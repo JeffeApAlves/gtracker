@@ -7,53 +7,23 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace GoodsTracker
 {
     public partial class MainForm : Form
     {
-        GMarkerGoogle marker;
-        GMapOverlay markerOverlay;
-        DataTable dt;
+        GMapOverlay     markerOverlay   = null;
+        GMapOverlay     polyOverlay     = null;
+        DataTable       dt;
 
-        double latitude = -23.673326;
-        double longitude = -46.775215;
+        const double latitude   = -23.673326;
+        const double longitude  = -46.775215;
+        int itemselected        = -1;
 
         public MainForm()
         {
             InitializeComponent();
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            panel1.Visible = !panel1.Visible;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            panel2.Visible = !panel2.Visible;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            panel3.Visible = !panel3.Visible;
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void gMapControl1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -73,42 +43,118 @@ namespace GoodsTracker
 
         private void button4_Click(object sender, EventArgs e)
         {
-
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            gMapControl1.DragButton = MouseButtons.Left;
-            gMapControl1.CanDragMap = true;
-            gMapControl1.MapProvider = GMapProviders.GoogleMap;
-            gMapControl1.Position = new PointLatLng(latitude, longitude);
-            gMapControl1.MinZoom = 0;
-            gMapControl1.MaxZoom = 24;
-            gMapControl1.Zoom = 22;
-            gMapControl1.AutoScroll = true;
-
-            markerOverlay = new GMapOverlay("Marcador");
-            marker = new GMarkerGoogle(new PointLatLng(latitude, longitude),GMarkerGoogleType.green);
-            markerOverlay.Markers.Add(marker);
-
-            marker.ToolTipMode = MarkerTooltipMode.Always;
-            marker.ToolTipText = string.Format("Localizacao\n Latitude:{0} \n Longitude:{1}", latitude, longitude);
-
-            gMapControl1.Overlays.Add(markerOverlay);
-
-
-  
-            GMapOverlay polyOverlay = new GMapOverlay("polygons");
-            List<PointLatLng> points = new List<PointLatLng>();
-            points.Add(new PointLatLng(latitude - 0.1, longitude + 0.1));
-            points.Add(new PointLatLng(latitude - 0.1, longitude + 0.1));
-            points.Add(new PointLatLng(latitude + 0.1, longitude - 0.1));
-            points.Add(new PointLatLng(latitude + 0.1, longitude - 0.1));
-            GMapPolygon polygon = new GMapPolygon(points, "mypolygon");
-            polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
-            polygon.Stroke = new Pen(Color.Red, 1);
-            polyOverlay.Polygons.Add(polygon);
-            gMapControl1.Overlays.Add(polyOverlay);
+            initMapControl();
+            initDataTable();
+            initDataGrid();
+            printmarker(latitude, longitude);
         }
+
+        private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            double lat  = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lat;
+            double lng  = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lng;
+
+            txtLat.Text = lat.ToString();
+            txtLng.Text = lng.ToString();
+
+            printmarker(lat, lng);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            double lat = Convert.ToDouble(txtLat.Text);
+            double lng = Convert.ToDouble(txtLng.Text);
+
+            insertData(lat,lng);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (itemselected >= 0)
+            {
+                dataGridView1.Rows.RemoveAt(itemselected);
+                markerOverlay.Markers.RemoveAt(itemselected+1);
+            }            
+        }
+
+        private void initMapControl()
+        {
+            gMapControl1.DragButton     = MouseButtons.Left;
+            gMapControl1.CanDragMap     = true;
+            gMapControl1.MapProvider    = GMapProviders.GoogleMap;
+            gMapControl1.MinZoom        = 0;
+            gMapControl1.MaxZoom        = 24;
+            gMapControl1.Zoom           = 15;
+            gMapControl1.Position       = new PointLatLng(latitude, longitude);
+            gMapControl1.AutoScroll     = true;
+        }
+
+        private void initDataTable()
+        {
+            dt = new DataTable();
+            dt.Columns.Add(new DataColumn("Loc.",       typeof(string)));
+            dt.Columns.Add(new DataColumn("Latitude",   typeof(double)));
+            dt.Columns.Add(new DataColumn("Longitude",  typeof(double)));
+        }
+
+        private void initDataGrid()
+        {
+            dataGridView1.DataSource = dt;
+        }
+
+        private void insertData(double lat, double lng)
+        {
+            dt.Rows.Add(string.Format("{0}", dt.Rows.Count), lat, lng);
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            itemselected    = e.RowIndex;
+            //latitude  = dataGridView1.Rows[itemselected].Cells[0].Value.ToString();
+            txtLat.Text = dataGridView1.Rows[itemselected].Cells[1].Value.ToString();
+            txtLng.Text = dataGridView1.Rows[itemselected].Cells[2].Value.ToString();
+        }
+
+        private void btn_fence_Click(object sender, EventArgs e)
+        {
+            Fence fence = new Fence();
+
+            fence.setFence(dt);
+
+            printFence(fence);
+        }
+
+        private void printFence(Fence pfence)
+        {
+            if (polyOverlay == null)
+            {
+                polyOverlay = new GMapOverlay("Fence");
+                gMapControl1.Overlays.Add(polyOverlay);
+            }
+
+            polyOverlay.Polygons.Add(pfence.getFence());
+        }
+
+        private void printmarker(double lat, double lng)
+        {
+            GMarkerGoogle marker;
+
+            marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.green);
+            marker.ToolTipMode = MarkerTooltipMode.Always;
+            marker.ToolTipText = string.Format("Localizacao\n Latitude:{0} \n Longitude:{1}", lat, lng);
+
+            if (markerOverlay == null)
+            {
+                markerOverlay = new GMapOverlay("Marcador");
+                gMapControl1.Overlays.Add(markerOverlay);
+            }
+
+            markerOverlay.Markers.Add(marker);
+        }
+
     }
 }
