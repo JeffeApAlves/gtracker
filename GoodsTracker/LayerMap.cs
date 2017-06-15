@@ -7,11 +7,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace GoodsTracker
 {
-    class LayerMap
+    class LayerMap : Object
     {
+        bool Visible = true;
         GMapControl mapControl = null;
         GMapOverlay mapOverlay = null;
 
@@ -22,6 +24,7 @@ namespace GoodsTracker
                 mapControl = mc;
                 mapOverlay = new GMapOverlay(name);
                 mapControl.Overlays.Add(mapOverlay);
+                Visible = true;
             }
         }
 
@@ -39,11 +42,6 @@ namespace GoodsTracker
         public void addPosition(double lat, double lng)
         {
             addPosition(new PointLatLng(lat, lng));
-        }
-
-        public void show()
-        {
-            mapControl.Visible = true;
         }
 
         public void removePositionAt(int item)
@@ -68,10 +66,40 @@ namespace GoodsTracker
             addFence(fence);
         }
 
+        public void show()
+        {
+            if (!Visible)
+            {
+                Visible = true;
+                mapControl.Overlays.Add(mapOverlay);
+                mapControl.Refresh();
+            }
+        }
 
         public void hide()
         {
-            mapControl.Visible = false;
+            if (Visible)
+            {
+                Visible = false;
+                mapControl.Overlays.Remove(mapOverlay);
+                mapControl.Refresh();
+            }
+        }
+
+        public void show(bool flg)
+        {
+            if (flg) {
+                show();
+            }
+            else
+            {
+                hide();
+            }
+        }
+
+        public bool isVisible()
+        {
+            return Visible;
         }
 
     }

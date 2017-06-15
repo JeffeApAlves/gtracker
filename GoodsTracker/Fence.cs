@@ -41,7 +41,6 @@ namespace GoodsTracker
             dt.Columns.Add(new DataColumn("Loc.", typeof(string)));
             dt.Columns.Add(new DataColumn("Latitude", typeof(double)));
             dt.Columns.Add(new DataColumn("Longitude", typeof(double)));
-
         }
 
         public void add(double plat, double plong)
@@ -91,11 +90,36 @@ namespace GoodsTracker
             updatePolygon();
         }
 
+        public void insertPositon(PointLatLng point)
+        {
+            dt.Rows.Add(string.Format("{0}", dt.Rows.Count), point.Lat, point.Lng);
+
+            points.Add(point);
+
+            updatePolygon();
+        }
+
         private void updatePolygon()
         {
             polygon         = new GMapPolygon(points, "mypolygon");
             polygon.Fill    = new SolidBrush(Color.FromArgb(50, Color.Red));
             polygon.Stroke  = new Pen(Color.Red, 1);
+        }
+
+        internal void clearPoints()
+        {
+            dt.Clear();
+
+            points.Clear();
+        }
+
+        public void removePositionAt(int index)
+        {
+            dt.Rows.RemoveAt(index);
+
+            points.RemoveAt(index);
+
+            updatePolygon();
         }
     }
 }
