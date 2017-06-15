@@ -11,8 +11,9 @@ namespace GoodsTracker
 {
     class Fence
     {
-        private List<PointLatLng> points    = null;
-        private GMapPolygon polygon         = null;
+        private DataTable           dt;
+        private List<PointLatLng>   points;
+        private GMapPolygon         polygon;
 
         private string name = "";
 
@@ -20,14 +21,27 @@ namespace GoodsTracker
         {
             setName(pname);
 
-            points = new List<PointLatLng>();
+            points  = new List<PointLatLng>();
+
+            dt      = new DataTable();
+
+            dt.Columns.Add(new DataColumn("Loc.", typeof(string)));
+            dt.Columns.Add(new DataColumn("Latitude", typeof(double)));
+            dt.Columns.Add(new DataColumn("Longitude", typeof(double)));
         }
 
         public Fence()
         {
             setName("");
 
-            points      = new List<PointLatLng>();
+            points = new List<PointLatLng>();
+
+            dt = new DataTable();
+
+            dt.Columns.Add(new DataColumn("Loc.", typeof(string)));
+            dt.Columns.Add(new DataColumn("Latitude", typeof(double)));
+            dt.Columns.Add(new DataColumn("Longitude", typeof(double)));
+
         }
 
         public void add(double plat, double plong)
@@ -42,6 +56,8 @@ namespace GoodsTracker
 
         public void setFence(DataTable pdt)
         {
+            dt = pdt;
+
             double lat, lng;
 
             for (int i = 0; i < pdt.Rows.Count; i++)
@@ -59,6 +75,27 @@ namespace GoodsTracker
         public GMapPolygon getFence()
         {
             return polygon;
+        }
+
+        public DataTable getDataTable()
+        {
+            return dt;
+        }
+
+        public void insertPositon(double lat, double lng)
+        {
+            dt.Rows.Add(string.Format("{0}", dt.Rows.Count), lat, lng);
+
+            points.Add(new PointLatLng(lat, lng));
+
+            updatePolygon();
+        }
+
+        private void updatePolygon()
+        {
+            polygon         = new GMapPolygon(points, "mypolygon");
+            polygon.Fill    = new SolidBrush(Color.FromArgb(50, Color.Red));
+            polygon.Stroke  = new Pen(Color.Red, 1);
         }
     }
 }

@@ -13,30 +13,30 @@ namespace GoodsTracker
         string formatCMD(string frame)
         {
             string ret      = frame;
-            /*
-            char delim[]    = { CHAR_SEPARATOR, 0 };
 
-            if (strstr(rxFrame.data, delim) == null)
-            {
-                char size_cmd = 0;
+            /*            char delim[]    = { CHAR_SEPARATOR, 0 };
 
-                while (size_cmd < rxFrame.count && (rxFrame.data[size_cmd] < '0' || rxFrame.data[size_cmd] > '9'))
-                {
-                    size_cmd++;
-                };
+                        if (strstr(rxFrame.data, delim) == null)
+                        {
+                            char size_cmd = 0;
 
-                if (rxFrame.getCount() >= (size_cmd + 1))
-                {
-                    str_append(rxFrame.data, delim, size_cmd);
+                            while (size_cmd < rxFrame.count && (rxFrame.data[size_cmd] < '0' || rxFrame.data[size_cmd] > '9'))
+                            {
+                                size_cmd++;
+                            };
 
-                    if ((size_cmd + LEN_ADDRESS + 1) < strlen(rxFrame.data))
-                    {
+                            if (rxFrame.getCount() >= (size_cmd + 1))
+                            {
+                                str_append(rxFrame.data, delim, size_cmd);
 
-                        str_append(rxFrame.data, delim, size_cmd + LEN_ADDRESS + 1);
-                    }
-                }
-            }
-            */
+                                if ((size_cmd + LEN_ADDRESS + 1) < strlen(rxFrame.data))
+                                {
+
+                                    str_append(rxFrame.data, delim, size_cmd + LEN_ADDRESS + 1);
+                                }
+                            }
+                        }*/
+
             return ret;
         }
 

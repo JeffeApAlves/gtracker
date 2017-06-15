@@ -11,14 +11,17 @@ using System.Collections.Generic;
 
 namespace GoodsTracker
 {
+    class POSITION_CONST {
+
+        public const double LATITUDE = -23.673326;
+        public const double LONGITUDE = -46.775215;
+    }
+
     public partial class MainForm : Form
     {
-        LayerMap layerFence, layerRoute;
+        LayerMap    layerFence, layerRoute,layoutBehavior;
 
-        DataTable       dt;
-
-        const double LATITUDE   = -23.673326;
-        const double LONGITUDE  = -46.775215;
+        Fence       fence;
 
         int itemselected        = -1;
 
@@ -29,58 +32,32 @@ namespace GoodsTracker
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            panel1.Visible = !panel1.Visible;
-
-            if (panel1.Visible)
-            {
-                panel2.Visible = false;
-                panel3.Visible = false;
-            }
-            
+            showPanel(panel1);
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            panel2.Visible = !panel2.Visible;
-
-            if (panel2.Visible)
-            {
-                panel1.Visible = false;
-                panel3.Visible = false;
-            }
-
+            showPanel(panel2);
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            panel3.Visible = !panel3.Visible;
-
-            if (panel3.Visible)
-            {
-                panel2.Visible = false;
-                panel1.Visible = false;
-            }
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
+            showPanel(panel3);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             initMapControl();
-            initDataTable();
             initDataGrid();
-            printmarker(LATITUDE, LONGITUDE);
+            printmarker(new PointLatLng(POSITION_CONST.LATITUDE, POSITION_CONST.LONGITUDE));
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            PointLatLng point = gMapControl1.FromLocalToLatLng(e.X, e.Y);
+            PointLatLng point   = gMapControl1.FromLocalToLatLng(e.X, e.Y);
 
-            txtLat.Text = point.Lat.ToString();
-            txtLng.Text = point.Lng.ToString();
+            txtLat.Text         = point.Lat.ToString();
+            txtLng.Text         = point.Lng.ToString();
 
             printmarker(point);
         }
@@ -90,7 +67,7 @@ namespace GoodsTracker
             double lat = Convert.ToDouble(txtLat.Text);
             double lng = Convert.ToDouble(txtLng.Text);
 
-            insertData(lat,lng);
+            fence.insertPositon(lat, lng);
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -111,28 +88,18 @@ namespace GoodsTracker
             gMapControl1.MaxZoom        = 24;
             gMapControl1.Zoom           = 15;
             gMapControl1.AutoScroll     = true;
-            gMapControl1.Position       = new PointLatLng(LATITUDE, LONGITUDE);
+            gMapControl1.Position       = new PointLatLng(POSITION_CONST.LATITUDE, POSITION_CONST.LONGITUDE);
 
-            layerFence = new LayerMap(gMapControl1, "Fence");
-            layerRoute = new LayerMap(gMapControl1, "Route");
-        }
-
-        private void initDataTable()
-        {
-            dt = new DataTable();
-            dt.Columns.Add(new DataColumn("Loc.",       typeof(string)));
-            dt.Columns.Add(new DataColumn("Latitude",   typeof(double)));
-            dt.Columns.Add(new DataColumn("Longitude",  typeof(double)));
+            layerFence      = new LayerMap(gMapControl1, "Fence");
+            layerRoute      = new LayerMap(gMapControl1, "Route");
+            layoutBehavior  = new LayerMap(gMapControl1, "Behavior");
         }
 
         private void initDataGrid()
         {
-            dataGridView1.DataSource = dt;
-        }
+            fence   = new Fence();
 
-        private void insertData(double lat, double lng)
-        {
-            dt.Rows.Add(string.Format("{0}", dt.Rows.Count), lat, lng);
+            dataGridView1.DataSource = fence.getDataTable();
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -145,22 +112,12 @@ namespace GoodsTracker
 
         private void btn_fence_Click(object sender, EventArgs e)
         {
-            printFence(dt);
-        }
-
-        private void printFence(DataTable data)
-        {
-            layerFence.addFence(data);
+            printFence(fence);
         }
 
         private void printFence(Fence fence)
         {
             layerFence.addFence(fence);
-        }
-
-        private void printmarker(double lat, double lng)
-        {
-            layerRoute.addPosition(lat,lng);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -182,17 +139,34 @@ namespace GoodsTracker
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
-        private void textBox9_TextChanged(object sender, EventArgs e)
+        private void button4_Click_1(object sender, EventArgs e)
         {
-
+            showPanel(panel4);
         }
 
         private void printmarker(PointLatLng point)
         {
             layerRoute.addPosition(point);
+        }
+
+        void showPanel(Panel p)
+        {
+            if (p != null)
+            {
+                bool show = !p.Visible;
+
+                if (show) {
+
+                    panel1.Visible = false;
+                    panel2.Visible = false;
+                    panel3.Visible = false;
+                    panel4.Visible = false;
+                }
+
+                p.Visible = show;
+            }
         }
     }
 }

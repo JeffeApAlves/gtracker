@@ -72,6 +72,9 @@
             this.btn_lock = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -81,6 +84,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -95,9 +99,11 @@
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Controls.Add(this.button3);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Controls.Add(this.button4);
+            this.flowLayoutPanel1.Controls.Add(this.panel4);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(345, 690);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(345, 692);
             this.flowLayoutPanel1.TabIndex = 1;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -246,7 +252,7 @@
             this.panel3.Controls.Add(this.treeView1);
             this.panel3.Location = new System.Drawing.Point(3, 930);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(320, 376);
+            this.panel3.Size = new System.Drawing.Size(320, 381);
             this.panel3.TabIndex = 5;
             this.panel3.Visible = false;
             // 
@@ -551,6 +557,42 @@
             this.label12.TabIndex = 2;
             this.label12.Text = "Filter";
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(0, 1314);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(325, 40);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "Setup";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.checkedListBox1);
+            this.panel4.Location = new System.Drawing.Point(3, 1357);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(320, 207);
+            this.panel4.TabIndex = 7;
+            this.panel4.Visible = false;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "Route",
+            "Behavior",
+            "Fence"});
+            this.checkedListBox1.Location = new System.Drawing.Point(25, 52);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(271, 64);
+            this.checkedListBox1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -581,6 +623,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -632,6 +675,9 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btn_lock;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
 

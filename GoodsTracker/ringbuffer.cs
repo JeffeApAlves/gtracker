@@ -8,31 +8,32 @@ namespace GoodsTracker
 {
     class RingBuffer
     {
-        const uint BUFFER_SIZE = 64;
+        const int DEFAULT_BUFFER_SIZE = 64;
 
-        byte[] data  = new byte[BUFFER_SIZE];
+        byte[] data  = null;
 
-        uint index_producer;
-        uint index_consumer;
+        int index_producer;
+        int index_consumer;
         uint count;
+
+        public RingBuffer(int size)
+        {
+            data = new byte[size>0?size: DEFAULT_BUFFER_SIZE];
+        }
 
         public bool putData(byte ch)
         {
             bool flag = false;
 
-//            EnterCritical();
-
             if (!isFull())
             {
 
                 data[index_producer++] = ch;
-                index_producer %= BUFFER_SIZE;
+                index_producer %= data.Length;
                 count++;
 
                 flag = true;
             }
-
-//            ExitCritical();
 
             return flag;
         }
@@ -44,19 +45,15 @@ namespace GoodsTracker
 
             ch = new byte();
 
-//            EnterCritical();
-
             if (hasData())
             {
 
                 ch = data[index_consumer++];
-                index_consumer %= BUFFER_SIZE;
+                index_consumer %= data.Length;
                 count--;
 
                 flag = true;
             }
-
-//            ExitCritical();
 
             return flag;
         }
@@ -70,7 +67,7 @@ namespace GoodsTracker
 
         public bool isFull()
         {
-            return getCount() >= BUFFER_SIZE;
+            return getCount() >= data.Length;
         }
         //------------------------------------------------------------------------
 
@@ -82,13 +79,12 @@ namespace GoodsTracker
 
         public void initBuffer()
         {
-            index_consumer = 0;
-            index_producer = 0;
-            count = 0;
+            index_consumer  = 0;
+            index_producer  = 0;
+            count           = 0;
 
-            for (uint i = 0; i < BUFFER_SIZE; i++)
+            for (uint i = 0; i < data.Length; i++)
             {
-
                 data[i] = 0;
             }
         }

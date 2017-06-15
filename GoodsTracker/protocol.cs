@@ -46,6 +46,13 @@ namespace GoodsTracker
         List<Cmd>       queueCmd        = new List<Cmd>();
         List<ParamCmd>  queueParam      = new List<ParamCmd>();
 
+
+        Protocol()
+        {
+            bufferRx = new RingBuffer(256);
+            bufferTx = new RingBuffer(256);
+        }
+
         public void process()
         {
             processTx();
@@ -249,7 +256,7 @@ namespace GoodsTracker
 
         void clearRxFrame()
         {
-            rxFrame     = new RxFrame();
+            rxFrame = new RxFrame();
         }
 
         bool putTxData(byte data)
