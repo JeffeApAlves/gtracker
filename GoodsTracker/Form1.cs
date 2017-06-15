@@ -17,8 +17,9 @@ namespace GoodsTracker
         GMapOverlay     polyOverlay     = null;
         DataTable       dt;
 
-        const double latitude   = -23.673326;
-        const double longitude  = -46.775215;
+        const double LATITUDE   = -23.673326;
+        const double LONGITUDE  = -46.775215;
+
         int itemselected        = -1;
 
         public MainForm()
@@ -50,18 +51,17 @@ namespace GoodsTracker
             initMapControl();
             initDataTable();
             initDataGrid();
-            printmarker(latitude, longitude);
+            printmarker(LATITUDE, LONGITUDE);
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            double lat  = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lat;
-            double lng  = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lng;
+            PointLatLng point = gMapControl1.FromLocalToLatLng(e.X, e.Y);
 
-            txtLat.Text = lat.ToString();
-            txtLng.Text = lng.ToString();
+            txtLat.Text = point.Lat.ToString();
+            txtLng.Text = point.Lng.ToString();
 
-            printmarker(lat, lng);
+            printmarker(point);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -89,8 +89,8 @@ namespace GoodsTracker
             gMapControl1.MinZoom        = 0;
             gMapControl1.MaxZoom        = 24;
             gMapControl1.Zoom           = 15;
-            gMapControl1.Position       = new PointLatLng(latitude, longitude);
             gMapControl1.AutoScroll     = true;
+            gMapControl1.Position       = new PointLatLng(LATITUDE, LONGITUDE);
         }
 
         private void initDataTable()
@@ -114,9 +114,9 @@ namespace GoodsTracker
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             itemselected    = e.RowIndex;
-            //latitude  = dataGridView1.Rows[itemselected].Cells[0].Value.ToString();
-            txtLat.Text = dataGridView1.Rows[itemselected].Cells[1].Value.ToString();
-            txtLng.Text = dataGridView1.Rows[itemselected].Cells[2].Value.ToString();
+            //latitude      = dataGridView1.Rows[itemselected].Cells[0].Value.ToString();
+            txtLat.Text     = dataGridView1.Rows[itemselected].Cells[1].Value.ToString();
+            txtLng.Text     = dataGridView1.Rows[itemselected].Cells[2].Value.ToString();
         }
 
         private void btn_fence_Click(object sender, EventArgs e)
@@ -143,18 +143,27 @@ namespace GoodsTracker
         {
             GMarkerGoogle marker;
 
-            marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.green);
-            marker.ToolTipMode = MarkerTooltipMode.Always;
-            marker.ToolTipText = string.Format("Localizacao\n Latitude:{0} \n Longitude:{1}", lat, lng);
-
             if (markerOverlay == null)
             {
                 markerOverlay = new GMapOverlay("Marcador");
                 gMapControl1.Overlays.Add(markerOverlay);
             }
 
+
+            marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.green);
+            marker.ToolTipMode = MarkerTooltipMode.Always;
+            marker.ToolTipText = string.Format("Localizacao\n Latitude:{0} \n Longitude:{1}", lat, lng);
+
+
             markerOverlay.Markers.Add(marker);
         }
 
+        private void printmarker(PointLatLng point)
+        {
+            double lat = point.Lat;
+            double lng = point.Lng;
+
+            printmarker(lat, lng);
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoodsTracker
 {
-    class Communication
+    class TxFrame : CommunicationFrame
     {
     }
 }

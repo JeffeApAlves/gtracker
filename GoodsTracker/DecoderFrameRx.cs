@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GoodsTracker
+{
+    class DecoderFrameRx : IDecoderFrameRx
+    {
+        string formatCMD(string frame)
+        {
+            string ret      = frame;
+            char delim[]    = { CHAR_SEPARATOR, 0 };
+
+            if (strstr(rxFrame.data, delim) == null)
+            {
+                char size_cmd = 0;
+
+                while (size_cmd < rxFrame.count && (rxFrame.data[size_cmd] < '0' || rxFrame.data[size_cmd] > '9'))
+                {
+                    size_cmd++;
+                };
+
+                if (rxFrame.getCount() >= (size_cmd + 1))
+                {
+                    str_append(rxFrame.data, delim, size_cmd);
+
+                    if ((size_cmd + LEN_ADDRESS + 1) < strlen(rxFrame.data))
+                    {
+
+                        str_append(rxFrame.data, delim, size_cmd + LEN_ADDRESS + 1);
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        public bool FillCmd(out ParamCmd param, RxFrame frame)
+        {
+            string frame_format = formatCMD(frame.getDataString());
+
+            string[] list       = frame_format.Split(CHAR_SEPARATOR);
+
+            if (list != null)
+            {
+                for (int i = 0; i < list.Length; i++)
+                {
+                    if (list[i] != null)
+                    {
+                        switch (i)
+                        {
+                            case 0: strcpy(param.Name_cmd, list.itens[0]); break;
+                            case 1: param.Address = atoi(list.itens[1]); break;
+                            case 2: param.Value = atoi(list.itens[2]); break;
+                        }
+                    }
+                }
+            }
+
+            return list.Length >= 2;
+        }
+    }
+}
