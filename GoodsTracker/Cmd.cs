@@ -83,5 +83,15 @@ namespace GoodsTracker
         {
             return ResultExec.EXEC_SUCCESS;
         }
+
+        internal object GetAddress()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal object GetValue()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

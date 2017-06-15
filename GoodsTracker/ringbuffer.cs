@@ -42,6 +42,8 @@ namespace GoodsTracker
         {
             bool flag = false;
 
+            ch = new byte();
+
 //            EnterCritical();
 
             if (hasData())

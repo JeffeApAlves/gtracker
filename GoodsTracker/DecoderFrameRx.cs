@@ -8,9 +8,12 @@ namespace GoodsTracker
 {
     class DecoderFrameRx : IDecoderFrameRx
     {
+        const char CHAR_SEPARATOR = ':';
+
         string formatCMD(string frame)
         {
             string ret      = frame;
+            /*
             char delim[]    = { CHAR_SEPARATOR, 0 };
 
             if (strstr(rxFrame.data, delim) == null)
@@ -33,18 +36,23 @@ namespace GoodsTracker
                     }
                 }
             }
-
+            */
             return ret;
         }
 
         public bool FillCmd(out ParamCmd param, RxFrame frame)
         {
-            string frame_format = formatCMD(frame.getDataString());
+            string frame_format = formatCMD(frame.getPayLoad());
 
             string[] list       = frame_format.Split(CHAR_SEPARATOR);
 
+            bool ret = false;
+
+            param = new ParamCmd();
+
             if (list != null)
             {
+                        /*
                 for (int i = 0; i < list.Length; i++)
                 {
                     if (list[i] != null)
@@ -57,9 +65,11 @@ namespace GoodsTracker
                         }
                     }
                 }
+                */
+                ret = list.Length >= 2;
             }
 
-            return list.Length >= 2;
+            return ret;
         }
     }
 }

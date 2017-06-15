@@ -6,6 +6,7 @@ namespace GoodsTracker
     {
         public void buildFrame(out TxFrame frame, Cmd cmd)
         {
+            frame = new TxFrame();
             string str = string.Format("[{0}{1}{2}]", cmd.getName(), cmd.GetAddress(),cmd.GetValue());
 
 //            frame.s

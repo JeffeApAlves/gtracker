@@ -13,8 +13,8 @@ namespace GoodsTracker
 {
     public partial class MainForm : Form
     {
-        GMapOverlay     markerOverlay   = null;
-        GMapOverlay     polyOverlay     = null;
+        LayerMap layerFence, layerRoute;
+
         DataTable       dt;
 
         const double LATITUDE   = -23.673326;
@@ -30,16 +30,37 @@ namespace GoodsTracker
         private void button1_Click_1(object sender, EventArgs e)
         {
             panel1.Visible = !panel1.Visible;
+
+            if (panel1.Visible)
+            {
+                panel2.Visible = false;
+                panel3.Visible = false;
+            }
+            
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             panel2.Visible = !panel2.Visible;
+
+            if (panel2.Visible)
+            {
+                panel1.Visible = false;
+                panel3.Visible = false;
+            }
+
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
             panel3.Visible = !panel3.Visible;
+
+            if (panel3.Visible)
+            {
+                panel2.Visible = false;
+                panel1.Visible = false;
+            }
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -77,7 +98,7 @@ namespace GoodsTracker
             if (itemselected >= 0)
             {
                 dataGridView1.Rows.RemoveAt(itemselected);
-                markerOverlay.Markers.RemoveAt(itemselected+1);
+                layerRoute.removePositionAt(itemselected + 1);
             }            
         }
 
@@ -91,6 +112,9 @@ namespace GoodsTracker
             gMapControl1.Zoom           = 15;
             gMapControl1.AutoScroll     = true;
             gMapControl1.Position       = new PointLatLng(LATITUDE, LONGITUDE);
+
+            layerFence = new LayerMap(gMapControl1, "Fence");
+            layerRoute = new LayerMap(gMapControl1, "Route");
         }
 
         private void initDataTable()
@@ -121,49 +145,54 @@ namespace GoodsTracker
 
         private void btn_fence_Click(object sender, EventArgs e)
         {
-            Fence fence = new Fence();
-
-            fence.setFence(dt);
-
-            printFence(fence);
+            printFence(dt);
         }
 
-        private void printFence(Fence pfence)
+        private void printFence(DataTable data)
         {
-            if (polyOverlay == null)
-            {
-                polyOverlay = new GMapOverlay("Fence");
-                gMapControl1.Overlays.Add(polyOverlay);
-            }
+            layerFence.addFence(data);
+        }
 
-            polyOverlay.Polygons.Add(pfence.getFence());
+        private void printFence(Fence fence)
+        {
+            layerFence.addFence(fence);
         }
 
         private void printmarker(double lat, double lng)
         {
-            GMarkerGoogle marker;
+            layerRoute.addPosition(lat,lng);
+        }
 
-            if (markerOverlay == null)
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
             {
-                markerOverlay = new GMapOverlay("Marcador");
-                gMapControl1.Overlays.Add(markerOverlay);
+                gMapControl1.MapProvider = GMapProviders.GoogleChinaSatelliteMap;
             }
+            else
+            {
+                gMapControl1.MapProvider = GMapProviders.GoogleMap;
+            }
+        }
 
+        private void tB_Zoom_Scroll(object sender, EventArgs e)
+        {
+            gMapControl1.Zoom = tB_Zoom.Value;
+        }
 
-            marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.green);
-            marker.ToolTipMode = MarkerTooltipMode.Always;
-            marker.ToolTipText = string.Format("Localizacao\n Latitude:{0} \n Longitude:{1}", lat, lng);
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
 
-            markerOverlay.Markers.Add(marker);
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void printmarker(PointLatLng point)
         {
-            double lat = point.Lat;
-            double lng = point.Lng;
-
-            printmarker(lat, lng);
+            layerRoute.addPosition(point);
         }
     }
 }
