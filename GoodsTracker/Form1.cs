@@ -16,11 +16,8 @@ namespace GoodsTracker
         LayerMap layerFence, layerRoute, layerBehavior;
 
         STATUS_GUI statusGUI    = STATUS_GUI.INIT;
-
-        Fence       fence;
-
+        Fence       fence       = new Fence();
         Tracker     tracker     = new Tracker();
-
         int itemselected        = -1;
 
         public MainForm()
@@ -49,10 +46,8 @@ namespace GoodsTracker
             initDataGrid();
             initLayers();
             initPanelConfig();
-
             loadlistPointsTreeView(tracker.ListBehavior);
-
-            printmarker(gMapControl1.Position);
+            layerRoute.addPosition(gMapControl1.Position);
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -62,15 +57,16 @@ namespace GoodsTracker
             txtLat.Text         = point.Lat.ToString();
             txtLng.Text         = point.Lng.ToString();
 
-            printmarker(point);
-
             if (statusGUI.Equals(STATUS_GUI.NEW_FENCE) || statusGUI.Equals(STATUS_GUI.ADD_POINTS))
             {
                 fence.insertPositon(point);
-
+                layerFence.addPosition(point);
                 statusGUI = STATUS_GUI.ADD_POINTS;
-
                 btn_fence.Enabled = true;
+            }
+            else
+            {
+                layerRoute.addPosition(point);
             }
         }
 
@@ -92,7 +88,9 @@ namespace GoodsTracker
         {
             if (statusGUI.Equals(STATUS_GUI.ADD_POINTS))
             {
-                printFence(fence);
+                layerFence.addFence(fence);
+
+                cbListFence.Items.Add(string.Format("Fence:{0}",cbListFence.Items.Count));
 
                 statusGUI = STATUS_GUI.CONFIRM_FENCE;
 
@@ -115,10 +113,13 @@ namespace GoodsTracker
         {
             if (itemselected >= 0)
             {
-                layerRoute.removePositionAt(itemselected + 1);
+                if (statusGUI.Equals(STATUS_GUI.ADD_POINTS))
+                {
+                    layerFence.removePositionAt(itemselected);
 
-                fence.removePositionAt(itemselected);
-            }            
+                    fence.removePositionAt(itemselected);
+                }
+            }
         }
 
         private void initMapControl()
@@ -135,8 +136,6 @@ namespace GoodsTracker
 
         private void initDataGrid()
         {
-            fence   = new Fence();
-
             dataGridView1.DataSource = fence.getDataTable();
         }
 
@@ -146,7 +145,6 @@ namespace GoodsTracker
 
             if (itemselected >= 0) {
 
-                //latitude      = dataGridView1.Rows[itemselected].Cells[0].Value.ToString();
                 txtLat.Text = dataGridView1.Rows[itemselected].Cells[1].Value.ToString();
                 txtLng.Text = dataGridView1.Rows[itemselected].Cells[2].Value.ToString();
             }
@@ -157,11 +155,6 @@ namespace GoodsTracker
             layerFence      = new LayerMap(gMapControl1, "Fence");
             layerRoute      = new LayerMap(gMapControl1, "Route");
             layerBehavior   = new LayerMap(gMapControl1, "Behavior");
-        }
-
-        private void printFence(Fence fence)
-        {
-            layerFence.addFence(fence);
         }
 
         private void tB_Zoom_Scroll(object sender, EventArgs e)
@@ -198,11 +191,6 @@ namespace GoodsTracker
             checkedListBox1.SetItemCheckState(3, gMapControl1.MapProvider.Equals(GMapProviders.GoogleChinaSatelliteMap) ? CheckState.Checked : CheckState.Unchecked);
         }
 
-        private void printmarker(PointLatLng point)
-        {
-            layerRoute.addPosition(point);
-        }
-
         void showPanel(Panel p)
         {
             if (p != null)
@@ -223,14 +211,23 @@ namespace GoodsTracker
 
         void loadlistPointsTreeView(List<Behavior> list)
         {
+            TreeNode root, loc;
+            int i = 0;
 
-            foreach(Behavior b in list)
+            root = createRootTreeView();
+
+            foreach (Behavior b in list)
             {
-                 insertPointTreeView(b);
+                loc = createLocTreeView(root, i);
+
+                createPositionTreeView(b,loc);
+                createEixoTreeView("Eixo[X]", b.AxisX, loc);
+                createEixoTreeView("Eixo[Y]", b.AxisY, loc);
+                createEixoTreeView("Eixo[Z]", b.AxisZ, loc);
             }
         }
 
-        void insertPointTreeView(Behavior behavior)
+        TreeNode createRootTreeView()
         {
             TreeNode root;
 
@@ -238,30 +235,57 @@ namespace GoodsTracker
             {
                 root = tvBehavior.Nodes.Add("Trip");
             }
-            else {
+            else
+            {
 
                 root = tvBehavior.Nodes[0];
             }
 
-            TreeNode info = root.Nodes.Add(string.Format("Localizacao [ {0} / {1} ]", 
-                                                behavior.Position.Latitude, 
-                                                behavior.Position.Longitude));
+            return root;
+        }
 
-            info.Nodes.Add(string.Format("Velocidade:   {0}", 
-                                        behavior.Speed.Val));
+        TreeNode createLocTreeView(TreeNode root,int i)
+        {
+            TreeNode loc;
 
-            info.Nodes.Add(string.Format("Eixo(X):      Acel={0} Rot={1}",
-                                        behavior.AccelerationX.Val,
-                                        behavior.RotationX.Val));
+            loc = root.Nodes.Add(string.Format("Localizacao[{0}]", i));
 
+            return loc;
+        }
 
-            info.Nodes.Add(string.Format("Eixo(Y):      Acel={0} Rot={1}",
-                                        behavior.AccelerationY.Val,
-                                        behavior.RotationY.Val));
+        private void btn_delFence_Click(object sender, EventArgs e)
+        {
+            layerFence.removeFenceAt(cbListFence.SelectedIndex);
 
-            info.Nodes.Add(string.Format("Eixo(Z):      Acel={0} Rot={1}",
-                                        behavior.AccelerationZ.Val,
-                                        behavior.RotationZ.Val));
+            cbListFence.Items.RemoveAt(cbListFence.SelectedIndex);
+        }
+
+        void createPositionTreeView(Behavior behavior, TreeNode loc)
+        {
+            loc.Nodes.Add(string.Format("Localizacao: ({0},{1})",
+                                    behavior.Position.Latitude,
+                                    behavior.Position.Longitude));
+
+            loc.Nodes.Add(string.Format("Velocidade: {0}", behavior.Speed.Val));
+
+        }
+
+        TreeNode createEixoTreeView(string neixo,Axis axis, TreeNode loc)
+        {
+            TreeNode eixo;
+
+            eixo = loc.Nodes.Add(string.Format(neixo));
+
+            eixo.Nodes.Add(string.Format("A: {0} Min:{1} Max:{2}",
+                                        axis.Acceleration.Val,
+                                        axis.Acceleration.Tol.Min,
+                                        axis.Acceleration.Tol.Max));
+
+            eixo.Nodes.Add(string.Format("R: {0} Min:{1} Max:{2}",
+                                        axis.Rotation.Val,
+                                        axis.Rotation.Tol.Min,
+                                        axis.Rotation.Tol.Max));
+            return eixo;
         }
     }
 

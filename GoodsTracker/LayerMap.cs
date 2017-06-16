@@ -4,6 +4,7 @@ using GMap.NET.WindowsForms.Markers;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,11 @@ namespace GoodsTracker
     class LayerMap : Object
     {
         bool Visible = true;
-        GMapControl mapControl = null;
+        static GMapControl mapControl = null;
         GMapOverlay mapOverlay = null;
+        List<string> listFecence = new List<string>();
 
-        public LayerMap(GMapControl mc,string name)
+        internal LayerMap(GMapControl mc,string name)
         {
             if (mapOverlay == null)
             {
@@ -28,7 +30,7 @@ namespace GoodsTracker
             }
         }
 
-        public void addPosition(PointLatLng position)
+        internal void addPosition(PointLatLng position)
         {
             GMarkerGoogle marker;
 
@@ -39,12 +41,12 @@ namespace GoodsTracker
             mapOverlay.Markers.Add(marker);
         }
 
-        public void addPosition(double lat, double lng)
+        internal void addPosition(double lat, double lng)
         {
             addPosition(new PointLatLng(lat, lng));
         }
 
-        public void removePositionAt(int item)
+        internal void removePositionAt(int item)
         {
             if (item >= 0)
             {
@@ -52,12 +54,20 @@ namespace GoodsTracker
             }
         }
 
-        public void addFence(Fence fence)
+        internal void addFence(Fence fence)
         {
-            mapOverlay.Polygons.Add(fence.getFence());
+            GMapPolygon polygon;
+
+            polygon = new GMapPolygon(fence.getPoints(), "Fence");
+            polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
+            polygon.Stroke = new Pen(Color.Red, 1);
+
+            mapOverlay.Polygons.Add(polygon);
+
+            listFecence.Add(string.Format("Fence:{0}",listFecence.Count+1));
         }
 
-        public void addFence(DataTable dt)
+        internal void addFence(DataTable dt)
         {
             Fence fence = new Fence();
 
@@ -66,7 +76,7 @@ namespace GoodsTracker
             addFence(fence);
         }
 
-        public void show()
+        internal void show()
         {
             if (!Visible)
             {
@@ -76,7 +86,7 @@ namespace GoodsTracker
             }
         }
 
-        public void hide()
+        internal void hide()
         {
             if (Visible)
             {
@@ -86,7 +96,7 @@ namespace GoodsTracker
             }
         }
 
-        public void show(bool flg)
+        internal void show(bool flg)
         {
             if (flg) {
                 show();
@@ -97,10 +107,22 @@ namespace GoodsTracker
             }
         }
 
-        public bool isVisible()
+        internal bool isVisible()
         {
             return Visible;
         }
 
+        internal void removeFenceAt(int index)
+        {
+            if (index >= 0 && index < mapOverlay.Polygons.Count)
+            {
+                mapOverlay.Polygons.RemoveAt(index);
+            }
+        }
+
+        internal List<string> getListFence()
+        {
+            return listFecence;
+        }
     }
 }

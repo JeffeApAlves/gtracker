@@ -54,6 +54,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbListFence = new System.Windows.Forms.ComboBox();
+            this.btn_delFence = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btn_fence = new System.Windows.Forms.Button();
@@ -352,6 +354,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cbListFence);
+            this.panel2.Controls.Add(this.btn_delFence);
             this.panel2.Controls.Add(this.btn_cancel);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.btn_fence);
@@ -363,9 +367,27 @@
             this.panel2.Controls.Add(this.button5);
             this.panel2.Location = new System.Drawing.Point(3, 529);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(320, 470);
+            this.panel2.Size = new System.Drawing.Size(320, 485);
             this.panel2.TabIndex = 3;
             this.panel2.Visible = false;
+            // 
+            // cbListFence
+            // 
+            this.cbListFence.FormattingEnabled = true;
+            this.cbListFence.Location = new System.Drawing.Point(0, 400);
+            this.cbListFence.Name = "cbListFence";
+            this.cbListFence.Size = new System.Drawing.Size(318, 21);
+            this.cbListFence.TabIndex = 18;
+            // 
+            // btn_delFence
+            // 
+            this.btn_delFence.Location = new System.Drawing.Point(223, 427);
+            this.btn_delFence.Name = "btn_delFence";
+            this.btn_delFence.Size = new System.Drawing.Size(95, 25);
+            this.btn_delFence.TabIndex = 17;
+            this.btn_delFence.Text = "Delete";
+            this.btn_delFence.UseVisualStyleBackColor = true;
+            this.btn_delFence.Click += new System.EventHandler(this.btn_delFence_Click);
             // 
             // btn_cancel
             // 
@@ -434,7 +456,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(222, 349);
+            this.button6.Location = new System.Drawing.Point(223, 349);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(95, 25);
             this.button6.TabIndex = 8;
@@ -458,7 +480,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(0, 1002);
+            this.button3.Location = new System.Drawing.Point(0, 1017);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(325, 40);
@@ -473,7 +495,7 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.comboBox1);
             this.panel3.Controls.Add(this.tvBehavior);
-            this.panel3.Location = new System.Drawing.Point(3, 1045);
+            this.panel3.Location = new System.Drawing.Point(3, 1060);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(320, 381);
             this.panel3.TabIndex = 5;
@@ -509,7 +531,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(0, 1429);
+            this.button4.Location = new System.Drawing.Point(0, 1444);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(325, 40);
@@ -522,7 +544,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.checkedListBox1);
-            this.panel4.Location = new System.Drawing.Point(3, 1472);
+            this.panel4.Location = new System.Drawing.Point(3, 1487);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(320, 207);
             this.panel4.TabIndex = 7;
@@ -557,8 +579,8 @@
             this.gMapControl1.LevelsKeepInMemmory = 5;
             this.gMapControl1.Location = new System.Drawing.Point(352, 0);
             this.gMapControl1.MarkersEnabled = true;
-            this.gMapControl1.MaxZoom = 2;
-            this.gMapControl1.MinZoom = 2;
+            this.gMapControl1.MaxZoom = 24;
+            this.gMapControl1.MinZoom = 0;
             this.gMapControl1.MouseWheelZoomEnabled = true;
             this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
             this.gMapControl1.Name = "gMapControl1";
@@ -684,6 +706,8 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Button btn_delFence;
+        private System.Windows.Forms.ComboBox cbListFence;
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿namespace GoodsTracker
 {
-    class Scale {
+    internal class Scale {
 
         double min;
         double max;
@@ -8,7 +8,9 @@
         public double Min { get => min; set => min = value; }
         public double Max { get => max; set => max = value; }
     }
-    class Value{
+
+    internal class Value
+    {
 
         double val;
         Scale tol;
@@ -22,34 +24,40 @@
         }
     }
 
+    internal class Axis
+    {
+        Value acceleration, rotation;
+
+        public Axis()
+        {
+            Acceleration = new Value();
+
+            Rotation = new Value();
+        }
+
+        internal Value Acceleration { get => acceleration; set => acceleration = value; }
+        internal Value Rotation { get => rotation; set => rotation = value; }
+    }
+
     internal class Behavior
     {
         GPSPosition position;
-        Value speed;
-        Value accelerationX, accelerationY, accelerationZ;
-        Value rotationX, rotationY, rotationZ;
+        Value       speed;
+        Axis        axisX, axisY, axisZ;
 
         internal Value Speed { get => speed; set => speed = value; }
-        internal Value AccelerationX { get => accelerationX; set => accelerationX = value; }
-        internal Value AccelerationY { get => accelerationY; set => accelerationY = value; }
-        internal Value AccelerationZ { get => accelerationZ; set => accelerationZ = value; }
         internal GPSPosition Position { get => position; set => position = value; }
-        internal Value RotationX { get => rotationX; set => rotationX = value; }
-        internal Value RotationY { get => rotationY; set => rotationY = value; }
-        internal Value RotationZ { get => rotationZ; set => rotationZ = value; }
-
+        internal Axis AxisX { get => axisX; set => axisX = value; }
+        internal Axis AxisY { get => axisY; set => axisY = value; }
+        internal Axis AxisZ { get => axisZ; set => axisZ = value; }
 
         public Behavior()
         {
             position        = new GPSPosition();
             speed           = new Value();
-            accelerationX   = new Value();
-            accelerationY   = new Value();
-            accelerationZ   = new Value();
-
-            rotationX       = new Value();
-            rotationY       = new Value();
-            rotationZ       = new Value();
+            AxisX = new Axis();
+            AxisY = new Axis();
+            AxisZ = new Axis();
         }
     }
 }

@@ -13,7 +13,6 @@ namespace GoodsTracker
     {
         private DataTable           dt;
         private List<PointLatLng>   points;
-        private GMapPolygon         polygon;
 
         private string name = "";
 
@@ -56,24 +55,6 @@ namespace GoodsTracker
         public void setFence(DataTable pdt)
         {
             dt = pdt;
-
-            double lat, lng;
-
-            for (int i = 0; i < pdt.Rows.Count; i++)
-            {
-                lat = Convert.ToDouble(pdt.Rows[i]["Latitude"].ToString());
-                lng = Convert.ToDouble(pdt.Rows[i]["Longitude"].ToString());
-                points.Add(new PointLatLng(lat, lng));
-            }
-
-            polygon = new GMapPolygon(points, "mypolygon");
-            polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
-            polygon.Stroke = new Pen(Color.Red, 1);
-        }
-
-        public GMapPolygon getFence()
-        {
-            return polygon;
         }
 
         public DataTable getDataTable()
@@ -86,8 +67,6 @@ namespace GoodsTracker
             dt.Rows.Add(string.Format("{0}", dt.Rows.Count), lat, lng);
 
             points.Add(new PointLatLng(lat, lng));
-
-            updatePolygon();
         }
 
         public void insertPositon(PointLatLng point)
@@ -95,15 +74,6 @@ namespace GoodsTracker
             dt.Rows.Add(string.Format("{0}", dt.Rows.Count), point.Lat, point.Lng);
 
             points.Add(point);
-
-            updatePolygon();
-        }
-
-        private void updatePolygon()
-        {
-            polygon         = new GMapPolygon(points, "mypolygon");
-            polygon.Fill    = new SolidBrush(Color.FromArgb(50, Color.Red));
-            polygon.Stroke  = new Pen(Color.Red, 1);
         }
 
         internal void clearPoints()
@@ -120,9 +90,12 @@ namespace GoodsTracker
                 dt.Rows.RemoveAt(index);
 
                 points.RemoveAt(index);
-
-                updatePolygon();
             }
+        }
+
+        public List<PointLatLng> getPoints()
+        {
+            return points;
         }
     }
 }
