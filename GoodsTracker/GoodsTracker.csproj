@@ -108,6 +108,7 @@
     <Compile Include="RxFrame.cs" />
     <Compile Include="touchkey.cs" />
     <Compile Include="tracker.cs" />
+    <Compile Include="TrackerController .cs" />
     <Compile Include="TxFrame.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

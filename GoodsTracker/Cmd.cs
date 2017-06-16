@@ -27,7 +27,13 @@ namespace GoodsTracker
     {
         private static Dictionary<IdCmd, Cmd> Containner = new Dictionary<IdCmd, Cmd>();
 
-        IdCmd   id_cmd;
+        IdCmd   idCmd;
+        int     address;
+        int     value;
+
+        public int Address { get => address; set => address = value; }
+        public int Value { get => value; set => this.value = value; }
+        internal IdCmd IdCmd { get => idCmd; set => idCmd = value; }
 
         private Cmd()
         {
@@ -35,7 +41,7 @@ namespace GoodsTracker
 
         private Cmd(IdCmd id)
         {
-            id_cmd = id;
+            idCmd = id;
 
             Containner.Add(id, this);
         }
@@ -67,7 +73,7 @@ namespace GoodsTracker
         {
             string name_cmd = "";
 
-            switch (id_cmd)
+            switch (idCmd)
             {
                 case IdCmd.CMD_LED:     name_cmd = "LED";   break;
                 case IdCmd.CMD_ANALOG:  name_cmd = "AN";    break;
@@ -82,16 +88,6 @@ namespace GoodsTracker
         public ResultExec callBack(ParamCmd param)
         {
             return ResultExec.EXEC_SUCCESS;
-        }
-
-        internal object GetAddress()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal object GetValue()
-        {
-            throw new NotImplementedException();
         }
     }
 }

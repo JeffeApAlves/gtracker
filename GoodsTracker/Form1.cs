@@ -5,8 +5,6 @@ using System.Windows.Forms;
 
 using GMap.NET;
 using GMap.NET.MapProviders;
-using GMap.NET.WindowsForms;
-using GMap.NET.WindowsForms.Markers;
 using System.Collections.Generic;
 
 namespace GoodsTracker
@@ -15,29 +13,15 @@ namespace GoodsTracker
     {
         LayerMap layerFence, layerRoute, layerBehavior;
 
-        STATUS_GUI statusGUI    = STATUS_GUI.INIT;
-        Fence       fence       = new Fence();
-        Tracker     tracker     = new Tracker();
+        STATUS_GUI  statusGUI   = STATUS_GUI.INIT;
+        TrackerController trackerController = new TrackerController();
+
+        Fence fence;
         int itemselected        = -1;
 
         public MainForm()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            showPanel(panel1);
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            showPanel(panel2);
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            showPanel(panel3);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -46,9 +30,44 @@ namespace GoodsTracker
             initDataGrid();
             initLayers();
             initPanelConfig();
-            loadlistPointsTreeView(tracker.ListBehavior);
+            loadlistPointsTreeView(trackerController.ListBehavior);
             layerRoute.addPosition(gMapControl1.Position);
         }
+
+        private void initMapControl()
+        {
+            gMapControl1.DragButton = MouseButtons.Left;
+            gMapControl1.CanDragMap = true;
+            gMapControl1.MapProvider = GMapProviders.GoogleMap;
+            gMapControl1.MinZoom = 0;
+            gMapControl1.MaxZoom = 24;
+            gMapControl1.Zoom = 15;
+            gMapControl1.AutoScroll = true;
+            gMapControl1.Position = new PointLatLng(POSITION_CONST.LATITUDE, POSITION_CONST.LONGITUDE);
+        }
+
+        private void initDataGrid()
+        {
+            fence = trackerController.createFence();
+
+            dataGridView1.DataSource = fence.Data;
+        }
+
+        private void initLayers()
+        {
+            layerFence = new LayerMap(gMapControl1, "Fence");
+            layerRoute = new LayerMap(gMapControl1, "Route");
+            layerBehavior = new LayerMap(gMapControl1, "Behavior");
+        }
+
+        void initPanelConfig()
+        {
+            checkedListBox1.SetItemCheckState(0, layerRoute.isVisible() ? CheckState.Checked : CheckState.Unchecked);
+            checkedListBox1.SetItemCheckState(1, layerBehavior.isVisible() ? CheckState.Checked : CheckState.Unchecked);
+            checkedListBox1.SetItemCheckState(2, layerFence.isVisible() ? CheckState.Checked : CheckState.Unchecked);
+            checkedListBox1.SetItemCheckState(3, gMapControl1.MapProvider.Equals(GMapProviders.GoogleChinaSatelliteMap) ? CheckState.Checked : CheckState.Unchecked);
+        }
+        //------------------------------------------------------------------------------------
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -59,8 +78,7 @@ namespace GoodsTracker
 
             if (statusGUI.Equals(STATUS_GUI.NEW_FENCE) || statusGUI.Equals(STATUS_GUI.ADD_POINTS))
             {
-                fence.insertPositon(point);
-                layerFence.addPosition(point);
+                addPositionFence(point);
                 statusGUI = STATUS_GUI.ADD_POINTS;
                 btn_fence.Enabled = true;
             }
@@ -68,6 +86,30 @@ namespace GoodsTracker
             {
                 layerRoute.addPosition(point);
             }
+        }
+
+        //Seleciona painel trip
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            selectPanel(panel1);
+        }
+
+        //Seleciona painel Fence
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            selectPanel(panel2);
+        }
+
+        //Seleciona painel Behavior
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            selectPanel(panel3);
+        }
+
+        // seleciona painel configuracao
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            selectPanel(panel4);
         }
 
         //Inicia nova fence
@@ -88,9 +130,7 @@ namespace GoodsTracker
         {
             if (statusGUI.Equals(STATUS_GUI.ADD_POINTS))
             {
-                layerFence.addFence(fence);
-
-                cbListFence.Items.Add(string.Format("Fence:{0}",cbListFence.Items.Count));
+                addFence(fence);
 
                 statusGUI = STATUS_GUI.CONFIRM_FENCE;
 
@@ -108,40 +148,24 @@ namespace GoodsTracker
             fence.clearPoints();
         }
 
-
         private void button6_Click(object sender, EventArgs e)
         {
-            if (itemselected >= 0)
+            if (statusGUI.Equals(STATUS_GUI.ADD_POINTS))
             {
-                if (statusGUI.Equals(STATUS_GUI.ADD_POINTS))
-                {
-                    layerFence.removePositionAt(itemselected);
-
-                    fence.removePositionAt(itemselected);
-                }
+                removePositionFence(itemselected);
             }
         }
 
-        private void initMapControl()
+        // Remove Fence selecionada no combo box
+        private void btn_delFence_Click(object sender, EventArgs e)
         {
-            gMapControl1.DragButton     = MouseButtons.Left;
-            gMapControl1.CanDragMap     = true;
-            gMapControl1.MapProvider    = GMapProviders.GoogleMap;
-            gMapControl1.MinZoom        = 0;
-            gMapControl1.MaxZoom        = 24;
-            gMapControl1.Zoom           = 15;
-            gMapControl1.AutoScroll     = true;
-            gMapControl1.Position       = new PointLatLng(POSITION_CONST.LATITUDE, POSITION_CONST.LONGITUDE);
+            removeFence(cbListFence.SelectedIndex);
         }
 
-        private void initDataGrid()
-        {
-            dataGridView1.DataSource = fence.getDataTable();
-        }
-
+        // Seleciona ponto no gridview
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            itemselected    = e.RowIndex;
+            itemselected = e.RowIndex;
 
             if (itemselected >= 0) {
 
@@ -150,21 +174,10 @@ namespace GoodsTracker
             }
         }
 
-        private void initLayers()
-        {
-            layerFence      = new LayerMap(gMapControl1, "Fence");
-            layerRoute      = new LayerMap(gMapControl1, "Route");
-            layerBehavior   = new LayerMap(gMapControl1, "Behavior");
-        }
-
+        //Atualiza zoom do mapa conforme track
         private void tB_Zoom_Scroll(object sender, EventArgs e)
         {
             gMapControl1.Zoom = tB_Zoom.Value;
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            showPanel(panel4);
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -183,15 +196,8 @@ namespace GoodsTracker
             layerFence.show(checkedListBox1.GetItemCheckState(2) == CheckState.Checked);
         }
 
-        void initPanelConfig()
-        {
-            checkedListBox1.SetItemCheckState(0, layerRoute.isVisible()?CheckState.Checked:CheckState.Unchecked);
-            checkedListBox1.SetItemCheckState(1, layerBehavior.isVisible() ? CheckState.Checked : CheckState.Unchecked);
-            checkedListBox1.SetItemCheckState(2, layerFence.isVisible() ? CheckState.Checked : CheckState.Unchecked);
-            checkedListBox1.SetItemCheckState(3, gMapControl1.MapProvider.Equals(GMapProviders.GoogleChinaSatelliteMap) ? CheckState.Checked : CheckState.Unchecked);
-        }
-
-        void showPanel(Panel p)
+        //seleciona painel
+        void selectPanel(Panel p)
         {
             if (p != null)
             {
@@ -209,6 +215,7 @@ namespace GoodsTracker
             }
         }
 
+        //build treeview
         void loadlistPointsTreeView(List<Behavior> list)
         {
             TreeNode root, loc;
@@ -218,9 +225,10 @@ namespace GoodsTracker
 
             foreach (Behavior b in list)
             {
-                loc = createLocTreeView(root, i);
+                loc = createLocTreeView(root, i++);
 
                 createPositionTreeView(b,loc);
+
                 createEixoTreeView("Eixo[X]", b.AxisX, loc);
                 createEixoTreeView("Eixo[Y]", b.AxisY, loc);
                 createEixoTreeView("Eixo[Z]", b.AxisZ, loc);
@@ -253,13 +261,6 @@ namespace GoodsTracker
             return loc;
         }
 
-        private void btn_delFence_Click(object sender, EventArgs e)
-        {
-            layerFence.removeFenceAt(cbListFence.SelectedIndex);
-
-            cbListFence.Items.RemoveAt(cbListFence.SelectedIndex);
-        }
-
         void createPositionTreeView(Behavior behavior, TreeNode loc)
         {
             loc.Nodes.Add(string.Format("Localizacao: ({0},{1})",
@@ -286,6 +287,35 @@ namespace GoodsTracker
                                         axis.Rotation.Tol.Min,
                                         axis.Rotation.Tol.Max));
             return eixo;
+        }
+        //--------------------------------------------------------------------------------------
+
+        void addFence(Fence fence) {
+
+            string str = string.Format("Fence:{0}", cbListFence.Items.Count);
+
+            layerFence.addFence(str,fence);
+            trackerController.addFence(fence);
+            cbListFence.Items.Add(str);
+        }
+
+        void removeFence(int index)
+        {
+            layerFence.removeFenceAt(index);
+            trackerController.removeFenceAt(index);
+            cbListFence.Items.RemoveAt(index);
+        }
+
+        void removePositionFence(int index)
+        {
+            fence.removePositionAt(index);
+            layerFence.removePositionAt(index);
+        }
+
+        void addPositionFence(PointLatLng point)
+        {
+            fence.insertPositon(point);
+            layerFence.addPosition(point);
         }
     }
 

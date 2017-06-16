@@ -11,16 +11,19 @@ namespace GoodsTracker
 {
     class Fence
     {
-        private DataTable           dt;
-        private List<PointLatLng>   points;
+        DataTable           dt;
+        List<PointLatLng>   listPoints;
+        string              name;
 
-        private string name = "";
+        public DataTable Data { get => dt; set => dt = value; }
+        public List<PointLatLng> Points { get => listPoints; set => listPoints = value; }
+        public string Name { get => name; set => name = value; }
 
         public Fence(string pname)
         {
-            setName(pname);
+            name = pname;
 
-            points  = new List<PointLatLng>();
+            listPoints  = new List<PointLatLng>();
 
             dt      = new DataTable();
 
@@ -31,9 +34,9 @@ namespace GoodsTracker
 
         public Fence()
         {
-            setName("");
+            name = "";
 
-            points = new List<PointLatLng>();
+            listPoints = new List<PointLatLng>();
 
             dt = new DataTable();
 
@@ -42,60 +45,33 @@ namespace GoodsTracker
             dt.Columns.Add(new DataColumn("Longitude", typeof(double)));
         }
 
-        public void add(double plat, double plong)
-        {
-            points.Add(new PointLatLng(plat, plong));
-        }
-
-        public void setName(string pname)
-        {
-            name = pname;
-        }
-
-        public void setFence(DataTable pdt)
-        {
-            dt = pdt;
-        }
-
-        public DataTable getDataTable()
-        {
-            return dt;
-        }
-
         public void insertPositon(double lat, double lng)
         {
-            dt.Rows.Add(string.Format("{0}", dt.Rows.Count), lat, lng);
-
-            points.Add(new PointLatLng(lat, lng));
+            insertPositon(new PointLatLng(lat, lng));
         }
 
         public void insertPositon(PointLatLng point)
         {
             dt.Rows.Add(string.Format("{0}", dt.Rows.Count), point.Lat, point.Lng);
 
-            points.Add(point);
+            listPoints.Add(point);
         }
 
         internal void clearPoints()
         {
             dt.Clear();
 
-            points.Clear();
+            listPoints.Clear();
         }
 
         public void removePositionAt(int index)
         {
-            if (index < dt.Rows.Count)
+            if (index>=0 && index < dt.Rows.Count)
             {
                 dt.Rows.RemoveAt(index);
 
-                points.RemoveAt(index);
+                listPoints.RemoveAt(index);
             }
-        }
-
-        public List<PointLatLng> getPoints()
-        {
-            return points;
         }
     }
 }
