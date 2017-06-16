@@ -81,6 +81,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behavior.cs" />
     <Compile Include="Cmd.cs" />
     <Compile Include="communicationFrame.cs" />
     <Compile Include="CommunicationUnit.cs" />

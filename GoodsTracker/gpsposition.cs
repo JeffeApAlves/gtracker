@@ -8,5 +8,9 @@ namespace GoodsTracker
 {
     class GPSPosition
     {
+        double latitude, longitude;
+
+        public double Latitude { get => latitude; set => latitude = value; }
+        public double Longitude { get => longitude; set => longitude = value; }
     }
 }

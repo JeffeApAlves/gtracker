@@ -115,11 +115,14 @@ namespace GoodsTracker
 
         public void removePositionAt(int index)
         {
-            dt.Rows.RemoveAt(index);
+            if (index < dt.Rows.Count)
+            {
+                dt.Rows.RemoveAt(index);
 
-            points.RemoveAt(index);
+                points.RemoveAt(index);
 
-            updatePolygon();
+                updatePolygon();
+            }
         }
     }
 }

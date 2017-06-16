@@ -19,6 +19,8 @@ namespace GoodsTracker
 
         Fence       fence;
 
+        Tracker     tracker     = new Tracker();
+
         int itemselected        = -1;
 
         public MainForm()
@@ -48,7 +50,7 @@ namespace GoodsTracker
             initLayers();
             initPanelConfig();
 
-            insertPointTreeView();
+            loadlistPointsTreeView(tracker.ListBehavior);
 
             printmarker(gMapControl1.Position);
         }
@@ -193,6 +195,7 @@ namespace GoodsTracker
             checkedListBox1.SetItemCheckState(0, layerRoute.isVisible()?CheckState.Checked:CheckState.Unchecked);
             checkedListBox1.SetItemCheckState(1, layerBehavior.isVisible() ? CheckState.Checked : CheckState.Unchecked);
             checkedListBox1.SetItemCheckState(2, layerFence.isVisible() ? CheckState.Checked : CheckState.Unchecked);
+            checkedListBox1.SetItemCheckState(3, gMapControl1.MapProvider.Equals(GMapProviders.GoogleChinaSatelliteMap) ? CheckState.Checked : CheckState.Unchecked);
         }
 
         private void printmarker(PointLatLng point)
@@ -218,21 +221,47 @@ namespace GoodsTracker
             }
         }
 
-        void insertPointTreeView()
+        void loadlistPointsTreeView(List<Behavior> list)
         {
-            TreeNode root = tvBehavior.Nodes.Add("Trip");
 
-            TreeNode info = root.Nodes.Add("Localizacao:(0.0000 /  0.0000)");
+            foreach(Behavior b in list)
+            {
+                 insertPointTreeView(b);
+            }
+        }
 
-            info.Nodes.Add("Eixo X: Aceleracao 0.00 Rotacao: 0.00");
-            info.Nodes.Add("Eixo Y: Aceleracao 0.00 Rotacao: 0.00");
-            info.Nodes.Add("Eixo Z: Aceleracao 0.00 Rotacao: 0.00");
+        void insertPointTreeView(Behavior behavior)
+        {
+            TreeNode root;
 
-            info = root.Nodes.Add("Localizacao:(0.0000 /  0.0000)");
+            if (tvBehavior.Nodes.Count <= 0)
+            {
+                root = tvBehavior.Nodes.Add("Trip");
+            }
+            else {
 
-            info.Nodes.Add("Eixo X: Aceleracao 0.00 Rotacao: 0.00");
-            info.Nodes.Add("Eixo Y: Aceleracao 0.00 Rotacao: 0.00");
-            info.Nodes.Add("Eixo Z: Aceleracao 0.00 Rotacao: 0.00");
+                root = tvBehavior.Nodes[0];
+            }
+
+            TreeNode info = root.Nodes.Add(string.Format("Localizacao [ {0} / {1} ]", 
+                                                behavior.Position.Latitude, 
+                                                behavior.Position.Longitude));
+
+            info.Nodes.Add(string.Format("Velocidade:   {0}", 
+                                        behavior.Speed.Val));
+
+            info.Nodes.Add(string.Format("Eixo(X):      Acel={0} Rot={1}",
+                                        behavior.AccelerationX.Val,
+                                        behavior.RotationX.Val));
+
+
+            info.Nodes.Add(string.Format("Eixo(Y):      Acel={0} Rot={1}",
+                                        behavior.AccelerationY.Val,
+                                        behavior.RotationY.Val));
+
+            info.Nodes.Add(string.Format("Eixo(Z):      Acel={0} Rot={1}",
+                                        behavior.AccelerationZ.Val,
+                                        behavior.RotationZ.Val));
         }
     }
 
@@ -241,7 +270,6 @@ namespace GoodsTracker
         public const double LATITUDE = -23.673326;
         public const double LONGITUDE = -46.775215;
     }
-
 
     enum STATUS_GUI {
 
