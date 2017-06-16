@@ -7,17 +7,17 @@ namespace GoodsTracker
         double min;
         double max;
 
-        public double Min { get => min; set => min = value; }
-        public double Max { get => max; set => max = value; }
+        internal double Min { get => min; set => min = value; }
+        internal double Max { get => max; set => max = value; }
     }
 
     internal class Value
     {
-        double val;
-        Scale tol;
+        double  val;
+        Scale   tol;
 
-        public double Val { get => val; set => val = value; }
-        internal Scale Tol { get => tol; set => tol = value; }
+        internal double   Val { get => val; set => val = value; }
+        internal Scale    Tol { get => tol; set => tol = value; }
 
         public Value()
         {
@@ -26,7 +26,12 @@ namespace GoodsTracker
 
         internal bool OK()
         {
-            return true;
+            return Val>=tol.Min && Val<=tol.Max;
+        }
+
+        public override string ToString()
+        {
+            return val.ToString();
         }
     }
 
@@ -36,9 +41,8 @@ namespace GoodsTracker
 
         public Axis()
         {
-            Acceleration = new Value();
-
-            Rotation = new Value();
+            Acceleration    = new Value();
+            Rotation        = new Value();
         }
 
         internal Value Acceleration { get => acceleration; set => acceleration = value; }
@@ -47,6 +51,11 @@ namespace GoodsTracker
         internal bool OK()
         {
             return acceleration.OK() && rotation.OK();
+        }
+
+        public override string ToString()
+        {
+            return "A: "+acceleration.ToString() + " R: " + rotation.ToString();
         }
     }
 
@@ -64,18 +73,29 @@ namespace GoodsTracker
         internal Axis AxisZ { get => axisZ; set => axisZ = value; }
         public DateTime DateTime { get => dateTime; set => dateTime = value; }
 
-        public Behavior()
+        internal Behavior()
         {
-            position        = new GPSPosition();
-            speed           = new Value();
-            AxisX = new Axis();
-            AxisY = new Axis();
-            AxisZ = new Axis();
+            position    = new GPSPosition();
+            speed       = new Value();
+            AxisX       = new Axis();
+            AxisY       = new Axis();
+            AxisZ       = new Axis();
         }
 
-        public bool OK()
+        internal bool OK()
         {
             return speed.OK() && axisX.OK() && axisY.OK() && axisZ.OK();
+        }
+
+        internal void setPosition(double lat,double lng)
+        {
+            position.Latitude = lat;
+            position.Longitude = lng;
+        }
+
+        public override string ToString()
+        {
+            return Position.ToString() + " " + axisX.ToString() + " " + axisY.ToString() + " " + axisZ.ToString();
         }
     }
 }

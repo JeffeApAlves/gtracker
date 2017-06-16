@@ -17,7 +17,7 @@ namespace GoodsTracker
         public uint Address { get => address; set => address = value; }
         public uint Value { get => value; set => this.value = value; }
 
-        public void clear()
+        internal void clear()
         {
             NameCmd     = "";
             Address     = 0;

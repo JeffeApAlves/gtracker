@@ -19,7 +19,7 @@ namespace GoodsTracker
         public List<PointLatLng> Points { get => listPoints; set => listPoints = value; }
         public string Name { get => name; set => name = value; }
 
-        public Fence(string pname)
+        internal Fence(string pname)
         {
             name = pname;
 
@@ -32,7 +32,7 @@ namespace GoodsTracker
             dt.Columns.Add(new DataColumn("Longitude", typeof(double)));
         }
 
-        public Fence()
+        internal Fence()
         {
             name = "";
 
@@ -45,12 +45,12 @@ namespace GoodsTracker
             dt.Columns.Add(new DataColumn("Longitude", typeof(double)));
         }
 
-        public void insertPositon(double lat, double lng)
+        internal void insertPositon(double lat, double lng)
         {
             insertPositon(new PointLatLng(lat, lng));
         }
 
-        public void insertPositon(PointLatLng point)
+        internal void insertPositon(PointLatLng point)
         {
             dt.Rows.Add(string.Format("{0}", dt.Rows.Count), point.Lat, point.Lng);
 
@@ -64,7 +64,7 @@ namespace GoodsTracker
             listPoints.Clear();
         }
 
-        public void removePositionAt(int index)
+        internal void removePositionAt(int index)
         {
             if (index>=0 && index < dt.Rows.Count)
             {

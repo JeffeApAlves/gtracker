@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using GMap.NET;
 using GMap.NET.MapProviders;
 using System.Collections.Generic;
+using GMap.NET.WindowsForms.Markers;
+using System.Text;
 
 namespace GoodsTracker
 {
@@ -14,7 +16,6 @@ namespace GoodsTracker
         LayerMap layerFence, layerRoute, layerBehavior;
 
         STATUS_GUI  statusFence     = STATUS_GUI.INIT;
-        STATUS_GUI  statusTrip      = STATUS_GUI.INIT;
         TrackerController trackerController = new TrackerController();
 
         Fence fence;
@@ -74,7 +75,11 @@ namespace GoodsTracker
         {
             cbFilter.SelectedIndex = 0;
 
-            loadlistPointsTreeView(getBehaviorFiltered(0));
+            List<Behavior> list = getBehaviorFiltered(cbFilter.SelectedIndex);
+
+            loadlistPointsTreeView(list);
+
+            showMarkerBehavior(list);
         }
         //------------------------------------------------------------------------------------
 
@@ -246,6 +251,47 @@ namespace GoodsTracker
             }
         }
 
+        void showMarkerBehavior(List<Behavior> list)
+        {
+            foreach(Behavior b in list)
+            {
+                PointLatLng p = new PointLatLng(b.Position.Latitude, b.Position.Longitude);
+                GMarkerGoogleType color = b.OK() ? GMarkerGoogleType.green: GMarkerGoogleType.red;
+
+                StringBuilder sb = new StringBuilder();
+
+                if (!b.OK()) {
+
+                    if (!b.Speed.OK())
+                    {
+                        sb.Append("Speed:" + b.Speed.ToString());
+                    }
+
+                    if (!b.AxisX.OK())
+                    {
+                        sb.AppendLine();
+                        sb.Append("X:"+b.AxisX.ToString());
+                    }
+
+                    if (!b.AxisY.OK())
+                    {
+                        sb.AppendLine();
+                        sb.Append("Y:" + b.AxisY.ToString());
+
+                    }
+
+                    if (!b.AxisZ.OK())
+                    {
+                        sb.AppendLine();
+                        sb.Append("Z:" + b.AxisZ.ToString());
+
+                    }
+                }
+
+                layerBehavior.addPosition(p,sb.ToString(),color);
+            }
+        }
+
         TreeNode createRootTreeView(int num)
         {
             TreeNode root;
@@ -311,6 +357,7 @@ namespace GoodsTracker
         List<Behavior> getBehaviorFiltered(int i)
         {
             List<Behavior> ret = null;
+
             switch (i)
             {
                 case 0: ret = trackerController.ListBehavior;   break;
@@ -320,7 +367,6 @@ namespace GoodsTracker
 
             return ret;
         }
-
 
         void addFence(Fence fence) {
 
@@ -340,7 +386,11 @@ namespace GoodsTracker
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadlistPointsTreeView(getBehaviorFiltered(cbFilter.SelectedIndex));
+            List<Behavior> list = getBehaviorFiltered(cbFilter.SelectedIndex);
+
+            loadlistPointsTreeView(list);
+
+            showMarkerBehavior(list);
         }
 
         void removePositionFence(int index)
@@ -358,8 +408,8 @@ namespace GoodsTracker
 
     class POSITION_CONST
     {
-        public const double LATITUDE = -23.673326;
-        public const double LONGITUDE = -46.775215;
+        internal const double LATITUDE = -23.673326;
+        internal const double LONGITUDE = -46.775215;
     }
 
     enum STATUS_GUI {

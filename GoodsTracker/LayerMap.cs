@@ -61,11 +61,19 @@ namespace GoodsTracker
 
         internal void addPosition(PointLatLng position)
         {
+            string str = string.Format("Lat.:{0} \n Lng.:{1}", position.Lat, position.Lng);
+
+            addPosition(position, str, GMarkerGoogleType.blue);
+        }
+
+
+        internal void addPosition(PointLatLng position,string str, GMarkerGoogleType color)
+        {
             GMarkerGoogle marker;
 
-            marker = new GMarkerGoogle(position, GMarkerGoogleType.green);
+            marker = new GMarkerGoogle(position, color);
             marker.ToolTipMode = MarkerTooltipMode.Always;
-            marker.ToolTipText = string.Format("Localizacao\n Latitude:{0} \n Longitude:{1}", position.Lat, position.Lng);
+            marker.ToolTipText = string.Format(str);
 
             mapOverlay.Markers.Add(marker);
         }

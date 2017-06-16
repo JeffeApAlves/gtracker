@@ -11,47 +11,38 @@ namespace GoodsTracker
         Tracker tracker;
 
         List<Behavior>  listBehavior;
-        List<Fence> containerFence;
-        private List<Fence> listFence;
+        List<Fence>     listFence;
 
         internal List<Behavior> ListBehavior { get => listBehavior; set => listBehavior = value; }
-        internal List<Fence> ContainerFence { get => containerFence; set => containerFence = value; }
         internal List<Fence> ListFence { get => listFence; set => listFence = value; }
 
-        public TrackerController()
+        internal TrackerController()
         {
             tracker         = new Tracker();
             ListFence       = new List<Fence>();
             ListBehavior    = new List<Behavior>();
 
-            for (int i = 0; i < 100; i++)
-            {
-                Behavior b = new Behavior();
-
-                b.DateTime = DateTime.Now;
-
-                ListBehavior.Add(b);
-            }
+            testeBehavior();
         }
 
-        public Fence createFence()
+        internal Fence createFence()
         {
             Fence fence = new Fence();
 
             return fence;
         }
 
-        public void addFence(Fence fence)
+        internal void addFence(Fence fence)
         {
             listFence.Add(fence);
         }
 
-        public void removeFenceAt(int index)
+        internal void removeFenceAt(int index)
         {
             listFence.RemoveAt(index);
         }
 
-        public List<Behavior> getItensNOK()
+        internal List<Behavior> getItensNOK()
         {
             List<Behavior> ret=new List<Behavior>();
 
@@ -66,7 +57,7 @@ namespace GoodsTracker
             return ret;
         }
 
-        public List<Behavior> getItensOK()
+        internal List<Behavior> getItensOK()
         {
             List<Behavior> ret = new List<Behavior>();
 
@@ -81,5 +72,24 @@ namespace GoodsTracker
             return ret;
         }
 
+        private void testeBehavior()
+        {
+            double LATITUDE = -23.673326;
+            double LONGITUDE = -46.775215;
+
+            for (int i = 0; i < 100; i++)
+            {
+                Behavior b = new Behavior();
+
+                b.DateTime = DateTime.Now;
+
+                LATITUDE += -0.001;
+                LONGITUDE += 0.001;
+
+                b.setPosition(LATITUDE, LONGITUDE);
+
+                ListBehavior.Add(b);
+            }
+        }
     }
 }

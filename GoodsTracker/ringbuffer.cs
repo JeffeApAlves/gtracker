@@ -16,12 +16,12 @@ namespace GoodsTracker
         int index_consumer;
         uint count;
 
-        public RingBuffer(int size)
+        internal RingBuffer(int size)
         {
             data = new byte[size>0?size: DEFAULT_BUFFER_SIZE];
         }
 
-        public bool putData(byte ch)
+        internal bool putData(byte ch)
         {
             bool flag = false;
 
@@ -37,9 +37,8 @@ namespace GoodsTracker
 
             return flag;
         }
-        //------------------------------------------------------------------------
 
-        public bool getData(out byte ch)
+        internal bool getData(out byte ch)
         {
             bool flag = false;
 
@@ -57,27 +56,23 @@ namespace GoodsTracker
 
             return flag;
         }
-        //------------------------------------------------------------------------
 
-        public uint getCount()
+        internal uint getCount()
         {
             return count;
         }
-        //------------------------------------------------------------------------
 
-        public bool isFull()
+        internal bool isFull()
         {
             return getCount() >= data.Length;
         }
-        //------------------------------------------------------------------------
 
-        public bool hasData()
+        internal bool hasData()
         {
             return getCount() > 0;
         }
-        //------------------------------------------------------------------------
 
-        public void initBuffer()
+        internal void initBuffer()
         {
             index_consumer  = 0;
             index_producer  = 0;
@@ -88,6 +83,6 @@ namespace GoodsTracker
                 data[i] = 0;
             }
         }
-        //------------------------------------------------------------------------
+
     }
 }

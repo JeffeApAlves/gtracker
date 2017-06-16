@@ -35,28 +35,28 @@ namespace GoodsTracker
         public int Value { get => value; set => this.value = value; }
         internal IdCmd IdCmd { get => idCmd; set => idCmd = value; }
 
-        private Cmd()
+        internal Cmd()
         {
         }
 
-        private Cmd(IdCmd id)
+        internal Cmd(IdCmd id)
         {
             idCmd = id;
 
             Containner.Add(id, this);
         }
 
-        public static Cmd createCMD(IdCmd id)
+        internal static Cmd createCMD(IdCmd id)
         {
             return new Cmd(id);
         }
 
-        public static Cmd getCMD(IdCmd id_cmd)
+        internal static Cmd getCMD(IdCmd id_cmd)
         {
             return Containner[id_cmd];
         }
 
-        public static Cmd findCMD(string name)
+        internal static Cmd findCMD(string name)
         {
             foreach (var item in Containner)
             {
@@ -69,7 +69,7 @@ namespace GoodsTracker
             return null;
         }
 
-        public string getName()
+        internal string getName()
         {
             string name_cmd = "";
 
@@ -85,7 +85,7 @@ namespace GoodsTracker
             return name_cmd;
         }
 
-        public ResultExec callBack(ParamCmd param)
+        internal ResultExec callBack(ParamCmd param)
         {
             return ResultExec.EXEC_SUCCESS;
         }

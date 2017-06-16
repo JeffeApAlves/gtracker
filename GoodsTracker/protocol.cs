@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoodsTracker
 {
-    internal interface IDecoderFrameTx
+    interface IDecoderFrameTx
     {
         void buildFrame(out TxFrame frame, Cmd cmd);
     }
@@ -53,7 +53,7 @@ namespace GoodsTracker
             bufferTx = new RingBuffer(256);
         }
 
-        public void process()
+        internal void process()
         {
             processTx();
 

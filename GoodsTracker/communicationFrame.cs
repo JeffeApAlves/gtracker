@@ -12,56 +12,56 @@ namespace GoodsTracker
 
         protected string payload;
 
-        public CommunicationFrame()
+        internal CommunicationFrame()
         {
             payload = "";
 
             clear();
         }
 
-        public byte getByte(int i)
+        internal byte getByte(int i)
         {
             return (byte)payload[i];
         }
 
-        public void setByte(int i, byte b)
+        internal void setByte(int i, byte b)
         {
             char[] letters  = payload.ToCharArray();
             letters[i]      = (char)b;
             payload         = string.Join("", letters);
         }
 
-        public void addByte(byte b)
+        internal void addByte(byte b)
         {
             payload = string.Join(payload,(char)b);
         }
 
-        public void clear()
+        internal void clear()
         {
             payload = "";
         }
 
-        public int getCount()
+        internal int getCount()
         {
             return payload.Length;
         }
 
-        public bool isFull()
+        internal bool isFull()
         {
             return getCount() >= LEN_MAX_PAYLOAD;
         }
 
-        public bool isEmpty()
+        internal bool isEmpty()
         {
             return getCount() <= 0;
         }
 
-        public string getPayLoad()
+        internal string getPayLoad()
         {
             return payload;
         }
 
-        public void setPayLoad(string str)
+        internal void setPayLoad(string str)
         {
             payload = str;
         }
