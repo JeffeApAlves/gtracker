@@ -50,5 +50,36 @@ namespace GoodsTracker
         {
             listFence.RemoveAt(index);
         }
+
+        public List<Behavior> getItensNOK()
+        {
+            List<Behavior> ret=new List<Behavior>();
+
+            foreach(Behavior b in listBehavior)
+            {
+                if (!b.OK())
+                {
+                    ret.Add(b);
+                }
+            }
+
+            return ret;
+        }
+
+        public List<Behavior> getItensOK()
+        {
+            List<Behavior> ret = new List<Behavior>();
+
+            foreach (Behavior b in listBehavior)
+            {
+                if (b.OK())
+                {
+                    ret.Add(b);
+                }
+            }
+
+            return ret;
+        }
+
     }
 }

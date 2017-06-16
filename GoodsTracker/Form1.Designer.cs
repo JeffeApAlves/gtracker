@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -73,8 +75,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
             this.tvBehavior = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button4 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -565,7 +568,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.cbFilter);
             this.panel3.Controls.Add(this.tvBehavior);
             this.panel3.Location = new System.Drawing.Point(3, 1161);
             this.panel3.Name = "panel3";
@@ -583,21 +586,39 @@
             this.label12.TabIndex = 2;
             this.label12.Text = "Filter";
             // 
-            // comboBox1
+            // cbFilter
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(47, 14);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(272, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Items.AddRange(new object[] {
+            "All",
+            "Only OK",
+            "Only NOK"});
+            this.cbFilter.Location = new System.Drawing.Point(47, 14);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(272, 21);
+            this.cbFilter.TabIndex = 1;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // tvBehavior
             // 
             this.tvBehavior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tvBehavior.ImageIndex = 0;
+            this.tvBehavior.ImageList = this.imageList1;
             this.tvBehavior.Location = new System.Drawing.Point(0, 46);
             this.tvBehavior.Name = "tvBehavior";
+            this.tvBehavior.SelectedImageIndex = 0;
             this.tvBehavior.Size = new System.Drawing.Size(320, 301);
             this.tvBehavior.TabIndex = 0;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "000.png");
+            this.imageList1.Images.SetKeyName(1, "001.png");
+            this.imageList1.Images.SetKeyName(2, "002.png");
+            this.imageList1.Images.SetKeyName(3, "003.png");
+            this.imageList1.Images.SetKeyName(4, "004.png");
             // 
             // button4
             // 
@@ -782,7 +803,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbFilter;
         private System.Windows.Forms.TreeView tvBehavior;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label11;
@@ -802,6 +823,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

@@ -31,7 +31,8 @@ namespace GoodsTracker
             initDataGrid();
             initLayers();
             initPanelConfig();
-            loadlistPointsTreeView(trackerController.ListBehavior);
+            initPanelBehavior();
+
             layerRoute.addPosition(gMapControl1.Position);
         }
 
@@ -67,6 +68,13 @@ namespace GoodsTracker
             checkedListBox1.SetItemCheckState(1, layerBehavior.isVisible() ? CheckState.Checked : CheckState.Unchecked);
             checkedListBox1.SetItemCheckState(2, layerFence.isVisible() ? CheckState.Checked : CheckState.Unchecked);
             checkedListBox1.SetItemCheckState(3, gMapControl1.MapProvider.Equals(GMapProviders.GoogleChinaSatelliteMap) ? CheckState.Checked : CheckState.Unchecked);
+        }
+
+        void initPanelBehavior()
+        {
+            cbFilter.SelectedIndex = 0;
+
+            loadlistPointsTreeView(getBehaviorFiltered(0));
         }
         //------------------------------------------------------------------------------------
 
@@ -222,7 +230,9 @@ namespace GoodsTracker
             TreeNode root, loc;
             int i = 0;
 
-            root = createRootTreeView();
+            root = createRootTreeView(list.Count);
+
+            root.ImageIndex =  (int)IMG_TREEVIEW.FILE;
 
             foreach (Behavior b in list)
             {
@@ -236,13 +246,15 @@ namespace GoodsTracker
             }
         }
 
-        TreeNode createRootTreeView()
+        TreeNode createRootTreeView(int num)
         {
             TreeNode root;
 
+            tvBehavior.Nodes.Clear();
+
             if (tvBehavior.Nodes.Count <= 0)
             {
-                root = tvBehavior.Nodes.Add("Trip");
+                root = tvBehavior.Nodes.Add(string.Format("Trip: ({0})",num));
             }
             else
             {
@@ -259,6 +271,8 @@ namespace GoodsTracker
 
             loc = root.Nodes.Add(string.Format("Registro[{0}] : ({1})", i, behavior.DateTime));
 
+            loc.ImageIndex = (int)(behavior.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+
             return loc;
         }
 
@@ -266,9 +280,10 @@ namespace GoodsTracker
         {
             loc.Nodes.Add(string.Format("Localizacao: ({0},{1})",
                                     behavior.Position.Latitude,
-                                    behavior.Position.Longitude));
+                                    behavior.Position.Longitude)).ImageIndex = (int)IMG_TREEVIEW.LOC;
 
-            loc.Nodes.Add(string.Format("Velocidade: {0}", behavior.Speed.Val));
+            loc.Nodes.Add(string.Format("Velocidade: {0}", 
+                                    behavior.Speed.Val)).ImageIndex = (int)(behavior.Speed.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
 
         }
 
@@ -278,18 +293,34 @@ namespace GoodsTracker
 
             eixo = loc.Nodes.Add(string.Format(neixo));
 
+            eixo.ImageIndex = (int)(axis.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+
             eixo.Nodes.Add(string.Format("A: Val:{0} Min:{1} Max:{2}",
                                         axis.Acceleration.Val,
                                         axis.Acceleration.Tol.Min,
-                                        axis.Acceleration.Tol.Max));
+                                        axis.Acceleration.Tol.Max)).ImageIndex = (int)IMG_TREEVIEW.SPEC;
 
             eixo.Nodes.Add(string.Format("R: Val:{0} Min:{1} Max:{2}",
                                         axis.Rotation.Val,
                                         axis.Rotation.Tol.Min,
-                                        axis.Rotation.Tol.Max));
+                                        axis.Rotation.Tol.Max)).ImageIndex = (int)IMG_TREEVIEW.SPEC;
             return eixo;
         }
         //--------------------------------------------------------------------------------------
+
+        List<Behavior> getBehaviorFiltered(int i)
+        {
+            List<Behavior> ret = null;
+            switch (i)
+            {
+                case 0: ret = trackerController.ListBehavior;   break;
+                case 1: ret = trackerController.getItensOK();   break;
+                case 2: ret = trackerController.getItensNOK();  break;
+            }
+
+            return ret;
+        }
+
 
         void addFence(Fence fence) {
 
@@ -305,6 +336,11 @@ namespace GoodsTracker
             layerFence.removeFenceAt(index);
             trackerController.removeFenceAt(index);
             cbListFence.Items.RemoveAt(index);
+        }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadlistPointsTreeView(getBehaviorFiltered(cbFilter.SelectedIndex));
         }
 
         void removePositionFence(int index)
@@ -333,5 +369,14 @@ namespace GoodsTracker
         NEW_FENCE,
         ADD_POINTS,
         CONFIRM_FENCE
+    }
+
+    enum IMG_TREEVIEW
+    {
+        OK = 0,
+        NOK = 1,
+        SPEC = 2,
+        LOC =3,
+        FILE =4
     }
 }

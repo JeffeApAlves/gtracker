@@ -13,7 +13,6 @@ namespace GoodsTracker
 
     internal class Value
     {
-
         double val;
         Scale tol;
 
@@ -23,6 +22,11 @@ namespace GoodsTracker
         public Value()
         {
             tol = new Scale();
+        }
+
+        internal bool OK()
+        {
+            return true;
         }
     }
 
@@ -39,6 +43,11 @@ namespace GoodsTracker
 
         internal Value Acceleration { get => acceleration; set => acceleration = value; }
         internal Value Rotation { get => rotation; set => rotation = value; }
+
+        internal bool OK()
+        {
+            return acceleration.OK() && rotation.OK();
+        }
     }
 
     internal class Behavior
@@ -62,6 +71,11 @@ namespace GoodsTracker
             AxisX = new Axis();
             AxisY = new Axis();
             AxisZ = new Axis();
+        }
+
+        public bool OK()
+        {
+            return speed.OK() && axisX.OK() && axisY.OK() && axisZ.OK();
         }
     }
 }
