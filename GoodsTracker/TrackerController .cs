@@ -26,8 +26,11 @@ namespace GoodsTracker
 
             for (int i = 0; i < 100; i++)
             {
+                Behavior b = new Behavior();
 
-                ListBehavior.Add(new Behavior());
+                b.DateTime = DateTime.Now;
+
+                ListBehavior.Add(b);
             }
         }
 

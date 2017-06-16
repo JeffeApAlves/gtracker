@@ -13,7 +13,8 @@ namespace GoodsTracker
     {
         LayerMap layerFence, layerRoute, layerBehavior;
 
-        STATUS_GUI  statusGUI   = STATUS_GUI.INIT;
+        STATUS_GUI  statusFence     = STATUS_GUI.INIT;
+        STATUS_GUI  statusTrip      = STATUS_GUI.INIT;
         TrackerController trackerController = new TrackerController();
 
         Fence fence;
@@ -76,10 +77,10 @@ namespace GoodsTracker
             txtLat.Text         = point.Lat.ToString();
             txtLng.Text         = point.Lng.ToString();
 
-            if (statusGUI.Equals(STATUS_GUI.NEW_FENCE) || statusGUI.Equals(STATUS_GUI.ADD_POINTS))
+            if (statusFence.Equals(STATUS_GUI.NEW_FENCE) || statusFence.Equals(STATUS_GUI.ADD_POINTS))
             {
                 addPositionFence(point);
-                statusGUI = STATUS_GUI.ADD_POINTS;
+                statusFence = STATUS_GUI.ADD_POINTS;
                 btn_fence.Enabled = true;
             }
             else
@@ -115,9 +116,9 @@ namespace GoodsTracker
         //Inicia nova fence
         private void button5_Click(object sender, EventArgs e)
         {
-            if (!statusGUI.Equals(STATUS_GUI.NEW_FENCE))
+            if (!statusFence.Equals(STATUS_GUI.NEW_FENCE))
             {
-                statusGUI = STATUS_GUI.NEW_FENCE;
+                statusFence = STATUS_GUI.NEW_FENCE;
 
                 fence.clearPoints();
 
@@ -128,11 +129,11 @@ namespace GoodsTracker
         //Confirma Fence
         private void btn_fence_Click(object sender, EventArgs e)
         {
-            if (statusGUI.Equals(STATUS_GUI.ADD_POINTS))
+            if (statusFence.Equals(STATUS_GUI.ADD_POINTS))
             {
                 addFence(fence);
 
-                statusGUI = STATUS_GUI.CONFIRM_FENCE;
+                statusFence = STATUS_GUI.CONFIRM_FENCE;
 
                 button5.Enabled = true;
             }
@@ -141,7 +142,7 @@ namespace GoodsTracker
         // Cancel fence
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            statusGUI = STATUS_GUI.INIT_OK;
+            statusFence = STATUS_GUI.INIT_OK;
 
             button5.Enabled = true;
 
@@ -150,7 +151,7 @@ namespace GoodsTracker
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (statusGUI.Equals(STATUS_GUI.ADD_POINTS))
+            if (statusFence.Equals(STATUS_GUI.ADD_POINTS))
             {
                 removePositionFence(itemselected);
             }
@@ -225,13 +226,13 @@ namespace GoodsTracker
 
             foreach (Behavior b in list)
             {
-                loc = createLocTreeView(root, i++);
+                loc = createLocTreeView(b,root, i++);
 
                 createPositionTreeView(b,loc);
 
-                createEixoTreeView("Eixo[X]", b.AxisX, loc);
-                createEixoTreeView("Eixo[Y]", b.AxisY, loc);
-                createEixoTreeView("Eixo[Z]", b.AxisZ, loc);
+                createEixoTreeView(b.AxisX, "Eixo[X]",loc);
+                createEixoTreeView(b.AxisY, "Eixo[Y]",loc);
+                createEixoTreeView(b.AxisZ, "Eixo[Z]",loc);
             }
         }
 
@@ -252,11 +253,11 @@ namespace GoodsTracker
             return root;
         }
 
-        TreeNode createLocTreeView(TreeNode root,int i)
+        TreeNode createLocTreeView(Behavior behavior, TreeNode root,int i)
         {
             TreeNode loc;
 
-            loc = root.Nodes.Add(string.Format("Localizacao[{0}]", i));
+            loc = root.Nodes.Add(string.Format("Registro[{0}] : ({1})", i, behavior.DateTime));
 
             return loc;
         }
@@ -271,18 +272,18 @@ namespace GoodsTracker
 
         }
 
-        TreeNode createEixoTreeView(string neixo,Axis axis, TreeNode loc)
+        TreeNode createEixoTreeView(Axis axis, string neixo, TreeNode loc)
         {
             TreeNode eixo;
 
             eixo = loc.Nodes.Add(string.Format(neixo));
 
-            eixo.Nodes.Add(string.Format("A: {0} Min:{1} Max:{2}",
+            eixo.Nodes.Add(string.Format("A: Val:{0} Min:{1} Max:{2}",
                                         axis.Acceleration.Val,
                                         axis.Acceleration.Tol.Min,
                                         axis.Acceleration.Tol.Max));
 
-            eixo.Nodes.Add(string.Format("R: {0} Min:{1} Max:{2}",
+            eixo.Nodes.Add(string.Format("R: Val:{0} Min:{1} Max:{2}",
                                         axis.Rotation.Val,
                                         axis.Rotation.Tol.Min,
                                         axis.Rotation.Tol.Max));

@@ -1,4 +1,6 @@
-﻿namespace GoodsTracker
+﻿using System;
+
+namespace GoodsTracker
 {
     internal class Scale {
 
@@ -44,12 +46,14 @@
         GPSPosition position;
         Value       speed;
         Axis        axisX, axisY, axisZ;
+        DateTime    dateTime;
 
         internal Value Speed { get => speed; set => speed = value; }
         internal GPSPosition Position { get => position; set => position = value; }
         internal Axis AxisX { get => axisX; set => axisX = value; }
         internal Axis AxisY { get => axisY; set => axisY = value; }
         internal Axis AxisZ { get => axisZ; set => axisZ = value; }
+        public DateTime DateTime { get => dateTime; set => dateTime = value; }
 
         public Behavior()
         {
