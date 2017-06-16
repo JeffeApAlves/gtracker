@@ -393,6 +393,11 @@ namespace GoodsTracker
             showMarkerBehavior(list);
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+//            groupBox1.BackColorChanged = Color.Gray;
+        }
+
         void removePositionFence(int index)
         {
             fence.removePositionAt(index);
