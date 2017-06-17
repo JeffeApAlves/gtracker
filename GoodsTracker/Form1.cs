@@ -273,6 +273,8 @@ namespace GoodsTracker
 
         void showMarkerBehavior(List<Behavior> list)
         {
+            layerBehavior.removeAllMarkers();
+
             if (list != null)
             {
                 foreach (Behavior b in list)
