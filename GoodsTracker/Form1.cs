@@ -71,8 +71,6 @@ namespace GoodsTracker
         private void button3_Click_1(object sender, EventArgs e)
         {
             selectPanel(panel3);
-
-            showBehavior();
         }
 
         // seleciona painel configuracao
@@ -162,12 +160,13 @@ namespace GoodsTracker
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            showBehavior();
+            updateBehavior();
         }
 
         private void groupBox1_Click(object sender, System.EventArgs e)
         {
             removeRoute(route);
+
             initSelectRoute();
         }
 
@@ -184,9 +183,6 @@ namespace GoodsTracker
 
         private void txtLatStop_Enter(object sender, EventArgs e)
         {
-            txtLatStop.BackColor = Color.White;
-            txtLngStop.BackColor = Color.White;
-
             txtLatStop.BackColor = Color.Yellow;
             txtLngStop.BackColor = Color.Yellow;
         }
@@ -242,6 +238,11 @@ namespace GoodsTracker
 
         private void initSelectRoute()
         {
+            txtLatStop.BackColor    = Color.White;
+            txtLngStop.BackColor    = Color.White;
+            txtLatStart.BackColor   = Color.White;
+            txtLngStart.BackColor   = Color.White;
+
             route.clear();
 
             statusTrip              = STATUS_GUI.START_POINT;
@@ -251,38 +252,30 @@ namespace GoodsTracker
             txtLatStop.Text         = "";
             txtLngStop.Text         = "";
 
-            txtLatStop.BackColor    = Color.White;
-            txtLngStop.BackColor    = Color.White;
-
-            txtLatStart.BackColor   = Color.White;
-            txtLngStart.BackColor   = Color.White;
 
             txtLatStart.Focus();
         }
 
-        void showBehavior()
+        void updateBehavior()
         {
             BuildTreeView bTV = new BuildTreeView(tvBehavior);
 
             List<Behavior> list = trackerController.getBehaviorFiltered(cbFilter.SelectedIndex);
 
             bTV.loadlistPointsTreeView(list);
-
             showMarkerBehavior(list);
         }
 
         void showMarkerBehavior(List<Behavior> list)
         {
-            layerBehavior.removeAllMarkers();
-
             if (list != null)
             {
+                layerBehavior.removeAllMarkers();
+
                 foreach (Behavior b in list)
                 {
                     PointLatLng p = new PointLatLng(b.Position.Latitude, b.Position.Longitude);
-
                     GMarkerGoogleType color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
-
                     layerBehavior.add(p, b.getStrNOK(), color);
                 }
             }
@@ -365,8 +358,6 @@ namespace GoodsTracker
         {
             route.createRoute();
 
-            route.teste(); // teste
-
             trackerController.addRoute(route);
             layerRoute.add(route);
         }
@@ -379,9 +370,9 @@ namespace GoodsTracker
                 trackerController.removeFenceAt(index);
                 cbListFence.Items.RemoveAt(index);
                 cbListFence.Text = "";
-
-                initPanelFence(); //clear entitys
             }
+
+            initPanelFence(); //clear entitys
         }
 
         void removePositionFence(int index)
@@ -399,14 +390,11 @@ namespace GoodsTracker
             layerFence.add(point, GMarkerGoogleType.yellow);
         }
 
-        void removeRouteAt(int index)
+        private void panel3_VisibleChanged(object sender, EventArgs e)
         {
-            if (index >= 0)
+            if (panel3.Visible)
             {
-                layerFence.removeRouteAt(index);
-                trackerController.removeRouteAt(index);
-
-                initSelectRoute(); // clear entitys
+                updateBehavior();
             }
         }
 
@@ -415,12 +403,8 @@ namespace GoodsTracker
             if (route !=null)
             {
                 layerBehavior.removeAllMarkers();
-
                 layerRoute.remove(route);
-
                 trackerController.remove(route);
-
-                initSelectRoute(); // clear entitys
             }
         }
     }

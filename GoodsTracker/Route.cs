@@ -72,6 +72,8 @@ namespace GoodsTracker
         internal void createRoute()
         {
             createRoute(points[0], points[points.Count - 1]);
+
+            teste();
         }
 
         internal List<Behavior> getItensNOK()

@@ -624,6 +624,7 @@
             this.panel3.Size = new System.Drawing.Size(320, 360);
             this.panel3.TabIndex = 5;
             this.panel3.Visible = false;
+            this.panel3.VisibleChanged += new System.EventHandler(this.panel3_VisibleChanged);
             // 
             // label12
             // 
