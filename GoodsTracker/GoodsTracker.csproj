@@ -108,6 +108,9 @@
     <Compile Include="Route.cs" />
     <Compile Include="RxFrame.cs" />
     <Compile Include="TestBehavior.cs" />
+    <Compile Include="ThreadCommunication.cs" />
+    <Compile Include="ThreadDomain.cs" />
+    <Compile Include="ThreadManager.cs" />
     <Compile Include="touchkey.cs" />
     <Compile Include="tracker.cs" />
     <Compile Include="TrackerController .cs" />

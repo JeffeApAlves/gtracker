@@ -31,6 +31,8 @@ namespace GoodsTracker
 
     class Protocol
     {
+        public static Protocol Communication;
+
         /* [LED01]\r\n*/
         const char CHAR_RX_FRAME_START  = '[';
         const char CHAR_RX_FRAME_END    = ']';
@@ -46,8 +48,13 @@ namespace GoodsTracker
         List<Cmd>       queueCmd        = new List<Cmd>();
         List<ParamCmd>  queueParam      = new List<ParamCmd>();
 
+        static public void init() {
 
-        Protocol()
+            Communication = new Protocol();
+        }
+
+
+        private Protocol()
         {
             bufferRx = new RingBuffer(256);
             bufferTx = new RingBuffer(256);
@@ -133,9 +140,7 @@ namespace GoodsTracker
             {
                 if (ch == CHAR_RX_FRAME_START || rxFrame.isFull())
                 {
-
                     setStatusRx(StatusRx.RX_FRAME_NOK);
-
                 }
                 else if (ch == CHAR_RX_FRAME_END)
                 {

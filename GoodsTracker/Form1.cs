@@ -25,6 +25,10 @@ namespace GoodsTracker
         public MainForm()
         {
             InitializeComponent();
+
+            Protocol.init();
+
+            ThreadManager.init();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -35,6 +39,8 @@ namespace GoodsTracker
             initPanelFence();
             initPanelBehavior();
             initPanelConfig();
+
+            ThreadManager.startThreads();
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -388,6 +394,11 @@ namespace GoodsTracker
         {
             fence.insertPositon(point);
             layerFence.add(point, GMarkerGoogleType.yellow);
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ThreadManager.stopThreads();
         }
 
         private void panel3_VisibleChanged(object sender, EventArgs e)
