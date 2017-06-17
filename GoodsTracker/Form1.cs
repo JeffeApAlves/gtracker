@@ -72,7 +72,7 @@ namespace GoodsTracker
         {
             selectPanel(panel3);
 
-            showListBehavior();
+            showBehavior();
         }
 
         // seleciona painel configuracao
@@ -162,7 +162,7 @@ namespace GoodsTracker
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            showListBehavior();
+            showBehavior();
         }
 
         private void groupBox1_Click(object sender, System.EventArgs e)
@@ -260,7 +260,7 @@ namespace GoodsTracker
             txtLatStart.Focus();
         }
 
-        void showListBehavior()
+        void showBehavior()
         {
             BuildTreeView bTV = new BuildTreeView(tvBehavior);
 
@@ -273,15 +273,16 @@ namespace GoodsTracker
 
         void showMarkerBehavior(List<Behavior> list)
         {
-            layerBehavior.removeAllMarkers();
-
-            foreach (Behavior b in list)
+            if (list != null)
             {
-                PointLatLng p = new PointLatLng(b.Position.Latitude, b.Position.Longitude);
+                foreach (Behavior b in list)
+                {
+                    PointLatLng p = new PointLatLng(b.Position.Latitude, b.Position.Longitude);
 
-                GMarkerGoogleType color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
+                    GMarkerGoogleType color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
 
-                layerBehavior.add(p, b.getStrNOK(), color);
+                    layerBehavior.add(p, b.getStrNOK(), color);
+                }
             }
         }
 
@@ -361,10 +362,11 @@ namespace GoodsTracker
         internal void add(Route r)
         {
             route.createRoute();
+
+            route.teste(); // teste
+
             trackerController.addRoute(route);
             layerRoute.add(route);
-
-            Tests.tstBehavior(trackerController.Behaviors, route); // test
         }
 
         void removeFenceAt(int index)
@@ -411,7 +413,9 @@ namespace GoodsTracker
             if (route !=null)
             {
                 layerBehavior.removeAllMarkers();
+
                 layerRoute.remove(route);
+
                 trackerController.remove(route);
 
                 initSelectRoute(); // clear entitys

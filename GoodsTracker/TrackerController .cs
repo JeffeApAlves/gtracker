@@ -5,11 +5,9 @@ namespace GoodsTracker
     class TrackerController
     {
         Tracker         tracker;
-        List<Behavior>  behaviors;
         List<Fence>     fences;
         List<Route>     routes;
 
-        internal List<Behavior> Behaviors { get => behaviors; set => behaviors = value; }
         internal List<Fence> Fences { get => fences; set => fences = value; }
         internal List<Route> Routes { get => routes; set => routes = value; }
 
@@ -17,7 +15,6 @@ namespace GoodsTracker
         {
             tracker     = new Tracker();
             fences      = new List<Fence>();
-            behaviors   = new List<Behavior>();
             routes      = new List<Route>();
         }
 
@@ -45,45 +42,18 @@ namespace GoodsTracker
             fences.RemoveAt(index);
         }
 
-        internal List<Behavior> getItensNOK()
-        {
-            List<Behavior> ret=new List<Behavior>();
-
-            foreach(Behavior b in behaviors)
-            {
-                if (!b.OK())
-                {
-                    ret.Add(b);
-                }
-            }
-
-            return ret;
-        }
-
-        internal List<Behavior> getItensOK()
-        {
-            List<Behavior> ret = new List<Behavior>();
-
-            foreach (Behavior b in behaviors)
-            {
-                if (b.OK())
-                {
-                    ret.Add(b);
-                }
-            }
-
-            return ret;
-        }
-
         internal List<Behavior> getBehaviorFiltered(int i)
         {
             List<Behavior> ret = null;
 
-            switch (i)
+            if (routes.Count > 0)
             {
-                case 0: ret = behaviors; break;
-                case 1: ret = getItensOK(); break;
-                case 2: ret = getItensNOK(); break;
+                switch (i)
+                {
+                    case 0: ret = routes[0].Behaviors; break;
+                    case 1: ret = routes[0].getItensOK(); break;
+                    case 2: ret = routes[0].getItensNOK(); break;
+                }
             }
 
             return ret;

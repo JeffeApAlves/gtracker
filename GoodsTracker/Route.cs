@@ -9,6 +9,7 @@ namespace GoodsTracker
 {
     class Route
     {
+        List<Behavior> behaviors;
         GDirections direction;
         GMapRoute   mapRoute;
 
@@ -21,6 +22,7 @@ namespace GoodsTracker
         public string Name { get => name; set => name = value; }
         public GDirections Direction { get => direction; set => direction = value; }
         public GMapRoute MapRoute { get => mapRoute; set => mapRoute = value; }
+        internal List<Behavior> Behaviors { get => behaviors; set => behaviors = value; }
 
         internal Route(string n)
         {
@@ -33,6 +35,8 @@ namespace GoodsTracker
             dt.Columns.Add(new DataColumn("Loc.", typeof(string)));
             dt.Columns.Add(new DataColumn("Latitude", typeof(double)));
             dt.Columns.Add(new DataColumn("Longitude", typeof(double)));
+
+            behaviors = new List<Behavior>();
         }
 
         internal void startTrip(PointLatLng point)
@@ -51,6 +55,7 @@ namespace GoodsTracker
         {
             points.Clear();
             dt.Clear();
+            behaviors.Clear();
         }
 
         internal void createRoute(PointLatLng start, PointLatLng stop)
@@ -68,5 +73,41 @@ namespace GoodsTracker
         {
             createRoute(points[0], points[points.Count - 1]);
         }
+
+        internal List<Behavior> getItensNOK()
+        {
+            List<Behavior> ret = new List<Behavior>();
+
+            foreach (Behavior b in behaviors)
+            {
+                if (!b.OK())
+                {
+                    ret.Add(b);
+                }
+            }
+
+            return ret;
+        }
+
+        internal List<Behavior> getItensOK()
+        {
+            List<Behavior> ret = new List<Behavior>();
+
+            foreach (Behavior b in behaviors)
+            {
+                if (b.OK())
+                {
+                    ret.Add(b);
+                }
+            }
+
+            return ret;
+        }
+
+        internal void teste()
+        {
+            Tests.tstBehavior(behaviors, this); // test
+        }
+
     }
 }

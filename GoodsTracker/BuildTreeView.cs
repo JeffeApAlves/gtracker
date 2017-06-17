@@ -37,17 +37,20 @@ namespace GoodsTracker
 
             int i = 0;
 
-            root = createRootTreeView(listBehavior.Count);
-
-            foreach (Behavior b in listBehavior)
+            if (listBehavior != null)
             {
-                loc = createLocTreeView(b, root, i++);
+                root = createRootTreeView(listBehavior.Count);
 
-                createPositionTreeView(b, loc);
+                foreach (Behavior b in listBehavior)
+                {
+                    loc = createLocTreeView(b, root, i++);
 
-                createEixoTreeView(b.AxisX, "Eixo[X]", loc);
-                createEixoTreeView(b.AxisY, "Eixo[Y]", loc);
-                createEixoTreeView(b.AxisZ, "Eixo[Z]", loc);
+                    createPositionTreeView(b, loc);
+
+                    createEixoTreeView(b.AxisX, "Eixo[X]", loc);
+                    createEixoTreeView(b.AxisY, "Eixo[Y]", loc);
+                    createEixoTreeView(b.AxisZ, "Eixo[Z]", loc);
+                }
             }
         }
 
