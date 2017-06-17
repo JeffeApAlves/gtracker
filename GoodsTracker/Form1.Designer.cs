@@ -295,15 +295,16 @@
             // 
             this.txtLngStop.Location = new System.Drawing.Point(75, 55);
             this.txtLngStop.Name = "txtLngStop";
-            this.txtLngStop.Size = new System.Drawing.Size(150, 22);
+            this.txtLngStop.Size = new System.Drawing.Size(130, 22);
             this.txtLngStop.TabIndex = 6;
             // 
             // txtLatStop
             // 
             this.txtLatStop.Location = new System.Drawing.Point(75, 30);
             this.txtLatStop.Name = "txtLatStop";
-            this.txtLatStop.Size = new System.Drawing.Size(150, 22);
+            this.txtLatStop.Size = new System.Drawing.Size(130, 22);
             this.txtLatStop.TabIndex = 5;
+            this.txtLatStop.Enter += new System.EventHandler(this.txtLatStop_Enter);
             // 
             // label9
             // 
@@ -378,15 +379,16 @@
             // 
             this.txtLngStart.Location = new System.Drawing.Point(75, 55);
             this.txtLngStart.Name = "txtLngStart";
-            this.txtLngStart.Size = new System.Drawing.Size(150, 22);
+            this.txtLngStart.Size = new System.Drawing.Size(130, 22);
             this.txtLngStart.TabIndex = 6;
             // 
             // txtLatStart
             // 
             this.txtLatStart.Location = new System.Drawing.Point(75, 30);
             this.txtLatStart.Name = "txtLatStart";
-            this.txtLatStart.Size = new System.Drawing.Size(150, 22);
+            this.txtLatStart.Size = new System.Drawing.Size(130, 22);
             this.txtLatStart.TabIndex = 5;
+            this.txtLatStart.Enter += new System.EventHandler(this.txtLatStart_Enter);
             // 
             // label1
             // 
@@ -437,7 +439,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(2, 25);
+            this.label13.Location = new System.Drawing.Point(2, 24);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 17);
             this.label13.TabIndex = 19;
@@ -521,22 +523,22 @@
             // 
             this.txtLng.Location = new System.Drawing.Point(75, 190);
             this.txtLng.Name = "txtLng";
-            this.txtLng.Size = new System.Drawing.Size(155, 20);
+            this.txtLng.Size = new System.Drawing.Size(130, 20);
             this.txtLng.TabIndex = 10;
             // 
             // txtLat
             // 
             this.txtLat.Location = new System.Drawing.Point(75, 166);
             this.txtLat.Name = "txtLat";
-            this.txtLat.Size = new System.Drawing.Size(155, 20);
+            this.txtLat.Size = new System.Drawing.Size(130, 20);
             this.txtLat.TabIndex = 9;
             // 
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(235, 166);
+            this.button6.Location = new System.Drawing.Point(218, 166);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 44);
+            this.button6.Size = new System.Drawing.Size(102, 43);
             this.button6.TabIndex = 8;
             this.button6.Text = "Delete";
             this.button6.UseVisualStyleBackColor = true;

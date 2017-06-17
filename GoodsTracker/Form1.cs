@@ -224,15 +224,12 @@ namespace GoodsTracker
             txtLatStart.Text = point.Lat.ToString();
             txtLngStart.Text = point.Lng.ToString();
 
+            txtLatStart.BackColor = Color.FromArgb(61, 120, 165);
+            txtLngStart.BackColor = Color.FromArgb(61, 120, 165);
+
             layerRoute.addPosition(point);
 
-
-            txtLatStart.BackColor = Color.White;
-            txtLngStart.BackColor = Color.White;
-            txtLatStop.BackColor = Color.Yellow;
-            txtLngStop.BackColor = Color.Yellow;
             txtLatStop.Focus();
-
 
             statusTrip = STATUS_GUI.END_POINT;
         }
@@ -242,12 +239,11 @@ namespace GoodsTracker
             txtLatStop.Text = point.Lat.ToString();
             txtLngStop.Text = point.Lng.ToString();
 
-            layerRoute.addPosition(point);
+            txtLatStop.BackColor = Color.FromArgb(61, 120, 165);
+            txtLngStop.BackColor = Color.FromArgb(61, 120, 165);
 
-            txtLatStart.BackColor = Color.White;
-            txtLngStart.BackColor = Color.White;
-            txtLatStop.BackColor = Color.White;
-            txtLngStop.BackColor = Color.White;
+
+            layerRoute.addPosition(point);
 
             statusTrip = STATUS_GUI.INIT_OK;
         }
@@ -441,8 +437,6 @@ namespace GoodsTracker
 
         private void groupBox1_Click(object sender, System.EventArgs e)
         {
-            txtLatStart.BackColor = Color.Yellow;
-            txtLngStart.BackColor = Color.Yellow;
             txtLatStart.Focus();
             statusTrip = STATUS_GUI.START_POINT;
         }
@@ -450,6 +444,21 @@ namespace GoodsTracker
         private void groupBox2_Click(object sender, System.EventArgs e)
         {
             statusTrip = STATUS_GUI.END_POINT;
+        }
+
+        private void txtLatStart_Enter(object sender, EventArgs e)
+        {
+            txtLatStart.BackColor = Color.Yellow;
+            txtLngStart.BackColor = Color.Yellow;
+        }
+
+        private void txtLatStop_Enter(object sender, EventArgs e)
+        {
+            txtLatStop.BackColor = Color.White;
+            txtLngStop.BackColor = Color.White;
+
+            txtLatStop.BackColor = Color.Yellow;
+            txtLngStop.BackColor = Color.Yellow;
         }
 
         void removePositionFence(int index)
