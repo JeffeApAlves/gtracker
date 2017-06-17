@@ -14,8 +14,8 @@ namespace GoodsTracker
     {
         LayerMap layerFence, layerRoute, layerBehavior;
 
-        STATUS_GUI  statusFence     = STATUS_GUI.INIT;
-        STATUS_GUI  statusTrip      = STATUS_GUI.INIT;
+        STATUS_GUI  statusFence = STATUS_GUI.INIT;
+        STATUS_GUI  statusTrip  = STATUS_GUI.INIT;
         TrackerController trackerController = new TrackerController();
 
         Fence fence;
@@ -58,9 +58,9 @@ namespace GoodsTracker
 
         private void initLayers()
         {
-            layerFence = new LayerMap(gMapControl1,     "Fence");
-            layerRoute = new LayerMap(gMapControl1,     "Route");
-            layerBehavior = new LayerMap(gMapControl1,  "Behavior");
+            layerFence      = new LayerMap(gMapControl1,     "Fence");
+            layerRoute      = new LayerMap(gMapControl1,     "Route");
+            layerBehavior   = new LayerMap(gMapControl1,  "Behavior");
         }
 
         void initPanelConfig()
@@ -274,11 +274,10 @@ namespace GoodsTracker
         void loadlistPointsTreeView(List<Behavior> list)
         {
             TreeNode root, loc;
+
             int i = 0;
 
             root = createRootTreeView(list.Count);
-
-            root.ImageIndex =  (int)IMG_TREEVIEW.FILE;
 
             foreach (Behavior b in list)
             {
@@ -348,6 +347,9 @@ namespace GoodsTracker
                 root = tvBehavior.Nodes[0];
             }
 
+            root.ImageIndex = (int)IMG_TREEVIEW.FILE;
+            root.SelectedImageIndex = (int)IMG_TREEVIEW.FILE;
+
             return root;
         }
 
@@ -355,41 +357,66 @@ namespace GoodsTracker
         {
             TreeNode loc;
 
-            loc = root.Nodes.Add(string.Format("Registro[{0}] : ({1})", i, behavior.DateTime));
+            loc = root.Nodes.Add(string.Format("Registro[{0}]: {1}", i.ToString("D5"), behavior.DateTime));
 
             loc.ImageIndex = (int)(behavior.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+            loc.SelectedImageIndex = loc.ImageIndex;
 
             return loc;
         }
 
-        void createPositionTreeView(Behavior behavior, TreeNode loc)
+        void createPositionTreeView(Behavior behavior, TreeNode reg)
         {
-            loc.Nodes.Add(string.Format("Localizacao: ({0},{1})",
-                                    behavior.Position.Latitude,
-                                    behavior.Position.Longitude)).ImageIndex = (int)IMG_TREEVIEW.LOC;
+            TreeNode info,loc,vel;
 
-            loc.Nodes.Add(string.Format("Velocidade: {0}", 
-                                    behavior.Speed.Val)).ImageIndex = (int)(behavior.Speed.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+            loc = reg.Nodes.Add("Localizacao");
+            loc.ImageIndex = (int)IMG_TREEVIEW.LOC;
+            loc.SelectedImageIndex = loc.ImageIndex;
 
+            info = loc.Nodes.Add(string.Format("Lat: {0}",behavior.Position.Latitude));
+            info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
+            info.SelectedImageIndex = info.ImageIndex;
+
+            info = loc.Nodes.Add(string.Format("Lng: {0}",behavior.Position.Longitude));
+            info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
+            info.SelectedImageIndex = info.ImageIndex;
+
+            vel = reg.Nodes.Add("Velocidade");
+            vel.ImageIndex = (int)IMG_TREEVIEW.GUAUGE;
+            vel.SelectedImageIndex = vel.ImageIndex;
+
+            info = vel.Nodes.Add(behavior.Speed.ToString());
+            info.ImageIndex = (int)(behavior.Speed.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+            info.SelectedImageIndex = info.ImageIndex;
         }
 
         TreeNode createEixoTreeView(Axis axis, string neixo, TreeNode loc)
         {
-            TreeNode eixo;
+            TreeNode eixo,spec;
 
             eixo = loc.Nodes.Add(string.Format(neixo));
 
-            eixo.ImageIndex = (int)(axis.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+            eixo.ImageIndex = (int)IMG_TREEVIEW.AXIS;
+            eixo.SelectedImageIndex = (int)IMG_TREEVIEW.AXIS;
 
-            eixo.Nodes.Add(string.Format("A: Val:{0} Min:{1} Max:{2}",
+
+            spec = eixo.Nodes.Add(string.Format("A: Val:{0} Min:{1} Max:{2}",
                                         axis.Acceleration.Val,
                                         axis.Acceleration.Tol.Min,
-                                        axis.Acceleration.Tol.Max)).ImageIndex = (int)IMG_TREEVIEW.SPEC;
+                                        axis.Acceleration.Tol.Max));
 
-            eixo.Nodes.Add(string.Format("R: Val:{0} Min:{1} Max:{2}",
+            spec.ImageIndex = (int)(axis.Acceleration.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+            spec.SelectedImageIndex = spec.ImageIndex;
+
+            spec = eixo.Nodes.Add(string.Format("R: Val:{0} Min:{1} Max:{2}",
                                         axis.Rotation.Val,
                                         axis.Rotation.Tol.Min,
-                                        axis.Rotation.Tol.Max)).ImageIndex = (int)IMG_TREEVIEW.SPEC;
+                                        axis.Rotation.Tol.Max));
+
+            spec.ImageIndex = (int)(axis.Rotation.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+            spec.SelectedImageIndex = spec.ImageIndex;
+
+
             return eixo;
         }
         //--------------------------------------------------------------------------------------
@@ -497,6 +524,11 @@ namespace GoodsTracker
         NOK = 1,
         SPEC = 2,
         LOC =3,
-        FILE =4
+        FILE =4,
+        INFO = 5,
+        AXIS =6,
+        GUAUGE = 7,
+        PUSHPIN = 8,
+        XYZ = 9,
     }
 }

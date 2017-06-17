@@ -32,11 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBoxLevel = new System.Windows.Forms.GroupBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.btn_lock = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -127,15 +129,27 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.ImageIndex = 1;
+            this.button1.ImageList = this.imageList3;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(325, 43);
+            this.button1.Size = new System.Drawing.Size(325, 45);
             this.button1.TabIndex = 0;
             this.button1.Text = "Trip";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // imageList3
+            // 
+            this.imageList3.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList3.ImageStream")));
+            this.imageList3.TransparentColor = System.Drawing.Color.White;
+            this.imageList3.Images.SetKeyName(0, "IntelliTrace_48x.png");
+            this.imageList3.Images.SetKeyName(1, "fence.png");
+            this.imageList3.Images.SetKeyName(2, "h.png");
             // 
             // panel1
             // 
@@ -145,7 +159,7 @@
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 46);
+            this.panel1.Location = new System.Drawing.Point(3, 48);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(320, 640);
             this.panel1.TabIndex = 1;
@@ -190,22 +204,37 @@
             // 
             this.button7.BackColor = System.Drawing.Color.Lime;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ImageIndex = 2;
+            this.button7.ImageList = this.imageList2;
             this.button7.Location = new System.Drawing.Point(162, 26);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(100, 30);
             this.button7.TabIndex = 15;
             this.button7.Text = "UNLOCK";
+            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button7.UseVisualStyleBackColor = true;
+            // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Black;
+            this.imageList2.Images.SetKeyName(0, "AddMark_10580_32.bmp");
+            this.imageList2.Images.SetKeyName(1, "Clearallrequests_8816.png");
+            this.imageList2.Images.SetKeyName(2, "Keys.ico");
+            this.imageList2.Images.SetKeyName(3, "base_lock_32.png");
             // 
             // btn_lock
             // 
             this.btn_lock.BackColor = System.Drawing.Color.White;
             this.btn_lock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_lock.ImageIndex = 3;
+            this.btn_lock.ImageList = this.imageList2;
             this.btn_lock.Location = new System.Drawing.Point(56, 26);
             this.btn_lock.Name = "btn_lock";
             this.btn_lock.Size = new System.Drawing.Size(100, 30);
             this.btn_lock.TabIndex = 14;
             this.btn_lock.Text = "LOCK";
+            this.btn_lock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_lock.UseVisualStyleBackColor = true;
             // 
             // label11
@@ -405,10 +434,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(0, 689);
+            this.button2.Location = new System.Drawing.Point(0, 691);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(325, 40);
+            this.button2.Size = new System.Drawing.Size(325, 45);
             this.button2.TabIndex = 2;
             this.button2.Text = "Fence";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -429,7 +458,7 @@
             this.panel2.Controls.Add(this.txtLat);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button5);
-            this.panel2.Location = new System.Drawing.Point(3, 732);
+            this.panel2.Location = new System.Drawing.Point(3, 739);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(320, 450);
             this.panel2.TabIndex = 3;
@@ -439,7 +468,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(2, 24);
+            this.label13.Location = new System.Drawing.Point(2, 25);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 17);
             this.label13.TabIndex = 19;
@@ -448,7 +477,7 @@
             // cbListFence
             // 
             this.cbListFence.FormattingEnabled = true;
-            this.cbListFence.Location = new System.Drawing.Point(50, 23);
+            this.cbListFence.Location = new System.Drawing.Point(50, 25);
             this.cbListFence.Name = "cbListFence";
             this.cbListFence.Size = new System.Drawing.Size(268, 21);
             this.cbListFence.TabIndex = 18;
@@ -456,18 +485,21 @@
             // btn_delFence
             // 
             this.btn_delFence.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_delFence.Location = new System.Drawing.Point(218, 88);
+            this.btn_delFence.ImageIndex = 1;
+            this.btn_delFence.ImageList = this.imageList2;
+            this.btn_delFence.Location = new System.Drawing.Point(218, 85);
             this.btn_delFence.Name = "btn_delFence";
             this.btn_delFence.Size = new System.Drawing.Size(100, 30);
             this.btn_delFence.TabIndex = 17;
             this.btn_delFence.Text = "Delete";
+            this.btn_delFence.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_delFence.UseVisualStyleBackColor = true;
             this.btn_delFence.Click += new System.EventHandler(this.btn_delFence_Click);
             // 
             // btn_cancel
             // 
             this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.Location = new System.Drawing.Point(218, 49);
+            this.btn_cancel.Location = new System.Drawing.Point(218, 50);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(100, 30);
             this.btn_cancel.TabIndex = 15;
@@ -492,7 +524,7 @@
             // btn_fence
             // 
             this.btn_fence.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_fence.Location = new System.Drawing.Point(109, 49);
+            this.btn_fence.Location = new System.Drawing.Point(109, 50);
             this.btn_fence.Name = "btn_fence";
             this.btn_fence.Size = new System.Drawing.Size(100, 30);
             this.btn_fence.TabIndex = 13;
@@ -537,22 +569,28 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ImageIndex = 1;
+            this.button6.ImageList = this.imageList2;
             this.button6.Location = new System.Drawing.Point(218, 166);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(102, 43);
             this.button6.TabIndex = 8;
             this.button6.Text = "Delete";
+            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(0, 49);
+            this.button5.ImageIndex = 0;
+            this.button5.ImageList = this.imageList2;
+            this.button5.Location = new System.Drawing.Point(0, 50);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(100, 30);
             this.button5.TabIndex = 0;
             this.button5.Text = "Insert";
+            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -562,13 +600,17 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(0, 1185);
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.ImageIndex = 0;
+            this.button3.ImageList = this.imageList3;
+            this.button3.Location = new System.Drawing.Point(0, 1192);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(325, 40);
+            this.button3.Size = new System.Drawing.Size(325, 45);
             this.button3.TabIndex = 4;
             this.button3.Text = "Driver behavior";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
@@ -577,7 +619,7 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.cbFilter);
             this.panel3.Controls.Add(this.tvBehavior);
-            this.panel3.Location = new System.Drawing.Point(3, 1228);
+            this.panel3.Location = new System.Drawing.Point(3, 1240);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(320, 360);
             this.panel3.TabIndex = 5;
@@ -626,6 +668,11 @@
             this.imageList1.Images.SetKeyName(2, "002.png");
             this.imageList1.Images.SetKeyName(3, "003.png");
             this.imageList1.Images.SetKeyName(4, "004.png");
+            this.imageList1.Images.SetKeyName(5, "StatusAnnotations_Information_32xMD_color.png");
+            this.imageList1.Images.SetKeyName(6, "ToggleWorld.png");
+            this.imageList1.Images.SetKeyName(7, "Guage_32xLG.png");
+            this.imageList1.Images.SetKeyName(8, "Pushpin_32x.png");
+            this.imageList1.Images.SetKeyName(9, "Dimension_32xMD.png");
             // 
             // button4
             // 
@@ -633,10 +680,10 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(0, 1591);
+            this.button4.Location = new System.Drawing.Point(0, 1603);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(325, 40);
+            this.button4.Size = new System.Drawing.Size(325, 45);
             this.button4.TabIndex = 6;
             this.button4.Text = "Setup";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -646,7 +693,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.groupBox4);
-            this.panel4.Location = new System.Drawing.Point(3, 1634);
+            this.panel4.Location = new System.Drawing.Point(3, 1651);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(320, 180);
             this.panel4.TabIndex = 7;
@@ -832,6 +879,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ImageList imageList2;
+        private System.Windows.Forms.ImageList imageList3;
     }
 }
 
