@@ -57,7 +57,7 @@ namespace GoodsTracker
             listPoints.Add(point);
         }
 
-        internal void clearPoints()
+        internal void clear()
         {
             dt.Clear();
 

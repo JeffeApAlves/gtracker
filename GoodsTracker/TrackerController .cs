@@ -1,35 +1,24 @@
-﻿using GMap.NET;
-using GMap.NET.MapProviders;
-using GMap.NET.WindowsForms;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace GoodsTracker
 {
     class TrackerController
     {
-        GDirections direction;
         Tracker         tracker;
-        GMapRoute route;
+        List<Behavior>  behaviors;
+        List<Fence>     fences;
+        List<Route>     routes;
 
-        List<Behavior>  listBehavior;
-        List<Fence>     listFence;
-
-        internal List<Behavior> ListBehavior { get => listBehavior; set => listBehavior = value; }
-        internal List<Fence> ListFence { get => listFence; set => listFence = value; }
-        public GMapRoute Route { get => route; set => route = value; }
-        public GDirections Direction { get => direction; set => direction = value; }
+        internal List<Behavior> Behaviors { get => behaviors; set => behaviors = value; }
+        internal List<Fence> Fences { get => fences; set => fences = value; }
+        internal List<Route> Routes { get => routes; set => routes = value; }
 
         internal TrackerController()
         {
-            tracker         = new Tracker();
-            ListFence       = new List<Fence>();
-            ListBehavior    = new List<Behavior>();
-
-            testeBehavior();
+            tracker     = new Tracker();
+            fences      = new List<Fence>();
+            behaviors   = new List<Behavior>();
+            routes      = new List<Route>();
         }
 
         internal Fence createFence()
@@ -39,21 +28,28 @@ namespace GoodsTracker
             return fence;
         }
 
+        internal Route createRoute()
+        {
+            Route route = new Route("");
+
+            return route;
+        }
+
         internal void addFence(Fence fence)
         {
-            listFence.Add(fence);
+            fences.Add(fence);
         }
 
         internal void removeFenceAt(int index)
         {
-            listFence.RemoveAt(index);
+            fences.RemoveAt(index);
         }
 
         internal List<Behavior> getItensNOK()
         {
             List<Behavior> ret=new List<Behavior>();
 
-            foreach(Behavior b in listBehavior)
+            foreach(Behavior b in behaviors)
             {
                 if (!b.OK())
                 {
@@ -68,7 +64,7 @@ namespace GoodsTracker
         {
             List<Behavior> ret = new List<Behavior>();
 
-            foreach (Behavior b in listBehavior)
+            foreach (Behavior b in behaviors)
             {
                 if (b.OK())
                 {
@@ -79,33 +75,13 @@ namespace GoodsTracker
             return ret;
         }
 
-        private void testeBehavior()
-        {
-            double LATITUDE = -23.673326;
-            double LONGITUDE = -46.775215;
-
-            for (int i = 0; i < 100; i++)
-            {
-                Behavior b = new Behavior();
-
-                b.DateTime = DateTime.Now;
-
-                LATITUDE += -0.001;
-                LONGITUDE += 0.001;
-
-                b.setPosition(LATITUDE, LONGITUDE);
-
-                ListBehavior.Add(b);
-            }
-        }
-
         internal List<Behavior> getBehaviorFiltered(int i)
         {
             List<Behavior> ret = null;
 
             switch (i)
             {
-                case 0: ret = ListBehavior; break;
+                case 0: ret = behaviors; break;
                 case 1: ret = getItensOK(); break;
                 case 2: ret = getItensNOK(); break;
             }
@@ -113,10 +89,19 @@ namespace GoodsTracker
             return ret;
         }
 
-        internal void createRoute(PointLatLng start, PointLatLng stop)
+        internal void addRoute(Route r)
         {
-            var routedirection = GMapProviders.GoogleMap.GetDirections(out direction, start, stop, false, false, false, false, false);
-            route = new GMapRoute(direction.Route, "Rota");
+            routes.Add(r);
+        }
+
+        internal void removeRouteAt(int index)
+        {
+            routes.RemoveAt(index);
+        }
+
+        internal void remove(Route r)
+        {
+            routes.Remove(r);
         }
     }
 }

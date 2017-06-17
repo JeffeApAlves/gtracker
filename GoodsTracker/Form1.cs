@@ -6,7 +6,6 @@ using GMap.NET.MapProviders;
 using System.Collections.Generic;
 using GMap.NET.WindowsForms.Markers;
 using System.Drawing;
-using GMap.NET.WindowsForms;
 
 namespace GoodsTracker
 {
@@ -18,7 +17,9 @@ namespace GoodsTracker
         STATUS_GUI statusTrip = STATUS_GUI.INIT;
         TrackerController trackerController = new TrackerController();
 
-        Fence fence;
+        Fence       fence;
+        Route       route;
+
         int itemselected = -1;
 
         public MainForm()
@@ -28,13 +29,12 @@ namespace GoodsTracker
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            initLayers();
             initMapControl();
+            initLayers();
+            initPanelTrip();
             initPanelFence();
-            initPanelConfig();
             initPanelBehavior();
-
-//            layerRoute.addPosition(gMapControl1.Position, GMarkerGoogleType.blue);
+            initPanelConfig();
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -71,6 +71,8 @@ namespace GoodsTracker
         private void button3_Click_1(object sender, EventArgs e)
         {
             selectPanel(panel3);
+
+            showListBehavior();
         }
 
         // seleciona painel configuracao
@@ -84,10 +86,8 @@ namespace GoodsTracker
         {
             if (!statusFence.Equals(STATUS_GUI.NEW_FENCE))
             {
+                fence.clear();
                 statusFence = STATUS_GUI.NEW_FENCE;
-
-                fence.clearPoints();
-
                 button5.Enabled = false;
             }
         }
@@ -97,10 +97,8 @@ namespace GoodsTracker
         {
             if (statusFence.Equals(STATUS_GUI.ADD_POINTS))
             {
-                addFence(fence);
-
+                add(fence);
                 statusFence = STATUS_GUI.CONFIRM_FENCE;
-
                 button5.Enabled = true;
             }
         }
@@ -109,10 +107,8 @@ namespace GoodsTracker
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             statusFence = STATUS_GUI.INIT_OK;
-
             button5.Enabled = true;
-
-            fence.clearPoints();
+            fence.clear();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -126,7 +122,7 @@ namespace GoodsTracker
         // Remove Fence selecionada no combo box
         private void btn_delFence_Click(object sender, EventArgs e)
         {
-            removeFence(cbListFence.SelectedIndex);
+            removeFenceAt(cbListFence.SelectedIndex);
         }
 
         // Seleciona ponto no gridview
@@ -171,8 +167,8 @@ namespace GoodsTracker
 
         private void groupBox1_Click(object sender, System.EventArgs e)
         {
-            txtLatStart.Focus();
-            statusTrip = STATUS_GUI.START_POINT;
+            removeRoute(route);
+            initSelectRoute();
         }
 
         private void groupBox2_Click(object sender, System.EventArgs e)
@@ -205,7 +201,12 @@ namespace GoodsTracker
             gMapControl1.MaxZoom = 24;
             gMapControl1.Zoom = 15;
             gMapControl1.AutoScroll = true;
-            gMapControl1.Position = new PointLatLng(POSITION_CONST.LATITUDE, POSITION_CONST.LONGITUDE);
+            gMapControl1.Position = new PointLatLng(CAPAO.LATITUDE, CAPAO.LONGITUDE);
+        }
+
+        private void initPanelTrip()
+        {
+            route = trackerController.createRoute();
         }
 
         private void initPanelFence()
@@ -237,6 +238,27 @@ namespace GoodsTracker
         {
             cbFilter.SelectedIndex = 0;
         }
+        //-------------------------------------Fim inits -----------------------------------
+
+        private void initSelectRoute()
+        {
+            route.clear();
+
+            statusTrip              = STATUS_GUI.START_POINT;
+
+            txtLatStart.Text        = "";
+            txtLngStart.Text        = "";
+            txtLatStop.Text         = "";
+            txtLngStop.Text         = "";
+
+            txtLatStop.BackColor    = Color.White;
+            txtLngStop.BackColor    = Color.White;
+
+            txtLatStart.BackColor   = Color.White;
+            txtLngStart.BackColor   = Color.White;
+
+            txtLatStart.Focus();
+        }
 
         void showListBehavior()
         {
@@ -251,7 +273,7 @@ namespace GoodsTracker
 
         void showMarkerBehavior(List<Behavior> list)
         {
-            layerBehavior.clearPositions();
+            layerBehavior.removeAllMarkers();
 
             foreach (Behavior b in list)
             {
@@ -259,7 +281,7 @@ namespace GoodsTracker
 
                 GMarkerGoogleType color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
 
-                layerBehavior.addPosition(p, b.getStrNOK(), color);
+                layerBehavior.add(p, b.getStrNOK(), color);
             }
         }
 
@@ -275,13 +297,15 @@ namespace GoodsTracker
 
         private void setStartPoint(PointLatLng point)
         {
+            route.startTrip(point);
+
             txtLatStart.Text = point.Lat.ToString();
             txtLngStart.Text = point.Lng.ToString();
 
             txtLatStart.BackColor = Color.FromArgb(61, 120, 165);
             txtLngStart.BackColor = Color.FromArgb(61, 120, 165);
 
-            layerRoute.addPosition(point, GMarkerGoogleType.blue);
+            layerRoute.add(point, GMarkerGoogleType.blue);
 
             txtLatStop.Focus();
 
@@ -290,17 +314,19 @@ namespace GoodsTracker
 
         private void setEndPoint(PointLatLng point)
         {
+            route.stopTrip(point);
+
             txtLatStop.Text = point.Lat.ToString();
             txtLngStop.Text = point.Lng.ToString();
 
             txtLatStop.BackColor = Color.FromArgb(61, 120, 165);
             txtLngStop.BackColor = Color.FromArgb(61, 120, 165);
 
-            layerRoute.addPosition(point, GMarkerGoogleType.blue);
+            layerRoute.add(point, GMarkerGoogleType.blue);
 
             statusTrip = STATUS_GUI.INIT_OK;
 
-            createRoute(layerRoute.getStartPosition(), layerRoute.getEndPosition());
+            add(route);
         }
 
         //seleciona painel
@@ -322,17 +348,26 @@ namespace GoodsTracker
             }
         }
 
-        void addFence(Fence fence) {
+        internal void add(Fence fence) {
 
-            string str = string.Format("Fence:{0}", trackerController.ListFence.Count+1);
+            string str = string.Format("Fence:{0}", trackerController.Fences.Count+1);
 
-            layerFence.addFence(str, fence);
+            layerFence.add(str, fence);
             trackerController.addFence(fence);
             cbListFence.Items.Add(str);
             cbListFence.SelectedIndex = cbListFence.Items.Count - 1;
         }
 
-        void removeFence(int index)
+        internal void add(Route r)
+        {
+            route.createRoute();
+            trackerController.addRoute(route);
+            layerRoute.add(route);
+
+            Tests.tstBehavior(trackerController.Behaviors, route); // test
+        }
+
+        void removeFenceAt(int index)
         {
             if (index >= 0)
             {
@@ -341,7 +376,7 @@ namespace GoodsTracker
                 cbListFence.Items.RemoveAt(index);
                 cbListFence.Text = "";
 
-                initPanelFence(); //clear DataSource
+                initPanelFence(); //clear entitys
             }
         }
 
@@ -350,27 +385,41 @@ namespace GoodsTracker
             if (index >= 0)
             {
                 fence.removePositionAt(index);
-                layerFence.removePositionAt(index);
+                layerFence.removeMarkerAt(index);
             }
         }
 
         void addPositionFence(PointLatLng point)
         {
             fence.insertPositon(point);
-            layerFence.addPosition(point, GMarkerGoogleType.yellow);
+            layerFence.add(point, GMarkerGoogleType.yellow);
         }
 
-        internal void createRoute(PointLatLng start, PointLatLng stop)
+        void removeRouteAt(int index)
         {
-            trackerController.createRoute(start, stop);
+            if (index >= 0)
+            {
+                layerFence.removeRouteAt(index);
+                trackerController.removeRouteAt(index);
 
-            layerRoute.addRoute(trackerController.Route);
+                initSelectRoute(); // clear entitys
+            }
+        }
 
-            gMapControl1.Refresh();
+        void removeRoute(Route route)
+        {
+            if (route !=null)
+            {
+                layerBehavior.removeAllMarkers();
+                layerRoute.remove(route);
+                trackerController.remove(route);
+
+                initSelectRoute(); // clear entitys
+            }
         }
     }
 
-    class POSITION_CONST
+    class CAPAO
     {
         internal const double LATITUDE  = -23.673326;
         internal const double LONGITUDE = -46.775215;

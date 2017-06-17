@@ -10,6 +10,12 @@ namespace GoodsTracker
 
         internal double Min { get => min; set => min = value; }
         internal double Max { get => max; set => max = value; }
+
+        internal Scale(double _min,double _max)
+        {
+            min = _min;
+            max = _max;
+        }
     }
 
     internal class Value
@@ -20,9 +26,14 @@ namespace GoodsTracker
         internal double   Val { get => val; set => val = value; }
         internal Scale    Tol { get => tol; set => tol = value; }
 
-        public Value()
+        internal Value(double min,double max)
         {
-            tol = new Scale();
+            tol = new Scale(min,max);
+        }
+        
+        internal Value()
+        {
+            tol = new Scale(0,0);
         }
 
         internal bool OK()
@@ -40,9 +51,9 @@ namespace GoodsTracker
     {
         Value acceleration, rotation;
 
-        public Axis()
+        internal Axis()
         {
-            Acceleration    = new Value();
+            Acceleration    = new Value(0,90);
             Rotation        = new Value();
         }
 
@@ -131,6 +142,13 @@ namespace GoodsTracker
             }
 
             return sb.ToString();
+        }
+
+        internal void setAcceleration(double x, double y, double z)
+        {
+            AxisX.Acceleration.Val = x;
+            AxisY.Acceleration.Val = y;
+            AxisZ.Acceleration.Val = z;
         }
     }
 }

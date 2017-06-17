@@ -59,15 +59,15 @@ namespace GoodsTracker
             return Visible;
         }
 
-        internal void addPosition(PointLatLng position)
+        internal void add(PointLatLng position)
         {
             string str = string.Format("Lat.:{0} \n Lng.:{1}", position.Lat, position.Lng);
 
-            addPosition(position, str, GMarkerGoogleType.blue);
+            add(position, str, GMarkerGoogleType.blue);
         }
 
 
-        internal void addPosition(PointLatLng position,string str, GMarkerGoogleType color)
+        internal void add(PointLatLng position,string str, GMarkerGoogleType color)
         {
             GMarkerGoogle marker;
 
@@ -78,17 +78,17 @@ namespace GoodsTracker
             mapOverlay.Markers.Add(marker);
         }
 
-        internal void addPosition(PointLatLng position, GMarkerGoogleType color)
+        internal void add(PointLatLng position, GMarkerGoogleType color)
         {
-            addPosition(position, "", color);
+            add(position, "", color);
         }
 
-        internal void addPosition(double lat, double lng)
+        internal void add(double lat, double lng)
         {
-            addPosition(new PointLatLng(lat, lng));
+            add(new PointLatLng(lat, lng));
         }
 
-        internal void addFence(string name,Fence fence)
+        internal void add(string name,Fence fence)
         {
             GMapPolygon     polygon;
 
@@ -97,6 +97,16 @@ namespace GoodsTracker
             polygon.Stroke  = new Pen(Color.Red, 1);
 
             mapOverlay.Polygons.Add(polygon);
+        }
+
+        internal void add(GMapRoute route)
+        {
+            mapOverlay.Routes.Add(route);
+        }
+
+        internal void add(Route route)
+        {
+            add(route.MapRoute);
         }
 
         internal void removeFenceAt(int index)
@@ -124,7 +134,7 @@ namespace GoodsTracker
             }
         }
 
-        internal void removePositionAt(int index)
+        internal void removeMarkerAt(int index)
         {
             if (index >= 0 && index < mapOverlay.Markers.Count)
             {
@@ -132,29 +142,27 @@ namespace GoodsTracker
             }
         }
 
-        internal void clearPositions()
+        internal void removeAllMarkers()
         {
             mapOverlay.Markers.Clear();
         }
 
-        internal void addRoute(GMapRoute route)
+        internal void removeRouteAt(int index)
         {
-            mapOverlay.Routes.Add(route);
+            if (index >= 0 && index < mapOverlay.Markers.Count)
+            {
+                mapOverlay.Routes.RemoveAt(index);
+            }
         }
 
-        internal PointLatLng getPosition(int index)
+        internal void remove(Route route)
         {
-            return mapOverlay.Markers[index].Position;
-        }
+            if (route!=null && route.MapRoute!=null)
+            {
+                mapOverlay.Routes.Remove(route.MapRoute);
 
-        internal PointLatLng getStartPosition()
-        {
-            return getPosition(0);
-        }
-
-        internal PointLatLng getEndPosition()
-        {
-            return getPosition(mapOverlay.Markers.Count-1);
+                removeAllMarkers();
+            }
         }
     }
 }
