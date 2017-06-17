@@ -431,7 +431,7 @@
             this.panel2.Controls.Add(this.button5);
             this.panel2.Location = new System.Drawing.Point(3, 732);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(320, 448);
+            this.panel2.Size = new System.Drawing.Size(320, 450);
             this.panel2.TabIndex = 3;
             this.panel2.Visible = false;
             // 
@@ -480,6 +480,7 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 220);
             this.dataGridView1.Name = "dataGridView1";
@@ -561,7 +562,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(0, 1183);
+            this.button3.Location = new System.Drawing.Point(0, 1185);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(325, 40);
@@ -576,9 +577,9 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.cbFilter);
             this.panel3.Controls.Add(this.tvBehavior);
-            this.panel3.Location = new System.Drawing.Point(3, 1226);
+            this.panel3.Location = new System.Drawing.Point(3, 1228);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(320, 361);
+            this.panel3.Size = new System.Drawing.Size(320, 360);
             this.panel3.TabIndex = 5;
             this.panel3.Visible = false;
             // 
@@ -632,7 +633,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(0, 1590);
+            this.button4.Location = new System.Drawing.Point(0, 1591);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(325, 40);
@@ -645,9 +646,9 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.groupBox4);
-            this.panel4.Location = new System.Drawing.Point(3, 1633);
+            this.panel4.Location = new System.Drawing.Point(3, 1634);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(320, 182);
+            this.panel4.Size = new System.Drawing.Size(320, 180);
             this.panel4.TabIndex = 7;
             this.panel4.Visible = false;
             // 

@@ -78,6 +78,11 @@ namespace GoodsTracker
             mapOverlay.Markers.Add(marker);
         }
 
+        internal void addPosition(PointLatLng position, GMarkerGoogleType color)
+        {
+            addPosition(position, "", color);
+        }
+
         internal void addPosition(double lat, double lng)
         {
             addPosition(new PointLatLng(lat, lng));

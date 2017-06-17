@@ -34,7 +34,7 @@ namespace GoodsTracker
             initPanelConfig();
             initPanelBehavior();
 
-            layerRoute.addPosition(gMapControl1.Position);
+            layerRoute.addPosition(gMapControl1.Position, GMarkerGoogleType.blue);
         }
 
         private void initMapControl()
@@ -227,7 +227,7 @@ namespace GoodsTracker
             txtLatStart.BackColor = Color.FromArgb(61, 120, 165);
             txtLngStart.BackColor = Color.FromArgb(61, 120, 165);
 
-            layerRoute.addPosition(point);
+            layerRoute.addPosition(point, GMarkerGoogleType.blue);
 
             txtLatStop.Focus();
 
@@ -243,7 +243,7 @@ namespace GoodsTracker
             txtLngStop.BackColor = Color.FromArgb(61, 120, 165);
 
 
-            layerRoute.addPosition(point);
+            layerRoute.addPosition(point, GMarkerGoogleType.blue);
 
             statusTrip = STATUS_GUI.INIT_OK;
         }
@@ -470,7 +470,7 @@ namespace GoodsTracker
         void addPositionFence(PointLatLng point)
         {
             fence.insertPositon(point);
-            layerFence.addPosition(point);
+            layerFence.addPosition(point, GMarkerGoogleType.yellow);
         }
     }
 
