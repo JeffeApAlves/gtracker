@@ -362,12 +362,9 @@ namespace GoodsTracker
 
         internal void createRoute(PointLatLng start, PointLatLng stop)
         {
-            GDirections direction;
+            trackerController.createRoute(start, stop);
 
-            var routedirection  = GMapProviders.GoogleMap.GetDirections(out direction, start, stop, false, false, false, false,false);
-            GMapRoute route     = new GMapRoute(direction.Route, "Rota");
-
-            layerRoute.addRoute(route);
+            layerRoute.addRoute(trackerController.Route);
 
             gMapControl1.Refresh();
         }

@@ -1,4 +1,6 @@
 ﻿using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +11,17 @@ namespace GoodsTracker
 {
     class TrackerController
     {
-        Tracker tracker;
+        GDirections direction;
+        Tracker         tracker;
+        GMapRoute route;
 
         List<Behavior>  listBehavior;
         List<Fence>     listFence;
 
         internal List<Behavior> ListBehavior { get => listBehavior; set => listBehavior = value; }
         internal List<Fence> ListFence { get => listFence; set => listFence = value; }
+        public GMapRoute Route { get => route; set => route = value; }
+        public GDirections Direction { get => direction; set => direction = value; }
 
         internal TrackerController()
         {
@@ -105,6 +111,12 @@ namespace GoodsTracker
             }
 
             return ret;
+        }
+
+        internal void createRoute(PointLatLng start, PointLatLng stop)
+        {
+            var routedirection = GMapProviders.GoogleMap.GetDirections(out direction, start, stop, false, false, false, false, false);
+            route = new GMapRoute(direction.Route, "Rota");
         }
     }
 }
