@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 
 using GMap.NET;
@@ -8,6 +6,7 @@ using GMap.NET.MapProviders;
 using System.Collections.Generic;
 using GMap.NET.WindowsForms.Markers;
 using System.Text;
+using System.Drawing;
 
 namespace GoodsTracker
 {
@@ -16,10 +15,11 @@ namespace GoodsTracker
         LayerMap layerFence, layerRoute, layerBehavior;
 
         STATUS_GUI  statusFence     = STATUS_GUI.INIT;
+        STATUS_GUI  statusTrip      = STATUS_GUI.INIT;
         TrackerController trackerController = new TrackerController();
 
         Fence fence;
-        int itemselected        = -1;
+        int itemselected    = -1;
 
         public MainForm()
         {
@@ -58,9 +58,9 @@ namespace GoodsTracker
 
         private void initLayers()
         {
-            layerFence = new LayerMap(gMapControl1, "Fence");
-            layerRoute = new LayerMap(gMapControl1, "Route");
-            layerBehavior = new LayerMap(gMapControl1, "Behavior");
+            layerFence = new LayerMap(gMapControl1,     "Fence");
+            layerRoute = new LayerMap(gMapControl1,     "Route");
+            layerBehavior = new LayerMap(gMapControl1,  "Behavior");
         }
 
         void initPanelConfig()
@@ -85,20 +85,19 @@ namespace GoodsTracker
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            PointLatLng point   = gMapControl1.FromLocalToLatLng(e.X, e.Y);
+            PointLatLng point = gMapControl1.FromLocalToLatLng(e.X, e.Y);
 
-            txtLat.Text         = point.Lat.ToString();
-            txtLng.Text         = point.Lng.ToString();
-
-            if (statusFence.Equals(STATUS_GUI.NEW_FENCE) || statusFence.Equals(STATUS_GUI.ADD_POINTS))
+            if (statusTrip.Equals(STATUS_GUI.START_POINT))
             {
-                addPositionFence(point);
-                statusFence = STATUS_GUI.ADD_POINTS;
-                btn_fence.Enabled = true;
+                setStartPoint(point);
             }
-            else
+            else if (statusTrip.Equals(STATUS_GUI.END_POINT))
             {
-                layerRoute.addPosition(point);
+                setEndPoint(point);
+            }
+            else if (statusFence.Equals(STATUS_GUI.NEW_FENCE) || statusFence.Equals(STATUS_GUI.ADD_POINTS))
+            {
+                setFencePoint(point);
             }
         }
 
@@ -210,6 +209,49 @@ namespace GoodsTracker
             layerFence.show(checkedListBox1.GetItemCheckState(2) == CheckState.Checked);
         }
 
+        private void setFencePoint(PointLatLng point)
+        {
+            txtLat.Text = point.Lat.ToString();
+            txtLng.Text = point.Lng.ToString();
+
+            addPositionFence(point);
+            statusFence = STATUS_GUI.ADD_POINTS;
+            btn_fence.Enabled = true;
+        }
+
+        private void setStartPoint(PointLatLng point)
+        {
+            txtLatStart.Text = point.Lat.ToString();
+            txtLngStart.Text = point.Lng.ToString();
+
+            layerRoute.addPosition(point);
+
+
+            txtLatStart.BackColor = Color.White;
+            txtLngStart.BackColor = Color.White;
+            txtLatStop.BackColor = Color.Yellow;
+            txtLngStop.BackColor = Color.Yellow;
+            txtLatStop.Focus();
+
+
+            statusTrip = STATUS_GUI.END_POINT;
+        }
+
+        private void setEndPoint(PointLatLng point)
+        {
+            txtLatStop.Text = point.Lat.ToString();
+            txtLngStop.Text = point.Lng.ToString();
+
+            layerRoute.addPosition(point);
+
+            txtLatStart.BackColor = Color.White;
+            txtLngStart.BackColor = Color.White;
+            txtLatStop.BackColor = Color.White;
+            txtLngStop.BackColor = Color.White;
+
+            statusTrip = STATUS_GUI.INIT_OK;
+        }
+
         //seleciona painel
         void selectPanel(Panel p)
         {
@@ -229,7 +271,10 @@ namespace GoodsTracker
             }
         }
 
-        //build treeview
+        /*
+         * Constroe arvore do historico da viagem
+         *  
+         */
         void loadlistPointsTreeView(List<Behavior> list)
         {
             TreeNode root, loc;
@@ -284,7 +329,6 @@ namespace GoodsTracker
                     {
                         sb.AppendLine();
                         sb.Append("Z:" + b.AxisZ.ToString());
-
                     }
                 }
 
@@ -382,6 +426,8 @@ namespace GoodsTracker
             layerFence.removeFenceAt(index);
             trackerController.removeFenceAt(index);
             cbListFence.Items.RemoveAt(index);
+
+            initDataGrid(); //clear DataSource
         }
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -393,9 +439,17 @@ namespace GoodsTracker
             showMarkerBehavior(list);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void groupBox1_Click(object sender, System.EventArgs e)
         {
-//            groupBox1.BackColorChanged = Color.Gray;
+            txtLatStart.BackColor = Color.Yellow;
+            txtLngStart.BackColor = Color.Yellow;
+            txtLatStart.Focus();
+            statusTrip = STATUS_GUI.START_POINT;
+        }
+
+        private void groupBox2_Click(object sender, System.EventArgs e)
+        {
+            statusTrip = STATUS_GUI.END_POINT;
         }
 
         void removePositionFence(int index)
@@ -413,7 +467,7 @@ namespace GoodsTracker
 
     class POSITION_CONST
     {
-        internal const double LATITUDE = -23.673326;
+        internal const double LATITUDE  = -23.673326;
         internal const double LONGITUDE = -46.775215;
     }
 
@@ -423,7 +477,9 @@ namespace GoodsTracker
         INIT_OK,
         NEW_FENCE,
         ADD_POINTS,
-        CONFIRM_FENCE
+        CONFIRM_FENCE,
+        START_POINT,
+        END_POINT
     }
 
     enum IMG_TREEVIEW
