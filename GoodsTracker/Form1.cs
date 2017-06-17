@@ -5,7 +5,6 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using System.Collections.Generic;
 using GMap.NET.WindowsForms.Markers;
-using System.Text;
 using System.Drawing;
 
 namespace GoodsTracker
@@ -14,12 +13,12 @@ namespace GoodsTracker
     {
         LayerMap layerFence, layerRoute, layerBehavior;
 
-        STATUS_GUI  statusFence = STATUS_GUI.INIT;
-        STATUS_GUI  statusTrip  = STATUS_GUI.INIT;
+        STATUS_GUI statusFence = STATUS_GUI.INIT;
+        STATUS_GUI statusTrip = STATUS_GUI.INIT;
         TrackerController trackerController = new TrackerController();
 
         Fence fence;
-        int itemselected    = -1;
+        int itemselected = -1;
 
         public MainForm()
         {
@@ -28,60 +27,14 @@ namespace GoodsTracker
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            initMapControl();
-            initDataGrid();
             initLayers();
+            initMapControl();
+            initPanelFence();
             initPanelConfig();
             initPanelBehavior();
 
             layerRoute.addPosition(gMapControl1.Position, GMarkerGoogleType.blue);
         }
-
-        private void initMapControl()
-        {
-            gMapControl1.DragButton = MouseButtons.Left;
-            gMapControl1.CanDragMap = true;
-            gMapControl1.MapProvider = GMapProviders.GoogleMap;
-            gMapControl1.MinZoom = 0;
-            gMapControl1.MaxZoom = 24;
-            gMapControl1.Zoom = 15;
-            gMapControl1.AutoScroll = true;
-            gMapControl1.Position = new PointLatLng(POSITION_CONST.LATITUDE, POSITION_CONST.LONGITUDE);
-        }
-
-        private void initDataGrid()
-        {
-            fence = trackerController.createFence();
-
-            dataGridView1.DataSource = fence.Data;
-        }
-
-        private void initLayers()
-        {
-            layerFence      = new LayerMap(gMapControl1,     "Fence");
-            layerRoute      = new LayerMap(gMapControl1,     "Route");
-            layerBehavior   = new LayerMap(gMapControl1,  "Behavior");
-        }
-
-        void initPanelConfig()
-        {
-            checkedListBox1.SetItemCheckState(0, layerRoute.isVisible() ? CheckState.Checked : CheckState.Unchecked);
-            checkedListBox1.SetItemCheckState(1, layerBehavior.isVisible() ? CheckState.Checked : CheckState.Unchecked);
-            checkedListBox1.SetItemCheckState(2, layerFence.isVisible() ? CheckState.Checked : CheckState.Unchecked);
-            checkedListBox1.SetItemCheckState(3, gMapControl1.MapProvider.Equals(GMapProviders.GoogleChinaSatelliteMap) ? CheckState.Checked : CheckState.Unchecked);
-        }
-
-        void initPanelBehavior()
-        {
-            cbFilter.SelectedIndex = 0;
-
-            List<Behavior> list = getBehaviorFiltered(cbFilter.SelectedIndex);
-
-            loadlistPointsTreeView(list);
-
-            showMarkerBehavior(list);
-        }
-        //------------------------------------------------------------------------------------
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -193,6 +146,7 @@ namespace GoodsTracker
             gMapControl1.Zoom = tB_Zoom.Value;
         }
 
+        //Seleciona layers
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (checkedListBox1.GetItemCheckState(3) == CheckState.Checked)
@@ -207,6 +161,105 @@ namespace GoodsTracker
             layerRoute.show(checkedListBox1.GetItemCheckState(0) == CheckState.Checked);
             layerBehavior.show(checkedListBox1.GetItemCheckState(1) == CheckState.Checked);
             layerFence.show(checkedListBox1.GetItemCheckState(2) == CheckState.Checked);
+        }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            showListBehavior();
+        }
+
+        private void groupBox1_Click(object sender, System.EventArgs e)
+        {
+            txtLatStart.Focus();
+            statusTrip = STATUS_GUI.START_POINT;
+        }
+
+        private void groupBox2_Click(object sender, System.EventArgs e)
+        {
+            statusTrip = STATUS_GUI.END_POINT;
+        }
+
+        private void txtLatStart_Enter(object sender, EventArgs e)
+        {
+            txtLatStart.BackColor = Color.Yellow;
+            txtLngStart.BackColor = Color.Yellow;
+        }
+
+        private void txtLatStop_Enter(object sender, EventArgs e)
+        {
+            txtLatStop.BackColor = Color.White;
+            txtLngStop.BackColor = Color.White;
+
+            txtLatStop.BackColor = Color.Yellow;
+            txtLngStop.BackColor = Color.Yellow;
+        }
+        //---------------------------------End Events-----------------------------------
+
+        private void initMapControl()
+        {
+            gMapControl1.DragButton = MouseButtons.Left;
+            gMapControl1.CanDragMap = true;
+            gMapControl1.MapProvider = GMapProviders.GoogleMap;
+            gMapControl1.MinZoom = 0;
+            gMapControl1.MaxZoom = 24;
+            gMapControl1.Zoom = 15;
+            gMapControl1.AutoScroll = true;
+            gMapControl1.Position = new PointLatLng(POSITION_CONST.LATITUDE, POSITION_CONST.LONGITUDE);
+        }
+
+        private void initPanelFence()
+        {
+            fence = trackerController.createFence();
+
+            dataGridView1.DataSource = fence.Data;
+
+            txtLat.Text = "";
+            txtLng.Text = "";
+        }
+
+        private void initLayers()
+        {
+            layerFence = new LayerMap(gMapControl1, "Fence");
+            layerRoute = new LayerMap(gMapControl1, "Route");
+            layerBehavior = new LayerMap(gMapControl1, "Behavior");
+        }
+
+        void initPanelConfig()
+        {
+            checkedListBox1.SetItemCheckState(0, layerRoute.isVisible() ? CheckState.Checked : CheckState.Unchecked);
+            checkedListBox1.SetItemCheckState(1, layerBehavior.isVisible() ? CheckState.Checked : CheckState.Unchecked);
+            checkedListBox1.SetItemCheckState(2, layerFence.isVisible() ? CheckState.Checked : CheckState.Unchecked);
+            checkedListBox1.SetItemCheckState(3, gMapControl1.MapProvider.Equals(GMapProviders.GoogleChinaSatelliteMap) ? CheckState.Checked : CheckState.Unchecked);
+        }
+
+        void initPanelBehavior()
+        {
+            cbFilter.SelectedIndex = 0;
+        }
+
+        void showListBehavior()
+        {
+            BuildTreeView bTV = new BuildTreeView(tvBehavior);
+
+            List<Behavior> list = trackerController.getBehaviorFiltered(cbFilter.SelectedIndex);
+
+            bTV.loadlistPointsTreeView(list);
+
+            showMarkerBehavior(list);
+        }
+
+        void showMarkerBehavior(List<Behavior> list)
+        {
+            layerBehavior.clearPositions();
+
+            foreach (Behavior b in list)
+            {
+                PointLatLng p = new PointLatLng(b.Position.Latitude, b.Position.Longitude);
+
+                GMarkerGoogleType color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
+
+                layerBehavior.addPosition(p, b.getStrNOK(), color);
+            }
         }
 
         private void setFencePoint(PointLatLng point)
@@ -242,7 +295,6 @@ namespace GoodsTracker
             txtLatStop.BackColor = Color.FromArgb(61, 120, 165);
             txtLngStop.BackColor = Color.FromArgb(61, 120, 165);
 
-
             layerRoute.addPosition(point, GMarkerGoogleType.blue);
 
             statusTrip = STATUS_GUI.INIT_OK;
@@ -267,231 +319,36 @@ namespace GoodsTracker
             }
         }
 
-        /*
-         * Constroe arvore do historico da viagem
-         *  
-         */
-        void loadlistPointsTreeView(List<Behavior> list)
-        {
-            TreeNode root, loc;
-
-            int i = 0;
-
-            root = createRootTreeView(list.Count);
-
-            foreach (Behavior b in list)
-            {
-                loc = createLocTreeView(b,root, i++);
-
-                createPositionTreeView(b,loc);
-
-                createEixoTreeView(b.AxisX, "Eixo[X]",loc);
-                createEixoTreeView(b.AxisY, "Eixo[Y]",loc);
-                createEixoTreeView(b.AxisZ, "Eixo[Z]",loc);
-            }
-        }
-
-        void showMarkerBehavior(List<Behavior> list)
-        {
-            foreach(Behavior b in list)
-            {
-                PointLatLng p = new PointLatLng(b.Position.Latitude, b.Position.Longitude);
-                GMarkerGoogleType color = b.OK() ? GMarkerGoogleType.green: GMarkerGoogleType.red;
-
-                StringBuilder sb = new StringBuilder();
-
-                if (!b.OK()) {
-
-                    if (!b.Speed.OK())
-                    {
-                        sb.Append("Speed:" + b.Speed.ToString());
-                    }
-
-                    if (!b.AxisX.OK())
-                    {
-                        sb.AppendLine();
-                        sb.Append("X:"+b.AxisX.ToString());
-                    }
-
-                    if (!b.AxisY.OK())
-                    {
-                        sb.AppendLine();
-                        sb.Append("Y:" + b.AxisY.ToString());
-
-                    }
-
-                    if (!b.AxisZ.OK())
-                    {
-                        sb.AppendLine();
-                        sb.Append("Z:" + b.AxisZ.ToString());
-                    }
-                }
-
-                layerBehavior.addPosition(p,sb.ToString(),color);
-            }
-        }
-
-        TreeNode createRootTreeView(int num)
-        {
-            TreeNode root;
-
-            tvBehavior.Nodes.Clear();
-
-            if (tvBehavior.Nodes.Count <= 0)
-            {
-                root = tvBehavior.Nodes.Add(string.Format("Trip: ({0})",num));
-            }
-            else
-            {
-
-                root = tvBehavior.Nodes[0];
-            }
-
-            root.ImageIndex = (int)IMG_TREEVIEW.FILE;
-            root.SelectedImageIndex = (int)IMG_TREEVIEW.FILE;
-
-            return root;
-        }
-
-        TreeNode createLocTreeView(Behavior behavior, TreeNode root,int i)
-        {
-            TreeNode loc;
-
-            loc = root.Nodes.Add(string.Format("Registro[{0}]: {1}", i.ToString("D5"), behavior.DateTime));
-
-            loc.ImageIndex = (int)(behavior.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
-            loc.SelectedImageIndex = loc.ImageIndex;
-
-            return loc;
-        }
-
-        void createPositionTreeView(Behavior behavior, TreeNode reg)
-        {
-            TreeNode info,loc,vel;
-
-            loc = reg.Nodes.Add("Localizacao");
-            loc.ImageIndex = (int)IMG_TREEVIEW.LOC;
-            loc.SelectedImageIndex = loc.ImageIndex;
-
-            info = loc.Nodes.Add(string.Format("Lat: {0}",behavior.Position.Latitude));
-            info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
-            info.SelectedImageIndex = info.ImageIndex;
-
-            info = loc.Nodes.Add(string.Format("Lng: {0}",behavior.Position.Longitude));
-            info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
-            info.SelectedImageIndex = info.ImageIndex;
-
-            vel = reg.Nodes.Add("Velocidade");
-            vel.ImageIndex = (int)IMG_TREEVIEW.GUAUGE;
-            vel.SelectedImageIndex = vel.ImageIndex;
-
-            info = vel.Nodes.Add(behavior.Speed.ToString());
-            info.ImageIndex = (int)(behavior.Speed.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
-            info.SelectedImageIndex = info.ImageIndex;
-        }
-
-        TreeNode createEixoTreeView(Axis axis, string neixo, TreeNode loc)
-        {
-            TreeNode eixo,spec;
-
-            eixo = loc.Nodes.Add(string.Format(neixo));
-
-            eixo.ImageIndex = (int)IMG_TREEVIEW.AXIS;
-            eixo.SelectedImageIndex = (int)IMG_TREEVIEW.AXIS;
-
-
-            spec = eixo.Nodes.Add(string.Format("A: Val:{0} Min:{1} Max:{2}",
-                                        axis.Acceleration.Val,
-                                        axis.Acceleration.Tol.Min,
-                                        axis.Acceleration.Tol.Max));
-
-            spec.ImageIndex = (int)(axis.Acceleration.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
-            spec.SelectedImageIndex = spec.ImageIndex;
-
-            spec = eixo.Nodes.Add(string.Format("R: Val:{0} Min:{1} Max:{2}",
-                                        axis.Rotation.Val,
-                                        axis.Rotation.Tol.Min,
-                                        axis.Rotation.Tol.Max));
-
-            spec.ImageIndex = (int)(axis.Rotation.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
-            spec.SelectedImageIndex = spec.ImageIndex;
-
-
-            return eixo;
-        }
-        //--------------------------------------------------------------------------------------
-
-        List<Behavior> getBehaviorFiltered(int i)
-        {
-            List<Behavior> ret = null;
-
-            switch (i)
-            {
-                case 0: ret = trackerController.ListBehavior;   break;
-                case 1: ret = trackerController.getItensOK();   break;
-                case 2: ret = trackerController.getItensNOK();  break;
-            }
-
-            return ret;
-        }
-
         void addFence(Fence fence) {
 
-            string str = string.Format("Fence:{0}", cbListFence.Items.Count);
+            string str = string.Format("Fence:{0}", trackerController.ListFence.Count+1);
 
-            layerFence.addFence(str,fence);
+            layerFence.addFence(str, fence);
             trackerController.addFence(fence);
             cbListFence.Items.Add(str);
+            cbListFence.SelectedIndex = cbListFence.Items.Count - 1;
         }
 
         void removeFence(int index)
         {
-            layerFence.removeFenceAt(index);
-            trackerController.removeFenceAt(index);
-            cbListFence.Items.RemoveAt(index);
+            if (index >= 0)
+            {
+                layerFence.removeFenceAt(index);
+                trackerController.removeFenceAt(index);
+                cbListFence.Items.RemoveAt(index);
+                cbListFence.Text = "";
 
-            initDataGrid(); //clear DataSource
-        }
-
-        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            List<Behavior> list = getBehaviorFiltered(cbFilter.SelectedIndex);
-
-            loadlistPointsTreeView(list);
-
-            showMarkerBehavior(list);
-        }
-
-        private void groupBox1_Click(object sender, System.EventArgs e)
-        {
-            txtLatStart.Focus();
-            statusTrip = STATUS_GUI.START_POINT;
-        }
-
-        private void groupBox2_Click(object sender, System.EventArgs e)
-        {
-            statusTrip = STATUS_GUI.END_POINT;
-        }
-
-        private void txtLatStart_Enter(object sender, EventArgs e)
-        {
-            txtLatStart.BackColor = Color.Yellow;
-            txtLngStart.BackColor = Color.Yellow;
-        }
-
-        private void txtLatStop_Enter(object sender, EventArgs e)
-        {
-            txtLatStop.BackColor = Color.White;
-            txtLngStop.BackColor = Color.White;
-
-            txtLatStop.BackColor = Color.Yellow;
-            txtLngStop.BackColor = Color.Yellow;
+                initPanelFence(); //clear DataSource
+            }
         }
 
         void removePositionFence(int index)
         {
-            fence.removePositionAt(index);
-            layerFence.removePositionAt(index);
+            if (index >= 0)
+            {
+                fence.removePositionAt(index);
+                layerFence.removePositionAt(index);
+            }
         }
 
         void addPositionFence(PointLatLng point)
@@ -516,19 +373,5 @@ namespace GoodsTracker
         CONFIRM_FENCE,
         START_POINT,
         END_POINT
-    }
-
-    enum IMG_TREEVIEW
-    {
-        OK = 0,
-        NOK = 1,
-        SPEC = 2,
-        LOC =3,
-        FILE =4,
-        INFO = 5,
-        AXIS =6,
-        GUAUGE = 7,
-        PUSHPIN = 8,
-        XYZ = 9,
     }
 }

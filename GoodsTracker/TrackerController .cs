@@ -91,5 +91,19 @@ namespace GoodsTracker
                 ListBehavior.Add(b);
             }
         }
+
+        internal List<Behavior> getBehaviorFiltered(int i)
+        {
+            List<Behavior> ret = null;
+
+            switch (i)
+            {
+                case 0: ret = ListBehavior; break;
+                case 1: ret = getItensOK(); break;
+                case 2: ret = getItensNOK(); break;
+            }
+
+            return ret;
+        }
     }
 }

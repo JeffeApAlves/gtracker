@@ -131,5 +131,10 @@ namespace GoodsTracker
                 mapOverlay.Markers.RemoveAt(index);
             }
         }
+
+        internal void clearPositions()
+        {
+            mapOverlay.Markers.Clear();
+        }
     }
 }

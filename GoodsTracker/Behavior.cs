@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace GoodsTracker
 {
@@ -96,6 +97,40 @@ namespace GoodsTracker
         public override string ToString()
         {
             return Position.ToString() + " " + axisX.ToString() + " " + axisY.ToString() + " " + axisZ.ToString();
+        }
+
+        internal string getStrNOK()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (!OK())
+            {
+                if (!speed.OK())
+                {
+                    sb.Append("Speed:" + speed.ToString());
+                }
+
+                if (!axisX.OK())
+                {
+                    sb.AppendLine();
+                    sb.Append("X:" + axisX.ToString());
+                }
+
+                if (!axisY.OK())
+                {
+                    sb.AppendLine();
+                    sb.Append("Y:" + axisY.ToString());
+
+                }
+
+                if (!axisZ.OK())
+                {
+                    sb.AppendLine();
+                    sb.Append("Z:" + axisZ.ToString());
+                }
+            }
+
+            return sb.ToString();
         }
     }
 }
