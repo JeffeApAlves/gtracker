@@ -136,5 +136,25 @@ namespace GoodsTracker
         {
             mapOverlay.Markers.Clear();
         }
+
+        internal void addRoute(GMapRoute route)
+        {
+            mapOverlay.Routes.Add(route);
+        }
+
+        internal PointLatLng getPosition(int index)
+        {
+            return mapOverlay.Markers[index].Position;
+        }
+
+        internal PointLatLng getStartPosition()
+        {
+            return getPosition(0);
+        }
+
+        internal PointLatLng getEndPosition()
+        {
+            return getPosition(mapOverlay.Markers.Count-1);
+        }
     }
 }

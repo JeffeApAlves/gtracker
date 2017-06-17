@@ -6,6 +6,7 @@ using GMap.NET.MapProviders;
 using System.Collections.Generic;
 using GMap.NET.WindowsForms.Markers;
 using System.Drawing;
+using GMap.NET.WindowsForms;
 
 namespace GoodsTracker
 {
@@ -33,7 +34,7 @@ namespace GoodsTracker
             initPanelConfig();
             initPanelBehavior();
 
-            layerRoute.addPosition(gMapControl1.Position, GMarkerGoogleType.blue);
+//            layerRoute.addPosition(gMapControl1.Position, GMarkerGoogleType.blue);
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -298,6 +299,8 @@ namespace GoodsTracker
             layerRoute.addPosition(point, GMarkerGoogleType.blue);
 
             statusTrip = STATUS_GUI.INIT_OK;
+
+            createRoute(layerRoute.getStartPosition(), layerRoute.getEndPosition());
         }
 
         //seleciona painel
@@ -355,6 +358,18 @@ namespace GoodsTracker
         {
             fence.insertPositon(point);
             layerFence.addPosition(point, GMarkerGoogleType.yellow);
+        }
+
+        internal void createRoute(PointLatLng start, PointLatLng stop)
+        {
+            GDirections direction;
+
+            var routedirection  = GMapProviders.GoogleMap.GetDirections(out direction, start, stop, false, false, false, false,false);
+            GMapRoute route     = new GMapRoute(direction.Route, "Rota");
+
+            layerRoute.addRoute(route);
+
+            gMapControl1.Refresh();
         }
     }
 
