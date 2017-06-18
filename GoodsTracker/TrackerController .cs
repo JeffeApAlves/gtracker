@@ -6,9 +6,9 @@ namespace GoodsTracker
     {
         private static TrackerController singleton=null;
 
-        Tracker         tracker;
-        List<Fence>     fences;
-        List<Route>     routes;
+        InterfaceTracker    tracker;
+        List<Fence>         fences;
+        List<Route>         routes;
 
         internal List<Fence> Fences { get => fences; set => fences = value; }
         internal List<Route> Routes { get => routes; set => routes = value; }
@@ -29,14 +29,21 @@ namespace GoodsTracker
 
         private TrackerController()
         {
-            tracker     = new Tracker();
+            tracker     = new TrackerTest();
             fences      = new List<Fence>();
             routes      = new List<Route>();
         }
 
+        /*
+         * 
+         * Metodo chamdo na Thread do Domain
+         * 
+         */
         public void process()
         {
-
+            if (routes.Count > 0) {
+                routes[0].registerBehavior(tracker.getPosition());
+            }            
         }
 
         internal Fence createFence()
@@ -69,12 +76,7 @@ namespace GoodsTracker
 
             if (routes.Count > 0)
             {
-                switch (i)
-                {
-                    case 0: ret = routes[0].Behaviors; break;
-                    case 1: ret = routes[0].getItensOK(); break;
-                    case 2: ret = routes[0].getItensNOK(); break;
-                }
+                ret = routes[0].getBehaviorFiltered(i);
             }
 
             return ret;
@@ -94,5 +96,18 @@ namespace GoodsTracker
         {
             routes.Remove(r);
         }
+
+        internal void registerBehavior(Behavior b)
+        {
+            if (routes.Count > 0 && b!=null)
+            {
+                routes[0].registerBehavior(b);
+            }
+        }
+
+        public void updateTracker()
+        {
+            registerBehavior(tracker.getPosition());
+        }        
     }
 }

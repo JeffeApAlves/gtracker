@@ -73,21 +73,21 @@ namespace GoodsTracker
 
     internal class Behavior
     {
-        GPSPosition position;
+        double      latitude, longitude;
         Value       speed;
         Axis        axisX, axisY, axisZ;
         DateTime    dateTime;
 
         internal Value Speed { get => speed; set => speed = value; }
-        internal GPSPosition Position { get => position; set => position = value; }
         internal Axis AxisX { get => axisX; set => axisX = value; }
         internal Axis AxisY { get => axisY; set => axisY = value; }
         internal Axis AxisZ { get => axisZ; set => axisZ = value; }
         public DateTime DateTime { get => dateTime; set => dateTime = value; }
+        public double Latitude { get => latitude; set => latitude = value; }
+        public double Longitude { get => longitude; set => longitude = value; }
 
         internal Behavior()
         {
-            position    = new GPSPosition();
             speed       = new Value();
             AxisX       = new Axis();
             AxisY       = new Axis();
@@ -101,13 +101,13 @@ namespace GoodsTracker
 
         internal void setPosition(double lat,double lng)
         {
-            position.Latitude = lat;
-            position.Longitude = lng;
+            latitude = lat;
+            longitude = lng;
         }
 
         public override string ToString()
         {
-            return Position.ToString() + " " + axisX.ToString() + " " + axisY.ToString() + " " + axisZ.ToString();
+            return string.Format("Lat:{0} Lng:{1}", latitude, longitude) + " " + axisX.ToString() + " " + axisY.ToString() + " " + axisZ.ToString();
         }
 
         internal string getStrNOK()

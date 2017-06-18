@@ -11,10 +11,10 @@ namespace GoodsTracker
 {
     public partial class MainForm : Form
     {
-        LayerMap layerFence, layerRoute, layerBehavior;
+        LayerMap    layerFence, layerRoute, layerBehavior;
 
-        STATUS_GUI statusFence  = STATUS_GUI.INIT;
-        STATUS_GUI statusTrip   = STATUS_GUI.INIT;
+        STATUS_GUI  statusFence  = STATUS_GUI.INIT;
+        STATUS_GUI  statusTrip   = STATUS_GUI.INIT;
         TrackerController trackerController = TrackerController.TrackerCtrl;
 
         Fence       fence;
@@ -25,6 +25,8 @@ namespace GoodsTracker
         public MainForm()
         {
             InitializeComponent();
+
+            Protocol.Communication.setCallBack(trackerController.updateTracker);
 
             ThreadManager.init();
         }
@@ -278,7 +280,7 @@ namespace GoodsTracker
 
                 foreach (Behavior b in list)
                 {
-                    PointLatLng p = new PointLatLng(b.Position.Latitude, b.Position.Longitude);
+                    PointLatLng p = new PointLatLng(b.Latitude, b.Longitude);
                     GMarkerGoogleType color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
                     layerBehavior.add(p, b.getStrNOK(), color);
                 }

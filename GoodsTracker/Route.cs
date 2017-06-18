@@ -9,13 +9,13 @@ namespace GoodsTracker
 {
     class Route
     {
-        List<Behavior> behaviors;
-        GDirections direction;
-        GMapRoute   mapRoute;
+        List<Behavior>  behaviors;
+        GDirections     direction;
+        GMapRoute       mapRoute;
 
-        DataTable dt;
-        List<PointLatLng> points;
-        string name;
+        DataTable           dt;
+        List<PointLatLng>   points;
+        string              name;
 
         public DataTable Dt { get => dt; set => dt = value; }
         public List<PointLatLng> Points { get => points; set => points = value; }
@@ -72,44 +72,35 @@ namespace GoodsTracker
         internal void createRoute()
         {
             createRoute(points[0], points[points.Count - 1]);
-
-            teste();
         }
 
-        internal List<Behavior> getItensNOK()
+        internal List<Behavior> getBehaviorFiltered(int i)
         {
-            List<Behavior> ret = new List<Behavior>();
+            List<Behavior> ret = new List<Behavior>(behaviors);
 
-            foreach (Behavior b in behaviors)
+            // i=0 nao filtra nada
+            // OK (i=1) entao remove os NOK
+            // NOK(i=2) entao remove os OK
+            if (i != 0)
             {
-                if (!b.OK())
+                foreach (Behavior b in behaviors)
                 {
-                    ret.Add(b);
+                    if ((i == 1 && !b.OK()) || i == 2 && b.OK())
+                    {
+                        ret.Remove(b);
+                    }
                 }
             }
 
             return ret;
         }
 
-        internal List<Behavior> getItensOK()
+        internal void registerBehavior(Behavior b)
         {
-            List<Behavior> ret = new List<Behavior>();
-
-            foreach (Behavior b in behaviors)
+            if (b != null)
             {
-                if (b.OK())
-                {
-                    ret.Add(b);
-                }
+                behaviors.Add(b);
             }
-
-            return ret;
         }
-
-        internal void teste()
-        {
-            Tests.tstBehavior(behaviors, this); // test
-        }
-
     }
 }

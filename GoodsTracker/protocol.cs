@@ -29,8 +29,12 @@ namespace GoodsTracker
         RX_FRAME_NOK,
     };
 
+    public delegate void updateTracker();
+
     class Protocol
     {
+        updateTracker updateTracker;
+
         private static Protocol singleton = null;
 
         /* [LED01]\r\n*/
@@ -64,8 +68,8 @@ namespace GoodsTracker
 
         private Protocol()
         {
-            bufferRx = new RingBuffer(256);
-            bufferTx = new RingBuffer(256);
+            bufferRx        = new RingBuffer(256);
+            bufferTx        = new RingBuffer(256);
         }
 
         internal void process()
@@ -75,6 +79,8 @@ namespace GoodsTracker
             processRx();
 
             processQueue();
+
+            updateTracker();
         }
 
         private void processQueue()
@@ -295,6 +301,11 @@ namespace GoodsTracker
         bool hasTxData()
         {
             return bufferTx.hasData();
+        }
+
+        public void setCallBack(updateTracker callback)
+        {
+            updateTracker = callback;
         }
     }
 }

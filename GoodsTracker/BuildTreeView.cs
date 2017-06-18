@@ -96,11 +96,11 @@ namespace GoodsTracker
             loc.ImageIndex = (int)IMG_TREEVIEW.LOC;
             loc.SelectedImageIndex = loc.ImageIndex;
 
-            info = loc.Nodes.Add(string.Format("Lat: {0}", behavior.Position.Latitude));
+            info = loc.Nodes.Add(string.Format("Lat: {0}", behavior.Latitude));
             info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
             info.SelectedImageIndex = info.ImageIndex;
 
-            info = loc.Nodes.Add(string.Format("Lng: {0}", behavior.Position.Longitude));
+            info = loc.Nodes.Add(string.Format("Lng: {0}", behavior.Longitude));
             info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
             info.SelectedImageIndex = info.ImageIndex;
 
