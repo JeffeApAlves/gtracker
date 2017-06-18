@@ -31,7 +31,7 @@ namespace GoodsTracker
 
     class Protocol
     {
-        public static Protocol Communication;
+        private static Protocol singleton = null;
 
         /* [LED01]\r\n*/
         const char CHAR_RX_FRAME_START  = '[';
@@ -48,11 +48,19 @@ namespace GoodsTracker
         List<Cmd>       queueCmd        = new List<Cmd>();
         List<ParamCmd>  queueParam      = new List<ParamCmd>();
 
-        static public void init() {
+        //Singleton
+        public static Protocol Communication
+        {
+            get
+            {
+                if (singleton == null)
+                {
+                    singleton = new Protocol();
+                }
 
-            Communication = new Protocol();
+                return singleton;
+            }
         }
-
 
         private Protocol()
         {

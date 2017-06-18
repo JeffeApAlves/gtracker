@@ -11,10 +11,14 @@ namespace GoodsTracker
     {
         private volatile bool _shouldStop;
 
+        private Protocol communication = Protocol.Communication;
+
         public void DoWork()
         {
             while (!_shouldStop)
             {
+                communication.process();
+
                 Thread.Sleep(100);
             }
         }

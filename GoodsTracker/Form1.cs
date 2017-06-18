@@ -13,9 +13,9 @@ namespace GoodsTracker
     {
         LayerMap layerFence, layerRoute, layerBehavior;
 
-        STATUS_GUI statusFence = STATUS_GUI.INIT;
-        STATUS_GUI statusTrip = STATUS_GUI.INIT;
-        TrackerController trackerController = new TrackerController();
+        STATUS_GUI statusFence  = STATUS_GUI.INIT;
+        STATUS_GUI statusTrip   = STATUS_GUI.INIT;
+        TrackerController trackerController = TrackerController.TrackerCtrl;
 
         Fence       fence;
         Route       route;
@@ -25,8 +25,6 @@ namespace GoodsTracker
         public MainForm()
         {
             InitializeComponent();
-
-            Protocol.init();
 
             ThreadManager.init();
         }

@@ -9,12 +9,15 @@ namespace GoodsTracker
 {
     class ThreadDomain
     {
+        private TrackerController trackerController = TrackerController.TrackerCtrl;
         private volatile bool _shouldStop;
 
         public void DoWork()
         {
             while (!_shouldStop)
             {
+                trackerController.process();
+
                 Thread.Sleep(100);
             }
         }

@@ -4,6 +4,8 @@ namespace GoodsTracker
 {
     class TrackerController
     {
+        private static TrackerController singleton=null;
+
         Tracker         tracker;
         List<Fence>     fences;
         List<Route>     routes;
@@ -11,11 +13,30 @@ namespace GoodsTracker
         internal List<Fence> Fences { get => fences; set => fences = value; }
         internal List<Route> Routes { get => routes; set => routes = value; }
 
-        internal TrackerController()
+        //Singleton
+        public static TrackerController TrackerCtrl
+        {
+            get
+            {
+                if (singleton == null)
+                {
+                    singleton = new TrackerController();
+                }
+
+                return singleton;
+            }
+        }
+
+        private TrackerController()
         {
             tracker     = new Tracker();
             fences      = new List<Fence>();
             routes      = new List<Route>();
+        }
+
+        public void process()
+        {
+
         }
 
         internal Fence createFence()
