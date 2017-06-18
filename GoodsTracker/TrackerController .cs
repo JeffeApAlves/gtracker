@@ -41,9 +41,6 @@ namespace GoodsTracker
          */
         public void process()
         {
-            if (routes.Count > 0) {
-                routes[0].registerBehavior(tracker.getPosition());
-            }            
         }
 
         internal Fence createFence()

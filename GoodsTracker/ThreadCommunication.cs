@@ -19,7 +19,7 @@ namespace GoodsTracker
             {
                 communication.process();
 
-                Thread.Sleep(100);
+                Thread.Sleep(2000);
             }
         }
 
