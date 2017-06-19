@@ -109,7 +109,7 @@ namespace GoodsTracker
 
         public void processTx()
         {
-            if (cur_unit.isAnyCmd())
+            if (CommunicationUnit.isAnyCmd())
             {
                 IDecoderFrameTx decoder = new DecoderFrameTx();
 
@@ -232,7 +232,9 @@ namespace GoodsTracker
 
             if (decoder.getValues(out dadosRx, rxFrame))
             {
-                cur_unit.addAns(ans);
+                ans.DadosRx = dadosRx;
+
+                CommunicationUnit.addAns(ans);
             }
 
             setStatusRx(StatusRx.RX_FRAME_BEGIN);

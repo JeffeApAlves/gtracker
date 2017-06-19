@@ -22,7 +22,7 @@ namespace GoodsTracker
             Protocol.Units.Add(this);
         }
 
-        internal bool isAnyCmd()
+        static internal bool isAnyCmd()
         {
             return queueCmd.Count > 0;
         }
@@ -32,17 +32,17 @@ namespace GoodsTracker
             return isAnyCmd()? queueCmd[0]:null;
         }
 
-        internal bool isAnyAns()
+        static internal bool isAnyAns()
         {
             return queueAnsCmd.Count > 0;
         }
 
-        internal void addAns(AnsCmd ans)
+        static internal void addAns(AnsCmd ans)
         {
             queueAnsCmd.Add(ans);
         }
 
-        internal void removeCmd(Cmd cmd)
+        static internal void removeCmd(Cmd cmd)
         {
             queueCmd.Remove(cmd);
         }
@@ -54,12 +54,12 @@ namespace GoodsTracker
             c.setCallBack(ans);
         }
 
-        internal static Cmd getCMD(IdCmd id_cmd)
+        static internal Cmd getCMD(IdCmd id_cmd)
         {
             return containner[id_cmd];
         }
 
-        internal static Cmd findCMD(string name)
+        static internal Cmd findCMD(string name)
         {
             foreach (var item in containner)
             {
@@ -76,9 +76,9 @@ namespace GoodsTracker
         {
             if (isAnyAns())
             {
-                foreach (AnsCmd ans in QueueAnsCmd)
+                foreach (AnsCmd ans in queueAnsCmd)
                 {
-                    foreach (Cmd cmd in QueueCmd)
+                    foreach (Cmd cmd in queueCmd)
                     {
                         if (ans.NameCmd == cmd.getName())
                         {
