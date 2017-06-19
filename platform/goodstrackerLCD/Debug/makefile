@@ -52,7 +52,7 @@ all: goodstrackerLCD.elf secondary-outputs
 goodstrackerLCD.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "D:/Users/Flávio Soares/workspace.kds/goodstrackerLCD/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"D:/Users/Flávio Soares/workspace.kds/goodstrackerLCD/Project_Settings/Linker_Files" -Wl,-Map,"goodstrackerLCD.map" -specs=nano.specs -specs=nosys.specs -o "goodstrackerLCD.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Project_Settings/Linker_Files" -Wl,-Map,"goodstrackerLCD.map" -specs=nano.specs -specs=nosys.specs -o "goodstrackerLCD.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -30,7 +30,6 @@
 /* Including needed modules to compile this module/procedure */
 #include "Cpu.h"
 #include "Events.h"
-#include "LCDout.h"
 #include "EN1.h"
 #include "BitIoLdd1.h"
 #include "RS1.h"
@@ -51,6 +50,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
+#include "lcd.h"
 
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
@@ -64,11 +64,12 @@ int main(void)
 
   /* Write your code here */
   /* For example: for(;;) { } */
-  LCDout_Clear();
-  LCDout_GotoXY(1, 1);
-  LCDout_WriteString("GOODSTRACKER");
-  LCDout_GotoXY(2, 6);
-  LCDout_WriteString("TESTE...123");
+  LCDInit();
+  LCDGotoXY(1, 6);
+  LCDWriteString("TESTE...123");
+  LCDGotoXY(2, 1);
+  LCDWriteString("GOODSTRACKER");
+
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
