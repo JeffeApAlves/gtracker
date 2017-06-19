@@ -68,7 +68,7 @@ C_DEPS += \
 Generated_Code/%.o: ../Generated_Code/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/Users/Flávio Soares/workspace.kds/goodstrackerLCD/Static_Code/PDD" -I"D:/Users/Flávio Soares/workspace.kds/goodstrackerLCD/Static_Code/IO_Map" -I"D:/Users/Flávio Soares/workspace.kds/goodstrackerLCD/Sources" -I"D:/Users/Flávio Soares/workspace.kds/goodstrackerLCD/Generated_Code" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Static_Code/PDD" -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Static_Code/IO_Map" -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources" -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
