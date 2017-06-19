@@ -13,14 +13,16 @@ namespace GoodsTracker
     {
         LayerMap    layerFence, layerRoute, layerBehavior;
 
-        STATUS_GUI  statusFence  = STATUS_GUI.INIT;
-        STATUS_GUI  statusTrip   = STATUS_GUI.INIT;
+        STATUS_GUI  statusFence = STATUS_GUI.INIT;
+        STATUS_GUI  statusTrip  = STATUS_GUI.INIT;
+        ThreadGUI   threadGUI;
         TrackerController trackerController = TrackerController.TrackerCtrl;
 
         Fence       fence;
         Route       route;
 
         int itemselected = -1;
+        int filterslected = 0;
 
         public MainForm()
         {
@@ -28,7 +30,7 @@ namespace GoodsTracker
 
             Protocol.Communication.setCallBack(trackerController.updateTracker);
 
-            ThreadManager.init();
+            initAllThreads();        
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -39,8 +41,6 @@ namespace GoodsTracker
             initPanelFence();
             initPanelBehavior();
             initPanelConfig();
-
-            ThreadManager.startThreads();
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -166,7 +166,9 @@ namespace GoodsTracker
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateBehavior();
+//            threadGUI.join();
+            filterslected = cbFilter.SelectedIndex;
+//            updateBehavior();
         }
 
         private void groupBox1_Click(object sender, System.EventArgs e)
@@ -203,7 +205,7 @@ namespace GoodsTracker
             gMapControl1.MaxZoom = 24;
             gMapControl1.Zoom = 15;
             gMapControl1.AutoScroll = true;
-            gMapControl1.Position = new PointLatLng(CAPAO.LATITUDE, CAPAO.LONGITUDE);
+            gMapControl1.Position = new PointLatLng(CAPAO_CITY.LATITUDE, CAPAO_CITY.LONGITUDE);
         }
 
         private void initPanelTrip()
@@ -238,7 +240,8 @@ namespace GoodsTracker
 
         void initPanelBehavior()
         {
-            cbFilter.SelectedIndex = 0;
+            cbFilter.SelectedIndex  = 0;
+            filterslected           = 0;
         }
         //-------------------------------------Fim inits -----------------------------------
 
@@ -266,7 +269,7 @@ namespace GoodsTracker
         {
             BuildTreeView bTV = new BuildTreeView(tvBehavior);
 
-            List<Behavior> list = trackerController.getBehaviorFiltered(cbFilter.SelectedIndex);
+            List<Behavior> list = trackerController.getBehaviorFiltered(filterslected);
 
             bTV.loadlistPointsTreeView(list);
             showMarkerBehavior(list);
@@ -398,7 +401,7 @@ namespace GoodsTracker
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ThreadManager.stopThreads();
+            ThreadManager.stop();
         }
 
         private void panel3_VisibleChanged(object sender, EventArgs e)
@@ -418,9 +421,27 @@ namespace GoodsTracker
                 trackerController.remove(route);
             }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            updateBehavior();
+        }
+
+        void initAllThreads()
+        {
+            threadGUI = new ThreadGUI();
+            threadGUI.setTime(250);
+            threadGUI.setUpdate(updateScreen);
+            ThreadManager.start();
+            timer1.Enabled = true;
+        }
+
+        void updateScreen()
+        {
+        }
     }
 
-    class CAPAO
+    class CAPAO_CITY
     {
         internal const double LATITUDE  = -23.673326;
         internal const double LONGITUDE = -46.775215;

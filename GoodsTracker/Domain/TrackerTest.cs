@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GoodsTracker
 {
-    class TrackerTest : InterfaceTracker
+    class TrackerTest : CommunicationUnit, InterfaceTracker
     {
         int indexBehavior=0;
 
@@ -43,6 +43,11 @@ namespace GoodsTracker
             }
 
             return b;
+        }
+
+        public override void update(ObjectValueRX dados)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,14 +6,6 @@ using System.Threading.Tasks;
 
 namespace GoodsTracker
 {
-    enum ResultExec
-    {
-        EXEC_UNSUCCESS  = -3,
-        INVALID_CMD     = -2,
-        INVALID_PARAM   = -1,
-        EXEC_SUCCESS    = 0,
-    };
-    
     enum IdCmd
     {
         CMD_LED,
@@ -27,13 +19,21 @@ namespace GoodsTracker
     {
         private static Dictionary<IdCmd, Cmd> Containner = new Dictionary<IdCmd, Cmd>();
 
+        ansCmd  ansCmd;
+
         IdCmd   idCmd;
+        int     dest;
         int     address;
         int     value;
+        Operation operation;
+
 
         public int Address { get => address; set => address = value; }
         public int Value { get => value; set => this.value = value; }
         internal IdCmd IdCmd { get => idCmd; set => idCmd = value; }
+        public Operation Operation { get => operation; set => operation = value; }
+        public int Dest { get => dest; set => dest = value; }
+
 
         internal Cmd()
         {
@@ -85,9 +85,9 @@ namespace GoodsTracker
             return name_cmd;
         }
 
-        internal ResultExec callBack(ParamCmd param)
+        internal void setCallBackAnsCmd(ansCmd ans)
         {
-            return ResultExec.EXEC_SUCCESS;
+            ansCmd = ans;
         }
     }
 }

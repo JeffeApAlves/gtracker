@@ -2,7 +2,7 @@
 
 namespace GoodsTracker
 {
-    class RxFrame : CommunicationFrame
+    internal class RxFrame : CommunicationFrame
     {
     }
 }

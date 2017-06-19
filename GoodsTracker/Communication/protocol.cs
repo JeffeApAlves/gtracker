@@ -1,22 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace GoodsTracker
 {
     interface IDecoderFrameTx
     {
-        void buildFrame(out TxFrame frame, Cmd cmd);
+        void setFrame(out TxFrame frame,CommunicationUnit unit);
     }
 
     interface IDecoderFrameRx
     {
-        bool FillCmd(out ParamCmd param, RxFrame frame);
+        bool getValues(out ObjectValueRX dadosRx, RxFrame frame);
     }
 
-    enum StatusRx
+    interface IUpdateCommUnit
+    {
+        void update(ObjectValueRX dados);
+    }
+
+    public struct ObjectValueRXAxis
+    {
+        public double acceleration;
+        public double rotation;
+    };
+
+    public struct ObjectValueRX
+    {
+        public int orig;
+        public int dest;
+        public string operation;
+        public int resource;
+        public int size;
+        public double latitude;
+        public double longitude;
+        public ObjectValueRXAxis X, Y, Z;
+        public double Level;
+        public int checksum;
+        public int speed;
+    };
+
+    public enum StatusRx
     {
         RX_FRAME_INIT,
         RX_FRAME_BEGIN,
@@ -29,28 +51,43 @@ namespace GoodsTracker
         RX_FRAME_NOK,
     };
 
-    public delegate void updateTracker();
-
-    class Protocol
+    public enum ResultExec
     {
-        updateTracker updateTracker;
+        EXEC_UNSUCCESS = -3,
+        INVALID_CMD = -2,
+        INVALID_PARAM = -1,
+        EXEC_SUCCESS = 0,
+    };
 
-        private static Protocol singleton = null;
+    public enum Operation
+    {
+        RD,WR
+    }
 
-        /* [LED01]\r\n*/
-        const char CHAR_RX_FRAME_START  = '[';
-        const char CHAR_RX_FRAME_END    = ']';
-        const char CHAR_CR              = '\r';
-        const char CHAR_LF			    = '\n';
-        const char CHAR_SEPARATOR	    = ':';
-        const char CHAR_NAK             = ((char)0x15);
+    public class CONST_CHAR
+    {        
+        public const char RX_FRAME_START  = '[';
+        public const char RX_FRAME_END    = ']';
+        public const char CR              = '\r';
+        public const char LF              = '\n';
+        public const char SEPARATOR       = ',';
+        public const char NAK             = ((char)0x15);
+    }
 
-        StatusRx    statusRx            = StatusRx.RX_FRAME_INIT;
-        RingBuffer  bufferRx, bufferTx;
-        RxFrame     rxFrame;
+    public delegate void update();
+    public delegate ResultExec ansCmd();
 
-        List<Cmd>       queueCmd        = new List<Cmd>();
-        List<ParamCmd>  queueParam      = new List<ParamCmd>();
+    class Protocol : ThreadRun
+    {
+        static Protocol singleton = null;
+        static List<CommunicationUnit> units = new List<CommunicationUnit>();
+
+        update              update;
+        StatusRx            statusRx        = StatusRx.RX_FRAME_INIT;
+        Serial              serial;
+        RxFrame             rxFrame;
+        CommunicationUnit   cur_unit;
+        int                 index = 0;
 
         //Singleton
         public static Protocol Communication
@@ -66,34 +103,37 @@ namespace GoodsTracker
             }
         }
 
+        internal static List<CommunicationUnit> Units { get => units; set => units = value; }
+
         private Protocol()
         {
-            bufferRx        = new RingBuffer(256);
-            bufferTx        = new RingBuffer(256);
+            serial = new Serial();
         }
 
-        internal void process()
+        public override void run()
         {
+            cur_unit = units[(index++)%units.Count];
+
             processTx();
 
             processRx();
 
             processQueue();
 
-            updateTracker();
+            update();
         }
 
         private void processQueue()
         {
-            if (queueParam.Count > 0)
+            if (cur_unit.isAnyAns())
             {
-                foreach (ParamCmd param in queueParam)
+                foreach (AnsCmd ans in cur_unit.QueueAnsCmd)
                 {
-                    foreach (Cmd cmd in queueCmd)
+                    foreach (Cmd cmd in cur_unit.QueueCmd)
                     {
-                        if (param.NameCmd == cmd.getName())
+                        if (ans.NameCmd == cmd.getName())
                         {
-                            queueCmd.Remove(cmd);
+                            cur_unit.removeCmd(cmd);
                         }
                     }
                 }
@@ -102,13 +142,13 @@ namespace GoodsTracker
 
         public void processTx()
         {
-            if (queueCmd.Count > 0)
+            if (cur_unit.isAnyCmd())
             {
                 IDecoderFrameTx decoder = new DecoderFrameTx();
 
                 TxFrame frame = new TxFrame();
 
-                decoder.buildFrame(out frame, queueCmd[0]);
+                decoder.setFrame(out frame, cur_unit);
 
                 sendFrame(frame);
             }
@@ -135,9 +175,9 @@ namespace GoodsTracker
         {
             byte ch;
 
-            if (getRxData(out ch))
+            if (serial.getRxData(out ch))
             {
-                if (ch == CHAR_RX_FRAME_START)
+                if (ch == CONST_CHAR.RX_FRAME_START)
                 {
                     clearRxFrame();
 
@@ -150,13 +190,13 @@ namespace GoodsTracker
         {
             byte ch;
 
-            if (getRxData(out ch))
+            if (serial.getRxData(out ch))
             {
-                if (ch == CHAR_RX_FRAME_START || rxFrame.isFull())
+                if (ch == CONST_CHAR.RX_FRAME_START || rxFrame.isFull())
                 {
                     setStatusRx(StatusRx.RX_FRAME_NOK);
                 }
-                else if (ch == CHAR_RX_FRAME_END)
+                else if (ch == CONST_CHAR.RX_FRAME_END)
                 {
                     if (rxFrame.isFull())
                     {
@@ -180,9 +220,9 @@ namespace GoodsTracker
         {
             byte ch;
 
-            if (getRxData(out ch))
+            if (serial.getRxData(out ch))
             {
-                if (ch == CHAR_LF)
+                if (ch == CONST_CHAR.LF)
                 {
                     setStatusRx(StatusRx.RX_FRAME_RX_NL);
 
@@ -198,10 +238,10 @@ namespace GoodsTracker
         {
             byte ch;
 
-            if (getRxData(out ch))
+            if (serial.getRxData(out ch))
             {
 
-                if (ch == CHAR_CR)
+                if (ch == CONST_CHAR.CR)
                 {
                     setStatusRx(StatusRx.RX_FRAME_RX_CR);
                 }
@@ -220,11 +260,12 @@ namespace GoodsTracker
         void acceptRxFrame()
         {
             IDecoderFrameRx decoder     = new DecoderFrameRx();
-            ParamCmd        param_cmd   = new ParamCmd();
+            AnsCmd          ans         = new AnsCmd();
+            ObjectValueRX   dadosRx;
 
-            if (decoder.FillCmd(out param_cmd, rxFrame))
+            if (decoder.getValues(out dadosRx, rxFrame))
             {
-                queueParam.Add(param_cmd);
+                cur_unit.addAns(ans);
             }
 
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
@@ -232,8 +273,6 @@ namespace GoodsTracker
 
         void errorRxFrame()
         {
-            /**/
-
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 
@@ -241,19 +280,18 @@ namespace GoodsTracker
         {
             if (!frame.isEmpty())
             {
-                string str = frame.getPayLoad();
+                string payload = frame.PayLoad;
 
-                putTxData((byte)CHAR_RX_FRAME_START);
+                serial.putTxData(CONST_CHAR.RX_FRAME_START);
 
-                foreach (char c in str)
+                foreach (char c in payload)
                 {
-                    putTxData((byte)c);
+                    serial.putTxData(c);
                 }
 
-                putTxData((byte)CHAR_RX_FRAME_END);
-
-                putTxData((byte)CHAR_CR);
-                putTxData((byte)CHAR_LF);
+                serial.putTxData(CONST_CHAR.RX_FRAME_END);
+                serial.putTxData(CONST_CHAR.CR);
+                serial.putTxData(CONST_CHAR.LF);
             }
         }
 
@@ -261,9 +299,7 @@ namespace GoodsTracker
         {
             clearRxFrame();
 
-            bufferRx.initBuffer();
-
-            bufferTx.initBuffer();
+            serial.clear();
 
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
@@ -278,34 +314,9 @@ namespace GoodsTracker
             rxFrame = new RxFrame();
         }
 
-        bool putTxData(byte data)
+        public void setCallBack(update callback)
         {
-            return bufferTx.putData(data);
-        }
-
-        bool putRxData(byte data)
-        {
-            return bufferRx.putData(data);
-        }
-
-        bool getTxData(out byte ch)
-        {
-            return bufferTx.getData(out ch);
-        }
-
-        bool getRxData(out byte ch)
-        {
-            return bufferRx.getData(out ch);
-        }
-
-        bool hasTxData()
-        {
-            return bufferTx.hasData();
-        }
-
-        public void setCallBack(updateTracker callback)
-        {
-            updateTracker = callback;
+            update = callback;
         }
     }
 }

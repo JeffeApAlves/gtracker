@@ -2,7 +2,7 @@
 
 namespace GoodsTracker
 {
-    class TrackerController
+    class TrackerController :ThreadRun
     {
         private static TrackerController singleton=null;
 
@@ -39,7 +39,7 @@ namespace GoodsTracker
          * Metodo chamdo na Thread do Domain
          * 
          */
-        public void process()
+        public override void run()
         {
         }
 

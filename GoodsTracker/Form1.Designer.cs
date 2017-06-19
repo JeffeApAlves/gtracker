@@ -88,6 +88,7 @@
             this.tB_Zoom = new System.Windows.Forms.TrackBar();
             this.label5 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxLevel.SuspendLayout();
@@ -784,6 +785,11 @@
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 250;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -883,6 +889,7 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.ImageList imageList3;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
