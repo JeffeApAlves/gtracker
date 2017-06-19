@@ -35,6 +35,16 @@ namespace GoodsTracker
      * Somatoria
      */
 
+    interface IDecoderFrameTx
+    {
+        void setFrame(out TxFrame frame, CommunicationUnit unit);
+    }
+
+    interface IDecoderFrameRx
+    {
+        bool getValues(out ObjectValueRX dadosRx, RxFrame frame);
+    }
+
     internal class CommunicationFrame
     {
         public const int LEN_MAX_PAYLOAD = 256;
@@ -45,14 +55,12 @@ namespace GoodsTracker
         protected string resource;
         protected string sizePayload;
         protected string CheckSum;
-        private string payLoad;
+        protected string payLoad;
 
         public string PayLoad { get => payLoad; set => payLoad = value; }
 
         internal CommunicationFrame()
         {
-            payLoad = "";
-
             clear();
         }
 

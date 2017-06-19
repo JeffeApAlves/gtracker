@@ -12,61 +12,37 @@ namespace GoodsTracker
         CMD_ANALOG,
         CMD_PWM,
         CMD_TOUCH,
-        CMD_ACC
+        CMD_ACC,
+        CMD_BEHAVIOR,
+        CMD_LOCK,
+        CMD_UNLOCK
     };
 
     class Cmd
     {
-        private static Dictionary<IdCmd, Cmd> Containner = new Dictionary<IdCmd, Cmd>();
+        CallBackAnsCmd      callBackAns;
 
-        ansCmd  ansCmd;
-
-        IdCmd   idCmd;
-        int     dest;
-        int     address;
-        int     value;
-        Operation operation;
-
-
+        IdCmd       idCmd;
+        int         dest;
+        int         address;
+        int         value;
+        Operation   operation;
+    
         public int Address { get => address; set => address = value; }
         public int Value { get => value; set => this.value = value; }
         internal IdCmd IdCmd { get => idCmd; set => idCmd = value; }
         public Operation Operation { get => operation; set => operation = value; }
         public int Dest { get => dest; set => dest = value; }
-
-
-        internal Cmd()
-        {
-        }
+        public CallBackAnsCmd CallBackAns { get => callBackAns; set => callBackAns = value; }
 
         internal Cmd(IdCmd id)
         {
             idCmd = id;
-
-            Containner.Add(id, this);
         }
 
         internal static Cmd createCMD(IdCmd id)
         {
             return new Cmd(id);
-        }
-
-        internal static Cmd getCMD(IdCmd id_cmd)
-        {
-            return Containner[id_cmd];
-        }
-
-        internal static Cmd findCMD(string name)
-        {
-            foreach (var item in Containner)
-            {
-                if (item.Value.getName() == name)
-                {
-                    return item.Value;
-                }
-            }
-
-            return null;
         }
 
         internal string getName()
@@ -85,9 +61,9 @@ namespace GoodsTracker
             return name_cmd;
         }
 
-        internal void setCallBackAnsCmd(ansCmd ans)
+        public void setCallBack(CallBackAnsCmd ans)
         {
-            ansCmd = ans;
+            callBackAns = ans;
         }
     }
 }

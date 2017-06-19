@@ -1,22 +1,23 @@
 ﻿using GMap.NET;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GoodsTracker
 {
     class TrackerTest : CommunicationUnit, InterfaceTracker
     {
-        int indexBehavior=0;
+        int indexBehavior = 0;
 
         public TrackerTest()
         {
             indexBehavior = 0;
         }
 
-        public Behavior getPosition()
+        public void getLevel()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Behavior getBehavior()
         {
             Behavior b = null;
 
@@ -45,9 +46,19 @@ namespace GoodsTracker
             return b;
         }
 
-        public override void update(ObjectValueRX dados)
+        public void lockVehicle(CallBackAnsCmd ans)
         {
-            throw new NotImplementedException();
+            sendCMD(IdCmd.CMD_LOCK,ans);
+        }
+
+        public void requestBehavior(CallBackAnsCmd ans)
+        {
+            sendCMD(IdCmd.CMD_BEHAVIOR, ans);
+        }
+
+        public void unLockVehicle(CallBackAnsCmd ans)
+        {
+            sendCMD(IdCmd.CMD_UNLOCK,ans);
         }
     }
 }

@@ -8,6 +8,11 @@ namespace GoodsTracker
 {
     interface InterfaceTracker
     {
-        Behavior getPosition();
+        void requestBehavior(CallBackAnsCmd ans);
+        void lockVehicle(CallBackAnsCmd ans);
+        void unLockVehicle(CallBackAnsCmd ans);
+
+        void getLevel();
+        Behavior getBehavior();
     }
 }

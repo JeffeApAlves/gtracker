@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GoodsTracker
 {
@@ -12,6 +13,7 @@ namespace GoodsTracker
 
         internal List<Fence> Fences { get => fences; set => fences = value; }
         internal List<Route> Routes { get => routes; set => routes = value; }
+        internal InterfaceTracker Tracker { get => tracker; set => tracker = value; }
 
         //Singleton
         public static TrackerController TrackerCtrl
@@ -94,17 +96,28 @@ namespace GoodsTracker
             routes.Remove(r);
         }
 
+        internal void requestBehavior()
+        {
+            tracker.requestBehavior(callBackBehavior);
+        }
+
+        internal ResultExec callBackBehavior(ObjectValueRX dados)
+        {
+            registerBehavior(tracker.getBehavior());
+
+            return ResultExec.EXEC_SUCCESS;
+        }
+
         internal void registerBehavior(Behavior b)
         {
-            if (routes.Count > 0 && b!=null)
+            if (routes.Count > 0 && b != null)
             {
                 routes[0].registerBehavior(b);
             }
         }
 
-        public void updateTracker()
+        internal void ansBehavior()
         {
-            registerBehavior(tracker.getPosition());
-        }        
+        }
     }
 }

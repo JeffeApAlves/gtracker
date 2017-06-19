@@ -4,6 +4,8 @@ using System.Threading;
 
 namespace GoodsTracker
 {
+    public delegate void update();
+
     abstract class ThreadRun
     {
         protected Thread thread;

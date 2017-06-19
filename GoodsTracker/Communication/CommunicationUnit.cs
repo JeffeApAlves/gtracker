@@ -2,21 +2,20 @@
 
 namespace GoodsTracker
 {
-    abstract class CommunicationUnit : IUpdateCommUnit
+    abstract class CommunicationUnit
     {
         /*
          * Endereco da unidade
          */
         int     address;
 
-        List<Cmd>       queueCmd = new List<Cmd>();
-        List<AnsCmd>    queueAnsCmd = new List<AnsCmd>();
+        private static Dictionary<IdCmd, Cmd>   containner = new Dictionary<IdCmd, Cmd>();
+        private static List<Cmd>                queueCmd = new List<Cmd>();
+        private static List<AnsCmd>             queueAnsCmd = new List<AnsCmd>();
 
         internal List<Cmd> QueueCmd { get => queueCmd; set => queueCmd = value; }
         internal List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
         internal int Address { get => address; set => address = value; }
-
-        public abstract void update(ObjectValueRX dados);
 
         internal CommunicationUnit()
         {
@@ -47,5 +46,51 @@ namespace GoodsTracker
         {
             queueCmd.Remove(cmd);
         }
+
+        internal void sendCMD(IdCmd id, CallBackAnsCmd ans)
+        {
+            Cmd c = new Cmd(id);
+
+            c.setCallBack(ans);
+        }
+
+        internal static Cmd getCMD(IdCmd id_cmd)
+        {
+            return containner[id_cmd];
+        }
+
+        internal static Cmd findCMD(string name)
+        {
+            foreach (var item in containner)
+            {
+                if (item.Value.getName() == name)
+                {
+                    return item.Value;
+                }
+            }
+
+            return null;
+        }
+
+        internal void processQueue()
+        {
+            if (isAnyAns())
+            {
+                foreach (AnsCmd ans in QueueAnsCmd)
+                {
+                    foreach (Cmd cmd in QueueCmd)
+                    {
+                        if (ans.NameCmd == cmd.getName())
+                        {
+                            if (cmd.CallBackAns(ans.DadosRx) == ResultExec.EXEC_SUCCESS)
+                            {
+                                removeCmd(cmd);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

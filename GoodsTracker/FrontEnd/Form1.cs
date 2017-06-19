@@ -27,9 +27,6 @@ namespace GoodsTracker
         public MainForm()
         {
             InitializeComponent();
-
-            Protocol.Communication.setCallBack(trackerController.updateTracker);
-
             initAllThreads();        
         }
 
@@ -134,8 +131,8 @@ namespace GoodsTracker
         {
             itemselected = e.RowIndex;
 
-            if (itemselected >= 0) {
-
+            if (itemselected >= 0)
+            {
                 txtLat.Text = dataGridView1.Rows[itemselected].Cells[1].Value.ToString();
                 txtLng.Text = dataGridView1.Rows[itemselected].Cells[2].Value.ToString();
             }
@@ -166,9 +163,8 @@ namespace GoodsTracker
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-//            threadGUI.join();
             filterslected = cbFilter.SelectedIndex;
-//            updateBehavior();
+            updateBehavior();
         }
 
         private void groupBox1_Click(object sender, System.EventArgs e)
@@ -424,6 +420,7 @@ namespace GoodsTracker
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            trackerController.requestBehavior();
             updateBehavior();
         }
 

@@ -2,21 +2,6 @@
 
 namespace GoodsTracker
 {
-    interface IDecoderFrameTx
-    {
-        void setFrame(out TxFrame frame,CommunicationUnit unit);
-    }
-
-    interface IDecoderFrameRx
-    {
-        bool getValues(out ObjectValueRX dadosRx, RxFrame frame);
-    }
-
-    interface IUpdateCommUnit
-    {
-        void update(ObjectValueRX dados);
-    }
-
     public struct ObjectValueRXAxis
     {
         public double acceleration;
@@ -74,15 +59,13 @@ namespace GoodsTracker
         public const char NAK             = ((char)0x15);
     }
 
-    public delegate void update();
-    public delegate ResultExec ansCmd();
+    public delegate ResultExec CallBackAnsCmd(ObjectValueRX dados);
 
     class Protocol : ThreadRun
     {
         static Protocol singleton = null;
         static List<CommunicationUnit> units = new List<CommunicationUnit>();
 
-        update              update;
         StatusRx            statusRx        = StatusRx.RX_FRAME_INIT;
         Serial              serial;
         RxFrame             rxFrame;
@@ -114,29 +97,13 @@ namespace GoodsTracker
         {
             cur_unit = units[(index++)%units.Count];
 
-            processTx();
-
-            processRx();
-
-            processQueue();
-
-            update();
-        }
-
-        private void processQueue()
-        {
-            if (cur_unit.isAnyAns())
+            if (cur_unit != null)
             {
-                foreach (AnsCmd ans in cur_unit.QueueAnsCmd)
-                {
-                    foreach (Cmd cmd in cur_unit.QueueCmd)
-                    {
-                        if (ans.NameCmd == cmd.getName())
-                        {
-                            cur_unit.removeCmd(cmd);
-                        }
-                    }
-                }
+                processTx();
+
+                processRx();
+
+                cur_unit.processQueue();
             }
         }
 
@@ -146,7 +113,7 @@ namespace GoodsTracker
             {
                 IDecoderFrameTx decoder = new DecoderFrameTx();
 
-                TxFrame frame = new TxFrame();
+                TxFrame frame;
 
                 decoder.setFrame(out frame, cur_unit);
 
@@ -312,11 +279,6 @@ namespace GoodsTracker
         void clearRxFrame()
         {
             rxFrame = new RxFrame();
-        }
-
-        public void setCallBack(update callback)
-        {
-            update = callback;
         }
     }
 }

@@ -4,16 +4,27 @@ namespace GoodsTracker
 {
     class Tracker : CommunicationUnit,InterfaceTracker
     {
-        public Tracker()
-        {
-        }
-
-        public Behavior getPosition()
+        public Behavior getBehavior()
         {
             throw new NotImplementedException();
         }
 
-        public override void update(ObjectValueRX dados)
+        public void getLevel()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void lockVehicle(CallBackAnsCmd ans)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void requestBehavior(CallBackAnsCmd ans)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void unLockVehicle(CallBackAnsCmd ans)
         {
             throw new NotImplementedException();
         }

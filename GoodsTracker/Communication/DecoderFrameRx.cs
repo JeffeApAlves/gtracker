@@ -5,7 +5,7 @@ namespace GoodsTracker
     /**
      * 
      * Frame Rx
-     * [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[2] , SizePayload[3] , payload[ 0 ~ 255] , '*'CheckSum[5] ]
+     * [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[5] , SizePayload[3] , payload[ 0 ~ 255] , '*'CheckSum[5] ]
      * 
      * End. de orig: 
      * Range: 00000~65535 (00000) Broadcast
@@ -17,7 +17,7 @@ namespace GoodsTracker
      * Possiveis: RD ou WR
      * 
      * Recurso: 
-     * Range: 01~99
+     * Range: A~Z 0~9
      * 01: Lat , Long , AccelX , AccelY , AccelZ , Level, Speed
      * 
      * SizePayload:
@@ -33,8 +33,6 @@ namespace GoodsTracker
 
     class DecoderFrameRx : IDecoderFrameRx
     {
-
-
         enum PALYLOAD_1 {
 
             LAT     = 0,
@@ -53,7 +51,7 @@ namespace GoodsTracker
 
             try
             {
-                string[] list       = frame.PayLoad.Split(CONST_CHAR.SEPARATOR);
+                string[] list   = frame.PayLoad.Split(CONST_CHAR.SEPARATOR);
 
                 if (list != null && list.Length >= 9)
                 {

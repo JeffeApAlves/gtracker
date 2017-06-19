@@ -2,6 +2,11 @@
 {
     internal class AnsCmd
     {
-        public string NameCmd { get; internal set; }
+        string nameCmd;
+
+        ObjectValueRX dadosRx;
+
+        public string NameCmd { get => nameCmd; set => nameCmd = value; }
+        public ObjectValueRX DadosRx { get => dadosRx; set => dadosRx = value; }
     }
 }
