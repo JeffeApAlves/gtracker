@@ -101,7 +101,7 @@ namespace GoodsTracker
             tracker.requestBehavior(callBackBehavior);
         }
 
-        internal ResultExec callBackBehavior(ObjectValueRX dados)
+        internal ResultExec callBackBehavior(AnsCmd ans)
         {
             registerBehavior(tracker.getBehavior());
 

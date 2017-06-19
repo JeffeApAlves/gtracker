@@ -7,17 +7,76 @@ namespace GoodsTracker
 
     internal class DecoderFrameTx : IDecoderFrameTx
     {
-        public void setFrame(out TxFrame frame, CommunicationUnit unit)
+        public bool setFrame(out CommunicationFrame frame, CommunicationUnit unit)
         {
-            frame               = new TxFrame();
-            StringBuilder sb    = new StringBuilder();
+            bool ret = false;
 
-            sb.Append(unit.Address);
-            sb.Append(CONST_CHAR.SEPARATOR);
-            sb.Append(unit.getNextCmd().Dest);
-            sb.Append(CONST_CHAR.SEPARATOR);
-            sb.Append(unit.getNextCmd().Operation);
-            sb.Append(CONST_CHAR.SEPARATOR);
+            frame = new CommunicationFrame();
+
+            try
+            {
+                Cmd cmd = unit.getNextCmd();
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append(unit.Address);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(cmd.Dest);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(cmd.Operation);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(cmd.Resource);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(0);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(CONST_CHAR.SEPARATOR);
+
+                frame.Frame = sb.ToString();
+
+                ret = true;
+            }
+            catch
+            {
+                ret = false;
+            }
+
+            return ret;
+        }
+
+        public bool setPayLoad(ref CommunicationFrame frame, Behavior b)
+        {
+            bool ret = false;
+
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append(b.Latitude);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(b.Longitude);
+                sb.Append(CONST_CHAR.SEPARATOR);
+
+                sb.Append(b.AxisX.Acceleration.Val);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(b.AxisY.Acceleration.Val);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(b.AxisZ.Acceleration.Val);
+                sb.Append(CONST_CHAR.SEPARATOR);
+
+                sb.Append(b.Speed.Val);
+                sb.Append(CONST_CHAR.SEPARATOR);
+
+                sb.Append(b.Level.Val);
+                sb.Append(CONST_CHAR.SEPARATOR);
+
+                ret = true;
+            }
+            catch
+            {
+                ret = false;
+            }
+
+            return ret;
         }
     }
 }

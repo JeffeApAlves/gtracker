@@ -37,68 +37,145 @@ namespace GoodsTracker
 
     interface IDecoderFrameTx
     {
-        void setFrame(out TxFrame frame, CommunicationUnit unit);
+        bool setFrame(out CommunicationFrame frame, CommunicationUnit unit);
+
+        bool setPayLoad(ref CommunicationFrame frame, Behavior b);
     }
 
     interface IDecoderFrameRx
     {
-        bool getValues(out ObjectValueRX dadosRx, RxFrame frame);
+        bool getValues(out ObjectValueRX dadosRx, CommunicationFrame frame);
     }
+
+    public struct ObjectValueRXAxis
+    {
+        public double acceleration;
+        public double rotation;
+    };
+
+    public struct ObjectValueRX
+    {
+        public int orig;
+        public int dest;
+        public string operation;
+        public int resource;
+        public int size;
+        public double latitude;
+        public double longitude;
+        public ObjectValueRXAxis X, Y, Z;
+        public double Level;
+        public int checksum;
+        public int speed;
+    };
+
 
     internal class CommunicationFrame
     {
         public const int LEN_MAX_PAYLOAD = 256;
-
-        protected string dest;
-        protected string orig;
-        protected string operation;
-        protected string resource;
-        protected string sizePayload;
-        protected string CheckSum;
         protected string payLoad;
+        protected string header;
+        protected string frame;
 
-        public string PayLoad { get => payLoad; set => payLoad = value; }
+        public string Header
+        {
+            get
+            {
+                return header;
+            }
+
+            set
+            {
+                header = value;
+                frame = header + frame;
+            }
+        }
+
+        public string PayLoad
+        {
+            get
+            {
+                return payLoad;
+            }
+
+            set
+            {
+                payLoad = value;
+                frame = header + frame;
+            }
+        }
+
+        public string Frame
+        {
+            get
+            {
+                return frame;
+            }
+
+            set
+            {
+                frame = value;
+            }
+        }
 
         internal CommunicationFrame()
         {
             clear();
         }
 
-        internal byte getByte(int i)
+        internal byte getByteOfFrame(int i)
         {
-            return (byte)payLoad[i];
+            return (byte)frame[i];
         }
-
-        internal void setByte(int i, byte b)
+/*
+        internal void setByteOfFrame(int i, byte b)
         {
             char[] letters  = payLoad.ToCharArray();
             letters[i]      = (char)b;
-            payLoad         = string.Join("", letters);
+            frame           = string.Join("", letters);
         }
-
-        internal void addByte(byte b)
+*/
+        internal void addByteInFrame(byte b)
         {
-            payLoad = string.Join(payLoad,(char)b);
+            frame = string.Join(frame,(char)b);
         }
 
         internal void clear()
         {
+            header  = "";
             payLoad = "";
+            frame   = "";
         }
 
-        internal int getCount()
+        internal int getSizeOfPayLoad()
         {
             return payLoad.Length;
         }
 
-        internal bool isFull()
+        internal int getSizeOfFrame()
         {
-            return getCount() >= LEN_MAX_PAYLOAD;
+            return frame.Length;
         }
 
-        internal bool isEmpty()
+        internal bool isPayloadFull()
         {
-            return getCount() <= 0;
+            return getSizeOfPayLoad() >= LEN_MAX_PAYLOAD;
+        }
+
+        internal bool isPayLoadEmpty()
+        {
+            return getSizeOfPayLoad() <= 0;
+        }
+
+        internal int checkSum()
+        {
+            int checkSum = 0;
+
+            for (int i = 0; i < payLoad.Length; i++)
+            {
+                checkSum += getByteOfFrame(i);
+            }
+
+            return checkSum;
         }
     }
 }

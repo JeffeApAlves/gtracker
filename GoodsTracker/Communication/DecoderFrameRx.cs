@@ -44,7 +44,7 @@ namespace GoodsTracker
             SPEED   = 6,
         }
 
-        public bool getValues(out ObjectValueRX dadosRx, RxFrame frame)
+        public bool getValues(out ObjectValueRX dadosRx, CommunicationFrame frame)
         {
             bool ret    = false;
             dadosRx     = new ObjectValueRX();

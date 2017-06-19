@@ -1,5 +1,7 @@
 ﻿namespace GoodsTracker
 {
+    internal delegate ResultExec CallBackAnsCmd(AnsCmd dados);
+
     internal class AnsCmd
     {
         string nameCmd;

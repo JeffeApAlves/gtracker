@@ -20,11 +20,11 @@ namespace GoodsTracker
 
     internal class Value
     {
-        double  val;
-        Scale   tol;
+        double val;
+        Scale tol;
 
-        internal double   Val { get => val; set => val = value; }
-        internal Scale    Tol { get => tol; set => tol = value; }
+        internal double Val { get => val; set => val = value; }
+        internal Scale Tol { get => tol; set => tol = value; }
 
         internal Value(double min,double max)
         {
@@ -75,6 +75,7 @@ namespace GoodsTracker
     {
         double      latitude, longitude;
         Value       speed;
+        Value       level;
         Axis        axisX, axisY, axisZ;
         DateTime    dateTime;
 
@@ -85,6 +86,7 @@ namespace GoodsTracker
         public DateTime DateTime { get => dateTime; set => dateTime = value; }
         public double Latitude { get => latitude; set => latitude = value; }
         public double Longitude { get => longitude; set => longitude = value; }
+        internal Value Level { get => level; set => level = value; }
 
         internal Behavior()
         {
@@ -103,11 +105,6 @@ namespace GoodsTracker
         {
             latitude = lat;
             longitude = lng;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("Lat:{0} Lng:{1}", latitude, longitude) + " " + axisX.ToString() + " " + axisY.ToString() + " " + axisZ.ToString();
         }
 
         internal string getStrNOK()
@@ -149,6 +146,11 @@ namespace GoodsTracker
             AxisX.Acceleration.Val = x;
             AxisY.Acceleration.Val = y;
             AxisZ.Acceleration.Val = z;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Lat:{0} Lng:{1}", latitude, longitude) + " " + axisX.ToString() + " " + axisY.ToString() + " " + axisZ.ToString();
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace GoodsTracker
 {
@@ -84,5 +80,9 @@ namespace GoodsTracker
             }
         }
 
+        void setBuffer(string dados)
+        {
+            data = Encoding.ASCII.GetBytes(dados);
+        }
     }
 }

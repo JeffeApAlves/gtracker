@@ -2,27 +2,6 @@
 
 namespace GoodsTracker
 {
-    public struct ObjectValueRXAxis
-    {
-        public double acceleration;
-        public double rotation;
-    };
-
-    public struct ObjectValueRX
-    {
-        public int orig;
-        public int dest;
-        public string operation;
-        public int resource;
-        public int size;
-        public double latitude;
-        public double longitude;
-        public ObjectValueRXAxis X, Y, Z;
-        public double Level;
-        public int checksum;
-        public int speed;
-    };
-
     public enum StatusRx
     {
         RX_FRAME_INIT,
@@ -51,15 +30,14 @@ namespace GoodsTracker
 
     public class CONST_CHAR
     {        
-        public const char RX_FRAME_START  = '[';
-        public const char RX_FRAME_END    = ']';
-        public const char CR              = '\r';
-        public const char LF              = '\n';
-        public const char SEPARATOR       = ',';
-        public const char NAK             = ((char)0x15);
+        public const char RX_FRAME_START    = '[';
+        public const char RX_FRAME_END      = ']';
+        public const char CR                = '\r';
+        public const char LF                = '\n';
+        public const char SEPARATOR         = ',';
+        public const char NAK               = ((char)0x15);
+        public const char ASTERISCO         = '*';
     }
-
-    public delegate ResultExec CallBackAnsCmd(ObjectValueRX dados);
 
     class Protocol : ThreadRun
     {
@@ -68,7 +46,7 @@ namespace GoodsTracker
 
         StatusRx            statusRx        = StatusRx.RX_FRAME_INIT;
         Serial              serial;
-        RxFrame             rxFrame;
+        CommunicationFrame  rxFrame;
         CommunicationUnit   cur_unit;
         int                 index = 0;
 
@@ -113,11 +91,12 @@ namespace GoodsTracker
             {
                 IDecoderFrameTx decoder = new DecoderFrameTx();
 
-                TxFrame frame;
+                CommunicationFrame frame;
 
-                decoder.setFrame(out frame, cur_unit);
-
-                sendFrame(frame);
+                if(decoder.setFrame(out frame, cur_unit))
+                {
+                    sendFrame(frame);
+                }            
             }
         }
 
@@ -159,13 +138,13 @@ namespace GoodsTracker
 
             if (serial.getRxData(out ch))
             {
-                if (ch == CONST_CHAR.RX_FRAME_START || rxFrame.isFull())
+                if (ch == CONST_CHAR.RX_FRAME_START || rxFrame.isPayLoadEmpty())
                 {
                     setStatusRx(StatusRx.RX_FRAME_NOK);
                 }
                 else if (ch == CONST_CHAR.RX_FRAME_END)
                 {
-                    if (rxFrame.isFull())
+                    if (rxFrame.isPayLoadEmpty())
                     {
                         setStatusRx(StatusRx.RX_FRAME_RX_END);
                     }
@@ -178,7 +157,7 @@ namespace GoodsTracker
                 {
                     setStatusRx(StatusRx.RX_FRAME_RX_PAYLOAD);
 
-                    rxFrame.addByte(ch);
+                    rxFrame.addByteInFrame(ch);
                 }
             }
         }
@@ -245,19 +224,16 @@ namespace GoodsTracker
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 
-        void sendFrame(TxFrame frame)
+        void sendFrame(CommunicationFrame frame)
         {
-            if (!frame.isEmpty())
+            if (!frame.isPayLoadEmpty())
             {
                 string payload = frame.PayLoad;
 
                 serial.putTxData(CONST_CHAR.RX_FRAME_START);
-
-                foreach (char c in payload)
-                {
-                    serial.putTxData(c);
-                }
-
+                serial.putTxData(payload);
+                serial.putTxData(CONST_CHAR.ASTERISCO);
+                serial.putTxData(frame.checkSum().ToString());
                 serial.putTxData(CONST_CHAR.RX_FRAME_END);
                 serial.putTxData(CONST_CHAR.CR);
                 serial.putTxData(CONST_CHAR.LF);
@@ -267,9 +243,7 @@ namespace GoodsTracker
         void initRxCMD()
         {
             clearRxFrame();
-
             serial.clear();
-
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 
@@ -280,7 +254,7 @@ namespace GoodsTracker
 
         void clearRxFrame()
         {
-            rxFrame = new RxFrame();
+            rxFrame = new CommunicationFrame();
         }
     }
 }

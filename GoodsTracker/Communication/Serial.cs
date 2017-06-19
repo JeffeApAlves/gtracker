@@ -52,5 +52,13 @@ namespace GoodsTracker
         {
             putTxData((byte)data);
         }
+
+        internal void putTxData(string str)
+        {
+            foreach (char c in str)
+            {
+                putTxData(c);
+            }
+        }
     }
 }

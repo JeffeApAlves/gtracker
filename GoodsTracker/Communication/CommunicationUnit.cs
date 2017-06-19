@@ -82,7 +82,7 @@ namespace GoodsTracker
                     {
                         if (ans.NameCmd == cmd.getName())
                         {
-                            if (cmd.CallBackAns(ans.DadosRx) == ResultExec.EXEC_SUCCESS)
+                            if (cmd.CallBackAns(ans) == ResultExec.EXEC_SUCCESS)
                             {
                                 removeCmd(cmd);
                             }

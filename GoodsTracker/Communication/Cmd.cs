@@ -27,6 +27,7 @@ namespace GoodsTracker
         int         address;
         int         value;
         Operation   operation;
+        string      resource;
     
         public int Address { get => address; set => address = value; }
         public int Value { get => value; set => this.value = value; }
@@ -34,6 +35,7 @@ namespace GoodsTracker
         public Operation Operation { get => operation; set => operation = value; }
         public int Dest { get => dest; set => dest = value; }
         public CallBackAnsCmd CallBackAns { get => callBackAns; set => callBackAns = value; }
+        public string Resource { get => resource; set => resource = value; }
 
         internal Cmd(IdCmd id)
         {
