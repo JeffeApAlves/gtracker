@@ -33,7 +33,7 @@ namespace GoodsTracker
 
     class DecoderFrameRx : IDecoderFrameRx
     {
-        enum PALYLOAD_1 {
+        enum DATA1 {
 
             LAT     = 0,
             LNG     = 1,
@@ -55,15 +55,15 @@ namespace GoodsTracker
 
                 if (list != null && list.Length >= 9)
                 {
-                    setVal(ref dadosRx.latitude,        list, (int)PALYLOAD_1.LAT);
-                    setVal(ref dadosRx.longitude,       list, (int)PALYLOAD_1.LNG);
-                    setVal(ref dadosRx.longitude,       list, (int)PALYLOAD_1.ACCEL_X);
-                    setVal(ref dadosRx.longitude,       list, (int)PALYLOAD_1.ACCEL_Y);
-                    setVal(ref dadosRx.X.acceleration,  list, (int)PALYLOAD_1.ACCEL_X);
-                    setVal(ref dadosRx.Y.acceleration,  list, (int)PALYLOAD_1.ACCEL_Y);
-                    setVal(ref dadosRx.Z.acceleration,  list, (int)PALYLOAD_1.ACCEL_Z);
-                    setVal(ref dadosRx.Level,           list, (int)PALYLOAD_1.LEVEL);
-                    setVal(ref dadosRx.speed,           list, (int)PALYLOAD_1.SPEED);
+                    setVal(ref dadosRx.latitude,        list, (int)DATA1.LAT);
+                    setVal(ref dadosRx.longitude,       list, (int)DATA1.LNG);
+                    setVal(ref dadosRx.longitude,       list, (int)DATA1.ACCEL_X);
+                    setVal(ref dadosRx.longitude,       list, (int)DATA1.ACCEL_Y);
+                    setVal(ref dadosRx.X.acceleration,  list, (int)DATA1.ACCEL_X);
+                    setVal(ref dadosRx.Y.acceleration,  list, (int)DATA1.ACCEL_Y);
+                    setVal(ref dadosRx.Z.acceleration,  list, (int)DATA1.ACCEL_Z);
+                    setVal(ref dadosRx.level,           list, (int)DATA1.LEVEL);
+                    setVal(ref dadosRx.speed,           list, (int)DATA1.SPEED);
 
                     ret = true;
                 }

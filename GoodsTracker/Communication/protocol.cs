@@ -23,11 +23,6 @@ namespace GoodsTracker
         EXEC_SUCCESS = 0,
     };
 
-    public enum Operation
-    {
-        RD,WR
-    }
-
     public class CONST_CHAR
     {        
         public const char RX_FRAME_START    = '[';

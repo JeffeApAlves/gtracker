@@ -9,6 +9,7 @@ namespace GoodsTracker
 
         public TrackerTest()
         {
+            Address = 1; 
             indexBehavior = 0;
         }
 
@@ -48,17 +49,23 @@ namespace GoodsTracker
 
         public void lockVehicle(CallBackAnsCmd ans)
         {
-            sendCMD(IdCmd.CMD_LOCK,ans);
+//            Cmd c = new Cmd(IdCmd.CMD_LOCK);
+//            c.setCallBack(ans);
+//            sendCMD(c);
         }
 
         public void requestBehavior(CallBackAnsCmd ans)
         {
-            sendCMD(IdCmd.CMD_BEHAVIOR, ans);
+//            Cmd c = new Cmd(IdCmd.CMD_BEHAVIOR);
+//            c.setCallBack(ans);
+//            sendCMD(c);
         }
 
         public void unLockVehicle(CallBackAnsCmd ans)
         {
-            sendCMD(IdCmd.CMD_UNLOCK,ans);
+//            Cmd c = new Cmd(IdCmd.CMD_UNLOCK);
+//            c.setCallBack(ans);
+//            sendCMD(c);
         }
     }
 }

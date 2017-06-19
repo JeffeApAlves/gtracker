@@ -9,7 +9,7 @@ namespace GoodsTracker
          */
         int     address;
 
-        private static Dictionary<IdCmd, Cmd>   containner = new Dictionary<IdCmd, Cmd>();
+        private static Dictionary<string, Cmd> containner = new Dictionary<string, Cmd>();
         private static List<Cmd>                queueCmd = new List<Cmd>();
         private static List<AnsCmd>             queueAnsCmd = new List<AnsCmd>();
 
@@ -47,29 +47,26 @@ namespace GoodsTracker
             queueCmd.Remove(cmd);
         }
 
-        internal void sendCMD(IdCmd id, CallBackAnsCmd ans)
+        internal Cmd sendCMD(int dest, Operation o,string resource)
         {
-            Cmd c = new Cmd(id);
+            Cmd c       = new Cmd(resource);
+            c.Dest      = dest;
+            c.Operation = 0;
+            c.Resource  = resource;
 
-            c.setCallBack(ans);
+            queueCmd.Add(c);
+
+            return c;
         }
 
-        static internal Cmd getCMD(IdCmd id_cmd)
+        static internal Cmd getCMD(string resource)
         {
-            return containner[id_cmd];
+            return containner[resource];
         }
 
-        static internal Cmd findCMD(string name)
+        static internal Cmd findCMD(string resource)
         {
-            foreach (var item in containner)
-            {
-                if (item.Value.getName() == name)
-                {
-                    return item.Value;
-                }
-            }
-
-            return null;
+            return containner[resource];
         }
 
         internal void processQueue()
@@ -80,7 +77,7 @@ namespace GoodsTracker
                 {
                     foreach (Cmd cmd in queueCmd)
                     {
-                        if (ans.NameCmd == cmd.getName())
+                        if (ans.Resource == cmd.Resource)
                         {
                             if (cmd.CallBackAns(ans) == ResultExec.EXEC_SUCCESS)
                             {

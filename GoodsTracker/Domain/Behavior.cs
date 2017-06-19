@@ -148,6 +148,19 @@ namespace GoodsTracker
             AxisZ.Acceleration.Val = z;
         }
 
+        internal void setValues(ObjectValueRX values)
+        {
+            Speed.Val               = values.speed;
+            Level.Val               = values.level;
+            AxisX.Acceleration.Val  = values.X.acceleration;
+            AxisY.Acceleration.Val  = values.Y.acceleration;
+            AxisZ.Acceleration.Val  = values.Z.acceleration;
+
+            AxisX.Rotation.Val = values.X.rotation;
+            AxisY.Rotation.Val = values.Y.rotation;
+            AxisZ.Rotation.Val = values.Z.rotation;
+        }
+
         public override string ToString()
         {
             return string.Format("Lat:{0} Lng:{1}", latitude, longitude) + " " + axisX.ToString() + " " + axisY.ToString() + " " + axisZ.ToString();

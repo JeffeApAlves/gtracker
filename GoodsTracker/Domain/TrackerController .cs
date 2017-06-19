@@ -115,9 +115,5 @@ namespace GoodsTracker
                 routes[0].registerBehavior(b);
             }
         }
-
-        internal void ansBehavior()
-        {
-        }
     }
 }

@@ -18,7 +18,10 @@ namespace GoodsTracker
      * Range: 00000~65535 (00000) Broadcast
      * 
      * Operacao:
-     * Possiveis: RD ou WR
+     * Possiveis: 
+     * RD = READ
+     * WR = WRITE
+     * AN + ANSWER
      * 
      * Recurso: 
      * Range: 01~99
@@ -47,27 +50,10 @@ namespace GoodsTracker
         bool getValues(out ObjectValueRX dadosRx, CommunicationFrame frame);
     }
 
-    public struct ObjectValueRXAxis
+    public enum Operation
     {
-        public double acceleration;
-        public double rotation;
-    };
-
-    public struct ObjectValueRX
-    {
-        public int orig;
-        public int dest;
-        public string operation;
-        public int resource;
-        public int size;
-        public double latitude;
-        public double longitude;
-        public ObjectValueRXAxis X, Y, Z;
-        public double Level;
-        public int checksum;
-        public int speed;
-    };
-
+        RD, WR, AN
+    }
 
     internal class CommunicationFrame
     {
@@ -126,14 +112,7 @@ namespace GoodsTracker
         {
             return (byte)frame[i];
         }
-/*
-        internal void setByteOfFrame(int i, byte b)
-        {
-            char[] letters  = payLoad.ToCharArray();
-            letters[i]      = (char)b;
-            frame           = string.Join("", letters);
-        }
-*/
+
         internal void addByteInFrame(byte b)
         {
             frame = string.Join(frame,(char)b);
@@ -170,7 +149,7 @@ namespace GoodsTracker
         {
             int checkSum = 0;
 
-            for (int i = 0; i < payLoad.Length; i++)
+            for (int i = 0; i < frame.Length; i++)
             {
                 checkSum += getByteOfFrame(i);
             }
