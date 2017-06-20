@@ -1,0 +1,324 @@
+/* ###################################################################
+**     Filename    : Events.c
+**     Project     : GoodsTrackerControl
+**     Processor   : MKL25Z128VLK4
+**     Component   : Events
+**     Version     : Driver 01.00
+**     Compiler    : GNU C Compiler
+**     Date/Time   : 2017-06-20, 18:03, # CodeGen: 10
+**     Abstract    :
+**         This is user's event module.
+**         Put your event handler code here.
+**     Contents    :
+**         GT_TI1_OnInterrupt      - void GT_TI1_OnInterrupt(void);
+**         GT_AD1_OnEnd            - void GT_AD1_OnEnd(void);
+**         GT_AD1_OnCalibrationEnd - void GT_AD1_OnCalibrationEnd(void);
+**         GT_AsynCSerial_OnError  - void GT_AsynCSerial_OnError(void);
+**         GT_AsynCSerial_OnRxChar - void GT_AsynCSerial_OnRxChar(void);
+**         GT_AsynCSerial_OnTxChar - void GT_AsynCSerial_OnTxChar(void);
+**         TSSin_fOnFault          - void TSSin_fOnFault(byte u8FaultElecNum);
+**         TSSin_fOnInit           - void TSSin_fOnInit(void);
+**         TSSin_fCallBack0        - void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId);
+**         Cpu_OnNMIINT            - void Cpu_OnNMIINT(void);
+**
+** ###################################################################*/
+/*!
+** @file Events.c
+** @version 01.00
+** @brief
+**         This is user's event module.
+**         Put your event handler code here.
+*/         
+/*!
+**  @addtogroup Events_module Events module documentation
+**  @{
+*/         
+/* MODULE Events */
+
+#include "Cpu.h"
+#include "Events.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif 
+
+
+/* User includes (#include below this line is not maintained by Processor Expert) */
+
+/*
+** ===================================================================
+**     Event       :  GT_TI1_OnInterrupt (module Events)
+**
+**     Component   :  GT_TI1 [TimerInt]
+**     Description :
+**         When a timer interrupt occurs this event is called (only
+**         when the component is enabled - <Enable> and the events are
+**         enabled - <EnableEvent>). This event is enabled only if a
+**         <interrupt service/event> is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void GT_TI1_OnInterrupt(void)
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  GT_AD1_OnEnd (module Events)
+**
+**     Component   :  GT_AD1 [ADC]
+**     Description :
+**         This event is called after the measurement (which consists
+**         of <1 or more conversions>) is/are finished.
+**         The event is available only when the <Interrupt
+**         service/event> property is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void GT_AD1_OnEnd(void)
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  GT_AD1_OnCalibrationEnd (module Events)
+**
+**     Component   :  GT_AD1 [ADC]
+**     Description :
+**         This event is called when the calibration has been finished.
+**         User should check if the calibration pass or fail by
+**         Calibration status method./nThis event is enabled only if
+**         the <Interrupt service/event> property is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void GT_AD1_OnCalibrationEnd(void)
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  GT_AsynCSerial_OnError (module Events)
+**
+**     Component   :  GT_AsynCSerial [AsynchroSerial]
+**     Description :
+**         This event is called when a channel error (not the error
+**         returned by a given method) occurs. The errors can be read
+**         using <GetError> method.
+**         The event is available only when the <Interrupt
+**         service/event> property is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void GT_AsynCSerial_OnError(void)
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  GT_AsynCSerial_OnRxChar (module Events)
+**
+**     Component   :  GT_AsynCSerial [AsynchroSerial]
+**     Description :
+**         This event is called after a correct character is received.
+**         The event is available only when the <Interrupt
+**         service/event> property is enabled and either the <Receiver>
+**         property is enabled or the <SCI output mode> property (if
+**         supported) is set to Single-wire mode.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void GT_AsynCSerial_OnRxChar(void)
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  GT_AsynCSerial_OnTxChar (module Events)
+**
+**     Component   :  GT_AsynCSerial [AsynchroSerial]
+**     Description :
+**         This event is called after a character is transmitted.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void GT_AsynCSerial_OnTxChar(void)
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  TSSin_fOnFault (module Events)
+**
+**     Component   :  TSSin [TSS_Library]
+**     Description :
+**         This callback function is called by TSS after Fault
+**         occurence. This event is enabled always and depends on
+**         selection 'generate code' if the callback is used.
+**         The default CallBack Name is automatically generated with
+**         automatic prefix update by current Component Name. User can
+**         define own name, but then the automatic name update is not
+**         functional.
+**         Option is available from TSS3.0 version.
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         u8FaultElecNum  - The value defines
+**                           electrode number on which measurement fault
+**                           occured.
+**     Returns     : Nothing
+** ===================================================================
+*/
+void TSSin_fOnFault(byte u8FaultElecNum)
+{
+  #if TSS_USE_PE_COMPONENT
+  /* If large or small capacitor fault  */
+  if(tss_CSSys.Faults.ChargeTimeout || tss_CSSys.Faults.SmallCapacitor)
+  {
+    /* Write your code here ... */
+  }
+  /* If data corruption fault  */
+  if(tss_CSSys.Faults.DataCorruption)
+  {
+    /* Write your code here ... */
+  }
+  /* If small trigger period fault  */
+  if(tss_CSSys.Faults.SmallTriggerPeriod)
+  {
+    /* Write your code here ... */
+  }
+  /* Clear the fault flags */
+  (void) TSS_SetSystemConfig(System_Faults_Register, 0x00);
+
+  (void) u8FaultElecNum;
+  return;
+  #endif
+}
+
+/*
+** ===================================================================
+**     Event       :  TSSin_fOnInit (module Events)
+**
+**     Component   :  TSSin [TSS_Library]
+**     Description :
+**         This callback function is automatically called during the
+**         TSS Init function execution. The function is intended for
+**         implementation of peripherals initialization. TSS Component
+**         automatically enables clock for all used TSS peripherals in
+**         the internal function TSS_InitDevices which is called by
+**         this callback.
+**         This event is enabled always and depends on selection
+**         'generate code' if the callback is used.
+**         The default CallBack Name is automatically generated with
+**         automatic prefix update by current Component Name. User can
+**         define own name, but then the automatic name update is not
+**         functional.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void TSSin_fOnInit(void)
+{
+  #if TSS_USE_PE_COMPONENT
+    TSSin_InitDevices();
+  #endif
+
+  /* Write your code here ... */
+
+}
+
+/*
+** ===================================================================
+**     Event       :  TSSin_fCallBack0 (module Events)
+**
+**     Component   :  TSSin [TSS_Library]
+**     Description :
+**         Callback definition for Control 0. This event is enabled
+**         only if Control 0 is enabled.
+**         The default CallBack Name is automatically generated with
+**         automatic prefix update by current Component Name. User can
+**         define own name, but then the automatic name update is not
+**         functional.
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         u8ControlId     - Valid unique Identifier of
+**                           the Control which generated the CallBack
+**                           function. This Id can be used for finding
+**                           of Callback's source Control.
+**     Returns     : Nothing
+** ===================================================================
+*/
+void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId)
+{
+  if (TSSin_cKey0.DynamicStatus.Movement)
+  {
+    if (TSSin_cKey0.Events.Touch)
+    {
+      if (!(TSSin_cKey0.Events.InvalidPos))
+      {
+        (void) TSSin_cKey0.Position;
+
+        /* Write your code here ... */
+        (void)u8ControlId; /* avoid warning */
+        LED_R_Put(TSSin_cKey0.Position<=25);
+        LED_G_Put(TSSin_cKey0.Position>25 && TSSin_cKey0.Position<=35);
+        LED_B_Put(TSSin_cKey0.Position>35 && TSSin_cKey0.Position<=64);
+      }
+    }
+    else
+    {
+      /* Write your code here ... */
+    }
+  }
+
+
+  (void) u8ControlId;
+  return;
+}
+
+/*
+** ===================================================================
+**     Event       :  Cpu_OnNMIINT (module Events)
+**
+**     Component   :  Cpu [MKL25Z128LK4]
+*/
+/*!
+**     @brief
+**         This event is called when the Non maskable interrupt had
+**         occurred. This event is automatically enabled when the [NMI
+**         interrupt] property is set to 'Enabled'.
+*/
+/* ===================================================================*/
+void Cpu_OnNMIINT(void)
+{
+  /* Write your code here ... */
+}
+
+/* END Events */
+
+#ifdef __cplusplus
+}  /* extern "C" */
+#endif 
+
+/*!
+** @}
+*/
+/*
+** ###################################################################
+**
+**     This file was created by Processor Expert 10.5 [05.21]
+**     for the Freescale Kinetis series of microcontrollers.
+**
+** ###################################################################
+*/
