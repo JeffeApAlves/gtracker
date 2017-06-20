@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 00:05, # CodeGen: 16
+**     Date/Time   : 2017-06-20, 10:57, # CodeGen: 19
 **     Abstract    :
 **
 **     Settings    :
@@ -257,6 +257,15 @@
 #include "WAIT1.h"
 #include "MCUC1.h"
 #include "TSSin.h"
+#include "LEDR.h"
+#include "LEDpin1.h"
+#include "BitIoLdd14.h"
+#include "LEDG.h"
+#include "LEDpin2.h"
+#include "BitIoLdd15.h"
+#include "LEDB.h"
+#include "LEDpin3.h"
+#include "BitIoLdd16.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -454,6 +463,18 @@ void PE_low_level_init(void)
 
   /* Write code here ... */
 
+  /* ### BitIO_LDD "BitIoLdd14" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd14_Init(NULL);
+  /* ### LED "LEDR" init code ... */
+  LEDR_Init(); /* initialize LED driver */
+  /* ### BitIO_LDD "BitIoLdd15" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd15_Init(NULL);
+  /* ### LED "LEDG" init code ... */
+  LEDG_Init(); /* initialize LED driver */
+  /* ### BitIO_LDD "BitIoLdd16" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd16_Init(NULL);
+  /* ### LED "LEDB" init code ... */
+  LEDB_Init(); /* initialize LED driver */
   __EI();
 }
   /* Flash configuration field */

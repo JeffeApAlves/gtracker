@@ -166,6 +166,10 @@ void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId)
         (void) TSSin_cKey0.Position;
 
         /* Write your code here ... */
+        (void)u8ControlId; /* avoid warning */
+        LEDR_Put(TSSin_cKey0.Position<=25);
+        LEDG_Put(TSSin_cKey0.Position>25 && TSSin_cKey0.Position<=35);
+        LEDB_Put(TSSin_cKey0.Position>35 && TSSin_cKey0.Position<=64);
       }
     }
     else

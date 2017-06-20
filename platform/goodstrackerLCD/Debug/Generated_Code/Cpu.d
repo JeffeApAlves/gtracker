@@ -21,6 +21,12 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/LCDout.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/derivative.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/Cpu.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_API.h \
+ ../Generated_Code/LEDR.h ../Generated_Code/LEDRconfig.h \
+ ../Generated_Code/LEDpin1.h ../Generated_Code/BitIoLdd14.h \
+ ../Generated_Code/LEDG.h ../Generated_Code/LEDGconfig.h \
+ ../Generated_Code/LEDpin2.h ../Generated_Code/BitIoLdd15.h \
+ ../Generated_Code/LEDB.h ../Generated_Code/LEDBconfig.h \
+ ../Generated_Code/LEDpin3.h ../Generated_Code/BitIoLdd16.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/Events.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/PE_Types.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/PE_Error.h \
@@ -41,7 +47,16 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/LCDout.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/BitIoLdd10.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/WAIT1.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/MCUC1.h \
- D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/TSSin.h
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/TSSin.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDR.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDpin1.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/BitIoLdd14.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDG.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDpin2.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/BitIoLdd15.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDB.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDpin3.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/BitIoLdd16.h
 
 ../Generated_Code/LCDout.h:
 
@@ -111,6 +126,30 @@ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Gen
 
 D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_API.h:
 
+../Generated_Code/LEDR.h:
+
+../Generated_Code/LEDRconfig.h:
+
+../Generated_Code/LEDpin1.h:
+
+../Generated_Code/BitIoLdd14.h:
+
+../Generated_Code/LEDG.h:
+
+../Generated_Code/LEDGconfig.h:
+
+../Generated_Code/LEDpin2.h:
+
+../Generated_Code/BitIoLdd15.h:
+
+../Generated_Code/LEDB.h:
+
+../Generated_Code/LEDBconfig.h:
+
+../Generated_Code/LEDpin3.h:
+
+../Generated_Code/BitIoLdd16.h:
+
 D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/Events.h:
 
 D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/PE_Types.h:
@@ -152,3 +191,21 @@ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Gen
 D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/MCUC1.h:
 
 D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/TSSin.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDR.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDpin1.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/BitIoLdd14.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDG.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDpin2.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/BitIoLdd15.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDB.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/LEDpin3.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/BitIoLdd16.h:
