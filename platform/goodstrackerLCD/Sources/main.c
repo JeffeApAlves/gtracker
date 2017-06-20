@@ -46,6 +46,15 @@
 #include "WAIT1.h"
 #include "MCUC1.h"
 #include "TSSin.h"
+#include "LEDR.h"
+#include "LEDpin1.h"
+#include "BitIoLdd14.h"
+#include "LEDG.h"
+#include "LEDpin2.h"
+#include "BitIoLdd15.h"
+#include "LEDB.h"
+#include "LEDpin3.h"
+#include "BitIoLdd16.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -71,6 +80,11 @@ int main(void)
   LCDWriteString("TESTE...123");
   LCDGotoXY(2, 1);
   LCDWriteString("GOODSTRACKER");
+
+  TSSin_Configure(); /* initialize TSS library */
+  for(;;) {
+    TSS_Task(); /* call TSS library to process touches */
+  }
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/

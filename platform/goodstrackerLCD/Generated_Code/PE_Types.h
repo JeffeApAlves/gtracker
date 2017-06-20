@@ -6,7 +6,7 @@
 **     Component   : PE_Types
 **     Version     : Driver 01.01
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-19, 23:51, # CodeGen: 14
+**     Date/Time   : 2017-06-20, 10:57, # CodeGen: 19
 **     Abstract    :
 **         PE_Types.h - contains definitions of basic types,
 **         register access macros and hardware specific macros
@@ -210,6 +210,9 @@ typedef unsigned long int       uint32;
 #define PE_LDD_COMPONENT_BitIoLdd8_ID            0x03U
 #define PE_LDD_COMPONENT_BitIoLdd9_ID            0x04U
 #define PE_LDD_COMPONENT_BitIoLdd10_ID           0x05U
+#define PE_LDD_COMPONENT_BitIoLdd14_ID           0x06U
+#define PE_LDD_COMPONENT_BitIoLdd15_ID           0x07U
+#define PE_LDD_COMPONENT_BitIoLdd16_ID           0x08U
 
 /*
 ** ===================================================================

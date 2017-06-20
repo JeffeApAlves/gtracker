@@ -42,6 +42,39 @@ Module "TSSin"     (component TSS_Library)
                 Config registers and all Control Config registers initialization according to setting of Component properties. 
                 The user have to place this function into the proper location in the source code.
 
+Module "LEDR"      (component LED)
+   - LEDR_On -This turns the LED on.
+   - LEDR_Off -This turns the LED off.
+   - LEDR_Neg -This negates/toggles the LED
+   - LEDR_Get -This returns logical 1 in case the LED is on, 0 otherwise.
+   - LEDR_Put -Turns the LED on or off.
+   - LEDR_SetRatio16 -Method to specify the duty cycle. If using a PWM pin, this means the duty cycle is set. For On/off pins, 
+                values smaller 0x7FFF means off, while values greater means on.
+   - LEDR_Deinit -Deinitializes the driver
+   - LEDR_Init -Performs the LED driver initialization.
+
+Module "LEDG"      (component LED)
+   - LEDG_On -This turns the LED on.
+   - LEDG_Off -This turns the LED off.
+   - LEDG_Neg -This negates/toggles the LED
+   - LEDG_Get -This returns logical 1 in case the LED is on, 0 otherwise.
+   - LEDG_Put -Turns the LED on or off.
+   - LEDG_SetRatio16 -Method to specify the duty cycle. If using a PWM pin, this means the duty cycle is set. For On/off pins, 
+                values smaller 0x7FFF means off, while values greater means on.
+   - LEDG_Deinit -Deinitializes the driver
+   - LEDG_Init -Performs the LED driver initialization.
+
+Module "LEDB"      (component LED)
+   - LEDB_On -This turns the LED on.
+   - LEDB_Off -This turns the LED off.
+   - LEDB_Neg -This negates/toggles the LED
+   - LEDB_Get -This returns logical 1 in case the LED is on, 0 otherwise.
+   - LEDB_Put -Turns the LED on or off.
+   - LEDB_SetRatio16 -Method to specify the duty cycle. If using a PWM pin, this means the duty cycle is set. For On/off pins, 
+                values smaller 0x7FFF means off, while values greater means on.
+   - LEDB_Deinit -Deinitializes the driver
+   - LEDB_Init -Performs the LED driver initialization.
+
 Module "Cpu"       (component MKL25Z128LK4)
 
 ===================================================================================

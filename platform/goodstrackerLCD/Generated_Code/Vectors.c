@@ -6,7 +6,7 @@
 **     Version     : Component 01.025, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 00:05, # CodeGen: 16
+**     Date/Time   : 2017-06-20, 10:57, # CodeGen: 19
 **     Abstract    :
 **
 **     Settings    :
@@ -71,6 +71,15 @@
   #include "WAIT1.h"
   #include "MCUC1.h"
   #include "TSSin.h"
+  #include "LEDR.h"
+  #include "LEDpin1.h"
+  #include "BitIoLdd14.h"
+  #include "LEDG.h"
+  #include "LEDpin2.h"
+  #include "BitIoLdd15.h"
+  #include "LEDB.h"
+  #include "LEDpin3.h"
+  #include "BitIoLdd16.h"
   #include "Events.h"
 
 

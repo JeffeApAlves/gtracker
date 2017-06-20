@@ -6,6 +6,9 @@
 C_SRCS += \
 ../Generated_Code/BitIoLdd1.c \
 ../Generated_Code/BitIoLdd10.c \
+../Generated_Code/BitIoLdd14.c \
+../Generated_Code/BitIoLdd15.c \
+../Generated_Code/BitIoLdd16.c \
 ../Generated_Code/BitIoLdd2.c \
 ../Generated_Code/BitIoLdd7.c \
 ../Generated_Code/BitIoLdd8.c \
@@ -17,6 +20,12 @@ C_SRCS += \
 ../Generated_Code/DB71.c \
 ../Generated_Code/EN1.c \
 ../Generated_Code/LCDout.c \
+../Generated_Code/LEDB.c \
+../Generated_Code/LEDG.c \
+../Generated_Code/LEDR.c \
+../Generated_Code/LEDpin1.c \
+../Generated_Code/LEDpin2.c \
+../Generated_Code/LEDpin3.c \
 ../Generated_Code/MCUC1.c \
 ../Generated_Code/PE_LDD.c \
 ../Generated_Code/RS1.c \
@@ -27,6 +36,9 @@ C_SRCS += \
 OBJS += \
 ./Generated_Code/BitIoLdd1.o \
 ./Generated_Code/BitIoLdd10.o \
+./Generated_Code/BitIoLdd14.o \
+./Generated_Code/BitIoLdd15.o \
+./Generated_Code/BitIoLdd16.o \
 ./Generated_Code/BitIoLdd2.o \
 ./Generated_Code/BitIoLdd7.o \
 ./Generated_Code/BitIoLdd8.o \
@@ -38,6 +50,12 @@ OBJS += \
 ./Generated_Code/DB71.o \
 ./Generated_Code/EN1.o \
 ./Generated_Code/LCDout.o \
+./Generated_Code/LEDB.o \
+./Generated_Code/LEDG.o \
+./Generated_Code/LEDR.o \
+./Generated_Code/LEDpin1.o \
+./Generated_Code/LEDpin2.o \
+./Generated_Code/LEDpin3.o \
 ./Generated_Code/MCUC1.o \
 ./Generated_Code/PE_LDD.o \
 ./Generated_Code/RS1.o \
@@ -48,6 +66,9 @@ OBJS += \
 C_DEPS += \
 ./Generated_Code/BitIoLdd1.d \
 ./Generated_Code/BitIoLdd10.d \
+./Generated_Code/BitIoLdd14.d \
+./Generated_Code/BitIoLdd15.d \
+./Generated_Code/BitIoLdd16.d \
 ./Generated_Code/BitIoLdd2.d \
 ./Generated_Code/BitIoLdd7.d \
 ./Generated_Code/BitIoLdd8.d \
@@ -59,6 +80,12 @@ C_DEPS += \
 ./Generated_Code/DB71.d \
 ./Generated_Code/EN1.d \
 ./Generated_Code/LCDout.d \
+./Generated_Code/LEDB.d \
+./Generated_Code/LEDG.d \
+./Generated_Code/LEDR.d \
+./Generated_Code/LEDpin1.d \
+./Generated_Code/LEDpin2.d \
+./Generated_Code/LEDpin3.d \
 ./Generated_Code/MCUC1.d \
 ./Generated_Code/PE_LDD.d \
 ./Generated_Code/RS1.d \
