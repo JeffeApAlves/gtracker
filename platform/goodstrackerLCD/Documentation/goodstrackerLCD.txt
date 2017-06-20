@@ -37,6 +37,11 @@ Module "WAIT1"     (component Wait)
 
 Module "MCUC1"     (component McuLibConfig)
 
+Module "TSSin"     (component TSS_Library)
+   - TSSin_Configure -Whole TSS initialization and configuration of registers. Contains main TSS_Init() function, TSS System 
+                Config registers and all Control Config registers initialization according to setting of Component properties. 
+                The user have to place this function into the proper location in the source code.
+
 Module "Cpu"       (component MKL25Z128LK4)
 
 ===================================================================================

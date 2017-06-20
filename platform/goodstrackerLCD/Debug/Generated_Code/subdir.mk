@@ -20,6 +20,7 @@ C_SRCS += \
 ../Generated_Code/MCUC1.c \
 ../Generated_Code/PE_LDD.c \
 ../Generated_Code/RS1.c \
+../Generated_Code/TSSin.c \
 ../Generated_Code/Vectors.c \
 ../Generated_Code/WAIT1.c 
 
@@ -40,6 +41,7 @@ OBJS += \
 ./Generated_Code/MCUC1.o \
 ./Generated_Code/PE_LDD.o \
 ./Generated_Code/RS1.o \
+./Generated_Code/TSSin.o \
 ./Generated_Code/Vectors.o \
 ./Generated_Code/WAIT1.o 
 
@@ -60,6 +62,7 @@ C_DEPS += \
 ./Generated_Code/MCUC1.d \
 ./Generated_Code/PE_LDD.d \
 ./Generated_Code/RS1.d \
+./Generated_Code/TSSin.d \
 ./Generated_Code/Vectors.d \
 ./Generated_Code/WAIT1.d 
 
@@ -68,7 +71,7 @@ C_DEPS += \
 Generated_Code/%.o: ../Generated_Code/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Static_Code/PDD" -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Static_Code/IO_Map" -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources" -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Static_Code/PDD" -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Static_Code/IO_Map" -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources" -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code" -I"D:/Users/Flávio Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
