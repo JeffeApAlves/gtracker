@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GoodsTracker
 {
@@ -9,7 +10,10 @@ namespace GoodsTracker
          */
         int     address;
 
-        private static Dictionary<string, Cmd> containner = new Dictionary<string, Cmd>();
+        static int     index = 0;
+
+        static List<CommunicationUnit>          units = new List<CommunicationUnit>();
+        private static Dictionary<string, Cmd>  containner = new Dictionary<string, Cmd>();
         private static List<Cmd>                queueCmd = new List<Cmd>();
         private static List<AnsCmd>             queueAnsCmd = new List<AnsCmd>();
 
@@ -17,9 +21,12 @@ namespace GoodsTracker
         internal List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
         internal int Address { get => address; set => address = value; }
 
+
+        protected abstract void onReceiveAnswer(AnsCmd ans);
+
         internal CommunicationUnit()
         {
-            Protocol.Units.Add(this);
+            units.Add(this);
         }
 
         static internal bool isAnyCmd()
@@ -59,6 +66,11 @@ namespace GoodsTracker
             return c;
         }
 
+        internal static CommunicationUnit getNextUnit()
+        {
+            return units[(index++) % units.Count];
+        }
+
         static internal Cmd getCMD(string resource)
         {
             return containner[resource];
@@ -79,15 +91,15 @@ namespace GoodsTracker
                     {
                         if (ans.Resource == cmd.Resource)
                         {
-                            if (cmd.CallBackAns(ans) == ResultExec.EXEC_SUCCESS)
-                            {
-                                removeCmd(cmd);
-                            }
+                            onReceiveAnswer(ans);
+
+                            cmd.EventAnswerCmd?.Invoke(ans);
+
+                            removeCmd(cmd);
                         }
                     }
                 }
             }
         }
-
     }
 }

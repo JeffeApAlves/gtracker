@@ -31,7 +31,7 @@ namespace GoodsTracker
 
         private TrackerController()
         {
-            tracker     = new TrackerTest();
+            tracker     = new Tracker();
             fences      = new List<Fence>();
             routes      = new List<Route>();
         }
@@ -52,9 +52,9 @@ namespace GoodsTracker
             return fence;
         }
 
-        internal Route createRoute()
+        internal Route createRoute(string name)
         {
-            Route route = new Route("");
+            Route route = new Route(name);
 
             return route;
         }
@@ -98,10 +98,10 @@ namespace GoodsTracker
 
         internal void requestBehavior()
         {
-            tracker.requestBehavior(callBackBehavior);
+            tracker.requestBehavior(onReceiveBehavior);
         }
 
-        internal ResultExec callBackBehavior(AnsCmd ans)
+        internal ResultExec onReceiveBehavior(AnsCmd ans)
         {
             registerBehavior(tracker.getBehavior());
 

@@ -86,7 +86,6 @@
     <Compile Include="Domain\Behavior.cs" />
     <Compile Include="Domain\tracker.cs" />
     <Compile Include="Domain\TrackerController .cs" />
-    <Compile Include="Domain\TrackerTest.cs" />
     <Compile Include="FrontEnd\BuildTreeView.cs" />
     <Compile Include="Communication\Cmd.cs" />
     <Compile Include="Communication\communicationFrame.cs" />

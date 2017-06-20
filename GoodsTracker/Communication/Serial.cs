@@ -16,22 +16,22 @@ namespace GoodsTracker
             bufferTx = new RingBuffer(256);
         }
 
-        internal bool putTxData(byte data)
+        internal bool putTxData(char data)
         {
             return bufferTx.putData(data);
         }
 
-        internal bool putRxData(byte data)
+        internal bool putRxData(char data)
         {
             return bufferRx.putData(data);
         }
 
-        internal bool getTxData(out byte ch)
+        internal bool getTxData(out char ch)
         {
             return bufferTx.getData(out ch);
         }
 
-        internal bool getRxData(out byte ch)
+        internal bool getRxData(out char ch)
         {
             return bufferRx.getData(out ch);
         }
@@ -48,17 +48,17 @@ namespace GoodsTracker
             bufferTx.initBuffer();
         }
 
-        internal void putTxData(char data)
-        {
-            putTxData((byte)data);
-        }
-
         internal void putTxData(string str)
         {
             foreach (char c in str)
             {
                 putTxData(c);
             }
+        }
+
+        internal void setFrameRx(string str)
+        {
+            bufferRx.setBuffer(str);
         }
     }
 }

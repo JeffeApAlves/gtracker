@@ -8,19 +8,16 @@ namespace GoodsTracker
 {
     class ThreadGUI : ThreadRun
     {
-        update update;
+        onUpdate onUpdate;
 
         public override void run()
         {
-            if (update != null)
-            {
-                update();
-            }
+            onUpdate?.Invoke();
         }
 
-        public void setUpdate(update func)
+        public void setUpdate(onUpdate func)
         {
-            update = func;
+            onUpdate = func;
         }
     }
 }

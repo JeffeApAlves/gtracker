@@ -27,7 +27,10 @@ namespace GoodsTracker
         public MainForm()
         {
             InitializeComponent();
-            initAllThreads();        
+
+            Protocol.Communication.init();
+
+            initAllThreads();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -206,7 +209,7 @@ namespace GoodsTracker
 
         private void initPanelTrip()
         {
-            route = trackerController.createRoute();
+            route = trackerController.createRoute("Route");
         }
 
         private void initPanelFence()
@@ -435,6 +438,7 @@ namespace GoodsTracker
 
         void updateScreen()
         {
+            test.AddFrame();
         }
     }
 
@@ -454,4 +458,47 @@ namespace GoodsTracker
         START_POINT,
         END_POINT
     }
+
+
+    class test
+    {
+        static int indexBehavior = 0;
+
+        static public void AddFrame()
+        {
+            Behavior b = null;
+
+            if (TrackerController.TrackerCtrl.Routes.Count > 0 &&
+                TrackerController.TrackerCtrl.Routes[0].MapRoute != null &&
+                TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > indexBehavior)
+            {
+                b = new Behavior();
+
+                PointLatLng p = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[indexBehavior++];
+                Random rnd = new Random();
+
+                b = new Behavior();
+                b.DateTime = DateTime.Now;
+                b.setPosition(p.Lat, p.Lng);
+                b.setAcceleration(rnd.Next(0, 100), rnd.Next(0, 100), rnd.Next(0, 100));
+
+                DecoderFrameTx decoder = new DecoderFrameTx();
+
+                CommunicationFrame frame = new CommunicationFrame();
+
+                decoder.setFrame(ref frame, CommunicationUnit.getNextUnit());
+                decoder.setPayLoad(ref frame, b);
+
+                
+
+                Protocol.Communication.setFrameRx(  CONST_CHAR.RX_FRAME_START + 
+                                                    frame.Frame +":*" + frame.checkSum().ToString() +
+                                                    CONST_CHAR.RX_FRAME_END+
+                                                    CONST_CHAR.CR + 
+                                                    CONST_CHAR.LF);
+
+            }
+        }
+    }
+
 }

@@ -40,8 +40,7 @@ namespace GoodsTracker
 
     interface IDecoderFrameTx
     {
-        bool setFrame(out CommunicationFrame frame, CommunicationUnit unit);
-
+        bool setFrame(ref CommunicationFrame frame, CommunicationUnit unit);
         bool setPayLoad(ref CommunicationFrame frame, Behavior b);
     }
 
@@ -72,7 +71,7 @@ namespace GoodsTracker
             set
             {
                 header = value;
-                frame = header + frame;
+                frame = header + payLoad;
             }
         }
 
@@ -86,7 +85,7 @@ namespace GoodsTracker
             set
             {
                 payLoad = value;
-                frame = header + frame;
+                frame = header + payLoad;
             }
         }
 
@@ -113,9 +112,9 @@ namespace GoodsTracker
             return (byte)frame[i];
         }
 
-        internal void addByteInFrame(byte b)
+        internal void addByteInFrame(char b)
         {
-            frame = string.Join(frame,(char)b);
+            frame += b;
         }
 
         internal void clear()
@@ -135,7 +134,7 @@ namespace GoodsTracker
             return frame.Length;
         }
 
-        internal bool isPayloadFull()
+        internal bool isPayLoadFull()
         {
             return getSizeOfPayLoad() >= LEN_MAX_PAYLOAD;
         }
@@ -145,13 +144,15 @@ namespace GoodsTracker
             return getSizeOfPayLoad() <= 0;
         }
 
-        internal int checkSum()
+        internal byte checkSum()
         {
-            int checkSum = 0;
+            byte checkSum = 0;
 
-            for (int i = 0; i < frame.Length; i++)
+            byte[] datas = Encoding.ASCII.GetBytes(frame);
+
+            for (int i = 0; i < datas.Length; i++)
             {
-                checkSum += getByteOfFrame(i);
+                checkSum ^= datas[i];
             }
 
             return checkSum;

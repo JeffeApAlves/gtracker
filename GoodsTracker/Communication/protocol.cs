@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GoodsTracker
 {
@@ -29,7 +30,7 @@ namespace GoodsTracker
         public const char RX_FRAME_END      = ']';
         public const char CR                = '\r';
         public const char LF                = '\n';
-        public const char SEPARATOR         = ',';
+        public const char SEPARATOR         = ':';
         public const char NAK               = ((char)0x15);
         public const char ASTERISCO         = '*';
     }
@@ -37,13 +38,11 @@ namespace GoodsTracker
     class Protocol : ThreadRun
     {
         static Protocol singleton = null;
-        static List<CommunicationUnit> units = new List<CommunicationUnit>();
 
         StatusRx            statusRx        = StatusRx.RX_FRAME_INIT;
         Serial              serial;
         CommunicationFrame  rxFrame;
-        CommunicationUnit   cur_unit;
-        int                 index = 0;
+        CommunicationUnit   currentUnit;
 
         //Singleton
         public static Protocol Communication
@@ -59,8 +58,6 @@ namespace GoodsTracker
             }
         }
 
-        internal static List<CommunicationUnit> Units { get => units; set => units = value; }
-
         private Protocol()
         {
             serial = new Serial();
@@ -68,15 +65,13 @@ namespace GoodsTracker
 
         public override void run()
         {
-            cur_unit = units[(index++)%units.Count];
+            currentUnit = CommunicationUnit.getNextUnit();
 
-            if (cur_unit != null)
+            if (currentUnit != null)
             {
                 processTx();
-
                 processRx();
-
-                cur_unit.processQueue();
+                currentUnit.processQueue();
             }
         }
 
@@ -84,11 +79,10 @@ namespace GoodsTracker
         {
             if (CommunicationUnit.isAnyCmd())
             {
-                IDecoderFrameTx decoder = new DecoderFrameTx();
+                IDecoderFrameTx decoder     = new DecoderFrameTx();
+                CommunicationFrame frame    = new CommunicationFrame();
 
-                CommunicationFrame frame;
-
-                if(decoder.setFrame(out frame, cur_unit))
+                if(decoder.setFrame(ref frame, currentUnit))
                 {
                     sendFrame(frame);
                 }            
@@ -114,7 +108,7 @@ namespace GoodsTracker
 
         void rxStartCMD()
         {
-            byte ch;
+            char ch;
 
             if (serial.getRxData(out ch))
             {
@@ -129,37 +123,30 @@ namespace GoodsTracker
 
         void rxPayLoad()
         {
-            byte ch;
+            char ch;
 
             if (serial.getRxData(out ch))
             {
-                if (ch == CONST_CHAR.RX_FRAME_START || rxFrame.isPayLoadEmpty())
+                if (ch == CONST_CHAR.RX_FRAME_START)
                 {
                     setStatusRx(StatusRx.RX_FRAME_NOK);
                 }
                 else if (ch == CONST_CHAR.RX_FRAME_END)
                 {
-                    if (rxFrame.isPayLoadEmpty())
-                    {
-                        setStatusRx(StatusRx.RX_FRAME_RX_END);
-                    }
-                    else
-                    {
-                        setStatusRx(StatusRx.RX_FRAME_NOK);
-                    }
+                    setStatusRx(StatusRx.RX_FRAME_RX_END);
                 }
                 else
                 {
-                    setStatusRx(StatusRx.RX_FRAME_RX_PAYLOAD);
-
                     rxFrame.addByteInFrame(ch);
+
+                    setStatusRx(StatusRx.RX_FRAME_RX_PAYLOAD);
                 }
             }
         }
 
         void rxNL()
         {
-            byte ch;
+            char ch;
 
             if (serial.getRxData(out ch))
             {
@@ -177,7 +164,7 @@ namespace GoodsTracker
 
         void rxCR()
         {
-            byte ch;
+            char ch;
 
             if (serial.getRxData(out ch))
             {
@@ -195,6 +182,8 @@ namespace GoodsTracker
 
         void verifyCheckSum()
         {
+            int checksum = rxFrame.checkSum();
+
             setStatusRx(StatusRx.RX_FRAME_OK);
         }
 
@@ -250,6 +239,16 @@ namespace GoodsTracker
         void clearRxFrame()
         {
             rxFrame = new CommunicationFrame();
+        }
+
+        internal void init()
+        {
+            setTime(10);
+        }
+
+        internal void setFrameRx(string str)
+        {
+            serial.setFrameRx(str);
         }
     }
 }

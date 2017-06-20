@@ -35,13 +35,16 @@ namespace GoodsTracker
     {
         enum DATA1 {
 
-            LAT     = 0,
-            LNG     = 1,
-            ACCEL_X = 2,
-            ACCEL_Y = 3,
-            ACCEL_Z = 4,
-            LEVEL   = 5,
-            SPEED   = 6,
+            ORIG    = 0,
+            DEST    = 1,
+
+            LAT     = 5,
+            LNG     = 6,
+            ACCEL_X = 7,
+            ACCEL_Y = 8,
+            ACCEL_Z = 9,
+            LEVEL   = 10,
+            SPEED   = 11,
         }
 
         public bool getValues(out ObjectValueRX dadosRx, CommunicationFrame frame)
@@ -51,7 +54,7 @@ namespace GoodsTracker
 
             try
             {
-                string[] list   = frame.PayLoad.Split(CONST_CHAR.SEPARATOR);
+                string[] list   = frame.Frame.Split(CONST_CHAR.SEPARATOR);
 
                 if (list != null && list.Length >= 9)
                 {

@@ -21,7 +21,7 @@
         public int speed;
     };
 
-    internal delegate ResultExec CallBackAnsCmd(AnsCmd dados);
+    internal delegate ResultExec onAnswerCmd(AnsCmd dados);
 
     internal class AnsCmd
     {

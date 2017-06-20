@@ -7,7 +7,7 @@ namespace GoodsTracker
 
     internal class DecoderFrameTx : IDecoderFrameTx
     {
-        public bool setFrame(out CommunicationFrame frame, CommunicationUnit unit)
+        public bool setFrame(ref CommunicationFrame frame, CommunicationUnit unit)
         {
             bool ret = false;
 
@@ -19,6 +19,7 @@ namespace GoodsTracker
 
                 StringBuilder sb = new StringBuilder();
 
+                //Header
                 sb.Append(unit.Address);
                 sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(cmd.Dest);
@@ -29,9 +30,10 @@ namespace GoodsTracker
                 sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(0);
                 sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(CONST_CHAR.SEPARATOR);
+                frame.Header = sb.ToString();
 
-                frame.Frame = sb.ToString();
+                //nenhum payload
+                frame.PayLoad = CONST_CHAR.SEPARATOR.ToString();
 
                 ret = true;
             }
@@ -52,22 +54,26 @@ namespace GoodsTracker
                 StringBuilder sb = new StringBuilder();
 
                 sb.Append(b.Latitude);
+
                 sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(b.Longitude);
-                sb.Append(CONST_CHAR.SEPARATOR);
 
+                sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(b.AxisX.Acceleration.Val);
+
                 sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(b.AxisY.Acceleration.Val);
+
                 sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(b.AxisZ.Acceleration.Val);
-                sb.Append(CONST_CHAR.SEPARATOR);
 
+                sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(b.Speed.Val);
-                sb.Append(CONST_CHAR.SEPARATOR);
 
-                sb.Append(b.Level.Val);
                 sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(b.Level.Val);
+
+                frame.PayLoad = sb.ToString();
 
                 ret = true;
             }

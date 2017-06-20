@@ -94,6 +94,8 @@ namespace GoodsTracker
             AxisX       = new Axis();
             AxisY       = new Axis();
             AxisZ       = new Axis();
+            speed       = new Value();
+            level       = new Value();
         }
 
         internal bool OK()

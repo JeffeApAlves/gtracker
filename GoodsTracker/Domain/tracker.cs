@@ -5,7 +5,6 @@ namespace GoodsTracker
     class Tracker : CommunicationUnit,InterfaceTracker
     {
         Behavior    behavior;
-        bool        lockStatus = false;
 
         internal Tracker()
         {
@@ -14,58 +13,49 @@ namespace GoodsTracker
 
         public Behavior getBehavior()
         {
-            throw new NotImplementedException();
+            return behavior;
         }
 
-        public void getLevel()
+        public double getLevel()
         {
-            throw new NotImplementedException();
+            return behavior.Level.Val;
         }
 
-        public void requestBehavior(CallBackAnsCmd ans)
+        public void requestBehavior(onAnswerCmd on_ans)
         {
-            sendCMD(2,Operation.RD,RESOURCE.BEHAVIOR).setCallBack(callBackData1);
+            sendCMD(2,Operation.RD,RESOURCE.BEHAVIOR).setEventAnswerCmd(on_ans);
         }
 
-        public void lockVehicle(CallBackAnsCmd ans)
+        public void lockVehicle(onAnswerCmd on_ans)
         {
-            sendCMD(2, Operation.WR, RESOURCE.LOCK).setCallBack(ans);
+            sendCMD(2, Operation.WR, RESOURCE.LOCK).setEventAnswerCmd(on_ans);
         }
 
-        public void unLockVehicle(CallBackAnsCmd ans)
+        public void unLockVehicle(onAnswerCmd on_ans)
         {
-            sendCMD(2, Operation.WR, RESOURCE.LOCK).setCallBack(ans);
+            sendCMD(2, Operation.WR, RESOURCE.LOCK).setEventAnswerCmd(on_ans);
         }
 
-        public void unLockVehicle()
+        /*
+         * 
+         * Chamado quando um aresposta e recebida 
+         * 
+         */
+        protected override void onReceiveAnswer(AnsCmd ans)
         {
-            sendCMD(2, Operation.WR, RESOURCE.LOCK).setCallBack(callBackUnLock);
+            if(ans.Resource.Equals(RESOURCE.BEHAVIOR))
+            {
+                updateBehavior(ans);
+            }
+            else if(ans.Resource.Equals(RESOURCE.LOCK)){
+            // NOTHING TODO
+            }
         }
 
-        public void LockVehicle()
-        {
-            sendCMD(2, Operation.WR, RESOURCE.LOCK).setCallBack(callBackLock);
-        }
-
-        private ResultExec callBackUnLock(AnsCmd ans)
-        {
-            lockStatus = false;
-            return ResultExec.EXEC_SUCCESS;
-        }
-
-        private ResultExec callBackLock(AnsCmd ans)
-        {
-            lockStatus = true;
-            return ResultExec.EXEC_SUCCESS;
-        }
-
-        private ResultExec callBackData1(AnsCmd ans)
+        void updateBehavior(AnsCmd ans)
         {
             behavior = new Behavior();
-
-            behavior.AxisX.Acceleration.Val = ans.DadosRx.X.acceleration;
-
-            return ResultExec.EXEC_SUCCESS;
+            behavior.setValues(ans.DadosRx);
         }
     }
 }
