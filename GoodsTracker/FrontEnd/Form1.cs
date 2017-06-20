@@ -23,6 +23,7 @@ namespace GoodsTracker
 
         int itemselected = -1;
         int filterslected = 0;
+        int register_count = 0;
 
         public MainForm()
         {
@@ -166,8 +167,12 @@ namespace GoodsTracker
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            filterslected = cbFilter.SelectedIndex;
-            updateBehavior();
+            if(filterslected != cbFilter.SelectedIndex)
+            {
+                filterslected = cbFilter.SelectedIndex;
+
+                updateBehavior();
+            }
         }
 
         private void groupBox1_Click(object sender, System.EventArgs e)
@@ -423,7 +428,12 @@ namespace GoodsTracker
         private void timer1_Tick(object sender, EventArgs e)
         {
             trackerController.requestBehavior();
-            updateBehavior();
+
+            if(register_count!= trackerController.getCountRegisters())
+            {
+                register_count = trackerController.getCountRegisters();
+                updateBehavior();
+            }
         }
 
         void initAllThreads()
@@ -472,7 +482,6 @@ namespace GoodsTracker
                 Random rnd          = new Random();
                 TelemetriaData b    = new TelemetriaData();
                 PointLatLng p       = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[indexBehavior++];
-
 
                 b = new TelemetriaData();
                 b.DateTime = DateTime.Now;

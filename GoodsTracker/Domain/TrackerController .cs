@@ -122,5 +122,10 @@ namespace GoodsTracker
         {
             return routes.Count > 0 &&routes[0].MapRoute!=null;
         }
+
+        internal int getCountRegisters()
+        {
+            return anyRoute() ? routes[0].Behaviors.Count:0;
+        }
     }
 }
