@@ -7,13 +7,13 @@ namespace GoodsTracker
     {
         private static TrackerController singleton=null;
 
-        InterfaceTracker    tracker;
+        Tracker             tracker;
         List<Fence>         fences;
         List<Route>         routes;
 
         internal List<Fence> Fences { get => fences; set => fences = value; }
         internal List<Route> Routes { get => routes; set => routes = value; }
-        internal InterfaceTracker Tracker { get => tracker; set => tracker = value; }
+
 
         //Singleton
         public static TrackerController TrackerCtrl
@@ -29,9 +29,11 @@ namespace GoodsTracker
             }
         }
 
+        internal Tracker Tracker { get => tracker; set => tracker = value; }
+
         private TrackerController()
         {
-            tracker     = new Tracker();
+            tracker     = new Tracker(1);
             fences      = new List<Fence>();
             routes      = new List<Route>();
         }
@@ -69,11 +71,11 @@ namespace GoodsTracker
             fences.RemoveAt(index);
         }
 
-        internal List<Behavior> getBehaviorFiltered(int i)
+        internal List<TelemetriaData> getBehaviorFiltered(int i)
         {
-            List<Behavior> ret = null;
+            List<TelemetriaData> ret = null;
 
-            if (routes.Count > 0)
+            if (anyRoute())
             {
                 ret = routes[0].getBehaviorFiltered(i);
             }
@@ -108,12 +110,17 @@ namespace GoodsTracker
             return ResultExec.EXEC_SUCCESS;
         }
 
-        internal void registerBehavior(Behavior b)
+        internal void registerBehavior(TelemetriaData b)
         {
-            if (routes.Count > 0 && b != null)
+            if (anyRoute() && b != null)
             {
                 routes[0].registerBehavior(b);
             }
+        }
+
+        internal bool anyRoute()
+        {
+            return routes.Count > 0 &&routes[0].MapRoute!=null;
         }
     }
 }

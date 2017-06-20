@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace GoodsTracker
 {
@@ -79,10 +78,10 @@ namespace GoodsTracker
         {
             if (CommunicationUnit.isAnyCmd())
             {
-                IDecoderFrameTx decoder     = new DecoderFrameTx();
+                IDecoderFrameTx decoder     = new DecoderFrame();
                 CommunicationFrame frame    = new CommunicationFrame();
 
-                if(decoder.setFrame(ref frame, currentUnit))
+                if(decoder.setHeader(ref frame, currentUnit))
                 {
                     sendFrame(frame);
                 }            
@@ -168,7 +167,6 @@ namespace GoodsTracker
 
             if (serial.getRxData(out ch))
             {
-
                 if (ch == CONST_CHAR.CR)
                 {
                     setStatusRx(StatusRx.RX_FRAME_RX_CR);
@@ -189,14 +187,11 @@ namespace GoodsTracker
 
         void acceptRxFrame()
         {
-            IDecoderFrameRx decoder     = new DecoderFrameRx();
-            AnsCmd          ans         = new AnsCmd();
-            ObjectValueRX   dadosRx;
+            IDecoderFrameRx decoder     = new DecoderFrame();
+            AnsCmd          ans;
 
-            if (decoder.getValues(out dadosRx, rxFrame))
+            if (decoder.getValues(out ans, rxFrame))
             {
-                ans.DadosRx = dadosRx;
-
                 CommunicationUnit.addAns(ans);
             }
 
@@ -243,12 +238,12 @@ namespace GoodsTracker
 
         internal void init()
         {
-            setTime(10);
+            setTime(20);
         }
 
         internal void setFrameRx(string str)
         {
-            serial.setFrameRx(str);
+            serial.putRxData(str);
         }
     }
 }

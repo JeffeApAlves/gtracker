@@ -12,8 +12,8 @@ namespace GoodsTracker
 
         public Serial()
         {
-            bufferRx = new RingBuffer(256);
-            bufferTx = new RingBuffer(256);
+            bufferRx = new RingBuffer(1024);
+            bufferTx = new RingBuffer(1024);
         }
 
         internal bool putTxData(char data)
@@ -56,9 +56,12 @@ namespace GoodsTracker
             }
         }
 
-        internal void setFrameRx(string str)
+        internal void putRxData(string str)
         {
-            bufferRx.setBuffer(str);
+            foreach (char c in str)
+            {
+                putRxData(c);
+            }
         }
     }
 }

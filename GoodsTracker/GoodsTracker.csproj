@@ -90,7 +90,6 @@
     <Compile Include="Communication\Cmd.cs" />
     <Compile Include="Communication\communicationFrame.cs" />
     <Compile Include="Communication\CommunicationUnit.cs" />
-    <Compile Include="Communication\DecoderFrameRx.cs" />
     <Compile Include="Communication\DecoderFrameTx.cs" />
     <Compile Include="display.cs" />
     <Compile Include="Domain\Fence.cs" />

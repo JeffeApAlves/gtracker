@@ -1,35 +1,26 @@
 ﻿namespace GoodsTracker
 {
-    public struct ObjectValueRXAxis
-    {
-        public double acceleration;
-        public double rotation;
-    };
-
-    public struct ObjectValueRX
-    {
-        public int orig;
-        public int dest;
-        public string operation;
-        public int resource;
-        public int size;
-        public double latitude;
-        public double longitude;
-        public ObjectValueRXAxis X, Y, Z;
-        public double level;
-        public int checksum;
-        public int speed;
-    };
-
-    internal delegate ResultExec onAnswerCmd(AnsCmd dados);
-
     internal class AnsCmd
     {
-        string resource;
+        string resource,operation;
+        int orig, dest;
+        int size;
 
-        ObjectValueRX dadosRx;
+        TelemetriaData info;
 
-        public ObjectValueRX DadosRx { get => dadosRx; set => dadosRx = value; }
         public string Resource { get => resource; set => resource = value; }
+        public int Orig { get => orig; set => orig = value; }
+        public int Dest { get => dest; set => dest = value; }
+        public int Size { get => size; set => size = value; }
+        public string Operation { get => operation; set => operation = value; }
+        internal TelemetriaData Info { get => info; set => info = value; }
+
+        internal AnsCmd()
+        {
+            resource = "";
+            operation = "";
+            size = 0;
+            info = new TelemetriaData();
+        }
     }
 }

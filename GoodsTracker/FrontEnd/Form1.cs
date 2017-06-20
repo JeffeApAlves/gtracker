@@ -73,7 +73,7 @@ namespace GoodsTracker
             selectPanel(panel2);
         }
 
-        //Seleciona painel Behavior
+        //Seleciona painel TelemetriaData
         private void button3_Click_1(object sender, EventArgs e)
         {
             selectPanel(panel3);
@@ -226,7 +226,7 @@ namespace GoodsTracker
         {
             layerFence = new LayerMap(gMapControl1, "Fence");
             layerRoute = new LayerMap(gMapControl1, "Route");
-            layerBehavior = new LayerMap(gMapControl1, "Behavior");
+            layerBehavior = new LayerMap(gMapControl1, "TelemetriaData");
         }
 
         void initPanelConfig()
@@ -266,21 +266,20 @@ namespace GoodsTracker
 
         void updateBehavior()
         {
-            BuildTreeView bTV = new BuildTreeView(tvBehavior);
-
-            List<Behavior> list = trackerController.getBehaviorFiltered(filterslected);
+            BuildTreeView bTV           = new BuildTreeView(tvBehavior);
+            List<TelemetriaData> list   = trackerController.getBehaviorFiltered(filterslected);
 
             bTV.loadlistPointsTreeView(list);
             showMarkerBehavior(list);
         }
 
-        void showMarkerBehavior(List<Behavior> list)
+        void showMarkerBehavior(List<TelemetriaData> list)
         {
             if (list != null)
             {
                 layerBehavior.removeAllMarkers();
 
-                foreach (Behavior b in list)
+                foreach (TelemetriaData b in list)
                 {
                     PointLatLng p = new PointLatLng(b.Latitude, b.Longitude);
                     GMarkerGoogleType color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
@@ -430,7 +429,7 @@ namespace GoodsTracker
         void initAllThreads()
         {
             threadGUI = new ThreadGUI();
-            threadGUI.setTime(250);
+            threadGUI.setTime(1000);
             threadGUI.setUpdate(updateScreen);
             ThreadManager.start();
             timer1.Enabled = true;
@@ -459,46 +458,48 @@ namespace GoodsTracker
         END_POINT
     }
 
-
+    // ############################################  TESTE #######################################################
     class test
     {
         static int indexBehavior = 0;
 
         static public void AddFrame()
         {
-            Behavior b = null;
 
-            if (TrackerController.TrackerCtrl.Routes.Count > 0 &&
-                TrackerController.TrackerCtrl.Routes[0].MapRoute != null &&
+            if (TrackerController.TrackerCtrl.anyRoute() &&
                 TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > indexBehavior)
             {
-                b = new Behavior();
+                Random rnd          = new Random();
+                TelemetriaData b    = new TelemetriaData();
+                PointLatLng p       = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[indexBehavior++];
 
-                PointLatLng p = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[indexBehavior++];
-                Random rnd = new Random();
 
-                b = new Behavior();
+                b = new TelemetriaData();
                 b.DateTime = DateTime.Now;
                 b.setPosition(p.Lat, p.Lng);
-                b.setAcceleration(rnd.Next(0, 100), rnd.Next(0, 100), rnd.Next(0, 100));
+                b.setAcceleration(rnd.Next(0, 4), rnd.Next(5, 9), rnd.Next(10, 14));
+                b.setSpeed(rnd.Next(40,120));
+                b.setLevel(rnd.Next(900,1000));
 
-                DecoderFrameTx decoder = new DecoderFrameTx();
+                DecoderFrame decoder        = new DecoderFrame();
+                CommunicationFrame frame    = new CommunicationFrame();
+                Cmd cmd                     = new Cmd(RESOURCE.BEHAVIOR);
+//                Tracker t                   = new Tracker(2);
+                cmd.Operation               = Operation.AN;
+                cmd.Dest                    = 1;
 
-                CommunicationFrame frame = new CommunicationFrame();
-
-                decoder.setFrame(ref frame, CommunicationUnit.getNextUnit());
-                decoder.setPayLoad(ref frame, b);
-
-                
-
+                decoder.setHeader(ref frame, TrackerController.TrackerCtrl.Tracker , cmd);
+                decoder.setPayLoad(ref frame,   b);
+               
                 Protocol.Communication.setFrameRx(  CONST_CHAR.RX_FRAME_START + 
-                                                    frame.Frame +":*" + frame.checkSum().ToString() +
-                                                    CONST_CHAR.RX_FRAME_END+
+                                                    frame.Frame +
+                                                    CONST_CHAR.SEPARATOR +
+//                                                    CONST_CHAR.ASTERISCO + 
+                                                    frame.checkSum().ToString() +
+                                                    CONST_CHAR.RX_FRAME_END +
                                                     CONST_CHAR.CR + 
                                                     CONST_CHAR.LF);
-
             }
         }
     }
-
 }

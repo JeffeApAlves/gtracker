@@ -9,7 +9,7 @@ namespace GoodsTracker
 {
     class Route
     {
-        List<Behavior>  behaviors;
+        List<TelemetriaData>  behaviors;
         GDirections     direction;
         GMapRoute       mapRoute;
 
@@ -22,7 +22,7 @@ namespace GoodsTracker
         public string Name { get => name; set => name = value; }
         public GDirections Direction { get => direction; set => direction = value; }
         public GMapRoute MapRoute { get => mapRoute; set => mapRoute = value; }
-        internal List<Behavior> Behaviors { get => behaviors; set => behaviors = value; }
+        internal List<TelemetriaData> Behaviors { get => behaviors; set => behaviors = value; }
 
         internal Route(string n)
         {
@@ -36,7 +36,7 @@ namespace GoodsTracker
             dt.Columns.Add(new DataColumn("Latitude", typeof(double)));
             dt.Columns.Add(new DataColumn("Longitude", typeof(double)));
 
-            behaviors = new List<Behavior>();
+            behaviors = new List<TelemetriaData>();
         }
 
         internal void startTrip(PointLatLng point)
@@ -74,16 +74,16 @@ namespace GoodsTracker
             createRoute(points[0], points[points.Count - 1]);
         }
 
-        internal List<Behavior> getBehaviorFiltered(int i)
+        internal List<TelemetriaData> getBehaviorFiltered(int i)
         {
-            List<Behavior> ret = new List<Behavior>(behaviors);
+            List<TelemetriaData> ret = new List<TelemetriaData>(behaviors);
 
             // i=0 nao filtra nada
             // OK (i=1) entao remove os NOK
             // NOK(i=2) entao remove os OK
             if (i != 0)
             {
-                foreach (Behavior b in behaviors)
+                foreach (TelemetriaData b in behaviors)
                 {
                     if ((i == 1 && !b.OK()) || i == 2 && b.OK())
                     {
@@ -95,7 +95,7 @@ namespace GoodsTracker
             return ret;
         }
 
-        internal void registerBehavior(Behavior b)
+        internal void registerBehavior(TelemetriaData b)
         {
             if (b != null)
             {

@@ -31,7 +31,7 @@ namespace GoodsTracker
          * Constroe arvore do historico da viagem
          *  
          */
-        internal void loadlistPointsTreeView(List<Behavior> listBehavior)
+        internal void loadlistPointsTreeView(List<TelemetriaData> listBehavior)
         {
             TreeNode root, loc;
 
@@ -41,7 +41,7 @@ namespace GoodsTracker
             {
                 root = createRootTreeView(listBehavior.Count);
 
-                foreach (Behavior b in listBehavior)
+                foreach (TelemetriaData b in listBehavior)
                 {
                     loc = createLocTreeView(b, root, i++);
 
@@ -76,7 +76,7 @@ namespace GoodsTracker
             return root;
         }
 
-        internal TreeNode createLocTreeView(Behavior behavior, TreeNode root, int i)
+        internal TreeNode createLocTreeView(TelemetriaData behavior, TreeNode root, int i)
         {
             TreeNode loc;
 
@@ -88,7 +88,7 @@ namespace GoodsTracker
             return loc;
         }
 
-        internal void createPositionTreeView(Behavior behavior, TreeNode reg)
+        internal void createPositionTreeView(TelemetriaData behavior, TreeNode reg)
         {
             TreeNode info, loc, vel;
 

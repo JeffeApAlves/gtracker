@@ -8,8 +8,8 @@ namespace GoodsTracker
 {
     public class RESOURCE
     {
-        public static string BEHAVIOR   = "DB1";    //Data Behavior
-        public static string LOCK       = "LOCK";
+        public static string BEHAVIOR   = "DB1";    //Data TelemetriaData
+        public static string LOCK       = "LMG";
     }
 
     class Cmd

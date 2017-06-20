@@ -4,14 +4,14 @@ namespace GoodsTracker
 {
     class Tracker : CommunicationUnit,InterfaceTracker
     {
-        Behavior    behavior;
+        TelemetriaData    behavior;
 
-        internal Tracker()
+        internal Tracker(int val)
         {
-            Address = 1;
+            address = val;
         }
 
-        public Behavior getBehavior()
+        public TelemetriaData getBehavior()
         {
             return behavior;
         }
@@ -54,8 +54,8 @@ namespace GoodsTracker
 
         void updateBehavior(AnsCmd ans)
         {
-            behavior = new Behavior();
-            behavior.setValues(ans.DadosRx);
+//            behavior = new TelemetriaData();
+            behavior = ans.Info;
         }
     }
 }

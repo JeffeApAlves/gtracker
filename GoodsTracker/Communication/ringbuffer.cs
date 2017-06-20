@@ -1,10 +1,11 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace GoodsTracker
 {
     class RingBuffer
     {
-        const int DEFAULT_BUFFER_SIZE = 64;
+        const int DEFAULT_BUFFER_SIZE = 1024;
 
         char[] data  = null;
 
@@ -79,8 +80,8 @@ namespace GoodsTracker
                 data[i] = (char)0;
             }
         }
-
-        internal void setBuffer(string dados)
+/*
+        internal void putData(string dados)
         {
             //            data = Encoding.ASCII.GetBytes(dados);
 
@@ -91,9 +92,18 @@ namespace GoodsTracker
 
                         Regex rgx = new Regex(pattern);
                         string result = rgx.Replace(dados, replacement);
-            */
-            data = dados.ToCharArray();
-            count = dados.Length;
-        }
+            
+            char[] source = dados.ToCharArray();
+
+            if(source!=null && source.Length > 0)
+            {
+                for(int i = 0; i < source.Length; i++)
+                {
+                    putData(source[i]);
+                }
+//                Array.Copy(source, data, dados.Length);
+//                count = dados.Length;
+            }
+        }*/
     }
 }

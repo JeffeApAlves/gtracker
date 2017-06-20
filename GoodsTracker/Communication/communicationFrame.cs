@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace GoodsTracker
 {
     /**
      * 
      * Frame Coomunication
-     * [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[2] , SizePayload[3] , payload[ 0 ~ 255] , '*'CheckSum[5] ] \r\n
+     * [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[3] , SizePayload[3] , payload[ 0 ~ 255] , '*'CheckSum[5] ] \r\n
      * 
      * End. de orig: 
      * Range: 00000~65535 (00000) Broadcast
@@ -40,13 +36,14 @@ namespace GoodsTracker
 
     interface IDecoderFrameTx
     {
-        bool setFrame(ref CommunicationFrame frame, CommunicationUnit unit);
-        bool setPayLoad(ref CommunicationFrame frame, Behavior b);
+        bool setHeader(ref CommunicationFrame frame, CommunicationUnit unit,Cmd cmd);
+        bool setHeader(ref CommunicationFrame frame, CommunicationUnit unit);
+        bool setPayLoad(ref CommunicationFrame frame, TelemetriaData b);
     }
 
     interface IDecoderFrameRx
     {
-        bool getValues(out ObjectValueRX dadosRx, CommunicationFrame frame);
+        bool getValues(out AnsCmd ans, CommunicationFrame frame);
     }
 
     public enum Operation
@@ -98,7 +95,20 @@ namespace GoodsTracker
 
             set
             {
-                frame = value;
+                frame   = value;
+                if (value.Length >= 15)
+                {
+                    Header = frame.Substring(0, 15);
+                }
+                else
+                {
+                    Header = frame;
+                }
+
+                if (value.Length >= 16)
+                {
+                    PayLoad = frame.Substring(15, frame.Length - 14);
+                }
             }
         }
 

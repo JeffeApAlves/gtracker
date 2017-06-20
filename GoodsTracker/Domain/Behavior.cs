@@ -71,7 +71,7 @@ namespace GoodsTracker
         }
     }
 
-    internal class Behavior
+    internal class TelemetriaData
     {
         double      latitude, longitude;
         Value       speed;
@@ -88,14 +88,13 @@ namespace GoodsTracker
         public double Longitude { get => longitude; set => longitude = value; }
         internal Value Level { get => level; set => level = value; }
 
-        internal Behavior()
+        internal TelemetriaData()
         {
-            speed       = new Value();
             AxisX       = new Axis();
             AxisY       = new Axis();
             AxisZ       = new Axis();
-            speed       = new Value();
-            level       = new Value();
+            speed       = new Value(0,100);
+            level       = new Value(500,1500);
         }
 
         internal bool OK()
@@ -150,22 +149,29 @@ namespace GoodsTracker
             AxisZ.Acceleration.Val = z;
         }
 
-        internal void setValues(ObjectValueRX values)
+        internal void setValues(TelemetriaData values)
         {
-            Speed.Val               = values.speed;
-            Level.Val               = values.level;
-            AxisX.Acceleration.Val  = values.X.acceleration;
-            AxisY.Acceleration.Val  = values.Y.acceleration;
-            AxisZ.Acceleration.Val  = values.Z.acceleration;
+            Speed               = values.Speed;
+            Level               = values.Level;
 
-            AxisX.Rotation.Val = values.X.rotation;
-            AxisY.Rotation.Val = values.Y.rotation;
-            AxisZ.Rotation.Val = values.Z.rotation;
+            AxisX = values.AxisX;
+            AxisY = values.AxisY;
+            AxisZ = values.AxisZ;
         }
 
         public override string ToString()
         {
             return string.Format("Lat:{0} Lng:{1}", latitude, longitude) + " " + axisX.ToString() + " " + axisY.ToString() + " " + axisZ.ToString();
+        }
+
+        internal void setSpeed(int v)
+        {
+            speed.Val = v;
+        }
+
+        internal void setLevel(int v)
+        {
+            level.Val = v;
         }
     }
 }

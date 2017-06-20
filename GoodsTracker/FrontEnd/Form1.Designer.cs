@@ -718,7 +718,7 @@
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Items.AddRange(new object[] {
             "Route",
-            "Behavior",
+            "TelemetriaData",
             "Fence",
             "Satelite"});
             this.checkedListBox1.Location = new System.Drawing.Point(25, 44);
