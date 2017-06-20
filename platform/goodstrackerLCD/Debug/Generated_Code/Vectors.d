@@ -14,6 +14,15 @@ Generated_Code/Vectors.o: ../Generated_Code/Vectors.c \
  ../Generated_Code/DB71.h ../Generated_Code/BitIoLdd10.h \
  ../Generated_Code/WAIT1.h ../Generated_Code/MCUC1.h \
  ../Generated_Code/MCUC1config.h ../Generated_Code/WAIT1config.h \
+ ../Generated_Code/TSSin.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_API.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS_SystemSetup.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_StatusCodes.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_DataTypes.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_Sensor.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/derivative.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/Cpu.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_API.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/Events.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/PE_Types.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/PE_Error.h \
@@ -33,7 +42,8 @@ Generated_Code/Vectors.o: ../Generated_Code/Vectors.c \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/DB71.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/BitIoLdd10.h \
  D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/WAIT1.h \
- D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/MCUC1.h
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/MCUC1.h \
+ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/TSSin.h
 
 ../Generated_Code/Cpu.h:
 
@@ -85,6 +95,24 @@ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sta
 
 ../Generated_Code/WAIT1config.h:
 
+../Generated_Code/TSSin.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_API.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS_SystemSetup.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_StatusCodes.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_DataTypes.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_Sensor.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/derivative.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/Cpu.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/TSS/TSS_API.h:
+
 D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Sources/Events.h:
 
 D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/PE_Types.h:
@@ -124,3 +152,5 @@ D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Gen
 D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/WAIT1.h:
 
 D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/MCUC1.h:
+
+D:/Users/Flávio\ Soares/Projetos/SENAI/GoodsTracker/platform/goodstrackerLCD/Generated_Code/TSSin.h:

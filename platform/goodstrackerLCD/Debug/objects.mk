@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS :=
+LIBS := -lTSS_KXX_M0
 

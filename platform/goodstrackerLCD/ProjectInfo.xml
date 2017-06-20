@@ -37,6 +37,7 @@
   <PATHS>
     <LinkerCommandFile>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Project_Settings\Linker_Files\ProcessorExpert.ld</LinkerCommandFile>
     <IncludePaths>
+      <Path>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\</Path>
       <Path>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Static_Code\PDD\</Path>
       <Path>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Static_Code\IO_Map\</Path>
       <Path>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\</Path>
@@ -46,7 +47,11 @@
       <Path>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\</Path>
       <Path>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Project_Settings\Startup_Code\</Path>
       <Path>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\</Path>
+      <Path>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\</Path>
     </SourceCodePaths>
+    <LibPaths>
+      <Path>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\</Path>
+    </LibPaths>
   </PATHS>
   <FILES>
     <GeneratedCs>
@@ -66,10 +71,17 @@
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\MCUC1.c</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\PE_LDD.c</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\RS1.c</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\TSSin.c</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\Vectors.c</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\WAIT1.c</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Project_Settings\Startup_Code\startup.c</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\Events.c</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_Freemaster.c</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_Sensor.c</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_SensorGPIO.c</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_SensorTSI.c</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_SensorTSIL.c</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_SystemSetupData.c</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\lcd.c</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\main.c</PathName>
     </GeneratedCs>
@@ -95,9 +107,23 @@
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\PE_LDD.h</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\PE_Types.h</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\RS1.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\TSSin.h</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\WAIT1.h</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Generated_Code\WAIT1config.h</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\Events.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_API.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_DataTypes.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_GPIO.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_Sensor.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_SensorGPIO.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_SensorTSI.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_SensorTSIL.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_StatusCodes.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_SystemSetupVal.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS\TSS_Timer.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\TSS_SystemSetup.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\derivative.h</PathName>
+      <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Sources\lcd.h</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Static_Code\IO_Map\MKL25Z4.h</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Static_Code\PDD\ADC_PDD.h</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Static_Code\PDD\CMP_PDD.h</PathName>
@@ -125,6 +151,9 @@
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Static_Code\PDD\UART_PDD.h</PathName>
       <PathName>D:\Users\Flávio Soares\Projetos\SENAI\GoodsTracker\platform\goodstrackerLCD\Static_Code\PDD\USB_PDD.h</PathName>
     </GeneratedHs>
+    <Libraries>
+      <PathName>"TSS_KXX_M0"</PathName>
+    </Libraries>
   </FILES>
   <OPTIONS>
   </OPTIONS>
