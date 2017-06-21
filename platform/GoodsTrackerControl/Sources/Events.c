@@ -36,6 +36,8 @@ extern "C" {
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
+#include "protocol.h"
+
 /*
 ** ===================================================================
 **     Event       :  Cpu_OnNMIINT (module Events)
@@ -282,7 +284,14 @@ void GT_AsyncSerial_OnError(void)
 */
 void GT_AsyncSerial_OnRxChar(void)
 {
-  /* Write your code here ... */
+	char byte = 0;
+
+	if(AS1_RecvChar(&byte)==ERR_OK){
+
+		putRxData(byte);
+	}
+
+	timeRx 	= TIME_RX;
 }
 
 /*
@@ -298,7 +307,22 @@ void GT_AsyncSerial_OnRxChar(void)
 */
 void GT_AsyncSerial_OnTxChar(void)
 {
-  /* Write your code here ... */
+	static char byte		= 0;
+	static char tx_result	= ERR_OK;
+
+	if(tx_result == ERR_OK){
+
+		if(getTxData(&byte)){
+
+			tx_result = AS1_SendChar(byte);
+		}
+
+	}else{
+
+		tx_result = AS1_SendChar(byte);
+	}
+
+	timeTx 	= TIME_TX;
 }
 
 /*

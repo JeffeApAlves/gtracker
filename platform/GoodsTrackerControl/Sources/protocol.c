@@ -14,11 +14,13 @@ RingBuffer	bufferRx,bufferTx;
 RxFrame		rxFrame;
 ParamCmd	param_cmd;
 
-Cmd			ListCmd[]	= {	{.id_cmd=CMD_LED,	.name_cmd = "LED\0",	.cb=NULL},
-							{.id_cmd=CMD_ANALOG,.name_cmd = "AN\0",		.cb=NULL},
-							{.id_cmd=CMD_PWM,	.name_cmd = "PWM\0",	.cb=NULL},
-							{.id_cmd=CMD_ACC,	.name_cmd = "ACC\0",	.cb=NULL},
-							{.id_cmd=CMD_TOUCH,	.name_cmd = "TOU\0",	.cb=NULL},
+Cmd			ListCmd[]	= {	{.id_cmd=CMD_LED,		.name_cmd = "LED\0",	.cb=NULL},
+							{.id_cmd=CMD_ANALOG,	.name_cmd = "AN\0",		.cb=NULL},
+							{.id_cmd=CMD_PWM,		.name_cmd = "PWM\0",	.cb=NULL},
+							{.id_cmd=CMD_ACC,		.name_cmd = "ACC\0",	.cb=NULL},
+							{.id_cmd=CMD_TOUCH,		.name_cmd = "TOU\0",	.cb=NULL},
+							{.id_cmd=CMD_TELEMETRIA,.name_cmd = "TLM\0",	.cb=NULL},
+							{.id_cmd=CMD_LOCK,		.name_cmd = "LCK\0",	.cb=NULL},
 							};
 
 const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Cmd);
@@ -30,8 +32,8 @@ void processProtocol(void) {
 		default:
 		case CMD_INIT:			initRxCMD();			break;
 		case CMD_INIT_OK:		rxStartCMD();			break;
-		case CMD_RX_START:		rxPayLoad();			break;
-		case CMD_RX_PAYLOAD:	rxPayLoad();			break;
+		case CMD_RX_START:		receiveFrame();			break;
+		case CMD_RX_PAYLOAD:	receiveFrame();			break;
 		case CMD_RX_END:		rxCR();					break;
 		case CMD_RX_CR:			rxNL();					break;
 		case CMD_RX_NL:			decoderCMD();			break;
@@ -63,19 +65,21 @@ void rxStartCMD (void) {
 }
 //------------------------------------------------------------------------
 
-void rxPayLoad (void) {
+void receiveFrame (void) {
 
 	char ch;
 
 	if(getRxData(&ch)){
 
-		if(ch==CHAR_CMD_START || rxFrame.count>=LEN_MAX_PAYLOAD){
+		param_cmd.checksum_calc ^= ch;
+
+		if(ch==CHAR_CMD_START || rxFrame.count>=LEN_MAX_FRAME){
 
 			setStatusRx(CMD_ERROR);
 
 		}else if(ch==CHAR_CMD_END){
 
-			if(rxFrame.count>=LEN_MIN_PAYLOAD){
+			if(rxFrame.count>=LEN_MIN_FRAME){
 
 				setStatusRx(CMD_RX_END);
 
@@ -88,7 +92,7 @@ void rxPayLoad (void) {
 
 			setStatusRx(CMD_RX_PAYLOAD);
 
-			rxFrame.data[(rxFrame.count++)%LEN_MAX_PAYLOAD] = ch;
+			rxFrame.data[(rxFrame.count++)%LEN_MAX_FRAME] = ch;
 		}
 	}
 }
@@ -132,7 +136,7 @@ void rxCR(void) {
 
 void decoderCMD(void) {
 
-	formatCMD();
+//	formatCMD();
 
 	if(decoderFrame2()){
 
@@ -178,23 +182,35 @@ bool decoderFrame2(void) {
 	str_split(&list,rxFrame.data,CHAR_SEPARATOR);
 
 	if(list.itens!=NULL){
-		char i;
-		for(i=0;i < list.size;i++){
 
-			if(list.itens[i]!=NULL){
+		param_cmd.checksum_rx == (unsigned char)atoi(list.itens[list.size-1]);
 
-				switch(i){
+		if(param_cmd.checksum_rx==param_cmd.checksum_calc){
 
-					case 0:	strcpy(param_cmd.name_cmd, list.itens[0]);	break;
-					case 1:	param_cmd.address	= atoi(list.itens[1]);	break;
-					case 2:	param_cmd.value		= atoi(list.itens[2]);	break;
+			char i;
+
+			for(i=0;i < list.size;i++){
+
+				if(list.itens[i]!=NULL){
+
+					switch(i){
+
+	//					case 0:	strcpy(param_cmd.name_cmd, list.itens[0]);	break;
+	//					case 1:	param_cmd.address	= atoi(list.itens[1]);	break;
+	//					case 2:	param_cmd.value		= atoi(list.itens[2]);	break;
+
+						case 0:	param_cmd.Origem			= atoi(list.itens[0]);				break;
+						case 1:	param_cmd.address			= atoi(list.itens[1]);				break;
+						case 2:	strncpy(param_cmd.operacao, list.itens[2],2);					break;
+						case 3:	strncpy(param_cmd.recurso,	list.itens[3],3);					break;
+						case 4:	param_cmd.sizePayLoad		= atoi(list.itens[4]);				break;
+						case 5:	strncpy(param_cmd.data, list.itens[5],param_cmd.sizePayLoad);	break;
+					}
 				}
-
-				_free(list.itens[i]);
 			}
 		}
 
-		_free(list.itens);
+		removeList(list);
 	}
 
 	return list.size>=2;
@@ -350,12 +366,15 @@ void errorRx(void){
 
 void clearRxFrame(void){
 
+	param_cmd.checksum_rx	= -1;
+	param_cmd.checksum_calc	= 0;
+
 	param_cmd.address	= 0;
 	param_cmd.value		= 0;
 	rxFrame.count		= 0;
 
 	char i;
-	for(i=0;i<LEN_MAX_PAYLOAD;i++){
+	for(i=0;i<LEN_MAX_FRAME;i++){
 
 		rxFrame.data[i]		= CHAR_STR_END;
 		param_cmd.data[i]	= CHAR_STR_END;

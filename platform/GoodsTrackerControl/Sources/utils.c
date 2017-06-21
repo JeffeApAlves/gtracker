@@ -88,3 +88,15 @@ void str_append(char subject[], char insert[], int pos) {
 	}
 }
 //------------------------------------------------------------------------
+
+void removeList(List* list){
+
+	int i = 0;
+
+	for(i=0 ; i<list->size ; i++){
+
+		_free(list->itens[i]);
+	}
+
+	_free(list->itens);
+}

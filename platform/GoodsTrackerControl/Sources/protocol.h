@@ -16,8 +16,9 @@
 #define LEN_CMD			5
 #define LEN_ADDRESS		1
 #define LEN_VALUE		1
-#define LEN_MIN_PAYLOAD	2
-#define LEN_MAX_PAYLOAD	16
+#define LEN_MIN_FRAME	18
+#define LEN_MAX_FRAME	273
+#define LEN_MAX_PAYLOAD	255
 
 /* [LED01]\r\n*/
 #define CHAR_CMD_START	'['
@@ -43,7 +44,9 @@ typedef enum {
 	CMD_ANALOG,
 	CMD_PWM,
 	CMD_TOUCH,
-	CMD_ACC
+	CMD_ACC,
+	CMD_TELEMETRIA,
+	CMD_LOCK
 
 }IdCmd;
 
@@ -66,15 +69,23 @@ typedef enum {
 
 typedef struct {
 
-	char	data[LEN_MAX_PAYLOAD];
+	char	data[LEN_MAX_FRAME];
 	unsigned char count;
 
 } RxFrame;
 
 typedef struct{
 
+	unsigned char		checksum_calc;
+	unsigned char		checksum_rx;
+
+	char	operacao[2];
+	char	recurso[3];
+	int		sizePayLoad;
 	char	name_cmd[LEN_CMD];
+
 	int		address;
+	int		Origem;
 	int		value;
 	char	data[LEN_MAX_PAYLOAD];
 

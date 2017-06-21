@@ -1739,7 +1739,7 @@ PE_DEBUGHALT();
         <boolgroup name="Transmitter" v="Enabled">
           <TxD v="TSI0_CH3/PTA2/UART0_TX/TPM2_CH1" />
         </boolgroup>
-        <Baud_rate v="56000 baud" />
+        <Baud_rate v="57600 baud" />
         <Break_signal v="Disabled" />
         <Wakeup_condition v="Idle line wakeup" />
         <Transmitter_output v="Not inverted" />
@@ -1776,7 +1776,7 @@ PE_DEBUGHALT();
               <Parity v="None" />
               <Stop_bits v="1" />
               <Loop_mode v="Normal" />
-              <Baud_rate v="56000 baud" />
+              <Baud_rate v="57600 baud" />
               <Wakeup_condition v="Idle line wakeup" />
               <Stop_in_wait_mode v="no" />
               <Idle_line_mode v="Starts after start bit" />

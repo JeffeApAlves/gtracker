@@ -7,7 +7,7 @@
 **     Version     : Component 02.611, Driver 01.01, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 22:44, # CodeGen: 17
+**     Date/Time   : 2017-06-21, 19:52, # CodeGen: 23
 **     Abstract    :
 **         This component "AsynchroSerial" implements an asynchronous serial
 **         communication. The component supports different settings of
@@ -40,7 +40,7 @@
 **            Transmitter                                  : Enabled
 **              TxD                                        : TSI0_CH3/PTA2/UART0_TX/TPM2_CH1
 **              TxD pin signal                             : 
-**            Baud rate                                    : 56000 baud
+**            Baud rate                                    : 57600 baud
 **            Break signal                                 : Disabled
 **            Wakeup condition                             : Idle line wakeup
 **            Transmitter output                           : Not inverted

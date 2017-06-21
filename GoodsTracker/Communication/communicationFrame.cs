@@ -5,7 +5,7 @@ namespace GoodsTracker
     /**
      * 
      * Frame Coomunication
-     * [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[3] , SizePayload[3] , payload[ 0 ~ 255] , '*'CheckSum[5] ] \r\n
+     * [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[3] , SizePayload[3] , payload[ 0 ~ 2557] , '*'CheckSum[2] ] \r\n
      * 
      * End. de orig: 
      * Range: 00000~65535 (00000) Broadcast
