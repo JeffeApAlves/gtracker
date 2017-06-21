@@ -157,6 +157,9 @@ void TSSin_fOnInit(void)
 */
 void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId)
 {
+    ihm_put_slide_event(&TSSin_cKey0);
+
+#if 0
   if (TSSin_cKey0.DynamicStatus.Movement)
   {
     if (TSSin_cKey0.Events.Touch)
@@ -166,9 +169,12 @@ void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId)
         (void) TSSin_cKey0.Position;
 
         (void)u8ControlId; /* avoid warning */
-        LED_R_Put(TSSin_cKey0.Position<=30);
-        LED_G_Put(TSSin_cKey0.Position>30 && TSSin_cKey0.Position<=35);
-        LED_B_Put(TSSin_cKey0.Position>35 && TSSin_cKey0.Position<=64);
+
+
+
+        //LED_R_Put(TSSin_cKey0.Position<=30);
+        //LED_G_Put(TSSin_cKey0.Position>30 && TSSin_cKey0.Position<=35);
+        //LED_B_Put(TSSin_cKey0.Position>35 && TSSin_cKey0.Position<=64);
       }
     }
     else
@@ -176,7 +182,7 @@ void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId)
       /* Write your code here ... */
     }
   }
-
+#endif
 
   (void) u8ControlId;
   return;

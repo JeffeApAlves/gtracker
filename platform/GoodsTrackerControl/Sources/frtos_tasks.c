@@ -36,14 +36,14 @@ static portTASK_FUNCTION(main_taskTask, pvParameters) {
 
 static portTASK_FUNCTION(IHM_taskTask, pvParameters) {
 
-	  initialize_ihm();
+	ihm_initialize();
 
 	  for(;;) {
-		  loop_ihm();
+		  ihm_loop();
 		  vTaskDelay(5/portTICK_RATE_MS);
 	  }
 
-	  terminate_ihm();
+	  ihm_terminate();
 	  vTaskDelete(IHM_taskTask);
 }
 

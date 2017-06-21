@@ -7,7 +7,7 @@
 **     Version     : Component 03.001, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 18:28, # CodeGen: 12
+**     Date/Time   : 2017-06-21, 12:29, # CodeGen: 21
 **     Contents    :
 **         Configure - byte TSSin_Configure(void);
 **
@@ -97,7 +97,7 @@ byte TSSin_Configure(void)
   /* Configure the Analog Slider Auto-Repeat Rate Register */
   u8Result |= TSS_SetASliderConfig(TSSin_cKey0.ControlId, ASlider_AutoRepeatRate_Register, 0x00);
   /* Configure the Analog Slider Movement Timeout Register */
-  u8Result |= TSS_SetASliderConfig(TSSin_cKey0.ControlId, ASlider_MovementTimeout_Register, 0x00);
+  u8Result |= TSS_SetASliderConfig(TSSin_cKey0.ControlId, ASlider_MovementTimeout_Register, 0x20);
   /* Configure the Analog Slider Range Register */
   u8Result |= TSS_SetASliderConfig(TSSin_cKey0.ControlId, ASlider_Range_Register, 0x40);
   /* Configure ASlider Control configuration registers */

@@ -658,7 +658,7 @@ PE_DEBUGHALT();
                 <Initial_Touch_Event_Enabled v="yes" />
               </group>
               <Auto_Repeat_Rate v="0" />
-              <Movement_Timeout v="0" />
+              <Movement_Timeout v="32" />
               <Range v="64" />
             </boolgroup>
           </enumgroup>
