@@ -32,7 +32,7 @@
 
 #define TSS_USE_AUTO_SENS_CALIBRATION          1      /* Automatic Sensitivity Calibration support */
 
-#define TSS_USE_AUTO_SENS_CALIB_INIT_DURATION  100    /* Automatic Sensitivity Calibration initialization duration */
+#define TSS_USE_AUTO_SENS_CALIB_INIT_DURATION  200    /* Automatic Sensitivity Calibration initialization duration */
 
 #define TSS_USE_BASELINE_INIT_DURATION         15     /* Baseline initialization duration */
 

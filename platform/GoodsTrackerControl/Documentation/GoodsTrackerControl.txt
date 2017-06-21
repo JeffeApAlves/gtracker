@@ -642,6 +642,85 @@ Module "TU1"       (component TimerUnit_LDD)
                 <Enable> method is not necessary and needn't to be generated. This method can be called only once. Before the 
                 second call of Init the <Deinit> must be called first.
 
+Module "GI2C1"     (component GenericI2C)
+   - GI2C1_SelectSlave -Selects the slave device on the bus. Method might use a semaphore to protect bus access.
+   - GI2C1_UnselectSlave -Unselects the device. Method will release a used a semaphore.
+   - GI2C1_RequestBus -Starts a critical section for accessing the bus.
+   - GI2C1_ReleaseBus -Finishes a critical section for accessing the bus.
+   - GI2C1_WriteBlock -Write a block to the device.
+   - GI2C1_ReadBlock -Read from the device a block.
+   - GI2C1_ReadAddress -Read from the device. This writes (S+i2cAddr+0), (memAddr), (Sr+i2cAddr+1), (data)...(data+P)
+   - GI2C1_WriteAddress -Write to the device: (S+i2cAddr+0), (memAddr), (data)...(data+P)
+   - GI2C1_ReadByteAddress8 -Read a byte from the device using an 8bit memory address. This writes (S+i2cAddr+0), (memAddr), 
+                (Sr+i2cAddr+1), (data)...(data+P)
+   - GI2C1_WriteByteAddress8 -Write a byte to the device using an 8bit memory address: (S+i2cAddr+0), (memAddr), (data)...
+                (data+P)
+   - GI2C1_ReadWordAddress8 -Read a word from the device using an 8bit memory address. This writes (S+i2cAddr+0), (memAddr), 
+                (Sr+i2cAddr+1), (data)...(data+P)
+   - GI2C1_WriteWordAddress8 -Write a word to the device using an 8bit memory address: (S+i2cAddr+0), (memAddr), (data)...
+                (data+P)
+   - GI2C1_ProbeACK -Accesses the bus to check if the device responds with an ACK (ACK polling).
+   - GI2C1_GetSemaphore -Returns the currently allocated semaphore.
+   - GI2C1_ScanDevice -Checks if a device responds on the bus with an ACK.
+   - GI2C1_Deinit -Deinitializes the driver.
+   - GI2C1_Init -Initializes the driver.
+
+Module "I2C1"      (component GenericSWI2C)
+   - I2C1_ResetBus -Reset bus if needed.
+   - I2C1_SendChar -When working as a MASTER, this method writes 7 bits of slave address plus R/W bit = 0 to the I2C bus and 
+                then writes one character (byte) to the bus. The slave address must be specified before by the "SelectSlave" 
+                method or in the  component initialization section of 'Slave address init' property. When working as the SLAVE, 
+                this method writes one character (byte) to the bus. If the ERR_NOTAVAIL error code returned, the char is 
+                successfully sent to master but the master device responds by an acknowledgment instead of no acknowledgment at 
+                the end of transfer. 'OnError' event is called in this case.
+   - I2C1_RecvChar -When working as a MASTER, this method writes 7 bits of slave address plus R/W bit = 1 to the I2C bus and 
+                then reads one character (byte) from the bus. The slave address must be specified before by the "SelectSlave" 
+                method or in the component initialization section of 'Slave address init' property. When working as a SLAVE, 
+                this method reads one character (byte) from the bus.
+   - I2C1_SendBlock -When working as a MASTER, this method writes 7 bits of slave address plus R/W bit = 0 to the I2C bus and 
+                then writes the block of characters to the bus. If the component is disabled (by the "Disable" method or 
+                initialization), the block is moved to the output buffer if the 'Output buffer size' property is different from 
+                zero. The content of the output buffer is sent immediately with the stop condition at the end when the 
+                component is enabled by the "Enable" method. After the output buffer transmission, the whole output buffer is 
+                cleared. The slave address must be specified before by the "SelectSlave" method or in component initialization 
+                section of 'Slave address init' property.  When working as a SLAVE, this method writes block of characters to 
+                the bus. If the ERR_NOTAVAIL error code is returned, the whole block is successfully sent to a master but the 
+                master device responds by an acknowledgment instead of no acknowledgment sent at the end of the last block byte 
+                transfer. 'OnError' event is called in this case.
+   - I2C1_SendBlockContinue -Same is SendBlock() but does not send start condition. When working as a MASTER, this method 
+                writes 7 bits of slave address plus R/W bit = 0 to the I2C bus and then writes the block of characters to the 
+                bus. If the component is disabled (by the "Disable" method or initialization), the block is moved to the output 
+                buffer if the 'Output buffer size' property is different from zero. The content of the output buffer is sent 
+                immediately with the stop condition at the end when the component is enabled by the "Enable" method. After the 
+                output buffer transmission, the whole output buffer is cleared. The slave address must be specified before by 
+                the "SelectSlave" method or in component initialization section of 'Slave address init' property.  When working 
+                as a SLAVE, this method writes block of characters to the bus. If the ERR_NOTAVAIL error code is returned, the 
+                whole block is successfully sent to a master but the master device responds by an acknowledgment instead of no 
+                acknowledgment sent at the end of the last block byte transfer. 'OnError' event is called in this case.
+   - I2C1_RecvBlock -When working as a MASTER, this method writes 7 bits of slave address plus R/W bit = 1 to the I2C bus and 
+                then reads the block of characters from the bus. The slave address must be specified before by the 
+                "SelectSlave" method or in component initialization section of 'Slave address init' property.  When working as 
+                a SLAVE, this method reads the block of characters from the bus.
+   - I2C1_RecvBlockCustom -Same as RecvBlock(), but with additional flags to control the bus transfer.
+   - I2C1_SendAck -The method sends ACK to the bus.
+   - I2C1_SendStop -When working as a MASTER, if the 'Automatic stop condition' property value is 'no', this method sends a 
+                valid stop  condition to the serial data line of the I2C bus to terminate the communication on the bus after 
+                using send methods. This method is enabled only if the component is in MASTER mode and 'Automatic stop 
+                condition' property value is 'no'
+   - I2C1_SelectSlave -When working as a MASTER, this method selects a new slave for communication by its slave address value. 
+                Any send or receive method are directed to or from the selected device, until a new slave device is selected by 
+                this method. If the selected slave uses 10-bit slave addressing, as the parameter 7 bits must be passed, which 
+                involves 10-bit addressing (11110XX), including two MSBs of slave address (XX). The second byte of the 10-bit 
+                slave address must be sent to the slave as a general character of send methods. This method is available only 
+                if the component is in MASTER mode.
+   - I2C1_GetSelected -When working as a MASTER, this method returns the identification address value of the slave, which is 
+                currently selected for communication with the master. If the current slave uses 10-bit slave addressing, the 
+                method returns the first 7 bits only, which involves 10-bit addressing (11110XX), including two MSBs of the 
+                slave address (XX). This method is not able to return the rest value of 10-bit slave address. This method is 
+                available only if the component is in MASTER mode.
+   - I2C1_Deinit -Driver de-initialization method.
+   - I2C1_Init -Initializes the associated peripheral(s) and the components internal variables.
+
 Module "CS1"       (component CriticalSection)
    - CS1_CriticalVariable -Defines a variable if necessary. This is a macro.
    - CS1_EnterCritical -Enters a critical section
@@ -650,20 +729,20 @@ Module "CS1"       (component CriticalSection)
 Module "GT_TSK"    (component FreeRTOS_Tasks)
    - GT_TSK_CreateTasks -Creates the tasks.
 
-Module "GT_AsynCSerial" (component AsynchroSerial)
-   - GT_AsynCSerial_RecvChar -If any data is received, this method returns one character, otherwise it returns an error code 
+Module "GT_AsyncSerial" (component AsynchroSerial)
+   - GT_AsyncSerial_RecvChar -If any data is received, this method returns one character, otherwise it returns an error code 
                 (it does not wait for data). This method is enabled only if the receiver property is enabled.  [Note:] Because 
                 the preferred method to handle error and break exception in the interrupt mode is to use events <OnError> and 
                 <OnBreak> the return value ERR_RXEMPTY has higher priority than other error codes. As a consequence the 
                 information about an exception in interrupt mode is returned only if there is a valid character ready to be 
                 read.
-   - GT_AsynCSerial_SendChar -Sends one character to the channel. If the component is temporarily disabled (Disable method) 
+   - GT_AsyncSerial_SendChar -Sends one character to the channel. If the component is temporarily disabled (Disable method) 
                 SendChar method only stores data into an output buffer. In case of a zero output buffer size, only one 
                 character can be stored. Enabling the component (Enable method) starts the transmission of the stored data. 
                 This method is available only if the transmitter property is enabled.
-   - GT_AsynCSerial_GetCharsInRxBuf -Returns the number of characters in the input buffer. This method is available only if the 
+   - GT_AsyncSerial_GetCharsInRxBuf -Returns the number of characters in the input buffer. This method is available only if the 
                 receiver property is enabled.
-   - GT_AsynCSerial_GetCharsInTxBuf -Returns the number of characters in the output buffer. This method is available only if 
+   - GT_AsyncSerial_GetCharsInTxBuf -Returns the number of characters in the output buffer. This method is available only if 
                 the transmitter property is enabled.
 
 Module "GT_AD1"    (component ADC)
@@ -677,6 +756,43 @@ Module "GT_AD1"    (component ADC)
                 gain and offset from a specific reading.
 
 Module "GT_TI1"    (component TimerInt)
+
+Module "MMA1"      (component MMA8451Q)
+   - MMA1_Enable -Enables the device with setting the ACTIVE bit in the CTRL register 1
+   - MMA1_Disable -Disables the device with clearing the ACTIVE bit in the CTRL register 1
+   - MMA1_isEnabled -Returns the status of the the ACTIVE bit in the CTRL register 1
+   - MMA1_SwReset -Perform a software reset using the rst bit in the CTRL register 2
+   - MMA1_ReadReg8 -Reads an 8bit device register
+   - MMA1_WriteReg8 -Write an 8bit device register
+   - MMA1_GetX -Retrieves the value for the X axis. The value is adjusted with the zero calibration value (0 for 0 g, negative 
+                for negative acceleration and positive for positive acceleration).
+   - MMA1_GetY -Retrieves the value for the Y axis. The value is adjusted with the zero calibration value (0 for 0 g, negative 
+                for negative acceleration and positive for positive acceleration).
+   - MMA1_GetZ -Retrieves the value for the Z axis. The value is adjusted with the zero calibration value (0 for 0 g, negative 
+                for negative acceleration and positive for positive acceleration).
+   - MMA1_GetRaw8XYZ -Returns in an array the x, y and z accelerometer as 8bit values.
+   - MMA1_CalibrateX1g -Performs a calibration of the sensor. It is assumed that the Y and Z sensors have 0 g, and the X sensor 
+                has 1 g.
+   - MMA1_CalibrateY1g -Performs a calibration of the sensor. It is assumed that the X and Z sensors have 0 g, and the Y sensor 
+                has 1 g.
+   - MMA1_CalibrateZ1g -Performs a calibration of the sensor. It is assumed that the X and Y sensors have 0 g, and the Z sensor 
+                has 1 g.
+   - MMA1_GetXmg -Returns the X value in mg
+   - MMA1_GetYmg -Returns the Y value in mg
+   - MMA1_GetZmg -Returns the Z value in mg
+   - MMA1_MeasureGetRawX -Performs a measurement on X channel and returns the raw value.
+   - MMA1_MeasureGetRawY -Performs a measurement on Y channel and returns the raw value.
+   - MMA1_MeasureGetRawZ -Performs a measurement on Z channel and returns the raw value.
+   - MMA1_GetXOffset -Returns the offset applied to the X value.
+   - MMA1_GetYOffset -Returns the offset applied to the Y value.
+   - MMA1_GetZOffset -Returns the offset applied to the Z value.
+   - MMA1_GetX1gValue -Returns the value for 1g for channel  X.
+   - MMA1_GetY1gValue -Returns the value for 1g for channel  Y.
+   - MMA1_GetZ1gValue -Returns the value for 1g for channel  Z.
+   - MMA1_SetFastMode -Turns the F_READ (Fast Read Mode) on or off
+   - MMA1_WhoAmI -Returns the value of the WHO_AM_I (0x0D) register
+   - MMA1_Deinit -Counterpart to Init() method.
+   - MMA1_Init -Initializes the device driver
 
 Module "Cpu"       (component MKL25Z128LK4)
 

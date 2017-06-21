@@ -166,8 +166,8 @@ void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId)
         (void) TSSin_cKey0.Position;
 
         (void)u8ControlId; /* avoid warning */
-        LED_R_Put(TSSin_cKey0.Position<=25);
-        LED_G_Put(TSSin_cKey0.Position>25 && TSSin_cKey0.Position<=35);
+        LED_R_Put(TSSin_cKey0.Position<=30);
+        LED_G_Put(TSSin_cKey0.Position>30 && TSSin_cKey0.Position<=35);
         LED_B_Put(TSSin_cKey0.Position>35 && TSSin_cKey0.Position<=64);
       }
     }
@@ -241,9 +241,9 @@ void GT_AD1_OnCalibrationEnd(void)
 
 /*
 ** ===================================================================
-**     Event       :  GT_AsynCSerial_OnError (module Events)
+**     Event       :  GT_AsyncSerial_OnError (module Events)
 **
-**     Component   :  GT_AsynCSerial [AsynchroSerial]
+**     Component   :  GT_AsyncSerial [AsynchroSerial]
 **     Description :
 **         This event is called when a channel error (not the error
 **         returned by a given method) occurs. The errors can be read
@@ -254,16 +254,16 @@ void GT_AD1_OnCalibrationEnd(void)
 **     Returns     : Nothing
 ** ===================================================================
 */
-void GT_AsynCSerial_OnError(void)
+void GT_AsyncSerial_OnError(void)
 {
   /* Write your code here ... */
 }
 
 /*
 ** ===================================================================
-**     Event       :  GT_AsynCSerial_OnRxChar (module Events)
+**     Event       :  GT_AsyncSerial_OnRxChar (module Events)
 **
-**     Component   :  GT_AsynCSerial [AsynchroSerial]
+**     Component   :  GT_AsyncSerial [AsynchroSerial]
 **     Description :
 **         This event is called after a correct character is received.
 **         The event is available only when the <Interrupt
@@ -274,23 +274,23 @@ void GT_AsynCSerial_OnError(void)
 **     Returns     : Nothing
 ** ===================================================================
 */
-void GT_AsynCSerial_OnRxChar(void)
+void GT_AsyncSerial_OnRxChar(void)
 {
   /* Write your code here ... */
 }
 
 /*
 ** ===================================================================
-**     Event       :  GT_AsynCSerial_OnTxChar (module Events)
+**     Event       :  GT_AsyncSerial_OnTxChar (module Events)
 **
-**     Component   :  GT_AsynCSerial [AsynchroSerial]
+**     Component   :  GT_AsyncSerial [AsynchroSerial]
 **     Description :
 **         This event is called after a character is transmitted.
 **     Parameters  : None
 **     Returns     : Nothing
 ** ===================================================================
 */
-void GT_AsynCSerial_OnTxChar(void)
+void GT_AsyncSerial_OnTxChar(void)
 {
   /* Write your code here ... */
 }

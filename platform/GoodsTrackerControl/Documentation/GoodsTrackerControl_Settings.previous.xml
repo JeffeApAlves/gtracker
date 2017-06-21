@@ -575,7 +575,7 @@ PE_DEBUGHALT();
         <Signal_Multiplier v="no" />
       </group>
       <boolgroup name="Automatic Sensitivity Calibration" v="Enabled">
-        <Initialization_Duration v="100" />
+        <Initialization_Duration v="200" />
         <Manual_Initial_Sensitivity v="no" />
         <Low_Limit v="no" />
       </boolgroup>
@@ -1452,7 +1452,7 @@ PE_DEBUGHALT();
     </Events>
   </Bean>
   <Bean name="GI2C1" type="GenericI2C">
-    <Enabled v="N" />
+    <Enabled v="Y" />
     <Properties>
       <Component_name v="GI2C1" />
       <Wait v="WAIT1" />
@@ -1499,19 +1499,19 @@ PE_DEBUGHALT();
     </Events>
   </Bean>
   <Bean name="I2C1" type="GenericSWI2C">
-    <Enabled v="N" />
+    <Enabled v="Y" />
     <Properties>
       <Component_name v="I2C1" />
       <Delay__ns_ v="1250" />
       <Trials v="256" />
       <inhrbean type="BitIO">
-        <Enabled v="N" />
+        <Enabled v="Y" />
         <Template v="SDA" />
         <Properties>
           <Component_name v="SDA1" />
           <Pin_for_I_O v="PTE0/UART1_TX/RTC_CLKOUT/CMP0_OUT/I2C1_SDA" />
           <inhrbean type="BitIO_LDD">
-            <Enabled v="N" />
+            <Enabled v="Y" />
             <Template v="BitIO_LDD" />
             <Properties>
               <Component_name v="BitIoLdd14" />
@@ -1569,13 +1569,13 @@ PE_DEBUGHALT();
         </Events>
       </inhrbean>
       <inhrbean type="BitIO">
-        <Enabled v="N" />
+        <Enabled v="Y" />
         <Template v="SCL" />
         <Properties>
           <Component_name v="SCL1" />
           <Pin_for_I_O v="PTE1/SPI1_MOSI/UART1_RX/SPI1_MISO/I2C1_SCL" />
           <inhrbean type="BitIO_LDD">
-            <Enabled v="N" />
+            <Enabled v="Y" />
             <Template v="BitIO_LDD" />
             <Properties>
               <Component_name v="BitIoLdd15" />
@@ -1682,7 +1682,12 @@ PE_DEBUGHALT();
       <FreeRTOS v="GT_FRTOS" />
       <list name="Number of tasks" v="4">
         <group name="FreeRTOS task">
-          <Task_name v="mains_task" />
+          <Task_name v="main_task" />
+          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
+          <Initial_Priority v="0" />
+        </group>
+        <group name="FreeRTOS task">
+          <Task_name v="IHM_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
@@ -1696,11 +1701,6 @@ PE_DEBUGHALT();
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
-        <group name="FreeRTOS task">
-          <Task_name v="IHM_task" />
-          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
-          <Initial_Priority v="0" />
-        </group>
       </list>
     </Properties>
     <Methods>
@@ -1710,10 +1710,10 @@ PE_DEBUGHALT();
       <EmptySection_DummyValue />
     </Events>
   </Bean>
-  <Bean name="GT_AsynCSerial" type="AsynchroSerial">
+  <Bean name="GT_AsyncSerial" type="AsynchroSerial">
     <Enabled v="Y" />
     <Properties>
-      <Component_name v="GT_AsynCSerial" />
+      <Component_name v="GT_AsyncSerial" />
       <Channel v="UART0" />
       <boolgroup name="Interrupt service/event" v="Enabled">
         <Interrupt_RxD v="INT_UART0" />
@@ -1892,16 +1892,16 @@ PE_DEBUGHALT();
       <event name="BeforeNewSpeed" v="don&amp;apos;t generate code" />
       <event name="AfterNewSpeed" v="don&amp;apos;t generate code" />
       <event name="OnError" v="generate code">
-        <Event_procedure_name v="GT_AsynCSerial_OnError" />
+        <Event_procedure_name v="GT_AsyncSerial_OnError" />
         <Priority v="same as interrupt" />
       </event>
       <event name="OnRxChar" v="generate code">
-        <Event_procedure_name v="GT_AsynCSerial_OnRxChar" />
+        <Event_procedure_name v="GT_AsyncSerial_OnRxChar" />
         <Priority v="same as interrupt" />
       </event>
       <event name="OnRxCharExt" v="don&amp;apos;t generate code" />
       <event name="OnTxChar" v="generate code">
-        <Event_procedure_name v="GT_AsynCSerial_OnTxChar" />
+        <Event_procedure_name v="GT_AsyncSerial_OnTxChar" />
         <Priority v="same as interrupt" />
       </event>
       <event name="OnFullRxBuf" v="don&amp;apos;t generate code" />
@@ -2213,7 +2213,7 @@ Autoselect
     </Events>
   </Bean>
   <Bean name="MMA1" type="MMA8451Q">
-    <Enabled v="N" />
+    <Enabled v="Y" />
     <Properties>
       <Component_Name v="MMA1" />
       <Slave_Address v="1D" />

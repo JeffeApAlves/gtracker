@@ -19,6 +19,8 @@
 
 /* End <includes> initialization, DO NOT MODIFY LINES ABOVE */
 
+#include "application.h"
+
 static portTASK_FUNCTION(main_taskTask, pvParameters) {
 
   /* Write your task initialization code here ... */
@@ -37,25 +39,21 @@ static portTASK_FUNCTION(IHM_taskTask, pvParameters) {
 	  initialize_ihm();
 
 	  for(;;) {
-
 		  loop_ihm();
-
-		  vTaskDelay(10/portTICK_RATE_MS);
+		  vTaskDelay(5/portTICK_RATE_MS);
 	  }
 
 	  terminate_ihm();
-	  /* Destroy the task */
 	  vTaskDelete(IHM_taskTask);
 }
 
 static portTASK_FUNCTION(communication_taskTask, pvParameters) {
 
-  /* Write your task initialization code here ... */
+  initCallBacks();
 
   for(;;) {
-    /* Write your task code here ... */
-
-      vTaskDelay(1000/portTICK_RATE_MS);
+      processProtocol();
+      vTaskDelay(5/portTICK_RATE_MS);
   }
   /* Destroy the task */
   vTaskDelete(communication_taskTask);
@@ -63,14 +61,14 @@ static portTASK_FUNCTION(communication_taskTask, pvParameters) {
 
 static portTASK_FUNCTION(data_taskTask, pvParameters) {
 
-  /* Write your task initialization code here ... */
+  initAccel();
 
   for(;;) {
-    /* Write your task code here ... */
-
-      vTaskDelay(1000/portTICK_RATE_MS);
+      read_accel();
+      read_Channels_AD();
+      vTaskDelay(100/portTICK_RATE_MS);
   }
-  /* Destroy the task */
+
   vTaskDelete(data_taskTask);
 }
 
