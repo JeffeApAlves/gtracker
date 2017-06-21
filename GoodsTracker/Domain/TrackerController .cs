@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GoodsTracker
 {
     class TrackerController :ThreadRun
     {
+        onUpdate onDataTelemetria, onStatusLock;
+
         private static TrackerController singleton=null;
 
         Tracker             tracker;
@@ -13,7 +14,6 @@ namespace GoodsTracker
 
         internal List<Fence> Fences { get => fences; set => fences = value; }
         internal List<Route> Routes { get => routes; set => routes = value; }
-
 
         //Singleton
         public static TrackerController TrackerCtrl
@@ -30,6 +30,8 @@ namespace GoodsTracker
         }
 
         internal Tracker Tracker { get => tracker; set => tracker = value; }
+        public onUpdate OnDataTelemetria { get => onDataTelemetria; set => onDataTelemetria = value; }
+        public onUpdate OnStatusLock { get => onStatusLock; set => onStatusLock = value; }
 
         private TrackerController()
         {
@@ -103,11 +105,14 @@ namespace GoodsTracker
             tracker.requestBehavior(onReceiveBehavior);
         }
 
-        internal ResultExec onReceiveBehavior(AnsCmd ans)
+        internal void unLockVehicle()
         {
-            registerBehavior(tracker.getBehavior());
+            tracker.unLockVehicle(onLockStatus);
+        }
 
-            return ResultExec.EXEC_SUCCESS;
+        internal void lockVehicle()
+        {
+            tracker.lockVehicle(onLockStatus);
         }
 
         internal void registerBehavior(TelemetriaData b)
@@ -120,12 +125,32 @@ namespace GoodsTracker
 
         internal bool anyRoute()
         {
-            return routes.Count > 0 &&routes[0].MapRoute!=null;
+            return routes.Count > 0 && routes[0].MapRoute != null;
         }
 
         internal int getCountRegisters()
         {
-            return anyRoute() ? routes[0].Behaviors.Count:0;
+            return anyRoute() ? routes[0].Behaviors.Count : 0;
+        }
+
+        // CallBacks
+
+        private ResultExec onLockStatus(AnsCmd ans)
+        {
+            registerBehavior(tracker.getTelemetria());
+
+            onStatusLock?.Invoke();
+
+            return ResultExec.EXEC_SUCCESS;
+        }
+
+        private ResultExec onReceiveBehavior(AnsCmd ans)
+        {
+            registerBehavior(tracker.getTelemetria());
+
+            onDataTelemetria?.Invoke();
+
+            return ResultExec.EXEC_SUCCESS;
         }
     }
 }

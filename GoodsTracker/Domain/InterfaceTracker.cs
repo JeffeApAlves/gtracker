@@ -12,6 +12,6 @@ namespace GoodsTracker
         void lockVehicle(onAnswerCmd ans);
         void unLockVehicle(onAnswerCmd ans);
         double  getLevel();
-        TelemetriaData getBehavior();
+        TelemetriaData getTelemetria();
     }
 }

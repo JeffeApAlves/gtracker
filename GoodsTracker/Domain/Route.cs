@@ -58,15 +58,19 @@ namespace GoodsTracker
             behaviors.Clear();
         }
 
-        internal void createRoute(PointLatLng start, PointLatLng stop)
+        internal bool createRoute(PointLatLng start, PointLatLng stop)
         {
             startTrip(start);
-
             stopTrip(stop);
 
             var routedirection = GMapProviders.GoogleMap.GetDirections(out direction, start, stop, false, false, false, false, false);
 
-            mapRoute = new GMapRoute(direction.Route, name);
+            if (direction != null)
+            {
+                mapRoute = new GMapRoute(direction.Route, name);
+            }
+
+            return direction != null;
         }
 
         internal void createRoute()

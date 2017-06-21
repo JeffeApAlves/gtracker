@@ -15,35 +15,41 @@ namespace GoodsTracker
 
         STATUS_GUI  statusFence = STATUS_GUI.INIT;
         STATUS_GUI  statusTrip  = STATUS_GUI.INIT;
-        ThreadGUI   threadGUI;
+        TestData    testData;
         TrackerController trackerController = TrackerController.TrackerCtrl;
 
-        Fence       fence;
-        Route       route;
+        Fence   fence;
+        Route   route;
 
-        int itemselected = -1;
-        int filterslected = 0;
-        int register_count = 0;
+        int     itemselected    = -1;
+        int     filterslected   = 0;
+        bool    changeDataTelemetria = false;
+        bool    changeStatusLock = false;
 
         public MainForm()
         {
             InitializeComponent();
-
-            Protocol.Communication.init();
-
-            initAllThreads();
-
-            Serial.Open();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            initTrackerControl();
             initMapControl();
             initLayers();
             initPanelTrip();
             initPanelFence();
             initPanelBehavior();
             initPanelConfig();
+
+            Protocol.Communication.init();
+
+            initAllThreads();
+        }
+
+        private void initTrackerControl()
+        {
+            trackerController.OnDataTelemetria  = onDataTelemetria;
+            trackerController.OnStatusLock      = onStatusLock;
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -64,31 +70,31 @@ namespace GoodsTracker
             }
         }
 
-        //Seleciona painel trip
+        // Seleciona painel trip
         private void button1_Click_1(object sender, EventArgs e)
         {
             selectPanel(panel1);
         }
 
-        //Seleciona painel Fence
+        // Seleciona painel Fence
         private void button2_Click_1(object sender, EventArgs e)
         {
             selectPanel(panel2);
         }
 
-        //Seleciona painel TelemetriaData
+        // Seleciona painel TelemetriaData
         private void button3_Click_1(object sender, EventArgs e)
         {
             selectPanel(panel3);
         }
 
-        // seleciona painel configuracao
+        // Seleciona painel configuracao
         private void button4_Click_1(object sender, EventArgs e)
         {
             selectPanel(panel4);
         }
 
-        //Inicia nova fence
+        // Inicia nova fence
         private void button5_Click(object sender, EventArgs e)
         {
             if (!statusFence.Equals(STATUS_GUI.NEW_FENCE))
@@ -99,7 +105,7 @@ namespace GoodsTracker
             }
         }
 
-        //Confirma Fence
+        // Confirma Fence
         private void btn_fence_Click(object sender, EventArgs e)
         {
             if (statusFence.Equals(STATUS_GUI.ADD_POINTS))
@@ -118,6 +124,7 @@ namespace GoodsTracker
             fence.clear();
         }
 
+        // Exclui fence
         private void button6_Click(object sender, EventArgs e)
         {
             if (statusFence.Equals(STATUS_GUI.ADD_POINTS))
@@ -144,13 +151,13 @@ namespace GoodsTracker
             }
         }
 
-        //Atualiza zoom do mapa conforme track
+        // Atualiza zoom do mapa conforme track
         private void tB_Zoom_Scroll(object sender, EventArgs e)
         {
             gMapControl1.Zoom = tB_Zoom.Value;
         }
 
-        //Seleciona layers
+        // Seleciona layers
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (checkedListBox1.GetItemCheckState(3) == CheckState.Checked)
@@ -167,13 +174,14 @@ namespace GoodsTracker
             layerFence.show(checkedListBox1.GetItemCheckState(2) == CheckState.Checked);
         }
 
+        // Seleciona filtro
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(filterslected != cbFilter.SelectedIndex)
             {
                 filterslected = cbFilter.SelectedIndex;
 
-                updateBehavior();
+                changeDataTelemetria = true;
             }
         }
 
@@ -212,6 +220,7 @@ namespace GoodsTracker
             gMapControl1.Zoom = 15;
             gMapControl1.AutoScroll = true;
             gMapControl1.Position = new PointLatLng(CAPAO_CITY.LATITUDE, CAPAO_CITY.LONGITUDE);
+            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly;
         }
 
         private void initPanelTrip()
@@ -267,12 +276,13 @@ namespace GoodsTracker
             txtLatStop.Text         = "";
             txtLngStop.Text         = "";
 
-
             txtLatStart.Focus();
         }
 
         void updateBehavior()
         {
+            changeDataTelemetria = false;
+
             BuildTreeView bTV           = new BuildTreeView(tvBehavior);
             List<TelemetriaData> list   = trackerController.getBehaviorFiltered(filterslected);
 
@@ -289,7 +299,18 @@ namespace GoodsTracker
                 foreach (TelemetriaData b in list)
                 {
                     PointLatLng p = new PointLatLng(b.Latitude, b.Longitude);
-                    GMarkerGoogleType color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
+
+                    GMarkerGoogleType color;
+
+                    if (b.IsInsideOfFence())
+                    {
+                        color = GMarkerGoogleType.brown_small;
+                    }
+                    else
+                    {
+                        color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
+                    }
+                    
                     layerBehavior.add(p, b.getStrNOK(), color);
                 }
             }
@@ -413,7 +434,7 @@ namespace GoodsTracker
         {
             if (panel3.Visible)
             {
-                updateBehavior();
+                changeDataTelemetria = true;
             }
         }
 
@@ -427,31 +448,49 @@ namespace GoodsTracker
             }
         }
 
+        /*
+         * A cada 250 ms
+         */ 
         private void timer1_Tick(object sender, EventArgs e)
         {
             trackerController.requestBehavior();
 
-            if(register_count!= trackerController.getCountRegisters())
+            if (changeDataTelemetria)
             {
-                register_count = trackerController.getCountRegisters();
                 updateBehavior();
             }
         }
 
+        // Inicializa as threads
         void initAllThreads()
         {
-            threadGUI = new ThreadGUI();
-            threadGUI.setTime(1000);
-            threadGUI.setUpdate(updateScreen);
+            //Dados para testes
+            testData = new TestData();
+            testData.setTime(1000);
+
+            //Inicia todas as threads
             ThreadManager.start();
             timer1.Enabled = true;
         }
 
-        void updateScreen()
+        // Evento quando o comando de alteracao do status da chave
+        private void onStatusLock()
         {
-            test.AddFrame();
+            changeStatusLock = true;
+        }
+
+        // Evento de recepcao de dados de telemetria
+        private void onDataTelemetria()
+        {
+            TelemetriaData data = trackerController.Tracker.getTelemetria();
+
+            layerFence.PointIsInsidePolygon(data);
+
+            changeDataTelemetria = true;
         }
     }
+
+    public delegate void onUpdate();
 
     class CAPAO_CITY
     {
@@ -468,49 +507,5 @@ namespace GoodsTracker
         CONFIRM_FENCE,
         START_POINT,
         END_POINT
-    }
-
-    // ############################################  TESTE #######################################################
-    class test
-    {
-        static int indexBehavior = 0;
-
-        static public void AddFrame()
-        {
-
-            if (TrackerController.TrackerCtrl.anyRoute() &&
-                TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > indexBehavior)
-            {
-                Random rnd          = new Random();
-                TelemetriaData b    = new TelemetriaData();
-                PointLatLng p       = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[indexBehavior++];
-
-                b = new TelemetriaData();
-                b.DateTime = DateTime.Now;
-                b.setPosition(p.Lat, p.Lng);
-                b.setAcceleration(rnd.Next(0, 4), rnd.Next(5, 9), rnd.Next(10, 14));
-                b.setSpeed(rnd.Next(40,120));
-                b.setLevel(rnd.Next(900,1000));
-
-                DecoderFrame decoder        = new DecoderFrame();
-                CommunicationFrame frame    = new CommunicationFrame();
-                Cmd cmd                     = new Cmd(RESOURCE.BEHAVIOR);
-//                Tracker t                   = new Tracker(2);
-                cmd.Operation               = Operation.AN;
-                cmd.Dest                    = 1;
-
-                decoder.setHeader(ref frame, TrackerController.TrackerCtrl.Tracker , cmd);
-                decoder.setPayLoad(ref frame,   b);
-               
-                Protocol.Communication.setFrameRx(  CONST_CHAR.RX_FRAME_START + 
-                                                    frame.Frame +
-                                                    CONST_CHAR.SEPARATOR +
-//                                                    CONST_CHAR.ASTERISCO + 
-                                                    frame.checkSum().ToString() +
-                                                    CONST_CHAR.RX_FRAME_END +
-                                                    CONST_CHAR.CR + 
-                                                    CONST_CHAR.LF);
-            }
-        }
     }
 }

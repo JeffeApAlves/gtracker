@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace GoodsTracker
@@ -73,6 +74,8 @@ namespace GoodsTracker
 
     internal class TelemetriaData
     {
+        Dictionary<int,bool>    insideOfFence;
+
         double      latitude, longitude;
         Value       speed;
         Value       level;
@@ -87,6 +90,7 @@ namespace GoodsTracker
         public double Latitude { get => latitude; set => latitude = value; }
         public double Longitude { get => longitude; set => longitude = value; }
         internal Value Level { get => level; set => level = value; }
+        public Dictionary<int, bool> InsideOfFence { get => insideOfFence; set => insideOfFence = value; }
 
         internal TelemetriaData()
         {
@@ -95,6 +99,8 @@ namespace GoodsTracker
             AxisZ       = new Axis();
             speed       = new Value(0,100);
             level       = new Value(500,1500);
+
+            insideOfFence = new Dictionary<int, bool>();
         }
 
         internal bool OK()
@@ -151,12 +157,12 @@ namespace GoodsTracker
 
         internal void setValues(TelemetriaData values)
         {
-            Speed               = values.Speed;
-            Level               = values.Level;
+            Speed   = values.Speed;
+            Level   = values.Level;
 
-            AxisX = values.AxisX;
-            AxisY = values.AxisY;
-            AxisZ = values.AxisZ;
+            AxisX   = values.AxisX;
+            AxisY   = values.AxisY;
+            AxisZ   = values.AxisZ;
         }
 
         public override string ToString()
@@ -172,6 +178,30 @@ namespace GoodsTracker
         internal void setLevel(int v)
         {
             level.Val = v;
+        }
+
+        internal void setInsideOfFence(int index,bool status)
+        {
+            insideOfFence[index] = status;
+        }
+
+        internal bool IsInsideOfFence()
+        {
+            bool ret = false;
+
+            if (insideOfFence != null) {
+
+                foreach (KeyValuePair<int, bool> entry in insideOfFence)
+                {
+                    if (entry.Value)
+                    {
+                        ret = true;
+                        break;
+                    }
+                }
+            }
+
+            return ret;
         }
     }
 }

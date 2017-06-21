@@ -233,6 +233,8 @@ namespace GoodsTracker
         internal void init()
         {
             setTime(20);
+
+            Serial.Open();
         }
 
         internal void setFrameRx(string str)

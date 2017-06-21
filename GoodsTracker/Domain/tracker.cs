@@ -4,21 +4,18 @@ namespace GoodsTracker
 {
     class Tracker : CommunicationUnit,InterfaceTracker
     {
-        TelemetriaData    behavior;
+        TelemetriaData    telemetriaData;
+
+        internal TelemetriaData TelemetriaData { get => telemetriaData; set => telemetriaData = value; }
 
         internal Tracker(int val)
         {
             address = val;
         }
 
-        public TelemetriaData getBehavior()
-        {
-            return behavior;
-        }
-
         public double getLevel()
         {
-            return behavior.Level.Val;
+            return telemetriaData.Level.Val;
         }
 
         public void requestBehavior(onAnswerCmd on_ans)
@@ -45,17 +42,21 @@ namespace GoodsTracker
         {
             if(ans.Resource.Equals(RESOURCE.BEHAVIOR))
             {
-                updateBehavior(ans);
+                updateDataTelemetria(ans);
             }
             else if(ans.Resource.Equals(RESOURCE.LOCK)){
-            // NOTHING TODO
+                // NOTHING UP To NOW
             }
         }
 
-        void updateBehavior(AnsCmd ans)
+        void updateDataTelemetria(AnsCmd ans)
         {
-//            behavior = new TelemetriaData();
-            behavior = ans.Info;
+            telemetriaData = ans.Info;
+        }
+
+        public TelemetriaData getTelemetria()
+        {
+            return telemetriaData;
         }
     }
 }

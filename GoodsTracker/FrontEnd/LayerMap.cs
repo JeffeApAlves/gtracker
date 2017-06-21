@@ -160,9 +160,29 @@ namespace GoodsTracker
             if (route!=null && route.MapRoute!=null)
             {
                 mapOverlay.Routes.Remove(route.MapRoute);
-
                 removeAllMarkers();
             }
+        }
+
+        internal bool PointIsInsidePolygon(TelemetriaData data)
+        {
+            bool ret = false;
+
+            PointLatLng p = new PointLatLng(data.Latitude, data.Longitude);
+
+            int i = 0;
+
+            foreach (GMapPolygon poly in mapOverlay.Polygons)
+            {
+                data.setInsideOfFence(i++, poly.IsInside(p));
+
+                if (data.IsInsideOfFence())
+                {
+                    ret = true;
+                }
+            }
+
+            return ret;
         }
     }
 }

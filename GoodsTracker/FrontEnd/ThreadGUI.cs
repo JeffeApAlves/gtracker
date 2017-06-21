@@ -10,14 +10,11 @@ namespace GoodsTracker
     {
         onUpdate onUpdate;
 
+        public onUpdate OnUpdate { get => onUpdate; set => onUpdate = value; }
+
         public override void run()
         {
             onUpdate?.Invoke();
-        }
-
-        public void setUpdate(onUpdate func)
-        {
-            onUpdate = func;
         }
     }
 }

@@ -83,7 +83,7 @@
   <ItemGroup>
     <Compile Include="Communication\AnsCmd.cs" />
     <Compile Include="Communication\Serial.cs" />
-    <Compile Include="Domain\Behavior.cs" />
+    <Compile Include="Domain\TelemetriaData.cs" />
     <Compile Include="Domain\tracker.cs" />
     <Compile Include="Domain\TrackerController .cs" />
     <Compile Include="FrontEnd\BuildTreeView.cs" />
@@ -112,6 +112,7 @@
     <Compile Include="Domain\ThreadManager.cs" />
     <Compile Include="Domain\ThreadRun.cs" />
     <Compile Include="Domain\touchkey.cs" />
+    <Compile Include="TestData.cs" />
     <EmbeddedResource Include="FrontEnd\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

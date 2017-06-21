@@ -1,10 +1,5 @@
-﻿using System;
-using System.Data;
-using System.Drawing;
-
+﻿using System.Data;
 using GMap.NET;
-using GMap.NET.MapProviders;
-using GMap.NET.WindowsForms;
 using System.Collections.Generic;
 
 namespace GoodsTracker
@@ -53,14 +48,12 @@ namespace GoodsTracker
         internal void insertPositon(PointLatLng point)
         {
             dt.Rows.Add(string.Format("{0}", dt.Rows.Count), point.Lat, point.Lng);
-
             listPoints.Add(point);
         }
 
         internal void clear()
         {
             dt.Clear();
-
             listPoints.Clear();
         }
 
@@ -72,6 +65,11 @@ namespace GoodsTracker
 
                 listPoints.RemoveAt(index);
             }
+        }
+
+        internal bool checkIn(PointLatLng position)
+        {
+            return true;
         }
     }
 }
