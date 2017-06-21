@@ -276,6 +276,8 @@ namespace GoodsTracker
             txtLngStop.Text         = "";
 
             txtLatStart.Focus();
+
+            tvBehavior.Nodes.Clear();
         }
 
         void updateBehavior()
@@ -289,7 +291,12 @@ namespace GoodsTracker
             showMarkerBehavior(list);
         }
 
-        void showMarkerBehavior(List<TelemetriaData> list)
+        void updateStatusLock()
+        {
+            TelemetriaData data = trackerController.Tracker.getTelemetria();
+        }
+
+            void showMarkerBehavior(List<TelemetriaData> list)
         {
             if (list != null)
             {
@@ -466,6 +473,11 @@ namespace GoodsTracker
             if (changeDataTelemetria)
             {
                 updateBehavior();
+            }
+
+            if (changeStatusLock)
+            {
+                updateStatusLock();
             }
         }
 

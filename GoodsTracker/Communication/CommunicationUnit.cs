@@ -84,7 +84,6 @@ namespace GoodsTracker
             if (isAnyAns())
             {
                 Cmd[]       array_cmd = queueCmd.ToArray();
-//                AnsCmd[]    array_ans = queueAnsCmd.ToArray();
 
                 foreach (Cmd cmd in array_cmd)
                 {
