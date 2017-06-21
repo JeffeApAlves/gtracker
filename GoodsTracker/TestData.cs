@@ -16,6 +16,11 @@ namespace GoodsTracker
 
         static int indexBehavior = 0;
 
+        public TestData(int t)
+        {
+            setTime(t);
+        }
+
         static public void AddFrame()
         {
 

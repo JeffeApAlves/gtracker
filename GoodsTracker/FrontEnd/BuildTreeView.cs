@@ -22,9 +22,11 @@ namespace GoodsTracker
 
         TreeView treeView;
 
-        internal BuildTreeView(TreeView tv)
+        internal BuildTreeView(TreeView tv, List<TelemetriaData> list)
         {
             treeView = tv;
+
+            loadlistPointsTreeView(list);
         }
 
         /*
@@ -33,40 +35,41 @@ namespace GoodsTracker
          */
         internal void loadlistPointsTreeView(List<TelemetriaData> listBehavior)
         {
-            TreeNode root, loc;
-
-            int i = 0;
-
             if (listBehavior != null)
             {
-                root = createRootTreeView(listBehavior.Count);
-
                 foreach (TelemetriaData b in listBehavior)
                 {
-                    loc = createLocTreeView(b, root, i++);
-
-                    createPositionTreeView(b, loc);
-
-                    createEixoTreeView(b.AxisX, "Eixo[X]", loc);
-                    createEixoTreeView(b.AxisY, "Eixo[Y]", loc);
-                    createEixoTreeView(b.AxisZ, "Eixo[Z]", loc);
+                    addTelemetria(b);
                 }
             }
         }
 
-        internal TreeNode createRootTreeView(int num)
+        internal void addTelemetria(TelemetriaData b)
+        {
+            TreeNode    root, loc;
+
+            root    = createRootTreeView();
+            loc     = createLocTreeView(b, root, root.Nodes.Count);
+
+            createPositionTreeView(b, loc);
+
+            createEixoTreeView(b.AxisX, "Eixo[X]", loc);
+            createEixoTreeView(b.AxisY, "Eixo[Y]", loc);
+            createEixoTreeView(b.AxisZ, "Eixo[Z]", loc);
+        }
+
+        internal TreeNode createRootTreeView()
         {
             TreeNode root;
 
-            treeView.Nodes.Clear();
+//            treeView.Nodes.Clear();
 
             if (treeView.Nodes.Count <= 0)
             {
-                root = treeView.Nodes.Add(string.Format("Trip: ({0})", num));
+                root = treeView.Nodes.Add(string.Format("Trip"));
             }
             else
             {
-
                 root = treeView.Nodes[0];
             }
 

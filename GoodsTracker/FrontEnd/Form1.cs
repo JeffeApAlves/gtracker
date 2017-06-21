@@ -40,9 +40,8 @@ namespace GoodsTracker
             initPanelFence();
             initPanelBehavior();
             initPanelConfig();
-
+            hideAllPanel();
             Protocol.Communication.init();
-
             initAllThreads();
         }
 
@@ -240,9 +239,9 @@ namespace GoodsTracker
 
         private void initLayers()
         {
-            layerFence = new LayerMap(gMapControl1, "Fence");
-            layerRoute = new LayerMap(gMapControl1, "Route");
-            layerBehavior = new LayerMap(gMapControl1, "TelemetriaData");
+            layerFence      = new LayerMap(gMapControl1, "Fence");
+            layerRoute      = new LayerMap(gMapControl1, "Route");
+            layerBehavior   = new LayerMap(gMapControl1, "TelemetriaData");
         }
 
         void initPanelConfig()
@@ -283,10 +282,10 @@ namespace GoodsTracker
         {
             changeDataTelemetria = false;
 
-            BuildTreeView bTV           = new BuildTreeView(tvBehavior);
             List<TelemetriaData> list   = trackerController.getBehaviorFiltered(filterslected);
 
-            bTV.loadlistPointsTreeView(list);
+            BuildTreeView bTV           = new BuildTreeView(tvBehavior,list);
+
             showMarkerBehavior(list);
         }
 
@@ -369,14 +368,22 @@ namespace GoodsTracker
 
                 if (show) {
 
-                    panel1.Visible = false;
-                    panel2.Visible = false;
-                    panel3.Visible = false;
-                    panel4.Visible = false;
+                    hideAllPanel();
                 }
 
                 p.Visible = show;
+
+                statusFence = STATUS_GUI.INIT;
+                statusTrip = STATUS_GUI.INIT;
             }
+        }
+
+        internal void hideAllPanel()
+        {
+            panel1.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+            panel4.Visible = false;
         }
 
         internal void add(Fence fence) {
@@ -438,6 +445,9 @@ namespace GoodsTracker
             }
         }
 
+        /**
+         * Remove uma rota e suas marcas
+         */
         void removeRoute(Route route)
         {
             if (route !=null)
@@ -453,8 +463,6 @@ namespace GoodsTracker
          */ 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            trackerController.requestBehavior();
-
             if (changeDataTelemetria)
             {
                 updateBehavior();
@@ -465,8 +473,7 @@ namespace GoodsTracker
         void initAllThreads()
         {
             //Dados para testes
-            testData = new TestData();
-            testData.setTime(1000);
+            testData = new TestData(1000);
 
             //Inicia todas as threads
             ThreadManager.start();

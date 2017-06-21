@@ -47,6 +47,7 @@ namespace GoodsTracker
          */
         public override void run()
         {
+            requestBehavior();
         }
 
         internal Fence createFence()
