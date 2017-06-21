@@ -61,14 +61,21 @@
 #include "GT_FRTOS.h"
 #include "UTIL1.h"
 #include "TU1.h"
+#include "GI2C1.h"
+#include "I2C1.h"
+#include "SDA1.h"
+#include "BitIoLdd14.h"
+#include "SCL1.h"
+#include "BitIoLdd15.h"
 #include "CS1.h"
 #include "GT_TSK.h"
-#include "GT_AsynCSerial.h"
+#include "GT_AsyncSerial.h"
 #include "ASerialLdd1.h"
 #include "GT_AD1.h"
 #include "AdcLdd1.h"
 #include "GT_TI1.h"
 #include "TimerIntLdd1.h"
+#include "MMA1.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -211,9 +218,9 @@ void GT_AD1_OnCalibrationEnd(void);
 
 /*
 ** ===================================================================
-**     Event       :  GT_AsynCSerial_OnError (module Events)
+**     Event       :  GT_AsyncSerial_OnError (module Events)
 **
-**     Component   :  GT_AsynCSerial [AsynchroSerial]
+**     Component   :  GT_AsyncSerial [AsynchroSerial]
 **     Description :
 **         This event is called when a channel error (not the error
 **         returned by a given method) occurs. The errors can be read
@@ -224,13 +231,13 @@ void GT_AD1_OnCalibrationEnd(void);
 **     Returns     : Nothing
 ** ===================================================================
 */
-void GT_AsynCSerial_OnError(void);
+void GT_AsyncSerial_OnError(void);
 
 /*
 ** ===================================================================
-**     Event       :  GT_AsynCSerial_OnRxChar (module Events)
+**     Event       :  GT_AsyncSerial_OnRxChar (module Events)
 **
-**     Component   :  GT_AsynCSerial [AsynchroSerial]
+**     Component   :  GT_AsyncSerial [AsynchroSerial]
 **     Description :
 **         This event is called after a correct character is received.
 **         The event is available only when the <Interrupt
@@ -241,20 +248,20 @@ void GT_AsynCSerial_OnError(void);
 **     Returns     : Nothing
 ** ===================================================================
 */
-void GT_AsynCSerial_OnRxChar(void);
+void GT_AsyncSerial_OnRxChar(void);
 
 /*
 ** ===================================================================
-**     Event       :  GT_AsynCSerial_OnTxChar (module Events)
+**     Event       :  GT_AsyncSerial_OnTxChar (module Events)
 **
-**     Component   :  GT_AsynCSerial [AsynchroSerial]
+**     Component   :  GT_AsyncSerial [AsynchroSerial]
 **     Description :
 **         This event is called after a character is transmitted.
 **     Parameters  : None
 **     Returns     : Nothing
 ** ===================================================================
 */
-void GT_AsynCSerial_OnTxChar(void);
+void GT_AsyncSerial_OnTxChar(void);
 
 void GT_FRTOS_vApplicationStackOverflowHook(TaskHandle_t pxTask, char *pcTaskName);
 /*

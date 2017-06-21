@@ -7,7 +7,7 @@
 **     Version     : Component 01.188, Driver 01.12, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 18:28, # CodeGen: 12
+**     Date/Time   : 2017-06-20, 22:42, # CodeGen: 16
 **     Abstract    :
 **         This component "Serial_LDD" implements an asynchronous serial
 **         communication. The component supports different settings of
@@ -120,7 +120,7 @@
 
 #include "FreeRTOS.h" /* FreeRTOS interface */
 #include "ASerialLdd1.h"
-#include "GT_AsynCSerial.h"
+#include "GT_AsyncSerial.h"
 #include "UART0_PDD.h"
 #include "SIM_PDD.h"
 

@@ -6,7 +6,7 @@
 **     Version     : Component 01.025, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 18:28, # CodeGen: 12
+**     Date/Time   : 2017-06-20, 22:42, # CodeGen: 16
 **     Abstract    :
 **
 **     Settings    :
@@ -89,14 +89,21 @@
 #include "GT_FRTOS.h"
 #include "UTIL1.h"
 #include "TU1.h"
+#include "GI2C1.h"
+#include "I2C1.h"
+#include "SDA1.h"
+#include "BitIoLdd14.h"
+#include "SCL1.h"
+#include "BitIoLdd15.h"
 #include "CS1.h"
 #include "GT_TSK.h"
-#include "GT_AsynCSerial.h"
+#include "GT_AsyncSerial.h"
 #include "ASerialLdd1.h"
 #include "GT_AD1.h"
 #include "AdcLdd1.h"
 #include "GT_TI1.h"
 #include "TimerIntLdd1.h"
+#include "MMA1.h"
 
 
 /*

@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 18:28, # CodeGen: 12
+**     Date/Time   : 2017-06-20, 22:42, # CodeGen: 16
 **     Abstract    :
 **
 **     Settings    :
@@ -269,14 +269,21 @@
 #include "GT_FRTOS.h"
 #include "UTIL1.h"
 #include "TU1.h"
+#include "GI2C1.h"
+#include "I2C1.h"
+#include "SDA1.h"
+#include "BitIoLdd14.h"
+#include "SCL1.h"
+#include "BitIoLdd15.h"
 #include "CS1.h"
 #include "GT_TSK.h"
-#include "GT_AsynCSerial.h"
+#include "GT_AsyncSerial.h"
 #include "ASerialLdd1.h"
 #include "GT_AD1.h"
 #include "AdcLdd1.h"
 #include "GT_TI1.h"
 #include "TimerIntLdd1.h"
+#include "MMA1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -485,16 +492,26 @@ void PE_low_level_init(void)
   LED_B_Init(); /* initialize LED driver */
   /* ### FreeRTOS "GT_FRTOS" init code ... */
   /* PEX_RTOS_INIT() should have been called at this time already with the most critical setup */
+  /* ### BitIO_LDD "BitIoLdd14" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd14_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd15" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd15_Init(NULL);
+  /* ### GenericSWI2C "I2C1" init code ... */
+  I2C1_Init();
+  /* ### GenericI2C "GI2C1" init code ... */
+  GI2C1_Init();
   /* ### CriticalSection "CS1" init code ... */
   /* ### FreeRTOS_Tasks "GT_TSK" init code ... */
   GT_TSK_CreateTasks();
-  /* ### Asynchro serial "GT_AsynCSerial" init code ... */
-  GT_AsynCSerial_Init();
+  /* ### Asynchro serial "GT_AsyncSerial" init code ... */
+  GT_AsyncSerial_Init();
   /* ### ADC "GT_AD1" init code ... */
   GT_AD1_Init();
   /* ### TimerInt_LDD "TimerIntLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)TimerIntLdd1_Init(NULL);
   /* ### TimerInt "GT_TI1" init code ... */
+  /* ### MMA8451Q "MMA1" init code ... */
+  /* Write code here ... */
 }
   /* Flash configuration field */
   __attribute__ ((section (".cfmconfig"))) const uint8_t _cfm[0x10] = {

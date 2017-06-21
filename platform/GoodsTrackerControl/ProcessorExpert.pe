@@ -3,7 +3,7 @@
   <Header>
     <Name>GoodsTrackerControl</Name>
     <SavedBy>Flávio Soares</SavedBy>
-    <ModificationStamp>10</ModificationStamp>
+    <ModificationStamp>14</ModificationStamp>
     <Date>2017-06-20</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.2.RT7_b1550-0615</PEversion>
@@ -29,7 +29,7 @@
     <UseExistingModules>true</UseExistingModules>
     <RenamePeripheries>false</RenamePeripheries>
     <Autodependency>true</Autodependency>
-    <ProjectCompNumb>76</ProjectCompNumb>
+    <ProjectCompNumb>88</ProjectCompNumb>
     <DelUnusedPreviouslyGenFiles>true</DelUnusedPreviouslyGenFiles>
     <GeneratedCodeFrozen>false</GeneratedCodeFrozen>
     <AssignInitComponentNameToPrph>true</AssignInitComponentNameToPrph>
@@ -4480,9 +4480,9 @@
       <ItemId10>48</ItemId10>
       <Value10>true</Value10>
       <ItemId11>49</ItemId11>
-      <Value11>false</Value11>
+      <Value11>true</Value11>
       <ItemId12>50</ItemId12>
-      <Value12>false</Value12>
+      <Value12>true</Value12>
       <ItemId13>55</ItemId13>
       <Value13>true</Value13>
       <ItemId14>56</ItemId14>
@@ -4494,7 +4494,7 @@
       <ItemId17>61</ItemId17>
       <Value17>true</Value17>
       <ItemId18>63</ItemId18>
-      <Value18>false</Value18>
+      <Value18>true</Value18>
     </BoolList_BeanConfig>
     <BoolList_TaskConfig>
       <Count>0</Count>
@@ -11207,7 +11207,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>100</Value>
+        <Value>200</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -17155,7 +17155,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>4096</Value>
+        <Value>8192</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -17758,7 +17758,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>vSemaphoreDelete</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
@@ -20601,7 +20601,7 @@
     <BeanType>GenericI2C</BeanType>
     <Name>GI2C1</Name>
     <CompNumb>49</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>Generic2C</IconName>
     <UserFolderName>Referenced_Components</UserFolderName>
@@ -20805,7 +20805,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>ReadAddress</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
@@ -20816,7 +20816,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>WriteAddress</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
@@ -21019,7 +21019,7 @@
     <BeanType>GenericSWI2C</BeanType>
     <Name>I2C1</Name>
     <CompNumb>50</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>GenericSWI2C</IconName>
     <UserFolderName>Referenced_Components</UserFolderName>
@@ -22286,7 +22286,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>SendChar</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
@@ -22334,7 +22334,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>RecvBlock</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
@@ -22370,7 +22370,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>SendStop</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
@@ -22382,7 +22382,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>SelectSlave</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
@@ -22736,7 +22736,7 @@
     <Repository>file:/${ProcessorExpert_loc}/Repositories/Kinetis_Repository</Repository>
     <ComponentUUID>com.freescale.processorexpert.asynchroserial</ComponentUUID>
     <BeanType>AsynchroSerial</BeanType>
-    <Name>GT_AsynCSerial</Name>
+    <Name>GT_AsyncSerial</Name>
     <CompNumb>57</CompNumb>
     <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
@@ -22751,7 +22751,7 @@
         <ItemSymbol>DeviceName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial</Value>
+        <Value>GT_AsyncSerial</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>Ser</ItemSymbol>
@@ -25361,7 +25361,7 @@
         <ItemSymbol>BeforeNewSpeedName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_BeforeNewSpeed</Value>
+        <Value>GT_AsyncSerial_BeforeNewSpeed</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>AfterNewSpeed</ItemSymbol>
@@ -25377,7 +25377,7 @@
         <ItemSymbol>AfterNewSpeedName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_AfterNewSpeed</Value>
+        <Value>GT_AsyncSerial_AfterNewSpeed</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnError</ItemSymbol>
@@ -25393,7 +25393,7 @@
         <ItemSymbol>OnErrorName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_OnError</Value>
+        <Value>GT_AsyncSerial_OnError</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnErrorPriority</ItemSymbol>
@@ -25415,7 +25415,7 @@
         <ItemSymbol>OnRxCharName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_OnRxChar</Value>
+        <Value>GT_AsyncSerial_OnRxChar</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnRxCharPriority</ItemSymbol>
@@ -25437,7 +25437,7 @@
         <ItemSymbol>OnRxCharExtName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_OnRxCharExt</Value>
+        <Value>GT_AsyncSerial_OnRxCharExt</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnRxCharExtPriority</ItemSymbol>
@@ -25459,7 +25459,7 @@
         <ItemSymbol>OnTxCharName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_OnTxChar</Value>
+        <Value>GT_AsyncSerial_OnTxChar</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnTxCharPriority</ItemSymbol>
@@ -25481,7 +25481,7 @@
         <ItemSymbol>OnFullRxBufName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_OnFullRxBuf</Value>
+        <Value>GT_AsyncSerial_OnFullRxBuf</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnFullRxBufPriority</ItemSymbol>
@@ -25503,7 +25503,7 @@
         <ItemSymbol>OnFreeTxBufName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_OnFreeTxBuf</Value>
+        <Value>GT_AsyncSerial_OnFreeTxBuf</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnFreeTxBufPriority</ItemSymbol>
@@ -25525,7 +25525,7 @@
         <ItemSymbol>OnBreakName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_OnBreak</Value>
+        <Value>GT_AsyncSerial_OnBreak</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnBreakPriority</ItemSymbol>
@@ -25552,7 +25552,7 @@
         <ItemSymbol>OnIdleName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_OnIdle</Value>
+        <Value>GT_AsyncSerial_OnIdle</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnIdlePriority</ItemSymbol>
@@ -25584,7 +25584,7 @@
         <ItemSymbol>OnTxCompleteName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_OnTxComplete</Value>
+        <Value>GT_AsyncSerial_OnTxComplete</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnTxCompletePriority</ItemSymbol>
@@ -25611,7 +25611,7 @@
         <ItemSymbol>OnRxActiveEdgeName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>GT_AsynCSerial_OnRxActiveEdge</Value>
+        <Value>GT_AsyncSerial_OnRxActiveEdge</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>OnRxActiveEdgePriority</ItemSymbol>
@@ -30564,7 +30564,7 @@
     <BeanType>MMA8451Q</BeanType>
     <Name>MMA1</Name>
     <CompNumb>63</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>MMA8451Q</IconName>
     <UserFolderName />
