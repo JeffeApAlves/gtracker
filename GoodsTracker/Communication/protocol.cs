@@ -39,7 +39,6 @@ namespace GoodsTracker
         static Protocol singleton = null;
 
         StatusRx            statusRx        = StatusRx.RX_FRAME_INIT;
-        Serial              serial;
         CommunicationFrame  rxFrame;
         CommunicationUnit   currentUnit;
 
@@ -55,11 +54,6 @@ namespace GoodsTracker
 
                 return singleton;
             }
-        }
-
-        private Protocol()
-        {
-            serial = new Serial();
         }
 
         public override void run()
@@ -109,7 +103,7 @@ namespace GoodsTracker
         {
             char ch;
 
-            if (serial.getRxData(out ch))
+            if (Serial.getRxData(out ch))
             {
                 if (ch == CONST_CHAR.RX_FRAME_START)
                 {
@@ -124,7 +118,7 @@ namespace GoodsTracker
         {
             char ch;
 
-            if (serial.getRxData(out ch))
+            if (Serial.getRxData(out ch))
             {
                 if (ch == CONST_CHAR.RX_FRAME_START)
                 {
@@ -147,7 +141,7 @@ namespace GoodsTracker
         {
             char ch;
 
-            if (serial.getRxData(out ch))
+            if (Serial.getRxData(out ch))
             {
                 if (ch == CONST_CHAR.LF)
                 {
@@ -165,7 +159,7 @@ namespace GoodsTracker
         {
             char ch;
 
-            if (serial.getRxData(out ch))
+            if (Serial.getRxData(out ch))
             {
                 if (ch == CONST_CHAR.CR)
                 {
@@ -209,20 +203,20 @@ namespace GoodsTracker
             {
                 string payload = frame.PayLoad;
 
-                serial.putTxData(CONST_CHAR.RX_FRAME_START);
-                serial.putTxData(payload);
-                serial.putTxData(CONST_CHAR.ASTERISCO);
-                serial.putTxData(frame.checkSum().ToString());
-                serial.putTxData(CONST_CHAR.RX_FRAME_END);
-                serial.putTxData(CONST_CHAR.CR);
-                serial.putTxData(CONST_CHAR.LF);
+                Serial.putTxData(CONST_CHAR.RX_FRAME_START);
+                Serial.putTxData(payload);
+                Serial.putTxData(CONST_CHAR.ASTERISCO);
+                Serial.putTxData(frame.checkSum().ToString());
+                Serial.putTxData(CONST_CHAR.RX_FRAME_END);
+                Serial.putTxData(CONST_CHAR.CR);
+                Serial.putTxData(CONST_CHAR.LF);
             }
         }
 
         void initRxCMD()
         {
             clearRxFrame();
-            serial.clear();
+            Serial.clearBuffer();
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 
@@ -243,7 +237,7 @@ namespace GoodsTracker
 
         internal void setFrameRx(string str)
         {
-            serial.putRxData(str);
+            Serial.putRxData(str);
         }
     }
 }

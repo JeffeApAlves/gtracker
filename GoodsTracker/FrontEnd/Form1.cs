@@ -32,6 +32,8 @@ namespace GoodsTracker
             Protocol.Communication.init();
 
             initAllThreads();
+
+            Serial.Open();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
