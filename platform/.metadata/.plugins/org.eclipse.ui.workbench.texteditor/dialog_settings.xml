@@ -3,28 +3,32 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
 		<item value="118" key="DIALOG_Y_ORIGIN"/>
-		<item value="563" key="DIALOG_X_ORIGIN"/>
 		<item value="381" key="DIALOG_HEIGHT"/>
+		<item value="563" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="ihm" key="selection"/>
+		<item value="dataFrame.checksum_rx" key="selection"/>
 		<list key="findhistory">
-			<item value="ihm"/>
-			<item value="pend"/>
-			<item value="initRxCMD"/>
-			<item value="rxchar"/>
-			<item value="user"/>
-			<item value="uart"/>
-			<item value="param_cmd.checksum_rx"/>
-			<item value="split"/>
+			<item value="dataFrame.checksum_rx"/>
+			<item value="decoderCMD"/>
+			<item value="cb("/>
+			<item value="sendResult"/>
+			<item value="sendresult"/>
+			<item value="sendResul"/>
+			<item value="sendresul"/>
+			<item value="buildHeader"/>
 		</list>
 		<list key="replacehistory">
+			<item value="dataFrame"/>
+			<item value="dataFrameRx"/>
+			<item value="resource"/>
+			<item value="dataRx"/>
 		</list>
 	</section>
 </section>

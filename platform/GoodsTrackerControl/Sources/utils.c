@@ -47,11 +47,26 @@ void str_split(List* result,char* str, const char a_delim){
 
 				*(result->itens + idx) = NULL;
 
+				Itens itens;
+
+				int n = replace(str,delim[0], '\0',itens);
+
+				int i=0;
+
+				for(i;i<n;i++){
+
+					tmp = _malloc((strlen(itens[i]) + 1)*sizeof(char));
+
+					memset(tmp,0,strlen(itens[i]) + 1);
+
+					strcpy(tmp, itens[i]);
+
+					*(result->itens + idx++) = tmp;
+				}
+/*
 				while ((token = strtok_r(sptr, delim, &sptr)) != NULL) {
 
 					assert(idx < result->size);
-
-					 //Equivalente a *(result->itens + idx++) = strdup(token);
 
 					tmp = _malloc((strlen(token) + 1)*sizeof(char));
 
@@ -60,10 +75,43 @@ void str_split(List* result,char* str, const char a_delim){
 					strcpy(tmp, token);
 
 					*(result->itens + idx++) = tmp;
-				}
+				}*/
 			}
 		}
     }
+}
+//------------------------------------------------------------------------
+
+int replace(char* str,char c_old, char c_new,Itens itens){
+
+	int n = 0;
+	int i =0;
+	size_t s = strlen(str)+1;
+
+	while(str[i]!='\0'){
+
+		if(str[i]==c_old){
+			str[i] = c_new;
+			n++;
+		}
+		i++;
+	}
+
+	itens = _malloc(sizeof(char*) * (n++));
+
+	itens[0] = str;
+
+	int j =1;
+
+	for(i=1;i<s;i++){
+
+		if(str[i]=='\0'){
+
+			itens[j++] = (str+i+1);
+		}
+	}
+
+	return n;
 }
 //------------------------------------------------------------------------
 
