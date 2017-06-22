@@ -373,8 +373,8 @@ void clearRxFrame(void){
 	param_cmd.value		= 0;
 	rxFrame.count		= 0;
 
-	char i;
-	for(i=0;i<LEN_MAX_FRAME;i++){
+	int i;
+	for(i=0;i<LEN_MAX_PAYLOAD;i++){
 
 		rxFrame.data[i]		= CHAR_STR_END;
 		param_cmd.data[i]	= CHAR_STR_END;

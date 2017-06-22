@@ -39,7 +39,7 @@ static portTASK_FUNCTION(IHM_taskTask, pvParameters) {
 	ihm_initialize();
 
 	  for(;;) {
-		  ihm_loop();
+		  //ihm_loop();
 		  vTaskDelay(5/portTICK_RATE_MS);
 	  }
 
