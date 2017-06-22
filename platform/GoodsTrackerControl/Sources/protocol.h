@@ -10,12 +10,19 @@
 #ifndef SOURCES_PROTOCOL_H_
 #define SOURCES_PROTOCOL_H_
 
+#define	ADDRESS			2
+
 #define TIME_TX			5
 #define TIME_RX			5
 
-#define LEN_CMD			5
-#define LEN_ADDRESS		1
-#define LEN_VALUE		1
+#define LEN_ADDRESS		5
+#define LEN_ORIGEM		5
+#define LEN_OPERATION	2
+#define LEN_RESOURCE	3
+#define LEN_SIZE_PL		3
+#define SIZE_HEADER		(LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL)
+
+
 #define LEN_MIN_FRAME	18
 #define LEN_MAX_FRAME	273
 #define LEN_MAX_PAYLOAD	255
@@ -67,46 +74,52 @@ typedef enum {
 
 } StatusRx;
 
+/*
 typedef struct {
 
 	char	data[LEN_MAX_FRAME];
 	unsigned char count;
 
-} RxFrame;
+} DataRx;*/
 
 typedef struct{
 
-	unsigned char		checksum_calc;
-	unsigned char		checksum_rx;
+	unsigned char	checksum_calc;
+	unsigned char	checksum_rx;
 
 	char	operacao[2];
-	char	recurso[3];
-	int		sizePayLoad;
-	char	name_cmd[LEN_CMD];
+	char	resource[LEN_RESOURCE];
 
 	int		address;
-	int		Origem;
+	int		dest;
 	int		value;
-	char	data[LEN_MAX_PAYLOAD];
 
-} ParamCmd;
+	int		sizePayLoad;
+	int		sizeFrame;
+
+	char	payload[LEN_MAX_PAYLOAD];
+	char	frame[LEN_MAX_FRAME];
+
+} DataFrame;
 
 
 /**
  * Ponteiro para as call backs
  */
-typedef ResultExec(*pCallBack)(ParamCmd*);
+typedef ResultExec(*pCallBack)(DataFrame*);
+
 
 /**
  *
  */
 typedef struct{
 
-	char 		name_cmd[LEN_CMD];
 	IdCmd		id_cmd;
+	char 		resource[LEN_RESOURCE];
 	pCallBack	cb;
 
 } Cmd;
+
 
 void rxStartCMD (void);
 void receiveFrame (void);
@@ -123,7 +136,7 @@ void setStatusRx(StatusRx sts);
 bool getRxData(char* ch);
 bool putTxData(char data);
 void sendString(const char* str);
-void clearRxFrame(void);
+void clearData(DataFrame* frame);
 void errorRx(void);
 bool decoderFrame(void);
 void formatCMD(void);
@@ -136,6 +149,8 @@ bool putRxData(char ch);
 bool getTxData(char* ch);
 bool hasTxData(void);
 void startTX(void);
+void setPayLoad(DataFrame* frame,char* str);
+void buildHeader(DataFrame *frame);
 
 extern unsigned int timeTx,timeRx;
 

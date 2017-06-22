@@ -17,11 +17,11 @@ typedef enum
 	LED_BLUE	=2}LEDS;
 
 
-ResultExec onAnalog(ParamCmd* cmd);
-ResultExec onLED(ParamCmd* cmd);
-ResultExec onPWM(ParamCmd* cmd);
-ResultExec onTouch(ParamCmd* cmd);
-ResultExec onAcel(ParamCmd* cmd);
+ResultExec onAnalog(DataFrame* cmd);
+ResultExec onLED(DataFrame* cmd);
+ResultExec onPWM(DataFrame* cmd);
+ResultExec onTouch(DataFrame* cmd);
+ResultExec onAcel(DataFrame* cmd);
 
 void read_accel();
 void read_Channels_AD();

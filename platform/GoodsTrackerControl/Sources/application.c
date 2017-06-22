@@ -27,47 +27,33 @@ void initCallBacks(){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onLED(ParamCmd* cmd){
-
-	switch(cmd->address){
-
-		case LED_GREEN:			LED_G_Put(cmd->value);	break;
-		case LED_RED:			LED_R_Put(cmd->value);	break;
-		case LED_BLUE:			LED_B_Put(cmd->value);	break;
-	}
+ResultExec onLED(DataFrame* frame){
 
 	return EXEC_SUCCESS;
 }
 	//-------------------------------------------------------------------------
 
-ResultExec onAnalog(ParamCmd* cmd){
-
-	if(cmd->address>=GT_AD1_CHANNEL_COUNT){
-
-		return INVALID_PARAM;
-	}
-
-	sprintf(cmd->data,"%s%d:%d\0",cmd->name_cmd,cmd->address,AD_Values[cmd->address]);
+ResultExec onAnalog(DataFrame* frame){
 
 	return EXEC_SUCCESS;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAcel(ParamCmd* cmd){
+ResultExec onAcel(DataFrame* frame){
 
-	sprintf(cmd->data,"%s%d:%d:%d:%d\0",cmd->name_cmd,cmd->address,xyz[0],xyz[1],xyz[2]);
-
-	return EXEC_SUCCESS;
-}
-//-------------------------------------------------------------------------
-
-ResultExec onTouch(ParamCmd* cmd){
+	buildPayLoad(frame);
 
 	return EXEC_SUCCESS;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onPWM(ParamCmd* cmd){
+ResultExec onTouch(DataFrame* frame){
+
+	return EXEC_SUCCESS;
+}
+//-------------------------------------------------------------------------
+
+ResultExec onPWM(DataFrame* frame){
 
 	return EXEC_SUCCESS;
 }
@@ -107,3 +93,14 @@ void initAccel(){
 	MMA1_Enable();
 }
 //------------------------------------------------------------------------
+
+void buildPayLoad(DataFrame* frame){
+
+	char p[LEN_MAX_PAYLOAD];
+
+	sprintf(p,"%s%d:%d:%d:%d",frame->resource,frame->address,xyz[0],xyz[1],xyz[2]);
+
+	setPayLoad(frame,p);
+}
+//------------------------------------------------------------------------
+

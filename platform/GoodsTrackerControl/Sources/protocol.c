@@ -1,4 +1,3 @@
-#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -11,16 +10,15 @@ unsigned int timeRx = TIME_RX;
 
 StatusRx	statusRx = CMD_INIT;
 RingBuffer	bufferRx,bufferTx;
-RxFrame		rxFrame;
-ParamCmd	param_cmd;
+DataFrame	dataFrame;
 
-Cmd			ListCmd[]	= {	{.id_cmd=CMD_LED,		.name_cmd = "LED\0",	.cb=NULL},
-							{.id_cmd=CMD_ANALOG,	.name_cmd = "AN\0",		.cb=NULL},
-							{.id_cmd=CMD_PWM,		.name_cmd = "PWM\0",	.cb=NULL},
-							{.id_cmd=CMD_ACC,		.name_cmd = "ACC\0",	.cb=NULL},
-							{.id_cmd=CMD_TOUCH,		.name_cmd = "TOU\0",	.cb=NULL},
-							{.id_cmd=CMD_TELEMETRIA,.name_cmd = "TLM\0",	.cb=NULL},
-							{.id_cmd=CMD_LOCK,		.name_cmd = "LCK\0",	.cb=NULL},
+Cmd			ListCmd[]	= {	{.id_cmd=CMD_LED,		.resource = "LED\0",	.cb=NULL},
+							{.id_cmd=CMD_ANALOG,	.resource = "AN\0",		.cb=NULL},
+							{.id_cmd=CMD_PWM,		.resource = "PWM\0",	.cb=NULL},
+							{.id_cmd=CMD_ACC,		.resource = "ACC\0",	.cb=NULL},
+							{.id_cmd=CMD_TOUCH,		.resource = "TOU\0",	.cb=NULL},
+							{.id_cmd=CMD_TELEMETRIA,.resource = "TLM\0",	.cb=NULL},
+							{.id_cmd=CMD_LOCK,		.resource = "LCK\0",	.cb=NULL},
 							};
 
 const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Cmd);
@@ -57,7 +55,7 @@ void rxStartCMD (void) {
 
 		if(ch==CHAR_CMD_START){
 
-			clearRxFrame();
+			clearData(&dataFrame);
 
 			setStatusRx(CMD_RX_START);
 		}
@@ -71,15 +69,15 @@ void receiveFrame (void) {
 
 	if(getRxData(&ch)){
 
-		param_cmd.checksum_calc ^= ch;
+		dataFrame.checksum_calc ^= ch;
 
-		if(ch==CHAR_CMD_START || rxFrame.count>=LEN_MAX_FRAME){
+		if(ch==CHAR_CMD_START || dataFrame.sizeFrame>=LEN_MAX_FRAME){
 
 			setStatusRx(CMD_ERROR);
 
 		}else if(ch==CHAR_CMD_END){
 
-			if(rxFrame.count>=LEN_MIN_FRAME){
+			if(dataFrame.sizeFrame>=LEN_MIN_FRAME){
 
 				setStatusRx(CMD_RX_END);
 
@@ -92,7 +90,7 @@ void receiveFrame (void) {
 
 			setStatusRx(CMD_RX_PAYLOAD);
 
-			rxFrame.data[(rxFrame.count++)%LEN_MAX_FRAME] = ch;
+			dataFrame.frame[(dataFrame.sizeFrame++)%LEN_MAX_FRAME] = ch;
 		}
 	}
 }
@@ -149,43 +147,18 @@ void decoderCMD(void) {
 }
 //------------------------------------------------------------------------
 
-void formatCMD(void) {
-
-	char delim[] = {CHAR_SEPARATOR,0};
-
-	if(strstr(rxFrame.data,delim)==NULL){
-
-		char size_cmd = 0;
-
-		while(size_cmd < rxFrame.count && (rxFrame.data[size_cmd] < '0' || rxFrame.data[size_cmd] > '9')){
-
-			size_cmd++;
-		};
-
-		if(rxFrame.count >= (size_cmd+1)){
-
-			str_append(rxFrame.data,delim, size_cmd);
-
-			if((size_cmd+LEN_ADDRESS+1)<strlen(rxFrame.data)){
-
-				str_append(rxFrame.data,delim, size_cmd+LEN_ADDRESS+1);
-			}
-		}
-	}
-}
-//------------------------------------------------------------------------
 
 bool decoderFrame2(void) {
 
 	List	list;
 
-	str_split(&list,rxFrame.data,CHAR_SEPARATOR);
+	str_split(&list,dataFrame.frame,CHAR_SEPARATOR);
 
 	if(list.itens!=NULL){
 
-		param_cmd.checksum_rx == (unsigned char)atoi(list.itens[list.size-1]);
+		dataFrame.checksum_rx = atoi(list.itens[list.size-1]);
 
-		if(param_cmd.checksum_rx==param_cmd.checksum_calc){
+		if(dataFrame.checksum_rx==dataFrame.checksum_calc){
 
 			char i;
 
@@ -195,16 +168,12 @@ bool decoderFrame2(void) {
 
 					switch(i){
 
-	//					case 0:	strcpy(param_cmd.name_cmd, list.itens[0]);	break;
-	//					case 1:	param_cmd.address	= atoi(list.itens[1]);	break;
-	//					case 2:	param_cmd.value		= atoi(list.itens[2]);	break;
-
-						case 0:	param_cmd.Origem			= atoi(list.itens[0]);				break;
-						case 1:	param_cmd.address			= atoi(list.itens[1]);				break;
-						case 2:	strncpy(param_cmd.operacao, list.itens[2],2);					break;
-						case 3:	strncpy(param_cmd.recurso,	list.itens[3],3);					break;
-						case 4:	param_cmd.sizePayLoad		= atoi(list.itens[4]);				break;
-						case 5:	strncpy(param_cmd.data, list.itens[5],param_cmd.sizePayLoad);	break;
+						case 0:	dataFrame.dest				= atoi(list.itens[0]);				break;
+						case 1:	dataFrame.address			= atoi(list.itens[1]);				break;
+						case 2:	strncpy(dataFrame.operacao, list.itens[2],2);					break;
+						case 3:	strncpy(dataFrame.resource,	list.itens[3],3);					break;
+						case 4:	dataFrame.sizePayLoad		= atoi(list.itens[4]);				break;
+						case 5:	strncpy(dataFrame.payload, 	list.itens[5],dataFrame.sizePayLoad);	break;
 					}
 				}
 			}
@@ -236,7 +205,7 @@ pCallBack getCallBack(void) {
 	char i;
 	for(i=0;i < SIZE_LIST_CMD;i++){
 
-		if(strcmp(ListCmd[i].name_cmd,param_cmd.name_cmd)==0){
+		if(strcmp(ListCmd[i].resource,dataFrame.resource)==0){
 
 			cb = ListCmd[i].cb;
 			break;
@@ -251,16 +220,16 @@ void execCallBack(void) {
 
 	pCallBack cb = getCallBack();
 
-	if(cb!=NULL && cb(&param_cmd)==EXEC_SUCCESS){
+	if(cb!=NULL && cb(&dataFrame)==EXEC_SUCCESS){
 
-		if(*param_cmd.data!=CHAR_STR_END){
+//		if(*dataFrame.frame!=CHAR_STR_END){
 
 			setStatusRx(CMD_EXEC);
 
-		}else {
+//		}else {
 
-			setStatusRx(CMD_ACK);
-		}
+//			setStatusRx(CMD_ACK);
+//		}
 
 	}else{
 
@@ -271,21 +240,18 @@ void execCallBack(void) {
 
 void initRxCMD(void) {
 
-	clearRxFrame();
-
+	clearData(&dataFrame);
 	initBuffer(&bufferRx);
-
 	initBuffer(&bufferTx);
-
 	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
 
 void sendACK(void) {
 
-	sprintf(param_cmd.data,"[%s%d%d]\0",param_cmd.name_cmd,param_cmd.address,param_cmd.value);
+	sprintf(dataFrame.frame,"[%s%d%d]",dataFrame.resource,dataFrame.address,dataFrame.value);
 
-	sendString(param_cmd.data);
+	sendString(dataFrame.frame);
 
 	setStatusRx(CMD_INIT_OK);
 }
@@ -293,9 +259,9 @@ void sendACK(void) {
 
 void sendNAK(void) {
 
-	sprintf(param_cmd.data,"[%s%d%d]%s\0",param_cmd.name_cmd,param_cmd.address,param_cmd.value,CHAR_NAK);
+	sprintf(dataFrame.frame,"[%s%d%d]%s",dataFrame.resource,dataFrame.address,dataFrame.value,CHAR_NAK);
 
-	sendString(param_cmd.data);
+	sendString(dataFrame.frame);
 
 	setStatusRx(CMD_INIT_OK);
 }
@@ -303,7 +269,13 @@ void sendNAK(void) {
 
 void sendResult(void){
 
-	sendString(param_cmd.data);
+	dataFrame.dest = dataFrame.address;
+	dataFrame.address = ADDRESS;
+
+
+	buildHeader(&dataFrame);
+
+	sendString(dataFrame.frame);
 
 	setStatusRx(CMD_INIT_OK);
 }
@@ -364,21 +336,27 @@ void errorRx(void){
 }
 //------------------------------------------------------------------------
 
-void clearRxFrame(void){
+void clearData(DataFrame* frame){
 
-	param_cmd.checksum_rx	= -1;
-	param_cmd.checksum_calc	= 0;
-
-	param_cmd.address	= 0;
-	param_cmd.value		= 0;
-	rxFrame.count		= 0;
+	frame->checksum_rx	= -1;
+	frame->checksum_calc= 0;
+	frame->address		= 0;
+	frame->value		= 0;
+	frame->sizeFrame	= 0;
+	frame->sizePayLoad	= 0;
 
 	int i;
+
 	for(i=0;i<LEN_MAX_PAYLOAD;i++){
 
-		rxFrame.data[i]		= CHAR_STR_END;
-		param_cmd.data[i]	= CHAR_STR_END;
+		frame->payload[i]	= CHAR_STR_END;
 	}
+
+	for(i=0;i<LEN_MAX_FRAME;i++){
+
+		frame->frame[i]		= CHAR_STR_END;
+	}
+
 }
 //------------------------------------------------------------------------
 
@@ -399,5 +377,25 @@ void startTX(void){
 
 		GT_AsyncSerial_OnTxChar();
 	}
+}
+//------------------------------------------------------------------------
+
+void buildHeader(DataFrame *frame){
+
+	sprintf(frame->frame,"%05d%05d:%s:%s:%03d",	frame->address,
+												frame->dest,
+												frame->operacao,
+												frame->resource,
+												frame->sizePayLoad);
+
+}
+//------------------------------------------------------------------------
+
+void setPayLoad(DataFrame* frame,char* str){
+
+	frame->sizePayLoad = (int)strlen(str);
+
+	strncpy(frame->payload,str,frame->sizePayLoad);
+	strncpy(frame->frame+SIZE_HEADER,frame->payload,frame->sizePayLoad);
 }
 //------------------------------------------------------------------------

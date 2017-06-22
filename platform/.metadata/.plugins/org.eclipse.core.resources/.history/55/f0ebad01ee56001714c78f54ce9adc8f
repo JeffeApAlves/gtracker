@@ -1,0 +1,399 @@
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "RingBuffer.h"
+#include "utils.h"
+#include "protocol.h"
+
+unsigned int timeTx = TIME_TX;
+unsigned int timeRx = TIME_RX;
+
+StatusRx	statusRx = CMD_INIT;
+RingBuffer	bufferRx,bufferTx;
+DataRx		rxFrame;
+DataFrame	param_cmd,anscmd;
+
+Cmd			ListCmd[]	= {	{.id_cmd=CMD_LED,		.name_cmd = "LED\0",	.cb=NULL},
+							{.id_cmd=CMD_ANALOG,	.name_cmd = "AN\0",		.cb=NULL},
+							{.id_cmd=CMD_PWM,		.name_cmd = "PWM\0",	.cb=NULL},
+							{.id_cmd=CMD_ACC,		.name_cmd = "ACC\0",	.cb=NULL},
+							{.id_cmd=CMD_TOUCH,		.name_cmd = "TOU\0",	.cb=NULL},
+							{.id_cmd=CMD_TELEMETRIA,.name_cmd = "TLM\0",	.cb=NULL},
+							{.id_cmd=CMD_LOCK,		.name_cmd = "LCK\0",	.cb=NULL},
+							};
+
+const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Cmd);
+
+void processProtocol(void) {
+
+	switch(statusRx){
+
+		default:
+		case CMD_INIT:			initRxCMD();			break;
+		case CMD_INIT_OK:		rxStartCMD();			break;
+		case CMD_RX_START:		receiveFrame();			break;
+		case CMD_RX_PAYLOAD:	receiveFrame();			break;
+		case CMD_RX_END:		rxCR();					break;
+		case CMD_RX_CR:			rxNL();					break;
+		case CMD_RX_NL:			decoderCMD();			break;
+		case CMD_DECODER:		execCallBack();			break;
+
+		case CMD_ERROR:			errorRx();				break;
+		case CMD_ACK:			sendACK();				break;
+		case CMD_NAK:			sendNAK();				break;
+		case CMD_EXEC:			sendResult();			break;
+	}
+
+	startTX();
+}
+//------------------------------------------------------------------------
+
+void rxStartCMD (void) {
+
+	char ch;
+
+	if(getRxData(&ch)){
+
+		if(ch==CHAR_CMD_START){
+
+			clearDataRx();
+
+			setStatusRx(CMD_RX_START);
+		}
+	}
+}
+//------------------------------------------------------------------------
+
+void receiveFrame (void) {
+
+	char ch;
+
+	if(getRxData(&ch)){
+
+		param_cmd.checksum_calc ^= ch;
+
+		if(ch==CHAR_CMD_START || rxFrame.count>=LEN_MAX_FRAME){
+
+			setStatusRx(CMD_ERROR);
+
+		}else if(ch==CHAR_CMD_END){
+
+			if(rxFrame.count>=LEN_MIN_FRAME){
+
+				setStatusRx(CMD_RX_END);
+
+			}else{
+
+				setStatusRx(CMD_ERROR);
+			}
+
+		}else {
+
+			setStatusRx(CMD_RX_PAYLOAD);
+
+			rxFrame.data[(rxFrame.count++)%LEN_MAX_FRAME] = ch;
+		}
+	}
+}
+//------------------------------------------------------------------------
+
+void rxNL(void) {
+
+	char ch;
+
+	if(getRxData(&ch)){
+
+		if(ch==CHAR_LF){
+
+			setStatusRx(CMD_RX_NL);
+
+		}else {
+
+			setStatusRx(CMD_ERROR);
+		}
+	}
+}
+//------------------------------------------------------------------------
+
+void rxCR(void) {
+
+	char ch;
+
+	if(getRxData(&ch)){
+
+		if(ch==CHAR_CR){
+
+			setStatusRx(CMD_RX_CR);
+
+		}else{
+
+			setStatusRx(CMD_ERROR);
+		}
+	}
+}
+//------------------------------------------------------------------------
+
+void decoderCMD(void) {
+
+//	formatCMD();
+
+	if(decoderFrame2()){
+
+		setStatusRx(CMD_DECODER);
+
+	}else{
+
+		setStatusRx(CMD_ERROR);
+	}
+}
+//------------------------------------------------------------------------
+
+void formatCMD(void) {
+
+	char delim[] = {CHAR_SEPARATOR,0};
+
+	if(strstr(rxFrame.data,delim)==NULL){
+
+		char size_cmd = 0;
+
+		while(size_cmd < rxFrame.count && (rxFrame.data[size_cmd] < '0' || rxFrame.data[size_cmd] > '9')){
+
+			size_cmd++;
+		};
+
+		if(rxFrame.count >= (size_cmd+1)){
+
+			str_append(rxFrame.data,delim, size_cmd);
+
+			if((size_cmd+LEN_ADDRESS+1)<strlen(rxFrame.data)){
+
+				str_append(rxFrame.data,delim, size_cmd+LEN_ADDRESS+1);
+			}
+		}
+	}
+}
+//------------------------------------------------------------------------
+
+bool decoderFrame2(void) {
+
+	List	list;
+
+	str_split(&list,rxFrame.data,CHAR_SEPARATOR);
+
+	if(list.itens!=NULL){
+
+		param_cmd.checksum_rx == (unsigned char)atoi(list.itens[list.size-1]);
+
+		if(param_cmd.checksum_rx==param_cmd.checksum_calc){
+
+			char i;
+
+			for(i=0;i < list.size;i++){
+
+				if(list.itens[i]!=NULL){
+
+					switch(i){
+
+						case 0:	param_cmd.Origem			= atoi(list.itens[0]);				break;
+						case 1:	param_cmd.address			= atoi(list.itens[1]);				break;
+						case 2:	strncpy(param_cmd.operacao, list.itens[2],2);					break;
+						case 3:	strncpy(param_cmd.recurso,	list.itens[3],3);					break;
+						case 4:	param_cmd.sizePayLoad		= atoi(list.itens[4]);				break;
+						case 5:	strncpy(param_cmd.data, 	list.itens[5],param_cmd.sizePayLoad);	break;
+					}
+				}
+			}
+		}
+
+		removeList(&list);
+	}
+
+	return list.size>=2;
+}
+//------------------------------------------------------------------------
+
+void setEventCMD(IdCmd id_cmd,pCallBack c) {
+	char i;
+	for(i=0;i<SIZE_LIST_CMD;i++){
+
+		if(ListCmd[i].id_cmd==id_cmd){
+
+			ListCmd[i].cb = c;
+			break;
+		}
+	}
+}
+//------------------------------------------------------------------------
+
+pCallBack getCallBack(void) {
+
+	pCallBack cb = NULL;
+	char i;
+	for(i=0;i < SIZE_LIST_CMD;i++){
+
+		if(strcmp(ListCmd[i].name_cmd,param_cmd.name_cmd)==0){
+
+			cb = ListCmd[i].cb;
+			break;
+		}
+	}
+
+	return cb;
+}
+//------------------------------------------------------------------------
+
+void execCallBack(void) {
+
+	pCallBack cb = getCallBack();
+
+	if(cb!=NULL && cb(&param_cmd)==EXEC_SUCCESS){
+
+		if(*param_cmd.data!=CHAR_STR_END){
+
+			setStatusRx(CMD_EXEC);
+
+		}else {
+
+			setStatusRx(CMD_ACK);
+		}
+
+	}else{
+
+		setStatusRx(CMD_NAK);
+	}
+}
+//------------------------------------------------------------------------
+
+void initRxCMD(void) {
+
+	clearDataRx();
+
+	initBuffer(&bufferRx);
+
+	initBuffer(&bufferTx);
+
+	setStatusRx(CMD_INIT_OK);
+}
+//------------------------------------------------------------------------
+
+void sendACK(void) {
+
+	sprintf(param_cmd.data,"[%s%d%d]\0",param_cmd.name_cmd,param_cmd.address,param_cmd.value);
+
+	sendString(param_cmd.data);
+
+	setStatusRx(CMD_INIT_OK);
+}
+//------------------------------------------------------------------------
+
+void sendNAK(void) {
+
+	sprintf(param_cmd.data,"[%s%d%d]%s\0",param_cmd.name_cmd,param_cmd.address,param_cmd.value,CHAR_NAK);
+
+	sendString(param_cmd.data);
+
+	setStatusRx(CMD_INIT_OK);
+}
+//------------------------------------------------------------------------
+
+void sendResult(void){
+
+	sendString(param_cmd.data);
+
+	setStatusRx(CMD_INIT_OK);
+}
+//------------------------------------------------------------------------
+
+void sendString(const char* str){
+
+	char* p = (char *)str;
+
+	if(p!=NULL){
+
+		while(*p!=CHAR_STR_END){
+
+			putTxData(*p++);
+		}
+
+		putTxData(CHAR_CR);
+		putTxData(CHAR_LF);
+	}
+}
+//------------------------------------------------------------------------
+
+inline void setStatusRx(StatusRx sts) {
+
+	statusRx = sts;
+}
+//------------------------------------------------------------------------
+
+inline bool putTxData(char data) {
+
+	return putData(&bufferTx,data);
+}
+//------------------------------------------------------------------------
+
+inline bool putRxData(char data) {
+
+	return putData(&bufferRx,data);
+}
+//------------------------------------------------------------------------
+
+inline bool getTxData(char* ch){
+
+	return getData(&bufferTx,ch);
+}
+//------------------------------------------------------------------------
+
+inline bool getRxData(char* ch){
+
+	return getData(&bufferRx,ch);
+}
+//------------------------------------------------------------------------
+
+void errorRx(void){
+
+	/**/
+
+	setStatusRx(CMD_INIT_OK);
+}
+//------------------------------------------------------------------------
+
+void clearRxFrame(void){
+
+	param_cmd.checksum_rx	= -1;
+	param_cmd.checksum_calc	= 0;
+
+	param_cmd.address	= 0;
+	param_cmd.value		= 0;
+	rxFrame.count		= 0;
+
+	int i;
+	for(i=0;i<LEN_MAX_PAYLOAD;i++){
+
+		rxFrame.data[i]		= CHAR_STR_END;
+		param_cmd.data[i]	= CHAR_STR_END;
+	}
+}
+//------------------------------------------------------------------------
+
+bool hasTxData(void){
+
+	return hasData(&bufferTx);
+}
+//------------------------------------------------------------------------
+
+/**
+ * Verifica se o buffer de TX esta vazio. Se sim, chama a call back
+ * da transmissao de caracter para iniciar a transmissao do buffer
+ *
+ */
+void startTX(void){
+
+	if(hasTxData() && GT_AsyncSerial_GetCharsInTxBuf()==0){
+
+		GT_AsyncSerial_OnTxChar();
+	}
+}
+//------------------------------------------------------------------------
