@@ -167,5 +167,17 @@ namespace GoodsTracker
 
             return checkSum;
         }
+
+        internal string strOfFrame()
+        {
+            return CONST_CHAR.RX_FRAME_START +
+                    frame +
+                    CONST_CHAR.SEPARATOR +
+                    //CONST_CHAR.ASTERISCO + 
+                    checkSum().ToString() +
+                    CONST_CHAR.RX_FRAME_END +
+                    CONST_CHAR.CR +
+                    CONST_CHAR.LF;
+        }
     }
 }

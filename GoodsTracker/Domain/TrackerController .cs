@@ -6,6 +6,9 @@ namespace GoodsTracker
 
     class TrackerController :ThreadRun
     {
+        const int NUM_ESTACAO = 1;
+        const int TIME_TELEMETRIA_MS = 1000;
+
         onUpdateTelemetria  onDataTelemetria;
 
         private static TrackerController singleton=null;
@@ -36,9 +39,11 @@ namespace GoodsTracker
 
         private TrackerController()
         {
-            tracker     = new Tracker(1);
+            tracker     = new Tracker(NUM_ESTACAO);
             fences      = new List<Fence>();
             routes      = new List<Route>();
+
+            setTime(TIME_TELEMETRIA_MS);
         }
 
         /*
@@ -77,14 +82,15 @@ namespace GoodsTracker
 
         internal TelemetriaData[] getBehaviorFiltered(int i)
         {
-            List<TelemetriaData> ret = null;
+            TelemetriaData[] ret = null;
 
             if (anyRoute())
             {
-                ret = routes[0].getBehaviorFiltered(i);
+                ret = routes[0].getBehaviorFiltered(i).ToArray();
+
             }
 
-            return ret.ToArray();
+            return ret;
         }
 
         internal void addRoute(Route r)
@@ -127,7 +133,7 @@ namespace GoodsTracker
 
         internal bool anyRoute()
         {
-            return routes.Count > 0 && routes[0].MapRoute != null;
+            return routes.Count > 0 && routes[0].MapRoute != null && routes[0].MapRoute.Points.Count>0;
         }
 
         internal int getCountRegisters()

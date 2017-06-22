@@ -20,6 +20,9 @@ namespace GoodsTracker
         private static List<AnsCmd>             queueAnsCmd = new List<AnsCmd>();
 
         internal int Address { get => address; set => address = value; }
+        public static List<Cmd> QueueCmd { get => queueCmd; set => queueCmd = value; }
+        public static List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
+
         protected abstract void onReceiveAnswer(AnsCmd ans);
 
         internal CommunicationUnit()

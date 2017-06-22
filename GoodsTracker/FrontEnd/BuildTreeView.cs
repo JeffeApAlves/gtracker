@@ -22,14 +22,14 @@ namespace GoodsTracker
             LOCK = 11,
         }
 
-        bool forceChange = false;
-        static bool forceClear = false;
+        bool forceChange    = false;
+        bool forceClear     = false;
 
         TreeView treeView;
         TelemetriaData[] behaviors;
 
-        public bool ForceChange { get => forceChange; set => forceChange = value; }
-        public static bool ForceClear { get => forceClear; set => forceClear = value; }
+        public bool ForceClear { get => forceClear; set => forceClear = value; }
+        public TreeView TreeView { get => treeView; set => treeView = value; }
 
         public TelemetriaData[] Behaviors
         {
@@ -43,35 +43,17 @@ namespace GoodsTracker
                 if (behaviors == null & value != null)
                 {
                     forceChange = true;
+
+                } else if(behaviors == null & value == null)
+                {
+                    forceChange = false;
                 }
                 else
                 {
-                    forceChange = value != null &&  !behaviors.Equals(value);
+                    forceChange = behaviors.SequenceEqual(value);
                 }
 
                 behaviors = value;
-            }
-        }
-
-        public TreeView TreeView
-        {
-            get
-            {
-                return treeView;
-            }
-
-            set
-            {
-                if (treeView == null &  value!=null)
-                {
-                    forceChange = true;
-                }
-                else
-                {
-                    forceChange = value != null && treeView.Equals(value);
-                }
-                
-                treeView = value;
             }
         }
 
@@ -88,9 +70,9 @@ namespace GoodsTracker
             if (forceClear)
             {
                 clear();
+                loadlistPointsTreeView();
             }
-
-            if (forceChange)
+            else if (forceChange)
             {
                 loadlistPointsTreeView();
             }
@@ -118,10 +100,12 @@ namespace GoodsTracker
             TreeNode    root, loc;
 
             root    = createRootTreeView();
-            loc     = createLocTreeView(b, root, root.Nodes.Count);
+            loc     = createLocTreeView(b, root);
 
-            createPositionTreeView(b, loc);
-
+            createPositionTreeView(b,loc);
+            createLockTreeView(b,loc);
+            createLevelTreeView(b,loc);
+            createSpeedTreeView(b,loc);
             createEixoTreeView(b.AxisX, "Eixo[X]", loc);
             createEixoTreeView(b.AxisY, "Eixo[Y]", loc);
             createEixoTreeView(b.AxisZ, "Eixo[Z]", loc);
@@ -141,6 +125,12 @@ namespace GoodsTracker
         {
             TreeNode root;
 
+            /*
+             *   |
+             * Trip
+             *   |__
+             *   
+             */
             if (treeView.Nodes.Count <= 0)
             {
                 root = treeView.Nodes.Add(string.Format("Trip"));
@@ -156,12 +146,17 @@ namespace GoodsTracker
             return root;
         }
 
-        internal TreeNode createLocTreeView(TelemetriaData behavior, TreeNode root, int i)
+        internal TreeNode createLocTreeView(TelemetriaData behavior, TreeNode root)
         {
             TreeNode loc;
 
-            loc = root.Nodes.Add(string.Format("Registro[{0}]: {1}", i.ToString("D5"), behavior.DateTime));
-
+            /*
+             *   |
+             * Registro[XXXXX]: 00/00/00 00:00
+             *   |__
+             *   |__
+             */
+            loc = root.Nodes.Add(string.Format("Registro[{0}]: {1}", root.Nodes.Count.ToString("D5"), behavior.DateTime));
             loc.ImageIndex = (int)(behavior.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
             loc.SelectedImageIndex = loc.ImageIndex;
 
@@ -170,7 +165,7 @@ namespace GoodsTracker
 
         internal void createPositionTreeView(TelemetriaData b, TreeNode reg)
         {
-            TreeNode info, loc, vel, level;
+            TreeNode info, loc;
 
             /*
              *   |
@@ -189,6 +184,11 @@ namespace GoodsTracker
                 info = loc.Nodes.Add(string.Format("Lng: {0}", b.Longitude));
                 info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
                 info.SelectedImageIndex = info.ImageIndex;
+        }
+
+        internal void createSpeedTreeView(TelemetriaData b, TreeNode reg)
+        {
+            TreeNode info, vel;
 
             /*
              *   |
@@ -202,6 +202,11 @@ namespace GoodsTracker
                 info = vel.Nodes.Add(b.Speed.ToString());
                 info.ImageIndex = (int)(b.Speed.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
                 info.SelectedImageIndex = info.ImageIndex;
+        }
+
+        internal void createLevelTreeView(TelemetriaData b, TreeNode reg)
+        {
+            TreeNode info, level;
 
             /*
              *   |
@@ -210,22 +215,27 @@ namespace GoodsTracker
              */
             level = reg.Nodes.Add("Nivel");
             level.ImageIndex = (int)IMG_TREEVIEW.LEVEL;
-            level.SelectedImageIndex = vel.ImageIndex;
+            level.SelectedImageIndex = level.ImageIndex;
 
                 info = level.Nodes.Add(b.Level.ToString());
                 info.ImageIndex = (int)(b.Level.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
                 info.SelectedImageIndex = info.ImageIndex;
+        }
+
+        internal void createLockTreeView(TelemetriaData b, TreeNode reg)
+        {
+            TreeNode info, _lock;
 
             /*
              *   |
-             * Lock
+             * Trava
              *   |__Valor
              */
-            level = reg.Nodes.Add("Trava");
-            level.ImageIndex = (int)IMG_TREEVIEW.LOCK;
-            level.SelectedImageIndex = vel.ImageIndex;
+            _lock = reg.Nodes.Add("Trava");
+            _lock.ImageIndex = (int)IMG_TREEVIEW.LOCK;
+            _lock.SelectedImageIndex = _lock.ImageIndex;
 
-                info = level.Nodes.Add(b.StatusLock.ToString());
+                info = _lock.Nodes.Add(b.StatusLock.ToString());
                 info.ImageIndex = (int)(b.StatusLock && b.IsInsideOfFence() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
                 info.SelectedImageIndex = info.ImageIndex;
         }
@@ -234,8 +244,13 @@ namespace GoodsTracker
         {
             TreeNode eixo, spec;
 
+            /*
+             *   |
+             * Eixo[]
+             *   |__ A: Val:0 Min:0 Max:0
+             *   |__ R: Val:0 Min:0 Max:0
+             */
             eixo = loc.Nodes.Add(string.Format(neixo));
-
             eixo.ImageIndex = (int)IMG_TREEVIEW.AXIS;
             eixo.SelectedImageIndex = (int)IMG_TREEVIEW.AXIS;
 
@@ -244,7 +259,6 @@ namespace GoodsTracker
                                         axis.Acceleration.Val,
                                         axis.Acceleration.Tol.Min,
                                         axis.Acceleration.Tol.Max));
-
             spec.ImageIndex = (int)(axis.Acceleration.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
             spec.SelectedImageIndex = spec.ImageIndex;
 
@@ -252,7 +266,6 @@ namespace GoodsTracker
                                         axis.Rotation.Val,
                                         axis.Rotation.Tol.Min,
                                         axis.Rotation.Tol.Max));
-
             spec.ImageIndex = (int)(axis.Rotation.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
             spec.SelectedImageIndex = spec.ImageIndex;
 

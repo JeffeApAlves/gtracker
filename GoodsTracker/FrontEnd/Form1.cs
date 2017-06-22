@@ -14,7 +14,7 @@ namespace GoodsTracker
 
         STATUS_GUI  statusFence = STATUS_GUI.INIT;
         STATUS_GUI  statusTrip  = STATUS_GUI.INIT;
-        TestData    testData;
+        TestData    demoData;
         TrackerController trackerController = TrackerController.TrackerCtrl;
 
         Fence   fence;
@@ -178,8 +178,8 @@ namespace GoodsTracker
                 filterslected       = cbFilter.SelectedIndex;
 
                 // Atualiza lista de behaviors
-                BuildTreeView.ForceClear    = true;
-                bTV.Behaviors = trackerController.getBehaviorFiltered(filterslected);
+                bTV.ForceClear  = true;
+                bTV.Behaviors   = trackerController.getBehaviorFiltered(filterslected);
             }
         }
 
@@ -271,6 +271,8 @@ namespace GoodsTracker
 
             cbFilter.SelectedIndex  = 0;
             filterslected           = 0;
+
+            bTV.Behaviors = trackerController.getBehaviorFiltered(filterslected);
         }
         //-------------------------------------Fim inits -----------------------------------
 
@@ -329,14 +331,17 @@ namespace GoodsTracker
             if (telemetria == null)
             {
                 lFence.BackColor = Color.Gray;
+                btn_unlock.Enabled = false;
             }
             else if (telemetria.IsInsideOfFence())
             {
                 lFence.BackColor = Color.Green;
+                btn_unlock.Enabled = true;
             }
             else
             {
                 lFence.BackColor = Color.Red;
+                btn_unlock.Enabled = false;
             }
         }
 
@@ -350,7 +355,7 @@ namespace GoodsTracker
             }
             else 
             {
-                levelBar.Value = (int)telemetria.Level.Val;
+//                levelBar.Value = (int)telemetria.Level.Val;
             }
         }
 
@@ -507,7 +512,6 @@ namespace GoodsTracker
         {
             if (panel3.Visible)
             {
-                bTV.ForceChange = true;
             }
         }
 
@@ -541,7 +545,7 @@ namespace GoodsTracker
         void initAllThreads()
         {
             // Dados para testes
-            testData = new TestData(1000);
+            demoData = new TestData(500);
 
             // Inicia todas as threads
             ThreadManager.start();

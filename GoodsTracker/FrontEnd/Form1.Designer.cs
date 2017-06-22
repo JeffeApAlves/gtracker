@@ -38,7 +38,7 @@
             this.levelBar = new System.Windows.Forms.ProgressBar();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lFence = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btn_unlock = new System.Windows.Forms.Button();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.btn_lock = new System.Windows.Forms.Button();
             this.labelStatusLock = new System.Windows.Forms.Label();
@@ -191,7 +191,7 @@
             // 
             this.groupBox3.AutoSize = true;
             this.groupBox3.Controls.Add(this.lFence);
-            this.groupBox3.Controls.Add(this.button7);
+            this.groupBox3.Controls.Add(this.btn_unlock);
             this.groupBox3.Controls.Add(this.btn_lock);
             this.groupBox3.Controls.Add(this.labelStatusLock);
             this.groupBox3.Controls.Add(this.label10);
@@ -214,20 +214,20 @@
             this.lFence.Text = "Fence";
             this.lFence.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button7
+            // btn_unlock
             // 
-            this.button7.BackColor = System.Drawing.Color.Lime;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ImageIndex = 2;
-            this.button7.ImageList = this.imageList2;
-            this.button7.Location = new System.Drawing.Point(111, 26);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(100, 30);
-            this.button7.TabIndex = 15;
-            this.button7.Text = "UNLOCK";
-            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btn_unlock.BackColor = System.Drawing.Color.Lime;
+            this.btn_unlock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_unlock.ImageIndex = 2;
+            this.btn_unlock.ImageList = this.imageList2;
+            this.btn_unlock.Location = new System.Drawing.Point(111, 26);
+            this.btn_unlock.Name = "btn_unlock";
+            this.btn_unlock.Size = new System.Drawing.Size(100, 30);
+            this.btn_unlock.TabIndex = 15;
+            this.btn_unlock.Text = "UNLOCK";
+            this.btn_unlock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_unlock.UseVisualStyleBackColor = true;
+            this.btn_unlock.Click += new System.EventHandler(this.button7_Click);
             // 
             // imageList2
             // 
@@ -885,7 +885,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label labelStatusLock;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btn_unlock;
         private System.Windows.Forms.Button btn_lock;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button4;
