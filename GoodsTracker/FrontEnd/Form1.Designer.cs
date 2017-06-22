@@ -35,6 +35,8 @@
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBoxLevel = new System.Windows.Forms.GroupBox();
+            this.lmax = new System.Windows.Forms.Label();
+            this.lmin = new System.Windows.Forms.Label();
             this.levelBar = new System.Windows.Forms.ProgressBar();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lFence = new System.Windows.Forms.Label();
@@ -90,6 +92,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lVal = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxLevel.SuspendLayout();
@@ -170,18 +173,39 @@
             // groupBoxLevel
             // 
             this.groupBoxLevel.AutoSize = true;
+            this.groupBoxLevel.Controls.Add(this.lVal);
+            this.groupBoxLevel.Controls.Add(this.lmax);
+            this.groupBoxLevel.Controls.Add(this.lmin);
             this.groupBoxLevel.Controls.Add(this.levelBar);
             this.groupBoxLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxLevel.Location = new System.Drawing.Point(0, 525);
             this.groupBoxLevel.Name = "groupBoxLevel";
-            this.groupBoxLevel.Size = new System.Drawing.Size(320, 95);
+            this.groupBoxLevel.Size = new System.Drawing.Size(320, 114);
             this.groupBoxLevel.TabIndex = 11;
             this.groupBoxLevel.TabStop = false;
             this.groupBoxLevel.Text = "Tanque Nivel";
             // 
+            // lmax
+            // 
+            this.lmax.Location = new System.Drawing.Point(264, 75);
+            this.lmax.Name = "lmax";
+            this.lmax.Size = new System.Drawing.Size(50, 20);
+            this.lmax.TabIndex = 2;
+            this.lmax.Text = "10000";
+            this.lmax.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lmin
+            // 
+            this.lmin.Location = new System.Drawing.Point(7, 75);
+            this.lmin.Name = "lmin";
+            this.lmin.Size = new System.Drawing.Size(50, 20);
+            this.lmin.TabIndex = 1;
+            this.lmin.Text = "10000";
+            this.lmin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // levelBar
             // 
-            this.levelBar.Location = new System.Drawing.Point(31, 34);
+            this.levelBar.Location = new System.Drawing.Point(31, 28);
             this.levelBar.Name = "levelBar";
             this.levelBar.Size = new System.Drawing.Size(258, 39);
             this.levelBar.TabIndex = 0;
@@ -804,6 +828,16 @@
             this.timer1.Interval = 250;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lVal
+            // 
+            this.lVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lVal.Location = new System.Drawing.Point(119, 75);
+            this.lVal.Name = "lVal";
+            this.lVal.Size = new System.Drawing.Size(70, 20);
+            this.lVal.TabIndex = 3;
+            this.lVal.Text = "10000";
+            this.lVal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -905,6 +939,9 @@
         private System.Windows.Forms.ImageList imageList3;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lFence;
+        private System.Windows.Forms.Label lmax;
+        private System.Windows.Forms.Label lmin;
+        private System.Windows.Forms.Label lVal;
     }
 }
 

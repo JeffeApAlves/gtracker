@@ -350,11 +350,22 @@ namespace GoodsTracker
 
             if (telemetria == null)
             {
+                lmin.Text = "---";
+                lmax.Text = "---";
+                lVal.Text = "---";
+
+                levelBar.Maximum = 100;
+                levelBar.Minimum = 0;
                 levelBar.Value = 0;
             }
             else 
             {
-//                levelBar.Value = (int)telemetria.Level.Val;
+                lmin.Text = telemetria.Level.Tol.Min.ToString();
+                lmax.Text = telemetria.Level.Tol.Max.ToString();
+                lVal.Text = telemetria.Level.Val.ToString();
+                levelBar.Maximum    = (int)telemetria.Level.Tol.Max;
+                levelBar.Minimum    = (int)telemetria.Level.Tol.Min;
+                levelBar.Value      = (int)telemetria.Level.Val;
             }
         }
 
