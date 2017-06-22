@@ -187,7 +187,7 @@ namespace GoodsTracker
             return root;
         }
 
-        internal TreeNode createLocTreeView(TelemetriaData behavior, TreeNode root)
+        internal TreeNode createLocTreeView(TelemetriaData b, TreeNode root)
         {
             TreeNode loc;
 
@@ -197,8 +197,8 @@ namespace GoodsTracker
              *   |__
              *
              */
-            loc = root.Nodes.Add(string.Format("Registro[{0}]: {1}", root.Nodes.Count.ToString("D5"), behavior.DateTime));
-                loc.ImageIndex = (int)(behavior.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+            loc = root.Nodes.Add(string.Format("Registro[{0}]: {1}", root.Nodes.Count.ToString("D5"), b.DateTime));
+                loc.ImageIndex = (int)(b.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
                 loc.SelectedImageIndex = loc.ImageIndex;
 
             return loc;
@@ -287,7 +287,7 @@ namespace GoodsTracker
 
             /*
              *   |
-             * Eixo[]
+             * Eixo[x]
              *   |__ A: Val:0 Min:0 Max:0
              *   |__ R: Val:0 Min:0 Max:0
              */

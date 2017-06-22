@@ -19,6 +19,7 @@ namespace GoodsTracker
         ACCEL_Z     = 9,
         SPEED       = 10,
         LEVEL       = 11,
+        DATETIME    = 12,
     }
 
     internal class DecoderFrame : IDecoderFrameTx,IDecoderFrameRx
@@ -105,6 +106,9 @@ namespace GoodsTracker
                 sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(b.Level.Val);
 
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(b.DateTime.ToString().Replace(':','.'));
+
                 frame.PayLoad = sb.Length.ToString("D3")+sb.ToString();
 
                 ret = true;
@@ -145,6 +149,8 @@ namespace GoodsTracker
                     dadosRx.Speed.Val   = getValAsDouble(list, (int)DATA1.SPEED);
                     dadosRx.Level.Val   = getValAsDouble(list, (int)DATA1.LEVEL);
 
+                    dadosRx.DateTime    = getValAsDateTime(list, (int)DATA1.DATETIME);
+
                     ans.Info = dadosRx;
 
                     ret = true;
@@ -156,6 +162,17 @@ namespace GoodsTracker
             }
 
             return ret;
+        }
+
+        private DateTime getValAsDateTime(string[] list, int index)
+        {
+            DateTime d = Convert.ToDateTime("01/01/1900");
+
+            if (index < list.Length)
+            {
+                d = Convert.ToDateTime(list[index].Replace('.', ':'));
+            }
+            return d;
         }
 
         private int getValAsInteger(string[] list, int index)
