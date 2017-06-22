@@ -20,7 +20,7 @@ namespace GoodsTracker
 
         static void addFrame()
         {
-            if (CommunicationUnit.QueueCmd.Count > 0)
+            if (CommunicationUnit.QueueCmd.Count > 0 && CommunicationUnit.QueueAnsCmd.Count<=0)
             {
                 count_ans++;
 

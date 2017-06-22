@@ -106,5 +106,16 @@ namespace GoodsTracker
                 behaviors.Add(b);
             }
         }
+
+        internal string EndAddress()
+        {
+            return direction.EndAddress;
+        }
+
+        internal string StartAddress()
+        {
+            return direction.StartAddress;
+        }
+
     }
 }

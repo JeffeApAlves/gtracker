@@ -35,6 +35,7 @@
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBoxLevel = new System.Windows.Forms.GroupBox();
+            this.lVal = new System.Windows.Forms.Label();
             this.lmax = new System.Windows.Forms.Label();
             this.lmin = new System.Windows.Forms.Label();
             this.levelBar = new System.Windows.Forms.ProgressBar();
@@ -49,7 +50,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.endAddress = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtLngStop = new System.Windows.Forms.TextBox();
             this.txtLatStop = new System.Windows.Forms.TextBox();
@@ -58,7 +59,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.startAddress = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtLngStart = new System.Windows.Forms.TextBox();
             this.txtLatStart = new System.Windows.Forms.TextBox();
@@ -92,7 +93,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lVal = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxLevel.SuspendLayout();
@@ -172,22 +172,31 @@
             // 
             // groupBoxLevel
             // 
-            this.groupBoxLevel.AutoSize = true;
             this.groupBoxLevel.Controls.Add(this.lVal);
             this.groupBoxLevel.Controls.Add(this.lmax);
             this.groupBoxLevel.Controls.Add(this.lmin);
             this.groupBoxLevel.Controls.Add(this.levelBar);
             this.groupBoxLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxLevel.Location = new System.Drawing.Point(0, 525);
+            this.groupBoxLevel.Location = new System.Drawing.Point(0, 555);
             this.groupBoxLevel.Name = "groupBoxLevel";
-            this.groupBoxLevel.Size = new System.Drawing.Size(320, 114);
+            this.groupBoxLevel.Size = new System.Drawing.Size(320, 80);
             this.groupBoxLevel.TabIndex = 11;
             this.groupBoxLevel.TabStop = false;
             this.groupBoxLevel.Text = "Tanque Nivel";
             // 
+            // lVal
+            // 
+            this.lVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lVal.Location = new System.Drawing.Point(121, 50);
+            this.lVal.Name = "lVal";
+            this.lVal.Size = new System.Drawing.Size(70, 20);
+            this.lVal.TabIndex = 3;
+            this.lVal.Text = "10000";
+            this.lVal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lmax
             // 
-            this.lmax.Location = new System.Drawing.Point(264, 75);
+            this.lmax.Location = new System.Drawing.Point(265, 50);
             this.lmax.Name = "lmax";
             this.lmax.Size = new System.Drawing.Size(50, 20);
             this.lmax.TabIndex = 2;
@@ -196,7 +205,7 @@
             // 
             // lmin
             // 
-            this.lmin.Location = new System.Drawing.Point(7, 75);
+            this.lmin.Location = new System.Drawing.Point(2, 50);
             this.lmin.Name = "lmin";
             this.lmin.Size = new System.Drawing.Size(50, 20);
             this.lmin.TabIndex = 1;
@@ -205,9 +214,9 @@
             // 
             // levelBar
             // 
-            this.levelBar.Location = new System.Drawing.Point(31, 28);
+            this.levelBar.Location = new System.Drawing.Point(25, 22);
             this.levelBar.Name = "levelBar";
-            this.levelBar.Size = new System.Drawing.Size(258, 39);
+            this.levelBar.Size = new System.Drawing.Size(270, 25);
             this.levelBar.TabIndex = 0;
             this.levelBar.Value = 50;
             // 
@@ -220,7 +229,7 @@
             this.groupBox3.Controls.Add(this.labelStatusLock);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(0, 400);
+            this.groupBox3.Location = new System.Drawing.Point(0, 435);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(320, 116);
             this.groupBox3.TabIndex = 10;
@@ -304,15 +313,15 @@
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.textBox5);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.endAddress);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtLngStop);
             this.groupBox2.Controls.Add(this.txtLatStop);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 205);
+            this.groupBox2.Location = new System.Drawing.Point(0, 220);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(320, 190);
+            this.groupBox2.Size = new System.Drawing.Size(320, 210);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chegada";
@@ -321,7 +330,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(5, 88);
+            this.label14.Location = new System.Drawing.Point(5, 83);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(67, 16);
             this.label14.TabIndex = 11;
@@ -329,7 +338,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(5, 155);
+            this.textBox5.Location = new System.Drawing.Point(5, 175);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(135, 22);
             this.textBox5.TabIndex = 10;
@@ -337,23 +346,24 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 135);
+            this.label7.Location = new System.Drawing.Point(5, 155);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 16);
             this.label7.TabIndex = 9;
             this.label7.Text = "Horario";
             // 
-            // textBox6
+            // endAddress
             // 
-            this.textBox6.Location = new System.Drawing.Point(5, 108);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(310, 22);
-            this.textBox6.TabIndex = 8;
+            this.endAddress.Location = new System.Drawing.Point(5, 103);
+            this.endAddress.Multiline = true;
+            this.endAddress.Name = "endAddress";
+            this.endAddress.Size = new System.Drawing.Size(310, 44);
+            this.endAddress.TabIndex = 8;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 57);
+            this.label8.Location = new System.Drawing.Point(5, 52);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 16);
             this.label8.TabIndex = 7;
@@ -361,14 +371,14 @@
             // 
             // txtLngStop
             // 
-            this.txtLngStop.Location = new System.Drawing.Point(75, 55);
+            this.txtLngStop.Location = new System.Drawing.Point(75, 50);
             this.txtLngStop.Name = "txtLngStop";
             this.txtLngStop.Size = new System.Drawing.Size(130, 22);
             this.txtLngStop.TabIndex = 6;
             // 
             // txtLatStop
             // 
-            this.txtLatStop.Location = new System.Drawing.Point(75, 30);
+            this.txtLatStop.Location = new System.Drawing.Point(75, 25);
             this.txtLatStop.Name = "txtLatStop";
             this.txtLatStop.Size = new System.Drawing.Size(130, 22);
             this.txtLatStop.TabIndex = 5;
@@ -377,7 +387,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 33);
+            this.label9.Location = new System.Drawing.Point(5, 28);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 16);
             this.label9.TabIndex = 4;
@@ -388,15 +398,15 @@
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.startAddress);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtLngStart);
             this.groupBox1.Controls.Add(this.txtLatStart);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 10);
+            this.groupBox1.Location = new System.Drawing.Point(0, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(320, 190);
+            this.groupBox1.Size = new System.Drawing.Size(320, 210);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Partida";
@@ -405,7 +415,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 88);
+            this.label15.Location = new System.Drawing.Point(5, 83);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(67, 16);
             this.label15.TabIndex = 12;
@@ -413,7 +423,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(5, 155);
+            this.textBox4.Location = new System.Drawing.Point(5, 175);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(135, 22);
             this.textBox4.TabIndex = 10;
@@ -421,23 +431,24 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 135);
+            this.label6.Location = new System.Drawing.Point(5, 155);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 16);
             this.label6.TabIndex = 9;
             this.label6.Text = "Horario";
             // 
-            // textBox3
+            // startAddress
             // 
-            this.textBox3.Location = new System.Drawing.Point(5, 108);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(310, 22);
-            this.textBox3.TabIndex = 8;
+            this.startAddress.Location = new System.Drawing.Point(5, 103);
+            this.startAddress.Multiline = true;
+            this.startAddress.Name = "startAddress";
+            this.startAddress.Size = new System.Drawing.Size(310, 40);
+            this.startAddress.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 57);
+            this.label2.Location = new System.Drawing.Point(5, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 16);
             this.label2.TabIndex = 7;
@@ -445,14 +456,14 @@
             // 
             // txtLngStart
             // 
-            this.txtLngStart.Location = new System.Drawing.Point(75, 55);
+            this.txtLngStart.Location = new System.Drawing.Point(75, 50);
             this.txtLngStart.Name = "txtLngStart";
             this.txtLngStart.Size = new System.Drawing.Size(130, 22);
             this.txtLngStart.TabIndex = 6;
             // 
             // txtLatStart
             // 
-            this.txtLatStart.Location = new System.Drawing.Point(75, 30);
+            this.txtLatStart.Location = new System.Drawing.Point(75, 25);
             this.txtLatStart.Name = "txtLatStart";
             this.txtLatStart.Size = new System.Drawing.Size(130, 22);
             this.txtLatStart.TabIndex = 5;
@@ -461,7 +472,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 33);
+            this.label1.Location = new System.Drawing.Point(5, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 16);
             this.label1.TabIndex = 4;
@@ -828,16 +839,6 @@
             this.timer1.Interval = 250;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lVal
-            // 
-            this.lVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lVal.Location = new System.Drawing.Point(119, 75);
-            this.lVal.Name = "lVal";
-            this.lVal.Size = new System.Drawing.Size(70, 20);
-            this.lVal.TabIndex = 3;
-            this.lVal.Text = "10000";
-            this.lVal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -906,14 +907,14 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox endAddress;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtLngStop;
         private System.Windows.Forms.TextBox txtLatStop;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox startAddress;
         private System.Windows.Forms.ComboBox cbFilter;
         private System.Windows.Forms.TreeView tvBehavior;
         private System.Windows.Forms.GroupBox groupBox3;

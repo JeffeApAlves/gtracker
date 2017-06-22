@@ -480,9 +480,11 @@ namespace GoodsTracker
         internal void add(Route r)
         {
             route.createRoute();
-
             trackerController.addRoute(route);
             layerRoute.add(route);
+
+            startAddress.Text   = route.StartAddress();
+            endAddress.Text     = route.EndAddress();
         }
 
         void removeFenceAt(int index)
@@ -555,7 +557,7 @@ namespace GoodsTracker
         void initAllThreads()
         {
             // Dados para testes
-            demoData = new TestData(500);
+            demoData = new TestData(TrackerController.TIME_TELEMETRIA+100);
 
             // Inicia todas as threads
             ThreadManager.start();

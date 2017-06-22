@@ -6,8 +6,8 @@ namespace GoodsTracker
 
     class TrackerController :ThreadRun
     {
-        const int NUM_ESTACAO = 1;
-        const int TIME_TELEMETRIA_MS = 1000;
+        private const int NUM_ESTACAO = 1;
+        private const int _TIME_TELEMETRIA = 1000;
 
         onUpdateTelemetria  onDataTelemetria;
 
@@ -37,13 +37,15 @@ namespace GoodsTracker
         internal Tracker Tracker { get => tracker; set => tracker = value; }
         public onUpdateTelemetria OnDataTelemetria { get => onDataTelemetria; set => onDataTelemetria = value; }
 
+        public static int TIME_TELEMETRIA => _TIME_TELEMETRIA;
+
         private TrackerController()
         {
             tracker     = new Tracker(NUM_ESTACAO);
             fences      = new List<Fence>();
             routes      = new List<Route>();
 
-            setTime(TIME_TELEMETRIA_MS);
+            setTime(_TIME_TELEMETRIA);
         }
 
         /*
