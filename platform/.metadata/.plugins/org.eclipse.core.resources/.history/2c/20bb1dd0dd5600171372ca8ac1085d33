@@ -286,7 +286,7 @@ void GT_AsyncSerial_OnRxChar(void)
 {
 	char byte = 0;
 
-	if(GT_AsyncSerial_RecvChar(&byte)==ERR_OK){
+	if(AS1_RecvChar(&byte)==ERR_OK){
 
 		putRxData(byte);
 	}
@@ -319,7 +319,7 @@ void GT_AsyncSerial_OnTxChar(void)
 
 	}else{
 
-		tx_result = GT_AsyncSerial_SendChar(byte);
+		tx_result = AS1_SendChar(byte);
 	}
 
 	timeTx 	= TIME_TX;

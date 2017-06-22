@@ -1,41 +1,6 @@
-20:52:25 **** Build of configuration Debug for project GoodsTrackerControl ****
+21:01:34 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
-Building file: ../Sources/TSS/TSS_Freemaster.c
-Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/TSS/TSS_Freemaster.d" -MT"Sources/TSS/TSS_Freemaster.o" -c -o "Sources/TSS/TSS_Freemaster.o" "../Sources/TSS/TSS_Freemaster.c"
-Finished building: ../Sources/TSS/TSS_Freemaster.c
- 
-Building file: ../Sources/TSS/TSS_Sensor.c
-Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/TSS/TSS_Sensor.d" -MT"Sources/TSS/TSS_Sensor.o" -c -o "Sources/TSS/TSS_Sensor.o" "../Sources/TSS/TSS_Sensor.c"
-Finished building: ../Sources/TSS/TSS_Sensor.c
- 
-Building file: ../Sources/TSS/TSS_SensorGPIO.c
-Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/TSS/TSS_SensorGPIO.d" -MT"Sources/TSS/TSS_SensorGPIO.o" -c -o "Sources/TSS/TSS_SensorGPIO.o" "../Sources/TSS/TSS_SensorGPIO.c"
-Finished building: ../Sources/TSS/TSS_SensorGPIO.c
- 
-Building file: ../Sources/TSS/TSS_SensorTSI.c
-Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/TSS/TSS_SensorTSI.d" -MT"Sources/TSS/TSS_SensorTSI.o" -c -o "Sources/TSS/TSS_SensorTSI.o" "../Sources/TSS/TSS_SensorTSI.c"
-Finished building: ../Sources/TSS/TSS_SensorTSI.c
- 
-Building file: ../Sources/TSS/TSS_SensorTSIL.c
-Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/TSS/TSS_SensorTSIL.d" -MT"Sources/TSS/TSS_SensorTSIL.o" -c -o "Sources/TSS/TSS_SensorTSIL.o" "../Sources/TSS/TSS_SensorTSIL.c"
-../Sources/TSS/TSS_SensorTSIL.c:4163:12: warning: #warning TSS - Please assign ISR function TSS_TSI0Isr to vector INT_TSI0 [-Wcpp]
-           #warning TSS - Please assign ISR function TSS_TSI0Isr to vector INT_TSI0
-            ^
-Finished building: ../Sources/TSS/TSS_SensorTSIL.c
- 
-Building file: ../Sources/TSS/TSS_SystemSetupData.c
-Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/TSS/TSS_SystemSetupData.d" -MT"Sources/TSS/TSS_SystemSetupData.o" -c -o "Sources/TSS/TSS_SystemSetupData.o" "../Sources/TSS/TSS_SystemSetupData.c"
-Finished building: ../Sources/TSS/TSS_SystemSetupData.c
- 
-Building file: ../Sources/Events.c
-Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/Events.d" -MT"Sources/Events.o" -c -o "Sources/Events.o" "../Sources/Events.c"
-Finished building: ../Sources/Events.c
- 
-Building file: ../Sources/RingBuffer.c
+make: Nothing to be done for 'all'.
+
+21:01:36 Build Finished (took 2s.47ms)
+

@@ -286,7 +286,7 @@ void GT_AsyncSerial_OnRxChar(void)
 {
 	char byte = 0;
 
-	if(GT_AsyncSerial_RecvChar(&byte)==ERR_OK){
+	if(AS1_RecvChar(&byte)==ERR_OK){
 
 		putRxData(byte);
 	}
