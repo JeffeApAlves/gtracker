@@ -54,8 +54,8 @@ namespace GoodsTracker
 
         public Axis()
         {
-            Acceleration    = new Value(0,90);
-            Rotation        = new Value();
+            Acceleration    = new Value(0,15);
+            Rotation        = new Value(15,30);
         }
 
         public Value Acceleration { get => acceleration; set => acceleration = value; }
@@ -159,6 +159,13 @@ namespace GoodsTracker
             AxisX.Acceleration.Val = x;
             AxisY.Acceleration.Val = y;
             AxisZ.Acceleration.Val = z;
+        }
+
+        public void setRotation(double x, double y, double z)
+        {
+            AxisX.Rotation.Val = x;
+            AxisY.Rotation.Val = y;
+            AxisZ.Rotation.Val = z;
         }
 
         public void setValues(TelemetriaData values)

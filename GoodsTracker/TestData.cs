@@ -47,11 +47,12 @@ namespace GoodsTracker
                 Random rnd = new Random();
                 PointLatLng p = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[count_behavior++];
 
-                b.DateTime = DateTime.Now;
                 b.setPosition(p.Lat, p.Lng);
                 b.setAcceleration(rnd.Next(0, 4), rnd.Next(5, 9), rnd.Next(10, 14));
+                b.setRotation(rnd.Next(15,20), rnd.Next(21, 25), rnd.Next(26, 30));
                 b.setSpeed(rnd.Next(40, 120));
                 b.setLevel(rnd.Next(900, 1000));
+                b.DateTime = DateTime.Now;
             }
 
             return b;

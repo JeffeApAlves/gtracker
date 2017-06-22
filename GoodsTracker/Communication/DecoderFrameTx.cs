@@ -5,7 +5,7 @@ namespace GoodsTracker
 {
     // [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[3] , SizePayload[3] , payload[ 0 ~ 255] , '*'CheckSum[5] ] \r\n
 
-    enum DATA1
+    enum DATA_INDEX
     {
         ORIG        = 0,
         DEST        = 1,
@@ -17,9 +17,14 @@ namespace GoodsTracker
         ACCEL_X     = 7,
         ACCEL_Y     = 8,
         ACCEL_Z     = 9,
-        SPEED       = 10,
-        LEVEL       = 11,
-        DATETIME    = 12,
+
+        ROT_X       = 10,
+        ROT_Y       = 11,
+        ROT_Z       = 12,
+
+        SPEED       = 13,
+        LEVEL       = 14,
+        DATETIME    = 15,
     }
 
     internal class DecoderFrame : IDecoderFrameTx,IDecoderFrameRx
@@ -93,12 +98,17 @@ namespace GoodsTracker
 
                 sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(b.AxisX.Acceleration.Val);
-
                 sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(b.AxisY.Acceleration.Val);
-
                 sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(b.AxisZ.Acceleration.Val);
+
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(b.AxisX.Rotation.Val);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(b.AxisY.Rotation.Val);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(b.AxisZ.Rotation.Val);
 
                 sb.Append(CONST_CHAR.SEPARATOR);
                 sb.Append(b.Speed.Val);
@@ -133,23 +143,27 @@ namespace GoodsTracker
 
                 if (list != null && list.Length >= 9)
                 {
-                    ans.Orig        = getValAsInteger(list, (int)DATA1.ORIG);
-                    ans.Dest        = getValAsInteger(list, (int)DATA1.DEST);
-                    ans.Operation   = getValAsString(list, (int)DATA1.OPERACAO);
-                    ans.Resource    = getValAsString(list, (int)DATA1.RESOURCE);
-                    ans.Size        = getValAsInteger(list, (int)DATA1.SIZE_PAYLOAD);
+                    ans.Orig        = getValAsInteger(list, DATA_INDEX.ORIG);
+                    ans.Dest        = getValAsInteger(list, DATA_INDEX.DEST);
+                    ans.Operation   = getValAsString(list, DATA_INDEX.OPERACAO);
+                    ans.Resource    = getValAsString(list, DATA_INDEX.RESOURCE);
+                    ans.Size        = getValAsInteger(list, DATA_INDEX.SIZE_PAYLOAD);
 
-                    dadosRx.setPosition(getValAsDouble(list, (int)DATA1.LAT), 
-                                        getValAsDouble(list, (int)DATA1.LNG));
+                    dadosRx.setPosition(getValAsDouble(list, DATA_INDEX.LAT), 
+                                        getValAsDouble(list, DATA_INDEX.LNG));
 
-                    dadosRx.setAcceleration(getValAsDouble(list, (int)DATA1.ACCEL_X),
-                                            getValAsDouble(list, (int)DATA1.ACCEL_Y),
-                                            getValAsDouble(list, (int)DATA1.ACCEL_Z));
+                    dadosRx.setAcceleration(getValAsDouble(list, DATA_INDEX.ACCEL_X),
+                                            getValAsDouble(list, DATA_INDEX.ACCEL_Y),
+                                            getValAsDouble(list, DATA_INDEX.ACCEL_Z));
 
-                    dadosRx.Speed.Val   = getValAsDouble(list, (int)DATA1.SPEED);
-                    dadosRx.Level.Val   = getValAsDouble(list, (int)DATA1.LEVEL);
+                    dadosRx.setRotation(    getValAsDouble(list, DATA_INDEX.ROT_X),
+                                            getValAsDouble(list, DATA_INDEX.ROT_Y),
+                                            getValAsDouble(list, DATA_INDEX.ROT_Z));
 
-                    dadosRx.DateTime    = getValAsDateTime(list, (int)DATA1.DATETIME);
+                    dadosRx.Speed.Val   = getValAsDouble(list, DATA_INDEX.SPEED);
+                    dadosRx.Level.Val   = getValAsDouble(list, DATA_INDEX.LEVEL);
+
+                    dadosRx.DateTime    = getValAsDateTime(list, DATA_INDEX.DATETIME);
 
                     ans.Info = dadosRx;
 
@@ -164,88 +178,51 @@ namespace GoodsTracker
             return ret;
         }
 
-        private DateTime getValAsDateTime(string[] list, int index)
+        private DateTime getValAsDateTime(string[] list, DATA_INDEX index)
         {
             DateTime d = Convert.ToDateTime("01/01/1900");
 
-            if (index < list.Length)
+            if ((int)index < list.Length)
             {
-                d = Convert.ToDateTime(list[index].Replace('.', ':'));
+                d = Convert.ToDateTime(list[(int)index].Replace('.', ':'));
             }
             return d;
         }
 
-        private int getValAsInteger(string[] list, int index)
+        private int getValAsInteger(string[] list, DATA_INDEX index)
         {
             int dest = 0;
 
-            if (index < list.Length)
+            if ((int)index < list.Length)
             {
-
-                dest = Convert.ToInt16(list[index]);
+                dest = Convert.ToInt16(list[(int)index]);
             }
 
             return dest;
         }
 
-
-        private double getValAsDouble(string[] list, int index)
+        private double getValAsDouble(string[] list, DATA_INDEX index)
         {
             double dest = 0;
 
-            if (index < list.Length)
+            if ((int)index < list.Length)
             {
-
-                dest = Convert.ToDouble(list[index]);
+                dest = Convert.ToDouble(list[(int)index]);
             }
 
             return dest;
         }
 
-        private string getValAsString(string[] list, int index)
+        private string getValAsString(string[] list, DATA_INDEX index)
         {
             string dest = "";
 
-            if (index < list.Length)
+            if ((int)index < list.Length)
             {
-
-                dest = list[index];
+                dest = list[(int)index];
             }
 
             return dest;
         }
-
-
-        private void setVal(ref double dest, string[] list, int index)
-        {
-            dest = 0;
-
-            if (index < list.Length)
-            {
-
-                dest = Convert.ToDouble(list[index]);
-            }
-        }
-
-        private void setVal(ref int dest, string[] list, int index)
-        {
-            dest = 0;
-
-            if (index < list.Length)
-            {
-                dest = Convert.ToInt16(list[index]);
-            }
-        }
-
-        private void setVal(ref string dest, string[] list, int index)
-        {
-            dest = "";
-
-            if (index < list.Length)
-            {
-                dest = list[index];
-            }
-        }
-
     }
 }
