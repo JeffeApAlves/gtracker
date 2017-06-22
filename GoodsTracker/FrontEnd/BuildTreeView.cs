@@ -50,7 +50,7 @@ namespace GoodsTracker
                 }
                 else
                 {
-                    forceChange = behaviors.SequenceEqual(value);
+                    forceChange = !behaviors.SequenceEqual(value);
                 }
 
                 behaviors = value;
@@ -74,9 +74,29 @@ namespace GoodsTracker
             }
             else if (forceChange)
             {
-                loadlistPointsTreeView();
+                addPointsTreeView();
             }
         }
+
+        /*
+ * Constroe arvore do historico da viagem
+ *  
+ */
+        internal void addPointsTreeView()
+        {
+            forceChange = false;
+
+            if (behaviors != null)
+            {
+                TreeNode root = createRootTreeView();
+
+                for (int i = TreeView.Nodes[0].Nodes.Count ; i < behaviors.Length; i++)
+                {
+                    addTelemetria(behaviors[i],root);
+                }
+            }
+        }
+
 
         /*
          * Constroe arvore do historico da viagem
@@ -88,18 +108,19 @@ namespace GoodsTracker
 
             if (behaviors != null)
             {
+                TreeNode root = createRootTreeView();
+
                 foreach (TelemetriaData b in behaviors)
                 {
-                    addTelemetria(b);
+                    addTelemetria(b,root);
                 }
             }
         }
 
-        internal void addTelemetria(TelemetriaData b)
+        internal void addTelemetria(TelemetriaData b,TreeNode    root)
         {
-            TreeNode    root, loc;
+            TreeNode    loc;
 
-            root    = createRootTreeView();
             loc     = createLocTreeView(b, root);
 
             createPositionTreeView(b,loc);
