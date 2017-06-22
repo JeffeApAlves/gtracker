@@ -210,7 +210,7 @@ bool decoderFrame2(void) {
 			}
 		}
 
-		removeList(list);
+		removeList(&list);
 	}
 
 	return list.size>=2;

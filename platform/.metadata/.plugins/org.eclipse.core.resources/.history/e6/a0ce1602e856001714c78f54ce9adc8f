@@ -109,7 +109,7 @@ typedef struct{
 } Cmd;
 
 void rxStartCMD (void);
-void receiveFrame (void);
+void rxPayLoad (void);
 void rxNL(void);
 void rxCR(void);
 void decoderCMD(void);
