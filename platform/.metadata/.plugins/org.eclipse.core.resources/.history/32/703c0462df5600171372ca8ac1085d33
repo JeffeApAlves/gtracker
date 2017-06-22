@@ -429,7 +429,7 @@ void GT_FRTOS_vApplicationIdleHook(void)
 /* ===================================================================*/
 void Cpu_OnSupervisorCall(void)
 {
-	vPortSVCHandler();
+  /* Write your code here ... */
 }
 
 /*
