@@ -28,7 +28,6 @@ namespace GoodsTracker
         TreeView treeView;
         TelemetriaData[] behaviors;
 
-        public bool ForceClear { get => forceClear; set => forceClear = value; }
         public TreeView TreeView { get => treeView; set => treeView = value; }
 
         public TelemetriaData[] Behaviors
@@ -43,14 +42,25 @@ namespace GoodsTracker
                 if (behaviors == null & value != null)
                 {
                     forceChange = true;
+                    forceClear  = true;
 
                 } else if(behaviors == null & value == null)
                 {
                     forceChange = false;
+                    forceClear  = false;
                 }
                 else
                 {
-                    forceChange = !behaviors.SequenceEqual(value);
+                    if (!behaviors.SequenceEqual(value))
+                    {
+                        forceClear  =   true;
+                    }
+
+                    if (behaviors.All(value.Contains) && behaviors.Length!=value.Length)
+                    {
+                        forceChange =   true;
+                    }
+
                 }
 
                 behaviors = value;
@@ -62,14 +72,13 @@ namespace GoodsTracker
             treeView    = tv;
             behaviors   = null;
 
-            show();
+            update();
         }
 
-        internal void show()
+        internal void update()
         {
             if (forceClear)
             {
-                clear();
                 loadlistPointsTreeView();
             }
             else if (forceChange)
@@ -78,10 +87,10 @@ namespace GoodsTracker
             }
         }
 
-        /*
- * Constroe arvore do historico da viagem
- *  
- */
+        /**
+         * Adicona apenas novos pontos
+         * 
+         */
         internal void addPointsTreeView()
         {
             forceChange = false;
@@ -90,12 +99,21 @@ namespace GoodsTracker
             {
                 TreeNode root = createRootTreeView();
 
-                for (int i = TreeView.Nodes[0].Nodes.Count ; i < behaviors.Length; i++)
+                for (int i = getCount(); i < behaviors.Length; i++)
                 {
                     addTelemetria(behaviors[i],root);
                 }
             }
         }
+
+        /*
+         * 
+         * 
+         */
+        internal int getCount()
+        {
+            return TreeView.Nodes.Count<=0? 0:TreeView.Nodes[0].Nodes.Count;
+        } 
 
 
         /*
@@ -108,6 +126,8 @@ namespace GoodsTracker
 
             if (behaviors != null)
             {
+                clear();
+
                 TreeNode root = createRootTreeView();
 
                 foreach (TelemetriaData b in behaviors)
@@ -136,7 +156,7 @@ namespace GoodsTracker
         {
             forceClear = false;
 
-            if (treeView.Nodes != null && treeView.Nodes.Count > 0 && treeView.Nodes[0] != null)
+            if (treeView.Nodes.Count > 0 && treeView.Nodes[0] != null)
             {
                 treeView.Nodes[0].Nodes.Clear();
             }
@@ -149,7 +169,7 @@ namespace GoodsTracker
             /*
              *   |
              * Trip
-             *   |__
+             * 
              *   
              */
             if (treeView.Nodes.Count <= 0)
@@ -175,11 +195,11 @@ namespace GoodsTracker
              *   |
              * Registro[XXXXX]: 00/00/00 00:00
              *   |__
-             *   |__
+             *
              */
             loc = root.Nodes.Add(string.Format("Registro[{0}]: {1}", root.Nodes.Count.ToString("D5"), behavior.DateTime));
-            loc.ImageIndex = (int)(behavior.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
-            loc.SelectedImageIndex = loc.ImageIndex;
+                loc.ImageIndex = (int)(behavior.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+                loc.SelectedImageIndex = loc.ImageIndex;
 
             return loc;
         }

@@ -22,7 +22,7 @@ namespace GoodsTracker
 
         BuildTreeView   bTV     = null;
         int     itemselected    = -1;
-        int     filterslected   = 0;
+        int     filterselected   = 0;
 
         public MainForm()
         {
@@ -173,13 +173,12 @@ namespace GoodsTracker
         // Seleciona filtro
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(filterslected != cbFilter.SelectedIndex)
+            if(filterselected != cbFilter.SelectedIndex)
             {
-                filterslected       = cbFilter.SelectedIndex;
+                filterselected       = cbFilter.SelectedIndex;
 
                 // Atualiza lista de behaviors
-                bTV.ForceClear  = true;
-                bTV.Behaviors   = trackerController.getBehaviorFiltered(filterslected);
+                bTV.Behaviors   = trackerController.getBehaviorFiltered(filterselected);
             }
         }
 
@@ -270,9 +269,9 @@ namespace GoodsTracker
             bTV = new BuildTreeView(tvBehavior);
 
             cbFilter.SelectedIndex  = 0;
-            filterslected           = 0;
+            filterselected           = 0;
 
-            bTV.Behaviors = trackerController.getBehaviorFiltered(filterslected);
+            bTV.Behaviors = trackerController.getBehaviorFiltered(filterselected);
         }
         //-------------------------------------Fim inits -----------------------------------
 
@@ -298,7 +297,7 @@ namespace GoodsTracker
 
         void updateBehavior()
         {
-            bTV.show();
+            bTV.update();
 
             showMarkerBehavior();
         }
@@ -562,7 +561,7 @@ namespace GoodsTracker
             layerFence.PointIsInsidePolygon(telemetria);
 
             // Atualiza lista de behaviors
-            bTV.Behaviors = trackerController.getBehaviorFiltered(filterslected);
+            bTV.Behaviors = trackerController.getBehaviorFiltered(filterselected);
         }
     }
 
