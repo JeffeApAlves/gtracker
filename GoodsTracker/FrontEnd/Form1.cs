@@ -3,7 +3,6 @@ using System.Windows.Forms;
 
 using GMap.NET;
 using GMap.NET.MapProviders;
-using System.Collections.Generic;
 using GMap.NET.WindowsForms.Markers;
 using System.Drawing;
 
@@ -21,10 +20,9 @@ namespace GoodsTracker
         Fence   fence;
         Route   route;
 
+        BuildTreeView   bTV     = null;
         int     itemselected    = -1;
         int     filterslected   = 0;
-        bool    changeDataTelemetria = false;
-        bool    changeStatusLock = false;
 
         public MainForm()
         {
@@ -48,7 +46,6 @@ namespace GoodsTracker
         private void initTrackerControl()
         {
             trackerController.OnDataTelemetria  = onDataTelemetria;
-            trackerController.OnStatusLock      = onStatusLock;
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -178,10 +175,24 @@ namespace GoodsTracker
         {
             if(filterslected != cbFilter.SelectedIndex)
             {
-                filterslected = cbFilter.SelectedIndex;
+                filterslected       = cbFilter.SelectedIndex;
 
-                changeDataTelemetria = true;
+                // Atualiza lista de behaviors
+                BuildTreeView.ForceClear    = true;
+                bTV.Behaviors = trackerController.getBehaviorFiltered(filterslected);
             }
+        }
+
+        //Botao trava a valvula
+        private void btn_lock_Click(object sender, EventArgs e)
+        {
+            trackerController.lockVehicle();
+        }
+
+        //Botao destrava a valvula
+        private void button7_Click(object sender, EventArgs e)
+        {
+            trackerController.unLockVehicle();
         }
 
         private void groupBox1_Click(object sender, System.EventArgs e)
@@ -196,12 +207,14 @@ namespace GoodsTracker
             statusTrip = STATUS_GUI.END_POINT;
         }
 
+        //Entrada no combobox da cordenada inicial
         private void txtLatStart_Enter(object sender, EventArgs e)
         {
             txtLatStart.BackColor = Color.Yellow;
             txtLngStart.BackColor = Color.Yellow;
         }
 
+        //Entrada no combobox da cordenada final
         private void txtLatStop_Enter(object sender, EventArgs e)
         {
             txtLatStop.BackColor = Color.Yellow;
@@ -254,6 +267,8 @@ namespace GoodsTracker
 
         void initPanelBehavior()
         {
+            bTV = new BuildTreeView(tvBehavior);
+
             cbFilter.SelectedIndex  = 0;
             filterslected           = 0;
         }
@@ -276,33 +291,77 @@ namespace GoodsTracker
             txtLngStop.Text         = "";
 
             txtLatStart.Focus();
-
             tvBehavior.Nodes.Clear();
         }
 
         void updateBehavior()
         {
-            changeDataTelemetria = false;
+            bTV.show();
 
-            List<TelemetriaData> list   = trackerController.getBehaviorFiltered(filterslected);
-
-            BuildTreeView bTV           = new BuildTreeView(tvBehavior,list);
-
-            showMarkerBehavior(list);
+            showMarkerBehavior();
         }
 
         void updateStatusLock()
         {
-            TelemetriaData data = trackerController.Tracker.getTelemetria();
+            TelemetriaData telemetria = trackerController.getTelemetria();
+
+            if (telemetria == null)
+            {
+                labelStatusLock.BackColor = Color.Gray;
+                labelStatusLock.Text = "---";
+            }
+            else if (telemetria.StatusLock)
+            {
+                labelStatusLock.BackColor   = Color.Green;
+                labelStatusLock.Text        = "LOCK";
+            }
+            else
+            {
+                labelStatusLock.BackColor   = Color.Red;
+                labelStatusLock.Text        = "UNLOCK";
+            }
         }
 
-            void showMarkerBehavior(List<TelemetriaData> list)
+        void updateStatusFence()
         {
-            if (list != null)
+            TelemetriaData telemetria = trackerController.getTelemetria();
+
+            if (telemetria == null)
+            {
+                lFence.BackColor = Color.Gray;
+            }
+            else if (telemetria.IsInsideOfFence())
+            {
+                lFence.BackColor = Color.Green;
+            }
+            else
+            {
+                lFence.BackColor = Color.Red;
+            }
+        }
+
+        void updatelevel()
+        {
+            TelemetriaData telemetria = trackerController.getTelemetria();
+
+            if (telemetria == null)
+            {
+                levelBar.Value = 0;
+            }
+            else 
+            {
+                levelBar.Value = (int)telemetria.Level.Val;
+            }
+        }
+
+        void showMarkerBehavior()
+        {
+            TelemetriaData[] listCurrentBehavior = bTV.Behaviors;
+            if (listCurrentBehavior != null)
             {
                 layerBehavior.removeAllMarkers();
 
-                foreach (TelemetriaData b in list)
+                foreach (TelemetriaData b in listCurrentBehavior)
                 {
                     PointLatLng p = new PointLatLng(b.Latitude, b.Longitude);
 
@@ -448,7 +507,7 @@ namespace GoodsTracker
         {
             if (panel3.Visible)
             {
-                changeDataTelemetria = true;
+                bTV.ForceChange = true;
             }
         }
 
@@ -466,50 +525,42 @@ namespace GoodsTracker
         }
 
         /*
-         * A cada 250 ms
+         * Tick a cada 250 ms
          */ 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (changeDataTelemetria)
-            {
-                updateBehavior();
-            }
-
-            if (changeStatusLock)
-            {
-                updateStatusLock();
-            }
+            updateBehavior();
+            updateStatusLock();
+            updateStatusFence();
+            updatelevel();
         }
 
-        // Inicializa as threads
+        /*
+         * Inicializa as threads
+         */
         void initAllThreads()
         {
-            //Dados para testes
+            // Dados para testes
             testData = new TestData(1000);
 
-            //Inicia todas as threads
+            // Inicia todas as threads
             ThreadManager.start();
             timer1.Enabled = true;
         }
 
-        // Evento quando o comando de alteracao do status da chave
-        private void onStatusLock()
+        /*
+         * Evento de recepcao de dados de telemetria
+         * 
+         */
+        private void onDataTelemetria(TelemetriaData telemetria)
         {
-            changeStatusLock = true;
-        }
+            // Atualiza o status da se esta dentro de alguma cerca
+            layerFence.PointIsInsidePolygon(telemetria);
 
-        // Evento de recepcao de dados de telemetria
-        private void onDataTelemetria()
-        {
-            TelemetriaData data = trackerController.Tracker.getTelemetria();
-
-            layerFence.PointIsInsidePolygon(data);
-
-            changeDataTelemetria = true;
+            // Atualiza lista de behaviors
+            bTV.Behaviors = trackerController.getBehaviorFiltered(filterslected);
         }
     }
-
-    public delegate void onUpdate();
 
     class CAPAO_CITY
     {

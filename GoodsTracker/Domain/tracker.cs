@@ -20,7 +20,7 @@ namespace GoodsTracker
 
         public void requestBehavior(onAnswerCmd on_ans)
         {
-            sendCMD(2,Operation.RD,RESOURCE.BEHAVIOR).setEventAnswerCmd(on_ans);
+            sendCMD(2,Operation.RD,RESOURCE.TELEMETRIA).setEventAnswerCmd(on_ans);
         }
 
         public void lockVehicle(onAnswerCmd on_ans)
@@ -35,17 +35,17 @@ namespace GoodsTracker
 
         /*
          * 
-         * Chamado quando um aresposta e recebida 
+         * Hook para processamento de comandos respondidos
          * 
          */
         protected override void onReceiveAnswer(AnsCmd ans)
         {
-            if(ans.Resource.Equals(RESOURCE.BEHAVIOR))
+            if(ans.Resource.Equals(RESOURCE.TELEMETRIA))
             {
                 updateDataTelemetria(ans);
             }
             else if(ans.Resource.Equals(RESOURCE.LOCK)){
-                // NOTHING UP To NOW
+                // Nao fazer nada pq o status da trava esta na telemetria
             }
         }
 

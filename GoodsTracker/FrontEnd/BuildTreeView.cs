@@ -18,26 +18,95 @@ namespace GoodsTracker
             GUAUGE = 7,
             PUSHPIN = 8,
             XYZ = 9,
+            LEVEL = 10,
+            LOCK = 11,
         }
 
+        bool forceChange = false;
+        static bool forceClear = false;
+
         TreeView treeView;
+        TelemetriaData[] behaviors;
 
-        internal BuildTreeView(TreeView tv, List<TelemetriaData> list)
+        public bool ForceChange { get => forceChange; set => forceChange = value; }
+        public static bool ForceClear { get => forceClear; set => forceClear = value; }
+
+        public TelemetriaData[] Behaviors
         {
-            treeView = tv;
+            get
+            {
+                return behaviors;
+            }
 
-            loadlistPointsTreeView(list);
+            set
+            {
+                if (behaviors == null & value != null)
+                {
+                    forceChange = true;
+                }
+                else
+                {
+                    forceChange = value != null &&  !behaviors.Equals(value);
+                }
+
+                behaviors = value;
+            }
+        }
+
+        public TreeView TreeView
+        {
+            get
+            {
+                return treeView;
+            }
+
+            set
+            {
+                if (treeView == null &  value!=null)
+                {
+                    forceChange = true;
+                }
+                else
+                {
+                    forceChange = value != null && treeView.Equals(value);
+                }
+                
+                treeView = value;
+            }
+        }
+
+        internal BuildTreeView(TreeView tv)
+        {
+            treeView    = tv;
+            behaviors   = null;
+
+            show();
+        }
+
+        internal void show()
+        {
+            if (forceClear)
+            {
+                clear();
+            }
+
+            if (forceChange)
+            {
+                loadlistPointsTreeView();
+            }
         }
 
         /*
          * Constroe arvore do historico da viagem
          *  
          */
-        internal void loadlistPointsTreeView(List<TelemetriaData> listBehavior)
+        internal void loadlistPointsTreeView()
         {
-            if (listBehavior != null)
+            forceChange = false;
+
+            if (behaviors != null)
             {
-                foreach (TelemetriaData b in listBehavior)
+                foreach (TelemetriaData b in behaviors)
                 {
                     addTelemetria(b);
                 }
@@ -58,11 +127,19 @@ namespace GoodsTracker
             createEixoTreeView(b.AxisZ, "Eixo[Z]", loc);
         }
 
+        internal void clear()
+        {
+            forceClear = false;
+
+            if (treeView.Nodes != null && treeView.Nodes.Count > 0 && treeView.Nodes[0] != null)
+            {
+                treeView.Nodes[0].Nodes.Clear();
+            }
+        }
+
         internal TreeNode createRootTreeView()
         {
             TreeNode root;
-
-//            treeView.Nodes.Clear();
 
             if (treeView.Nodes.Count <= 0)
             {
@@ -91,29 +168,66 @@ namespace GoodsTracker
             return loc;
         }
 
-        internal void createPositionTreeView(TelemetriaData behavior, TreeNode reg)
+        internal void createPositionTreeView(TelemetriaData b, TreeNode reg)
         {
-            TreeNode info, loc, vel;
+            TreeNode info, loc, vel, level;
 
+            /*
+             *   |
+             * Localizacao
+             *   |__Lat
+             *   |__Lng
+             */
             loc = reg.Nodes.Add("Localizacao");
             loc.ImageIndex = (int)IMG_TREEVIEW.LOC;
             loc.SelectedImageIndex = loc.ImageIndex;
 
-            info = loc.Nodes.Add(string.Format("Lat: {0}", behavior.Latitude));
-            info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
-            info.SelectedImageIndex = info.ImageIndex;
+                info = loc.Nodes.Add(string.Format("Lat: {0}", b.Latitude));
+                info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
+                info.SelectedImageIndex = info.ImageIndex;
 
-            info = loc.Nodes.Add(string.Format("Lng: {0}", behavior.Longitude));
-            info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
-            info.SelectedImageIndex = info.ImageIndex;
+                info = loc.Nodes.Add(string.Format("Lng: {0}", b.Longitude));
+                info.ImageIndex = (int)IMG_TREEVIEW.PUSHPIN;
+                info.SelectedImageIndex = info.ImageIndex;
 
+            /*
+             *   |
+             * Velocidade
+             *   |__Valor
+             */
             vel = reg.Nodes.Add("Velocidade");
             vel.ImageIndex = (int)IMG_TREEVIEW.GUAUGE;
             vel.SelectedImageIndex = vel.ImageIndex;
 
-            info = vel.Nodes.Add(behavior.Speed.ToString());
-            info.ImageIndex = (int)(behavior.Speed.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
-            info.SelectedImageIndex = info.ImageIndex;
+                info = vel.Nodes.Add(b.Speed.ToString());
+                info.ImageIndex = (int)(b.Speed.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+                info.SelectedImageIndex = info.ImageIndex;
+
+            /*
+             *   |
+             * Nivel
+             *   |__Valor
+             */
+            level = reg.Nodes.Add("Nivel");
+            level.ImageIndex = (int)IMG_TREEVIEW.LEVEL;
+            level.SelectedImageIndex = vel.ImageIndex;
+
+                info = level.Nodes.Add(b.Level.ToString());
+                info.ImageIndex = (int)(b.Level.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+                info.SelectedImageIndex = info.ImageIndex;
+
+            /*
+             *   |
+             * Lock
+             *   |__Valor
+             */
+            level = reg.Nodes.Add("Trava");
+            level.ImageIndex = (int)IMG_TREEVIEW.LOCK;
+            level.SelectedImageIndex = vel.ImageIndex;
+
+                info = level.Nodes.Add(b.StatusLock.ToString());
+                info.ImageIndex = (int)(b.StatusLock && b.IsInsideOfFence() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+                info.SelectedImageIndex = info.ImageIndex;
         }
 
         internal TreeNode createEixoTreeView(Axis axis, string neixo, TreeNode loc)

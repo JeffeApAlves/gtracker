@@ -40,7 +40,7 @@ namespace GoodsTracker
 
                 DecoderFrame decoder = new DecoderFrame();
                 CommunicationFrame frame = new CommunicationFrame();
-                Cmd cmd = new Cmd(RESOURCE.BEHAVIOR);
+                Cmd cmd = new Cmd(RESOURCE.TELEMETRIA);
                 //                Tracker t                   = new Tracker(2);
                 cmd.Operation = Operation.AN;
                 cmd.Dest = 1;

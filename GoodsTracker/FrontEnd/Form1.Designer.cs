@@ -35,12 +35,13 @@
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBoxLevel = new System.Windows.Forms.GroupBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.levelBar = new System.Windows.Forms.ProgressBar();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lFence = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.btn_lock = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelStatusLock = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -169,7 +170,7 @@
             // groupBoxLevel
             // 
             this.groupBoxLevel.AutoSize = true;
-            this.groupBoxLevel.Controls.Add(this.progressBar1);
+            this.groupBoxLevel.Controls.Add(this.levelBar);
             this.groupBoxLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxLevel.Location = new System.Drawing.Point(0, 525);
             this.groupBoxLevel.Name = "groupBoxLevel";
@@ -178,20 +179,21 @@
             this.groupBoxLevel.TabStop = false;
             this.groupBoxLevel.Text = "Tanque Nivel";
             // 
-            // progressBar1
+            // levelBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(31, 34);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(258, 39);
-            this.progressBar1.TabIndex = 0;
-            this.progressBar1.Value = 50;
+            this.levelBar.Location = new System.Drawing.Point(31, 34);
+            this.levelBar.Name = "levelBar";
+            this.levelBar.Size = new System.Drawing.Size(258, 39);
+            this.levelBar.TabIndex = 0;
+            this.levelBar.Value = 50;
             // 
             // groupBox3
             // 
             this.groupBox3.AutoSize = true;
+            this.groupBox3.Controls.Add(this.lFence);
             this.groupBox3.Controls.Add(this.button7);
             this.groupBox3.Controls.Add(this.btn_lock);
-            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.labelStatusLock);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(0, 400);
@@ -201,19 +203,31 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Trava";
             // 
+            // lFence
+            // 
+            this.lFence.BackColor = System.Drawing.Color.Red;
+            this.lFence.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFence.Location = new System.Drawing.Point(220, 26);
+            this.lFence.Name = "lFence";
+            this.lFence.Size = new System.Drawing.Size(90, 70);
+            this.lFence.TabIndex = 10;
+            this.lFence.Text = "Fence";
+            this.lFence.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.Lime;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ImageIndex = 2;
             this.button7.ImageList = this.imageList2;
-            this.button7.Location = new System.Drawing.Point(162, 26);
+            this.button7.Location = new System.Drawing.Point(111, 26);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(100, 30);
             this.button7.TabIndex = 15;
             this.button7.Text = "UNLOCK";
             this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // imageList2
             // 
@@ -230,31 +244,31 @@
             this.btn_lock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_lock.ImageIndex = 3;
             this.btn_lock.ImageList = this.imageList2;
-            this.btn_lock.Location = new System.Drawing.Point(56, 26);
+            this.btn_lock.Location = new System.Drawing.Point(5, 26);
             this.btn_lock.Name = "btn_lock";
             this.btn_lock.Size = new System.Drawing.Size(100, 30);
             this.btn_lock.TabIndex = 14;
             this.btn_lock.Text = "LOCK";
             this.btn_lock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_lock.UseVisualStyleBackColor = true;
+            this.btn_lock.Click += new System.EventHandler(this.btn_lock_Click);
             // 
-            // label11
+            // labelStatusLock
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Red;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(163, 72);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 26);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "LOCK";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelStatusLock.BackColor = System.Drawing.Color.Red;
+            this.labelStatusLock.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStatusLock.Location = new System.Drawing.Point(89, 70);
+            this.labelStatusLock.Name = "labelStatusLock";
+            this.labelStatusLock.Size = new System.Drawing.Size(122, 26);
+            this.labelStatusLock.TabIndex = 13;
+            this.labelStatusLock.Text = "LOCK";
+            this.labelStatusLock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(78, 72);
+            this.label10.Location = new System.Drawing.Point(5, 70);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(87, 26);
             this.label10.TabIndex = 12;
@@ -869,7 +883,7 @@
         private System.Windows.Forms.ComboBox cbFilter;
         private System.Windows.Forms.TreeView tvBehavior;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelStatusLock;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btn_lock;
@@ -880,7 +894,7 @@
         private System.Windows.Forms.Button btn_delFence;
         private System.Windows.Forms.ComboBox cbListFence;
         private System.Windows.Forms.GroupBox groupBoxLevel;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar levelBar;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Label label13;
@@ -890,6 +904,7 @@
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.ImageList imageList3;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lFence;
     }
 }
 

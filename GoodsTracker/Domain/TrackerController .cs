@@ -2,9 +2,11 @@
 
 namespace GoodsTracker
 {
+    public delegate void onUpdateTelemetria(TelemetriaData telemetria);
+
     class TrackerController :ThreadRun
     {
-        onUpdate onDataTelemetria, onStatusLock;
+        onUpdateTelemetria  onDataTelemetria;
 
         private static TrackerController singleton=null;
 
@@ -30,8 +32,7 @@ namespace GoodsTracker
         }
 
         internal Tracker Tracker { get => tracker; set => tracker = value; }
-        public onUpdate OnDataTelemetria { get => onDataTelemetria; set => onDataTelemetria = value; }
-        public onUpdate OnStatusLock { get => onStatusLock; set => onStatusLock = value; }
+        public onUpdateTelemetria OnDataTelemetria { get => onDataTelemetria; set => onDataTelemetria = value; }
 
         private TrackerController()
         {
@@ -74,7 +75,7 @@ namespace GoodsTracker
             fences.RemoveAt(index);
         }
 
-        internal List<TelemetriaData> getBehaviorFiltered(int i)
+        internal TelemetriaData[] getBehaviorFiltered(int i)
         {
             List<TelemetriaData> ret = null;
 
@@ -83,7 +84,7 @@ namespace GoodsTracker
                 ret = routes[0].getBehaviorFiltered(i);
             }
 
-            return ret;
+            return ret.ToArray();
         }
 
         internal void addRoute(Route r)
@@ -134,22 +135,28 @@ namespace GoodsTracker
             return anyRoute() ? routes[0].Behaviors.Count : 0;
         }
 
-        // CallBacks
+        public TelemetriaData getTelemetria()
+        {
+            return Tracker.getTelemetria();
+        }
+
+        // -------------------------  CallBacks CMDs -------------------------------------------
 
         private ResultExec onLockStatus(AnsCmd ans)
         {
-            registerBehavior(tracker.getTelemetria());
-
-            onStatusLock?.Invoke();
-
             return ResultExec.EXEC_SUCCESS;
         }
 
         private ResultExec onReceiveBehavior(AnsCmd ans)
         {
-            registerBehavior(tracker.getTelemetria());
+            //`Atualiza entidade
+            tracker.TelemetriaData = ans.Info;
 
-            onDataTelemetria?.Invoke();
+            // Registra a telemetria
+            registerBehavior(getTelemetria());
+
+            // Chama alguma call back para notificacao do front End
+            onDataTelemetria?.Invoke(getTelemetria());
 
             return ResultExec.EXEC_SUCCESS;
         }

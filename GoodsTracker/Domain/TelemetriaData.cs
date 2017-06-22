@@ -4,40 +4,40 @@ using System.Text;
 
 namespace GoodsTracker
 {
-    internal class Scale {
+    public class Scale {
 
         double min;
         double max;
 
-        internal double Min { get => min; set => min = value; }
-        internal double Max { get => max; set => max = value; }
+        public double Min { get => min; set => min = value; }
+        public double Max { get => max; set => max = value; }
 
-        internal Scale(double _min,double _max)
+        public Scale(double _min,double _max)
         {
             min = _min;
             max = _max;
         }
     }
 
-    internal class Value
+    public class Value
     {
         double val;
         Scale tol;
 
-        internal double Val { get => val; set => val = value; }
-        internal Scale Tol { get => tol; set => tol = value; }
+        public double Val { get => val; set => val = value; }
+        public Scale Tol { get => tol; set => tol = value; }
 
-        internal Value(double min,double max)
+        public Value(double min,double max)
         {
             tol = new Scale(min,max);
         }
         
-        internal Value()
+        public Value()
         {
             tol = new Scale(0,0);
         }
 
-        internal bool OK()
+        public bool OK()
         {
             return Val>=tol.Min && Val<=tol.Max;
         }
@@ -48,20 +48,20 @@ namespace GoodsTracker
         }
     }
 
-    internal class Axis
+    public class Axis
     {
         Value acceleration, rotation;
 
-        internal Axis()
+        public Axis()
         {
             Acceleration    = new Value(0,90);
             Rotation        = new Value();
         }
 
-        internal Value Acceleration { get => acceleration; set => acceleration = value; }
-        internal Value Rotation { get => rotation; set => rotation = value; }
+        public Value Acceleration { get => acceleration; set => acceleration = value; }
+        public Value Rotation { get => rotation; set => rotation = value; }
 
-        internal bool OK()
+        public bool OK()
         {
             return acceleration.OK() && rotation.OK();
         }
@@ -72,7 +72,7 @@ namespace GoodsTracker
         }
     }
 
-    internal class TelemetriaData
+    public class TelemetriaData
     {
         Dictionary<int,bool>    insideOfFence;
 
@@ -81,18 +81,20 @@ namespace GoodsTracker
         Value       level;
         Axis        axisX, axisY, axisZ;
         DateTime    dateTime;
+        bool        statusLock;
 
-        internal Value Speed { get => speed; set => speed = value; }
-        internal Axis AxisX { get => axisX; set => axisX = value; }
-        internal Axis AxisY { get => axisY; set => axisY = value; }
-        internal Axis AxisZ { get => axisZ; set => axisZ = value; }
+        public Value Speed { get => speed; set => speed = value; }
+        public Axis AxisX { get => axisX; set => axisX = value; }
+        public Axis AxisY { get => axisY; set => axisY = value; }
+        public Axis AxisZ { get => axisZ; set => axisZ = value; }
         public DateTime DateTime { get => dateTime; set => dateTime = value; }
         public double Latitude { get => latitude; set => latitude = value; }
         public double Longitude { get => longitude; set => longitude = value; }
-        internal Value Level { get => level; set => level = value; }
+        public Value Level { get => level; set => level = value; }
         public Dictionary<int, bool> InsideOfFence { get => insideOfFence; set => insideOfFence = value; }
+        public bool StatusLock { get => statusLock; set => statusLock = value; }
 
-        internal TelemetriaData()
+        public TelemetriaData()
         {
             AxisX       = new Axis();
             AxisY       = new Axis();
@@ -103,18 +105,18 @@ namespace GoodsTracker
             insideOfFence = new Dictionary<int, bool>();
         }
 
-        internal bool OK()
+        public bool OK()
         {
             return speed.OK() && axisX.OK() && axisY.OK() && axisZ.OK();
         }
 
-        internal void setPosition(double lat,double lng)
+        public void setPosition(double lat,double lng)
         {
             latitude = lat;
             longitude = lng;
         }
 
-        internal string getStrNOK()
+        public string getStrNOK()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -148,14 +150,14 @@ namespace GoodsTracker
             return sb.ToString();
         }
 
-        internal void setAcceleration(double x, double y, double z)
+        public void setAcceleration(double x, double y, double z)
         {
             AxisX.Acceleration.Val = x;
             AxisY.Acceleration.Val = y;
             AxisZ.Acceleration.Val = z;
         }
 
-        internal void setValues(TelemetriaData values)
+        public void setValues(TelemetriaData values)
         {
             Speed   = values.Speed;
             Level   = values.Level;
@@ -170,22 +172,22 @@ namespace GoodsTracker
             return string.Format("Lat:{0} Lng:{1}", latitude, longitude) + " " + axisX.ToString() + " " + axisY.ToString() + " " + axisZ.ToString();
         }
 
-        internal void setSpeed(int v)
+        public void setSpeed(int v)
         {
             speed.Val = v;
         }
 
-        internal void setLevel(int v)
+        public void setLevel(int v)
         {
             level.Val = v;
         }
 
-        internal void setInsideOfFence(int index,bool status)
+        public void setInsideOfFence(int index,bool status)
         {
             insideOfFence[index] = status;
         }
 
-        internal bool IsInsideOfFence()
+        public bool IsInsideOfFence()
         {
             bool ret = false;
 

@@ -100,7 +100,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Domain\gps.cs" />
-    <Compile Include="FrontEnd\ThreadGUI.cs" />
     <Compile Include="Domain\InterfaceTracker.cs" />
     <Compile Include="FrontEnd\LayerMap.cs" />
     <Compile Include="Domain\padlock.cs" />
