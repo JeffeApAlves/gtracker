@@ -23,6 +23,7 @@ namespace GoodsTracker
         SPEED       = 13,
         LEVEL       = 14,
         DATETIME    = 15,
+        CHECKSUM    = 16,
     }
 
     internal class DecoderFrame : IDecoderFrameTx,IDecoderFrameRx
@@ -141,8 +142,8 @@ namespace GoodsTracker
         public bool getValues(out AnsCmd ans, CommunicationFrame frame)
         {
             bool ret = false;
-            ans                     = new AnsCmd();
-            TelemetriaData  dadosRx = new TelemetriaData();
+            ans = new AnsCmd();
+            TelemetriaData  telemetria = new TelemetriaData();
 
             try
             {
@@ -150,31 +151,34 @@ namespace GoodsTracker
 
                 if (list != null && list.Length >= 9)
                 {
-                    ans.Address        = getValAsInteger(list, DATA_INDEX.ORIG);
+                    ans.Address     = getValAsInteger(list, DATA_INDEX.ORIG);
                     ans.Dest        = getValAsInteger(list, DATA_INDEX.DEST);
                     ans.Operation   = getValAsOperation(list, DATA_INDEX.OPERACAO);
                     ans.Resource    = getValAsString(list, DATA_INDEX.RESOURCE);
                     ans.Size        = getValAsInteger(list, DATA_INDEX.SIZE_PAYLOAD);
+                    
+                    telemetria.setPosition( getValAsDouble(list, DATA_INDEX.LAT), 
+                                            getValAsDouble(list, DATA_INDEX.LNG));
 
-                    dadosRx.setPosition(getValAsDouble(list, DATA_INDEX.LAT), 
-                                        getValAsDouble(list, DATA_INDEX.LNG));
+                    telemetria.setAcceleration( getValAsDouble(list, DATA_INDEX.ACCEL_X),
+                                                getValAsDouble(list, DATA_INDEX.ACCEL_Y),
+                                                getValAsDouble(list, DATA_INDEX.ACCEL_Z));
 
-                    dadosRx.setAcceleration(getValAsDouble(list, DATA_INDEX.ACCEL_X),
-                                            getValAsDouble(list, DATA_INDEX.ACCEL_Y),
-                                            getValAsDouble(list, DATA_INDEX.ACCEL_Z));
-
-                    dadosRx.setRotation(    getValAsDouble(list, DATA_INDEX.ROT_X),
+                    telemetria.setRotation( getValAsDouble(list, DATA_INDEX.ROT_X),
                                             getValAsDouble(list, DATA_INDEX.ROT_Y),
                                             getValAsDouble(list, DATA_INDEX.ROT_Z));
 
-                    dadosRx.Speed.Val   = getValAsDouble(list, DATA_INDEX.SPEED);
-                    dadosRx.Level.Val   = getValAsDouble(list, DATA_INDEX.LEVEL);
+                    telemetria.Speed.Val   = getValAsDouble(list, DATA_INDEX.SPEED);
+                    telemetria.Level.Val   = getValAsDouble(list, DATA_INDEX.LEVEL);
+                    telemetria.DateTime    = getValAsDateTime(list, DATA_INDEX.DATETIME);
 
-                    dadosRx.DateTime    = getValAsDateTime(list, DATA_INDEX.DATETIME);
+                    ans.Info                = telemetria;
 
-                    ans.Info = dadosRx;
+                    byte cheksumRx          = (byte)getValAsInteger(list, DATA_INDEX.CHECKSUM);
 
-                    ret = true;
+                    frame.Frame             = frame.Frame.Substring(0, frame.Frame.Length - 4);
+
+                    ret = frame.checkSum()==cheksumRx;
                 }
             }
             catch

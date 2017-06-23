@@ -5,7 +5,7 @@ namespace GoodsTracker
     /**
      * 
      * Frame Coomunication
-     * [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[3] , SizePayload[3] , payload[ 0 ~ 255] , '*'CheckSum[2] ] \r\n
+     * [ End. de orig[5] : End dest[5] : Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[3] ] \r\n
      * 
      * End. de orig: 
      * Range: 00000~65535 (00000) Broadcast
@@ -20,8 +20,7 @@ namespace GoodsTracker
      * AN + ANSWER
      * 
      * Recurso: 
-     * Range: 01~99
-     * 01: Lat , Long , AccelX , AccelY , AccelZ , Level, Speed
+     * Range: A-Z a-z 0~9
      * 
      * SizePayload:
      * Range: 0~255
@@ -95,18 +94,19 @@ namespace GoodsTracker
             set
             {
                 frame   = value;
-                if (value.Length >= 15)
+
+                if (value.Length >= 22)
                 {
-                    Header = frame.Substring(0, 15);
+                    header = frame.Substring(0, 22);
                 }
                 else
                 {
-                    Header = frame;
+                    header = frame;
                 }
 
-                if (value.Length >= 16)
+                if (value.Length > 23)
                 {
-                    PayLoad = frame.Substring(15, frame.Length - 14);
+                    payLoad = frame.Substring(23, frame.Length - 23);
                 }
             }
         }
@@ -121,9 +121,9 @@ namespace GoodsTracker
             return (byte)frame[i];
         }
 
-        internal void addByteInFrame(char b)
+        internal void Append(char b)
         {
-            frame += b;
+            Frame += b;
         }
 
         internal void clear()
@@ -153,6 +153,11 @@ namespace GoodsTracker
             return getSizeOfPayLoad() <= 0;
         }
 
+        internal bool isFrameEmpty()
+        {
+            return getSizeOfFrame() <= 0;
+        }
+
         internal byte checkSum()
         {
             byte checkSum = 0;
@@ -172,9 +177,13 @@ namespace GoodsTracker
             return  CONST_CHAR.RX_FRAME_START +
                     frame +
                     CONST_CHAR.SEPARATOR +
-                    //CONST_CHAR.ASTERISCO + 
-                    checkSum().ToString() +
+                    checkSum().ToString("D3") +
                     CONST_CHAR.RX_FRAME_END;
+        }
+
+        internal char[] ToCharArray()
+        {
+            return  strOfFrame().ToCharArray();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GoodsTracker
 {
@@ -93,14 +92,14 @@ namespace GoodsTracker
 
                     foreach (AnsCmd ans in array_ans)
                     {
-                        if (ans.Resource == cmd.Resource)
+                        if ((ans.Resource == cmd.Resource) && (ans.Dest==cmd.Address))
                         {
                             try
                             {
-                                //executa evento de recebmento de resposta de comando
+                                // Executa evento de recebmento de resposta de comando
                                 onReceiveAnswer(ans);
 
-                                //excuta call back respectiva do comando
+                                // Excuta call back respectiva do comando
                                 cmd.EventAnswerCmd?.Invoke(ans);
 
                                 removeCmd(cmd);

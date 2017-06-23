@@ -130,7 +130,7 @@ namespace GoodsTracker
                 }
                 else
                 {
-                    rxFrame.addByteInFrame(ch);
+                    rxFrame.Append(ch);
 
                     setStatusRx(StatusRx.RX_FRAME_RX_PAYLOAD);
                 }
@@ -174,9 +174,19 @@ namespace GoodsTracker
 
         void verifyCheckSum()
         {
-            int checksum = rxFrame.checkSum();
+            IDecoderFrameRx decoder = new DecoderFrame();
+            AnsCmd ans;
 
-            setStatusRx(StatusRx.RX_FRAME_OK);
+            if (decoder.getValues(out ans, rxFrame))
+            {
+                CommunicationUnit.addAns(ans);
+
+                setStatusRx(StatusRx.RX_FRAME_OK);
+            }
+            else
+            {
+                setStatusRx(StatusRx.RX_FRAME_NOK);
+            }
         }
 
         void acceptRxFrame()
@@ -223,19 +233,12 @@ namespace GoodsTracker
 
         void sendFrame(CommunicationFrame frame)
         {
-            if (frame != null && !frame.isPayLoadEmpty())
+            if (frame != null && !frame.isFrameEmpty())
             {
-                Serial.putTxData(frame.strOfFrame());
-                Serial.putTxData(CONST_CHAR.CR);
-                Serial.putTxData(CONST_CHAR.LF);
+                char[] end = { CONST_CHAR.CR, CONST_CHAR.LF };
 
-                /*Serial.putTxData(CONST_CHAR.RX_FRAME_START);
-                Serial.putTxData(frame.Frame);
-                Serial.putTxData(CONST_CHAR.SEPARATOR);
-                Serial.putTxData(frame.checkSum().ToString());
-                Serial.putTxData(CONST_CHAR.RX_FRAME_END);
-                Serial.putTxData(CONST_CHAR.CR);
-                Serial.putTxData(CONST_CHAR.LF);*/
+                Serial.putTxData(frame.ToCharArray());
+                Serial.putTxData(end);
             }
         }
 

@@ -18,6 +18,7 @@
         public int Address { get => address; set => address = value; }
         public Operation Operation { get => operation; set => operation = value; }
 
+
         internal AnsCmd()
         {
             resource    = "";

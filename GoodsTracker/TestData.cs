@@ -56,8 +56,8 @@ namespace GoodsTracker
         {
             AnsCmd ans = new AnsCmd(RESOURCE.TELEMETRIA,Operation.AN);
 
-            ans.Address = 1;
-            ans.Dest    = 2;
+            ans.Address = 2;
+            ans.Dest    = 1;
 
             return ans;
         }

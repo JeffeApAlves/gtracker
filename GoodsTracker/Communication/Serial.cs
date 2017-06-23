@@ -8,12 +8,6 @@ namespace GoodsTracker
         static RingBuffer bufferRx=new RingBuffer(1024);
 //        static RingBuffer bufferTx=new RingBuffer(1024);
 
-        internal static bool putTxData(char data)
-        {
-            port.Write(data.ToString());
-            return true;
-            //return bufferTx.putData(data);
-        }
 
         internal static bool putRxData(char data)
         {
@@ -36,12 +30,12 @@ namespace GoodsTracker
 //            bufferTx.initBuffer();
         }
 
-        internal static void putTxData(string str)
+        internal static void putTxData(char[] str)
         {
-            foreach (char c in str)
+            if (port != null && port.IsOpen)
             {
-                putTxData(c);
-            }
+                port.Write(str, 0, str.Length);
+            }           
         }
 
         internal static void putRxData(string str)
