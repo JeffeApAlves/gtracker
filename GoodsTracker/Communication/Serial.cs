@@ -52,7 +52,7 @@ namespace GoodsTracker
             {
                 clearBuffer();
                 
-                port = new SerialPort("COM1",9600, Parity.None, 8, StopBits.One);
+                port = new SerialPort("COM4",57600, Parity.None, 8, StopBits.One);
 
                 port.ReadBufferSize     = 1024;
                 port.WriteBufferSize    = 1024;

@@ -5,9 +5,13 @@
 **     Processor   : MKL25Z128VLK4
 **     Component   : GenericI2C
 **     Version     : Component 01.033, Driver 01.00, CPU db: 3.00.000
-**     Repository  : MCUOnEclipse2017-05-06
+**     Repository  : My Components
 **     Compiler    : GNU C Compiler
+<<<<<<< HEAD
 **     Date/Time   : 2017-06-23, 14:23, # CodeGen: 7
+=======
+**     Date/Time   : 2017-06-23, 21:00, # CodeGen: 9
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
 **     Abstract    :
 **         This component implements a generic I2C driver wrapper to work both with LDD and non-LDD I2C components.
 **     Settings    :

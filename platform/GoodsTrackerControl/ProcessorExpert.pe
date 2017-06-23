@@ -29,7 +29,11 @@
     <UseExistingModules>true</UseExistingModules>
     <RenamePeripheries>false</RenamePeripheries>
     <Autodependency>true</Autodependency>
+<<<<<<< HEAD
     <ProjectCompNumb>133</ProjectCompNumb>
+=======
+    <ProjectCompNumb>137</ProjectCompNumb>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
     <DelUnusedPreviouslyGenFiles>true</DelUnusedPreviouslyGenFiles>
     <GeneratedCodeFrozen>false</GeneratedCodeFrozen>
     <AssignInitComponentNameToPrph>true</AssignInitComponentNameToPrph>
@@ -4560,7 +4564,7 @@
     </ItemState>
   </Configuration>
   <Bean>
-    <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>FreeRTOS</BeanType>
     <Name>FRTOS1</Name>
     <CompNumb>3</CompNumb>
@@ -7050,7 +7054,7 @@
     </Events>
   </Bean>
   <Bean>
-    <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>Utility</BeanType>
     <Name>UTIL1</Name>
     <CompNumb>5</CompNumb>
@@ -7899,7 +7903,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>McuLibConfig</BeanType>
     <Name>MCUC1</Name>
     <CompNumb>7</CompNumb>
@@ -7947,7 +7951,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>FreeRTOS_Tasks</BeanType>
     <Name>TSK1</Name>
     <CompNumb>8</CompNumb>
@@ -10988,7 +10992,7 @@
     </Events>
   </Bean>
   <Bean>
-    <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>LED</BeanType>
     <Name>LED_G</Name>
     <CompNumb>18</CompNumb>
@@ -11782,7 +11786,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>LED</BeanType>
     <Name>LED_R</Name>
     <CompNumb>9</CompNumb>
@@ -13968,7 +13972,7 @@
     <Events />
   </Bean>
   <Bean>
-    <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>LED</BeanType>
     <Name>LED_B</Name>
     <CompNumb>21</CompNumb>
@@ -21024,7 +21028,11 @@
     </Events>
   </Bean>
   <Bean>
+<<<<<<< HEAD
     <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+=======
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
     <BeanType>Wait</BeanType>
     <Name>WAIT1</Name>
     <CompNumb>50</CompNumb>
@@ -21045,6 +21053,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>sdk</ItemSymbol>
+<<<<<<< HEAD
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <Value>MCUC1</Value>
@@ -21079,11 +21088,42 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>CpuBusClkHzHigh</ItemSymbol>
+=======
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>MCUC1</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>useCycleCounter</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>false</Value>
+        <Expanded>false</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>CortexTools</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value />
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>ManualClockValues</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>false</Value>
+        <Expanded>false</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>CpuBusClkHz</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <Value>8000000</Value>
       </ItemState>
       <ItemState>
+<<<<<<< HEAD
         <ItemSymbol>CpuBusClkHzLow</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
@@ -21103,6 +21143,37 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>RTOSgroup</ItemSymbol>
+=======
+        <ItemSymbol>CpuBusClkHzHigh</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>8000000</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>CpuBusClkHzLow</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>4000000</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>CpuBusClkHzSlow</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>1000000</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Delay100usFunction</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>Delay100US</Value>
+      </ItemState>
+      <ItemState>
+<<<<<<< HEAD
+        <ItemSymbol>RTOS</ItemSymbol>
+=======
+        <ItemSymbol>RTOSgroup</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -21110,20 +21181,51 @@
         <Expanded>false</Expanded>
       </ItemState>
       <ItemState>
+<<<<<<< HEAD
+        <ItemSymbol>WatchdogEnabled</ItemSymbol>
+=======
         <ItemSymbol>RTOS</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>false</Value>
+        <Expanded>false</Expanded>
+      </ItemState>
+      <ItemState>
+<<<<<<< HEAD
+        <ItemSymbol>nonLDDWatchDogEnabled</ItemSymbol>
+        <ReadOnly>true</ReadOnly>
+=======
+        <ItemSymbol>WatchdogEnabled</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>false</Value>
+        <Expanded>false</Expanded>
+      </ItemState>
+      <ItemState>
+<<<<<<< HEAD
+        <ItemSymbol>Watchdog</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <Value />
       </ItemState>
       <ItemState>
-        <ItemSymbol>WatchdogEnabled</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ItemSymbol>LDDWatchDogEnabled</ItemSymbol>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>false</Value>
-        <Expanded>false</Expanded>
+        <Value>true</Value>
+        <Expanded>true</Expanded>
       </ItemState>
       <ItemState>
+        <ItemSymbol>WatchdogLDD</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value />
+=======
         <ItemSymbol>nonLDDWatchDogEnabled</ItemSymbol>
         <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
@@ -21144,16 +21246,12 @@
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Value>true</Value>
         <Expanded>true</Expanded>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>WatchdogLDD</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <Value />
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
       </ItemState>
     </Properties>
     <Methods>
       <ItemState>
+<<<<<<< HEAD
         <ItemSymbol>Wait10Cycles</ItemSymbol>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
@@ -21161,47 +21259,88 @@
         <LastSelection>true</LastSelection>
         <LastUserSel>always</LastUserSel>
         <UsrMethodName>Wait10Cycles</UsrMethodName>
+=======
+        <ItemSymbol>WatchdogLDD</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value />
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
       </ItemState>
+    </Properties>
+    <Methods>
       <ItemState>
+<<<<<<< HEAD
         <ItemSymbol>Wait100Cycles</ItemSymbol>
+=======
+        <ItemSymbol>Wait10Cycles</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
         <Value>true</Value>
         <LastSelection>true</LastSelection>
         <LastUserSel>always</LastUserSel>
+<<<<<<< HEAD
         <UsrMethodName>Wait100Cycles</UsrMethodName>
       </ItemState>
       <ItemState>
         <ItemSymbol>WaitCycles</ItemSymbol>
+=======
+        <UsrMethodName>Wait10Cycles</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Wait100Cycles</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
         <Value>true</Value>
         <LastSelection>true</LastSelection>
         <LastUserSel>always</LastUserSel>
+<<<<<<< HEAD
         <UsrMethodName>WaitCycles</UsrMethodName>
       </ItemState>
       <ItemState>
         <ItemSymbol>WaitLongCycles</ItemSymbol>
+=======
+        <UsrMethodName>Wait100Cycles</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>WaitCycles</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
         <Value>true</Value>
         <LastSelection>true</LastSelection>
         <LastUserSel>always</LastUserSel>
+<<<<<<< HEAD
         <UsrMethodName>WaitLongCycles</UsrMethodName>
       </ItemState>
       <ItemState>
         <ItemSymbol>Waitms</ItemSymbol>
         <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
+=======
+        <UsrMethodName>WaitCycles</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>WaitLongCycles</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
         <Value>true</Value>
         <LastSelection>true</LastSelection>
+<<<<<<< HEAD
         <LastUserSel>yes</LastUserSel>
         <UsrMethodName>Waitms</UsrMethodName>
       </ItemState>
       <ItemState>
         <ItemSymbol>Waitus</ItemSymbol>
+=======
+        <LastUserSel>always</LastUserSel>
+        <UsrMethodName>WaitLongCycles</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Waitms</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -21209,10 +21348,17 @@
         <Value>true</Value>
         <LastSelection>true</LastSelection>
         <LastUserSel>yes</LastUserSel>
+<<<<<<< HEAD
         <UsrMethodName>Waitus</UsrMethodName>
       </ItemState>
       <ItemState>
         <ItemSymbol>Waitns</ItemSymbol>
+=======
+        <UsrMethodName>Waitms</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Waitus</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -21220,10 +21366,17 @@
         <Value>true</Value>
         <LastSelection>true</LastSelection>
         <LastUserSel>yes</LastUserSel>
+<<<<<<< HEAD
         <UsrMethodName>Waitns</UsrMethodName>
       </ItemState>
       <ItemState>
         <ItemSymbol>WaitOSms</ItemSymbol>
+=======
+        <UsrMethodName>Waitus</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Waitns</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <ReadOnly>true</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -21231,21 +21384,36 @@
         <Value>true</Value>
         <LastSelection>true</LastSelection>
         <LastUserSel>yes</LastUserSel>
+<<<<<<< HEAD
         <UsrMethodName>WaitOSms</UsrMethodName>
       </ItemState>
       <ItemState>
         <ItemSymbol>Init</ItemSymbol>
         <ReadOnly>false</ReadOnly>
+=======
+        <UsrMethodName>Waitns</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>WaitOSms</ItemSymbol>
+        <ReadOnly>true</ReadOnly>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
         <Value>true</Value>
         <LastSelection>true</LastSelection>
         <LastUserSel>yes</LastUserSel>
+<<<<<<< HEAD
         <UsrMethodName>Init</UsrMethodName>
       </ItemState>
       <ItemState>
         <ItemSymbol>DeInit</ItemSymbol>
+=======
+        <UsrMethodName>WaitOSms</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Init</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -21253,7 +21421,11 @@
         <Value>true</Value>
         <LastSelection>true</LastSelection>
         <LastUserSel>yes</LastUserSel>
+<<<<<<< HEAD
         <UsrMethodName>DeInit</UsrMethodName>
+=======
+        <UsrMethodName>Init</UsrMethodName>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
       </ItemState>
     </Methods>
     <Events />
@@ -21273,12 +21445,42 @@
     <LightErrorsIgnored>false</LightErrorsIgnored>
     <Properties>
       <ItemState>
+<<<<<<< HEAD
         <ItemSymbol>DeviceName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <Value>CS1</Value>
+=======
+        <ItemSymbol>DeInit</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>DeInit</UsrMethodName>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
       </ItemState>
+    </Methods>
+    <Events />
+  </Bean>
+  <Bean>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
+    <BeanType>CriticalSection</BeanType>
+    <Name>CS1</Name>
+    <CompNumb>59</CompNumb>
+    <CompEnabled>true</CompEnabled>
+    <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
+    <IconName>CPU_CHIP2</IconName>
+    <UserFolderName>Referenced_Components</UserFolderName>
+    <Comment lines_count="0" />
+    <Template />
+    <BeanVersion>01.010</BeanVersion>
+    <LightErrorsIgnored>false</LightErrorsIgnored>
+    <Properties>
       <ItemState>
+<<<<<<< HEAD
         <ItemSymbol>sdk</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
@@ -21294,6 +21496,21 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>useRTOScritical</ItemSymbol>
+=======
+        <ItemSymbol>DeviceName</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>CS1</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>sdk</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>MCUC1</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>UseProcessorExpertDefault</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -21303,6 +21520,7 @@
     </Properties>
     <Methods>
       <ItemState>
+<<<<<<< HEAD
         <ItemSymbol>CriticalVariable</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
@@ -21312,9 +21530,23 @@
         <LastSelection>true</LastSelection>
         <LastUserSel>yes</LastUserSel>
         <UsrMethodName>CriticalVariable</UsrMethodName>
+=======
+        <ItemSymbol>useRTOScritical</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>1</Index>
+        <Value>false</Value>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
       </ItemState>
+    </Properties>
+    <Methods>
       <ItemState>
+<<<<<<< HEAD
         <ItemSymbol>EnterCritical</ItemSymbol>
+=======
+        <ItemSymbol>CriticalVariable</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
@@ -21322,6 +21554,26 @@
         <Value>true</Value>
         <LastSelection>true</LastSelection>
         <LastUserSel>yes</LastUserSel>
+<<<<<<< HEAD
+        <UsrMethodName>EnterCritical</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>ExitCritical</ItemSymbol>
+=======
+        <UsrMethodName>CriticalVariable</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>EnterCritical</ItemSymbol>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+<<<<<<< HEAD
+=======
         <UsrMethodName>EnterCritical</UsrMethodName>
       </ItemState>
       <ItemState>
@@ -21333,13 +21585,18 @@
         <Value>true</Value>
         <LastSelection>true</LastSelection>
         <LastUserSel>yes</LastUserSel>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
         <UsrMethodName>ExitCritical</UsrMethodName>
       </ItemState>
     </Methods>
     <Events />
   </Bean>
   <Bean>
+<<<<<<< HEAD
     <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+=======
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
     <BeanType>LCDHTA</BeanType>
     <Name>LCDout</Name>
     <CompNumb>80</CompNumb>
@@ -30444,7 +30701,11 @@
     </Events>
   </Bean>
   <Bean>
+<<<<<<< HEAD
     <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+=======
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
     <BeanType>MMA8451Q</BeanType>
     <Name>MMA1</Name>
     <CompNumb>122</CompNumb>
@@ -30900,7 +31161,11 @@
     </Events>
   </Bean>
   <Bean>
+<<<<<<< HEAD
     <Repository>file:/C:\Freescale\KDS_v3\eclipse\ProcessorExpert\Repositories\MCUOnEclipse2017-05-06</Repository>
+=======
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
     <BeanType>GenericI2C</BeanType>
     <Name>GI2C1</Name>
     <CompNumb>123</CompNumb>

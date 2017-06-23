@@ -95,12 +95,12 @@ namespace GoodsTracker
 
         internal string EndAddress()
         {
-            return direction.EndAddress;
+            return direction == null ? "" : direction.EndAddress;
         }
 
         internal string StartAddress()
         {
-            return direction.StartAddress;
+            return direction==null? "":direction.StartAddress;
         }
     }
 }

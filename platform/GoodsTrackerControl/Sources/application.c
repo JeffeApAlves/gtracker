@@ -133,8 +133,12 @@ ResultExec onPWM(DataFrame* frame){
 //------------------------------------------------------------------------
 
 ResultExec onTelemetry(DataFrame* frame){
-	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+	//ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+	ResultExec res = CMD_RESULT_EXEC_SUCCESS;
 
+	char *msg2send = "0.0000000,0.0000000";
+
+#if 0
 	if (frame) {
 
 		                 /*    LAT*/
@@ -142,7 +146,13 @@ ResultExec onTelemetry(DataFrame* frame){
 		doAnswer(msg2send);
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
+#endif
 
+<<<<<<< HEAD
+=======
+	doAnswer(msg2send);
+
+>>>>>>> b5adea659d46635408b216ced18a345c77620c2d
 	return res;
 }
 //------------------------------------------------------------------------

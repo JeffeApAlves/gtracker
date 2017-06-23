@@ -107,7 +107,7 @@ namespace GoodsTracker
                     byte cheksumRx  = AsByte(list, DATA_INDEX.CHECKSUM);
 
                     // Exclui CheckSum
-                    frame.Data      = frame.Data.Substring(0, frame.Data.Length - 4);
+                    frame.Data      = frame.Data.Substring(0, frame.Data.Length - 3);
 
                     ret = frame.checkSum()==cheksumRx;
                 }
@@ -213,7 +213,15 @@ namespace GoodsTracker
 
         private byte AsByte(string[] list, DATA_INDEX index)
         {
-            return (byte)AsInteger(list, index);
+            byte dest = 0;
+
+            if ((int)index < list.Length)
+            {
+                dest = (byte)Convert.ToInt16(list[(int)index],16);
+            }
+
+            return dest;
+
         }
     }
 }
