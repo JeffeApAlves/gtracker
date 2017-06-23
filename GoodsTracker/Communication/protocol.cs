@@ -146,7 +146,6 @@ namespace GoodsTracker
                 if (ch == CONST_CHAR.LF)
                 {
                     setStatusRx(StatusRx.RX_FRAME_RX_NL);
-
                 }
                 else
                 {

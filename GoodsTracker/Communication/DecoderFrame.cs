@@ -36,18 +36,11 @@ namespace GoodsTracker
 
             try
             {
-                StringBuilder sb = new StringBuilder();
-
-                //Header
-                sb.Append(cmd.Address.ToString("D5"));
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(cmd.Dest.ToString("D5"));
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(cmd.Operation);
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(cmd.Resource);
-                sb.Append(CONST_CHAR.SEPARATOR);
-                frame.Header = sb.ToString();
+                // Header
+                frame.Append(cmd.Address.ToString("D5")+ CONST_CHAR.SEPARATOR);
+                frame.Append(cmd.Dest.ToString("D5")+ CONST_CHAR.SEPARATOR);
+                frame.Append(cmd.Operation.ToString()+ CONST_CHAR.SEPARATOR);
+                frame.Append(cmd.Resource);
 
                 ret = true;
             }
@@ -67,18 +60,10 @@ namespace GoodsTracker
 
             try
             {
-                StringBuilder sb = new StringBuilder();
-
-                //Header
-                sb.Append(ans.Address.ToString("D5"));
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(ans.Dest.ToString("D5"));
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(ans.Operation);
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(ans.Resource);
-                sb.Append(CONST_CHAR.SEPARATOR);
-                frame.Header = sb.ToString();
+                frame.Append(ans.Address.ToString("D5") + CONST_CHAR.SEPARATOR);
+                frame.Append(ans.Dest.ToString("D5") + CONST_CHAR.SEPARATOR);
+                frame.Append(ans.Operation.ToString() + CONST_CHAR.SEPARATOR);
+                frame.Append(ans.Resource);
 
                 ret = true;
             }
@@ -96,38 +81,29 @@ namespace GoodsTracker
 
             try
             {
-                StringBuilder sb = new StringBuilder();
+                frame.AppendPayLoad(b.Latitude);
+                frame.AppendPayLoad(CONST_CHAR.SEPARATOR);
+                frame.AppendPayLoad(b.Longitude);
+                frame.AppendPayLoad(CONST_CHAR.SEPARATOR);
+                frame.AppendPayLoad(b.AxisX.Acceleration.Val);
+                frame.AppendPayLoad(CONST_CHAR.SEPARATOR);
+                frame.AppendPayLoad(b.AxisY.Acceleration.Val);
+                frame.AppendPayLoad(CONST_CHAR.SEPARATOR);
+                frame.AppendPayLoad(b.AxisZ.Acceleration.Val);
+                frame.AppendPayLoad(CONST_CHAR.SEPARATOR);
+                frame.AppendPayLoad(b.AxisX.Rotation.Val);
+                frame.AppendPayLoad(CONST_CHAR.SEPARATOR);
+                frame.AppendPayLoad(b.AxisY.Rotation.Val);
+                frame.AppendPayLoad(CONST_CHAR.SEPARATOR);
+                frame.AppendPayLoad(b.AxisZ.Rotation.Val);
+                frame.AppendPayLoad(CONST_CHAR.SEPARATOR);
+                frame.AppendPayLoad(b.Speed.Val);
+                frame.AppendPayLoad(CONST_CHAR.SEPARATOR);
+                frame.AppendPayLoad(b.Level.Val);
+                frame.AppendPayLoad(CONST_CHAR.SEPARATOR);
+                frame.AppendPayLoad(b.DateTime.ToString().Replace(CONST_CHAR.SEPARATOR, '.'));
 
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.Latitude);
-
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.Longitude);
-
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.AxisX.Acceleration.Val);
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.AxisY.Acceleration.Val);
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.AxisZ.Acceleration.Val);
-
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.AxisX.Rotation.Val);
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.AxisY.Rotation.Val);
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.AxisZ.Rotation.Val);
-
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.Speed.Val);
-
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.Level.Val);
-
-                sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(b.DateTime.ToString().Replace(':','.'));
-
-                frame.PayLoad = sb.Length.ToString("D3")+sb.ToString();
+                frame.PayLoad = frame.getSizeOfPayLoad().ToString("D3") + CONST_CHAR.SEPARATOR + frame.PayLoad;
 
                 ret = true;
             }
@@ -202,7 +178,7 @@ namespace GoodsTracker
 
             if ((int)index < list.Length)
             {
-                d = Convert.ToDateTime(list[(int)index].Replace('.', ':'));
+                d = Convert.ToDateTime(list[(int)index].Replace('.', CONST_CHAR.SEPARATOR));
             }
             return d;
         }

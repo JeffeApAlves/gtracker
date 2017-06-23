@@ -66,7 +66,7 @@ namespace GoodsTracker
             set
             {
                 header = value;
-                frame = header + payLoad;
+                frame = header +":"+ payLoad;
             }
         }
 
@@ -80,7 +80,7 @@ namespace GoodsTracker
             set
             {
                 payLoad = value;
-                frame = header + payLoad;
+                frame = header + ":"+ payLoad;
             }
         }
 
@@ -124,6 +124,31 @@ namespace GoodsTracker
         internal void Append(char b)
         {
             Frame += b;
+        }
+
+        internal void Append(string b)
+        {
+            Frame += b;
+        }
+
+        internal void Append(double b)
+        {
+            Frame += b.ToString("G");
+        }
+
+        internal void AppendPayLoad(char b)
+        {
+            PayLoad += b;
+        }
+
+        internal void AppendPayLoad(string b)
+        {
+            PayLoad += b;
+        }
+
+        internal void AppendPayLoad(double b)
+        {
+            PayLoad += b.ToString("G");
         }
 
         internal void clear()
