@@ -54,15 +54,18 @@ namespace GoodsTracker
             queueCmd.Remove(cmd);
         }
 
-        internal Cmd sendCMD(int dest, Operation o,string resource)
+        internal Cmd createCMD(int dest, Operation o, string resource)
         {
-            Cmd c       = new Cmd(resource,o);
-            c.Header.Dest      = dest;
-            c.Header.Address   = address;
-
-            queueCmd.Add(c);
+            Cmd c = new Cmd(resource, o);
+            c.Header.Dest = dest;
+            c.Header.Address = address;
 
             return c;
+        }
+
+        internal void sendCMD(Cmd cmd)
+        {
+            queueCmd.Add(cmd);
         }
 
         internal static CommunicationUnit getNextUnit()

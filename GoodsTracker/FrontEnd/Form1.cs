@@ -182,13 +182,13 @@ namespace GoodsTracker
         //Botao trava a valvula
         private void btn_lock_Click(object sender, EventArgs e)
         {
-            trackerController.lockVehicle();
+            trackerController.lockVehicle(true);
         }
 
         //Botao destrava a valvula
         private void button7_Click(object sender, EventArgs e)
         {
-            trackerController.unLockVehicle();
+            trackerController.lockVehicle(false);
         }
 
         private void groupBox1_Click(object sender, System.EventArgs e)
@@ -541,12 +541,31 @@ namespace GoodsTracker
          */ 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            lckMng();
+
             updateBehavior();
             updateStatusLock();
             updateStatusFence();
             updatelevel();
 
             tB_Zoom.Value = (int)gMapControl1.Zoom;
+        }
+
+        private void lckMng()
+        {
+            TelemetriaData telemetria = trackerController.getTelemetria();
+
+            if (telemetria != null)
+            {
+                if (telemetria.IsInsideOfFence())
+                {
+                    trackerController.lockVehicle(false);
+                }
+                else
+                {
+                    trackerController.lockVehicle(true);
+                }
+            }
         }
 
         /*

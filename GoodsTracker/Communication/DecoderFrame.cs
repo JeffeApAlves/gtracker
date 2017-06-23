@@ -2,34 +2,34 @@
 
 namespace GoodsTracker
 {
-    enum DATA_INDEX
-    {
-        ORIG        = 0,
-        DEST        = 1,
-        OPERACAO    = 2,
-        RESOURCE    = 3,
-        SIZE_PAYLOAD= 4,
-
-        LAT         = 5,
-        LNG         = 6,
-
-        ACCEL_X     = 7,
-        ACCEL_Y     = 8,
-        ACCEL_Z     = 9,
-
-        ROT_X       = 10,
-        ROT_Y       = 11,
-        ROT_Z       = 12,
-
-        SPEED       = 13,
-        LEVEL       = 14,
-        DATETIME    = 15,
-
-        CHECKSUM    = 16,
-    }
-
     internal class DecoderFrame : IDecoderFrame
     {
+        enum DATA_INDEX
+        {
+            ORIG = 0,
+            DEST = 1,
+            OPERACAO = 2,
+            RESOURCE = 3,
+            SIZE_PAYLOAD = 4,
+
+            LAT = 5,
+            LNG = 6,
+
+            ACCEL_X = 7,
+            ACCEL_Y = 8,
+            ACCEL_Z = 9,
+
+            ROT_X = 10,
+            ROT_Y = 11,
+            ROT_Z = 12,
+
+            SPEED = 13,
+            LEVEL = 14,
+            DATETIME = 15,
+
+            CHECKSUM = 16,
+        }
+
         static public bool setHeader(Header header)
         {
             bool ret    = false;
@@ -54,9 +54,8 @@ namespace GoodsTracker
 
         public bool setValues(out PayLoad payload, TelemetriaData b)
         {
-            bool ret = false;
-
-            payload = new PayLoad();
+            bool ret    = false;
+            payload     = new PayLoad();
 
             try
             {
@@ -81,8 +80,7 @@ namespace GoodsTracker
                 payload.Append(b.Level.Val);
                 payload.Append(CONST_CHAR.SEPARATOR);
                 payload.Append(b.DateTime.ToString().Replace(CONST_CHAR.SEPARATOR, '.'));
-
-                payload.Data = payload.Length().ToString("D3") + CONST_CHAR.SEPARATOR + payload.Data;
+                payload.AddCheckSum();
 
                 ret = true;
             }
@@ -98,41 +96,19 @@ namespace GoodsTracker
         {
             bool ret    = false;
             ans         = new AnsCmd();
-            TelemetriaData  telemetria = new TelemetriaData();
 
             try
             {
                 string[] list = frame.Data.Split(CONST_CHAR.SEPARATOR);
 
-                if (list != null && list.Length >= 9)
+                if (list != null && list.Length >= 7)
                 {
-                    ans.Header.Address     = getAsInteger(list, DATA_INDEX.ORIG);
-                    ans.Header.Dest        = getAsInteger(list, DATA_INDEX.DEST);
-                    ans.Header.Operation   = getAsOperation(list, DATA_INDEX.OPERACAO);
-                    ans.Header.Resource    = getAsString(list, DATA_INDEX.RESOURCE);
-                    ans.Header.SizePayLoad = getAsInteger(list, DATA_INDEX.SIZE_PAYLOAD);
-                    
-                    telemetria.setPosition( getAsDouble(list, DATA_INDEX.LAT), 
-                                            getAsDouble(list, DATA_INDEX.LNG));
+                    ans.Header      = getHeader(list);
+                    ans.Telemetria  = getTelemetria(list);
+                    byte cheksumRx  = AsByte(list, DATA_INDEX.CHECKSUM);
 
-                    telemetria.setAcceleration( getAsDouble(list, DATA_INDEX.ACCEL_X),
-                                                getAsDouble(list, DATA_INDEX.ACCEL_Y),
-                                                getAsDouble(list, DATA_INDEX.ACCEL_Z));
-
-                    telemetria.setRotation( getAsDouble(list, DATA_INDEX.ROT_X),
-                                            getAsDouble(list, DATA_INDEX.ROT_Y),
-                                            getAsDouble(list, DATA_INDEX.ROT_Z));
-
-                    telemetria.Speed.Val   = getAsDouble(list, DATA_INDEX.SPEED);
-                    telemetria.Level.Val   = getAsDouble(list, DATA_INDEX.LEVEL);
-                    telemetria.DateTime    = getAsDateTime(list, DATA_INDEX.DATETIME);
-
-                    ans.Info                = telemetria;
-
-                    byte cheksumRx          = (byte)getAsInteger(list, DATA_INDEX.CHECKSUM);
-
-                    // Excluir checksum
-                    frame.Data             = frame.Data.Substring(0, frame.Data.Length - 4);
+                    // Exclui CheckSum
+                    frame.Data      = frame.Data.Substring(0, frame.Data.Length - 4);
 
                     ret = frame.checkSum()==cheksumRx;
                 }
@@ -145,14 +121,51 @@ namespace GoodsTracker
             return ret;
         }
 
-        private Operation getAsOperation(string[] list, DATA_INDEX oPERACAO)
+        private TelemetriaData getTelemetria(string[] list)
         {
-            string str = getAsString(list, oPERACAO);
+            TelemetriaData telemetria = new TelemetriaData();
+
+            telemetria.setPosition(AsDouble(list, DATA_INDEX.LAT),
+                                    AsDouble(list, DATA_INDEX.LNG));
+
+            telemetria.setAcceleration(AsDouble(list, DATA_INDEX.ACCEL_X),
+                                        AsDouble(list, DATA_INDEX.ACCEL_Y),
+                                        AsDouble(list, DATA_INDEX.ACCEL_Z));
+
+            telemetria.setRotation(AsDouble(list, DATA_INDEX.ROT_X),
+                                    AsDouble(list, DATA_INDEX.ROT_Y),
+                                    AsDouble(list, DATA_INDEX.ROT_Z));
+
+            telemetria.Speed.Val = AsDouble(list, DATA_INDEX.SPEED);
+            telemetria.Level.Val = AsDouble(list, DATA_INDEX.LEVEL);
+            telemetria.DateTime = AsDateTime(list, DATA_INDEX.DATETIME);
+
+
+            return telemetria;
+        }
+
+
+        private Header getHeader(string[] list)
+        {
+            Header header = new Header();
+
+            header.Address = AsInteger(list, DATA_INDEX.ORIG);
+            header.Dest = AsInteger(list, DATA_INDEX.DEST);
+            header.Operation = AsOperation(list, DATA_INDEX.OPERACAO);
+            header.Resource = AsString(list, DATA_INDEX.RESOURCE);
+            header.SizePayLoad = AsInteger(list, DATA_INDEX.SIZE_PAYLOAD);
+
+            return header;
+        }
+
+        private Operation AsOperation(string[] list, DATA_INDEX oPERACAO)
+        {
+            string str = AsString(list, oPERACAO);
 
             return (Operation)Enum.Parse(typeof(Operation), str);
         }
 
-        private DateTime getAsDateTime(string[] list, DATA_INDEX index)
+        private DateTime AsDateTime(string[] list, DATA_INDEX index)
         {
             DateTime d = Convert.ToDateTime("01/01/1900");
 
@@ -163,7 +176,7 @@ namespace GoodsTracker
             return d;
         }
 
-        private int getAsInteger(string[] list, DATA_INDEX index)
+        private int AsInteger(string[] list, DATA_INDEX index)
         {
             int dest = 0;
 
@@ -175,7 +188,7 @@ namespace GoodsTracker
             return dest;
         }
 
-        private double getAsDouble(string[] list, DATA_INDEX index)
+        private double AsDouble(string[] list, DATA_INDEX index)
         {
             double dest = 0;
 
@@ -187,7 +200,7 @@ namespace GoodsTracker
             return dest;
         }
 
-        private string getAsString(string[] list, DATA_INDEX index)
+        private string AsString(string[] list, DATA_INDEX index)
         {
             string dest = "";
 
@@ -197,6 +210,11 @@ namespace GoodsTracker
             }
 
             return dest;
+        }
+
+        private byte AsByte(string[] list, DATA_INDEX index)
+        {
+            return (byte)AsInteger(list, index);
         }
     }
 }

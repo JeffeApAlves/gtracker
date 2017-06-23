@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GoodsTracker
 {
@@ -6,8 +7,8 @@ namespace GoodsTracker
 
     class TrackerController :ThreadRun
     {
-        private const int   NUM_ESTACAO = 1;
-        private const int _TIME_TELEMETRIA = 1000;
+        private const int   NUM_ESTACAO     = 1;
+        private const int _TIME_TELEMETRIA  = 1000;
 
         onUpdateTelemetria  onDataTelemetria;
 
@@ -112,17 +113,22 @@ namespace GoodsTracker
 
         internal void requestBehavior()
         {
-            tracker.requestBehavior(onReceiveTelemetria);
+            tracker.requestBehavior(onTLM);
         }
 
-        internal void unLockVehicle()
+        internal void lockVehicle(bool flg)
         {
-            tracker.unLockVehicle(onLockStatus);
-        }
-
-        internal void lockVehicle()
-        {
-            tracker.lockVehicle(onLockStatus);
+            if (flg != getTelemetria().StatusLock)
+            {
+                if (flg)
+                {
+                    tracker.lockVehicle(onLCK);
+                }
+                else
+                {
+                    tracker.unLockVehicle(onLCK);
+                }
+            }
         }
 
         internal void registerBehavior(TelemetriaData b)
@@ -146,24 +152,35 @@ namespace GoodsTracker
             return routes.Count > 0 && routes[0].MapRoute != null && routes[0].MapRoute.Points.Count>0;
         }
 
+        /*
+         * 
+         * Retorna numero de telemetria registrada
+         */
         internal int getCountRegisters()
         {
             return anyRoute() ? routes[0].Behaviors.Count : 0;
         }
 
+        /*
+         * Retorna ultima telemetria
+         */
         public TelemetriaData getTelemetria()
         {
             return Tracker.getTelemetria();
         }
 
-        //-------------------------  CallBacks respectivas dos comandos CMDs -------------------------------------------
-
-        private ResultExec onLockStatus(AnsCmd ans)
+        /*
+         * Evento chamado quando o rastreador responder por um comando de LCK
+         */
+        private ResultExec onLCK(AnsCmd ans)
         {
             return ResultExec.EXEC_SUCCESS;
         }
 
-        private ResultExec onReceiveTelemetria(AnsCmd ans)
+        /*
+         * Evento chamado quando o rastreador responder por um comando de TLM
+         */
+        private ResultExec onTLM(AnsCmd ans)
         {
             // Registra a telemetria
             registerBehavior(getTelemetria());

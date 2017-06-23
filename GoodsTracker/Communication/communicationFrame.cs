@@ -39,6 +39,13 @@ namespace GoodsTracker
         bool getValues(out AnsCmd ans, CommunicationFrame frame);
     }
 
+    public class RESOURCE
+    {
+        public const string TELEMETRIA  = "TLM";    // Data TelemetriaData
+        public const string LOCK        = "LCK";    // Trava 
+        public const string LCD         = "LCD";
+    }
+
     public enum Operation
     {
         NN,RD, WR, AN
@@ -117,9 +124,8 @@ namespace GoodsTracker
 
     internal class PayLoad
     {
-        public const int LEN_MAX_PAYLOAD = 256;
-
-        private string data;
+        public const int    LEN_MAX_PAYLOAD = 256;
+        private string      data;
 
         internal string Data { get => data; set => data = value; }
 
@@ -172,10 +178,15 @@ namespace GoodsTracker
                 data = value.Substring((Header.SIZE + 1), value.Length - (Header.SIZE + 1));
             }
         }
-    }
 
-    internal class CommunicationFrame
-    {
+        internal void AddCheckSum()
+        {
+            data =  Length().ToString("D3") + CONST_CHAR.SEPARATOR + data;
+        }
+}
+
+internal class CommunicationFrame
+{
         protected Header    header;
         protected PayLoad   payLoad;
         protected string    data;
@@ -190,7 +201,7 @@ namespace GoodsTracker
             set
             {
                 header = value;
-                data = header.str() +":"+ payLoad.str();
+                data = header.str() +":" + (payLoad==null?"":payLoad.str());
             }
         }
 
@@ -204,7 +215,7 @@ namespace GoodsTracker
             set
             {
                 payLoad = value;
-                data = header.str() + ":"+ payLoad.str();
+                data = header.str() + ":" + (payLoad == null ? "" : payLoad.str());
             }
         }
 
@@ -221,6 +232,13 @@ namespace GoodsTracker
                 header.setData(this);
                 payLoad.setData(this);
             }
+        }
+
+        internal CommunicationFrame(Header h,PayLoad p)
+        {
+            data    = "";
+            Header  = h;
+            PayLoad = p;
         }
 
         internal CommunicationFrame()
@@ -242,7 +260,7 @@ namespace GoodsTracker
 
         internal int getSizeOfFrame()
         {
-            return data.Length;
+            return data==null?0:data.Length;
         }
 
         internal bool isFrameEmpty()

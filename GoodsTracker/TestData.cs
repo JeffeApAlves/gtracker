@@ -1,5 +1,5 @@
-﻿using GMap.NET;
-using System;
+﻿using System;
+using GMap.NET;
 
 namespace GoodsTracker
 {
@@ -70,12 +70,10 @@ namespace GoodsTracker
             {
                 PayLoad payload;
 
-                frame = new CommunicationFrame();
                 DecoderFrame decoder = new DecoderFrame();
                 decoder.setValues(out payload, b);
 
-                frame.Header    = cmd.Header;
-                frame.PayLoad   = payload;
+                frame = new CommunicationFrame(cmd.Header, payload);
             }
 
             return frame;

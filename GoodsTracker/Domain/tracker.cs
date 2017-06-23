@@ -4,12 +4,16 @@ namespace GoodsTracker
 {
     class Tracker : CommunicationUnit,InterfaceTracker
     {
-        TelemetriaData    telemetriaData;
+        TelemetriaData  telemetriaData;
+
+        bool            statusLock;
 
         internal TelemetriaData TelemetriaData { get => telemetriaData; set => telemetriaData = value; }
+        public bool StatusLock { get => statusLock; set => statusLock = value; }
 
         internal Tracker(int val)
         {
+            statusLock = false;
             address = val;
         }
 
@@ -20,23 +24,33 @@ namespace GoodsTracker
 
         public void requestBehavior(onAnswerCmd on_ans)
         {
-            Cmd cmd = sendCMD(2, Operation.RD, RESOURCE.TELEMETRIA);
+            Cmd cmd = createCMD(2, Operation.RD, RESOURCE.TELEMETRIA);
 
             cmd.EventAnswerCmd = on_ans;
+
+            sendCMD(cmd);
         }
 
         public void lockVehicle(onAnswerCmd on_ans)
         {
-            Cmd cmd = sendCMD(2, Operation.WR, RESOURCE.LOCK);
+            Cmd cmd = createCMD(2, Operation.WR, RESOURCE.LOCK);
 
+            statusLock = true;
+            cmd.Append("1");
             cmd.EventAnswerCmd = on_ans;
+
+            sendCMD(cmd);
         }
 
         public void unLockVehicle(onAnswerCmd on_ans)
         {
-            Cmd cmd = sendCMD(2, Operation.WR, RESOURCE.LOCK);
+            Cmd cmd = createCMD(2, Operation.WR, RESOURCE.LOCK);
 
+            statusLock = false;
+            cmd.Append("0");
             cmd.EventAnswerCmd = on_ans;
+
+            sendCMD(cmd);
         }
 
         /*
@@ -57,7 +71,7 @@ namespace GoodsTracker
 
         void updateDataTelemetria(AnsCmd ans)
         {
-            telemetriaData = ans.Info;
+            telemetriaData = ans.Telemetria;
         }
 
         public TelemetriaData getTelemetria()

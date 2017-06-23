@@ -1,27 +1,27 @@
-﻿namespace GoodsTracker
+﻿using System;
+
+namespace GoodsTracker
 {
     internal class AnsCmd
     {
-        Header header;
+        Header          header;
+        TelemetriaData  telemetria;
 
-        TelemetriaData info;
-
-        internal TelemetriaData Info { get => info; set => info = value; }
+        internal TelemetriaData Telemetria { get => telemetria; set => telemetria = value; }
         internal Header Header { get => header; set => header = value; }
 
         internal AnsCmd()
         {
             header  = new Header();
-            info    = null;
+            telemetria    = null;
         }
 
         internal AnsCmd(string r,Operation o)
         {
-            header = new Header();
-
-            header.Resource = r;
-            header.Operation = o;
-            info = null;
+            header              = new Header();
+            header.Resource     = r;
+            header.Operation    = o;
+            telemetria                = null;
         }
     }
 }
