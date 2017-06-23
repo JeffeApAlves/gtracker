@@ -173,7 +173,7 @@ namespace GoodsTracker
         // Seleciona filtro
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bTV.Filter  = cbFilter.SelectedIndex;
+            bTV.Filter      = cbFilter.SelectedIndex;
 
             // Atualiza lista de behaviors
             bTV.Behaviors   = trackerController.getBehaviorFiltered(bTV.Filter);
