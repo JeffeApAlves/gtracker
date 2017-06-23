@@ -569,17 +569,6 @@ Module "MCUC1"     (component McuLibConfig)
 Module "TSK1"      (component FreeRTOS_Tasks)
    - TSK1_CreateTasks -Creates the tasks.
 
-Module "LED_R"     (component LED)
-   - LED_R_On -This turns the LED on.
-   - LED_R_Off -This turns the LED off.
-   - LED_R_Neg -This negates/toggles the LED
-   - LED_R_Get -This returns logical 1 in case the LED is on, 0 otherwise.
-   - LED_R_Put -Turns the LED on or off.
-   - LED_R_SetRatio16 -Method to specify the duty cycle. If using a PWM pin, this means the duty cycle is set. For On/off pins, 
-                values smaller 0x7FFF means off, while values greater means on.
-   - LED_R_Deinit -Deinitializes the driver
-   - LED_R_Init -Performs the LED driver initialization.
-
 Module "AS1"       (component AsynchroSerial)
    - AS1_RecvChar -If any data is received, this method returns one character, otherwise it returns an error code (it does not 
                 wait for data). This method is enabled only if the receiver property is enabled.  [Note:] Because the preferred 
@@ -605,6 +594,17 @@ Module "LED_G"     (component LED)
                 values smaller 0x7FFF means off, while values greater means on.
    - LED_G_Deinit -Deinitializes the driver
    - LED_G_Init -Performs the LED driver initialization.
+
+Module "LED_R"     (component LED)
+   - LED_R_On -This turns the LED on.
+   - LED_R_Off -This turns the LED off.
+   - LED_R_Neg -This negates/toggles the LED
+   - LED_R_Get -This returns logical 1 in case the LED is on, 0 otherwise.
+   - LED_R_Put -Turns the LED on or off.
+   - LED_R_SetRatio16 -Method to specify the duty cycle. If using a PWM pin, this means the duty cycle is set. For On/off pins, 
+                values smaller 0x7FFF means off, while values greater means on.
+   - LED_R_Deinit -Deinitializes the driver
+   - LED_R_Init -Performs the LED driver initialization.
 
 Module "LED_B"     (component LED)
    - LED_B_On -This turns the LED on.
@@ -768,6 +768,29 @@ Module "CS1"       (component CriticalSection)
    - CS1_CriticalVariable -Defines a variable if necessary. This is a macro.
    - CS1_EnterCritical -Enters a critical section
    - CS1_ExitCritical -Exits a critical section
+
+Module "LCDout"    (component LCDHTA)
+   - LCDout_WriteLCDCommand -Writes a command to the display
+   - LCDout_Write -Write a single character to the display
+   - LCDout_WriteLn -Writes a new line to the display
+   - LCDout_WriteLineStr -Writes a full line to the display (clears the rest of the line).
+   - LCDout_WriteString -Writes a string to the display at the current cursor position.
+   - LCDout_ShiftLeft -Shifts all characters to the left.
+   - LCDout_ShiftRight -Shifts all characters to the right.
+   - LCDout_GotoXY -Places the cursor on a specified position on the display.
+   - LCDout_SetEntryMode -Configures the display entry mode, if the cursor has to shift and/or if the display shall shift 
+                content while displaying text.
+   - LCDout_CursorShiftRight -Shift the cursor to the right.
+   - LCDout_CursorShiftLeft -Shift the cursor to the left.
+   - LCDout_Home -Moves the cursor to the beginning of the first line.
+   - LCDout_Line -Sets the current line.
+   - LCDout_Clear -Clears the display and moves the cursor to the first line.
+   - LCDout_UseDisplay -
+
+Module "TSSin"     (component TSS_Library)
+   - TSSin_Configure -Whole TSS initialization and configuration of registers. Contains main TSS_Init() function, TSS System 
+                Config registers and all Control Config registers initialization according to setting of Component properties. 
+                The user have to place this function into the proper location in the source code.
 
 Module "Cpu"       (component MKL25Z128LK4)
 

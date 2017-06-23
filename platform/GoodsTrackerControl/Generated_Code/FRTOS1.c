@@ -7,7 +7,7 @@
 **     Version     : Component 01.539, Driver 01.00, CPU db: 3.00.000
 **     Repository  : MCUOnEclipse2017-05-06
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
+**     Date/Time   : 2017-06-23, 04:32, # CodeGen: 5
 **     Abstract    :
 **          This component implements the FreeRTOS Realtime Operating System
 **     Settings    :
@@ -75,7 +75,7 @@
 **          Timers                                         : Disabled
 **          Memory                                         : Settings for the memory and heap allocation
 **            Dynamic Allocation                           : Enabled
-**              Heap Size                                  : 4096
+**              Heap Size                                  : 8192
 **              Application allocated Heap                 : no
 **              Memory Allocation Scheme                   : Scheme 4: merge free blocks
 **            Static Allocation                            : Disabled

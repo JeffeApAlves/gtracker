@@ -8,13 +8,13 @@
 **     Version     : Component 01.008, Driver 01.00, CPU db: 3.00.000
 **     Repository  : MCUOnEclipse2017-05-06
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
+**     Date/Time   : 2017-06-23, 04:11, # CodeGen: 3
 **     Abstract    :
 **
 **     Settings    :
 **          Component Name                                 : TSK1
 **          FreeRTOS                                       : FRTOS1
-**          Number of tasks                                : 3
+**          Number of tasks                                : 4
 **            FreeRTOS task                                : mains_taskTask
 **              Task name                                  : mains_task
 **              Stack size (plus configMINIMAL_STACK_SIZE) : 0
@@ -25,6 +25,10 @@
 **              Initial Priority                           : 0
 **            FreeRTOS task                                : data_taskTask
 **              Task name                                  : data_task
+**              Stack size (plus configMINIMAL_STACK_SIZE) : 0
+**              Initial Priority                           : 0
+**            FreeRTOS task                                : ihm_taskTask
+**              Task name                                  : ihm_task
 **              Stack size (plus configMINIMAL_STACK_SIZE) : 0
 **              Initial Priority                           : 0
 **     Contents    :

@@ -83,7 +83,8 @@ void initBuffer(RingBuffer* buffer){
 		buffer->index_producer	= 0;
 		buffer->count			= 0;
 
-		for(char i =0;i<BUFFER_SIZE	;i++){
+		char i;
+		for(i = 0; i < BUFFER_SIZE; i++){
 
 			buffer->data[i]=0;
 		}

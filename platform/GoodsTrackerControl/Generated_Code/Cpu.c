@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **
 **     Settings    :
@@ -251,14 +251,14 @@
 #include "UTIL1.h"
 #include "MCUC1.h"
 #include "TSK1.h"
-#include "LED_R.h"
-#include "LEDpin1.h"
-#include "BitIoLdd1.h"
 #include "AS1.h"
 #include "ASerialLdd1.h"
 #include "LED_G.h"
 #include "LEDpin2.h"
 #include "BitIoLdd2.h"
+#include "LED_R.h"
+#include "LEDpin1.h"
+#include "BitIoLdd1.h"
 #include "LED_B.h"
 #include "LEDpin3.h"
 #include "BitIoLdd3.h"
@@ -276,6 +276,20 @@
 #include "SCL1.h"
 #include "BitIoLdd5.h"
 #include "CS1.h"
+#include "LCDout.h"
+#include "EN1.h"
+#include "BitIoLdd6.h"
+#include "RS1.h"
+#include "BitIoLdd7.h"
+#include "DB41.h"
+#include "BitIoLdd12.h"
+#include "DB51.h"
+#include "BitIoLdd13.h"
+#include "DB61.h"
+#include "BitIoLdd14.h"
+#include "DB71.h"
+#include "BitIoLdd15.h"
+#include "TSSin.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -369,9 +383,10 @@ void __init_hardware(void)
   /* System clock initialization */
   /* SIM_CLKDIV1: OUTDIV1=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,OUTDIV4=3,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0 */
   SIM_CLKDIV1 = (SIM_CLKDIV1_OUTDIV1(0x00) | SIM_CLKDIV1_OUTDIV4(0x03)); /* Set the system prescalers to safe value */
-  /* SIM_SCGC5: PORTE=1,PORTD=1,PORTB=1,PORTA=1 */
+  /* SIM_SCGC5: PORTE=1,PORTD=1,PORTC=1,PORTB=1,PORTA=1 */
   SIM_SCGC5 |= SIM_SCGC5_PORTE_MASK |
                SIM_SCGC5_PORTD_MASK |
+               SIM_SCGC5_PORTC_MASK |
                SIM_SCGC5_PORTB_MASK |
                SIM_SCGC5_PORTA_MASK;   /* Enable clock gate for ports to enable pin routing */
   if ((PMC_REGSC & PMC_REGSC_ACKISO_MASK) != 0x0U) {
@@ -492,16 +507,16 @@ void PE_low_level_init(void)
   /* PEX_RTOS_INIT() should have been called at this time already with the most critical setup */
   /* ### FreeRTOS_Tasks "TSK1" init code ... */
   TSK1_CreateTasks();
-  /* ### BitIO_LDD "BitIoLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd1_Init(NULL);
-  /* ### LED "LED_R" init code ... */
-  LED_R_Init(); /* initialize LED driver */
   /* ### Asynchro serial "AS1" init code ... */
   AS1_Init();
   /* ### BitIO_LDD "BitIoLdd2" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)BitIoLdd2_Init(NULL);
   /* ### LED "LED_G" init code ... */
   LED_G_Init(); /* initialize LED driver */
+  /* ### BitIO_LDD "BitIoLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd1_Init(NULL);
+  /* ### LED "LED_R" init code ... */
+  LED_R_Init(); /* initialize LED driver */
   /* ### BitIO_LDD "BitIoLdd3" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)BitIoLdd3_Init(NULL);
   /* ### LED "LED_B" init code ... */
@@ -523,6 +538,24 @@ void PE_low_level_init(void)
   /* ### MMA8451Q "MMA1" init code ... */
   /* Write code here ... */
   /* ### CriticalSection "CS1" init code ... */
+  /* ### BitIO_LDD "BitIoLdd6" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd6_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd7" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd7_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd12" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd12_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd13" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd13_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd14" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd14_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd15" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd15_Init(NULL);
+  /* ### LCDHTA "LCDout" init code ... */
+  LCDout_Init(); /* initializes the display driver */
+  /* ### TSS_Library "TSSin" init code ... */
+
+  /* Write code here ... */
+
 }
   /* Flash configuration field */
   __attribute__ ((section (".cfmconfig"))) const uint8_t _cfm[0x10] = {

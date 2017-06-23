@@ -23,86 +23,100 @@
 
 static portTASK_FUNCTION(mains_taskTask, pvParameters) {
 
-	while(1) {
+  for(;;) {
+	  vTaskDelay(20/portTICK_RATE_MS);
+  }
 
-		vTaskDelay(20/portTICK_RATE_MS);
-	}
-
-	vTaskDelete(mains_taskTask);
+  vTaskDelete(mains_taskTask);
 }
-//---------------------------------------------------------------------------------------
 
 static portTASK_FUNCTION(communication_taskTask, pvParameters) {
 
-	initCallBacks();
+  initCallBacks();
 
-	while(1) {
-
+  for(;;) {
 		processProtocol();
 
 		vTaskDelay(5/portTICK_RATE_MS);
-	}
+  }
 
-	vTaskDelete(communication_taskTask);
+  vTaskDelete(communication_taskTask);
 }
-//---------------------------------------------------------------------------------------
 
 static portTASK_FUNCTION(data_taskTask, pvParameters) {
 
-	initAccel();
+  initAccel();
 
-	while (1) {
+  for(;;) {
+	  read_accel();
+	  read_Channels_AD();
+	  vTaskDelay(10/portTICK_RATE_MS);
+  }
 
-		read_accel();
+  vTaskDelete(data_taskTask);
+}
 
-		read_Channels_AD();
+static portTASK_FUNCTION(ihm_taskTask, pvParameters) {
 
-		vTaskDelay(10/portTICK_RATE_MS);
+	ihm_initialize();
+
+	for(;;) {
+		ihm_loop();
+		vTaskDelay(25/portTICK_RATE_MS);
 	}
 
-	vTaskDelete(data_taskTask);
+	ihm_terminate();
+	vTaskDelete(ihm_taskTask);
 }
-//---------------------------------------------------------------------------------------
 
 void CreateTasks(void) {
-	if (FRTOS1_xTaskCreate(
-			mains_taskTask, /* pointer to the task */
-			"mains_task", /* task name for kernel awareness debugging */
-			configMINIMAL_STACK_SIZE + 0, /* task stack size */
-			(void*)NULL, /* optional task startup argument */
-			tskIDLE_PRIORITY + 0, /* initial priority */
-			(xTaskHandle*)NULL /* optional task handle to create */
-	) != pdPASS) {
-		/*lint -e527 */
-		for (;;) {
-		}; /* error! probably out of memory */
-		/*lint +e527 */
-	}
-	if (FRTOS1_xTaskCreate(
-			communication_taskTask, /* pointer to the task */
-			"communication_task", /* task name for kernel awareness debugging */
-			configMINIMAL_STACK_SIZE + 0, /* task stack size */
-			(void*)NULL, /* optional task startup argument */
-			tskIDLE_PRIORITY + 0, /* initial priority */
-			(xTaskHandle*)NULL /* optional task handle to create */
-	) != pdPASS) {
-		/*lint -e527 */
-		for (;;) {
-		}; /* error! probably out of memory */
-		/*lint +e527 */
-	}
-	if (FRTOS1_xTaskCreate(
-			data_taskTask, /* pointer to the task */
-			"data_task", /* task name for kernel awareness debugging */
-			configMINIMAL_STACK_SIZE + 0, /* task stack size */
-			(void*)NULL, /* optional task startup argument */
-			tskIDLE_PRIORITY + 0, /* initial priority */
-			(xTaskHandle*)NULL /* optional task handle to create */
-	) != pdPASS) {
-		/*lint -e527 */
-		for (;;) {
-		}; /* error! probably out of memory */
-		/*lint +e527 */
-	}
+  if (FRTOS1_xTaskCreate(
+     mains_taskTask,  /* pointer to the task */
+      "mains_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+  if (FRTOS1_xTaskCreate(
+     communication_taskTask,  /* pointer to the task */
+      "communication_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+  if (FRTOS1_xTaskCreate(
+     data_taskTask,  /* pointer to the task */
+      "data_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+  if (FRTOS1_xTaskCreate(
+     ihm_taskTask,  /* pointer to the task */
+      "ihm_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
 }
-//---------------------------------------------------------------------------------------
+
