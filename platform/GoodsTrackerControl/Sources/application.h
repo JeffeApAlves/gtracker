@@ -21,7 +21,9 @@ ResultExec onAnalog(DataFrame* cmd);
 ResultExec onLED(DataFrame* cmd);
 ResultExec onPWM(DataFrame* cmd);
 ResultExec onTouch(DataFrame* cmd);
-ResultExec onAcel(DataFrame* cmd);
+ResultExec onAccel(DataFrame* cmd);
+ResultExec onTelemetry(DataFrame* frame);
+ResultExec onLock(DataFrame* frame);
 
 void read_accel();
 void read_Channels_AD();

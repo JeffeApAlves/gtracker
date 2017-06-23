@@ -21,7 +21,7 @@ void initCallBacks(){
 
 	setEventCMD(CMD_LED,	onLED);
 	setEventCMD(CMD_ANALOG,	onAnalog);
-	setEventCMD(CMD_ACC,	onAcel);
+	setEventCMD(CMD_ACC,	onAccel);
 	setEventCMD(CMD_TOUCH,	onTouch);
 	setEventCMD(CMD_PWM,	onPWM);
 }
@@ -29,33 +29,45 @@ void initCallBacks(){
 
 ResultExec onLED(DataFrame* frame){
 
-	return EXEC_SUCCESS;
+	return CMD_RESULT_EXEC_SUCCESS;
 }
 	//-------------------------------------------------------------------------
 
 ResultExec onAnalog(DataFrame* frame){
 
-	return EXEC_SUCCESS;
+	return CMD_RESULT_EXEC_SUCCESS;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAcel(DataFrame* frame){
+ResultExec onAccel(DataFrame* frame){
 
 	buildPayLoad(frame);
 
-	return EXEC_SUCCESS;
+	return CMD_RESULT_EXEC_SUCCESS;
 }
 //-------------------------------------------------------------------------
 
 ResultExec onTouch(DataFrame* frame){
 
-	return EXEC_SUCCESS;
+	return CMD_RESULT_EXEC_SUCCESS;
 }
 //-------------------------------------------------------------------------
 
 ResultExec onPWM(DataFrame* frame){
 
-	return EXEC_SUCCESS;
+	return CMD_RESULT_EXEC_SUCCESS;
+}
+//------------------------------------------------------------------------
+
+ResultExec onTelemetry(DataFrame* frame){
+
+	return CMD_RESULT_EXEC_SUCCESS;
+}
+//------------------------------------------------------------------------
+
+ResultExec onLock(DataFrame* frame){
+
+	return CMD_RESULT_EXEC_SUCCESS;
 }
 //------------------------------------------------------------------------
 
