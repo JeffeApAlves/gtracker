@@ -7,7 +7,7 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
@@ -17,7 +17,7 @@
 **     Settings    :
 **          Component name                                 : LEDpin3
 **          Pin for I/O                                    : ADC0_SE5b/PTD1/SPI0_SCK/TPM0_CH1
-**          Pin signal                                     : BLUE_LED
+**          Pin signal                                     : 
 **          BitIO_LDD                                      : BitIO_LDD
 **          Direction                                      : Output
 **          Initialization                                 : 
@@ -88,7 +88,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* Include inherited beans */
-#include "BitIoLdd13.h"
+#include "BitIoLdd3.h"
 
 #include "Cpu.h"
 
@@ -116,7 +116,7 @@ extern "C" {
 
 ** ===================================================================
 */
-#define LEDpin3_GetVal() (BitIoLdd13_GetVal(BitIoLdd13_DeviceData))
+#define LEDpin3_GetVal() (BitIoLdd3_GetVal(BitIoLdd3_DeviceData))
 
 /*
 ** ===================================================================
@@ -127,7 +127,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define LEDpin3_ClrVal() (BitIoLdd13_ClrVal(BitIoLdd13_DeviceData))
+#define LEDpin3_ClrVal() (BitIoLdd3_ClrVal(BitIoLdd3_DeviceData))
 
 /*
 ** ===================================================================
@@ -138,7 +138,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define LEDpin3_SetVal() (BitIoLdd13_SetVal(BitIoLdd13_DeviceData))
+#define LEDpin3_SetVal() (BitIoLdd3_SetVal(BitIoLdd3_DeviceData))
 
 /*
 ** ===================================================================
@@ -149,7 +149,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define LEDpin3_NegVal() (BitIoLdd13_NegVal(BitIoLdd13_DeviceData))
+#define LEDpin3_NegVal() (BitIoLdd3_NegVal(BitIoLdd3_DeviceData))
 
 /* END LEDpin3. */
 

@@ -5,9 +5,9 @@
 **     Processor   : MKL25Z128VLK4
 **     Component   : GenericI2C
 **     Version     : Component 01.033, Driver 01.00, CPU db: 3.00.000
-**     Repository  : My Components
+**     Repository  : MCUOnEclipse2017-05-06
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 22:12, # CodeGen: 14
+**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
 **     Abstract    :
 **         This component implements a generic I2C driver wrapper to work both with LDD and non-LDD I2C components.
 **     Settings    :
@@ -20,7 +20,7 @@
 **            I2C                                          : I2C1
 **          LDD I2C                                        : Disabled
 **          RTOS                                           : Enabled
-**            RTOS                                         : GT_FRTOS
+**            RTOS                                         : FRTOS1
 **            Semaphore                                    : yes
 **          Init() on startup                              : yes
 **     Contents    :
@@ -91,7 +91,7 @@
 #include "WAIT1.h"
 #include "MCUC1.h"
 #include "I2C1.h"
-#include "GT_FRTOS.h"
+#include "FRTOS1.h"
 
 
 #define GI2C1_WRITE_BUFFER_SIZE 16 /* size of internal buffer used, set in the component properties */

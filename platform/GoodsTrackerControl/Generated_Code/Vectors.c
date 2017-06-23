@@ -6,7 +6,7 @@
 **     Version     : Component 01.025, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-21, 21:10, # CodeGen: 25
+**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
 **     Abstract    :
 **
 **     Settings    :
@@ -55,49 +55,35 @@
 */         
 
   #include "Cpu.h"
-  #include "LCDout.h"
-  #include "EN1.h"
-  #include "BitIoLdd1.h"
-  #include "RS1.h"
-  #include "BitIoLdd2.h"
-  #include "DB41.h"
-  #include "BitIoLdd7.h"
-  #include "DB51.h"
-  #include "BitIoLdd8.h"
-  #include "DB61.h"
-  #include "BitIoLdd9.h"
-  #include "DB71.h"
-  #include "BitIoLdd10.h"
-  #include "TSSin.h"
+  #include "FRTOS1.h"
+  #include "UTIL1.h"
+  #include "MCUC1.h"
+  #include "TSK1.h"
   #include "LED_R.h"
   #include "LEDpin1.h"
-  #include "BitIoLdd11.h"
+  #include "BitIoLdd1.h"
+  #include "AS1.h"
+  #include "ASerialLdd1.h"
   #include "LED_G.h"
   #include "LEDpin2.h"
-  #include "BitIoLdd12.h"
+  #include "BitIoLdd2.h"
   #include "LED_B.h"
   #include "LEDpin3.h"
-  #include "BitIoLdd13.h"
-  #include "WAIT1.h"
-  #include "MCUC1.h"
-  #include "GT_FRTOS.h"
-  #include "UTIL1.h"
-  #include "TU1.h"
-  #include "GI2C1.h"
-  #include "I2C1.h"
-  #include "SDA1.h"
-  #include "BitIoLdd14.h"
-  #include "SCL1.h"
-  #include "BitIoLdd15.h"
-  #include "CS1.h"
-  #include "GT_TSK.h"
-  #include "GT_AsyncSerial.h"
-  #include "ASerialLdd1.h"
-  #include "GT_AD1.h"
+  #include "BitIoLdd3.h"
+  #include "AD1.h"
   #include "AdcLdd1.h"
-  #include "GT_TI1.h"
+  #include "TU1.h"
+  #include "TI1.h"
   #include "TimerIntLdd1.h"
   #include "MMA1.h"
+  #include "GI2C1.h"
+  #include "WAIT1.h"
+  #include "I2C1.h"
+  #include "SDA1.h"
+  #include "BitIoLdd4.h"
+  #include "SCL1.h"
+  #include "BitIoLdd5.h"
+  #include "CS1.h"
   #include "Events.h"
 
 
@@ -159,7 +145,7 @@
     (tIsrFunc)&Cpu_Interrupt,          /* 0x27  0x0000009C   -   ivINT_Reserved39              unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x28  0x000000A0   -   ivINT_USB0                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x29  0x000000A4   -   ivINT_DAC0                    unused by PE */
-    (tIsrFunc)&TSS_TSI0Isr,            /* 0x2A  0x000000A8   -   ivINT_TSI0                    used by PE */
+    (tIsrFunc)&Cpu_Interrupt,          /* 0x2A  0x000000A8   -   ivINT_TSI0                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x2B  0x000000AC   -   ivINT_MCG                     unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x2C  0x000000B0   -   ivINT_LPTMR0                  unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x2D  0x000000B4   -   ivINT_Reserved45              unused by PE */
