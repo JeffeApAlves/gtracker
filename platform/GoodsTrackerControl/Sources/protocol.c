@@ -65,32 +65,31 @@ void rxStartCMD (void) {
 
 void receiveFrame (void) {
 
-	char ch;
+	unsigned char ch;
 
-	if(getRxData(&ch)){
+	if(getRxData(&ch)) {
+		//dataFrame.checksum_calc ^= ch;
 
-		dataFrame.checksum_calc ^= ch;
-
-		if(ch==CHAR_CMD_START || dataFrame.sizeFrame>=LEN_MAX_FRAME){
-
+		if(ch==CHAR_CMD_START || dataFrame.sizeFrame>=LEN_MAX_FRAME) {
 			setStatusRx(CMD_ERROR);
+		}
+		else
+		  if(ch==CHAR_CMD_END) {
+			 if(dataFrame.sizeFrame>=LEN_MIN_FRAME) {
 
-		}else if(ch==CHAR_CMD_END){
-
-			if(dataFrame.sizeFrame>=LEN_MIN_FRAME){
+				unsigned char i;
+				for (i = 0; i < dataFrame.sizeFrame - 2; i++)
+					 dataFrame.checksum_calc ^= dataFrame.frame[i];
 
 				setStatusRx(CMD_RX_END);
-
-			}else{
-
-				setStatusRx(CMD_ERROR);
-			}
-
-		}else {
-
-			setStatusRx(CMD_RX_PAYLOAD);
-
-			dataFrame.frame[(dataFrame.sizeFrame++)%LEN_MAX_FRAME] = ch;
+			 }
+			 else {
+			   setStatusRx(CMD_ERROR);
+			 }
+		}
+		else {
+		  setStatusRx(CMD_RX_PAYLOAD);
+		  dataFrame.frame[(dataFrame.sizeFrame++)%LEN_MAX_FRAME] = ch;
 		}
 	}
 }
@@ -152,25 +151,26 @@ bool decoderFrame2(void) {
 
 	List	list;
 
-	str_split(&list,dataFrame.frame,CHAR_SEPARATOR);
+	str_split(&list, dataFrame.frame, CHAR_SEPARATOR);
 
-	if(list.itens!=NULL){
+	if(list.itens!=NULL) {
 
 		char t[5];
 
 		strcpy(t,list.itens[6]);
 
-		dataFrame.checksum_rx = atoi(list.itens[list.size-1]);
+		/*Usamos strtol pois o último objeto da lista armazena o valor do checksum em HEXA*/
+		dataFrame.checksum_rx = strtol(list.itens[list.size-1], NULL, 16);
 
-		if(dataFrame.checksum_rx==dataFrame.checksum_calc){
+		if(dataFrame.checksum_rx==dataFrame.checksum_calc) {
 
 			char i;
 
-			for(i=0;i < list.size;i++){
+			for(i=0;i < list.size;i++) {
 
-				if(list.itens[i]!=NULL){
+				if(list.itens[i]!=NULL) {
 
-					switch(i){
+					switch(i) {
 
 						case 0:	dataFrame.dest				= atoi(list.itens[0]);				break;
 						case 1:	dataFrame.address			= atoi(list.itens[1]);				break;
@@ -377,9 +377,9 @@ bool hasTxData(void){
  */
 void startTX(void){
 
-	if(hasTxData() && GT_AsyncSerial_GetCharsInTxBuf()==0){
+	if(hasTxData() && AS1_GetCharsInTxBuf()==0){
 
-		GT_AsyncSerial_OnTxChar();
+		AS1_OnTxChar();
 	}
 }
 //------------------------------------------------------------------------
