@@ -64,7 +64,7 @@ namespace GoodsTracker
             {
                 processTx();
                 processRx();
-                currentUnit.processQueue();
+                currentUnit.processQueues();
             }
         }
 
@@ -73,9 +73,10 @@ namespace GoodsTracker
             if (CommunicationUnit.isAnyCmd())
             {
                 CommunicationFrame frame = new CommunicationFrame();
+                Cmd cmd = currentUnit.getNextCmd();
 
-                frame.Header    = currentUnit.getNextCmd().Header;
-                frame.PayLoad   = new PayLoad();
+                frame.Header    = cmd.Header;
+                frame.PayLoad   = cmd.Payload;
 
                 sendFrame(frame);
             }

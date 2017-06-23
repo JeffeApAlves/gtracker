@@ -83,7 +83,7 @@ namespace GoodsTracker
             return containner[resource];
         }
 
-        internal void processQueue()
+        internal void processQueues()
         {
             if (isAnyAns())
             {

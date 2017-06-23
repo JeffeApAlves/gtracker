@@ -24,11 +24,16 @@ namespace GoodsTracker
         int     itemselected    = -1;
 
 
+        //#################################### Events ########################################
+
         public MainForm()
         {
             InitializeComponent();
         }
 
+        /*
+         * Evento de carga do form
+         */ 
         private void MainForm_Load(object sender, EventArgs e)
         {
             initTrackerControl();
@@ -38,16 +43,14 @@ namespace GoodsTracker
             initPanelFence();
             initPanelBehavior();
             initPanelConfig();
-            hideAllPanel();
+            collapseAllPanel();
             Protocol.Communication.init();
             initAllThreads();
         }
 
-        private void initTrackerControl()
-        {
-            trackerController.OnDataTelemetria  = onDataTelemetria;
-        }
-
+        /*
+         * Evento click no mapa usado para selecionar as posicoes pelo usuario
+         */
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             PointLatLng point = gMapControl1.FromLocalToLatLng(e.X, e.Y);
@@ -66,28 +69,34 @@ namespace GoodsTracker
             }
         }
 
-        // Seleciona painel trip
+        /*
+         * 
+         * Seleciona painel trip
+         */
         private void button1_Click_1(object sender, EventArgs e)
         {
-            selectPanel(panel1);
+            expandPanel(panel1);
         }
 
-        // Seleciona painel Fence
+        /*
+         * 
+         * Seleciona painel Fence
+         */
         private void button2_Click_1(object sender, EventArgs e)
         {
-            selectPanel(panel2);
+            expandPanel(panel2);
         }
 
         // Seleciona painel TelemetriaData
         private void button3_Click_1(object sender, EventArgs e)
         {
-            selectPanel(panel3);
+            expandPanel(panel3);
         }
 
         // Seleciona painel configuracao
         private void button4_Click_1(object sender, EventArgs e)
         {
-            selectPanel(panel4);
+            expandPanel(panel4);
         }
 
         // Inicia nova fence
@@ -153,7 +162,9 @@ namespace GoodsTracker
             gMapControl1.Zoom = tB_Zoom.Value;
         }
 
-        // Seleciona layers
+        /*
+         * Seleciona layers
+         */
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (checkedListBox1.GetItemCheckState(3) == CheckState.Checked)
@@ -170,7 +181,9 @@ namespace GoodsTracker
             layerFence.show(checkedListBox1.GetItemCheckState(2) == CheckState.Checked);
         }
 
-        // Seleciona filtro
+        /*
+         * Seleciona filtro
+         */
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             bTV.Filter      = cbFilter.SelectedIndex;
@@ -179,13 +192,17 @@ namespace GoodsTracker
             bTV.Behaviors   = trackerController.getBehaviorFiltered(bTV.Filter);
         }
 
-        //Botao trava a valvula
+        /*
+         * Botao trava a valvula
+         */
         private void btn_lock_Click(object sender, EventArgs e)
         {
             trackerController.lockVehicle(true);
         }
 
-        //Botao destrava a valvula
+        /*
+         * Botao destrava a valvula
+         */
         private void button7_Click(object sender, EventArgs e)
         {
             trackerController.lockVehicle(false);
@@ -203,20 +220,55 @@ namespace GoodsTracker
             statusTrip = STATUS_GUI.END_POINT;
         }
 
-        //Entrada no combobox da cordenada inicial
+        /*
+         * Entrada no combobox da cordenada inicial
+         */
         private void txtLatStart_Enter(object sender, EventArgs e)
         {
             txtLatStart.BackColor = Color.Yellow;
             txtLngStart.BackColor = Color.Yellow;
         }
 
-        //Entrada no combobox da cordenada final
+        /*
+         * Entrada no combobox da cordenada final
+         */
         private void txtLatStop_Enter(object sender, EventArgs e)
         {
             txtLatStop.BackColor = Color.Yellow;
             txtLngStop.BackColor = Color.Yellow;
         }
-        //---------------------------------End Events-----------------------------------
+
+        /*
+         * Evento de fechamento do form
+         */
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ThreadManager.stop();
+        }
+        
+        //################################## Inicializacoes ########################################
+
+        /*
+         * Inicializa as threads
+         * 
+         */
+        void initAllThreads()
+        {
+            // Dados para testes
+            demoData = new TestData(TrackerController.TIME_TELEMETRIA);
+
+            // Inicia todas as threads
+            ThreadManager.start();
+            timer1.Enabled = true;
+        }
+
+        /*
+         *Inicializa entidade de controle do rastreador 
+         */
+        private void initTrackerControl()
+        {
+            trackerController.OnDataTelemetria = onDataTelemetria;
+        }
 
         private void initMapControl()
         {
@@ -269,7 +321,6 @@ namespace GoodsTracker
 
             bTV.Behaviors = trackerController.getBehaviorFiltered(bTV.Filter);
         }
-        //-------------------------------------Fim inits -----------------------------------
 
         private void initSelectRoute()
         {
@@ -293,13 +344,34 @@ namespace GoodsTracker
             removeRoute(route);
         }
 
+        //################################## Updates ########################################
+
+        /*
+         * Tick a cada 250 ms
+         */
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lckMng();
+
+            updateBehavior();
+            updateStatusLock();
+            updateStatusFence();
+            updatelevel();
+
+            tB_Zoom.Value = (int)gMapControl1.Zoom;
+        }
+
+        /*
+         * Atualiza oa tela com informacoes sobre telemetria
+         */
         void updateBehavior()
         {
             bTV.update();
-
             showMarkerBehavior();
         }
-
+        /*
+         * Atualiza as informacoes na tela sobre a trava
+         */
         void updateStatusLock()
         {
             TelemetriaData telemetria = trackerController.getTelemetria();
@@ -321,6 +393,9 @@ namespace GoodsTracker
             }
         }
 
+        /*
+         * Atualiza as informacoes na tela sobre a cerca virtual
+         */
         void updateStatusFence()
         {
             TelemetriaData telemetria = trackerController.getTelemetria();
@@ -342,6 +417,9 @@ namespace GoodsTracker
             }
         }
 
+        /*
+         * Atualiza as informacoes na tela sobre o sensor de nivel
+         */
         void updatelevel()
         {
             TelemetriaData telemetria = trackerController.getTelemetria();
@@ -367,6 +445,9 @@ namespace GoodsTracker
             }
         }
 
+        /*
+         * Mostra as marcas no mapa
+         */
         void showMarkerBehavior()
         {
             TelemetriaData[] listCurrentBehavior = bTV.Behaviors;
@@ -395,6 +476,66 @@ namespace GoodsTracker
             }
         }
 
+        /**
+         * Verifica se o veiculo se encontra dentro da cerca para liberacao da trava
+         */
+        private void lckMng()
+        {
+            TelemetriaData telemetria = trackerController.getTelemetria();
+
+            if (telemetria != null)
+            {
+                if (telemetria.IsInsideOfFence())
+                {
+                    trackerController.lockVehicle(false);
+                }
+                else
+                {
+                    trackerController.lockVehicle(true);
+                }
+            }
+        }
+
+        //################################## Painel ########################################
+
+        /*
+          * Seleciona (expande) o painel
+          */
+        void expandPanel(Panel p)
+        {
+            if (p != null)
+            {
+                bool show = !p.Visible;
+
+                if (show)
+                {
+
+                    collapseAllPanel();
+                }
+
+                p.Visible = show;
+
+                statusFence = STATUS_GUI.INIT;
+                statusTrip = STATUS_GUI.INIT;
+            }
+        }
+
+        /*
+         * Oculta todas os paineis
+         */
+        internal void collapseAllPanel()
+        {
+            panel1.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+            panel4.Visible = false;
+        }
+
+        //################################## Set's ########################################
+
+        /*
+         * Processa o selecionamento dos pontos para montagem da cerca
+         */
         private void setFencePoint(PointLatLng point)
         {
             txtLat.Text = point.Lat.ToString();
@@ -405,6 +546,9 @@ namespace GoodsTracker
             btn_fence.Enabled = true;
         }
 
+        /*
+         * Set a posicao inicial da rota
+         */
         private void setStartPoint(PointLatLng point)
         {
             route.startAddress(point);
@@ -422,6 +566,9 @@ namespace GoodsTracker
             statusTrip = STATUS_GUI.END_POINT;
         }
 
+        /*
+         * Set a posicao final da rota
+         */
         private void setEndPoint(PointLatLng point)
         {
             route.stopAddress(point);
@@ -438,34 +585,10 @@ namespace GoodsTracker
 
             add(route);
         }
-
-        //seleciona painel
-        void selectPanel(Panel p)
-        {
-            if (p != null)
-            {
-                bool show = !p.Visible;
-
-                if (show) {
-
-                    hideAllPanel();
-                }
-
-                p.Visible = show;
-
-                statusFence = STATUS_GUI.INIT;
-                statusTrip = STATUS_GUI.INIT;
-            }
-        }
-
-        internal void hideAllPanel()
-        {
-            panel1.Visible = false;
-            panel2.Visible = false;
-            panel3.Visible = false;
-            panel4.Visible = false;
-        }
-
+ 
+        /*
+         * Adiciona cerca no layer e no container
+         */
         internal void add(Fence fence) {
 
             string str = string.Format("Fence:{0}", trackerController.Fences.Count+1);
@@ -476,6 +599,9 @@ namespace GoodsTracker
             cbListFence.SelectedIndex = cbListFence.Items.Count - 1;
         }
 
+        /*
+         * Adicona rota
+         */
         internal void add(Route r)
         {
             route.createRoute();
@@ -486,6 +612,9 @@ namespace GoodsTracker
             endAddress.Text     = route.EndAddress();
         }
 
+        /*
+         * Remove um cerca 
+         */
         void removeFenceAt(int index)
         {
             if (index >= 0)
@@ -499,6 +628,9 @@ namespace GoodsTracker
             initPanelFence(); //clear entitys
         }
 
+        /*
+         * Remove um ponto selecionado da cerca
+         */
         void removePositionFence(int index)
         {
             if (index >= 0)
@@ -506,17 +638,6 @@ namespace GoodsTracker
                 fence.removePositionAt(index);
                 layerFence.removeMarkerAt(index);
             }
-        }
-
-        void addPositionFence(PointLatLng point)
-        {
-            fence.insertPositon(point);
-            layerFence.add(point, GMarkerGoogleType.yellow);
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            ThreadManager.stop();
         }
 
         /**
@@ -537,49 +658,15 @@ namespace GoodsTracker
         }
 
         /*
-         * Tick a cada 250 ms
-         */ 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            lckMng();
-
-            updateBehavior();
-            updateStatusLock();
-            updateStatusFence();
-            updatelevel();
-
-            tB_Zoom.Value = (int)gMapControl1.Zoom;
-        }
-
-        private void lckMng()
-        {
-            TelemetriaData telemetria = trackerController.getTelemetria();
-
-            if (telemetria != null)
-            {
-                if (telemetria.IsInsideOfFence())
-                {
-                    trackerController.lockVehicle(false);
-                }
-                else
-                {
-                    trackerController.lockVehicle(true);
-                }
-            }
-        }
-
-        /*
-         * Inicializa as threads
+         * Adiciona posicao da cerca
          */
-        void initAllThreads()
+        void addPositionFence(PointLatLng point)
         {
-            // Dados para testes
-            demoData = new TestData(TrackerController.TIME_TELEMETRIA);
-
-            // Inicia todas as threads
-            ThreadManager.start();
-            timer1.Enabled = true;
+            fence.insertPositon(point);
+            layerFence.add(point, GMarkerGoogleType.yellow);
         }
+
+        //################################## call backs ########################################
 
         /*
          * Evento de recepcao de dados de telemetria
