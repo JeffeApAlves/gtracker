@@ -9,12 +9,12 @@
 #include "LED_B.h"
 #include "LED_G.h"
 #include "LED_R.h"
-#include "GT_AD1.h"
+#include "AD1.h"
 #include "MMA1.h"
 #include "application.h"
 
 volatile	bool AD_finished=FALSE;
-uint16_t	AD_Values[GT_AD1_CHANNEL_COUNT];
+uint16_t	AD_Values[AD1_CHANNEL_COUNT];
 uint8_t		xyz[3];
 
 void initCallBacks(){
@@ -67,16 +67,18 @@ void read_Channels_AD(){
 //		}
 //	}
 
-	if(GT_AD1_Measure(FALSE)==ERR_OK){
+#if 0
+	if(AD1_Measure(FALSE)==ERR_OK){
 
 		AD_finished = FALSE;
 
 		while (!AD_finished) {}
 
-		if(GT_AD1_GetValue16(AD_Values)==ERR_OK){
+		if(AD1_GetValue16(AD_Values)==ERR_OK){
 			//TODO
 		}
 	}
+#endif
 }
 //------------------------------------------------------------------------
 

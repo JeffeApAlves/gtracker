@@ -7,7 +7,7 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
@@ -17,7 +17,7 @@
 **     Settings    :
 **          Component name                                 : LEDpin1
 **          Pin for I/O                                    : TSI0_CH11/PTB18/TPM2_CH0
-**          Pin signal                                     : RED_LED
+**          Pin signal                                     : 
 **          BitIO_LDD                                      : BitIO_LDD
 **          Direction                                      : Output
 **          Initialization                                 : 
@@ -88,7 +88,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* Include inherited beans */
-#include "BitIoLdd11.h"
+#include "BitIoLdd1.h"
 
 #include "Cpu.h"
 
@@ -116,7 +116,7 @@ extern "C" {
 
 ** ===================================================================
 */
-#define LEDpin1_GetVal() (BitIoLdd11_GetVal(BitIoLdd11_DeviceData))
+#define LEDpin1_GetVal() (BitIoLdd1_GetVal(BitIoLdd1_DeviceData))
 
 /*
 ** ===================================================================
@@ -127,7 +127,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define LEDpin1_ClrVal() (BitIoLdd11_ClrVal(BitIoLdd11_DeviceData))
+#define LEDpin1_ClrVal() (BitIoLdd1_ClrVal(BitIoLdd1_DeviceData))
 
 /*
 ** ===================================================================
@@ -138,7 +138,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define LEDpin1_SetVal() (BitIoLdd11_SetVal(BitIoLdd11_DeviceData))
+#define LEDpin1_SetVal() (BitIoLdd1_SetVal(BitIoLdd1_DeviceData))
 
 /*
 ** ===================================================================
@@ -149,7 +149,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define LEDpin1_NegVal() (BitIoLdd11_NegVal(BitIoLdd11_DeviceData))
+#define LEDpin1_NegVal() (BitIoLdd1_NegVal(BitIoLdd1_DeviceData))
 
 /* END LEDpin1. */
 

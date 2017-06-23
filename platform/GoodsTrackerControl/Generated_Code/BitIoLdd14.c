@@ -7,7 +7,7 @@
 **     Version     : Component 01.033, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 22:12, # CodeGen: 14
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         The HAL BitIO component provides a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -17,21 +17,23 @@
 **         portable to various microprocessors.
 **     Settings    :
 **          Component name                                 : BitIoLdd14
-**          Pin for I/O                                    : PTE0/UART1_TX/RTC_CLKOUT/CMP0_OUT/I2C1_SDA
-**          Pin signal                                     : 
+**          Pin for I/O                                    : CMP0_IN2/PTC8/I2C0_SCL/TPM0_CH4
+**          Pin signal                                     : LCDDB6
 **          Direction                                      : Input/Output
 **          Initialization                                 : 
-**            Init. direction                              : Input
-**            Init. value                                  : 1
+**            Init. direction                              : Output
+**            Init. value                                  : 0
 **            Auto initialization                          : yes
 **          Safe mode                                      : yes
 **     Contents    :
-**         Init   - LDD_TDeviceData* BitIoLdd14_Init(LDD_TUserData *UserDataPtr);
-**         SetDir - void BitIoLdd14_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
-**         GetVal - bool BitIoLdd14_GetVal(LDD_TDeviceData *DeviceDataPtr);
-**         PutVal - void BitIoLdd14_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
-**         ClrVal - void BitIoLdd14_ClrVal(LDD_TDeviceData *DeviceDataPtr);
-**         SetVal - void BitIoLdd14_SetVal(LDD_TDeviceData *DeviceDataPtr);
+**         Init      - LDD_TDeviceData* BitIoLdd14_Init(LDD_TUserData *UserDataPtr);
+**         SetDir    - void BitIoLdd14_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
+**         SetInput  - void BitIoLdd14_SetInput(LDD_TDeviceData *DeviceDataPtr);
+**         SetOutput - void BitIoLdd14_SetOutput(LDD_TDeviceData *DeviceDataPtr);
+**         GetVal    - bool BitIoLdd14_GetVal(LDD_TDeviceData *DeviceDataPtr);
+**         PutVal    - void BitIoLdd14_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
+**         ClrVal    - void BitIoLdd14_ClrVal(LDD_TDeviceData *DeviceDataPtr);
+**         SetVal    - void BitIoLdd14_SetVal(LDD_TDeviceData *DeviceDataPtr);
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -127,15 +129,15 @@ LDD_TDeviceData* BitIoLdd14_Init(LDD_TUserData *UserDataPtr)
   /* {FreeRTOS RTOS Adapter} Driver memory allocation: Dynamic allocation is simulated by a pointer to the static object */
   DeviceDataPrv = &DeviceDataPrv__DEFAULT_RTOS_ALLOC;
   DeviceDataPrv->UserDataPtr = UserDataPtr; /* Store the RTOS device structure */
-  /* Configure pin as input */
-  /* GPIOE_PDDR: PDD&=~1 */
-  GPIOE_PDDR &= (uint32_t)~(uint32_t)(GPIO_PDDR_PDD(0x01));
+  /* Configure pin as output */
+  /* GPIOC_PDDR: PDD|=0x0100 */
+  GPIOC_PDDR |= GPIO_PDDR_PDD(0x0100);
   /* Set initialization value */
-  /* GPIOE_PDOR: PDO|=1 */
-  GPIOE_PDOR |= GPIO_PDOR_PDO(0x01);
+  /* GPIOC_PDOR: PDO&=~0x0100 */
+  GPIOC_PDOR &= (uint32_t)~(uint32_t)(GPIO_PDOR_PDO(0x0100));
   /* Initialization of Port Control register */
-  /* PORTE_PCR0: ISF=0,MUX=1 */
-  PORTE_PCR0 = (uint32_t)((PORTE_PCR0 & (uint32_t)~(uint32_t)(
+  /* PORTC_PCR8: ISF=0,MUX=1 */
+  PORTC_PCR8 = (uint32_t)((PORTC_PCR8 & (uint32_t)~(uint32_t)(
                 PORT_PCR_ISF_MASK |
                 PORT_PCR_MUX(0x06)
                )) | (uint32_t)(
@@ -172,6 +174,44 @@ void BitIoLdd14_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir)
     /* Input */
     GPIO_PDD_SetPortInputDirectionMask(BitIoLdd14_MODULE_BASE_ADDRESS, BitIoLdd14_PORT_MASK);
   }
+}
+
+/*
+** ===================================================================
+**     Method      :  BitIoLdd14_SetInput (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         Sets a pin direction to input (available only if the
+**         direction = _[input/output]_).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+*/
+/* ===================================================================*/
+void BitIoLdd14_SetInput(LDD_TDeviceData *DeviceDataPtr)
+{
+  (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
+  GPIO_PDD_SetPortInputDirectionMask(BitIoLdd14_MODULE_BASE_ADDRESS, BitIoLdd14_PORT_MASK);
+}
+
+/*
+** ===================================================================
+**     Method      :  BitIoLdd14_SetOutput (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         Sets a pin direction to output (available only if the
+**         direction = _[input/output]_).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+*/
+/* ===================================================================*/
+void BitIoLdd14_SetOutput(LDD_TDeviceData *DeviceDataPtr)
+{
+  (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
+  GPIO_PDD_SetPortOutputDirectionMask(BitIoLdd14_MODULE_BASE_ADDRESS, BitIoLdd14_PORT_MASK);
 }
 
 /*

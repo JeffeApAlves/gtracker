@@ -7,7 +7,7 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
@@ -15,7 +15,7 @@
 **         (if supported by target language and compiler).
 **     Settings    :
 **          Component name                                 : DB41
-**          Pin for I/O                                    : TSI0_CH5/PTA4/I2C1_SDA/TPM0_CH1/NMI_b
+**          Pin for I/O                                    : PTC5/LLWU_P9/SPI0_SCK/LPTMR0_ALT2/CMP0_OUT
 **          Pin signal                                     : LCDDB4
 **          BitIO_LDD                                      : BitIO_LDD
 **          Direction                                      : Input/Output

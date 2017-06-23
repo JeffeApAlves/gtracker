@@ -469,8 +469,8 @@ void prvTaskExitError(void);
   /* handler to catch task exit errors */
 
 #if !configGENERATE_RUN_TIME_STATS_USE_TICKS
-  extern void GT_FRTOS_AppConfigureTimerForRuntimeStats(void);
-  extern uint32_t GT_FRTOS_AppGetRuntimeCounterValueFromISR(void);
+  extern void FRTOS1_AppConfigureTimerForRuntimeStats(void);
+  extern uint32_t FRTOS1_AppGetRuntimeCounterValueFromISR(void);
 #endif
 
 #ifdef __cplusplus

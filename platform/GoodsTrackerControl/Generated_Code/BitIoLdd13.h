@@ -7,7 +7,7 @@
 **     Version     : Component 01.033, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         The HAL BitIO component provides a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -17,20 +17,23 @@
 **         portable to various microprocessors.
 **     Settings    :
 **          Component name                                 : BitIoLdd13
-**          Pin for I/O                                    : ADC0_SE5b/PTD1/SPI0_SCK/TPM0_CH1
-**          Pin signal                                     : BLUE_LED
-**          Direction                                      : Output
+**          Pin for I/O                                    : PTA5/USB_CLKIN/TPM0_CH2
+**          Pin signal                                     : LCDDB5
+**          Direction                                      : Input/Output
 **          Initialization                                 : 
 **            Init. direction                              : Output
 **            Init. value                                  : 0
 **            Auto initialization                          : yes
 **          Safe mode                                      : yes
 **     Contents    :
-**         Init   - LDD_TDeviceData* BitIoLdd13_Init(LDD_TUserData *UserDataPtr);
-**         GetVal - bool BitIoLdd13_GetVal(LDD_TDeviceData *DeviceDataPtr);
-**         ClrVal - void BitIoLdd13_ClrVal(LDD_TDeviceData *DeviceDataPtr);
-**         SetVal - void BitIoLdd13_SetVal(LDD_TDeviceData *DeviceDataPtr);
-**         NegVal - void BitIoLdd13_NegVal(LDD_TDeviceData *DeviceDataPtr);
+**         Init      - LDD_TDeviceData* BitIoLdd13_Init(LDD_TUserData *UserDataPtr);
+**         SetDir    - void BitIoLdd13_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
+**         SetInput  - void BitIoLdd13_SetInput(LDD_TDeviceData *DeviceDataPtr);
+**         SetOutput - void BitIoLdd13_SetOutput(LDD_TDeviceData *DeviceDataPtr);
+**         GetVal    - bool BitIoLdd13_GetVal(LDD_TDeviceData *DeviceDataPtr);
+**         PutVal    - void BitIoLdd13_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
+**         ClrVal    - void BitIoLdd13_ClrVal(LDD_TDeviceData *DeviceDataPtr);
+**         SetVal    - void BitIoLdd13_SetVal(LDD_TDeviceData *DeviceDataPtr);
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -102,22 +105,25 @@ extern "C" {
 
 
 /*! Peripheral base address of a device allocated by the component. This constant can be used directly in PDD macros. */
-#define BitIoLdd13_PRPH_BASE_ADDRESS  0x400FF0C0U
+#define BitIoLdd13_PRPH_BASE_ADDRESS  0x400FF000U
   
 /*! Device data structure pointer used when auto initialization property is enabled. This constant can be passed as a first parameter to all component's methods. */
 #define BitIoLdd13_DeviceData  ((LDD_TDeviceData *)PE_LDD_GetDeviceStructure(PE_LDD_COMPONENT_BitIoLdd13_ID))
 
 /* Methods configuration constants - generated for all enabled component's methods */
 #define BitIoLdd13_Init_METHOD_ENABLED /*!< Init method of the component BitIoLdd13 is enabled (generated) */
+#define BitIoLdd13_SetDir_METHOD_ENABLED /*!< SetDir method of the component BitIoLdd13 is enabled (generated) */
+#define BitIoLdd13_SetInput_METHOD_ENABLED /*!< SetInput method of the component BitIoLdd13 is enabled (generated) */
+#define BitIoLdd13_SetOutput_METHOD_ENABLED /*!< SetOutput method of the component BitIoLdd13 is enabled (generated) */
 #define BitIoLdd13_GetVal_METHOD_ENABLED /*!< GetVal method of the component BitIoLdd13 is enabled (generated) */
+#define BitIoLdd13_PutVal_METHOD_ENABLED /*!< PutVal method of the component BitIoLdd13 is enabled (generated) */
 #define BitIoLdd13_ClrVal_METHOD_ENABLED /*!< ClrVal method of the component BitIoLdd13 is enabled (generated) */
 #define BitIoLdd13_SetVal_METHOD_ENABLED /*!< SetVal method of the component BitIoLdd13 is enabled (generated) */
-#define BitIoLdd13_NegVal_METHOD_ENABLED /*!< NegVal method of the component BitIoLdd13 is enabled (generated) */
 
 /* Definition of implementation constants */
-#define BitIoLdd13_MODULE_BASE_ADDRESS FPTD_BASE_PTR /*!< Name of macro used as the base address */
-#define BitIoLdd13_PORTCONTROL_BASE_ADDRESS PORTD_BASE_PTR /*!< Name of macro used as the base address */
-#define BitIoLdd13_PORT_MASK 0x02U     /*!< Mask of the allocated pin from the port */
+#define BitIoLdd13_MODULE_BASE_ADDRESS FPTA_BASE_PTR /*!< Name of macro used as the base address */
+#define BitIoLdd13_PORTCONTROL_BASE_ADDRESS PORTA_BASE_PTR /*!< Name of macro used as the base address */
+#define BitIoLdd13_PORT_MASK 0x20U     /*!< Mask of the allocated pin from the port */
 
 
 
@@ -147,6 +153,55 @@ LDD_TDeviceData* BitIoLdd13_Init(LDD_TUserData *UserDataPtr);
 
 /*
 ** ===================================================================
+**     Method      :  BitIoLdd13_SetDir (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         Sets a pin direction (available only if the direction =
+**         _[input/output]_).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+**     @param
+**         Dir             - Direction to set. Possible values:
+**                           <false> - Input
+**                           <true> - Output
+*/
+/* ===================================================================*/
+void BitIoLdd13_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
+
+/*
+** ===================================================================
+**     Method      :  BitIoLdd13_SetInput (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         Sets a pin direction to input (available only if the
+**         direction = _[input/output]_).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+*/
+/* ===================================================================*/
+void BitIoLdd13_SetInput(LDD_TDeviceData *DeviceDataPtr);
+
+/*
+** ===================================================================
+**     Method      :  BitIoLdd13_SetOutput (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         Sets a pin direction to output (available only if the
+**         direction = _[input/output]_).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+*/
+/* ===================================================================*/
+void BitIoLdd13_SetOutput(LDD_TDeviceData *DeviceDataPtr);
+
+/*
+** ===================================================================
 **     Method      :  BitIoLdd13_GetVal (component BitIO_LDD)
 */
 /*!
@@ -166,6 +221,32 @@ LDD_TDeviceData* BitIoLdd13_Init(LDD_TUserData *UserDataPtr);
 */
 /* ===================================================================*/
 bool BitIoLdd13_GetVal(LDD_TDeviceData *DeviceDataPtr);
+
+/*
+** ===================================================================
+**     Method      :  BitIoLdd13_PutVal (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         The specified output value is set. If the direction is <b>
+**         input</b>, the component saves the value to a memory or a
+**         register and this value will be written to the pin after
+**         switching to the output mode (using <tt>SetDir(TRUE)</tt>;
+**         see <a href="BitIOProperties.html#SafeMode">Safe mode</a>
+**         property for limitations). If the direction is <b>output</b>,
+**         it writes the value to the pin. (Method is available only if
+**         the direction = <u><tt>output</tt></u> or <u><tt>
+**         input/output</tt></u>).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+**     @param
+**         Val             - Output value. Possible values:
+**                           <false> - logical "0" (Low level)
+**                           <true> - logical "1" (High level)
+*/
+/* ===================================================================*/
+void BitIoLdd13_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
 
 /*
 ** ===================================================================
@@ -198,22 +279,6 @@ void BitIoLdd13_ClrVal(LDD_TDeviceData *DeviceDataPtr);
 */
 /* ===================================================================*/
 void BitIoLdd13_SetVal(LDD_TDeviceData *DeviceDataPtr);
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd13_NegVal (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Negates (inverts) the output value. It is equivalent to the
-**         [PutVal(!GetVal())]. This method is available only if the
-**         direction = _[output]_ or _[input/output]_.
-**     @param
-**         DeviceDataPtr   - Pointer to device data
-**                           structure returned by <Init> method.
-*/
-/* ===================================================================*/
-void BitIoLdd13_NegVal(LDD_TDeviceData *DeviceDataPtr);
 
 /* END BitIoLdd13. */
 

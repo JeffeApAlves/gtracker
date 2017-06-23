@@ -7,7 +7,7 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 22:12, # CodeGen: 14
+**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
@@ -87,7 +87,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* Include inherited beans */
-#include "BitIoLdd14.h"
+#include "BitIoLdd4.h"
 
 #include "Cpu.h"
 
@@ -110,7 +110,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define SDA1_SetDir(Dir) (BitIoLdd14_SetDir(BitIoLdd14_DeviceData, (Dir)))
+#define SDA1_SetDir(Dir) (BitIoLdd4_SetDir(BitIoLdd4_DeviceData, (Dir)))
 
 /*
 ** ===================================================================
@@ -128,7 +128,7 @@ extern "C" {
 
 ** ===================================================================
 */
-#define SDA1_GetVal() (BitIoLdd14_GetVal(BitIoLdd14_DeviceData))
+#define SDA1_GetVal() (BitIoLdd4_GetVal(BitIoLdd4_DeviceData))
 
 /*
 ** ===================================================================
@@ -150,7 +150,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define SDA1_PutVal(Val) (BitIoLdd14_PutVal(BitIoLdd14_DeviceData, (Val)))
+#define SDA1_PutVal(Val) (BitIoLdd4_PutVal(BitIoLdd4_DeviceData, (Val)))
 
 /*
 ** ===================================================================
@@ -168,7 +168,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define SDA1_ClrVal() (BitIoLdd14_ClrVal(BitIoLdd14_DeviceData))
+#define SDA1_ClrVal() (BitIoLdd4_ClrVal(BitIoLdd4_DeviceData))
 
 /*
 ** ===================================================================
@@ -186,7 +186,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define SDA1_SetVal() (BitIoLdd14_SetVal(BitIoLdd14_DeviceData))
+#define SDA1_SetVal() (BitIoLdd4_SetVal(BitIoLdd4_DeviceData))
 
 /* END SDA1. */
 

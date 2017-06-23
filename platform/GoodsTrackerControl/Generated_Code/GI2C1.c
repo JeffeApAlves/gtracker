@@ -5,9 +5,9 @@
 **     Processor   : MKL25Z128VLK4
 **     Component   : GenericI2C
 **     Version     : Component 01.033, Driver 01.00, CPU db: 3.00.000
-**     Repository  : My Components
+**     Repository  : MCUOnEclipse2017-05-06
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 22:12, # CodeGen: 14
+**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
 **     Abstract    :
 **         This component implements a generic I2C driver wrapper to work both with LDD and non-LDD I2C components.
 **     Settings    :
@@ -20,7 +20,7 @@
 **            I2C                                          : I2C1
 **          LDD I2C                                        : Disabled
 **          RTOS                                           : Enabled
-**            RTOS                                         : GT_FRTOS
+**            RTOS                                         : FRTOS1
 **            Semaphore                                    : yes
 **          Init() on startup                              : yes
 **     Contents    :
@@ -101,7 +101,7 @@ void GI2C1_RequestBus(void)
 {
   /*lint -save -e522 function lacks side effect  */
   /*lint -restore */
-  (void)GT_FRTOS_xSemaphoreTakeRecursive(GI2C1_busSem, portMAX_DELAY);
+  (void)FRTOS1_xSemaphoreTakeRecursive(GI2C1_busSem, portMAX_DELAY);
 }
 
 /*
@@ -115,7 +115,7 @@ void GI2C1_RequestBus(void)
 */
 void GI2C1_ReleaseBus(void)
 {
-  (void)GT_FRTOS_xSemaphoreGiveRecursive(GI2C1_busSem);
+  (void)FRTOS1_xSemaphoreGiveRecursive(GI2C1_busSem);
   /*lint -save -e522 function lacks side effect  */
   /*lint -restore */
 }
@@ -369,7 +369,7 @@ void GI2C1_Init(void)
 void GI2C1_Deinit(void)
 {
   vQueueUnregisterQueue(GI2C1_busSem);
-  GT_FRTOS_vSemaphoreDelete(GI2C1_busSem);
+  FRTOS1_vSemaphoreDelete(GI2C1_busSem);
   GI2C1_busSem = NULL;
 }
 

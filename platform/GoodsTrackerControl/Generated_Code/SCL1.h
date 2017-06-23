@@ -7,7 +7,7 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 22:12, # CodeGen: 14
+**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
@@ -87,7 +87,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* Include inherited beans */
-#include "BitIoLdd15.h"
+#include "BitIoLdd5.h"
 
 #include "Cpu.h"
 
@@ -110,7 +110,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define SCL1_SetDir(Dir) (BitIoLdd15_SetDir(BitIoLdd15_DeviceData, (Dir)))
+#define SCL1_SetDir(Dir) (BitIoLdd5_SetDir(BitIoLdd5_DeviceData, (Dir)))
 
 /*
 ** ===================================================================
@@ -128,7 +128,7 @@ extern "C" {
 
 ** ===================================================================
 */
-#define SCL1_GetVal() (BitIoLdd15_GetVal(BitIoLdd15_DeviceData))
+#define SCL1_GetVal() (BitIoLdd5_GetVal(BitIoLdd5_DeviceData))
 
 /*
 ** ===================================================================
@@ -150,7 +150,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define SCL1_PutVal(Val) (BitIoLdd15_PutVal(BitIoLdd15_DeviceData, (Val)))
+#define SCL1_PutVal(Val) (BitIoLdd5_PutVal(BitIoLdd5_DeviceData, (Val)))
 
 /*
 ** ===================================================================
@@ -168,7 +168,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define SCL1_ClrVal() (BitIoLdd15_ClrVal(BitIoLdd15_DeviceData))
+#define SCL1_ClrVal() (BitIoLdd5_ClrVal(BitIoLdd5_DeviceData))
 
 /*
 ** ===================================================================
@@ -186,7 +186,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define SCL1_SetVal() (BitIoLdd15_SetVal(BitIoLdd15_DeviceData))
+#define SCL1_SetVal() (BitIoLdd5_SetVal(BitIoLdd5_DeviceData))
 
 /* END SCL1. */
 

@@ -7,7 +7,7 @@
 **     Version     : Component 03.001, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Contents    :
 **         Configure - byte TSSin_Configure(void);
 **

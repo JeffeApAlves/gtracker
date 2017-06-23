@@ -7,7 +7,7 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
@@ -89,7 +89,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* Include inherited beans */
-#include "BitIoLdd9.h"
+#include "BitIoLdd14.h"
 
 #include "Cpu.h"
 
@@ -112,7 +112,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB61_SetDir(Dir) (BitIoLdd9_SetDir(BitIoLdd9_DeviceData, (Dir)))
+#define DB61_SetDir(Dir) (BitIoLdd14_SetDir(BitIoLdd14_DeviceData, (Dir)))
 
 /*
 ** ===================================================================
@@ -123,7 +123,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB61_SetInput() (BitIoLdd9_SetInput(BitIoLdd9_DeviceData))
+#define DB61_SetInput() (BitIoLdd14_SetInput(BitIoLdd14_DeviceData))
 
 /*
 ** ===================================================================
@@ -134,7 +134,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB61_SetOutput() (BitIoLdd9_SetOutput(BitIoLdd9_DeviceData))
+#define DB61_SetOutput() (BitIoLdd14_SetOutput(BitIoLdd14_DeviceData))
 
 /*
 ** ===================================================================
@@ -152,7 +152,7 @@ extern "C" {
 
 ** ===================================================================
 */
-#define DB61_GetVal() (BitIoLdd9_GetVal(BitIoLdd9_DeviceData))
+#define DB61_GetVal() (BitIoLdd14_GetVal(BitIoLdd14_DeviceData))
 
 /*
 ** ===================================================================
@@ -174,7 +174,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB61_PutVal(Val) (BitIoLdd9_PutVal(BitIoLdd9_DeviceData, (Val)))
+#define DB61_PutVal(Val) (BitIoLdd14_PutVal(BitIoLdd14_DeviceData, (Val)))
 
 /*
 ** ===================================================================
@@ -192,7 +192,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB61_ClrVal() (BitIoLdd9_ClrVal(BitIoLdd9_DeviceData))
+#define DB61_ClrVal() (BitIoLdd14_ClrVal(BitIoLdd14_DeviceData))
 
 /*
 ** ===================================================================
@@ -210,7 +210,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB61_SetVal() (BitIoLdd9_SetVal(BitIoLdd9_DeviceData))
+#define DB61_SetVal() (BitIoLdd14_SetVal(BitIoLdd14_DeviceData))
 
 /* END DB61. */
 

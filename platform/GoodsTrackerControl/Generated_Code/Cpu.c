@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-21, 21:10, # CodeGen: 25
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **
 **     Settings    :
@@ -61,7 +61,9 @@
 **          Initialization priority                        : interrupts enabled
 **          Watchdog disable                               : yes
 **          Internal peripherals                           : 
-**            NMI pin                                      : Disabled
+**            NMI pin                                      : Enabled
+**              NMI Pin                                    : TSI0_CH5/PTA4/I2C1_SDA/TPM0_CH1/NMI_b
+**              NMI Pin signal                             : 
 **            Reset control                                : Enabled
 **              Reset pin                                  : PTA20/RESET_b
 **              Reset pin signal                           : 
@@ -129,7 +131,7 @@
 **                    Protection region 31                 : Unprotected
 **              Peripheral settings                        : 
 **                Reset pin function                       : Enabled
-**                NMI function                             : Disabled
+**                NMI function                             : Enabled
 **                FLASH initialization speed               : Fast
 **                Clock dividers settings                  : Fast clock boot
 **            MCM settings                                 : Disabled
@@ -245,49 +247,49 @@
 /* MODULE Cpu. */
 
 #include "FreeRTOS.h" /* FreeRTOS interface */
-#include "LCDout.h"
-#include "EN1.h"
-#include "BitIoLdd1.h"
-#include "RS1.h"
-#include "BitIoLdd2.h"
-#include "DB41.h"
-#include "BitIoLdd7.h"
-#include "DB51.h"
-#include "BitIoLdd8.h"
-#include "DB61.h"
-#include "BitIoLdd9.h"
-#include "DB71.h"
-#include "BitIoLdd10.h"
-#include "TSSin.h"
-#include "LED_R.h"
-#include "LEDpin1.h"
-#include "BitIoLdd11.h"
+#include "FRTOS1.h"
+#include "UTIL1.h"
+#include "MCUC1.h"
+#include "TSK1.h"
+#include "AS1.h"
+#include "ASerialLdd1.h"
 #include "LED_G.h"
 #include "LEDpin2.h"
-#include "BitIoLdd12.h"
+#include "BitIoLdd2.h"
+#include "LED_R.h"
+#include "LEDpin1.h"
+#include "BitIoLdd1.h"
 #include "LED_B.h"
 #include "LEDpin3.h"
-#include "BitIoLdd13.h"
-#include "WAIT1.h"
-#include "MCUC1.h"
-#include "GT_FRTOS.h"
-#include "UTIL1.h"
-#include "TU1.h"
-#include "GI2C1.h"
-#include "I2C1.h"
-#include "SDA1.h"
-#include "BitIoLdd14.h"
-#include "SCL1.h"
-#include "BitIoLdd15.h"
-#include "CS1.h"
-#include "GT_TSK.h"
-#include "GT_AsyncSerial.h"
-#include "ASerialLdd1.h"
-#include "GT_AD1.h"
+#include "BitIoLdd3.h"
+#include "AD1.h"
 #include "AdcLdd1.h"
-#include "GT_TI1.h"
+#include "TU1.h"
+#include "TI1.h"
 #include "TimerIntLdd1.h"
 #include "MMA1.h"
+#include "GI2C1.h"
+#include "WAIT1.h"
+#include "I2C1.h"
+#include "SDA1.h"
+#include "BitIoLdd4.h"
+#include "SCL1.h"
+#include "BitIoLdd5.h"
+#include "CS1.h"
+#include "LCDout.h"
+#include "EN1.h"
+#include "BitIoLdd6.h"
+#include "RS1.h"
+#include "BitIoLdd7.h"
+#include "DB41.h"
+#include "BitIoLdd12.h"
+#include "DB51.h"
+#include "BitIoLdd13.h"
+#include "DB61.h"
+#include "BitIoLdd14.h"
+#include "DB71.h"
+#include "BitIoLdd15.h"
+#include "TSSin.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -448,6 +450,12 @@ void PE_low_level_init(void)
     PEX_RTOS_INIT();                   /* Initialization of the selected RTOS. Macro is defined by the RTOS component. */
   #endif
       /* Initialization of the SIM module */
+  /* PORTA_PCR4: ISF=0,MUX=7 */
+  PORTA_PCR4 = (uint32_t)((PORTA_PCR4 & (uint32_t)~(uint32_t)(
+                PORT_PCR_ISF_MASK
+               )) | (uint32_t)(
+                PORT_PCR_MUX(0x07)
+               ));
         /* Initialization of the RCM module */
   /* RCM_RPFW: RSTFLTSEL=0 */
   RCM_RPFW &= (uint8_t)~(uint8_t)(RCM_RPFW_RSTFLTSEL(0x1F));
@@ -495,59 +503,59 @@ void PE_low_level_init(void)
   /* SCB_SHPR3: PRI_14=0 */
   SCB_SHPR3 &= (uint32_t)~(uint32_t)(SCB_SHPR3_PRI_14(0xFF));
   /* ### McuLibConfig "MCUC1" init code ... */
-  WAIT1_Init();
-  /* ### BitIO_LDD "BitIoLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd1_Init(NULL);
+  /* ### FreeRTOS "FRTOS1" init code ... */
+  /* PEX_RTOS_INIT() should have been called at this time already with the most critical setup */
+  /* ### FreeRTOS_Tasks "TSK1" init code ... */
+  TSK1_CreateTasks();
+  /* ### Asynchro serial "AS1" init code ... */
+  AS1_Init();
   /* ### BitIO_LDD "BitIoLdd2" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)BitIoLdd2_Init(NULL);
+  /* ### LED "LED_G" init code ... */
+  LED_G_Init(); /* initialize LED driver */
+  /* ### BitIO_LDD "BitIoLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd1_Init(NULL);
+  /* ### LED "LED_R" init code ... */
+  LED_R_Init(); /* initialize LED driver */
+  /* ### BitIO_LDD "BitIoLdd3" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd3_Init(NULL);
+  /* ### LED "LED_B" init code ... */
+  LED_B_Init(); /* initialize LED driver */
+  /* ### ADC "AD1" init code ... */
+  AD1_Init();
+  /* ### TimerInt_LDD "TimerIntLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)TimerIntLdd1_Init(NULL);
+  /* ### TimerInt "TI1" init code ... */
+  WAIT1_Init();
+  /* ### BitIO_LDD "BitIoLdd4" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd4_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd5" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd5_Init(NULL);
+  /* ### GenericSWI2C "I2C1" init code ... */
+  I2C1_Init();
+  /* ### GenericI2C "GI2C1" init code ... */
+  GI2C1_Init();
+  /* ### MMA8451Q "MMA1" init code ... */
+  /* Write code here ... */
+  /* ### CriticalSection "CS1" init code ... */
+  /* ### BitIO_LDD "BitIoLdd6" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd6_Init(NULL);
   /* ### BitIO_LDD "BitIoLdd7" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)BitIoLdd7_Init(NULL);
-  /* ### BitIO_LDD "BitIoLdd8" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd8_Init(NULL);
-  /* ### BitIO_LDD "BitIoLdd9" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd9_Init(NULL);
-  /* ### BitIO_LDD "BitIoLdd10" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd10_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd12" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd12_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd13" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd13_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd14" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd14_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd15" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd15_Init(NULL);
   /* ### LCDHTA "LCDout" init code ... */
   LCDout_Init(); /* initializes the display driver */
   /* ### TSS_Library "TSSin" init code ... */
 
   /* Write code here ... */
 
-  /* ### BitIO_LDD "BitIoLdd11" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd11_Init(NULL);
-  /* ### LED "LED_R" init code ... */
-  LED_R_Init(); /* initialize LED driver */
-  /* ### BitIO_LDD "BitIoLdd12" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd12_Init(NULL);
-  /* ### LED "LED_G" init code ... */
-  LED_G_Init(); /* initialize LED driver */
-  /* ### BitIO_LDD "BitIoLdd13" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd13_Init(NULL);
-  /* ### LED "LED_B" init code ... */
-  LED_B_Init(); /* initialize LED driver */
-  /* ### FreeRTOS "GT_FRTOS" init code ... */
-  /* PEX_RTOS_INIT() should have been called at this time already with the most critical setup */
-  /* ### BitIO_LDD "BitIoLdd14" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd14_Init(NULL);
-  /* ### BitIO_LDD "BitIoLdd15" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd15_Init(NULL);
-  /* ### GenericSWI2C "I2C1" init code ... */
-  I2C1_Init();
-  /* ### GenericI2C "GI2C1" init code ... */
-  GI2C1_Init();
-  /* ### CriticalSection "CS1" init code ... */
-  /* ### FreeRTOS_Tasks "GT_TSK" init code ... */
-  GT_TSK_CreateTasks();
-  /* ### Asynchro serial "GT_AsyncSerial" init code ... */
-  GT_AsyncSerial_Init();
-  /* ### ADC "GT_AD1" init code ... */
-  GT_AD1_Init();
-  /* ### TimerInt_LDD "TimerIntLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)TimerIntLdd1_Init(NULL);
-  /* ### TimerInt "GT_TI1" init code ... */
-  /* ### MMA8451Q "MMA1" init code ... */
-  /* Write code here ... */
 }
   /* Flash configuration field */
   __attribute__ ((section (".cfmconfig"))) const uint8_t _cfm[0x10] = {
@@ -577,8 +585,8 @@ void PE_low_level_init(void)
     0xFFU,
    /* NV_FSEC: KEYEN=1,MEEN=3,FSLACC=3,SEC=2 */
     0x7EU,
-   /* NV_FOPT: ??=1,??=1,FAST_INIT=1,LPBOOT1=1,RESET_PIN_CFG=1,NMI_DIS=0,??=1,LPBOOT0=1 */
-    0xFBU,
+   /* NV_FOPT: ??=1,??=1,FAST_INIT=1,LPBOOT1=1,RESET_PIN_CFG=1,NMI_DIS=1,??=1,LPBOOT0=1 */
+    0xFFU,
     0xFFU,
     0xFFU
   };

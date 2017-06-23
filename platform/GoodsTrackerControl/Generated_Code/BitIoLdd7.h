@@ -7,7 +7,7 @@
 **     Version     : Component 01.033, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         The HAL BitIO component provides a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -17,23 +17,18 @@
 **         portable to various microprocessors.
 **     Settings    :
 **          Component name                                 : BitIoLdd7
-**          Pin for I/O                                    : TSI0_CH5/PTA4/I2C1_SDA/TPM0_CH1/NMI_b
-**          Pin signal                                     : LCDDB4
-**          Direction                                      : Input/Output
+**          Pin for I/O                                    : PTA13/TPM1_CH1
+**          Pin signal                                     : LCDRS
+**          Direction                                      : Output
 **          Initialization                                 : 
 **            Init. direction                              : Output
 **            Init. value                                  : 0
 **            Auto initialization                          : yes
 **          Safe mode                                      : yes
 **     Contents    :
-**         Init      - LDD_TDeviceData* BitIoLdd7_Init(LDD_TUserData *UserDataPtr);
-**         SetDir    - void BitIoLdd7_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
-**         SetInput  - void BitIoLdd7_SetInput(LDD_TDeviceData *DeviceDataPtr);
-**         SetOutput - void BitIoLdd7_SetOutput(LDD_TDeviceData *DeviceDataPtr);
-**         GetVal    - bool BitIoLdd7_GetVal(LDD_TDeviceData *DeviceDataPtr);
-**         PutVal    - void BitIoLdd7_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
-**         ClrVal    - void BitIoLdd7_ClrVal(LDD_TDeviceData *DeviceDataPtr);
-**         SetVal    - void BitIoLdd7_SetVal(LDD_TDeviceData *DeviceDataPtr);
+**         Init   - LDD_TDeviceData* BitIoLdd7_Init(LDD_TUserData *UserDataPtr);
+**         ClrVal - void BitIoLdd7_ClrVal(LDD_TDeviceData *DeviceDataPtr);
+**         SetVal - void BitIoLdd7_SetVal(LDD_TDeviceData *DeviceDataPtr);
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -112,18 +107,13 @@ extern "C" {
 
 /* Methods configuration constants - generated for all enabled component's methods */
 #define BitIoLdd7_Init_METHOD_ENABLED  /*!< Init method of the component BitIoLdd7 is enabled (generated) */
-#define BitIoLdd7_SetDir_METHOD_ENABLED /*!< SetDir method of the component BitIoLdd7 is enabled (generated) */
-#define BitIoLdd7_SetInput_METHOD_ENABLED /*!< SetInput method of the component BitIoLdd7 is enabled (generated) */
-#define BitIoLdd7_SetOutput_METHOD_ENABLED /*!< SetOutput method of the component BitIoLdd7 is enabled (generated) */
-#define BitIoLdd7_GetVal_METHOD_ENABLED /*!< GetVal method of the component BitIoLdd7 is enabled (generated) */
-#define BitIoLdd7_PutVal_METHOD_ENABLED /*!< PutVal method of the component BitIoLdd7 is enabled (generated) */
 #define BitIoLdd7_ClrVal_METHOD_ENABLED /*!< ClrVal method of the component BitIoLdd7 is enabled (generated) */
 #define BitIoLdd7_SetVal_METHOD_ENABLED /*!< SetVal method of the component BitIoLdd7 is enabled (generated) */
 
 /* Definition of implementation constants */
 #define BitIoLdd7_MODULE_BASE_ADDRESS FPTA_BASE_PTR /*!< Name of macro used as the base address */
 #define BitIoLdd7_PORTCONTROL_BASE_ADDRESS PORTA_BASE_PTR /*!< Name of macro used as the base address */
-#define BitIoLdd7_PORT_MASK 0x10U      /*!< Mask of the allocated pin from the port */
+#define BitIoLdd7_PORT_MASK 0x2000U    /*!< Mask of the allocated pin from the port */
 
 
 
@@ -150,103 +140,6 @@ extern "C" {
 */
 /* ===================================================================*/
 LDD_TDeviceData* BitIoLdd7_Init(LDD_TUserData *UserDataPtr);
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd7_SetDir (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Sets a pin direction (available only if the direction =
-**         _[input/output]_).
-**     @param
-**         DeviceDataPtr   - Device data structure
-**                           pointer returned by <Init> method.
-**     @param
-**         Dir             - Direction to set. Possible values:
-**                           <false> - Input
-**                           <true> - Output
-*/
-/* ===================================================================*/
-void BitIoLdd7_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd7_SetInput (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Sets a pin direction to input (available only if the
-**         direction = _[input/output]_).
-**     @param
-**         DeviceDataPtr   - Device data structure
-**                           pointer returned by <Init> method.
-*/
-/* ===================================================================*/
-void BitIoLdd7_SetInput(LDD_TDeviceData *DeviceDataPtr);
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd7_SetOutput (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Sets a pin direction to output (available only if the
-**         direction = _[input/output]_).
-**     @param
-**         DeviceDataPtr   - Device data structure
-**                           pointer returned by <Init> method.
-*/
-/* ===================================================================*/
-void BitIoLdd7_SetOutput(LDD_TDeviceData *DeviceDataPtr);
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd7_GetVal (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Returns the input/output value. If the direction is [input]
-**         then the input value of the pin is read and returned. If the
-**         direction is [output] then the last written value is read
-**         and returned (see <Safe mode> property for limitations).
-**         This method cannot be disabled if direction is [input].
-**     @param
-**         DeviceDataPtr   - Device data structure
-**                           pointer returned by <Init> method.
-**     @return
-**                         - Input or output value. Possible values:
-**                           <false> - logical "0" (Low level)
-**                           <true> - logical "1" (High level)
-*/
-/* ===================================================================*/
-bool BitIoLdd7_GetVal(LDD_TDeviceData *DeviceDataPtr);
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd7_PutVal (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         The specified output value is set. If the direction is <b>
-**         input</b>, the component saves the value to a memory or a
-**         register and this value will be written to the pin after
-**         switching to the output mode (using <tt>SetDir(TRUE)</tt>;
-**         see <a href="BitIOProperties.html#SafeMode">Safe mode</a>
-**         property for limitations). If the direction is <b>output</b>,
-**         it writes the value to the pin. (Method is available only if
-**         the direction = <u><tt>output</tt></u> or <u><tt>
-**         input/output</tt></u>).
-**     @param
-**         DeviceDataPtr   - Device data structure
-**                           pointer returned by <Init> method.
-**     @param
-**         Val             - Output value. Possible values:
-**                           <false> - logical "0" (Low level)
-**                           <true> - logical "1" (High level)
-*/
-/* ===================================================================*/
-void BitIoLdd7_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
 
 /*
 ** ===================================================================

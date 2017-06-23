@@ -7,7 +7,7 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
@@ -15,7 +15,7 @@
 **         (if supported by target language and compiler).
 **     Settings    :
 **          Component name                                 : DB41
-**          Pin for I/O                                    : TSI0_CH5/PTA4/I2C1_SDA/TPM0_CH1/NMI_b
+**          Pin for I/O                                    : PTC5/LLWU_P9/SPI0_SCK/LPTMR0_ALT2/CMP0_OUT
 **          Pin signal                                     : LCDDB4
 **          BitIO_LDD                                      : BitIO_LDD
 **          Direction                                      : Input/Output
@@ -89,7 +89,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* Include inherited beans */
-#include "BitIoLdd7.h"
+#include "BitIoLdd12.h"
 
 #include "Cpu.h"
 
@@ -112,7 +112,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB41_SetDir(Dir) (BitIoLdd7_SetDir(BitIoLdd7_DeviceData, (Dir)))
+#define DB41_SetDir(Dir) (BitIoLdd12_SetDir(BitIoLdd12_DeviceData, (Dir)))
 
 /*
 ** ===================================================================
@@ -123,7 +123,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB41_SetInput() (BitIoLdd7_SetInput(BitIoLdd7_DeviceData))
+#define DB41_SetInput() (BitIoLdd12_SetInput(BitIoLdd12_DeviceData))
 
 /*
 ** ===================================================================
@@ -134,7 +134,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB41_SetOutput() (BitIoLdd7_SetOutput(BitIoLdd7_DeviceData))
+#define DB41_SetOutput() (BitIoLdd12_SetOutput(BitIoLdd12_DeviceData))
 
 /*
 ** ===================================================================
@@ -152,7 +152,7 @@ extern "C" {
 
 ** ===================================================================
 */
-#define DB41_GetVal() (BitIoLdd7_GetVal(BitIoLdd7_DeviceData))
+#define DB41_GetVal() (BitIoLdd12_GetVal(BitIoLdd12_DeviceData))
 
 /*
 ** ===================================================================
@@ -174,7 +174,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB41_PutVal(Val) (BitIoLdd7_PutVal(BitIoLdd7_DeviceData, (Val)))
+#define DB41_PutVal(Val) (BitIoLdd12_PutVal(BitIoLdd12_DeviceData, (Val)))
 
 /*
 ** ===================================================================
@@ -192,7 +192,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB41_ClrVal() (BitIoLdd7_ClrVal(BitIoLdd7_DeviceData))
+#define DB41_ClrVal() (BitIoLdd12_ClrVal(BitIoLdd12_DeviceData))
 
 /*
 ** ===================================================================
@@ -210,7 +210,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB41_SetVal() (BitIoLdd7_SetVal(BitIoLdd7_DeviceData))
+#define DB41_SetVal() (BitIoLdd12_SetVal(BitIoLdd12_DeviceData))
 
 /* END DB41. */
 

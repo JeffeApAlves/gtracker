@@ -7,7 +7,7 @@
 **     Version     : Component 01.018, Driver 01.02, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 18:28, # CodeGen: 12
+**     Date/Time   : 2017-06-22, 22:11, # CodeGen: 0
 **     Abstract    :
 **          This TimerInt component implements a periodic interrupt.
 **          When the component and its events are enabled, the "OnInterrupt"
@@ -93,7 +93,7 @@
 
 /* MODULE TimerIntLdd1. */
 
-#include "GT_TI1.h"
+#include "TI1.h"
 #include "TimerIntLdd1.h"
 #include "FreeRTOS.h" /* FreeRTOS interface */
 

@@ -7,7 +7,7 @@
 **     Version     : Component 01.033, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 22:12, # CodeGen: 14
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         The HAL BitIO component provides a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -17,21 +17,23 @@
 **         portable to various microprocessors.
 **     Settings    :
 **          Component name                                 : BitIoLdd14
-**          Pin for I/O                                    : PTE0/UART1_TX/RTC_CLKOUT/CMP0_OUT/I2C1_SDA
-**          Pin signal                                     : 
+**          Pin for I/O                                    : CMP0_IN2/PTC8/I2C0_SCL/TPM0_CH4
+**          Pin signal                                     : LCDDB6
 **          Direction                                      : Input/Output
 **          Initialization                                 : 
-**            Init. direction                              : Input
-**            Init. value                                  : 1
+**            Init. direction                              : Output
+**            Init. value                                  : 0
 **            Auto initialization                          : yes
 **          Safe mode                                      : yes
 **     Contents    :
-**         Init   - LDD_TDeviceData* BitIoLdd14_Init(LDD_TUserData *UserDataPtr);
-**         SetDir - void BitIoLdd14_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
-**         GetVal - bool BitIoLdd14_GetVal(LDD_TDeviceData *DeviceDataPtr);
-**         PutVal - void BitIoLdd14_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
-**         ClrVal - void BitIoLdd14_ClrVal(LDD_TDeviceData *DeviceDataPtr);
-**         SetVal - void BitIoLdd14_SetVal(LDD_TDeviceData *DeviceDataPtr);
+**         Init      - LDD_TDeviceData* BitIoLdd14_Init(LDD_TUserData *UserDataPtr);
+**         SetDir    - void BitIoLdd14_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
+**         SetInput  - void BitIoLdd14_SetInput(LDD_TDeviceData *DeviceDataPtr);
+**         SetOutput - void BitIoLdd14_SetOutput(LDD_TDeviceData *DeviceDataPtr);
+**         GetVal    - bool BitIoLdd14_GetVal(LDD_TDeviceData *DeviceDataPtr);
+**         PutVal    - void BitIoLdd14_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
+**         ClrVal    - void BitIoLdd14_ClrVal(LDD_TDeviceData *DeviceDataPtr);
+**         SetVal    - void BitIoLdd14_SetVal(LDD_TDeviceData *DeviceDataPtr);
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -103,7 +105,7 @@ extern "C" {
 
 
 /*! Peripheral base address of a device allocated by the component. This constant can be used directly in PDD macros. */
-#define BitIoLdd14_PRPH_BASE_ADDRESS  0x400FF100U
+#define BitIoLdd14_PRPH_BASE_ADDRESS  0x400FF080U
   
 /*! Device data structure pointer used when auto initialization property is enabled. This constant can be passed as a first parameter to all component's methods. */
 #define BitIoLdd14_DeviceData  ((LDD_TDeviceData *)PE_LDD_GetDeviceStructure(PE_LDD_COMPONENT_BitIoLdd14_ID))
@@ -111,15 +113,17 @@ extern "C" {
 /* Methods configuration constants - generated for all enabled component's methods */
 #define BitIoLdd14_Init_METHOD_ENABLED /*!< Init method of the component BitIoLdd14 is enabled (generated) */
 #define BitIoLdd14_SetDir_METHOD_ENABLED /*!< SetDir method of the component BitIoLdd14 is enabled (generated) */
+#define BitIoLdd14_SetInput_METHOD_ENABLED /*!< SetInput method of the component BitIoLdd14 is enabled (generated) */
+#define BitIoLdd14_SetOutput_METHOD_ENABLED /*!< SetOutput method of the component BitIoLdd14 is enabled (generated) */
 #define BitIoLdd14_GetVal_METHOD_ENABLED /*!< GetVal method of the component BitIoLdd14 is enabled (generated) */
 #define BitIoLdd14_PutVal_METHOD_ENABLED /*!< PutVal method of the component BitIoLdd14 is enabled (generated) */
 #define BitIoLdd14_ClrVal_METHOD_ENABLED /*!< ClrVal method of the component BitIoLdd14 is enabled (generated) */
 #define BitIoLdd14_SetVal_METHOD_ENABLED /*!< SetVal method of the component BitIoLdd14 is enabled (generated) */
 
 /* Definition of implementation constants */
-#define BitIoLdd14_MODULE_BASE_ADDRESS FPTE_BASE_PTR /*!< Name of macro used as the base address */
-#define BitIoLdd14_PORTCONTROL_BASE_ADDRESS PORTE_BASE_PTR /*!< Name of macro used as the base address */
-#define BitIoLdd14_PORT_MASK 0x01U     /*!< Mask of the allocated pin from the port */
+#define BitIoLdd14_MODULE_BASE_ADDRESS FPTC_BASE_PTR /*!< Name of macro used as the base address */
+#define BitIoLdd14_PORTCONTROL_BASE_ADDRESS PORTC_BASE_PTR /*!< Name of macro used as the base address */
+#define BitIoLdd14_PORT_MASK 0x0100U   /*!< Mask of the allocated pin from the port */
 
 
 
@@ -165,6 +169,36 @@ LDD_TDeviceData* BitIoLdd14_Init(LDD_TUserData *UserDataPtr);
 */
 /* ===================================================================*/
 void BitIoLdd14_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
+
+/*
+** ===================================================================
+**     Method      :  BitIoLdd14_SetInput (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         Sets a pin direction to input (available only if the
+**         direction = _[input/output]_).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+*/
+/* ===================================================================*/
+void BitIoLdd14_SetInput(LDD_TDeviceData *DeviceDataPtr);
+
+/*
+** ===================================================================
+**     Method      :  BitIoLdd14_SetOutput (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         Sets a pin direction to output (available only if the
+**         direction = _[input/output]_).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+*/
+/* ===================================================================*/
+void BitIoLdd14_SetOutput(LDD_TDeviceData *DeviceDataPtr);
 
 /*
 ** ===================================================================

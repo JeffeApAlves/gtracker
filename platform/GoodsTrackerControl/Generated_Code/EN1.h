@@ -7,7 +7,7 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
@@ -86,7 +86,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* Include inherited beans */
-#include "BitIoLdd1.h"
+#include "BitIoLdd6.h"
 
 #include "Cpu.h"
 
@@ -106,7 +106,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define EN1_ClrVal() (BitIoLdd1_ClrVal(BitIoLdd1_DeviceData))
+#define EN1_ClrVal() (BitIoLdd6_ClrVal(BitIoLdd6_DeviceData))
 
 /*
 ** ===================================================================
@@ -117,7 +117,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define EN1_SetVal() (BitIoLdd1_SetVal(BitIoLdd1_DeviceData))
+#define EN1_SetVal() (BitIoLdd6_SetVal(BitIoLdd6_DeviceData))
 
 /* END EN1. */
 

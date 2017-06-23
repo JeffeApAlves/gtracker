@@ -7,7 +7,7 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
@@ -89,7 +89,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* Include inherited beans */
-#include "BitIoLdd8.h"
+#include "BitIoLdd13.h"
 
 #include "Cpu.h"
 
@@ -112,7 +112,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB51_SetDir(Dir) (BitIoLdd8_SetDir(BitIoLdd8_DeviceData, (Dir)))
+#define DB51_SetDir(Dir) (BitIoLdd13_SetDir(BitIoLdd13_DeviceData, (Dir)))
 
 /*
 ** ===================================================================
@@ -123,7 +123,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB51_SetInput() (BitIoLdd8_SetInput(BitIoLdd8_DeviceData))
+#define DB51_SetInput() (BitIoLdd13_SetInput(BitIoLdd13_DeviceData))
 
 /*
 ** ===================================================================
@@ -134,7 +134,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB51_SetOutput() (BitIoLdd8_SetOutput(BitIoLdd8_DeviceData))
+#define DB51_SetOutput() (BitIoLdd13_SetOutput(BitIoLdd13_DeviceData))
 
 /*
 ** ===================================================================
@@ -152,7 +152,7 @@ extern "C" {
 
 ** ===================================================================
 */
-#define DB51_GetVal() (BitIoLdd8_GetVal(BitIoLdd8_DeviceData))
+#define DB51_GetVal() (BitIoLdd13_GetVal(BitIoLdd13_DeviceData))
 
 /*
 ** ===================================================================
@@ -174,7 +174,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB51_PutVal(Val) (BitIoLdd8_PutVal(BitIoLdd8_DeviceData, (Val)))
+#define DB51_PutVal(Val) (BitIoLdd13_PutVal(BitIoLdd13_DeviceData, (Val)))
 
 /*
 ** ===================================================================
@@ -192,7 +192,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB51_ClrVal() (BitIoLdd8_ClrVal(BitIoLdd8_DeviceData))
+#define DB51_ClrVal() (BitIoLdd13_ClrVal(BitIoLdd13_DeviceData))
 
 /*
 ** ===================================================================
@@ -210,7 +210,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB51_SetVal() (BitIoLdd8_SetVal(BitIoLdd8_DeviceData))
+#define DB51_SetVal() (BitIoLdd13_SetVal(BitIoLdd13_DeviceData))
 
 /* END DB51. */
 

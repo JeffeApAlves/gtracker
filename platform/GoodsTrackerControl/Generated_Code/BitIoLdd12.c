@@ -7,7 +7,7 @@
 **     Version     : Component 01.033, Driver 01.03, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 18:28, # CodeGen: 12
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         The HAL BitIO component provides a low level API for unified
 **         access to general purpose digital input/output pins across
@@ -17,20 +17,23 @@
 **         portable to various microprocessors.
 **     Settings    :
 **          Component name                                 : BitIoLdd12
-**          Pin for I/O                                    : TSI0_CH12/PTB19/TPM2_CH1
-**          Pin signal                                     : GREEN_LED
-**          Direction                                      : Output
+**          Pin for I/O                                    : PTC5/LLWU_P9/SPI0_SCK/LPTMR0_ALT2/CMP0_OUT
+**          Pin signal                                     : LCDDB4
+**          Direction                                      : Input/Output
 **          Initialization                                 : 
 **            Init. direction                              : Output
 **            Init. value                                  : 0
 **            Auto initialization                          : yes
 **          Safe mode                                      : yes
 **     Contents    :
-**         Init   - LDD_TDeviceData* BitIoLdd12_Init(LDD_TUserData *UserDataPtr);
-**         GetVal - bool BitIoLdd12_GetVal(LDD_TDeviceData *DeviceDataPtr);
-**         ClrVal - void BitIoLdd12_ClrVal(LDD_TDeviceData *DeviceDataPtr);
-**         SetVal - void BitIoLdd12_SetVal(LDD_TDeviceData *DeviceDataPtr);
-**         NegVal - void BitIoLdd12_NegVal(LDD_TDeviceData *DeviceDataPtr);
+**         Init      - LDD_TDeviceData* BitIoLdd12_Init(LDD_TUserData *UserDataPtr);
+**         SetDir    - void BitIoLdd12_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir);
+**         SetInput  - void BitIoLdd12_SetInput(LDD_TDeviceData *DeviceDataPtr);
+**         SetOutput - void BitIoLdd12_SetOutput(LDD_TDeviceData *DeviceDataPtr);
+**         GetVal    - bool BitIoLdd12_GetVal(LDD_TDeviceData *DeviceDataPtr);
+**         PutVal    - void BitIoLdd12_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val);
+**         ClrVal    - void BitIoLdd12_ClrVal(LDD_TDeviceData *DeviceDataPtr);
+**         SetVal    - void BitIoLdd12_SetVal(LDD_TDeviceData *DeviceDataPtr);
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -127,23 +130,90 @@ LDD_TDeviceData* BitIoLdd12_Init(LDD_TUserData *UserDataPtr)
   DeviceDataPrv = &DeviceDataPrv__DEFAULT_RTOS_ALLOC;
   DeviceDataPrv->UserDataPtr = UserDataPtr; /* Store the RTOS device structure */
   /* Configure pin as output */
-  /* GPIOB_PDDR: PDD|=0x00080000 */
-  GPIOB_PDDR |= GPIO_PDDR_PDD(0x00080000);
+  /* GPIOC_PDDR: PDD|=0x20 */
+  GPIOC_PDDR |= GPIO_PDDR_PDD(0x20);
   /* Set initialization value */
-  /* GPIOB_PDOR: PDO&=~0x00080000 */
-  GPIOB_PDOR &= (uint32_t)~(uint32_t)(GPIO_PDOR_PDO(0x00080000));
+  /* GPIOC_PDOR: PDO&=~0x20 */
+  GPIOC_PDOR &= (uint32_t)~(uint32_t)(GPIO_PDOR_PDO(0x20));
   /* Initialization of Port Control register */
-  /* PORTB_PCR19: ISF=0,MUX=1 */
-  PORTB_PCR19 = (uint32_t)((PORTB_PCR19 & (uint32_t)~(uint32_t)(
-                 PORT_PCR_ISF_MASK |
-                 PORT_PCR_MUX(0x06)
-                )) | (uint32_t)(
-                 PORT_PCR_MUX(0x01)
-                ));
+  /* PORTC_PCR5: ISF=0,MUX=1 */
+  PORTC_PCR5 = (uint32_t)((PORTC_PCR5 & (uint32_t)~(uint32_t)(
+                PORT_PCR_ISF_MASK |
+                PORT_PCR_MUX(0x06)
+               )) | (uint32_t)(
+                PORT_PCR_MUX(0x01)
+               ));
   /* Registration of the device structure */
   PE_LDD_RegisterDeviceStructure(PE_LDD_COMPONENT_BitIoLdd12_ID,DeviceDataPrv);
   return ((LDD_TDeviceData *)DeviceDataPrv);
 }
+/*
+** ===================================================================
+**     Method      :  BitIoLdd12_SetDir (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         Sets a pin direction (available only if the direction =
+**         _[input/output]_).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+**     @param
+**         Dir             - Direction to set. Possible values:
+**                           <false> - Input
+**                           <true> - Output
+*/
+/* ===================================================================*/
+void BitIoLdd12_SetDir(LDD_TDeviceData *DeviceDataPtr, bool Dir)
+{
+  (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
+  if (Dir) {
+    /* Output */
+    GPIO_PDD_SetPortOutputDirectionMask(BitIoLdd12_MODULE_BASE_ADDRESS, BitIoLdd12_PORT_MASK);
+  } else {
+    /* Input */
+    GPIO_PDD_SetPortInputDirectionMask(BitIoLdd12_MODULE_BASE_ADDRESS, BitIoLdd12_PORT_MASK);
+  }
+}
+
+/*
+** ===================================================================
+**     Method      :  BitIoLdd12_SetInput (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         Sets a pin direction to input (available only if the
+**         direction = _[input/output]_).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+*/
+/* ===================================================================*/
+void BitIoLdd12_SetInput(LDD_TDeviceData *DeviceDataPtr)
+{
+  (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
+  GPIO_PDD_SetPortInputDirectionMask(BitIoLdd12_MODULE_BASE_ADDRESS, BitIoLdd12_PORT_MASK);
+}
+
+/*
+** ===================================================================
+**     Method      :  BitIoLdd12_SetOutput (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         Sets a pin direction to output (available only if the
+**         direction = _[input/output]_).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+*/
+/* ===================================================================*/
+void BitIoLdd12_SetOutput(LDD_TDeviceData *DeviceDataPtr)
+{
+  (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
+  GPIO_PDD_SetPortOutputDirectionMask(BitIoLdd12_MODULE_BASE_ADDRESS, BitIoLdd12_PORT_MASK);
+}
+
 /*
 ** ===================================================================
 **     Method      :  BitIoLdd12_GetVal (component BitIO_LDD)
@@ -169,8 +239,48 @@ bool BitIoLdd12_GetVal(LDD_TDeviceData *DeviceDataPtr)
   uint32_t PortData;                   /* Port data masked according to the bit used */
 
   (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
-  PortData = GPIO_PDD_GetPortDataOutput(BitIoLdd12_MODULE_BASE_ADDRESS) & BitIoLdd12_PORT_MASK;
+  if ((GPIO_PDD_GetPortDirection(BitIoLdd12_MODULE_BASE_ADDRESS) & BitIoLdd12_PORT_MASK) == 0U) {
+    /* Port is configured as input */
+    PortData = GPIO_PDD_GetPortDataInput(BitIoLdd12_MODULE_BASE_ADDRESS) & BitIoLdd12_PORT_MASK;
+  } else {
+    /* Port is configured as output */
+    PortData = GPIO_PDD_GetPortDataOutput(BitIoLdd12_MODULE_BASE_ADDRESS) & BitIoLdd12_PORT_MASK;
+  }
   return (PortData != 0U) ? (bool)TRUE : (bool)FALSE;
+}
+
+/*
+** ===================================================================
+**     Method      :  BitIoLdd12_PutVal (component BitIO_LDD)
+*/
+/*!
+**     @brief
+**         The specified output value is set. If the direction is <b>
+**         input</b>, the component saves the value to a memory or a
+**         register and this value will be written to the pin after
+**         switching to the output mode (using <tt>SetDir(TRUE)</tt>;
+**         see <a href="BitIOProperties.html#SafeMode">Safe mode</a>
+**         property for limitations). If the direction is <b>output</b>,
+**         it writes the value to the pin. (Method is available only if
+**         the direction = <u><tt>output</tt></u> or <u><tt>
+**         input/output</tt></u>).
+**     @param
+**         DeviceDataPtr   - Device data structure
+**                           pointer returned by <Init> method.
+**     @param
+**         Val             - Output value. Possible values:
+**                           <false> - logical "0" (Low level)
+**                           <true> - logical "1" (High level)
+*/
+/* ===================================================================*/
+void BitIoLdd12_PutVal(LDD_TDeviceData *DeviceDataPtr, bool Val)
+{
+  (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
+  if (Val) {
+    GPIO_PDD_SetPortDataOutputMask(BitIoLdd12_MODULE_BASE_ADDRESS, BitIoLdd12_PORT_MASK);
+  } else { /* !Val */
+    GPIO_PDD_ClearPortDataOutputMask(BitIoLdd12_MODULE_BASE_ADDRESS, BitIoLdd12_PORT_MASK);
+  } /* !Val */
 }
 
 /*
@@ -211,26 +321,6 @@ void BitIoLdd12_SetVal(LDD_TDeviceData *DeviceDataPtr)
 {
   (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
   GPIO_PDD_SetPortDataOutputMask(BitIoLdd12_MODULE_BASE_ADDRESS, BitIoLdd12_PORT_MASK);
-}
-
-/*
-** ===================================================================
-**     Method      :  BitIoLdd12_NegVal (component BitIO_LDD)
-*/
-/*!
-**     @brief
-**         Negates (inverts) the output value. It is equivalent to the
-**         [PutVal(!GetVal())]. This method is available only if the
-**         direction = _[output]_ or _[input/output]_.
-**     @param
-**         DeviceDataPtr   - Pointer to device data
-**                           structure returned by <Init> method.
-*/
-/* ===================================================================*/
-void BitIoLdd12_NegVal(LDD_TDeviceData *DeviceDataPtr)
-{
-  (void)DeviceDataPtr;                 /* Parameter is not used, suppress unused argument warning */
-  GPIO_PDD_TogglePortDataOutputMask(BitIoLdd12_MODULE_BASE_ADDRESS, BitIoLdd12_PORT_MASK);
 }
 
 /* END BitIoLdd12. */

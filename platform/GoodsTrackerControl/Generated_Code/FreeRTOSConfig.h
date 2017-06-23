@@ -71,7 +71,7 @@
 #define FREERTOS_CONFIG_H
 
 #include "MCUC1.h" /* SDK and API used */
-#include "GT_FRTOSconfig.h" /* extra configuration settings not part of the original FreeRTOS ports */
+#include "FRTOS1config.h" /* extra configuration settings not part of the original FreeRTOS ports */
 
 #define configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H 0 /* 1: include additional header file at the end of task.c to help with debugging in GDB in combination with configUSE_TRACE_FACILITY; 0: no extra file included. */
 /*-----------------------------------------------------------
@@ -92,9 +92,9 @@
     #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()   /* nothing */ /* default: use Tick counter as runtime counter */
     #define portGET_RUN_TIME_COUNTER_VALUE()           xTaskGetTickCountFromISR() /* default: use Tick counter as runtime counter */
   #else /* use dedicated timer */
-    extern uint32_t GT_FRTOS_AppGetRuntimeCounterValueFromISR(void);
-    #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()   GT_FRTOS_AppConfigureTimerForRuntimeStats()
-    #define portGET_RUN_TIME_COUNTER_VALUE()           GT_FRTOS_AppGetRuntimeCounterValueFromISR()
+    extern uint32_t FRTOS1_AppGetRuntimeCounterValueFromISR(void);
+    #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()   FRTOS1_AppConfigureTimerForRuntimeStats()
+    #define portGET_RUN_TIME_COUNTER_VALUE()           FRTOS1_AppGetRuntimeCounterValueFromISR()
   #endif
 #else /* no runtime stats, use empty macros */
   #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()     /* nothing */
@@ -103,11 +103,11 @@
 #define configUSE_PREEMPTION                      1 /* 1: pre-emptive mode; 0: cooperative mode */
 #define configUSE_TIME_SLICING                    1 /* 1: use time slicing; 0: don't time slice at tick interrupt time */
 #define configUSE_IDLE_HOOK                       1 /* 1: use Idle hook; 0: no Idle hook */
-#define configUSE_IDLE_HOOK_NAME                  GT_FRTOS_vApplicationIdleHook
+#define configUSE_IDLE_HOOK_NAME                  FRTOS1_vApplicationIdleHook
 #define configUSE_TICK_HOOK                       1 /* 1: use Tick hook; 0: no Tick hook */
-#define configUSE_TICK_HOOK_NAME                  GT_FRTOS_vApplicationTickHook
+#define configUSE_TICK_HOOK_NAME                  FRTOS1_vApplicationTickHook
 #define configUSE_MALLOC_FAILED_HOOK              1 /* 1: use MallocFailed hook; 0: no MallocFailed hook */
-#define configUSE_MALLOC_FAILED_HOOK_NAME         GT_FRTOS_vApplicationMallocFailedHook
+#define configUSE_MALLOC_FAILED_HOOK_NAME         FRTOS1_vApplicationMallocFailedHook
 #define configTICK_RATE_HZ                        (100) /* frequency of tick interrupt */
 #define configSYSTICK_USE_LOW_POWER_TIMER         0 /* If using Kinetis Low Power Timer (LPTMR) instead of SysTick timer */
 #define configSYSTICK_LOW_POWER_TIMER_CLOCK_HZ    1 /* 1 kHz LPO timer. Set to 1 if not used */
@@ -152,7 +152,7 @@
 #define configUSE_CO_ROUTINES                     0
 #define configUSE_MUTEXES                         1
 #define configCHECK_FOR_STACK_OVERFLOW            1 /* 0 is disabling stack overflow. Set it to 1 for Method1 or 2 for Method2 */
-#define configCHECK_FOR_STACK_OVERFLOW_NAME       GT_FRTOS_vApplicationStackOverflowHook
+#define configCHECK_FOR_STACK_OVERFLOW_NAME       FRTOS1_vApplicationStackOverflowHook
 #define configUSE_RECURSIVE_MUTEXES               1
 #define configQUEUE_REGISTRY_SIZE                 5
 #define configUSE_QUEUE_SETS                      0

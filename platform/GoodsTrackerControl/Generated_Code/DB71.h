@@ -7,7 +7,7 @@
 **     Version     : Component 02.086, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-20, 14:21, # CodeGen: 1
+**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
 **     Abstract    :
 **         This component "BitIO" implements an one-bit input/output.
 **         It uses one bit/pin of a port.
@@ -89,7 +89,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* Include inherited beans */
-#include "BitIoLdd10.h"
+#include "BitIoLdd15.h"
 
 #include "Cpu.h"
 
@@ -112,7 +112,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB71_SetDir(Dir) (BitIoLdd10_SetDir(BitIoLdd10_DeviceData, (Dir)))
+#define DB71_SetDir(Dir) (BitIoLdd15_SetDir(BitIoLdd15_DeviceData, (Dir)))
 
 /*
 ** ===================================================================
@@ -123,7 +123,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB71_SetInput() (BitIoLdd10_SetInput(BitIoLdd10_DeviceData))
+#define DB71_SetInput() (BitIoLdd15_SetInput(BitIoLdd15_DeviceData))
 
 /*
 ** ===================================================================
@@ -134,7 +134,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB71_SetOutput() (BitIoLdd10_SetOutput(BitIoLdd10_DeviceData))
+#define DB71_SetOutput() (BitIoLdd15_SetOutput(BitIoLdd15_DeviceData))
 
 /*
 ** ===================================================================
@@ -152,7 +152,7 @@ extern "C" {
 
 ** ===================================================================
 */
-#define DB71_GetVal() (BitIoLdd10_GetVal(BitIoLdd10_DeviceData))
+#define DB71_GetVal() (BitIoLdd15_GetVal(BitIoLdd15_DeviceData))
 
 /*
 ** ===================================================================
@@ -174,7 +174,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB71_PutVal(Val) (BitIoLdd10_PutVal(BitIoLdd10_DeviceData, (Val)))
+#define DB71_PutVal(Val) (BitIoLdd15_PutVal(BitIoLdd15_DeviceData, (Val)))
 
 /*
 ** ===================================================================
@@ -192,7 +192,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB71_ClrVal() (BitIoLdd10_ClrVal(BitIoLdd10_DeviceData))
+#define DB71_ClrVal() (BitIoLdd15_ClrVal(BitIoLdd15_DeviceData))
 
 /*
 ** ===================================================================
@@ -210,7 +210,7 @@ extern "C" {
 **     Returns     : Nothing
 ** ===================================================================
 */
-#define DB71_SetVal() (BitIoLdd10_SetVal(BitIoLdd10_DeviceData))
+#define DB71_SetVal() (BitIoLdd15_SetVal(BitIoLdd15_DeviceData))
 
 /* END DB71. */
 

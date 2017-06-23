@@ -9,109 +9,85 @@
 #include <assert.h>
 #include "utils.h"
 
-void str_split(List* result,char* str, const char a_delim){
+void str_split(List* result, char* str, const char a_delim) {
 
-    char delim[2];
-    delim[0]			= a_delim;
-    delim[1]			= 0;
+	typedef struct {
+	    const unsigned char *data;
+	    size_t len;
+	} buffer_t;
+
+	/* Use strpbrk() for multiple delimiters. */
+	buffer_t
+	memtok(const void *s, size_t length, const char *delim, buffer_t *save_ptr)
+	{
+	    const unsigned char *stream,
+	                        *token;
+	    size_t len = 0;
+
+	    if (NULL == s) {
+	        stream = save_ptr->data;
+	    } else {
+	        stream = s;
+	        save_ptr->len = length;
+	    }
+
+	    token = stream;
+
+	    /* Advance until either a token is found or the stream exhausted. */
+	    while (save_ptr->len--) {
+	        if (memchr(delim, *stream, strlen(delim))) {
+	            /* Point save_ptr past the (non-existent) token. */
+	            save_ptr->data = stream + 1;
+	            return (buffer_t) { .data = token, .len = len };
+	        }
+
+	        ++len;
+	        ++stream;
+	    }
+
+	    /* State : done. */
+	    *save_ptr = (buffer_t) { .data = NULL, .len = 0 };
+
+	    /* Stream exhausted but no delimiters terminate it. */
+	    return (buffer_t){ .data = token, .len = len };
+	}
 
     char*	tmp			= str;
-    char*	sptr		= str;
-    result->size		= 0;
-    char*	last_comma	= NULL;
-    result->itens		= NULL;
-    char*	token		= NULL;
+    size_t sz = 0;
+	while (*tmp){
 
-    if(str!=NULL){
-
-		while (*tmp){
-
-			if (a_delim == *tmp){
-
-				result->size++;
-	            last_comma = tmp;
-			}
-
-			tmp++;
+		if (a_delim == *tmp){
+			sz++;
 		}
 
-		result->size += last_comma < (str + strlen(str) - 1);
-
-		if(result->size>0){
-
-			result->itens = _malloc(sizeof(char*) * result->size);
-
-			if (result->itens) {
-
-				size_t idx = 0;
-
-				*(result->itens + idx) = NULL;
-
-				Itens itens;
-
-				int n = replace(str,delim[0], '\0',itens);
-
-				int i=0;
-
-				for(i;i<n;i++){
-
-					tmp = _malloc((strlen(itens[i]) + 1)*sizeof(char));
-
-					memset(tmp,0,strlen(itens[i]) + 1);
-
-					strcpy(tmp, itens[i]);
-
-					*(result->itens + idx++) = tmp;
-				}
-/*
-				while ((token = strtok_r(sptr, delim, &sptr)) != NULL) {
-
-					assert(idx < result->size);
-
-					tmp = _malloc((strlen(token) + 1)*sizeof(char));
-
-					memset(tmp,0,strlen(token) + 1);
-
-					strcpy(tmp, token);
-
-					*(result->itens + idx++) = tmp;
-				}*/
-			}
-		}
-    }
-}
-//------------------------------------------------------------------------
-
-int replace(char* str,char c_old, char c_new,Itens itens){
-
-	int n = 0;
-	int i =0;
-	size_t s = strlen(str)+1;
-
-	while(str[i]!='\0'){
-
-		if(str[i]==c_old){
-			str[i] = c_new;
-			n++;
-		}
-		i++;
+		tmp++;
 	}
 
-	itens = _malloc(sizeof(char*) * (n++));
+	result->size = sz + 1;
 
-	itens[0] = str;
+	result->itens = _malloc(sizeof(char *) * result->size);
 
-	int j =1;
+	char delim[2];
+	delim[0]			= a_delim;
+	delim[1]			= 0;
 
-	for(i=1;i<s;i++){
+	unsigned int len = strlen(str);
+	buffer_t token, state;
 
-		if(str[i]=='\0'){
+	token = memtok(str, len, delim, &state);
 
-			itens[j++] = (str+i+1);
-		}
+    unsigned short idx = 0;
+	while (token.data != NULL) {
+	       char *tmp = _malloc(sizeof(char) * (token.len + 1));
+
+	       memcpy(tmp, token.data, token.len);
+	       tmp[token.len] = '\0';
+
+	       result->itens[idx] = tmp;
+	       idx++;
+
+	       token = memtok(NULL, 0, delim, &state);
 	}
-
-	return n;
 }
 //------------------------------------------------------------------------
 

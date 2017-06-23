@@ -5,7 +5,7 @@
  *      Author: Jefferson
  */
 
-#include "CPU.h"
+#include "Cpu.h"
 #include "RingBuffer.h"
 
 bool putData(RingBuffer* buffer,char ch){
@@ -84,7 +84,7 @@ void initBuffer(RingBuffer* buffer){
 		buffer->count			= 0;
 
 		char i;
-		for(i =0;i<BUFFER_SIZE	;i++){
+		for(i = 0; i < BUFFER_SIZE; i++){
 
 			buffer->data[i]=0;
 		}
