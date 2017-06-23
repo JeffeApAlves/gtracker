@@ -20,17 +20,23 @@ namespace GoodsTracker
 
         public void requestBehavior(onAnswerCmd on_ans)
         {
-            sendCMD(2,Operation.RD,RESOURCE.TELEMETRIA).EventAnswerCmd = on_ans;
+            Cmd cmd = sendCMD(2, Operation.RD, RESOURCE.TELEMETRIA);
+
+            cmd.EventAnswerCmd = on_ans;
         }
 
         public void lockVehicle(onAnswerCmd on_ans)
         {
-            sendCMD(2, Operation.WR, RESOURCE.LOCK).EventAnswerCmd = on_ans;
+            Cmd cmd = sendCMD(2, Operation.WR, RESOURCE.LOCK);
+
+            cmd.EventAnswerCmd = on_ans;
         }
 
         public void unLockVehicle(onAnswerCmd on_ans)
         {
-            sendCMD(2, Operation.WR, RESOURCE.LOCK).EventAnswerCmd = on_ans;
+            Cmd cmd = sendCMD(2, Operation.WR, RESOURCE.LOCK);
+
+            cmd.EventAnswerCmd = on_ans;
         }
 
         /*
@@ -40,11 +46,11 @@ namespace GoodsTracker
          */
         protected override void onReceiveAnswer(AnsCmd ans)
         {
-            if(ans.Resource.Equals(RESOURCE.TELEMETRIA))
+            if(ans.Header.Resource.Equals(RESOURCE.TELEMETRIA))
             {
                 updateDataTelemetria(ans);
             }
-            else if(ans.Resource.Equals(RESOURCE.LOCK)){
+            else if(ans.Header.Resource.Equals(RESOURCE.LOCK)){
                 // Nao fazer nada pq o status da trava esta na telemetria
             }
         }

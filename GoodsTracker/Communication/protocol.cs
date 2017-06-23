@@ -72,13 +72,12 @@ namespace GoodsTracker
         {
             if (CommunicationUnit.isAnyCmd())
             {
-                IDecoderFrameTx decoder     = new DecoderFrame();
-                CommunicationFrame frame    = new CommunicationFrame();
+                CommunicationFrame frame = new CommunicationFrame();
 
-                if(decoder.setHeader(ref frame, currentUnit.getNextCmd()))
-                {
-                    sendFrame(frame);
-                }            
+                frame.Header    = currentUnit.getNextCmd().Header;
+                frame.PayLoad   = new PayLoad();
+
+                sendFrame(frame);
             }
         }
 
@@ -130,7 +129,7 @@ namespace GoodsTracker
                 }
                 else
                 {
-                    rxFrame.Append(ch);
+                    rxFrame.putByte(ch);
 
                     setStatusRx(StatusRx.RX_FRAME_RX_PAYLOAD);
                 }
@@ -173,7 +172,7 @@ namespace GoodsTracker
 
         void verifyCheckSum()
         {
-            IDecoderFrameRx decoder = new DecoderFrame();
+            IDecoderFrame decoder = new DecoderFrame();
             AnsCmd ans;
 
             if (decoder.getValues(out ans, rxFrame))
@@ -190,7 +189,7 @@ namespace GoodsTracker
 
         void acceptRxFrame()
         {
-            IDecoderFrameRx decoder     = new DecoderFrame();
+            IDecoderFrame decoder     = new DecoderFrame();
             AnsCmd          ans;
 
             if (decoder.getValues(out ans, rxFrame))
@@ -245,7 +244,7 @@ namespace GoodsTracker
         {
             if (frame != null)
             {
-                Serial.putRxData(frame.strOfFrame());
+                Serial.putRxData(frame.str());
                 Serial.putRxData(CONST_CHAR.CR);
                 Serial.putRxData(CONST_CHAR.LF);
             }

@@ -2,38 +2,26 @@
 {
     internal class AnsCmd
     {
-        int dest;
-        int address;
-        Operation operation;
-        string resource;
-
-        int size;
+        Header header;
 
         TelemetriaData info;
 
-        public string Resource { get => resource; set => resource = value; }
-        public int Dest { get => dest; set => dest = value; }
-        public int Size { get => size; set => size = value; }
         internal TelemetriaData Info { get => info; set => info = value; }
-        public int Address { get => address; set => address = value; }
-        public Operation Operation { get => operation; set => operation = value; }
-
+        internal Header Header { get => header; set => header = value; }
 
         internal AnsCmd()
         {
-            resource    = "";
-            operation   = Operation.NN;
-            size        = 0;
-            info        = new TelemetriaData();
+            header  = new Header();
+            info    = null;
         }
 
         internal AnsCmd(string r,Operation o)
         {
-            resource = r;
-            operation = o;
-            size = 0;
-            info = new TelemetriaData();
-        }
+            header = new Header();
 
+            header.Resource = r;
+            header.Operation = o;
+            info = null;
+        }
     }
 }

@@ -381,7 +381,7 @@ namespace GoodsTracker
 
                     GMarkerGoogleType color;
 
-                    if (b.IsInsideOfFence() || b.InsideOfRoute)
+                    if (b.IsInsideOfFence())
                     {
                         color = GMarkerGoogleType.brown_small;
                     }

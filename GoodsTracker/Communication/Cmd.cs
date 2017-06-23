@@ -17,21 +17,17 @@ namespace GoodsTracker
     {
         onAnswerCmd onAnswerCmd;
 
-        int         dest;
-        int         address;
-        Operation   operation;
-        string      resource;
-    
-        public int Address { get => address; set => address = value; }
-        public Operation Operation { get => operation; set => operation = value; }
-        public int Dest { get => dest; set => dest = value; }
+        Header header;
+        
         public onAnswerCmd EventAnswerCmd { get => onAnswerCmd; set => onAnswerCmd = value; }
-        public string Resource { get => resource; set => resource = value; }
+        internal Header Header { get => header; set => header = value; }
 
         internal Cmd(string r,Operation o)
         {
-            resource    = r;
-            operation   = o;
+            header = new Header();
+
+            header.Resource = r;
+            header.Operation = o;
         }
     }
 }

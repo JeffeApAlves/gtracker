@@ -76,8 +76,6 @@ namespace GoodsTracker
     {
         Dictionary<int,bool>    insideOfFence;
 
-        bool        insideOfRoute;
-
         double      latitude, longitude;
         Value       speed;
         Value       level;
@@ -95,7 +93,6 @@ namespace GoodsTracker
         public Value Level { get => level; set => level = value; }
         public Dictionary<int, bool> InsideOfFence { get => insideOfFence; set => insideOfFence = value; }
         public bool StatusLock { get => statusLock; set => statusLock = value; }
-        public bool InsideOfRoute { get => insideOfRoute; set => insideOfRoute = value; }
 
         public TelemetriaData()
         {
@@ -106,7 +103,6 @@ namespace GoodsTracker
             level       = new Value(500,1500);
 
             insideOfFence = new Dictionary<int, bool>();
-            insideOfRoute = false;
         }
 
         public bool OK()

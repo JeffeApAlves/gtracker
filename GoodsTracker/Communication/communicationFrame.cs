@@ -33,14 +33,9 @@ namespace GoodsTracker
      * Somatoria
      */
 
-    interface IDecoderFrameTx
+    interface IDecoderFrame
     {
-        bool setHeader(ref CommunicationFrame frame,Cmd cmd);
-        bool setPayLoad(ref CommunicationFrame frame, TelemetriaData b);
-    }
-
-    interface IDecoderFrameRx
-    {
+        bool setValues(out PayLoad payload, TelemetriaData b);
         bool getValues(out AnsCmd ans, CommunicationFrame frame);
     }
 
@@ -49,14 +44,143 @@ namespace GoodsTracker
         NN,RD, WR, AN
     }
 
-    internal class CommunicationFrame
+    internal class Header
+    {
+        public const int SIZE = 22;             // 5+5+2+3+3 + 4 separadores
+
+        string data;
+        int dest;
+        int address;
+        Operation operation;
+        string resource;
+        int sizePayLoad;
+
+        public int Dest { get => dest; set => dest = value; }
+        public int Address { get => address; set => address = value; }
+        public Operation Operation { get => operation; set => operation = value; }
+        public string Resource { get => resource; set => resource = value; }
+        public int SizePayLoad { get => sizePayLoad; set => sizePayLoad = value; }
+        public string Data { get => data; set => data = value; }
+
+        internal Header()
+        {
+            address = 0;
+            dest = 0;
+            resource = "";
+            operation = Operation.NN;
+            sizePayLoad = 0;
+        }
+
+        internal string str()
+        {
+            data = "";
+
+            DecoderFrame.setHeader(this);
+
+            return data;
+        }
+
+        internal void Clear()
+        {
+            data = "";
+        }
+
+        internal void Append(char b)
+        {
+            data += b;
+        }
+
+        internal void Append(string b)
+        {
+            data += b;
+        }
+
+        internal void Append(double b)
+        {
+            data += b.ToString("G");
+        }
+
+        internal void setData(CommunicationFrame frame)
+        {
+            string value = frame.Data;
+
+            if (value.Length > Header.SIZE)
+            {
+                data = value.Substring(0, Header.SIZE);
+            }
+            else
+            {
+                data = value;
+            }
+        }
+    }
+
+    internal class PayLoad
     {
         public const int LEN_MAX_PAYLOAD = 256;
-        protected string payLoad;
-        protected string header;
-        protected string frame;
 
-        public string Header
+        private string data;
+
+        internal string Data { get => data; set => data = value; }
+
+        internal void Append(char b)
+        {
+            data += b;
+        }
+
+        internal void Append(string b)
+        {
+            data += b;
+        }
+
+        internal void Append(double b)
+        {
+            data += b.ToString("G");
+        }
+
+        internal int Length()
+        {
+            return data.Length;
+        }
+
+        internal bool IsFull()
+        {
+            return Length() >= LEN_MAX_PAYLOAD;
+        }
+
+        internal bool IsEmpty()
+        {
+            return Length() <= 0;
+        }
+
+        internal string str()
+        {
+            return data;
+        }
+
+        internal void Clear()
+        {
+            data = "";
+        }
+
+        internal void setData(CommunicationFrame frame)
+        {
+            string value = frame.Data;
+
+            if (value.Length > (Header.SIZE + 1))
+            {
+                data = value.Substring((Header.SIZE + 1), value.Length - (Header.SIZE + 1));
+            }
+        }
+    }
+
+    internal class CommunicationFrame
+    {
+        protected Header    header;
+        protected PayLoad   payLoad;
+        protected string    data;
+
+        public Header Header
         {
             get
             {
@@ -66,11 +190,11 @@ namespace GoodsTracker
             set
             {
                 header = value;
-                frame = header +":"+ payLoad;
+                data = header.str() +":"+ payLoad.str();
             }
         }
 
-        public string PayLoad
+        public PayLoad PayLoad
         {
             get
             {
@@ -80,102 +204,45 @@ namespace GoodsTracker
             set
             {
                 payLoad = value;
-                frame = header + ":"+ payLoad;
+                data = header.str() + ":"+ payLoad.str();
             }
         }
 
-        public string Frame
+        public string Data
         {
             get
             {
-                return frame;
+                return data;
             }
 
             set
             {
-                frame   = value;
-
-                if (value.Length >= 22)
-                {
-                    header = frame.Substring(0, 22);
-                }
-                else
-                {
-                    header = frame;
-                }
-
-                if (value.Length > 23)
-                {
-                    payLoad = frame.Substring(23, frame.Length - 23);
-                }
+                data   = value;
+                header.setData(this);
+                payLoad.setData(this);
             }
         }
 
         internal CommunicationFrame()
         {
-            clear();
+            header  = new Header();
+            payLoad = new PayLoad();
+            data   = "";
         }
 
-        internal byte getByteOfFrame(int i)
+        internal byte getByte(int i)
         {
-            return (byte)frame[i];
+            return (byte)data[i];
         }
 
-        internal void Append(char b)
+        internal void putByte(char b)
         {
-            Frame += b;
-        }
-
-        internal void Append(string b)
-        {
-            Frame += b;
-        }
-
-        internal void Append(double b)
-        {
-            Frame += b.ToString("G");
-        }
-
-        internal void AppendPayLoad(char b)
-        {
-            PayLoad += b;
-        }
-
-        internal void AppendPayLoad(string b)
-        {
-            PayLoad += b;
-        }
-
-        internal void AppendPayLoad(double b)
-        {
-            PayLoad += b.ToString("G");
-        }
-
-        internal void clear()
-        {
-            header  = "";
-            payLoad = "";
-            frame   = "";
-        }
-
-        internal int getSizeOfPayLoad()
-        {
-            return payLoad.Length;
+            Data += b;
         }
 
         internal int getSizeOfFrame()
         {
-            return frame.Length;
-        }
-
-        internal bool isPayLoadFull()
-        {
-            return getSizeOfPayLoad() >= LEN_MAX_PAYLOAD;
-        }
-
-        internal bool isPayLoadEmpty()
-        {
-            return getSizeOfPayLoad() <= 0;
+            return data.Length;
         }
 
         internal bool isFrameEmpty()
@@ -187,7 +254,7 @@ namespace GoodsTracker
         {
             byte checkSum = 0;
 
-            byte[] datas = Encoding.ASCII.GetBytes(frame);
+            byte[] datas = Encoding.ASCII.GetBytes(data);
 
             for (int i = 0; i < datas.Length; i++)
             {
@@ -197,10 +264,10 @@ namespace GoodsTracker
             return checkSum;
         }
 
-        internal string strOfFrame()
+        internal string str()
         {
             return  CONST_CHAR.RX_FRAME_START +
-                    frame +
+                    data +
                     CONST_CHAR.SEPARATOR +
                     checkSum().ToString("D3") +
                     CONST_CHAR.RX_FRAME_END;
@@ -208,7 +275,7 @@ namespace GoodsTracker
 
         internal char[] ToCharArray()
         {
-            return  strOfFrame().ToCharArray();
+            return  str().ToCharArray();
         }
     }
 }

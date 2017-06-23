@@ -56,8 +56,8 @@ namespace GoodsTracker
         {
             AnsCmd ans = new AnsCmd(RESOURCE.TELEMETRIA,Operation.AN);
 
-            ans.Address = 2;
-            ans.Dest    = 1;
+            ans.Header.Address = 2;
+            ans.Header.Dest    = 1;
 
             return ans;
         }
@@ -68,11 +68,14 @@ namespace GoodsTracker
 
             if (b != null)
             {
+                PayLoad payload;
+
                 frame = new CommunicationFrame();
                 DecoderFrame decoder = new DecoderFrame();
+                decoder.setValues(out payload, b);
 
-                decoder.setHeader(ref frame, cmd);
-                decoder.setPayLoad(ref frame, b);
+                frame.Header    = cmd.Header;
+                frame.PayLoad   = payload;
             }
 
             return frame;

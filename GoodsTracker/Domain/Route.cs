@@ -11,7 +11,6 @@ namespace GoodsTracker
 
         GDirections         direction;
         GMapRoute           mapRoute;
-        GMapPolygon         polygon;
 
         List<PointLatLng>   points;
         string              name;
@@ -57,8 +56,6 @@ namespace GoodsTracker
                 mapRoute = new GMapRoute(direction.Route, name);
             }
 
-            polygon = new GMapPolygon(mapRoute.Points, "fence of route:"+name);
-
             return direction != null;
         }
 
@@ -92,7 +89,6 @@ namespace GoodsTracker
         {
             if (b != null)
             {
-                IsInRoute(b);
                 behaviors.Add(b);
             }
         }
@@ -105,18 +101,6 @@ namespace GoodsTracker
         internal string StartAddress()
         {
             return direction.StartAddress;
-        }
-
-        internal bool IsInRoute(TelemetriaData telemetria)
-        {
-            bool ret = false;
-
-            if (polygon != null)
-            {
-                telemetria.InsideOfRoute = polygon.IsInside(new PointLatLng(telemetria.Latitude, telemetria.Longitude));
-            }
-
-            return ret;
         }
     }
 }

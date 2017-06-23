@@ -57,8 +57,8 @@ namespace GoodsTracker
         internal Cmd sendCMD(int dest, Operation o,string resource)
         {
             Cmd c       = new Cmd(resource,o);
-            c.Dest      = dest;
-            c.Address   = address;
+            c.Header.Dest      = dest;
+            c.Header.Address   = address;
 
             queueCmd.Add(c);
 
@@ -92,7 +92,7 @@ namespace GoodsTracker
 
                     foreach (AnsCmd ans in array_ans)
                     {
-                        if ((ans.Resource == cmd.Resource) && (ans.Dest==cmd.Address))
+                        if ((ans.Header.Resource == cmd.Header.Resource) && (ans.Header.Dest ==cmd.Header.Address))
                         {
                             try
                             {
