@@ -226,7 +226,7 @@ namespace GoodsTracker
 
         internal void init()
         {
-            setTime(50);
+            setTime(5);
 
             Serial.Open();
         }

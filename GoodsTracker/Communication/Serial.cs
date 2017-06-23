@@ -5,7 +5,7 @@ namespace GoodsTracker
     class Serial
     {
         static SerialPort port=null;
-        static RingBuffer bufferRx=new RingBuffer(1024);
+        static RingBuffer bufferRx=new RingBuffer(4096);
 //        static RingBuffer bufferTx=new RingBuffer(1024);
 
 
@@ -88,6 +88,5 @@ namespace GoodsTracker
                 putRxData((char)buffer[i]);
             }
         }
-
     }
 }
