@@ -87,7 +87,7 @@ typedef struct{
 	unsigned char	checksum_calc;
 	unsigned char	checksum_rx;
 
-	char	operacao[2];
+	char	operacao[2 + 1];
 	char	resource[LEN_RESOURCE + 1];
 
 	int		address;
@@ -149,8 +149,9 @@ bool putRxData(char ch);
 bool getTxData(char* ch);
 bool hasTxData(void);
 void startTX(void);
-void setPayLoad(DataFrame* frame,char* str);
+void setPayLoad(DataFrame* frame, char* str);
 void buildHeader(DataFrame *frame);
+void buildPayload(DataFrame *frame);
 
 extern unsigned int timeTx,timeRx;
 

@@ -60,8 +60,23 @@ ResultExec onPWM(DataFrame* frame){
 //------------------------------------------------------------------------
 
 ResultExec onTelemetry(DataFrame* frame){
+	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	return CMD_RESULT_EXEC_SUCCESS;
+	if (frame) {
+		buildHeader(frame);
+
+		char *msg2send = "0.0000000,0.0000000";
+
+		frame->sizePayLoad = strlen(msg2send);
+
+		setPayLoad(frame, msg2send);
+
+		buildPayload(frame);
+		res = CMD_RESULT_EXEC_SUCCESS;
+	}
+
+
+	return res;
 }
 //------------------------------------------------------------------------
 
