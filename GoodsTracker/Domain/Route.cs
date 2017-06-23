@@ -2,66 +2,53 @@
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using System.Collections.Generic;
-using System.Data;
-
 
 namespace GoodsTracker
 {
     class Route
     {
         List<TelemetriaData>  behaviors;
-        GDirections     direction;
-        GMapRoute       mapRoute;
 
-        DataTable           dt;
+        GDirections         direction;
+        GMapRoute           mapRoute;
+        GMapPolygon         polygon;
+
         List<PointLatLng>   points;
         string              name;
 
-        public DataTable Dt { get => dt; set => dt = value; }
         public List<PointLatLng> Points { get => points; set => points = value; }
         public string Name { get => name; set => name = value; }
         public GDirections Direction { get => direction; set => direction = value; }
         public GMapRoute MapRoute { get => mapRoute; set => mapRoute = value; }
-        internal List<TelemetriaData> Behaviors { get => behaviors; set => behaviors = value; }
+        internal List<TelemetriaData> Behaviors { get => behaviors; /*set => behaviors = value;*/ }
 
         internal Route(string n)
         {
-            name = n;
-
-            points = new List<PointLatLng>();
-
-            dt = new DataTable();
-
-            dt.Columns.Add(new DataColumn("Loc.", typeof(string)));
-            dt.Columns.Add(new DataColumn("Latitude", typeof(double)));
-            dt.Columns.Add(new DataColumn("Longitude", typeof(double)));
-
-            behaviors = new List<TelemetriaData>();
+            name        = n;
+            points      = new List<PointLatLng>();
+            behaviors   = new List<TelemetriaData>();
         }
 
-        internal void startTrip(PointLatLng point)
+        internal void startAddress(PointLatLng point)
         {
             points.Add(point);
-            dt.Rows.Add(string.Format("Start{0}", dt.Rows.Count), point.Lat, point.Lng);
         }
 
-        internal void stopTrip(PointLatLng point)
+        internal void stopAddress(PointLatLng point)
         {
             points.Add(point);
-            dt.Rows.Add(string.Format("Stop{0}", dt.Rows.Count), point.Lat, point.Lng);
         }
 
         internal void clear()
         {
             points.Clear();
-            dt.Clear();
             behaviors.Clear();
         }
 
         internal bool createRoute(PointLatLng start, PointLatLng stop)
         {
-            startTrip(start);
-            stopTrip(stop);
+            startAddress(start);
+            stopAddress(stop);
 
             var routedirection = GMapProviders.GoogleMap.GetDirections(out direction, start, stop, false, false, false, false, false);
 
@@ -69,6 +56,8 @@ namespace GoodsTracker
             {
                 mapRoute = new GMapRoute(direction.Route, name);
             }
+
+            polygon = new GMapPolygon(mapRoute.Points, "fence of route:"+name);
 
             return direction != null;
         }
@@ -103,6 +92,7 @@ namespace GoodsTracker
         {
             if (b != null)
             {
+                IsInRoute(b);
                 behaviors.Add(b);
             }
         }
@@ -117,5 +107,16 @@ namespace GoodsTracker
             return direction.StartAddress;
         }
 
+        internal bool IsInRoute(TelemetriaData telemetria)
+        {
+            bool ret = false;
+
+            if (polygon != null)
+            {
+                telemetria.InsideOfRoute = polygon.IsInside(new PointLatLng(telemetria.Latitude, telemetria.Longitude));
+            }
+
+            return ret;
+        }
     }
 }

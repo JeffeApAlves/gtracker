@@ -8,8 +8,9 @@ namespace GoodsTracker
 {
     public class RESOURCE
     {
-        public static string TELEMETRIA = "TLM";    //Data TelemetriaData
-        public static string LOCK       = "LCK";
+        public const string TELEMETRIA  = "TLM";    // Data TelemetriaData
+        public const string LOCK        = "LCK";    // Trava 
+        public const string LCD         = "LCD";
     }
 
     class Cmd
@@ -18,25 +19,19 @@ namespace GoodsTracker
 
         int         dest;
         int         address;
-        int         value;
         Operation   operation;
         string      resource;
     
         public int Address { get => address; set => address = value; }
-        public int Value { get => value; set => this.value = value; }
         public Operation Operation { get => operation; set => operation = value; }
         public int Dest { get => dest; set => dest = value; }
         public onAnswerCmd EventAnswerCmd { get => onAnswerCmd; set => onAnswerCmd = value; }
         public string Resource { get => resource; set => resource = value; }
 
-        internal Cmd(string r)
+        internal Cmd(string r,Operation o)
         {
-            resource = r;
-        }
-
-        public void setEventAnswerCmd(onAnswerCmd ans)
-        {
-            onAnswerCmd = ans;
+            resource    = r;
+            operation   = o;
         }
     }
 }

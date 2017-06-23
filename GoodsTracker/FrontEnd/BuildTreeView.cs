@@ -28,6 +28,8 @@ namespace GoodsTracker
         TreeView treeView;
         TelemetriaData[] behaviors;
 
+        int filter = 0;
+
         public TreeView TreeView { get => treeView; set => treeView = value; }
 
         public TelemetriaData[] Behaviors
@@ -51,14 +53,21 @@ namespace GoodsTracker
                 }
                 else
                 {
-                    if (!behaviors.SequenceEqual(value))
+                    if (behaviors.Length <= 0)
                     {
-                        forceClear  =   true;
+                        forceChange = true;
                     }
-
-                    if (behaviors.All(value.Contains) && behaviors.Length!=value.Length)
+                    else
                     {
-                        forceChange =   true;
+                        if (!behaviors.SequenceEqual(value))
+                        {
+                            forceClear = true;
+                        }
+
+                        if (behaviors.All(value.Contains) && behaviors.Length != value.Length)
+                        {
+                            forceChange = true;
+                        }
                     }
 
                 }
@@ -67,10 +76,28 @@ namespace GoodsTracker
             }
         }
 
+        public int Filter
+        {
+            get
+            {
+                return filter;
+            }
+
+            set
+            {
+                if (filter != value)
+                {
+                    filter = value;
+                    forceClear = true;
+                }
+            }
+        }
+
         internal BuildTreeView(TreeView tv)
         {
             treeView    = tv;
             behaviors   = null;
+            filter = 0;
 
             update();
         }

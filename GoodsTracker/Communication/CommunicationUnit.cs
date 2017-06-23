@@ -57,10 +57,9 @@ namespace GoodsTracker
 
         internal Cmd sendCMD(int dest, Operation o,string resource)
         {
-            Cmd c       = new Cmd(resource);
+            Cmd c       = new Cmd(resource,o);
             c.Dest      = dest;
-            c.Operation = 0;
-            c.Resource  = resource;
+            c.Address   = address;
 
             queueCmd.Add(c);
 
@@ -96,14 +95,23 @@ namespace GoodsTracker
                     {
                         if (ans.Resource == cmd.Resource)
                         {
-                            //executa evento de recebmento
-                            onReceiveAnswer(ans);
+                            try
+                            {
+                                //executa evento de recebmento de resposta de comando
+                                onReceiveAnswer(ans);
 
-                            //excuta call back
-                            cmd.EventAnswerCmd?.Invoke(ans);
+                                //excuta call back respectiva do comando
+                                cmd.EventAnswerCmd?.Invoke(ans);
 
-                            removeCmd(cmd);
-                            removeAns(ans);
+                                removeCmd(cmd);
+                                removeAns(ans);
+                            }
+                            catch
+                            {
+
+                            }
+
+                            break;
                         }
                     }
                 }

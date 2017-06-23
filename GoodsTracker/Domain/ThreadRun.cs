@@ -8,7 +8,7 @@ namespace GoodsTracker
     {
         protected Thread thread;
 
-        private int time_ms = 1000;
+        private int time_ms = 10000;
 
         private volatile bool _shouldStop;
 

@@ -3,8 +3,6 @@ using System.Text;
 
 namespace GoodsTracker
 {
-    // [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[3] , SizePayload[3] , payload[ 0 ~ 255] , '*'CheckSum[5] ] \r\n
-
     enum DATA_INDEX
     {
         ORIG        = 0,
@@ -29,7 +27,7 @@ namespace GoodsTracker
 
     internal class DecoderFrame : IDecoderFrameTx,IDecoderFrameRx
     {
-        public bool setHeader(ref CommunicationFrame frame, CommunicationUnit unit)
+        public bool setHeader(ref CommunicationFrame frame, Cmd cmd)
         {
             bool ret = false;
 
@@ -37,9 +35,18 @@ namespace GoodsTracker
 
             try
             {
-                Cmd cmd = unit.getNextCmd();
+                StringBuilder sb = new StringBuilder();
 
-                setHeader(ref frame, unit, cmd);
+                //Header
+                sb.Append(cmd.Address.ToString("D5"));
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(cmd.Dest.ToString("D5"));
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(cmd.Operation);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                sb.Append(cmd.Resource);
+                sb.Append(CONST_CHAR.SEPARATOR);
+                frame.Header = sb.ToString();
 
                 ret = true;
             }
@@ -51,7 +58,7 @@ namespace GoodsTracker
             return ret;
         }
 
-        public bool setHeader(ref CommunicationFrame frame, CommunicationUnit unit,Cmd cmd)
+        public bool setHeader(ref CommunicationFrame frame, AnsCmd ans)
         {
             bool ret = false;
 
@@ -62,13 +69,13 @@ namespace GoodsTracker
                 StringBuilder sb = new StringBuilder();
 
                 //Header
-                sb.Append(unit.Address.ToString("D5"));
+                sb.Append(ans.Address.ToString("D5"));
                 sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(cmd.Dest.ToString("D5"));
+                sb.Append(ans.Dest.ToString("D5"));
                 sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(cmd.Operation);
+                sb.Append(ans.Operation);
                 sb.Append(CONST_CHAR.SEPARATOR);
-                sb.Append(cmd.Resource);
+                sb.Append(ans.Resource);
                 sb.Append(CONST_CHAR.SEPARATOR);
                 frame.Header = sb.ToString();
 
@@ -143,9 +150,9 @@ namespace GoodsTracker
 
                 if (list != null && list.Length >= 9)
                 {
-                    ans.Orig        = getValAsInteger(list, DATA_INDEX.ORIG);
+                    ans.Address        = getValAsInteger(list, DATA_INDEX.ORIG);
                     ans.Dest        = getValAsInteger(list, DATA_INDEX.DEST);
-                    ans.Operation   = getValAsString(list, DATA_INDEX.OPERACAO);
+                    ans.Operation   = getValAsOperation(list, DATA_INDEX.OPERACAO);
                     ans.Resource    = getValAsString(list, DATA_INDEX.RESOURCE);
                     ans.Size        = getValAsInteger(list, DATA_INDEX.SIZE_PAYLOAD);
 
@@ -176,6 +183,13 @@ namespace GoodsTracker
             }
 
             return ret;
+        }
+
+        private Operation getValAsOperation(string[] list, DATA_INDEX oPERACAO)
+        {
+            string str = getValAsString(list, oPERACAO);
+
+            return (Operation)Enum.Parse(typeof(Operation), str);
         }
 
         private DateTime getValAsDateTime(string[] list, DATA_INDEX index)

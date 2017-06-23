@@ -76,7 +76,7 @@ namespace GoodsTracker
     {
         Dictionary<int,bool>    insideOfFence;
 
-        bool insideOfRoute;
+        bool        insideOfRoute;
 
         double      latitude, longitude;
         Value       speed;

@@ -75,7 +75,7 @@ namespace GoodsTracker
                 IDecoderFrameTx decoder     = new DecoderFrame();
                 CommunicationFrame frame    = new CommunicationFrame();
 
-                if(decoder.setHeader(ref frame, currentUnit))
+                if(decoder.setHeader(ref frame, currentUnit.getNextCmd()))
                 {
                     sendFrame(frame);
                 }            
@@ -197,22 +197,6 @@ namespace GoodsTracker
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 
-        void sendFrame(CommunicationFrame frame)
-        {
-            if (!frame.isPayLoadEmpty())
-            {
-                string payload = frame.PayLoad;
-
-                Serial.putTxData(CONST_CHAR.RX_FRAME_START);
-                Serial.putTxData(payload);
-                Serial.putTxData(CONST_CHAR.ASTERISCO);
-                Serial.putTxData(frame.checkSum().ToString());
-                Serial.putTxData(CONST_CHAR.RX_FRAME_END);
-                Serial.putTxData(CONST_CHAR.CR);
-                Serial.putTxData(CONST_CHAR.LF);
-            }
-        }
-
         void initRxCMD()
         {
             clearRxFrame();
@@ -232,14 +216,37 @@ namespace GoodsTracker
 
         internal void init()
         {
-            setTime(20);
+            setTime(50);
 
             Serial.Open();
         }
 
-        internal void setFrameRx(string str)
+        void sendFrame(CommunicationFrame frame)
         {
-            Serial.putRxData(str);
+            if (frame != null && !frame.isPayLoadEmpty())
+            {
+                Serial.putTxData(frame.strOfFrame());
+                Serial.putTxData(CONST_CHAR.CR);
+                Serial.putTxData(CONST_CHAR.LF);
+
+                /*Serial.putTxData(CONST_CHAR.RX_FRAME_START);
+                Serial.putTxData(frame.Frame);
+                Serial.putTxData(CONST_CHAR.SEPARATOR);
+                Serial.putTxData(frame.checkSum().ToString());
+                Serial.putTxData(CONST_CHAR.RX_FRAME_END);
+                Serial.putTxData(CONST_CHAR.CR);
+                Serial.putTxData(CONST_CHAR.LF);*/
+            }
+        }
+
+        internal void setFrameRx(CommunicationFrame frame)
+        {
+            if (frame != null)
+            {
+                Serial.putRxData(frame.strOfFrame());
+                Serial.putRxData(CONST_CHAR.CR);
+                Serial.putRxData(CONST_CHAR.LF);
+            }
         }
     }
 }

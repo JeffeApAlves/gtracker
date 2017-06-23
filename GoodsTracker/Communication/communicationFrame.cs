@@ -5,7 +5,7 @@ namespace GoodsTracker
     /**
      * 
      * Frame Coomunication
-     * [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[3] , SizePayload[3] , payload[ 0 ~ 2557] , '*'CheckSum[2] ] \r\n
+     * [ End. de orig[5] , End dest[5] ,Operacao[2] , Recurso[3] , SizePayload[3] , payload[ 0 ~ 255] , '*'CheckSum[2] ] \r\n
      * 
      * End. de orig: 
      * Range: 00000~65535 (00000) Broadcast
@@ -36,8 +36,7 @@ namespace GoodsTracker
 
     interface IDecoderFrameTx
     {
-        bool setHeader(ref CommunicationFrame frame, CommunicationUnit unit,Cmd cmd);
-        bool setHeader(ref CommunicationFrame frame, CommunicationUnit unit);
+        bool setHeader(ref CommunicationFrame frame,Cmd cmd);
         bool setPayLoad(ref CommunicationFrame frame, TelemetriaData b);
     }
 
@@ -48,7 +47,7 @@ namespace GoodsTracker
 
     public enum Operation
     {
-        RD, WR, AN
+        NN,RD, WR, AN
     }
 
     internal class CommunicationFrame
@@ -170,14 +169,12 @@ namespace GoodsTracker
 
         internal string strOfFrame()
         {
-            return CONST_CHAR.RX_FRAME_START +
+            return  CONST_CHAR.RX_FRAME_START +
                     frame +
                     CONST_CHAR.SEPARATOR +
                     //CONST_CHAR.ASTERISCO + 
                     checkSum().ToString() +
-                    CONST_CHAR.RX_FRAME_END +
-                    CONST_CHAR.CR +
-                    CONST_CHAR.LF;
+                    CONST_CHAR.RX_FRAME_END;
         }
     }
 }

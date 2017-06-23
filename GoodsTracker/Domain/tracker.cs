@@ -20,17 +20,17 @@ namespace GoodsTracker
 
         public void requestBehavior(onAnswerCmd on_ans)
         {
-            sendCMD(2,Operation.RD,RESOURCE.TELEMETRIA).setEventAnswerCmd(on_ans);
+            sendCMD(2,Operation.RD,RESOURCE.TELEMETRIA).EventAnswerCmd = on_ans;
         }
 
         public void lockVehicle(onAnswerCmd on_ans)
         {
-            sendCMD(2, Operation.WR, RESOURCE.LOCK).setEventAnswerCmd(on_ans);
+            sendCMD(2, Operation.WR, RESOURCE.LOCK).EventAnswerCmd = on_ans;
         }
 
         public void unLockVehicle(onAnswerCmd on_ans)
         {
-            sendCMD(2, Operation.WR, RESOURCE.LOCK).setEventAnswerCmd(on_ans);
+            sendCMD(2, Operation.WR, RESOURCE.LOCK).EventAnswerCmd = on_ans;
         }
 
         /*

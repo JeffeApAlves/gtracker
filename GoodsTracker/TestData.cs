@@ -5,8 +5,7 @@ namespace GoodsTracker
 {
     class TestData : ThreadRun
     {
-        static int count_ans        = 0;
-        static int count_behavior   = 0;
+        static int count_publish = 0;
 
         public TestData(int t)
         {
@@ -22,16 +21,11 @@ namespace GoodsTracker
         {
             if (CommunicationUnit.QueueCmd.Count > 0 && CommunicationUnit.QueueAnsCmd.Count<=0)
             {
-                count_ans++;
-
                 TelemetriaData b            = createTelemetriaData();
-                Cmd cmd                     = createCmd();
-                CommunicationFrame frame    = createFrame(b,cmd);
+                AnsCmd ans                  = createAnsCmd();
+                CommunicationFrame frame    = createFrame(b,ans);
 
-                if (frame != null)
-                {
-                    Protocol.Communication.setFrameRx(frame.strOfFrame());
-                }
+                Protocol.Communication.setFrameRx(frame);
             }
         }
 
@@ -40,12 +34,12 @@ namespace GoodsTracker
             TelemetriaData b = null;
 
             if (TrackerController.TrackerCtrl.anyRoute() &&  
-                TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > count_behavior)
+                TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > count_publish)
             {
                 b = new TelemetriaData();
 
                 Random rnd = new Random();
-                PointLatLng p = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[count_behavior++];
+                PointLatLng p = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[count_publish++];
 
                 b.setPosition(p.Lat, p.Lng);
                 b.setAcceleration(rnd.Next(0, 4), rnd.Next(5, 9), rnd.Next(10, 14));
@@ -58,17 +52,17 @@ namespace GoodsTracker
             return b;
         }
 
-        static Cmd createCmd()
+        static AnsCmd createAnsCmd()
         {
-            Cmd cmd = new Cmd(RESOURCE.TELEMETRIA);
+            AnsCmd ans = new AnsCmd(RESOURCE.TELEMETRIA,Operation.AN);
 
-            cmd.Operation = Operation.AN;
-            cmd.Dest = 1;
+            ans.Address = 1;
+            ans.Dest    = 2;
 
-            return cmd;
+            return ans;
         }
 
-        static CommunicationFrame createFrame(TelemetriaData b,Cmd cmd)
+        static CommunicationFrame createFrame(TelemetriaData b,AnsCmd cmd)
         {
             CommunicationFrame frame = null;
 
@@ -77,7 +71,7 @@ namespace GoodsTracker
                 frame = new CommunicationFrame();
                 DecoderFrame decoder = new DecoderFrame();
 
-                decoder.setHeader(ref frame, TrackerController.TrackerCtrl.Tracker, cmd);
+                decoder.setHeader(ref frame, cmd);
                 decoder.setPayLoad(ref frame, b);
             }
 

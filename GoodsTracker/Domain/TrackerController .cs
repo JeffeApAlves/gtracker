@@ -6,7 +6,7 @@ namespace GoodsTracker
 
     class TrackerController :ThreadRun
     {
-        private const int NUM_ESTACAO = 1;
+        private const int   NUM_ESTACAO = 1;
         private const int _TIME_TELEMETRIA = 1000;
 
         onUpdateTelemetria  onDataTelemetria;
@@ -50,7 +50,7 @@ namespace GoodsTracker
 
         /*
          * 
-         * Metodo chamdo na Thread do Domain
+         * Metodo chamado na Thread do Domain
          * 
          */
         public override void run()
@@ -112,7 +112,7 @@ namespace GoodsTracker
 
         internal void requestBehavior()
         {
-            tracker.requestBehavior(onReceiveBehavior);
+            tracker.requestBehavior(onReceiveTelemetria);
         }
 
         internal void unLockVehicle()
@@ -133,6 +133,14 @@ namespace GoodsTracker
             }
         }
 
+        internal void clearBehavior()
+        {
+            if (anyRoute())
+            {
+                routes[0].Behaviors.Clear();
+            }
+        }
+
         internal bool anyRoute()
         {
             return routes.Count > 0 && routes[0].MapRoute != null && routes[0].MapRoute.Points.Count>0;
@@ -148,18 +156,15 @@ namespace GoodsTracker
             return Tracker.getTelemetria();
         }
 
-        // -------------------------  CallBacks CMDs -------------------------------------------
+        //-------------------------  CallBacks respectivas dos comandos CMDs -------------------------------------------
 
         private ResultExec onLockStatus(AnsCmd ans)
         {
             return ResultExec.EXEC_SUCCESS;
         }
 
-        private ResultExec onReceiveBehavior(AnsCmd ans)
+        private ResultExec onReceiveTelemetria(AnsCmd ans)
         {
-            //`Atualiza entidade
-            tracker.TelemetriaData = ans.Info;
-
             // Registra a telemetria
             registerBehavior(getTelemetria());
 

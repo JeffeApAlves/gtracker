@@ -17,12 +17,12 @@ namespace GoodsTracker
         TestData    demoData;
         TrackerController trackerController = TrackerController.TrackerCtrl;
 
-        Fence   fence;
-        Route   route;
+        Fence       fence;
+        Route       route;
 
         BuildTreeView   bTV     = null;
         int     itemselected    = -1;
-        int     filterselected   = 0;
+
 
         public MainForm()
         {
@@ -173,13 +173,10 @@ namespace GoodsTracker
         // Seleciona filtro
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(filterselected != cbFilter.SelectedIndex)
-            {
-                filterselected       = cbFilter.SelectedIndex;
+            bTV.Filter  = cbFilter.SelectedIndex;
 
-                // Atualiza lista de behaviors
-                bTV.Behaviors   = trackerController.getBehaviorFiltered(filterselected);
-            }
+            // Atualiza lista de behaviors
+            bTV.Behaviors   = trackerController.getBehaviorFiltered(bTV.Filter);
         }
 
         //Botao trava a valvula
@@ -269,9 +266,8 @@ namespace GoodsTracker
             bTV = new BuildTreeView(tvBehavior);
 
             cbFilter.SelectedIndex  = 0;
-            filterselected           = 0;
 
-            bTV.Behaviors = trackerController.getBehaviorFiltered(filterselected);
+            bTV.Behaviors = trackerController.getBehaviorFiltered(bTV.Filter);
         }
         //-------------------------------------Fim inits -----------------------------------
 
@@ -282,17 +278,19 @@ namespace GoodsTracker
             txtLatStart.BackColor   = Color.White;
             txtLngStart.BackColor   = Color.White;
 
-            route.clear();
-
             statusTrip              = STATUS_GUI.START_POINT;
 
             txtLatStart.Text        = "";
             txtLngStart.Text        = "";
             txtLatStop.Text         = "";
             txtLngStop.Text         = "";
+            startAddress.Text       = "";
+            endAddress.Text         = "";
 
             txtLatStart.Focus();
             tvBehavior.Nodes.Clear();
+
+            removeRoute(route);
         }
 
         void updateBehavior()
@@ -372,6 +370,7 @@ namespace GoodsTracker
         void showMarkerBehavior()
         {
             TelemetriaData[] listCurrentBehavior = bTV.Behaviors;
+
             if (listCurrentBehavior != null)
             {
                 layerBehavior.removeAllMarkers();
@@ -382,7 +381,7 @@ namespace GoodsTracker
 
                     GMarkerGoogleType color;
 
-                    if (b.IsInsideOfFence())
+                    if (b.IsInsideOfFence() || b.InsideOfRoute)
                     {
                         color = GMarkerGoogleType.brown_small;
                     }
@@ -408,7 +407,7 @@ namespace GoodsTracker
 
         private void setStartPoint(PointLatLng point)
         {
-            route.startTrip(point);
+            route.startAddress(point);
 
             txtLatStart.Text = point.Lat.ToString();
             txtLngStart.Text = point.Lng.ToString();
@@ -425,7 +424,7 @@ namespace GoodsTracker
 
         private void setEndPoint(PointLatLng point)
         {
-            route.stopTrip(point);
+            route.stopAddress(point);
 
             txtLatStop.Text = point.Lat.ToString();
             txtLngStop.Text = point.Lng.ToString();
@@ -520,13 +519,6 @@ namespace GoodsTracker
             ThreadManager.stop();
         }
 
-        private void panel3_VisibleChanged(object sender, EventArgs e)
-        {
-            if (panel3.Visible)
-            {
-            }
-        }
-
         /**
          * Remove uma rota e suas marcas
          */
@@ -534,6 +526,10 @@ namespace GoodsTracker
         {
             if (route !=null)
             {
+                route.clear();
+
+                trackerController.clearBehavior();
+                bTV.Behaviors = trackerController.getBehaviorFiltered(0);
                 layerBehavior.removeAllMarkers();
                 layerRoute.remove(route);
                 trackerController.remove(route);
@@ -549,6 +545,8 @@ namespace GoodsTracker
             updateStatusLock();
             updateStatusFence();
             updatelevel();
+
+            tB_Zoom.Value = (int)gMapControl1.Zoom;
         }
 
         /*
@@ -557,7 +555,7 @@ namespace GoodsTracker
         void initAllThreads()
         {
             // Dados para testes
-            demoData = new TestData(TrackerController.TIME_TELEMETRIA+100);
+            demoData = new TestData(TrackerController.TIME_TELEMETRIA+300);
 
             // Inicia todas as threads
             ThreadManager.start();
@@ -574,7 +572,7 @@ namespace GoodsTracker
             layerFence.PointIsInsidePolygon(telemetria);
 
             // Atualiza lista de behaviors
-            bTV.Behaviors = trackerController.getBehaviorFiltered(filterselected);
+            bTV.Behaviors = trackerController.getBehaviorFiltered(bTV.Filter);
         }
     }
 
