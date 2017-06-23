@@ -152,6 +152,7 @@ void startTX(void);
 void setPayLoad(DataFrame* frame, char* str);
 void buildHeader(DataFrame *frame);
 void buildPayload(DataFrame *frame);
+void doAnswer(char *msg);
 
 extern unsigned int timeTx,timeRx;
 

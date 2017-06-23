@@ -136,18 +136,10 @@ ResultExec onTelemetry(DataFrame* frame){
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
-		buildHeader(frame);
-
 		char *msg2send = "0.0000000,0.0000000";
-
-		frame->sizePayLoad = strlen(msg2send);
-
-		setPayLoad(frame, msg2send);
-
-		buildPayload(frame);
+		doAnswer(msg2send);
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
-
 
 	return res;
 }
@@ -157,18 +149,13 @@ ResultExec onLock(DataFrame* frame){
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
-		buildHeader(frame);
+		char *msg2send = "";
 
-		char *msg2send = "0.0000000,0.0000000";
+		LED_G_On();
 
-		frame->sizePayLoad = strlen(msg2send);
-
-		setPayLoad(frame, msg2send);
-
-		buildPayload(frame);
+		doAnswer(msg2send);
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
-
 
 	return res;
 }
@@ -182,7 +169,6 @@ void read_Channels_AD(){
 //		}
 //	}
 
-#if 0
 	if(AD1_Measure(FALSE)==ERR_OK){
 
 		AD_finished = FALSE;
@@ -193,7 +179,6 @@ void read_Channels_AD(){
 			//TODO
 		}
 	}
-#endif
 }
 //------------------------------------------------------------------------
 
