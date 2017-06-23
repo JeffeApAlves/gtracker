@@ -136,7 +136,8 @@ ResultExec onTelemetry(DataFrame* frame){
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
-		char *msg2send = "0.0000000,0.0000000";
+		                 /*    LAT*/
+		char *msg2send = "-23.5912537:-46.6451776:0.1:9.8:0.4:1:2:3:60:1000:23/06/2017 19.52";
 		doAnswer(msg2send);
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
