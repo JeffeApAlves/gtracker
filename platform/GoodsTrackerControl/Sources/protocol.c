@@ -4,6 +4,7 @@
 #include "RingBuffer.h"
 #include "utils.h"
 #include "protocol.h"
+#include "application.h"
 
 unsigned int timeTx = TIME_TX;
 unsigned int timeRx = TIME_RX;
@@ -12,13 +13,13 @@ StatusRx	statusRx = CMD_INIT;
 RingBuffer	bufferRx,bufferTx;
 DataFrame	dataFrame;
 
-Cmd			ListCmd[]	= {	{.id_cmd=CMD_LED,		.resource = "LED\0",	.cb=NULL},
-							{.id_cmd=CMD_ANALOG,	.resource = "AN\0",		.cb=NULL},
-							{.id_cmd=CMD_PWM,		.resource = "PWM\0",	.cb=NULL},
-							{.id_cmd=CMD_ACC,		.resource = "ACC\0",	.cb=NULL},
-							{.id_cmd=CMD_TOUCH,		.resource = "TOU\0",	.cb=NULL},
-							{.id_cmd=CMD_TELEMETRIA,.resource = "TLM\0",	.cb=NULL},
-							{.id_cmd=CMD_LOCK,		.resource = "LCK\0",	.cb=NULL},
+Cmd			ListCmd[]	= {	{.id_cmd=CMD_LED,		.resource = "LED",	.cb = onLED},
+							{.id_cmd=CMD_ANALOG,	.resource = "AN",	.cb = onAnalog},
+							{.id_cmd=CMD_PWM,		.resource = "PWM",	.cb = onPWM},
+							{.id_cmd=CMD_ACC,		.resource = "ACC",	.cb = onAccel},
+							{.id_cmd=CMD_TOUCH,		.resource = "TOU",	.cb = onTouch},
+							{.id_cmd=CMD_TELEMETRIA,.resource = "TLM",	.cb = onTelemetry},
+							{.id_cmd=CMD_LOCK,		.resource = "LCK",	.cb = onLock},
 							};
 
 const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Cmd);
@@ -172,12 +173,14 @@ bool decoderFrame2(void) {
 
 					switch(i) {
 
-						case 0:	dataFrame.dest				= atoi(list.itens[0]);				break;
-						case 1:	dataFrame.address			= atoi(list.itens[1]);				break;
-						case 2:	strncpy(dataFrame.operacao, list.itens[2],2);					break;
-						case 3:	strncpy(dataFrame.resource,	list.itens[3],3);					break;
-						case 4:	dataFrame.sizePayLoad		= atoi(list.itens[4]);				break;
-						case 5:	strncpy(dataFrame.payload, 	list.itens[5],dataFrame.sizePayLoad);	break;
+						case 0:	dataFrame.dest				= atoi(list.itens[0]);					break;
+						case 1:	dataFrame.address			= atoi(list.itens[1]);					break;
+						/*usando strncpy porque estamos copiando strings*/
+						case 2:	strncpy(dataFrame.operacao, list.itens[2], strlen(list.itens[2]));	break;
+						case 3:	strncpy(dataFrame.resource,	list.itens[3], strlen(list.itens[3]));	break;
+						case 4:	dataFrame.sizePayLoad		= atoi(list.itens[4]);					break;
+						/*usando memcpy porque estamos copiando dados*/
+						case 5:	memcpy(dataFrame.payload,  list.itens[5], dataFrame.sizePayLoad);	break;
 					}
 				}
 			}
@@ -207,9 +210,9 @@ pCallBack getCallBack(void) {
 
 	pCallBack cb = NULL;
 	char i;
-	for(i=0;i < SIZE_LIST_CMD;i++){
+	for(i = 0; i < SIZE_LIST_CMD; i++){
 
-		if(strcmp(ListCmd[i].resource,dataFrame.resource)==0){
+		if(strcmp(ListCmd[i].resource, dataFrame.resource) == 0){
 
 			cb = ListCmd[i].cb;
 			break;
@@ -224,7 +227,7 @@ void execCallBack(void) {
 
 	pCallBack cb = getCallBack();
 
-	if(cb!=NULL && cb(&dataFrame)==EXEC_SUCCESS){
+	if(cb!=NULL && cb(&dataFrame) == CMD_RESULT_EXEC_SUCCESS) {
 
 //		if(*dataFrame.frame!=CHAR_STR_END){
 
@@ -235,7 +238,8 @@ void execCallBack(void) {
 //			setStatusRx(CMD_ACK);
 //		}
 
-	}else{
+	}
+	else {
 
 		setStatusRx(CMD_NAK);
 	}
@@ -384,7 +388,7 @@ void startTX(void){
 }
 //------------------------------------------------------------------------
 
-void buildHeader(DataFrame *frame){
+void buildHeader(DataFrame *frame) {
 
 	sprintf(frame->frame,"%05d%05d:%s:%s:%03d",	frame->address,
 												frame->dest,
@@ -395,7 +399,7 @@ void buildHeader(DataFrame *frame){
 }
 //------------------------------------------------------------------------
 
-void setPayLoad(DataFrame* frame,char* str){
+void setPayLoad(DataFrame* frame,char* str) {
 
 	frame->sizePayLoad = (int)strlen(str);
 
@@ -403,3 +407,7 @@ void setPayLoad(DataFrame* frame,char* str){
 	strncpy(frame->frame+SIZE_HEADER,frame->payload,frame->sizePayLoad);
 }
 //------------------------------------------------------------------------
+
+
+
+

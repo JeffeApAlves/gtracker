@@ -38,10 +38,10 @@
 
 typedef enum {
 
-	EXEC_UNSUCCESS	= -3,
-	INVALID_CMD		= -2,
-	INVALID_PARAM	= -1,
-	EXEC_SUCCESS	= 0,
+	CMD_RESULT_EXEC_UNSUCCESS	= -3,
+	CMD_RESULT_INVALID_CMD		= -2,
+	CMD_RESULT_INVALID_PARAM	= -1,
+	CMD_RESULT_EXEC_SUCCESS	= 0,
 
 }ResultExec;
 
@@ -88,7 +88,7 @@ typedef struct{
 	unsigned char	checksum_rx;
 
 	char	operacao[2];
-	char	resource[LEN_RESOURCE];
+	char	resource[LEN_RESOURCE + 1];
 
 	int		address;
 	int		dest;
@@ -115,7 +115,7 @@ typedef ResultExec(*pCallBack)(DataFrame*);
 typedef struct{
 
 	IdCmd		id_cmd;
-	char 		resource[LEN_RESOURCE];
+	char 		resource[LEN_RESOURCE + 1];
 	pCallBack	cb;
 
 } Cmd;
