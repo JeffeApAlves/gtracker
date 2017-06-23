@@ -280,8 +280,8 @@ void sendResult(void){
 	dataFrame.dest = dataFrame.address;
 	dataFrame.address = ADDRESS;
 
-
-	buildHeader(&dataFrame);
+	//buildHeader(&dataFrame);
+	//buildPayload(&dataFrame);
 
 	sendString(dataFrame.frame);
 
@@ -390,21 +390,47 @@ void startTX(void){
 
 void buildHeader(DataFrame *frame) {
 
-	sprintf(frame->frame,"%05d%05d:%s:%s:%03d",	frame->address,
-												frame->dest,
-												frame->operacao,
-												frame->resource,
-												frame->sizePayLoad);
+	sprintf(frame->frame,"%c%05d%c%05d%c%s%c%s%c",
+			CHAR_CMD_START,
+				frame->address,
+					CHAR_SEPARATOR,
+						frame->dest,
+							CHAR_SEPARATOR,
+								frame->operacao,
+									CHAR_SEPARATOR,
+										frame->resource,
+											CHAR_SEPARATOR);
 
+	frame->sizeFrame = strlen(frame->frame);
 }
 //------------------------------------------------------------------------
 
-void setPayLoad(DataFrame* frame,char* str) {
+void buildPayload(DataFrame *frame) {
+	char szpldbuff[5];
+	char chrsepstr[2];
+	chrsepstr[0] = CHAR_SEPARATOR;
+	chrsepstr[1] = '\0';
+
+	sprintf(szpldbuff, "%d", frame->sizePayLoad);
+
+	strncat(frame->frame, szpldbuff, strlen(szpldbuff));
+	strncat(frame->frame, chrsepstr, 1);
+	strncat(frame->frame, frame->payload, frame->sizePayLoad);
+	strncat(frame->frame, chrsepstr, 1);
+
+
+	frame->sizeFrame += frame->sizePayLoad;
+}
+//------------------------------------------------------------------------
+
+void setPayLoad(DataFrame* frame, char* str) {
 
 	frame->sizePayLoad = (int)strlen(str);
 
-	strncpy(frame->payload,str,frame->sizePayLoad);
-	strncpy(frame->frame+SIZE_HEADER,frame->payload,frame->sizePayLoad);
+	strncpy(frame->payload, str, frame->sizePayLoad);
+
+	*(frame->frame + SIZE_HEADER + frame->sizePayLoad) = '\0';
+
 }
 //------------------------------------------------------------------------
 
