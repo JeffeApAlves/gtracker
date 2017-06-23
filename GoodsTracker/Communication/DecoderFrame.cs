@@ -80,7 +80,6 @@ namespace GoodsTracker
                 payload.Append(b.Level.Val);
                 payload.Append(CONST_CHAR.SEPARATOR);
                 payload.Append(b.DateTime.ToString().Replace(CONST_CHAR.SEPARATOR, '.'));
-                payload.AddCheckSum();
 
                 ret = true;
             }

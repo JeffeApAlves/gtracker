@@ -723,6 +723,7 @@
             this.imageList1.Images.SetKeyName(7, "Guage_32xLG.png");
             this.imageList1.Images.SetKeyName(8, "Pushpin_32x.png");
             this.imageList1.Images.SetKeyName(9, "Dimension_32xMD.png");
+            this.imageList1.Images.SetKeyName(10, "Keys.ico");
             // 
             // button4
             // 

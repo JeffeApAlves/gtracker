@@ -5,7 +5,7 @@ namespace GoodsTracker
     /**
      * 
      * Frame Coomunication
-     * [ End. de orig[5] : End dest[5] : Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[3] ] \r\n
+     * [ End. de orig[5] : End dest[5] : Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
      * 
      * End. de orig: 
      * Range: 00000~65535 (00000) Broadcast
@@ -67,7 +67,6 @@ namespace GoodsTracker
         public Operation Operation { get => operation; set => operation = value; }
         public string Resource { get => resource; set => resource = value; }
         public int SizePayLoad { get => sizePayLoad; set => sizePayLoad = value; }
-        public string Data { get => data; set => data = value; }
 
         internal Header()
         {
@@ -120,6 +119,11 @@ namespace GoodsTracker
                 data = value;
             }
         }
+
+        internal char[] ToCharArray()
+        {
+            return str().ToCharArray();
+        }
     }
 
     internal class PayLoad
@@ -146,7 +150,7 @@ namespace GoodsTracker
 
         internal int Length()
         {
-            return data.Length;
+            return data==null? 0:data.Length;
         }
 
         internal bool IsFull()
@@ -161,7 +165,7 @@ namespace GoodsTracker
 
         internal string str()
         {
-            return data;
+            return Length().ToString("D3") + CONST_CHAR.SEPARATOR+ data;
         }
 
         internal void Clear()
@@ -179,13 +183,14 @@ namespace GoodsTracker
             }
         }
 
-        internal void AddCheckSum()
+        internal char[] ToCharArray()
         {
-            data =  Length().ToString("D3") + CONST_CHAR.SEPARATOR + data;
+            return str().ToCharArray();
         }
-}
 
-internal class CommunicationFrame
+    }
+
+    internal class CommunicationFrame
 {
         protected Header    header;
         protected PayLoad   payLoad;
@@ -215,7 +220,7 @@ internal class CommunicationFrame
             set
             {
                 payLoad = value;
-                data = header.str() + ":" + (payLoad == null ? "" : payLoad.str());
+                data    = header.str() + ":" + (payLoad == null ? "" : payLoad.str());
             }
         }
 
@@ -287,7 +292,7 @@ internal class CommunicationFrame
             return  CONST_CHAR.RX_FRAME_START +
                     data +
                     CONST_CHAR.SEPARATOR +
-                    checkSum().ToString("D3") +
+                    checkSum().ToString("X2") +
                     CONST_CHAR.RX_FRAME_END;
         }
 

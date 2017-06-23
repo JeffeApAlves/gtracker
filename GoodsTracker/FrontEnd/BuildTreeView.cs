@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Forms;
 
 namespace GoodsTracker
@@ -18,8 +17,8 @@ namespace GoodsTracker
             GUAUGE = 7,
             PUSHPIN = 8,
             XYZ = 9,
-            LEVEL = 10,
-            LOCK = 11,
+            LEVEL = 11,
+            LOCK = 10,
         }
 
         bool forceChange    = false;
