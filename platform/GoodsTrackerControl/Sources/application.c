@@ -28,34 +28,107 @@ void initCallBacks(){
 //-------------------------------------------------------------------------
 
 ResultExec onLED(DataFrame* frame){
+	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	return CMD_RESULT_EXEC_SUCCESS;
+	if (frame) {
+		buildHeader(frame);
+
+		char *msg2send = "0.0000000,0.0000000";
+
+		frame->sizePayLoad = strlen(msg2send);
+
+		setPayLoad(frame, msg2send);
+
+		buildPayload(frame);
+		res = CMD_RESULT_EXEC_SUCCESS;
+	}
+
+
+	return res;
 }
 	//-------------------------------------------------------------------------
 
 ResultExec onAnalog(DataFrame* frame){
+	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	return CMD_RESULT_EXEC_SUCCESS;
+	if (frame) {
+		buildHeader(frame);
+
+		char *msg2send = "0.0000000,0.0000000";
+
+		frame->sizePayLoad = strlen(msg2send);
+
+		setPayLoad(frame, msg2send);
+
+		buildPayload(frame);
+		res = CMD_RESULT_EXEC_SUCCESS;
+	}
+
+
+	return res;
 }
 //-------------------------------------------------------------------------
 
 ResultExec onAccel(DataFrame* frame){
+	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	buildPayLoad(frame);
+	if (frame) {
+		buildHeader(frame);
 
-	return CMD_RESULT_EXEC_SUCCESS;
+		char *msg2send = "0.0000000,0.0000000";
+
+		frame->sizePayLoad = strlen(msg2send);
+
+		setPayLoad(frame, msg2send);
+
+		buildPayload(frame);
+		res = CMD_RESULT_EXEC_SUCCESS;
+	}
+
+
+	return res;
 }
 //-------------------------------------------------------------------------
 
 ResultExec onTouch(DataFrame* frame){
+	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	return CMD_RESULT_EXEC_SUCCESS;
+	if (frame) {
+		buildHeader(frame);
+
+		char *msg2send = "0.0000000,0.0000000";
+
+		frame->sizePayLoad = strlen(msg2send);
+
+		setPayLoad(frame, msg2send);
+
+		buildPayload(frame);
+		res = CMD_RESULT_EXEC_SUCCESS;
+	}
+
+
+	return res;
 }
 //-------------------------------------------------------------------------
 
 ResultExec onPWM(DataFrame* frame){
+	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	return CMD_RESULT_EXEC_SUCCESS;
+	if (frame) {
+		buildHeader(frame);
+
+		char *msg2send = "0.0000000,0.0000000";
+
+		frame->sizePayLoad = strlen(msg2send);
+
+		setPayLoad(frame, msg2send);
+
+		buildPayload(frame);
+		res = CMD_RESULT_EXEC_SUCCESS;
+	}
+
+
+	return res;
 }
 //------------------------------------------------------------------------
 
@@ -81,8 +154,23 @@ ResultExec onTelemetry(DataFrame* frame){
 //------------------------------------------------------------------------
 
 ResultExec onLock(DataFrame* frame){
+	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	return CMD_RESULT_EXEC_SUCCESS;
+	if (frame) {
+		buildHeader(frame);
+
+		char *msg2send = "0.0000000,0.0000000";
+
+		frame->sizePayLoad = strlen(msg2send);
+
+		setPayLoad(frame, msg2send);
+
+		buildPayload(frame);
+		res = CMD_RESULT_EXEC_SUCCESS;
+	}
+
+
+	return res;
 }
 //------------------------------------------------------------------------
 

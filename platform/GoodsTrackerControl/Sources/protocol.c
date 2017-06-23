@@ -78,9 +78,11 @@ void receiveFrame (void) {
 		  if(ch==CHAR_CMD_END) {
 			 if(dataFrame.sizeFrame>=LEN_MIN_FRAME) {
 
-				unsigned char i;
-				for (i = 0; i < dataFrame.sizeFrame - 2; i++)
-					 dataFrame.checksum_calc ^= dataFrame.frame[i];
+				//unsigned char i;
+				//for (i = 0; i < dataFrame.sizeFrame - 2; i++)
+				//	 dataFrame.checksum_calc ^= dataFrame.frame[i];
+
+				dataFrame.checksum_calc = checksum(dataFrame.frame, dataFrame.sizeFrame - 2);
 
 				setStatusRx(CMD_RX_END);
 			 }
@@ -277,11 +279,19 @@ void sendNAK(void) {
 
 void sendResult(void){
 
+	char chksum[4];
+
 	dataFrame.dest = dataFrame.address;
 	dataFrame.address = ADDRESS;
 
 	//buildHeader(&dataFrame);
 	//buildPayload(&dataFrame);
+
+	sprintf(chksum, "%02X%c",
+			checksum(dataFrame.frame + 1,
+						dataFrame.sizeFrame - 1),
+									CHAR_CMD_END);
+	strncat(dataFrame.frame, chksum, 3);
 
 	sendString(dataFrame.frame);
 
@@ -417,7 +427,6 @@ void buildPayload(DataFrame *frame) {
 	strncat(frame->frame, chrsepstr, 1);
 	strncat(frame->frame, frame->payload, frame->sizePayLoad);
 	strncat(frame->frame, chrsepstr, 1);
-
 
 	frame->sizeFrame += frame->sizePayLoad;
 }
