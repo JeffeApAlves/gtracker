@@ -6,7 +6,7 @@
 **     Version     : Component 01.025, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-23, 03:51, # CodeGen: 2
+**     Date/Time   : 2017-06-23, 14:23, # CodeGen: 7
 **     Abstract    :
 **
 **     Settings    :
@@ -81,14 +81,7 @@
 #include "TU1.h"
 #include "TI1.h"
 #include "TimerIntLdd1.h"
-#include "MMA1.h"
-#include "GI2C1.h"
 #include "WAIT1.h"
-#include "I2C1.h"
-#include "SDA1.h"
-#include "BitIoLdd4.h"
-#include "SCL1.h"
-#include "BitIoLdd5.h"
 #include "CS1.h"
 #include "LCDout.h"
 #include "EN1.h"
@@ -104,6 +97,9 @@
 #include "DB71.h"
 #include "BitIoLdd15.h"
 #include "TSSin.h"
+#include "MMA1.h"
+#include "GI2C1.h"
+#include "CI2C1.h"
 
 
 /*

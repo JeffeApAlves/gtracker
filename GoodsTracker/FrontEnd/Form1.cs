@@ -255,7 +255,7 @@ namespace GoodsTracker
         void initAllThreads()
         {
             // Dados para testes
-            demoData = new TestData(TrackerController.TIME_TELEMETRIA);
+//            demoData = new TestData(TrackerController.TIME_TELEMETRIA);
 
             // Inicia todas as threads
             ThreadManager.start();

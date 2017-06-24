@@ -133,8 +133,12 @@ ResultExec onPWM(DataFrame* frame){
 //------------------------------------------------------------------------
 
 ResultExec onTelemetry(DataFrame* frame){
-	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+	//ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+	ResultExec res = CMD_RESULT_EXEC_SUCCESS;
 
+	char *msg2send = "0.0000000,0.0000000";
+
+#if 0
 	if (frame) {
 		buildHeader(frame);
 
@@ -147,7 +151,9 @@ ResultExec onTelemetry(DataFrame* frame){
 		buildPayload(frame);
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
+#endif
 
+	doAnswer(msg2send);
 
 	return res;
 }

@@ -443,6 +443,20 @@ void setPayLoad(DataFrame* frame, char* str) {
 }
 //------------------------------------------------------------------------
 
+void doAnswer(char *msg) {
+	if (msg) {
+		strncpy(dataFrame.operacao, "AN", 2);
 
+		buildHeader(&dataFrame);
+
+		setPayLoad(&dataFrame, msg);
+
+		buildPayload(&dataFrame);
+	}
+	else {
+		/*O QUE RESPONDE EM CASO DE MENSAGEM NULA ???*/
+	}
+}
+//------------------------------------------------------------------------
 
 

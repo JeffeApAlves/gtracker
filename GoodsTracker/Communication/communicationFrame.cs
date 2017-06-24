@@ -284,6 +284,8 @@ namespace GoodsTracker
                 checkSum ^= datas[i];
             }
 
+            checkSum ^= (byte)CONST_CHAR.SEPARATOR;
+
             return checkSum;
         }
 
