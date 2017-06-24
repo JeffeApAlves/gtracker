@@ -75,8 +75,11 @@ void receiveFrame (void) {
 		}
 		else
 		  if(ch==CHAR_CMD_END) {
-
 			 if(dataFrame.sizeFrame>=LEN_MIN_FRAME) {
+
+				//unsigned char i;
+				//for (i = 0; i < dataFrame.sizeFrame - 2; i++)
+				//	 dataFrame.checksum_calc ^= dataFrame.frame[i];
 
 				setStatusRx(CMD_RX_END);
 			 }
@@ -85,7 +88,6 @@ void receiveFrame (void) {
 			 }
 		}
 		else {
-
 		  setStatusRx(CMD_RX_PAYLOAD);
 		  dataFrame.frame[(dataFrame.sizeFrame++)%LEN_MAX_FRAME] = ch;
 		}
@@ -429,22 +431,17 @@ void buildPayload(DataFrame *frame) {
 
 void setPayLoad(DataFrame* frame, char* str) {
 
-	frame->sizePayLoad = strlen(str);
+	frame->sizePayLoad = (int)strlen(str);
 
-	if(frame->sizePayLoad <= LEN_MAX_PAYLOAD){
+	strncpy(frame->payload, str, frame->sizePayLoad);
 
-		strncpy(frame->payload, str, frame->sizePayLoad);
+	*(frame->frame + SIZE_HEADER + frame->sizePayLoad) = '\0';
 
-		*(frame->frame + SIZE_HEADER + frame->sizePayLoad) = '\0';
-
-	}
 }
 //------------------------------------------------------------------------
 
 void doAnswer(char *msg) {
-
 	if (msg) {
-
 		strncpy(dataFrame.operacao, "AN", 2);
 
 		buildHeader(&dataFrame);

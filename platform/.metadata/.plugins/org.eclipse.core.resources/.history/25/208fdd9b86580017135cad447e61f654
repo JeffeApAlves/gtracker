@@ -431,7 +431,7 @@ void setPayLoad(DataFrame* frame, char* str) {
 
 	frame->sizePayLoad = strlen(str);
 
-	if(frame->sizePayLoad <= LEN_MAX_PAYLOAD){
+	if(frame->sizePayLoad < LEN_MAX_PAYLOAD){
 
 		strncpy(frame->payload, str, frame->sizePayLoad);
 

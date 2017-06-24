@@ -429,15 +429,12 @@ void buildPayload(DataFrame *frame) {
 
 void setPayLoad(DataFrame* frame, char* str) {
 
-	frame->sizePayLoad = strlen(str);
+	frame->sizePayLoad = (int)strlen(str);
 
-	if(frame->sizePayLoad <= LEN_MAX_PAYLOAD){
+	strncpy(frame->payload, str, strlen(str));
 
-		strncpy(frame->payload, str, frame->sizePayLoad);
+	*(frame->frame + SIZE_HEADER + frame->sizePayLoad) = '\0';
 
-		*(frame->frame + SIZE_HEADER + frame->sizePayLoad) = '\0';
-
-	}
 }
 //------------------------------------------------------------------------
 

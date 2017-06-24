@@ -9821,3 +9821,1158 @@ No symbol "_mqx_kernel_data" in current context.
 java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:08:00.194
+!MESSAGE Request monitor: 'Sequence "", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:08:00.206
+!MESSAGE Request monitor: 'Sequence "Initializing debugger services", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:08:00.219
+!MESSAGE Request monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@1f8bd46): Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY com.pemicro.debug.gdbjtag.pne 4 5012 2017-06-23 23:08:00.229
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:425)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:388)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:313)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+!SUBENTRY 1 com.pemicro.debug.gdbjtag.pne 8 1 2017-06-23 23:08:00.229
+!MESSAGE PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:14:09.609
+!MESSAGE Request for monitor: '42^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:14:09.609
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:14:59.660
+!MESSAGE Request for monitor: '41^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:14:59.660
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:18:28.895
+!MESSAGE Request for monitor: '*running,thread-id="all"
+~"[Switching to Thread 536871808]\n"
+*stopped,reason="signal-received",signal-name="SIGINT",signal-meaning="Interrupt",frame={addr="0x00008e28",func="vTaskSwitchContext",args=[],file="../Generated_Code/tasks.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\tasks.c",line="2957"},thread-id="1",stopped-threads="all"
+40^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:18:28.895
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:20:13.264
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="3",type="breakpoint",disp="keep",enabled="y",addr="0x00004b16",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="34",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:34"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="3",frame={addr="0x00004b16",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="34"},thread-id="1",stopped-threads="all"
+41^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:20:13.264
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:20:20.390
+!MESSAGE Request for monitor: '*running,thread-id="all"
+~"[Switching to Thread 536871808]\n"
+*stopped,reason="signal-received",signal-name="SIGINT",signal-meaning="Interrupt",frame={addr="0x00008de8",func="vTaskSwitchContext",args=[],file="../Generated_Code/tasks.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\tasks.c",line="2957"},thread-id="5",stopped-threads="all"
+=thread-selected,id="5"
+54^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:20:20.390
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:20:33.064
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="5",type="breakpoint",disp="keep",enabled="y",addr="0x00004b1c",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="35",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:35"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="5",frame={addr="0x00004b1c",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="35"},thread-id="1",stopped-threads="all"
+=thread-selected,id="1"
+74^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:20:33.064
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:20.123
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="6",type="breakpoint",disp="keep",enabled="y",addr="0x00004b1c",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="35",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:35"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="6",frame={addr="0x00004b1c",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="35"},thread-id="1",stopped-threads="all"
+=thread-selected,id="1"
+103^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:20.123
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:23.977
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004ba2",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="71"},thread-id="1",stopped-threads="all"
+118^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:23.977
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:26.250
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004bb0",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="74"},thread-id="1",stopped-threads="all"
+131^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:26.250
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:27.353
+!MESSAGE Request for monitor: '144^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:27.353
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:28.261
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004c04",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="94"},thread-id="1",stopped-threads="all"
+156^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:28.261
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:36.333
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004c0a",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="95"},thread-id="1",stopped-threads="all"
+168^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:36.333
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:40.546
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004c36",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="98"},thread-id="1",stopped-threads="all"
+180^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:40.546
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:42.291
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="6",type="breakpoint",disp="keep",enabled="y",addr="0x00004b1c",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="35",thread-groups=[i1],times="2",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:35"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="6",frame={addr="0x00004b1c",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="35"},thread-id="1",stopped-threads="all"
+193^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:42.291
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:44.227
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004ba2",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="71"},thread-id="1",stopped-threads="all"
+209^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:44.227
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:45.442
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004bb0",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="74"},thread-id="1",stopped-threads="all"
+222^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:45.442
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:46.410
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004bcc",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="78"},thread-id="1",stopped-threads="all"
+234^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:46.410
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:51.100
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="6",type="breakpoint",disp="keep",enabled="y",addr="0x00004b1c",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="35",thread-groups=[i1],times="3",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:35"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="6",frame={addr="0x00004b1c",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="35"},thread-id="1",stopped-threads="all"
+248^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:51.100
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:21:52.500
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="6",type="breakpoint",disp="keep",enabled="y",addr="0x00004b1c",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="35",thread-groups=[i1],times="4",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:35"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="6",frame={addr="0x00004b1c",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="35"},thread-id="1",stopped-threads="all"
+264^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:21:52.500
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:22:20.770
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="8",type="breakpoint",disp="keep",enabled="y",addr="0x00004bd4",func="receiveFrame",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="79",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:79"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="8",frame={addr="0x00004bd4",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="79"},thread-id="1",stopped-threads="all"
+=thread-selected,id="1"
+284^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:22:20.770
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:22:33.781
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004bdc",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="85"},thread-id="1",stopped-threads="all"
+328^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:22:33.781
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:22:42.160
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004bf4",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="87"},thread-id="1",stopped-threads="all"
+340^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:22:42.160
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:24:23.560
+!MESSAGE Request monitor: 'Sequence "", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:24:23.572
+!MESSAGE Request monitor: 'Sequence "Initializing debugger services", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:24:23.582
+!MESSAGE Request monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@17f760b): Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY com.pemicro.debug.gdbjtag.pne 4 5012 2017-06-23 23:24:23.592
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:425)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:388)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:313)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+!SUBENTRY 1 com.pemicro.debug.gdbjtag.pne 8 1 2017-06-23 23:24:23.592
+!MESSAGE PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:24:50.610
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x00004bd4",func="receiveFrame",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="79",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:79"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x00004bd4",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="79"},thread-id="1",stopped-threads="all"
+43^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:24:50.610
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:25:19.192
+!MESSAGE Request for monitor: '56^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:25:19.192
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:27:07.447
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="4",type="breakpoint",disp="keep",enabled="y",addr="0x00004af8",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="29",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:29"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="4",frame={addr="0x00004af8",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="29"},thread-id="1",stopped-threads="all"
+45^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:27:07.447
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:27:11.800
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004b22",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="36"},thread-id="1",stopped-threads="all"
+56^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:27:11.800
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:27:19.861
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="4",type="breakpoint",disp="keep",enabled="y",addr="0x00004af8",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="29",thread-groups=[i1],times="2",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:29"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="4",frame={addr="0x00004af8",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="29"},thread-id="1",stopped-threads="all"
+78^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:27:19.861
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:27:48.964
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="7",type="breakpoint",disp="keep",enabled="y",addr="0x00004b1c",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="35",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:35"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="7",frame={addr="0x00004b1c",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="35"},thread-id="1",stopped-threads="all"
+=thread-selected,id="1"
+98^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:27:48.964
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:28:02.934
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="8",type="breakpoint",disp="keep",enabled="y",addr="0x00004bb0",func="receiveFrame",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="73",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:73"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="8",frame={addr="0x00004bb0",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="74"},thread-id="1",stopped-threads="all"
+111^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:28:02.934
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:29:35.423
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004bcc",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="78"},thread-id="1",stopped-threads="all"
+163^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:29:35.423
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:30:25.459
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="1",type="breakpoint",disp="keep",enabled="y",addr="0x00004bb0",func="receiveFrame",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="73",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:73"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="1",frame={addr="0x00004bb0",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="73"},thread-id="1",stopped-threads="all"
+42^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:30:25.459
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:30:29.067
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004bcc",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="77"},thread-id="1",stopped-threads="all"
+53^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:30:29.067
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:30:35.264
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="4",type="breakpoint",disp="keep",enabled="y",addr="0x00004bd4",func="receiveFrame",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="79",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:79"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="4",frame={addr="0x00004bd4",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="79"},thread-id="1",stopped-threads="all"
+64^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:30:35.264
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:30:51.501
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="5",type="breakpoint",disp="keep",enabled="y",addr="0x00004bdc",func="receiveFrame",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="81",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:81"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="5",frame={addr="0x00004bdc",func="receiveFrame",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="81"},thread-id="1",stopped-threads="all"
+77^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:30:51.501
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:31:21.545
+!MESSAGE Request for monitor: '89^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:31:21.545
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:31:46.430
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="3",type="breakpoint",disp="keep",enabled="y",addr="0x00004b22",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="36",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:36"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="3",frame={addr="0x00004b22",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="36"},thread-id="1",stopped-threads="all"
+41^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:31:46.430
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:31:57.201
+!MESSAGE Request for monitor: '56^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:31:57.201
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:32:27.166
+!MESSAGE Request for monitor: '44^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:32:27.166
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:32:57.161
+!MESSAGE Request for monitor: '43^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:32:57.161
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:00.669
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="3",type="breakpoint",disp="keep",enabled="y",addr="0x00004b22",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="36",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:36"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="3",frame={addr="0x00004b22",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="36"},thread-id="1",stopped-threads="all"
+43^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:00.669
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:16.399
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="6",type="breakpoint",disp="keep",enabled="y",addr="0x00004b28",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="37",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:37"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="6",frame={addr="0x00004b28",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="37"},thread-id="1",stopped-threads="all"
+80^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:16.399
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:24.113
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="7",type="breakpoint",disp="keep",enabled="y",addr="0x00004b2e",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="38",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:38"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="7",frame={addr="0x00004b2e",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="38"},thread-id="1",stopped-threads="all"
+93^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:24.113
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:26.400
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x00004c94",func="decoderCMD",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="134",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:134"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x00004c94",func="decoderCMD",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="134"},thread-id="1",stopped-threads="all"
+104^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:26.400
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:28.404
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="7",type="breakpoint",disp="keep",enabled="y",addr="0x00004b2e",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="38",thread-groups=[i1],times="2",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:38"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="7",frame={addr="0x00004b2e",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="38"},thread-id="1",stopped-threads="all"
+114^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:28.404
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:29.748
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x00004c94",func="decoderCMD",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="134",thread-groups=[i1],times="2",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:134"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x00004c94",func="decoderCMD",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="134"},thread-id="1",stopped-threads="all"
+124^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:29.748
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:30.576
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="7",type="breakpoint",disp="keep",enabled="y",addr="0x00004b2e",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="38",thread-groups=[i1],times="3",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:38"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="7",frame={addr="0x00004b2e",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="38"},thread-id="1",stopped-threads="all"
+134^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:30.576
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:31.401
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x00004c94",func="decoderCMD",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="134",thread-groups=[i1],times="3",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:134"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x00004c94",func="decoderCMD",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="134"},thread-id="1",stopped-threads="all"
+144^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:31.401
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:31.901
+!MESSAGE Request for monitor: '155^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:31.901
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:32.401
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x00004c94",func="decoderCMD",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="134",thread-groups=[i1],times="4",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:134"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x00004c94",func="decoderCMD",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="134"},thread-id="1",stopped-threads="all"
+164^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:32.401
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:33.452
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="7",type="breakpoint",disp="keep",enabled="y",addr="0x00004b2e",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="38",thread-groups=[i1],times="5",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:38"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="7",frame={addr="0x00004b2e",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="38"},thread-id="1",stopped-threads="all"
+174^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:33.452
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:33.957
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x00004c94",func="decoderCMD",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="134",thread-groups=[i1],times="5",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:134"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x00004c94",func="decoderCMD",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="134"},thread-id="1",stopped-threads="all"
+184^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:33.957
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:34.455
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="7",type="breakpoint",disp="keep",enabled="y",addr="0x00004b2e",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="38",thread-groups=[i1],times="6",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:38"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="7",frame={addr="0x00004b2e",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="38"},thread-id="1",stopped-threads="all"
+194^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:34.455
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:35.130
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x00004c94",func="decoderCMD",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="134",thread-groups=[i1],times="6",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:134"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x00004c94",func="decoderCMD",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="134"},thread-id="1",stopped-threads="all"
+204^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:35.130
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:35.934
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="7",type="breakpoint",disp="keep",enabled="y",addr="0x00004b2e",func="processProtocol",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="38",thread-groups=[i1],times="7",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:38"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="7",frame={addr="0x00004b2e",func="processProtocol",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="38"},thread-id="1",stopped-threads="all"
+214^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:35.934
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:38.682
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x00004c94",func="decoderCMD",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="134",thread-groups=[i1],times="7",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:134"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x00004c94",func="decoderCMD",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="134"},thread-id="1",stopped-threads="all"
+225^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:38.682
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:39.433
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004cb6",func="decoderFrame2",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="150"},thread-id="1",stopped-threads="all"
+235^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:39.433
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:42.851
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004cce",func="decoderFrame2",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="152"},thread-id="1",stopped-threads="all"
+244^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:42.851
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:52.377
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004cde",func="decoderFrame2",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="154"},thread-id="1",stopped-threads="all"
+264^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:52.377
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:53.124
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004cea",func="decoderFrame2",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="158"},thread-id="1",stopped-threads="all"
+272^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:53.124
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:54.056
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00004cfe",func="decoderFrame2",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="161"},thread-id="1",stopped-threads="all"
+280^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:54.056
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:34:55.950
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x00004c94",func="decoderCMD",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="134",thread-groups=[i1],times="8",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:134"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x00004c94",func="decoderCMD",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="134"},thread-id="1",stopped-threads="all"
+289^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:34:55.950
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:35:59.586
+!MESSAGE Request for monitor: '301^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:35:59.586
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:40:43.399
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x000053ce",func="setPayLoad",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="434",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:434"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x000053ce",func="setPayLoad",args=[{name="frame",value="0x20001490 <dataFrame>"},{name="str",value="0x9a74 "-23.5912537:-46.6451776:0.1:9.8:0.4:1:2:3:60:1000:23/06/2017 19.52""}],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="434"},thread-id="1",stopped-threads="all"
+41^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:40:43.399
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:40:51.987
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00005402",func="setPayLoad",args=[{name="frame",value="0x20001490 <dataFrame>"},{name="str",value="0x9a74 "-23.5912537:-46.6451776:0.1:9.8:0.4:1:2:3:60:1000:23/06/2017 19.52""}],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="441"},thread-id="1",stopped-threads="all"
+65^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:40:51.987
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:42:12.591
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x000053ce",func="setPayLoad",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="434",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:434"}
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x000053ce",func="setPayLoad",args=[{name="frame",value="0x20001490 <dataFrame>"},{name="str",value="0x9a74 "-23.5912537:-46.6451776:0.1:9.8:0.4:1:2:3:60:1000:23/06/2017 19.52""}],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="434"},thread-id="1",stopped-threads="all"
+41^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:42:12.591
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:42:17.131
+!MESSAGE Request for monitor: '*running,thread-id="1"
+*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x000053d6",func="setPayLoad",args=[{name="frame",value="0x20001490 <dataFrame>"},{name="str",value="0x9a74 "-23.5912537:-46.6451776:0.1:9.8:0.4:1:2:3:60:1000:23/06/2017 19.52""}],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="436"},thread-id="1",stopped-threads="all"
+62^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:42:17.131
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:42:21.321
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x000053ec",func="setPayLoad",args=[{name="frame",value="0x20001490 <dataFrame>"},{name="str",value="0x9a74 "-23.5912537:-46.6451776:0.1:9.8:0.4:1:2:3:60:1000:23/06/2017 19.52""}],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="438"},thread-id="1",stopped-threads="all"
+69^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:42:21.321
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:43:03.708
+!MESSAGE Request for monitor: '*running,thread-id="all"
+*stopped,reason="end-stepping-range",frame={addr="0x00005402",func="setPayLoad",args=[{name="frame",value="0x20001490 <dataFrame>"},{name="str",value="0x9a74 "-23.5912537:-46.6451776:0.1:9.8:0.4:1:2:3:60:1000:23/06/2017 19.52""}],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c",line="441"},thread-id="1",stopped-threads="all"
+101^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:43:03.708
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:44:04.049
+!MESSAGE Request for monitor: '124^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:44:04.049
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:45:37.037
+!MESSAGE Request for monitor: '41^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:45:37.037
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:46:10.614
+!MESSAGE Request for monitor: '41^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:46:10.614
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:48:11.437
+!MESSAGE Request for monitor: '42^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:48:11.437
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:49:53.136
+!MESSAGE Request for monitor: '*running,thread-id="all"
+~"[Switching to Thread 536869096]\n"
+*stopped,reason="signal-received",signal-name="SIGINT",signal-meaning="Interrupt",frame={addr="0x00004450",func="initBuffer",args=[{name="buffer",value="0x2000144c <bufferRx>"}],file="../Sources/RingBuffer.c",fullname="D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\RingBuffer.c",line="87"},thread-id="1",stopped-threads="all"
+40^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-23 23:49:53.136
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:52:56.553
+!MESSAGE Request monitor: 'Sequence "", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:52:56.566
+!MESSAGE Request monitor: 'Sequence "Initializing debugger services", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-23 23:52:56.576
+!MESSAGE Request monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@56b692): Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY com.pemicro.debug.gdbjtag.pne 4 5012 2017-06-23 23:52:56.586
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:425)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:388)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:313)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+!SUBENTRY 1 com.pemicro.debug.gdbjtag.pne 8 1 2017-06-23 23:52:56.587
+!MESSAGE PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
