@@ -136,7 +136,7 @@ ResultExec onTelemetry(DataFrame* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_SUCCESS;
 
-#if 1
+#if 0
 	if (frame) {
 
 		                 /*    LAT*/
@@ -146,6 +146,8 @@ ResultExec onTelemetry(DataFrame* frame){
 	}
 
 #endif
+
+	doAnswer(msg2send);
 
 	return res;
 }

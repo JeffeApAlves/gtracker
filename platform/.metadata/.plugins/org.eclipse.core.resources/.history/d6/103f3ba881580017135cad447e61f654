@@ -147,6 +147,8 @@ ResultExec onTelemetry(DataFrame* frame){
 
 #endif
 
+	doAnswer(msg2send);
+
 	return res;
 }
 //------------------------------------------------------------------------

@@ -1,78 +1,85 @@
-22:12:13 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+23:05:57 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  39288	    248	  10820	  50356	   c4b4	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
- 
-22:12:57 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
-make all 
-Building file: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c
+Building file: ../Sources/application.c
 Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -MT".metadata/.plugins/org.eclipse.cdt.make.core/specs.o" -c -o ".metadata/.plugins/org.eclipse.cdt.make.core/specs.o" "../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c"
-Finished building: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/application.d" -MT"Sources/application.o" -c -o "Sources/application.o" "../Sources/application.c"
+../Sources/application.c: In function 'onLED':
+../Sources/application.c:38:24: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+   frame->sizePayLoad = strlen(msg2send);
+                        ^
+../Sources/application.c: In function 'onAnalog':
+../Sources/application.c:59:24: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+   frame->sizePayLoad = strlen(msg2send);
+                        ^
+../Sources/application.c: In function 'onAccel':
+../Sources/application.c:80:24: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+   frame->sizePayLoad = strlen(msg2send);
+                        ^
+../Sources/application.c: In function 'onTouch':
+../Sources/application.c:101:24: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+   frame->sizePayLoad = strlen(msg2send);
+                        ^
+../Sources/application.c: In function 'onPWM':
+../Sources/application.c:122:24: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+   frame->sizePayLoad = strlen(msg2send);
+                        ^
+Finished building: ../Sources/application.c
  
-Building target: GoodsTrackerControl.elf
-Invoking: Cross ARM GNU C++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Project_Settings/Linker_Files" -L"D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS" -Wl,-Map,"GoodsTrackerControl.map" -specs=nano.specs -specs=nosys.specs -o "GoodsTrackerControl.elf"  ./Sources/TSS/TSS_Freemaster.o ./Sources/TSS/TSS_Sensor.o ./Sources/TSS/TSS_SensorGPIO.o ./Sources/TSS/TSS_SensorTSI.o ./Sources/TSS/TSS_SensorTSIL.o ./Sources/TSS/TSS_SystemSetupData.o  ./Sources/Events.o ./Sources/RingBuffer.o ./Sources/application.o ./Sources/frtos_tasks.o ./Sources/ihm.o ./Sources/lcd.o ./Sources/main.o ./Sources/protocol.o ./Sources/utils.o  ./Project_Settings/Startup_Code/startup.o  ./Generated_Code/AD1.o ./Generated_Code/AS1.o ./Generated_Code/ASerialLdd1.o ./Generated_Code/AdcLdd1.o ./Generated_Code/BitIoLdd1.o ./Generated_Code/BitIoLdd12.o ./Generated_Code/BitIoLdd13.o ./Generated_Code/BitIoLdd14.o ./Generated_Code/BitIoLdd15.o ./Generated_Code/BitIoLdd2.o ./Generated_Code/BitIoLdd3.o ./Generated_Code/BitIoLdd6.o ./Generated_Code/BitIoLdd7.o ./Generated_Code/CI2C1.o ./Generated_Code/CS1.o ./Generated_Code/Cpu.o ./Generated_Code/DB41.o ./Generated_Code/DB51.o ./Generated_Code/DB61.o ./Generated_Code/DB71.o ./Generated_Code/EN1.o ./Generated_Code/FRTOS1.o ./Generated_Code/GI2C1.o ./Generated_Code/LCDout.o ./Generated_Code/LED_B.o ./Generated_Code/LED_G.o ./Generated_Code/LED_R.o ./Generated_Code/LEDpin1.o ./Generated_Code/LEDpin2.o ./Generated_Code/LEDpin3.o ./Generated_Code/MCUC1.o ./Generated_Code/MMA1.o ./Generated_Code/PE_LDD.o ./Generated_Code/RS1.o ./Generated_Code/TI1.o ./Generated_Code/TSK1.o ./Generated_Code/TSSin.o ./Generated_Code/TU1.o ./Generated_Code/TimerIntLdd1.o ./Generated_Code/UTIL1.o ./Generated_Code/Vectors.o ./Generated_Code/WAIT1.o ./Generated_Code/croutine.o ./Generated_Code/event_groups.o ./Generated_Code/heap_1.o ./Generated_Code/heap_2.o ./Generated_Code/heap_3.o ./Generated_Code/heap_4.o ./Generated_Code/heap_5.o ./Generated_Code/list.o ./Generated_Code/mpu_wrappers.o ./Generated_Code/port.o ./Generated_Code/queue.o ./Generated_Code/tasks.o ./Generated_Code/timers.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -lTSS_KXX_M0
-Finished building target: GoodsTrackerControl.elf
+Building file: ../Sources/ihm.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/ihm.d" -MT"Sources/ihm.o" -c -o "Sources/ihm.o" "../Sources/ihm.c"
+Finished building: ../Sources/ihm.c
  
-Invoking: Cross ARM GNU Create Flash Image
-arm-none-eabi-objcopy -O srec "GoodsTrackerControl.elf"  "GoodsTrackerControl.srec"
-Finished building: GoodsTrackerControl.srec
+Building file: ../Sources/main.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
  
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  39288	    248	  10820	  50356	   c4b4	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
+Building file: ../Generated_Code/AD1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/AD1.d" -MT"Generated_Code/AD1.o" -c -o "Generated_Code/AD1.o" "../Generated_Code/AD1.c"
+Finished building: ../Generated_Code/AD1.c
  
-22:14:33 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
-make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  39288	    248	  10820	  50356	   c4b4	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
+Building file: ../Generated_Code/AS1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/AS1.d" -MT"Generated_Code/AS1.o" -c -o "Generated_Code/AS1.o" "../Generated_Code/AS1.c"
+Finished building: ../Generated_Code/AS1.c
  
-22:15:10 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
-make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  39288	    248	  10820	  50356	   c4b4	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
+Building file: ../Generated_Code/CI2C1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/CI2C1.d" -MT"Generated_Code/CI2C1.o" -c -o "Generated_Code/CI2C1.o" "../Generated_Code/CI2C1.c"
+Finished building: ../Generated_Code/CI2C1.c
  
-22:17:37 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
-make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  39288	    248	  10820	  50356	   c4b4	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
+Building file: ../Generated_Code/Cpu.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/Cpu.d" -MT"Generated_Code/Cpu.o" -c -o "Generated_Code/Cpu.o" "../Generated_Code/Cpu.c"
+Finished building: ../Generated_Code/Cpu.c
  
-22:17:58 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
-make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  39288	    248	  10820	  50356	   c4b4	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
+Building file: ../Generated_Code/GI2C1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/GI2C1.d" -MT"Generated_Code/GI2C1.o" -c -o "Generated_Code/GI2C1.o" "../Generated_Code/GI2C1.c"
+Finished building: ../Generated_Code/GI2C1.c
  
-22:20:03 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
-make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  39288	    248	  10820	  50356	   c4b4	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
+Building file: ../Generated_Code/MMA1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/MMA1.d" -MT"Generated_Code/MMA1.o" -c -o "Generated_Code/MMA1.o" "../Generated_Code/MMA1.c"
+Finished building: ../Generated_Code/MMA1.c
  
-22:20:53 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
-make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  39288	    248	  10820	  50356	   c4b4	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
+Building file: ../Generated_Code/PE_LDD.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/PE_LDD.d" -MT"Generated_Code/PE_LDD.o" -c -o "Generated_Code/PE_LDD.o" "../Generated_Code/PE_LDD.c"
+Finished building: ../Generated_Code/PE_LDD.c
  
+Building file: ../Generated_Code/TI1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/TI1.d" -MT"Generated_Code/TI1.o" -c -o "Generated_Code/TI1.o" "../Generated_Code/TI1.c"
+Finished building: ../Generated_Code/TI1.c
+ 
+Building file: ../Generated_Code/TSSin.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/TSSin.d" -MT"Generated_Code/TSSin.o" -c -o "Generated_Code/TSSin.o" "../Generated_Code/TSSin.c"
+Finished building: ../Generated_Code/TSSin.c
+ 
+Building file: ../Generated_Code/Vectors.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/Vectors.d" -MT"Generated_Code/Vectors.o" -c -o "Generated_Code/Vectors.o" "../Generated_Code/Vectors.c"

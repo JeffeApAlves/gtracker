@@ -1,11 +1,85 @@
-22:20:53 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+23:05:57 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  39288	    248	  10820	  50356	   c4b4	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
+Building file: ../Sources/application.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/application.d" -MT"Sources/application.o" -c -o "Sources/application.o" "../Sources/application.c"
+../Sources/application.c: In function 'onLED':
+../Sources/application.c:38:24: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+   frame->sizePayLoad = strlen(msg2send);
+                        ^
+../Sources/application.c: In function 'onAnalog':
+../Sources/application.c:59:24: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+   frame->sizePayLoad = strlen(msg2send);
+                        ^
+../Sources/application.c: In function 'onAccel':
+../Sources/application.c:80:24: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+   frame->sizePayLoad = strlen(msg2send);
+                        ^
+../Sources/application.c: In function 'onTouch':
+../Sources/application.c:101:24: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+   frame->sizePayLoad = strlen(msg2send);
+                        ^
+../Sources/application.c: In function 'onPWM':
+../Sources/application.c:122:24: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+   frame->sizePayLoad = strlen(msg2send);
+                        ^
+Finished building: ../Sources/application.c
  
-
-22:20:57 Build Finished (took 3s.865ms)
-
+Building file: ../Sources/ihm.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/ihm.d" -MT"Sources/ihm.o" -c -o "Sources/ihm.o" "../Sources/ihm.c"
+Finished building: ../Sources/ihm.c
+ 
+Building file: ../Sources/main.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+Finished building: ../Sources/main.c
+ 
+Building file: ../Generated_Code/AD1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/AD1.d" -MT"Generated_Code/AD1.o" -c -o "Generated_Code/AD1.o" "../Generated_Code/AD1.c"
+Finished building: ../Generated_Code/AD1.c
+ 
+Building file: ../Generated_Code/AS1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/AS1.d" -MT"Generated_Code/AS1.o" -c -o "Generated_Code/AS1.o" "../Generated_Code/AS1.c"
+Finished building: ../Generated_Code/AS1.c
+ 
+Building file: ../Generated_Code/CI2C1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/CI2C1.d" -MT"Generated_Code/CI2C1.o" -c -o "Generated_Code/CI2C1.o" "../Generated_Code/CI2C1.c"
+Finished building: ../Generated_Code/CI2C1.c
+ 
+Building file: ../Generated_Code/Cpu.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/Cpu.d" -MT"Generated_Code/Cpu.o" -c -o "Generated_Code/Cpu.o" "../Generated_Code/Cpu.c"
+Finished building: ../Generated_Code/Cpu.c
+ 
+Building file: ../Generated_Code/GI2C1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/GI2C1.d" -MT"Generated_Code/GI2C1.o" -c -o "Generated_Code/GI2C1.o" "../Generated_Code/GI2C1.c"
+Finished building: ../Generated_Code/GI2C1.c
+ 
+Building file: ../Generated_Code/MMA1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/MMA1.d" -MT"Generated_Code/MMA1.o" -c -o "Generated_Code/MMA1.o" "../Generated_Code/MMA1.c"
+Finished building: ../Generated_Code/MMA1.c
+ 
+Building file: ../Generated_Code/PE_LDD.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/PE_LDD.d" -MT"Generated_Code/PE_LDD.o" -c -o "Generated_Code/PE_LDD.o" "../Generated_Code/PE_LDD.c"
+Finished building: ../Generated_Code/PE_LDD.c
+ 
+Building file: ../Generated_Code/TI1.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/TI1.d" -MT"Generated_Code/TI1.o" -c -o "Generated_Code/TI1.o" "../Generated_Code/TI1.c"
+Finished building: ../Generated_Code/TI1.c
+ 
+Building file: ../Generated_Code/TSSin.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/TSSin.d" -MT"Generated_Code/TSSin.o" -c -o "Generated_Code/TSSin.o" "../Generated_Code/TSSin.c"
+Finished building: ../Generated_Code/TSSin.c
+ 
+Building file: ../Generated_Code/Vectors.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Generated_Code/Vectors.d" -MT"Generated_Code/Vectors.o" -c -o "Generated_Code/Vectors.o" "../Generated_Code/Vectors.c"
