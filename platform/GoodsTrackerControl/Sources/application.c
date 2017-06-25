@@ -23,11 +23,14 @@ char		msg2send[150];
 
 void initCallBacks(){
 
-	setEventCMD(CMD_LED,	onLED);
-	setEventCMD(CMD_ANALOG,	onAnalog);
-	setEventCMD(CMD_ACC,	onAccel);
-	setEventCMD(CMD_TOUCH,	onTouch);
-	setEventCMD(CMD_PWM,	onPWM);
+	setEventCMD(CMD_LED,		onLED);
+	setEventCMD(CMD_ANALOG,		onAnalog);
+	setEventCMD(CMD_ACC,		onAccel);
+	setEventCMD(CMD_TOUCH,		onTouch);
+	setEventCMD(CMD_PWM,		onPWM);
+	setEventCMD(CMD_TELEMETRIA,	onTelemetry);
+	setEventCMD(CMD_LOCK,		onLock);
+
 }
 //-------------------------------------------------------------------------
 
@@ -37,7 +40,7 @@ ResultExec onLED(DataFrame* frame){
 
 	if (frame) {
 
-		strcpy(msg2send,"0.0000000,0.0000000");
+		strcpy(msg2send,"23/06/2017 19.52");
 
 		doAnswer(msg2send);
 
@@ -46,7 +49,7 @@ ResultExec onLED(DataFrame* frame){
 
 	return res;
 }
-	//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
 
 ResultExec onAnalog(DataFrame* frame){
 
@@ -54,7 +57,7 @@ ResultExec onAnalog(DataFrame* frame){
 
 	if (frame) {
 
-		strcpy(msg2send,"0.0000000,0.0000000");
+		strcpy(msg2send,"23/06/2017 19.52");
 
 		doAnswer(msg2send);
 
@@ -72,7 +75,7 @@ ResultExec onAccel(DataFrame* frame){
 
 	if (frame) {
 
-		strcpy(msg2send,"0.0000000,0.0000000");
+		strcpy(msg2send,"23/06/2017 19.52");
 
 		doAnswer(msg2send);
 
@@ -90,7 +93,7 @@ ResultExec onTouch(DataFrame* frame){
 
 	if (frame) {
 
-		strcpy(msg2send,"0.0000000,0.0000000");
+		strcpy(msg2send,"23/06/2017 19.52");
 
 		doAnswer(msg2send);
 
@@ -107,7 +110,7 @@ ResultExec onPWM(DataFrame* frame){
 
 	if (frame) {
 
-		strcpy(msg2send,"");
+		strcpy(msg2send,"23/06/2017 19.52");
 
 		doAnswer(msg2send);
 
@@ -154,9 +157,11 @@ ResultExec onLock(DataFrame* frame){
 
 	if (frame) {
 
-		char *msg2send = "";
+		//Colocar no minimo horario que foi executado o cmd
+		strcpy(msg2send,"23/06/2017 19.52");
 
 		LED_G_On();
+
 
 		doAnswer(msg2send);
 
@@ -197,7 +202,6 @@ void read_accel() {
 void initAccel(){
 
 	MMA1_Init();
-
 	MMA1_Enable();
 }
 //------------------------------------------------------------------------
@@ -208,9 +212,7 @@ void Infor2String(Info* info,char* str_out){
 
 		strcpy(str_out,"-23.591387:-46.645126:0.1:9.8:0.4:1:2:3:60:900:1:23/06/2017 19.52");
 
-		//char *msg2send = "-23.673326:-46.775215:0.1:9.8:0.4:1:2:3:60:900:23/06/2017 19.52";
 /*
-
 		sprintf(str_out,"%.7f:%.7f:%d:%d:%d:%d:%d:%d:%d:%d:%s",
 				info->Lat,
 				info->Lng,
@@ -223,8 +225,8 @@ void Infor2String(Info* info,char* str_out){
 				info->Speed,
 				info->Level,
 				info->Date);
-
 */
+
 	}
 }
 //------------------------------------------------------------------------

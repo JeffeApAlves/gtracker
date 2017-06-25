@@ -5,10 +5,10 @@
  *      Author: Suporte
  */
 
-#include "PE_Types.h"
-
 #ifndef SOURCES_PROTOCOL_H_
 #define SOURCES_PROTOCOL_H_
+
+#include "PE_Types.h"
 
 #define	ADDRESS			2
 
@@ -20,12 +20,13 @@
 #define LEN_OPERATION	2
 #define LEN_RESOURCE	3
 #define LEN_SIZE_PL		3
-#define SIZE_HEADER		(LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL+4)
+#define LEN_CHECKSUM	2
+#define LEN_HEADER		(LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL+4) // 4 separadores do cabecalho
 
+#define SIZE_MIN_FRAME		(LEN_HEADER+2)
+#define SIZE_MAX_PAYLOAD	255
+#define SIZE_MAX_FRAME		(LEN_HEADER+SIZE_MAX_PAYLOAD+2)
 
-#define LEN_MIN_FRAME	18
-#define LEN_MAX_FRAME	273
-#define LEN_MAX_PAYLOAD	255
 
 /* [LED01]\r\n*/
 #define CHAR_CMD_START	'['
@@ -36,6 +37,10 @@
 #define CHAR_NAK		0x15
 #define CHAR_STR_END	'\0'
 
+/*
+ *
+ *Retorno das callbacks
+ */
 typedef enum {
 
 	CMD_RESULT_EXEC_UNSUCCESS	= -3,
@@ -45,6 +50,10 @@ typedef enum {
 
 }ResultExec;
 
+/*
+ *
+ * Id dos recursos
+ */
 typedef enum {
 
 	CMD_LED,
@@ -53,10 +62,15 @@ typedef enum {
 	CMD_TOUCH,
 	CMD_ACC,
 	CMD_TELEMETRIA,
-	CMD_LOCK
+	CMD_LOCK,
+	CMD_LCD
 
-}IdCmd;
+}ResourceID;
 
+/**
+ *
+ * Maquina de estado para recebimento do frame
+ */
 typedef enum {
 
 	CMD_INIT,
@@ -67,39 +81,31 @@ typedef enum {
 	CMD_RX_NL,
 	CMD_RX_CR,
 	CMD_DECODER,
-	CMD_EXEC,
 	CMD_ERROR,
-	CMD_ACK,
-	CMD_NAK,
-
+	CMD_EXEC,
+	CMD_EXEC_ERROR,
 } StatusRx;
 
 /*
-typedef struct {
-
-	char	data[LEN_MAX_FRAME];
-	unsigned char count;
-
-} DataRx;*/
-
+ * Estrutura de dados do frame
+ *
+ */
 typedef struct{
 
-	unsigned char	checksum_calc;
 	unsigned char	checksum_rx;
 
-	char	operacao[2 + 1];
+	char	operacao[LEN_OPERATION + 1];
 	char	resource[LEN_RESOURCE + 1];
 
 	int		address;
 	int		dest;
-	int		value;
 
 	int		sizeHeader;
 	int		sizePayLoad;
 	int		sizeFrame;
 
-	char	payload[LEN_MAX_PAYLOAD];
-	char	frame[LEN_MAX_FRAME];
+	char	payload[SIZE_MAX_PAYLOAD];
+	char	frame[SIZE_MAX_FRAME];
 
 } DataFrame;
 
@@ -115,22 +121,18 @@ typedef ResultExec(*pCallBack)(DataFrame*);
  */
 typedef struct{
 
-	IdCmd		id_cmd;
-	char 		resource[LEN_RESOURCE + 1];
+	ResourceID	resourceID;
+	char		resource[LEN_RESOURCE + 1];
 	pCallBack	cb;
 
-} Cmd;
-
+} Resource;
 
 void rxStartCMD (void);
 void receiveFrame (void);
 void rxNL(void);
 void rxCR(void);
-void decoderCMD(void);
 pCallBack getCallBack(void);
 void initRxCMD(void);
-void sendNAK(void);
-void sendACK(void);
 void sendResult(void);
 void execCallBack();
 void setStatusRx(StatusRx sts);
@@ -139,21 +141,21 @@ bool putTxData(char data);
 void sendString(const char* str);
 void clearData(DataFrame* frame);
 void errorRx(void);
-bool decoderFrame(void);
-void formatCMD(void);
+void decoderFrame(void);
 bool decoderFrame2(void);
+void errorExec(void);
 unsigned char calcChecksum(const char *buff, size_t sz);
-
-/*interface*/
-void processProtocol(void);
-void setEventCMD(IdCmd id_cmd,pCallBack c);
-bool putRxData(char ch);
-bool getTxData(char* ch);
-bool hasTxData(void);
 void startTX(void);
 void setPayLoad(DataFrame* frame, char* str);
 void buildHeader(DataFrame *frame);
 void buildFrame(DataFrame *frame);
+
+/*interface*/
+void processProtocol(void);
+void setEventCMD(ResourceID id,pCallBack c);
+bool putRxData(char ch);
+bool getTxData(char* ch);
+bool hasTxData(void);
 void doAnswer(char *msg);
 
 extern unsigned int timeTx,timeRx;

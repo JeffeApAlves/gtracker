@@ -5,12 +5,14 @@ namespace GoodsTracker
 {
     class Serial
     {
+        const int SIZE_BUFFER_RX    = 256;
+        const int SIZE_BUFFER_TX    = 256;
+        const int SIZE_RING_BUFFER_TX = (8 * 1024);
+
         static AutoResetEvent autoEvent;
 
-        static private object _lock = new object();
-        static SerialPort port=null;
-        static RingBuffer bufferRx=new RingBuffer(8*1024);
-
+        static SerialPort port = null;
+        static RingBuffer bufferRx = new RingBuffer(SIZE_RING_BUFFER_TX);
 
         internal static bool putRxData(char data)
         {
@@ -23,19 +25,9 @@ namespace GoodsTracker
 
             autoEvent.WaitOne();
 
-//            lock (_lock)
-            //{
-
-                flg = bufferRx.getData(out ch);
-            //}
-
+            flg = bufferRx.getData(out ch);
 
             return flg;
-        }
-
-        internal static void clearBuffer()
-        {
-            bufferRx.initBuffer();
         }
 
         internal static void putTxData(char[] str)
@@ -58,22 +50,18 @@ namespace GoodsTracker
         {
             try
             {
-                clearBuffer();
+                bufferRx.init();
 
-                autoEvent = new AutoResetEvent(false);
+                autoEvent   = new AutoResetEvent(false);
+                port        = new SerialPort("COM3",57600, Parity.None, 8, StopBits.One);
 
-                port = new SerialPort("COM3",57600, Parity.None, 8, StopBits.One);
-
-                port.ReadBufferSize     = 128;
-                port.WriteBufferSize    = 128;
-                port.Handshake = Handshake.None;
+                port.ReadBufferSize     = SIZE_BUFFER_RX;
+                port.WriteBufferSize    = SIZE_BUFFER_TX;
+                port.Handshake          = Handshake.None;
                 port.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
-
                 port.ReadTimeout    = 50;
                 port.WriteTimeout   = 50;
-
                 port.Open();
-
                 port.DiscardInBuffer();
             }
             catch
@@ -93,19 +81,15 @@ namespace GoodsTracker
         {
             autoEvent.Reset();
 
-            lock (_lock)
+            char[] buffer = new char[SIZE_BUFFER_RX];
+
+            int bytesRead = port.Read(buffer, 0, SIZE_BUFFER_RX);
+
+            if (bytesRead > 0)
             {
-
-                byte[] buffer = new byte[64];
-
-                int bytesRead = port.Read(buffer, 0, 64);
-
-                if (bytesRead > 0)
+                for (int i = 0; i < bytesRead; i++)
                 {
-                    for (int i = 0; i < bytesRead; i++)
-                    {
-                        putRxData((char)buffer[i]);
-                    }
+                    putRxData(buffer[i]);
                 }
             }
 

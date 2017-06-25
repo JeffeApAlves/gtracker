@@ -5,7 +5,10 @@
 #include "RingBuffer.h"
 #include "utils.h"
 #include "protocol.h"
-#include "application.h"
+
+const char* OPERATION_AN="AN";
+const char* OPERATION_RD="RD";
+const char* OPERATION_WR="WR";
 
 unsigned int timeTx = TIME_TX;
 unsigned int timeRx = TIME_RX;
@@ -14,16 +17,17 @@ StatusRx	statusRx = CMD_INIT;
 RingBuffer	bufferRx,bufferTx;
 DataFrame	dataFrame;
 
-Cmd			ListCmd[]	= {	{.id_cmd=CMD_LED,		.resource = "LED",	.cb = onLED},
-							{.id_cmd=CMD_ANALOG,	.resource = "AN",	.cb = onAnalog},
-							{.id_cmd=CMD_PWM,		.resource = "PWM",	.cb = onPWM},
-							{.id_cmd=CMD_ACC,		.resource = "ACC",	.cb = onAccel},
-							{.id_cmd=CMD_TOUCH,		.resource = "TOU",	.cb = onTouch},
-							{.id_cmd=CMD_TELEMETRIA,.resource = "TLM",	.cb = onTelemetry},
-							{.id_cmd=CMD_LOCK,		.resource = "LCK",	.cb = onLock},
-							};
+Resource	ListCmd[]	= {	{.resourceID = CMD_LED,			.resource = "LED\0",	.cb = NULL},
+							{.resourceID = CMD_ANALOG,		.resource = "ANL\0",	.cb = NULL},
+							{.resourceID = CMD_PWM,			.resource = "PWM\0",	.cb = NULL},
+							{.resourceID = CMD_ACC,			.resource = "ACC\0",	.cb = NULL},
+							{.resourceID = CMD_TOUCH,		.resource = "TOU\0",	.cb = NULL},
+							{.resourceID = CMD_TELEMETRIA,	.resource = "TLM\0",	.cb = NULL},
+							{.resourceID = CMD_LOCK,		.resource = "LCK\0",	.cb = NULL},
+							{.resourceID = CMD_LCD,			.resource = "LCD\0",	.cb = NULL},
+				};
 
-const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Cmd);
+const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Resource);
 
 void processProtocol(void) {
 
@@ -36,15 +40,15 @@ void processProtocol(void) {
 		case CMD_RX_PAYLOAD:	receiveFrame();			break;
 		case CMD_RX_END:		rxCR();					break;
 		case CMD_RX_CR:			rxNL();					break;
-		case CMD_RX_NL:			decoderCMD();			break;
+		case CMD_RX_NL:			decoderFrame();			break;
 		case CMD_DECODER:		execCallBack();			break;
 
 		case CMD_ERROR:			errorRx();				break;
-		case CMD_ACK:			sendACK();				break;
-		case CMD_NAK:			sendNAK();				break;
 		case CMD_EXEC:			sendResult();			break;
+		case CMD_EXEC_ERROR:	errorExec();			break;
 	}
 
+	// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
 	startTX();
 }
 //------------------------------------------------------------------------
@@ -71,13 +75,13 @@ void receiveFrame (void) {
 
 	if(getRxData(&ch)) {
 
-		if(ch==CHAR_CMD_START || dataFrame.sizeFrame>=LEN_MAX_FRAME) {
+		if(ch==CHAR_CMD_START || dataFrame.sizeFrame>=SIZE_MAX_FRAME) {
 			setStatusRx(CMD_ERROR);
 		}
 		else
 		  if(ch==CHAR_CMD_END) {
 
-			 if(dataFrame.sizeFrame>=LEN_MIN_FRAME) {
+			 if(dataFrame.sizeFrame>=SIZE_MIN_FRAME) {
 
 				setStatusRx(CMD_RX_END);
 			 }
@@ -88,7 +92,7 @@ void receiveFrame (void) {
 		else {
 
 		  setStatusRx(CMD_RX_PAYLOAD);
-		  dataFrame.frame[(dataFrame.sizeFrame++)%LEN_MAX_FRAME] = ch;
+		  dataFrame.frame[(dataFrame.sizeFrame++)%SIZE_MAX_FRAME] = ch;
 		}
 	}
 }
@@ -130,7 +134,7 @@ void rxCR(void) {
 }
 //------------------------------------------------------------------------
 
-void decoderCMD(void) {
+void decoderFrame(void) {
 
 	if(decoderFrame2()){
 
@@ -150,7 +154,8 @@ bool decoderFrame2(void) {
 
 	List	list;
 
-	dataFrame.checksum_calc = calcChecksum(dataFrame.frame, dataFrame.sizeFrame - 2);
+	//-2 para desconsiderar o checksum que que esta no frame recebido
+	unsigned char checksum_calc = calcChecksum(dataFrame.frame, dataFrame.sizeFrame - LEN_CHECKSUM);
 
 	str_split(&list, dataFrame.frame, CHAR_SEPARATOR);
 
@@ -160,7 +165,7 @@ bool decoderFrame2(void) {
 		/*Usamos strtol pois o último objeto da lista armazena o valor do checksum em HEXA*/
 		dataFrame.checksum_rx = strtol(list.itens[list.size-1], NULL, 16);
 
-		if(dataFrame.checksum_rx==dataFrame.checksum_calc) {
+		if(dataFrame.checksum_rx==checksum_calc) {
 
 			char i;
 
@@ -190,11 +195,12 @@ bool decoderFrame2(void) {
 }
 //------------------------------------------------------------------------
 
-void setEventCMD(IdCmd id_cmd,pCallBack c) {
-	char i;
+void setEventCMD(ResourceID id,pCallBack c) {
+
+	int i;
 	for(i=0;i<SIZE_LIST_CMD;i++){
 
-		if(ListCmd[i].id_cmd==id_cmd){
+		if(ListCmd[i].resourceID==id){
 
 			ListCmd[i].cb = c;
 			break;
@@ -206,7 +212,8 @@ void setEventCMD(IdCmd id_cmd,pCallBack c) {
 pCallBack getCallBack(void) {
 
 	pCallBack cb = NULL;
-	char i;
+
+	int i;
 	for(i = 0; i < SIZE_LIST_CMD; i++){
 
 		if(strcmp(ListCmd[i].resource, dataFrame.resource) == 0){
@@ -226,11 +233,11 @@ void execCallBack(void) {
 
 	if(cb!=NULL && cb(&dataFrame) == CMD_RESULT_EXEC_SUCCESS) {
 
-			setStatusRx(CMD_EXEC);
+		setStatusRx(CMD_EXEC);
 	}
 	else {
 
-		setStatusRx(CMD_NAK);
+		setStatusRx(CMD_EXEC_ERROR);
 	}
 }
 //------------------------------------------------------------------------
@@ -244,22 +251,11 @@ void initRxCMD(void) {
 }
 //------------------------------------------------------------------------
 
-void sendACK(void) {
+void errorExec(void) {
 
-	sprintf(dataFrame.frame,"%s%d%d",dataFrame.resource,dataFrame.address,dataFrame.value);
-
-	sendFrame(dataFrame.frame);
-
-	setStatusRx(CMD_INIT_OK);
-}
-//------------------------------------------------------------------------
-
-void sendNAK(void) {
-
-	sprintf(dataFrame.frame,"%s%d%d%s",dataFrame.resource,dataFrame.address,dataFrame.value,CHAR_NAK);
-
-	sendFrame(dataFrame.frame);
-
+	/*
+	 * TBD
+	 */
 	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
@@ -267,7 +263,6 @@ void sendNAK(void) {
 void sendResult(void){
 
 	sendFrame(dataFrame.frame);
-
 	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
@@ -336,31 +331,6 @@ void errorRx(void){
 }
 //------------------------------------------------------------------------
 
-void clearData(DataFrame* frame){
-
-	frame->checksum_rx	= -1;
-	frame->checksum_calc= 0;
-	frame->address		= 0;
-	frame->value		= 0;
-	frame->sizeFrame	= 0;
-	frame->sizePayLoad	= 0;
-	frame->sizeHeader	= 0;
-
-	int i;
-
-	for(i=0;i<LEN_MAX_PAYLOAD;i++){
-
-		frame->payload[i]	= CHAR_STR_END;
-	}
-
-	for(i=0;i<LEN_MAX_FRAME;i++){
-
-		frame->frame[i]		= CHAR_STR_END;
-	}
-
-}
-//------------------------------------------------------------------------
-
 bool hasTxData(void){
 
 	return hasData(&bufferTx);
@@ -383,15 +353,12 @@ void startTX(void){
 
 void buildHeader(DataFrame *frame) {
 
-	sprintf(frame->frame,"%05d%c%05d%c%s%c%s%c",
-				frame->address,
-					CHAR_SEPARATOR,
-						frame->dest,
-							CHAR_SEPARATOR,
-								frame->operacao,
-									CHAR_SEPARATOR,
-										frame->resource,
-											CHAR_SEPARATOR);
+	sprintf(frame->frame,"%05d%c%05d%c%s%c%s%c%03d%c",
+				frame->address, CHAR_SEPARATOR,
+					frame->dest, CHAR_SEPARATOR,
+						frame->operacao, CHAR_SEPARATOR,
+							frame->resource, CHAR_SEPARATOR,
+								frame->sizePayLoad, CHAR_SEPARATOR);
 
 	frame->sizeHeader	= strlen(frame->frame);
 }
@@ -400,18 +367,19 @@ void buildHeader(DataFrame *frame) {
 void buildFrame(DataFrame *frame) {
 
 	char seperador[]= {CHAR_SEPARATOR,CHAR_STR_END};
-	char checksum[4];
+	char checksum[LEN_CHECKSUM+2];
 
+	// Header
 	buildHeader(frame);
-	strncat(frame->frame, frame->payload,frame->payload);
+
+	// Payload
+	strncat(frame->frame, frame->payload,frame->sizePayLoad);
+
+	// CheckSum
 	strcat(dataFrame.frame, seperador);
-
 	frame->sizeFrame = strlen(frame->frame);
-
 	sprintf(checksum, "%02X", calcChecksum (frame->frame,frame->sizeFrame));
-
-
-	strcat(dataFrame.frame, checksum);
+	strcat(frame->frame, checksum);
 }
 //------------------------------------------------------------------------
 
@@ -419,11 +387,9 @@ void setPayLoad(DataFrame* frame, char* str) {
 
 	size_t size = strlen(str);
 
-	sprintf(frame->payload,"%03d:",size);
+	if(frame->sizePayLoad <= SIZE_MAX_PAYLOAD){
 
-	if(frame->sizePayLoad <= LEN_MAX_PAYLOAD){
-
-		strcpy(frame->payload+4, str);
+		strcpy(frame->payload, str);
 	}
 
 	frame->sizePayLoad	= strlen(frame->payload);
@@ -436,7 +402,7 @@ void doAnswer(char *msg) {
 
 		setPayLoad(&dataFrame, msg);
 
-		strncpy(dataFrame.operacao, "AN", 2);
+		strncpy(dataFrame.operacao, OPERATION_AN, LEN_OPERATION);
 		dataFrame.dest		= dataFrame.address;
 		dataFrame.address	= ADDRESS;
 
@@ -450,15 +416,38 @@ void doAnswer(char *msg) {
 
 unsigned char calcChecksum(const char *buff, size_t sz) {
 
-	unsigned char i=0;
-	unsigned char chk = 0;
+	int i;
+	unsigned char chk	= 0;
 
 	if (buff) {
 
-		for (i = 0; i < sz; i++)
+		for (i = 0; i < sz; i++){
 			chk ^= buff[i];
+		}
 	}
 
 	return chk;
+}
+//------------------------------------------------------------------------
+
+void clearData(DataFrame* frame){
+
+	frame->checksum_rx	= -1;
+	frame->address		= 0;
+	frame->sizeFrame	= 0;
+	frame->sizePayLoad	= 0;
+	frame->sizeHeader	= 0;
+
+	int i;
+
+	for(i=0;i<SIZE_MAX_PAYLOAD;i++){
+
+		frame->payload[i]	= CHAR_STR_END;
+	}
+
+	for(i=0;i<SIZE_MAX_FRAME;i++){
+
+		frame->frame[i]		= CHAR_STR_END;
+	}
 }
 //------------------------------------------------------------------------

@@ -5,9 +5,10 @@ namespace GoodsTracker
 {
     class RingBuffer
     {
+        private object _lock = new object();
         const int DEFAULT_BUFFER_SIZE = 1024;
 
-        char[] data  = null;
+        char[] data  = new char[DEFAULT_BUFFER_SIZE];
 
         int index_producer;
         int index_consumer;
@@ -15,21 +16,29 @@ namespace GoodsTracker
 
         internal RingBuffer(int size)
         {
-            data = new char[size>0?size: DEFAULT_BUFFER_SIZE];
+            if (size > 0)
+            {
+                data = new char[size];
+            }
+
+            init();
         }
 
         internal bool putData(char ch)
         {
             bool flag = false;
 
-            if (!isFull())
+            lock (_lock)
             {
+                if (!isFull())
+                {
 
-                data[index_producer++] = ch;
-                index_producer %= data.Length;
-                count++;
+                    data[index_producer++] = ch;
+                    index_producer %= data.Length;
+                    count++;
 
-                flag = true;
+                    flag = true;
+                }
             }
 
             return flag;
@@ -41,14 +50,17 @@ namespace GoodsTracker
 
             ch = new char();
 
-            if (hasData())
+            lock (_lock)
             {
+                if (hasData())
+                {
 
-                ch = data[index_consumer++];
-                index_consumer %= data.Length;
-                count--;
+                    ch = data[index_consumer++];
+                    index_consumer %= data.Length;
+                    count--;
 
-                flag = true;
+                    flag = true;
+                }
             }
 
             return flag;
@@ -69,7 +81,7 @@ namespace GoodsTracker
             return getCount() > 0;
         }
 
-        internal void initBuffer()
+        internal void init()
         {
             index_consumer  = 0;
             index_producer  = 0;

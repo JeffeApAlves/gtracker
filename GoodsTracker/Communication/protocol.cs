@@ -209,7 +209,6 @@ namespace GoodsTracker
         void initRxCMD()
         {
             clearRxFrame();
-            Serial.clearBuffer();
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 
@@ -225,7 +224,7 @@ namespace GoodsTracker
 
         internal void init()
         {
-            setTime(5);
+            setTime(50);
 
             Serial.Open();
         }
