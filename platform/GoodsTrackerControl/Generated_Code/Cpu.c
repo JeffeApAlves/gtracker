@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-23, 14:23, # CodeGen: 7
+**     Date/Time   : 2017-06-24, 12:17, # CodeGen: 0
 **     Abstract    :
 **
 **     Settings    :
@@ -267,7 +267,14 @@
 #include "TU1.h"
 #include "TI1.h"
 #include "TimerIntLdd1.h"
+#include "MMA1.h"
+#include "GI2C1.h"
 #include "WAIT1.h"
+#include "I2C1.h"
+#include "SDA1.h"
+#include "BitIoLdd4.h"
+#include "SCL1.h"
+#include "BitIoLdd5.h"
 #include "CS1.h"
 #include "LCDout.h"
 #include "EN1.h"
@@ -283,9 +290,6 @@
 #include "DB71.h"
 #include "BitIoLdd15.h"
 #include "TSSin.h"
-#include "MMA1.h"
-#include "GI2C1.h"
-#include "CI2C1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -523,6 +527,16 @@ void PE_low_level_init(void)
   (void)TimerIntLdd1_Init(NULL);
   /* ### TimerInt "TI1" init code ... */
   WAIT1_Init();
+  /* ### BitIO_LDD "BitIoLdd4" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd4_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd5" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd5_Init(NULL);
+  /* ### GenericSWI2C "I2C1" init code ... */
+  I2C1_Init();
+  /* ### GenericI2C "GI2C1" init code ... */
+  GI2C1_Init();
+  /* ### MMA8451Q "MMA1" init code ... */
+  /* Write code here ... */
   /* ### CriticalSection "CS1" init code ... */
   /* ### BitIO_LDD "BitIoLdd6" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)BitIoLdd6_Init(NULL);
@@ -542,10 +556,6 @@ void PE_low_level_init(void)
 
   /* Write code here ... */
 
-  /* ### GenericI2C "GI2C1" init code ... */
-  GI2C1_Init();
-  /* ### MMA8451Q "MMA1" init code ... */
-  /* Write code here ... */
 }
   /* Flash configuration field */
   __attribute__ ((section (".cfmconfig"))) const uint8_t _cfm[0x10] = {

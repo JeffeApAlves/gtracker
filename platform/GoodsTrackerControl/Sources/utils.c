@@ -125,17 +125,3 @@ void removeList(List* list){
 	_free(list->itens);
 }
 //------------------------------------------------------------------------
-
-unsigned char checksum(const char *buff, size_t sz) {
-	unsigned char i;
-	unsigned char chk = 0;
-
-	if (buff) {
-		for (i = 0; i < sz; i++)
-			chk ^= buff[i];
-	}
-
-	return chk;
-}
-//------------------------------------------------------------------------
-

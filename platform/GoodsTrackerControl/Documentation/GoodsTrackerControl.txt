@@ -635,47 +635,6 @@ Module "TU1"       (component TimerUnit_LDD)
 
 Module "TI1"       (component TimerInt)
 
-Module "WAIT1"     (component Wait)
-   - WAIT1_Wait10Cycles -Wait for 10 CPU cycles.
-   - WAIT1_Wait100Cycles -Wait for 100 CPU cycles.
-   - WAIT1_WaitCycles -Wait for a specified number of CPU cycles (16bit data type).
-   - WAIT1_WaitLongCycles -Wait for a specified number of CPU cycles (32bit data type).
-   - WAIT1_Waitms -Wait for a specified time in milliseconds.
-   - WAIT1_Waitus -Wait for a specified time in microseconds.
-   - WAIT1_Waitns -Wait for a specified time in nano seconds.
-   - WAIT1_WaitOSms -If an RTOS is enabled, this routine will use a non-blocking wait method. Otherwise it will do a 
-                busy/blocking wait.
-   - WAIT1_Init -Driver initialization routine.
-   - WAIT1_DeInit -Driver de-initialization routine
-
-Module "CS1"       (component CriticalSection)
-   - CS1_CriticalVariable -Defines a variable if necessary. This is a macro.
-   - CS1_EnterCritical -Enters a critical section
-   - CS1_ExitCritical -Exits a critical section
-
-Module "LCDout"    (component LCDHTA)
-   - LCDout_WriteLCDCommand -Writes a command to the display
-   - LCDout_Write -Write a single character to the display
-   - LCDout_WriteLn -Writes a new line to the display
-   - LCDout_WriteLineStr -Writes a full line to the display (clears the rest of the line).
-   - LCDout_WriteString -Writes a string to the display at the current cursor position.
-   - LCDout_ShiftLeft -Shifts all characters to the left.
-   - LCDout_ShiftRight -Shifts all characters to the right.
-   - LCDout_GotoXY -Places the cursor on a specified position on the display.
-   - LCDout_SetEntryMode -Configures the display entry mode, if the cursor has to shift and/or if the display shall shift 
-                content while displaying text.
-   - LCDout_CursorShiftRight -Shift the cursor to the right.
-   - LCDout_CursorShiftLeft -Shift the cursor to the left.
-   - LCDout_Home -Moves the cursor to the beginning of the first line.
-   - LCDout_Line -Sets the current line.
-   - LCDout_Clear -Clears the display and moves the cursor to the first line.
-   - LCDout_UseDisplay -
-
-Module "TSSin"     (component TSS_Library)
-   - TSSin_Configure -Whole TSS initialization and configuration of registers. Contains main TSS_Init() function, TSS System 
-                Config registers and all Control Config registers initialization according to setting of Component properties. 
-                The user have to place this function into the proper location in the source code.
-
 Module "MMA1"      (component MMA8451Q)
    - MMA1_Enable -Enables the device with setting the ACTIVE bit in the CTRL register 1
    - MMA1_Disable -Disables the device with clearing the ACTIVE bit in the CTRL register 1
@@ -736,33 +695,102 @@ Module "GI2C1"     (component GenericI2C)
    - GI2C1_Deinit -Deinitializes the driver.
    - GI2C1_Init -Initializes the driver.
 
-Module "CI2C1"     (component I2C_LDD)
-   - CI2C1_Init -Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets 
-                interrupt priority, sets pin routing, sets timing, etc.   If the "Enable in init. code" is set to "yes" value 
-                then the device is also enabled(see the description of the Enable() method). In this case the Enable() method 
-                is not necessary and needn't to be generated.    This method can be called only once. Before the second call of 
-                Init() the Deinit() must be called first.
-   - CI2C1_Deinit -Deinitializes the device. Switches off the device, frees the device data structure memory, interrupts 
-                vectors, etc.
-   - CI2C1_MasterSendBlock -This method writes one (7-bit addressing) or two (10-bit addressing) slave address bytes inclusive 
-                of R/W bit = 0 to the I2C bus and then writes the block of characters to the bus. The slave address must be 
-                specified before, by the "SelectSlaveDevice" method or in component initialization section, "Target slave 
-                address init" property. If the method returns ERR_OK, it doesn't mean that transmission was successful. The 
-                state of transmission is detectable by means of events (OnMasterSendComplete or OnError). Data to be sent are 
-                not copied to an internal buffer and remains in the original location. Therefore the content of the buffer 
-                should not be changed until the transmission is complete. Event "OnMasterBlockSent"can be used to detect the 
-                end of the transmission. This method is available only for the MASTER or MASTER - SLAVE mode.
-   - CI2C1_MasterReceiveBlock -This method writes one (7-bit addressing) or two (10-bit addressing) slave address bytes 
-                inclusive of R/W bit = 1 to the I2C bus and then receives the block of characters from the bus. The slave 
-                address must be specified before, by the "SelectSlaveDevice" method or in component initialization section, 
-                "Target slave address init" property. If the method returns ERR_OK, it doesn't mean that reception was 
-                successful. The state of reception is detectable by means of events (OnMasterSendComplete  or OnError). Data to 
-                be received are not copied to an internal buffer and remains in the original location. Therefore the content of 
-                the buffer should not be changed until the transmission is complete. Event "OnMasterBlockReceived"can be used 
-                to detect the end of the reception. This method is available only for the MASTER or MASTER - SLAVE mode.
-   - CI2C1_SelectSlaveDevice -This method selects a new slave for communication by its 7-bit slave, 10-bit address or general 
-                call value. Any send or receive method directs to or from selected device, until a new slave device is selected 
-                by this method. This method is available for the MASTER mode.
+Module "WAIT1"     (component Wait)
+   - WAIT1_Wait10Cycles -Wait for 10 CPU cycles.
+   - WAIT1_Wait100Cycles -Wait for 100 CPU cycles.
+   - WAIT1_WaitCycles -Wait for a specified number of CPU cycles (16bit data type).
+   - WAIT1_WaitLongCycles -Wait for a specified number of CPU cycles (32bit data type).
+   - WAIT1_Waitms -Wait for a specified time in milliseconds.
+   - WAIT1_Waitus -Wait for a specified time in microseconds.
+   - WAIT1_Waitns -Wait for a specified time in nano seconds.
+   - WAIT1_WaitOSms -If an RTOS is enabled, this routine will use a non-blocking wait method. Otherwise it will do a 
+                busy/blocking wait.
+   - WAIT1_Init -Driver initialization routine.
+   - WAIT1_DeInit -Driver de-initialization routine
+
+Module "I2C1"      (component GenericSWI2C)
+   - I2C1_ResetBus -Reset bus if needed.
+   - I2C1_SendChar -When working as a MASTER, this method writes 7 bits of slave address plus R/W bit = 0 to the I2C bus and 
+                then writes one character (byte) to the bus. The slave address must be specified before by the "SelectSlave" 
+                method or in the  component initialization section of 'Slave address init' property. When working as the SLAVE, 
+                this method writes one character (byte) to the bus. If the ERR_NOTAVAIL error code returned, the char is 
+                successfully sent to master but the master device responds by an acknowledgment instead of no acknowledgment at 
+                the end of transfer. 'OnError' event is called in this case.
+   - I2C1_RecvChar -When working as a MASTER, this method writes 7 bits of slave address plus R/W bit = 1 to the I2C bus and 
+                then reads one character (byte) from the bus. The slave address must be specified before by the "SelectSlave" 
+                method or in the component initialization section of 'Slave address init' property. When working as a SLAVE, 
+                this method reads one character (byte) from the bus.
+   - I2C1_SendBlock -When working as a MASTER, this method writes 7 bits of slave address plus R/W bit = 0 to the I2C bus and 
+                then writes the block of characters to the bus. If the component is disabled (by the "Disable" method or 
+                initialization), the block is moved to the output buffer if the 'Output buffer size' property is different from 
+                zero. The content of the output buffer is sent immediately with the stop condition at the end when the 
+                component is enabled by the "Enable" method. After the output buffer transmission, the whole output buffer is 
+                cleared. The slave address must be specified before by the "SelectSlave" method or in component initialization 
+                section of 'Slave address init' property.  When working as a SLAVE, this method writes block of characters to 
+                the bus. If the ERR_NOTAVAIL error code is returned, the whole block is successfully sent to a master but the 
+                master device responds by an acknowledgment instead of no acknowledgment sent at the end of the last block byte 
+                transfer. 'OnError' event is called in this case.
+   - I2C1_SendBlockContinue -Same is SendBlock() but does not send start condition. When working as a MASTER, this method 
+                writes 7 bits of slave address plus R/W bit = 0 to the I2C bus and then writes the block of characters to the 
+                bus. If the component is disabled (by the "Disable" method or initialization), the block is moved to the output 
+                buffer if the 'Output buffer size' property is different from zero. The content of the output buffer is sent 
+                immediately with the stop condition at the end when the component is enabled by the "Enable" method. After the 
+                output buffer transmission, the whole output buffer is cleared. The slave address must be specified before by 
+                the "SelectSlave" method or in component initialization section of 'Slave address init' property.  When working 
+                as a SLAVE, this method writes block of characters to the bus. If the ERR_NOTAVAIL error code is returned, the 
+                whole block is successfully sent to a master but the master device responds by an acknowledgment instead of no 
+                acknowledgment sent at the end of the last block byte transfer. 'OnError' event is called in this case.
+   - I2C1_RecvBlock -When working as a MASTER, this method writes 7 bits of slave address plus R/W bit = 1 to the I2C bus and 
+                then reads the block of characters from the bus. The slave address must be specified before by the 
+                "SelectSlave" method or in component initialization section of 'Slave address init' property.  When working as 
+                a SLAVE, this method reads the block of characters from the bus.
+   - I2C1_RecvBlockCustom -Same as RecvBlock(), but with additional flags to control the bus transfer.
+   - I2C1_SendAck -The method sends ACK to the bus.
+   - I2C1_SendStop -When working as a MASTER, if the 'Automatic stop condition' property value is 'no', this method sends a 
+                valid stop  condition to the serial data line of the I2C bus to terminate the communication on the bus after 
+                using send methods. This method is enabled only if the component is in MASTER mode and 'Automatic stop 
+                condition' property value is 'no'
+   - I2C1_SelectSlave -When working as a MASTER, this method selects a new slave for communication by its slave address value. 
+                Any send or receive method are directed to or from the selected device, until a new slave device is selected by 
+                this method. If the selected slave uses 10-bit slave addressing, as the parameter 7 bits must be passed, which 
+                involves 10-bit addressing (11110XX), including two MSBs of slave address (XX). The second byte of the 10-bit 
+                slave address must be sent to the slave as a general character of send methods. This method is available only 
+                if the component is in MASTER mode.
+   - I2C1_GetSelected -When working as a MASTER, this method returns the identification address value of the slave, which is 
+                currently selected for communication with the master. If the current slave uses 10-bit slave addressing, the 
+                method returns the first 7 bits only, which involves 10-bit addressing (11110XX), including two MSBs of the 
+                slave address (XX). This method is not able to return the rest value of 10-bit slave address. This method is 
+                available only if the component is in MASTER mode.
+   - I2C1_Deinit -Driver de-initialization method.
+   - I2C1_Init -Initializes the associated peripheral(s) and the components internal variables.
+
+Module "CS1"       (component CriticalSection)
+   - CS1_CriticalVariable -Defines a variable if necessary. This is a macro.
+   - CS1_EnterCritical -Enters a critical section
+   - CS1_ExitCritical -Exits a critical section
+
+Module "LCDout"    (component LCDHTA)
+   - LCDout_WriteLCDCommand -Writes a command to the display
+   - LCDout_Write -Write a single character to the display
+   - LCDout_WriteLn -Writes a new line to the display
+   - LCDout_WriteLineStr -Writes a full line to the display (clears the rest of the line).
+   - LCDout_WriteString -Writes a string to the display at the current cursor position.
+   - LCDout_ShiftLeft -Shifts all characters to the left.
+   - LCDout_ShiftRight -Shifts all characters to the right.
+   - LCDout_GotoXY -Places the cursor on a specified position on the display.
+   - LCDout_SetEntryMode -Configures the display entry mode, if the cursor has to shift and/or if the display shall shift 
+                content while displaying text.
+   - LCDout_CursorShiftRight -Shift the cursor to the right.
+   - LCDout_CursorShiftLeft -Shift the cursor to the left.
+   - LCDout_Home -Moves the cursor to the beginning of the first line.
+   - LCDout_Line -Sets the current line.
+   - LCDout_Clear -Clears the display and moves the cursor to the first line.
+   - LCDout_UseDisplay -
+
+Module "TSSin"     (component TSS_Library)
+   - TSSin_Configure -Whole TSS initialization and configuration of registers. Contains main TSS_Init() function, TSS System 
+                Config registers and all Control Config registers initialization according to setting of Component properties. 
+                The user have to place this function into the proper location in the source code.
 
 Module "Cpu"       (component MKL25Z128LK4)
 

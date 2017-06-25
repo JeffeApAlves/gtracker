@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 #include "RingBuffer.h"
 #include "utils.h"
@@ -145,17 +146,16 @@ void decoderCMD(void) {
 
 bool decoderFrame2(void) {
 
+	bool ret = false;
+
 	List	list;
 
-	dataFrame.checksum_calc = checksum(dataFrame.frame, dataFrame.sizeFrame - 2);
+	dataFrame.checksum_calc = calcChecksum(dataFrame.frame, dataFrame.sizeFrame - 2);
 
 	str_split(&list, dataFrame.frame, CHAR_SEPARATOR);
 
 	if(list.itens!=NULL) {
 
-		char t[5];
-
-		strcpy(t,list.itens[6]);
 
 		/*Usamos strtol pois o último objeto da lista armazena o valor do checksum em HEXA*/
 		dataFrame.checksum_rx = strtol(list.itens[list.size-1], NULL, 16);
@@ -170,23 +170,23 @@ bool decoderFrame2(void) {
 
 					switch(i) {
 
-						case 0:	dataFrame.dest				= atoi(list.itens[0]);					break;
-						case 1:	dataFrame.address			= atoi(list.itens[1]);					break;
-						/*usando strncpy porque estamos copiando strings*/
+						case 0:	dataFrame.address			= atoi(list.itens[0]);					break;
+						case 1:	dataFrame.dest				= atoi(list.itens[1]);					break;
 						case 2:	strncpy(dataFrame.operacao, list.itens[2], strlen(list.itens[2]));	break;
 						case 3:	strncpy(dataFrame.resource,	list.itens[3], strlen(list.itens[3]));	break;
 						case 4:	dataFrame.sizePayLoad		= atoi(list.itens[4]);					break;
-						/*usando memcpy porque estamos copiando dados*/
-						case 5:	memcpy(dataFrame.payload,  list.itens[5], dataFrame.sizePayLoad);	break;
+						case 5:	memcpy(dataFrame.payload, 	list.itens[5], dataFrame.sizePayLoad);	break;
 					}
 				}
 			}
+
+			ret = true;
 		}
 
 		removeList(&list);
 	}
 
-	return list.size>=2;
+	return ret;
 }
 //------------------------------------------------------------------------
 
@@ -226,15 +226,7 @@ void execCallBack(void) {
 
 	if(cb!=NULL && cb(&dataFrame) == CMD_RESULT_EXEC_SUCCESS) {
 
-//		if(*dataFrame.frame!=CHAR_STR_END){
-
 			setStatusRx(CMD_EXEC);
-
-//		}else {
-
-//			setStatusRx(CMD_ACK);
-//		}
-
 	}
 	else {
 
@@ -254,9 +246,9 @@ void initRxCMD(void) {
 
 void sendACK(void) {
 
-	sprintf(dataFrame.frame,"[%s%d%d]",dataFrame.resource,dataFrame.address,dataFrame.value);
+	sprintf(dataFrame.frame,"%s%d%d",dataFrame.resource,dataFrame.address,dataFrame.value);
 
-	sendString(dataFrame.frame);
+	sendFrame(dataFrame.frame);
 
 	setStatusRx(CMD_INIT_OK);
 }
@@ -264,9 +256,9 @@ void sendACK(void) {
 
 void sendNAK(void) {
 
-	sprintf(dataFrame.frame,"[%s%d%d]%s",dataFrame.resource,dataFrame.address,dataFrame.value,CHAR_NAK);
+	sprintf(dataFrame.frame,"%s%d%d%s",dataFrame.resource,dataFrame.address,dataFrame.value,CHAR_NAK);
 
-	sendString(dataFrame.frame);
+	sendFrame(dataFrame.frame);
 
 	setStatusRx(CMD_INIT_OK);
 }
@@ -274,23 +266,21 @@ void sendNAK(void) {
 
 void sendResult(void){
 
-	char chksum[4];
-
-	dataFrame.dest = dataFrame.address;
-	dataFrame.address = ADDRESS;
-
-	//buildHeader(&dataFrame);
-	//buildPayload(&dataFrame);
-
-	sprintf(chksum, "%02X%c",
-			checksum(dataFrame.frame + 1,
-						dataFrame.sizeFrame - 1),
-									CHAR_CMD_END);
-	strncat(dataFrame.frame, chksum, 3);
-
-	sendString(dataFrame.frame);
+	sendFrame(dataFrame.frame);
 
 	setStatusRx(CMD_INIT_OK);
+}
+//------------------------------------------------------------------------
+
+void sendFrame(const char* str){
+
+	putTxData(CHAR_CMD_START);
+
+	sendString(str);
+
+	putTxData(CHAR_CMD_END);
+	putTxData(CHAR_CR);
+	putTxData(CHAR_LF);
 }
 //------------------------------------------------------------------------
 
@@ -304,9 +294,6 @@ void sendString(const char* str){
 
 			putTxData(*p++);
 		}
-
-		putTxData(CHAR_CR);
-		putTxData(CHAR_LF);
 	}
 }
 //------------------------------------------------------------------------
@@ -357,6 +344,7 @@ void clearData(DataFrame* frame){
 	frame->value		= 0;
 	frame->sizeFrame	= 0;
 	frame->sizePayLoad	= 0;
+	frame->sizeHeader	= 0;
 
 	int i;
 
@@ -395,8 +383,7 @@ void startTX(void){
 
 void buildHeader(DataFrame *frame) {
 
-	sprintf(frame->frame,"%c%05d%c%05d%c%s%c%s%c",
-			CHAR_CMD_START,
+	sprintf(frame->frame,"%05d%c%05d%c%s%c%s%c",
 				frame->address,
 					CHAR_SEPARATOR,
 						frame->dest,
@@ -406,38 +393,40 @@ void buildHeader(DataFrame *frame) {
 										frame->resource,
 											CHAR_SEPARATOR);
 
-	frame->sizeFrame = strlen(frame->frame);
+	frame->sizeHeader	= strlen(frame->frame);
 }
 //------------------------------------------------------------------------
 
-void buildPayload(DataFrame *frame) {
-	char szpldbuff[5];
-	char chrsepstr[2];
-	chrsepstr[0] = CHAR_SEPARATOR;
-	chrsepstr[1] = '\0';
+void buildFrame(DataFrame *frame) {
 
-	sprintf(szpldbuff, "%d", frame->sizePayLoad);
+	char seperador[]= {CHAR_SEPARATOR,CHAR_STR_END};
+	char checksum[4];
 
-	strncat(frame->frame, szpldbuff, strlen(szpldbuff));
-	strncat(frame->frame, chrsepstr, 1);
-	strncat(frame->frame, frame->payload, frame->sizePayLoad);
-	strncat(frame->frame, chrsepstr, 1);
+	buildHeader(frame);
+	strncat(frame->frame, frame->payload,frame->payload);
+	strcat(dataFrame.frame, seperador);
 
-	frame->sizeFrame += frame->sizePayLoad;
+	frame->sizeFrame = strlen(frame->frame);
+
+	sprintf(checksum, "%02X", calcChecksum (frame->frame,frame->sizeFrame));
+
+
+	strcat(dataFrame.frame, checksum);
 }
 //------------------------------------------------------------------------
 
 void setPayLoad(DataFrame* frame, char* str) {
 
-	frame->sizePayLoad = strlen(str);
+	size_t size = strlen(str);
+
+	sprintf(frame->payload,"%03d:",size);
 
 	if(frame->sizePayLoad <= LEN_MAX_PAYLOAD){
 
-		strncpy(frame->payload, str, frame->sizePayLoad);
-
-		*(frame->frame + SIZE_HEADER + frame->sizePayLoad) = '\0';
-
+		strcpy(frame->payload+4, str);
 	}
+
+	frame->sizePayLoad	= strlen(frame->payload);
 }
 //------------------------------------------------------------------------
 
@@ -445,13 +434,13 @@ void doAnswer(char *msg) {
 
 	if (msg) {
 
-		strncpy(dataFrame.operacao, "AN", 2);
-
-		buildHeader(&dataFrame);
-
 		setPayLoad(&dataFrame, msg);
 
-		buildPayload(&dataFrame);
+		strncpy(dataFrame.operacao, "AN", 2);
+		dataFrame.dest		= dataFrame.address;
+		dataFrame.address	= ADDRESS;
+
+		buildFrame(&dataFrame);
 	}
 	else {
 		/*O QUE RESPONDE EM CASO DE MENSAGEM NULA ???*/
@@ -459,4 +448,17 @@ void doAnswer(char *msg) {
 }
 //------------------------------------------------------------------------
 
+unsigned char calcChecksum(const char *buff, size_t sz) {
 
+	unsigned char i=0;
+	unsigned char chk = 0;
+
+	if (buff) {
+
+		for (i = 0; i < sz; i++)
+			chk ^= buff[i];
+	}
+
+	return chk;
+}
+//------------------------------------------------------------------------

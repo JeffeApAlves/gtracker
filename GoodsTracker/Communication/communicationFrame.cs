@@ -165,7 +165,7 @@ namespace GoodsTracker
 
         internal string str()
         {
-            return Length().ToString("D3") + CONST_CHAR.SEPARATOR+ data;
+            return Length().ToString("D3") + CONST_CHAR.SEPARATOR + data + CONST_CHAR.SEPARATOR;
         }
 
         internal void Clear()
@@ -206,7 +206,7 @@ namespace GoodsTracker
             set
             {
                 header = value;
-                data = header.str() +":" + (payLoad==null?"":payLoad.str());
+                data = header.str() + CONST_CHAR.SEPARATOR + (payLoad==null?"":payLoad.str());
             }
         }
 
@@ -220,7 +220,7 @@ namespace GoodsTracker
             set
             {
                 payLoad = value;
-                data    = header.str() + ":" + (payLoad == null ? "" : payLoad.str());
+                data    = header.str() + CONST_CHAR.SEPARATOR + (payLoad == null ? "" : payLoad.str());
             }
         }
 
@@ -284,8 +284,6 @@ namespace GoodsTracker
                 checkSum ^= datas[i];
             }
 
-            checkSum ^= (byte)CONST_CHAR.SEPARATOR;
-
             return checkSum;
         }
 
@@ -293,7 +291,7 @@ namespace GoodsTracker
         {
             return  CONST_CHAR.RX_FRAME_START +
                     data +
-                    CONST_CHAR.SEPARATOR +
+//                    CONST_CHAR.SEPARATOR +
                     checkSum().ToString("X2") +
                     CONST_CHAR.RX_FRAME_END;
         }

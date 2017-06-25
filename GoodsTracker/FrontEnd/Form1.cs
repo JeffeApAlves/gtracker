@@ -244,6 +244,8 @@ namespace GoodsTracker
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             ThreadManager.stop();
+
+            Serial.Close();
         }
         
         //################################## Inicializacoes ########################################
@@ -255,7 +257,7 @@ namespace GoodsTracker
         void initAllThreads()
         {
             // Dados para testes
-//            demoData = new TestData(TrackerController.TIME_TELEMETRIA);
+            //demoData = new TestData(TrackerController.TIME_TELEMETRIA);
 
             // Inicia todas as threads
             ThreadManager.start();
@@ -684,8 +686,8 @@ namespace GoodsTracker
 
     class CAPAO_CITY
     {
-        internal const double LATITUDE  = -23.673326;
-        internal const double LONGITUDE = -46.775215;
+        internal const double LATITUDE  = -23.591387;
+        internal const double LONGITUDE = -46.645126;
     }
 
     enum STATUS_GUI {

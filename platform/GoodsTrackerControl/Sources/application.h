@@ -10,11 +10,24 @@
 
 #include "protocol.h"
 
+enum {AXIS_X=0,AXIS_Y=1,AXIS_Z=2};
 
 typedef enum
 	{LED_GREEN	=0,
 	LED_RED		=1,
 	LED_BLUE	=2}LEDS;
+
+typedef struct{
+
+		float	Lat;
+		float	Lng;
+		uint8_t	Acc[3];
+		uint8_t	Inc[3];
+		int		Speed ;
+		int		Level;
+		int		Trava;
+		char	Date[20];
+	} Info;
 
 
 ResultExec onAnalog(DataFrame* cmd);
@@ -29,6 +42,7 @@ void read_accel();
 void read_Channels_AD();
 void initCallBacks();
 void initAccel();
+void Infor2String(Info* info,char* str_out);
 
 extern volatile bool AD_finished;
 

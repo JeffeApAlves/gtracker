@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="AS1" key="selection"/>
+		<item value="execCallBack" key="selection"/>
 		<list key="findhistory">
-			<item value="as1"/>
-			<item value="getchar"/>
-			<item value="GPS_TComData"/>
-			<item value="GPS_TComData&apos;"/>
-			<item value="dataFrame.checksum_rx"/>
+			<item value="execCallBack"/>
+			<item value="decoderFrame2"/>
 			<item value="decoderCMD"/>
-			<item value="cb("/>
-			<item value="sendResult"/>
+			<item value="sprintf"/>
+			<item value="read_Channels_AD"/>
+			<item value="ad"/>
+			<item value="bool"/>
+			<item value="decoder"/>
 		</list>
 		<list key="replacehistory">
 			<item value="dataFrame"/>

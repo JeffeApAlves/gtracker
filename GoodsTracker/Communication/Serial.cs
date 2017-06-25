@@ -1,12 +1,15 @@
 ﻿using System.IO.Ports;
+using System.Threading;
 
 namespace GoodsTracker
 {
     class Serial
     {
+        static AutoResetEvent autoEvent;
+
+        static private object _lock = new object();
         static SerialPort port=null;
-        static RingBuffer bufferRx=new RingBuffer(4096);
-//        static RingBuffer bufferTx=new RingBuffer(1024);
+        static RingBuffer bufferRx=new RingBuffer(8*1024);
 
 
         internal static bool putRxData(char data)
@@ -16,18 +19,23 @@ namespace GoodsTracker
 
         internal static bool getRxData(out char ch)
         {
-            return bufferRx.getData(out ch);
+             bool flg = false;
+
+            autoEvent.WaitOne();
+
+//            lock (_lock)
+            //{
+
+                flg = bufferRx.getData(out ch);
+            //}
+
+
+            return flg;
         }
-/*
-        internal static bool hasTxData()
-        {
-            return bufferTx.hasData();
-        }*/
 
         internal static void clearBuffer()
         {
             bufferRx.initBuffer();
-//            bufferTx.initBuffer();
         }
 
         internal static void putTxData(char[] str)
@@ -51,11 +59,13 @@ namespace GoodsTracker
             try
             {
                 clearBuffer();
-                
-                port = new SerialPort("COM4",57600, Parity.None, 8, StopBits.One);
 
-                port.ReadBufferSize     = 1024;
-                port.WriteBufferSize    = 1024;
+                autoEvent = new AutoResetEvent(false);
+
+                port = new SerialPort("COM3",57600, Parity.None, 8, StopBits.One);
+
+                port.ReadBufferSize     = 128;
+                port.WriteBufferSize    = 128;
                 port.Handshake = Handshake.None;
                 port.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
 
@@ -63,6 +73,8 @@ namespace GoodsTracker
                 port.WriteTimeout   = 50;
 
                 port.Open();
+
+                port.DiscardInBuffer();
             }
             catch
             {
@@ -79,14 +91,30 @@ namespace GoodsTracker
          */
         private static void _serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            byte[] buffer = new byte[port.ReadBufferSize];
+            autoEvent.Reset();
 
-            int bytesRead = port.Read(buffer, 0, buffer.Length);
-
-            for(int i=0;i< bytesRead; i++)
+            lock (_lock)
             {
-                putRxData((char)buffer[i]);
+
+                byte[] buffer = new byte[64];
+
+                int bytesRead = port.Read(buffer, 0, 64);
+
+                if (bytesRead > 0)
+                {
+                    for (int i = 0; i < bytesRead; i++)
+                    {
+                        putRxData((char)buffer[i]);
+                    }
+                }
             }
+
+            autoEvent.Set();
+        }
+
+        public static void Close()
+        {
+            port.Close();
         }
     }
 }

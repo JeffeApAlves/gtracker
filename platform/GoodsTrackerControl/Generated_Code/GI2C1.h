@@ -7,11 +7,7 @@
 **     Version     : Component 01.033, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-<<<<<<< HEAD
-**     Date/Time   : 2017-06-23, 14:23, # CodeGen: 7
-=======
-**     Date/Time   : 2017-06-23, 21:00, # CodeGen: 9
->>>>>>> b5adea659d46635408b216ced18a345c77620c2d
+**     Date/Time   : 2017-06-24, 12:17, # CodeGen: 0
 **     Abstract    :
 **         This component implements a generic I2C driver wrapper to work both with LDD and non-LDD I2C components.
 **     Settings    :
@@ -20,11 +16,12 @@
 **          SDK                                            : MCUC1
 **          Support STOP_NOSTART                           : no
 **          Write Buffer Size                              : 16
-**          non-LDD I2C                                    : Disabled
-**          LDD I2C                                        : Enabled
-**            I2C                                          : CI2C1
-**            Timeout                                      : Disabled
-**          RTOS                                           : Disabled
+**          non-LDD I2C                                    : Enabled
+**            I2C                                          : I2C1
+**          LDD I2C                                        : Disabled
+**          RTOS                                           : Enabled
+**            RTOS                                         : FRTOS1
+**            Semaphore                                    : yes
 **          Init() on startup                              : yes
 **     Contents    :
 **         SelectSlave       - uint8_t GI2C1_SelectSlave(uint8_t i2cAddr);
@@ -93,7 +90,8 @@
 /* Include inherited beans */
 #include "WAIT1.h"
 #include "MCUC1.h"
-#include "CI2C1.h"
+#include "I2C1.h"
+#include "FRTOS1.h"
 
 
 #define GI2C1_WRITE_BUFFER_SIZE 16 /* size of internal buffer used, set in the component properties */
@@ -113,10 +111,6 @@ typedef enum GI2C1_EnumAckFlags_ {
   GI2C1_SEND_LAST_ACK,   /* Nack after last received byte is sent */
   GI2C1_DO_NOT_LAST_ACK  /* Nack after last received byte is not sent */
 } GI2C1_EnumAckFlags;
-
-void CI2C1_OnMasterBlockSent(LDD_TUserData *UserDataPtr);
-
-void CI2C1_OnMasterBlockReceived(LDD_TUserData *UserDataPtr);
 
 void GI2C1_Init(void);
 /*

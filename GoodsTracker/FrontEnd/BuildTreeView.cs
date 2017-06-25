@@ -315,7 +315,7 @@ namespace GoodsTracker
              *   |
              * Eixo[x]
              *   |__ A: Val:0 Min:0 Max:0
-             *   |__ R: Val:0 Min:0 Max:0
+             *   |__ N: Val:0 Min:0 Max:0
              */
             eixo = loc.Nodes.Add(string.Format(neixo));
             eixo.ImageIndex = (int)IMG_TREEVIEW.AXIS;
@@ -329,7 +329,7 @@ namespace GoodsTracker
             spec.ImageIndex = (int)(axis.Acceleration.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
             spec.SelectedImageIndex = spec.ImageIndex;
 
-            spec = eixo.Nodes.Add(string.Format("R: Val:{0} Min:{1} Max:{2}",
+            spec = eixo.Nodes.Add(string.Format("N: Val:{0} Min:{1} Max:{2}",
                                         axis.Rotation.Val,
                                         axis.Rotation.Tol.Min,
                                         axis.Rotation.Tol.Max));

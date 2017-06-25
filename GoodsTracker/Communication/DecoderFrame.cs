@@ -25,9 +25,10 @@ namespace GoodsTracker
 
             SPEED = 13,
             LEVEL = 14,
-            DATETIME = 15,
+            TRAVA = 15,
+            DATETIME = 16,
 
-            CHECKSUM = 16,
+            CHECKSUM = 17,
         }
 
         static public bool setHeader(Header header)
@@ -79,6 +80,8 @@ namespace GoodsTracker
                 payload.Append(CONST_CHAR.SEPARATOR);
                 payload.Append(b.Level.Val);
                 payload.Append(CONST_CHAR.SEPARATOR);
+                payload.Append(b.StatusLock.ToString());
+                payload.Append(CONST_CHAR.SEPARATOR);
                 payload.Append(b.DateTime.ToString().Replace(CONST_CHAR.SEPARATOR, '.'));
 
                 ret = true;
@@ -104,10 +107,10 @@ namespace GoodsTracker
                 {
                     ans.Header      = getHeader(list);
                     ans.Telemetria  = getTelemetria(list);
-                    byte cheksumRx  = AsByte(list, DATA_INDEX.CHECKSUM);
+                    byte cheksumRx  = AsHex(list, DATA_INDEX.CHECKSUM);
 
                     // Exclui CheckSum
-                    frame.Data      = frame.Data.Substring(0, frame.Data.Length - 3);
+                    frame.Data      = frame.Data.Substring(0, frame.Data.Length - 2);
 
                     ret = frame.checkSum()==cheksumRx;
                 }
@@ -137,6 +140,7 @@ namespace GoodsTracker
 
             telemetria.Speed.Val = AsDouble(list, DATA_INDEX.SPEED);
             telemetria.Level.Val = AsDouble(list, DATA_INDEX.LEVEL);
+            telemetria.StatusLock = AsBool(list, DATA_INDEX.TRAVA);
             telemetria.DateTime = AsDateTime(list, DATA_INDEX.DATETIME);
 
 
@@ -193,7 +197,7 @@ namespace GoodsTracker
 
             if ((int)index < list.Length)
             {
-                dest = Convert.ToDouble(list[(int)index]);
+                dest = Convert.ToDouble(list[(int)index].Replace(".",","));
             }
 
             return dest;
@@ -211,7 +215,7 @@ namespace GoodsTracker
             return dest;
         }
 
-        private byte AsByte(string[] list, DATA_INDEX index)
+        private byte AsHex(string[] list, DATA_INDEX index)
         {
             byte dest = 0;
 
@@ -223,5 +227,19 @@ namespace GoodsTracker
             return dest;
 
         }
+
+        private bool AsBool(string[] list, DATA_INDEX index)
+        {
+            int dest = 0;
+
+            if ((int)index < list.Length)
+            {
+                dest = (int)Convert.ToInt16(list[(int)index]);
+            }
+
+            return dest>0 ? true:false;
+
+        }
+
     }
 }

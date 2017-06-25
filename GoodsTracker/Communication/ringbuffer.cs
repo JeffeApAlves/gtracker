@@ -80,30 +80,5 @@ namespace GoodsTracker
                 data[i] = (char)0;
             }
         }
-/*
-        internal void putData(string dados)
-        {
-            //            data = Encoding.ASCII.GetBytes(dados);
-
-
-            /*
-                        string pattern      = @",";
-                        string replacement  = "";
-
-                        Regex rgx = new Regex(pattern);
-                        string result = rgx.Replace(dados, replacement);
-            
-            char[] source = dados.ToCharArray();
-
-            if(source!=null && source.Length > 0)
-            {
-                for(int i = 0; i < source.Length; i++)
-                {
-                    putData(source[i]);
-                }
-//                Array.Copy(source, data, dados.Length);
-//                count = dados.Length;
-            }
-        }*/
     }
 }

@@ -21,20 +21,32 @@
 
 #include "application.h"
 
+/*
+ *
+ * Main task
+ *
+ */
 static portTASK_FUNCTION(mains_taskTask, pvParameters) {
 
   for(;;) {
+
 	  vTaskDelay(20/portTICK_RATE_MS);
   }
 
   vTaskDelete(mains_taskTask);
 }
 
+
+/*
+ * Processamento do Protocolo
+ *
+ */
 static portTASK_FUNCTION(communication_taskTask, pvParameters) {
 
   initCallBacks();
 
   for(;;) {
+
 		processProtocol();
 
 		vTaskDelay(5/portTICK_RATE_MS);
@@ -43,11 +55,16 @@ static portTASK_FUNCTION(communication_taskTask, pvParameters) {
   vTaskDelete(communication_taskTask);
 }
 
+/*
+ *
+ * Task de aquisicao do acelerometro e canais AD
+ */
 static portTASK_FUNCTION(data_taskTask, pvParameters) {
 
   initAccel();
 
   for(;;) {
+
 	  read_accel();
 	  read_Channels_AD();
 	  vTaskDelay(10/portTICK_RATE_MS);
@@ -56,11 +73,17 @@ static portTASK_FUNCTION(data_taskTask, pvParameters) {
   vTaskDelete(data_taskTask);
 }
 
+/**
+ *
+ * Task para atualizacao do IHM
+ *
+ */
 static portTASK_FUNCTION(ihm_taskTask, pvParameters) {
 
 	ihm_initialize();
 
 	for(;;) {
+
 		ihm_loop();
 		vTaskDelay(25/portTICK_RATE_MS);
 	}

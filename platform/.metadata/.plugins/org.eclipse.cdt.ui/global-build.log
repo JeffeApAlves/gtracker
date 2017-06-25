@@ -1,82 +1,48 @@
-23:51:41 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+13:55:17 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
-Building file: ../Sources/RingBuffer.c
-Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/RingBuffer.d" -MT"Sources/RingBuffer.o" -c -o "Sources/RingBuffer.o" "../Sources/RingBuffer.c"
-Finished building: ../Sources/RingBuffer.c
- 
-Building file: ../Sources/protocol.c
-Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/protocol.d" -MT"Sources/protocol.o" -c -o "Sources/protocol.o" "../Sources/protocol.c"
-../Sources/protocol.c: In function 'decoderFrame2':
-../Sources/protocol.c:158:3: warning: incompatible implicit declaration of built-in function 'strcpy' [enabled by default]
-   strcpy(t,list.itens[6]);
-   ^
-../Sources/protocol.c:176:15: warning: incompatible implicit declaration of built-in function 'strncpy' [enabled by default]
-       case 2: strncpy(dataFrame.operacao, list.itens[2], strlen(list.itens[2])); break;
-               ^
-../Sources/protocol.c:176:58: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
-       case 2: strncpy(dataFrame.operacao, list.itens[2], strlen(list.itens[2])); break;
-                                                          ^
-../Sources/protocol.c:180:15: warning: incompatible implicit declaration of built-in function 'memcpy' [enabled by default]
-       case 5: memcpy(dataFrame.payload,  list.itens[5], dataFrame.sizePayLoad); break;
-               ^
-../Sources/protocol.c: In function 'sendResult':
-../Sources/protocol.c:289:2: warning: incompatible implicit declaration of built-in function 'strncat' [enabled by default]
-  strncat(dataFrame.frame, chksum, 3);
-  ^
-../Sources/protocol.c: In function 'buildHeader':
-../Sources/protocol.c:409:21: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
-  frame->sizeFrame = strlen(frame->frame);
-                     ^
-../Sources/protocol.c: In function 'buildPayload':
-../Sources/protocol.c:421:2: warning: incompatible implicit declaration of built-in function 'strncat' [enabled by default]
-  strncat(frame->frame, szpldbuff, strlen(szpldbuff));
-  ^
-../Sources/protocol.c:421:35: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
-  strncat(frame->frame, szpldbuff, strlen(szpldbuff));
-                                   ^
-../Sources/protocol.c: In function 'setPayLoad':
-../Sources/protocol.c:432:23: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
-  frame->sizePayLoad = strlen(str);
-                       ^
-../Sources/protocol.c:436:3: warning: incompatible implicit declaration of built-in function 'strncpy' [enabled by default]
-   strncpy(frame->payload, str, frame->sizePayLoad);
-   ^
-../Sources/protocol.c: In function 'doAnswer':
-../Sources/protocol.c:448:3: warning: incompatible implicit declaration of built-in function 'strncpy' [enabled by default]
-   strncpy(dataFrame.operacao, "AN", 2);
-   ^
-Finished building: ../Sources/protocol.c
- 
-Building target: GoodsTrackerControl.elf
-Invoking: Cross ARM GNU C++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"D:/workspace/GoodsTracker/platform/GoodsTrackerControl/Project_Settings/Linker_Files" -L"D:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS" -Wl,-Map,"GoodsTrackerControl.map" -specs=nano.specs -specs=nosys.specs -o "GoodsTrackerControl.elf"  ./Sources/TSS/TSS_Freemaster.o ./Sources/TSS/TSS_Sensor.o ./Sources/TSS/TSS_SensorGPIO.o ./Sources/TSS/TSS_SensorTSI.o ./Sources/TSS/TSS_SensorTSIL.o ./Sources/TSS/TSS_SystemSetupData.o  ./Sources/Events.o ./Sources/RingBuffer.o ./Sources/application.o ./Sources/frtos_tasks.o ./Sources/ihm.o ./Sources/lcd.o ./Sources/main.o ./Sources/protocol.o ./Sources/utils.o  ./Project_Settings/Startup_Code/startup.o  ./Generated_Code/AD1.o ./Generated_Code/AS1.o ./Generated_Code/ASerialLdd1.o ./Generated_Code/AdcLdd1.o ./Generated_Code/BitIoLdd1.o ./Generated_Code/BitIoLdd12.o ./Generated_Code/BitIoLdd13.o ./Generated_Code/BitIoLdd14.o ./Generated_Code/BitIoLdd15.o ./Generated_Code/BitIoLdd2.o ./Generated_Code/BitIoLdd3.o ./Generated_Code/BitIoLdd6.o ./Generated_Code/BitIoLdd7.o ./Generated_Code/CI2C1.o ./Generated_Code/CS1.o ./Generated_Code/Cpu.o ./Generated_Code/DB41.o ./Generated_Code/DB51.o ./Generated_Code/DB61.o ./Generated_Code/DB71.o ./Generated_Code/EN1.o ./Generated_Code/FRTOS1.o ./Generated_Code/GI2C1.o ./Generated_Code/LCDout.o ./Generated_Code/LED_B.o ./Generated_Code/LED_G.o ./Generated_Code/LED_R.o ./Generated_Code/LEDpin1.o ./Generated_Code/LEDpin2.o ./Generated_Code/LEDpin3.o ./Generated_Code/MCUC1.o ./Generated_Code/MMA1.o ./Generated_Code/PE_LDD.o ./Generated_Code/RS1.o ./Generated_Code/TI1.o ./Generated_Code/TSK1.o ./Generated_Code/TSSin.o ./Generated_Code/TU1.o ./Generated_Code/TimerIntLdd1.o ./Generated_Code/UTIL1.o ./Generated_Code/Vectors.o ./Generated_Code/WAIT1.o ./Generated_Code/croutine.o ./Generated_Code/event_groups.o ./Generated_Code/heap_1.o ./Generated_Code/heap_2.o ./Generated_Code/heap_3.o ./Generated_Code/heap_4.o ./Generated_Code/heap_5.o ./Generated_Code/list.o ./Generated_Code/mpu_wrappers.o ./Generated_Code/port.o ./Generated_Code/queue.o ./Generated_Code/tasks.o ./Generated_Code/timers.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -lTSS_KXX_M0
-Finished building target: GoodsTrackerControl.elf
- 
-Invoking: Cross ARM GNU Create Flash Image
-arm-none-eabi-objcopy -O srec "GoodsTrackerControl.elf"  "GoodsTrackerControl.srec"
-Finished building: GoodsTrackerControl.srec
- 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  39680	    248	  11204	  51132	   c7bc	GoodsTrackerControl.elf
+  43320	    248	  11432	  55000	   d6d8	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
-23:52:47 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+13:57:56 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  39680	    248	  11204	  51132	   c7bc	GoodsTrackerControl.elf
+  43320	    248	  11432	  55000	   d6d8	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
-23:53:31 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+14:41:19 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  39680	    248	  11204	  51132	   c7bc	GoodsTrackerControl.elf
+  43320	    248	  11432	  55000	   d6d8	GoodsTrackerControl.elf
+Finished building: GoodsTrackerControl.siz
+ 
+14:43:18 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
+   text	   data	    bss	    dec	    hex	filename
+  43320	    248	  11432	  55000	   d6d8	GoodsTrackerControl.elf
+Finished building: GoodsTrackerControl.siz
+ 
+14:46:33 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
+   text	   data	    bss	    dec	    hex	filename
+  43320	    248	  11432	  55000	   d6d8	GoodsTrackerControl.elf
+Finished building: GoodsTrackerControl.siz
+ 
+14:53:19 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
+   text	   data	    bss	    dec	    hex	filename
+  43320	    248	  11432	  55000	   d6d8	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
