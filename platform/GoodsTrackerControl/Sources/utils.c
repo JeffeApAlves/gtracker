@@ -125,3 +125,30 @@ void removeList(List* list){
 	_free(list->itens);
 }
 //------------------------------------------------------------------------
+
+void AsString(char* out,List *list,int index){
+
+	if(index<list->size && out!=NULL){
+
+		strcpy(out, list->itens[index]);
+	}
+}
+//------------------------------------------------------------------------
+
+void AsInteger(int* out,List *list,int index){
+
+	if(index<list->size && out!=NULL){
+
+		*out = atoi(list->itens[index]);
+	}
+}
+//------------------------------------------------------------------------
+
+void AsHex(int* out,List *list,int index){
+
+	if(index<list->size && out!=NULL){
+
+		*out = strtol(list->itens[index], NULL, 16);
+	}
+}
+//------------------------------------------------------------------------

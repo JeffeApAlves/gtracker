@@ -9,6 +9,38 @@
 #define SOURCES_PROTOCOL_H_
 
 #include "PE_Types.h"
+#include "utils.h"
+
+    /**
+     *
+     * Frame Coomunication
+     * [ End. de orig[5] : End dest[5] : Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
+     *
+     * End. de orig:
+     * Range: 00000~65535 (00000) Broadcast
+     *
+     * End. de dest:
+     * Range: 00000~65535 (00000) Broadcast
+     *
+     * Operacao:
+     * Possiveis:
+     * RD = READ
+     * WR = WRITE
+     * AN + ANSWER
+     *
+     * Recurso:
+     * Range: A-Z a-z 0~9
+     *
+     * SizePayload:
+     * Range: 0~255
+     *
+     * Payload:
+     * Conteudo App
+     * Observacao: '[' ']' sao caracteres especiais entao usar \] e \[
+     *
+     * CheckSum
+     * Somatoria
+     */
 
 #define	ADDRESS			2
 
@@ -17,24 +49,22 @@
 
 #define LEN_ADDRESS		5
 #define LEN_ORIGEM		5
+#define LEN_COUNT		5
 #define LEN_OPERATION	2
 #define LEN_RESOURCE	3
 #define LEN_SIZE_PL		3
 #define LEN_CHECKSUM	2
-#define LEN_HEADER		(LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL+4) // 4 separadores do cabecalho
 
-#define SIZE_MIN_FRAME		(LEN_HEADER+2)
-#define SIZE_MAX_PAYLOAD	255
-#define SIZE_MAX_FRAME		(LEN_HEADER+SIZE_MAX_PAYLOAD+2)
+#define SIZE_HEADER			(LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL+4)	// 4 separadores do cabecalho
+#define SIZE_MIN_FRAME		(SIZE_HEADER+2)														// 2 separador do payload vazio
+#define SIZE_MAX_PAYLOAD	256
+#define SIZE_MAX_FRAME		(SIZE_HEADER+SIZE_MAX_PAYLOAD+2)
 
-
-/* [LED01]\r\n*/
 #define CHAR_CMD_START	'['
 #define CHAR_CMD_END	']'
+#define CHAR_SEPARATOR	':'
 #define CHAR_CR			'\r'
 #define CHAR_LF			'\n'
-#define CHAR_SEPARATOR	':'
-#define CHAR_NAK		0x15
 #define CHAR_STR_END	'\0'
 
 /*
@@ -46,7 +76,7 @@ typedef enum {
 	CMD_RESULT_EXEC_UNSUCCESS	= -3,
 	CMD_RESULT_INVALID_CMD		= -2,
 	CMD_RESULT_INVALID_PARAM	= -1,
-	CMD_RESULT_EXEC_SUCCESS	= 0,
+	CMD_RESULT_EXEC_SUCCESS		= 0,
 
 }ResultExec;
 
@@ -92,13 +122,12 @@ typedef enum {
  */
 typedef struct{
 
-	unsigned char	checksum_rx;
+	int		address;
+	int		dest;
+	int		count;
 
 	char	operacao[LEN_OPERATION + 1];
 	char	resource[LEN_RESOURCE + 1];
-
-	int		address;
-	int		dest;
 
 	int		sizeHeader;
 	int		sizePayLoad;
@@ -134,18 +163,19 @@ void rxCR(void);
 pCallBack getCallBack(void);
 void initRxCMD(void);
 void sendResult(void);
-void execCallBack();
+void acceptRxFrame();
 void setStatusRx(StatusRx sts);
 bool getRxData(char* ch);
 bool putTxData(char data);
 void sendString(const char* str);
-void clearData(DataFrame* frame);
-void errorRx(void);
-void decoderFrame(void);
-bool decoderFrame2(void);
+void errorRxFrame(void);
+bool decoderFrame(void);
+void verifyCheckSum(void);
 void errorExec(void);
 unsigned char calcChecksum(const char *buff, size_t sz);
 void startTX(void);
+void sendFrame(DataFrame *frame);
+void clearData(DataFrame* frame);
 void setPayLoad(DataFrame* frame, char* str);
 void buildHeader(DataFrame *frame);
 void buildFrame(DataFrame *frame);

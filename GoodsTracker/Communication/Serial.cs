@@ -5,14 +5,14 @@ namespace GoodsTracker
 {
     class Serial
     {
-        const int SIZE_BUFFER_RX    = 256;
-        const int SIZE_BUFFER_TX    = 256;
-        const int SIZE_RING_BUFFER_TX = (8 * 1024);
+        const int SIZE_BUFFER_RX    = 512;
+        const int SIZE_BUFFER_TX    = 512;
+        const int SIZE_RING_BUFFER_RX = (1 * 1024);
 
         static AutoResetEvent autoEvent;
 
         static SerialPort port = null;
-        static RingBuffer bufferRx = new RingBuffer(SIZE_RING_BUFFER_TX);
+        static RingBuffer bufferRx = new RingBuffer(SIZE_RING_BUFFER_RX);
 
         internal static bool putRxData(char data)
         {
@@ -59,8 +59,8 @@ namespace GoodsTracker
                 port.WriteBufferSize    = SIZE_BUFFER_TX;
                 port.Handshake          = Handshake.None;
                 port.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
-                port.ReadTimeout    = 50;
-                port.WriteTimeout   = 50;
+                port.ReadTimeout        = 50;
+                port.WriteTimeout       = 50;
                 port.Open();
                 port.DiscardInBuffer();
             }

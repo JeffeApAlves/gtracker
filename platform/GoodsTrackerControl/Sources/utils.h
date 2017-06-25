@@ -21,7 +21,6 @@ typedef	char** Itens;
 typedef struct{
 
 	Itens	itens;
-
 	size_t	size;
 
 } List;
@@ -31,5 +30,8 @@ typedef struct{
 void str_split(List* result,char* a_str, const char a_delim);
 void str_append(char subject[], char insert[], int pos);
 void removeList(List* list);
+void AsString(char* out,List *list,int index);
+void AsInteger(int* out,List *list,int index);
+void AsHex(int* out,List *list,int index);
 
 #endif /* SOURCES_UTILS_H_ */

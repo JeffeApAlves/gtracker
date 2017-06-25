@@ -3,7 +3,6 @@
 #include <stdbool.h>
 
 #include "RingBuffer.h"
-#include "utils.h"
 #include "protocol.h"
 
 const char* OPERATION_AN="AN";
@@ -40,16 +39,12 @@ void processProtocol(void) {
 		case CMD_RX_PAYLOAD:	receiveFrame();			break;
 		case CMD_RX_END:		rxCR();					break;
 		case CMD_RX_CR:			rxNL();					break;
-		case CMD_RX_NL:			decoderFrame();			break;
-		case CMD_DECODER:		execCallBack();			break;
-
-		case CMD_ERROR:			errorRx();				break;
+		case CMD_RX_NL:			verifyCheckSum();		break;
+		case CMD_DECODER:		acceptRxFrame();		break;
 		case CMD_EXEC:			sendResult();			break;
+		case CMD_ERROR:			errorRxFrame();			break;
 		case CMD_EXEC_ERROR:	errorExec();			break;
 	}
-
-	// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
-	startTX();
 }
 //------------------------------------------------------------------------
 
@@ -62,7 +57,6 @@ void rxStartCMD (void) {
 		if(ch==CHAR_CMD_START){
 
 			clearData(&dataFrame);
-
 			setStatusRx(CMD_RX_START);
 		}
 	}
@@ -71,11 +65,12 @@ void rxStartCMD (void) {
 
 void receiveFrame (void) {
 
-	unsigned char ch;
+	char ch;
 
 	if(getRxData(&ch)) {
 
 		if(ch==CHAR_CMD_START || dataFrame.sizeFrame>=SIZE_MAX_FRAME) {
+
 			setStatusRx(CMD_ERROR);
 		}
 		else
@@ -86,13 +81,14 @@ void receiveFrame (void) {
 				setStatusRx(CMD_RX_END);
 			 }
 			 else {
+
 			   setStatusRx(CMD_ERROR);
 			 }
 		}
 		else {
 
-		  setStatusRx(CMD_RX_PAYLOAD);
 		  dataFrame.frame[(dataFrame.sizeFrame++)%SIZE_MAX_FRAME] = ch;
+		  setStatusRx(CMD_RX_PAYLOAD);
 		}
 	}
 }
@@ -134,9 +130,9 @@ void rxCR(void) {
 }
 //------------------------------------------------------------------------
 
-void decoderFrame(void) {
+void verifyCheckSum(void) {
 
-	if(decoderFrame2()){
+	if(decoderFrame()){
 
 		setStatusRx(CMD_DECODER);
 
@@ -147,43 +143,34 @@ void decoderFrame(void) {
 }
 //------------------------------------------------------------------------
 
-
-bool decoderFrame2(void) {
+bool decoderFrame(void) {
 
 	bool ret = false;
 
 	List	list;
 
-	//-2 para desconsiderar o checksum que que esta no frame recebido
-	unsigned char checksum_calc = calcChecksum(dataFrame.frame, dataFrame.sizeFrame - LEN_CHECKSUM);
-
 	str_split(&list, dataFrame.frame, CHAR_SEPARATOR);
 
-	if(list.itens!=NULL) {
+	if(list.itens!=NULL && list.size >= 8) {
 
+		//-2 para desconsiderar o checksum que que esta no frame recebido
+		int checksum_rx;
+		unsigned char checksum_calc = (char)calcChecksum(dataFrame.frame, dataFrame.sizeFrame - LEN_CHECKSUM);
+		checksum_rx = ~checksum_calc;
 
-		/*Usamos strtol pois o último objeto da lista armazena o valor do checksum em HEXA*/
-		dataFrame.checksum_rx = strtol(list.itens[list.size-1], NULL, 16);
+		AsHex(&checksum_rx,&list,list.size-1);
 
-		if(dataFrame.checksum_rx==checksum_calc) {
+		if(checksum_rx==checksum_calc) {
 
 			char i;
 
-			for(i=0;i < list.size;i++) {
-
-				if(list.itens[i]!=NULL) {
-
-					switch(i) {
-
-						case 0:	dataFrame.address			= atoi(list.itens[0]);					break;
-						case 1:	dataFrame.dest				= atoi(list.itens[1]);					break;
-						case 2:	strncpy(dataFrame.operacao, list.itens[2], strlen(list.itens[2]));	break;
-						case 3:	strncpy(dataFrame.resource,	list.itens[3], strlen(list.itens[3]));	break;
-						case 4:	dataFrame.sizePayLoad		= atoi(list.itens[4]);					break;
-						case 5:	memcpy(dataFrame.payload, 	list.itens[5], dataFrame.sizePayLoad);	break;
-					}
-				}
-			}
+			AsInteger(&dataFrame.address,		&list,0);
+			AsInteger(&dataFrame.dest,			&list,1);
+			AsInteger(&dataFrame.count,			&list,2);
+			AsString(&dataFrame.operacao,		&list,3);
+			AsString(&dataFrame.resource,		&list,4);
+			AsInteger(&dataFrame.sizePayLoad,	&list,5);
+			AsString(&dataFrame.payload,		&list,6);
 
 			ret = true;
 		}
@@ -227,21 +214,6 @@ pCallBack getCallBack(void) {
 }
 //------------------------------------------------------------------------
 
-void execCallBack(void) {
-
-	pCallBack cb = getCallBack();
-
-	if(cb!=NULL && cb(&dataFrame) == CMD_RESULT_EXEC_SUCCESS) {
-
-		setStatusRx(CMD_EXEC);
-	}
-	else {
-
-		setStatusRx(CMD_EXEC_ERROR);
-	}
-}
-//------------------------------------------------------------------------
-
 void initRxCMD(void) {
 
 	clearData(&dataFrame);
@@ -262,16 +234,20 @@ void errorExec(void) {
 
 void sendResult(void){
 
-	sendFrame(dataFrame.frame);
+	sendFrame(&dataFrame);
+
+	// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
+	startTX();
+
 	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
 
-void sendFrame(const char* str){
+void sendFrame(DataFrame* frame){
 
 	putTxData(CHAR_CMD_START);
 
-	sendString(str);
+	sendString(frame->frame);
 
 	putTxData(CHAR_CMD_END);
 	putTxData(CHAR_CR);
@@ -323,7 +299,30 @@ inline bool getRxData(char* ch){
 }
 //------------------------------------------------------------------------
 
-void errorRx(void){
+/**
+ * Recepcao do frame OK
+ *
+ */
+void acceptRxFrame(void) {
+
+	pCallBack cb = getCallBack();
+
+	if(cb!=NULL && cb(&dataFrame) == CMD_RESULT_EXEC_SUCCESS) {
+
+		setStatusRx(CMD_EXEC);
+	}
+	else {
+
+		setStatusRx(CMD_EXEC_ERROR);
+	}
+}
+//------------------------------------------------------------------------
+
+/**
+ * Erro na recepcao do frame
+ *
+ */
+void errorRxFrame(void){
 
 	/**/
 
@@ -331,6 +330,9 @@ void errorRx(void){
 }
 //------------------------------------------------------------------------
 
+/**
+ * Verifica se existe dados no buffer circular de transmiassa
+ */
 bool hasTxData(void){
 
 	return hasData(&bufferTx);
@@ -353,12 +355,13 @@ void startTX(void){
 
 void buildHeader(DataFrame *frame) {
 
-	sprintf(frame->frame,"%05d%c%05d%c%s%c%s%c%03d%c",
+	sprintf(frame->frame,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
 				frame->address, CHAR_SEPARATOR,
 					frame->dest, CHAR_SEPARATOR,
-						frame->operacao, CHAR_SEPARATOR,
-							frame->resource, CHAR_SEPARATOR,
-								frame->sizePayLoad, CHAR_SEPARATOR);
+						frame->count, CHAR_SEPARATOR,
+							frame->operacao, CHAR_SEPARATOR,
+								frame->resource, CHAR_SEPARATOR,
+									frame->sizePayLoad, CHAR_SEPARATOR);
 
 	frame->sizeHeader	= strlen(frame->frame);
 }
@@ -366,8 +369,8 @@ void buildHeader(DataFrame *frame) {
 
 void buildFrame(DataFrame *frame) {
 
-	char seperador[]= {CHAR_SEPARATOR,CHAR_STR_END};
-	char checksum[LEN_CHECKSUM+2];
+	char	separator[] = {CHAR_SEPARATOR,CHAR_STR_END};
+	char	checksum[LEN_CHECKSUM+1];
 
 	// Header
 	buildHeader(frame);
@@ -376,7 +379,7 @@ void buildFrame(DataFrame *frame) {
 	strncat(frame->frame, frame->payload,frame->sizePayLoad);
 
 	// CheckSum
-	strcat(dataFrame.frame, seperador);
+	strcat(frame->frame,separator);
 	frame->sizeFrame = strlen(frame->frame);
 	sprintf(checksum, "%02X", calcChecksum (frame->frame,frame->sizeFrame));
 	strcat(frame->frame, checksum);
@@ -390,7 +393,12 @@ void setPayLoad(DataFrame* frame, char* str) {
 	if(frame->sizePayLoad <= SIZE_MAX_PAYLOAD){
 
 		strcpy(frame->payload, str);
+
+	}else{
+
+		//TODO Erro: mensagem maior que o array do payload
 	}
+
 
 	frame->sizePayLoad	= strlen(frame->payload);
 }
@@ -432,22 +440,16 @@ unsigned char calcChecksum(const char *buff, size_t sz) {
 
 void clearData(DataFrame* frame){
 
-	frame->checksum_rx	= -1;
+	strcpy(frame->operacao,"");
+	strcpy(frame->resource,"");
+
 	frame->address		= 0;
 	frame->sizeFrame	= 0;
 	frame->sizePayLoad	= 0;
 	frame->sizeHeader	= 0;
+	frame->count		= 0;
 
-	int i;
-
-	for(i=0;i<SIZE_MAX_PAYLOAD;i++){
-
-		frame->payload[i]	= CHAR_STR_END;
-	}
-
-	for(i=0;i<SIZE_MAX_FRAME;i++){
-
-		frame->frame[i]		= CHAR_STR_END;
-	}
+	memset(frame->payload,0,SIZE_MAX_PAYLOAD);
+	memset(frame->frame,0,SIZE_MAX_FRAME);
 }
 //------------------------------------------------------------------------

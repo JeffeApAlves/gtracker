@@ -30,7 +30,6 @@ namespace GoodsTracker
         public const char CR                = '\r';
         public const char LF                = '\n';
         public const char SEPARATOR         = ':';
-        public const char NAK               = ((char)0x15);
         public const char ASTERISCO         = '*';
     }
 
@@ -225,7 +224,6 @@ namespace GoodsTracker
         internal void init()
         {
             setTime(50);
-
             Serial.Open();
         }
 

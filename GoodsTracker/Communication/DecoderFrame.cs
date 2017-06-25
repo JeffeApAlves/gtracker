@@ -8,27 +8,28 @@ namespace GoodsTracker
         {
             ORIG = 0,
             DEST = 1,
-            OPERACAO = 2,
-            RESOURCE = 3,
-            SIZE_PAYLOAD = 4,
+            COUNT = 2,
+            OPERACAO = 3,
+            RESOURCE = 4,
+            SIZE_PAYLOAD = 5,
 
-            LAT = 5,
-            LNG = 6,
+            LAT =6,
+            LNG = 7,
 
-            ACCEL_X = 7,
-            ACCEL_Y = 8,
-            ACCEL_Z = 9,
+            ACCEL_X = 8,
+            ACCEL_Y = 9,
+            ACCEL_Z = 10,
 
-            ROT_X = 10,
-            ROT_Y = 11,
-            ROT_Z = 12,
+            ROT_X = 11,
+            ROT_Y = 12,
+            ROT_Z = 13,
 
-            SPEED = 13,
-            LEVEL = 14,
-            TRAVA = 15,
-            DATETIME = 16,
+            SPEED = 14,
+            LEVEL = 15,
+            TRAVA = 16,
+            DATETIME = 17,
 
-            CHECKSUM = 17,
+            CHECKSUM = 18,
         }
 
         static public bool setHeader(Header header)
@@ -40,6 +41,7 @@ namespace GoodsTracker
                 // Header
                 header.Append(header.Address.ToString("D5")+ CONST_CHAR.SEPARATOR);
                 header.Append(header.Dest.ToString("D5")+ CONST_CHAR.SEPARATOR);
+                header.Append(header.Count.ToString("D5") + CONST_CHAR.SEPARATOR);
                 header.Append(header.Operation.ToString()+ CONST_CHAR.SEPARATOR);
                 header.Append(header.Resource);
 
@@ -103,7 +105,7 @@ namespace GoodsTracker
             {
                 string[] list = frame.Data.Split(CONST_CHAR.SEPARATOR);
 
-                if (list != null && list.Length >= 7)
+                if (list != null && list.Length >= 8)
                 {
                     ans.Header      = getHeader(list);
                     ans.Telemetria  = getTelemetria(list);
@@ -154,6 +156,7 @@ namespace GoodsTracker
 
             header.Address = AsInteger(list, DATA_INDEX.ORIG);
             header.Dest = AsInteger(list, DATA_INDEX.DEST);
+            header.Count = AsInteger(list, DATA_INDEX.COUNT);
             header.Operation = AsOperation(list, DATA_INDEX.OPERACAO);
             header.Resource = AsString(list, DATA_INDEX.RESOURCE);
             header.SizePayLoad = AsInteger(list, DATA_INDEX.SIZE_PAYLOAD);

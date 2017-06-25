@@ -5,7 +5,7 @@ namespace GoodsTracker
     /**
      * 
      * Frame Coomunication
-     * [ End. de orig[5] : End dest[5] : Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
+     * [ End. de orig[5] : End dest[5] : Count frame[5] : Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
      * 
      * End. de orig: 
      * Range: 00000~65535 (00000) Broadcast
@@ -53,11 +53,12 @@ namespace GoodsTracker
 
     internal class Header
     {
-        public const int SIZE = 22;             // 5+5+2+3+3 + 4 separadores
+        public const int SIZE = 27;             // 5+5+5+2+3+3 + 4 separadores
 
         string data;
         int dest;
         int address;
+        int count;
         Operation operation;
         string resource;
         int sizePayLoad;
@@ -67,6 +68,7 @@ namespace GoodsTracker
         public Operation Operation { get => operation; set => operation = value; }
         public string Resource { get => resource; set => resource = value; }
         public int SizePayLoad { get => sizePayLoad; set => sizePayLoad = value; }
+        public int Count { get => count; set => count = value; }
 
         internal Header()
         {
@@ -75,6 +77,7 @@ namespace GoodsTracker
             resource = "";
             operation = Operation.NN;
             sizePayLoad = 0;
+            count = 0;
         }
 
         internal string str()
@@ -291,7 +294,6 @@ namespace GoodsTracker
         {
             return  CONST_CHAR.RX_FRAME_START +
                     data +
-//                    CONST_CHAR.SEPARATOR +
                     checkSum().ToString("X2") +
                     CONST_CHAR.RX_FRAME_END;
         }
