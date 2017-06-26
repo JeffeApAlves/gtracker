@@ -189,6 +189,7 @@ namespace GoodsTracker
 
         void acceptRxFrame()
         {
+/*
             IDecoderFrame decoder     = new DecoderFrame();
             AnsCmd          ans;
 
@@ -196,7 +197,7 @@ namespace GoodsTracker
             {
                 CommunicationUnit.addAns(ans);
             }
-
+*/
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 
@@ -223,7 +224,7 @@ namespace GoodsTracker
 
         internal void init()
         {
-            setTime(50);
+            setTime(100);
             Serial.Open();
         }
 
@@ -242,7 +243,7 @@ namespace GoodsTracker
         {
             if (frame != null)
             {
-                Serial.putRxData(frame.str());
+                Serial.putRxData(frame.str().ToCharArray());
                 Serial.putRxData(CONST_CHAR.CR);
                 Serial.putRxData(CONST_CHAR.LF);
             }

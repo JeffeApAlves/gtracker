@@ -58,7 +58,7 @@ namespace GoodsTracker
         string data;
         int dest;
         int address;
-        int count;
+        static int count = 0;
         Operation operation;
         string resource;
         int sizePayLoad;
@@ -77,7 +77,7 @@ namespace GoodsTracker
             resource = "";
             operation = Operation.NN;
             sizePayLoad = 0;
-            count = 0;
+            count++;
         }
 
         internal string str()
