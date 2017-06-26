@@ -50,9 +50,9 @@ bool getData(RingBuffer* buffer,char* ch){
 }
 //------------------------------------------------------------------------
 
-unsigned char getCount(RingBuffer* buffer){
+unsigned int getCount(RingBuffer* buffer){
 
-	unsigned char r = 0;
+	unsigned int r = 0;
 
 	if(buffer!=NULL){
 

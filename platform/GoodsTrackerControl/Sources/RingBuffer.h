@@ -17,7 +17,7 @@ typedef struct{
 	unsigned char	data[BUFFER_SIZE];
 	unsigned char	index_producer;
 	unsigned char	index_consumer;
-	unsigned char	count;
+	int				count;
 
 } RingBuffer;
 
@@ -26,7 +26,7 @@ bool putData(RingBuffer* buffer,char ch);
 bool hasData(RingBuffer* buffer);
 void initBuffer(RingBuffer* buffer);
 bool isFull(RingBuffer* buffer);
-unsigned char getCount(RingBuffer* buffer);
+unsigned int getCount(RingBuffer* buffer);
 
 
 #endif /* SOURCES_RINGBUFFER_H_ */

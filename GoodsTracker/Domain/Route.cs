@@ -1,7 +1,9 @@
 ﻿using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GoodsTracker
 {
@@ -64,25 +66,25 @@ namespace GoodsTracker
             createRoute(points[0], points[points.Count - 1]);
         }
 
-        internal List<TelemetriaData> getBehaviorFiltered(int i)
+        internal TelemetriaData[] getBehaviorFiltered(int filter)
         {
             List<TelemetriaData> ret = new List<TelemetriaData>(behaviors);
 
-            // i=0 nao filtra nada
+            // filter=0 nao filtra nada
             // OK (i=1) entao remove os NOK
             // NOK(i=2) entao remove os OK
-            if (i != 0)
+            if (filter != 0)
             {
                 foreach (TelemetriaData b in behaviors)
                 {
-                    if ((i == 1 && !b.OK()) || i == 2 && b.OK())
+                    if ((filter == 1 && !b.OK()) || filter == 2 && b.OK())
                     {
                         ret.Remove(b);
                     }
                 }
             }
 
-            return ret;
+            return ret.ToArray();
         }
 
         internal void registerBehavior(TelemetriaData b)

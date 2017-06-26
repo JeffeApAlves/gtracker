@@ -5,9 +5,9 @@
 #include "RingBuffer.h"
 #include "protocol.h"
 
-const char* OPERATION_AN="AN";
-const char* OPERATION_RD="RD";
-const char* OPERATION_WR="WR";
+const char* OPERATION_AN = "AN";
+const char* OPERATION_RD = "RD";
+const char* OPERATION_WR = "WR";
 
 unsigned int timeTx = TIME_TX;
 unsigned int timeRx = TIME_RX;
@@ -339,21 +339,20 @@ bool hasTxData(void){
 }
 //------------------------------------------------------------------------
 
-/**
- * Verifica se o buffer de TX esta vazio. Se sim, chama a call back
- * da transmissao de caracter para iniciar a transmissao do buffer
- *
- */
-void startTX(void){
+void buildFrame(DataFrame *frame) {
 
-	if(hasTxData() && AS1_GetCharsInTxBuf()==0){
-
-		AS1_OnTxChar();
-	}
+	AppendHeader(frame);
+	AppendPayLoad(frame);
+	AppendCheckSum(frame);
 }
 //------------------------------------------------------------------------
 
-void buildHeader(DataFrame *frame) {
+/**
+ *
+ * Adiciona o cabecalho no frame
+ *
+ */
+void AppendHeader(DataFrame *frame) {
 
 	sprintf(frame->frame,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
 				frame->address, CHAR_SEPARATOR,
@@ -367,18 +366,27 @@ void buildHeader(DataFrame *frame) {
 }
 //------------------------------------------------------------------------
 
-void buildFrame(DataFrame *frame) {
+/**
+ *
+ * Adiciona o Payload no Frame
+ *
+ */
+void AppendPayLoad(DataFrame *frame) {
+
+	strncat(frame->frame, frame->payload,frame->sizePayLoad);
+}
+//------------------------------------------------------------------------
+
+/**
+ *
+ * Adiciona o CheckSum no Frame
+ *
+ */
+void AppendCheckSum(DataFrame *frame) {
 
 	char	separator[] = {CHAR_SEPARATOR,CHAR_STR_END};
 	char	checksum[LEN_CHECKSUM+1];
 
-	// Header
-	buildHeader(frame);
-
-	// Payload
-	strncat(frame->frame, frame->payload,frame->sizePayLoad);
-
-	// CheckSum
 	strcat(frame->frame,separator);
 	frame->sizeFrame = strlen(frame->frame);
 	sprintf(checksum, "%02X", calcChecksum (frame->frame,frame->sizeFrame));
@@ -386,6 +394,12 @@ void buildFrame(DataFrame *frame) {
 }
 //------------------------------------------------------------------------
 
+/*
+ *
+ * Set PayLoad
+ *
+ *
+ */
 void setPayLoad(DataFrame* frame, char* str) {
 
 	size_t size = strlen(str);
@@ -418,6 +432,20 @@ void doAnswer(char *msg) {
 	}
 	else {
 		/*O QUE RESPONDE EM CASO DE MENSAGEM NULA ???*/
+	}
+}
+//------------------------------------------------------------------------
+
+/**
+ * Verifica se o buffer de TX esta vazio. Se sim, chama a call back
+ * da transmissao de caracter para iniciar a transmissao do buffer
+ *
+ */
+void startTX(void){
+
+	if(hasTxData() && AS1_GetCharsInTxBuf()==0){
+
+		AS1_OnTxChar();
 	}
 }
 //------------------------------------------------------------------------

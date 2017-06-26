@@ -89,8 +89,7 @@ namespace GoodsTracker
 
             if (anyRoute())
             {
-                ret = routes[0].getBehaviorFiltered(i).ToArray();
-
+                ret = routes[0].getBehaviorFiltered(i);
             }
 
             return ret;

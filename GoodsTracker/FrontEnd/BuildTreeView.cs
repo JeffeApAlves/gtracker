@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GoodsTracker
@@ -50,29 +52,48 @@ namespace GoodsTracker
                     forceChange = false;
                     forceClear  = false;
                 }
+                else if (behaviors.Length <= 0)
+                {
+                    forceChange = true;
+                    forceClear  = true;
+                }
                 else
                 {
-                    if (behaviors.Length <= 0)
+                    if (behaviors.All(value.Contains))
                     {
                         forceChange = true;
                     }
-                    else
+
+                    if(!ContainsEquivalentSequence(behaviors,value))
                     {
-                        if (!behaviors.SequenceEqual(value))
-                        {
-                            forceClear = true;
-                        }
-
-                        if (behaviors.All(value.Contains) && behaviors.Length != value.Length)
-                        {
-                            forceChange = true;
-                        }
+                        forceClear = true;
                     }
-
                 }
 
                 behaviors = value;
             }
+        }
+
+        public bool ContainsEquivalentSequence<T>(T[] array1, T[] array2)
+        {
+            bool a1IsNullOrEmpty = ReferenceEquals(array1, null) || array1.Length == 0;
+            bool a2IsNullOrEmpty = ReferenceEquals(array2, null) || array2.Length == 0;
+
+            if (a1IsNullOrEmpty)
+            {
+                return a2IsNullOrEmpty;
+            }
+
+            if (a2IsNullOrEmpty)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < array1.Length; i++)
+                if (!Equals(array1[i], array2[i]))
+                    return false;
+
+            return true;
         }
 
         public int Filter
@@ -338,5 +359,30 @@ namespace GoodsTracker
 
             return eixo;
         }
+
+        private void test()
+        {
+            List<TelemetriaData> be = new List<TelemetriaData>();
+            List<TelemetriaData> v = new List<TelemetriaData>();
+
+            TelemetriaData e1 = new TelemetriaData();
+            TelemetriaData e2 = new TelemetriaData();
+            TelemetriaData e3 = new TelemetriaData();
+            TelemetriaData e4 = new TelemetriaData();
+
+            be.Add(e1);
+            be.Add(e2);
+            be.Add(e3);
+            //            be.Add(e4);
+
+            v.Add(e1);
+            v.Add(e2);
+            v.Add(e3);
+            v.Add(e4);
+
+            Console.WriteLine("{0}", be.ToArray().All(v.ToArray().Contains));
+            Console.WriteLine("{0}", !be.ToArray().SequenceEqual(v.ToArray()));
+        }
     }
 }
+

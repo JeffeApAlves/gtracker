@@ -177,7 +177,9 @@ void startTX(void);
 void sendFrame(DataFrame *frame);
 void clearData(DataFrame* frame);
 void setPayLoad(DataFrame* frame, char* str);
-void buildHeader(DataFrame *frame);
+void AppendHeader(DataFrame *frame);
+void AppendPayLoad(DataFrame *frame);
+void AppendCheckSum(DataFrame *frame);
 void buildFrame(DataFrame *frame);
 
 /*interface*/
