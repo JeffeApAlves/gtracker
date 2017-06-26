@@ -7,7 +7,7 @@
 **     Version     : Component 01.697, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-24, 12:17, # CodeGen: 0
+**     Date/Time   : 2017-06-26, 23:13, # CodeGen: 18
 **     Abstract    :
 **         This device "ADC" implements an A/D converter,
 **         its control methods and interrupt/event handling procedure.
@@ -19,7 +19,7 @@
 **          Interrupt service/event                        : Enabled
 **            A/D interrupt                                : INT_ADC0
 **            A/D interrupt priority                       : medium priority
-**          A/D channels                                   : 4
+**          A/D channels                                   : 3
 **            Channel0                                     : 
 **              A/D channel (pin)                          : ADC0_DP0/ADC0_SE0/PTE20/TPM1_CH0/UART0_TX
 **              A/D channel (pin) signal                   : 
@@ -29,10 +29,6 @@
 **              A/D channel (pin) signal                   : 
 **              Mode select                                : Single Ended
 **            Channel2                                     : 
-**              A/D channel (pin)                          : ADC0_DP3/ADC0_SE3/PTE22/TPM2_CH0/UART2_TX
-**              A/D channel (pin) signal                   : 
-**              Mode select                                : Single Ended
-**            Channel3                                     : 
 **              A/D channel (pin)                          : DAC0_OUT/ADC0_SE23/CMP0_IN4/PTE30/TPM0_CH3/TPM_CLKIN1
 **              A/D channel (pin) signal                   : 
 **              Mode select                                : Single Ended
@@ -124,7 +120,7 @@ extern "C" {
 
 
 
-#define AD1_SAMPLE_GROUP_SIZE 4U
+#define AD1_SAMPLE_GROUP_SIZE 3U
 void AD1_HWEnDi(void);
 /*
 ** ===================================================================

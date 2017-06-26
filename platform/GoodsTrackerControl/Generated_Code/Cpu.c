@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-24, 12:17, # CodeGen: 0
+**     Date/Time   : 2017-06-26, 22:35, # CodeGen: 15
 **     Abstract    :
 **
 **     Settings    :
@@ -290,6 +290,9 @@
 #include "DB71.h"
 #include "BitIoLdd15.h"
 #include "TSSin.h"
+#include "XF1.h"
+#include "AS2.h"
+#include "ASerialLdd2.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -556,6 +559,9 @@ void PE_low_level_init(void)
 
   /* Write code here ... */
 
+  /* ### XFormat "XF1" init code ... */
+  /* ### Asynchro serial "AS2" init code ... */
+  AS2_Init();
 }
   /* Flash configuration field */
   __attribute__ ((section (".cfmconfig"))) const uint8_t _cfm[0x10] = {

@@ -7,7 +7,7 @@
 **     Version     : Component 01.697, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-24, 12:17, # CodeGen: 0
+**     Date/Time   : 2017-06-26, 23:13, # CodeGen: 18
 **     Abstract    :
 **         This device "ADC" implements an A/D converter,
 **         its control methods and interrupt/event handling procedure.
@@ -19,7 +19,7 @@
 **          Interrupt service/event                        : Enabled
 **            A/D interrupt                                : INT_ADC0
 **            A/D interrupt priority                       : medium priority
-**          A/D channels                                   : 4
+**          A/D channels                                   : 3
 **            Channel0                                     : 
 **              A/D channel (pin)                          : ADC0_DP0/ADC0_SE0/PTE20/TPM1_CH0/UART0_TX
 **              A/D channel (pin) signal                   : 
@@ -29,10 +29,6 @@
 **              A/D channel (pin) signal                   : 
 **              Mode select                                : Single Ended
 **            Channel2                                     : 
-**              A/D channel (pin)                          : ADC0_DP3/ADC0_SE3/PTE22/TPM2_CH0/UART2_TX
-**              A/D channel (pin) signal                   : 
-**              Mode select                                : Single Ended
-**            Channel3                                     : 
 **              A/D channel (pin)                          : DAC0_OUT/ADC0_SE23/CMP0_IN4/PTE30/TPM0_CH3/TPM_CLKIN1
 **              A/D channel (pin) signal                   : 
 **              Mode select                                : Single Ended
@@ -139,7 +135,6 @@ static void ClrSumV(void)
   AD1_OutV[0] = 0U;                    /* Set variable for storing measured values to 0 */
   AD1_OutV[1] = 0U;                    /* Set variable for storing measured values to 0 */
   AD1_OutV[2] = 0U;                    /* Set variable for storing measured values to 0 */
-  AD1_OutV[3] = 0U;                    /* Set variable for storing measured values to 0 */
 }
 
 /*
@@ -247,7 +242,6 @@ byte AD1_GetValue16(word *Values)
   Values[0] = AD1_OutV[0];             /* Save measured values to the output buffer */
   Values[1] = AD1_OutV[1];             /* Save measured values to the output buffer */
   Values[2] = AD1_OutV[2];             /* Save measured values to the output buffer */
-  Values[3] = AD1_OutV[3];             /* Save measured values to the output buffer */
   return ERR_OK;                       /* OK */
 }
 
@@ -317,7 +311,7 @@ void AdcLdd1_OnMeasurementComplete(LDD_TUserData *UserDataPtr)
   }
   AdcLdd1_GetMeasuredValues(AdcLdd1_DeviceDataPtr, (LDD_TData *)&AD1_OutV[SumChan]);
   SumChan++;                           /* Increase counter of measured channels*/
-  if (SumChan == 4U) {                 /* Is number of measured channels equal to the number of channels used in the component? */
+  if (SumChan == 3U) {                 /* Is number of measured channels equal to the number of channels used in the component? */
     SumChan = 0U;                      /* If yes then set the counter of measured channels to 0 */
     OutFlg = TRUE;                     /* Measured values are available */
     AD1_OnEnd();                       /* If yes then invoke user event */

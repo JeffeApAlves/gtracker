@@ -25,10 +25,9 @@ typedef struct{
 		uint8_t	Inc[3];
 		int		Speed ;
 		int		Level;
-		int		Trava;
+		int		Lock;
 		char	Date[20];
 	} Info;
-
 
 ResultExec onAnalog(DataFrame* cmd);
 ResultExec onLED(DataFrame* cmd);
@@ -38,11 +37,12 @@ ResultExec onAccel(DataFrame* cmd);
 ResultExec onTelemetry(DataFrame* frame);
 ResultExec onLock(DataFrame* frame);
 
-void read_accel();
-void read_Channels_AD();
-void initCallBacks();
-void initAccel();
+void read_accel(void);
+void read_Channels_AD(void);
+void initCallBacks(void);
+void initAccel(void);
 void Infor2String(Info* info,char* str_out);
+void initInfo(Info* info);
 
 extern volatile bool AD_finished;
 

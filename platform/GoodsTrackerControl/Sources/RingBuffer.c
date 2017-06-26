@@ -77,17 +77,6 @@ bool hasData(RingBuffer* buffer){
 
 void initBuffer(RingBuffer* buffer){
 
-	if(buffer!=NULL){
-
-		buffer->index_consumer	= 0;
-		buffer->index_producer	= 0;
-		buffer->count			= 0;
-
-		int i;
-		for(i = 0; i < BUFFER_SIZE; i++){
-
-			buffer->data[i]=0;
-		}
-	}
+	memset(buffer,0,sizeof(RingBuffer));
 }
 //------------------------------------------------------------------------

@@ -6,12 +6,12 @@
  */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <stdbool.h>
 
 #include "LED_B.h"
 #include "LED_G.h"
 #include "LED_R.h"
+#include "XF1.h"
 #include "AD1.h"
 #include "MMA1.h"
 #include "application.h"
@@ -21,7 +21,7 @@ uint16_t	AD_Values[AD1_CHANNEL_COUNT];
 Info		dataInfo;
 char		msg2send[150];
 
-void initCallBacks(){
+void initCallBacks(void){
 
 	setEventCMD(CMD_LED,		onLED);
 	setEventCMD(CMD_ANALOG,		onAnalog);
@@ -138,6 +138,7 @@ ResultExec onTelemetry(DataFrame* frame){
 		dataInfo.Inc[AXIS_Z]	= 6;
 		dataInfo.Level			= 1000;
 		dataInfo.Speed			= 100;
+		dataInfo.Lock			= true;
 		strcpy(dataInfo.Date,	"23/06/2017 19.52");
 
 		Infor2String(&dataInfo,msg2send);
@@ -172,7 +173,7 @@ ResultExec onLock(DataFrame* frame){
 }
 //------------------------------------------------------------------------
 
-void read_Channels_AD(){
+void read_Channels_AD(void){
 
 //	if(AD_finished){
 //		if(AD1_GetValue16(AD_Values)==ERR_OK){
@@ -193,13 +194,13 @@ void read_Channels_AD(){
 }
 //------------------------------------------------------------------------
 
-void read_accel() {
+void read_accel(void) {
 
 	MMA1_GetRaw8XYZ(dataInfo.Inc);
 }
 //------------------------------------------------------------------------
 
-void initAccel(){
+void initAccel(void){
 
 	MMA1_Init();
 	MMA1_Enable();
@@ -210,10 +211,7 @@ void Infor2String(Info* info,char* str_out){
 
 	if(str_out){
 
-		strcpy(str_out,"-23.591387:-46.645126:0.1:9.8:0.4:1:2:3:60:900:1:23/06/2017 19.52");
-
-/*
-		sprintf(str_out,"%.7f:%.7f:%d:%d:%d:%d:%d:%d:%d:%d:%s",
+		XF1_xsprintf(str_out,"%.7f:%.7f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s",
 				info->Lat,
 				info->Lng,
 				info->Acc[AXIS_X],
@@ -224,10 +222,14 @@ void Infor2String(Info* info,char* str_out){
 				info->Inc[AXIS_Z],
 				info->Speed,
 				info->Level,
+				info->Lock,
 				info->Date);
-*/
-
 	}
 }
 //------------------------------------------------------------------------
 
+void initInfo(Info* info){
+
+	memset(info,0,sizeof(Info));
+}
+//------------------------------------------------------------------------

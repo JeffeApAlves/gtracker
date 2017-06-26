@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include <stdbool.h>
 
+#include "XF1.h"
 #include "RingBuffer.h"
 #include "protocol.h"
 
@@ -354,7 +354,7 @@ void buildFrame(DataFrame *frame) {
  */
 void AppendHeader(DataFrame *frame) {
 
-	sprintf(frame->frame,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
+	XF1_xsprintf(frame->frame,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
 				frame->address, CHAR_SEPARATOR,
 					frame->dest, CHAR_SEPARATOR,
 						frame->count, CHAR_SEPARATOR,
@@ -389,7 +389,7 @@ void AppendCheckSum(DataFrame *frame) {
 
 	strcat(frame->frame,separator);
 	frame->sizeFrame = strlen(frame->frame);
-	sprintf(checksum, "%02X", calcChecksum (frame->frame,frame->sizeFrame));
+	XF1_xsprintf(checksum, "%02X", calcChecksum (frame->frame,frame->sizeFrame));
 	strcat(frame->frame, checksum);
 }
 //------------------------------------------------------------------------
@@ -468,16 +468,6 @@ unsigned char calcChecksum(const char *buff, size_t sz) {
 
 void clearData(DataFrame* frame){
 
-	strcpy(frame->operacao,"");
-	strcpy(frame->resource,"");
-
-	frame->address		= 0;
-	frame->sizeFrame	= 0;
-	frame->sizePayLoad	= 0;
-	frame->sizeHeader	= 0;
-	frame->count		= 0;
-
-	memset(frame->payload,0,SIZE_MAX_PAYLOAD);
-	memset(frame->frame,0,SIZE_MAX_FRAME);
+	memset(frame,0,sizeof(DataFrame));
 }
 //------------------------------------------------------------------------

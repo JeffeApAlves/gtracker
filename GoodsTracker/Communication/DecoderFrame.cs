@@ -145,7 +145,6 @@ namespace GoodsTracker
             telemetria.StatusLock = AsBool(list, DATA_INDEX.TRAVA);
             telemetria.DateTime = AsDateTime(list, DATA_INDEX.DATETIME);
 
-
             return telemetria;
         }
 
@@ -228,7 +227,6 @@ namespace GoodsTracker
             }
 
             return dest;
-
         }
 
         private bool AsBool(string[] list, DATA_INDEX index)
@@ -241,8 +239,6 @@ namespace GoodsTracker
             }
 
             return dest>0 ? true:false;
-
         }
-
     }
 }

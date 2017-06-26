@@ -9,9 +9,9 @@ namespace GoodsTracker
 {
     class Serial
     {
-        const int SIZE_BUFFER_RX    = (1 * 1024);
-        const int SIZE_BUFFER_TX    = (1 * 1024);
-        const int SIZE_RING_BUFFER_RX = (4 * 1024);
+        const int SIZE_BUFFER_RX    = (2 * 1024);
+        const int SIZE_BUFFER_TX    = (2 * 1024);
+        const int SIZE_RING_BUFFER_RX = (8 * 1024);
 
         static SerialPort port = null;
         static RingBuffer bufferRx = new RingBuffer(SIZE_RING_BUFFER_RX);

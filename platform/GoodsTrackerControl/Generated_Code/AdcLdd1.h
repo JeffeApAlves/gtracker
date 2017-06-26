@@ -7,7 +7,7 @@
 **     Version     : Component 01.183, Driver 01.08, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-24, 12:17, # CodeGen: 0
+**     Date/Time   : 2017-06-26, 23:13, # CodeGen: 18
 **     Abstract    :
 **         This device "ADC_LDD" implements an A/D converter,
 **         its control methods and interrupt/event handling procedure.
@@ -19,7 +19,7 @@
 **            A/D interrupt                                : INT_ADC0
 **            A/D interrupt priority                       : medium priority
 **          DMA                                            : Disabled
-**          A/D channel list                               : 4
+**          A/D channel list                               : 3
 **            Channel 0                                    : 
 **              Channel mode                               : Single Ended
 **                Input                                    : 
@@ -31,11 +31,6 @@
 **                  A/D channel (pin)                      : ADC0_DM0/ADC0_SE4a/PTE21/TPM1_CH1/UART0_RX
 **                  A/D channel (pin) signal               : 
 **            Channel 2                                    : 
-**              Channel mode                               : Single Ended
-**                Input                                    : 
-**                  A/D channel (pin)                      : ADC0_DP3/ADC0_SE3/PTE22/TPM2_CH0/UART2_TX
-**                  A/D channel (pin) signal               : 
-**            Channel 3                                    : 
 **              Channel mode                               : Single Ended
 **                Input                                    : 
 **                  A/D channel (pin)                      : DAC0_OUT/ADC0_SE23/CMP0_IN4/PTE30/TPM0_CH3/TPM_CLKIN1
@@ -186,7 +181,7 @@ extern "C" {
 
 /* This constant contains the number of channels in the "A/D channel list"
    group */
-#define AdcLdd1_CHANNEL_COUNT           4u
+#define AdcLdd1_CHANNEL_COUNT           3u
 
 /* This constant can be used in the sample array to create a gap in sample group.
    It is intended to disable a measurement of a sample */

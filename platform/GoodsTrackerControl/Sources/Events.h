@@ -76,6 +76,9 @@
 #include "DB71.h"
 #include "BitIoLdd15.h"
 #include "TSSin.h"
+#include "XF1.h"
+#include "AS2.h"
+#include "ASerialLdd2.h"
 
 
 #ifdef __cplusplus

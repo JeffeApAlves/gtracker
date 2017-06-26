@@ -792,6 +792,27 @@ Module "TSSin"     (component TSS_Library)
                 Config registers and all Control Config registers initialization according to setting of Component properties. 
                 The user have to place this function into the proper location in the source code.
 
+Module "XF1"       (component XFormat)
+   - XF1_xvformat -Printf() like format function
+   - XF1_xformat -Printf() like function using variable arguments
+   - XF1_xsprintf -sprintf() like function
+   - XF1_xsnprintf -snprintf() like function, returns the number of characters written, negative in case of error.
+
+Module "AS2"       (component AsynchroSerial)
+   - AS2_RecvChar -If any data is received, this method returns one character, otherwise it returns an error code (it does not 
+                wait for data). This method is enabled only if the receiver property is enabled.  [Note:] Because the preferred 
+                method to handle error and break exception in the interrupt mode is to use events <OnError> and <OnBreak> the 
+                return value ERR_RXEMPTY has higher priority than other error codes. As a consequence the information about an 
+                exception in interrupt mode is returned only if there is a valid character ready to be read.
+   - AS2_SendChar -Sends one character to the channel. If the component is temporarily disabled (Disable method) SendChar 
+                method only stores data into an output buffer. In case of a zero output buffer size, only one character can be 
+                stored. Enabling the component (Enable method) starts the transmission of the stored data. This method is 
+                available only if the transmitter property is enabled.
+   - AS2_GetCharsInRxBuf -Returns the number of characters in the input buffer. This method is available only if the receiver 
+                property is enabled.
+   - AS2_GetCharsInTxBuf -Returns the number of characters in the output buffer. This method is available only if the 
+                transmitter property is enabled.
+
 Module "Cpu"       (component MKL25Z128LK4)
 
 ===================================================================================
