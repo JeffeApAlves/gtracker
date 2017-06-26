@@ -40,6 +40,7 @@ namespace GoodsTracker
         StatusRx            statusRx        = StatusRx.RX_FRAME_INIT;
         CommunicationFrame  rxFrame;
         CommunicationUnit   currentUnit;
+        private const int _TIME_COMMUNICATION    = 5;
 
         //Singleton
         public static Protocol Communication
@@ -224,7 +225,7 @@ namespace GoodsTracker
 
         internal void init()
         {
-            setTime(100);
+            setTime(_TIME_COMMUNICATION);
             Serial.Open();
         }
 

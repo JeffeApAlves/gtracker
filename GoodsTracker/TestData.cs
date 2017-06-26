@@ -19,7 +19,7 @@ namespace GoodsTracker
 
         static void addFrame()
         {
-            if (CommunicationUnit.QueueCmd.Count > 0 && CommunicationUnit.QueueAnsCmd.Count<=0)
+            if (CommunicationUnit.isAnyCmd() && !CommunicationUnit.isAnyAns())
             {
                 TelemetriaData b            = createTelemetriaData();
                 AnsCmd ans                  = createAnsCmd();

@@ -14,15 +14,14 @@ namespace GoodsTracker
 
         STATUS_GUI  statusFence = STATUS_GUI.INIT;
         STATUS_GUI  statusTrip  = STATUS_GUI.INIT;
-        TestData    demoData;
         TrackerController trackerController = TrackerController.TrackerCtrl;
 
         Fence       fence;
         Route       route;
-
         BuildTreeView   bTV     = null;
         int     itemselected    = -1;
 
+        TestData demoData       = null;
 
         //#################################### Events ########################################
 

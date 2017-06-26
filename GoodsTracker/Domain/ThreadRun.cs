@@ -16,9 +16,16 @@ namespace GoodsTracker
         {
             while (!_shouldStop)
             {
-                run();
+                try
+                {
+                    run();
 
-                Thread.Sleep(time_ms);
+                    Thread.Sleep(time_ms);
+                }
+                catch{
+
+                    Console.WriteLine("Erro na execucao de alguma Thread");
+                }
             }
         }
 

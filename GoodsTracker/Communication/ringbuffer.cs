@@ -37,23 +37,31 @@ namespace GoodsTracker
         {
             bool flag = false;
 
-            if (!isFull())
+            try
             {
-                semaforo.WaitOne();
+                if (!isFull())
+                {
+                    semaforo.WaitOne();
 
-                data[index_producer++] = ch;
-                index_producer %= data.Length;
-                count++;
+                    data[index_producer++] = ch;
+                    index_producer %= data.Length;
+                    count++;
 
-//                LogConsole("PUT:", ch);
+                    //                LogConsole("PUT:", ch);
 
-                semaforo.Release();
+                    semaforo.Release();
 
-                flag = true;
+                    flag = true;
+                }
+                else
+                {
+                    //TODO
+                }
+
             }
-            else
+            catch
             {
-                //TODO
+                flag = false;
             }
 
             return flag;
@@ -67,34 +75,44 @@ namespace GoodsTracker
 
             try
             {
-                if (hasData())
+                try
                 {
-                    semaforo.WaitOne();
+                    if (hasData())
+                    {
+                        semaforo.WaitOne();
 
-                    ch = data[index_consumer++];
-                    index_consumer %= data.Length;
-                    count--;
+                        ch = data[index_consumer++];
+                        index_consumer %= data.Length;
+                        count--;
 
-                    LogConsole("GET:", ch);
+                        LogConsole("GET:", ch);
 
-                    semaforo.Release();
+                        semaforo.Release();
 
-                    flag = true;
+                        flag = true;
+                    }
+                    else
+                    {
+                        //TODO 
+                    }
                 }
-                else
+                catch (System.IndexOutOfRangeException)
                 {
-                    //TODO 
+                    ch = (char)0;
                 }
             }
-            catch(System.IndexOutOfRangeException)
+            catch
             {
+                flag = false;
                 ch = (char)0;
             }
 
             return flag;
         }
 
-        internal bool isFull()
+
+
+    internal bool isFull()
         {
             return count >= data.Length;
         }

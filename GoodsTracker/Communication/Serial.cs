@@ -3,14 +3,15 @@ using System.Diagnostics;
 using System.IO.Ports;
 using System.Text;
 using System.Threading;
+using System.Windows;
 
 namespace GoodsTracker
 {
     class Serial
     {
-        const int SIZE_BUFFER_RX    = 2048;
-        const int SIZE_BUFFER_TX    = 2048;
-        const int SIZE_RING_BUFFER_RX = (1 * 512);
+        const int SIZE_BUFFER_RX    = (1 * 1024);
+        const int SIZE_BUFFER_TX    = (1 * 1024);
+        const int SIZE_RING_BUFFER_RX = (4 * 1024);
 
         static SerialPort port = null;
         static RingBuffer bufferRx = new RingBuffer(SIZE_RING_BUFFER_RX);
@@ -80,12 +81,13 @@ namespace GoodsTracker
 
                 port.ReadBufferSize     = SIZE_BUFFER_RX;
                 port.WriteBufferSize    = SIZE_BUFFER_TX;
-                port.Handshake = Handshake.None;
-                port.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
+                port.Handshake          = Handshake.None;
                 port.ReadTimeout        = 50;
                 port.WriteTimeout       = 50;
+                port.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
+                port.ErrorReceived += new SerialErrorReceivedEventHandler(_serialPort_DataErroReceived);
+
                 port.Open();
-                port.DiscardInBuffer();
             }
             catch
             {
@@ -106,13 +108,13 @@ namespace GoodsTracker
             {
                 if (!bufferRx.isFull())
                 {
-                    if (port.BytesToRead > 0)
+                    SerialPort com = (SerialPort)sender;
+
+                    if (com.BytesToRead > 0)
                     {
-                        char[] buffer = new char[port.BytesToRead];
-
-                        int bytesRead = port.Read(buffer, 0, buffer.Length);
-
-                        int size = bytesRead > buffer.Length ? buffer.Length : bytesRead;
+                        char[] buffer   = new char[com.BytesToRead];
+                        int bytesRead   = com.Read(buffer, 0, buffer.Length);
+                        int size        = bytesRead > buffer.Length ? buffer.Length : bytesRead;
 
                         if (size > 0)
                         {
@@ -136,7 +138,7 @@ namespace GoodsTracker
                                     sb.Append(buffer[i]);
                                 }
 
-                                LogConsole("COM:", buffer[i], bytesRead);
+//                                LogConsole("COM:", buffer[i], bytesRead);
                             }
 
                             LogConsole("COM:", sb.ToString(), bytesRead);
@@ -146,7 +148,13 @@ namespace GoodsTracker
             }
             catch(IndexOutOfRangeException)
             {
+                Console.WriteLine("Erro no evento de recepcao dos dados");
             }            
+        }
+
+        private static void _serialPort_DataErroReceived(object sender, SerialErrorReceivedEventArgs e)
+        {
+            MessageBox.Show(e.ToString());
         }
 
         /**

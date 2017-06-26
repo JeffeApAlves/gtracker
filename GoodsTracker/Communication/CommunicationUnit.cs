@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GoodsTracker
 {
@@ -14,13 +15,12 @@ namespace GoodsTracker
         static int      index = 0;
 
         static List<CommunicationUnit>          units = new List<CommunicationUnit>();
-        private static Dictionary<string, Cmd>  containner = new Dictionary<string, Cmd>();
-        private static List<Cmd>                queueCmd = new List<Cmd>();
+        private static Dictionary<string, Cmd>  containnerCmds = new Dictionary<string, Cmd>();
         private static List<AnsCmd>             queueAnsCmd = new List<AnsCmd>();
 
         internal int Address { get => address; set => address = value; }
-        public static List<Cmd> QueueCmd { get => queueCmd; set => queueCmd = value; }
         public static List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
+        internal static Dictionary<string, Cmd> ContainnerCmds { get => containnerCmds; set => containnerCmds = value; }
 
         protected abstract void onReceiveAnswer(AnsCmd ans);
 
@@ -31,12 +31,19 @@ namespace GoodsTracker
 
         static internal bool isAnyCmd()
         {
-            return queueCmd.Count > 0;
+            return containnerCmds.Count > 0;
         }
 
         internal Cmd getNextCmd()
         {
-            return isAnyCmd()? queueCmd[0]:null;
+            Cmd cmd = null;
+
+            if (isAnyCmd())
+            {
+                cmd = new List<Cmd>(containnerCmds.Values).ToArray()[0];
+            }
+            
+            return cmd;
         }
 
         static internal bool isAnyAns()
@@ -47,11 +54,6 @@ namespace GoodsTracker
         static internal void addAns(AnsCmd ans)
         {
             queueAnsCmd.Add(ans);
-        }
-
-        static internal void removeCmd(Cmd cmd)
-        {
-            queueCmd.Remove(cmd);
         }
 
         internal Cmd createCMD(int dest, Operation o, string resource)
@@ -65,7 +67,7 @@ namespace GoodsTracker
 
         internal void sendCMD(Cmd cmd)
         {
-            queueCmd.Add(cmd);
+            containnerCmds[cmd.Header.Resource] = cmd;
         }
 
         internal static CommunicationUnit getNextUnit()
@@ -75,19 +77,19 @@ namespace GoodsTracker
 
         static internal Cmd getCMD(string resource)
         {
-            return containner[resource];
+            return containnerCmds[resource];
         }
 
         static internal Cmd findCMD(string resource)
         {
-            return containner[resource];
+            return containnerCmds[resource];
         }
 
         internal void processQueues()
         {
-            if (isAnyAns())
+            if (isAnyCmd())
             {
-                Cmd[]       array_cmd = queueCmd.ToArray();
+                Cmd[] array_cmd = new List<Cmd>(containnerCmds.Values).ToArray();
 
                 foreach (Cmd cmd in array_cmd)
                 {
@@ -110,7 +112,7 @@ namespace GoodsTracker
                             }
                             catch
                             {
-
+                                Console.WriteLine("Erro ao processar as filas de Tx e Rx");
                             }
 
                             break;
@@ -118,6 +120,11 @@ namespace GoodsTracker
                     }
                 }
             }
+        }
+
+        static internal void removeCmd(Cmd cmd)
+        {
+            containnerCmds.Remove(cmd.Header.Resource);
         }
 
         private void removeAns(AnsCmd ans)
