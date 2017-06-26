@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO.Ports;
+using System.Text;
 using System.Threading;
 
 namespace GoodsTracker
 {
     class Serial
     {
-        const int SIZE_BUFFER_RX    = 1024;
-        const int SIZE_BUFFER_TX    = 1024;
+        const int SIZE_BUFFER_RX    = 2048;
+        const int SIZE_BUFFER_TX    = 2048;
         const int SIZE_RING_BUFFER_RX = (1 * 512);
 
         static SerialPort port = null;
@@ -105,29 +106,45 @@ namespace GoodsTracker
             {
                 if (!bufferRx.isFull())
                 {
-                    char[] buffer = new char[SIZE_BUFFER_RX];
-                    int bytesRead = port.Read(buffer, 0, SIZE_BUFFER_RX);
-
-                    if (bytesRead > 0)
+                    if (port.BytesToRead > 0)
                     {
-                        buffer[bytesRead] = (char)0;
+                        char[] buffer = new char[port.BytesToRead];
 
-                        //Console.WriteLine("COM: {0} '{1}'", stopSerial.Elapsed.Milliseconds.ToString("D5"), new string(buffer));
+                        int bytesRead = port.Read(buffer, 0, buffer.Length);
 
-                        Console.Write("COM: {0} ", stopSerial.Elapsed.Milliseconds.ToString("D5"));
+                        int size = bytesRead > buffer.Length ? buffer.Length : bytesRead;
 
-                        stopSerial.Start();
-
-                        for (int i = 0; i < bytesRead; i++)
+                        if (size > 0)
                         {
-                            putRxData(buffer[i]);
-                            Console.Write("{1}", buffer[i]);
+                            StringBuilder sb = new StringBuilder();
+
+                            for (int i = 0; i < size; i++)
+                            {
+                                putRxData(buffer[i]);
+
+                                if (buffer[i] == '\n')
+                                {
+                                    sb.Append("\\n");
+
+                                }
+                                else if (buffer[i] == '\r')
+                                {
+                                    sb.Append("\\r");
+                                }
+                                else
+                                {
+                                    sb.Append(buffer[i]);
+                                }
+
+                                LogConsole("COM:", buffer[i], bytesRead);
+                            }
+
+                            LogConsole("COM:", sb.ToString(), bytesRead);
                         }
-                        Console.Write("\n");
                     }
                 }
             }
-            catch
+            catch(IndexOutOfRangeException)
             {
             }            
         }
@@ -140,6 +157,46 @@ namespace GoodsTracker
         public static void Close()
         {
             port.Close();
+        }
+
+        static void LogConsole(string str, string info,int num)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(str);
+            sb.Append(" ");
+            sb.Append(stopSerial.Elapsed.Milliseconds.ToString("D5"));
+            sb.Append(" ");
+            sb.Append(num.ToString("D5"));
+            sb.Append(" ");
+            sb.Append("     ");
+            sb.Append("\\");
+            sb.Append("     ");
+            sb.Append(" ");
+            sb.Append(info);
+
+            Console.WriteLine(sb.ToString());
+            stopSerial.Start();
+        }
+
+        static void LogConsole(string str, char ch, int count)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(str);
+            sb.Append(" ");
+            sb.Append(stopSerial.Elapsed.Milliseconds.ToString("D5"));
+            sb.Append(" ");
+            sb.Append(count.ToString("D5"));
+            sb.Append(" ");
+            sb.Append("     ");
+            sb.Append("\\");
+            sb.Append("     ");
+            sb.Append(" ");
+            sb.Append(ch);
+
+            Console.WriteLine(sb.ToString());
+            stopSerial.Start();
         }
     }
 }

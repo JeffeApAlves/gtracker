@@ -45,16 +45,15 @@ namespace GoodsTracker
                 index_producer %= data.Length;
                 count++;
 
-                semaforo.Release();
+//                LogConsole("PUT:", ch);
 
-                Console.WriteLine("PUT: {0} '{1}' P/C:{2}/{3}-Count:{4}", stopPUT.Elapsed.Milliseconds.ToString("D5"), ch, index_producer.ToString("D5"), index_consumer.ToString("D5"), count.ToString("D5"));
-                stopPUT.Start();
+                semaforo.Release();
 
                 flag = true;
             }
             else
             {
-//                Console.WriteLine("RingBuffer FULL {0}",count);
+                //TODO
             }
 
             return flag;
@@ -66,26 +65,31 @@ namespace GoodsTracker
 
             ch = new char();
 
-            if (hasData())
+            try
             {
-                semaforo.WaitOne();
+                if (hasData())
+                {
+                    semaforo.WaitOne();
 
-                ch = data[index_consumer++];
-                index_consumer %= data.Length;
-                count--;
+                    ch = data[index_consumer++];
+                    index_consumer %= data.Length;
+                    count--;
 
-                semaforo.Release();
+                    LogConsole("GET:", ch);
 
-                Console.WriteLine("GET: {0} '{1}' P/C:{2}/{3}-Count:{4}", stopGET.Elapsed.Milliseconds.ToString("D5"), ch, index_producer.ToString("D5"), index_consumer.ToString("D5"), count.ToString("D5"));
-                stopGET.Start();
+                    semaforo.Release();
 
-                flag = true;
+                    flag = true;
+                }
+                else
+                {
+                    //TODO 
+                }
             }
-            else
+            catch(System.IndexOutOfRangeException)
             {
-//                Console.WriteLine("RingBuffer EMPTY {0}",count);
+                ch = (char)0;
             }
-
 
             return flag;
         }
@@ -114,6 +118,26 @@ namespace GoodsTracker
             }
 
             semaforo.Release();
+        }
+
+        void LogConsole(string str,char ch)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(str);
+            sb.Append(" ");
+            sb.Append(stopPUT.Elapsed.Milliseconds.ToString("D5"));
+            sb.Append(" ");
+            sb.Append(count.ToString("D5"));
+            sb.Append(" ");
+            sb.Append(index_producer.ToString("D5"));
+            sb.Append("\\");
+            sb.Append(index_consumer.ToString("D5"));
+            sb.Append(" ");
+            sb.Append(ch);
+
+            Console.WriteLine(sb);
+            stopPUT.Start();
         }
     }
 }
