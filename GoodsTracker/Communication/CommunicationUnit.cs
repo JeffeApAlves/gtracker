@@ -16,12 +16,14 @@ namespace GoodsTracker
         static int      index = 0;
 
         static List<CommunicationUnit>          units = new List<CommunicationUnit>();
-        private static Dictionary<string, Cmd>  containnerCmds = new Dictionary<string, Cmd>();
+        private static Dictionary<string, Cmd>  txCmds = new Dictionary<string, Cmd>();
+        private static List<Cmd>                queueCmds = new List<Cmd>();
         private static List<AnsCmd>             queueAnsCmd = new List<AnsCmd>();
 
         internal int Address { get => address; set => address = value; }
         public static List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
-        internal static Dictionary<string, Cmd> ContainnerCmds { get => containnerCmds; set => containnerCmds = value; }
+        internal static List<Cmd> QueueCmds { get => queueCmds; set => queueCmds = value; }
+        internal static Dictionary<string, Cmd> TxCmds { get => txCmds; set => txCmds = value; }
 
         protected abstract void onReceiveAnswer(AnsCmd ans);
 
@@ -30,18 +32,27 @@ namespace GoodsTracker
             units.Add(this);
         }
 
-        static internal bool isAnyCmd()
+        static internal bool isAnyTxCmd()
         {
-            return containnerCmds.Count > 0;
+            return txCmds.Count > 0;
+        }
+
+        static internal bool isAnyQueueCmd()
+        {
+            return queueCmds.Count > 0;
         }
 
         internal Cmd getNextCmd()
         {
             Cmd cmd = null;
 
-            if (isAnyCmd())
+            if (isAnyQueueCmd())
             {
-                cmd = new List<Cmd>(containnerCmds.Values).ToArray()[0];
+                cmd = queueCmds[0];
+
+                txCmds[cmd.Header.Resource] = cmd;
+
+                queueCmds.Remove(cmd);
             }
             
             return cmd;
@@ -68,7 +79,7 @@ namespace GoodsTracker
 
         internal void sendCMD(Cmd cmd)
         {
-            containnerCmds[cmd.Header.Resource] = cmd;
+            queueCmds.Add(cmd);
         }
 
         internal static CommunicationUnit getNextUnit()
@@ -76,21 +87,11 @@ namespace GoodsTracker
             return units[(index++) % units.Count];
         }
 
-        static internal Cmd getCMD(string resource)
-        {
-            return containnerCmds[resource];
-        }
-
-        static internal Cmd findCMD(string resource)
-        {
-            return containnerCmds[resource];
-        }
-
         internal void processQueues()
         {
-            if (isAnyCmd())
+            if (isAnyTxCmd())
             {
-                Cmd[] array_cmd = new List<Cmd>(containnerCmds.Values).ToArray();
+                Cmd[] array_cmd = new List<Cmd>(txCmds.Values).ToArray();
 
                 foreach (Cmd cmd in array_cmd)
                 {
@@ -98,7 +99,8 @@ namespace GoodsTracker
 
                     foreach (AnsCmd ans in array_ans)
                     {
-                        if ((ans.Header.Resource == cmd.Header.Resource) && (ans.Header.Dest ==cmd.Header.Address))
+                        if ((ans.Header.Resource == cmd.Header.Resource) && 
+                            (ans.Header.Dest == cmd.Header.Address))
                         {
                             try
                             {
@@ -118,8 +120,6 @@ namespace GoodsTracker
                                 Debug.WriteLine(e.ToString());
                             }
 
-
-
                             break;
                         }
                     }
@@ -129,7 +129,7 @@ namespace GoodsTracker
 
         static internal void removeCmd(Cmd cmd)
         {
-            containnerCmds.Remove(cmd.Header.Resource);
+            txCmds.Remove(cmd.Header.Resource);
         }
 
         private void removeAns(AnsCmd ans)

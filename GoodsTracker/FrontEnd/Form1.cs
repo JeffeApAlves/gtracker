@@ -5,6 +5,7 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms.Markers;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace GoodsTracker
 {

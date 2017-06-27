@@ -21,10 +21,6 @@ namespace GoodsTracker
          */
         internal static bool putRxData(char data)
         {
-            if (bufferRx.isFull())
-            {
-            }
-
             return bufferRx.putData(data);
         }
 
@@ -82,8 +78,8 @@ namespace GoodsTracker
                 port.ReadBufferSize     = SIZE_BUFFER_RX;
                 port.WriteBufferSize    = SIZE_BUFFER_TX;
                 port.Handshake          = Handshake.None;
-                port.ReadTimeout        = 50;
-                port.WriteTimeout       = 50;
+                port.ReadTimeout        = 100;
+                port.WriteTimeout       = 100;
                 port.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
                 port.ErrorReceived += new SerialErrorReceivedEventHandler(_serialPort_DataErroReceived);
 
@@ -146,7 +142,7 @@ namespace GoodsTracker
 //                                LogConsole("COM:", buffer[i], bytesRead);
                             }
 
-                            LogConsole("COM:", sb.ToString(), bytesRead);
+//                            LogConsole("COM:", sb.ToString(), bytesRead);
                         }
                     }
                 }

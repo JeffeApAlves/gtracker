@@ -45,7 +45,7 @@ namespace GoodsTracker
                 index_producer %= data.Length;
                 count++;
 
-                //                LogConsole("PUT:", ch);
+                //LogConsole("PUT:", ch);
 
                 semaforo.Release();
 
@@ -53,7 +53,10 @@ namespace GoodsTracker
             }
             else
             {
-                //TODO
+//                Debug.WriteLine("\nRing Buffer cheio {0}/{1} {2}", index_consumer, index_producer, data.Length);
+//                foreach (char c in data)
+//                    Debug.Write(c.ToString());
+//                Debug.Write("\n");
             }
 
 
@@ -74,7 +77,7 @@ namespace GoodsTracker
                 index_consumer %= data.Length;
                 count--;
 
-                LogConsole("GET:", ch);
+                //LogConsole("GET:", ch);
 
                 semaforo.Release();
 
@@ -82,7 +85,10 @@ namespace GoodsTracker
             }
             else
             {
-                //TODO 
+//                Debug.WriteLine("\nRing Buffer vazio {0}/{1} {2}",index_consumer,index_producer,data.Length);
+//                foreach(char c in data)
+//                    Debug.Write(c.ToString());
+//                Debug.Write("\n");
             }
 
             return flag;

@@ -42,6 +42,7 @@ namespace GoodsTracker
         DataFrame           rxFrame;
         CommunicationUnit   currentUnit;
         private const int _TIME_COMMUNICATION    = 1;
+        Stopwatch stopTx = new Stopwatch();
 
         //Singleton
         public static Protocol Communication
@@ -80,7 +81,7 @@ namespace GoodsTracker
 
         public void processTx()
         {
-            if (CommunicationUnit.isAnyCmd())
+            if (CommunicationUnit.isAnyQueueCmd())
             {
                 DataFrame frame = new DataFrame();
                 Cmd cmd = currentUnit.getNextCmd();
@@ -89,6 +90,9 @@ namespace GoodsTracker
                 frame.PayLoad   = cmd.Payload;
 
                 sendFrame(frame);
+
+                Debug.WriteLine("{0} {1} {2}", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Milliseconds.ToString("D5"));
+                stopTx.Start();
             }
         }
 
@@ -201,11 +205,24 @@ namespace GoodsTracker
         void acceptRxFrame()
         {
             // TODO ???
+            Debug.WriteLine("Rx Frame OK");
+
+            foreach (char c in rxFrame.Data)
+                Debug.Write(c.ToString());
+            Debug.Write("\r\n");
+
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 
         void errorRxFrame()
         {
+            // TODO ???
+            Debug.WriteLine("Rx Frame NOK");
+
+            foreach (char c in rxFrame.Data)
+                Debug.Write(c.ToString());
+            Debug.Write("\r\n");
+
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 

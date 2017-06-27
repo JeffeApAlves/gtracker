@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,11 +19,16 @@ namespace GoodsTracker
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
+                Debug.Listeners.Add(new TextWriterTraceListener("debug_trace.txt"));
+                Debug.AutoFlush = true;
+
                 Application.Run(new MainForm());
             }
-            catch
+            catch (Exception e)
             {
                 Console.WriteLine("Erro na aplicao");
+                Debug.WriteLine("Erro na aplicao");
+                Debug.WriteLine(e.ToString());
             }            
         }
     }

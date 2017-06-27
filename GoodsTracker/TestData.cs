@@ -19,7 +19,7 @@ namespace GoodsTracker
 
         static void addFrame()
         {
-            if (CommunicationUnit.isAnyCmd() && !CommunicationUnit.isAnyAns())
+            if (CommunicationUnit.isAnyTxCmd() && !CommunicationUnit.isAnyAns())
             {
                 TelemetriaData b            = createTelemetriaData();
                 AnsCmd ans                  = createAnsCmd();
@@ -54,7 +54,7 @@ namespace GoodsTracker
 
         static AnsCmd createAnsCmd()
         {
-            AnsCmd ans = new AnsCmd(RESOURCE.TELEMETRIA,Operation.AN);
+            AnsCmd ans = new AnsCmd(RESOURCE.TLM,Operation.AN);
 
             ans.Header.Address = 2;
             ans.Header.Dest    = 1;

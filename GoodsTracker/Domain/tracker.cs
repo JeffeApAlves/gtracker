@@ -24,7 +24,7 @@ namespace GoodsTracker
 
         public void requestBehavior(onAnswerCmd on_ans)
         {
-            Cmd cmd = createCMD(2, Operation.RD, RESOURCE.TELEMETRIA);
+            Cmd cmd = createCMD(2, Operation.RD, RESOURCE.TLM);
 
             cmd.EventAnswerCmd = on_ans;
 
@@ -60,7 +60,7 @@ namespace GoodsTracker
          */
         protected override void onReceiveAnswer(AnsCmd ans)
         {
-            if(ans.Header.Resource.Equals(RESOURCE.TELEMETRIA))
+            if(ans.Header.Resource.Equals(RESOURCE.TLM))
             {
                 updateDataTelemetria(ans);
             }
