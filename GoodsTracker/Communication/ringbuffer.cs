@@ -37,32 +37,25 @@ namespace GoodsTracker
         {
             bool flag = false;
 
-            try
+            if (!isFull())
             {
-                if (!isFull())
-                {
-                    semaforo.WaitOne();
+                semaforo.WaitOne();
 
-                    data[index_producer++] = ch;
-                    index_producer %= data.Length;
-                    count++;
+                data[index_producer++] = ch;
+                index_producer %= data.Length;
+                count++;
 
-                    //                LogConsole("PUT:", ch);
+                //                LogConsole("PUT:", ch);
 
-                    semaforo.Release();
+                semaforo.Release();
 
-                    flag = true;
-                }
-                else
-                {
-                    //TODO
-                }
-
+                flag = true;
             }
-            catch
+            else
             {
-                flag = false;
+                //TODO
             }
+
 
             return flag;
         }
@@ -73,38 +66,23 @@ namespace GoodsTracker
 
             ch = new char();
 
-            try
+            if (hasData())
             {
-                try
-                {
-                    if (hasData())
-                    {
-                        semaforo.WaitOne();
+                semaforo.WaitOne();
 
-                        ch = data[index_consumer++];
-                        index_consumer %= data.Length;
-                        count--;
+                ch = data[index_consumer++];
+                index_consumer %= data.Length;
+                count--;
 
-                        LogConsole("GET:", ch);
+                LogConsole("GET:", ch);
 
-                        semaforo.Release();
+                semaforo.Release();
 
-                        flag = true;
-                    }
-                    else
-                    {
-                        //TODO 
-                    }
-                }
-                catch (System.IndexOutOfRangeException)
-                {
-                    ch = (char)0;
-                }
+                flag = true;
             }
-            catch
+            else
             {
-                flag = false;
-                ch = (char)0;
+                //TODO 
             }
 
             return flag;

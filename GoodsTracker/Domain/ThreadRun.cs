@@ -25,7 +25,7 @@ namespace GoodsTracker
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Erro no evento de recepcao dos dados");
+                    Console.WriteLine("Erro na execucao de alguma Thread");
                     Console.WriteLine(e.ToString());
                     Debug.WriteLine(e.ToString());
                 }

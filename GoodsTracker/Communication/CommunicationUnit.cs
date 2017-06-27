@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace GoodsTracker
 {
@@ -110,10 +111,14 @@ namespace GoodsTracker
                                 removeCmd(cmd);
                                 removeAns(ans);
                             }
-                            catch
+                            catch (Exception e)
                             {
                                 Console.WriteLine("Erro ao processar as filas de Tx e Rx");
+                                Console.WriteLine(e.ToString());
+                                Debug.WriteLine(e.ToString());
                             }
+
+
 
                             break;
                         }

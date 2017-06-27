@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace GoodsTracker
 {
@@ -47,10 +48,15 @@ namespace GoodsTracker
 
                 ret = true;
             }
-            catch
+            catch (Exception e)
             {
                 ret = false;
+
+                Console.WriteLine("Erro na decodificacao do frame");
+                Console.WriteLine(e.ToString());
+                Debug.WriteLine(e.ToString());
             }
+
 
             return ret;
         }
@@ -88,9 +94,13 @@ namespace GoodsTracker
 
                 ret = true;
             }
-            catch
+            catch (Exception e)
             {
                 ret = false;
+
+                Console.WriteLine("Erro na decodificacao do frame");
+                Console.WriteLine(e.ToString());
+                Debug.WriteLine(e.ToString());
             }
 
             return ret;
@@ -117,9 +127,13 @@ namespace GoodsTracker
                     ret = frame.checkSum()==cheksumRx;
                 }
             }
-            catch
+            catch (Exception e)
             {
                 ret = false;
+
+                Console.WriteLine("Erro na decodificacao do frame");
+                Console.WriteLine(e.ToString());
+                Debug.WriteLine(e.ToString());
             }
 
             return ret;
