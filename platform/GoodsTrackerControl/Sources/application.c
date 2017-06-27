@@ -124,7 +124,7 @@ ResultExec onTelemetry(DataFrame* frame){
 		dataInfo.Inc[AXIS_Z]	= 6;
 		dataInfo.Level			= 1000;
 		dataInfo.Speed			= 100;
-		dataInfo.Lock			= true;
+		dataInfo.Lock			= _lock;
 		strcpy(dataInfo.Date,	"23/06/2017 19.52");
 
 		Infor2String(&dataInfo,msg2send);

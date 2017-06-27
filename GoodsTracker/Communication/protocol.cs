@@ -190,15 +190,7 @@ namespace GoodsTracker
 
         void acceptRxFrame()
         {
-/*
-            IDecoderFrame decoder     = new DecoderFrame();
-            AnsCmd          ans;
-
-            if (decoder.getValues(out ans, rxFrame))
-            {
-                CommunicationUnit.addAns(ans);
-            }
-*/
+            // TODO ???
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 

@@ -7,12 +7,12 @@ namespace GoodsTracker
 
     class TrackerController :ThreadRun
     {
+        private static TrackerController singleton = null;
+
         private const int   NUM_ESTACAO     = 1;
         private const int _TIME_TELEMETRIA  = 1000;
 
         onUpdateTelemetria  onDataTelemetria;
-
-        private static TrackerController singleton=null;
 
         Tracker             tracker;
         List<Fence>         fences;
@@ -59,6 +59,11 @@ namespace GoodsTracker
             requestBehavior();
         }
 
+        /*
+         * 
+         * Cria uma cerca
+         * 
+         */ 
         internal Fence createFence()
         {
             Fence fence = new Fence();
@@ -146,6 +151,10 @@ namespace GoodsTracker
             }
         }
 
+        /*
+         * 
+         * Indica se tem alguma rota
+         */ 
         internal bool anyRoute()
         {
             return routes.Count > 0 && routes[0].MapRoute != null && routes[0].MapRoute.Points.Count>0;
