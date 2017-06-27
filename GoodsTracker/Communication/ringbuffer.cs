@@ -53,10 +53,10 @@ namespace GoodsTracker
             }
             else
             {
-//                Debug.WriteLine("\nRing Buffer cheio {0}/{1} {2}", index_consumer, index_producer, data.Length);
-//                foreach (char c in data)
-//                    Debug.Write(c.ToString());
-//                Debug.Write("\n");
+                Debug.WriteLine("\nRing Buffer cheio {0}/{1} {2}", index_consumer, index_producer, data.Length);
+                foreach (char c in data)
+                    Debug.Write(c.ToString());
+                Debug.Write("\n");
             }
 
 

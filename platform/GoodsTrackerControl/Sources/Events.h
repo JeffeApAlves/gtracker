@@ -356,6 +356,53 @@ void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId);
 ** ===================================================================
 */
 
+/*
+** ===================================================================
+**     Event       :  AS2_OnError (module Events)
+**
+**     Component   :  AS2 [AsynchroSerial]
+**     Description :
+**         This event is called when a channel error (not the error
+**         returned by a given method) occurs. The errors can be read
+**         using <GetError> method.
+**         The event is available only when the <Interrupt
+**         service/event> property is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void AS2_OnError(void);
+
+/*
+** ===================================================================
+**     Event       :  AS2_OnRxChar (module Events)
+**
+**     Component   :  AS2 [AsynchroSerial]
+**     Description :
+**         This event is called after a correct character is received.
+**         The event is available only when the <Interrupt
+**         service/event> property is enabled and either the <Receiver>
+**         property is enabled or the <SCI output mode> property (if
+**         supported) is set to Single-wire mode.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void AS2_OnRxChar(void);
+
+/*
+** ===================================================================
+**     Event       :  AS2_OnTxChar (module Events)
+**
+**     Component   :  AS2 [AsynchroSerial]
+**     Description :
+**         This event is called after a character is transmitted.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void AS2_OnTxChar(void);
+
 /* END Events */
 
 #ifdef __cplusplus

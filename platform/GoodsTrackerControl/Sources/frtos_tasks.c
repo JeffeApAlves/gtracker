@@ -30,6 +30,8 @@ static portTASK_FUNCTION(mains_taskTask, pvParameters) {
 
   for(;;) {
 
+	  updateDataTLM();
+
 	  vTaskDelay(20/portTICK_RATE_MS);
   }
 

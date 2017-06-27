@@ -37,6 +37,7 @@ ResultExec onAccel(DataFrame* cmd);
 ResultExec onTelemetry(DataFrame* frame);
 ResultExec onLock(DataFrame* frame);
 
+void updateDataTLM(void);
 void read_accel(void);
 void read_Channels_AD(void);
 void initCallBacks(void);

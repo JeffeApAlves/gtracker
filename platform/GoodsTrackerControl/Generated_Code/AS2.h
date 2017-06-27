@@ -7,7 +7,7 @@
 **     Version     : Component 02.611, Driver 01.01, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-26, 23:13, # CodeGen: 18
+**     Date/Time   : 2017-06-27, 21:12, # CodeGen: 25
 **     Abstract    :
 **         This component "AsynchroSerial" implements an asynchronous serial
 **         communication. The component supports different settings of
@@ -18,7 +18,18 @@
 **     Settings    :
 **          Component name                                 : AS2
 **          Channel                                        : UART2
-**          Interrupt service/event                        : Disabled
+**          Interrupt service/event                        : Enabled
+**            Interrupt RxD                                : INT_UART2
+**            Interrupt RxD priority                       : medium priority
+**            Interrupt TxD                                : INT_UART2
+**            Interrupt TxD priority                       : medium priority
+**            Interrupt Error                              : INT_UART2
+**            Interrupt Error priority                     : medium priority
+**            Input buffer size                            : 0
+**            Output buffer size                           : 0
+**            Handshake                                    : 
+**              CTS                                        : Disabled
+**              RTS                                        : Disabled
 **          Settings                                       : 
 **            Parity                                       : none
 **            Width                                        : 8 bits
@@ -235,6 +246,42 @@ word AS2_GetCharsInTxBuf(void);
 ** ===================================================================
 */
 void AS2_Init(void);
+
+/*
+** ===================================================================
+**     Method      :  AS2_ASerialLdd2_OnBlockReceived (component AsynchroSerial)
+**
+**     Description :
+**         This event is called when the requested number of data is 
+**         moved to the input buffer.
+**         This method is internal. It is used by Processor Expert only.
+** ===================================================================
+*/
+void ASerialLdd2_OnBlockReceived(LDD_TUserData *UserDataPtr);
+
+/*
+** ===================================================================
+**     Method      :  AS2_ASerialLdd2_OnBlockSent (component AsynchroSerial)
+**
+**     Description :
+**         This event is called after the last character from the output 
+**         buffer is moved to the transmitter.
+**         This method is internal. It is used by Processor Expert only.
+** ===================================================================
+*/
+void ASerialLdd2_OnBlockSent(LDD_TUserData *UserDataPtr);
+
+/*
+** ===================================================================
+**     Method      :  AS2_ASerialLdd2_OnError (component AsynchroSerial)
+**
+**     Description :
+**         This event is called when a channel error (not the error 
+**         returned by a given method) occurs.
+**         This method is internal. It is used by Processor Expert only.
+** ===================================================================
+*/
+void ASerialLdd2_OnError(LDD_TUserData *UserDataPtr);
 
 /*
 ** ===================================================================

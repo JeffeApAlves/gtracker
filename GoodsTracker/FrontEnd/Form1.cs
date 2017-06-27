@@ -451,12 +451,16 @@ namespace GoodsTracker
             }
             else 
             {
-                lmin.Text = telemetria.Level.Tol.Min.ToString();
-                lmax.Text = telemetria.Level.Tol.Max.ToString();
-                lVal.Text = telemetria.Level.Val.ToString();
-                levelBar.Maximum    = (int)telemetria.Level.Tol.Max;
-                levelBar.Minimum    = (int)telemetria.Level.Tol.Min;
+                //levelBar.Maximum    = (int)telemetria.Level.Tol.Max;
+                //levelBar.Minimum    = (int)telemetria.Level.Tol.Min;
+                levelBar.Maximum = 20000;
+                levelBar.Minimum = 0;
                 levelBar.Value      = (int)telemetria.Level.Val;
+
+
+                lmin.Text = levelBar.Minimum.ToString();
+                lmax.Text = levelBar.Maximum.ToString();
+                lVal.Text = levelBar.Value.ToString();
             }
         }
 

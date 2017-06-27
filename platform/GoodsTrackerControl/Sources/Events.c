@@ -36,6 +36,7 @@ extern "C" {
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
+#include "gps.h"
 #include "protocol.h"
 #include "application.h"
 #include "ihm.h"
@@ -448,6 +449,67 @@ void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId)
 
   (void) u8ControlId;
   return;
+}
+
+/*
+** ===================================================================
+**     Event       :  AS2_OnError (module Events)
+**
+**     Component   :  AS2 [AsynchroSerial]
+**     Description :
+**         This event is called when a channel error (not the error
+**         returned by a given method) occurs. The errors can be read
+**         using <GetError> method.
+**         The event is available only when the <Interrupt
+**         service/event> property is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void AS2_OnError(void)
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  AS2_OnRxChar (module Events)
+**
+**     Component   :  AS2 [AsynchroSerial]
+**     Description :
+**         This event is called after a correct character is received.
+**         The event is available only when the <Interrupt
+**         service/event> property is enabled and either the <Receiver>
+**         property is enabled or the <SCI output mode> property (if
+**         supported) is set to Single-wire mode.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void AS2_OnRxChar(void)
+{
+	char byte = 0;
+
+	if(AS2_RecvChar(&byte)==ERR_OK){
+
+		putGPSData(byte);
+	}
+}
+
+/*
+** ===================================================================
+**     Event       :  AS2_OnTxChar (module Events)
+**
+**     Component   :  AS2 [AsynchroSerial]
+**     Description :
+**         This event is called after a character is transmitted.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void AS2_OnTxChar(void)
+{
+  /* Write your code here ... */
 }
 
 /* END Events */

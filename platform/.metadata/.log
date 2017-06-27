@@ -7368,3 +7368,147 @@ java.lang.InterruptedException
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+!SESSION 2017-06-27 20:47:28.101 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product com.somniumtech.branding.kds.ide -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.somniumtech.branding.kds.ide -showlocation
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-06-27 20:48:13.962
+!MESSAGE External elements location C:\Freescale\KDS_v3\eclipse\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-06-27 20:48:19.084
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.freescale.processorexpert.core 4 0 2017-06-27 20:50:19.776
+!MESSAGE org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+	at org.eclipse.cdt.managedbuilder.internal.core.Option.getBasicStringListValue(Option.java:2547)
+	at com.processorexpert.core.compiler.BuildSettingsReader.modifyIncludePathAdv(BuildSettingsReader.java:728)
+	at com.processorexpert.core.compiler.LkrFile.updateToolchainSettings(LkrReader.java:417)
+	at com.processorexpert.core.compiler.LkrReader.updateToolchainSettings(LkrReader.java:618)
+	at com.processorexpert.core.ProjectPE.updateCompilerSettingsFromSymbols(ProjectPE.java:4125)
+	at com.processorexpert.core.ProjectPE.synchronizeGeneratedFiles(ProjectPE.java:3918)
+	at com.processorexpert.core.client.ProjectPEclient.synchronizeGeneratedFiles(ProjectPEclient.java:1935)
+	at com.processorexpert.core.ProjectPE$7.run(ProjectPE.java:3237)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-27 21:06:00.660
+!MESSAGE Request for monitor: 'RequestMonitor (com.freescale.mqx.gdb.tad.model.VariableReader$1@ed7cc0): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-06-27 21:06:00.660
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-27 21:07:49.636
+!MESSAGE Request for monitor: '43^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-27 21:07:49.636
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY com.freescale.processorexpert.core 4 0 2017-06-27 21:08:53.123
+!MESSAGE org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+	at org.eclipse.cdt.managedbuilder.internal.core.Option.getBasicStringListValue(Option.java:2547)
+	at com.processorexpert.core.compiler.BuildSettingsReader.modifyIncludePathAdv(BuildSettingsReader.java:728)
+	at com.processorexpert.core.compiler.LkrFile.updateToolchainSettings(LkrReader.java:417)
+	at com.processorexpert.core.compiler.LkrReader.updateToolchainSettings(LkrReader.java:618)
+	at com.processorexpert.core.ProjectPE.updateCompilerSettingsFromSymbols(ProjectPE.java:4125)
+	at com.processorexpert.core.ProjectPE.synchronizeGeneratedFiles(ProjectPE.java:3918)
+	at com.processorexpert.core.client.ProjectPEclient.synchronizeGeneratedFiles(ProjectPEclient.java:1935)
+	at com.processorexpert.core.ProjectPE$7.run(ProjectPE.java:3237)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-27 21:11:32.069
+!MESSAGE Request for monitor: '42^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-27 21:11:32.069
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY com.freescale.processorexpert.core 4 0 2017-06-27 21:12:29.786
+!MESSAGE org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+	at org.eclipse.cdt.managedbuilder.internal.core.Option.getBasicStringListValue(Option.java:2547)
+	at com.processorexpert.core.compiler.BuildSettingsReader.modifyIncludePathAdv(BuildSettingsReader.java:728)
+	at com.processorexpert.core.compiler.LkrFile.updateToolchainSettings(LkrReader.java:417)
+	at com.processorexpert.core.compiler.LkrReader.updateToolchainSettings(LkrReader.java:618)
+	at com.processorexpert.core.ProjectPE.updateCompilerSettingsFromSymbols(ProjectPE.java:4125)
+	at com.processorexpert.core.ProjectPE.synchronizeGeneratedFiles(ProjectPE.java:3918)
+	at com.processorexpert.core.client.ProjectPEclient.synchronizeGeneratedFiles(ProjectPEclient.java:1935)
+	at com.processorexpert.core.ProjectPE$7.run(ProjectPE.java:3237)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-27 21:25:04.740
+!MESSAGE Request for monitor: '43^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-27 21:25:04.740
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-27 21:27:30.744
+!MESSAGE Request for monitor: '*running,thread-id="all"
+~"[Switching to Thread 536871928]\n"
+*stopped,reason="signal-received",signal-name="SIGINT",signal-meaning="Interrupt",frame={addr="0x0000b8cc",func="vPortPendSVHandler",args=[],file="../Generated_Code/port.c",fullname="D:\workspace\GoodsTracker\trunk\platform\GoodsTrackerControl\Generated_Code\port.c",line="1407"},thread-id="1",stopped-threads="all"
+41^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-27 21:27:30.744
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-27 21:31:42.192
+!MESSAGE Request for monitor: '42^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-27 21:31:42.192
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-27 22:02:28.142
+!MESSAGE Request for monitor: '42^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-06-27 22:02:28.142
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-06-27 22:22:26.177
+!MESSAGE Request for monitor: 'RequestMonitor (com.freescale.mqx.gdb.tad.model.VariableReader$1@d57c0b): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-06-27 22:22:26.177
+!MESSAGE Connection is shut down
