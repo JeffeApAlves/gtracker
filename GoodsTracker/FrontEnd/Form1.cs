@@ -5,7 +5,6 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms.Markers;
 using System.Drawing;
-using System.Diagnostics;
 
 namespace GoodsTracker
 {
@@ -21,10 +20,15 @@ namespace GoodsTracker
         Route       route;
         BuildTreeView   bTV     = null;
         int     itemselected    = -1;
+        private bool lockVehicle;
+        //        TestData demoData       = null;
 
-        TestData demoData       = null;
+        /*************************************************************************
+         *                                                                       *
+         *                          Eventos                                      *
+         *                                                                       *
+         *************************************************************************/
 
-        //#################################### Events ########################################
 
         public MainForm()
         {
@@ -197,7 +201,7 @@ namespace GoodsTracker
          */
         private void btn_lock_Click(object sender, EventArgs e)
         {
-            trackerController.lockVehicle(true);
+            lockVehicle = true;
         }
 
         /*
@@ -205,7 +209,7 @@ namespace GoodsTracker
          */
         private void button7_Click(object sender, EventArgs e)
         {
-            trackerController.lockVehicle(false);
+            lockVehicle = false;
         }
 
         private void groupBox1_Click(object sender, System.EventArgs e)
@@ -247,8 +251,13 @@ namespace GoodsTracker
 
             Serial.Close();
         }
-        
-        //################################## Inicializacoes ########################################
+
+        /*************************************************************************
+         *                                                                       *
+         *                          Inicializacoes                               *
+         *                                                                       *
+         *************************************************************************/
+
 
         /*
          * Inicializa as threads
@@ -346,14 +355,18 @@ namespace GoodsTracker
             removeRoute(route);
         }
 
-        //################################## Updates ########################################
+        /*************************************************************************
+         *                                                                       *
+         *                          Updates                                      *
+         *                                                                       *
+         *************************************************************************/
 
         /*
          * Tick a cada 250 ms
          */
         private void timer1_Tick(object sender, EventArgs e)
         {
-//            lckMng();
+            lckMng();
 
             updateBehavior();
             updateStatusLock();
@@ -410,15 +423,13 @@ namespace GoodsTracker
             else if (telemetria.IsInsideOfFence())
             {
                 lFence.BackColor = Color.Green;
-//                btn_unlock.Enabled = true;
+                btn_unlock.Enabled = true;
             }
             else
             {
                 lFence.BackColor = Color.Red;
-//                btn_unlock.Enabled = false;
+                btn_unlock.Enabled = false;
             }
-
-            btn_unlock.Enabled = true;
         }
 
         /*
@@ -491,7 +502,7 @@ namespace GoodsTracker
             {
                 if (telemetria.IsInsideOfFence())
                 {
-                    trackerController.lockVehicle(false);
+                    trackerController.lockVehicle(lockVehicle);
                 }
                 else
                 {
@@ -500,7 +511,12 @@ namespace GoodsTracker
             }
         }
 
-        //################################## Painel ########################################
+        /*************************************************************************
+         *                                                                       *
+         *                          Painel                                       *
+         *                                                                       *
+         *************************************************************************/
+
 
         /*
           * Seleciona (expande) o painel
@@ -535,7 +551,12 @@ namespace GoodsTracker
             panel4.Visible = false;
         }
 
-        //################################## Set's ########################################
+        /*************************************************************************
+         *                                                                       *
+         *                          Set's                                        *
+         *                                                                       *
+         *************************************************************************/
+
 
         /*
          * Processa o selecionamento dos pontos para montagem da cerca
@@ -670,7 +691,11 @@ namespace GoodsTracker
             layerFence.add(point, GMarkerGoogleType.yellow);
         }
 
-        //################################## call backs ########################################
+        /*************************************************************************
+         *                                                                       *
+         *                          CALL BACKS                                   *
+         *                                                                       *
+         *************************************************************************/
 
         /*
          * Evento de recepcao de dados de telemetria
