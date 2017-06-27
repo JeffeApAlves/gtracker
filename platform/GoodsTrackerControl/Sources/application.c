@@ -238,7 +238,6 @@ void initInfo(Info* info){
 
 	memset(info,0,sizeof(Info));
 	memset(msg2send,0,sizeof(char)*SIZE_MAX_PAYLOAD);
-
 }
 //------------------------------------------------------------------------
 

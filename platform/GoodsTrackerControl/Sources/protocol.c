@@ -151,14 +151,15 @@ bool decoderFrame(void) {
 
 	str_split(&list, dataFrame.frame, CHAR_SEPARATOR);
 
-	if(list.itens!=NULL && list.size >= 8) {
+	// Minimo 8 itens
+	if(list.itens!=NULL && list.count >= 8) {
 
-		//-2 para desconsiderar o checksum que que esta no frame recebido
-		int checksum_rx;
-		unsigned char checksum_calc = (char)calcChecksum(dataFrame.frame, dataFrame.sizeFrame - LEN_CHECKSUM);
+		//-2 para desconsiderar o checksum que esta no frame recebido
+		unsigned int checksum_rx;
+		unsigned int checksum_calc = calcChecksum(dataFrame.frame, dataFrame.sizeFrame - LEN_CHECKSUM);
 		checksum_rx = ~checksum_calc;
 
-		AsHex(&checksum_rx,&list,list.size-1);
+		AsHex(&checksum_rx,&list,list.count-1);
 
 		if(checksum_rx==checksum_calc) {
 
@@ -450,7 +451,7 @@ void startTX(void){
 }
 //------------------------------------------------------------------------
 
-unsigned char calcChecksum(const char *buff, size_t sz) {
+unsigned int calcChecksum(const char *buff, size_t sz) {
 
 	int i;
 	unsigned char chk	= 0;

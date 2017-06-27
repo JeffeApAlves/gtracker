@@ -172,7 +172,7 @@ void errorRxFrame(void);
 bool decoderFrame(void);
 void verifyCheckSum(void);
 void errorExec(void);
-unsigned char calcChecksum(const char *buff, size_t sz);
+unsigned int calcChecksum(const char *buff, size_t sz);
 void startTX(void);
 void sendFrame(DataFrame *frame);
 void clearData(DataFrame* frame);
