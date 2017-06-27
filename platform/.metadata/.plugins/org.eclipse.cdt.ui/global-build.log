@@ -46,3 +46,19 @@ arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
   43320	    248	  11432	  55000	   d6d8	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
+11:27:05 **** Build of configuration Debug for project GoodsTrackerControl ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
+   text	   data	    bss	    dec	    hex	filename
+  52352	    264	  11388	  64004	   fa04	GoodsTrackerControl.elf
+Finished building: GoodsTrackerControl.siz
+ 
+11:28:59 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
+   text	   data	    bss	    dec	    hex	filename
+  52352	    264	  11388	  64004	   fa04	GoodsTrackerControl.elf
+Finished building: GoodsTrackerControl.siz
+ 
