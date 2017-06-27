@@ -146,10 +146,12 @@ namespace GoodsTracker
                     }
                 }
             }
-            catch(IndexOutOfRangeException)
+            catch(System.IO.IOException ex)
             {
                 Console.WriteLine("Erro no evento de recepcao dos dados");
-            }            
+                Console.WriteLine(ex.ToString());
+                Debug.WriteLine(ex.ToString());
+            }
         }
 
         private static void _serialPort_DataErroReceived(object sender, SerialErrorReceivedEventArgs e)

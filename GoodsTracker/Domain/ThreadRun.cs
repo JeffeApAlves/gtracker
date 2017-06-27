@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 
 
@@ -22,9 +23,11 @@ namespace GoodsTracker
 
                     Thread.Sleep(time_ms);
                 }
-                catch{
-
-                    Console.WriteLine("Erro na execucao de alguma Thread");
+                catch (Exception e)
+                {
+                    Console.WriteLine("Erro no evento de recepcao dos dados");
+                    Console.WriteLine(e.ToString());
+                    Debug.WriteLine(e.ToString());
                 }
             }
         }

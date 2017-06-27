@@ -43,6 +43,7 @@ void initCallBacks(void);
 void initAccel(void);
 void Infor2String(Info* info,char* str_out);
 void initInfo(Info* info);
+void decoderPayLoad(char* payload);
 
 extern volatile bool AD_finished;
 

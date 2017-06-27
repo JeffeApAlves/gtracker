@@ -280,7 +280,7 @@ namespace GoodsTracker
             gMapControl1.MaxZoom = 24;
             gMapControl1.Zoom = 15;
             gMapControl1.AutoScroll = true;
-            gMapControl1.Position = new PointLatLng(CAPAO_CITY.LATITUDE, CAPAO_CITY.LONGITUDE);
+            gMapControl1.Position = new PointLatLng(SENAI_ANCHIETA.LATITUDE, SENAI_ANCHIETA.LONGITUDE);
             GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly;
         }
 
@@ -683,7 +683,7 @@ namespace GoodsTracker
         }
     }
 
-    class CAPAO_CITY
+    class SENAI_ANCHIETA
     {
         internal const double LATITUDE  = -23.591387;
         internal const double LONGITUDE = -46.645126;

@@ -8,31 +8,17 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "LED_B.h"
-#include "LED_G.h"
-#include "LED_R.h"
 #include "XF1.h"
 #include "AD1.h"
 #include "MMA1.h"
+#include "lock.h"
 #include "application.h"
 
 volatile	bool AD_finished=FALSE;
 uint16_t	AD_Values[AD1_CHANNEL_COUNT];
 Info		dataInfo;
-char		msg2send[150];
-
-void initCallBacks(void){
-
-	setEventCMD(CMD_LED,		onLED);
-	setEventCMD(CMD_ANALOG,		onAnalog);
-	setEventCMD(CMD_ACC,		onAccel);
-	setEventCMD(CMD_TOUCH,		onTouch);
-	setEventCMD(CMD_PWM,		onPWM);
-	setEventCMD(CMD_TELEMETRIA,	onTelemetry);
-	setEventCMD(CMD_LOCK,		onLock);
-
-}
-//-------------------------------------------------------------------------
+int			_lock;
+char		msg2send[SIZE_MAX_PAYLOAD];
 
 ResultExec onLED(DataFrame* frame){
 
@@ -128,8 +114,8 @@ ResultExec onTelemetry(DataFrame* frame){
 
 	if (frame) {
 
-		dataInfo.Lat			= -23.5912537f;
-		dataInfo.Lng			= -46.775215f;
+		dataInfo.Lat			= -23.591387;
+		dataInfo.Lng			= -46.645126;
 		dataInfo.Acc[AXIS_X]	= 1;
 		dataInfo.Acc[AXIS_Y]	= 2;
 		dataInfo.Acc[AXIS_Z]	= 3;
@@ -161,8 +147,16 @@ ResultExec onLock(DataFrame* frame){
 		//Colocar no minimo horario que foi executado o cmd
 		strcpy(msg2send,"23/06/2017 19.52");
 
-		LED_G_On();
+		decoderPayLoad(frame->payload);
 
+		if(_lock){
+
+			lock();
+
+		}else{
+
+			unLock();
+		}
 
 		doAnswer(msg2send);
 
@@ -228,8 +222,35 @@ void Infor2String(Info* info,char* str_out){
 }
 //------------------------------------------------------------------------
 
+void decoderPayLoad(char* payload){
+
+	List	list;
+
+	str_split(&list, payload, CHAR_SEPARATOR);
+
+	AsInteger(&_lock,		&list,0);
+
+	removeList(&list);
+}
+//------------------------------------------------------------------------
+
 void initInfo(Info* info){
 
 	memset(info,0,sizeof(Info));
+	memset(msg2send,0,sizeof(char)*SIZE_MAX_PAYLOAD);
+
 }
 //------------------------------------------------------------------------
+
+void initCallBacks(void){
+
+	setEventCMD(CMD_LED,		onLED);
+	setEventCMD(CMD_ANALOG,		onAnalog);
+	setEventCMD(CMD_ACC,		onAccel);
+	setEventCMD(CMD_TOUCH,		onTouch);
+	setEventCMD(CMD_PWM,		onPWM);
+	setEventCMD(CMD_TELEMETRIA,	onTelemetry);
+	setEventCMD(CMD_LOCK,		onLock);
+
+}
+//-------------------------------------------------------------------------
