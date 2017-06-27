@@ -28,6 +28,9 @@ namespace GoodsTracker
                     Console.WriteLine("Erro na execucao de alguma Thread");
                     Console.WriteLine(e.ToString());
                     Debug.WriteLine(e.ToString());
+
+                    _shouldStop = true;
+                    break;
                 }
             }
         }

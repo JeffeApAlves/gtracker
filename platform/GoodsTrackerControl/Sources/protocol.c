@@ -218,8 +218,8 @@ pCallBack getCallBack(void) {
 void initRxCMD(void) {
 
 	clearData(&dataFrame);
-	initBuffer(&bufferRx);
-	initBuffer(&bufferTx);
+	clearBuffer(&bufferRx);
+	clearBuffer(&bufferTx);
 	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
@@ -464,11 +464,5 @@ unsigned int calcChecksum(const char *buff, size_t sz) {
 	}
 
 	return chk;
-}
-//------------------------------------------------------------------------
-
-void clearData(DataFrame* frame){
-
-	memset(frame,0,sizeof(DataFrame));
 }
 //------------------------------------------------------------------------

@@ -168,17 +168,20 @@ namespace GoodsTracker
         {
             bool ret = false;
 
-            PointLatLng p = new PointLatLng(data.Latitude, data.Longitude);
-
-            int i = 0;
-
-            foreach (GMapPolygon poly in mapOverlay.Polygons)
+            if (data != null)
             {
-                data.setInsideOfFence(i++, poly.IsInside(p));
+                PointLatLng p = new PointLatLng(data.Latitude, data.Longitude);
 
-                if (data.IsInsideOfFence())
+                int i = 0;
+
+                foreach (GMapPolygon poly in mapOverlay.Polygons)
                 {
-                    ret = true;
+                    data.setInsideOfFence(i++, poly.IsInside(p));
+
+                    if (data.IsInsideOfFence())
+                    {
+                        ret = true;
+                    }
                 }
             }
 

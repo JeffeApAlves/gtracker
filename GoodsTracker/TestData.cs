@@ -23,7 +23,7 @@ namespace GoodsTracker
             {
                 TelemetriaData b            = createTelemetriaData();
                 AnsCmd ans                  = createAnsCmd();
-                CommunicationFrame frame    = createFrame(b,ans);
+                DataFrame frame    = createFrame(b,ans);
 
                 Protocol.Communication.setFrameRx(frame);
             }
@@ -62,9 +62,9 @@ namespace GoodsTracker
             return ans;
         }
 
-        static CommunicationFrame createFrame(TelemetriaData b,AnsCmd cmd)
+        static DataFrame createFrame(TelemetriaData b,AnsCmd cmd)
         {
-            CommunicationFrame frame = null;
+            DataFrame frame = null;
 
             if (b != null)
             {
@@ -73,7 +73,7 @@ namespace GoodsTracker
                 DecoderFrame decoder = new DecoderFrame();
                 decoder.setValues(out payload, b);
 
-                frame = new CommunicationFrame(cmd.Header, payload);
+                frame = new DataFrame(cmd.Header, payload);
             }
 
             return frame;

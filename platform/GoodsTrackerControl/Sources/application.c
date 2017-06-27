@@ -16,7 +16,7 @@
 
 volatile	bool AD_finished=FALSE;
 uint16_t	AD_Values[AD1_CHANNEL_COUNT];
-Info		dataInfo;
+Info		dataTLM;
 int			_lock;
 char		msg2send[SIZE_MAX_PAYLOAD];
 
@@ -114,20 +114,20 @@ ResultExec onTelemetry(DataFrame* frame){
 
 	if (frame) {
 
-		dataInfo.Lat			= -23.591387;
-		dataInfo.Lng			= -46.645126;
-		dataInfo.Acc[AXIS_X]	= 1;
-		dataInfo.Acc[AXIS_Y]	= 2;
-		dataInfo.Acc[AXIS_Z]	= 3;
-		dataInfo.Inc[AXIS_X]	= 4;
-		dataInfo.Inc[AXIS_Y]	= 5;
-		dataInfo.Inc[AXIS_Z]	= 6;
-		dataInfo.Level			= 1000;
-		dataInfo.Speed			= 100;
-		dataInfo.Lock			= _lock;
-		strcpy(dataInfo.Date,	"23/06/2017 19.52");
+		dataTLM.Lat			= -23.591387;
+		dataTLM.Lng			= -46.645126;
+		dataTLM.Acc[AXIS_X]	= 1;
+		dataTLM.Acc[AXIS_Y]	= 2;
+		dataTLM.Acc[AXIS_Z]	= 3;
+		dataTLM.Inc[AXIS_X]	= 4;
+		dataTLM.Inc[AXIS_Y]	= 5;
+		dataTLM.Inc[AXIS_Z]	= 6;
+		dataTLM.Level			= 1000;
+		dataTLM.Speed			= 100;
+		dataTLM.Lock			= _lock;
+		strcpy(dataTLM.Date,	"23/06/2017 19.52");
 
-		Infor2String(&dataInfo,msg2send);
+		Infor2String(&dataTLM,msg2send);
 
 		doAnswer(msg2send);
 
@@ -190,7 +190,7 @@ void read_Channels_AD(void){
 
 void read_accel(void) {
 
-	MMA1_GetRaw8XYZ(dataInfo.Inc);
+	MMA1_GetRaw8XYZ(dataTLM.Inc);
 }
 //------------------------------------------------------------------------
 

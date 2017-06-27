@@ -117,7 +117,7 @@ namespace GoodsTracker
         {
             treeView    = tv;
             behaviors   = null;
-            filter = 0;
+            filter      = 0;
 
             update();
         }
@@ -146,22 +146,13 @@ namespace GoodsTracker
             {
                 TreeNode root = createRootTreeView();
 
+                // Adiciona a partir do ultimo i =getCount();
                 for (int i = getCount(); i < behaviors.Length; i++)
                 {
                     addTelemetria(behaviors[i],root);
                 }
             }
         }
-
-        /*
-         * 
-         * 
-         */
-        internal int getCount()
-        {
-            return TreeView.Nodes.Count<=0? 0:TreeView.Nodes[0].Nodes.Count;
-        } 
-
 
         /*
          * Constroe arvore do historico da viagem
@@ -184,19 +175,31 @@ namespace GoodsTracker
             }
         }
 
+        /*
+         * 
+         * 
+         */
+        internal int getCount()
+        {
+            return TreeView.Nodes.Count <= 0 ? 0 : TreeView.Nodes[0].Nodes.Count;
+        }
+
         internal void addTelemetria(TelemetriaData b,TreeNode    root)
         {
-            TreeNode    loc;
+            if (b != null)
+            {
+                TreeNode loc;
 
-            loc     = createLocTreeView(b, root);
+                loc = createLocTreeView(b, root);
 
-            createPositionTreeView(b,loc);
-            createLockTreeView(b,loc);
-            createLevelTreeView(b,loc);
-            createSpeedTreeView(b,loc);
-            createEixoTreeView(b.AxisX, "Eixo[X]", loc);
-            createEixoTreeView(b.AxisY, "Eixo[Y]", loc);
-            createEixoTreeView(b.AxisZ, "Eixo[Z]", loc);
+                createPositionTreeView(b, loc);
+                createLockTreeView(b, loc);
+                createLevelTreeView(b, loc);
+                createSpeedTreeView(b, loc);
+                createEixoTreeView(b.AxisX, "Eixo[X]", loc);
+                createEixoTreeView(b.AxisY, "Eixo[Y]", loc);
+                createEixoTreeView(b.AxisZ, "Eixo[Z]", loc);
+            }
         }
 
         internal void clear()
@@ -324,7 +327,7 @@ namespace GoodsTracker
             _lock.SelectedImageIndex = _lock.ImageIndex;
 
                 info = _lock.Nodes.Add(b.StatusLock.ToString());
-                info.ImageIndex = (int)(b.StatusLock && b.IsInsideOfFence() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+                info.ImageIndex = (int)(b.StatusLock? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
                 info.SelectedImageIndex = info.ImageIndex;
         }
 

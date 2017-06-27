@@ -352,7 +352,7 @@ namespace GoodsTracker
          */
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lckMng();
+//            lckMng();
 
             updateBehavior();
             updateStatusLock();
@@ -384,12 +384,12 @@ namespace GoodsTracker
             }
             else if (telemetria.StatusLock)
             {
-                labelStatusLock.BackColor   = Color.Green;
+                labelStatusLock.BackColor   = Color.Red;
                 labelStatusLock.Text        = "LOCK";
             }
             else
             {
-                labelStatusLock.BackColor   = Color.Red;
+                labelStatusLock.BackColor   = Color.Green;
                 labelStatusLock.Text        = "UNLOCK";
             }
         }
@@ -409,13 +409,15 @@ namespace GoodsTracker
             else if (telemetria.IsInsideOfFence())
             {
                 lFence.BackColor = Color.Green;
-                btn_unlock.Enabled = true;
+//                btn_unlock.Enabled = true;
             }
             else
             {
                 lFence.BackColor = Color.Red;
-                btn_unlock.Enabled = false;
+//                btn_unlock.Enabled = false;
             }
+
+            btn_unlock.Enabled = true;
         }
 
         /*

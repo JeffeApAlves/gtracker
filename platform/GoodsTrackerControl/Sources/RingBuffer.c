@@ -5,7 +5,6 @@
  *      Author: Jefferson
  */
 
-#include "Cpu.h"
 #include "RingBuffer.h"
 
 bool putData(RingBuffer* buffer,char ch){
@@ -72,11 +71,5 @@ bool isFull(RingBuffer* buffer){
 bool hasData(RingBuffer* buffer){
 
 	return getCount(buffer)>0;
-}
-//------------------------------------------------------------------------
-
-void initBuffer(RingBuffer* buffer){
-
-	memset(buffer,0,sizeof(RingBuffer));
 }
 //------------------------------------------------------------------------

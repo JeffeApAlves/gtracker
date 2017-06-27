@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace GoodsTracker
 {
@@ -56,14 +57,23 @@ namespace GoodsTracker
          */
         public override void run()
         {
-            requestBehavior();
+            try
+            {
+                requestBehavior();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro no controller");
+                Console.WriteLine(e.ToString());
+                Debug.WriteLine(e.ToString());
+            }
         }
 
         /*
-         * 
-         * Cria uma cerca
-         * 
-         */ 
+        * 
+        * Cria uma cerca
+        * 
+        */
         internal Fence createFence()
         {
             Fence fence = new Fence();

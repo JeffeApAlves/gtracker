@@ -1,49 +1,16 @@
-13:16:16 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+16:02:52 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
-Building file: ../Sources/utils.c
-Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/utils.d" -MT"Sources/utils.o" -c -o "Sources/utils.o" "../Sources/utils.c"
-../Sources/utils.c: In function 'str_split':
-../Sources/utils.c:30:16: warning: assignment makes pointer from integer without a cast [enabled by default]
-  result->itens = _malloc(sizeof(char *) * result->count);
-                ^
-In file included from ../Sources/utils.c:10:0:
-../Sources/utils.h:14:23: warning: initialization makes pointer from integer without a cast [enabled by default]
- #define _malloc(size) pvPortMalloc(size)
-                       ^
-../Sources/utils.c:42:17: note: in expansion of macro '_malloc'
-     char *tmp = _malloc(sizeof(char) * (token.len + 1));
-                 ^
-Finished building: ../Sources/utils.c
- 
-Building target: GoodsTrackerControl.elf
-Invoking: Cross ARM GNU C++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Project_Settings/Linker_Files" -L"D:\workspace\GoodsTracker\trunk\platform\GoodsTrackerControl\Sources\TSS" -Wl,-Map,"GoodsTrackerControl.map" -specs=nano.specs -specs=nosys.specs -o "GoodsTrackerControl.elf"  ./Sources/TSS/TSS_Freemaster.o ./Sources/TSS/TSS_Sensor.o ./Sources/TSS/TSS_SensorGPIO.o ./Sources/TSS/TSS_SensorTSI.o ./Sources/TSS/TSS_SensorTSIL.o ./Sources/TSS/TSS_SystemSetupData.o  ./Sources/Events.o ./Sources/RingBuffer.o ./Sources/application.o ./Sources/frtos_tasks.o ./Sources/ihm.o ./Sources/lcd.o ./Sources/lock.o ./Sources/main.o ./Sources/protocol.o ./Sources/utils.o  ./Project_Settings/Startup_Code/startup.o  ./Generated_Code/AD1.o ./Generated_Code/AS1.o ./Generated_Code/AS2.o ./Generated_Code/ASerialLdd1.o ./Generated_Code/ASerialLdd2.o ./Generated_Code/AdcLdd1.o ./Generated_Code/BitIoLdd1.o ./Generated_Code/BitIoLdd12.o ./Generated_Code/BitIoLdd13.o ./Generated_Code/BitIoLdd14.o ./Generated_Code/BitIoLdd15.o ./Generated_Code/BitIoLdd2.o ./Generated_Code/BitIoLdd3.o ./Generated_Code/BitIoLdd4.o ./Generated_Code/BitIoLdd5.o ./Generated_Code/BitIoLdd6.o ./Generated_Code/BitIoLdd7.o ./Generated_Code/CS1.o ./Generated_Code/Cpu.o ./Generated_Code/DB41.o ./Generated_Code/DB51.o ./Generated_Code/DB61.o ./Generated_Code/DB71.o ./Generated_Code/EN1.o ./Generated_Code/FRTOS1.o ./Generated_Code/GI2C1.o ./Generated_Code/I2C1.o ./Generated_Code/LCDout.o ./Generated_Code/LED_B.o ./Generated_Code/LED_G.o ./Generated_Code/LED_R.o ./Generated_Code/LEDpin1.o ./Generated_Code/LEDpin2.o ./Generated_Code/LEDpin3.o ./Generated_Code/MCUC1.o ./Generated_Code/MMA1.o ./Generated_Code/PE_LDD.o ./Generated_Code/RS1.o ./Generated_Code/SCL1.o ./Generated_Code/SDA1.o ./Generated_Code/TI1.o ./Generated_Code/TSK1.o ./Generated_Code/TSSin.o ./Generated_Code/TU1.o ./Generated_Code/TimerIntLdd1.o ./Generated_Code/UTIL1.o ./Generated_Code/Vectors.o ./Generated_Code/WAIT1.o ./Generated_Code/XF1.o ./Generated_Code/croutine.o ./Generated_Code/event_groups.o ./Generated_Code/heap_1.o ./Generated_Code/heap_2.o ./Generated_Code/heap_3.o ./Generated_Code/heap_4.o ./Generated_Code/heap_5.o ./Generated_Code/list.o ./Generated_Code/mpu_wrappers.o ./Generated_Code/port.o ./Generated_Code/queue.o ./Generated_Code/tasks.o ./Generated_Code/timers.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -lTSS_KXX_M0
-Finished building target: GoodsTrackerControl.elf
- 
-Invoking: Cross ARM GNU Create Flash Image
-arm-none-eabi-objcopy -O srec "GoodsTrackerControl.elf"  "GoodsTrackerControl.srec"
-Finished building: GoodsTrackerControl.srec
- 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  52368	    264	  11388	  64020	   fa14	GoodsTrackerControl.elf
+  52336	    264	  11388	  63988	   f9f4	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
-13:16:54 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+16:03:09 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  52368	    264	  11388	  64020	   fa14	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
- 
-13:17:23 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
-make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  52368	    264	  11388	  64020	   fa14	GoodsTrackerControl.elf
+  52336	    264	  11388	  63988	   f9f4	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  

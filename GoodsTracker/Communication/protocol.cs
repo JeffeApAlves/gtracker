@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace GoodsTracker
 {
@@ -37,10 +38,10 @@ namespace GoodsTracker
     {
         static Protocol singleton = null;
 
-        StatusRx            statusRx        = StatusRx.RX_FRAME_INIT;
-        CommunicationFrame  rxFrame;
+        StatusRx            statusRx = StatusRx.RX_FRAME_INIT;
+        DataFrame           rxFrame;
         CommunicationUnit   currentUnit;
-        private const int _TIME_COMMUNICATION    = 5;
+        private const int _TIME_COMMUNICATION    = 1;
 
         //Singleton
         public static Protocol Communication
@@ -58,13 +59,22 @@ namespace GoodsTracker
 
         public override void run()
         {
-            currentUnit = CommunicationUnit.getNextUnit();
-
-            if (currentUnit != null)
+            try
             {
-                processTx();
-                processRx();
-                currentUnit.processQueues();
+                currentUnit = CommunicationUnit.getNextUnit();
+
+                if (currentUnit != null)
+                {
+                    processTx();
+                    processRx();
+                    currentUnit.processQueues();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro no processamento da pilha de comunicacao");
+                Console.WriteLine(e.ToString());
+                Debug.WriteLine(e.ToString());
             }
         }
 
@@ -72,7 +82,7 @@ namespace GoodsTracker
         {
             if (CommunicationUnit.isAnyCmd())
             {
-                CommunicationFrame frame = new CommunicationFrame();
+                DataFrame frame = new DataFrame();
                 Cmd cmd = currentUnit.getNextCmd();
 
                 frame.Header    = cmd.Header;
@@ -212,7 +222,7 @@ namespace GoodsTracker
 
         void clearRxFrame()
         {
-            rxFrame = new CommunicationFrame();
+            rxFrame = new DataFrame();
         }
 
         internal void init()
@@ -221,7 +231,7 @@ namespace GoodsTracker
             Serial.Open();
         }
 
-        void sendFrame(CommunicationFrame frame)
+        void sendFrame(DataFrame frame)
         {
             if (frame != null && !frame.isFrameEmpty())
             {
@@ -232,7 +242,7 @@ namespace GoodsTracker
             }
         }
 
-        internal void setFrameRx(CommunicationFrame frame)
+        internal void setFrameRx(DataFrame frame)
         {
             if (frame != null)
             {
