@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="" key="selection"/>
+		<item value="NMEA_acceptRxFrame" key="selection"/>
 		<list key="findhistory">
-			<item value="float"/>
-			<item value="calc"/>
-			<item value="decoder"/>
+			<item value="NMEA_acceptRxFrame"/>
 			<item value="NMEA_verifyFrame"/>
-			<item value="NMEA_RX_CHECKSUM"/>
-			<item value="NMEA_receiveCheckSum"/>
-			<item value="size"/>
-			<item value="max"/>
+			<item value="NMEA_sendResult"/>
+			<item value="decoder"/>
+			<item value="NL"/>
+			<item value="rxnl"/>
+			<item value="nl"/>
+			<item value="rxNL"/>
 		</list>
 		<list key="replacehistory">
 			<item value="dataFrame"/>

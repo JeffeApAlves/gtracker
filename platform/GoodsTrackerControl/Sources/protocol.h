@@ -96,8 +96,8 @@ typedef enum {
 	CMD_RX_START,
 	CMD_RX_FRAME,
 	CMD_RX_END,
-	CMD_RX_NL,
 	CMD_RX_CR,
+	CMD_RX_LF,
 	CMD_FRAME_OK,
 	CMD_FRAME_NOK,
 	CMD_EXEC,
@@ -124,7 +124,7 @@ typedef struct{
 
 static void rxStartCMD (void);
 static void receiveFrame (void);
-static void rxNL(void);
+static void rxLF(void);
 static void rxCR(void);
 static pCallBack getCallBack(void);
 void initRxCMD(void);

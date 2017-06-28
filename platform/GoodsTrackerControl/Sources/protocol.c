@@ -43,8 +43,8 @@ void processProtocol(void) {
 		case CMD_RX_START:		receiveFrame();			break;
 		case CMD_RX_FRAME:		receiveFrame();			break;
 		case CMD_RX_END:		rxCR();					break;
-		case CMD_RX_CR:			rxNL();					break;
-		case CMD_RX_NL:			verifyFrame();			break;
+		case CMD_RX_CR:			rxLF();					break;
+		case CMD_RX_LF:			verifyFrame();			break;
 		case CMD_FRAME_OK:		acceptRxFrame();		break;
 		case CMD_EXEC:			sendResult();			break;
 		case CMD_FRAME_NOK:		errorRxFrame();			break;
@@ -99,7 +99,7 @@ static void receiveFrame (void) {
 }
 //------------------------------------------------------------------------
 
-static void rxNL(void) {
+static void rxLF(void) {
 
 	char ch;
 
@@ -107,7 +107,7 @@ static void rxNL(void) {
 
 		if(ch==CHAR_LF){
 
-			setStatusRx(CMD_RX_NL);
+			setStatusRx(CMD_RX_LF);
 
 		}else {
 

@@ -1,9 +1,9 @@
-04:08:30 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+14:15:14 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
-Building file: ../Sources/application.c
+Building file: ../Sources/frtos_tasks.c
 Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/application.d" -MT"Sources/application.o" -c -o "Sources/application.o" "../Sources/application.c"
-Finished building: ../Sources/application.c
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/frtos_tasks.d" -MT"Sources/frtos_tasks.o" -c -o "Sources/frtos_tasks.o" "../Sources/frtos_tasks.c"
+Finished building: ../Sources/frtos_tasks.c
  
 Building target: GoodsTrackerControl.elf
 Invoking: Cross ARM GNU C++ Linker
@@ -17,30 +17,14 @@ Finished building: GoodsTrackerControl.srec
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  63108	    332	  11832	  75272	  12608	GoodsTrackerControl.elf
+  63500	    332	  12000	  75832	  12838	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
-04:08:52 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+14:15:34 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  63108	    332	  11832	  75272	  12608	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
- 
-04:16:41 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
-make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  63108	    332	  11832	  75272	  12608	GoodsTrackerControl.elf
-Finished building: GoodsTrackerControl.siz
- 
-04:17:50 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
-make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
-   text	   data	    bss	    dec	    hex	filename
-  63108	    332	  11832	  75272	  12608	GoodsTrackerControl.elf
+  63500	    332	  12000	  75832	  12838	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  

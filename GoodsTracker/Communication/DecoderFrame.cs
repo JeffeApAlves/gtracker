@@ -159,8 +159,8 @@ namespace GoodsTracker
 
             try
             {
-                telemetria.setPosition(AsDouble(list, INDEX.LAT),
-                                        AsDouble(list, INDEX.LNG));
+                telemetria.setPosition(AsDouble(list, INDEX.LAT)/100.0,
+                                        AsDouble(list, INDEX.LNG) / 100.0);
 
                 telemetria.setAcceleration(AsDouble(list, INDEX.ACCEL_X),
                                             AsDouble(list, INDEX.ACCEL_Y),

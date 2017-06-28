@@ -168,6 +168,15 @@ void AsFloat(float* out,List *list,int index){
 }
 //------------------------------------------------------------------------
 
+void AsChar(char* out,List *list,int index){
+
+	if(index<list->count && out!=NULL){
+
+		*out = list->itens[index][0];
+	}
+}
+//------------------------------------------------------------------------
+
 /**
  *
  * Calcula o checkSum da string buff
@@ -189,4 +198,7 @@ unsigned int calcChecksum(const char *buff, size_t sz) {
 }
 //------------------------------------------------------------------------
 
+void Convert(void* out,char* info,TYPE_INFO type){
 
+}
+//------------------------------------------------------------------------

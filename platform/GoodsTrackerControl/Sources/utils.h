@@ -10,6 +10,16 @@
 
 #include "stdlib.h"
 
+typedef enum {
+
+	INTEGER,
+	STRING,
+	FLOAT,
+	HEX,
+
+
+}TYPE_INFO;
+
 //#ifdef PEX_RTOS_START
 #define _malloc(size)	pvPortMalloc(size)
 #define _free(ptr)		vPortFree(ptr);ptr=NULL
@@ -40,6 +50,9 @@ void AsString(char* out,List *list,int index);
 void AsInteger(int* out,List *list,int index);
 void AsHex(int* out,List *list,int index);
 void AsFloat(float* out,List *list,int index);
+void AsChar(char* out,List *list,int index);
+
 unsigned int calcChecksum(const char *buff, size_t sz);
+void Convert(void* out,char* info,TYPE_INFO type);
 
 #endif /* SOURCES_UTILS_H_ */
