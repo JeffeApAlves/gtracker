@@ -4,11 +4,11 @@ namespace GoodsTracker
 {
     class Tracker : CommunicationUnit,InterfaceTracker
     {
-        TelemetriaData  telemetriaData;
+        DataTelemetria  telemetriaData;
 
         bool            statusLock;
 
-        internal TelemetriaData TelemetriaData { get => telemetriaData; set => telemetriaData = value; }
+        internal DataTelemetria TelemetriaData { get => telemetriaData; set => telemetriaData = value; }
         public bool StatusLock { get => statusLock; set => statusLock = value; }
 
         internal Tracker(int val)
@@ -74,7 +74,7 @@ namespace GoodsTracker
             telemetriaData = ans.Telemetria;
         }
 
-        public TelemetriaData getTelemetria()
+        public DataTelemetria getTelemetria()
         {
             return telemetriaData;
         }

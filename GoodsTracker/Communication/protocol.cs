@@ -8,7 +8,7 @@ namespace GoodsTracker
         RX_FRAME_INIT,
         RX_FRAME_BEGIN,
         RX_FRAME_RX_START,
-        RX_FRAME_RX_PAYLOAD,
+        RX_FRAME_RX_FRAME,
         RX_FRAME_RX_END,
         RX_FRAME_RX_NL,
         RX_FRAME_RX_CR,
@@ -105,11 +105,11 @@ namespace GoodsTracker
                 default:
                 case StatusRx.RX_FRAME_INIT:        initRxCMD();        break;
                 case StatusRx.RX_FRAME_BEGIN:       rxStartCMD();       break;
-                case StatusRx.RX_FRAME_RX_START:    rxPayLoad();        break;
-                case StatusRx.RX_FRAME_RX_PAYLOAD:  rxPayLoad();        break;
+                case StatusRx.RX_FRAME_RX_START:    receiveFrame();     break;
+                case StatusRx.RX_FRAME_RX_FRAME:    receiveFrame();     break;
                 case StatusRx.RX_FRAME_RX_END:      rxCR();             break;
                 case StatusRx.RX_FRAME_RX_CR:       rxNL();             break;
-                case StatusRx.RX_FRAME_RX_NL:       verifyCheckSum();   break;
+                case StatusRx.RX_FRAME_RX_NL:       verifyFrame();      break;
                 case StatusRx.RX_FRAME_OK:          acceptRxFrame();    break;
                 case StatusRx.RX_FRAME_NOK:         errorRxFrame();     break;
             }
@@ -130,7 +130,7 @@ namespace GoodsTracker
             }
         }
 
-        void rxPayLoad()
+        void receiveFrame()
         {
             char ch;
 
@@ -148,7 +148,7 @@ namespace GoodsTracker
                 {
                     rxFrame.putByte(ch);
 
-                    setStatusRx(StatusRx.RX_FRAME_RX_PAYLOAD);
+                    setStatusRx(StatusRx.RX_FRAME_RX_FRAME);
                 }
             }
         }
@@ -187,7 +187,7 @@ namespace GoodsTracker
             }
         }
 
-        void verifyCheckSum()
+        void verifyFrame()
         {
             IDecoderFrame decoder = new DecoderFrame();
             AnsCmd ans;

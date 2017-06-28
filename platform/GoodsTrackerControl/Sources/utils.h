@@ -39,5 +39,7 @@ void removeList(List* list);
 void AsString(char* out,List *list,int index);
 void AsInteger(int* out,List *list,int index);
 void AsHex(int* out,List *list,int index);
+void AsFloat(float* out,List *list,int index);
+unsigned int calcChecksum(const char *buff, size_t sz);
 
 #endif /* SOURCES_UTILS_H_ */

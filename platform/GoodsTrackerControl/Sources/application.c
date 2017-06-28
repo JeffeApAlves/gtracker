@@ -12,6 +12,7 @@
 #include "AD1.h"
 #include "MMA1.h"
 #include "lock.h"
+#include "gps.h"
 #include "application.h"
 
 static TaskHandle_t xTaskToNotify = NULL;
@@ -24,15 +25,17 @@ char		msg2send[SIZE_MAX_PAYLOAD];
 
 void updateDataTLM(void){
 
-	dataTLM.Lat			= -23.591387;
-	dataTLM.Lng			= -46.645126;
+//	dataTLM.Lat			= -23.591387;
+//	dataTLM.Lng			= -46.645126;
+	dataTLM.Lat			= nmeaFrame.Lat;
+	dataTLM.Lng			= nmeaFrame.Lng;
 	dataTLM.Acc[AXIS_X]	= 1;
 	dataTLM.Acc[AXIS_Y]	= 2;
 	dataTLM.Acc[AXIS_Z]	= 3;
-	dataTLM.Inc[AXIS_X]	= 4;
-	dataTLM.Inc[AXIS_Y]	= 5;
-	dataTLM.Inc[AXIS_Z]	= 6;
-	dataTLM.Level			= AD_Values[0];
+	dataTLM.Inc[AXIS_X]	= 20;
+	dataTLM.Inc[AXIS_Y]	= 21;
+	dataTLM.Inc[AXIS_Z]	= 22;
+	dataTLM.Level			= AD_Values[2];
 	dataTLM.Speed			= 100;
 	dataTLM.Lock			= _lock;
 	strcpy(dataTLM.Date,	"23/06/2017 19.52");

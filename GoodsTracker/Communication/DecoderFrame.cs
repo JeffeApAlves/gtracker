@@ -58,7 +58,7 @@ namespace GoodsTracker
             return ret;
         }
 
-        public bool setValues(out PayLoad payload, TelemetriaData b)
+        public bool setValues(out PayLoad payload, DataTelemetria b)
         {
             bool ret    = false;
             payload     = new PayLoad();
@@ -153,9 +153,9 @@ namespace GoodsTracker
             return ret;
         }
 
-        private TelemetriaData decoderTelemetria(string[] list)
+        private DataTelemetria decoderTelemetria(string[] list)
         {
-            TelemetriaData telemetria = new TelemetriaData();
+            DataTelemetria telemetria = new DataTelemetria();
 
             try
             {
@@ -177,7 +177,7 @@ namespace GoodsTracker
             }
             catch (Exception e)
             {
-                telemetria = new TelemetriaData();
+                telemetria = new DataTelemetria();
 
                 Console.WriteLine("Erro na decodificacao dos dados da Telemetria");
                 Console.WriteLine(e.ToString());

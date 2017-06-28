@@ -5,9 +5,9 @@ namespace GoodsTracker
     internal class AnsCmd
     {
         Header          header;
-        TelemetriaData  telemetria;
+        DataTelemetria  telemetria;
 
-        internal TelemetriaData Telemetria { get => telemetria; set => telemetria = value; }
+        internal DataTelemetria Telemetria { get => telemetria; set => telemetria = value; }
         internal Header Header { get => header; set => header = value; }
 
         internal AnsCmd()

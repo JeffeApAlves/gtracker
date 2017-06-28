@@ -164,7 +164,7 @@ namespace GoodsTracker
             }
         }
 
-        internal bool PointIsInsidePolygon(TelemetriaData data)
+        internal bool PointIsInsidePolygon(DataTelemetria data)
         {
             bool ret = false;
 

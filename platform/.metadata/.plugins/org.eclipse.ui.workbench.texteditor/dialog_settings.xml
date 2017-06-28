@@ -3,26 +3,26 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
 		<item value="118" key="DIALOG_Y_ORIGIN"/>
-		<item value="563" key="DIALOG_X_ORIGIN"/>
 		<item value="381" key="DIALOG_HEIGHT"/>
+		<item value="563" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="xTaskToNotify" key="selection"/>
+		<item value="" key="selection"/>
 		<list key="findhistory">
-			<item value="xTaskToNotify"/>
-			<item value="AD_finished"/>
-			<item value="dataTLM.Level"/>
-			<item value="AD_Values"/>
-			<item value="onrx"/>
-			<item value="putrx"/>
-			<item value="RxChar"/>
-			<item value="rx"/>
+			<item value="float"/>
+			<item value="calc"/>
+			<item value="decoder"/>
+			<item value="NMEA_verifyFrame"/>
+			<item value="NMEA_RX_CHECKSUM"/>
+			<item value="NMEA_receiveCheckSum"/>
+			<item value="size"/>
+			<item value="max"/>
 		</list>
 		<list key="replacehistory">
 			<item value="dataFrame"/>

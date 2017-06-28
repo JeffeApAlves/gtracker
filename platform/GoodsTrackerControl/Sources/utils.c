@@ -158,3 +158,35 @@ void AsHex(int* out,List *list,int index){
 	}
 }
 //------------------------------------------------------------------------
+
+void AsFloat(float* out,List *list,int index){
+
+	if(index<list->count && out!=NULL){
+
+		*out = atof(list->itens[index]);
+	}
+}
+//------------------------------------------------------------------------
+
+/**
+ *
+ * Calcula o checkSum da string buff
+ *
+ */
+unsigned int calcChecksum(const char *buff, size_t sz) {
+
+	int i;
+	unsigned char chk	= 0;
+
+	if (buff) {
+
+		for (i = 0; i < sz; i++){
+			chk ^= buff[i];
+		}
+	}
+
+	return chk;
+}
+//------------------------------------------------------------------------
+
+

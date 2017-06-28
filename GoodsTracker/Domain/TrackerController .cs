@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace GoodsTracker
 {
-    public delegate void onUpdateTelemetria(TelemetriaData telemetria);
+    public delegate void onUpdateTelemetria(DataTelemetria telemetria);
 
     class TrackerController :ThreadRun
     {
@@ -98,9 +98,9 @@ namespace GoodsTracker
             fences.RemoveAt(index);
         }
 
-        internal TelemetriaData[] getBehaviorFiltered(int i)
+        internal DataTelemetria[] getBehaviorFiltered(int i)
         {
-            TelemetriaData[] ret = null;
+            DataTelemetria[] ret = null;
 
             if (anyRoute())
             {
@@ -145,7 +145,7 @@ namespace GoodsTracker
             }
         }
 
-        internal void registerBehavior(TelemetriaData b)
+        internal void registerBehavior(DataTelemetria b)
         {
             if (anyRoute() && b != null)
             {
@@ -182,7 +182,7 @@ namespace GoodsTracker
         /*
          * Retorna ultima telemetria
          */
-        public TelemetriaData getTelemetria()
+        public DataTelemetria getTelemetria()
         {
             return Tracker.getTelemetria();
         }

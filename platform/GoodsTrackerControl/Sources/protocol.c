@@ -28,6 +28,11 @@ Resource	ListCmd[]	= {	{.resourceID = CMD_LED,			.resource = "LED\0",	.cb = NULL
 
 const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Resource);
 
+/**
+ *
+ * Processamento da comunicacao
+ *
+ */
 void processProtocol(void) {
 
 	switch(statusRx){
@@ -36,25 +41,25 @@ void processProtocol(void) {
 		case CMD_INIT:			initRxCMD();			break;
 		case CMD_INIT_OK:		rxStartCMD();			break;
 		case CMD_RX_START:		receiveFrame();			break;
-		case CMD_RX_PAYLOAD:	receiveFrame();			break;
+		case CMD_RX_FRAME:		receiveFrame();			break;
 		case CMD_RX_END:		rxCR();					break;
 		case CMD_RX_CR:			rxNL();					break;
-		case CMD_RX_NL:			verifyCheckSum();		break;
-		case CMD_DECODER:		acceptRxFrame();		break;
+		case CMD_RX_NL:			verifyFrame();			break;
+		case CMD_FRAME_OK:		acceptRxFrame();		break;
 		case CMD_EXEC:			sendResult();			break;
-		case CMD_ERROR:			errorRxFrame();			break;
+		case CMD_FRAME_NOK:		errorRxFrame();			break;
 		case CMD_EXEC_ERROR:	errorExec();			break;
 	}
 }
 //------------------------------------------------------------------------
 
-void rxStartCMD (void) {
+static void rxStartCMD (void) {
 
 	char ch;
 
 	if(getRxData(&ch)){
 
-		if(ch==CHAR_CMD_START){
+		if(ch==CHAR_START){
 
 			clearData(&dataFrame);
 			setStatusRx(CMD_RX_START);
@@ -63,18 +68,18 @@ void rxStartCMD (void) {
 }
 //------------------------------------------------------------------------
 
-void receiveFrame (void) {
+static void receiveFrame (void) {
 
 	char ch;
 
 	if(getRxData(&ch)) {
 
-		if(ch==CHAR_CMD_START || dataFrame.sizeFrame>=SIZE_MAX_FRAME) {
+		if(ch==CHAR_START || dataFrame.sizeFrame>=SIZE_MAX_FRAME) {
 
-			setStatusRx(CMD_ERROR);
+			setStatusRx(CMD_FRAME_NOK);
 		}
 		else
-		  if(ch==CHAR_CMD_END) {
+		  if(ch==CHAR_END) {
 
 			 if(dataFrame.sizeFrame>=SIZE_MIN_FRAME) {
 
@@ -82,19 +87,19 @@ void receiveFrame (void) {
 			 }
 			 else {
 
-			   setStatusRx(CMD_ERROR);
+			   setStatusRx(CMD_FRAME_NOK);
 			 }
 		}
 		else {
 
 		  dataFrame.frame[(dataFrame.sizeFrame++)%SIZE_MAX_FRAME] = ch;
-		  setStatusRx(CMD_RX_PAYLOAD);
+		  setStatusRx(CMD_RX_FRAME);
 		}
 	}
 }
 //------------------------------------------------------------------------
 
-void rxNL(void) {
+static void rxNL(void) {
 
 	char ch;
 
@@ -106,13 +111,13 @@ void rxNL(void) {
 
 		}else {
 
-			setStatusRx(CMD_ERROR);
+			setStatusRx(CMD_FRAME_NOK);
 		}
 	}
 }
 //------------------------------------------------------------------------
 
-void rxCR(void) {
+static void rxCR(void) {
 
 	char ch;
 
@@ -124,26 +129,26 @@ void rxCR(void) {
 
 		}else{
 
-			setStatusRx(CMD_ERROR);
+			setStatusRx(CMD_FRAME_NOK);
 		}
 	}
 }
 //------------------------------------------------------------------------
 
-void verifyCheckSum(void) {
+static void verifyFrame(void) {
 
 	if(decoderFrame()){
 
-		setStatusRx(CMD_DECODER);
+		setStatusRx(CMD_FRAME_OK);
 
 	}else{
 
-		setStatusRx(CMD_ERROR);
+		setStatusRx(CMD_FRAME_NOK);
 	}
 }
 //------------------------------------------------------------------------
 
-bool decoderFrame(void) {
+static bool decoderFrame(void) {
 
 	bool ret = false;
 
@@ -151,29 +156,30 @@ bool decoderFrame(void) {
 
 	str_split(&list, dataFrame.frame, CHAR_SEPARATOR);
 
-	// Minimo 8 itens
-	if(list.itens!=NULL && list.count >= 8) {
+	if(list.itens!=NULL) {
 
-		//-2 para desconsiderar o checksum que esta no frame recebido
-		unsigned int checksum_rx;
-		unsigned int checksum_calc = calcChecksum(dataFrame.frame, dataFrame.sizeFrame - LEN_CHECKSUM);
-		checksum_rx = ~checksum_calc;
+		// Minimo 8 itens
+		if(list.count >= 8){
 
-		AsHex(&checksum_rx,&list,list.count-1);
+			//-2 para desconsiderar o checksum que esta no frame recebido
+			unsigned int checksum_rx;
+			unsigned int checksum_calc = calcChecksum(dataFrame.frame, dataFrame.sizeFrame - LEN_CHECKSUM);
+			checksum_rx = ~checksum_calc;
 
-		if(checksum_rx==checksum_calc) {
+			AsHex(&checksum_rx,&list,list.count-1);
 
-			char i;
+			if(checksum_rx==checksum_calc) {
 
-			AsInteger(&dataFrame.address,		&list,0);
-			AsInteger(&dataFrame.dest,			&list,1);
-			AsInteger(&dataFrame.count,			&list,2);
-			AsString(&dataFrame.operacao,		&list,3);
-			AsString(&dataFrame.resource,		&list,4);
-			AsInteger(&dataFrame.sizePayLoad,	&list,5);
-			AsString(&dataFrame.payload,		&list,6);
+				AsInteger(&dataFrame.address,		&list,0);
+				AsInteger(&dataFrame.dest,			&list,1);
+				AsInteger(&dataFrame.count,			&list,2);
+				AsString(&dataFrame.operacao,		&list,3);
+				AsString(&dataFrame.resource,		&list,4);
+				AsInteger(&dataFrame.sizePayLoad,	&list,5);
+				AsString(&dataFrame.payload,		&list,6);
 
-			ret = true;
+				ret = true;
+			}
 		}
 
 		removeList(&list);
@@ -197,7 +203,7 @@ void setEventCMD(ResourceID id,pCallBack c) {
 }
 //------------------------------------------------------------------------
 
-pCallBack getCallBack(void) {
+static pCallBack getCallBack(void) {
 
 	pCallBack cb = NULL;
 
@@ -215,16 +221,7 @@ pCallBack getCallBack(void) {
 }
 //------------------------------------------------------------------------
 
-void initRxCMD(void) {
-
-	clearData(&dataFrame);
-	clearBuffer(&bufferRx);
-	clearBuffer(&bufferTx);
-	setStatusRx(CMD_INIT_OK);
-}
-//------------------------------------------------------------------------
-
-void errorExec(void) {
+static void errorExec(void) {
 
 	/*
 	 * TBD
@@ -233,7 +230,12 @@ void errorExec(void) {
 }
 //------------------------------------------------------------------------
 
-void sendResult(void){
+/**
+ *
+ * Envia o  resultado
+ *
+ */
+static void sendResult(void){
 
 	sendFrame(&dataFrame);
 
@@ -244,19 +246,29 @@ void sendResult(void){
 }
 //------------------------------------------------------------------------
 
-void sendFrame(DataFrame* frame){
+/**
+ *
+ * Envia o frame
+ *
+ */
+static void sendFrame(DataFrame* frame){
 
-	putTxData(CHAR_CMD_START);
+	// Envia caracter de inicio
+	putTxData(CHAR_START);
 
+	// Emvia o frame
 	sendString(frame->frame);
 
-	putTxData(CHAR_CMD_END);
+	// Envia o caracter de fim
+	putTxData(CHAR_END);
+
+	// Envia caracteres de controle
 	putTxData(CHAR_CR);
 	putTxData(CHAR_LF);
 }
 //------------------------------------------------------------------------
 
-void sendString(const char* str){
+static void sendString(const char* str){
 
 	char* p = (char *)str;
 
@@ -270,7 +282,7 @@ void sendString(const char* str){
 }
 //------------------------------------------------------------------------
 
-inline void setStatusRx(StatusRx sts) {
+static inline void setStatusRx(StatusRx sts) {
 
 	statusRx = sts;
 }
@@ -282,18 +294,29 @@ inline bool putTxData(char data) {
 }
 //------------------------------------------------------------------------
 
+
 inline bool putRxData(char data) {
 
 	return putData(&bufferRx,data);
 }
 //------------------------------------------------------------------------
 
+/*
+ *
+ * Pega um char do buffer circular da transmissao
+ *
+ */
 inline bool getTxData(char* ch){
 
 	return getData(&bufferTx,ch);
 }
 //------------------------------------------------------------------------
 
+/*
+ *
+ * Pega um char do buffer circular da recepcao
+ *
+ */
 inline bool getRxData(char* ch){
 
 	return getData(&bufferRx,ch);
@@ -304,7 +327,7 @@ inline bool getRxData(char* ch){
  * Recepcao do frame OK
  *
  */
-void acceptRxFrame(void) {
+static void acceptRxFrame(void) {
 
 	pCallBack cb = getCallBack();
 
@@ -323,7 +346,7 @@ void acceptRxFrame(void) {
  * Erro na recepcao do frame
  *
  */
-void errorRxFrame(void){
+static void errorRxFrame(void){
 
 	/**/
 
@@ -340,7 +363,12 @@ bool hasTxData(void){
 }
 //------------------------------------------------------------------------
 
-void buildFrame(DataFrame *frame) {
+/**
+ *
+ * Constroi o frame para envio
+ *
+ */
+static void buildFrame(DataFrame *frame) {
 
 	AppendHeader(frame);
 	AppendPayLoad(frame);
@@ -353,7 +381,7 @@ void buildFrame(DataFrame *frame) {
  * Adiciona o cabecalho no frame
  *
  */
-void AppendHeader(DataFrame *frame) {
+static void AppendHeader(DataFrame *frame) {
 
 	XF1_xsprintf(frame->frame,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
 				frame->address, CHAR_SEPARATOR,
@@ -372,7 +400,7 @@ void AppendHeader(DataFrame *frame) {
  * Adiciona o Payload no Frame
  *
  */
-void AppendPayLoad(DataFrame *frame) {
+static void AppendPayLoad(DataFrame *frame) {
 
 	strncat(frame->frame, frame->payload,frame->sizePayLoad);
 }
@@ -383,7 +411,7 @@ void AppendPayLoad(DataFrame *frame) {
  * Adiciona o CheckSum no Frame
  *
  */
-void AppendCheckSum(DataFrame *frame) {
+static void AppendCheckSum(DataFrame *frame) {
 
 	char	separator[] = {CHAR_SEPARATOR,CHAR_STR_END};
 	char	checksum[LEN_CHECKSUM+1];
@@ -399,9 +427,8 @@ void AppendCheckSum(DataFrame *frame) {
  *
  * Set PayLoad
  *
- *
  */
-void setPayLoad(DataFrame* frame, char* str) {
+static void setPayLoad(DataFrame* frame, char* str) {
 
 	size_t size = strlen(str);
 
@@ -414,11 +441,15 @@ void setPayLoad(DataFrame* frame, char* str) {
 		//TODO Erro: mensagem maior que o array do payload
 	}
 
-
 	frame->sizePayLoad	= strlen(frame->payload);
 }
 //------------------------------------------------------------------------
 
+/**
+ *
+ * Funcao disponibilizada para aplicacao preencher o payload
+ *
+ */
 void doAnswer(char *msg) {
 
 	if (msg) {
@@ -442,7 +473,7 @@ void doAnswer(char *msg) {
  * da transmissao de caracter para iniciar a transmissao do buffer
  *
  */
-void startTX(void){
+static void startTX(void){
 
 	if(hasTxData() && AS1_GetCharsInTxBuf()==0){
 
@@ -451,18 +482,16 @@ void startTX(void){
 }
 //------------------------------------------------------------------------
 
-unsigned int calcChecksum(const char *buff, size_t sz) {
+/**
+ *
+ * Inicializa a comunicacao
+ *
+ */
+void initRxCMD(void) {
 
-	int i;
-	unsigned char chk	= 0;
-
-	if (buff) {
-
-		for (i = 0; i < sz; i++){
-			chk ^= buff[i];
-		}
-	}
-
-	return chk;
+	clearData(&dataFrame);
+	clearBuffer(&bufferRx);
+	clearBuffer(&bufferTx);
+	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------

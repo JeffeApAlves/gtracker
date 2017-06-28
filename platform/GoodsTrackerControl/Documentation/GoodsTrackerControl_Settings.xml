@@ -453,7 +453,7 @@ PE_DEBUGHALT();
       <FreeRTOS v="FRTOS1" />
       <list name="Number of tasks" v="5">
         <group name="FreeRTOS task">
-          <Task_name v="mains_task" />
+          <Task_name v="app_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>

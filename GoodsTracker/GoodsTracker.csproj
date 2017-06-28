@@ -84,7 +84,7 @@
   <ItemGroup>
     <Compile Include="Communication\AnsCmd.cs" />
     <Compile Include="Communication\Serial.cs" />
-    <Compile Include="Domain\TelemetriaData.cs" />
+    <Compile Include="Domain\DataTelemetria.cs" />
     <Compile Include="Domain\tracker.cs" />
     <Compile Include="Domain\TrackerController .cs" />
     <Compile Include="FrontEnd\BuildTreeView.cs" />

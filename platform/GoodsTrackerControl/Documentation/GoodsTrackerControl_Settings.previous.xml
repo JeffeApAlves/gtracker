@@ -453,27 +453,27 @@ PE_DEBUGHALT();
       <FreeRTOS v="FRTOS1" />
       <list name="Number of tasks" v="5">
         <group name="FreeRTOS task">
-          <Task_name v="mains_task" />
+          <Task_name v="main" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
         <group name="FreeRTOS task">
-          <Task_name v="communication_task" />
+          <Task_name v="communication" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
         <group name="FreeRTOS task">
-          <Task_name v="data_task" />
+          <Task_name v="data" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
         <group name="FreeRTOS task">
-          <Task_name v="ihm_task" />
+          <Task_name v="ihm" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
         <group name="FreeRTOS task">
-          <Task_name v="gps_task" />
+          <Task_name v="gps" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
@@ -2305,7 +2305,7 @@ Autoselect
         <boolgroup name="Transmitter" v="Enabled">
           <TxD v="ADC0_DP3/ADC0_SE3/PTE22/TPM2_CH0/UART2_TX" />
         </boolgroup>
-        <Baud_rate v="9600 baud" />
+        <Baud_rate v="4800 baud" />
         <Break_signal v="Disabled" />
         <Wakeup_condition v="Idle line wakeup" />
         <Transmitter_output v="Not inverted" />
@@ -2342,7 +2342,7 @@ Autoselect
               <Parity v="None" />
               <Stop_bits v="1" />
               <Loop_mode v="Normal" />
-              <Baud_rate v="9600 baud" />
+              <Baud_rate v="4800 baud" />
               <Wakeup_condition v="Idle line wakeup" />
               <Stop_in_wait_mode v="no" />
               <Idle_line_mode v="Starts after start bit" />

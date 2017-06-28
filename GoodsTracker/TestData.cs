@@ -21,7 +21,7 @@ namespace GoodsTracker
         {
             if (CommunicationUnit.isAnyTxCmd() && !CommunicationUnit.isAnyAns())
             {
-                TelemetriaData b            = createTelemetriaData();
+                DataTelemetria b            = createTelemetriaData();
                 AnsCmd ans                  = createAnsCmd();
                 DataFrame frame    = createFrame(b,ans);
 
@@ -29,14 +29,14 @@ namespace GoodsTracker
             }
         }
 
-        static TelemetriaData createTelemetriaData()
+        static DataTelemetria createTelemetriaData()
         {
-            TelemetriaData b = null;
+            DataTelemetria b = null;
 
             if (TrackerController.TrackerCtrl.anyRoute() &&  
                 TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > count_publish)
             {
-                b = new TelemetriaData();
+                b = new DataTelemetria();
 
                 Random rnd = new Random();
                 PointLatLng p = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[count_publish++];
@@ -62,7 +62,7 @@ namespace GoodsTracker
             return ans;
         }
 
-        static DataFrame createFrame(TelemetriaData b,AnsCmd cmd)
+        static DataFrame createFrame(DataTelemetria b,AnsCmd cmd)
         {
             DataFrame frame = null;
 

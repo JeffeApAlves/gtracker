@@ -91,7 +91,7 @@ namespace GoodsTracker
             expandPanel(panel2);
         }
 
-        // Seleciona painel TelemetriaData
+        // Seleciona painel DataTelemetria
         private void button3_Click_1(object sender, EventArgs e)
         {
             expandPanel(panel3);
@@ -313,7 +313,7 @@ namespace GoodsTracker
         {
             layerFence      = new LayerMap(gMapControl1, "Fence");
             layerRoute      = new LayerMap(gMapControl1, "Route");
-            layerBehavior   = new LayerMap(gMapControl1, "TelemetriaData");
+            layerBehavior   = new LayerMap(gMapControl1, "DataTelemetria");
         }
 
         void initPanelConfig()
@@ -389,7 +389,7 @@ namespace GoodsTracker
          */
         void updateStatusLock()
         {
-            TelemetriaData telemetria = trackerController.getTelemetria();
+            DataTelemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria == null)
             {
@@ -413,7 +413,7 @@ namespace GoodsTracker
          */
         void updateStatusFence()
         {
-            TelemetriaData telemetria = trackerController.getTelemetria();
+            DataTelemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria == null)
             {
@@ -437,7 +437,7 @@ namespace GoodsTracker
          */
         void updatelevel()
         {
-            TelemetriaData telemetria = trackerController.getTelemetria();
+            DataTelemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria == null)
             {
@@ -445,18 +445,15 @@ namespace GoodsTracker
                 lmax.Text = "---";
                 lVal.Text = "---";
 
-                levelBar.Maximum = 100;
-                levelBar.Minimum = 0;
-                levelBar.Value = 0;
+                levelBar.Maximum    = 100;
+                levelBar.Minimum    = 0;
+                levelBar.Value      = 0;
             }
             else 
             {
-                //levelBar.Maximum    = (int)telemetria.Level.Tol.Max;
-                //levelBar.Minimum    = (int)telemetria.Level.Tol.Min;
-                levelBar.Maximum = 20000;
-                levelBar.Minimum = 0;
+                levelBar.Maximum    = (int)telemetria.Level.Tol.Max;
+                levelBar.Minimum    = (int)telemetria.Level.Tol.Min;
                 levelBar.Value      = (int)telemetria.Level.Val;
-
 
                 lmin.Text = levelBar.Minimum.ToString();
                 lmax.Text = levelBar.Maximum.ToString();
@@ -469,13 +466,13 @@ namespace GoodsTracker
          */
         void showMarkerBehavior()
         {
-            TelemetriaData[] listCurrentBehavior = bTV.Behaviors;
+            DataTelemetria[] listCurrentBehavior = bTV.Behaviors;
 
             if (listCurrentBehavior != null)
             {
                 layerBehavior.removeAllMarkers();
 
-                foreach (TelemetriaData b in listCurrentBehavior)
+                foreach (DataTelemetria b in listCurrentBehavior)
                 {
                     PointLatLng p = new PointLatLng(b.Latitude, b.Longitude);
 
@@ -500,7 +497,7 @@ namespace GoodsTracker
          */
         private void lckMng()
         {
-            TelemetriaData telemetria = trackerController.getTelemetria();
+            DataTelemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria != null)
             {
@@ -705,7 +702,7 @@ namespace GoodsTracker
          * Evento de recepcao de dados de telemetria
          * 
          */
-        private void onDataTelemetria(TelemetriaData telemetria)
+        private void onDataTelemetria(DataTelemetria telemetria)
         {
             // Atualiza o status da se esta dentro de alguma cerca
             layerFence.PointIsInsidePolygon(telemetria);

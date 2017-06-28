@@ -15,7 +15,7 @@
     /**
      *
      * Frame Coomunication
-     * [ End. de orig[5] : End dest[5] : Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
+     * [ End. de orig[5] : End dest[5] :  COUNT[5] :Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
      *
      * End. de orig:
      * Range: 00000~65535 (00000) Broadcast
@@ -48,8 +48,8 @@
 #define TIME_TX			5
 #define TIME_RX			5
 
-#define CHAR_CMD_START	'['
-#define CHAR_CMD_END	']'
+#define CHAR_START		'['
+#define CHAR_END		']'
 #define CHAR_SEPARATOR	':'
 #define CHAR_CR			'\r'
 #define CHAR_LF			'\n'
@@ -94,12 +94,12 @@ typedef enum {
 	CMD_INIT,
 	CMD_INIT_OK,
 	CMD_RX_START,
-	CMD_RX_PAYLOAD,
+	CMD_RX_FRAME,
 	CMD_RX_END,
 	CMD_RX_NL,
 	CMD_RX_CR,
-	CMD_DECODER,
-	CMD_ERROR,
+	CMD_FRAME_OK,
+	CMD_FRAME_NOK,
 	CMD_EXEC,
 	CMD_EXEC_ERROR,
 } StatusRx;
@@ -122,30 +122,29 @@ typedef struct{
 
 } Resource;
 
-void rxStartCMD (void);
-void receiveFrame (void);
-void rxNL(void);
-void rxCR(void);
-pCallBack getCallBack(void);
+static void rxStartCMD (void);
+static void receiveFrame (void);
+static void rxNL(void);
+static void rxCR(void);
+static pCallBack getCallBack(void);
 void initRxCMD(void);
-void sendResult(void);
-void acceptRxFrame();
-void setStatusRx(StatusRx sts);
+static void sendResult(void);
+static void acceptRxFrame();
+static void setStatusRx(StatusRx sts);
 bool getRxData(char* ch);
 bool putTxData(char data);
-void sendString(const char* str);
-void errorRxFrame(void);
-bool decoderFrame(void);
-void verifyCheckSum(void);
-void errorExec(void);
-unsigned int calcChecksum(const char *buff, size_t sz);
-void startTX(void);
-void sendFrame(DataFrame *frame);
-void setPayLoad(DataFrame* frame, char* str);
-void AppendHeader(DataFrame *frame);
-void AppendPayLoad(DataFrame *frame);
-void AppendCheckSum(DataFrame *frame);
-void buildFrame(DataFrame *frame);
+static void sendString(const char* str);
+static void errorRxFrame(void);
+static bool decoderFrame(void);
+static void verifyFrame(void);
+static void errorExec(void);
+static void startTX(void);
+static void sendFrame(DataFrame *frame);
+static void setPayLoad(DataFrame* frame, char* str);
+static void AppendHeader(DataFrame *frame);
+static void AppendPayLoad(DataFrame *frame);
+static void AppendCheckSum(DataFrame *frame);
+static void buildFrame(DataFrame *frame);
 
 /*interface*/
 void processProtocol(void);
