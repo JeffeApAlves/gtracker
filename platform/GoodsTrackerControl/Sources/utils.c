@@ -105,7 +105,7 @@ void str_append(char subject[], char insert[], int pos) {
 
 		if(buf!=NULL){
 
-			memset(buf,0,size);
+			memset((void*)buf,0,size);
 
 			strcpy(buf, insert);
 			strcpy(buf+strlen(insert), subject + pos);

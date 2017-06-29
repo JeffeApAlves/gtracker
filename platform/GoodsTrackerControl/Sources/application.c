@@ -8,37 +8,62 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#include "AppQueues.h"
 #include "XF1.h"
-#include "AD1.h"
-#include "MMA1.h"
 #include "lock.h"
-#include "gps.h"
+#include "NMEAFrame.h"
+#include "Level.h"
+#include "Accelerometer.h"
 #include "application.h"
 
-static TaskHandle_t xTaskToNotify = NULL;
+//static TaskHandle_t xTaskToNotify = NULL;
 
-volatile	bool AD_finished=FALSE;
-uint16_t	AD_Values[AD1_CHANNEL_COUNT];
 Info		dataTLM;
 int			_lock;
 char		msg2send[SIZE_MAX_PAYLOAD];
 
 void updateDataTLM(void){
 
-	dataTLM.Lat			= nmeaFrame.Lat;
-	dataTLM.Lng			= nmeaFrame.Lng;
-	dataTLM.Acc[AXIS_X]	= 1;
-	dataTLM.Acc[AXIS_Y]	= 2;
-	dataTLM.Acc[AXIS_Z]	= 3;
-	dataTLM.Inc[AXIS_X]	= 20;
-	dataTLM.Inc[AXIS_Y]	= 21;
-	dataTLM.Inc[AXIS_Z]	= 22;
-	dataTLM.Level			= AD_Values[2];
+	if(xQueueGPS!=0){
+
+		NMEAFrame* info;
+
+		if( xQueueReceive( xQueueGPS, &(info), ( TickType_t ) 1 ) ){
+
+			dataTLM.Lat				= info->Lat;
+			dataTLM.Lng				= info->Lng;
+			strcpy(dataTLM.Date,	info->Date);
+			strcpy(dataTLM.Time,	info->Time_UTC);
+		}
+	}
+
+	if(xQueueAcce!=0){
+
+		AcceInfo* info;
+
+		if( xQueueReceive( xQueueAcce, &(info), ( TickType_t ) 1 ) ){
+
+			dataTLM.Acc[AXIS_X]		= info->AcceXYZ[AXIS_X];
+			dataTLM.Acc[AXIS_Y]		= info->AcceXYZ[AXIS_Y];
+			dataTLM.Acc[AXIS_Z]		= info->AcceXYZ[AXIS_Z];
+			dataTLM.Inc[AXIS_X]		= info->IncXYZ[AXIS_X];
+			dataTLM.Inc[AXIS_Y]		= info->IncXYZ[AXIS_Y];
+			dataTLM.Inc[AXIS_Z]		= info->IncXYZ[AXIS_Z];
+		}
+	}
+
+	if(xQueueAD!=0){
+
+		ADInfo* info;
+
+		if( xQueueReceive( xQueueAD, &(info), ( TickType_t ) 1 ) ){
+
+			dataTLM.Level			= info->Level;
+		}
+	}
+
 	dataTLM.Speed			= 100;
 	dataTLM.Lock			= _lock;
-	strcpy(dataTLM.Date,	nmeaFrame.Date);
-	strcpy(dataTLM.Time,	nmeaFrame.Time_UTC);
-
 }
 //-------------------------------------------------------------------------
 
@@ -153,11 +178,6 @@ ResultExec onLock(DataFrame* frame){
 
 	if (frame) {
 
-		//Colocar no minimo horario que foi executado o cmd
-		strcpy(msg2send,"23/06/2017 19.52");
-
-		decoderPayLoad(frame->payload);
-
 		if(_lock){
 
 			lock();
@@ -167,41 +187,17 @@ ResultExec onLock(DataFrame* frame){
 			unLock();
 		}
 
+		//Colocar no minimo horario que foi executado o cmd
+		strcpy(msg2send,"23/06/2017 19.52");
+
+		decoderPayLoad(frame->payload);
+
 		doAnswer(msg2send);
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
 
 	return res;
-}
-//------------------------------------------------------------------------
-
-void read_Channels_AD(void){
-
-
-//	AD_finished = FALSE;
-
-	if(AD1_Measure(TRUE)==ERR_OK){
-
-//		while (!AD_finished) {}
-
-		if(AD1_GetValue16(AD_Values)==ERR_OK){
-
-		}
-	}
-}
-//------------------------------------------------------------------------
-
-void read_accel(void) {
-
-	MMA1_GetRaw8XYZ(dataTLM.Inc);
-}
-//------------------------------------------------------------------------
-
-void initAccel(void){
-
-	MMA1_Init();
-	MMA1_Enable();
 }
 //------------------------------------------------------------------------
 
@@ -241,8 +237,8 @@ void decoderPayLoad(char* payload){
 
 void initInfo(Info* info){
 
-	memset(info,0,sizeof(Info));
-	memset(msg2send,0,sizeof(char)*SIZE_MAX_PAYLOAD);
+	memset((void*)info,0,sizeof(Info));
+	memset((void*)msg2send,0,sizeof(char)*SIZE_MAX_PAYLOAD);
 }
 //------------------------------------------------------------------------
 

@@ -10,8 +10,6 @@
 
 #include "protocol.h"
 
-enum {AXIS_X=0,AXIS_Y=1,AXIS_Z=2};
-
 typedef enum
 	{LED_GREEN	=0,
 	LED_RED		=1,
@@ -39,14 +37,10 @@ ResultExec onTelemetry(DataFrame* frame);
 ResultExec onLock(DataFrame* frame);
 
 void updateDataTLM(void);
-void read_accel(void);
 void read_Channels_AD(void);
 void initCallBacks(void);
-void initAccel(void);
 void Infor2String(Info* info,char* str_out);
 void initInfo(Info* info);
 void decoderPayLoad(char* payload);
-
-extern volatile bool AD_finished;
 
 #endif /* SOURCES_APPLICATION_H_ */

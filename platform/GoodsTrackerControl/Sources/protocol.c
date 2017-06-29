@@ -386,11 +386,11 @@ static void AppendHeader(DataFrame *frame) {
 
 	XF1_xsprintf(frame->frame,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
 				frame->address, CHAR_SEPARATOR,
-					frame->dest, CHAR_SEPARATOR,
-						frame->count, CHAR_SEPARATOR,
-							frame->operacao, CHAR_SEPARATOR,
-								frame->resource, CHAR_SEPARATOR,
-									frame->sizePayLoad, CHAR_SEPARATOR);
+				frame->dest, CHAR_SEPARATOR,
+				frame->count, CHAR_SEPARATOR,
+				frame->operacao, CHAR_SEPARATOR,
+				frame->resource, CHAR_SEPARATOR,
+				frame->sizePayLoad, CHAR_SEPARATOR);
 
 	frame->sizeHeader	= strlen(frame->frame);
 }
@@ -476,10 +476,14 @@ void doAnswer(char *msg) {
  */
 static void startTX(void){
 
+	vPortEnterCritical();
+
 	if(hasTxData() && AS1_GetCharsInTxBuf()==0){
 
 		AS1_OnTxChar();
 	}
+
+	vPortExitCritical();
 }
 //------------------------------------------------------------------------
 

@@ -20,6 +20,7 @@
 /* End <includes> initialization, DO NOT MODIFY LINES ABOVE */
 
 #include "application.h"
+#include "AppQueues.h"
 #include "gps.h"
 
 const TickType_t xMainDelay 			= 50 / portTICK_PERIOD_MS;
@@ -35,14 +36,16 @@ const TickType_t xGPSDelay				= 5 / portTICK_PERIOD_MS;
  */
 static portTASK_FUNCTION(main_task, pvParameters) {
 
-  for(;;) {
+	initQueues();
 
-	  updateDataTLM();
+	for(;;) {
 
-	  vTaskDelay(xMainDelay);
-  }
+		updateDataTLM();
 
-  vTaskDelete(main_task);
+		vTaskDelay(xMainDelay);
+	}
+
+	vTaskDelete(main_task);
 }
 
 

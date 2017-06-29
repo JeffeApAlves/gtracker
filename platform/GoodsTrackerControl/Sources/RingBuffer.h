@@ -24,10 +24,10 @@ typedef struct{
 
 bool getData(RingBuffer* buffer,char* ch);
 bool putData(RingBuffer* buffer,char ch);
-bool hasData(RingBuffer* buffer);
-bool isFull(RingBuffer* buffer);
 short getCount(RingBuffer* buffer);
 
-#define clearBuffer(buf)	memset(buf,0,sizeof(RingBuffer))
+#define clearBuffer(buf)	memset((void*)buf,0,sizeof(RingBuffer))
+#define hasData(buf)		(getCount(buf)>0)
+#define isFull(buf)			(getCount(buf)>= BUFFER_SIZE)
 
 #endif /* SOURCES_RINGBUFFER_H_ */
