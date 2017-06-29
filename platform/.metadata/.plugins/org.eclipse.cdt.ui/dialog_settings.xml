@@ -8,6 +8,12 @@
 		<item value="227191" key="searchFlags"/>
 		<item value="false" key="caseSensitive"/>
 		<list key="previousPatterns">
+			<item value="memset"/>
+			<item value="xQueueSend"/>
+			<item value="vPortEnterCritical"/>
+			<item value="EnterCritical"/>
+			<item value="Critical"/>
+			<item value="hasTxData"/>
 			<item value="short"/>
 		</list>
 	</section>

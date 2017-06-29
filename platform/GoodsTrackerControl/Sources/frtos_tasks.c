@@ -1,15 +1,14 @@
-
 /*!
-** @}
-*/
+ ** @}
+ */
 /*
-** ###################################################################
-**
-**     This file was created by Processor Expert 10.5 [05.21]
-**     for the Freescale Kinetis series of microcontrollers.
-**
-** ###################################################################
-*/
+ ** ###################################################################
+ **
+ **     This file was created by Processor Expert 10.5 [05.21]
+ **     for the Freescale Kinetis series of microcontrollers.
+ **
+ ** ###################################################################
+ */
 
 /* Begin of <includes> initialization, DO NOT MODIFY LINES BELOW */
 
@@ -21,13 +20,18 @@
 
 #include "application.h"
 #include "AppQueues.h"
+#include "ihm.h"
+#include "protocol.h"
+#include "Level.h"
+#include "accelerometer.h"
 #include "gps.h"
 
-const TickType_t xMainDelay 			= 50 / portTICK_PERIOD_MS;
-const TickType_t xCommunicationDelay	= 5 / portTICK_PERIOD_MS;
-const TickType_t xDataDelay				= 10 / portTICK_PERIOD_MS;
-const TickType_t xIHMDelay				= 25 / portTICK_PERIOD_MS;
-const TickType_t xGPSDelay				= 5 / portTICK_PERIOD_MS;
+const TickType_t xMainDelay = 50 / portTICK_PERIOD_MS;
+const TickType_t xCommunicationDelay = 5 / portTICK_PERIOD_MS;
+const TickType_t xDataDelay = 10 / portTICK_PERIOD_MS;
+const TickType_t xIHMDelay = 25 / portTICK_PERIOD_MS;
+const TickType_t xGPSDelay = 5 / portTICK_PERIOD_MS;
+const TickType_t xAccelDelay = 10 / portTICK_PERIOD_MS;
 
 /*
  *
@@ -38,16 +42,19 @@ static portTASK_FUNCTION(main_task, pvParameters) {
 
 	initQueues();
 
-	for(;;) {
+	initInfo();
+
+	for (;;) {
+
+		ulTaskNotifyTake( pdTRUE, portMAX_DELAY );
 
 		updateDataTLM();
 
-		vTaskDelay(xMainDelay);
+//		vTaskDelay(xMainDelay);
 	}
 
 	vTaskDelete(main_task);
 }
-
 
 /*
  * Processamento do Protocolo
@@ -55,34 +62,32 @@ static portTASK_FUNCTION(main_task, pvParameters) {
  */
 static portTASK_FUNCTION(communication_task, pvParameters) {
 
-  initCallBacks();
+	initCallBacks();
 
-  for(;;) {
+	for (;;) {
 
 		processProtocol();
 
 		vTaskDelay(xCommunicationDelay);
-  }
+	}
 
-  vTaskDelete(communication_task);
+	vTaskDelete(communication_task);
 }
 
 /*
  *
- * Task de aquisicao do acelerometro e canais AD
+ * Task de leitura dos canais do AD
  */
 static portTASK_FUNCTION(data_task, pvParameters) {
 
-  initAccel();
+	for (;;) {
 
-  for(;;) {
+		read_Channels_AD();
 
-	  read_accel();
-	  read_Channels_AD();
-	  vTaskDelay(xDataDelay);
-  }
+		vTaskDelay(xDataDelay);
+	}
 
-  vTaskDelete(data_task);
+	vTaskDelete(data_task);
 }
 
 /**
@@ -94,9 +99,10 @@ static portTASK_FUNCTION(ihm_task, pvParameters) {
 
 	ihm_initialize();
 
-	for(;;) {
+	for (;;) {
 
 		ihm_loop();
+
 		vTaskDelay(xIHMDelay);
 	}
 
@@ -113,76 +119,115 @@ static portTASK_FUNCTION(gps_task, pvParameters) {
 
 	NMEA_init();
 
-	for(;;) {
+	for (;;) {
 
 		NMEA_process();
+
 		vTaskDelay(xGPSDelay);
 	}
 
 	vTaskDelete(gps_task);
 }
 
-void CreateTasks(void) {
-  if (FRTOS1_xTaskCreate(
-     main_task,  /* pointer to the task */
-      "mains_task", /* task name for kernel awareness debugging */
-      configMINIMAL_STACK_SIZE + 0, /* task stack size */
-      (void*)NULL, /* optional task startup argument */
-      tskIDLE_PRIORITY + 0,  /* initial priority */
-      (xTaskHandle*)NULL /* optional task handle to create */
-    ) != pdPASS) {
-      /*lint -e527 */
-      for(;;){}; /* error! probably out of memory */
-      /*lint +e527 */
-  }
-  if (FRTOS1_xTaskCreate(
-     communication_task,  /* pointer to the task */
-      "communication_task", /* task name for kernel awareness debugging */
-      configMINIMAL_STACK_SIZE + 0, /* task stack size */
-      (void*)NULL, /* optional task startup argument */
-      tskIDLE_PRIORITY + 0,  /* initial priority */
-      (xTaskHandle*)NULL /* optional task handle to create */
-    ) != pdPASS) {
-      /*lint -e527 */
-      for(;;){}; /* error! probably out of memory */
-      /*lint +e527 */
-  }
-  if (FRTOS1_xTaskCreate(
-     data_task,  /* pointer to the task */
-      "data_task", /* task name for kernel awareness debugging */
-      configMINIMAL_STACK_SIZE + 0, /* task stack size */
-      (void*)NULL, /* optional task startup argument */
-      tskIDLE_PRIORITY + 0,  /* initial priority */
-      (xTaskHandle*)NULL /* optional task handle to create */
-    ) != pdPASS) {
-      /*lint -e527 */
-      for(;;){}; /* error! probably out of memory */
-      /*lint +e527 */
-  }
-  if (FRTOS1_xTaskCreate(
-     ihm_task,  /* pointer to the task */
-      "ihm_task", /* task name for kernel awareness debugging */
-      configMINIMAL_STACK_SIZE + 0, /* task stack size */
-      (void*)NULL, /* optional task startup argument */
-      tskIDLE_PRIORITY + 0,  /* initial priority */
-      (xTaskHandle*)NULL /* optional task handle to create */
-    ) != pdPASS) {
-      /*lint -e527 */
-      for(;;){}; /* error! probably out of memory */
-      /*lint +e527 */
-  }
+/**
+ *
+ * Task leitura do acelerometro
+ *
+ */
+static portTASK_FUNCTION(accel_task, pvParameters) {
 
-  if (FRTOS1_xTaskCreate(
-     gps_task,  /* pointer to the task */
-      "gps_task", /* task name for kernel awareness debugging */
-      configMINIMAL_STACK_SIZE + 0, /* task stack size */
-      (void*)NULL, /* optional task startup argument */
-      tskIDLE_PRIORITY + 0,  /* initial priority */
-      (xTaskHandle*)NULL /* optional task handle to create */
-    ) != pdPASS) {
-      /*lint -e527 */
-      for(;;){}; /* error! probably out of memory */
-      /*lint +e527 */
-  }
+	initAccel();
+
+	for (;;) {
+
+		read_accel();
+
+		vTaskDelay(xAccelDelay);
+	}
+
+	vTaskDelete(accel_task);
 }
 
+void CreateTasks(void) {
+
+	if (FRTOS1_xTaskCreate(
+			main_task, /* pointer to the task */
+			"mains_task", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			(void*)NULL, /* optional task startup argument */
+			tskIDLE_PRIORITY + 0, /* initial priority */
+			&xHandleMainTask /* optional task handle to create */
+	) != pdPASS) {
+		/*lint -e527 */
+		for (;;) {
+		}; /* error! probably out of memory */
+		/*lint +e527 */
+	}
+	if (FRTOS1_xTaskCreate(
+			communication_task, /* pointer to the task */
+			"communication_task", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			(void*)NULL, /* optional task startup argument */
+			tskIDLE_PRIORITY + 0, /* initial priority */
+			&xHandleCommunicationTask /* optional task handle to create */
+	) != pdPASS) {
+		/*lint -e527 */
+		for (;;) {
+		}; /* error! probably out of memory */
+		/*lint +e527 */
+	}
+	if (FRTOS1_xTaskCreate(
+			data_task, /* pointer to the task */
+			"data_task", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			(void*)NULL, /* optional task startup argument */
+			tskIDLE_PRIORITY + 0, /* initial priority */
+			&xHandleDataTask /* optional task handle to create */
+	) != pdPASS) {
+		/*lint -e527 */
+		for (;;) {
+		}; /* error! probably out of memory */
+		/*lint +e527 */
+	}
+	if (FRTOS1_xTaskCreate(
+			ihm_task, /* pointer to the task */
+			"ihm_task", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			(void*)NULL, /* optional task startup argument */
+			tskIDLE_PRIORITY + 0, /* initial priority */
+			&xHandleIHMTask /* optional task handle to create */
+	) != pdPASS) {
+		/*lint -e527 */
+		for (;;) {
+		}; /* error! probably out of memory */
+		/*lint +e527 */
+	}
+
+	if (FRTOS1_xTaskCreate(
+			gps_task, /* pointer to the task */
+			"gps_task", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			(void*)NULL, /* optional task startup argument */
+			tskIDLE_PRIORITY + 0, /* initial priority */
+			&xHandleGPSTask /* optional task handle to create */
+	) != pdPASS) {
+		/*lint -e527 */
+		for (;;) {
+		}; /* error! probably out of memory */
+		/*lint +e527 */
+	}
+
+	if (FRTOS1_xTaskCreate(
+			accel_task, /* pointer to the task */
+			"accel_task", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			(void*)NULL, /* optional task startup argument */
+			tskIDLE_PRIORITY + 0, /* initial priority */
+			&xHandleAccelTask /* optional task handle to create */
+	) != pdPASS) {
+		/*lint -e527 */
+		for (;;) {
+		}; /* error! probably out of memory */
+		/*lint +e527 */
+	}
+}

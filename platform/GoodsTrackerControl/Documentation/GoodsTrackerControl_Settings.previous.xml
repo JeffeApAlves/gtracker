@@ -453,27 +453,27 @@ PE_DEBUGHALT();
       <FreeRTOS v="FRTOS1" />
       <list name="Number of tasks" v="5">
         <group name="FreeRTOS task">
-          <Task_name v="main" />
+          <Task_name v="app_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
         <group name="FreeRTOS task">
-          <Task_name v="communication" />
+          <Task_name v="communication_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
         <group name="FreeRTOS task">
-          <Task_name v="data" />
+          <Task_name v="data_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
         <group name="FreeRTOS task">
-          <Task_name v="ihm" />
+          <Task_name v="ihm_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
         <group name="FreeRTOS task">
-          <Task_name v="gps" />
+          <Task_name v="gps_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>

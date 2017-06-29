@@ -451,7 +451,7 @@ PE_DEBUGHALT();
     <Properties>
       <Component_Name v="TSK1" />
       <FreeRTOS v="FRTOS1" />
-      <list name="Number of tasks" v="5">
+      <list name="Number of tasks" v="6">
         <group name="FreeRTOS task">
           <Task_name v="app_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
@@ -474,6 +474,11 @@ PE_DEBUGHALT();
         </group>
         <group name="FreeRTOS task">
           <Task_name v="gps_task" />
+          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
+          <Initial_Priority v="0" />
+        </group>
+        <group name="FreeRTOS task">
+          <Task_name v="accel_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>

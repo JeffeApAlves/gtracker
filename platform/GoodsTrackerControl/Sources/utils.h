@@ -8,7 +8,7 @@
 #ifndef SOURCES_UTILS_H_
 #define SOURCES_UTILS_H_
 
-#include "stdlib.h"
+#include <string.h>
 
 typedef enum {
 
@@ -52,7 +52,6 @@ void AsHex(int* out,List *list,int index);
 void AsFloat(float* out,List *list,int index);
 void AsChar(char* out,List *list,int index);
 
-unsigned int calcChecksum(const char *buff, size_t sz);
 void Convert(void* out,char* info,TYPE_INFO type);
 
 #endif /* SOURCES_UTILS_H_ */

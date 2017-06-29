@@ -108,7 +108,7 @@ typedef enum {
 /**
  * Ponteiro para as call backs
  */
-typedef ResultExec(*pCallBack)(DataFrame*);
+typedef ResultExec(*pCallBack)(DataCom*);
 
 
 /**
@@ -139,12 +139,12 @@ static bool decoderFrame(void);
 static void verifyFrame(void);
 static void errorExec(void);
 static void startTX(void);
-static void sendFrame(DataFrame *frame);
-static void setPayLoad(DataFrame* frame, char* str);
-static void AppendHeader(DataFrame *frame);
-static void AppendPayLoad(DataFrame *frame);
-static void AppendCheckSum(DataFrame *frame);
-static void buildFrame(DataFrame *frame);
+static void sendFrame(DataCom *frame);
+static void setPayLoad(DataCom* frame, char* str);
+static void AppendHeader(DataCom *frame);
+static void AppendPayLoad(DataCom *frame);
+static void AppendCheckSum(DataCom *frame);
+static void buildFrame(DataCom *frame);
 
 /*interface*/
 void processProtocol(void);
@@ -153,7 +153,5 @@ bool putRxData(char ch);
 bool getTxData(char* ch);
 bool hasTxData(void);
 void doAnswer(char *msg);
-
-extern unsigned int timeTx,timeRx;
 
 #endif /* SOURCES_PROTOCOL_H_ */

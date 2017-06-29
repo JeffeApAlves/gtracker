@@ -9,6 +9,7 @@
 #define SOURCES_APPLICATION_H_
 
 #include "protocol.h"
+#include "Array.h"
 
 typedef enum
 	{LED_GREEN	=0,
@@ -28,19 +29,25 @@ typedef struct{
 		char	Date[7];
 	} Info;
 
-ResultExec onAnalog(DataFrame* cmd);
-ResultExec onLED(DataFrame* cmd);
-ResultExec onPWM(DataFrame* cmd);
-ResultExec onTouch(DataFrame* cmd);
-ResultExec onAccel(DataFrame* cmd);
-ResultExec onTelemetry(DataFrame* frame);
-ResultExec onLock(DataFrame* frame);
+ResultExec onAnalog(DataCom* cmd);
+ResultExec onLED(DataCom* cmd);
+ResultExec onPWM(DataCom* cmd);
+ResultExec onTouch(DataCom* cmd);
+ResultExec onAccel(DataCom* cmd);
+ResultExec onTelemetry(DataCom* frame);
+ResultExec onLock(DataCom* frame);
 
 void updateDataTLM(void);
 void read_Channels_AD(void);
 void initCallBacks(void);
 void Infor2String(Info* info,char* str_out);
-void initInfo(Info* info);
-void decoderPayLoad(char* payload);
+void initInfo(void);
+void decoderPayLoad(ArrayPayLoad* payload);
+
+void updateDataLevel(void);
+void updateDataAcce(void);
+void updateDataGPS(void);
+
+#define clearInfo(f) memset((void*)f,0,sizeof(Info));
 
 #endif /* SOURCES_APPLICATION_H_ */

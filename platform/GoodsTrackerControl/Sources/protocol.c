@@ -2,6 +2,7 @@
 #include <stdbool.h>
 
 #include "XF1.h"
+#include "Array.h"
 #include "RingBuffer.h"
 #include "protocol.h"
 
@@ -9,12 +10,10 @@ const char* OPERATION_AN = "AN";
 const char* OPERATION_RD = "RD";
 const char* OPERATION_WR = "WR";
 
-unsigned int timeTx = TIME_TX;
-unsigned int timeRx = TIME_RX;
-
 StatusRx	statusRx = CMD_INIT;
 RingBuffer	bufferRx,bufferTx;
-DataFrame	dataFrame;
+DataCom		dataFrame;
+ArrayFrame	frameCom;
 
 Resource	ListCmd[]	= {	{.resourceID = CMD_LED,			.resource = "LED\0",	.cb = NULL},
 							{.resourceID = CMD_ANALOG,		.resource = "ANL\0",	.cb = NULL},
@@ -46,8 +45,8 @@ void processProtocol(void) {
 		case CMD_RX_CR:			rxLF();					break;
 		case CMD_RX_LF:			verifyFrame();			break;
 		case CMD_FRAME_OK:		acceptRxFrame();		break;
-		case CMD_EXEC:			sendResult();			break;
 		case CMD_FRAME_NOK:		errorRxFrame();			break;
+		case CMD_EXEC:			sendResult();			break;
 		case CMD_EXEC_ERROR:	errorExec();			break;
 	}
 }
@@ -62,6 +61,7 @@ static void rxStartCMD (void) {
 		if(ch==CHAR_START){
 
 			clearData(&dataFrame);
+			clearArrayFrame(&frameCom);
 			setStatusRx(CMD_RX_START);
 		}
 	}
@@ -74,14 +74,14 @@ static void receiveFrame (void) {
 
 	if(getRxData(&ch)) {
 
-		if(ch==CHAR_START || dataFrame.sizeFrame>=SIZE_MAX_FRAME) {
+		if(ch==CHAR_START || frameCom.Count>=SIZE_FRAME) {
 
 			setStatusRx(CMD_FRAME_NOK);
 		}
 		else
 		  if(ch==CHAR_END) {
 
-			 if(dataFrame.sizeFrame>=SIZE_MIN_FRAME) {
+			 if(frameCom.Count>=SIZE_MIN_FRAME) {
 
 				setStatusRx(CMD_RX_END);
 			 }
@@ -92,9 +92,8 @@ static void receiveFrame (void) {
 		}
 		else {
 
-		  dataFrame.frame[dataFrame.sizeFrame++] = ch;
-		  dataFrame.sizeFrame%=SIZE_MAX_FRAME;
-		  setStatusRx(CMD_RX_FRAME);
+			putDataArray(&frameCom,ch);
+			setStatusRx(CMD_RX_FRAME);
 		}
 	}
 }
@@ -155,7 +154,7 @@ static bool decoderFrame(void) {
 
 	List	list;
 
-	str_split(&list, dataFrame.frame, CHAR_SEPARATOR);
+	str_split(&list, frameCom.Data, CHAR_SEPARATOR);
 
 	if(list.itens!=NULL) {
 
@@ -164,7 +163,7 @@ static bool decoderFrame(void) {
 
 			//-2 para desconsiderar o checksum que esta no frame recebido
 			unsigned int checksum_rx;
-			unsigned int checksum_calc = calcChecksum(dataFrame.frame, dataFrame.sizeFrame - LEN_CHECKSUM);
+			unsigned int checksum_calc = calcChecksum(frameCom.Data, frameCom.Count - LEN_CHECKSUM);
 			checksum_rx = ~checksum_calc;
 
 			AsHex(&checksum_rx,&list,list.count-1);
@@ -173,11 +172,11 @@ static bool decoderFrame(void) {
 
 				AsInteger(&dataFrame.address,		&list,0);
 				AsInteger(&dataFrame.dest,			&list,1);
-				AsInteger(&dataFrame.count,			&list,2);
+				AsInteger(&dataFrame.countFrame,	&list,2);
 				AsString(&dataFrame.operacao,		&list,3);
 				AsString(&dataFrame.resource,		&list,4);
-				AsInteger(&dataFrame.sizePayLoad,	&list,5);
-				AsString(&dataFrame.payload,		&list,6);
+				AsInteger(&dataFrame.PayLoad.Count,	&list,5);
+				AsString(&dataFrame.PayLoad.Data,	&list,6);
 
 				ret = true;
 			}
@@ -252,13 +251,13 @@ static void sendResult(void){
  * Envia o frame
  *
  */
-static void sendFrame(DataFrame* frame){
+static void sendFrame(DataCom* frame){
 
 	// Envia caracter de inicio
 	putTxData(CHAR_START);
 
 	// Emvia o frame
-	sendString(frame->frame);
+	sendString(frameCom.Data);
 
 	// Envia o caracter de fim
 	putTxData(CHAR_END);
@@ -369,7 +368,7 @@ inline bool hasTxData(void){
  * Constroi o frame para envio
  *
  */
-static void buildFrame(DataFrame *frame) {
+static void buildFrame(DataCom *frame) {
 
 	AppendHeader(frame);
 	AppendPayLoad(frame);
@@ -382,17 +381,15 @@ static void buildFrame(DataFrame *frame) {
  * Adiciona o cabecalho no frame
  *
  */
-static void AppendHeader(DataFrame *frame) {
+static void AppendHeader(DataCom *frame) {
 
-	XF1_xsprintf(frame->frame,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
-				frame->address, CHAR_SEPARATOR,
-				frame->dest, CHAR_SEPARATOR,
-				frame->count, CHAR_SEPARATOR,
-				frame->operacao, CHAR_SEPARATOR,
-				frame->resource, CHAR_SEPARATOR,
-				frame->sizePayLoad, CHAR_SEPARATOR);
-
-	frame->sizeHeader	= strlen(frame->frame);
+	XF1_xsprintf(frameCom.Data,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
+				frame->address, 		CHAR_SEPARATOR,
+				frame->dest, 			CHAR_SEPARATOR,
+				frame->countFrame,		CHAR_SEPARATOR,
+				frame->operacao, 		CHAR_SEPARATOR,
+				frame->resource, 		CHAR_SEPARATOR,
+				frame->PayLoad.Count,	CHAR_SEPARATOR);
 }
 //------------------------------------------------------------------------
 
@@ -401,9 +398,9 @@ static void AppendHeader(DataFrame *frame) {
  * Adiciona o Payload no Frame
  *
  */
-inline static void AppendPayLoad(DataFrame *frame) {
+inline static void AppendPayLoad(DataCom* frame) {
 
-	strncat(frame->frame, frame->payload,frame->sizePayLoad);
+	strncat(frameCom.Data, frame->PayLoad.Data,frame->PayLoad.Count);
 }
 //------------------------------------------------------------------------
 
@@ -412,15 +409,15 @@ inline static void AppendPayLoad(DataFrame *frame) {
  * Adiciona o CheckSum no Frame
  *
  */
-static void AppendCheckSum(DataFrame *frame) {
+static void AppendCheckSum(DataCom* frame) {
 
 	char	separator[] = {CHAR_SEPARATOR,CHAR_STR_END};
 	char	checksum[LEN_CHECKSUM+1];
 
-	strcat(frame->frame,separator);
-	frame->sizeFrame = strlen(frame->frame);
-	XF1_xsprintf(checksum, "%02X", calcChecksum (frame->frame,frame->sizeFrame));
-	strcat(frame->frame, checksum);
+	strcat(frameCom.Data,separator);
+	frameCom.Count = strlen(frameCom.Data);
+	XF1_xsprintf(checksum, "%02X", calcChecksum (frameCom.Data,frameCom.Count));
+	strcat(frameCom.Data, checksum);
 }
 //------------------------------------------------------------------------
 
@@ -429,20 +426,20 @@ static void AppendCheckSum(DataFrame *frame) {
  * Set PayLoad
  *
  */
-static void setPayLoad(DataFrame* frame, char* str) {
+static void setPayLoad(DataCom* frame, char* str) {
 
 	size_t size = strlen(str);
 
-	if(frame->sizePayLoad <= SIZE_MAX_PAYLOAD){
+	if(frame->PayLoad.Count <= SIZE_PAYLOAD){
 
-		strcpy(frame->payload, str);
+		strcpy(frame->PayLoad.Data, str);
 
 	}else{
 
 		//TODO Erro: mensagem maior que o array do payload
 	}
 
-	frame->sizePayLoad	= strlen(frame->payload);
+	frame->PayLoad.Count	= strlen(frame->PayLoad.Data);
 }
 //------------------------------------------------------------------------
 
@@ -495,6 +492,7 @@ static void startTX(void){
 void initRxCMD(void) {
 
 	clearData(&dataFrame);
+	clearArrayFrame(&frameCom);
 	clearBuffer(&bufferRx);
 	clearBuffer(&bufferTx);
 	setStatusRx(CMD_INIT_OK);

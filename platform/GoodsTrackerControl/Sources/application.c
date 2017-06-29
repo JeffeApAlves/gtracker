@@ -16,66 +16,82 @@
 #include "Accelerometer.h"
 #include "application.h"
 
-//static TaskHandle_t xTaskToNotify = NULL;
-
-Info		dataTLM;
-int			_lock;
-char		msg2send[SIZE_MAX_PAYLOAD];
+Info			dataTLM;
+int				_lock;
+ArrayPayLoad	msg2send;
 
 void updateDataTLM(void){
 
-	if(xQueueGPS!=0){
+	updateDataGPS();
 
-		NMEAFrame* info;
+	updateDataAcce();
 
-		if( xQueueReceive( xQueueGPS, &(info), ( TickType_t ) 1 ) ){
+	updateDataLevel();
 
-			dataTLM.Lat				= info->Lat;
-			dataTLM.Lng				= info->Lng;
-			strcpy(dataTLM.Date,	info->Date);
-			strcpy(dataTLM.Time,	info->Time_UTC);
+	dataTLM.Speed	= 100;
+	dataTLM.Lock	= _lock;
+}
+//-------------------------------------------------------------------------
+
+void updateDataGPS(void) {
+
+	if (xQueueGPS != 0) {
+
+		DataNMEA* data;
+
+		if (xQueueReceive(xQueueGPS, &(data), (TickType_t ) 1)) {
+
+			dataTLM.Lat = data->Lat;
+			dataTLM.Lng = data->Lng;
+			strcpy(dataTLM.Date, data->Date);
+			strcpy(dataTLM.Time, data->Time_UTC);
 		}
 	}
+}
+//-------------------------------------------------------------------------
 
-	if(xQueueAcce!=0){
+void updateDataAcce(void) {
 
-		AcceInfo* info;
+	if (xQueueAcce != 0) {
 
-		if( xQueueReceive( xQueueAcce, &(info), ( TickType_t ) 1 ) ){
+		DataAcce* data;
 
-			dataTLM.Acc[AXIS_X]		= info->AcceXYZ[AXIS_X];
-			dataTLM.Acc[AXIS_Y]		= info->AcceXYZ[AXIS_Y];
-			dataTLM.Acc[AXIS_Z]		= info->AcceXYZ[AXIS_Z];
-			dataTLM.Inc[AXIS_X]		= info->IncXYZ[AXIS_X];
-			dataTLM.Inc[AXIS_Y]		= info->IncXYZ[AXIS_Y];
-			dataTLM.Inc[AXIS_Z]		= info->IncXYZ[AXIS_Z];
+		if (xQueueReceive(xQueueAcce, &(data), (TickType_t ) 1)) {
+
+			dataTLM.Acc[AXIS_X] = data->AcceXYZ[AXIS_X];
+			dataTLM.Acc[AXIS_Y] = data->AcceXYZ[AXIS_Y];
+			dataTLM.Acc[AXIS_Z] = data->AcceXYZ[AXIS_Z];
+			dataTLM.Inc[AXIS_X] = data->IncXYZ[AXIS_X];
+			dataTLM.Inc[AXIS_Y] = data->IncXYZ[AXIS_Y];
+			dataTLM.Inc[AXIS_Z] = data->IncXYZ[AXIS_Z];
 		}
 	}
+}
+//-------------------------------------------------------------------------
 
-	if(xQueueAD!=0){
+void updateDataLevel(void) {
 
-		ADInfo* info;
+	if (xQueueAD != 0) {
 
-		if( xQueueReceive( xQueueAD, &(info), ( TickType_t ) 1 ) ){
+		DataAD* data;
 
-			dataTLM.Level			= info->Level;
+		if (xQueueReceive(xQueueAD, &(data), (TickType_t ) 1)) {
+
+			dataTLM.Level = data->Level;
 		}
 	}
-
-	dataTLM.Speed			= 100;
-	dataTLM.Lock			= _lock;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onLED(DataFrame* frame){
+ResultExec onLED(DataCom* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		strcpy(msg2send,"23/06/2017 19.52");
+		strcpy(msg2send.Data,"23/06/2017 19.52");
 
-		doAnswer(msg2send);
+		doAnswer(msg2send.Data);
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -84,33 +100,15 @@ ResultExec onLED(DataFrame* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAnalog(DataFrame* frame){
+ResultExec onAnalog(DataCom* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		strcpy(msg2send,"23/06/2017 19.52");
+		strcpy(msg2send.Data,"23/06/2017 19.52");
 
-		doAnswer(msg2send);
-
-		res = CMD_RESULT_EXEC_SUCCESS;
-	}
-
-
-	return res;
-}
-//-------------------------------------------------------------------------
-
-ResultExec onAccel(DataFrame* frame){
-
-	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
-
-	if (frame) {
-
-		strcpy(msg2send,"23/06/2017 19.52");
-
-		doAnswer(msg2send);
+		doAnswer(msg2send.Data);
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -120,15 +118,33 @@ ResultExec onAccel(DataFrame* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onTouch(DataFrame* frame){
+ResultExec onAccel(DataCom* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		strcpy(msg2send,"23/06/2017 19.52");
+		strcpy(msg2send.Data,"23/06/2017 19.52");
 
-		doAnswer(msg2send);
+		doAnswer(msg2send.Data);
+
+		res = CMD_RESULT_EXEC_SUCCESS;
+	}
+
+
+	return res;
+}
+//-------------------------------------------------------------------------
+
+ResultExec onTouch(DataCom* frame){
+
+	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+
+	if (frame) {
+
+		strcpy(msg2send.Data,"23/06/2017 19.52");
+
+		doAnswer(msg2send.Data);
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -137,15 +153,15 @@ ResultExec onTouch(DataFrame* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onPWM(DataFrame* frame){
+ResultExec onPWM(DataCom* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		strcpy(msg2send,"23/06/2017 19.52");
+		strcpy(msg2send.Data,"23/06/2017 19.52");
 
-		doAnswer(msg2send);
+		doAnswer(msg2send.Data);
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -155,15 +171,15 @@ ResultExec onPWM(DataFrame* frame){
 }
 //------------------------------------------------------------------------
 
-ResultExec onTelemetry(DataFrame* frame){
+ResultExec onTelemetry(DataCom* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		Infor2String(&dataTLM,msg2send);
+		Infor2String(&dataTLM,msg2send.Data);
 
-		doAnswer(msg2send);
+		doAnswer(msg2send.Data);
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -172,7 +188,7 @@ ResultExec onTelemetry(DataFrame* frame){
 }
 //------------------------------------------------------------------------
 
-ResultExec onLock(DataFrame* frame){
+ResultExec onLock(DataCom* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
@@ -188,11 +204,11 @@ ResultExec onLock(DataFrame* frame){
 		}
 
 		//Colocar no minimo horario que foi executado o cmd
-		strcpy(msg2send,"23/06/2017 19.52");
+		strcpy(msg2send.Data,"23/06/2017 19.52");
 
-		decoderPayLoad(frame->payload);
+		decoderPayLoad(&frame->PayLoad);
 
-		doAnswer(msg2send);
+		doAnswer(msg2send.Data);
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -223,11 +239,11 @@ void Infor2String(Info* info,char* str_out){
 }
 //------------------------------------------------------------------------
 
-void decoderPayLoad(char* payload){
+void decoderPayLoad(ArrayPayLoad* payload){
 
 	List	list;
 
-	str_split(&list, payload, CHAR_SEPARATOR);
+	str_split(&list, payload->Data, CHAR_SEPARATOR);
 
 	AsInteger(&_lock,		&list,0);
 
@@ -235,10 +251,10 @@ void decoderPayLoad(char* payload){
 }
 //------------------------------------------------------------------------
 
-void initInfo(Info* info){
+void initInfo(void){
 
-	memset((void*)info,0,sizeof(Info));
-	memset((void*)msg2send,0,sizeof(char)*SIZE_MAX_PAYLOAD);
+	clearInfo(&dataTLM);
+	clearArrayPayLoad(&msg2send);
 }
 //------------------------------------------------------------------------
 

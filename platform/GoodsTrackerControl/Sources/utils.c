@@ -7,6 +7,7 @@
 
 #include <string.h>
 #include <assert.h>
+#include <stdlib.h>
 #include "utils.h"
 
 void str_split(List* result, char* str, const char a_delim) {
@@ -174,27 +175,6 @@ void AsChar(char* out,List *list,int index){
 
 		*out = list->itens[index][0];
 	}
-}
-//------------------------------------------------------------------------
-
-/**
- *
- * Calcula o checkSum da string buff
- *
- */
-unsigned int calcChecksum(const char *buff, size_t sz) {
-
-	int i;
-	unsigned char chk	= 0;
-
-	if (buff) {
-
-		for (i = 0; i < sz; i++){
-			chk ^= buff[i];
-		}
-	}
-
-	return chk;
 }
 //------------------------------------------------------------------------
 
