@@ -26,7 +26,8 @@ typedef struct{
 		int		Speed ;
 		int		Level;
 		int		Lock;
-		char	Date[20];
+		char	Time[11];
+		char	Date[7];
 	} Info;
 
 ResultExec onAnalog(DataFrame* cmd);

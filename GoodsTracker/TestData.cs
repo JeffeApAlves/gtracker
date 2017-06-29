@@ -46,7 +46,8 @@ namespace GoodsTracker
                 b.setRotation(rnd.Next(15,20), rnd.Next(21, 25), rnd.Next(26, 30));
                 b.setSpeed(rnd.Next(40, 120));
                 b.setLevel(rnd.Next(900, 1000));
-                b.DateTime = DateTime.Now;
+                b.Date = DateTime.Now;
+                b.Time = DateTime.Now;
             }
 
             return b;

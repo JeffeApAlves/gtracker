@@ -92,7 +92,8 @@ static void receiveFrame (void) {
 		}
 		else {
 
-		  dataFrame.frame[(dataFrame.sizeFrame++)%SIZE_MAX_FRAME] = ch;
+		  dataFrame.frame[dataFrame.sizeFrame++] = ch;
+		  dataFrame.sizeFrame%=SIZE_MAX_FRAME;
 		  setStatusRx(CMD_RX_FRAME);
 		}
 	}
@@ -357,7 +358,7 @@ static void errorRxFrame(void){
 /**
  * Verifica se existe dados no buffer circular de transmiassa
  */
-bool hasTxData(void){
+inline bool hasTxData(void){
 
 	return hasData(&bufferTx);
 }
@@ -400,7 +401,7 @@ static void AppendHeader(DataFrame *frame) {
  * Adiciona o Payload no Frame
  *
  */
-static void AppendPayLoad(DataFrame *frame) {
+inline static void AppendPayLoad(DataFrame *frame) {
 
 	strncat(frame->frame, frame->payload,frame->sizePayLoad);
 }

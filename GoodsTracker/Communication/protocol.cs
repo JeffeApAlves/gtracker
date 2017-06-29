@@ -94,6 +94,12 @@ namespace GoodsTracker
                 sendFrame(frame);
 
                 Debug.WriteLine("{0} Frame[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"),stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
+
+                Debug.Write("TX OK: ");
+                foreach (char c in frame.Data)
+                    Debug.Write(c.ToString());
+                Debug.Write("\r\n");
+
                 stopTx.Restart();
             }
         }

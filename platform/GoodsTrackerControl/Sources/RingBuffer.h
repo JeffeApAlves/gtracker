@@ -16,9 +16,9 @@
 typedef struct{
 
 	unsigned char	data[BUFFER_SIZE];
-	unsigned char	index_producer;
-	unsigned char	index_consumer;
-	int				count;
+	short	index_producer;
+	short	index_consumer;
+	short	count;
 
 } RingBuffer;
 
@@ -26,7 +26,7 @@ bool getData(RingBuffer* buffer,char* ch);
 bool putData(RingBuffer* buffer,char ch);
 bool hasData(RingBuffer* buffer);
 bool isFull(RingBuffer* buffer);
-unsigned int getCount(RingBuffer* buffer);
+short getCount(RingBuffer* buffer);
 
 #define clearBuffer(buf)	memset(buf,0,sizeof(RingBuffer))
 

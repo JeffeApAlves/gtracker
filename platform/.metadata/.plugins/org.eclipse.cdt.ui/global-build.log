@@ -1,9 +1,71 @@
-14:15:14 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+01:56:45 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
+Building file: ../Sources/Events.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/Events.d" -MT"Sources/Events.o" -c -o "Sources/Events.o" "../Sources/Events.c"
+Finished building: ../Sources/Events.c
+ 
+Building file: ../Sources/application.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/application.d" -MT"Sources/application.o" -c -o "Sources/application.o" "../Sources/application.c"
+Finished building: ../Sources/application.c
+ 
 Building file: ../Sources/frtos_tasks.c
 Invoking: Cross ARM GNU C Compiler
 arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/frtos_tasks.d" -MT"Sources/frtos_tasks.o" -c -o "Sources/frtos_tasks.o" "../Sources/frtos_tasks.c"
 Finished building: ../Sources/frtos_tasks.c
+ 
+Building file: ../Sources/gps.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/gps.d" -MT"Sources/gps.o" -c -o "Sources/gps.o" "../Sources/gps.c"
+../Sources/gps.c: In function 'NMEA_decoderFrame':
+../Sources/gps.c:206:5: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+     AsString(&nmeaFrame.Identifier,   &list,0);
+     ^
+In file included from ../Sources/gps.h:12:0,
+                 from ../Sources/gps.c:9:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[6]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/gps.c: In function 'decoderGGA':
+../Sources/gps.c:261:2: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+  AsString(&frame->Time_UTC,   list,1);
+  ^
+In file included from ../Sources/gps.h:12:0,
+                 from ../Sources/gps.c:9:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[11]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/gps.c: In function 'decoderRMC':
+../Sources/gps.c:302:2: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+  AsString(&frame->Time_UTC,  list,1);
+  ^
+In file included from ../Sources/gps.h:12:0,
+                 from ../Sources/gps.c:9:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[11]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/gps.c:309:2: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+  AsString(&frame->Date,   list,9);
+  ^
+In file included from ../Sources/gps.h:12:0,
+                 from ../Sources/gps.c:9:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[7]'
+ void AsString(char* out,List *list,int index);
+      ^
+In file included from ../Sources/gps.c:8:0:
+../Sources/gps.c: In function 'NMEA_init':
+../Sources/RingBuffer.h:31:26: warning: incompatible implicit declaration of built-in function 'memset' [enabled by default]
+ #define clearBuffer(buf) memset(buf,0,sizeof(RingBuffer))
+                          ^
+../Sources/gps.c:377:2: note: in expansion of macro 'clearBuffer'
+  clearBuffer(&bufferRxNMEA);
+  ^
+../Sources/gps.c: In function 'resetRx':
+../Sources/gps.c:388:2: warning: incompatible implicit declaration of built-in function 'memset' [enabled by default]
+  memset(nmeaFrame.checksum,0,sizeof(char)*NMEA_LEN_CHECKSUM + 1);
+  ^
+Finished building: ../Sources/gps.c
  
 Building target: GoodsTrackerControl.elf
 Invoking: Cross ARM GNU C++ Linker
@@ -17,14 +79,14 @@ Finished building: GoodsTrackerControl.srec
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  63500	    332	  12000	  75832	  12838	GoodsTrackerControl.elf
+  63748	    324	  12064	  76136	  12968	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
-14:15:34 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+01:57:39 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  63500	    332	  12000	  75832	  12838	GoodsTrackerControl.elf
+  63748	    324	  12064	  76136	  12968	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  

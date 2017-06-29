@@ -229,8 +229,6 @@ void AS1_OnRxChar(void)
 
 		putRxData(byte);
 	}
-
-	timeRx 	= TIME_RX;
 }
 
 /*
@@ -260,8 +258,6 @@ void AS1_OnTxChar(void)
 
 		tx_result = AS1_SendChar(byte);
 	}
-
-	timeTx 	= TIME_TX;
 }
 
 /*

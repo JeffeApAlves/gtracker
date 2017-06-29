@@ -247,7 +247,7 @@ namespace GoodsTracker
              *   |__
              *
              */
-            loc = root.Nodes.Add(string.Format("Registro[{0}]: {1}", root.Nodes.Count.ToString("D5"), b.DateTime));
+            loc = root.Nodes.Add(string.Format("Registro[{0}]: {1} {2}", root.Nodes.Count.ToString("D5"), b.Date.ToShortDateString(),b.Time.ToShortTimeString()));
                 loc.ImageIndex = (int)(b.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
                 loc.SelectedImageIndex = loc.ImageIndex;
 

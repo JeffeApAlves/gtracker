@@ -28,7 +28,8 @@ namespace GoodsTracker
             public const int SPEED = 14;
             public const int LEVEL = 15;
             public const int TRAVA = 16;
-            public const int DATETIME = 17;
+            public const int TIME = 17;
+            public const int DATE = 18;
         };
 
         static public bool setHeader(Header header)
@@ -87,7 +88,8 @@ namespace GoodsTracker
                 payload.Append(CONST_CHAR.SEPARATOR);
                 payload.Append(b.StatusLock.ToString());
                 payload.Append(CONST_CHAR.SEPARATOR);
-                payload.Append(b.DateTime.ToString().Replace(CONST_CHAR.SEPARATOR, '.'));
+                payload.Append(b.Time.ToString());  
+                payload.Append(b.Date.ToString());
 
                 ret = true;
             }
@@ -173,7 +175,8 @@ namespace GoodsTracker
                 telemetria.Speed.Val = AsDouble(list, INDEX.SPEED);
                 telemetria.Level.Val = AsDouble(list, INDEX.LEVEL);
                 telemetria.StatusLock = AsBool(list, INDEX.TRAVA);
-                telemetria.DateTime = AsDateTime(list, INDEX.DATETIME);
+                telemetria.Date      = AsDate(list, INDEX.DATE);
+                telemetria.Time     = AsTime(list, INDEX.TIME);
             }
             catch (Exception e)
             {
@@ -219,13 +222,41 @@ namespace GoodsTracker
             return (Operation)Enum.Parse(typeof(Operation), str);
         }
 
-        static private DateTime AsDateTime(string[] list, int index)
+        static private DateTime AsTime(string[] list, int index)
+        {
+            DateTime d = Convert.ToDateTime("00:00:00");
+
+            if ((int)index < list.Length)
+            {
+                string str = list[(int)index];
+
+                if (!str.Equals(""))
+                {
+                    str = str.Insert(2, ":");
+                    str = str.Insert(5, ":");
+                    str = str.Substring(0, str.Length - 4);
+
+                    d = Convert.ToDateTime(str);
+                }
+            }
+
+            return d;
+        }
+
+        static private DateTime AsDate(string[] list, int index)
         {
             DateTime d = Convert.ToDateTime("01/01/1900");
 
             if ((int)index < list.Length)
             {
-                d = Convert.ToDateTime(list[(int)index].Replace('.', CONST_CHAR.SEPARATOR));
+                string str = list[(int)index];
+
+                if (!str.Equals(""))
+                {
+                    str = str.Insert(2, "/");
+                    str = str.Insert(5, "/");
+                    d = Convert.ToDateTime(str);
+                }                
             }
             return d;
         }

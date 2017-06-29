@@ -11,18 +11,22 @@ bool putData(RingBuffer* buffer,char ch){
 
 	bool flag = FALSE;
 
-	EnterCritical();
+//	EnterCritical();
+	vPortEnterCritical();
 
 	if(!isFull(buffer)) {
 
 		buffer->data[buffer->index_producer++] = ch;
 		buffer->index_producer %= BUFFER_SIZE;
-		buffer->count++;
+		if(buffer->count<BUFFER_SIZE){
+			buffer->count++;
+		}
 
 		flag = TRUE;
 	}
 
-	ExitCritical();
+//	ExitCritical();
+	vPortExitCritical();
 
 	return flag;
 }
@@ -32,43 +36,40 @@ bool getData(RingBuffer* buffer,char* ch){
 
 	bool flag = FALSE;
 
-	EnterCritical();
+//	EnterCritical();
+	vPortEnterCritical();
 
 	if(hasData(buffer)){
 
 		*ch = buffer->data[buffer->index_consumer++];
 		buffer->index_consumer %= BUFFER_SIZE;
-		buffer->count--;
+		if(buffer->count>0){
+			buffer->count--;
+		}
 
 		flag = TRUE;
 	}
 
-	ExitCritical();
+//	ExitCritical();
+	vPortExitCritical();
 
 	return flag;
 }
 //------------------------------------------------------------------------
 
-unsigned int getCount(RingBuffer* buffer){
+inline short getCount(RingBuffer* buffer){
 
-	unsigned int r = 0;
-
-	if(buffer!=NULL){
-
-		r = buffer->count;
-	}
-
-	return r;
+	return buffer!=NULL?buffer->count:0;
 }
 //------------------------------------------------------------------------
 
-bool isFull(RingBuffer* buffer){
+inline bool isFull(RingBuffer* buffer){
 
 	return getCount(buffer)>= BUFFER_SIZE;
 }
 //------------------------------------------------------------------------
 
-bool hasData(RingBuffer* buffer){
+inline bool hasData(RingBuffer* buffer){
 
 	return getCount(buffer)>0;
 }

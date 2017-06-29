@@ -25,8 +25,6 @@ char		msg2send[SIZE_MAX_PAYLOAD];
 
 void updateDataTLM(void){
 
-//	dataTLM.Lat			= -23.591387;
-//	dataTLM.Lng			= -46.645126;
 	dataTLM.Lat			= nmeaFrame.Lat;
 	dataTLM.Lng			= nmeaFrame.Lng;
 	dataTLM.Acc[AXIS_X]	= 1;
@@ -38,7 +36,8 @@ void updateDataTLM(void){
 	dataTLM.Level			= AD_Values[2];
 	dataTLM.Speed			= 100;
 	dataTLM.Lock			= _lock;
-	strcpy(dataTLM.Date,	"23/06/2017 19.52");
+	strcpy(dataTLM.Date,	nmeaFrame.Date);
+	strcpy(dataTLM.Time,	nmeaFrame.Time_UTC);
 
 }
 //-------------------------------------------------------------------------
@@ -210,7 +209,7 @@ void Infor2String(Info* info,char* str_out){
 
 	if(info!=NULL && str_out!= NULL){
 
-		XF1_xsprintf(str_out,"%.7f:%.7f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s",
+		XF1_xsprintf(str_out,"%.8f:%.8f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s:%s",
 				info->Lat,
 				info->Lng,
 				info->Acc[AXIS_X],
@@ -222,6 +221,7 @@ void Infor2String(Info* info,char* str_out){
 				info->Speed,
 				info->Level,
 				info->Lock,
+				info->Time,
 				info->Date);
 	}
 }
@@ -255,6 +255,5 @@ void initCallBacks(void){
 	setEventCMD(CMD_PWM,		onPWM);
 	setEventCMD(CMD_TELEMETRIA,	onTelemetry);
 	setEventCMD(CMD_LOCK,		onLock);
-
 }
 //-------------------------------------------------------------------------
