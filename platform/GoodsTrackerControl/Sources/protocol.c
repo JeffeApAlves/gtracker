@@ -18,14 +18,14 @@ DataCom		dataCom;
 DataCom*	pDataCom = &dataCom;
 ArrayFrame	frameCom;
 
-Resource	ListCmd[]	= {	{.id = CMD_NONE,		.name = "---\0"},
-							{.id = CMD_LED,			.name = "LED\0"},
-							{.id = CMD_ANALOG,		.name = "ANL\0"},
-							{.id = CMD_PWM,			.name = "PWM\0"},
-							{.id = CMD_ACC,			.name = "ACC\0"},
-							{.id = CMD_TOUCH,		.name = "TOU\0"},
-							{.id = CMD_TLM,			.name = "TLM\0"},
-							{.id = CMD_LOCK,		.name = "LCK\0"},
+Resource	ListCmd[]	= {	{.id = CMD_NONE,	.name = "---\0"},
+							{.id = CMD_LED,		.name = "LED\0"},
+							{.id = CMD_ANALOG,	.name = "ANL\0"},
+							{.id = CMD_PWM,		.name = "PWM\0"},
+							{.id = CMD_ACC,		.name = "ACC\0"},
+							{.id = CMD_TOUCH,	.name = "TOU\0"},
+							{.id = CMD_TLM,		.name = "TLM\0"},
+							{.id = CMD_LOCK,	.name = "LCK\0"},
 							{.id = CMD_LCD,			.name = "LCD\0"},
 				};
 
@@ -38,10 +38,21 @@ const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Resource);
  */
 void runCommunication(void) {
 
+	processRx();
+	processTx();
+}
+//------------------------------------------------------------------------
+
+/*
+ *
+ *
+ */
+static void processRx(void){
+
 	switch(statusRx){
 
 		default:
-		case CMD_INIT:			initRxCMD();			break;
+		case CMD_INIT:			initCommunication();	break;
 		case CMD_INIT_OK:		rxStartCMD();			break;
 		case CMD_RX_START:		receiveFrame();			break;
 		case CMD_RX_FRAME:		receiveFrame();			break;
@@ -50,23 +61,21 @@ void runCommunication(void) {
 		case CMD_RX_LF:			verifyFrame();			break;
 		case CMD_FRAME_OK:		acceptRxFrame();		break;
 		case CMD_FRAME_NOK:		errorRxFrame();			break;
-//		case CMD_EXEC:			sendResult();			break;
-//		case CMD_EXEC_ERROR:	errorExec();			break;
 	}
-
-	anyResult();
 }
 //------------------------------------------------------------------------
 
-void anyResult(void){
+/*
+ *
+ *
+ */
+static void processTx(void){
 
 	ArrayPayLoad* payload;
 
 	if (xQueueReceive(xQueuePayload, &(payload), (TickType_t ) 1)) {
 
 		doAnswer(payload);
-
-		sendResult();
 	}
 }
 //------------------------------------------------------------------------
@@ -255,9 +264,9 @@ static void errorExec(void) {
  * Envia o  resultado
  *
  */
-static void sendResult(void){
+static void sendAnswer(void){
 
-	sendFrame(&dataCom);
+	sendFrame();
 
 	// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
 	startTX();
@@ -271,34 +280,16 @@ static void sendResult(void){
  * Envia o frame
  *
  */
-static void sendFrame(DataCom* frame){
+static void sendFrame(void){
 
-	// Envia caracter de inicio
-	putTxData(CHAR_START);
+	putTxData(CHAR_START);					// Envia caracter de inicio
 
-	// Emvia o frame
-	sendString(frameCom.Data);
+	putString(&bufferTx,frameCom.Data);		// Envia o frame
 
-	// Envia o caracter de fim
-	putTxData(CHAR_END);
+	putTxData(CHAR_END);					// Envia o caracter de fim
 
-	// Envia caracteres de controle
-	putTxData(CHAR_CR);
+	putTxData(CHAR_CR);						// Envia caracteres de controle
 	putTxData(CHAR_LF);
-}
-//------------------------------------------------------------------------
-
-static void sendString(const char* str){
-
-	char* p = (char *)str;
-
-	if(p!=NULL){
-
-		while(*p!=CHAR_STR_END){
-
-			putTxData(*p++);
-		}
-	}
 }
 //------------------------------------------------------------------------
 
@@ -366,7 +357,7 @@ static void acceptRxFrame(void) {
  */
 static void errorRxFrame(void){
 
-	/**/
+	// TODO implementar algo quando der erro na recepcao do frame
 
 	setStatusRx(CMD_INIT_OK);
 }
@@ -383,10 +374,10 @@ inline bool hasTxData(void){
 
 /**
  *
- * Constroi o frame para envio
+ *  Preenche todo o frame  de envio
  *
  */
-static void buildFrame() {
+static void buildFrame(void) {
 
 	copyHeaderToFrame();
 	copyPayLoadToFrame();
@@ -403,11 +394,11 @@ static void copyHeaderToFrame(void) {
 
 	XF1_xsprintf(frameCom.Data,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
 				dataCom.address, 		CHAR_SEPARATOR,
-				dataCom.dest, 		CHAR_SEPARATOR,
-				dataCom.countFrame,	CHAR_SEPARATOR,
-				dataCom.operacao, 	CHAR_SEPARATOR,
-				dataCom.resource.name,CHAR_SEPARATOR,
-				dataCom.PayLoad.Count,CHAR_SEPARATOR);
+				dataCom.dest, 			CHAR_SEPARATOR,
+				dataCom.countFrame,		CHAR_SEPARATOR,
+				dataCom.operacao, 		CHAR_SEPARATOR,
+				dataCom.resource.name,	CHAR_SEPARATOR,
+				dataCom.PayLoad.Count,	CHAR_SEPARATOR);
 }
 //------------------------------------------------------------------------
 
@@ -442,13 +433,13 @@ static void copyCheckSumToFrame(void) {
  * Set PayLoad
  *
  */
-static void setPayLoad(DataCom* frame, ArrayPayLoad* ans) {
+static void setPayLoad(ArrayPayLoad* ans) {
 
-	if(frame!=NULL && ans!=NULL){
+	if(ans!=NULL){
 
-		frame->PayLoad =  *ans;
+		dataCom.PayLoad =  *ans;
 
-		if(frame->PayLoad.Count > SIZE_PAYLOAD){
+		if(dataCom.PayLoad.Count > SIZE_PAYLOAD){
 
 			//TODO Tratar array do payload maior que o buffer provisionado
 		}
@@ -465,13 +456,13 @@ void doAnswer(ArrayPayLoad* ans) {
 
 	if (ans) {
 
-		setPayLoad(&dataCom, ans);
+		setHeaderInfo(ADDRESS,dataCom.address, OPERATION_AN);
 
-		strcpy(dataCom.operacao, OPERATION_AN);
-		dataCom.dest	= dataCom.address;
-		dataCom.address	= ADDRESS;
+		setPayLoad(ans);
 
 		buildFrame();
+
+		sendAnswer();
 	}
 	else {
 		/*O QUE RESPONDE EM CASO DE MENSAGEM NULA ???*/
@@ -479,6 +470,18 @@ void doAnswer(ArrayPayLoad* ans) {
 }
 //------------------------------------------------------------------------
 
+/*
+ *
+ * Set endereco de origem e destino e o tipo da operacao
+ *
+ */
+static void setHeaderInfo(int address,int dest, char* operation){
+
+	strcpy(dataCom.operacao, operation);
+	dataCom.dest	= dest;
+	dataCom.address	= address;
+}
+//------------------------------------------------------------------------
 /**
  * Verifica se o buffer de TX esta vazio. Se sim, chama a call back
  * da transmissao de caracter para iniciar a transmissao do buffer
@@ -502,7 +505,7 @@ static void startTX(void){
  * Inicializa a comunicacao
  *
  */
-void initRxCMD(void) {
+void initCommunication(void) {
 
 	clearData(&dataCom);
 	clearArrayFrame(&frameCom);

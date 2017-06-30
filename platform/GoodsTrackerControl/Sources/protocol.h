@@ -58,7 +58,7 @@ static void receiveFrame (void);
 static void rxLF(void);
 static void rxCR(void);
 static Resource getResource(char* name);
-static void sendResult(void);
+static void sendAnswer(void);
 static void acceptRxFrame();
 static void setStatusRx(StatusRx sts);
 static void sendString(const char* str);
@@ -67,24 +67,25 @@ static bool decoderFrame(void);
 static void verifyFrame(void);
 static void errorExec(void);
 static void startTX(void);
-static void sendFrame(DataCom *frame);
-static void setPayLoad(DataCom* frame,ArrayPayLoad* ans);
+static void setHeaderInfo(int address,int dest, char* operation);
+static void setPayLoad(ArrayPayLoad* ans);
+static void doAnswer(ArrayPayLoad* ans);
 static void copyHeaderToFrame(void);
 static void copyPayLoadToFrame(void);
 static void copyCheckSumToFrame(void);
-static void buildFrame();
+static void buildFrame(void);
+static void sendFrame(void);
+static void processTx(void);
+static void processRx(void);
+
 
 /*interface*/
 bool getRxData(char* ch);
 bool putTxData(char data);
-
 bool putRxData(char ch);
 bool getTxData(char* ch);
 bool hasTxData(void);
-void doAnswer(ArrayPayLoad* ans);
-void initRxCMD(void);
+void initCommunication(void);
 void runCommunication(void);
-//void setEventCMD(ResourceID id,pCallBack c);
-void anyResult(void);
 
 #endif /* SOURCES_PROTOCOL_H_ */

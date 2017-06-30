@@ -33,8 +33,8 @@ QueueHandle_t	xQueueCom,xQueueLCD,xQueuePayload,xQueueDataTLM;
  */
 void initQueues(void){
 
-	xQueueCom		= xQueueCreate( 5, sizeof( DataCom* ));
-	xQueuePayload	= xQueueCreate( 5, sizeof( ArrayPayLoad* ));
+	xQueueCom		= xQueueCreate( 3, sizeof( DataCom* ));
+	xQueuePayload	= xQueueCreate( 3, sizeof( ArrayPayLoad* ));
 	xQueueDataTLM	= xQueueCreate( 5, sizeof( DataTLM* ));
 }
 //-----------------------------------------------------------------------------

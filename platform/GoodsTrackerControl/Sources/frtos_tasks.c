@@ -51,6 +51,8 @@ static portTASK_FUNCTION(main_task, pvParameters) {
 
 static portTASK_FUNCTION(communication_task, pvParameters) {
 
+	initCommunication();
+
 	for (;;) {
 
 		runCommunication();
