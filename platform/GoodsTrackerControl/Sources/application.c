@@ -20,13 +20,28 @@ Info			dataTLM;
 int				_lock;
 ArrayPayLoad	msg2send;
 
-void updateDataTLM(void){
+void App_Run(void){
 
-	updateDataGPS();
+	uint32_t ulNotifiedValue;
 
-	updateDataAcce();
+	xTaskNotifyWait( 0x0, UPDATE_GPS | UPDATE_ACCE | UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY );
 
-	updateDataLevel();
+
+	if(ulNotifiedValue & UPDATE_GPS){
+
+		updateDataGPS();
+	}
+
+	if(ulNotifiedValue & UPDATE_ACCE){
+
+		updateDataAcce();
+	}
+
+	if(ulNotifiedValue & UPDATE_AD){
+
+		updateDataLevel();
+	}
+
 
 	dataTLM.Speed	= 100;
 	dataTLM.Lock	= _lock;
@@ -35,16 +50,16 @@ void updateDataTLM(void){
 
 void updateDataGPS(void) {
 
-	if (xQueueGPS != 0) {
+	if (xQueueData != 0) {
 
-		DataNMEA* data;
+		Info* data;
 
-		if (xQueueReceive(xQueueGPS, &(data), (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueData, &(data), (TickType_t ) 1)) {
 
 			dataTLM.Lat = data->Lat;
 			dataTLM.Lng = data->Lng;
 			strcpy(dataTLM.Date, data->Date);
-			strcpy(dataTLM.Time, data->Time_UTC);
+			strcpy(dataTLM.Time, data->Time);
 		}
 	}
 }
@@ -52,18 +67,18 @@ void updateDataGPS(void) {
 
 void updateDataAcce(void) {
 
-	if (xQueueAcce != 0) {
+	if (xQueueData != 0) {
 
-		DataAcce* data;
+		Info* data;
 
-		if (xQueueReceive(xQueueAcce, &(data), (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueData, &(data), (TickType_t ) 1)) {
 
-			dataTLM.Acc[AXIS_X] = data->AcceXYZ[AXIS_X];
-			dataTLM.Acc[AXIS_Y] = data->AcceXYZ[AXIS_Y];
-			dataTLM.Acc[AXIS_Z] = data->AcceXYZ[AXIS_Z];
-			dataTLM.Inc[AXIS_X] = data->IncXYZ[AXIS_X];
-			dataTLM.Inc[AXIS_Y] = data->IncXYZ[AXIS_Y];
-			dataTLM.Inc[AXIS_Z] = data->IncXYZ[AXIS_Z];
+			dataTLM.Acc[AXIS_X] = data->Acc[AXIS_X];
+			dataTLM.Acc[AXIS_Y] = data->Acc[AXIS_Y];
+			dataTLM.Acc[AXIS_Z] = data->Acc[AXIS_Z];
+			dataTLM.Inc[AXIS_X] = data->Inc[AXIS_X];
+			dataTLM.Inc[AXIS_Y] = data->Inc[AXIS_Y];
+			dataTLM.Inc[AXIS_Z] = data->Inc[AXIS_Z];
 		}
 	}
 }
@@ -71,11 +86,11 @@ void updateDataAcce(void) {
 
 void updateDataLevel(void) {
 
-	if (xQueueAD != 0) {
+	if (xQueueData != 0) {
 
-		DataAD* data;
+		Info* data;
 
-		if (xQueueReceive(xQueueAD, &(data), (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueData, &(data), (TickType_t ) 1)) {
 
 			dataTLM.Level = data->Level;
 		}

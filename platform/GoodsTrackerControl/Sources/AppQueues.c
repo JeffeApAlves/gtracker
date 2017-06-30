@@ -5,27 +5,34 @@
  *      Author: Jefferson
  */
 
-#include "AppQueues.h"
-#include "Level.h"
-#include "Accelerometer.h"
-#include "NMEAFrame.h"
+#include "Array.h"
+#include "Data.h"
 #include "DataFrame.h"
+#include "AppQueues.h"
+
+// Tasks Delay
+const TickType_t xMainDelay = 50 / portTICK_PERIOD_MS;
+const TickType_t xCommunicationDelay = 5 / portTICK_PERIOD_MS;
+const TickType_t xDataDelay = 10 / portTICK_PERIOD_MS;
+const TickType_t xIHMDelay = 25 / portTICK_PERIOD_MS;
+const TickType_t xGPSDelay = 5 / portTICK_PERIOD_MS;
+const TickType_t xAccelDelay = 10 / portTICK_PERIOD_MS;
+
 
 // Handles Tasks
 TaskHandle_t xHandleMainTask = NULL, xHandleCommunicationTask = NULL,
 		xHandleDataTask = NULL, xHandleIHMTask = NULL, xHandleGPSTask = NULL,
 		xHandleAccelTask = NULL;
 
-QueueHandle_t	xQueueGPS,xQueueCom,xQueueAcce,xQueueLCD,xQueuePayload,xQueueAD;
+// Queues
+QueueHandle_t	xQueueCom,xQueueLCD,xQueuePayload,xQueueData;
 
-//static TaskHandle_t xTaskToNotify = NULL;
+uint32_t ulPreviousValue;
 
 void initQueues(void){
 
-	xQueueGPS		= xQueueCreate( 2, sizeof( DataNMEA* ) );
-	xQueueCom		= xQueueCreate( 2, sizeof( DataCom* ) );
-	xQueueAcce		= xQueueCreate( 2, sizeof( DataAcce* ) );
-	xQueuePayload	= xQueueCreate( 2, sizeof( char* ) );
-	xQueueAD		= xQueueCreate( 2, sizeof( DataAD* ) );
+	xQueueCom		= xQueueCreate( 2, sizeof( DataCom* ));
+	xQueuePayload	= xQueueCreate( 2, sizeof( ArrayPayLoad* ));
+	xQueueData		= xQueueCreate( 5, sizeof( Info* ));
 }
 //-----------------------------------------------------------------------------

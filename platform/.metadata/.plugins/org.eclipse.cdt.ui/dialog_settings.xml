@@ -2,12 +2,17 @@
 <section name="Workbench">
 	<item value="Default C++ source template" key="LastUsedSourceTemplate"/>
 	<item value="Default C++ header template" key="LastUsedHeaderTemplate"/>
+	<section name="ExtractFunctionWizard">
+		<item value="private" key="AccessModifier"/>
+	</section>
 	<section name="completion_proposal_size">
 	</section>
 	<section name="PDOMSearchPage">
 		<item value="227191" key="searchFlags"/>
 		<item value="false" key="caseSensitive"/>
 		<list key="previousPatterns">
+			<item value="xTaskNotifyGive"/>
+			<item value="squeuesend"/>
 			<item value="memset"/>
 			<item value="xQueueSend"/>
 			<item value="vPortEnterCritical"/>
@@ -16,6 +21,10 @@
 			<item value="hasTxData"/>
 			<item value="short"/>
 		</list>
+	</section>
+	<section name="RefactoringWizard.preview">
+		<item value="400" key="height"/>
+		<item value="600" key="width"/>
 	</section>
 	<section name="RenameInformationPopup">
 	</section>

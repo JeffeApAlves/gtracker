@@ -32,7 +32,7 @@ const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Resource);
  * Processamento da comunicacao
  *
  */
-void processProtocol(void) {
+void Communication_Run(void) {
 
 	switch(statusRx){
 

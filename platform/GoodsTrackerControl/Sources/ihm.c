@@ -110,7 +110,7 @@ static void ihm_process_event(ihmEvent *ev)
 	}
 }
 
-void ihm_loop()
+void IHM_Run()
 {
   TSS_Task(); /* call TSS library to process touches */
 

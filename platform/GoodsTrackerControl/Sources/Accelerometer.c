@@ -5,38 +5,43 @@
  *      Author: Jefferson
  */
 
+#include "Data.h"
 #include "MMA1.h"
 #include "AppQueues.h"
 #include "Accelerometer.h"
 
-DataAcce	acceInfo;
-DataAcce*	pAcceInfo = &acceInfo;
+Info	acceInfo;
+Info*	pAcceInfo = &acceInfo;
 
-void read_accel(void) {
+void Accelerometer_Run(void) {
 
-	MMA1_GetRaw8XYZ(pAcceInfo->AcceXYZ);
+//	MMA1_GetRaw8XYZ(&pAcceInfo->Acc[0]);
 
+	pAcceInfo->Acc[AXIS_X] = MMA1_GetXmg();
+	pAcceInfo->Acc[AXIS_Y] = MMA1_GetYmg();
+	pAcceInfo->Acc[AXIS_Z] = MMA1_GetZmg();
 //	pAcceInfo->AcceXYZ[AXIS_X]	= 20;
 //	pAcceInfo->AcceXYZ[AXIS_Y]	= 21;
 //	pAcceInfo->AcceXYZ[AXIS_Z]	= 22;
 
-	pAcceInfo->IncXYZ[AXIS_X]	= 30;
-	pAcceInfo->IncXYZ[AXIS_Y]	= 31;
-	pAcceInfo->IncXYZ[AXIS_Z]	= 32;
+	pAcceInfo->Inc[AXIS_X]	= 30;
+	pAcceInfo->Inc[AXIS_Y]	= 31;
+	pAcceInfo->Inc[AXIS_Z]	= 32;
 
-    if(xQueueSendToBack( xQueueAcce , ( void * ) &pAcceInfo, ( TickType_t ) 1 ) ){
+    if(xQueueSendToBack( xQueueData , ( void * ) &pAcceInfo, ( TickType_t ) 1 ) ){
 
-    	xTaskNotifyGive( xHandleMainTask );
-
-//TODO Sucesso da transmissao do valor dos acelerometros
+    	xTaskNotify( xHandleMainTask , UPDATE_ACCE , eSetBits );
     }
 }
 //------------------------------------------------------------------------
 
 void initAccel(void){
 
-	clearAcce(pAcceInfo);
-	MMA1_Init();
-	MMA1_Enable();
+	if(MMA1_Init()==ERR_OK){
+
+		MMA1_Enable();
+	}
+
+	clearInfo(pAcceInfo);
 }
 //------------------------------------------------------------------------

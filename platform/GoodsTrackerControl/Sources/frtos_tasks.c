@@ -26,13 +26,6 @@
 #include "accelerometer.h"
 #include "gps.h"
 
-const TickType_t xMainDelay = 50 / portTICK_PERIOD_MS;
-const TickType_t xCommunicationDelay = 5 / portTICK_PERIOD_MS;
-const TickType_t xDataDelay = 10 / portTICK_PERIOD_MS;
-const TickType_t xIHMDelay = 25 / portTICK_PERIOD_MS;
-const TickType_t xGPSDelay = 5 / portTICK_PERIOD_MS;
-const TickType_t xAccelDelay = 10 / portTICK_PERIOD_MS;
-
 /*
  *
  * Main task
@@ -46,9 +39,7 @@ static portTASK_FUNCTION(main_task, pvParameters) {
 
 	for (;;) {
 
-		ulTaskNotifyTake( pdTRUE, portMAX_DELAY );
-
-		updateDataTLM();
+		App_Run();
 
 //		vTaskDelay(xMainDelay);
 	}
@@ -66,7 +57,7 @@ static portTASK_FUNCTION(communication_task, pvParameters) {
 
 	for (;;) {
 
-		processProtocol();
+		Communication_Run();
 
 		vTaskDelay(xCommunicationDelay);
 	}
@@ -82,7 +73,7 @@ static portTASK_FUNCTION(data_task, pvParameters) {
 
 	for (;;) {
 
-		read_Channels_AD();
+		Analog_Run();
 
 		vTaskDelay(xDataDelay);
 	}
@@ -101,7 +92,7 @@ static portTASK_FUNCTION(ihm_task, pvParameters) {
 
 	for (;;) {
 
-		ihm_loop();
+		IHM_Run();
 
 		vTaskDelay(xIHMDelay);
 	}
@@ -121,7 +112,7 @@ static portTASK_FUNCTION(gps_task, pvParameters) {
 
 	for (;;) {
 
-		NMEA_process();
+		NMEA_Run();
 
 		vTaskDelay(xGPSDelay);
 	}
@@ -140,7 +131,7 @@ static portTASK_FUNCTION(accel_task, pvParameters) {
 
 	for (;;) {
 
-		read_accel();
+		Accelerometer_Run();
 
 		vTaskDelay(xAccelDelay);
 	}

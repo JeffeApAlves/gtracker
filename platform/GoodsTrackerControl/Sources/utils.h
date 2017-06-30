@@ -29,7 +29,7 @@ typedef enum {
 //#endif
 
 typedef struct {
-    const unsigned char *data;
+    const char*	text;
     size_t len;
 } buffer_t;
 

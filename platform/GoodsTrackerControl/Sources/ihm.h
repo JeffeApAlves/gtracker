@@ -27,7 +27,7 @@ void ihm_terminate();
 /**
  *
  */
-void ihm_loop();
+void IHM_Run();
 
 /**
  *

@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-26, 22:35, # CodeGen: 15
+**     Date/Time   : 2017-06-30, 02:07, # CodeGen: 48
 **     Abstract    :
 **
 **     Settings    :
@@ -248,8 +248,6 @@
 
 #include "FreeRTOS.h" /* FreeRTOS interface */
 #include "FRTOS1.h"
-#include "UTIL1.h"
-#include "MCUC1.h"
 #include "TSK1.h"
 #include "AS1.h"
 #include "ASerialLdd1.h"
@@ -264,18 +262,8 @@
 #include "BitIoLdd3.h"
 #include "AD1.h"
 #include "AdcLdd1.h"
-#include "TU1.h"
 #include "TI1.h"
 #include "TimerIntLdd1.h"
-#include "MMA1.h"
-#include "GI2C1.h"
-#include "WAIT1.h"
-#include "I2C1.h"
-#include "SDA1.h"
-#include "BitIoLdd4.h"
-#include "SCL1.h"
-#include "BitIoLdd5.h"
-#include "CS1.h"
 #include "LCDout.h"
 #include "EN1.h"
 #include "BitIoLdd6.h"
@@ -293,6 +281,15 @@
 #include "XF1.h"
 #include "AS2.h"
 #include "ASerialLdd2.h"
+#include "WAIT1.h"
+#include "TU1.h"
+#include "MCUC1.h"
+#include "UTIL1.h"
+#include "MMA1.h"
+#include "GI2C1.h"
+#include "WAIT2.h"
+#include "WAIT3.h"
+#include "CI2C1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -530,17 +527,6 @@ void PE_low_level_init(void)
   (void)TimerIntLdd1_Init(NULL);
   /* ### TimerInt "TI1" init code ... */
   WAIT1_Init();
-  /* ### BitIO_LDD "BitIoLdd4" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd4_Init(NULL);
-  /* ### BitIO_LDD "BitIoLdd5" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)BitIoLdd5_Init(NULL);
-  /* ### GenericSWI2C "I2C1" init code ... */
-  I2C1_Init();
-  /* ### GenericI2C "GI2C1" init code ... */
-  GI2C1_Init();
-  /* ### MMA8451Q "MMA1" init code ... */
-  /* Write code here ... */
-  /* ### CriticalSection "CS1" init code ... */
   /* ### BitIO_LDD "BitIoLdd6" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)BitIoLdd6_Init(NULL);
   /* ### BitIO_LDD "BitIoLdd7" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
@@ -562,6 +548,12 @@ void PE_low_level_init(void)
   /* ### XFormat "XF1" init code ... */
   /* ### Asynchro serial "AS2" init code ... */
   AS2_Init();
+  WAIT3_Init();
+  /* ### GenericI2C "GI2C1" init code ... */
+  GI2C1_Init();
+  WAIT2_Init();
+  /* ### MMA8451Q "MMA1" init code ... */
+  /* Write code here ... */
 }
   /* Flash configuration field */
   __attribute__ ((section (".cfmconfig"))) const uint8_t _cfm[0x10] = {

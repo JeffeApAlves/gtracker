@@ -5,17 +5,18 @@
  *      Author: Jefferson
  */
 
+#include "Data.h"
 #include "AppQueues.h"
 #include "Level.h"
 
 uint16_t	ADValues[AD1_CHANNEL_COUNT];
 
-DataAD		adInfo;
-DataAD*		pInfo = &adInfo;
+Info		adInfo;
+Info*		pInfo = &adInfo;
 
 volatile	bool AD_finished = FALSE;
 
-void read_Channels_AD(void){
+void Analog_Run(void){
 
 	if(AD1_Measure(TRUE)==ERR_OK){
 
@@ -25,11 +26,9 @@ void read_Channels_AD(void){
 
 			pInfo->Level = ADValues[2];
 
-		    if(xQueueSendToBack( xQueueAD , ( void * ) &pInfo, ( TickType_t ) 1 ) ){
+		    if(xQueueSendToBack( xQueueData , ( void * ) &pInfo, ( TickType_t ) 1 ) ){
 
-		    	xTaskNotifyGive( xHandleMainTask );
-
-		//TODO Sucesso da transmissao do valor dos acelerometros
+		    	xTaskNotify( xHandleMainTask, UPDATE_AD , eSetBits );
 		    }
 		}
 	}

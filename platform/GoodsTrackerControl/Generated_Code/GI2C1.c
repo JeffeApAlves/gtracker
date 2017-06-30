@@ -7,21 +7,20 @@
 **     Version     : Component 01.033, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-24, 12:17, # CodeGen: 0
+**     Date/Time   : 2017-06-30, 02:07, # CodeGen: 48
 **     Abstract    :
 **         This component implements a generic I2C driver wrapper to work both with LDD and non-LDD I2C components.
 **     Settings    :
 **          Component name                                 : GI2C1
-**          Wait                                           : WAIT1
+**          Wait                                           : WAIT3
 **          SDK                                            : MCUC1
 **          Support STOP_NOSTART                           : no
 **          Write Buffer Size                              : 16
-**          non-LDD I2C                                    : Enabled
-**            I2C                                          : I2C1
-**          LDD I2C                                        : Disabled
-**          RTOS                                           : Enabled
-**            RTOS                                         : FRTOS1
-**            Semaphore                                    : yes
+**          non-LDD I2C                                    : Disabled
+**          LDD I2C                                        : Enabled
+**            I2C                                          : CI2C1
+**            Timeout                                      : Disabled
+**          RTOS                                           : Disabled
 **          Init() on startup                              : yes
 **     Contents    :
 **         SelectSlave       - uint8_t GI2C1_SelectSlave(uint8_t i2cAddr);
@@ -87,7 +86,14 @@
   #define NULL 0L
 #endif /* NULL */
 
-static xSemaphoreHandle GI2C1_busSem = NULL; /* Semaphore to protect I2C bus access */
+typedef struct {
+  volatile bool dataReceivedFlg; /* set to TRUE by the interrupt if we have received data */
+  volatile bool dataTransmittedFlg; /* set to TRUE by the interrupt if we have set data */
+  LDD_TDeviceData *handle; /* pointer to the device handle */
+} GI2C1_TDataState;
+
+static GI2C1_TDataState GI2C1_deviceData;
+
 /*
 ** ===================================================================
 **     Method      :  GI2C1_RequestBus (component GenericI2C)
@@ -101,7 +107,6 @@ void GI2C1_RequestBus(void)
 {
   /*lint -save -e522 function lacks side effect  */
   /*lint -restore */
-  (void)FRTOS1_xSemaphoreTakeRecursive(GI2C1_busSem, portMAX_DELAY);
 }
 
 /*
@@ -115,7 +120,6 @@ void GI2C1_RequestBus(void)
 */
 void GI2C1_ReleaseBus(void)
 {
-  (void)FRTOS1_xSemaphoreGiveRecursive(GI2C1_busSem);
   /*lint -save -e522 function lacks side effect  */
   /*lint -restore */
 }
@@ -135,9 +139,7 @@ void GI2C1_ReleaseBus(void)
 */
 uint8_t GI2C1_SelectSlave(uint8_t i2cAddr)
 {
-  GI2C1_RequestBus();
-  if (I2C1_SelectSlave(i2cAddr)!=ERR_OK) {
-    GI2C1_ReleaseBus();
+  if (CI2C1_SelectSlaveDevice(GI2C1_deviceData.handle, LDD_I2C_ADDRTYPE_7BITS, i2cAddr)!=ERR_OK) {
     return ERR_FAILED;
   }
   return ERR_OK;
@@ -155,7 +157,6 @@ uint8_t GI2C1_SelectSlave(uint8_t i2cAddr)
 */
 uint8_t GI2C1_UnselectSlave(void)
 {
-  GI2C1_ReleaseBus();
   return ERR_OK;
 }
 
@@ -176,19 +177,15 @@ uint8_t GI2C1_UnselectSlave(void)
 uint8_t GI2C1_ReadBlock(void* data, uint16_t dataSize, GI2C1_EnumSendFlags flags)
 {
   uint8_t res = ERR_OK;
-  uint16_t nof;
 
   for(;;) { /* breaks */
-    res = I2C1_RecvBlock(data, dataSize, &nof);
+    GI2C1_deviceData.dataReceivedFlg = FALSE;
+    res = CI2C1_MasterReceiveBlock(GI2C1_deviceData.handle, data, dataSize, flags==GI2C1_SEND_STOP?LDD_I2C_SEND_STOP:LDD_I2C_NO_SEND_STOP);
     if (res!=ERR_OK) {
       break; /* break for(;;) */
     }
-    if (flags==GI2C1_SEND_STOP) {
-      res = I2C1_SendStop();
-      if (res!=ERR_OK) {
-        break; /* break for(;;) */
-      }
-    }
+    do { /* Wait until data is received */
+    } while (!GI2C1_deviceData.dataReceivedFlg);
     break; /* break for(;;) */
   } /* for(;;) */
   return res;
@@ -210,21 +207,16 @@ uint8_t GI2C1_ReadBlock(void* data, uint16_t dataSize, GI2C1_EnumSendFlags flags
 */
 uint8_t GI2C1_WriteBlock(void* data, uint16_t dataSize, GI2C1_EnumSendFlags flags)
 {
-  uint16_t nof;
   uint8_t res = ERR_OK;
 
   for(;;) { /* breaks */
-    res = I2C1_SendBlock(data, dataSize, &nof);
+    GI2C1_deviceData.dataTransmittedFlg = FALSE;
+    res = CI2C1_MasterSendBlock(GI2C1_deviceData.handle, data, dataSize, flags==GI2C1_SEND_STOP?LDD_I2C_SEND_STOP:LDD_I2C_NO_SEND_STOP);
     if (res!=ERR_OK) {
-      (void)I2C1_SendStop();
       break; /* break for(;;) */
     }
-    if (flags==GI2C1_SEND_STOP || (flags==GI2C1_STOP_NOSTART)) {
-      res = I2C1_SendStop();
-      if (res!=ERR_OK) {
-        break; /* break for(;;) */
-      }
-    }
+    do { /* Wait until data is sent */
+    } while (!GI2C1_deviceData.dataTransmittedFlg);
     break; /* break for(;;) */
   } /* for(;;) */
   return res;
@@ -250,28 +242,29 @@ uint8_t GI2C1_WriteBlock(void* data, uint16_t dataSize, GI2C1_EnumSendFlags flag
 uint8_t GI2C1_ReadAddress(uint8_t i2cAddr, uint8_t *memAddr, uint8_t memAddrSize, uint8_t *data, uint16_t dataSize)
 {
   uint8_t res = ERR_OK;
-  uint16_t nof;
 
   if (GI2C1_SelectSlave(i2cAddr)!=ERR_OK) {
     return ERR_FAILED;
   }
   for(;;) { /* breaks */
     if(memAddr!=NULL) { /* only if we want to send an address */
-      res = I2C1_SendBlock((void*)memAddr, memAddrSize, &nof);
+      /* send device address and memory address */
+      GI2C1_deviceData.dataTransmittedFlg = FALSE;
+      res = CI2C1_MasterSendBlock(GI2C1_deviceData.handle, memAddr, memAddrSize, LDD_I2C_NO_SEND_STOP);
       if (res!=ERR_OK) {
-        (void)I2C1_SendStop();
         break; /* break for(;;) */
       }
     }
-    res = I2C1_RecvBlock(data, dataSize, &nof);
+    do { /* Wait until data is sent */
+    } while (!GI2C1_deviceData.dataTransmittedFlg);
+    /* receive data */
+    GI2C1_deviceData.dataReceivedFlg = FALSE;
+    res = CI2C1_MasterReceiveBlock(GI2C1_deviceData.handle, data, dataSize, LDD_I2C_SEND_STOP);
     if (res!=ERR_OK) {
-      (void)I2C1_SendStop();
       break; /* break for(;;) */
     }
-    res = I2C1_SendStop();
-    if (res!=ERR_OK) {
-      break; /* break for(;;) */
-    }
+    do { /* Wait until data is received */
+    } while (!GI2C1_deviceData.dataReceivedFlg);
     break; /* break for(;;) */
   } /* for(;;) */
   if (GI2C1_UnselectSlave()!=ERR_OK) {
@@ -302,7 +295,6 @@ uint8_t GI2C1_WriteAddress(uint8_t i2cAddr, uint8_t *memAddr, uint8_t memAddrSiz
   static uint8_t writeBuf[GI2C1_WRITE_BUFFER_SIZE];
   uint8_t *p;
   uint16_t i;
-  uint16_t nof;
   uint8_t res = ERR_OK;
 
   if (GI2C1_SelectSlave(i2cAddr)!=ERR_OK) {
@@ -322,21 +314,53 @@ uint8_t GI2C1_WriteAddress(uint8_t i2cAddr, uint8_t *memAddr, uint8_t memAddrSiz
     dataSize--;
   }
   for(;;) { /* breaks */
-    res = I2C1_SendBlock((void*)writeBuf, i, &nof);
-    if (res!=ERR_OK) {
-      (void)I2C1_SendStop();
+    /* send device address, memory address and data */
+    GI2C1_deviceData.dataTransmittedFlg = FALSE;
+    if (CI2C1_MasterSendBlock(GI2C1_deviceData.handle, writeBuf, i, LDD_I2C_SEND_STOP)!=ERR_OK) {
       break; /* break for(;;) */
     }
-    res = I2C1_SendStop();
-    if (res!=ERR_OK) {
-      break; /* break for(;;) */
-    }
+    do { /* Wait until data is sent */
+    } while (!GI2C1_deviceData.dataTransmittedFlg);
     break; /* break for(;;) */
   } /* for(;;) */
   if (GI2C1_UnselectSlave()!=ERR_OK) {
     return ERR_FAILED;
   }
   return res;
+}
+
+/*
+** ===================================================================
+**     Method      :  GI2C1_OnMasterBlockSent (component GenericI2C)
+**
+**     Description :
+**         This method is internal. It is used by Processor Expert only.
+** ===================================================================
+*/
+void CI2C1_OnMasterBlockSent(LDD_TUserData *UserDataPtr)
+{
+  if (UserDataPtr==&GI2C1_deviceData) { /* it is our own message */
+    GI2C1_TDataState *devicePtr = (GI2C1_TDataState*)UserDataPtr;
+
+    devicePtr->dataTransmittedFlg = TRUE;
+  }
+}
+
+/*
+** ===================================================================
+**     Method      :  GI2C1_OnMasterBlockReceived (component GenericI2C)
+**
+**     Description :
+**         This method is internal. It is used by Processor Expert only.
+** ===================================================================
+*/
+void CI2C1_OnMasterBlockReceived(LDD_TUserData *UserDataPtr)
+{
+  if (UserDataPtr==&GI2C1_deviceData) { /* it is our own message */
+    GI2C1_TDataState *devicePtr = (GI2C1_TDataState*)UserDataPtr;
+
+    devicePtr->dataReceivedFlg = TRUE;
+  }
 }
 
 /*
@@ -350,11 +374,10 @@ uint8_t GI2C1_WriteAddress(uint8_t i2cAddr, uint8_t *memAddr, uint8_t memAddrSiz
 */
 void GI2C1_Init(void)
 {
-  GI2C1_busSem = xSemaphoreCreateRecursiveMutex();
-  if (GI2C1_busSem==NULL) { /* semaphore creation failed */
-    for(;;) {} /* error, not enough memory? */
+  GI2C1_deviceData.handle = CI2C1_Init(&GI2C1_deviceData);
+  if (GI2C1_deviceData.handle==NULL) {
+    for(;;){} /* failure! */
   }
-  vQueueAddToRegistry(GI2C1_busSem, "GI2C1_Mutex");
 }
 
 /*
@@ -368,9 +391,7 @@ void GI2C1_Init(void)
 */
 void GI2C1_Deinit(void)
 {
-  vQueueUnregisterQueue(GI2C1_busSem);
-  FRTOS1_vSemaphoreDelete(GI2C1_busSem);
-  GI2C1_busSem = NULL;
+  CI2C1_Deinit(&GI2C1_deviceData);
 }
 
 /*
@@ -385,7 +406,7 @@ void GI2C1_Deinit(void)
 */
 void* GI2C1_GetSemaphore(void)
 {
-  return GI2C1_busSem;
+  return NULL; /* RTOS and Semaphore enabled in properties */
 }
 
 /*
@@ -485,21 +506,25 @@ uint8_t GI2C1_WriteWordAddress8(uint8_t i2cAddr, uint8_t memAddr, uint16_t data)
 uint8_t GI2C1_ScanDevice(uint8_t i2cAddr)
 {
   uint8_t res = ERR_OK;
-  uint16_t nof;
+  LDD_I2C_TErrorMask errMask;
   uint8_t dummy;
 
   if (GI2C1_SelectSlave(i2cAddr)!=ERR_OK) {
     return ERR_FAILED;
   }
   for(;;) { /* breaks */
-    res = I2C1_RecvBlock((void*)&dummy, 1, &nof);
+    /* send device address */
+    GI2C1_deviceData.dataTransmittedFlg = FALSE;
+    res = CI2C1_MasterReceiveBlock(GI2C1_deviceData.handle, &dummy, 1, LDD_I2C_SEND_STOP);
     if (res!=ERR_OK) {
-      (void)I2C1_SendStop();
       break; /* break for(;;) */
     }
-    res = I2C1_SendStop();
-    if (res!=ERR_OK) {
-      break; /* break for(;;) */
+    do { /* Wait until data is sent */
+    } while (!GI2C1_deviceData.dataTransmittedFlg);
+    errMask = 0;
+    (void)CI2C1_GetError(GI2C1_deviceData.handle, &errMask);
+    if (errMask&LDD_I2C_MASTER_NACK) { /* master did not receive ACK from slave */
+      res = ERR_NOTAVAIL; /* device did not respond with ACK */
     }
     break; /* break for(;;) */
   } /* for(;;) */
@@ -528,24 +553,19 @@ uint8_t GI2C1_ScanDevice(uint8_t i2cAddr)
 */
 uint8_t GI2C1_ProbeACK(void* data, uint16_t dataSize, GI2C1_EnumSendFlags flags, uint16_t WaitTimeUS)
 {
-  uint16_t nof;
   uint8_t res = ERR_OK;
 
-  (void)WaitTimeUS; /* not used */
-  for(;;) { /* breaks */
-    res = I2C1_SendBlock(data, dataSize, &nof);
-    if (res!=ERR_OK) {
-      (void)I2C1_SendStop();
-      break; /* break for(;;) */
-    }
-    if (flags==GI2C1_SEND_STOP) {
-      res = I2C1_SendStop();
-      if (res!=ERR_OK) {
-        break; /* break for(;;) */
-      }
-    }
-    break; /* break for(;;) */
-  } /* for(;;) */
+  GI2C1_deviceData.dataTransmittedFlg = FALSE;
+  res = CI2C1_MasterSendBlock(GI2C1_deviceData.handle, data, dataSize, flags==GI2C1_SEND_STOP?LDD_I2C_SEND_STOP:LDD_I2C_NO_SEND_STOP);
+  if (res!=ERR_OK) {
+    return res;
+  }
+  /*lint -save -e522 Lacks side effect */
+  WAIT3_Waitus(WaitTimeUS);
+  /*lint -restore */
+  if (!GI2C1_deviceData.dataTransmittedFlg) {
+    return ERR_FAILED; /* no ACK received? */
+  }
   return res;
 }
 

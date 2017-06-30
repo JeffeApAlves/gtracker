@@ -10,13 +10,7 @@
 
 #include "AD1.h"
 
-typedef struct{
-
-	int		Level;
-
-} DataAD;
-
-void read_Channels_AD(void);
+void Analog_Run(void);
 
 extern volatile bool AD_finished;
 

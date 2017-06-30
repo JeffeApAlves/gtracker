@@ -5,7 +5,7 @@
  */
 
 #include "AppQueues.h"
-#include "queue.h"
+#include "Data.h"
 #include "RingBuffer.h"
 #include "gps.h"
 
@@ -20,9 +20,11 @@ RingBuffer	bufferRxNMEA;
 ArrayFrame	frameNMEA;
 StatusNMEA	statusNMEA = NMEA_INIT;
 DataNMEA	dataNMEA;
-DataNMEA*	pDataNMEA = &dataNMEA;
 
-void NMEA_process(void) {
+Info		infoGPS;
+Info*		pInfoGPS = &infoGPS;
+
+void NMEA_Run(void) {
 
 	switch(statusNMEA){
 
@@ -159,9 +161,16 @@ static void NMEA_verifyFrame(void)
 
 static void NMEA_acceptRxFrame(void)
 {
-    if(xQueueSendToBack( xQueueGPS , ( void * ) &pDataNMEA, ( TickType_t ) 1 ) ){
 
-    	xTaskNotifyGive( xHandleMainTask );
+	pInfoGPS->Lat = dataNMEA.Lat;
+	pInfoGPS->Lng = dataNMEA.Lng;
+	strcpy(pInfoGPS->Time,dataNMEA.Time_UTC);
+	strcpy(pInfoGPS->Date,dataNMEA.Date);
+
+
+    if(xQueueSendToBack( xQueueData , ( void * ) &pInfoGPS, ( TickType_t ) 1 ) ){
+
+    	xTaskNotify( xHandleMainTask , UPDATE_GPS , eSetBits );
 
     	setGPSStatus(NMEA_INIT_OK);
     }
@@ -213,11 +222,11 @@ static bool NMEA_decoderFrame(void){
 
 				AsString(id,&list,0);
 
-				if(strcmp(GGA,id+2)==0){		decoderGGA(&list,pDataNMEA);
+				if(strcmp(GGA,id+2)==0){		decoderGGA(&list,&dataNMEA);
 
-				}else if(strcmp(RMC,id+2)==0){	decoderRMC(&list,pDataNMEA);
+				}else if(strcmp(RMC,id+2)==0){	decoderRMC(&list,&dataNMEA);
 
-				}else if(strcmp(GSA,id+2)==0){	decoderGSA(&list,pDataNMEA);
+				}else if(strcmp(GSA,id+2)==0){	decoderGSA(&list,&dataNMEA);
 
 				}else{
 
@@ -379,7 +388,7 @@ inline bool putGPSData(char data) {
 void NMEA_init(void)
 {
 	clearBuffer(&bufferRxNMEA);
-	clearDataNMEA(pDataNMEA);
+	clearDataNMEA(&dataNMEA);
 	clearArrayFrame(&frameNMEA);
 	setGPSStatus(NMEA_INIT_OK);
 }

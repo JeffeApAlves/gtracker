@@ -147,7 +147,7 @@ static void AppendCheckSum(DataCom *frame);
 static void buildFrame(DataCom *frame);
 
 /*interface*/
-void processProtocol(void);
+void Communication_Run(void);
 void setEventCMD(ResourceID id,pCallBack c);
 bool putRxData(char ch);
 bool getTxData(char* ch);

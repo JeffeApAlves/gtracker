@@ -6,7 +6,7 @@
 **     Version     : Component 01.025, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-26, 22:35, # CodeGen: 15
+**     Date/Time   : 2017-06-30, 02:07, # CodeGen: 48
 **     Abstract    :
 **
 **     Settings    :
@@ -62,8 +62,6 @@
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "FRTOS1.h"
-#include "UTIL1.h"
-#include "MCUC1.h"
 #include "TSK1.h"
 #include "AS1.h"
 #include "ASerialLdd1.h"
@@ -78,18 +76,8 @@
 #include "BitIoLdd3.h"
 #include "AD1.h"
 #include "AdcLdd1.h"
-#include "TU1.h"
 #include "TI1.h"
 #include "TimerIntLdd1.h"
-#include "MMA1.h"
-#include "GI2C1.h"
-#include "WAIT1.h"
-#include "I2C1.h"
-#include "SDA1.h"
-#include "BitIoLdd4.h"
-#include "SCL1.h"
-#include "BitIoLdd5.h"
-#include "CS1.h"
 #include "LCDout.h"
 #include "EN1.h"
 #include "BitIoLdd6.h"
@@ -107,6 +95,15 @@
 #include "XF1.h"
 #include "AS2.h"
 #include "ASerialLdd2.h"
+#include "WAIT1.h"
+#include "TU1.h"
+#include "MCUC1.h"
+#include "UTIL1.h"
+#include "MMA1.h"
+#include "GI2C1.h"
+#include "WAIT2.h"
+#include "WAIT3.h"
+#include "CI2C1.h"
 
 
 /*

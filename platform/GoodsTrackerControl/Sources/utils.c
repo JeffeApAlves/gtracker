@@ -28,7 +28,7 @@ void str_split(List* result, char* str, const char a_delim) {
 	}
 
 	result->count	= count + 1;
-	result->itens	= _malloc(sizeof(char *) * result->count);
+	result->itens	= _malloc(sizeof(char*) * result->count);
 
 	unsigned int len = strlen(str);
 
@@ -38,13 +38,13 @@ void str_split(List* result, char* str, const char a_delim) {
 
     unsigned short idx = 0;
 
-	while (token.data != NULL) {
+	while (token.text != NULL) {
 
-	   char *tmp = _malloc(sizeof(char) * (token.len + 1));
+		char* tmp = _malloc(sizeof(char) * (token.len + 1));
 
 	   if(tmp!=NULL){
 
-		   memcpy(tmp, token.data, token.len);
+		   memcpy(tmp, token.text, token.len);
 
 		   tmp[token.len] = '\0';
 
@@ -68,7 +68,7 @@ buffer_t memtok(const void *s, size_t length, const char *delim, buffer_t *save_
     size_t len = 0;
 
     if (NULL == s) {
-        stream = save_ptr->data;
+        stream = save_ptr->text;
     } else {
         stream = s;
         save_ptr->len = length;
@@ -80,8 +80,8 @@ buffer_t memtok(const void *s, size_t length, const char *delim, buffer_t *save_
     while (save_ptr->len--) {
         if (memchr(delim, *stream, strlen(delim))) {
             /* Point save_ptr past the (non-existent) token. */
-            save_ptr->data = stream + 1;
-            return (buffer_t) { .data = token, .len = len };
+            save_ptr->text = stream + 1;
+            return (buffer_t) { .text = token, .len = len };
         }
 
         ++len;
@@ -89,10 +89,10 @@ buffer_t memtok(const void *s, size_t length, const char *delim, buffer_t *save_
     }
 
     /* State : done. */
-    *save_ptr = (buffer_t) { .data = NULL, .len = 0 };
+    *save_ptr = (buffer_t) { .text = NULL, .len = 0 };
 
     /* Stream exhausted but no delimiters terminate it. */
-    return (buffer_t){ .data = token, .len = len };
+    return (buffer_t){ .text = token, .len = len };
 }
 //-----------------------------------------------------------------------------------------
 

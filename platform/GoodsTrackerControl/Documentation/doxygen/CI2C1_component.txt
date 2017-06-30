@@ -29,7 +29,7 @@ by the component.
 <tr><td colspan="4" class="ttitle1">CI2C1 Initialization</td></tr>
 <tr><td class="ttitle2">Address</td><td class="ttitle2">Register</td><td class="ttitle2">Register Value</td><td class="ttitle2">Register Description</td></tr>
 <tr><td>0x40048034</td><td>SIM_SCGC4</td>
-<td class="regNotResetVal">0xF0000470</td>
+<td class="regNotResetVal">0xF0001470</td>
  <td>SIM_SCGC4 register, peripheral CI2C1.</td></tr>
 <tr><td>0x40066002</td><td>I2C0_C1</td>
 <td class="regResetVal">0x00000000</td>
@@ -50,7 +50,7 @@ by the component.
 <td class="regNotResetVal">0x00000080</td>
  <td>NVIC_IPR2 register, peripheral CI2C1.</td></tr>
 <tr><td>0xE000E100</td><td>NVIC_ISER</td>
-<td class="regNotResetVal">0x00029100</td>
+<td class="regNotResetVal">0x0002D100</td>
  <td>NVIC_ISER register, peripheral CI2C1.</td></tr>
 <tr><td>0x40066005</td><td>I2C0_C2</td>
 <td class="regResetVal">0x00000000</td>
@@ -59,7 +59,7 @@ by the component.
 <td class="regNotResetVal">0x00000008</td>
  <td>I2C0_SMB register, peripheral CI2C1.</td></tr>
 <tr><td>0x40066001</td><td>I2C0_F</td>
-<td class="regNotResetVal">0x00000040</td>
+<td class="regNotResetVal">0x00000080</td>
  <td>I2C0_F register, peripheral CI2C1.</td></tr>
 </table>
 Color Denotes Reset Value
@@ -115,14 +115,14 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x40048034</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0xF0000470</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0xF0001470</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0xF0000030</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
 <tr><td>23</td><td>SPI1</td><td>0x00</td><td>SPI1 Clock Gate Control</td>
 <tr><td>22</td><td>SPI0</td><td>0x00</td><td>SPI0 Clock Gate Control</td>
 <tr><td>19</td><td>CMP</td><td>0x00</td><td>Comparator Clock Gate Control</td>
 <tr><td>18</td><td>USBOTG</td><td>0x00</td><td>USB Clock Gate Control</td>
-<tr><td>12</td><td>UART2</td><td>0x00</td><td>UART2 Clock Gate Control</td>
+<tr><td>12</td><td>UART2</td><td>0x01</td><td>UART2 Clock Gate Control</td>
 <tr><td>11</td><td>UART1</td><td>0x00</td><td>UART1 Clock Gate Control</td>
 <tr><td>10</td><td>UART0</td><td>0x01</td><td>UART0 Clock Gate Control</td>
 <tr><td>7</td><td>I2C1</td><td>0x00</td><td>I2C1 Clock Gate Control</td>
@@ -420,7 +420,7 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0xE000E100</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00029100</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x0002D100</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
 <tr><td>0 - 31</td><td>SETENA</td><td>0x00</td><td>Interrupt set enable bits</td>
@@ -509,10 +509,10 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x40066001</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000040</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00000080</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
-<tr><td>6 - 7</td><td>MULT</td><td>0x00</td><td>The MULT bits define the multiplier factor mul. This factor is used along with the SCL divider to generate the I2C baud rate</td>
+<tr><td>6 - 7</td><td>MULT</td><td>0x02</td><td>The MULT bits define the multiplier factor mul. This factor is used along with the SCL divider to generate the I2C baud rate</td>
 <tr><td>0 - 5</td><td>ICR</td><td>0x00</td><td>ClockRate</td>
 </tr></table>
 */
@@ -529,7 +529,7 @@ registers of the peripheral(s) configured by the component.
 **            MASTER mode                                  : Enabled
 **              Initialization                             : 
 **                Address mode                             : 7-bit addressing
-**                Target slave address init                : 0x1D
+**                Target slave address init                : 0
 **            SLAVE mode                                   : Disabled
 **            Pins                                         : 
 **              SDA pin                                    : 
@@ -540,13 +540,13 @@ registers of the peripheral(s) configured by the component.
 **                SCL pin signal                           : 
 **              High drive select                          : Disabled
 **              Input Glitch filter                        : 0
-**            Internal frequency (multiplier factor)       : 10.48576 MHz
+**            Internal frequency (multiplier factor)       : 5.24288 MHz
 **            Bits 0-2 of Frequency divider register       : 000
 **            Bits 3-5 of Frequency divider register       : 000
-**            SCL frequency                                : 524.288 kHz
-**            SDA Hold                                     : 0.668 us
-**            SCL start Hold                               : 0.572 us
-**            SCL stop Hold                                : 1.049 us
+**            SCL frequency                                : 262.144 kHz
+**            SDA Hold                                     : 1.335 us
+**            SCL start Hold                               : 1.144 us
+**            SCL stop Hold                                : 2.098 us
 **            Control acknowledge bit                      : Disabled
 **            Low timeout                                  : Disabled
 **          Initialization                                 : 
