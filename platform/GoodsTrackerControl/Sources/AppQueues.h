@@ -26,11 +26,9 @@ extern const TickType_t xMainDelay,
 						xAccelDelay;
 
 
-extern QueueHandle_t xQueueCom, xQueueData, xQueueLCD, xQueuePayload;
+extern QueueHandle_t xQueueCom, xQueueDataTLM, xQueueLCD, xQueuePayload;
 
 extern TaskHandle_t xHandleMainTask, xHandleCommunicationTask,
-		xHandleDataTask, xHandleIHMTask, xHandleGPSTask, xHandleAccelTask;
-
-extern uint32_t ulPreviousValue;
+		xHandleDataTask, xHandleIHMTask, xHandleGPSTask, xHandleAccelTask,xHandleCallBackTask;
 
 #endif /* SOURCES_APPQUEUES_H_ */

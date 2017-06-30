@@ -10,7 +10,7 @@
 
 #include "AD1.h"
 
-void Analog_Run(void);
+void runAnalog(void);
 
 extern volatile bool AD_finished;
 

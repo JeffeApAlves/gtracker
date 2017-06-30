@@ -1,9 +1,11 @@
+#include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 #include "XF1.h"
 #include "Array.h"
 #include "RingBuffer.h"
+#include "AppQueues.h"
 #include "protocol.h"
 
 const char* OPERATION_AN = "AN";
@@ -12,17 +14,19 @@ const char* OPERATION_WR = "WR";
 
 StatusRx	statusRx = CMD_INIT;
 RingBuffer	bufferRx,bufferTx;
-DataCom		dataFrame;
+DataCom		dataCom;
+DataCom*	pDataCom = &dataCom;
 ArrayFrame	frameCom;
 
-Resource	ListCmd[]	= {	{.resourceID = CMD_LED,			.resource = "LED\0",	.cb = NULL},
-							{.resourceID = CMD_ANALOG,		.resource = "ANL\0",	.cb = NULL},
-							{.resourceID = CMD_PWM,			.resource = "PWM\0",	.cb = NULL},
-							{.resourceID = CMD_ACC,			.resource = "ACC\0",	.cb = NULL},
-							{.resourceID = CMD_TOUCH,		.resource = "TOU\0",	.cb = NULL},
-							{.resourceID = CMD_TELEMETRIA,	.resource = "TLM\0",	.cb = NULL},
-							{.resourceID = CMD_LOCK,		.resource = "LCK\0",	.cb = NULL},
-							{.resourceID = CMD_LCD,			.resource = "LCD\0",	.cb = NULL},
+Resource	ListCmd[]	= {	{.id = CMD_NONE,		.name = "---\0"},
+							{.id = CMD_LED,			.name = "LED\0"},
+							{.id = CMD_ANALOG,		.name = "ANL\0"},
+							{.id = CMD_PWM,			.name = "PWM\0"},
+							{.id = CMD_ACC,			.name = "ACC\0"},
+							{.id = CMD_TOUCH,		.name = "TOU\0"},
+							{.id = CMD_TLM,			.name = "TLM\0"},
+							{.id = CMD_LOCK,		.name = "LCK\0"},
+							{.id = CMD_LCD,			.name = "LCD\0"},
 				};
 
 const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Resource);
@@ -32,7 +36,7 @@ const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Resource);
  * Processamento da comunicacao
  *
  */
-void Communication_Run(void) {
+void runCommunication(void) {
 
 	switch(statusRx){
 
@@ -46,8 +50,23 @@ void Communication_Run(void) {
 		case CMD_RX_LF:			verifyFrame();			break;
 		case CMD_FRAME_OK:		acceptRxFrame();		break;
 		case CMD_FRAME_NOK:		errorRxFrame();			break;
-		case CMD_EXEC:			sendResult();			break;
-		case CMD_EXEC_ERROR:	errorExec();			break;
+//		case CMD_EXEC:			sendResult();			break;
+//		case CMD_EXEC_ERROR:	errorExec();			break;
+	}
+
+	anyResult();
+}
+//------------------------------------------------------------------------
+
+void anyResult(void){
+
+	ArrayPayLoad* payload;
+
+	if (xQueueReceive(xQueuePayload, &(payload), (TickType_t ) 1)) {
+
+		doAnswer(payload);
+
+		sendResult();
 	}
 }
 //------------------------------------------------------------------------
@@ -60,7 +79,7 @@ static void rxStartCMD (void) {
 
 		if(ch==CHAR_START){
 
-			clearData(&dataFrame);
+			clearData(&dataCom);
 			clearArrayFrame(&frameCom);
 			setStatusRx(CMD_RX_START);
 		}
@@ -170,13 +189,13 @@ static bool decoderFrame(void) {
 
 			if(checksum_rx==checksum_calc) {
 
-				AsInteger(&dataFrame.address,		&list,0);
-				AsInteger(&dataFrame.dest,			&list,1);
-				AsInteger(&dataFrame.countFrame,	&list,2);
-				AsString(&dataFrame.operacao,		&list,3);
-				AsString(&dataFrame.resource,		&list,4);
-				AsInteger(&dataFrame.PayLoad.Count,	&list,5);
-				AsString(&dataFrame.PayLoad.Data,	&list,6);
+				AsInteger(&dataCom.address,			&list,0);
+				AsInteger(&dataCom.dest,			&list,1);
+				AsInteger(&dataCom.countFrame,		&list,2);
+				AsString(&dataCom.operacao,			&list,3);
+				AsString(&dataCom.resource.name,	&list,4);
+				AsInteger(&dataCom.PayLoad.Count,	&list,5);
+				AsString(&dataCom.PayLoad.Data,		&list,6);
 
 				ret = true;
 			}
@@ -188,13 +207,13 @@ static bool decoderFrame(void) {
 	return ret;
 }
 //------------------------------------------------------------------------
-
+/*
 void setEventCMD(ResourceID id,pCallBack c) {
 
 	int i;
 	for(i=0;i<SIZE_LIST_CMD;i++){
 
-		if(ListCmd[i].resourceID==id){
+		if(ListCmd[i].id==id){
 
 			ListCmd[i].cb = c;
 			break;
@@ -202,22 +221,23 @@ void setEventCMD(ResourceID id,pCallBack c) {
 	}
 }
 //------------------------------------------------------------------------
+*/
+static Resource getResource(char* name) {
 
-static pCallBack getCallBack(void) {
+	Resource	r = ListCmd[0];
 
-	pCallBack cb = NULL;
+	unsigned char i;
 
-	int i;
-	for(i = 0; i < SIZE_LIST_CMD; i++){
+	for(i = 1; i < SIZE_LIST_CMD; i++){
 
-		if(strcmp(ListCmd[i].resource, dataFrame.resource) == 0){
+		if(strcmp(ListCmd[i].name, name) == 0){
 
-			cb = ListCmd[i].cb;
+			r = ListCmd[i];
 			break;
 		}
 	}
 
-	return cb;
+	return r;
 }
 //------------------------------------------------------------------------
 
@@ -237,12 +257,12 @@ static void errorExec(void) {
  */
 static void sendResult(void){
 
-	sendFrame(&dataFrame);
+	sendFrame(&dataCom);
 
 	// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
 	startTX();
 
-	setStatusRx(CMD_INIT_OK);
+//	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
 
@@ -329,16 +349,14 @@ inline bool getRxData(char* ch){
  */
 static void acceptRxFrame(void) {
 
-	pCallBack cb = getCallBack();
+	pDataCom->resource = getResource(pDataCom->resource.name);
 
-	if(cb!=NULL && cb(&dataFrame) == CMD_RESULT_EXEC_SUCCESS) {
+	if(xQueueSendToBack( xQueueCom , ( void * ) &pDataCom, ( TickType_t ) 1 ) ){
 
-		setStatusRx(CMD_EXEC);
+		xTaskNotify( xHandleCallBackTask , (uint32_t) 0  ,eIncrement);
 	}
-	else {
 
-		setStatusRx(CMD_EXEC_ERROR);
-	}
+	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
 
@@ -368,11 +386,11 @@ inline bool hasTxData(void){
  * Constroi o frame para envio
  *
  */
-static void buildFrame(DataCom *frame) {
+static void buildFrame() {
 
-	AppendHeader(frame);
-	AppendPayLoad(frame);
-	AppendCheckSum(frame);
+	copyHeaderToFrame();
+	copyPayLoadToFrame();
+	copyCheckSumToFrame();
 }
 //------------------------------------------------------------------------
 
@@ -381,15 +399,15 @@ static void buildFrame(DataCom *frame) {
  * Adiciona o cabecalho no frame
  *
  */
-static void AppendHeader(DataCom *frame) {
+static void copyHeaderToFrame(void) {
 
 	XF1_xsprintf(frameCom.Data,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
-				frame->address, 		CHAR_SEPARATOR,
-				frame->dest, 			CHAR_SEPARATOR,
-				frame->countFrame,		CHAR_SEPARATOR,
-				frame->operacao, 		CHAR_SEPARATOR,
-				frame->resource, 		CHAR_SEPARATOR,
-				frame->PayLoad.Count,	CHAR_SEPARATOR);
+				dataCom.address, 		CHAR_SEPARATOR,
+				dataCom.dest, 		CHAR_SEPARATOR,
+				dataCom.countFrame,	CHAR_SEPARATOR,
+				dataCom.operacao, 	CHAR_SEPARATOR,
+				dataCom.resource.name,CHAR_SEPARATOR,
+				dataCom.PayLoad.Count,CHAR_SEPARATOR);
 }
 //------------------------------------------------------------------------
 
@@ -398,9 +416,9 @@ static void AppendHeader(DataCom *frame) {
  * Adiciona o Payload no Frame
  *
  */
-inline static void AppendPayLoad(DataCom* frame) {
+inline static void copyPayLoadToFrame(void) {
 
-	strncat(frameCom.Data, frame->PayLoad.Data,frame->PayLoad.Count);
+	AppendFrame(&frameCom,dataCom.PayLoad.Data);
 }
 //------------------------------------------------------------------------
 
@@ -409,15 +427,13 @@ inline static void AppendPayLoad(DataCom* frame) {
  * Adiciona o CheckSum no Frame
  *
  */
-static void AppendCheckSum(DataCom* frame) {
+static void copyCheckSumToFrame(void) {
 
 	char	separator[] = {CHAR_SEPARATOR,CHAR_STR_END};
-	char	checksum[LEN_CHECKSUM+1];
 
-	strcat(frameCom.Data,separator);
-	frameCom.Count = strlen(frameCom.Data);
-	XF1_xsprintf(checksum, "%02X", calcChecksum (frameCom.Data,frameCom.Count));
-	strcat(frameCom.Data, checksum);
+	AppendFrame(&frameCom,separator);
+	XF1_xsprintf(frameCom.checksum, "%02X", calcChecksum (frameCom.Data,frameCom.Count));
+	AppendFrame(&frameCom,frameCom.checksum);
 }
 //------------------------------------------------------------------------
 
@@ -426,20 +442,17 @@ static void AppendCheckSum(DataCom* frame) {
  * Set PayLoad
  *
  */
-static void setPayLoad(DataCom* frame, char* str) {
+static void setPayLoad(DataCom* frame, ArrayPayLoad* ans) {
 
-	size_t size = strlen(str);
+	if(frame!=NULL && ans!=NULL){
 
-	if(frame->PayLoad.Count <= SIZE_PAYLOAD){
+		frame->PayLoad =  *ans;
 
-		strcpy(frame->PayLoad.Data, str);
+		if(frame->PayLoad.Count > SIZE_PAYLOAD){
 
-	}else{
-
-		//TODO Erro: mensagem maior que o array do payload
+			//TODO Tratar array do payload maior que o buffer provisionado
+		}
 	}
-
-	frame->PayLoad.Count	= strlen(frame->PayLoad.Data);
 }
 //------------------------------------------------------------------------
 
@@ -448,17 +461,17 @@ static void setPayLoad(DataCom* frame, char* str) {
  * Funcao disponibilizada para aplicacao preencher o payload
  *
  */
-void doAnswer(char *msg) {
+void doAnswer(ArrayPayLoad* ans) {
 
-	if (msg) {
+	if (ans) {
 
-		setPayLoad(&dataFrame, msg);
+		setPayLoad(&dataCom, ans);
 
-		strncpy(dataFrame.operacao, OPERATION_AN, LEN_OPERATION);
-		dataFrame.dest		= dataFrame.address;
-		dataFrame.address	= ADDRESS;
+		strcpy(dataCom.operacao, OPERATION_AN);
+		dataCom.dest	= dataCom.address;
+		dataCom.address	= ADDRESS;
 
-		buildFrame(&dataFrame);
+		buildFrame();
 	}
 	else {
 		/*O QUE RESPONDE EM CASO DE MENSAGEM NULA ???*/
@@ -491,7 +504,7 @@ static void startTX(void){
  */
 void initRxCMD(void) {
 
-	clearData(&dataFrame);
+	clearData(&dataCom);
 	clearArrayFrame(&frameCom);
 	clearBuffer(&bufferRx);
 	clearBuffer(&bufferTx);

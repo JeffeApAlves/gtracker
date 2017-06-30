@@ -9,6 +9,30 @@
 #ifndef SOURCES_IHM_H_
 #define SOURCES_IHM_H_
 
+typedef enum {
+	IHM_EVENT_NONE,
+	IHM_EVENT_CHOOSE_LEFT,
+	IHM_EVENT_CHOOSE_RIGHT,
+	IHM_EVENT_CHOOSE_OK,
+} ihmEventType;
+
+typedef struct {
+	bool eventTreated;
+	ihmEventType evType;
+} ihmEvent;
+
+#define IHM_MAX_EVENTS 16
+typedef struct {
+	UINT8 option;
+	struct {
+		ihmEvent event[IHM_MAX_EVENTS]; //TODO - USAR BUFFER CIRCULAR
+		UINT8 head;
+		UINT8 tail;
+	} ihmEventBuffer;
+
+} ihmStruct;
+
+
 /**
  * CHAMANDO ESTA ESTRUTURA DE IHM (INTERFACE HOMEM-MÁQUINA) EM VEZ DE
  * MMI (MEN-MACHINE INTERFACE) POR PURO GOSTO PESSOAL... :)
@@ -27,11 +51,13 @@ void ihm_terminate();
 /**
  *
  */
-void IHM_Run();
+void runIHM();
 
 /**
  *
  */
 int ihm_put_slide_event(TSS_CSASlider *event);
+
+void ihm_process_events(ihmStruct *ihm);
 
 #endif /* SOURCES_IHM_H_ */

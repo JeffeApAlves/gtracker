@@ -8,7 +8,7 @@
 #ifndef SOURCES_APPLICATION_H_
 #define SOURCES_APPLICATION_H_
 
-#include "Data.h"
+#include "DataTLM.h"
 #include "protocol.h"
 #include "Array.h"
 
@@ -17,24 +17,31 @@ typedef enum
 	LED_RED		=1,
 	LED_BLUE	=2}LEDS;
 
+/**
+ * Ponteiro para as call backs
+ */
+typedef ResultExec(*pCallBack)(ArrayPayLoad*);
 
-ResultExec onAnalog(DataCom* cmd);
-ResultExec onLED(DataCom* cmd);
-ResultExec onPWM(DataCom* cmd);
-ResultExec onTouch(DataCom* cmd);
-ResultExec onAccel(DataCom* cmd);
-ResultExec onTelemetry(DataCom* frame);
-ResultExec onLock(DataCom* frame);
 
-void App_Run(void);
-void initCallBacks(void);
-void Infor2String(Info* info,char* str_out);
-void initInfo(void);
-void decoderPayLoad(ArrayPayLoad* payload);
+ResultExec onAnalog(ArrayPayLoad* cmd);
+ResultExec onLED(ArrayPayLoad* cmd);
+ResultExec onPWM(ArrayPayLoad* cmd);
+ResultExec onTouch(ArrayPayLoad* cmd);
+ResultExec onAccel(ArrayPayLoad* cmd);
+ResultExec onTelemetry(ArrayPayLoad* frame);
+ResultExec onLock(ArrayPayLoad* frame);
+
+void runApp(void);
+void Infor2String(DataTLM* info,ArrayPayLoad* ans);
+void initApp(void);
+void decoderLockPayLoad(ArrayPayLoad* payload);
+void answerTime(void);
+void answerTLM(void);
 
 void updateDataLevel(void);
 void updateDataAcce(void);
 void updateDataGPS(void);
-
+void runCallBack(void);
+pCallBack getCallBack(Resource* r);
 
 #endif /* SOURCES_APPLICATION_H_ */

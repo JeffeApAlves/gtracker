@@ -16,11 +16,12 @@
 #include "Accelerometer.h"
 #include "application.h"
 
-Info			dataTLM;
+DataTLM			dataTLM;
 int				_lock;
 ArrayPayLoad	msg2send;
+ArrayPayLoad*	pAnswer = &msg2send;
 
-void App_Run(void){
+void runApp(void){
 
 	uint32_t ulNotifiedValue;
 
@@ -42,19 +43,46 @@ void App_Run(void){
 		updateDataLevel();
 	}
 
-
 	dataTLM.Speed	= 100;
 	dataTLM.Lock	= _lock;
 }
 //-------------------------------------------------------------------------
 
+void runCallBack(void){
+
+	uint32_t ulNotifiedValue;
+
+	xTaskNotifyWait( 0x0, 0xFFFF ,  &ulNotifiedValue, portMAX_DELAY );
+
+	DataCom* data;
+
+	if (xQueueReceive(xQueueCom, &(data), (TickType_t ) 1)) {
+
+		if(data!=NULL) {
+
+			pCallBack cb = getCallBack(&data->resource);
+
+			if(cb!=NULL){
+
+				if(cb(&data->PayLoad) == CMD_RESULT_EXEC_SUCCESS) {
+
+				}
+				else {
+
+				}
+			}
+		}
+	}
+}
+//-------------------------------------------------------------------------
+
 void updateDataGPS(void) {
 
-	if (xQueueData != 0) {
+	if (xQueueDataTLM != 0) {
 
-		Info* data;
+		DataTLM* data;
 
-		if (xQueueReceive(xQueueData, &(data), (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueDataTLM, &(data), (TickType_t ) 1)) {
 
 			dataTLM.Lat = data->Lat;
 			dataTLM.Lng = data->Lng;
@@ -67,11 +95,11 @@ void updateDataGPS(void) {
 
 void updateDataAcce(void) {
 
-	if (xQueueData != 0) {
+	if (xQueueDataTLM != 0) {
 
-		Info* data;
+		DataTLM* data;
 
-		if (xQueueReceive(xQueueData, &(data), (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueDataTLM, &(data), (TickType_t ) 1)) {
 
 			dataTLM.Acc[AXIS_X] = data->Acc[AXIS_X];
 			dataTLM.Acc[AXIS_Y] = data->Acc[AXIS_Y];
@@ -86,11 +114,11 @@ void updateDataAcce(void) {
 
 void updateDataLevel(void) {
 
-	if (xQueueData != 0) {
+	if (xQueueDataTLM != 0) {
 
-		Info* data;
+		DataTLM* data;
 
-		if (xQueueReceive(xQueueData, &(data), (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueDataTLM, &(data), (TickType_t ) 1)) {
 
 			dataTLM.Level = data->Level;
 		}
@@ -98,15 +126,13 @@ void updateDataLevel(void) {
 }
 //-------------------------------------------------------------------------
 
-ResultExec onLED(DataCom* frame){
+ResultExec onLED(ArrayPayLoad* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		strcpy(msg2send.Data,"23/06/2017 19.52");
-
-		doAnswer(msg2send.Data);
+		answerTime();
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -115,15 +141,13 @@ ResultExec onLED(DataCom* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAnalog(DataCom* frame){
+ResultExec onAnalog(ArrayPayLoad* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		strcpy(msg2send.Data,"23/06/2017 19.52");
-
-		doAnswer(msg2send.Data);
+		answerTime();
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -133,15 +157,13 @@ ResultExec onAnalog(DataCom* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAccel(DataCom* frame){
+ResultExec onAccel(ArrayPayLoad* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		strcpy(msg2send.Data,"23/06/2017 19.52");
-
-		doAnswer(msg2send.Data);
+		answerTime();
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -151,15 +173,13 @@ ResultExec onAccel(DataCom* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onTouch(DataCom* frame){
+ResultExec onTouch(ArrayPayLoad* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		strcpy(msg2send.Data,"23/06/2017 19.52");
-
-		doAnswer(msg2send.Data);
+		answerTime();
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -168,15 +188,13 @@ ResultExec onTouch(DataCom* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onPWM(DataCom* frame){
+ResultExec onPWM(ArrayPayLoad* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		strcpy(msg2send.Data,"23/06/2017 19.52");
-
-		doAnswer(msg2send.Data);
+		answerTime();
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -186,15 +204,13 @@ ResultExec onPWM(DataCom* frame){
 }
 //------------------------------------------------------------------------
 
-ResultExec onTelemetry(DataCom* frame){
+ResultExec onTelemetry(ArrayPayLoad* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
 
-		Infor2String(&dataTLM,msg2send.Data);
-
-		doAnswer(msg2send.Data);
+		answerTLM();
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -203,11 +219,13 @@ ResultExec onTelemetry(DataCom* frame){
 }
 //------------------------------------------------------------------------
 
-ResultExec onLock(DataCom* frame){
+ResultExec onLock(ArrayPayLoad* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
+
+		decoderLockPayLoad(frame);
 
 		if(_lock){
 
@@ -218,12 +236,7 @@ ResultExec onLock(DataCom* frame){
 			unLock();
 		}
 
-		//Colocar no minimo horario que foi executado o cmd
-		strcpy(msg2send.Data,"23/06/2017 19.52");
-
-		decoderPayLoad(&frame->PayLoad);
-
-		doAnswer(msg2send.Data);
+		answerTime();
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
@@ -232,11 +245,11 @@ ResultExec onLock(DataCom* frame){
 }
 //------------------------------------------------------------------------
 
-void Infor2String(Info* info,char* str_out){
+void Infor2String(DataTLM* info,ArrayPayLoad* ans){
 
-	if(info!=NULL && str_out!= NULL){
+	if(info!=NULL && ans!= NULL){
 
-		XF1_xsprintf(str_out,"%.8f:%.8f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s:%s",
+		XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s:%s",
 				info->Lat,
 				info->Lng,
 				info->Acc[AXIS_X],
@@ -250,11 +263,13 @@ void Infor2String(Info* info,char* str_out){
 				info->Lock,
 				info->Time,
 				info->Date);
+
+		ans->Count = strlen(ans->Data);
 	}
 }
 //------------------------------------------------------------------------
 
-void decoderPayLoad(ArrayPayLoad* payload){
+void decoderLockPayLoad(ArrayPayLoad* payload){
 
 	List	list;
 
@@ -266,21 +281,59 @@ void decoderPayLoad(ArrayPayLoad* payload){
 }
 //------------------------------------------------------------------------
 
-void initInfo(void){
+void initApp(void){
 
-	clearInfo(&dataTLM);
+	clearDataTLM(&dataTLM);
 	clearArrayPayLoad(&msg2send);
 }
 //------------------------------------------------------------------------
 
-void initCallBacks(void){
+void answerTime(void){
 
-	setEventCMD(CMD_LED,		onLED);
-	setEventCMD(CMD_ANALOG,		onAnalog);
-	setEventCMD(CMD_ACC,		onAccel);
-	setEventCMD(CMD_TOUCH,		onTouch);
-	setEventCMD(CMD_PWM,		onPWM);
-	setEventCMD(CMD_TELEMETRIA,	onTelemetry);
-	setEventCMD(CMD_LOCK,		onLock);
+	clearArrayPayLoad(&msg2send);
+
+	AppendPayLoad(&msg2send,"23/06/2017 19.52");
+
+	if(xQueueSendToBack( xQueuePayload , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){
+
+	}else{
+
+		//TODO erro na resposta
+	}
 }
 //-------------------------------------------------------------------------
+
+void answerTLM(void){
+
+	clearArrayPayLoad(&msg2send);
+
+	Infor2String(&dataTLM,&msg2send);
+
+	if(xQueueSendToBack( xQueuePayload , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){
+
+	}else{
+
+		//TODO erro na resposta
+	}
+}
+//-------------------------------------------------------------------------
+
+pCallBack getCallBack(Resource* r) {
+
+	pCallBack	cb = NULL;
+
+	switch(r->id){
+
+		case CMD_LED:		cb = onLED;			break;
+		case CMD_ANALOG:	cb = onAnalog;		break;
+		case CMD_PWM:		cb = onPWM;			break;
+		case CMD_ACC:		cb = onAccel;		break;
+		case CMD_TOUCH:		cb = onTouch;		break;
+		case CMD_TLM:		cb = onTelemetry;	break;
+		case CMD_LOCK:		cb = onLock;		break;
+		case CMD_LCD:		cb = NULL;			break;
+	}
+
+	return cb;
+}
+//------------------------------------------------------------------------

@@ -10,7 +10,7 @@
 
 enum {AXIS_X=0,AXIS_Y=1,AXIS_Z=2};
 
-void Accelerometer_Run(void);
+void runAccelerometer(void);
 void initAccel(void);
 
 #endif /* SOURCES_ACCELEROMETER_H_ */

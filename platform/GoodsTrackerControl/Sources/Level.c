@@ -5,18 +5,18 @@
  *      Author: Jefferson
  */
 
-#include "Data.h"
+#include "DataTLM.h"
 #include "AppQueues.h"
 #include "Level.h"
 
 uint16_t	ADValues[AD1_CHANNEL_COUNT];
 
-Info		adInfo;
-Info*		pInfo = &adInfo;
+DataTLM		adInfo;
+DataTLM*	pInfo = &adInfo;
 
 volatile	bool AD_finished = FALSE;
 
-void Analog_Run(void){
+void runAnalog(void){
 
 	if(AD1_Measure(TRUE)==ERR_OK){
 
@@ -26,7 +26,7 @@ void Analog_Run(void){
 
 			pInfo->Level = ADValues[2];
 
-		    if(xQueueSendToBack( xQueueData , ( void * ) &pInfo, ( TickType_t ) 1 ) ){
+		    if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pInfo, ( TickType_t ) 1 ) ){
 
 		    	xTaskNotify( xHandleMainTask, UPDATE_AD , eSetBits );
 		    }

@@ -5,15 +5,15 @@
  *      Author: Jefferson
  */
 
-#include "Data.h"
+#include "DataTLM.h"
 #include "MMA1.h"
 #include "AppQueues.h"
 #include "Accelerometer.h"
 
-Info	acceInfo;
-Info*	pAcceInfo = &acceInfo;
+DataTLM	acceInfo;
+DataTLM*	pAcceInfo = &acceInfo;
 
-void Accelerometer_Run(void) {
+void runAccelerometer(void) {
 
 //	MMA1_GetRaw8XYZ(&pAcceInfo->Acc[0]);
 
@@ -28,7 +28,7 @@ void Accelerometer_Run(void) {
 	pAcceInfo->Inc[AXIS_Y]	= 31;
 	pAcceInfo->Inc[AXIS_Z]	= 32;
 
-    if(xQueueSendToBack( xQueueData , ( void * ) &pAcceInfo, ( TickType_t ) 1 ) ){
+    if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pAcceInfo, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleMainTask , UPDATE_ACCE , eSetBits );
     }
@@ -42,6 +42,6 @@ void initAccel(void){
 		MMA1_Enable();
 	}
 
-	clearInfo(pAcceInfo);
+	clearDataTLM(pAcceInfo);
 }
 //------------------------------------------------------------------------

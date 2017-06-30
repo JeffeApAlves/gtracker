@@ -52,6 +52,4 @@ void AsHex(int* out,List *list,int index);
 void AsFloat(float* out,List *list,int index);
 void AsChar(char* out,List *list,int index);
 
-void Convert(void* out,char* info,TYPE_INFO type);
-
 #endif /* SOURCES_UTILS_H_ */

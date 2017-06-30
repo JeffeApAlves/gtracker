@@ -61,7 +61,7 @@ static void decoderGSA(List* list,DataNMEA* data);
 //API
 bool getGPSData(char* ch);
 inline bool putGPSData(char data);
-void NMEA_Run(void);
+void runNMEA(void);
 void NMEA_init(void);
 
 #endif /* SOURCES_GPS_H_ */

@@ -6,6 +6,7 @@
  */
 
 
+#include "string.h"
 #include "Array.h"
 
 inline unsigned int putDataArray(ArrayFrame *frame, char data) {
@@ -35,5 +36,19 @@ unsigned int calcChecksum(const char *buff, size_t sz) {
 	}
 
 	return chk;
+}
+//------------------------------------------------------------------------
+
+void AppendPayLoad(ArrayPayLoad* payload,const char* data){
+
+	strcat(payload->Data,data);
+	payload->Count = strlen(payload->Data);
+}
+//------------------------------------------------------------------------
+
+void AppendFrame(ArrayFrame* frame,const char* data){
+
+	strcat(frame->Data,data);
+	frame->Count = strlen(frame->Data);
 }
 //------------------------------------------------------------------------

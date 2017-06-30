@@ -5,7 +5,7 @@
  */
 
 #include "AppQueues.h"
-#include "Data.h"
+#include "DataTLM.h"
 #include "RingBuffer.h"
 #include "gps.h"
 
@@ -21,10 +21,10 @@ ArrayFrame	frameNMEA;
 StatusNMEA	statusNMEA = NMEA_INIT;
 DataNMEA	dataNMEA;
 
-Info		infoGPS;
-Info*		pInfoGPS = &infoGPS;
+DataTLM		infoGPS;
+DataTLM*	pInfoGPS = &infoGPS;
 
-void NMEA_Run(void) {
+void runNMEA(void) {
 
 	switch(statusNMEA){
 
@@ -168,7 +168,7 @@ static void NMEA_acceptRxFrame(void)
 	strcpy(pInfoGPS->Date,dataNMEA.Date);
 
 
-    if(xQueueSendToBack( xQueueData , ( void * ) &pInfoGPS, ( TickType_t ) 1 ) ){
+    if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pInfoGPS, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleMainTask , UPDATE_GPS , eSetBits );
 

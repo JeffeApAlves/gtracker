@@ -26,38 +26,34 @@
 #include "accelerometer.h"
 #include "gps.h"
 
-/*
- *
- * Main task
- *
- */
+/*############################################################################################
+  #  Main task
+  ############################################################################################*/
+
 static portTASK_FUNCTION(main_task, pvParameters) {
 
 	initQueues();
 
-	initInfo();
+	initApp();
 
 	for (;;) {
 
-		App_Run();
-
-//		vTaskDelay(xMainDelay);
+		runApp();
 	}
 
 	vTaskDelete(main_task);
 }
 
-/*
- * Processamento do Protocolo
- *
- */
-static portTASK_FUNCTION(communication_task, pvParameters) {
 
-	initCallBacks();
+/*############################################################################################
+ #  Comunicacao com o computador
+ ############################################################################################*/
+
+static portTASK_FUNCTION(communication_task, pvParameters) {
 
 	for (;;) {
 
-		Communication_Run();
+		runCommunication();
 
 		vTaskDelay(xCommunicationDelay);
 	}
@@ -65,15 +61,16 @@ static portTASK_FUNCTION(communication_task, pvParameters) {
 	vTaskDelete(communication_task);
 }
 
-/*
- *
- * Task de leitura dos canais do AD
- */
+
+/*############################################################################################
+ #  Leitura do AD
+ ############################################################################################*/
+
 static portTASK_FUNCTION(data_task, pvParameters) {
 
 	for (;;) {
 
-		Analog_Run();
+		runAnalog();
 
 		vTaskDelay(xDataDelay);
 	}
@@ -81,18 +78,17 @@ static portTASK_FUNCTION(data_task, pvParameters) {
 	vTaskDelete(data_task);
 }
 
-/**
- *
- * Task para atualizacao do IHM
- *
- */
+/*############################################################################################
+ #  Gerencimento do IHM LCD-Touch
+ ############################################################################################*/
+
 static portTASK_FUNCTION(ihm_task, pvParameters) {
 
 	ihm_initialize();
 
 	for (;;) {
 
-		IHM_Run();
+		runIHM();
 
 		vTaskDelay(xIHMDelay);
 	}
@@ -101,18 +97,18 @@ static portTASK_FUNCTION(ihm_task, pvParameters) {
 	vTaskDelete(ihm_task);
 }
 
-/**
- *
- * Task para comunicacao com o GPS
- *
- */
+
+/*############################################################################################
+ #  Task de gerenciamento do GPS e protocolo NMEA
+ ############################################################################################*/
+
 static portTASK_FUNCTION(gps_task, pvParameters) {
 
 	NMEA_init();
 
 	for (;;) {
 
-		NMEA_Run();
+		runNMEA();
 
 		vTaskDelay(xGPSDelay);
 	}
@@ -120,18 +116,17 @@ static portTASK_FUNCTION(gps_task, pvParameters) {
 	vTaskDelete(gps_task);
 }
 
-/**
- *
- * Task leitura do acelerometro
- *
- */
+/*############################################################################################
+ #  Task leitura do acelerometro
+ ############################################################################################*/
+
 static portTASK_FUNCTION(accel_task, pvParameters) {
 
 	initAccel();
 
 	for (;;) {
 
-		Accelerometer_Run();
+		runAccelerometer();
 
 		vTaskDelay(xAccelDelay);
 	}
@@ -139,12 +134,30 @@ static portTASK_FUNCTION(accel_task, pvParameters) {
 	vTaskDelete(accel_task);
 }
 
+/*############################################################################################
+ #  Task para execucao da call back dos cmds recebidos
+ ############################################################################################*/
+
+static portTASK_FUNCTION(callback_task, pvParameters) {
+
+	for (;;) {
+
+		runCallBack();
+	}
+
+	vTaskDelete(callback_task);
+}
+
+/*############################################################################################
+ #  Funcao para criacao das tasks
+ ############################################################################################*/
+
 void CreateTasks(void) {
 
 	if (FRTOS1_xTaskCreate(
 			main_task, /* pointer to the task */
 			"mains_task", /* task name for kernel awareness debugging */
-			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			configMINIMAL_STACK_SIZE, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
 			tskIDLE_PRIORITY + 0, /* initial priority */
 			&xHandleMainTask /* optional task handle to create */
@@ -157,7 +170,7 @@ void CreateTasks(void) {
 	if (FRTOS1_xTaskCreate(
 			communication_task, /* pointer to the task */
 			"communication_task", /* task name for kernel awareness debugging */
-			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			configMINIMAL_STACK_SIZE, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
 			tskIDLE_PRIORITY + 0, /* initial priority */
 			&xHandleCommunicationTask /* optional task handle to create */
@@ -215,6 +228,20 @@ void CreateTasks(void) {
 			(void*)NULL, /* optional task startup argument */
 			tskIDLE_PRIORITY + 0, /* initial priority */
 			&xHandleAccelTask /* optional task handle to create */
+	) != pdPASS) {
+		/*lint -e527 */
+		for (;;) {
+		}; /* error! probably out of memory */
+		/*lint +e527 */
+	}
+
+	if (FRTOS1_xTaskCreate(
+			callback_task, /* pointer to the task */
+			"callback_task", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			(void*)NULL, /* optional task startup argument */
+			tskIDLE_PRIORITY + 0, /* initial priority */
+			&xHandleCallBackTask /* optional task handle to create */
 	) != pdPASS) {
 		/*lint -e527 */
 		for (;;) {
