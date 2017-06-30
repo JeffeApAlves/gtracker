@@ -15,15 +15,15 @@ namespace GoodsTracker
 
         static int      index = 0;
 
-        static List<CommunicationUnit>          units = new List<CommunicationUnit>();
-        private static Dictionary<string, Cmd>  txCmds = new Dictionary<string, Cmd>();
-        private static List<Cmd>                queueCmds = new List<Cmd>();
+        static List<CommunicationUnit>          units   = new List<CommunicationUnit>();
+        private static Dictionary<string, Cmd>  txCmds  = new Dictionary<string, Cmd>();
+        private static Dictionary<string, Cmd>  cmds    = new Dictionary<string, Cmd>();
         private static List<AnsCmd>             queueAnsCmd = new List<AnsCmd>();
 
         internal int Address { get => address; set => address = value; }
         public static List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
-        internal static List<Cmd> QueueCmds { get => queueCmds; set => queueCmds = value; }
         internal static Dictionary<string, Cmd> TxCmds { get => txCmds; set => txCmds = value; }
+        internal static Dictionary<string, Cmd> Cmds { get => cmds; set => cmds = value; }
 
         protected abstract void onReceiveAnswer(AnsCmd ans);
 
@@ -39,7 +39,7 @@ namespace GoodsTracker
 
         static internal bool isAnyQueueCmd()
         {
-            return queueCmds.Count > 0;
+            return cmds.Count > 0;
         }
 
         internal Cmd getNextCmd()
@@ -48,11 +48,13 @@ namespace GoodsTracker
 
             if (isAnyQueueCmd())
             {
-                cmd = queueCmds[0];
+                List<Cmd> tmp = new List<Cmd>(cmds.Values);
+
+                cmd = tmp[0];
 
                 txCmds[cmd.Header.Resource] = cmd;
 
-                queueCmds.Remove(cmd);
+                cmds.Remove(cmd.Header.Resource);
             }
             
             return cmd;
@@ -79,7 +81,7 @@ namespace GoodsTracker
 
         internal void sendCMD(Cmd cmd)
         {
-            queueCmds.Add(cmd);
+            cmds[cmd.Header.Resource] =cmd;
         }
 
         internal static CommunicationUnit getNextUnit()

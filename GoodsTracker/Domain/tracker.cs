@@ -65,7 +65,8 @@ namespace GoodsTracker
                 updateDataTelemetria(ans);
             }
             else if(ans.Header.Resource.Equals(RESOURCE.LOCK)){
-                // Nao fazer nada pq o status da trava esta na telemetria
+
+                telemetriaData.StatusLock = statusLock;
             }
         }
 

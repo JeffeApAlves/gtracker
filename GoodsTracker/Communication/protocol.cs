@@ -82,25 +82,28 @@ namespace GoodsTracker
 
         public void processTx()
         {
-            if (CommunicationUnit.isAnyQueueCmd())
+            if (stopTx.Elapsed.Milliseconds > 100)
             {
-                DataFrame frame = new DataFrame();
-                Cmd cmd = currentUnit.getNextCmd();
+                if (CommunicationUnit.isAnyQueueCmd())
+                {
+                    DataFrame frame = new DataFrame();
+                    Cmd cmd = currentUnit.getNextCmd();
 
-                cmd.Header.Count    = count++;
-                frame.Header        = cmd.Header;
-                frame.PayLoad       = cmd.Payload;
+                    cmd.Header.Count    = count++;
+                    frame.Header        = cmd.Header;
+                    frame.PayLoad       = cmd.Payload;
 
-                sendFrame(frame);
+                        sendFrame(frame);
 
-                Debug.WriteLine("{0} Frame[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"),stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
+                        Debug.WriteLine("TX TO:{0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
 
-                Debug.Write("TX OK: ");
-                foreach (char c in frame.Data)
-                    Debug.Write(c.ToString());
-                Debug.Write("\r\n");
+                        Debug.Write("TX OK: ");
+                        foreach (char c in frame.Data)
+                            Debug.Write(c.ToString());
+                        Debug.Write("\r\n");
 
-                stopTx.Restart();
+                        stopTx.Restart();
+                    }
             }
         }
 
@@ -252,6 +255,7 @@ namespace GoodsTracker
 
         internal void init()
         {
+            stopTx.Start();
             setTime(_TIME_COMMUNICATION);
             Serial.Open();
         }
