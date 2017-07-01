@@ -27,7 +27,8 @@
 #include "gps.h"
 
 /*############################################################################################
-  #  Main task
+  # Main task
+  # Espera as notificacoes para atualizacoes das informacoes de teleemtria
   ############################################################################################*/
 
 static portTASK_FUNCTION(main_task, pvParameters) {
@@ -38,33 +39,11 @@ static portTASK_FUNCTION(main_task, pvParameters) {
 
 	for (;;) {
 
-		runApp();
+		updateTLM();
 	}
 
 	vTaskDelete(main_task);
 }
-
-
-/*############################################################################################
- #  Comunicacao com o computador
- ############################################################################################*/
-
-static portTASK_FUNCTION(communication_task, pvParameters) {
-
-	initCommunication();
-
-	for (;;) {
-
-//		runCommunication();
-
-		processRx();
-
-		vTaskDelay(xCommunicationDelay);
-	}
-
-	vTaskDelete(communication_task);
-}
-
 
 /*############################################################################################
  #  Leitura do AD
@@ -98,6 +77,7 @@ static portTASK_FUNCTION(ihm_task, pvParameters) {
 	}
 
 	ihm_terminate();
+
 	vTaskDelete(ihm_task);
 }
 
@@ -150,6 +130,24 @@ static portTASK_FUNCTION(callback_task, pvParameters) {
 	}
 
 	vTaskDelete(callback_task);
+}
+
+/*############################################################################################
+ # Task para processamento da recepcao dos dados
+ ############################################################################################*/
+
+static portTASK_FUNCTION(communication_task, pvParameters) {
+
+	initCommunication();
+
+	for (;;) {
+
+		processRx();
+
+		vTaskDelay(xCommunicationDelay);
+	}
+
+	vTaskDelete(communication_task);
 }
 
 /*############################################################################################

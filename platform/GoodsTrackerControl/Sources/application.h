@@ -22,7 +22,6 @@ typedef enum
  */
 typedef ResultExec(*pCallBack)(ArrayPayLoad*);
 
-
 ResultExec onAnalog(ArrayPayLoad* cmd);
 ResultExec onLED(ArrayPayLoad* cmd);
 ResultExec onPWM(ArrayPayLoad* cmd);
@@ -31,16 +30,12 @@ ResultExec onAccel(ArrayPayLoad* cmd);
 ResultExec onTelemetry(ArrayPayLoad* frame);
 ResultExec onLock(ArrayPayLoad* frame);
 
-void runApp(void);
-void Infor2String(DataTLM* info,ArrayPayLoad* ans);
+void tlm2String(DataTLM* info,ArrayPayLoad* ans);
 void initApp(void);
 void decoderLockPayLoad(ArrayPayLoad* payload);
 void answerTime(void);
 void answerTLM(void);
 
-void updateDataLevel(void);
-void updateDataAcce(void);
-void updateDataGPS(void);
 void runCallBack(void);
 pCallBack getCallBack(Resource* r);
 

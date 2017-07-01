@@ -68,7 +68,6 @@ static void sendString(const char* str);
 static void errorRxFrame(void);
 static bool decoderFrame(void);
 static void verifyFrame(void);
-static void errorExec(void);
 static void startTX(void);
 static void setHeaderInfo(int address,int dest, char* operation);
 static void setPayLoad(ArrayPayLoad* ans);

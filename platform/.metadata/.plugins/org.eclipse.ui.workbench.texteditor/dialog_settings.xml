@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="verifyFrame" key="selection"/>
+		<item value="Infor2String" key="selection"/>
 		<list key="findhistory">
-			<item value="verifyFrame"/>
-			<item value="rxLF"/>
-			<item value="errorRxFrame"/>
-			<item value="acceptRxFrame"/>
-			<item value="runc"/>
-			<item value="run"/>
-			<item value="sendFrame"/>
-			<item value="sendAnswer"/>
+			<item value="Infor2String"/>
+			<item value="decoderFrame"/>
+			<item value="erro"/>
+			<item value="rxStartCMD"/>
+			<item value="errorExec"/>
+			<item value="datacom"/>
+			<item value="msg2send"/>
+			<item value="inline"/>
 		</list>
 		<list key="replacehistory">
 			<item value="dataNMEA."/>

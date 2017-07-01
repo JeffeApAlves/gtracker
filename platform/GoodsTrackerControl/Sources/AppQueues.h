@@ -26,7 +26,7 @@ extern const TickType_t /*xMainDelay,*/
 						xAccelDelay;
 
 
-extern QueueHandle_t xQueueCom, xQueueDataTLM, xQueueLCD, xQueuePayload;
+extern QueueHandle_t xQueueCom, xQueueDataTLM, xQueueLCD, xQueueAnswer;
 
 extern TaskHandle_t xHandleMainTask, xHandleCommunicationTask,
 		xHandleDataTask, xHandleIHMTask, xHandleGPSTask, xHandleAccelTask,xHandleCallBackTask,xHandleRunTxTask;

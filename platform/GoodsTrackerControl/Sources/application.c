@@ -16,37 +16,8 @@
 #include "Accelerometer.h"
 #include "application.h"
 
-DataTLM			dataTLM;
-int				_lock;
 ArrayPayLoad	msg2send;
 ArrayPayLoad*	pAnswer = &msg2send;
-
-void runApp(void){
-
-	uint32_t ulNotifiedValue;
-
-	xTaskNotifyWait( 0x0, BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY );
-
-
-	if(ulNotifiedValue & BIT_UPDATE_GPS){
-
-		updateDataGPS();
-	}
-
-	if(ulNotifiedValue & BIT_UPDATE_ACCE){
-
-		updateDataAcce();
-	}
-
-	if(ulNotifiedValue & BIT_UPDATE_AD){
-
-		updateDataLevel();
-	}
-
-	dataTLM.Speed	= 100;
-	dataTLM.Lock	= _lock;
-}
-//-------------------------------------------------------------------------
 
 void runCallBack(void){
 
@@ -72,56 +43,6 @@ void runCallBack(void){
 
 				}
 			}
-		}
-	}
-}
-//-------------------------------------------------------------------------
-
-void updateDataGPS(void) {
-
-	if (xQueueDataTLM != 0) {
-
-		DataTLM* data;
-
-		if (xQueueReceive(xQueueDataTLM, &(data), (TickType_t ) 1)) {
-
-			dataTLM.Lat = data->Lat;
-			dataTLM.Lng = data->Lng;
-			strcpy(dataTLM.Date, data->Date);
-			strcpy(dataTLM.Time, data->Time);
-		}
-	}
-}
-//-------------------------------------------------------------------------
-
-void updateDataAcce(void) {
-
-	if (xQueueDataTLM != 0) {
-
-		DataTLM* data;
-
-		if (xQueueReceive(xQueueDataTLM, &(data), (TickType_t ) 1)) {
-
-			dataTLM.Acc[AXIS_X] = data->Acc[AXIS_X];
-			dataTLM.Acc[AXIS_Y] = data->Acc[AXIS_Y];
-			dataTLM.Acc[AXIS_Z] = data->Acc[AXIS_Z];
-			dataTLM.Inc[AXIS_X] = data->Inc[AXIS_X];
-			dataTLM.Inc[AXIS_Y] = data->Inc[AXIS_Y];
-			dataTLM.Inc[AXIS_Z] = data->Inc[AXIS_Z];
-		}
-	}
-}
-//-------------------------------------------------------------------------
-
-void updateDataLevel(void) {
-
-	if (xQueueDataTLM != 0) {
-
-		DataTLM* data;
-
-		if (xQueueReceive(xQueueDataTLM, &(data), (TickType_t ) 1)) {
-
-			dataTLM.Level = data->Level;
 		}
 	}
 }
@@ -246,7 +167,7 @@ ResultExec onLock(ArrayPayLoad* frame){
 }
 //------------------------------------------------------------------------
 
-void Infor2String(DataTLM* info,ArrayPayLoad* ans){
+void tlm2String(DataTLM* info,ArrayPayLoad* ans){
 
 	if(info!=NULL && ans!= NULL){
 
@@ -282,13 +203,6 @@ void decoderLockPayLoad(ArrayPayLoad* payload){
 }
 //------------------------------------------------------------------------
 
-void initApp(void){
-
-	clearDataTLM(&dataTLM);
-	clearArrayPayLoad(&msg2send);
-}
-//------------------------------------------------------------------------
-
 void answerTime(void){
 
 	clearArrayPayLoad(&msg2send);
@@ -296,7 +210,7 @@ void answerTime(void){
 	AppendPayLoad(&msg2send,"23/06/2017 19.52");
 
 
-	if(xQueueSendToBack( xQueuePayload , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){
+	if(xQueueSendToBack( xQueueAnswer , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
 
@@ -311,9 +225,9 @@ void answerTLM(void){
 
 	clearArrayPayLoad(&msg2send);
 
-	Infor2String(&dataTLM,&msg2send);
+	tlm2String(&dataTLM,&msg2send);
 
-	if(xQueueSendToBack( xQueuePayload , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){
+	if(xQueueSendToBack( xQueueAnswer , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
 
@@ -341,5 +255,12 @@ pCallBack getCallBack(Resource* r) {
 	}
 
 	return cb;
+}
+//------------------------------------------------------------------------
+
+void initApp(void){
+
+	clearDataTLM(&dataTLM);
+	clearArrayPayLoad(&msg2send);
 }
 //------------------------------------------------------------------------

@@ -7792,3 +7792,248 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+!SESSION 2017-07-01 01:03:31.474 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product com.somniumtech.branding.kds.ide -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.somniumtech.branding.kds.ide -showlocation
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-07-01 01:05:37.785
+!MESSAGE External elements location C:\Freescale\KDS_v3\eclipse\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-01 01:06:01.142
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.freescale.processorexpert.core 4 0 2017-07-01 01:09:46.276
+!MESSAGE org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+	at org.eclipse.cdt.managedbuilder.internal.core.Option.getBasicStringListValue(Option.java:2547)
+	at com.processorexpert.core.compiler.BuildSettingsReader.modifyIncludePathAdv(BuildSettingsReader.java:728)
+	at com.processorexpert.core.compiler.LkrFile.updateToolchainSettings(LkrReader.java:417)
+	at com.processorexpert.core.compiler.LkrReader.updateToolchainSettings(LkrReader.java:618)
+	at com.processorexpert.core.ProjectPE.updateCompilerSettingsFromSymbols(ProjectPE.java:4125)
+	at com.processorexpert.core.ProjectPE.synchronizeGeneratedFiles(ProjectPE.java:3918)
+	at com.processorexpert.core.client.ProjectPEclient.synchronizeGeneratedFiles(ProjectPEclient.java:1935)
+	at com.processorexpert.core.builder.PEBuilder.buildIfNeeded(PEBuilder.java:269)
+	at com.processorexpert.core.builder.PEBuilder.fullBuild(PEBuilder.java:196)
+	at com.processorexpert.core.builder.PEBuilder.build(PEBuilder.java:81)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:328)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:403)
+	at org.eclipse.core.internal.resources.Project$1.run(Project.java:618)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2313)
+	at org.eclipse.core.internal.resources.Project.internalBuild(Project.java:597)
+	at org.eclipse.core.internal.resources.Project.build(Project.java:124)
+	at org.eclipse.cdt.launch.AbstractCLaunchDelegate2$1.run(AbstractCLaunchDelegate2.java:352)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2313)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2295)
+	at org.eclipse.cdt.launch.AbstractCLaunchDelegate2.buildProject(AbstractCLaunchDelegate2.java:367)
+	at org.eclipse.cdt.launch.AbstractCLaunchDelegate2.buildForLaunch(AbstractCLaunchDelegate2.java:284)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:855)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-07-01 01:11:20.400
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=thread-created,id="2",group-id="i1"
+~"[New Thread 536874640]\n"
+=breakpoint-modified,bkpt={number="3",type="breakpoint",disp="keep",enabled="y",addr="0x00007794",func="processTx",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\trunk\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="83",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\trunk\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:83"}
+~"[Switching to Thread 536874640]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="3",frame={addr="0x00007794",func="processTx",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\trunk\platform\GoodsTrackerControl\Sources\protocol.c",line="83"},thread-id="2",stopped-threads="all"
+=thread-selected,id="2"
+41^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-07-01 01:11:20.400
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-07-01 01:11:30.392
+!MESSAGE Request for monitor: '*running,thread-id="2"
+*running,thread-id="all"
+=breakpoint-modified,bkpt={number="3",type="breakpoint",disp="keep",enabled="y",addr="0x00007794",func="processTx",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\trunk\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="83",thread-groups=[i1],times="2",original-location="D:\\\\workspace\\\\GoodsTracker\\\\trunk\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:83"}
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="3",frame={addr="0x00007794",func="processTx",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\trunk\platform\GoodsTrackerControl\Sources\protocol.c",line="83"},thread-id="2",stopped-threads="all"
+68^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-07-01 01:11:30.392
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-07-01 01:11:48.458
+!MESSAGE Request for monitor: '*running,thread-id="all"
+=breakpoint-modified,bkpt={number="4",type="breakpoint",disp="keep",enabled="y",addr="0x000077c6",func="rxStartCMD",file="../Sources/protocol.c",fullname="D:\\workspace\\GoodsTracker\\trunk\\platform\\GoodsTrackerControl\\Sources\\protocol.c",line="89",thread-groups=[i1],times="1",original-location="D:\\\\workspace\\\\GoodsTracker\\\\trunk\\\\platform\\\\GoodsTrackerControl\\\\Sources\\\\protocol.c:89"}
+~"[Switching to Thread 536869216]\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="4",frame={addr="0x000077c6",func="rxStartCMD",args=[],file="../Sources/protocol.c",fullname="D:\workspace\GoodsTracker\trunk\platform\GoodsTrackerControl\Sources\protocol.c",line="95"},thread-id="8",stopped-threads="all"
+=thread-selected,id="8"
+88^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-07-01 01:11:48.458
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-07-01 01:14:44.188
+!MESSAGE Request for monitor: '108^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-07-01 01:14:44.188
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-07-01 01:16:50.353
+!MESSAGE Request for monitor: '41^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-07-01 01:16:50.353
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 2 0 2017-07-01 01:24:06.517
+!MESSAGE Error parsing metadata repository
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2017-07-01 01:24:06.517
+!MESSAGE Error in file:/C:/Freescale/KDS_v3/eclipse/p2/org.eclipse.equinox.p2.repository/cache/content-783366767.jar at line 6767, column 45: Missing required attribute in "unit": id
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2017-07-01 01:24:15.817
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at jar:file:/C:/Users/Jefferson/Downloads/SDK_2.2_FRDM-KL25Z.zip!/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:692)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2017-07-01 01:24:15.818
+!MESSAGE No repository found at jar:file:/C:/Users/Jefferson/Downloads/SDK_2.2_FRDM-KL25Z.zip!/.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2017-07-01 01:24:23.432
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at jar:file:/C:/Freescale/SDK_2.2_FRDM-KL25Z.zip!/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:692)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2017-07-01 01:24:23.433
+!MESSAGE No repository found at jar:file:/C:/Freescale/SDK_2.2_FRDM-KL25Z.zip!/.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2017-07-01 01:24:36.969
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at jar:file:/D:/Home/Documents/Eclipse_add-on_to_add_SVD_files_for_EmbSysRegView_into_KDS_3.2.0.zip!/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:692)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2017-07-01 01:24:36.969
+!MESSAGE No repository found at jar:file:/D:/Home/Documents/Eclipse_add-on_to_add_SVD_files_for_EmbSysRegView_into_KDS_3.2.0.zip!/.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-07-01 01:26:35.435
+!MESSAGE Request for monitor: 'RequestMonitor (com.freescale.mqx.gdb.tad.model.VariableReader$1@c494d4): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-07-01 01:26:35.435
+!MESSAGE Connection is shut down
+!SESSION 2017-07-01 01:26:41.975 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product com.somniumtech.branding.kds.ide -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.somniumtech.branding.kds.ide -showlocation
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-07-01 01:26:59.358
+!MESSAGE External elements location C:\Freescale\KDS_v3\eclipse\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-01 01:27:00.922
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.freescale.processorexpert.core 4 0 2017-07-01 01:29:35.270
+!MESSAGE org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+	at org.eclipse.cdt.managedbuilder.internal.core.Option.getBasicStringListValue(Option.java:2547)
+	at com.processorexpert.core.compiler.BuildSettingsReader.modifyIncludePathAdv(BuildSettingsReader.java:728)
+	at com.processorexpert.core.compiler.LkrFile.updateToolchainSettings(LkrReader.java:417)
+	at com.processorexpert.core.compiler.LkrReader.updateToolchainSettings(LkrReader.java:618)
+	at com.processorexpert.core.ProjectPE.updateCompilerSettingsFromSymbols(ProjectPE.java:4125)
+	at com.processorexpert.core.ProjectPE.synchronizeGeneratedFiles(ProjectPE.java:3918)
+	at com.processorexpert.core.client.ProjectPEclient.synchronizeGeneratedFiles(ProjectPEclient.java:1935)
+	at com.processorexpert.core.ProjectPE$7.run(ProjectPE.java:3237)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-07-01 01:52:47.336
+!MESSAGE Request for monitor: '40^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-07-01 01:52:47.336
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-07-01 02:08:41.425
+!MESSAGE Request for monitor: '42^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-07-01 02:08:41.425
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:926)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:755)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-07-01 02:10:10.202
+!MESSAGE Request for monitor: 'RequestMonitor (com.freescale.mqx.gdb.tad.model.VariableReader$1@42dc7b): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-07-01 02:10:10.202
+!MESSAGE Connection is shut down

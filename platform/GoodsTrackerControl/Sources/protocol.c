@@ -26,7 +26,7 @@ Resource	ListCmd[]	= {	{.id = CMD_NONE,	.name = "---\0"},
 							{.id = CMD_TOUCH,	.name = "TOU\0"},
 							{.id = CMD_TLM,		.name = "TLM\0"},
 							{.id = CMD_LOCK,	.name = "LCK\0"},
-							{.id = CMD_LCD,			.name = "LCD\0"},
+							{.id = CMD_LCD,		.name = "LCD\0"},
 				};
 
 const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Resource);
@@ -80,7 +80,7 @@ void processTx(void){
 
 		ArrayPayLoad* payload;
 
-		if (xQueueReceive(xQueuePayload, &(payload), (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueAnswer, &(payload), (TickType_t ) 1)) {
 
 			doAnswer(payload);
 		}
@@ -96,7 +96,6 @@ static void rxStartCMD (void) {
 
 		if(ch==CHAR_START){
 
-			clearData(&dataCom);
 			clearArrayFrame(&frameCom);
 			setStatusRx(CMD_RX_START);
 		}
@@ -175,11 +174,15 @@ static void verifyFrame(void) {
 
 	if(decoderFrame()){
 
-		setStatusRx(CMD_FRAME_OK);
+//		setStatusRx(CMD_FRAME_OK);
+
+		acceptRxFrame();
 
 	}else{
 
-		setStatusRx(CMD_FRAME_NOK);
+//		setStatusRx(CMD_FRAME_NOK);
+
+		errorRxFrame();
 	}
 }
 //------------------------------------------------------------------------
@@ -191,6 +194,8 @@ static bool decoderFrame(void) {
 	List	list;
 
 	str_split(&list, frameCom.Data, CHAR_SEPARATOR);
+
+	clearData(&dataCom);
 
 	if(list.itens!=NULL) {
 
@@ -255,15 +260,6 @@ static Resource getResource(char* name) {
 	}
 
 	return r;
-}
-//------------------------------------------------------------------------
-
-static void errorExec(void) {
-
-	/*
-	 * TBD
-	 */
-	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
 
@@ -363,6 +359,8 @@ static void acceptRxFrame(void) {
 static void errorRxFrame(void){
 
 	// TODO implementar algo quando der erro na recepcao do frame
+
+	clearData(&dataCom);
 
 	setStatusRx(CMD_INIT_OK);
 }
