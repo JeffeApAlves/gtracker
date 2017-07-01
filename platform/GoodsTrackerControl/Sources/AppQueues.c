@@ -11,18 +11,17 @@
 #include "AppQueues.h"
 
 // Tasks Delay
-const TickType_t xMainDelay				= 50 / portTICK_PERIOD_MS;
-const TickType_t xCommunicationDelay	= 3 / portTICK_PERIOD_MS;
+//const TickType_t xMainDelay			= 50 / portTICK_PERIOD_MS;
+const TickType_t xCommunicationDelay	= 5 / portTICK_PERIOD_MS;
 const TickType_t xDataDelay				= 10 / portTICK_PERIOD_MS;
 const TickType_t xIHMDelay				= 25 / portTICK_PERIOD_MS;
-const TickType_t xGPSDelay				= 5 / portTICK_PERIOD_MS;
+const TickType_t xGPSDelay				= 50 / portTICK_PERIOD_MS;
 const TickType_t xAccelDelay			= 10 / portTICK_PERIOD_MS;
-
 
 // Handles Tasks
 TaskHandle_t xHandleMainTask = NULL, xHandleCommunicationTask = NULL,
 		xHandleDataTask = NULL, xHandleIHMTask = NULL, xHandleGPSTask = NULL,
-		xHandleAccelTask = NULL,xHandleCallBackTask=NULL;
+		xHandleAccelTask = NULL,xHandleCallBackTask=NULL,xHandleRunTxTask=NULL;
 
 // Queues
 QueueHandle_t	xQueueCom,xQueueLCD,xQueuePayload,xQueueDataTLM;

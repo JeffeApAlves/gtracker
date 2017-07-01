@@ -28,7 +28,7 @@ void runAnalog(void){
 
 		    if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pInfo, ( TickType_t ) 1 ) ){
 
-		    	xTaskNotify( xHandleMainTask, UPDATE_AD , eSetBits );
+		    	xTaskNotify( xHandleMainTask, BIT_UPDATE_AD , eSetBits );
 		    }
 		}
 	}

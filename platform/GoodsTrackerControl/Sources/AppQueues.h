@@ -12,13 +12,13 @@
 #include "task.h"
 #include "queue.h"
 
-#define		UPDATE_GPS	0x01
-#define		UPDATE_AD	0x02
-#define		UPDATE_ACCE	0x04
+#define		BIT_UPDATE_GPS	0x01
+#define		BIT_UPDATE_AD	0x02
+#define		BIT_UPDATE_ACCE	0x04
 
 void initQueues(void);
 
-extern const TickType_t xMainDelay,
+extern const TickType_t /*xMainDelay,*/
 						xCommunicationDelay,
 						xDataDelay,
 						xIHMDelay,
@@ -29,6 +29,7 @@ extern const TickType_t xMainDelay,
 extern QueueHandle_t xQueueCom, xQueueDataTLM, xQueueLCD, xQueuePayload;
 
 extern TaskHandle_t xHandleMainTask, xHandleCommunicationTask,
-		xHandleDataTask, xHandleIHMTask, xHandleGPSTask, xHandleAccelTask,xHandleCallBackTask;
+		xHandleDataTask, xHandleIHMTask, xHandleGPSTask, xHandleAccelTask,xHandleCallBackTask,xHandleRunTxTask;
+
 
 #endif /* SOURCES_APPQUEUES_H_ */

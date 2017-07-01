@@ -170,7 +170,7 @@ static void NMEA_acceptRxFrame(void)
 
     if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pInfoGPS, ( TickType_t ) 1 ) ){
 
-    	xTaskNotify( xHandleMainTask , UPDATE_GPS , eSetBits );
+    	xTaskNotify( xHandleMainTask , BIT_UPDATE_GPS , eSetBits );
 
     	setGPSStatus(NMEA_INIT_OK);
     }

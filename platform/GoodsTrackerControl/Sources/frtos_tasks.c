@@ -55,7 +55,9 @@ static portTASK_FUNCTION(communication_task, pvParameters) {
 
 	for (;;) {
 
-		runCommunication();
+//		runCommunication();
+
+		processRx();
 
 		vTaskDelay(xCommunicationDelay);
 	}
@@ -148,6 +150,20 @@ static portTASK_FUNCTION(callback_task, pvParameters) {
 	}
 
 	vTaskDelete(callback_task);
+}
+
+/*############################################################################################
+ #  Task para processamento das transmissao
+ ############################################################################################*/
+
+static portTASK_FUNCTION(runTx_task, pvParameters) {
+
+	for (;;) {
+
+		processTx();
+	}
+
+	vTaskDelete(runTx_task);
 }
 
 /*############################################################################################
@@ -244,6 +260,20 @@ void CreateTasks(void) {
 			(void*)NULL, /* optional task startup argument */
 			tskIDLE_PRIORITY + 0, /* initial priority */
 			&xHandleCallBackTask /* optional task handle to create */
+	) != pdPASS) {
+		/*lint -e527 */
+		for (;;) {
+		}; /* error! probably out of memory */
+		/*lint +e527 */
+	}
+
+	if (FRTOS1_xTaskCreate(
+			runTx_task, /* pointer to the task */
+			"runTx_task", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			(void*)NULL, /* optional task startup argument */
+			tskIDLE_PRIORITY + 0, /* initial priority */
+			&xHandleRunTxTask /* optional task handle to create */
 	) != pdPASS) {
 		/*lint -e527 */
 		for (;;) {

@@ -25,20 +25,20 @@ void runApp(void){
 
 	uint32_t ulNotifiedValue;
 
-	xTaskNotifyWait( 0x0, UPDATE_GPS | UPDATE_ACCE | UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY );
+	xTaskNotifyWait( 0x0, BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY );
 
 
-	if(ulNotifiedValue & UPDATE_GPS){
+	if(ulNotifiedValue & BIT_UPDATE_GPS){
 
 		updateDataGPS();
 	}
 
-	if(ulNotifiedValue & UPDATE_ACCE){
+	if(ulNotifiedValue & BIT_UPDATE_ACCE){
 
 		updateDataAcce();
 	}
 
-	if(ulNotifiedValue & UPDATE_AD){
+	if(ulNotifiedValue & BIT_UPDATE_AD){
 
 		updateDataLevel();
 	}
@@ -53,6 +53,7 @@ void runCallBack(void){
 	uint32_t ulNotifiedValue;
 
 	xTaskNotifyWait( 0x0, 0xFFFF ,  &ulNotifiedValue, portMAX_DELAY );
+
 
 	DataCom* data;
 
@@ -294,7 +295,10 @@ void answerTime(void){
 
 	AppendPayLoad(&msg2send,"23/06/2017 19.52");
 
+
 	if(xQueueSendToBack( xQueuePayload , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){
+
+    	xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
 
 	}else{
 
@@ -310,6 +314,8 @@ void answerTLM(void){
 	Infor2String(&dataTLM,&msg2send);
 
 	if(xQueueSendToBack( xQueuePayload , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){
+
+    	xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
 
 	}else{
 

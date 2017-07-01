@@ -186,7 +186,7 @@ PE_DEBUGHALT();
       <boolgroup name="Timers" v="Disabled" />
       <group name="Memory">
         <boolgroup name="Dynamic Allocation" v="Enabled">
-          <Heap_Size v="8000" />
+          <Heap_Size v="10000" />
           <Application_allocated_Heap v="no" />
           <Memory_Allocation_Scheme v="Scheme 4: merge free blocks" />
         </boolgroup>
@@ -357,7 +357,7 @@ PE_DEBUGHALT();
     <Properties>
       <Component_Name v="TSK1" />
       <FreeRTOS v="FRTOS1" />
-      <list name="Number of tasks" v="7">
+      <list name="Number of tasks" v="8">
         <group name="FreeRTOS task">
           <Task_name v="app_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
@@ -390,6 +390,11 @@ PE_DEBUGHALT();
         </group>
         <group name="FreeRTOS task">
           <Task_name v="callback_task" />
+          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
+          <Initial_Priority v="0" />
+        </group>
+        <group name="FreeRTOS task">
+          <Task_name v="runTx_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>

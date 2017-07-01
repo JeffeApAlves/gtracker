@@ -30,7 +30,7 @@ void runAccelerometer(void) {
 
     if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pAcceInfo, ( TickType_t ) 1 ) ){
 
-    	xTaskNotify( xHandleMainTask , UPDATE_ACCE , eSetBits );
+    	xTaskNotify( xHandleMainTask , BIT_UPDATE_ACCE , eSetBits );
     }
 }
 //------------------------------------------------------------------------

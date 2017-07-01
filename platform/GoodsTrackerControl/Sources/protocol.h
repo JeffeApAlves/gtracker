@@ -46,6 +46,9 @@
 // Endereco desse Rastreador
 #define	ADDRESS			2
 
+#define	BIT_TX			0x01
+#define	BIT_RX			0x02
+
 #define CHAR_START		'['
 #define CHAR_END		']'
 #define CHAR_SEPARATOR	':'
@@ -75,8 +78,8 @@ static void copyPayLoadToFrame(void);
 static void copyCheckSumToFrame(void);
 static void buildFrame(void);
 static void sendFrame(void);
-static void processTx(void);
-static void processRx(void);
+void processTx(void);
+void processRx(void);
 
 
 /*interface*/
@@ -86,6 +89,6 @@ bool putRxData(char ch);
 bool getTxData(char* ch);
 bool hasTxData(void);
 void initCommunication(void);
-void runCommunication(void);
+//void runCommunication(void);
 
 #endif /* SOURCES_PROTOCOL_H_ */

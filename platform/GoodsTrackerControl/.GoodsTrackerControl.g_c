@@ -173,7 +173,7 @@
       <XtraAge31>1255759443</XtraAge31>
       <XtraAge32>1255759443</XtraAge32>
       <XtraAge33>1255759443</XtraAge33>
-      <XtraAge34>1255848407</XtraAge34>
+      <XtraAge34>1256110945</XtraAge34>
       <XtraAge35>1255759443</XtraAge35>
       <XtraAge36>1255759443</XtraAge36>
       <XtraAge37>1255759443</XtraAge37>
@@ -657,7 +657,7 @@
     </GenFiles>
     <SignalListFile>Documentation\GoodsTrackerControl_SIGNALS.txt</SignalListFile>
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>92</ProjectModificationStamp>
+    <ProjectModificationStamp>94</ProjectModificationStamp>
   </Options>
   <CpuID_2>
     <Generated>true</Generated>
@@ -745,8 +745,8 @@
     <GenComponentVersion>01.539</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule>Events</GenEventModule>
-    <HeaderAge>1255848406</HeaderAge>
-    <CodeAge>1255848406</CodeAge>
+    <HeaderAge>1256110945</HeaderAge>
+    <CodeAge>1256110945</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>127</GenNumMethods>
     <xTaskCreate>true</xTaskCreate>
@@ -2501,8 +2501,8 @@
     <GenComponentVersion>01.008</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1256093365</HeaderAge>
-    <CodeAge>1256093365</CodeAge>
+    <HeaderAge>1256110780</HeaderAge>
+    <CodeAge>1256110780</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>1</GenNumMethods>
     <CreateTasks>true</CreateTasks>
@@ -2515,15 +2515,15 @@
       <MethodPos0>CreateTasks</MethodPos0>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>89</LineBeg>
-      <LineEnd>98</LineEnd>
+      <LineBeg>93</LineBeg>
+      <LineEnd>102</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos1>CreateTasks</MethodPos1>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>77</LineBeg>
-      <LineEnd>89</LineEnd>
+      <LineBeg>81</LineBeg>
+      <LineEnd>93</LineEnd>
     </MethodPos>
     <GenExtraFilesCount>2</GenExtraFilesCount>
     <ExtraFile0>D:\workspace\GoodsTracker\trunk\platform\GoodsTrackerControl\Sources\frtos_tasks.h</ExtraFile0>
@@ -4683,7 +4683,7 @@
       <LineEnd>584</LineEnd>
     </MethodPos>
     <GenExtraFilesCount>0</GenExtraFilesCount>
-    <InhrCompID_220>
+    <InhrCompID_224>
       <Generated>false</Generated>
       <GenCompName />
       <GenComponentVersion>??.???</GenComponentVersion>
@@ -4710,8 +4710,8 @@
       <GenSmartUserChangesDetected_Asembl>false</GenSmartUserChangesDetected_Asembl>
       <GenMethodPos>0</GenMethodPos>
       <GenExtraFilesCount>0</GenExtraFilesCount>
-    </InhrCompID_220>
-    <InhrCompID_221>
+    </InhrCompID_224>
+    <InhrCompID_225>
       <Generated>false</Generated>
       <GenCompName />
       <GenComponentVersion>??.???</GenComponentVersion>
@@ -4738,7 +4738,7 @@
       <GenSmartUserChangesDetected_Asembl>false</GenSmartUserChangesDetected_Asembl>
       <GenMethodPos>0</GenMethodPos>
       <GenExtraFilesCount>0</GenExtraFilesCount>
-    </InhrCompID_221>
+    </InhrCompID_225>
     <InhrCompID_81>
       <Generated>true</Generated>
       <GenCompName>EN1</GenCompName>
@@ -4868,7 +4868,7 @@
         <ExtraFile0>Documentation\doxygen\BitIoLdd6_component.txt</ExtraFile0>
       </InhrCompID_91>
     </InhrCompID_81>
-    <InhrCompID_222>
+    <InhrCompID_226>
       <Generated>false</Generated>
       <GenCompName />
       <GenComponentVersion>??.???</GenComponentVersion>
@@ -4895,7 +4895,7 @@
       <GenSmartUserChangesDetected_Asembl>false</GenSmartUserChangesDetected_Asembl>
       <GenMethodPos>0</GenMethodPos>
       <GenExtraFilesCount>0</GenExtraFilesCount>
-    </InhrCompID_222>
+    </InhrCompID_226>
     <InhrCompID_82>
       <Generated>true</Generated>
       <GenCompName>RS1</GenCompName>
@@ -6333,7 +6333,7 @@
         <ExtraFile0>Documentation\doxygen\BitIoLdd15_component.txt</ExtraFile0>
       </InhrCompID_100>
     </InhrCompID_90>
-    <InhrCompID_223>
+    <InhrCompID_227>
       <Generated>false</Generated>
       <GenCompName />
       <GenComponentVersion>??.???</GenComponentVersion>
@@ -6363,7 +6363,7 @@
       <GenSmartUserChangesDetected_Asembl>false</GenSmartUserChangesDetected_Asembl>
       <GenMethodPos>0</GenMethodPos>
       <GenExtraFilesCount>0</GenExtraFilesCount>
-    </InhrCompID_223>
+    </InhrCompID_227>
   </ComponentID_80>
   <ComponentID_105>
     <Generated>true</Generated>

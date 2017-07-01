@@ -36,18 +36,18 @@ const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Resource);
  * Processamento da comunicacao
  *
  */
-void runCommunication(void) {
-
-	processRx();
-	processTx();
-}
+//void runCommunication(void) {
+//
+//	processRx();
+//	processTx();
+//}
 //------------------------------------------------------------------------
 
 /*
  *
  *
  */
-static void processRx(void){
+void processRx(void){
 
 	switch(statusRx){
 
@@ -69,13 +69,21 @@ static void processRx(void){
  *
  *
  */
-static void processTx(void){
+void processTx(void){
 
-	ArrayPayLoad* payload;
+	uint32_t ulNotifiedValue;
 
-	if (xQueueReceive(xQueuePayload, &(payload), (TickType_t ) 1)) {
+	xTaskNotifyWait( 0x0, BIT_TX,  &ulNotifiedValue, portMAX_DELAY );
 
-		doAnswer(payload);
+
+	if(ulNotifiedValue & BIT_TX){
+
+		ArrayPayLoad* payload;
+
+		if (xQueueReceive(xQueuePayload, &(payload), (TickType_t ) 1)) {
+
+			doAnswer(payload);
+		}
 	}
 }
 //------------------------------------------------------------------------
@@ -268,10 +276,7 @@ static void sendAnswer(void){
 
 	sendFrame();
 
-	// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
-	startTX();
-
-//	setStatusRx(CMD_INIT_OK);
+	startTX();	// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
 }
 //------------------------------------------------------------------------
 
@@ -420,7 +425,7 @@ inline static void copyPayLoadToFrame(void) {
  */
 static void copyCheckSumToFrame(void) {
 
-	char	separator[] = {CHAR_SEPARATOR,CHAR_STR_END};
+	char separator[] = {CHAR_SEPARATOR,CHAR_STR_END};
 
 	AppendFrame(&frameCom,separator);
 	XF1_xsprintf(frameCom.checksum, "%02X", calcChecksum (frameCom.Data,frameCom.Count));
@@ -465,7 +470,8 @@ void doAnswer(ArrayPayLoad* ans) {
 		sendAnswer();
 	}
 	else {
-		/*O QUE RESPONDE EM CASO DE MENSAGEM NULA ???*/
+
+		//TODO O QUE RESPONDE EM CASO DE MENSAGEM NULA ???
 	}
 }
 //------------------------------------------------------------------------
