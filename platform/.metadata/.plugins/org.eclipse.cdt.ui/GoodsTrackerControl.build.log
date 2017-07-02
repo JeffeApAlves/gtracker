@@ -1,5 +1,185 @@
-19:04:26 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+22:33:29 **** Build of configuration Debug for project GoodsTrackerControl ****
 make all 
+Building file: ../Sources/AppQueues.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/AppQueues.d" -MT"Sources/AppQueues.o" -c -o "Sources/AppQueues.o" "../Sources/AppQueues.c"
+In file included from ../Sources/AppQueues.c:10:0:
+../Sources/DataFrame.h:21:0: warning: "SIZE_HEADER" redefined [enabled by default]
+ #define SIZE_HEADER   (LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL+4) // 4 separadores do cabecalho
+ ^
+In file included from ../Sources/AppQueues.c:8:0:
+../Sources/Array.h:13:0: note: this is the location of the previous definition
+ #define SIZE_HEADER  30
+ ^
+Finished building: ../Sources/AppQueues.c
+ 
+Building file: ../Sources/Array.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/Array.d" -MT"Sources/Array.o" -c -o "Sources/Array.o" "../Sources/Array.c"
+Finished building: ../Sources/Array.c
+ 
+Building file: ../Sources/Events.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/Events.d" -MT"Sources/Events.o" -c -o "Sources/Events.o" "../Sources/Events.c"
+In file included from ../Sources/protocol.h:13:0,
+                 from ../Sources/Events.c:40:
+../Sources/DataFrame.h:21:0: warning: "SIZE_HEADER" redefined [enabled by default]
+ #define SIZE_HEADER   (LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL+4) // 4 separadores do cabecalho
+ ^
+In file included from ../Sources/NMEAFrame.h:11:0,
+                 from ../Sources/gps.h:14,
+                 from ../Sources/Events.c:39:
+../Sources/Array.h:13:0: note: this is the location of the previous definition
+ #define SIZE_HEADER  30
+ ^
+Finished building: ../Sources/Events.c
+ 
+Building file: ../Sources/application.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/application.d" -MT"Sources/application.o" -c -o "Sources/application.o" "../Sources/application.c"
+In file included from ../Sources/protocol.h:13:0,
+                 from ../Sources/application.h:12,
+                 from ../Sources/application.c:17:
+../Sources/DataFrame.h:21:0: warning: "SIZE_HEADER" redefined [enabled by default]
+ #define SIZE_HEADER   (LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL+4) // 4 separadores do cabecalho
+ ^
+In file included from ../Sources/NMEAFrame.h:11:0,
+                 from ../Sources/application.c:14:
+../Sources/Array.h:13:0: note: this is the location of the previous definition
+ #define SIZE_HEADER  30
+ ^
+Finished building: ../Sources/application.c
+ 
+Building file: ../Sources/frtos_tasks.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/frtos_tasks.d" -MT"Sources/frtos_tasks.o" -c -o "Sources/frtos_tasks.o" "../Sources/frtos_tasks.c"
+In file included from ../Sources/protocol.h:13:0,
+                 from ../Sources/application.h:12,
+                 from ../Sources/frtos_tasks.c:21:
+../Sources/DataFrame.h:21:0: warning: "SIZE_HEADER" redefined [enabled by default]
+ #define SIZE_HEADER   (LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL+4) // 4 separadores do cabecalho
+ ^
+In file included from ../Sources/DataFrame.h:11:0,
+                 from ../Sources/protocol.h:13,
+                 from ../Sources/application.h:12,
+                 from ../Sources/frtos_tasks.c:21:
+../Sources/Array.h:13:0: note: this is the location of the previous definition
+ #define SIZE_HEADER  30
+ ^
+Finished building: ../Sources/frtos_tasks.c
+ 
+Building file: ../Sources/gps.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/gps.d" -MT"Sources/gps.o" -c -o "Sources/gps.o" "../Sources/gps.c"
+../Sources/gps.c: In function 'decoderGGA':
+../Sources/gps.c:271:2: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+  AsString(&frame->Identifier,   list,0);
+  ^
+In file included from ../Sources/gps.h:13:0,
+                 from ../Sources/gps.c:10:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[6]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/gps.c:272:2: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+  AsString(&frame->Time_UTC,   list,1);
+  ^
+In file included from ../Sources/gps.h:13:0,
+                 from ../Sources/gps.c:10:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[11]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/gps.c: In function 'decoderRMC':
+../Sources/gps.c:313:2: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+  AsString(&frame->Identifier, list,0);
+  ^
+In file included from ../Sources/gps.h:13:0,
+                 from ../Sources/gps.c:10:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[6]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/gps.c:314:2: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+  AsString(&frame->Time_UTC,  list,1);
+  ^
+In file included from ../Sources/gps.h:13:0,
+                 from ../Sources/gps.c:10:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[11]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/gps.c:321:2: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+  AsString(&frame->Date,   list,9);
+  ^
+In file included from ../Sources/gps.h:13:0,
+                 from ../Sources/gps.c:10:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[7]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/gps.c: In function 'decoderGSA':
+../Sources/gps.c:354:2: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+  AsString(&frame->Identifier, list,0);
+  ^
+In file included from ../Sources/gps.h:13:0,
+                 from ../Sources/gps.c:10:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[6]'
+ void AsString(char* out,List *list,int index);
+      ^
+Finished building: ../Sources/gps.c
+ 
+Building file: ../Sources/protocol.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/PDD" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Generated_Code" -I"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/protocol.d" -MT"Sources/protocol.o" -c -o "Sources/protocol.o" "../Sources/protocol.c"
+In file included from ../Sources/protocol.h:13:0,
+                 from ../Sources/protocol.c:9:
+../Sources/DataFrame.h:21:0: warning: "SIZE_HEADER" redefined [enabled by default]
+ #define SIZE_HEADER   (LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL+4) // 4 separadores do cabecalho
+ ^
+In file included from ../Sources/protocol.c:6:0:
+../Sources/Array.h:13:0: note: this is the location of the previous definition
+ #define SIZE_HEADER  30
+ ^
+../Sources/protocol.c: In function 'decoderFrame':
+../Sources/protocol.c:217:5: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+     AsString(&dataCom.operacao,   &list,3);
+     ^
+In file included from ../Sources/protocol.h:12:0,
+                 from ../Sources/protocol.c:9:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[3]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/protocol.c:218:5: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+     AsString(&dataCom.resource.name, &list,4);
+     ^
+In file included from ../Sources/protocol.h:12:0,
+                 from ../Sources/protocol.c:9:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[4]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/protocol.c:220:5: warning: passing argument 1 of 'AsString' from incompatible pointer type [enabled by default]
+     AsString(&dataCom.PayLoad.Data,  &list,6);
+     ^
+In file included from ../Sources/protocol.h:12:0,
+                 from ../Sources/protocol.c:9:
+../Sources/utils.h:49:6: note: expected 'char *' but argument is of type 'char (*)[256]'
+ void AsString(char* out,List *list,int index);
+      ^
+../Sources/protocol.c: In function 'doAnswer':
+../Sources/protocol.c:462:3: warning: passing argument 3 of 'setHeaderInfo' discards 'const' qualifier from pointer target type [enabled by default]
+   setHeaderInfo(ADDRESS,dataCom.address, OPERATION_AN);
+   ^
+In file included from ../Sources/protocol.c:9:0:
+../Sources/protocol.h:72:13: note: expected 'char *' but argument is of type 'const char *'
+ static void setHeaderInfo(int address,int dest, char* operation);
+             ^
+Finished building: ../Sources/protocol.c
+ 
+Building target: GoodsTrackerControl.elf
+Invoking: Cross ARM GNU C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"D:/workspace/GoodsTracker/trunk/platform/GoodsTrackerControl/Project_Settings/Linker_Files" -L"D:\workspace\GoodsTracker\trunk\platform\GoodsTrackerControl\Sources\TSS" -Wl,-Map,"GoodsTrackerControl.map" -specs=nano.specs -specs=nosys.specs -o "GoodsTrackerControl.elf"  ./Sources/TSS/TSS_Freemaster.o ./Sources/TSS/TSS_Sensor.o ./Sources/TSS/TSS_SensorGPIO.o ./Sources/TSS/TSS_SensorTSI.o ./Sources/TSS/TSS_SensorTSIL.o ./Sources/TSS/TSS_SystemSetupData.o  ./Sources/Accelerometer.o ./Sources/AppQueues.o ./Sources/Array.o ./Sources/DataTLM.o ./Sources/Events.o ./Sources/Level.o ./Sources/RingBuffer.o ./Sources/application.o ./Sources/frtos_tasks.o ./Sources/gps.o ./Sources/ihm.o ./Sources/lcd.o ./Sources/lock.o ./Sources/main.o ./Sources/protocol.o ./Sources/utils.o  ./Project_Settings/Startup_Code/startup.o  ./Generated_Code/AD1.o ./Generated_Code/AS1.o ./Generated_Code/AS2.o ./Generated_Code/ASerialLdd1.o ./Generated_Code/ASerialLdd2.o ./Generated_Code/AdcLdd1.o ./Generated_Code/BitIoLdd1.o ./Generated_Code/BitIoLdd12.o ./Generated_Code/BitIoLdd13.o ./Generated_Code/BitIoLdd14.o ./Generated_Code/BitIoLdd15.o ./Generated_Code/BitIoLdd2.o ./Generated_Code/BitIoLdd3.o ./Generated_Code/BitIoLdd6.o ./Generated_Code/BitIoLdd7.o ./Generated_Code/CI2C1.o ./Generated_Code/Cpu.o ./Generated_Code/DB41.o ./Generated_Code/DB51.o ./Generated_Code/DB61.o ./Generated_Code/DB71.o ./Generated_Code/EN1.o ./Generated_Code/FRTOS1.o ./Generated_Code/GI2C1.o ./Generated_Code/LCDout.o ./Generated_Code/LED_B.o ./Generated_Code/LED_G.o ./Generated_Code/LED_R.o ./Generated_Code/LEDpin1.o ./Generated_Code/LEDpin2.o ./Generated_Code/LEDpin3.o ./Generated_Code/MCUC1.o ./Generated_Code/MMA1.o ./Generated_Code/PE_LDD.o ./Generated_Code/RS1.o ./Generated_Code/TI1.o ./Generated_Code/TSK1.o ./Generated_Code/TSSin.o ./Generated_Code/TU1.o ./Generated_Code/TimerIntLdd1.o ./Generated_Code/UTIL1.o ./Generated_Code/Vectors.o ./Generated_Code/WAIT1.o ./Generated_Code/WAIT2.o ./Generated_Code/WAIT3.o ./Generated_Code/XF1.o ./Generated_Code/croutine.o ./Generated_Code/event_groups.o ./Generated_Code/heap_1.o ./Generated_Code/heap_2.o ./Generated_Code/heap_3.o ./Generated_Code/heap_4.o ./Generated_Code/heap_5.o ./Generated_Code/list.o ./Generated_Code/mpu_wrappers.o ./Generated_Code/port.o ./Generated_Code/queue.o ./Generated_Code/tasks.o ./Generated_Code/timers.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -lTSS_KXX_M0
+Finished building target: GoodsTrackerControl.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O srec "GoodsTrackerControl.elf"  "GoodsTrackerControl.srec"
+Finished building: GoodsTrackerControl.srec
+ 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
@@ -7,5 +187,5 @@ arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
 Finished building: GoodsTrackerControl.siz
  
 
-19:04:35 Build Finished (took 8s.848ms)
+22:34:19 Build Finished (took 50s.268ms)
 
