@@ -47,7 +47,7 @@ unsigned int calcChecksum(const char *buff, size_t sz);
 #define clearArrayFrame(f)		memset((void*)f,0,sizeof(ArrayFrame));
 #define clearArrayPayLoad(f)	memset((void*)f,0,sizeof(ArrayPayLoad));
 
-inline unsigned int putDataArray(ArrayFrame *frame, char data);
+unsigned int putDataArray(ArrayFrame *frame, char data);
 void AppendPayLoad(ArrayPayLoad* payload,const char* data);
 void AppendFrame(ArrayFrame* frame,const char* data);
 
