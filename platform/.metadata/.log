@@ -9669,3 +9669,190 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2017-07-02 23:05:22.385 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product com.somniumtech.branding.kds.ide -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.somniumtech.branding.kds.ide -showlocation
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-07-02 23:05:30.023
+!MESSAGE External elements location C:\Freescale\KDS_v3\eclipse\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-02 23:05:31.629
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2017-07-02 23:08:08.598 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product com.somniumtech.branding.kds.ide -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.somniumtech.branding.kds.ide -showlocation
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-07-02 23:08:16.149
+!MESSAGE External elements location C:\Freescale\KDS_v3\eclipse\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-02 23:08:17.850
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2017-07-02 23:14:00.372 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product com.somniumtech.branding.kds.ide -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.somniumtech.branding.kds.ide -showlocation
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-07-02 23:14:07.750
+!MESSAGE External elements location C:\Freescale\KDS_v3\eclipse\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-02 23:14:10.101
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2017-07-02 23:16:01.034 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product com.somniumtech.branding.kds.ide -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.somniumtech.branding.kds.ide -showlocation
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-07-02 23:16:08.439
+!MESSAGE External elements location C:\Freescale\KDS_v3\eclipse\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-02 23:16:10.774
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.freescale.processorexpert.core 4 0 2017-07-02 23:17:54.221
+!MESSAGE org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+	at org.eclipse.cdt.managedbuilder.internal.core.Option.getBasicStringListValue(Option.java:2547)
+	at com.processorexpert.core.compiler.BuildSettingsReader.modifyIncludePathAdv(BuildSettingsReader.java:728)
+	at com.processorexpert.core.compiler.LkrFile.updateToolchainSettings(LkrReader.java:417)
+	at com.processorexpert.core.compiler.LkrReader.updateToolchainSettings(LkrReader.java:618)
+	at com.processorexpert.core.ProjectPE.updateCompilerSettingsFromSymbols(ProjectPE.java:4125)
+	at com.processorexpert.core.ProjectPE.synchronizeGeneratedFiles(ProjectPE.java:3918)
+	at com.processorexpert.core.client.ProjectPEclient.synchronizeGeneratedFiles(ProjectPEclient.java:1935)
+	at com.processorexpert.core.builder.PEBuilder.buildIfNeeded(PEBuilder.java:269)
+	at com.processorexpert.core.builder.PEBuilder.fullBuild(PEBuilder.java:196)
+	at com.processorexpert.core.builder.PEBuilder.build(PEBuilder.java:81)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:496)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:415)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:305)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2017-07-02 23:18:19.427 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product com.somniumtech.branding.kds.ide -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.somniumtech.branding.kds.ide -showlocation
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-07-02 23:18:26.849
+!MESSAGE External elements location C:\Freescale\KDS_v3\eclipse\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-02 23:18:28.963
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.freescale.processorexpert.core 4 0 2017-07-02 23:19:07.631
+!MESSAGE org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+	at org.eclipse.cdt.managedbuilder.internal.core.Option.getBasicStringListValue(Option.java:2547)
+	at com.processorexpert.core.compiler.BuildSettingsReader.modifyIncludePathAdv(BuildSettingsReader.java:728)
+	at com.processorexpert.core.compiler.LkrFile.updateToolchainSettings(LkrReader.java:417)
+	at com.processorexpert.core.compiler.LkrReader.updateToolchainSettings(LkrReader.java:618)
+	at com.processorexpert.core.ProjectPE.updateCompilerSettingsFromSymbols(ProjectPE.java:4125)
+	at com.processorexpert.core.ProjectPE.synchronizeGeneratedFiles(ProjectPE.java:3918)
+	at com.processorexpert.core.client.ProjectPEclient.synchronizeGeneratedFiles(ProjectPEclient.java:1935)
+	at com.processorexpert.core.builder.PEBuilder.buildIfNeeded(PEBuilder.java:269)
+	at com.processorexpert.core.builder.PEBuilder.fullBuild(PEBuilder.java:196)
+	at com.processorexpert.core.builder.PEBuilder.build(PEBuilder.java:81)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:496)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:405)
+	at org.eclipse.ui.actions.GlobalBuildAction$1.run(GlobalBuildAction.java:180)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2017-07-02 23:20:38.377 -----------------------------------------------
+eclipse.buildId=3.2.0.201603041649
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product com.somniumtech.branding.kds.ide -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.somniumtech.branding.kds.ide -showlocation
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-07-02 23:20:46.020
+!MESSAGE External elements location C:\Freescale\KDS_v3\eclipse\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-02 23:20:47.872
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.freescale.processorexpert.core 4 0 2017-07-02 23:21:26.147
+!MESSAGE org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+	at org.eclipse.cdt.managedbuilder.internal.core.Option.getBasicStringListValue(Option.java:2547)
+	at com.processorexpert.core.compiler.BuildSettingsReader.modifyIncludePathAdv(BuildSettingsReader.java:728)
+	at com.processorexpert.core.compiler.LkrFile.updateToolchainSettings(LkrReader.java:417)
+	at com.processorexpert.core.compiler.LkrReader.updateToolchainSettings(LkrReader.java:618)
+	at com.processorexpert.core.ProjectPE.updateCompilerSettingsFromSymbols(ProjectPE.java:4125)
+	at com.processorexpert.core.ProjectPE.synchronizeGeneratedFiles(ProjectPE.java:3918)
+	at com.processorexpert.core.client.ProjectPEclient.synchronizeGeneratedFiles(ProjectPEclient.java:1935)
+	at com.processorexpert.core.builder.PEBuilder.buildIfNeeded(PEBuilder.java:269)
+	at com.processorexpert.core.builder.PEBuilder.fullBuild(PEBuilder.java:196)
+	at com.processorexpert.core.builder.PEBuilder.build(PEBuilder.java:81)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:496)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:405)
+	at org.eclipse.ui.actions.GlobalBuildAction$1.run(GlobalBuildAction.java:180)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
