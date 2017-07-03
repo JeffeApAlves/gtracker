@@ -35,8 +35,6 @@ static portTASK_FUNCTION(main_task, pvParameters) {
 
 	initQueues();
 
-	initApp();
-
 	for (;;) {
 
 		//TODO main task
@@ -126,6 +124,8 @@ static portTASK_FUNCTION(accel_task, pvParameters) {
  ############################################################################################*/
 
 static portTASK_FUNCTION(callback_task, pvParameters) {
+
+	initApp();
 
 	for (;;) {
 
