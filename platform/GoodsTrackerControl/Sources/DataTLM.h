@@ -11,6 +11,8 @@
 #include <stdint.h>
 #include <string.h>
 
+#define	TIMEOUT_TLM		10
+
 typedef struct{
 
 		float		Lat;
