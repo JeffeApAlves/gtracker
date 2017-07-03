@@ -1,0 +1,256 @@
+<CodeGenerationInfo>
+  <ToolchainSettings>
+    <option>
+      <name>PE_G_4PEx_ToolChain_CompilerCpp_SearchUserPaths</name>
+      <values lines_count="5">
+        <Line>"${ProjDirPath}/Sources/TSS"</Line>
+        <Line>"${ProjDirPath}/Static_Code/PDD"</Line>
+        <Line>"${ProjDirPath}/Static_Code/IO_Map"</Line>
+        <Line>"${ProjDirPath}/Sources"</Line>
+        <Line>"${ProjDirPath}/Generated_Code"</Line>
+      </values>
+    </option>
+    <option>
+      <name>PE_G_4PEx_ToolChain_Linker_Libraries</name>
+      <values lines_count="1">
+        <Line>"TSS_KXX_M0"</Line>
+      </values>
+    </option>
+    <option>
+      <name>PE_G_4PEx_ToolChain_Linker_SearchLibraryPaths</name>
+      <values lines_count="1">
+        <Line>"${ProjDirPath}/Sources/TSS"</Line>
+      </values>
+    </option>
+    <option>
+      <name>PE_G_4PEx_ToolChain_Compiler_SearchUserPaths</name>
+      <values lines_count="5">
+        <Line>"${ProjDirPath}/Sources/TSS"</Line>
+        <Line>"${ProjDirPath}/Static_Code/PDD"</Line>
+        <Line>"${ProjDirPath}/Static_Code/IO_Map"</Line>
+        <Line>"${ProjDirPath}/Sources"</Line>
+        <Line>"${ProjDirPath}/Generated_Code"</Line>
+      </values>
+    </option>
+  </ToolchainSettings>
+  <GeneratedFilesList>
+    <GeneratedByPE>
+      <File Name="Generated_Code/LEDpin1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765531" FileType="45637" CompNumb="70" />
+      <File Name="Generated_Code/ASerialLdd1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765782" FileType="45637" CompNumb="13" />
+      <File Name="Sources/TSS/TSS_SystemSetupVal.h" FileDate="2017-06-25, 11:44:31" FileAge="1498401871831" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/heap_4.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765892" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/WAIT2.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764351" FileType="45637" CompNumb="205" />
+      <File Name="Generated_Code/TimerIntLdd1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765263" FileType="45637" CompNumb="37" />
+      <File Name="Sources/TSS_SystemSetup.h" FileDate="2017-06-25, 11:50:41" FileAge="1498402241777" FileType="45637" CompNumb="105" />
+      <File Name="Generated_Code/WAIT2.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764339" FileType="45637" CompNumb="205" />
+      <File Name="Generated_Code/heap_2.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765877" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/TimerIntLdd1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765250" FileType="45637" CompNumb="37" />
+      <File Name="Static_Code/PDD/ADC_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872795" FileType="1048576" />
+      <File Name="Sources/TSS/TSS_Freemaster.c" FileDate="2017-06-25, 11:44:31" FileAge="1498401871726" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/UTIL1config.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766248" FileType="45637" CompNumb="202" />
+      <File Name="Documentation/doxygen/TimerIntLdd1_component.txt" FileDate="2017-06-28, 21:14:30" FileAge="1498695270165" FileType="45637" CompNumb="37" />
+      <File Name="Documentation/doxygen/BitIoLdd3_component.txt" FileDate="2017-06-25, 11:50:39" FileAge="1498402239758" FileType="45637" CompNumb="75" />
+      <File Name="Generated_Code/task.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766065" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/TI1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765217" FileType="45637" CompNumb="36" />
+      <File Name="Documentation/doxygen/ASerialLdd2_component.txt" FileDate="2017-06-28, 21:14:29" FileAge="1498695269978" FileType="45637" CompNumb="144" />
+      <File Name="Documentation/doxygen/BitIoLdd6_component.txt" FileDate="2017-06-25, 11:50:41" FileAge="1498402241058" FileType="45637" CompNumb="91" />
+      <File Name="Documentation/doxygen/RoutingReport_component.txt" FileDate="2017-06-25, 11:50:41" FileAge="1498402241808" FileType="45637" CompNumb="2" />
+      <File Name="Generated_Code/TI1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765212" FileType="45637" CompNumb="36" />
+      <File Name="Generated_Code/AS2.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764559" FileType="45637" CompNumb="143" />
+      <File Name="Static_Code/PDD/PIT_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872925" FileType="1048576" />
+      <File Name="Generated_Code/FreeRTOS_license.txt" FileDate="2017-07-03, 01:56:05" FileAge="1499057765914" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/AS2.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764546" FileType="45637" CompNumb="143" />
+      <File Name="Static_Code/PDD/CMP_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872845" FileType="1048576" />
+      <File Name="Generated_Code/BitIoLdd14.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764870" FileType="45637" CompNumb="99" />
+      <File Name="Documentation/doxygen/TU1_component.txt" FileDate="2017-06-28, 21:14:30" FileAge="1498695270174" FileType="45637" CompNumb="200" />
+      <File Name="Static_Code/PDD/DAC_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872860" FileType="1048576" />
+      <File Name="Generated_Code/BitIoLdd14.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764859" FileType="45637" CompNumb="99" />
+      <File Name="Generated_Code/BitIoLdd12.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765032" FileType="45637" CompNumb="97" />
+      <File Name="Generated_Code/LED_G.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765654" FileType="45637" CompNumb="18" />
+      <File Name="Generated_Code/StackMacros.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766047" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/portable.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765967" FileType="45637" CompNumb="3" />
+      <File Name="Documentation/GoodsTrackerControl_SIGNALS.txt" FileDate="2017-07-03, 12:37:24" FileAge="1499096244260" FileType="3072" />
+      <File Name="Generated_Code/BitIoLdd12.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765021" FileType="45637" CompNumb="97" />
+      <File Name="Generated_Code/MMA1config.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764273" FileType="45637" CompNumb="203" />
+      <File Name="Generated_Code/FRTOS1.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766243" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/LED_G.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765649" FileType="45637" CompNumb="18" />
+      <File Name="Static_Code/PDD/OSC_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872918" FileType="1048576" />
+      <File Name="Generated_Code/list.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765926" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/FRTOS1.c" FileDate="2017-07-03, 01:56:06" FileAge="1499057766230" FileType="45637" CompNumb="3" />
+      <File Name="Documentation/doxygen/pex.css" FileDate="2017-06-25, 11:44:24" FileAge="1498401864838" FileType="16384" CompNumb="2" />
+      <File Name="Generated_Code/list.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765939" FileType="45637" CompNumb="3" />
+      <File Name="Static_Code/PDD/USB_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872982" FileType="1048576" />
+      <File Name="Sources/TSS/TSS_API.h" FileDate="2017-06-25, 11:44:31" FileAge="1498401871718" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/DB71.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764746" FileType="45637" CompNumb="90" />
+      <File Name="Documentation/doxygen/BitIoLdd14_component.txt" FileDate="2017-06-25, 11:50:41" FileAge="1498402241742" FileType="45637" CompNumb="99" />
+      <File Name="Sources/TSS/TSS_SystemSetupData.c" FileDate="2017-06-25, 11:44:31" FileAge="1498401871822" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/DB71.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764732" FileType="45637" CompNumb="90" />
+      <File Name="Static_Code/PDD/SIM_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872943" FileType="1048576" />
+      <File Name="Sources/TSS/TSS_GPIO.h" FileDate="2017-06-25, 11:44:31" FileAge="1498401871733" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/MCUC1.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766296" FileType="45637" CompNumb="201" />
+      <File Name="Generated_Code/MCUC1.c" FileDate="2017-07-03, 01:56:06" FileAge="1499057766285" FileType="45637" CompNumb="201" />
+      <File Name="Generated_Code/tasks.c" FileDate="2017-07-03, 01:56:06" FileAge="1499057766080" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/BitIoLdd7.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765117" FileType="45637" CompNumb="92" />
+      <File Name="Static_Code/IO_Map/MKL25Z4.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872056" FileType="1048576" CompNumb="2" />
+      <File Name="Generated_Code/BitIoLdd7.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765104" FileType="45637" CompNumb="92" />
+      <File Name="Generated_Code/WAIT2config.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764301" FileType="45637" CompNumb="205" />
+      <File Name="Generated_Code/croutine.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765815" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/croutine.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765826" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/BitIoLdd3.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765513" FileType="45637" CompNumb="75" />
+      <File Name="Generated_Code/BitIoLdd3.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765501" FileType="45637" CompNumb="75" />
+      <File Name="Generated_Code/BitIoLdd1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765638" FileType="45637" CompNumb="71" />
+      <File Name="Generated_Code/freertos_tasks_c_additions.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766212" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/GI2C1config.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764356" FileType="45637" CompNumb="204" />
+      <File Name="Generated_Code/XF1.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764654" FileType="45637" CompNumb="142" />
+      <File Name="Generated_Code/IO_Map.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764249" FileType="45637" />
+      <File Name="Generated_Code/BitIoLdd1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765570" FileType="45637" CompNumb="71" />
+      <File Name="Generated_Code/port.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765952" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/LED_Gconfig.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765644" FileType="45637" CompNumb="18" />
+      <File Name="Generated_Code/XF1.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764648" FileType="45637" CompNumb="142" />
+      <File Name="Project_Settings/Linker_Files/ProcessorExpert.ld" FileDate="2017-06-25, 11:44:30" FileAge="1498401870508" FileType="8" CompNumb="2" />
+      <File Name="Sources/TSS/TSS_SensorGPIO.h" FileDate="2017-06-25, 11:44:31" FileAge="1498401871766" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/AD1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765360" FileType="45637" CompNumb="31" />
+      <File Name="Documentation/GoodsTrackerControl.txt" FileDate="2017-06-30, 02:09:43" FileAge="1498799383912" FileType="3072" />
+      <File Name="Documentation/doxygen/BitIoLdd1_component.txt" FileDate="2017-06-25, 11:50:39" FileAge="1498402239617" FileType="45637" CompNumb="71" />
+      <File Name="Sources/TSS/TSS_DataTypes.h" FileDate="2017-06-25, 11:44:31" FileAge="1498401871724" FileType="16384" CompNumb="105" />
+      <File Name="Sources/TSS/TSS_SensorGPIO.c" FileDate="2017-06-25, 11:44:31" FileAge="1498401871758" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/AD1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765344" FileType="45637" CompNumb="31" />
+      <File Name="Generated_Code/FreeRTOS.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765840" FileType="45637" CompNumb="3" />
+      <File Name="Sources/TSS/TSS_SensorTSIL.h" FileDate="2017-06-25, 11:44:31" FileAge="1498401871807" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/EN1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765127" FileType="45637" CompNumb="81" />
+      <File Name="Documentation/doxygen/BitIoLdd7_component.txt" FileDate="2017-06-25, 11:50:41" FileAge="1498402241081" FileType="45637" CompNumb="92" />
+      <File Name="Static_Code/PDD/SPI_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872949" FileType="1048576" />
+      <File Name="Sources/TSS/TSS_SensorTSIL.c" FileDate="2017-06-25, 11:44:31" FileAge="1498401871801" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/EN1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765122" FileType="45637" CompNumb="81" />
+      <File Name="Sources/Events.h" FileDate="2017-06-30, 02:09:38" FileAge="1498799378147" FileType="131328" />
+      <File Name="Generated_Code/PE_Error.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764257" FileType="45637" />
+      <File Name="Static_Code/PDD/DMAMUX_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872867" FileType="1048576" />
+      <File Name="Documentation/doxygen/AdcLdd1_component.txt" FileDate="2017-06-28, 21:14:30" FileAge="1498695270152" FileType="45637" CompNumb="32" />
+      <File Name="Sources/Events.c" FileDate="2017-06-29, 14:59:32" FileAge="1498759172400" FileType="131328" />
+      <File Name="Generated_Code/AdcLdd1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765415" FileType="45637" CompNumb="32" />
+      <File Name="Static_Code/PDD/FTFA_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872886" FileType="1048576" />
+      <File Name="Generated_Code/AdcLdd1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765405" FileType="45637" CompNumb="32" />
+      <File Name="Static_Code/PDD/MCM_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872913" FileType="1048576" />
+      <File Name="Static_Code/PDD/RTC_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872935" FileType="1048576" />
+      <File Name="Sources/TSS/TSS_Sensor.h" FileDate="2017-06-25, 11:44:31" FileAge="1498401871748" FileType="16384" CompNumb="105" />
+      <File Name="Sources/TSS/TSS_Sensor.c" FileDate="2017-06-25, 11:44:31" FileAge="1498401871741" FileType="16384" CompNumb="105" />
+      <File Name="Sources/TSS/TSS_Timer.h" FileDate="2017-06-25, 11:44:31" FileAge="1498401871837" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/LEDpin2.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765664" FileType="45637" CompNumb="72" />
+      <File Name="Generated_Code/ASerialLdd2.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764630" FileType="45637" CompNumb="144" />
+      <File Name="Generated_Code/LEDpin2.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765660" FileType="45637" CompNumb="72" />
+      <File Name="Sources/main.c" FileDate="2017-06-30, 02:09:38" FileAge="1498799378035" FileType="128" />
+      <File Name="Generated_Code/ASerialLdd2.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764620" FileType="45637" CompNumb="144" />
+      <File Name="Static_Code/PDD/PDD_Types.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872920" FileType="1048576" CompNumb="2" />
+      <File Name="Generated_Code/MMA1.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764296" FileType="45637" CompNumb="203" />
+      <File Name="Generated_Code/FRTOS1config.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766217" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/heap_5.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765902" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/MMA1.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764286" FileType="45637" CompNumb="203" />
+      <File Name="Generated_Code/WAIT3.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764486" FileType="45637" CompNumb="206" />
+      <File Name="Static_Code/PDD/SysTick_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872955" FileType="1048576" />
+      <File Name="Generated_Code/DB41.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764967" FileType="45637" CompNumb="87" />
+      <File Name="Generated_Code/WAIT3.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764473" FileType="45637" CompNumb="206" />
+      <File Name="Generated_Code/heap_3.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765882" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/LED_R.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765527" FileType="45637" CompNumb="9" />
+      <File Name="Generated_Code/LCDout.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764718" FileType="45637" CompNumb="80" />
+      <File Name="Generated_Code/FreeRTOSConfig.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765851" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/WAIT1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765206" FileType="45637" CompNumb="199" />
+      <File Name="Generated_Code/DB41.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764956" FileType="45637" CompNumb="87" />
+      <File Name="Generated_Code/LED_R.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765523" FileType="45637" CompNumb="9" />
+      <File Name="Generated_Code/LCDout.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764707" FileType="45637" CompNumb="80" />
+      <File Name="Generated_Code/WAIT1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765193" FileType="45637" CompNumb="199" />
+      <File Name="Generated_Code/heap_1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765866" FileType="45637" CompNumb="3" />
+      <File Name="Documentation/doxygen/BitIoLdd12_component.txt" FileDate="2017-06-25, 11:50:41" FileAge="1498402241701" FileType="45637" CompNumb="97" />
+      <File Name="Static_Code/PDD/LPTMR_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872902" FileType="1048576" />
+      <File Name="Documentation/doxygen/BitIoLdd15_component.txt" FileDate="2017-06-25, 11:50:41" FileAge="1498402241760" FileType="45637" CompNumb="100" />
+      <File Name="Generated_Code/WAIT3config.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764462" FileType="45637" CompNumb="206" />
+      <File Name="Project_Settings/Startup_Code/startup.c" FileDate="2017-06-25, 11:44:30" FileAge="1498401870717" FileType="16384" CompNumb="2" />
+      <File Name="Generated_Code/AS1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765753" FileType="45637" CompNumb="12" />
+      <File Name="Generated_Code/LED_Bconfig.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765419" FileType="45637" CompNumb="21" />
+      <File Name="Generated_Code/BitIoLdd15.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764805" FileType="45637" CompNumb="100" />
+      <File Name="Generated_Code/AS1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765742" FileType="45637" CompNumb="12" />
+      <File Name="ProjectInfo.xml" FileDate="2017-07-03, 01:56:08" FileAge="1499057768861" FileType="45637" />
+      <File Name="Generated_Code/portmacro.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765983" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/BitIoLdd15.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764794" FileType="45637" CompNumb="100" />
+      <File Name="Static_Code/PDD/MCG_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872908" FileType="1048576" />
+      <File Name="Generated_Code/BitIoLdd13.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764943" FileType="45637" CompNumb="98" />
+      <File Name="Generated_Code/XF1config.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764635" FileType="45637" CompNumb="142" />
+      <File Name="Generated_Code/BitIoLdd13.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764932" FileType="45637" CompNumb="98" />
+      <File Name="Sources/TSS/TSS_SensorTSI.h" FileDate="2017-06-25, 11:44:31" FileAge="1498401871781" FileType="16384" CompNumb="105" />
+      <File Name="Documentation/doxygen/GoodsTrackerControl_project.txt" FileDate="2017-06-30, 02:09:38" FileAge="1498799378073" FileType="45637" CompNumb="2" />
+      <File Name="Generated_Code/mpu_wrappers.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766174" FileType="45637" CompNumb="3" />
+      <File Name="Sources/TSS/TSS_SensorTSI.c" FileDate="2017-06-25, 11:44:31" FileAge="1498401871775" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/mpu_wrappers.c" FileDate="2017-07-03, 01:56:06" FileAge="1499057766197" FileType="45637" CompNumb="3" />
+      <File Name="Documentation/doxygen/BitIoLdd2_component.txt" FileDate="2017-06-25, 11:50:39" FileAge="1498402239245" FileType="45637" CompNumb="73" />
+      <File Name="Generated_Code/readme_gdbBacktraceDebug.txt" FileDate="2017-07-03, 01:56:06" FileAge="1499057766202" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/PE_Const.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764253" FileType="45637" />
+      <File Name="Generated_Code/queue.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766023" FileType="45637" CompNumb="3" />
+      <File Name="Static_Code/PDD/TSI_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872965" FileType="1048576" />
+      <File Name="Static_Code/PDD/I2C_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872897" FileType="1048576" />
+      <File Name="Generated_Code/TU1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765313" FileType="45637" CompNumb="200" />
+      <File Name="Generated_Code/LED_B.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765427" FileType="45637" CompNumb="21" />
+      <File Name="Generated_Code/queue.c" FileDate="2017-07-03, 01:56:06" FileAge="1499057766010" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/TU1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765301" FileType="45637" CompNumb="200" />
+      <File Name="Generated_Code/UTIL1.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766270" FileType="45637" CompNumb="202" />
+      <File Name="Generated_Code/LED_B.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765423" FileType="45637" CompNumb="21" />
+      <File Name="Static_Code/PDD/TPM_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872960" FileType="1048576" />
+      <File Name="Generated_Code/UTIL1.c" FileDate="2017-07-03, 01:56:06" FileAge="1499057766258" FileType="45637" CompNumb="202" />
+      <File Name="Generated_Code/deprecated_definitions.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765993" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/PE_LDD.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764116" FileType="45637" CompNumb="2" />
+      <File Name="Static_Code/PDD/UART0_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872970" FileType="1048576" />
+      <File Name="Sources/derivative.h" FileDate="2017-06-27, 20:50:15" FileAge="1498607415546" FileType="45637" CompNumb="105" />
+      <File Name="Generated_Code/PE_LDD.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764137" FileType="45637" CompNumb="2" />
+      <File Name="Generated_Code/GI2C1.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764377" FileType="45637" CompNumb="204" />
+      <File Name="Generated_Code/BitIoLdd6.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765174" FileType="45637" CompNumb="91" />
+      <File Name="Generated_Code/DB51.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764895" FileType="45637" CompNumb="88" />
+      <File Name="Generated_Code/GI2C1.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764366" FileType="45637" CompNumb="204" />
+      <File Name="Sources/TSS/TSS_StatusCodes.h" FileDate="2017-06-25, 11:44:31" FileAge="1498401871815" FileType="16384" CompNumb="105" />
+      <File Name="Generated_Code/BitIoLdd6.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765163" FileType="45637" CompNumb="91" />
+      <File Name="Generated_Code/DB51.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764882" FileType="45637" CompNumb="88" />
+      <File Name="Generated_Code/Cpu.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764244" FileType="45637" CompNumb="2" />
+      <File Name="Static_Code/PDD/COP_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872849" FileType="1048576" />
+      <File Name="Documentation/doxygen/ASerialLdd1_component.txt" FileDate="2017-06-29, 00:08:31" FileAge="1498705711855" FileType="45637" CompNumb="13" />
+      <File Name="Static_Code/PDD/GPIO_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872892" FileType="1048576" />
+      <File Name="Static_Code/PDD/DMA_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872878" FileType="1048576" />
+      <File Name="Generated_Code/Cpu.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764231" FileType="45637" CompNumb="2" />
+      <File Name="Generated_Code/BitIoLdd2.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765710" FileType="45637" CompNumb="73" />
+      <File Name="Generated_Code/PE_Types.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764268" FileType="45637" />
+      <File Name="Generated_Code/TSK1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765804" FileType="45637" CompNumb="8" />
+      <File Name="Generated_Code/BitIoLdd2.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765697" FileType="45637" CompNumb="73" />
+      <File Name="Generated_Code/mpu_prototypes.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766185" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/semphr.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766034" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/TSK1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765800" FileType="45637" CompNumb="8" />
+      <File Name="Generated_Code/RS1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765071" FileType="45637" CompNumb="82" />
+      <File Name="Generated_Code/timers.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766095" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/.gdbinit-FreeRTOS-helpers" FileDate="2017-07-03, 01:56:06" FileAge="1499057766207" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/RS1.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765038" FileType="45637" CompNumb="82" />
+      <File Name="Generated_Code/portasm.s" FileDate="2017-07-03, 01:56:05" FileAge="1499057765972" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/timers.c" FileDate="2017-07-03, 01:56:06" FileAge="1499057766133" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/CI2C1.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764458" FileType="45637" CompNumb="207" />
+      <File Name="Generated_Code/LED_Rconfig.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765518" FileType="45637" CompNumb="9" />
+      <File Name="Generated_Code/CI2C1.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764445" FileType="45637" CompNumb="207" />
+      <File Name="Documentation/doxygen/BitIoLdd13_component.txt" FileDate="2017-06-25, 11:50:41" FileAge="1498402241723" FileType="45637" CompNumb="98" />
+      <File Name="Generated_Code/MCUC1config.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766274" FileType="45637" CompNumb="201" />
+      <File Name="Generated_Code/Vectors.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764079" FileType="45637" CompNumb="2" />
+      <File Name="Generated_Code/WAIT1config.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765179" FileType="45637" CompNumb="199" />
+      <File Name="Documentation/doxygen/pex.doxyfile" FileDate="2017-06-25, 11:50:41" FileAge="1498402241825" FileType="45637" CompNumb="2" />
+      <File Name="Sources/TSS/libTSS_KXX_M0.a" FileDate="2017-06-25, 11:44:31" FileAge="1498401871842" FileType="16384" CompNumb="105" />
+      <File Name="Documentation/GoodsTrackerControl_Settings.xml" FileDate="2017-06-30, 23:27:03" FileAge="1498876023632" FileType="3072" />
+      <File Name="Static_Code/PDD/UART_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872976" FileType="1048576" />
+      <File Name="Documentation/doxygen/CI2C1_component.txt" FileDate="2017-06-30, 02:09:37" FileAge="1498799377967" FileType="45637" CompNumb="207" />
+      <File Name="Generated_Code/projdefs.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765998" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/event_groups.h" FileDate="2017-07-03, 01:56:06" FileAge="1499057766160" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/DB61.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764829" FileType="45637" CompNumb="89" />
+      <File Name="Generated_Code/portTicks.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765956" FileType="45637" CompNumb="3" />
+      <File Name="Static_Code/PDD/PORT_PDD.h" FileDate="2017-06-25, 11:44:32" FileAge="1498401872930" FileType="1048576" />
+      <File Name="Generated_Code/LEDpin3.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765436" FileType="45637" CompNumb="74" />
+      <File Name="Generated_Code/event_groups.c" FileDate="2017-07-03, 01:56:06" FileAge="1499057766147" FileType="45637" CompNumb="3" />
+      <File Name="Generated_Code/DB61.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764817" FileType="45637" CompNumb="89" />
+      <File Name="Generated_Code/TSSin.h" FileDate="2017-07-03, 01:56:04" FileAge="1499057764696" FileType="45637" CompNumb="105" />
+      <File Name="Generated_Code/LEDpin3.c" FileDate="2017-07-03, 01:56:05" FileAge="1499057765432" FileType="45637" CompNumb="74" />
+      <File Name="Generated_Code/ASerialLdd1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765793" FileType="45637" CompNumb="13" />
+      <File Name="Generated_Code/LEDpin1.h" FileDate="2017-07-03, 01:56:05" FileAge="1499057765536" FileType="45637" CompNumb="70" />
+      <File Name="Generated_Code/TSSin.c" FileDate="2017-07-03, 01:56:04" FileAge="1499057764692" FileType="45637" CompNumb="105" />
+    </GeneratedByPE>
+  </GeneratedFilesList>
+  <CodeGenReference>67</CodeGenReference>
+</CodeGenerationInfo>
