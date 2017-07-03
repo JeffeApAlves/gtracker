@@ -9,30 +9,34 @@
 #include "AppQueues.h"
 #include "DataTLM.h"
 
-
 DataTLM			dataTLM;
 int				_lock;
 
+/**
+ *
+ * Atualiza a s informcoes de telemetria que estao na lista de menssagem xQueueDataTLM
+ *
+ */
 void updateTLM(void){
 
-	uint32_t ulNotifiedValue;
+	uint32_t ulNotifiedValue =0 ;
 
-	xTaskNotifyWait( 0x0, BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY );
+	if(xTaskNotifyWait( 0x0, BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, TIMEOUT_TLM )==pdTRUE){
 
+		if(ulNotifiedValue & BIT_UPDATE_GPS){
 
-	if(ulNotifiedValue & BIT_UPDATE_GPS){
+			updateDataGPS();
+		}
 
-		updateDataGPS();
-	}
+		if(ulNotifiedValue & BIT_UPDATE_ACCE){
 
-	if(ulNotifiedValue & BIT_UPDATE_ACCE){
+			updateDataAcce();
+		}
 
-		updateDataAcce();
-	}
+		if(ulNotifiedValue & BIT_UPDATE_AD){
 
-	if(ulNotifiedValue & BIT_UPDATE_AD){
-
-		updateDataLevel();
+			updateDataLevel();
+		}
 	}
 
 	dataTLM.Speed	= 100;
