@@ -8,8 +8,9 @@
 #ifndef SOURCES_RINGBUFFER_H_
 #define SOURCES_RINGBUFFER_H_
 
-#include "Cpu.h"
-#include "PE_Types.h"
+#include <stdbool.h>
+//#include "Cpu.h"
+//#include "PE_Types.h"
 
 #define BUFFER_SIZE		256
 

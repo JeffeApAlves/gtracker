@@ -9,7 +9,6 @@
 #define SOURCES_GPS_H_
 
 #include <stdbool.h>
-#include "PE_Types.h"
 #include "utils.h"
 #include "NMEAFrame.h"
 

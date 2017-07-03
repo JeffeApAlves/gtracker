@@ -2,12 +2,14 @@
  * ihm.h
  *
  *  Created on: 20/06/2017
- *      Author: Flávio Soares
+ *      Author: Flï¿½vio Soares
  */
-#include "Events.h"
-
 #ifndef SOURCES_IHM_H_
 #define SOURCES_IHM_H_
+
+#include <stdint.h>
+
+#include "TSS_API.h"
 
 typedef enum {
 	IHM_EVENT_NONE,
@@ -23,18 +25,18 @@ typedef struct {
 
 #define IHM_MAX_EVENTS 16
 typedef struct {
-	UINT8 option;
+	uint8 option;
 	struct {
 		ihmEvent event[IHM_MAX_EVENTS]; //TODO - USAR BUFFER CIRCULAR
-		UINT8 head;
-		UINT8 tail;
+		uint8 head;
+		uint8 tail;
 	} ihmEventBuffer;
 
 } ihmStruct;
 
 
 /**
- * CHAMANDO ESTA ESTRUTURA DE IHM (INTERFACE HOMEM-MÁQUINA) EM VEZ DE
+ * CHAMANDO ESTA ESTRUTURA DE IHM (INTERFACE HOMEM-Mï¿½QUINA) EM VEZ DE
  * MMI (MEN-MACHINE INTERFACE) POR PURO GOSTO PESSOAL... :)
  */
 

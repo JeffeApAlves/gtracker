@@ -5,11 +5,12 @@
  *      Author: Jefferson
  */
 
+#include <stdlib.h>
 #include "RingBuffer.h"
 
 bool putData(RingBuffer* buffer,char ch){
 
-	bool flag = FALSE;
+	bool flag = false;
 
 	if(buffer!=NULL){
 
@@ -24,7 +25,7 @@ bool putData(RingBuffer* buffer,char ch){
 				buffer->count++;
 			}
 
-			flag = TRUE;
+			flag = true;
 		}
 
 	//	ExitCritical();
@@ -37,7 +38,7 @@ bool putData(RingBuffer* buffer,char ch){
 
 bool getData(RingBuffer* buffer,char* ch){
 
-	bool flag = FALSE;
+	bool flag = false;
 
 	if(buffer!=NULL){
 
@@ -52,7 +53,7 @@ bool getData(RingBuffer* buffer,char* ch){
 				buffer->count--;
 			}
 
-			flag = TRUE;
+			flag = true;
 		}
 
 		//	ExitCritical();

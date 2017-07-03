@@ -2,7 +2,7 @@
  * ihm.c
  *
  *  Created on: 20/06/2017
- *      Author: Flávio Soares
+ *      Author: Flï¿½vio Soares
  */
 #include <stdio.h>
 #include "ihm.h"
@@ -25,7 +25,7 @@ void ihm_process_events(ihmStruct *ihm) {
 
 	if (ihm) {
 #if 0
-		//TODO - ISSO É SÓ UMA VERSÃO PRELIMINAR, O CERTO É TRATAR COMO RingBuffer
+		//TODO - ISSO ï¿½ Sï¿½ UMA VERSï¿½O PRELIMINAR, O CERTO ï¿½ TRATAR COMO RingBuffer
 		UINT8 evmax = ihm->ihmEventBuffer.head;
 		unsigned char i;
 		for (i = 0; i < evmax; i++) {
@@ -65,7 +65,7 @@ static void ihm_process_event(ihmEvent *ev) {
 //-----------------------------------------------------------------------------------------
 
 //TODO - IMPLEMENTAR CHAMADA PARA RECEBER EVENTOS EM GERAL, ABSTRAIR MELHOR O HARDWARE
-//TODO - POR ENQUANTO FICA ASSIM PARA IMPLEMENTAÇÃO BÁSICA
+//TODO - POR ENQUANTO FICA ASSIM PARA IMPLEMENTAï¿½ï¿½O Bï¿½SICA
 int ihm_put_slide_event(TSS_CSASlider *event) {
 
 	if (event == NULL)
@@ -85,9 +85,9 @@ int ihm_put_slide_event(TSS_CSASlider *event) {
 		if (TSSin_cKey0.Events.Touch) {
 			if (!(TSSin_cKey0.Events.InvalidPos)) {
 
-				LED_R_Put(0);
-				LED_G_Put(1);
-				LED_B_Put(0);
+//				LED_R_Put(0);
+//				LED_G_Put(1);
+//				LED_B_Put(0);
 
 				ev->evType = IHM_EVENT_CHOOSE_OK;
 			}
@@ -95,15 +95,15 @@ int ihm_put_slide_event(TSS_CSASlider *event) {
 
 		if (TSSin_cKey0.DynamicStatus.Displacement > (UINT8) 15) {
 			if (TSSin_cKey0.DynamicStatus.Direction) {
-				LED_R_Put(1);
-				LED_G_Put(0);
-				LED_B_Put(0);
+//				LED_R_Put(1);
+//				LED_G_Put(0);
+//				LED_B_Put(0);
 
 				ev->evType = IHM_EVENT_CHOOSE_LEFT;
 			} else {
-				LED_R_Put(0);
-				LED_G_Put(0);
-				LED_B_Put(1);
+//				LED_R_Put(0);
+//				LED_G_Put(0);
+//				LED_B_Put(1);
 
 				ev->evType = IHM_EVENT_CHOOSE_RIGHT;
 			}
@@ -138,7 +138,7 @@ void ihm_initialize() {
 	ihmGlobal.ihmEventBuffer.tail = 0;
 	for (i = 0; i < IHM_MAX_EVENTS; i++) {
 		ihmGlobal.ihmEventBuffer.event[i].evType = IHM_EVENT_NONE;
-		/*INICIALIZAMOS COMO JÁ TRATADO PARA NÃO ENTRAR A 1a VEZ A TOA*/
+		/*INICIALIZAMOS COMO Jï¿½ TRATADO PARA Nï¿½O ENTRAR A 1a VEZ A TOA*/
 		ihmGlobal.ihmEventBuffer.event[i].eventTreated = TRUE;
 	}
 

@@ -8,7 +8,7 @@
 #ifndef SOURCES_PROTOCOL_H_
 #define SOURCES_PROTOCOL_H_
 
-#include "PE_Types.h"
+#include <stdbool.h>
 #include "utils.h"
 #include "DataFrame.h"
 
