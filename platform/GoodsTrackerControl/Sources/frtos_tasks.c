@@ -28,7 +28,7 @@
 
 /*############################################################################################
   # Main task
-  # Espera as notificacoes para atualizacoes das informacoes de teleemtria
+  # Espera as notificacoes para atualizacoes das informacoes de telemtria
   ############################################################################################*/
 
 static portTASK_FUNCTION(main_task, pvParameters) {
@@ -39,7 +39,9 @@ static portTASK_FUNCTION(main_task, pvParameters) {
 
 	for (;;) {
 
-		updateTLM();
+		//TODO main task
+
+		vTaskDelay(xMainDelay);
 	}
 
 	vTaskDelete(main_task);
@@ -120,6 +122,7 @@ static portTASK_FUNCTION(accel_task, pvParameters) {
 
 /*############################################################################################
  #  Task para execucao da call back dos cmds recebidos
+ #  O comando de telemetria espera as notificacoes para atualizacoes das informacoes via fila de mensagens
  ############################################################################################*/
 
 static portTASK_FUNCTION(callback_task, pvParameters) {

@@ -18,7 +18,7 @@
 
 void initQueues(void);
 
-extern const TickType_t /*xMainDelay,*/
+extern const TickType_t xMainDelay,
 						xCommunicationDelay,
 						xDataDelay,
 						xIHMDelay,

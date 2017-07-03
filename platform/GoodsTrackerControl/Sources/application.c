@@ -11,6 +11,7 @@
 #include "AppQueues.h"
 #include "XF1.h"
 #include "lock.h"
+#include "DataTLM.h"
 #include "NMEAFrame.h"
 #include "Level.h"
 #include "Accelerometer.h"
@@ -132,6 +133,8 @@ ResultExec onTelemetry(ArrayPayLoad* frame){
 
 	if (frame) {
 
+		updateTLM();
+
 		answerTLM();
 
 		res = CMD_RESULT_EXEC_SUCCESS;
@@ -170,6 +173,8 @@ ResultExec onLock(ArrayPayLoad* frame){
 void tlm2String(DataTLM* info,ArrayPayLoad* ans){
 
 	if(info!=NULL && ans!= NULL){
+
+		clearArrayPayLoad(ans);
 
 		XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s:%s",
 				info->Lat,
@@ -222,8 +227,6 @@ void answerTime(void){
 //-------------------------------------------------------------------------
 
 void answerTLM(void){
-
-	clearArrayPayLoad(&msg2send);
 
 	tlm2String(&dataTLM,&msg2send);
 
