@@ -2,12 +2,11 @@
 using System.Diagnostics;
 using System.IO.Ports;
 using System.Text;
-using System.Threading;
 using System.Windows;
 
 namespace GoodsTracker
 {
-    class Serial
+    class Serial : IOCommunication
     {
         const int SIZE_BUFFER_RX    = (256);
         const int SIZE_BUFFER_TX    = (256);
@@ -19,7 +18,7 @@ namespace GoodsTracker
         /*
          * Cola na fila uma string
          */
-        internal static bool putRxData(char data)
+        public bool putRxData(char data)
         {
             return bufferRx.putData(data);
         }
@@ -28,7 +27,7 @@ namespace GoodsTracker
          * 
          * Le um caracter da fila Rx
          */ 
-        internal static bool getRxData(out char ch)
+        public bool getRxData(out char ch)
         {
             bool flg = false;
 
@@ -42,7 +41,7 @@ namespace GoodsTracker
          * Coloca na fila Tx uma fila de string
          * 
          */
-        internal static void putTxData(char[] str)
+        public void putTxData(char[] str)
         {
             if (port != null && port.IsOpen)
             {
@@ -54,7 +53,7 @@ namespace GoodsTracker
          * Coloca na fila Rx uma string 
          * 
          */ 
-        internal static void putRxData(char[] str)
+        public void putRxData(char[] str)
         {
             foreach (char c in str)
             {
@@ -67,7 +66,7 @@ namespace GoodsTracker
          * Abri a porta de comunicacao
          * 
          */ 
-        public static bool Open()
+        public bool Open()
         {
             try
             {
@@ -103,7 +102,7 @@ namespace GoodsTracker
          * Evento recepcao
          * 
          */
-        private static void _serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void _serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
@@ -165,9 +164,11 @@ namespace GoodsTracker
          * Fecha a porta serial
          * 
          */
-        public static void Close()
+        public bool Close()
         {
             port.Close();
+
+            return true;
         }
 
         static void LogConsole(string str, string info,int num)

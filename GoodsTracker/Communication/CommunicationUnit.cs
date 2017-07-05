@@ -4,18 +4,26 @@ using System.Diagnostics;
 
 namespace GoodsTracker
 {
+    public enum ResultExec
+    {
+        EXEC_UNSUCCESS  = -3,
+        INVALID_CMD     = -2,
+        INVALID_PARAM   = -1,
+        EXEC_SUCCESS    = 0,
+    };
+
     internal delegate ResultExec onAnswerCmd(AnsCmd ans);
 
     abstract class CommunicationUnit
     {
+        // Server
+        private const int MASTER_NUMBER = 1;
+
         /*
          * Endereco da unidade
          */
         protected int   address;
 
-        static int      index = 0;
-
-        static List<CommunicationUnit>          units   = new List<CommunicationUnit>();
         private static Dictionary<string, Cmd>  txCmds  = new Dictionary<string, Cmd>();
         private static Dictionary<string, Cmd>  cmds    = new Dictionary<string, Cmd>();
         private static List<AnsCmd>             queueAnsCmd = new List<AnsCmd>();
@@ -29,7 +37,7 @@ namespace GoodsTracker
 
         internal CommunicationUnit()
         {
-            units.Add(this);
+            Communication.AddUnit(this);
         }
 
         static internal bool isAnyTxCmd()
@@ -42,7 +50,7 @@ namespace GoodsTracker
             return cmds.Count > 0;
         }
 
-        internal Cmd getNextCmd()
+        internal static Cmd getNextCmd()
         {
             Cmd cmd = null;
 
@@ -73,8 +81,8 @@ namespace GoodsTracker
         internal Cmd createCMD(int dest, Operation o, string resource)
         {
             Cmd c = new Cmd(resource, o);
-            c.Header.Dest = dest;
-            c.Header.Address = address;
+            c.Header.Dest       = dest;
+            c.Header.Address    = MASTER_NUMBER;
 
             return c;
         }
@@ -84,14 +92,9 @@ namespace GoodsTracker
             cmds[cmd.Header.Resource] =cmd;
         }
 
-        internal static CommunicationUnit getNextUnit()
-        {
-            return units[(index++) % units.Count];
-        }
-
         internal void processQueues()
         {
-            if (isAnyTxCmd())
+            if (isAnyTxCmd() && isAnyAns())
             {
                 Cmd[] array_cmd = new List<Cmd>(txCmds.Values).ToArray();
 
@@ -109,7 +112,7 @@ namespace GoodsTracker
                                 // Executa evento de recebmento de resposta de comando
                                 onReceiveAnswer(ans);
 
-                                // Excuta call back respectiva do comando
+                                // Executa call back respectiva do comando
                                 cmd.EventAnswerCmd?.Invoke(ans);
 
                                 removeCmd(cmd);
@@ -117,7 +120,7 @@ namespace GoodsTracker
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("Erro ao processar as filas de Tx e Rx");
+                                Console.WriteLine("Erro na execucao das callbacks de communicacao");
                                 Console.WriteLine(e.ToString());
                                 Debug.WriteLine(e.ToString());
                             }

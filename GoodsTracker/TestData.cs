@@ -21,11 +21,11 @@ namespace GoodsTracker
         {
             if (CommunicationUnit.isAnyTxCmd() && !CommunicationUnit.isAnyAns())
             {
-                DataTelemetria b            = createTelemetriaData();
-                AnsCmd ans                  = createAnsCmd();
+                DataTelemetria b   = createTelemetriaData();
+                AnsCmd ans         = createAnsCmd();
                 DataFrame frame    = createFrame(b,ans);
 
-                Protocol.Communication.setFrameRx(frame);
+                SerialCommunication.writeRx(frame);
             }
         }
 

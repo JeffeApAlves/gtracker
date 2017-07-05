@@ -48,7 +48,7 @@ namespace GoodsTracker
             initPanelBehavior();
             initPanelConfig();
             collapseAllPanel();
-            Protocol.Communication.init();
+            Communication.create(TYPE_COMMUNICATION.AMQP);
             initAllThreads();
         }
 
@@ -248,8 +248,7 @@ namespace GoodsTracker
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             ThreadManager.stop();
-
-            Serial.Close();
+            Communication.DeInit();
         }
 
         /*************************************************************************

@@ -16,14 +16,6 @@ namespace GoodsTracker
         RX_FRAME_NOK,
     };
 
-    public enum ResultExec
-    {
-        EXEC_UNSUCCESS = -3,
-        INVALID_CMD = -2,
-        INVALID_PARAM = -1,
-        EXEC_SUCCESS = 0,
-    };
-
     public class CONST_CHAR
     {        
         public const char RX_FRAME_START    = '[';
@@ -34,69 +26,37 @@ namespace GoodsTracker
         public const char ASTERISCO         = '*';
     }
 
-    class Protocol : ThreadRun
+    class Protocol
     {
-        static Protocol singleton = null;
-
+        IOCommunication     IOComunic;
         StatusRx            statusRx = StatusRx.RX_FRAME_INIT;
         DataFrame           rxFrame;
-        CommunicationUnit   currentUnit;
-        private const int _TIME_COMMUNICATION    = 1;
-        Stopwatch stopTx = new Stopwatch();
-        static int count=0;
+        Stopwatch stopTx    = new Stopwatch();
+        static int count    = 0;
 
-        //Singleton
-        public static Protocol Communication
+        public Protocol(IOCommunication io)
         {
-            get
-            {
-                if (singleton == null)
-                {
-                    singleton = new Protocol();
-                }
-
-                return singleton;
-            }
-        }
-
-        public override void run()
-        {
-            try
-            {
-                currentUnit = CommunicationUnit.getNextUnit();
-
-                if (currentUnit != null)
-                {
-                    processTx();
-                    processRx();
-                    currentUnit.processQueues();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Erro no processamento da pilha de comunicacao");
-                Console.WriteLine(e.ToString());
-                Debug.WriteLine(e.ToString());
-            }
+            IOComunic = io;
         }
 
         public void processTx()
         {
-            if (stopTx.Elapsed.Milliseconds > 100)
+            try
             {
-                if (CommunicationUnit.isAnyQueueCmd())
+                if (stopTx.Elapsed.Milliseconds > 100)
                 {
-                    DataFrame frame = new DataFrame();
-                    Cmd cmd = currentUnit.getNextCmd();
+                    if (CommunicationUnit.isAnyQueueCmd())
+                    {
+                        DataFrame frame = new DataFrame();
+                        Cmd cmd = CommunicationUnit.getNextCmd();
 
-                    cmd.Header.Count    = count++;
-                    frame.Header        = cmd.Header;
-                    frame.PayLoad       = cmd.Payload;
+                        cmd.Header.Count    = count++;
+                        frame.Header        = cmd.Header;
+                        frame.PayLoad       = cmd.Payload;
 
-                        sendFrame(frame);
+                        writeTx(frame);
 
                         Debug.WriteLine("TX TO:{0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
-
                         Debug.Write("TX OK: ");
                         foreach (char c in frame.Data)
                             Debug.Write(c.ToString());
@@ -104,23 +64,39 @@ namespace GoodsTracker
 
                         stopTx.Restart();
                     }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro no processamento da pilha de Transmissao");
+                Console.WriteLine(e.ToString());
+                Debug.WriteLine(e.ToString());
             }
         }
 
-        void processRx()
+        public void processRx()
         {
-            switch (statusRx)
+            try
             {
-                default:
-                case StatusRx.RX_FRAME_INIT:        initRxCMD();        break;
-                case StatusRx.RX_FRAME_BEGIN:       rxStartCMD();       break;
-                case StatusRx.RX_FRAME_RX_START:    receiveFrame();     break;
-                case StatusRx.RX_FRAME_RX_FRAME:    receiveFrame();     break;
-                case StatusRx.RX_FRAME_RX_END:      rxCR();             break;
-                case StatusRx.RX_FRAME_RX_CR:       rxNL();             break;
-                case StatusRx.RX_FRAME_RX_NL:       verifyFrame();      break;
-                case StatusRx.RX_FRAME_OK:          acceptRxFrame();    break;
-                case StatusRx.RX_FRAME_NOK:         errorRxFrame();     break;
+                switch (statusRx)
+                {
+                    default:
+                    case StatusRx.RX_FRAME_INIT:        initRxCMD();        break;
+                    case StatusRx.RX_FRAME_BEGIN:       rxStartCMD();       break;
+                    case StatusRx.RX_FRAME_RX_START:    receiveFrame();     break;
+                    case StatusRx.RX_FRAME_RX_FRAME:    receiveFrame();     break;
+                    case StatusRx.RX_FRAME_RX_END:      rxCR();             break;
+                    case StatusRx.RX_FRAME_RX_CR:       rxNL();             break;
+                    case StatusRx.RX_FRAME_RX_NL:       verifyFrame();      break;
+                    case StatusRx.RX_FRAME_OK:          acceptRxFrame();    break;
+                    case StatusRx.RX_FRAME_NOK:         errorRxFrame();     break;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro no processamento da pilha de Recepcao");
+                Console.WriteLine(e.ToString());
+                Debug.WriteLine(e.ToString());
             }
         }
 
@@ -128,7 +104,7 @@ namespace GoodsTracker
         {
             char ch;
 
-            if (Serial.getRxData(out ch))
+            if (readByteRx(out ch))
             {
                 if (ch == CONST_CHAR.RX_FRAME_START)
                 {
@@ -143,7 +119,7 @@ namespace GoodsTracker
         {
             char ch;
 
-            if (Serial.getRxData(out ch))
+            if (readByteRx(out ch))
             {
                 if (ch == CONST_CHAR.RX_FRAME_START)
                 {
@@ -166,7 +142,7 @@ namespace GoodsTracker
         {
             char ch;
 
-            if (Serial.getRxData(out ch))
+            if (readByteRx(out ch))
             {
                 if (ch == CONST_CHAR.LF)
                 {
@@ -183,7 +159,7 @@ namespace GoodsTracker
         {
             char ch;
 
-            if (Serial.getRxData(out ch))
+            if (readByteRx(out ch))
             {
                 if (ch == CONST_CHAR.CR)
                 {
@@ -239,6 +215,7 @@ namespace GoodsTracker
 
         void initRxCMD()
         {
+            stopTx.Start();
             clearRxFrame();
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
@@ -253,31 +230,30 @@ namespace GoodsTracker
             rxFrame = new DataFrame();
         }
 
-        internal void init()
+        internal bool readByteRx(out char ch)
         {
-            stopTx.Start();
-            setTime(_TIME_COMMUNICATION);
-            Serial.Open();
+            return IOComunic.getRxData(out ch);
         }
 
-        void sendFrame(DataFrame frame)
+        public void writeTx(DataFrame frame)
         {
             if (frame != null && !frame.isFrameEmpty())
             {
                 char[] end = { CONST_CHAR.CR, CONST_CHAR.LF };
 
-                Serial.putTxData(frame.ToCharArray());
-                Serial.putTxData(end);
+                IOComunic.putTxData(frame.ToCharArray());
+                IOComunic.putTxData(end);
             }
         }
 
-        internal void setFrameRx(DataFrame frame)
+        public void writeRx(DataFrame frame)
         {
-            if (frame != null)
+            if (frame != null && !frame.isFrameEmpty())
             {
-                Serial.putRxData(frame.str().ToCharArray());
-                Serial.putRxData(CONST_CHAR.CR);
-                Serial.putRxData(CONST_CHAR.LF);
+                char[] end = { CONST_CHAR.CR, CONST_CHAR.LF };
+
+                IOComunic.putRxData(frame.str().ToCharArray());
+                IOComunic.putRxData(end);
             }
         }
     }

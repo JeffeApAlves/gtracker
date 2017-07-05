@@ -10,7 +10,6 @@ namespace GoodsTracker
     {
         private static TrackerController singleton = null;
 
-        private const int   NUM_ESTACAO     = 1;
         private const int _TIME_TELEMETRIA  = 5000;
 
         onUpdateTelemetria  onDataTelemetria;
@@ -43,7 +42,7 @@ namespace GoodsTracker
 
         private TrackerController()
         {
-            tracker     = new Tracker(NUM_ESTACAO);
+            tracker     = new Tracker(2);
             fences      = new List<Fence>();
             routes      = new List<Route>();
 
