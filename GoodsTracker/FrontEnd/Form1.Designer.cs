@@ -93,6 +93,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbCommunication = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxLevel.SuspendLayout();
@@ -105,6 +107,7 @@
             this.panel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tB_Zoom)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -743,10 +746,11 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.groupBox5);
             this.panel4.Controls.Add(this.groupBox4);
             this.panel4.Location = new System.Drawing.Point(3, 1651);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(320, 180);
+            this.panel4.Size = new System.Drawing.Size(320, 300);
             this.panel4.TabIndex = 7;
             this.panel4.Visible = false;
             // 
@@ -839,6 +843,29 @@
             this.timer1.Interval = 250;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cbCommunication);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(0, 176);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(320, 100);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Comunicacao";
+            // 
+            // cbCommunication
+            // 
+            this.cbCommunication.FormattingEnabled = true;
+            this.cbCommunication.Items.AddRange(new object[] {
+            "Serial",
+            "Servidor"});
+            this.cbCommunication.Location = new System.Drawing.Point(25, 45);
+            this.cbCommunication.Name = "cbCommunication";
+            this.cbCommunication.Size = new System.Drawing.Size(250, 24);
+            this.cbCommunication.TabIndex = 0;
+            this.cbCommunication.SelectedIndexChanged += new System.EventHandler(this.cbCommunication_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -873,6 +900,7 @@
             this.panel4.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tB_Zoom)).EndInit();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -943,6 +971,8 @@
         private System.Windows.Forms.Label lmax;
         private System.Windows.Forms.Label lmin;
         private System.Windows.Forms.Label lVal;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ComboBox cbCommunication;
     }
 }
 

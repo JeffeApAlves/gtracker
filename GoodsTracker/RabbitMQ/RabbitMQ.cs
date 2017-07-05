@@ -8,6 +8,7 @@ namespace GoodsTracker
 {
     class RABBITMQ{
 
+        public const string EXCHANGE_ANS    = "ANS";
         public const string EXCHANGE_CMD    = "CMD";
         public const string HOSTNAME        = "localhost";
         public const int PORT               = 5672;
@@ -24,10 +25,8 @@ namespace GoodsTracker
         private IConnection     connection;
         private IModel          channel;
         EventingBasicConsumer   consumer;
-
-        Stopwatch stopTx = new Stopwatch();
-
-        public int count { get; private set; }
+        Stopwatch               stopTx = new Stopwatch();
+        static int              count = 0;
 
         public bool Close()
         {
@@ -39,7 +38,7 @@ namespace GoodsTracker
         {
             bool flg = false;
 
-            factory = new ConnectionFactory();
+            factory             = new ConnectionFactory();
             
             factory.HostName    = RABBITMQ.HOSTNAME;
             factory.UserName    = RABBITMQ.USER;
@@ -47,8 +46,8 @@ namespace GoodsTracker
             factory.VirtualHost = RABBITMQ.VHOST;
             factory.Port        = RABBITMQ.PORT;
 
-            connection = factory.CreateConnection();
-            channel = connection.CreateModel();
+            connection          = factory.CreateConnection();
+            channel             = connection.CreateModel();
 
             createExchanges();
             createQueues();
@@ -59,44 +58,57 @@ namespace GoodsTracker
             return flg;
         }
 
+        public void doCommunication()
+        {
+            processTx();
+            processRx();
+        }
+
         private void createConsumers()
         {
             consumer = new EventingBasicConsumer(channel);
 
             consumer.Received += (model, ea) =>
             {
-                var body        = ea.Body;
-                var message     = Encoding.UTF8.GetString(body);
-                var routingKey  = ea.RoutingKey;
+                var body                = ea.Body;
+                var message             = Encoding.UTF8.GetString(body);
+                var routingKey          = ea.RoutingKey;
 
                 IDecoderFrame decoder   = new DecoderFrame();
                 AnsCmd ans;
                 DataFrame frame         = new DataFrame();
-                frame.Data              = ea.Body.ToString() + ":";
+                frame.Data              = message + ":";
                 frame.Data              = frame.Data+frame.checkSum().ToString("X2");
 
                 if (decoder.getValues(out ans, frame))
                 {
-                    CommunicationUnit.addAns(ans);
+                    Communication.acceptAnswer(ans);
+
+                    printFrame(frame, "RX OK: ");
                 }
             };
 
-            foreach (CommunicationUnit c in Communication.Units)
+            CommunicationUnit[] list = Communication.getArrayOfUnit();
+
+            foreach (CommunicationUnit c in list)
             {
-                channel.BasicConsume(queue: RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
-                                        noAck: true,
-                                        consumer: consumer);
+                channel.BasicConsume(queue:     RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
+                                     noAck:     true,
+                                     consumer:  consumer);
             }
         }
 
-        void createExchanges()
+        private void createExchanges()
         {
             channel.ExchangeDeclare(exchange: RABBITMQ.EXCHANGE_CMD, type: "direct");
+            channel.ExchangeDeclare(exchange: RABBITMQ.EXCHANGE_ANS, type: "direct");
         }
 
-        void createQueues()
+        private void createQueues()
         {
-            foreach (CommunicationUnit c in Communication.Units)
+            CommunicationUnit[] list = Communication.getArrayOfUnit();
+
+            foreach (CommunicationUnit c in list)
             {
                 channel.QueueDeclare(   queue: RABBITMQ.CMD_QUEUE + c.Address.ToString("D5"), 
                                         durable: false,
@@ -104,7 +116,7 @@ namespace GoodsTracker
                                         autoDelete: false, 
                                         arguments: null);
 
-                channel.QueueDeclare(queue: RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
+                channel.QueueDeclare(   queue: RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
                                         durable: false,
                                         exclusive: false,
                                         autoDelete: false,
@@ -113,39 +125,40 @@ namespace GoodsTracker
             }
         }
 
-        void createBinds()
+        private void createBinds()
         {
-            foreach(CommunicationUnit c in Communication.Units)
+            CommunicationUnit[] list = Communication.getArrayOfUnit();
+
+            foreach (CommunicationUnit c in list)
             {
-                channel.QueueBind(  queue: RABBITMQ.CMD_QUEUE + c.Address.ToString("D5"), 
-                                    exchange: RABBITMQ.EXCHANGE_CMD, 
+                channel.QueueBind(  queue:      RABBITMQ.CMD_QUEUE + c.Address.ToString("D5"), 
+                                    exchange:   RABBITMQ.EXCHANGE_CMD, 
+                                    routingKey: c.Address.ToString("D5"));
+
+                channel.QueueBind(  queue:      RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
+                                    exchange:   RABBITMQ.EXCHANGE_ANS,
                                     routingKey: c.Address.ToString("D5"));
             }
         }
 
-        public void processTx()
+        private void processTx()
         {
             try
             {
                 if (stopTx.Elapsed.Milliseconds > 100)
                 {
-                    if (CommunicationUnit.isAnyQueueCmd())
+                    if (Communication.isAnyQueueCmd())
                     {
-                        DataFrame frame = new DataFrame();
-                        Cmd cmd = CommunicationUnit.getNextCmd();
+                        Cmd cmd             = Communication.getNextCmd();
+                        cmd.Header.Count    = count++;
+                        DataFrame frame     = new DataFrame(cmd.Header,cmd.Payload);
 
-                        cmd.Header.Count = count++;
-                        frame.Header = cmd.Header;
-                        frame.PayLoad = cmd.Payload;
+                        publishCMD(frame);
 
-                        writeTx(frame);
+                        Communication.removeCmd(cmd);
+                        Communication.addTxCmd(cmd);
 
-                        Debug.WriteLine("TX TO:{0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
-                        Debug.Write("TX OK: ");
-                        foreach (char c in frame.Data)
-                            Debug.Write(c.ToString());
-                        Debug.Write("\r\n");
-
+                        printTx(frame, "TX OK: ");
                         stopTx.Restart();
                     }
                 }
@@ -158,7 +171,7 @@ namespace GoodsTracker
             }
         }
 
-        public void processRx()
+        private void processRx()
         {
             try
             {
@@ -171,14 +184,40 @@ namespace GoodsTracker
             }
         }
 
-        void writeTx(DataFrame frame)
+        private void publishCMD(DataFrame frame)
         {
-            var body            = Encoding.UTF8.GetBytes(frame.Data);
+            var body = Encoding.UTF8.GetBytes(frame.Data);
 
             channel.BasicPublish(   exchange:           RABBITMQ.EXCHANGE_CMD,
                                     routingKey:         frame.Header.Dest.ToString("D5"),
                                     basicProperties:    null,
                                     body:               body);
+        }
+
+        private void printFrame(DataFrame frame, string str)
+        {
+            Debug.WriteLine(str);
+            foreach (char c in frame.Data)
+                Debug.Write(c.ToString());
+            Debug.Write("\r\n");
+        }
+
+        private void printTx(DataFrame frame, string str)
+        {
+            Debug.WriteLine("TX TO:{0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
+            printFrame(frame, str);
+        }
+
+        // Para testes
+        public void publishAnswer(DataFrame frame)
+        {
+            var body = Encoding.UTF8.GetBytes(frame.Data);
+
+            channel.BasicPublish(exchange: RABBITMQ.EXCHANGE_ANS,
+                                    routingKey: frame.Header.Address.ToString("D5"),
+                                    basicProperties: null,
+                                    body: body);
+
         }
     }
 }

@@ -86,10 +86,19 @@ namespace GoodsTracker
                 payload.Append(CONST_CHAR.SEPARATOR);
                 payload.Append(b.Level.Val);
                 payload.Append(CONST_CHAR.SEPARATOR);
-                payload.Append(b.StatusLock.ToString());
+                payload.Append(b.StatusLock);
                 payload.Append(CONST_CHAR.SEPARATOR);
-                payload.Append(b.Time.ToString());  
-                payload.Append(b.Date.ToString());
+
+                string str = b.Time.ToLongTimeString();
+                str = str.Remove(2, 1);
+                str = str.Remove(4, 1);
+
+                payload.Append(str);
+                payload.Append(CONST_CHAR.SEPARATOR);
+
+                str = b.Date.ToShortDateString().Remove(5, 1);
+                str = str.Remove(2, 1);
+                payload.Append(str);
 
                 ret = true;
             }

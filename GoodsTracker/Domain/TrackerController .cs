@@ -207,5 +207,10 @@ namespace GoodsTracker
 
             return ResultExec.EXEC_SUCCESS;
         }
+
+        public void Init()
+        {
+            start();
+        }
     }
 }

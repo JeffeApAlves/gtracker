@@ -11,10 +11,9 @@ namespace GoodsTracker
         internal DataTelemetria TelemetriaData { get => telemetriaData; set => telemetriaData = value; }
         public bool StatusLock { get => statusLock; set => statusLock = value; }
 
-        internal Tracker(int val)
+        internal Tracker(int val):base(val)
         {
             statusLock = false;
-            address = val;
         }
 
         public double getLevel()

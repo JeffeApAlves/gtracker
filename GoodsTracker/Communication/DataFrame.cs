@@ -146,6 +146,12 @@ namespace GoodsTracker
             data += b;
         }
 
+        internal void Append(bool b)
+        {
+            data += (b?1:0).ToString();
+        }
+
+
         internal void Append(double b)
         {
             data += b.ToString("G");

@@ -39,28 +39,31 @@ namespace GoodsTracker
             IOComunic = io;
         }
 
-        public void processTx()
+        public void doCommunication()
+        {
+            processTx();
+            processRx();
+        }
+
+        private void processTx()
         {
             try
             {
                 if (stopTx.Elapsed.Milliseconds > 100)
                 {
-                    if (CommunicationUnit.isAnyQueueCmd())
+                    if (Communication.isAnyQueueCmd())
                     {
-                        DataFrame frame = new DataFrame();
-                        Cmd cmd = CommunicationUnit.getNextCmd();
-
+                        Cmd cmd = Communication.getNextCmd();
                         cmd.Header.Count    = count++;
-                        frame.Header        = cmd.Header;
-                        frame.PayLoad       = cmd.Payload;
+
+                        DataFrame frame     = new DataFrame(cmd.Header,cmd.Payload);
 
                         writeTx(frame);
 
-                        Debug.WriteLine("TX TO:{0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
-                        Debug.Write("TX OK: ");
-                        foreach (char c in frame.Data)
-                            Debug.Write(c.ToString());
-                        Debug.Write("\r\n");
+                        Communication.removeCmd(cmd);
+                        Communication.addTxCmd(cmd);
+
+                        printTx(frame,"TX OK: ");
 
                         stopTx.Restart();
                     }
@@ -74,7 +77,7 @@ namespace GoodsTracker
             }
         }
 
-        public void processRx()
+        private void processRx()
         {
             try
             {
@@ -179,7 +182,7 @@ namespace GoodsTracker
 
             if (decoder.getValues(out ans, rxFrame))
             {
-                CommunicationUnit.addAns(ans);
+                Communication.acceptAnswer(ans);
 
                 setStatusRx(StatusRx.RX_FRAME_OK);
             }
@@ -191,24 +194,14 @@ namespace GoodsTracker
 
         void acceptRxFrame()
         {
-            // TODO ???
-            Debug.Write("RX OK: ");
-
-            foreach (char c in rxFrame.Data)
-                Debug.Write(c.ToString());
-            Debug.Write("\r\n");
+            printFrame(rxFrame,"RX OK: ");
 
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 
         void errorRxFrame()
         {
-            // TODO ???
-            Debug.WriteLine("RX NO: ");
-
-            foreach (char c in rxFrame.Data)
-                Debug.Write(c.ToString());
-            Debug.Write("\r\n");
+            printFrame(rxFrame,"RX NO: ");
 
             setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
@@ -246,7 +239,7 @@ namespace GoodsTracker
             }
         }
 
-        public void writeRx(DataFrame frame)
+        public void publishAnswer(DataFrame frame)
         {
             if (frame != null && !frame.isFrameEmpty())
             {
@@ -255,6 +248,20 @@ namespace GoodsTracker
                 IOComunic.putRxData(frame.str().ToCharArray());
                 IOComunic.putRxData(end);
             }
+        }
+
+        private void printFrame(DataFrame frame,string str)
+        {
+            Debug.WriteLine(str);
+            foreach (char c in frame.Data)
+                Debug.Write(c.ToString());
+            Debug.Write("\r\n");
+        }
+
+        private void printTx(DataFrame frame, string str)
+        {
+            Debug.WriteLine("TX TO:{0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
+            printFrame(frame, str);
         }
     }
 }

@@ -14,21 +14,18 @@ namespace GoodsTracker
 
         STATUS_GUI  statusFence = STATUS_GUI.INIT;
         STATUS_GUI  statusTrip  = STATUS_GUI.INIT;
-        TrackerController trackerController = TrackerController.TrackerCtrl;
+        TrackerController trackerController;
 
-        Fence       fence;
-        Route       route;
-        BuildTreeView   bTV     = null;
-        int     itemselected    = -1;
-        private bool lockVehicle;
-        //        TestData demoData       = null;
+        Fence           fence;
+        Route           route;
+        BuildTreeView   bTV             = null;
+        int             itemselected    = -1;
+        private bool    lockVehicle;
+        TestData        demoData        = null;
 
         /*************************************************************************
-         *                                                                       *
          *                          Eventos                                      *
-         *                                                                       *
          *************************************************************************/
-
 
         public MainForm()
         {
@@ -40,6 +37,8 @@ namespace GoodsTracker
          */ 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            initAllEntities();
+
             initTrackerControl();
             initMapControl();
             initLayers();
@@ -48,8 +47,6 @@ namespace GoodsTracker
             initPanelBehavior();
             initPanelConfig();
             collapseAllPanel();
-            Communication.create(TYPE_COMMUNICATION.AMQP);
-            initAllThreads();
         }
 
         /*
@@ -247,28 +244,31 @@ namespace GoodsTracker
          */
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ThreadManager.stop();
+            ThreadRun.stopAll();
             Communication.DeInit();
         }
 
         /*************************************************************************
-         *                                                                       *
          *                          Inicializacoes                               *
-         *                                                                       *
          *************************************************************************/
-
 
         /*
          * Inicializa as threads
          * 
          */
-        void initAllThreads()
+        void initAllEntities()
         {
+            trackerController = TrackerController.TrackerCtrl;
+            trackerController.Init();
+
             // Dados para testes
-            //demoData = new TestData(TrackerController.TIME_TELEMETRIA);
+            demoData = new TestData(TrackerController.TIME_TELEMETRIA);
 
             // Inicia todas as threads
-            ThreadManager.start();
+            //ThreadManager.start();
+
+            Communication.create(TYPE_COMMUNICATION.AMQP);
+
             timer1.Enabled = true;
         }
 
@@ -321,6 +321,8 @@ namespace GoodsTracker
             checkedListBox1.SetItemCheckState(1, layerBehavior.isVisible() ? CheckState.Checked : CheckState.Unchecked);
             checkedListBox1.SetItemCheckState(2, layerFence.isVisible() ? CheckState.Checked : CheckState.Unchecked);
             checkedListBox1.SetItemCheckState(3, gMapControl1.MapProvider.Equals(GMapProviders.GoogleChinaSatelliteMap) ? CheckState.Checked : CheckState.Unchecked);
+
+            cbCommunication.SelectedIndex = (int)Communication.Type;
         }
 
         void initPanelBehavior()
@@ -355,9 +357,7 @@ namespace GoodsTracker
         }
 
         /*************************************************************************
-         *                                                                       *
          *                          Updates                                      *
-         *                                                                       *
          *************************************************************************/
 
         /*
@@ -512,11 +512,8 @@ namespace GoodsTracker
         }
 
         /*************************************************************************
-         *                                                                       *
          *                          Painel                                       *
-         *                                                                       *
          *************************************************************************/
-
 
         /*
           * Seleciona (expande) o painel
@@ -552,11 +549,8 @@ namespace GoodsTracker
         }
 
         /*************************************************************************
-         *                                                                       *
          *                          Set's                                        *
-         *                                                                       *
          *************************************************************************/
-
 
         /*
          * Processa o selecionamento dos pontos para montagem da cerca
@@ -682,6 +676,19 @@ namespace GoodsTracker
             }
         }
 
+        private void cbCommunication_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbCommunication.SelectedIndex==0)
+            {
+                Communication.create(TYPE_COMMUNICATION.SERIAL);
+
+            }
+            else
+            {
+                Communication.create(TYPE_COMMUNICATION.AMQP);
+            }
+        }
+
         /*
          * Adiciona posicao da cerca
          */
@@ -692,9 +699,7 @@ namespace GoodsTracker
         }
 
         /*************************************************************************
-         *                                                                       *
          *                          CALL BACKS                                   *
-         *                                                                       *
          *************************************************************************/
 
         /*

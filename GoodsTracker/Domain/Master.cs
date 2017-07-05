@@ -4,13 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoodsTracker.Domain
+namespace GoodsTracker
 {
     class Master : CommunicationUnit
     {
+        // Server
+        public const int ADDRESS = 1;
+
         protected override void onReceiveAnswer(AnsCmd ans)
         {
             throw new NotImplementedException();
+        }
+
+        Master():base(ADDRESS)
+        {
+
         }
     }
 }

@@ -115,7 +115,6 @@
     <Compile Include="Communication\protocol.cs" />
     <Compile Include="Communication\ringbuffer.cs" />
     <Compile Include="Domain\Route.cs" />
-    <Compile Include="Domain\ThreadManager.cs" />
     <Compile Include="Domain\ThreadRun.cs" />
     <Compile Include="Domain\touchkey.cs" />
     <Compile Include="RabbitMQ\RabbitMQ.cs" />
