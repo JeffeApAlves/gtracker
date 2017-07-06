@@ -9,8 +9,8 @@
 #include "AppQueues.h"
 #include "DataTLM.h"
 
-DataTLM			dataTLM;
-int				_lock;
+DataTLM		dataTLM;
+
 
 /**
  *
@@ -38,9 +38,6 @@ void updateTLM(void){
 			updateDataLevel();
 		}
 	}
-
-	dataTLM.Speed	= 100;
-	dataTLM.Lock	= _lock;
 }
 //-------------------------------------------------------------------------
 
@@ -56,6 +53,7 @@ void updateDataGPS(void) {
 			dataTLM.Lng = data->Lng;
 			strcpy(dataTLM.Date, data->Date);
 			strcpy(dataTLM.Time, data->Time);
+			dataTLM.Speed	= data->Speed;
 		}
 	}
 }

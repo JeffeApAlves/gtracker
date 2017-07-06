@@ -24,7 +24,7 @@ typedef struct{
 		int			Lock;
 		char		Time[11];
 		char		Date[7];
-	} DataTLM;
+} DataTLM;
 
 
 void updateDataLevel(void);
@@ -35,8 +35,5 @@ void updateTLM(void);
 #define clearDataTLM(f) memset((void*)f,0,sizeof(DataTLM));
 
 extern DataTLM			dataTLM;
-extern int				_lock;
-
-
 
 #endif /* SOURCES_DATATLM_H_ */

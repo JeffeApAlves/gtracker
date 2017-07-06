@@ -16,12 +16,12 @@ const char* GSA	= "GSA";
 #define		SOUTH	'S'
 #define		WEST	'W'
 
-RingBuffer	bufferRxNMEA;
-ArrayFrame	frameNMEA;
-StatusNMEA	statusNMEA = NMEA_INIT;
-DataNMEA	dataNMEA;
+static RingBuffer	bufferRxNMEA;
+static ArrayFrame	frameNMEA;
+static StatusNMEA	statusNMEA = NMEA_INIT;
+static DataNMEA		dataNMEA;
+static DataTLM		infoGPS;
 
-DataTLM		infoGPS;
 DataTLM*	pInfoGPS = &infoGPS;
 
 void runNMEA(void) {
@@ -166,6 +166,7 @@ static void NMEA_acceptRxFrame(void)
 	pInfoGPS->Lng = dataNMEA.Lng;
 	strcpy(pInfoGPS->Time,dataNMEA.Time_UTC);
 	strcpy(pInfoGPS->Date,dataNMEA.Date);
+	pInfoGPS->Speed = dataNMEA.Speed;
 
 
     if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pInfoGPS, ( TickType_t ) 1 ) ){

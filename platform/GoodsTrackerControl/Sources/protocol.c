@@ -12,11 +12,13 @@ const char* OPERATION_AN = "AN";
 const char* OPERATION_RD = "RD";
 const char* OPERATION_WR = "WR";
 
-StatusRx	statusRx = CMD_INIT;
-RingBuffer	bufferRx,bufferTx;
-DataCom		dataCom;
+static StatusRx	statusRx = CMD_INIT;
+static RingBuffer	bufferRx,bufferTx;
+static DataCom		dataCom;
+static ArrayFrame	frameCom;
+
 DataCom*	pDataCom = &dataCom;
-ArrayFrame	frameCom;
+
 
 Resource	ListCmd[]	= {	{.id = CMD_NONE,	.name = "---\0"},
 							{.id = CMD_LED,		.name = "LED\0"},

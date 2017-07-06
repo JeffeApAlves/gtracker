@@ -17,7 +17,9 @@
 #include "Accelerometer.h"
 #include "application.h"
 
-ArrayPayLoad	msg2send;
+static 	int			_lock;
+static ArrayPayLoad	msg2send;
+
 ArrayPayLoad*	pAnswer = &msg2send;
 
 void runCallBack(void){

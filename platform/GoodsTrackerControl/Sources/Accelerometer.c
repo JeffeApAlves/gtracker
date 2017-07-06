@@ -10,7 +10,7 @@
 #include "AppQueues.h"
 #include "Accelerometer.h"
 
-DataTLM		acceInfo;
+static DataTLM	acceInfo;
 DataTLM*	pAcceInfo = &acceInfo;
 
 void runAccelerometer(void) {

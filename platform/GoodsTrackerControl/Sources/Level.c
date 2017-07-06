@@ -9,9 +9,9 @@
 #include "AppQueues.h"
 #include "Level.h"
 
-uint16_t	ADValues[AD1_CHANNEL_COUNT];
+static uint16_t	ADValues[AD1_CHANNEL_COUNT];
+static DataTLM		adInfo;
 
-DataTLM		adInfo;
 DataTLM*	pInfo = &adInfo;
 
 volatile	bool AD_finished = FALSE;
