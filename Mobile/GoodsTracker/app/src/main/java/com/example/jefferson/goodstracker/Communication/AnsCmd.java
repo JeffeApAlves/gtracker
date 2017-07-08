@@ -25,4 +25,20 @@ public class AnsCmd {
         header.setOperation(o);
 
     }
+
+    public Header getHeader() {
+        return header;
+    }
+
+    public void setHeader(Header header) {
+        this.header = header;
+    }
+
+    public DataTelemetria getTelemetria() {
+        return telemetria;
+    }
+
+    public void setTelemetria(DataTelemetria telemetria) {
+        this.telemetria = telemetria;
+    }
 }

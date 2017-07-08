@@ -24,4 +24,25 @@ public class Cmd {
     {
         payload.append(str);
     }
+
+    public Header getHeader() {
+        return header;
+    }
+
+    public void setHeader(Header header) {
+        this.header = header;
+    }
+
+    public PayLoad getPayload() {
+        return payload;
+    }
+
+    public void setPayload(PayLoad payload) {
+        this.payload = payload;
+    }
+
+    public  String getResource(){
+
+        return header.getResource();
+    }
 }

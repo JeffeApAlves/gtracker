@@ -6,13 +6,23 @@ package com.example.jefferson.goodstracker.Communication;
 
 public class CONST_COM {
 
-    public class CHAR
-    {
+    public class CONFIG{
+
+        static public final int TIME_COMMUNICATION = 1;
+    }
+
+    public class CHAR {
+
         static public final char RX_FRAME_START    = '[';
         static public final char RX_FRAME_END      = ']';
         static public final char CR                = '\r';
         static public final char LF                = '\n';
         static public final char SEPARATOR         = ':';
         static public final char ASTERISCO         = '*';
+    }
+
+    public  class MASTER{
+
+        static  public  final  int ADDRESS          = 5;
     }
 }
