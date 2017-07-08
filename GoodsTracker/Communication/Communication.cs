@@ -27,11 +27,15 @@ namespace GoodsTracker
         private static Dictionary<string, Cmd> cmds = new Dictionary<string, Cmd>();
         private static List<AnsCmd> queueAnsCmd = new List<AnsCmd>();
 
-        internal static Dictionary<int,CommunicationUnit> Units { get => units; set => units = value; }
         internal static TYPE_COMMUNICATION Type { get => type; set => type = value; }
-        internal static List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
+        internal static Communic Communic { get => communic; set => communic = value; }
+
+        public static int TIME_COMMUNICATION => _TIME_COMMUNICATION;
+
+        internal static Dictionary<int, CommunicationUnit> Units { get => units; set => units = value; }
         internal static Dictionary<string, Cmd> TxCmds { get => txCmds; set => txCmds = value; }
         internal static Dictionary<string, Cmd> Cmds { get => cmds; set => cmds = value; }
+        internal static List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
 
         public Communication()
         {
@@ -205,7 +209,7 @@ namespace GoodsTracker
 
             if (isAnyQueueCmd())
             {
-                List<Cmd> tmp = new List<Cmd>(Cmds.Values);
+                List<Cmd> tmp = new List<Cmd>(cmds.Values);
 
                 cmd = tmp[0];
             }

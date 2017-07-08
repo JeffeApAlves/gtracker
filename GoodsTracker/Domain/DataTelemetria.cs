@@ -99,9 +99,9 @@ namespace GoodsTracker
 
         public DataTelemetria()
         {
-            AxisX       = new Axis();
-            AxisY       = new Axis();
-            AxisZ       = new Axis();
+            axisX       = new Axis();
+            axisY       = new Axis();
+            axisZ       = new Axis();
             speed       = new Value(0,100);
             level       = new Value(0,70000);
 
@@ -162,19 +162,19 @@ namespace GoodsTracker
 
         public void setRotation(double x, double y, double z)
         {
-            AxisX.Rotation.Val = x;
-            AxisY.Rotation.Val = y;
-            AxisZ.Rotation.Val = z;
+            axisX.Rotation.Val = x;
+            axisY.Rotation.Val = y;
+            axisZ.Rotation.Val = z;
         }
 
         public void setValues(DataTelemetria values)
         {
-            Speed   = values.Speed;
-            Level   = values.Level;
+            speed   = values.Speed;
+            level   = values.Level;
 
-            AxisX   = values.AxisX;
-            AxisY   = values.AxisY;
-            AxisZ   = values.AxisZ;
+            axisX   = values.AxisX;
+            axisY   = values.AxisY;
+            axisZ   = values.AxisZ;
         }
 
         public override string ToString()

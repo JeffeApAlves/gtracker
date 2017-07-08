@@ -20,7 +20,8 @@ namespace GoodsTracker
          * Endereco da unidade
          */
         protected int   address;
-        internal int Address { get => address; set => address = value; }
+        internal int    Address { get => address; set => address = value; }
+
         protected abstract void onReceiveAnswer(AnsCmd ans);
 
         internal CommunicationUnit(int val)

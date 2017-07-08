@@ -70,8 +70,8 @@ public class DecoderFrame {
 
     public boolean setValues(PayLoad payload, DataTelemetria b) {
 
-        boolean ret    = false;
-        payload     = new PayLoad();
+        boolean ret     = false;
+        payload         = new PayLoad();
 
         try {
 
