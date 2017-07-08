@@ -6,8 +6,8 @@ package com.example.jefferson.goodstracker.Communication;
 
 public class RESOURCE_TYPE {
 
-    public final String TLM         = "TLM";    // Data DataTelemetria
-    public final String LOCK        = "LCK";    // Trava
-    public final String LCD         = "LCD";
+    static public final String TLM         = "TLM";    // Data DataTelemetria
+    static public final String LOCK        = "LCK";    // Trava
+    static public final String LCD         = "LCD";
 
 }

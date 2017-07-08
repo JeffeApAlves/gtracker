@@ -6,8 +6,8 @@ package com.example.jefferson.goodstracker.Domain;
 
 public class Value extends Object {
 
-    double  val;
-    Scale   tol;
+    private double  val;
+    private Scale   tol;
 
     public Value(double min,double max) {
 

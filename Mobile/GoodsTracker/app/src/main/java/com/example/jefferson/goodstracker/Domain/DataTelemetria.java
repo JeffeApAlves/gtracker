@@ -230,4 +230,17 @@ public class DataTelemetria  extends Object {
     public void setTime(Date time) {
         this.time = time;
     }
+
+    public void setSpeed(double speed) {
+        this.speed.setVal(speed);
+    }
+
+    public void setLevel(double level) {
+        this.level.setVal(level);
+    }
+
+    public double getValSpeed() {
+
+        return speed.getVal();
+    }
 }
