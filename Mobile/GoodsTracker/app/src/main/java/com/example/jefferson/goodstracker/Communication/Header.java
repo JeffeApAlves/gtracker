@@ -6,7 +6,7 @@ package com.example.jefferson.goodstracker.Communication;
 
 public class Header {
 
-    public final int SIZE = 27;             // 5+5+5+2+3+3 + 4 separadores
+    public final int LENGTH = 27;             // 5+5+5+2+3+3 + 4 separadores
 
     String      data;
     int         dest;
@@ -62,9 +62,9 @@ public class Header {
 
         String value = frame.getData();
 
-        if (value.length() > SIZE) {
+        if (value.length() > LENGTH) {
 
-            data = value.substring(0, SIZE);
+            data = value.substring(0, LENGTH);
 
         } else {
 
@@ -79,6 +79,62 @@ public class Header {
 
     public int length(){
 
-        return SIZE;
+        return LENGTH;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public int getDest() {
+        return dest;
+    }
+
+    public void setDest(int dest) {
+        this.dest = dest;
+    }
+
+    public int getAddress() {
+        return address;
+    }
+
+    public void setAddress(int address) {
+        this.address = address;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public Operation getOperation() {
+        return operation;
+    }
+
+    public void setOperation(Operation operation) {
+        this.operation = operation;
+    }
+
+    public String getResource() {
+        return resource;
+    }
+
+    public void setResource(String resource) {
+        this.resource = resource;
+    }
+
+    public int getSizePayLoad() {
+        return sizePayLoad;
+    }
+
+    public void setSizePayLoad(int sizePayLoad) {
+        this.sizePayLoad = sizePayLoad;
     }
 }
