@@ -73,8 +73,8 @@ public class DecoderFrame {
         boolean ret    = false;
         payload     = new PayLoad();
 
-        try
-        {
+        try {
+
             payload.append(b.getLatitude());
             payload.append(CONST_COM.CHAR.SEPARATOR);
             payload.append(b.getLongitude());
@@ -133,12 +133,12 @@ public class DecoderFrame {
         boolean ret     = false;
         ans             = new AnsCmd();
 
-        try
-        {
+        try {
+
             String[] list = frame.getData().split(String.valueOf(CONST_COM.CHAR.SEPARATOR));
 
-            if (list != null && list.length >= 8)
-            {
+            if (list != null && list.length >= 8) {
+
                 //TODO verificar substring
                 // Exclui CheckSum
                 frame.setData(frame.getData().substring(0, frame.getData().length() - 2));
@@ -167,8 +167,8 @@ public class DecoderFrame {
                 Log.d("","Incorreto a quantidade de parametros recebidos");
             }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
+
             ret = false;
 
             System.out.println("Erro na decodificacao do frame");
@@ -184,8 +184,8 @@ public class DecoderFrame {
 
         DataTelemetria telemetria = new DataTelemetria();
 
-        try
-        {
+        try {
+
             telemetria.setPosition(     AsDouble(list, INDEX.LAT)/100.0,
                                         AsDouble(list, INDEX.LNG) / 100.0);
 
@@ -202,9 +202,9 @@ public class DecoderFrame {
             telemetria.setStatusLock(   AsBool(list, INDEX.TRAVA));
             telemetria.setDate(         AsDate(list, INDEX.DATE));
             telemetria.setTime (        AsTime(list, INDEX.TIME));
-        }
-        catch (Exception e)
-        {
+
+        } catch (Exception e) {
+
             telemetria = new DataTelemetria();
 
             System.out.println("Erro na decodificacao dos dados da Telemetria");
@@ -219,17 +219,17 @@ public class DecoderFrame {
 
         Header header = new Header();
 
-        try
-        {
+        try {
+
             header.setAddress(AsInteger(list, INDEX.ADDRESS));
             header.setDest(AsInteger(list, INDEX.DEST));
             header.setCount(AsInteger(list, INDEX.COUNT));
             header.setOperation(AsOperation(list, INDEX.OPERACAO));
             header.setResource(AsString(list, INDEX.RESOURCE));
             header.setSizePayLoad(AsInteger(list, INDEX.SIZE_PAYLOAD));
-        }
-        catch (Exception e)
-        {
+
+        } catch (Exception e) {
+
             header = new Header();
 
             System.out.println("Erro na codificacao do Header");

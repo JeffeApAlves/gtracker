@@ -1,29 +1,24 @@
 package com.example.jefferson.goodstracker.Communication;
 
-import com.example.jefferson.goodstracker.Domain.ThreadRun;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * Created by Jefferson on 08/07/2017.
  */
 
-public class Communication extends ThreadRun {
+public class Communication extends Object {
 
-    private static TYPE_COMMUNICATION type;
-    private static Communic communic = null;
+    private static Thread               threadCommunication;
+    private static TYPE_COMMUNICATION   type;
+    private static Communic             communic        = null;
+    private static Map<String,Cmd>      txCmds          = new HashMap<String, Cmd>();
+    private static Map<String,Cmd>      cmds            = new HashMap<String, Cmd>();
+    private static List<AnsCmd>         queueAnsCmd     = new ArrayList<AnsCmd>();
     private static Map<Integer,CommunicationUnit> units = new HashMap<Integer,CommunicationUnit>();
-    private static Map<String,  Cmd> txCmds             = new HashMap<String, Cmd>();
-    private static Map<String,  Cmd> cmds               = new HashMap<String, Cmd>();
-    private static List<AnsCmd> queueAnsCmd             = new ArrayList<AnsCmd>();
-
-    public Communication() {
-
-        setTime(CONST_COM.CONFIG.TIME_COMMUNICATION);
-    }
 
     public static void AddUnit(CommunicationUnit unit) {
 
@@ -33,24 +28,17 @@ public class Communication extends ThreadRun {
         }
     }
 
-    @Override
-    public void run() {
-
-        if (communic != null) {
-
-            communic.doCommunication();
-        }
-    }
-
     public static void Init() {
 
         if (communic != null) {
 
             communic.Init();
         }
+
+        initThread();
     }
 
-    public static void DeInit() {
+    public static void deInit() {
 
         if (communic != null) {
 
@@ -60,13 +48,13 @@ public class Communication extends ThreadRun {
 
     public static void create(TYPE_COMMUNICATION t) {
 
-        if (type != t || communic == null)
-        {
-            type = t;
-            DeInit();
+        if (type != t) {
 
-            switch (type)
-            {
+            type = t;
+            deInit();
+
+            switch (type) {
+
                 case AMQP: communic = new AMQPCommunication(); break;
             }
 
@@ -100,8 +88,8 @@ public class Communication extends ThreadRun {
 
     public static void removeAns(AnsCmd ans) {
 
-        if (ans != null)
-        {
+        if (ans != null) {
+
             queueAnsCmd.remove(ans);
         }
     }
@@ -149,8 +137,8 @@ public class Communication extends ThreadRun {
             Header cmd_header = txCmds.get(ans_header.getResource()).getHeader();
 
             if ((ans_header.getResource() != cmd_header.getResource()) ||
-                    (ans_header.getDest() != cmd_header.getAddress()) ||
-                    (ans_header.getCount()!= cmd_header.getCount())) {
+                (ans_header.getDest() != cmd_header.getAddress()) ||
+                (ans_header.getCount()!= cmd_header.getCount())) {
 
                 cmd = null;
             }
@@ -185,9 +173,8 @@ public class Communication extends ThreadRun {
         return ret;
     }
 
+    public static void publishAnswer(DataFrame frame) {
 
-    public static void publishAnswer(DataFrame frame)
-    {
         communic.publishAnswer(frame);
     }
 
@@ -208,15 +195,27 @@ public class Communication extends ThreadRun {
 
     public static Cmd getNextCmd() {
 
-        Cmd cmd = null;
+        return isAnyQueueCmd()?getArrayOfCmd()[0]:null;
+    }
 
-        if (isAnyQueueCmd()) {
+    /*
+    Iniciaaliza a thread que ira gerenciar as pilhas de mensagens
+     */
+    static void initThread(){
 
-            Cmd temp[] = getArrayOfCmd();
+        threadCommunication = new Thread(new Runnable() {
 
-            cmd = temp[0];
-        }
+            @Override
+            public void run() {
 
-        return cmd;
+                communic.doCommunication();
+
+                try {
+                    Thread.sleep(CONST_COM.CONFIG.TIME_COMMUNICATION);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
