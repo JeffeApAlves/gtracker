@@ -8,6 +8,7 @@ import com.example.jefferson.goodstracker.Domain.DataTelemetria;
 
 public interface IDecoderFrame {
 
+    //TODO verificar possiveis problemas por passagem por referencia out
     boolean setValues(PayLoad payload, DataTelemetria b);
     boolean getValues(AnsCmd ans, DataFrame frame);
 }
