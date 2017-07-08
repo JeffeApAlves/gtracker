@@ -50,4 +50,14 @@ public class Axis extends Object{
 
         acceleration.setVal(v);
     }
+
+    public double getValAcceleration(){
+
+        return acceleration.getVal();
+    }
+
+    public double getValRotation(){
+
+        return rotation.getVal();
+    }
 }

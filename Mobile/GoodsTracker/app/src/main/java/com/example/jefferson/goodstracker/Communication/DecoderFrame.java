@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.example.jefferson.goodstracker.Domain.DataTelemetria;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -77,17 +79,17 @@ public class DecoderFrame {
             payload.append(CONST_COM.CHAR.SEPARATOR);
             payload.append(b.getLongitude());
             payload.append(CONST_COM.CHAR.SEPARATOR);
-            payload.append(b.AxisX.Acceleration.Val);
+            payload.append(b.getAxisX().getValAcceleration());
             payload.append(CONST_COM.CHAR.SEPARATOR);
-            payload.append(b.AxisY.Acceleration.Val);
+            payload.append(b.getAxisY().getValAcceleration());
             payload.append(CONST_COM.CHAR.SEPARATOR);
-            payload.append(b.AxisZ.Acceleration.Val);
+            payload.append(b.getAxisZ().getValAcceleration());
             payload.append(CONST_COM.CHAR.SEPARATOR);
-            payload.append(b.AxisX.Rotation.Val);
+            payload.append(b.getAxisX().getValRotation());
             payload.append(CONST_COM.CHAR.SEPARATOR);
-            payload.append(b.AxisY.Rotation.Val);
+            payload.append(b.getAxisY().getValRotation());
             payload.append(CONST_COM.CHAR.SEPARATOR);
-            payload.append(b.AxisZ.Rotation.Val);
+            payload.append(b.getAxisZ().getValRotation());
             payload.append(CONST_COM.CHAR.SEPARATOR);
             payload.append(b.getValSpeed());
             payload.append(CONST_COM.CHAR.SEPARATOR);
@@ -96,16 +98,20 @@ public class DecoderFrame {
             payload.append(b.isStatusLock());
             payload.append(CONST_COM.CHAR.SEPARATOR);
 
-            String str = b.Time.ToLongTimeString();
-            str = str.Remove(2, 1);
-            str = str.Remove(4, 1);
+            //TODO Verificar a formatacao de string de time
+            StringBuilder sb;
 
-            payload.append(str);
+            sb = new StringBuilder(b.getTime().toString());
+            sb = sb.deleteCharAt(2);
+            sb = sb.deleteCharAt(4);
+
+            payload.append(sb.toString());
             payload.append(CONST_COM.CHAR.SEPARATOR);
 
-            str = b.Date.ToShortDateString().Remove(5, 1);
-            str = str.Remove(2, 1);
-            payload.append(str);
+            sb = new StringBuilder(b.getDate().toString());
+            sb = sb.deleteCharAt(5);
+            sb = sb.deleteCharAt(1);
+            payload.append(sb.toString());
 
             ret = true;
 
@@ -180,16 +186,16 @@ public class DecoderFrame {
 
         try
         {
-            telemetria.setPosition(AsDouble(list, INDEX.LAT)/100.0,
-                    AsDouble(list, INDEX.LNG) / 100.0);
+            telemetria.setPosition(     AsDouble(list, INDEX.LAT)/100.0,
+                                        AsDouble(list, INDEX.LNG) / 100.0);
 
-            telemetria.setAcceleration(AsDouble(list, INDEX.ACCEL_X),
-                    AsDouble(list, INDEX.ACCEL_Y),
-                    AsDouble(list, INDEX.ACCEL_Z));
+            telemetria.setAcceleration( AsDouble(list, INDEX.ACCEL_X),
+                                        AsDouble(list, INDEX.ACCEL_Y),
+                                        AsDouble(list, INDEX.ACCEL_Z));
 
-            telemetria.setRotation(AsDouble(list, INDEX.ROT_X),
-                    AsDouble(list, INDEX.ROT_Y),
-                    AsDouble(list, INDEX.ROT_Z));
+            telemetria.setRotation(     AsDouble(list, INDEX.ROT_X),
+                                        AsDouble(list, INDEX.ROT_Y),
+                                        AsDouble(list, INDEX.ROT_Z));
 
             telemetria.setSpeed(        AsDouble(list, INDEX.SPEED));
             telemetria.setLevel(        AsDouble(list, INDEX.LEVEL));
@@ -220,7 +226,7 @@ public class DecoderFrame {
             header.setCount(AsInteger(list, INDEX.COUNT));
             header.setOperation(AsOperation(list, INDEX.OPERACAO));
             header.setResource(AsString(list, INDEX.RESOURCE));
-            header.setSizePayLoad(AsInteger(list, INDEX.SIZE_PAYLOAD))s;
+            header.setSizePayLoad(AsInteger(list, INDEX.SIZE_PAYLOAD));
         }
         catch (Exception e)
         {
@@ -243,19 +249,26 @@ public class DecoderFrame {
 
     static private Date AsTime(String[] list, int index) {
 
-        Date d = Convert.ToDate("00:00:00");
+        Date d = new Date();
 
-        if (index < list.length)
-        {
+        if (index < list.length) {
+
+            StringBuilder sb = new StringBuilder(list[index]);
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+
             String str = list[index];
 
             if (!str.equals("")) {
 
-                str = str.Insert(2, ":");
-                str = str.Insert(5, ":");
-                str = str.SubString(0, str.length() - 4);
+                sb = sb.insert(2, ":");
+                sb = sb.insert(5, ":");
+                str = sb.substring(0, str.length() - 4);
 
-                d = Convert.ToDate(str);
+                try {
+                    d = (Date)format.parse(sb.toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -264,19 +277,28 @@ public class DecoderFrame {
 
     static private Date AsDate(String[] list, int index) {
 
-        Date d = Convert.ToDate("01/01/1900");
+        Date d = new Date();
 
         if (index < list.length) {
+
+            StringBuilder sb = new StringBuilder(list[index]);
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
 
             String str = list[index];
 
             if (!str.equals("")) {
 
-                str = str.Insert(2, "/");
-                str = str.Insert(5, "/");
-                d = Convert.ToDate(str);
+                sb = sb.insert(2, "/");
+                sb = sb.insert(5, "/");
+
+                try {
+                    d = (Date)format.parse(sb.toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
         return d;
     }
 
@@ -286,7 +308,7 @@ public class DecoderFrame {
 
         if (index < list.length) {
 
-            dest = Convert.ToInt16(list[index]);
+            dest = Integer.valueOf(list[index]);
         }
 
         return dest;
@@ -298,7 +320,9 @@ public class DecoderFrame {
 
         if (index < list.length) {
 
-            dest = Convert.ToDouble(list[index].Replace(".", ","));
+            String str =list[index].replace(".", ",");
+
+            dest = Double.valueOf(str);
         }
 
         return dest;
@@ -322,7 +346,8 @@ public class DecoderFrame {
 
         if (index < list.length) {
 
-            dest = (byte)Convert.ToInt16(list[index],16);
+            //TODO Verificar a conversao hex string to byte
+            dest = Byte.valueOf(list[index], 16);
         }
 
         return dest;
@@ -330,13 +355,6 @@ public class DecoderFrame {
 
     static private boolean AsBool(String[] list, int index) {
 
-        int dest = 0;
-
-        if (index < list.length) {
-            
-            dest = Convert.ToInt16(list[index]);
-        }
-
-        return dest>0 ? true:false;
+        return AsInteger(list, index)!=0 ? true:false;
     }
 }

@@ -243,4 +243,9 @@ public class DataTelemetria  extends Object {
 
         return speed.getVal();
     }
+
+    public double getValLevel() {
+
+        return level.getVal();
+    }
 }
