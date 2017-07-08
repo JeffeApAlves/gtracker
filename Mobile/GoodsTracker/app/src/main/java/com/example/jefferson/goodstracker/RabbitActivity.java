@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.jefferson.goodstracker.Communication.RabbitMQ;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -25,8 +28,10 @@ public class RabbitActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_rabbit);
 
-        rabbitMQ.init();
-        rabbitMQ.subscribe(incomingMessageHandler);
+        rabbitMQ.open();
+        rabbitMQ.createConnThread();
+        rabbitMQ.createPublishThread();
+        rabbitMQ.createSubscribeThread(incomingMessageHandler);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -35,6 +40,14 @@ public class RabbitActivity extends AppCompatActivity {
 
     public void onClick_btConnect(View view){
 
+        try {
+
+            rabbitMQ.connect();
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
     };
 
     public void onClick_btPublish(View view){
@@ -61,7 +74,7 @@ public class RabbitActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        rabbitMQ.deInit();
+        rabbitMQ.close();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
