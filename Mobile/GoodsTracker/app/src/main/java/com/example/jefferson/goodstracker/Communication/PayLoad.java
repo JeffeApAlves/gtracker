@@ -26,8 +26,8 @@ public class PayLoad {
     }
 
 
-    public void append(double b)
-    {
+    public void append(double b) {
+
         //TODO verificar o que o parametro G faz na conversao string
         //data += b.toString("G");
 
@@ -49,8 +49,8 @@ public class PayLoad {
         return length() <= 0;
     }
 
-    public String str()
-    {
+    public String str() {
+
         return String.format("%0d",length()) + CONST_COM.CHAR.SEPARATOR + data + CONST_COM.CHAR.SEPARATOR;
     }
 
@@ -61,11 +61,14 @@ public class PayLoad {
 
     public void setData(DataFrame frame) {
 
-        String value = frame.getData();
+        //TODO verificar substring
 
-        if (value.length() > (Header.SIZE + 1)) {
+        Header header   = frame.getHeader();
+        String value    = frame.getData();
 
-            data = value.substring((Header.SIZE + 1), value.length() - (Header.SIZE + 1));
+        if (value.length() > (header.length() + 1)) {
+
+            data = value.substring((header.length() + 1), value.length());
         }
     }
 
