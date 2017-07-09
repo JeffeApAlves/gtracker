@@ -17,13 +17,7 @@ import android.view.MenuItem;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import com.example.jefferson.goodstracker.ExpandableListAdapter;
 import com.example.jefferson.goodstracker.R;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 import static android.widget.ExpandableListView.*;
 
@@ -32,15 +26,15 @@ import static android.widget.ExpandableListView.*;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    List<String> groupList;
-    List<String> childList;
-    Map<String, List<String>> laptopCollection;
-    ExpandableListView expListView;
+    ExpandableListView  expListView;
+
+    TrackerListView     trackerListView = new TrackerListView();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -63,16 +57,15 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        createGroupList();
-
-        createCollection();
+        //setGroupIndicatorToRight();
 
         expListView = (ExpandableListView) findViewById(R.id.laptop_list);
+
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
-                this, groupList, laptopCollection);
+                this, trackerListView.getGroupList(), trackerListView.getLaptopCollection());
+
         expListView.setAdapter(expListAdapter);
 
-        //setGroupIndicatorToRight();
 
         expListView.setOnChildClickListener(new OnChildClickListener() {
 
@@ -126,26 +119,18 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        switch (id){
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }else if (id == R.id.nav_server) {
-
-            showServerActivity();
-
-        } else if (id == R.id.nav_trip){
-
-            showTripActivit();
+            case R.id.nav_camera:                           break;
+            case R.id.nav_gallery:                          break;
+            case R.id.nav_slideshow:                        break;
+            case R.id.nav_manage:                           break;
+            case R.id.nav_share:                            break;
+            case R.id.nav_send:                             break;
+            case R.id.nav_server:   showServerActivity();   break;
+            case R.id.nav_trip:     showTripActivit();      break;
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -162,57 +147,6 @@ public class MainActivity extends AppCompatActivity
 
         Intent it = new Intent(MainActivity.this,   TripActivity.class);
         startActivity(it);
-    }
-
-
-
-    private void createGroupList() {
-        groupList = new ArrayList<String>();
-        groupList.add("HP");
-        groupList.add("Dell");
-        groupList.add("Lenovo");
-        groupList.add("Sony");
-        groupList.add("HCL");
-        groupList.add("Samsung");
-    }
-
-    private void createCollection() {
-        // preparing laptops collection(child)
-        String[] hpModels = { "HP Pavilion G6-2014TX", "ProBook HP 4540",
-                "HP Envy 4-1025TX" };
-        String[] hclModels = { "HCL S2101", "HCL L2102", "HCL V2002" };
-        String[] lenovoModels = { "IdeaPad Z Series", "Essential G Series",
-                "ThinkPad X Series", "Ideapad Z Series" };
-        String[] sonyModels = { "VAIO E Series", "VAIO Z Series",
-                "VAIO S Series", "VAIO YB Series" };
-        String[] dellModels = { "Inspiron", "Vostro", "XPS" };
-        String[] samsungModels = { "NP Series", "Series 5", "SF Series" };
-
-        laptopCollection = new LinkedHashMap<String, List<String>>();
-
-        for (String laptop : groupList) {
-            if (laptop.equals("HP")) {
-                loadChild(hpModels);
-            } else if (laptop.equals("Dell"))
-                loadChild(dellModels);
-            else if (laptop.equals("Sony"))
-                loadChild(sonyModels);
-            else if (laptop.equals("HCL"))
-                loadChild(hclModels);
-            else if (laptop.equals("Samsung"))
-                loadChild(samsungModels);
-            else
-                loadChild(lenovoModels);
-
-            laptopCollection.put(laptop, childList);
-        }
-    }
-
-    private void loadChild(String[] laptopModels) {
-
-        childList = new ArrayList<String>();
-        for (String model : laptopModels)
-            childList.add(model);
     }
 
     private void setGroupIndicatorToRight() {

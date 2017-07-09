@@ -5,6 +5,23 @@
     android:padding="10dp" >
 
     <TextView
+        android:id="@+id/lat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="25dp" />
+
+    <TextView
+        android:id="@+id/lng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="25dp" />
+
+
+    <TextView
         android:id="@+id/laptop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,6 +36,26 @@
         android:layout_alignParentRight="true"
         android:src="@drawable/ic_info_black_24dp"
         android:contentDescription="@string/app_name"/>
+
+    <ProgressBar
+        android:id="@+id/level"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="53dp"
+        android:layout_marginEnd="278dp"
+        android:layout_toStartOf="@+id/delete" />
+
+    <ToggleButton
+        android:id="@+id/lockButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="260dp"
+        android:layout_toStartOf="@+id/delete"
+        android:text="ToggleButton" />
 
 
 </RelativeLayout>

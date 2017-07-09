@@ -1,4 +1,4 @@
-package com.example.jefferson.goodstracker; /**
+package com.example.jefferson.goodstracker.Activities; /**
  * Created by Jefferson on 06/07/2017.
  */
 
