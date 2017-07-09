@@ -16,6 +16,16 @@ public class Header {
     String      resource;
     int         sizePayLoad;
 
+    public Header(String r, Operation o) {
+
+        count       = 0;
+        address     = 0;
+        dest        = 0;
+        resource    = r;
+        operation   = o;
+        sizePayLoad = 0;
+    }
+
     public Header() {
 
         count       = 0;

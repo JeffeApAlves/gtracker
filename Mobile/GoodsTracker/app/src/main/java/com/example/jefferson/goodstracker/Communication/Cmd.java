@@ -4,24 +4,24 @@ package com.example.jefferson.goodstracker.Communication;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class Cmd {
+public class Cmd  implements ObserverAnswerCmd {
 
-// TODO implementar se necessario o ponteiro de callback do comando
-//    onAnswerCmd onAnswerCmd;
-    Header      header;
-    PayLoad     payload;
+    Header              header;
+    PayLoad             payload;
+    EventReceiveAnswer  eventReceiveAnswer = null;
 
-    public Cmd(String r,Operation o)
-    {
-        header  = new Header();
+    public Cmd(int address, int dest,String r,Operation o,EventReceiveAnswer eRA) {
+
+        header  = new Header(r,o);
         payload = new PayLoad();
 
-        header.setResource(r);
-        header.setOperation(o);
+        header.setAddress(address);
+        header.setDest(dest);
+
+        eventReceiveAnswer = eRA;
     }
 
-    public void append(String str)
-    {
+    public void append(String str) {
         payload.append(str);
     }
 
@@ -42,7 +42,31 @@ public class Cmd {
     }
 
     public  String getResource(){
-
         return header.getResource();
+    }
+
+    public void setAddress(int address){
+
+        header.setAddress(address);
+    }
+
+    public void setDest(int dest){
+
+        header.setDest(dest);
+    }
+
+    @Override
+    public int getAddress() {
+
+        return header.getAddress();
+    }
+
+    /*
+     * Metodo chamado para notificar o recebimento de resposta
+     */
+    @Override
+    public void updateAnswer(AnsCmd ans) {
+
+        eventReceiveAnswer.onReceiveAnswer();
     }
 }

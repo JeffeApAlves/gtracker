@@ -9,7 +9,7 @@ import com.example.jefferson.goodstracker.Domain.DataTelemetria;
 public class AnsCmd {
 
     Header          header;
-    DataTelemetria telemetria;
+    DataTelemetria  telemetria;
 
     public AnsCmd() {
 
@@ -23,7 +23,6 @@ public class AnsCmd {
         header      = new Header();
         header.setResource(r);
         header.setOperation(o);
-
     }
 
     public Header getHeader() {
@@ -40,5 +39,9 @@ public class AnsCmd {
 
     public void setTelemetria(DataTelemetria telemetria) {
         this.telemetria = telemetria;
+    }
+
+    public  String getResource(){
+        return header.getResource();
     }
 }

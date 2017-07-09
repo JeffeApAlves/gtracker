@@ -10,40 +10,20 @@ import java.util.Map;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class Communication extends Object {
+abstract public class Communication extends Object implements ObservableAnswerCmd, Communic  {
 
-    private static Thread               threadCommunication;
-    private static TYPE_COMMUNICATION   type;
-    private static Communic             communic        = null;
-    private static Map<String,Cmd>      txCmds          = new HashMap<String, Cmd>();
-    private static Map<String,Cmd>      cmds            = new HashMap<String, Cmd>();
-    private static List<AnsCmd>         queueAnsCmd     = new ArrayList<AnsCmd>();
-    private static Map<Integer,CommunicationUnit> units = new HashMap<Integer,CommunicationUnit>();
+    private static Thread               threadCommunication = null;
+    private static TYPE_COMMUNICATION   type                = TYPE_COMMUNICATION.AMQP;
+    private static Communic             communic            = null;
+    private static Map<String,Cmd>      txCmds              = new HashMap<String, Cmd>();
+    private static Map<String,Cmd>      cmds                = new HashMap<String, Cmd>();
+    private static List<AnsCmd>         answers             = new ArrayList<AnsCmd>();
+    private static Map<Integer,ObserverAnswerCmd > units    = new HashMap<Integer,ObserverAnswerCmd >();
 
-    public static void AddUnit(CommunicationUnit unit) {
 
-        if (unit != null) {
-
-            units.put(unit.getAddress(),unit);
-        }
-    }
-
-    public static void Init() {
-
-        if (communic != null) {
-
-            communic.Init();
-        }
+    public void init() {
 
         initThread();
-    }
-
-    public static void deInit() {
-
-        if (communic != null) {
-
-            communic.DeInit();
-        }
     }
 
     public static void create(TYPE_COMMUNICATION t) {
@@ -51,14 +31,18 @@ public class Communication extends Object {
         if (type != t) {
 
             type = t;
-            deInit();
+
+            if(communic!=null){
+
+                communic.deInit();
+            }
 
             switch (type) {
 
                 case AMQP: communic = new AMQPCommunication(); break;
             }
 
-            Init();
+            communic.init();
         }
     }
 
@@ -70,7 +54,7 @@ public class Communication extends Object {
 
     public static boolean isAnyAns() {
 
-        return queueAnsCmd.size() > 0;
+        return answers.size() > 0;
     }
 
     public static boolean isAnyQueueCmd() {
@@ -82,7 +66,7 @@ public class Communication extends Object {
 
         if (ans != null) {
 
-            queueAnsCmd.add(ans);
+            answers.add(ans);
         }
     }
 
@@ -90,7 +74,7 @@ public class Communication extends Object {
 
         if (ans != null) {
 
-            queueAnsCmd.remove(ans);
+            answers.remove(ans);
         }
     }
 
@@ -136,9 +120,9 @@ public class Communication extends Object {
 
             Header cmd_header = txCmds.get(ans_header.getResource()).getHeader();
 
-            if ((ans_header.getResource() != cmd_header.getResource()) ||
-                (ans_header.getDest() != cmd_header.getAddress()) ||
-                (ans_header.getCount()!= cmd_header.getCount())) {
+            if ((ans_header.getResource()   != cmd_header.getResource()) ||
+                (ans_header.getDest()       != cmd_header.getAddress()) ||
+                (ans_header.getCount()      != cmd_header.getCount())) {
 
                 cmd = null;
             }
@@ -173,12 +157,7 @@ public class Communication extends Object {
         return ret;
     }
 
-    public static void publishAnswer(DataFrame frame) {
-
-        communic.publishAnswer(frame);
-    }
-
-    public static void acceptAnswer(AnsCmd ans) {
+    public void acceptAnswer(AnsCmd ans) {
 
         if (ans != null) {
 
@@ -186,7 +165,7 @@ public class Communication extends Object {
 
             addAns(ans);
 
-            units.get((ans.header.getAddress())).processAnswer(ans);
+            notifyObserver(ans);
 
             removeTxCmd(cmd);
             removeAns(ans);
@@ -201,14 +180,14 @@ public class Communication extends Object {
     /*
     Iniciaaliza a thread que ira gerenciar as pilhas de mensagens
      */
-    static void initThread(){
+    void initThread(){
 
         threadCommunication = new Thread(new Runnable() {
 
             @Override
             public void run() {
 
-                communic.doCommunication();
+                doCommunication();
 
                 try {
                     Thread.sleep(CONST_COM.CONFIG.TIME_COMMUNICATION);
@@ -217,5 +196,59 @@ public class Communication extends Object {
                 }
             }
         });
+    }
+
+    @Override
+    public void registerObserver(ObserverAnswerCmd observer) {
+
+        if (observer != null) {
+
+            units.put(observer.getAddress(),observer);
+        }
+    }
+
+    @Override
+    public  void removeObserver(ObserverAnswerCmd observer) {
+
+        units.remove(observer.getAddress());
+    }
+
+    /*
+    *
+    * Notifica toda as unidades
+    *
+    */
+    @Override
+    public void notifyAllObservers(AnsCmd ans) {
+
+        //Notifica todas as unidades
+        for (ObserverAnswerCmd ob : units.values()){
+
+            ob.updateAnswer(ans);
+        }
+
+        //Notifica o comando que gerou a resposta
+        Cmd cmd = searchCmdOfAnswer(ans);
+        cmd.updateAnswer(ans);
+    }
+
+    /*
+        Notifica apenas a entidade respectiva do tracker correspondente
+     */
+    @Override
+    public void notifyObserver(AnsCmd ans) {
+
+        ObserverAnswerCmd ob = units.get(ans.getHeader().getAddress());
+
+        //Notifica a unidade
+        ob.updateAnswer(ans);
+
+        //Notifica o comando que gerou a resposta
+        Cmd cmd = searchCmdOfAnswer(ans);
+        cmd.updateAnswer(ans);
+    }
+
+    public static Communic getCommunic() {
+        return communic;
     }
 }

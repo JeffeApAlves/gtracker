@@ -6,29 +6,29 @@ import android.util.Log;
  * Created by Jefferson on 08/07/2017.
  */
 
-abstract public class CommunicationUnit {
-
-    //TODO implementar o delegate de resposta
-    //internal delegate ResultExec onAnswerCmd(AnsCmd ans);
+abstract public class CommunicationUnit implements ObserverAnswerCmd {
 
     /*
      * Endereco da unidade
      */
     protected int   address;
-    protected abstract void onReceiveAnswer(AnsCmd ans);
 
-    public CommunicationUnit(int val)
-    {
+    public CommunicationUnit(int val) {
+
         address = val;
-        Communication.AddUnit(this);
+
+        Communication.getCommunic().registerObserver(this);
     }
 
-    public Cmd createCMD(int dest, Operation o, String resource)
-    {
-        Cmd cmd               = new Cmd(resource, o);
+    public Cmd createCMD(int dest, Operation o, String resource,EventReceiveAnswer on_ans) {
 
-        cmd.getHeader().setAddress(CONST_COM.MASTER.ADDRESS);
-        cmd.getHeader().setDest(dest);
+        Cmd cmd  = new Cmd( CONST_COM.MASTER.ADDRESS,
+                            dest,
+                            resource,
+                            o,on_ans);
+
+        cmd.setAddress(CONST_COM.MASTER.ADDRESS);
+        cmd.setDest(dest);
 
         return cmd;
     }
@@ -38,7 +38,19 @@ abstract public class CommunicationUnit {
         Communication.addCmd(cmd);
     }
 
-    public void processAnswer(AnsCmd ans) {
+    public int getAddress() {
+        return address;
+    }
+
+    public void setAddress(int address) {
+        this.address = address;
+    }
+
+    /*
+     * Notifica a unidade
+     */
+    @Override
+    public void updateAnswer(AnsCmd ans){
 
         try {
 
@@ -49,10 +61,6 @@ abstract public class CommunicationUnit {
 
                 // Executa evento de recebmento de resposta de comando
                 onReceiveAnswer(ans);
-
-                // TODO chamada da call do comando
-                // Executa call back respectiva do comando
-                //cmd.EventAnswerCmd?.Invoke(ans);
             }
         }
         catch (Exception e) {
@@ -63,11 +71,5 @@ abstract public class CommunicationUnit {
         }
     }
 
-    public int getAddress() {
-        return address;
-    }
-
-    public void setAddress(int address) {
-        this.address = address;
-    }
+    abstract public void onReceiveAnswer(AnsCmd ans);
 }
