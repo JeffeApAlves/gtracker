@@ -27,9 +27,6 @@ abstract public class CommunicationUnit implements ObserverAnswerCmd {
                             resource,
                             o,on_ans);
 
-        cmd.setAddress(CONST_COM.MASTER.ADDRESS);
-        cmd.setDest(dest);
-
         return cmd;
     }
 
@@ -54,18 +51,12 @@ abstract public class CommunicationUnit implements ObserverAnswerCmd {
 
         try {
 
-            // Pega o comando respectivo
-            Cmd cmd = Communication.searchCmdOfAnswer(ans);
-
-            if (cmd != null) {
-
-                // Executa evento de recebmento de resposta de comando
-                onReceiveAnswer(ans);
-            }
+            // Executa evento de recebmento de resposta de comando
+            onReceiveAnswer(ans);
         }
         catch (Exception e) {
 
-            System.out.println("Erro na execucao das callbacks de communicacao");
+            System.out.println("Erro na execucao da callback pela unidade");
             System.out.println(e.toString());
             Log.d("",e.toString());
         }

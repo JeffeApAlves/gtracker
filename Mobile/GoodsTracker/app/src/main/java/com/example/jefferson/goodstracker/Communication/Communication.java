@@ -18,12 +18,18 @@ abstract public class Communication extends Object implements ObservableAnswerCm
     private static Map<String,Cmd>      txCmds              = new HashMap<String, Cmd>();
     private static Map<String,Cmd>      cmds                = new HashMap<String, Cmd>();
     private static List<AnsCmd>         answers             = new ArrayList<AnsCmd>();
-    private static Map<Integer,ObserverAnswerCmd > units    = new HashMap<Integer,ObserverAnswerCmd >();
+    private static Map<Integer,ObserverAnswerCmd >units     = new HashMap<Integer,ObserverAnswerCmd >();
 
-
+    @Override
     public void init() {
 
         initThread();
+    }
+
+    @Override
+    public void deInit(){
+
+        threadCommunication.interrupt();
     }
 
     public static void create(TYPE_COMMUNICATION t) {
@@ -229,7 +235,10 @@ abstract public class Communication extends Object implements ObservableAnswerCm
 
         //Notifica o comando que gerou a resposta
         Cmd cmd = searchCmdOfAnswer(ans);
-        cmd.updateAnswer(ans);
+        if(cmd!=null) {
+
+            cmd.updateAnswer(ans);
+        }
     }
 
     /*
@@ -245,7 +254,10 @@ abstract public class Communication extends Object implements ObservableAnswerCm
 
         //Notifica o comando que gerou a resposta
         Cmd cmd = searchCmdOfAnswer(ans);
-        cmd.updateAnswer(ans);
+        if(cmd!=null) {
+
+            cmd.updateAnswer(ans);
+        }
     }
 
     public static Communic getCommunic() {

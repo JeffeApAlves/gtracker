@@ -19,6 +19,8 @@ public class Cmd  implements ObserverAnswerCmd {
         header.setDest(dest);
 
         eventReceiveAnswer = eRA;
+
+        Communication.getCommunic().registerObserver(this);
     }
 
     public void append(String str) {

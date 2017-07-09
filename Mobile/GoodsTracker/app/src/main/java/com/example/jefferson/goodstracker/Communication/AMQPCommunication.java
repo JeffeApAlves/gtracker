@@ -8,11 +8,6 @@ public class AMQPCommunication extends Communication{
 
 
     @Override
-    public void deInit() {
-
-    }
-
-    @Override
     public void doCommunication() {
 
     }

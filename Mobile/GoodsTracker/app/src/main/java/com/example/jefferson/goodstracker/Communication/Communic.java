@@ -9,7 +9,7 @@ public interface Communic {
     void init();
     void deInit();
     void doCommunication();
-    void publishAnswer(DataFrame frame);
     public void registerObserver(ObserverAnswerCmd observer);
     public void removeObserver(ObserverAnswerCmd observer);
+    void publishAnswer(DataFrame frame);
 }
