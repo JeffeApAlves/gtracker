@@ -14,25 +14,25 @@ import static org.junit.Assert.*;
  */
 public class CommunicationTest {
 
-    Communic            communic;
-    ObservableAnswerCmd observable;
-    static Tracker[]    trackers;
+    Communic                communic;
+    ObservableCommunication observable;
+    static Tracker[]        trackers;
     @BeforeClass
     public static void onceExecutedBeforeAll() {
 
         Communication.create(TYPE_COMMUNICATION.AMQP);
 
-        trackers = new Tracker[]{ new Tracker(0),
-                                            new Tracker(1),
-                                            new Tracker(2),
-                                            new Tracker(3),
-                                            new Tracker(4)};
+        trackers = new Tracker[]{   new Tracker(0),
+                                    new Tracker(1),
+                                    new Tracker(2),
+                                    new Tracker(3),
+                                    new Tracker(4)};
     }
 
     @Before
     public void executedBeforeEach() {
 
-        observable  = (ObservableAnswerCmd)Communication.getInstance();
+        observable  = Communication.getInstance();
         communic    = Communication.getInstance();
     }
 
@@ -144,7 +144,7 @@ public class CommunicationTest {
     @Test
     public void notifyObserver() throws Exception {
 
-         final AnsCmd[] list = new AnsCmd[trackers.length];
+        final AnsCmd[] list = new AnsCmd[trackers.length];
 
         int i = 0;
         for(Tracker t:trackers){

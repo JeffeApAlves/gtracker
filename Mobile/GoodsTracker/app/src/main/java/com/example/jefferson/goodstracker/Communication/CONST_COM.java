@@ -8,7 +8,7 @@ public class CONST_COM {
 
     public class CONFIG{
 
-        static public final int TIME_COMMUNICATION = 1;
+        static public final int TIME_COMMUNICATION = 10;
     }
 
     public class CHAR {

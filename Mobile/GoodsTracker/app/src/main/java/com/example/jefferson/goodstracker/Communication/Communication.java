@@ -10,15 +10,16 @@ import java.util.Map;
  * Created by Jefferson on 08/07/2017.
  */
 
-abstract public class Communication extends Object implements Communic,ObservableAnswerCmd  {
+abstract public class Communication extends Object implements Communic,ObservableCommunication  {
 
+    protected int  time                                     = CONST_COM.CONFIG.TIME_COMMUNICATION;
     private static Communication        instance            = null;
-    private static Thread               threadCommunication = null;
+    private static Thread               thread              = null;
     private static TYPE_COMMUNICATION   type                = TYPE_COMMUNICATION.NONE;
     private static Map<String,Cmd>      txCmds              = new HashMap<String, Cmd>();
     private static Map<String,Cmd>      cmds                = new HashMap<String, Cmd>();
     private static List<AnsCmd>         answers             = new ArrayList<AnsCmd>();
-    private static Map<Integer,ObserverAnswerCmd >units     = new HashMap<Integer,ObserverAnswerCmd >();
+    private static Map<Integer,ObserverCommunication>units     = new HashMap<Integer,ObserverCommunication>();
 
     @Override
     public void init() {
@@ -29,7 +30,7 @@ abstract public class Communication extends Object implements Communic,Observabl
     @Override
     public void deInit(){
 
-        threadCommunication.interrupt();
+        thread.interrupt();
     }
 
     public static void create(TYPE_COMMUNICATION t) {
@@ -164,15 +165,16 @@ abstract public class Communication extends Object implements Communic,Observabl
         return ret;
     }
 
+    @Override
     public void acceptAnswer(AnsCmd ans) {
 
         if (ans != null) {
 
-            Cmd cmd = searchCmdOfAnswer(ans);
-
             addAns(ans);
 
             notifyObserver(ans);
+
+            Cmd cmd = searchCmdOfAnswer(ans);
 
             removeTxCmd(cmd);
             removeAns(ans);
@@ -184,12 +186,13 @@ abstract public class Communication extends Object implements Communic,Observabl
         return isAnyQueueCmd()?getArrayOfCmd()[0]:null;
     }
 
-    /*
-    Iniciaaliza a thread que ira gerenciar as pilhas de mensagens
+    /**
+     *
+     * Inicializa a thread que ira gerenciar as pilhas de mensagens
      */
     void initThread(){
 
-        threadCommunication = new Thread(new Runnable() {
+        thread = new Thread(new Runnable() {
 
             @Override
             public void run() {
@@ -197,7 +200,7 @@ abstract public class Communication extends Object implements Communic,Observabl
                 doCommunication();
 
                 try {
-                    Thread.sleep(CONST_COM.CONFIG.TIME_COMMUNICATION);
+                    Thread.sleep(time);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -206,7 +209,7 @@ abstract public class Communication extends Object implements Communic,Observabl
     }
 
     @Override
-    public void registerObserver(ObserverAnswerCmd observer){
+    public void registerObserver(ObserverCommunication observer){
 
         if (observer != null) {
 
@@ -215,21 +218,16 @@ abstract public class Communication extends Object implements Communic,Observabl
     }
 
     @Override
-    public void removeObserver(ObserverAnswerCmd observer){
+    public void removeObserver(ObserverCommunication observer){
 
         units.remove(observer.getAddress());
     }
 
-    /*
-    *
-    * Notifica toda as unidades
-    *
-    */
     @Override
     public void notifyAllObservers(AnsCmd ans){
 
         //Notifica todas as unidades
-        for (ObserverAnswerCmd ob : units.values()){
+        for (ObserverCommunication ob : units.values()){
 
             ob.updateAnswer(ans);
         }
@@ -242,15 +240,12 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
     }
 
-    /*
-        Notifica apenas a entidade respectiva do tracker correspondente
-     */
     @Override
     public void notifyObserver(AnsCmd ans){
 
         if(units.containsKey(ans.getHeader().getAddress())) {
 
-            ObserverAnswerCmd ob = units.get(ans.getHeader().getAddress());
+            ObserverCommunication ob = units.get(ans.getHeader().getAddress());
 
             //Notifica a entidade respectiva da unidade
             ob.updateAnswer(ans);
@@ -264,7 +259,17 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
     }
 
-    public static Communic getInstance() {
+    /**
+     *
+     * Retorna o singleton
+     *
+     * @return
+     */
+    public static Communication getInstance() {
         return instance;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 }

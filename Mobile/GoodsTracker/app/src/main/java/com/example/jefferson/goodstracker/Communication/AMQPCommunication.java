@@ -6,13 +6,16 @@ package com.example.jefferson.goodstracker.Communication;
 
 public class AMQPCommunication extends Communication{
 
-
     @Override
     public void doCommunication() {
 
     }
 
     @Override
+    public void publishCmd(Cmd cmd) {
+
+    }
+
     public void publishAnswer(DataFrame frame) {
 
     }
