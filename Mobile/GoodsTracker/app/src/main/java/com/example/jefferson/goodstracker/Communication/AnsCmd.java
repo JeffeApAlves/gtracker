@@ -8,8 +8,8 @@ import com.example.jefferson.goodstracker.Domain.DataTelemetria;
 
 public class AnsCmd {
 
-    Header          header;
-    DataTelemetria  telemetria;
+    private Header          header;
+    private DataTelemetria  telemetria;
 
     public AnsCmd() {
 

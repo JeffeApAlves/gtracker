@@ -10,11 +10,11 @@ import java.util.Map;
  * Created by Jefferson on 08/07/2017.
  */
 
-abstract public class Communication extends Object implements ObservableAnswerCmd, Communic  {
+abstract public class Communication extends Object implements Communic,ObservableAnswerCmd  {
 
+    private static Communication        instance            = null;
     private static Thread               threadCommunication = null;
-    private static TYPE_COMMUNICATION   type                = TYPE_COMMUNICATION.AMQP;
-    private static Communic             communic            = null;
+    private static TYPE_COMMUNICATION   type                = TYPE_COMMUNICATION.NONE;
     private static Map<String,Cmd>      txCmds              = new HashMap<String, Cmd>();
     private static Map<String,Cmd>      cmds                = new HashMap<String, Cmd>();
     private static List<AnsCmd>         answers             = new ArrayList<AnsCmd>();
@@ -38,17 +38,17 @@ abstract public class Communication extends Object implements ObservableAnswerCm
 
             type = t;
 
-            if(communic!=null){
+            if(instance!=null){
 
-                communic.deInit();
+                instance.deInit();
             }
 
             switch (type) {
 
-                case AMQP: communic = new AMQPCommunication(); break;
+                case AMQP: instance = new AMQPCommunication(); break;
             }
 
-            communic.init();
+            instance.init();
         }
     }
 
@@ -126,15 +126,16 @@ abstract public class Communication extends Object implements ObservableAnswerCm
 
             Header cmd_header = txCmds.get(ans_header.getResource()).getHeader();
 
-            if ((ans_header.getResource()   != cmd_header.getResource()) ||
-                (ans_header.getDest()       != cmd_header.getAddress()) ||
-                (ans_header.getCount()      != cmd_header.getCount())) {
+            if ((   ans_header.getResource()    == cmd_header.getResource()) &&
+                (   ans_header.getDest()        == cmd.getAddress()) &&
+                (   ans_header.getCount()       == cmd_header.getCount())    &&
+                    ans_header.getAddress()     == cmd.getDest()) {
 
-                cmd = null;
+                return cmd;
             }
         }
 
-        return cmd;
+        return null;
     }
 
     public static CommunicationUnit[] getArrayOfUnit() {
@@ -205,7 +206,7 @@ abstract public class Communication extends Object implements ObservableAnswerCm
     }
 
     @Override
-    public void registerObserver(ObserverAnswerCmd observer) {
+    public void registerObserver(ObserverAnswerCmd observer){
 
         if (observer != null) {
 
@@ -214,7 +215,7 @@ abstract public class Communication extends Object implements ObservableAnswerCm
     }
 
     @Override
-    public  void removeObserver(ObserverAnswerCmd observer) {
+    public void removeObserver(ObserverAnswerCmd observer){
 
         units.remove(observer.getAddress());
     }
@@ -225,7 +226,7 @@ abstract public class Communication extends Object implements ObservableAnswerCm
     *
     */
     @Override
-    public void notifyAllObservers(AnsCmd ans) {
+    public void notifyAllObservers(AnsCmd ans){
 
         //Notifica todas as unidades
         for (ObserverAnswerCmd ob : units.values()){
@@ -245,22 +246,25 @@ abstract public class Communication extends Object implements ObservableAnswerCm
         Notifica apenas a entidade respectiva do tracker correspondente
      */
     @Override
-    public void notifyObserver(AnsCmd ans) {
+    public void notifyObserver(AnsCmd ans){
 
-        ObserverAnswerCmd ob = units.get(ans.getHeader().getAddress());
+        if(units.containsKey(ans.getHeader().getAddress())) {
 
-        //Notifica a unidade
-        ob.updateAnswer(ans);
+            ObserverAnswerCmd ob = units.get(ans.getHeader().getAddress());
 
-        //Notifica o comando que gerou a resposta
-        Cmd cmd = searchCmdOfAnswer(ans);
-        if(cmd!=null) {
+            //Notifica a entidade respectiva da unidade
+            ob.updateAnswer(ans);
 
-            cmd.updateAnswer(ans);
+            //Notifica o comando que gerou a resposta
+            Cmd cmd = searchCmdOfAnswer(ans);
+            if (cmd != null) {
+
+                cmd.updateAnswer(ans);
+            }
         }
     }
 
-    public static Communic getCommunic() {
-        return communic;
+    public static Communic getInstance() {
+        return instance;
     }
 }

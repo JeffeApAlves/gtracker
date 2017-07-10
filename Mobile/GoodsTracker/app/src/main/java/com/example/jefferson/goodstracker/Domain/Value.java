@@ -7,21 +7,21 @@ package com.example.jefferson.goodstracker.Domain;
 public class Value extends Object {
 
     private double  val;
-    private Scale   tol;
+    private Tol     tol;
 
     public Value(double min,double max) {
 
-        tol = new Scale(min,max);
+        tol = new Tol(min,max);
     }
 
     public Value() {
 
-        tol = new Scale(0,0);
+        tol = new Tol(0,0);
     }
 
     public boolean OK() {
 
-        return val>=tol.getMin() && val<=tol.getMax();
+        return tol.OK(val);
     }
 
     @Override
@@ -38,11 +38,11 @@ public class Value extends Object {
         this.val = val;
     }
 
-    public Scale getTol() {
+    public Tol getTol() {
         return tol;
     }
 
-    public void setTol(Scale tol) {
+    public void setTol(Tol tol) {
         this.tol = tol;
     }
 }

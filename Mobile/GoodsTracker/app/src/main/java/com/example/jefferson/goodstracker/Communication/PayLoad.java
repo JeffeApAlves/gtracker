@@ -7,8 +7,12 @@ package com.example.jefferson.goodstracker.Communication;
 public class PayLoad {
 
     public final int    LEN_MAX_PAYLOAD = 256;
-    private String      data;
+    private String      data            = "";
 
+    public PayLoad(){
+
+        clear();
+    }
 
     public void append(char b)
     {
@@ -39,37 +43,24 @@ public class PayLoad {
         return data==null? 0:data.length();
     }
 
-    public boolean IsFull()
+    public boolean isFull()
     {
         return length() >= LEN_MAX_PAYLOAD;
     }
 
-    public boolean IsEmpty()
+    public boolean isEmpty()
     {
         return length() <= 0;
     }
 
     public String str() {
 
-        return String.format("%0d",length()) + CONST_COM.CHAR.SEPARATOR + data + CONST_COM.CHAR.SEPARATOR;
+        return String.format("%03d",length()) + CONST_COM.CHAR.SEPARATOR + data + CONST_COM.CHAR.SEPARATOR;
     }
 
-    public void Clear()
+    public void clear()
     {
         data = "";
-    }
-
-    public void setData(DataFrame frame) {
-
-        //TODO verificar substring
-
-        Header header   = frame.getHeader();
-        String value    = frame.getData();
-
-        if (value.length() > (header.length() + 1)) {
-
-            data = value.substring((header.length() + 1), value.length());
-        }
     }
 
     public char[] toCharArray() {

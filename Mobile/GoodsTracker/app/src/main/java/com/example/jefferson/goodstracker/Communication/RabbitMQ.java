@@ -17,13 +17,13 @@ import java.util.concurrent.TimeoutException;
 
 public class RabbitMQ {
 
-    ConnectionFactory   factory     = null;
-    Connection          connection  = null;
-    Channel             channel;
+    private ConnectionFactory   factory     = null;
+    private Connection          connection  = null;
+    private Channel             channel;
 
-    Thread              connThread,
-                        subscribeThread,
-                        publishThread;
+    private Thread              connThread,
+                                subscribeThread,
+                                publishThread;
 
     private BlockingDeque<String> queue = new LinkedBlockingDeque<String>();
 

@@ -6,7 +6,7 @@ package com.example.jefferson.goodstracker.Domain;
 
 public class Axis extends Object{
 
-    Value acceleration, rotation;
+    private Value acceleration, rotation;
 
     public Axis()
     {
@@ -59,5 +59,9 @@ public class Axis extends Object{
     public double getValRotation(){
 
         return rotation.getVal();
+    }
+
+    public void setLimiAccelearion(double min, double max){
+        acceleration.setTol(new Tol(min,max));
     }
 }

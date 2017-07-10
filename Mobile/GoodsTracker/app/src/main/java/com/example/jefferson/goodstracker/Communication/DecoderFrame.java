@@ -55,9 +55,8 @@ public class DecoderFrame {
             header.append(header.getResource());
 
             ret = true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
+
             ret = false;
 
             System.out.println("Erro na codificacao do Header");
@@ -187,7 +186,7 @@ public class DecoderFrame {
         try {
 
             telemetria.setPosition(     AsDouble(list, INDEX.LAT)/100.0,
-                                        AsDouble(list, INDEX.LNG) / 100.0);
+                                        AsDouble(list, INDEX.LNG)/100.0);
 
             telemetria.setAcceleration( AsDouble(list, INDEX.ACCEL_X),
                                         AsDouble(list, INDEX.ACCEL_Y),
@@ -215,7 +214,7 @@ public class DecoderFrame {
         return telemetria;
     }
 
-    private Header decoderHeader(String[] list) {
+    static public Header decoderHeader(String[] list) {
 
         Header header = new Header();
 
@@ -232,7 +231,7 @@ public class DecoderFrame {
 
             header = new Header();
 
-            System.out.println("Erro na codificacao do Header");
+            System.out.println("Erro na decodificacao do Header");
             System.out.println(e.toString());
             Log.d("",e.toString());
         }

@@ -13,8 +13,8 @@ import com.example.jefferson.goodstracker.Communication.RESOURCE_TYPE;
 
 public class Tracker extends CommunicationUnit {
 
-    DataTelemetria  telemetria;
-    boolean         statusLock;
+    private DataTelemetria  telemetria;
+    private boolean         statusLock;
 
     public Tracker(int val) {
 
@@ -24,14 +24,14 @@ public class Tracker extends CommunicationUnit {
 
     public void requestBehavior(EventReceiveAnswer on_ans)
     {
-        Cmd cmd = createCMD(2, Operation.RD, RESOURCE_TYPE.TLM,on_ans);
+        Cmd cmd = createCMD(Operation.RD, RESOURCE_TYPE.TLM,on_ans);
 
         sendCMD(cmd);
     }
 
     public void lockVehicle(EventReceiveAnswer on_ans) {
 
-        Cmd cmd = createCMD(2, Operation.WR, RESOURCE_TYPE.LOCK,on_ans);
+        Cmd cmd = createCMD(Operation.WR, RESOURCE_TYPE.LOCK,on_ans);
 
         statusLock = true;
         cmd.append("1");
@@ -41,7 +41,7 @@ public class Tracker extends CommunicationUnit {
 
     public void unLockVehicle(EventReceiveAnswer on_ans) {
 
-        Cmd cmd = createCMD(2, Operation.WR, RESOURCE_TYPE.LOCK,on_ans);
+        Cmd cmd = createCMD(Operation.WR, RESOURCE_TYPE.LOCK,on_ans);
 
         statusLock = false;
         cmd.append("0");

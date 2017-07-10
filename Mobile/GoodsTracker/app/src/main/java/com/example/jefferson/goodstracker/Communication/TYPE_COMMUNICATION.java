@@ -6,7 +6,7 @@ package com.example.jefferson.goodstracker.Communication;
 
 public enum TYPE_COMMUNICATION {
 
+    NONE,
     SERIAL,
-    AMQP
-
+    AMQP;
 }

@@ -10,11 +10,16 @@ public class DataFrame {
     protected PayLoad   payLoad;
     protected String    data;
 
-    public DataFrame(Header h,PayLoad p) {
+    public DataFrame(String data) {
+
+        setData(data);
+    }
+
+    public DataFrame(Cmd cmd) {
 
         data    = "";
-        header  = h;
-        payLoad = p;
+        setHeader(  cmd.getHeader());
+        setPayLoad( cmd.getPayload());
     }
 
     public DataFrame() {
@@ -31,8 +36,8 @@ public class DataFrame {
 
     void setHeader(Header value) {
 
-        header = value;
-        data = header.str() + CONST_COM.CHAR.SEPARATOR + (payLoad==null?"":payLoad.str());
+        header  = value;
+        data    = header.str() + CONST_COM.CHAR.SEPARATOR + (payLoad==null?"":payLoad.str());
     }
 
     PayLoad getPayLoad() {
@@ -54,8 +59,16 @@ public class DataFrame {
     void setData(String value) {
 
         data   = value;
-        header.setData(this);
-        payLoad.setData(this);
+
+        if(value.length() >= header.length()+1){
+
+            header.setData(value.substring(0, header.length()));
+            payLoad.setData(value.substring( (header.length() + 1), value.length()));
+        }else{
+
+            header.setData(value.substring(0, value.length()));
+            payLoad.setData("");
+        }
     }
 
     public byte getByte(int i) {

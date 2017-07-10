@@ -6,5 +6,5 @@ package com.example.jefferson.goodstracker.Communication;
 
 public interface EventReceiveAnswer {
 
-    void onReceiveAnswer();
+    public void onReceiveAnswer(AnsCmd ans);
 }

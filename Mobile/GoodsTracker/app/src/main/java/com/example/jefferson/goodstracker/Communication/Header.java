@@ -6,15 +6,15 @@ package com.example.jefferson.goodstracker.Communication;
 
 public class Header {
 
-    public final int LENGTH = 27;             // 5+5+5+2+3+3 + 4 separadores
+    public final int LENGTH = 28;             // (5)+(5)+(5)+(2)+(3)+(3) + 5 separadores
 
-    String      data;
-    int         dest;
-    int         address;
-    int         count = 0;
-    Operation   operation;
-    String      resource;
-    int         sizePayLoad;
+    private String      data;
+    private int         dest;
+    private int         address;
+    private int         count = 0;
+    private Operation   operation;
+    private String      resource;
+    private int         sizePayLoad;
 
     public Header(String r, Operation o) {
 
@@ -68,20 +68,6 @@ public class Header {
         data += Double.toString(b);
     }
 
-    public void setData(DataFrame frame) {
-
-        String value = frame.getData();
-
-        if (value.length() > LENGTH) {
-
-            data = value.substring(0, LENGTH);
-
-        } else {
-
-            data = value;
-        }
-    }
-
     public char[] toCharArray() {
 
         return str().toCharArray();
@@ -97,7 +83,17 @@ public class Header {
     }
 
     public void setData(String data) {
+
         this.data = data;
+
+        Header header = DecoderFrame.decoderHeader(data.split(String.valueOf(CONST_COM.CHAR.SEPARATOR)));
+
+        this.setAddress(header.getAddress());
+        this.setDest(header.getDest());
+        this.setCount(header.getCount());
+        this.setOperation(header.getOperation());
+        this.setResource(header.getResource());
+        this.setSizePayLoad(header.getSizePayLoad());
     }
 
     public int getDest() {

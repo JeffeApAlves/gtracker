@@ -4,13 +4,12 @@ package com.example.jefferson.goodstracker.Domain;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class Scale  extends Object {
+public class Tol extends Object {
 
-    double min;
-    double max;
+    private double min,max;
 
-    public Scale(double _min,double _max)
-    {
+    public Tol(double _min, double _max) {
+
         min = _min;
         max = _max;
     }
@@ -29,5 +28,9 @@ public class Scale  extends Object {
 
     public void setMax(double max) {
         this.max = max;
+    }
+
+    public boolean OK(double val) {
+        return val>=min && val<=max;
     }
 }

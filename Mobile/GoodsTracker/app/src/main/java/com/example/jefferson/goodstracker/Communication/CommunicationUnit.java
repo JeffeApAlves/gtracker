@@ -17,13 +17,13 @@ abstract public class CommunicationUnit implements ObserverAnswerCmd {
 
         address = val;
 
-        Communication.getCommunic().registerObserver(this);
+        Communication.getInstance().registerObserver(this);
     }
 
-    public Cmd createCMD(int dest, Operation o, String resource,EventReceiveAnswer on_ans) {
+    public Cmd createCMD(Operation o, String resource,EventReceiveAnswer on_ans) {
 
         Cmd cmd  = new Cmd( CONST_COM.MASTER.ADDRESS,
-                            dest,
+                            address,
                             resource,
                             o,on_ans);
 
