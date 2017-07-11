@@ -11,15 +11,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.jefferson.goodstracker.Communication.Communication;
 import com.example.jefferson.goodstracker.Communication.RabbitMQ;
+import com.example.jefferson.goodstracker.Communication.TYPE_COMMUNICATION;
 import com.example.jefferson.goodstracker.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class RabbitActivity extends AppCompatActivity {
-
-    RabbitMQ rabbitMQ = new RabbitMQ();
 
     private TextView mTextMessage;
 
@@ -29,10 +29,7 @@ public class RabbitActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_rabbit);
 
-        rabbitMQ.open();
-        rabbitMQ.createConnThread();
-        rabbitMQ.createPublishThread();
-        rabbitMQ.createSubscribeThread(incomingMessageHandler);
+        Communication.create(TYPE_COMMUNICATION.AMQP);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -40,7 +37,7 @@ public class RabbitActivity extends AppCompatActivity {
     }
 
     public void onClick_btConnect(View view){
-
+/*
         try {
 
             rabbitMQ.connect();
@@ -48,14 +45,14 @@ public class RabbitActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
 
             e.printStackTrace();
-        }
+        }*/
     };
 
     public void onClick_btPublish(View view){
 
-        EditText et = (EditText) findViewById(R.id.text);
-        rabbitMQ.putLast(et.getText().toString());
-        et.setText("");
+//        EditText et = (EditText) findViewById(R.id.text);
+//        rabbitMQ.putLast(et.getText().toString());
+//        et.setText("");
     };
 
     final Handler incomingMessageHandler = new Handler() {
@@ -73,9 +70,10 @@ public class RabbitActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+
         super.onDestroy();
 
-        rabbitMQ.close();
+        Communication.create(TYPE_COMMUNICATION.NONE);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

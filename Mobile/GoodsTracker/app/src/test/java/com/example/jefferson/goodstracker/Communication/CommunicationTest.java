@@ -182,4 +182,10 @@ public class CommunicationTest {
 
         assertNotNull(Communication.getInstance());
     }
+
+    @Test
+    public void sendMessageToPublish() throws Exception {
+
+
+    }
 }

@@ -24,10 +24,10 @@ import java.util.concurrent.TimeoutException;
 
 abstract public class Communication extends Object implements Communic,ObservableCommunication  {
 
+    // ID para iidentificacao das mensagens
     enum ID_MENSSAGE{
 
         CMD,
-
     };
 
     protected int  time                                     = CONST_COM.CONFIG.TIME_COMMUNICATION;
@@ -57,7 +57,6 @@ abstract public class Communication extends Object implements Communic,Observabl
 
     @Override
     public void deInit(){
-
         connThread.interrupt();
         subscribeThread.interrupt();
         publishThread.interrupt();
@@ -67,20 +66,27 @@ abstract public class Communication extends Object implements Communic,Observabl
 
         if (type != t) {
 
-            type = t;
-
             if(instance!=null){
 
                 instance.deInit();
             }
 
-            switch (type) {
+            type = t;
 
-                case AMQP:      instance = new AMQPCommunication(); break;
-                case SERIAL:    instance = null;                    break; // Comunicacao via serial
+            if(!TYPE_COMMUNICATION.NONE.equals(t)) {
+
+                switch (type) {
+
+                    case AMQP:
+                        instance = new AMQPCommunication();
+                        break;
+                    case SERIAL:
+                        instance = null;
+                        break; // Comunicacao via serial
+                }
+
+                instance.init();
             }
-
-            instance.init();
         }
     }
 
@@ -158,9 +164,9 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             Header cmd_header = txCmds.get(ans_header.getResource()).getHeader();
 
-            if ((   ans_header.getResource()    == cmd_header.getResource()) &&
-                (   ans_header.getDest()        == cmd.getAddress()) &&
-                (   ans_header.getCount()       == cmd_header.getCount())    &&
+            if ((   ans_header.getResource()    == cmd_header.getResource())    &&
+                (   ans_header.getDest()        == cmd.getAddress())            &&
+                (   ans_header.getCount()       == cmd_header.getCount())       &&
                     ans_header.getAddress()     == cmd.getDest()) {
 
                 return cmd;
@@ -312,6 +318,24 @@ abstract public class Communication extends Object implements Communic,Observabl
         subscribeThread.start();
     }
 
+    /**
+     * Envia um comando para a fila de mensagens da Thread de transmissao
+     *
+     * @param cmd
+     */
+    private void sendMessageToPublish(Cmd cmd) {
+
+        DataFrame frame = new DataFrame(cmd);
+
+        Message messageToSend = publishHandle.obtainMessage(ID_MENSSAGE.CMD.ordinal());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(CMD_KEY, frame.str());
+        messageToSend.setData(bundle);
+
+        publishHandle.sendMessage(messageToSend);
+    }
+
     class TaskStartConnection implements  Runnable{
 
         @Override
@@ -416,24 +440,12 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             ID_MENSSAGE id = ID_MENSSAGE.values()[msg.what];
 
+            String teste = msg.getData().getString(CMD_KEY);
+
             switch (id){
 
-                case CMD: doSubscribe();    break;
+                case CMD: doPublish();    break;
             }
         }
-    }
-
-
-    private void sendMessageToPublish(Cmd cmd) {
-
-        DataFrame frame = new DataFrame(cmd);
-
-        Message messageToSend = publishHandle.obtainMessage(ID_MENSSAGE.CMD.ordinal());
-
-        Bundle bundle = new Bundle();
-        bundle.putString(CMD_KEY, frame.str());
-        messageToSend.setData(bundle);
-
-        publishHandle.sendMessage(messageToSend);
     }
 }
