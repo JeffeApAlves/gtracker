@@ -6,9 +6,24 @@ package com.example.jefferson.goodstracker.Communication;
 
 public class AMQPCommunication extends Communication{
 
-    @Override
-    public void doCommunication() {
+    RabbitMQ rabbitMQ = new RabbitMQ();
 
+    @Override
+    public void doPublish() {
+
+        rabbitMQ.publish();
+    }
+
+    @Override
+    public void doSubscribe(){
+
+        rabbitMQ.subscribe();
+    }
+
+    @Override
+    public boolean connection() {
+
+        return rabbitMQ.connect();
     }
 
     @Override

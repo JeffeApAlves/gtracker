@@ -1,9 +1,21 @@
 package com.example.jefferson.goodstracker.Communication;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
+
+import com.example.jefferson.goodstracker.Domain.DataTelemetria;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.QueueingConsumer;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeoutException;
 
 
 /**
@@ -12,25 +24,43 @@ import java.util.Map;
 
 abstract public class Communication extends Object implements Communic,ObservableCommunication  {
 
+    enum ID_MENSSAGE{
+
+        CMD,
+
+    };
+
     protected int  time                                     = CONST_COM.CONFIG.TIME_COMMUNICATION;
     private static Communication        instance            = null;
-    private static Thread               thread              = null;
     private static TYPE_COMMUNICATION   type                = TYPE_COMMUNICATION.NONE;
     private static Map<String,Cmd>      txCmds              = new HashMap<String, Cmd>();
     private static Map<String,Cmd>      cmds                = new HashMap<String, Cmd>();
     private static List<AnsCmd>         answers             = new ArrayList<AnsCmd>();
-    private static Map<Integer,ObserverCommunication>units     = new HashMap<Integer,ObserverCommunication>();
+    private static Map<Integer,ObserverCommunication>units  = new HashMap<Integer,ObserverCommunication>();
 
+    private Thread                      connThread,
+                                        subscribeThread,
+                                        publishThread;
+
+    private Handler publishHandle,subscribeHandle;
+
+    private static final String CMD_KEY = "cmd";
+
+    //Incia a htrea que fara a conexao
     @Override
     public void init() {
 
-        initThread();
+        createPublishThread();
+        createSubscribeThread();
+        createConnThread();
     }
 
     @Override
     public void deInit(){
 
-        thread.interrupt();
+        connThread.interrupt();
+        subscribeThread.interrupt();
+        publishThread.interrupt();
     }
 
     public static void create(TYPE_COMMUNICATION t) {
@@ -46,7 +76,8 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             switch (type) {
 
-                case AMQP: instance = new AMQPCommunication(); break;
+                case AMQP:      instance = new AMQPCommunication(); break;
+                case SERIAL:    instance = null;                    break; // Comunicacao via serial
             }
 
             instance.init();
@@ -181,31 +212,9 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
     }
 
-    public static Cmd getNextCmd() {
+    public static Cmd takeFirst() {
 
         return isAnyQueueCmd()?getArrayOfCmd()[0]:null;
-    }
-
-    /**
-     *
-     * Inicializa a thread que ira gerenciar as pilhas de mensagens
-     */
-    void initThread(){
-
-        thread = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-
-                doCommunication();
-
-                try {
-                    Thread.sleep(time);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     @Override
@@ -247,7 +256,7 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             ObserverCommunication ob = units.get(ans.getHeader().getAddress());
 
-            //Notifica a entidade respectiva da unidade
+            //Notifica apenas entidade respectiva ddo address
             ob.updateAnswer(ans);
 
             //Notifica o comando que gerou a resposta
@@ -271,5 +280,160 @@ abstract public class Communication extends Object implements Communic,Observabl
 
     public void setTime(int time) {
         this.time = time;
+    }
+
+    /**
+     *
+     * Thread para inicializacao da conexao
+     */
+    public void createConnThread(){
+
+        connThread = new Thread(new TaskStartConnection());
+        connThread.start();
+    }
+
+    /**
+     *
+     * Thread para processamento da pilha de saida
+     */
+    public void createPublishThread() {
+
+        publishThread = new Thread(new TaskPublish());
+        publishThread.start();
+    }
+
+    /**
+     * Thread para processamento da pilha de entrada
+     *
+     */
+    public void createSubscribeThread() {
+
+        subscribeThread = new Thread(new TaskSubscribe());
+        subscribeThread.start();
+    }
+
+    class TaskStartConnection implements  Runnable{
+
+        @Override
+        public void run() {
+
+            synchronized (connThread){
+
+                if(connection()){
+
+                    // Delay para garantir que as Threads de transmissao e recepcao ja foram
+                    // inicializadas e estao em execucao esperando a notificacao
+                    try {
+                        connThread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    connThread.notifyAll();
+                }
+            }
+        }
+    }
+
+    class TaskPublish implements Runnable{
+
+        @Override
+        public void run() {
+
+            // Espera a conexao
+            synchronized (connThread){
+
+                try {
+
+                    connThread.wait();
+
+                } catch (InterruptedException e) {
+
+                    e.printStackTrace();
+                }
+            }
+
+            // Loop infinito para processamento do subscribe
+            while(true) {
+
+                doPublish();
+
+                try {
+                    Thread.sleep(time);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    class TaskSubscribe implements Runnable{
+
+        @Override
+        public void run() {
+
+            // Espera a conexao
+            synchronized (connThread){
+
+                try {
+
+                    connThread.wait();
+
+                } catch (InterruptedException e) {
+
+                    e.printStackTrace();
+                }
+            }
+
+            // Loop infinito para processamento do subscribe
+            while(true) {
+
+                Looper.prepare();
+
+                publishHandle = new publishHandler();
+
+                Looper.loop();
+
+
+                try {
+                    Thread.sleep(time);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     * Hook para processamento das mensagens
+     *
+     */
+    private class publishHandler extends Handler {
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            ID_MENSSAGE id = ID_MENSSAGE.values()[msg.what];
+
+            switch (id){
+
+                case CMD: doSubscribe();    break;
+            }
+        }
+    }
+
+
+    private void sendMessageToPublish(Cmd cmd) {
+
+        DataFrame frame = new DataFrame(cmd);
+
+        Message messageToSend = publishHandle.obtainMessage(ID_MENSSAGE.CMD.ordinal());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(CMD_KEY, frame.str());
+        messageToSend.setData(bundle);
+
+        publishHandle.sendMessage(messageToSend);
     }
 }

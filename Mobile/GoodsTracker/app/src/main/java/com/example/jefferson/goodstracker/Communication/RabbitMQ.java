@@ -19,13 +19,10 @@ public class RabbitMQ {
 
     private ConnectionFactory   factory     = null;
     private Connection          connection  = null;
-    private Channel             channel;
+    private Channel             channel     = null;
+    Handler                     handler     = null;
 
-    private Thread              connThread,
-                                subscribeThread,
-                                publishThread;
-
-    private BlockingDeque<String> queue = new LinkedBlockingDeque<String>();
+    private BlockingDeque<String> queue     = new LinkedBlockingDeque<String>();
 
     public void open(){
 
@@ -36,15 +33,9 @@ public class RabbitMQ {
         factory.setUsername(RABBITMQ_CONST.USER);
         factory.setPassword(RABBITMQ_CONST.PW);
         factory.setPort(RABBITMQ_CONST.PORT);
-
-        createConnThread();
     }
 
     public void close(){
-
-        connThread.interrupt();
-        publishThread.interrupt();
-        subscribeThread.interrupt();
 
         try {
 
@@ -54,12 +45,12 @@ public class RabbitMQ {
         }catch (IOException e) {
 
             e.printStackTrace();
-            Log.d("", "Connection broken: " + e.getClass().getName());
+            Log.d("", "Problema na finalizacao da conexao: " + e.getClass().getName());
 
         }catch (TimeoutException e1) {
 
             e1.printStackTrace();
-            Log.d("", "Connection broken: " + e1.getClass().getName());
+            Log.d("", "Problema na finalizacao da conexao: " + e1.getClass().getName());
         }
     }
 
@@ -77,152 +68,108 @@ public class RabbitMQ {
         }
     }
 
-    public void connect() throws InterruptedException {
+    /**
+     *
+     *
+     * @return
+     */
+    boolean connect() {
 
-        connThread.start();
+        boolean ret;
 
-        Thread.sleep(1000);
+        try {
 
-        subscribeThread.start();
-        publishThread.start();
+            connection  = factory.newConnection();
+            channel     = connection.createChannel();
+
+            ret = true;
+        } catch (IOException e) {
+
+            Log.d("", "Nao foi possivel conectar: " + e.getClass().getName());
+            e.printStackTrace();
+            ret = false;
+
+        } catch (TimeoutException e1) {
+
+            Log.d("", "Nao foi possivel conectar: " + e1.getClass().getName());
+            e1.printStackTrace();
+            ret = false;
+        }
+
+        return ret;
     }
 
-    public void createConnThread(){
+    /**
+     *
+     *
+     */
+    public void publish() {
 
-        connThread = new Thread(new Runnable() {
+        while(true) {
 
-            @Override
-            public void run() {
+            try {
+                channel.confirmSelect();
 
-                synchronized (connThread) {
-
-                    try {
-
-                        if (factory != null) {
-
-                            connection = factory.newConnection();
-                            channel = connection.createChannel();
-
-                            connThread.notifyAll();
-                        }
-
-                    } catch (IOException e) {
-
-                        e.printStackTrace();
-                        Log.d("", "Connection broken: " + e.getClass().getName());
-
-                    } catch (TimeoutException e1) {
-
-                        e1.printStackTrace();
-                        Log.d("", "Connection broken: " + e1.getClass().getName());
+                while (true) {
+                    String message = queue.takeFirst();
+                    try{
+                        channel.basicPublish("amq.fanout", "chat", null, message.getBytes());
+                        channel.waitForConfirmsOrDie();
+                        Log.d("", "[s] " + message);
+                    } catch (Exception e){
+                        Log.d("","[f] " + message);
+                        queue.putFirst(message);
+                        throw e;
                     }
                 }
+            } catch (InterruptedException e) {
+                break;
+            } catch (Exception e) {
+                Log.d("","Problema na transmissao: " + e.getClass().getName());
             }
-        });
+        }
     }
 
-    public void createPublishThread() {
+    /**
+     *
+     *
+     */
+    public void subscribe() {
 
-        publishThread = new Thread(new Runnable() {
+        while(true) {
 
-            @Override
-            public void run() {
+            try {
+                channel.basicQos(1);
+                AMQP.Queue.DeclareOk q = channel.queueDeclare();
+                channel.queueBind(q.getQueue(), "amq.fanout", "chat");
+                QueueingConsumer consumer = new QueueingConsumer(channel);
+                channel.basicConsume(q.getQueue(), true, consumer);
 
-                // Espera a conexao
-                synchronized (connThread){
+                while (true) {
 
-                    try {
+                    QueueingConsumer.Delivery delivery = consumer.nextDelivery();
+                    String message = new String(delivery.getBody());
+                    Log.d("","[r] " + message);
 
-                        connThread.wait();
+                    if(handler!=null) {
 
-                    } catch (InterruptedException e) {
+                        Message msg = handler.obtainMessage();
 
-                        e.printStackTrace();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("msg", message);
+                        msg.setData(bundle);
+
+                        handler.sendMessage(msg);
                     }
                 }
-
-                while(true) {
-                    try {
-                        channel.confirmSelect();
-
-                        while (true) {
-                            String message = queue.takeFirst();
-                            try{
-                                channel.basicPublish("amq.fanout", "chat", null, message.getBytes());
-                                Log.d("", "[s] " + message);
-                                channel.waitForConfirmsOrDie();
-                            } catch (Exception e){
-                                Log.d("","[f] " + message);
-                                queue.putFirst(message);
-                                throw e;
-                            }
-                        }
-                    } catch (InterruptedException e) {
-                        break;
-                    } catch (Exception e) {
-                        Log.d("", "Connection broken: " + e.getClass().getName());
-                        try {
-                            Thread.sleep(5000); //sleep and then try again
-                        } catch (InterruptedException e1) {
-                            break;
-                        }
-                    }
-                }
+            } catch (InterruptedException e) {
+                break;
+            } catch (Exception e1) {
+                Log.d("","Problema na recepcao: " + e1.getClass().getName());
             }
-        });
-    }
-
-    public void createSubscribeThread(final Handler handler) {
-
-        subscribeThread = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-
-                // Espera a conexao
-                synchronized (connThread){
-
-                    try {
-
-                        connThread.wait();
-
-                    } catch (InterruptedException e) {
-
-                        e.printStackTrace();
-                    }
-                }
-
-                while(true) {
-
-                    try {
-                        channel.basicQos(1);
-                        AMQP.Queue.DeclareOk q = channel.queueDeclare();
-                        channel.queueBind(q.getQueue(), "amq.fanout", "chat");
-                        QueueingConsumer consumer = new QueueingConsumer(channel);
-                        channel.basicConsume(q.getQueue(), true, consumer);
-
-                        while (true) {
-                            QueueingConsumer.Delivery delivery = consumer.nextDelivery();
-                            String message = new String(delivery.getBody());
-                            Log.d("","[r] " + message);
-                            Message msg = handler.obtainMessage();
-                            Bundle bundle = new Bundle();
-                            bundle.putString("msg", message);
-                            msg.setData(bundle);
-                            handler.sendMessage(msg);
-                        }
-                    } catch (InterruptedException e) {
-                        break;
-                    } catch (Exception e1) {
-                        Log.d("", "Connection broken: " + e1.getClass().getName());
-                        try {
-                            Thread.sleep(5000); //sleep and then try again
-                        } catch (InterruptedException e) {
-                            break;
-                        }
-                    }
-                }
-            }
-        });
+        }
     }
 }
+
+//Raimundo
+//031 37625426

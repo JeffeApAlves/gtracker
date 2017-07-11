@@ -8,7 +8,9 @@ public interface Communic {
 
     void init();
     void deInit();
-    void doCommunication();
+    void doPublish();
+    void doSubscribe();
+    boolean connection();
     void publishCmd(Cmd cmd);
     void acceptAnswer(AnsCmd ans);
 }
