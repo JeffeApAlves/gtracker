@@ -20,7 +20,7 @@ abstract public class CommunicationUnit implements ObserverCommunication {
         Communication.getInstance().registerObserver(this);
     }
 
-    public Cmd createCMD(Operation o, String resource,EventReceiveAnswer on_ans) {
+    public Cmd createCMD(String resource,Operation o, EventReceiveAnswer on_ans) {
 
         Cmd cmd  = new Cmd( CONST_COM.MASTER.ADDRESS,
                             address,

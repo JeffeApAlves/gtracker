@@ -6,25 +6,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import com.example.jefferson.goodstracker.Domain.DataTelemetria;
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.QueueingConsumer;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.Executors;
 
 
 /**
- * Created by Jefferson on 08/07/2017.
+ * Created by Jefferson on 08/0`/2017.
  */
 
 abstract public class Communication extends Object implements Communic,ObservableCommunication  {
 
-    // ID para iidentificacao das mensagens
+    // ID para identificacao das mensagens
     enum ID_MENSSAGE{
 
         CMD,
@@ -38,11 +33,9 @@ abstract public class Communication extends Object implements Communic,Observabl
     private static List<AnsCmd>         answers             = new ArrayList<AnsCmd>();
     private static Map<Integer,ObserverCommunication>units  = new HashMap<Integer,ObserverCommunication>();
 
-    private Thread                      connThread,
-                                        subscribeThread,
-                                        publishThread;
-
-    private Handler publishHandle,subscribeHandle;
+    private Thread              connThread;
+    private WorkerPublish       workerPublish;
+    private WorkerSubscribe     workerSubscribe;
 
     private static final String CMD_KEY = "cmd";
 
@@ -53,13 +46,14 @@ abstract public class Communication extends Object implements Communic,Observabl
         createPublishThread();
         createSubscribeThread();
         createConnThread();
+
+        connThread.start();
     }
 
     @Override
     public void deInit(){
+
         connThread.interrupt();
-        subscribeThread.interrupt();
-        publishThread.interrupt();
     }
 
     public static void create(TYPE_COMMUNICATION t) {
@@ -295,7 +289,6 @@ abstract public class Communication extends Object implements Communic,Observabl
     public void createConnThread(){
 
         connThread = new Thread(new TaskStartConnection());
-        connThread.start();
     }
 
     /**
@@ -304,8 +297,7 @@ abstract public class Communication extends Object implements Communic,Observabl
      */
     public void createPublishThread() {
 
-        publishThread = new Thread(new TaskPublish());
-        publishThread.start();
+        workerPublish = new WorkerPublish();
     }
 
     /**
@@ -314,8 +306,7 @@ abstract public class Communication extends Object implements Communic,Observabl
      */
     public void createSubscribeThread() {
 
-        subscribeThread = new Thread(new TaskSubscribe());
-        subscribeThread.start();
+        workerSubscribe = new WorkerSubscribe();
     }
 
     /**
@@ -323,107 +314,22 @@ abstract public class Communication extends Object implements Communic,Observabl
      *
      * @param cmd
      */
-    private void sendMessageToPublish(Cmd cmd) {
+    public void sendPublish(Cmd cmd) {
 
-        DataFrame frame = new DataFrame(cmd);
+        addCmd(cmd);
+        workerPublish.sendMessageToPublish(cmd);
 
-        Message messageToSend = publishHandle.obtainMessage(ID_MENSSAGE.CMD.ordinal());
-
-        Bundle bundle = new Bundle();
-        bundle.putString(CMD_KEY, frame.str());
-        messageToSend.setData(bundle);
-
-        publishHandle.sendMessage(messageToSend);
     }
 
-    class TaskStartConnection implements  Runnable{
+    private class TaskStartConnection implements  Runnable{
 
         @Override
         public void run() {
 
-            synchronized (connThread){
+            if(connection()){
 
-                if(connection()){
-
-                    // Delay para garantir que as Threads de transmissao e recepcao ja foram
-                    // inicializadas e estao em execucao esperando a notificacao
-                    try {
-                        connThread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    connThread.notifyAll();
-                }
-            }
-        }
-    }
-
-    class TaskPublish implements Runnable{
-
-        @Override
-        public void run() {
-
-            // Espera a conexao
-            synchronized (connThread){
-
-                try {
-
-                    connThread.wait();
-
-                } catch (InterruptedException e) {
-
-                    e.printStackTrace();
-                }
-            }
-
-            // Loop infinito para processamento do subscribe
-            while(true) {
-
-                doPublish();
-
-                try {
-                    Thread.sleep(time);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    class TaskSubscribe implements Runnable{
-
-        @Override
-        public void run() {
-
-            // Espera a conexao
-            synchronized (connThread){
-
-                try {
-
-                    connThread.wait();
-
-                } catch (InterruptedException e) {
-
-                    e.printStackTrace();
-                }
-            }
-
-            // Loop infinito para processamento do subscribe
-            while(true) {
-
-                Looper.prepare();
-
-                publishHandle = new publishHandler();
-
-                Looper.loop();
-
-
-                try {
-                    Thread.sleep(time);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                workerPublish.start();
+                workerSubscribe.start();
             }
         }
     }
@@ -433,18 +339,64 @@ abstract public class Communication extends Object implements Communic,Observabl
      * Hook para processamento das mensagens
      *
      */
-    private class publishHandler extends Handler {
+    private class WorkerSubscribe extends Thread implements Handler.Callback {
+
+        public Handler handler;
 
         @Override
-        public void handleMessage(Message msg) {
+        public void run() {
 
-            ID_MENSSAGE id = ID_MENSSAGE.values()[msg.what];
+            Looper.prepare();
+            handler = new Handler(this);
+            Looper.loop();
+        }
 
-            String teste = msg.getData().getString(CMD_KEY);
+        @Override
+        public boolean  handleMessage(Message msg) {
 
-            switch (id){
+            doSubscribe();
+            return true;
+        }
+    }
 
-                case CMD: doPublish();    break;
+    private class WorkerPublish extends Thread implements Handler.Callback {
+
+        public Handler handler;
+
+        @Override
+        public void run() {
+
+            Looper.prepare();
+            handler = new Handler(this);
+
+            Looper.loop();
+        }
+
+        @Override
+        public boolean  handleMessage(Message msg) {
+
+            doPublish();
+            return true;
+        }
+
+        public void sendMessageToPublish(Cmd cmd) {
+
+            try {
+                DataFrame frame = new DataFrame(cmd);
+
+                Message messageToSend = handler.obtainMessage();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(CMD_KEY, frame.str());
+                messageToSend.what = ID_MENSSAGE.CMD.ordinal();
+                messageToSend.setData(bundle);
+
+                handler.sendMessage(messageToSend);
+            }catch (Exception e){
+
+                System.out.print(e.toString());
+
+                Log.d("",e.toString());
             }
         }
     }

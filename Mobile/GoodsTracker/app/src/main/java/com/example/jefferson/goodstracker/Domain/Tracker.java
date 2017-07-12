@@ -24,14 +24,14 @@ public class Tracker extends CommunicationUnit {
 
     public void requestBehavior(EventReceiveAnswer on_ans)
     {
-        Cmd cmd = createCMD(Operation.RD, RESOURCE_TYPE.TLM,on_ans);
+        Cmd cmd = createCMD( RESOURCE_TYPE.TLM,Operation.RD,on_ans);
 
         sendCMD(cmd);
     }
 
     public void lockVehicle(EventReceiveAnswer on_ans) {
 
-        Cmd cmd = createCMD(Operation.WR, RESOURCE_TYPE.LOCK,on_ans);
+        Cmd cmd = createCMD( RESOURCE_TYPE.LOCK,Operation.WR,on_ans);
 
         statusLock = true;
         cmd.append("1");
@@ -41,7 +41,7 @@ public class Tracker extends CommunicationUnit {
 
     public void unLockVehicle(EventReceiveAnswer on_ans) {
 
-        Cmd cmd = createCMD(Operation.WR, RESOURCE_TYPE.LOCK,on_ans);
+        Cmd cmd = createCMD( RESOURCE_TYPE.LOCK,Operation.WR,on_ans);
 
         statusLock = false;
         cmd.append("0");

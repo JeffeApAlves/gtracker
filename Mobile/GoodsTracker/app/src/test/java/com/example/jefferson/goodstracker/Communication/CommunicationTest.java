@@ -1,5 +1,6 @@
 package com.example.jefferson.goodstracker.Communication;
 
+
 import com.example.jefferson.goodstracker.Domain.DataTelemetria;
 import com.example.jefferson.goodstracker.Domain.Tracker;
 
@@ -12,11 +13,12 @@ import static org.junit.Assert.*;
 /**
  * Created by Jefferson on 10/07/2017.
  */
+
 public class CommunicationTest {
 
-    Communic                communic;
-    ObservableCommunication observable;
+    Communication           communication;
     static Tracker[]        trackers;
+
     @BeforeClass
     public static void onceExecutedBeforeAll() {
 
@@ -32,8 +34,7 @@ public class CommunicationTest {
     @Before
     public void executedBeforeEach() {
 
-        observable  = Communication.getInstance();
-        communic    = Communication.getInstance();
+        communication = Communication.getInstance();
     }
 
     @Test
@@ -149,7 +150,7 @@ public class CommunicationTest {
         int i = 0;
         for(Tracker t:trackers){
 
-            t.createCMD(Operation.RD, RESOURCE_TYPE.TLM, new EventReceiveAnswer() {
+            t.createCMD(RESOURCE_TYPE.TLM,Operation.RD,  new EventReceiveAnswer() {
                 int y = 0;
                 @Override
                 public void onReceiveAnswer(AnsCmd ans) {
@@ -168,12 +169,12 @@ public class CommunicationTest {
             ans.setHeader(header);
             ans.setTelemetria(new DataTelemetria());
 
-            observable.notifyObserver(ans);
+            communication.notifyObserver(ans);
         }
 
         for(AnsCmd a:list){
 
-            assertEquals(RESOURCE_TYPE.TLM,a.getResource());
+//            assertEquals(RESOURCE_TYPE.TLM,a.getResource());
         }
     }
 
@@ -186,6 +187,34 @@ public class CommunicationTest {
     @Test
     public void sendMessageToPublish() throws Exception {
 
+        final AnsCmd[] list = new AnsCmd[trackers.length];
+
+        for(int i = 0;i<trackers.length;i++){
+
+            Cmd cmd = new Cmd(0,1,RESOURCE_TYPE.TLM,Operation.RD,  new EventReceiveAnswer() {
+
+                int y = 0;
+                @Override
+                public void onReceiveAnswer(AnsCmd ans) {
+
+                    list[y++] = ans;
+                }
+            });
+
+            cmd.append("1");
+
+            Communication.addCmd(cmd);
+
+            Thread.sleep(6000);
+
+            communication.sendPublish(cmd);
+
+        }
+
+//        for(AnsCmd a:list){
+
+//            assertEquals(RESOURCE_TYPE.TLM,a.getResource());
+//        }
 
     }
 }

@@ -9,6 +9,14 @@ public class AMQPCommunication extends Communication{
     RabbitMQ rabbitMQ = new RabbitMQ();
 
     @Override
+    public void init() {
+
+        rabbitMQ.open();
+
+        super.init();
+    }
+
+    @Override
     public void doPublish() {
 
         rabbitMQ.publish();
