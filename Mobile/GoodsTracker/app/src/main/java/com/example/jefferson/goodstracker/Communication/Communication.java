@@ -30,8 +30,8 @@ abstract public class Communication extends Object implements Communic,Observabl
     private static List<AnsCmd>         answers             = new ArrayList<AnsCmd>();
     private static Map<Integer,ObserverCommunication>units  = new HashMap<Integer,ObserverCommunication>();
 
-    private static WorkerPublish        workerPublish;
-    private static WorkerSubscribe      workerSubscribe;
+    private static WorkerPublish        workerPublish       = null;
+    private static WorkerSubscribe      workerSubscribe     = null;
 
     private static final String CMD_KEY = "cmd";
 
@@ -113,8 +113,10 @@ abstract public class Communication extends Object implements Communic,Observabl
 
     public static void finish(){
 
-        workerPublish.interrupt();
-        workerSubscribe.interrupt();
+        if(workerPublish!=null)
+            workerPublish.interrupt();
+        if(workerSubscribe!=null)
+            workerSubscribe.interrupt();
     }
 
     public static boolean isAnyTxCmd() {

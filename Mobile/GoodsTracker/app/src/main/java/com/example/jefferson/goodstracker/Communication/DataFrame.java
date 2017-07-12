@@ -55,12 +55,12 @@ public class DataFrame  extends Object {
 
         if(value.length() >= header.length()+1){
 
-            header.setData(value.substring(0, header.length()));
+            header = DecoderFrame.str2Header(value);
             payLoad.setData(value.substring( (header.length() + 1), value.length()));
         }else{
 
-            header.setData(value.substring(0, value.length()));
-            payLoad.setData("");
+            header  = new Header();
+            payLoad = new PayLoad();
         }
     }
 
