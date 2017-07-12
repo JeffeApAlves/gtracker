@@ -4,7 +4,7 @@ package com.example.jefferson.goodstracker.Communication;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class DataFrame {
+public class DataFrame  extends Object {
 
     protected Header    header;
     protected PayLoad   payLoad;
@@ -13,13 +13,6 @@ public class DataFrame {
     public DataFrame(String data) {
 
         setData(data);
-    }
-
-    public DataFrame(Cmd cmd) {
-
-        data    = "";
-        setHeader(  cmd.getHeader());
-        setPayLoad( cmd.getPayload());
     }
 
     public DataFrame() {
@@ -118,5 +111,10 @@ public class DataFrame {
     public char[] toCharArray() {
 
         return  str().toCharArray();
+    }
+
+    public byte[] getBytes() {
+
+        return  str().getBytes();
     }
 }

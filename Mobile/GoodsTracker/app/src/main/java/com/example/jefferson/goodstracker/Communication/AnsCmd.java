@@ -6,7 +6,7 @@ import com.example.jefferson.goodstracker.Domain.DataTelemetria;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class AnsCmd {
+public class AnsCmd extends Object {
 
     private Header          header;
     private DataTelemetria  telemetria;

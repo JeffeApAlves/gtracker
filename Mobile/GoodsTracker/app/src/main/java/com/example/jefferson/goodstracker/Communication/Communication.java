@@ -5,19 +5,16 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Executors;
-
 
 /**
  * Created by Jefferson on 08/0`/2017.
  */
 
-abstract public class Communication extends Object implements Communic,ObservableCommunication  {
+abstract public class Communication extends Object implements Communic,ObservableCommunication,Runnable  {
 
     // ID para identificacao das mensagens
     enum ID_MENSSAGE{
@@ -33,55 +30,91 @@ abstract public class Communication extends Object implements Communic,Observabl
     private static List<AnsCmd>         answers             = new ArrayList<AnsCmd>();
     private static Map<Integer,ObserverCommunication>units  = new HashMap<Integer,ObserverCommunication>();
 
-    private Thread              connThread;
-    private WorkerPublish       workerPublish;
-    private WorkerSubscribe     workerSubscribe;
+    private static WorkerPublish        workerPublish;
+    private static WorkerSubscribe      workerSubscribe;
 
     private static final String CMD_KEY = "cmd";
 
-    //Incia a htrea que fara a conexao
-    @Override
-    public void init() {
+    protected Communication(){
 
-        createPublishThread();
-        createSubscribeThread();
-        createConnThread();
-
-        connThread.start();
     }
 
-    @Override
-    public void deInit(){
+    /**
+     * Metodo construtor do tipo de comunicacao
+     *
+     * @param type_com
+     */
+    public static boolean create(TYPE_COMMUNICATION type_com) {
 
-        connThread.interrupt();
-    }
+        boolean success = false;
 
-    public static void create(TYPE_COMMUNICATION t) {
+        try {
 
-        if (type != t) {
+            if (type != type_com) {
 
-            if(instance!=null){
+                finish();
 
-                instance.deInit();
-            }
+                type = type_com;
 
-            type = t;
+                if (!TYPE_COMMUNICATION.NONE.equals(type_com)) {
 
-            if(!TYPE_COMMUNICATION.NONE.equals(t)) {
+                    switch (type) {
 
-                switch (type) {
+                        case AMQP:      instance    = new AMQPCommunication();  break;
+                        case SERIAL:    instance    = null;                     break; // Comunicacao via serial
+                    }
 
-                    case AMQP:
-                        instance = new AMQPCommunication();
-                        break;
-                    case SERIAL:
-                        instance = null;
-                        break; // Comunicacao via serial
+                    success = instance!=null;
                 }
-
-                instance.init();
             }
+
+        }catch (Exception e){
+
+            success = false;
+            Log.d("","Problemas na inicializacao da conexao");
         }
+
+        return success;
+    }
+
+    /**
+     * Inicia a thead que fara a conexao
+     *
+     */
+    protected void start() {
+
+        new Thread(this);
+    }
+
+    /**
+     *
+     * A conexao sera chamada em uma Thread
+     *
+     */
+    @Override
+    public void run() {
+
+        try{
+
+            if(connection()){
+
+                createPublishThread();
+                createSubscribeThread();
+
+                workerPublish.start();
+                workerSubscribe.start();
+            }
+
+        }catch (Exception e){
+
+            Log.d("","Problemas na inicialicalizaco da conexao");
+        }
+    }
+
+    public static void finish(){
+
+        workerPublish.interrupt();
+        workerSubscribe.interrupt();
     }
 
     public static boolean isAnyTxCmd() {
@@ -212,7 +245,7 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
     }
 
-    public static Cmd takeFirst() {
+    public static Cmd takeFirstCmd() {
 
         return isAnyQueueCmd()?getArrayOfCmd()[0]:null;
     }
@@ -233,37 +266,25 @@ abstract public class Communication extends Object implements Communic,Observabl
     }
 
     @Override
-    public void notifyAllObservers(AnsCmd ans){
+    public void notifyObserver(Object obj){
 
-        //Notifica todas as unidades
-        for (ObserverCommunication ob : units.values()){
+        if(obj instanceof AnsCmd) {
 
-            ob.updateAnswer(ans);
-        }
+            AnsCmd ans = (AnsCmd)obj;
 
-        //Notifica o comando que gerou a resposta
-        Cmd cmd = searchCmdOfAnswer(ans);
-        if(cmd!=null) {
+            if (units.containsKey(ans.getHeader().getAddress())) {
 
-            cmd.updateAnswer(ans);
-        }
-    }
+                ObserverCommunication ob = units.get(ans.getHeader().getAddress());
 
-    @Override
-    public void notifyObserver(AnsCmd ans){
+                //Notifica apenas entidade respectiva ddo address
+                ob.updateAnswer(ans);
 
-        if(units.containsKey(ans.getHeader().getAddress())) {
+                //Notifica o comando que gerou a resposta
+                Cmd cmd = searchCmdOfAnswer(ans);
+                if (cmd != null) {
 
-            ObserverCommunication ob = units.get(ans.getHeader().getAddress());
-
-            //Notifica apenas entidade respectiva ddo address
-            ob.updateAnswer(ans);
-
-            //Notifica o comando que gerou a resposta
-            Cmd cmd = searchCmdOfAnswer(ans);
-            if (cmd != null) {
-
-                cmd.updateAnswer(ans);
+                    cmd.updateAnswer(ans);
+                }
             }
         }
     }
@@ -282,14 +303,6 @@ abstract public class Communication extends Object implements Communic,Observabl
         this.time = time;
     }
 
-    /**
-     *
-     * Thread para inicializacao da conexao
-     */
-    public void createConnThread(){
-
-        connThread = new Thread(new TaskStartConnection());
-    }
 
     /**
      *
@@ -297,7 +310,7 @@ abstract public class Communication extends Object implements Communic,Observabl
      */
     public void createPublishThread() {
 
-        workerPublish = new WorkerPublish();
+        workerPublish   = new WorkerPublish();
     }
 
     /**
@@ -317,21 +330,6 @@ abstract public class Communication extends Object implements Communic,Observabl
     public void sendPublish(Cmd cmd) {
 
         addCmd(cmd);
-        workerPublish.sendMessageToPublish(cmd);
-
-    }
-
-    private class TaskStartConnection implements  Runnable{
-
-        @Override
-        public void run() {
-
-            if(connection()){
-
-                workerPublish.start();
-                workerSubscribe.start();
-            }
-        }
     }
 
     /**
@@ -354,7 +352,9 @@ abstract public class Communication extends Object implements Communic,Observabl
         @Override
         public boolean  handleMessage(Message msg) {
 
-            doSubscribe();
+            //TODO salvar resposta na lista
+            //addAns(ans);
+            //doSubscribe();
             return true;
         }
     }
@@ -368,35 +368,39 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             Looper.prepare();
             handler = new Handler(this);
-
             Looper.loop();
         }
 
         @Override
         public boolean  handleMessage(Message msg) {
 
-            doPublish();
+            ID_MENSSAGE id = ID_MENSSAGE.values()[msg.what];
+
+            switch (id){
+
+                case CMD:   publishCmd(takeFirstCmd());
+            }
+
             return true;
         }
 
-        public void sendMessageToPublish(Cmd cmd) {
+        public void sendCmd() {
 
             try {
-                DataFrame frame = new DataFrame(cmd);
-
                 Message messageToSend = handler.obtainMessage();
 
                 Bundle bundle = new Bundle();
-                bundle.putString(CMD_KEY, frame.str());
+
+                bundle.putString(CMD_KEY, "");
                 messageToSend.what = ID_MENSSAGE.CMD.ordinal();
                 messageToSend.setData(bundle);
 
                 handler.sendMessage(messageToSend);
+
             }catch (Exception e){
 
                 System.out.print(e.toString());
-
-                Log.d("",e.toString());
+                Log.d("",e.getClass().toString());
             }
         }
     }

@@ -20,14 +20,8 @@ public interface ObservableCommunication{
      */
     void removeObserver(ObserverCommunication observer);
 
-   /*
-    * Notifica toda as unidades
-    *
-    */
-    void notifyAllObservers(AnsCmd ans);
-
     /*
      * Notifica apenas a entidade respectiva do tracker correspondente
      */
-    void notifyObserver(AnsCmd ans);
+    void notifyObserver(Object ans);
 }

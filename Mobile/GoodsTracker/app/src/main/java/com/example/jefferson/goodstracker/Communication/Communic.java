@@ -6,11 +6,12 @@ package com.example.jefferson.goodstracker.Communication;
 
 public interface Communic {
 
-    void init();
+//    void init();
     void deInit();
     void doPublish();
     void doSubscribe();
     boolean connection();
     void publishCmd(Cmd cmd);
+    void publishAnswer(AnsCmd ans);
     void acceptAnswer(AnsCmd ans);
 }

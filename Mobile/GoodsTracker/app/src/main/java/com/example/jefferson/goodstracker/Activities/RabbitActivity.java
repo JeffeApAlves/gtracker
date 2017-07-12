@@ -8,17 +8,14 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jefferson.goodstracker.Communication.AnsCmd;
 import com.example.jefferson.goodstracker.Communication.Cmd;
-import com.example.jefferson.goodstracker.Communication.Communic;
 import com.example.jefferson.goodstracker.Communication.Communication;
 import com.example.jefferson.goodstracker.Communication.EventReceiveAnswer;
 import com.example.jefferson.goodstracker.Communication.Operation;
 import com.example.jefferson.goodstracker.Communication.RESOURCE_TYPE;
-import com.example.jefferson.goodstracker.Communication.RabbitMQ;
 import com.example.jefferson.goodstracker.Communication.TYPE_COMMUNICATION;
 import com.example.jefferson.goodstracker.Domain.Tracker;
 import com.example.jefferson.goodstracker.R;

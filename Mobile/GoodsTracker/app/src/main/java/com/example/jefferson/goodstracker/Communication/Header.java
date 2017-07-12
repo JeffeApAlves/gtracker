@@ -4,11 +4,10 @@ package com.example.jefferson.goodstracker.Communication;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class Header {
+public class Header  extends Object{
 
     public final int LENGTH = 28;             // (5)+(5)+(5)+(2)+(3)+(3) + 5 separadores
 
-    private String      data;
     private int         dest;
     private int         address;
     private int         count = 0;
@@ -38,34 +37,11 @@ public class Header {
 
     public String str() {
 
-        data = "";
-
-        DecoderFrame.setHeader(this);
-
-        return data;
+        return DecoderFrame.header2str(this);
     }
 
-    public void Clear() {
+    public void clear() {
 
-        data = "";
-    }
-
-    public void append(char b) {
-
-        data += b;
-    }
-
-    public void append(String b) {
-
-        data += b;
-    }
-
-    public void append(double b) {
-
-        //TODO verificar o que o parametro G faz na conversao string
-        //data += b.toString("G");
-
-        data += Double.toString(b);
     }
 
     public char[] toCharArray() {
@@ -76,24 +52,6 @@ public class Header {
     public int length(){
 
         return LENGTH;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-
-        this.data = data;
-
-        Header header = DecoderFrame.decoderHeader(data.split(String.valueOf(CONST_COM.CHAR.SEPARATOR)));
-
-        this.setAddress(header.getAddress());
-        this.setDest(header.getDest());
-        this.setCount(header.getCount());
-        this.setOperation(header.getOperation());
-        this.setResource(header.getResource());
-        this.setSizePayLoad(header.getSizePayLoad());
     }
 
     public int getDest() {

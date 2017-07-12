@@ -4,7 +4,7 @@ package com.example.jefferson.goodstracker.Communication;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class PayLoad {
+public class PayLoad  extends Object{
 
     public final int    LEN_MAX_PAYLOAD = 256;
     private String      data            = "";
@@ -14,18 +14,18 @@ public class PayLoad {
         clear();
     }
 
-    public void append(char b)
-    {
+    public void append(char b) {
+
         data += b;
     }
 
-    public void append(String b)
-    {
+    public void append(String b) {
+
         data += b;
     }
 
-    public void append(boolean b)
-    {
+    public void append(boolean b) {
+
         data += String.valueOf((b?1:0));
     }
 
@@ -38,18 +38,18 @@ public class PayLoad {
         data += Double.toString(b);
     }
 
-    public int length()
-    {
+    public int length() {
+
         return data==null? 0:data.length();
     }
 
-    public boolean isFull()
-    {
+    public boolean isFull() {
+
         return length() >= LEN_MAX_PAYLOAD;
     }
 
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
+
         return length() <= 0;
     }
 
@@ -58,8 +58,7 @@ public class PayLoad {
         return String.format("%03d",length()) + CONST_COM.CHAR.SEPARATOR + data + CONST_COM.CHAR.SEPARATOR;
     }
 
-    public void clear()
-    {
+    public void clear(){
         data = "";
     }
 

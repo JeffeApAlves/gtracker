@@ -12,7 +12,7 @@ import java.util.Date;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class DecoderFrame {
+public class DecoderFrame  extends Object{
 
     class INDEX {
 
@@ -41,18 +41,117 @@ public class DecoderFrame {
         static public final int DATE = 18;
     };
 
-    static public boolean setHeader(Header header) {
+    /**
+     * Answer to Frame
+     *
+     * @param ans
+     * @param frame
+     * @return
+     */
+    public static boolean ans2Frame(AnsCmd ans, DataFrame frame){
 
+        PayLoad payLoad     = new PayLoad();
+        Header header       = ans.getHeader();
+
+        tlm2Payload(ans.getTelemetria(),payLoad);
+
+        frame.setHeader(header);
+        frame.setPayLoad(payLoad);
+
+        return true;
+    }
+
+    /**
+     * Frame to answer
+     *
+     * @param frame
+     * @param ans
+     * @return
+     */
+    public static boolean frame2Ans(DataFrame frame, AnsCmd ans) {
+
+        boolean ret     = false;
+
+        try {
+
+            String[] list = frame.getData().split(String.valueOf(CONST_COM.CHAR.SEPARATOR));
+
+            if (list != null && list.length >= 8) {
+
+                //TODO verificar substring
+                // Exclui CheckSum
+                frame.setData(frame.getData().substring(0, frame.getData().length() - 2));
+                byte cheksumRx = AsHex(list, list.length-1);
+                ret = frame.checkSum() == cheksumRx;
+
+                if (ret) {
+
+                    Header header = decoderHeader(list);
+
+                    ans.setHeader(header);
+
+                    if (header.getResource().equals(RESOURCE_TYPE.TLM) &&
+                        header.getOperation().equals(Operation.AN))
+                    {
+                        ans.setTelemetria(decoderTelemetria(list));
+                    }
+
+                } else {
+
+                    Log.d("","Erro de CheckSum");
+                }
+            }
+            else {
+
+                Log.d("","Incorreto a quantidade de parametros recebidos");
+            }
+        }
+        catch (Exception e) {
+
+            ret = false;
+
+            System.out.println("Erro na decodificacao do frame");
+            System.out.println(frame.getData());
+            System.out.println(e.toString());
+            Log.d("",e.toString());
+        }
+
+        return ret;
+    }
+
+    /**
+     * Cmd to Frame
+     *
+     * @param cmd
+     * @param frame
+     * @return
+     */
+    public static boolean cmd2Frame(Cmd cmd, DataFrame frame) {
+
+        frame.setHeader(cmd.getHeader());
+        frame.setPayLoad(cmd.getPayload());
+
+        return true;
+    }
+
+    /**
+     * Header to String
+     * @param header
+     * @return
+     */
+    public static String header2str(Header header) {
+
+        StringBuilder sb = new StringBuilder();
         boolean ret    = false;
 
         try {
 
             // Header
-            header.append(String.format("%05d",header.getAddress()) + CONST_COM.CHAR.SEPARATOR);
-            header.append(String.format("%05d",header.getDest())    + CONST_COM.CHAR.SEPARATOR);
-            header.append(String.format("%05d",header.getCount())   + CONST_COM.CHAR.SEPARATOR);
-            header.append(header.getOperation().name()              + CONST_COM.CHAR.SEPARATOR);
-            header.append(header.getResource());
+            sb.append(String.format("%05d",header.getAddress()) + CONST_COM.CHAR.SEPARATOR);
+            sb.append(String.format("%05d",header.getDest())    + CONST_COM.CHAR.SEPARATOR);
+            sb.append(String.format("%05d",header.getCount())   + CONST_COM.CHAR.SEPARATOR);
+            sb.append(header.getOperation().name()              + CONST_COM.CHAR.SEPARATOR);
+            sb.append(header.getResource());
 
             ret = true;
         } catch (Exception e) {
@@ -64,13 +163,23 @@ public class DecoderFrame {
             Log.d("",e.toString());
         }
 
-        return ret;
+        return sb.toString();
     }
 
-    public boolean setValues(PayLoad payload, DataTelemetria b) {
+    /**
+     * String para Header
+     * @param data
+     * @return
+     */
+    public static Header str2Header(String data) {
+
+        return decoderHeader(data.split(String.valueOf(CONST_COM.CHAR.SEPARATOR)));
+    }
+
+    // Telemetria to Payload
+    private static boolean tlm2Payload(DataTelemetria b ,PayLoad payload) {
 
         boolean ret     = false;
-        payload         = new PayLoad();
 
         try {
 
@@ -127,59 +236,7 @@ public class DecoderFrame {
         return ret;
     }
 
-    public boolean getValues(AnsCmd ans, DataFrame frame) {
-
-        boolean ret     = false;
-        ans             = new AnsCmd();
-
-        try {
-
-            String[] list = frame.getData().split(String.valueOf(CONST_COM.CHAR.SEPARATOR));
-
-            if (list != null && list.length >= 8) {
-
-                //TODO verificar substring
-                // Exclui CheckSum
-                frame.setData(frame.getData().substring(0, frame.getData().length() - 2));
-                byte cheksumRx = AsHex(list, list.length-1);
-                ret = frame.checkSum() == cheksumRx;
-
-                if (ret) {
-
-                    Header header = decoderHeader(list);
-
-                    ans.setHeader(header);
-
-                    if (header.getResource().equals(RESOURCE_TYPE.TLM) &&
-                        header.getOperation().equals(Operation.AN))
-                    {
-                        ans.setTelemetria(decoderTelemetria(list));
-                    }
-
-                } else {
-
-                    Log.d("","Erro de CheckSum");
-                }
-            }
-            else {
-
-                Log.d("","Incorreto a quantidade de parametros recebidos");
-            }
-        }
-        catch (Exception e) {
-
-            ret = false;
-
-            System.out.println("Erro na decodificacao do frame");
-            System.out.println(frame.getData());
-            System.out.println(e.toString());
-            Log.d("",e.toString());
-        }
-
-        return ret;
-    }
-
-    private DataTelemetria decoderTelemetria(String[] list) {
+    private static DataTelemetria decoderTelemetria(String[] list) {
 
         DataTelemetria telemetria = new DataTelemetria();
 
@@ -214,18 +271,18 @@ public class DecoderFrame {
         return telemetria;
     }
 
-    static public Header decoderHeader(String[] list) {
+    private static Header decoderHeader(String[] list) {
 
         Header header = new Header();
 
         try {
 
-            header.setAddress(AsInteger(list, INDEX.ADDRESS));
-            header.setDest(AsInteger(list, INDEX.DEST));
-            header.setCount(AsInteger(list, INDEX.COUNT));
-            header.setOperation(AsOperation(list, INDEX.OPERACAO));
-            header.setResource(AsString(list, INDEX.RESOURCE));
-            header.setSizePayLoad(AsInteger(list, INDEX.SIZE_PAYLOAD));
+            header.setAddress(AsInteger(list,       INDEX.ADDRESS));
+            header.setDest(AsInteger(list,          INDEX.DEST));
+            header.setCount(AsInteger(list,         INDEX.COUNT));
+            header.setOperation(AsOperation(list,   INDEX.OPERACAO));
+            header.setResource(AsString(list,       INDEX.RESOURCE));
+            header.setSizePayLoad(AsInteger(list,   INDEX.SIZE_PAYLOAD));
 
         } catch (Exception e) {
 
@@ -239,20 +296,20 @@ public class DecoderFrame {
         return header;
     }
 
-    static private Operation AsOperation(String[] list, int oPERACAO) {
+    private static Operation AsOperation(String[] list, int oPERACAO) {
 
         String str = AsString(list, oPERACAO);
 
         return Operation.valueOf(str );
     }
 
-    static private Date AsTime(String[] list, int index) {
+    private static Date AsTime(String[] list, int index) {
 
         Date d = new Date();
 
         if (index < list.length) {
 
-            StringBuilder sb = new StringBuilder(list[index]);
+            StringBuilder sb        = new StringBuilder(list[index]);
             SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
 
             String str = list[index];
@@ -274,7 +331,7 @@ public class DecoderFrame {
         return d;
     }
 
-    static private Date AsDate(String[] list, int index) {
+    private static Date AsDate(String[] list, int index) {
 
         Date d = new Date();
 
@@ -301,7 +358,7 @@ public class DecoderFrame {
         return d;
     }
 
-    static private int AsInteger(String[] list, int index) {
+    private static int AsInteger(String[] list, int index) {
 
         int dest = 0;
 
@@ -313,7 +370,7 @@ public class DecoderFrame {
         return dest;
     }
 
-    static private double AsDouble(String[] list, int index) {
+    private static double AsDouble(String[] list, int index) {
 
         double dest = 0;
 
@@ -327,7 +384,7 @@ public class DecoderFrame {
         return dest;
     }
 
-    static private String AsString(String[] list, int index) {
+    private static String AsString(String[] list, int index) {
 
         String dest = "";
 
@@ -339,7 +396,7 @@ public class DecoderFrame {
         return dest;
     }
 
-    static private byte AsHex(String[] list, int index) {
+    private static byte AsHex(String[] list, int index) {
 
         byte dest = 0;
 
@@ -352,7 +409,7 @@ public class DecoderFrame {
         return dest;
     }
 
-    static private boolean AsBool(String[] list, int index) {
+    private static boolean AsBool(String[] list, int index) {
 
         return AsInteger(list, index)!=0 ? true:false;
     }

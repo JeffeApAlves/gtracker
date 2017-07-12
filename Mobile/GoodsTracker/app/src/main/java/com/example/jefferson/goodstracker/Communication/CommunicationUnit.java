@@ -6,7 +6,7 @@ import android.util.Log;
  * Created by Jefferson on 08/07/2017.
  */
 
-abstract public class CommunicationUnit implements ObserverCommunication {
+abstract public class CommunicationUnit  extends Object implements ObserverCommunication {
 
     /*
      * Endereco da unidade

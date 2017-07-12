@@ -4,7 +4,7 @@ package com.example.jefferson.goodstracker.Communication;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class CONST_COM {
+public class CONST_COM  extends Object{
 
     public class CONFIG{
 
