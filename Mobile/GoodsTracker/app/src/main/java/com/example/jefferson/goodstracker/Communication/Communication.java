@@ -22,6 +22,7 @@ abstract public class Communication extends Object implements Communic,Observabl
     enum ID_MENSSAGE{
 
         CMD,
+        ANS
     };
 
     protected int  time                                     = CONST_COM.CONFIG.TIME_COMMUNICATION;
@@ -100,11 +101,8 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             if(connection()){
 
-                createPublishThread();
-                createSubscribeThread();
-
-                workerPublish.start();
-                workerSubscribe.start();
+                startWorkerPublish();
+                startWorkerSubscribe();
             }
 
         }catch (Exception e){
@@ -283,15 +281,8 @@ abstract public class Communication extends Object implements Communic,Observabl
 
                 ObserverCommunication ob = units.get(ans.getHeader().getAddress());
 
-                //Notifica apenas entidade respectiva ddo address
+                // Notifica apenas entidade respectiva do address
                 ob.updateAnswer(ans);
-
-                //Notifica o comando que gerou a resposta
-                Cmd cmd = findCmdByAnswer(ans);
-                if (cmd != null) {
-
-                    cmd.updateAnswer(ans);
-                }
             }
         }
     }
@@ -315,18 +306,22 @@ abstract public class Communication extends Object implements Communic,Observabl
      *
      * Thread para processamento da pilha de saida
      */
-    public void createPublishThread() {
+    @Override
+    public void startWorkerPublish() {
 
         workerPublish   = new WorkerPublish();
+        workerPublish.start();
     }
 
     /**
      * Thread para processamento da pilha de entrada
      *
      */
-    public void createSubscribeThread() {
+    @Override
+    public void startWorkerSubscribe() {
 
         workerSubscribe = new WorkerSubscribe();
+        workerSubscribe.start();
     }
 
     /**
@@ -334,11 +329,21 @@ abstract public class Communication extends Object implements Communic,Observabl
      *
      * @param cmd
      */
-    public static void sendPublish(Cmd cmd) {
+    @Override
+    public void publishCmd(Cmd cmd) {
 
         addCmd(cmd);
         workerPublish.flush();
     }
+
+    public Handler getHandlerSubscribe(){
+
+        return workerSubscribe.getHandler();
+    }
+
+    abstract public void doPublish();
+    abstract public void doSubscribe();
+
 
     /**
      *
@@ -360,10 +365,21 @@ abstract public class Communication extends Object implements Communic,Observabl
         @Override
         public boolean  handleMessage(Message msg) {
 
-            //TODO salvar resposta na lista
-            //addAns(ans);
-            //doSubscribe();
+            ID_MENSSAGE id  = ID_MENSSAGE.values()[msg.what];
+
+            String message  = msg.getData().getString("ANS");
+            AnsCmd      ans = new AnsCmd();
+
+            if(DecoderFrame.str2Ans(message,ans)){
+
+                acceptAnswer(ans);
+            }
+
             return true;
+        }
+
+        public Handler getHandler() {
+            return handler;
         }
     }
 
@@ -386,24 +402,33 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             switch (id){
 
-                case CMD:   publishCmd(takeFirstCmd());
+                case CMD:   doPublish();
             }
 
             return true;
         }
 
+        public Handler getHandler() {
+            return handler;
+        }
+
         public void flush() {
 
             try {
-                Message messageToSend = handler.obtainMessage();
+                /*
+                    Message messageToSend = handler.obtainMessage();
 
-                Bundle bundle = new Bundle();
+                    Bundle bundle = new Bundle();
 
-                bundle.putString(CMD_KEY, "");
-                messageToSend.what = ID_MENSSAGE.CMD.ordinal();
-                messageToSend.setData(bundle);
+                    bundle.putString(CMD_KEY, "");
+                    messageToSend.what = ID_MENSSAGE.CMD.ordinal();
+                    messageToSend.setData(bundle);
 
-                handler.sendMessage(messageToSend);
+                    handler.sendMessage(messageToSend);
+                */
+
+                //O comando foi previamente inserido no map
+                handler.sendEmptyMessage(ID_MENSSAGE.CMD.ordinal());
 
             }catch (Exception e){
 

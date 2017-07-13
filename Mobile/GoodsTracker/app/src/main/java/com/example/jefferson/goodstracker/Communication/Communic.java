@@ -8,8 +8,8 @@ public interface Communic {
 
 //    void init();
     void deInit();
-    void doPublish();
-    void doSubscribe();
+    void startWorkerPublish();
+    void startWorkerSubscribe();
     boolean connection();
     void publishCmd(Cmd cmd);
     void publishAnswer(AnsCmd ans);

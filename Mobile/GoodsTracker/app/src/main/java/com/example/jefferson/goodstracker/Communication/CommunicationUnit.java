@@ -22,12 +22,12 @@ abstract public class CommunicationUnit  extends Object implements ObserverCommu
         Communication.getInstance().registerObserver(this);
     }
 
-    public Cmd createCMD(String resource,Operation o, EventReceiveAnswer on_ans) throws IOException {
+    public Cmd createCMD(String resource,Operation o){
 
         Cmd cmd  = new Cmd( CONST_COM.MASTER.ADDRESS,
                             address,
                             resource,
-                            o,on_ans);
+                            o);
 
         return cmd;
     }

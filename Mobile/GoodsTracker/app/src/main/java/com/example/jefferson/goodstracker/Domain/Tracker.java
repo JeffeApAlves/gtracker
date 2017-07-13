@@ -3,7 +3,6 @@ package com.example.jefferson.goodstracker.Domain;
 import com.example.jefferson.goodstracker.Communication.AnsCmd;
 import com.example.jefferson.goodstracker.Communication.Cmd;
 import com.example.jefferson.goodstracker.Communication.CommunicationUnit;
-import com.example.jefferson.goodstracker.Communication.EventReceiveAnswer;
 import com.example.jefferson.goodstracker.Communication.Operation;
 import com.example.jefferson.goodstracker.Communication.RESOURCE_TYPE;
 
@@ -15,62 +14,41 @@ import java.io.IOException;
 
 public class Tracker extends CommunicationUnit {
 
-    private DataTelemetria  telemetria;
-    private boolean         statusLock;
+    private DataTelemetria  tlm;
 
     public Tracker(int val) throws IOException {
 
         super(val);
-        statusLock = false;
     }
 
-    public void requestBehavior(EventReceiveAnswer on_ans)
-    {
-        try {
+    public void requestBehavior() {
 
-            Cmd cmd = createCMD( RESOURCE_TYPE.TLM,Operation.RD,on_ans);
+        Cmd cmd = createCMD( RESOURCE_TYPE.TLM,Operation.RD);
 
-            sendCMD(cmd);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        sendCMD(cmd);
     }
 
-    public void lockVehicle(EventReceiveAnswer on_ans) {
+    public void lockVehicle() {
 
-        try {
+        Cmd cmd = createCMD( RESOURCE_TYPE.LOCK,Operation.WR);
 
-            Cmd cmd = createCMD( RESOURCE_TYPE.LOCK,Operation.WR,on_ans);
+        cmd.append("1");
 
-            statusLock = true;
-
-            cmd.append("1");
-            sendCMD(cmd);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        sendCMD(cmd);
     }
 
-    public void unLockVehicle(EventReceiveAnswer on_ans) {
+    public void unLockVehicle() {
 
-        try {
+        Cmd cmd = createCMD( RESOURCE_TYPE.LOCK, Operation.WR);
 
-            Cmd cmd = createCMD( RESOURCE_TYPE.LOCK, Operation.WR,on_ans);
+        cmd.append("0");
 
-            statusLock = false;
-            cmd.append("0");
-
-            sendCMD(cmd);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        sendCMD(cmd);
     }
 
     /*
      *
-     * Hook para processamento de comandos respondidos
+     * Hook para processamento das respostas dos comandos
      *
      */
     @Override
@@ -78,38 +56,50 @@ public class Tracker extends CommunicationUnit {
 
         if(ans.getResource().equals(RESOURCE_TYPE.TLM)) {
 
+            // Atualiza a entidade de telemetria
             updateDataTelemetria(ans);
         }
         else if(ans.getResource().equals(RESOURCE_TYPE.LOCK)){
 
-            telemetria.setStatusLock(statusLock);
+            // Nothing to do at the moment
         }
     }
 
     void updateDataTelemetria(AnsCmd ans) {
 
-        telemetria = ans.getTelemetria();
+        tlm = ans.getTelemetria();
     }
 
-    public DataTelemetria getTelemetria() {
+    public DataTelemetria getTlm() {
 
-        return telemetria;
+        return tlm;
     }
 
-    public void setTelemetria(DataTelemetria telemetriaData) {
-        this.telemetria = telemetriaData;
+    public void setTlm(DataTelemetria telemetriaData) {
+        this.tlm = telemetriaData;
     }
 
-    public boolean isStatusLock() {
-        return statusLock;
+    public LockStatus getStatusLock() {
+        return tlm.getStatusLock();
     }
 
-    public void setStatusLock(boolean statusLock) {
-        this.statusLock = statusLock;
+    public void setStatusLock(LockStatus statusLock) {
+
+        if(statusLock!=getStatusLock()) {
+
+            if (statusLock.equals(LockStatus.LOCK)) {
+
+                lockVehicle();
+
+            } else {
+
+                unLockVehicle();
+            }
+        }
     }
 
     public double getValLevel() {
 
-        return telemetria.getValLevel();
+        return tlm.getValLevel();
     }
 }

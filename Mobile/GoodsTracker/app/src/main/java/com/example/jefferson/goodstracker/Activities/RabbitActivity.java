@@ -11,11 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.jefferson.goodstracker.Communication.AnsCmd;
-import com.example.jefferson.goodstracker.Communication.Cmd;
 import com.example.jefferson.goodstracker.Communication.Communication;
-import com.example.jefferson.goodstracker.Communication.EventReceiveAnswer;
-import com.example.jefferson.goodstracker.Communication.Operation;
-import com.example.jefferson.goodstracker.Communication.RESOURCE_TYPE;
 import com.example.jefferson.goodstracker.Communication.TYPE_COMMUNICATION;
 import com.example.jefferson.goodstracker.Domain.Tracker;
 import com.example.jefferson.goodstracker.R;
@@ -38,41 +34,23 @@ public class RabbitActivity extends AppCompatActivity {
 
         Communication.create(TYPE_COMMUNICATION.AMQP);
 
-        mTextMessage    = (TextView) findViewById(R.id.message);
-        navigation      = (BottomNavigationView) findViewById(R.id.navigation);
-        tv              = (TextView) findViewById(R.id.textView);
+        mTextMessage    = (TextView)                findViewById(R.id.message);
+        navigation      = (BottomNavigationView)    findViewById(R.id.navigation);
+        tv              = (TextView)                findViewById(R.id.textView);
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     public void onClick_btConnect(View view){
 
-        Tracker[]  trackers = new Tracker[5];
+        Tracker[]       trackers = new Tracker[5];
 
         try {
 
-            for(int i=1;i<trackers.length+1;i++){
+            for(int i=0;i<trackers.length;i++){
 
-                trackers[i] = new Tracker(i);
-            }
-
-            final AnsCmd[] list = new AnsCmd[trackers.length];
-
-
-            for(int i = 0;i<trackers.length;i++){
-
-                Cmd cmd = new Cmd(0,1, RESOURCE_TYPE.TLM, Operation.RD,  new EventReceiveAnswer() {
-
-                    int y = 0;
-                    @Override
-                    public void onReceiveAnswer(AnsCmd ans) {
-
-                        list[y++] = ans;
-                    }
-                });
-
-                cmd.append("1");
-                Communication.sendPublish(cmd);
+                trackers[i] = new Tracker(i+1);
+                trackers[i].requestBehavior();
             }
 
         } catch (IOException e) {

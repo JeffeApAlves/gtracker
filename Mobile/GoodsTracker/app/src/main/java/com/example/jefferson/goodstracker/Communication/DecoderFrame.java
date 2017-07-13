@@ -3,6 +3,7 @@ package com.example.jefferson.goodstracker.Communication;
 import android.util.Log;
 
 import com.example.jefferson.goodstracker.Domain.DataTelemetria;
+import com.example.jefferson.goodstracker.Domain.LockStatus;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,6 +42,13 @@ public class DecoderFrame  extends Object{
         static public final int DATE = 18;
     };
 
+    public static boolean str2Ans(String data, AnsCmd ans){
+
+        DataFrame frame = new DataFrame();
+        frame.setData(data);
+
+        return frame2Ans(frame,ans);
+    }
     /**
      * Answer to Frame
      *
@@ -203,7 +211,7 @@ public class DecoderFrame  extends Object{
             payload.append(CONST_COM.CHAR.SEPARATOR);
             payload.append(b.getValLevel());
             payload.append(CONST_COM.CHAR.SEPARATOR);
-            payload.append(b.isStatusLock());
+            payload.append(b.getStatusLock().ordinal());
             payload.append(CONST_COM.CHAR.SEPARATOR);
 
             //TODO Verificar a formatacao de string de time
@@ -255,7 +263,7 @@ public class DecoderFrame  extends Object{
 
             telemetria.setSpeed(        AsDouble(list, INDEX.SPEED));
             telemetria.setLevel(        AsDouble(list, INDEX.LEVEL));
-            telemetria.setStatusLock(   AsBool(list, INDEX.TRAVA));
+            telemetria.setStatusLock(   AsStatusLoock(list, INDEX.TRAVA));
             telemetria.setDate(         AsDate(list, INDEX.DATE));
             telemetria.setTime (        AsTime(list, INDEX.TIME));
 
@@ -409,8 +417,8 @@ public class DecoderFrame  extends Object{
         return dest;
     }
 
-    private static boolean AsBool(String[] list, int index) {
+    private static LockStatus AsStatusLoock(String[] list, int index) {
 
-        return AsInteger(list, index)!=0 ? true:false;
+        return AsInteger(list, index)!=0 ? LockStatus.UNLOCK:LockStatus.LOCK;
     }
 }

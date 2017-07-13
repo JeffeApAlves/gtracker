@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static android.R.attr.value;
 
 /**
  * Created by Jefferson on 08/07/2017.
@@ -19,7 +18,7 @@ public class DataTelemetria  extends Object {
     private Value       level;
     private Axis        axisX, axisY, axisZ;
 
-    private boolean     statusLock;
+    private LockStatus  statusLock;
     private Date        date;
     private Date        time;
 
@@ -207,11 +206,11 @@ public class DataTelemetria  extends Object {
         this.axisZ = axisZ;
     }
 
-    public boolean isStatusLock() {
+    public LockStatus getStatusLock() {
         return statusLock;
     }
 
-    public void setStatusLock(boolean statusLock) {
+    public void setStatusLock(LockStatus statusLock) {
         this.statusLock = statusLock;
     }
 

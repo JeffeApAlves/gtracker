@@ -6,34 +6,18 @@ import java.io.IOException;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class Cmd  extends Object implements ObserverCommunication {
+public class Cmd  extends Object{
 
     private Header              header;
     private PayLoad             payload;
-    private EventReceiveAnswer  eventReceiveAnswer = null;
 
-    public Cmd(int address, int dest,String r,Operation o) throws IOException {
-
-        header  = new Header(r,o);
-        payload = new PayLoad();
-
-        header.setAddress(address);
-        header.setDest(dest);
-
-        Communication.getInstance().registerObserver(this);
-    }
-
-    public Cmd(int address, int dest,String r,Operation o,EventReceiveAnswer eRA) throws IOException {
+    public Cmd(int address, int dest,String r,Operation o){
 
         header  = new Header(r,o);
         payload = new PayLoad();
 
         header.setAddress(address);
         header.setDest(dest);
-
-        eventReceiveAnswer = eRA;
-
-        Communication.getInstance().registerObserver(this);
     }
 
     public void append(String str) {
@@ -70,7 +54,6 @@ public class Cmd  extends Object implements ObserverCommunication {
         header.setDest(dest);
     }
 
-    @Override
     public int getAddress() {
 
         return header.getAddress();
@@ -79,17 +62,5 @@ public class Cmd  extends Object implements ObserverCommunication {
     public int getDest() {
 
         return header.getDest();
-    }
-
-    /*
-     * Metodo chamado para notificar o recebimento de resposta
-     */
-    @Override
-    public void updateAnswer(AnsCmd ans) {
-
-        if(eventReceiveAnswer!=null) {
-
-            eventReceiveAnswer.onReceiveAnswer(ans);
-        }
     }
 }

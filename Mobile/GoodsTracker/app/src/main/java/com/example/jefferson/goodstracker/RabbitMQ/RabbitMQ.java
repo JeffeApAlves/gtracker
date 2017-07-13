@@ -1,5 +1,8 @@
 package com.example.jefferson.goodstracker.RabbitMQ;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import com.example.jefferson.goodstracker.Communication.DataFrame;
@@ -14,12 +17,14 @@ import java.util.concurrent.TimeoutException;
 
 public class RabbitMQ  extends Object {
 
+    private Handler             handler         = null;
     private ConnectionFactory   factory         = null;
     private Connection          connection      = null;
     private Channel             channel         = null;
 
+    public void open(Handler handler){
 
-    public void open(){
+        this.handler = handler;
 
         factory = new ConnectionFactory();
 
@@ -89,6 +94,7 @@ public class RabbitMQ  extends Object {
         if(frame==null) return;
 
         try {
+
             channel.confirmSelect();
 
             try{
@@ -111,59 +117,100 @@ public class RabbitMQ  extends Object {
      *
      *
      */
-    public void subscribe() {
+    public void createSubscribe(int address) {
 
         try {
+
             channel.basicQos(1);
-            AMQP.Queue.DeclareOk q = channel.queueDeclare();
-            channel.queueBind(q.getQueue(), "amq.fanout", "chat");
-            QueueingConsumer consumer = new QueueingConsumer(channel);
-            channel.basicConsume(q.getQueue(), true, consumer);
 
-            while (true) {
+            Consumer consumerCmd = new ConsumerCmd(address);
+            Consumer consumerAns = new ConsumerAns(address);
 
-                QueueingConsumer.Delivery delivery = consumer.nextDelivery();
-                String message = new String(delivery.getBody());
-                Log.d("","[r] " + message);
+        } catch (Exception e) {
 
-                //TODO Publicar mensagens
-/*
-                if(handler!=null) {
-
-                    Message msg = handler.obtainMessage();
-
-                    Bundle bundle = new Bundle();
-                    bundle.putString("msg", message);
-                    msg.setData(bundle);
-
-                    handler.sendMessage(msg);
-                }*/
-            }
-        } catch (InterruptedException e) {
             Log.d("","Problema na recepcao: " + e.getClass().getName());
-        } catch (Exception e1) {
-            Log.d("","Problema na recepcao: " + e1.getClass().getName());
         }
     }
 
-    public void create(int address)throws java.io.IOException {
+    class ConsumerAns extends DefaultConsumer{
 
-        String queueCmd = RABBITMQ_CONST.EXCHANGE.CMD+String.format("%05d",address);
-        String queueAns = RABBITMQ_CONST.EXCHANGE.ANS+String.format("%05d",address);
+        public ConsumerAns(int address) throws IOException {
 
-        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.CMD,RABBITMQ_CONST.DIRECT);
-        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.ANS,RABBITMQ_CONST.DIRECT);
+            super(channel);
 
-        channel.queueDeclare(queueCmd,false,false,false,null);
-        channel.queueDeclare(queueAns,false,false,false,null);
+            String str_address  = String.format("%05d",address);
+            String queue        = RABBITMQ_CONST.EXCHANGE.ANS+str_address;
+            String route        = "ans."+ str_address;
 
-        channel.queueBind(  queueCmd,
-                            RABBITMQ_CONST.EXCHANGE.CMD,
-                            "R"+String.format("%05d",address));
+            channel.queueDeclare(queue,false,false,false,null);
+            channel.basicConsume(queue, true, this);
+            channel.queueBind(queue, RABBITMQ_CONST.EXCHANGE.ANS, route);
+        }
 
-        channel.queueBind(  queueAns,
-                            RABBITMQ_CONST.EXCHANGE.ANS,
-                            "R"+String.format("%05d",address));
+        @Override
+        public void handleDelivery(String consumerTag, Envelope envelope,
+                                   AMQP.BasicProperties properties, byte[] body) throws IOException {
+
+            Log.d("","[ans] " + body);
+
+            if(handler!=null) {
+
+                String message = new String(body, "UTF-8");
+
+                Log.d("","[r] " + message);
+
+                Message msg = handler.obtainMessage();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("ANS", message);
+                msg.setData(bundle);
+
+                handler.sendMessage(msg);
+            }
+        }
+    }
+
+    class ConsumerCmd extends DefaultConsumer{
+
+        public ConsumerCmd(int address) throws IOException {
+
+            super(channel);
+            String str_address  = String.format("%05d",address);
+            String queue        = RABBITMQ_CONST.EXCHANGE.CMD+str_address;
+            String route        = "cmd."+ str_address;
+
+            channel.queueDeclare(queue,false,false,false,null);
+            channel.basicConsume(queue, true, this);
+            channel.queueBind(queue, RABBITMQ_CONST.EXCHANGE.CMD, route);
+        }
+
+        @Override
+        public void handleDelivery(String consumerTag, Envelope envelope,
+                                   AMQP.BasicProperties properties, byte[] body) throws IOException {
+
+            Log.d("","[cmd] " + body);
+
+            if(handler!=null) {
+
+                String message = new String(body, "UTF-8");
+
+                Log.d("","[r] " + message);
+
+                Message msg = handler.obtainMessage();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("CMD", message);
+                msg.setData(bundle);
+
+                handler.sendMessage(msg);
+            }
+        }
+    }
+
+    public void createExchange()throws java.io.IOException {
+
+        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.CMD, RABBITMQ_CONST.EXCHANGE.TYPE.TOPIC);
+        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.ANS, RABBITMQ_CONST.EXCHANGE.TYPE.TOPIC);
     }
 }
 

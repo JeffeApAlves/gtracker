@@ -1,9 +1,6 @@
 package com.example.jefferson.goodstracker.Communication;
 
-import android.provider.ContactsContract;
-
 import com.example.jefferson.goodstracker.RabbitMQ.RabbitMQ;
-
 import java.io.IOException;
 
 /**
@@ -12,11 +9,11 @@ import java.io.IOException;
 
 public class AMQPCommunication extends Communication{
 
-    RabbitMQ rabbitMQ = new RabbitMQ();
+    RabbitMQ rabbitMQ= new RabbitMQ();
 
     protected AMQPCommunication(){
 
-        rabbitMQ.open();
+        rabbitMQ.open(getHandlerSubscribe());
 
         startCommunication();
     }
@@ -28,31 +25,31 @@ public class AMQPCommunication extends Communication{
     }
 
     @Override
-    public void doPublish() {
-
-//        rabbitMQ.publish();
-    }
-
-    @Override
-    public void doSubscribe(){
-
-        rabbitMQ.subscribe();
-    }
-
-    @Override
     public boolean connection() {
 
         return rabbitMQ.connect();
     }
 
     @Override
-    public void publishCmd(Cmd cmd) {
+    public void doPublish() {
 
         DataFrame frame = new DataFrame();
 
-        if(DecoderFrame.cmd2Frame(cmd,frame)){
+        if(DecoderFrame.cmd2Frame(takeFirstCmd(),frame)){
 
             rabbitMQ.publish(frame);
+        }
+    }
+
+    @Override
+    public void doSubscribe() {
+
+        DataFrame frame = new DataFrame();
+        AnsCmd      ans = new AnsCmd();
+
+        if(DecoderFrame.frame2Ans(frame,ans)){
+
+            acceptAnswer(ans);
         }
     }
 
@@ -71,6 +68,7 @@ public class AMQPCommunication extends Communication{
     public void registerObserver(ObserverCommunication observer) throws IOException {
 
         super.registerObserver(observer);
-        rabbitMQ.create(observer.getAddress());
+        rabbitMQ.createExchange();
+        rabbitMQ.createSubscribe(observer.getAddress());
     }
 }

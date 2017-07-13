@@ -12,11 +12,17 @@ public class RABBITMQ_CONST  extends Object{
     public static final String PW      = "mt5@1981";
     public static final int    PORT    = 5672;
 
-    public static  final String DIRECT  = "direct";
+
     class EXCHANGE {
 
         public static final String ANS    = "ANS";
         public static final String CMD    = "CMD";
+
+        class TYPE{
+
+            public static  final String DIRECT  = "direct";
+            public static  final String TOPIC   = "topic";
+        }
     }
 
     class QUEUE{

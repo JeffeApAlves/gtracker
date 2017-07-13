@@ -14,12 +14,12 @@ public class AnsCmd extends Object {
     public AnsCmd() {
 
         header      = new Header();
-        telemetria  = null;
+        telemetria  = new DataTelemetria();
     }
 
     public AnsCmd(String r,Operation o) {
 
-        telemetria  = null;
+        telemetria  = new DataTelemetria();
         header      = new Header();
         header.setResource(r);
         header.setOperation(o);
