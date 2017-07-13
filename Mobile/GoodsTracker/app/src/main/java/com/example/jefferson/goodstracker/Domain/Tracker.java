@@ -7,6 +7,8 @@ import com.example.jefferson.goodstracker.Communication.EventReceiveAnswer;
 import com.example.jefferson.goodstracker.Communication.Operation;
 import com.example.jefferson.goodstracker.Communication.RESOURCE_TYPE;
 
+import java.io.IOException;
+
 /**
  * Created by Jefferson on 09/07/2017.
  */
@@ -16,7 +18,7 @@ public class Tracker extends CommunicationUnit {
     private DataTelemetria  telemetria;
     private boolean         statusLock;
 
-    public Tracker(int val) {
+    public Tracker(int val) throws IOException {
 
         super(val);
         statusLock = false;
@@ -24,29 +26,46 @@ public class Tracker extends CommunicationUnit {
 
     public void requestBehavior(EventReceiveAnswer on_ans)
     {
-        Cmd cmd = createCMD( RESOURCE_TYPE.TLM,Operation.RD,on_ans);
+        try {
 
-        sendCMD(cmd);
+            Cmd cmd = createCMD( RESOURCE_TYPE.TLM,Operation.RD,on_ans);
+
+            sendCMD(cmd);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void lockVehicle(EventReceiveAnswer on_ans) {
 
-        Cmd cmd = createCMD( RESOURCE_TYPE.LOCK,Operation.WR,on_ans);
+        try {
 
-        statusLock = true;
-        cmd.append("1");
+            Cmd cmd = createCMD( RESOURCE_TYPE.LOCK,Operation.WR,on_ans);
 
-        sendCMD(cmd);
+            statusLock = true;
+
+            cmd.append("1");
+            sendCMD(cmd);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void unLockVehicle(EventReceiveAnswer on_ans) {
 
-        Cmd cmd = createCMD( RESOURCE_TYPE.LOCK,Operation.WR,on_ans);
+        try {
 
-        statusLock = false;
-        cmd.append("0");
+            Cmd cmd = createCMD( RESOURCE_TYPE.LOCK, Operation.WR,on_ans);
 
-        sendCMD(cmd);
+            statusLock = false;
+            cmd.append("0");
+
+            sendCMD(cmd);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /*

@@ -20,12 +20,15 @@ import com.example.jefferson.goodstracker.Communication.TYPE_COMMUNICATION;
 import com.example.jefferson.goodstracker.Domain.Tracker;
 import com.example.jefferson.goodstracker.R;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class RabbitActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    private TextView        mTextMessage;
+    BottomNavigationView    navigation;
+    TextView                tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,10 @@ public class RabbitActivity extends AppCompatActivity {
 
         Communication.create(TYPE_COMMUNICATION.AMQP);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        mTextMessage    = (TextView) findViewById(R.id.message);
+        navigation      = (BottomNavigationView) findViewById(R.id.navigation);
+        tv              = (TextView) findViewById(R.id.textView);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
@@ -44,29 +49,36 @@ public class RabbitActivity extends AppCompatActivity {
 
         Tracker[]  trackers = new Tracker[5];
 
-        for(int i=0;i<trackers.length;i++){
+        try {
 
-            trackers[i] = new Tracker(i);
+            for(int i=1;i<trackers.length+1;i++){
+
+                trackers[i] = new Tracker(i);
+            }
+
+            final AnsCmd[] list = new AnsCmd[trackers.length];
+
+
+            for(int i = 0;i<trackers.length;i++){
+
+                Cmd cmd = new Cmd(0,1, RESOURCE_TYPE.TLM, Operation.RD,  new EventReceiveAnswer() {
+
+                    int y = 0;
+                    @Override
+                    public void onReceiveAnswer(AnsCmd ans) {
+
+                        list[y++] = ans;
+                    }
+                });
+
+                cmd.append("1");
+                Communication.sendPublish(cmd);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        final AnsCmd[] list = new AnsCmd[trackers.length];
-
-        for(int i = 0;i<trackers.length;i++){
-
-            Cmd cmd = new Cmd(0,1, RESOURCE_TYPE.TLM, Operation.RD,  new EventReceiveAnswer() {
-
-                int y = 0;
-                @Override
-                public void onReceiveAnswer(AnsCmd ans) {
-
-                    list[y++] = ans;
-                }
-            });
-
-            cmd.append("1");
-
-            Communication.getInstance().sendPublish(cmd);
-        }
     };
 
     public void onClick_btPublish(View view){
@@ -81,9 +93,8 @@ public class RabbitActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
 
-        String message = msg.getData().getString("msg");
-        TextView tv = (TextView) findViewById(R.id.textView);
-        Date now = new Date();
+        String message  = msg.getData().getString("msg");
+        Date now        = new Date();
         SimpleDateFormat ft = new SimpleDateFormat ("hh:mm:ss");
         tv.append(ft.format(now) + ' ' + message + '\n');
         }

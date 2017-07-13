@@ -1,5 +1,7 @@
 package com.example.jefferson.goodstracker.Communication;
 
+import java.io.IOException;
+
 /**
  * Created by Jefferson on 08/07/2017.
  */
@@ -10,7 +12,7 @@ public class Cmd  extends Object implements ObserverCommunication {
     private PayLoad             payload;
     private EventReceiveAnswer  eventReceiveAnswer = null;
 
-    public Cmd(int address, int dest,String r,Operation o) {
+    public Cmd(int address, int dest,String r,Operation o) throws IOException {
 
         header  = new Header(r,o);
         payload = new PayLoad();
@@ -21,7 +23,7 @@ public class Cmd  extends Object implements ObserverCommunication {
         Communication.getInstance().registerObserver(this);
     }
 
-    public Cmd(int address, int dest,String r,Operation o,EventReceiveAnswer eRA) {
+    public Cmd(int address, int dest,String r,Operation o,EventReceiveAnswer eRA) throws IOException {
 
         header  = new Header(r,o);
         payload = new PayLoad();

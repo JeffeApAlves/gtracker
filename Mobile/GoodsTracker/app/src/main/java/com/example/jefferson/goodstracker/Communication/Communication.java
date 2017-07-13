@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -81,9 +83,9 @@ abstract public class Communication extends Object implements Communic,Observabl
      * Inicia a thead que fara a conexao
      *
      */
-    protected void start() {
+    protected void startCommunication() {
 
-        new Thread(this);
+        new Thread(this).start();
     }
 
     /**
@@ -113,10 +115,13 @@ abstract public class Communication extends Object implements Communic,Observabl
 
     public static void finish(){
 
-        if(workerPublish!=null)
+        if(workerPublish!=null) {
             workerPublish.interrupt();
-        if(workerSubscribe!=null)
+        }
+
+        if(workerSubscribe!=null) {
             workerSubscribe.interrupt();
+        }
     }
 
     public static boolean isAnyTxCmd() {
@@ -183,7 +188,7 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
     }
 
-    public static Cmd searchCmdOfAnswer(AnsCmd ans) {
+    public static Cmd findCmdByAnswer(AnsCmd ans) {
 
         Cmd cmd = null;
 
@@ -222,7 +227,7 @@ abstract public class Communication extends Object implements Communic,Observabl
 
         Cmd[] ret = null;
 
-        if (cmds.size() > 0) {
+        if (isAnyQueueCmd()) {
 
             //TODO Verificar a conversao de map para array
             ret = cmds.values().toArray(new Cmd[cmds.size()]);
@@ -240,7 +245,7 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             notifyObserver(ans);
 
-            Cmd cmd = searchCmdOfAnswer(ans);
+            Cmd cmd = findCmdByAnswer(ans);
 
             removeTxCmd(cmd);
             removeAns(ans);
@@ -253,7 +258,7 @@ abstract public class Communication extends Object implements Communic,Observabl
     }
 
     @Override
-    public void registerObserver(ObserverCommunication observer){
+    public void registerObserver(ObserverCommunication observer) throws IOException {
 
         if (observer != null) {
 
@@ -282,7 +287,7 @@ abstract public class Communication extends Object implements Communic,Observabl
                 ob.updateAnswer(ans);
 
                 //Notifica o comando que gerou a resposta
-                Cmd cmd = searchCmdOfAnswer(ans);
+                Cmd cmd = findCmdByAnswer(ans);
                 if (cmd != null) {
 
                     cmd.updateAnswer(ans);
@@ -329,9 +334,10 @@ abstract public class Communication extends Object implements Communic,Observabl
      *
      * @param cmd
      */
-    public void sendPublish(Cmd cmd) {
+    public static void sendPublish(Cmd cmd) {
 
         addCmd(cmd);
+        workerPublish.flush();
     }
 
     /**
@@ -386,7 +392,7 @@ abstract public class Communication extends Object implements Communic,Observabl
             return true;
         }
 
-        public void sendCmd() {
+        public void flush() {
 
             try {
                 Message messageToSend = handler.obtainMessage();

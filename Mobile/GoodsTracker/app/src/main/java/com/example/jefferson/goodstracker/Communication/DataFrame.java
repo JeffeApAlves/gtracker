@@ -22,12 +22,12 @@ public class DataFrame  extends Object {
         data   = "";
     }
 
-    Header getHeader() {
+    public Header getHeader() {
 
         return header;
     }
 
-    void setHeader(Header value) {
+    public void setHeader(Header value) {
 
         header  = value;
         data    = header.str() + CONST_COM.CHAR.SEPARATOR + (payLoad==null?"":payLoad.str());
@@ -69,7 +69,7 @@ public class DataFrame  extends Object {
         return data.getBytes()[i];
     }
 
-    public void putByte(char b) {
+    public void append(char b) {
 
         data += b;
     }

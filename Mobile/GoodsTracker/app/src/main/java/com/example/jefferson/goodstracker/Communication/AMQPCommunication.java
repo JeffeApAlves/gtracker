@@ -4,6 +4,8 @@ import android.provider.ContactsContract;
 
 import com.example.jefferson.goodstracker.RabbitMQ.RabbitMQ;
 
+import java.io.IOException;
+
 /**
  * Created by Jefferson on 08/07/2017.
  */
@@ -16,7 +18,7 @@ public class AMQPCommunication extends Communication{
 
         rabbitMQ.open();
 
-        start();
+        startCommunication();
     }
 
     @Override
@@ -63,5 +65,12 @@ public class AMQPCommunication extends Communication{
 
             rabbitMQ.publish(frame);
         }
+    }
+
+    @Override
+    public void registerObserver(ObserverCommunication observer) throws IOException {
+
+        super.registerObserver(observer);
+        rabbitMQ.create(observer.getAddress());
     }
 }

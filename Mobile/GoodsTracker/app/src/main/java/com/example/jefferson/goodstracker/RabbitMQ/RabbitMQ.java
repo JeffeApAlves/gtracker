@@ -23,7 +23,7 @@ public class RabbitMQ  extends Object {
 
         factory = new ConnectionFactory();
 
-        factory.setHost(RABBITMQ_CONST.HOST);
+        factory.setHost(RABBITMQ_CONST.HOSTNAME);
         factory.setVirtualHost(RABBITMQ_CONST.VHOST);
         factory.setUsername(RABBITMQ_CONST.USER);
         factory.setPassword(RABBITMQ_CONST.PW);
@@ -144,6 +144,26 @@ public class RabbitMQ  extends Object {
         } catch (Exception e1) {
             Log.d("","Problema na recepcao: " + e1.getClass().getName());
         }
+    }
+
+    public void create(int address)throws java.io.IOException {
+
+        String queueCmd = RABBITMQ_CONST.EXCHANGE.CMD+String.format("%05d",address);
+        String queueAns = RABBITMQ_CONST.EXCHANGE.ANS+String.format("%05d",address);
+
+        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.CMD,RABBITMQ_CONST.DIRECT);
+        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.ANS,RABBITMQ_CONST.DIRECT);
+
+        channel.queueDeclare(queueCmd,false,false,false,null);
+        channel.queueDeclare(queueAns,false,false,false,null);
+
+        channel.queueBind(  queueCmd,
+                            RABBITMQ_CONST.EXCHANGE.CMD,
+                            "R"+String.format("%05d",address));
+
+        channel.queueBind(  queueAns,
+                            RABBITMQ_CONST.EXCHANGE.ANS,
+                            "R"+String.format("%05d",address));
     }
 }
 

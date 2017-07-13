@@ -2,6 +2,8 @@ package com.example.jefferson.goodstracker.Communication;
 
 import android.util.Log;
 
+import java.io.IOException;
+
 /**
  * Created by Jefferson on 08/07/2017.
  */
@@ -13,14 +15,14 @@ abstract public class CommunicationUnit  extends Object implements ObserverCommu
      */
     protected int   address;
 
-    public CommunicationUnit(int val) {
+    public CommunicationUnit(int val) throws IOException {
 
         address = val;
 
         Communication.getInstance().registerObserver(this);
     }
 
-    public Cmd createCMD(String resource,Operation o, EventReceiveAnswer on_ans) {
+    public Cmd createCMD(String resource,Operation o, EventReceiveAnswer on_ans) throws IOException {
 
         Cmd cmd  = new Cmd( CONST_COM.MASTER.ADDRESS,
                             address,
