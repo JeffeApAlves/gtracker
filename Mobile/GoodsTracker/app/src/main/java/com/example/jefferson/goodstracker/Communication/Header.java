@@ -37,7 +37,7 @@ public class Header  extends Object{
 
     public String str() {
 
-        return DecoderFrame.header2str(this);
+        return Decoder.header2str(this);
     }
 
     public void clear() {

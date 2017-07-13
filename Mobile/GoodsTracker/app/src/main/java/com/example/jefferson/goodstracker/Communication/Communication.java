@@ -1,6 +1,5 @@
 package com.example.jefferson.goodstracker.Communication;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -18,12 +17,6 @@ import java.util.Map;
 
 abstract public class Communication extends Object implements Communic,ObservableCommunication,Runnable  {
 
-    // ID para identificacao das mensagens
-    enum ID_MENSSAGE{
-
-        CMD,
-        ANS
-    };
 
     protected int  time                                     = CONST_COM.CONFIG.TIME_COMMUNICATION;
     private static Communication        instance            = null;
@@ -35,8 +28,6 @@ abstract public class Communication extends Object implements Communic,Observabl
 
     private static WorkerPublish        workerPublish       = null;
     private static WorkerSubscribe      workerSubscribe     = null;
-
-    private static final String CMD_KEY = "cmd";
 
     protected Communication(){
 
@@ -133,7 +124,7 @@ abstract public class Communication extends Object implements Communic,Observabl
         return answers.size() > 0;
     }
 
-    public static boolean isAnyQueueCmd() {
+    public static boolean isAnyCmd() {
 
         return cmds.size() > 0;
     }
@@ -225,10 +216,23 @@ abstract public class Communication extends Object implements Communic,Observabl
 
         Cmd[] ret = null;
 
-        if (isAnyQueueCmd()) {
+        if (isAnyCmd()) {
 
             //TODO Verificar a conversao de map para array
             ret = cmds.values().toArray(new Cmd[cmds.size()]);
+        }
+
+        return ret;
+    }
+
+    public static AnsCmd[] getArrayOfAns() {
+
+        AnsCmd[] ret = null;
+
+        if (isAnyAns()) {
+
+            ret = new AnsCmd[answers.size()];
+            answers.toArray(ret);
         }
 
         return ret;
@@ -252,7 +256,12 @@ abstract public class Communication extends Object implements Communic,Observabl
 
     public static Cmd takeFirstCmd() {
 
-        return isAnyQueueCmd()?getArrayOfCmd()[0]:null;
+        return isAnyCmd()?getArrayOfCmd()[0]:null;
+    }
+
+    public static AnsCmd takeFirstAns() {
+
+        return isAnyAns()?getArrayOfAns()[0]:null;
     }
 
     @Override
@@ -329,21 +338,33 @@ abstract public class Communication extends Object implements Communic,Observabl
      *
      * @param cmd
      */
-    @Override
-    public void publishCmd(Cmd cmd) {
+    public void publish(Cmd cmd) {
 
         addCmd(cmd);
         workerPublish.flush();
     }
 
+    /**
+     *
+     * @param ans
+     */
+    public void publish(AnsCmd ans) {
+
+        DataFrame frame = new DataFrame();
+
+        if(Decoder.ans2Frame(takeFirstAns(),frame)){
+
+            publish(frame);
+        }
+
+        workerPublish.flush();
+    }
+
+
     public Handler getHandlerSubscribe(){
 
         return workerSubscribe.getHandler();
     }
-
-    abstract public void doPublish();
-    abstract public void doSubscribe();
-
 
     /**
      *
@@ -365,12 +386,12 @@ abstract public class Communication extends Object implements Communic,Observabl
         @Override
         public boolean  handleMessage(Message msg) {
 
-            ID_MENSSAGE id  = ID_MENSSAGE.values()[msg.what];
+            IdMessage id  = IdMessage.values()[msg.what];
 
-            String message  = msg.getData().getString("ANS");
+            String message  = msg.getData().getString("PAYLOAD");
             AnsCmd      ans = new AnsCmd();
 
-            if(DecoderFrame.str2Ans(message,ans)){
+            if(Decoder.str2Ans(message,ans)){
 
                 acceptAnswer(ans);
             }
@@ -398,43 +419,41 @@ abstract public class Communication extends Object implements Communic,Observabl
         @Override
         public boolean  handleMessage(Message msg) {
 
-            ID_MENSSAGE id = ID_MENSSAGE.values()[msg.what];
+            IdMessage id = IdMessage.values()[msg.what];
 
-            switch (id){
-
-                case CMD:   doPublish();
-            }
+            doPublish(id);
 
             return true;
+        }
+
+        public void doPublish(IdMessage i) {
+
+            boolean flg = false;
+
+            DataFrame frame = new DataFrame();
+
+            switch (i){
+
+                case ANS:   flg = Decoder.ans2Frame(takeFirstAns(),frame);break;
+                case CMD:   flg = Decoder.cmd2Frame(takeFirstCmd(),frame);break;
+            }
+
+            if(flg){
+
+                publish(frame);
+            }
         }
 
         public Handler getHandler() {
             return handler;
         }
 
+        /**
+         * O conteudo foi previamente inserido nos containers respectivo
+         */
         public void flush() {
 
-            try {
-                /*
-                    Message messageToSend = handler.obtainMessage();
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString(CMD_KEY, "");
-                    messageToSend.what = ID_MENSSAGE.CMD.ordinal();
-                    messageToSend.setData(bundle);
-
-                    handler.sendMessage(messageToSend);
-                */
-
-                //O comando foi previamente inserido no map
-                handler.sendEmptyMessage(ID_MENSSAGE.CMD.ordinal());
-
-            }catch (Exception e){
-
-                System.out.print(e.toString());
-                Log.d("",e.getClass().toString());
-            }
+            handler.sendEmptyMessage(IdMessage.CMD.ordinal());
         }
     }
 }

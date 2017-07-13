@@ -19,7 +19,7 @@ public class AMQPCommunication extends Communication{
     }
 
     @Override
-    public void deInit() {
+    public void close() {
 
         rabbitMQ.close();
     }
@@ -31,43 +31,17 @@ public class AMQPCommunication extends Communication{
     }
 
     @Override
-    public void doPublish() {
+    public void publish(DataFrame frame) {
 
-        DataFrame frame = new DataFrame();
-
-        if(DecoderFrame.cmd2Frame(takeFirstCmd(),frame)){
-
-            rabbitMQ.publish(frame);
-        }
-    }
-
-    @Override
-    public void doSubscribe() {
-
-        DataFrame frame = new DataFrame();
-        AnsCmd      ans = new AnsCmd();
-
-        if(DecoderFrame.frame2Ans(frame,ans)){
-
-            acceptAnswer(ans);
-        }
-    }
-
-    @Override
-    public void publishAnswer(AnsCmd ans) {
-
-        DataFrame frame = new DataFrame();
-
-        if(DecoderFrame.ans2Frame(ans,frame)){
-
-            rabbitMQ.publish(frame);
-        }
+        rabbitMQ.publish(frame);
     }
 
     @Override
     public void registerObserver(ObserverCommunication observer) throws IOException {
 
         super.registerObserver(observer);
+
+        //Declare all things
         rabbitMQ.createExchange();
         rabbitMQ.createSubscribe(observer.getAddress());
     }

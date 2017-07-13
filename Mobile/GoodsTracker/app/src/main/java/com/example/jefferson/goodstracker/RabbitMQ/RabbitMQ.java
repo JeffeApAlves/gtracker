@@ -6,6 +6,7 @@ import android.os.Message;
 import android.util.Log;
 
 import com.example.jefferson.goodstracker.Communication.DataFrame;
+import com.example.jefferson.goodstracker.Communication.IdMessage;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
@@ -24,9 +25,9 @@ public class RabbitMQ  extends Object {
 
     public void open(Handler handler){
 
-        this.handler = handler;
+        this.handler    = handler;
 
-        factory = new ConnectionFactory();
+        factory         = new ConnectionFactory();
 
         factory.setHost(RABBITMQ_CONST.HOSTNAME);
         factory.setVirtualHost(RABBITMQ_CONST.VHOST);
@@ -143,26 +144,26 @@ public class RabbitMQ  extends Object {
             String route        = "ans."+ str_address;
 
             channel.queueDeclare(queue,false,false,false,null);
-            channel.basicConsume(queue, true, this);
             channel.queueBind(queue, RABBITMQ_CONST.EXCHANGE.ANS, route);
+            channel.basicConsume(queue, true, this);
         }
 
         @Override
         public void handleDelivery(String consumerTag, Envelope envelope,
                                    AMQP.BasicProperties properties, byte[] body) throws IOException {
 
-            Log.d("","[ans] " + body);
+            String message = new String(body, "UTF-8");
+
+            Log.d("","[ans] " + message);
 
             if(handler!=null) {
 
-                String message = new String(body, "UTF-8");
-
-                Log.d("","[r] " + message);
-
                 Message msg = handler.obtainMessage();
 
+                msg.what    = IdMessage.ANS.ordinal();
+
                 Bundle bundle = new Bundle();
-                bundle.putString("ANS", message);
+                bundle.putString("PAYLOAD", message);
                 msg.setData(bundle);
 
                 handler.sendMessage(msg);
@@ -179,27 +180,27 @@ public class RabbitMQ  extends Object {
             String queue        = RABBITMQ_CONST.EXCHANGE.CMD+str_address;
             String route        = "cmd."+ str_address;
 
-            channel.queueDeclare(queue,false,false,false,null);
-            channel.basicConsume(queue, true, this);
-            channel.queueBind(queue, RABBITMQ_CONST.EXCHANGE.CMD, route);
+            channel.queueDeclare(   queue,  false,false,false,null);
+            channel.queueBind(      queue, RABBITMQ_CONST.EXCHANGE.CMD, route);
+            channel.basicConsume(   queue, true, this);
         }
 
         @Override
         public void handleDelivery(String consumerTag, Envelope envelope,
                                    AMQP.BasicProperties properties, byte[] body) throws IOException {
 
-            Log.d("","[cmd] " + body);
+            String message = new String(body, "UTF-8");
+
+            Log.d("","[cmd] " + message);
 
             if(handler!=null) {
 
-                String message = new String(body, "UTF-8");
-
-                Log.d("","[r] " + message);
-
                 Message msg = handler.obtainMessage();
 
+                msg.what = IdMessage.CMD.ordinal();
+
                 Bundle bundle = new Bundle();
-                bundle.putString("CMD", message);
+                bundle.putString("PAYLOAD", message);
                 msg.setData(bundle);
 
                 handler.sendMessage(msg);

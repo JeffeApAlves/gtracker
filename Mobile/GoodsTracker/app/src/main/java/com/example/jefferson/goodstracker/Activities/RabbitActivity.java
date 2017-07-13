@@ -43,9 +43,9 @@ public class RabbitActivity extends AppCompatActivity {
 
     public void onClick_btConnect(View view){
 
-        Tracker[]       trackers = new Tracker[5];
-
         try {
+
+            Tracker[]   trackers = new Tracker[5];
 
             for(int i=0;i<trackers.length;i++){
 
@@ -56,7 +56,6 @@ public class RabbitActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     };
 
     public void onClick_btPublish(View view){

@@ -55,7 +55,7 @@ public class DataFrame  extends Object {
 
         if(value.length() >= header.length()+1){
 
-            header = DecoderFrame.str2Header(value);
+            header = Decoder.str2Header(value);
             payLoad.setData(value.substring( (header.length() + 1), value.length()));
         }else{
 
