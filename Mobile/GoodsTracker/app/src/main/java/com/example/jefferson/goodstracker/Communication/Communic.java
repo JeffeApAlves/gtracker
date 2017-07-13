@@ -6,10 +6,10 @@ package com.example.jefferson.goodstracker.Communication;
 
 public interface Communic {
 
-    boolean connection();
+    boolean connect();
     void close();
     void startWorkerPublish();
     void startWorkerSubscribe();
     void publish(DataFrame frame);
-    void acceptAnswer(AnsCmd ans);
+    void subscribe(DataFrame frame);
 }

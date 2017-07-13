@@ -25,7 +25,7 @@ public class AMQPCommunication extends Communication{
     }
 
     @Override
-    public boolean connection() {
+    public boolean connect() {
 
         return rabbitMQ.connect();
     }

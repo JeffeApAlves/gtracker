@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.jefferson.goodstracker.Communication.AnsCmd;
 import com.example.jefferson.goodstracker.Communication.Communication;
 import com.example.jefferson.goodstracker.Communication.TYPE_COMMUNICATION;
 import com.example.jefferson.goodstracker.Domain.Tracker;
@@ -70,10 +69,10 @@ public class RabbitActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
 
-        String message  = msg.getData().getString("msg");
-        Date now        = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat ("hh:mm:ss");
-        tv.append(ft.format(now) + ' ' + message + '\n');
+            String message  = msg.getData().getString("msg");
+            Date now        = new Date();
+            SimpleDateFormat ft = new SimpleDateFormat ("hh:mm:ss");
+            tv.append(ft.format(now) + ' ' + message + '\n');
         }
     };
 
