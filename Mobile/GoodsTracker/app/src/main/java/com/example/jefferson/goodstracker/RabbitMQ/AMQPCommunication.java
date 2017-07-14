@@ -12,10 +12,6 @@ import java.io.IOException;
 public class AMQPCommunication extends Communication {
 
     RabbitMQ rabbitMQ = new RabbitMQ();
-/*
-    public AMQPCommunication() {
-
-    }*/
 
     @Override
     public void close() {

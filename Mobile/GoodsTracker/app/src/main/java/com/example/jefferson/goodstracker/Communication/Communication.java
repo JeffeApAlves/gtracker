@@ -4,14 +4,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-
-import com.example.jefferson.goodstracker.RabbitMQ.AMQPCommunication;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.example.jefferson.goodstracker.RabbitMQ.AMQPCommunication;
 
 /**
  * Created by Jefferson on 08/0`/2017.
@@ -61,11 +59,11 @@ abstract public class Communication extends Object implements Communic,Observabl
                         case SERIAL:    instance    = null;                     break; // Comunicacao via serial
                     }
 
-                    success = instance!=null;
-
-                    if(success){
+                    if(instance!=null){
 
                         instance.startCommunication();
+
+                        success = true;
                     }
                 }
             }
@@ -226,12 +224,12 @@ abstract public class Communication extends Object implements Communic,Observabl
 
     public static Cmd[] getArrayOfCmd() {
 
-        Cmd[] ret = null;
+        Cmd[] ret = new Cmd[cmds.size()];
 
         if (isAnyCmd()) {
 
             //TODO Verificar a conversao de map para array
-            ret = cmds.values().toArray(new Cmd[cmds.size()]);
+            ret = cmds.values().toArray(ret);
         }
 
         return ret;
@@ -239,12 +237,11 @@ abstract public class Communication extends Object implements Communic,Observabl
 
     public static AnsCmd[] getArrayOfAns() {
 
-        AnsCmd[] ret = null;
+        AnsCmd[] ret = new AnsCmd[answers.size()];
 
         if (isAnyAns()) {
 
-            ret = new AnsCmd[answers.size()];
-            answers.toArray(ret);
+            ret = answers.toArray(ret);
         }
 
         return ret;
@@ -385,11 +382,21 @@ abstract public class Communication extends Object implements Communic,Observabl
     @Override
     public void consumerFrame(DataFrame frame){
 
-        AnsCmd      ans = new AnsCmd();
+        AnsCmd ans = new AnsCmd();
 
         if(Decoder.frame2Ans(frame,ans)){
 
             acceptAnswer(ans);
+        }
+    }
+
+    public void consumerCmd(DataFrame frame){
+
+        Cmd cmd = new Cmd();
+
+        if(Decoder.frame2Cmd(frame,cmd)){
+
+            //TODO acceptCmd(cmd)
         }
     }
 
@@ -427,13 +434,10 @@ abstract public class Communication extends Object implements Communic,Observabl
 
         public void doWork(IdMessage i,String data) {
 
-            DataFrame frame = new DataFrame(data);
-            Cmd         cmd = new Cmd();
-
             switch (i){
 
-                case ANS:   consumerFrame(frame);           break;
-                case CMD:   Decoder.frame2Cmd(frame,cmd);   break;
+                case ANS:   consumerFrame(new DataFrame(data));   break;
+                case CMD:   consumerCmd(new DataFrame(data));     break;
             }
         }
 
