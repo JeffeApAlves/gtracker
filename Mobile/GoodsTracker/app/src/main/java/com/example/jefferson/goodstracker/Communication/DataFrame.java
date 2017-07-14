@@ -1,19 +1,15 @@
 package com.example.jefferson.goodstracker.Communication;
 
-import android.util.Log;
-
-import java.nio.charset.StandardCharsets;
-
 /**
  * Created by Jefferson on 08/07/2017.
  */
 
 public class DataFrame  extends Object {
 
-    protected   TypeFrame typeFrame;
-    protected   Header    header;
-    protected   PayLoad   payLoad;
-    protected   String    data;
+    protected   TypeFrame   typeFrame;
+    protected   Header      header;
+    protected   PayLoad     payload;
+    protected   String      data;
 
 
     public DataFrame(String data,TypeFrame type) {
@@ -26,7 +22,7 @@ public class DataFrame  extends Object {
 
         this.typeFrame = type;
         header  = new Header();
-        payLoad = new PayLoad();
+        payload = new PayLoad();
         data    = "";
     }
 
@@ -41,14 +37,14 @@ public class DataFrame  extends Object {
         updateData();
     }
 
-    PayLoad getPayLoad() {
+    PayLoad getPayload() {
 
-        return payLoad;
+        return payload;
     }
 
-    void setPayLoad(PayLoad value) {
+    void setPayload(PayLoad value) {
 
-        payLoad             = value;
+        payload = value;
         updateData();
     }
 
@@ -63,27 +59,27 @@ public class DataFrame  extends Object {
 
         data    =           decoder.header_to_str(header)           +
                             CONST_COM.CHAR.SEPARATOR                +
-                            String.format("%03d",payLoad.length())  +
+                            String.format("%03d", payload.length())  +
                             CONST_COM.CHAR.SEPARATOR                +
-                            payLoad.getData()                       +
+                            payload.getData()                       +
                             CONST_COM.CHAR.SEPARATOR;
     }
 
     private void updateHeaderPayLoad(){
 
-        final int HEADER_LENGTH = 28;             // (5)+(5)+(5)+(2)+(3)+(3) + 5 separadores
+        final int HEADER_LENGTH = 27;             // (5)+(5)+(5)+(2)+(3)+(3) + 5 separadores
 
         if(data.length() >= HEADER_LENGTH+1){
 
             IDecoder decoder = DecoderFrame.create(typeFrame);
 
             header = decoder.str_to_header(data);
-            payLoad.setData(data.substring( (HEADER_LENGTH + 1), data.length()));
 
+            payload = new PayLoad(data.substring( (HEADER_LENGTH + 1), data.length()-2));
         }else{
 
             header  = new Header();
-            payLoad = new PayLoad();
+            payload = new PayLoad();
         }
     }
 
@@ -138,23 +134,24 @@ public class DataFrame  extends Object {
         return typeFrame;
     }
 
-    public String str() {
+    @Override
+    public String toString() {
 
         //TODO verificar a conversao para hexa 2 digitos
 
-        return  CONST_COM.CHAR.RX_FRAME_START +
-                data.toString() +
-                Integer.toHexString(calcSum()) +
-                CONST_COM.CHAR.RX_FRAME_END;
+        return  /*CONST_COM.CHAR.RX_FRAME_START +*/
+                data.toString()                 +
+                Integer.toHexString(calcSum())  /*+
+                CONST_COM.CHAR.RX_FRAME_END*/;
     }
 
     public char[] toCharArray() {
 
-        return  str().toCharArray();
+        return  toString().toCharArray();
     }
 
     public byte[] toBytesArray() {
 
-        return  str().getBytes();
+        return  toString().getBytes();
     }
 }

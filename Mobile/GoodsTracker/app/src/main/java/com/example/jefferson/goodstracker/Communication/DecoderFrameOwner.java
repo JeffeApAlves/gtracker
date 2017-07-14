@@ -91,7 +91,7 @@ public class DecoderFrameOwner extends DecoderFrame{
                 if (header.getResource().equals(RESOURCE_TYPE.TLM) &&
                         header.getOperation().equals(Operation.AN)) {
 
-                    cmd.setPayload(frame.getPayLoad());
+                    cmd.setPayload(frame.getPayload());
                 }
 
                 ret = true;
@@ -125,7 +125,7 @@ public class DecoderFrameOwner extends DecoderFrame{
         PayLoad payLoad     = buildPayload(ans.getTelemetria());
 
         frame.setHeader(header);
-        frame.setPayLoad(payLoad);
+        frame.setPayload(payLoad);
 
         return true;
     }
@@ -199,7 +199,7 @@ public class DecoderFrameOwner extends DecoderFrame{
     @Override
     public boolean cmd_to_frame(Cmd cmd, DataFrame frame) {
 
-        frame.setPayLoad(cmd.getPayload());
+        frame.setPayload(cmd.getPayload());
         frame.setHeader(cmd.getHeader());
         return true;
     }

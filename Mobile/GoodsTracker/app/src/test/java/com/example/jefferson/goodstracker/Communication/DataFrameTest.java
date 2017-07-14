@@ -1,7 +1,5 @@
 package com.example.jefferson.goodstracker.Communication;
 
-import android.provider.ContactsContract;
-
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -58,7 +56,7 @@ public class DataFrameTest {
         frame.setData("00001:00002:00005:AN:TLM:007:1:2:3:4");
 
         Header  header  = frame.getHeader();
-        PayLoad payLoad = frame.getPayLoad();
+        PayLoad payLoad = frame.getPayload();
 
         assertEquals(1,header.getAddress());
         assertEquals(2,header.getDest());

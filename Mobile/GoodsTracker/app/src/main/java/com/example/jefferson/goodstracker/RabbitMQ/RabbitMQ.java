@@ -100,9 +100,9 @@ public class RabbitMQ  extends Object {
             try{
                 channel.basicPublish(exchange, routing, null, frame.toBytesArray());
                 channel.waitForConfirmsOrDie();
-                Log.d("", "[sucesso] " + frame.str());
+                Log.d("", "[sucesso] " + frame.toString());
             } catch (Exception e){
-                Log.d("","[fail] " + frame.str());
+                Log.d("","[fail] " + frame.toString());
 
                 throw e;
             }

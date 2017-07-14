@@ -9,6 +9,11 @@ public class PayLoad  extends Object{
     public final int        LEN_MAX_PAYLOAD = 256;
     private StringBuilder   data;
 
+    public PayLoad(String val){
+
+        data = new StringBuilder(val);
+    }
+
     public PayLoad(){
 
         clear();
