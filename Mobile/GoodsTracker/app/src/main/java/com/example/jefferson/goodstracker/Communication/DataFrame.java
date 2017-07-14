@@ -69,13 +69,15 @@ public class DataFrame  extends Object {
 
         final int HEADER_LENGTH = 27;             // (5)+(5)+(5)+(2)+(3)+(3) + 5 separadores
 
-        if(data.length() >= HEADER_LENGTH+1){
+        if(data.length() >= HEADER_LENGTH+2){
 
             IDecoder decoder = DecoderFrame.create(typeFrame);
 
-            header = decoder.str_to_header(data);
+            header  = decoder.str_to_header(data);
 
-            payload = new PayLoad(data.substring( (HEADER_LENGTH + 1), data.length()-2));
+            //+2 -3 ja para eliminar os separadores
+            payload = new PayLoad(data.substring( (HEADER_LENGTH + 2), data.length()-3));
+
         }else{
 
             header  = new Header();

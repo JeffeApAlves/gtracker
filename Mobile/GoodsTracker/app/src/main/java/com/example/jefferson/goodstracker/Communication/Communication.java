@@ -114,6 +114,7 @@ abstract public class Communication extends Object implements Communic,Observabl
 
         if(workerProducer !=null) {
             workerProducer.interrupt();
+            workerProducer.interrupt();
         }
 
         if(workerConsumer!=null) {
