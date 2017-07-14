@@ -18,14 +18,11 @@ import java.util.concurrent.TimeoutException;
 
 public class RabbitMQ  extends Object {
 
-    private Handler             handler         = null;
     private ConnectionFactory   factory         = null;
     private Connection          connection      = null;
     private Channel             channel         = null;
 
-    public void open(Handler handler){
-
-        this.handler    = handler;
+    public void open(){
 
         factory         = new ConnectionFactory();
 
@@ -69,6 +66,8 @@ public class RabbitMQ  extends Object {
             connection  = factory.newConnection();
             channel     = connection.createChannel();
 
+            channel.basicQos(1);
+
             ret = true;
         } catch (IOException e) {
 
@@ -90,7 +89,7 @@ public class RabbitMQ  extends Object {
      *
      *
      */
-    public void publish(DataFrame frame) {
+    public void publish(String exchange,String routing,DataFrame frame) {
 
         if(frame==null) return;
 
@@ -99,7 +98,7 @@ public class RabbitMQ  extends Object {
             channel.confirmSelect();
 
             try{
-                channel.basicPublish("amq.fanout", "chat", null, frame.getBytes());
+                channel.basicPublish(exchange, routing, null, frame.getBytes());
                 channel.waitForConfirmsOrDie();
                 Log.d("", "[sucesso] " + frame.str());
             } catch (Exception e){
@@ -114,26 +113,49 @@ public class RabbitMQ  extends Object {
         }
     }
 
+    public void createExchange()throws java.io.IOException {
+
+        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.CMD, RABBITMQ_CONST.EXCHANGE.TYPE.TOPIC);
+        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.ANS, RABBITMQ_CONST.EXCHANGE.TYPE.TOPIC);
+    }
+
     /**
      *
      *
      */
-    public void createSubscribe(int address) {
+    public void createConsumerCmd(int address,Handler handler) {
 
         try {
 
-            channel.basicQos(1);
-
-            Consumer consumerCmd = new ConsumerCmd(address);
-            Consumer consumerAns = new ConsumerAns(address);
+            ConsumerCmd consumerCmd = new ConsumerCmd(address);
+            consumerCmd.setHandler(handler);
 
         } catch (Exception e) {
 
-            Log.d("","Problema na recepcao: " + e.getClass().getName());
+            Log.d("","Problema na criacao dos consumidores: " + e.getClass().getName());
+        }
+    }
+
+    /**
+     *
+     *
+     */
+    public void createConsumerAns(int address,Handler handler) {
+
+        try {
+
+            ConsumerAns consumerAns = new ConsumerAns(address);
+            consumerAns.setHandler(handler);
+
+        } catch (Exception e) {
+
+            Log.d("","Problema na criacao dos consumidores: " + e.getClass().getName());
         }
     }
 
     class ConsumerAns extends DefaultConsumer{
+
+        private Handler handler = null;
 
         public ConsumerAns(int address) throws IOException {
 
@@ -169,9 +191,15 @@ public class RabbitMQ  extends Object {
                 handler.sendMessage(msg);
             }
         }
+
+        public void setHandler(Handler handler) {
+            this.handler = handler;
+        }
     }
 
     class ConsumerCmd extends DefaultConsumer{
+
+        private Handler handler = null;
 
         public ConsumerCmd(int address) throws IOException {
 
@@ -206,12 +234,10 @@ public class RabbitMQ  extends Object {
                 handler.sendMessage(msg);
             }
         }
-    }
 
-    public void createExchange()throws java.io.IOException {
-
-        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.CMD, RABBITMQ_CONST.EXCHANGE.TYPE.TOPIC);
-        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.ANS, RABBITMQ_CONST.EXCHANGE.TYPE.TOPIC);
+        public void setHandler(Handler handler) {
+            this.handler = handler;
+        }
     }
 }
 

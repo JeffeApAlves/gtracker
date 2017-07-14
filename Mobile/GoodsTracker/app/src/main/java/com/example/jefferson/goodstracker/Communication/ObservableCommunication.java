@@ -26,4 +26,10 @@ public interface ObservableCommunication{
      * Notifica apenas a entidade respectiva do tracker correspondente
      */
     void notifyObserver(Object ans);
+
+
+    /*
+     * Notifica a conexao estabilizada
+     */
+    void notifyConnEstablished();
 }

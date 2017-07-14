@@ -5,6 +5,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
+import com.example.jefferson.goodstracker.RabbitMQ.AMQPCommunication;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,8 +26,8 @@ abstract public class Communication extends Object implements Communic,Observabl
     private static List<AnsCmd>         answers             = new ArrayList<AnsCmd>();
     private static Map<Integer,ObserverCommunication>units  = new HashMap<Integer,ObserverCommunication>();
 
-    private static WorkerPublish        workerPublish       = null;
-    private static WorkerSubscribe      workerSubscribe     = null;
+    private static WorkerProducer       workerProducer      = null;
+    private static WorkerConsumer       workerConsumer      = null;
 
     protected Communication(){
 
@@ -44,7 +46,10 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             if (type != type_com) {
 
-                deInit();
+                if(instance!=null){
+
+                    instance.close();
+                }
 
                 type = type_com;
 
@@ -57,6 +62,11 @@ abstract public class Communication extends Object implements Communic,Observabl
                     }
 
                     success = instance!=null;
+
+                    if(success){
+
+                        instance.startCommunication();
+                    }
                 }
             }
 
@@ -90,8 +100,9 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             if(connect()){
 
-                startWorkerPublish();
-                startWorkerSubscribe();
+                startWorkerProducer();
+                startWorkerConsumer();
+                notifyConnEstablished();
             }
 
         }catch (Exception e){
@@ -100,18 +111,15 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
     }
 
-    public static void deInit(){
+    @Override
+    public void close(){
 
-        if(workerPublish!=null) {
-            workerPublish.interrupt();
+        if(workerProducer !=null) {
+            workerProducer.interrupt();
         }
 
-        if(workerSubscribe!=null) {
-            workerSubscribe.interrupt();
-        }
-
-        if(instance!=null) {
-            instance.close();
+        if(workerConsumer!=null) {
+            workerConsumer.interrupt();
         }
     }
 
@@ -181,13 +189,13 @@ abstract public class Communication extends Object implements Communic,Observabl
 
     public static Cmd findCmdByAnswer(AnsCmd ans) {
 
-        Cmd cmd = null;
-
         Header ans_header = ans.getHeader();
 
         if(txCmds.containsKey(ans_header.getResource())) {
 
-            Header cmd_header = txCmds.get(ans_header.getResource()).getHeader();
+            Cmd cmd = txCmds.get(ans_header.getResource());
+
+            Header cmd_header = cmd.getHeader();
 
             if ((   ans_header.getResource()    == cmd_header.getResource())    &&
                 (   ans_header.getDest()        == cmd.getAddress())            &&
@@ -203,12 +211,14 @@ abstract public class Communication extends Object implements Communic,Observabl
 
     public static CommunicationUnit[] getArrayOfUnit() {
 
-        CommunicationUnit[] ret = null;
+        CommunicationUnit[] ret = new CommunicationUnit[units.size()];
 
         if (units.size() > 0) {
 
-            //TODO Verificar a conversao de map para array
-            ret = units.values().toArray(new CommunicationUnit[units.size()]);
+            Log.d("","Teste");
+
+            // TODO Verificar a conversao de map para array
+            ret = units.values().toArray(ret);
         }
 
         return ret;
@@ -297,6 +307,21 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
     }
 
+
+    /**
+     *
+     * Notifica conexao estabelecida
+     *
+     */
+    @Override
+    public void notifyConnEstablished(){
+
+        for(ObserverCommunication ob : units.values()){
+
+            ob.connEstablished();
+        }
+    }
+
     /**
      *
      * Retorna o singleton
@@ -314,10 +339,10 @@ abstract public class Communication extends Object implements Communic,Observabl
      * Thread para processamento da pilha de saida
      */
     @Override
-    public void startWorkerPublish() {
+    public void startWorkerProducer() {
 
-        workerPublish   = new WorkerPublish();
-        workerPublish.start();
+        workerProducer = new WorkerProducer();
+        workerProducer.start();
     }
 
     /**
@@ -325,10 +350,10 @@ abstract public class Communication extends Object implements Communic,Observabl
      *
      */
     @Override
-    public void startWorkerSubscribe() {
+    public void startWorkerConsumer() {
 
-        workerSubscribe = new WorkerSubscribe();
-        workerSubscribe.start();
+        workerConsumer = new WorkerConsumer();
+        workerConsumer.start();
     }
 
     /**
@@ -339,7 +364,7 @@ abstract public class Communication extends Object implements Communic,Observabl
     public void publish(Cmd cmd) {
 
         addCmd(cmd);
-        workerPublish.flush(IdMessage.CMD);
+        workerProducer.flush(IdMessage.CMD);
     }
 
     /**
@@ -349,7 +374,7 @@ abstract public class Communication extends Object implements Communic,Observabl
     public void publish(AnsCmd ans) {
 
         // TODO Criar lista de resposta para ser usada como slave
-        workerPublish.flush(IdMessage.ANS);
+        workerProducer.flush(IdMessage.ANS);
     }
 
     /**
@@ -358,7 +383,7 @@ abstract public class Communication extends Object implements Communic,Observabl
      * @param frame
      */
     @Override
-    public void subscribe(DataFrame frame){
+    public void consumerFrame(DataFrame frame){
 
         AnsCmd      ans = new AnsCmd();
 
@@ -368,9 +393,9 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
     }
 
-    public Handler getHandlerSubscribe(){
+    public Handler getHandlerConsumer(){
 
-        return workerSubscribe.getHandler();
+        return workerConsumer.getHandler();
     }
 
     /**
@@ -378,9 +403,9 @@ abstract public class Communication extends Object implements Communic,Observabl
      * Hook para processamento das mensagens
      *
      */
-    private class WorkerSubscribe extends Thread implements Handler.Callback {
+    private class WorkerConsumer extends Thread implements Handler.Callback {
 
-        public Handler handler;
+        public Handler handler=null;
 
         @Override
         public void run() {
@@ -391,18 +416,25 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
 
         @Override
-        public boolean  handleMessage(Message msg) {
+        public boolean handleMessage(Message msg) {
 
-            IdMessage id  = IdMessage.values()[msg.what];
+            String data = msg.getData().getString("PAYLOAD");
 
-            String data  = msg.getData().getString("PAYLOAD");
-
-            DataFrame frame = new DataFrame();
-            frame.setData(data);
-
-            subscribe(frame);
+            doWork(IdMessage.values()[msg.what],data);
 
             return true;
+        }
+
+        public void doWork(IdMessage i,String data) {
+
+            DataFrame frame = new DataFrame(data);
+            Cmd         cmd = new Cmd();
+
+            switch (i){
+
+                case ANS:   consumerFrame(frame);           break;
+                case CMD:   Decoder.frame2Cmd(frame,cmd);   break;
+            }
         }
 
         public Handler getHandler() {
@@ -410,9 +442,9 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
     }
 
-    private class WorkerPublish extends Thread implements Handler.Callback {
+    private class WorkerProducer extends Thread implements Handler.Callback {
 
-        public Handler handler;
+        public Handler handler=null;
 
         @Override
         public void run() {
@@ -444,7 +476,7 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             if(flg){
 
-                publish(frame);
+                producerFrame(frame);
             }
         }
 
@@ -457,7 +489,9 @@ abstract public class Communication extends Object implements Communic,Observabl
          */
         public void flush(IdMessage id) {
 
-            handler.sendEmptyMessage(id.ordinal());
+            if (handler!=null) {
+                handler.sendEmptyMessage(id.ordinal());
+            }
         }
     }
 }

@@ -7,5 +7,6 @@ package com.example.jefferson.goodstracker.Communication;
 public interface ObserverCommunication {
 
     public int getAddress();
+    public void connEstablished();
     public void updateAnswer(AnsCmd ans);
 }

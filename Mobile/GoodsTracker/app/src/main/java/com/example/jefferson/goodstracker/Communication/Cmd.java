@@ -11,6 +11,12 @@ public class Cmd  extends Object{
     private Header              header;
     private PayLoad             payload;
 
+    public Cmd(){
+
+        header  = new Header();
+        payload = new PayLoad();
+    }
+
     public Cmd(int address, int dest,String r,Operation o){
 
         header  = new Header(r,o);

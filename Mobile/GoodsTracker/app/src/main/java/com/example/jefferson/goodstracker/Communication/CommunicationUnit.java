@@ -10,6 +10,8 @@ import java.io.IOException;
 
 abstract public class CommunicationUnit  extends Object implements ObserverCommunication {
 
+    private static Communic communic = null;
+
     /*
      * Endereco da unidade
      */
@@ -34,7 +36,7 @@ abstract public class CommunicationUnit  extends Object implements ObserverCommu
 
     public void sendCMD(Cmd cmd) {
 
-        Communication.addCmd(cmd);
+        Communication.getInstance().publish(cmd);
     }
 
     public int getAddress() {
@@ -62,6 +64,12 @@ abstract public class CommunicationUnit  extends Object implements ObserverCommu
             System.out.println(e.toString());
             Log.d("",e.toString());
         }
+    }
+
+    @Override
+    public void connEstablished(){
+
+        communic = Communication.getInstance();
     }
 
     abstract public void onReceiveAnswer(AnsCmd ans);

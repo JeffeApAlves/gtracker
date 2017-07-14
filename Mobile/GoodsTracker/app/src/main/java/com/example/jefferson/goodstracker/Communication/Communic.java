@@ -8,8 +8,8 @@ public interface Communic {
 
     boolean connect();
     void close();
-    void startWorkerPublish();
-    void startWorkerSubscribe();
-    void publish(DataFrame frame);
-    void subscribe(DataFrame frame);
+    void startWorkerProducer();
+    void startWorkerConsumer();
+    void producerFrame(DataFrame frame);
+    void consumerFrame(DataFrame frame);
 }

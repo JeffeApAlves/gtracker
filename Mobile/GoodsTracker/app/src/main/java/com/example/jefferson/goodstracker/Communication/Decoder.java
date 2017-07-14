@@ -42,6 +42,57 @@ public class Decoder extends Object{
         static public final int DATE = 18;
     };
 
+
+    public static boolean frame2Cmd(DataFrame frame,Cmd cmd){
+
+        boolean ret     = false;
+
+        try {
+
+            String[] list = frame.getData().split(String.valueOf(CONST_COM.CHAR.SEPARATOR));
+
+            //TODO verificar substring
+            // Exclui CheckSum
+            frame.setData(frame.getData().substring(0, frame.getData().length() - 2));
+            byte cheksumRx = AsHex(list, list.length-1);
+            ret = frame.checkSum() == cheksumRx;
+
+            if (ret) {
+
+                Header header = decoderHeader(list);
+
+                cmd.setHeader(header);
+
+                if (header.getResource().equals(RESOURCE_TYPE.TLM) &&
+                        header.getOperation().equals(Operation.AN)) {
+
+                    cmd.setPayload(frame.getPayLoad());
+                }
+
+            } else {
+
+                Log.d("","Erro de CheckSum");
+            }
+        }
+        catch (Exception e) {
+
+            ret = false;
+
+            System.out.println("Erro na decodificacao do frame");
+            System.out.println(frame.getData());
+            System.out.println(e.toString());
+            Log.d("",e.toString());
+        }
+
+        return ret;
+    }
+
+    /**
+     *
+     * @param data
+     * @param ans
+     * @return
+     */
     public static boolean str2Ans(String data, AnsCmd ans){
 
         DataFrame frame = new DataFrame();
@@ -99,8 +150,8 @@ public class Decoder extends Object{
                     ans.setHeader(header);
 
                     if (header.getResource().equals(RESOURCE_TYPE.TLM) &&
-                        header.getOperation().equals(Operation.AN))
-                    {
+                        header.getOperation().equals(Operation.AN)) {
+
                         ans.setTelemetria(decoderTelemetria(list));
                     }
 
