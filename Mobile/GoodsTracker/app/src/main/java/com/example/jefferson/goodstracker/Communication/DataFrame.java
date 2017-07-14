@@ -1,25 +1,33 @@
 package com.example.jefferson.goodstracker.Communication;
 
+import android.util.Log;
+
+import java.nio.charset.StandardCharsets;
+
 /**
  * Created by Jefferson on 08/07/2017.
  */
 
 public class DataFrame  extends Object {
 
-    protected Header    header;
-    protected PayLoad   payLoad;
-    protected String    data;
+    protected   TypeFrame typeFrame;
+    protected   Header    header;
+    protected   PayLoad   payLoad;
+    protected   String    data;
 
-    public DataFrame(String data) {
 
+    public DataFrame(String data,TypeFrame type) {
+
+        this.typeFrame = type;
         setData(data);
     }
 
-    public DataFrame() {
+    public DataFrame(TypeFrame type) {
 
+        this.typeFrame = type;
         header  = new Header();
         payLoad = new PayLoad();
-        data   = "";
+        data    = "";
     }
 
     public Header getHeader() {
@@ -29,8 +37,8 @@ public class DataFrame  extends Object {
 
     public void setHeader(Header value) {
 
-        header  = value;
-        data    = header.str() + CONST_COM.CHAR.SEPARATOR + (payLoad==null?"":payLoad.str());
+        header              = value;
+        updateData();
     }
 
     PayLoad getPayLoad() {
@@ -40,8 +48,8 @@ public class DataFrame  extends Object {
 
     void setPayLoad(PayLoad value) {
 
-        payLoad = value;
-        data    = header.str() + CONST_COM.CHAR.SEPARATOR + (payLoad == null ? "" : payLoad.str());
+        payLoad             = value;
+        updateData();
     }
 
     String getData() {
@@ -49,19 +57,41 @@ public class DataFrame  extends Object {
         return data;
     }
 
-    void setData(String value) {
+    private void updateData(){
 
-        data   = value;
+        IDecoder decoder    = DecoderFrame.create(typeFrame);
 
-        if(value.length() >= header.length()+1){
+        data    =           decoder.header_to_str(header)           +
+                            CONST_COM.CHAR.SEPARATOR                +
+                            String.format("%03d",payLoad.length())  +
+                            CONST_COM.CHAR.SEPARATOR                +
+                            payLoad.getData()                       +
+                            CONST_COM.CHAR.SEPARATOR;
+    }
 
-            header = Decoder.str2Header(value);
-            payLoad.setData(value.substring( (header.length() + 1), value.length()));
+    private void updateHeaderPayLoad(){
+
+        final int HEADER_LENGTH = 28;             // (5)+(5)+(5)+(2)+(3)+(3) + 5 separadores
+
+        if(data.length() >= HEADER_LENGTH+1){
+
+            IDecoder decoder = DecoderFrame.create(typeFrame);
+
+            header = decoder.str_to_header(data);
+            payLoad.setData(data.substring( (HEADER_LENGTH + 1), data.length()));
+
         }else{
 
             header  = new Header();
             payLoad = new PayLoad();
         }
+    }
+
+    void setData(String value) {
+
+        data = value;
+
+        updateHeaderPayLoad();
     }
 
     public byte getByte(int i) {
@@ -71,7 +101,7 @@ public class DataFrame  extends Object {
 
     public void append(char b) {
 
-        data += b;
+        data +=b;
     }
 
     public int getSizeOfFrame() {
@@ -84,18 +114,28 @@ public class DataFrame  extends Object {
         return getSizeOfFrame() <= 0;
     }
 
-    public byte checkSum() {
+    public byte calcSum() {
 
         byte checkSum = 0;
 
-        byte[] datas = data.getBytes();
+        byte[] d = data.getBytes();
 
-        for (int i = 0; i < datas.length; i++) {
+        for (int i = 0; i < getSizeOfFrame(); i++) {
 
-            checkSum ^= datas[i];
+            checkSum ^= d[i];
         }
 
         return checkSum;
+    }
+
+    public boolean checkSum(byte val) {
+
+        return calcSum()==val;
+    }
+
+    public TypeFrame getTypeFrame() {
+
+        return typeFrame;
     }
 
     public String str() {
@@ -103,8 +143,8 @@ public class DataFrame  extends Object {
         //TODO verificar a conversao para hexa 2 digitos
 
         return  CONST_COM.CHAR.RX_FRAME_START +
-                data +
-                Integer.toHexString(checkSum()) +
+                data.toString() +
+                Integer.toHexString(calcSum()) +
                 CONST_COM.CHAR.RX_FRAME_END;
     }
 
@@ -113,7 +153,7 @@ public class DataFrame  extends Object {
         return  str().toCharArray();
     }
 
-    public byte[] getBytes() {
+    public byte[] toBytesArray() {
 
         return  str().getBytes();
     }

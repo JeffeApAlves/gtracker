@@ -13,7 +13,7 @@ import java.util.Date;
  * Created by Jefferson on 08/07/2017.
  */
 
-public class Decoder extends Object{
+public class DecoderFrameOwner extends DecoderFrame{
 
     class INDEX {
 
@@ -43,9 +43,35 @@ public class Decoder extends Object{
     };
 
 
-    public static boolean frame2Cmd(DataFrame frame,Cmd cmd){
+    protected DecoderFrameOwner(){
 
-        boolean ret     = false;
+    }
+
+    /**
+     *
+     * @param data
+     * @param ans
+     * @return
+     */
+    @Override
+    public boolean str_to_ans(String data, AnsCmd ans){
+
+        DataFrame frame = new DataFrame(TypeFrame.OWNER);
+        frame.setData(data);
+
+        return frame_to_ans(frame,ans);
+    }
+
+    /**
+     *
+     * @param frame
+     * @param cmd
+     * @return
+     */
+    @Override
+    public boolean frame_to_cmd(DataFrame frame,Cmd cmd){
+
+        boolean ret = false;
 
         try {
 
@@ -55,9 +81,8 @@ public class Decoder extends Object{
             // Exclui CheckSum
             frame.setData(frame.getData().substring(0, frame.getData().length() - 2));
             byte cheksumRx = AsHex(list, list.length-1);
-            ret = frame.checkSum() == cheksumRx;
 
-            if (ret) {
+            if (frame.checkSum(cheksumRx)) {
 
                 Header header = decoderHeader(list);
 
@@ -69,14 +94,13 @@ public class Decoder extends Object{
                     cmd.setPayload(frame.getPayLoad());
                 }
 
+                ret = true;
             } else {
 
                 Log.d("","Erro de CheckSum");
             }
         }
         catch (Exception e) {
-
-            ret = false;
 
             System.out.println("Erro na decodificacao do frame");
             System.out.println(frame.getData());
@@ -88,31 +112,17 @@ public class Decoder extends Object{
     }
 
     /**
-     *
-     * @param data
-     * @param ans
-     * @return
-     */
-    public static boolean str2Ans(String data, AnsCmd ans){
-
-        DataFrame frame = new DataFrame();
-        frame.setData(data);
-
-        return frame2Ans(frame,ans);
-    }
-    /**
      * Answer to Frame
      *
      * @param ans
      * @param frame
      * @return
      */
-    public static boolean ans2Frame(AnsCmd ans, DataFrame frame){
+    @Override
+    public boolean ans_to_frame(AnsCmd ans, DataFrame frame){
 
-        PayLoad payLoad     = new PayLoad();
-        Header header       = ans.getHeader();
-
-        tlm2Payload(ans.getTelemetria(),payLoad);
+        Header  header      = ans.getHeader();
+        PayLoad payLoad     = buildPayload(ans.getTelemetria());
 
         frame.setHeader(header);
         frame.setPayLoad(payLoad);
@@ -127,7 +137,8 @@ public class Decoder extends Object{
      * @param ans
      * @return
      */
-    public static boolean frame2Ans(DataFrame frame, AnsCmd ans) {
+    @Override
+    public boolean frame_to_ans(DataFrame frame, AnsCmd ans) {
 
         boolean ret     = false;
 
@@ -141,7 +152,7 @@ public class Decoder extends Object{
                 // Exclui CheckSum
                 frame.setData(frame.getData().substring(0, frame.getData().length() - 2));
                 byte cheksumRx = AsHex(list, list.length-1);
-                ret = frame.checkSum() == cheksumRx;
+                ret = frame.calcSum() == cheksumRx;
 
                 if (ret) {
 
@@ -185,11 +196,11 @@ public class Decoder extends Object{
      * @param frame
      * @return
      */
-    public static boolean cmd2Frame(Cmd cmd, DataFrame frame) {
+    @Override
+    public boolean cmd_to_frame(Cmd cmd, DataFrame frame) {
 
-        frame.setHeader(cmd.getHeader());
         frame.setPayLoad(cmd.getPayload());
-
+        frame.setHeader(cmd.getHeader());
         return true;
     }
 
@@ -198,7 +209,8 @@ public class Decoder extends Object{
      * @param header
      * @return
      */
-    public static String header2str(Header header) {
+    @Override
+    public String header_to_str(Header header) {
 
         StringBuilder sb = new StringBuilder();
         boolean ret    = false;
@@ -230,14 +242,16 @@ public class Decoder extends Object{
      * @param data
      * @return
      */
-    public static Header str2Header(String data) {
+    @Override
+    public Header str_to_header(String data) {
 
         return decoderHeader(data.split(String.valueOf(CONST_COM.CHAR.SEPARATOR)));
     }
 
     // Telemetria to Payload
-    private static boolean tlm2Payload(DataTelemetria b ,PayLoad payload) {
+    private static PayLoad buildPayload(DataTelemetria b) {
 
+        PayLoad payload = new PayLoad();
         boolean ret     = false;
 
         try {
@@ -292,7 +306,7 @@ public class Decoder extends Object{
             Log.d("",e.toString());
         }
 
-        return ret;
+        return ret?payload:new PayLoad();
     }
 
     private static DataTelemetria decoderTelemetria(String[] list) {

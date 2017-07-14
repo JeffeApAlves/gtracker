@@ -384,7 +384,9 @@ abstract public class Communication extends Object implements Communic,Observabl
 
         AnsCmd ans = new AnsCmd();
 
-        if(Decoder.frame2Ans(frame,ans)){
+        IDecoder decoder = DecoderFrame.create(frame);
+
+        if(decoder.frame_to_ans(frame,ans)){
 
             acceptAnswer(ans);
         }
@@ -394,7 +396,9 @@ abstract public class Communication extends Object implements Communic,Observabl
 
         Cmd cmd = new Cmd();
 
-        if(Decoder.frame2Cmd(frame,cmd)){
+        IDecoder decoder = DecoderFrame.create(frame);
+
+        if(decoder.frame_to_cmd(frame,cmd)){
 
             //TODO acceptCmd(cmd)
         }
@@ -436,8 +440,8 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             switch (i){
 
-                case ANS:   consumerFrame(new DataFrame(data));   break;
-                case CMD:   consumerCmd(new DataFrame(data));     break;
+                case ANS:   consumerFrame(  new DataFrame(data,TypeFrame.OWNER));   break;
+                case CMD:   consumerCmd(    new DataFrame(data,TypeFrame.OWNER));   break;
             }
         }
 
@@ -470,12 +474,13 @@ abstract public class Communication extends Object implements Communic,Observabl
 
             boolean flg = false;
 
-            DataFrame frame = new DataFrame();
+            DataFrame   frame   = new DataFrame(TypeFrame.OWNER);
+            IDecoder    decoder = DecoderFrame.create(frame);
 
             switch (i){
 
-                case ANS:   flg = Decoder.ans2Frame(takeFirstAns(),frame);break;
-                case CMD:   flg = Decoder.cmd2Frame(takeFirstCmd(),frame);break;
+                case ANS:   flg = decoder.ans_to_frame(takeFirstAns(),frame);break;
+                case CMD:   flg = decoder.cmd_to_frame(takeFirstCmd(),frame);break;
             }
 
             if(flg){

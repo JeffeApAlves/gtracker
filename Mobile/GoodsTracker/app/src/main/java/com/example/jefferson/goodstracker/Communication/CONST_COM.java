@@ -17,6 +17,7 @@ public class CONST_COM  extends Object{
         static public final char RX_FRAME_END      = ']';
         static public final char CR                = '\r';
         static public final char LF                = '\n';
+        static public final char SEPARATOR_CSV     = ',';
         static public final char SEPARATOR         = ':';
         static public final char ASTERISCO         = '*';
     }

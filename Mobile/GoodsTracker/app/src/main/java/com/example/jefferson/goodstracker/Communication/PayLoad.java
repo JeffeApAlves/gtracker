@@ -6,8 +6,8 @@ package com.example.jefferson.goodstracker.Communication;
 
 public class PayLoad  extends Object{
 
-    public final int    LEN_MAX_PAYLOAD = 256;
-    private String      data            = "";
+    public final int        LEN_MAX_PAYLOAD = 256;
+    private StringBuilder   data;
 
     public PayLoad(){
 
@@ -16,26 +16,25 @@ public class PayLoad  extends Object{
 
     public void append(char b) {
 
-        data += b;
+        data.append(b);
     }
 
     public void append(String b) {
 
-        data += b;
+        data.append(b);
     }
 
     public void append(boolean b) {
 
-        data += String.valueOf((b?1:0));
+        data.append(String.valueOf((b?1:0)));
     }
-
 
     public void append(double b) {
 
         //TODO verificar o que o parametro G faz na conversao string
         //data += b.toString("G");
 
-        data += Double.toString(b);
+        data.append(b);
     }
 
     public int length() {
@@ -53,25 +52,17 @@ public class PayLoad  extends Object{
         return length() <= 0;
     }
 
-    public String str() {
-
-        return String.format("%03d",length()) + CONST_COM.CHAR.SEPARATOR + data + CONST_COM.CHAR.SEPARATOR;
-    }
-
     public void clear(){
-        data = "";
-    }
-
-    public char[] toCharArray() {
-
-        return str().toCharArray();
+        data = new StringBuilder();
     }
 
     public String getData() {
-        return data;
+
+        return data!=null?data.toString():"";
     }
 
     public void setData(String data) {
-        this.data = data;
+
+        this.data = new StringBuilder(data);
     }
 }

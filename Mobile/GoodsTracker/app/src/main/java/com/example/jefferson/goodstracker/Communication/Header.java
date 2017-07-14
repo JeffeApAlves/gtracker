@@ -6,8 +6,6 @@ package com.example.jefferson.goodstracker.Communication;
 
 public class Header  extends Object{
 
-    public final int LENGTH = 28;             // (5)+(5)+(5)+(2)+(3)+(3) + 5 separadores
-
     private int         dest;
     private int         address;
     private int         count = 0;
@@ -33,25 +31,6 @@ public class Header  extends Object{
         resource    = "";
         operation   = Operation.NN;
         sizePayLoad = 0;
-    }
-
-    public String str() {
-
-        return Decoder.header2str(this);
-    }
-
-    public void clear() {
-
-    }
-
-    public char[] toCharArray() {
-
-        return str().toCharArray();
-    }
-
-    public int length(){
-
-        return LENGTH;
     }
 
     public int getDest() {

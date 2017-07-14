@@ -24,7 +24,7 @@ public class DataFrameTest {
     @Before
     public void executedBeforeEach() {
 
-        frame = new DataFrame();
+        frame = new DataFrame(TypeFrame.OWNER);
     }
 
     @Test

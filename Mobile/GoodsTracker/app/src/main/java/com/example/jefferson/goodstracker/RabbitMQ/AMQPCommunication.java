@@ -31,9 +31,9 @@ public class AMQPCommunication extends Communication {
     @Override
     public void producerFrame(DataFrame frame) {
 
-        String routing = "cmd." + String.format("%05d",frame.getHeader().getDest());
+        String routing = "cmd." + String.format("%05d", frame.getHeader().getDest());
 
-        rabbitMQ.publish(RABBITMQ_CONST.EXCHANGE.CMD,routing,frame);
+        rabbitMQ.publish(RABBITMQ_CONST.EXCHANGE.CMD, routing, frame);
     }
 
     @Override
@@ -43,18 +43,20 @@ public class AMQPCommunication extends Communication {
 
         // Declare all things inside of server rabbitmq
         rabbitMQ.createExchange();
+        rabbitMQ.createConsumerAns(observer.getAddress(), getHandlerConsumer());
+        rabbitMQ.createConsumerCmd(observer.getAddress(), getHandlerConsumer());
     }
 
     @Override
-    public void startWorkerConsumer() {
-
-        super.startWorkerConsumer();
+    public void notifyConnEstablished() {
 
         // Criando consumer e definindo handler de manipulacao das mensagens recebidas para cada unidade
-        for(ObserverCommunication ob:getArrayOfUnit()){
+        for (ObserverCommunication ob : getArrayOfUnit()) {
 
-            rabbitMQ.createConsumerAns(ob.getAddress(),getHandlerConsumer());
-            rabbitMQ.createConsumerCmd(ob.getAddress(),getHandlerConsumer());
+            rabbitMQ.createConsumerAns(ob.getAddress(), getHandlerConsumer());
+            rabbitMQ.createConsumerCmd(ob.getAddress(), getHandlerConsumer());
+
+            ob.connEstablished();
         }
     }
 }

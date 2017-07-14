@@ -98,7 +98,7 @@ public class RabbitMQ  extends Object {
             channel.confirmSelect();
 
             try{
-                channel.basicPublish(exchange, routing, null, frame.getBytes());
+                channel.basicPublish(exchange, routing, null, frame.toBytesArray());
                 channel.waitForConfirmsOrDie();
                 Log.d("", "[sucesso] " + frame.str());
             } catch (Exception e){

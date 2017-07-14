@@ -8,8 +8,8 @@ import java.io.IOException;
 
 public class Cmd  extends Object{
 
-    private Header              header;
-    private PayLoad             payload;
+    private Header      header;
+    private PayLoad     payload;
 
     public Cmd(){
 
