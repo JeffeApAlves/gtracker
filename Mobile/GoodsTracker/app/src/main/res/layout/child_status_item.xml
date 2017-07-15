@@ -1,61 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp" >
+    android:orientation="vertical"
+    android:padding="10dp">
 
-    <TextView
-        android:id="@+id/lat"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:paddingLeft="25dp" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/lng"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/laptop"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Tracker: 000000 " />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:paddingLeft="25dp" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/labelLat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Latitude: " />
 
 
-    <TextView
-        android:id="@+id/laptop"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textLat"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/labelLat"
+            android:text="00.000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:paddingLeft="25dp" />
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/labelLng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Longitude: " />
+
+        <TextView
+            android:id="@+id/textLng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/labelLng"
+            android:text="00.000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_info_black_24dp"
-        android:contentDescription="@string/app_name"/>
+        android:orientation="horizontal">
 
-    <ProgressBar
-        android:id="@+id/level"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/labelLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Level: " />
+
+        <ProgressBar
+            android:id="@+id/level"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="53dp"
+            android:layout_marginEnd="278dp"
+            android:layout_toRightOf="@id/labelLevel"
+            android:layout_toStartOf="@+id/delete" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="53dp"
-        android:layout_marginEnd="278dp"
-        android:layout_toStartOf="@+id/delete" />
+        android:orientation="horizontal">
 
-    <ToggleButton
-        android:id="@+id/lockButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="260dp"
-        android:layout_toStartOf="@+id/delete"
-        android:text="ToggleButton" />
+        <TextView
+            android:id="@+id/labellock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lock: " />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/labellock"
+            android:id="@+id/lock"
+            android:onClick="onLock"/>
+
+    </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

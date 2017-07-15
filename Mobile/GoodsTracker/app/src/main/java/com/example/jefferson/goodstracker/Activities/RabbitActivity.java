@@ -8,6 +8,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jefferson.goodstracker.Communication.Communication;
@@ -24,6 +25,7 @@ public class RabbitActivity extends AppCompatActivity {
     private TextView        mTextMessage;
     BottomNavigationView    navigation;
     TextView                tv;
+    EditText                et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +35,12 @@ public class RabbitActivity extends AppCompatActivity {
 
         Communication.create(TYPE_COMMUNICATION.AMQP);
 
-        mTextMessage    = (TextView)                findViewById(R.id.message);
-        navigation      = (BottomNavigationView)    findViewById(R.id.navigation);
-        tv              = (TextView)                findViewById(R.id.textView);
+//        mTextMessage    = (TextView)                findViewById(R.id.message);
+//        navigation      = (BottomNavigationView)    findViewById(R.id.navigation);
+//        tv              = (TextView)                findViewById(R.id.textView);
+//        et              = (EditText)                findViewById(R.id.text);
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     public void onClick_btConnect(View view){
@@ -57,11 +60,12 @@ public class RabbitActivity extends AppCompatActivity {
         }
     };
 
+    public void onLock(View view){
+
+    };
+
     public void onClick_btPublish(View view){
 
-//        EditText et = (EditText) findViewById(R.id.text);
-//        rabbitMQ.putLast(et.getText().toString());
-//        et.setText("");
     };
 
     final Handler incomingMessageHandler = new Handler() {
@@ -82,7 +86,7 @@ public class RabbitActivity extends AppCompatActivity {
         super.onDestroy();
 
         Communication.create(TYPE_COMMUNICATION.NONE);
-    }
+    };
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
         = new BottomNavigationView.OnNavigationItemSelectedListener() {
