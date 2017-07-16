@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class Tracker extends CommunicationUnit {
 
-    private DataTelemetria  tlm;
+    private DataTelemetria  tlm = new DataTelemetria();
 
     public Tracker(int val) throws IOException {
 

@@ -17,25 +17,26 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.jefferson.goodstracker.Domain.DataTelemetria;
+import com.example.jefferson.goodstracker.Domain.Tracker;
 import com.example.jefferson.goodstracker.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-    private Activity context;
-    private Map<String, List<String>> laptopCollections;
-    private List<String> laptops;
+    private Activity                    context;
+    private Tracker[]                   trackers;
 
-    public ExpandableListAdapter(Activity context, List<String> laptops,
-                                 Map<String, List<String>> laptopCollections) {
-        this.context = context;
-        this.laptopCollections = laptopCollections;
-        this.laptops = laptops;
+    public ExpandableListAdapter(Activity context, Tracker[] list) {
+
+        this.context            = context;
+        this.trackers            = list;
     }
 
     public Object getChild(int groupPosition, int childPosition) {
-        return laptopCollections.get(laptops.get(groupPosition)).get(childPosition);
+        return groupPosition<trackers.length?trackers[groupPosition]:null;
     }
 
     public long getChildId(int groupPosition, int childPosition) {
@@ -45,56 +46,41 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-        final String laptop = (String) getChild(groupPosition, childPosition);
-        LayoutInflater inflater = context.getLayoutInflater();
+
+        final Tracker tracker   = (Tracker) getGroup(groupPosition);
+        DataTelemetria tlm      = tracker.getTlm();
 
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.child_status_item, null);
+
+            LayoutInflater inflater = context.getLayoutInflater();
+            convertView             = inflater.inflate(R.layout.child_status_item, null);
         }
 
-        TextView item = (TextView) convertView.findViewById(R.id.laptop);
+        TextView textLat        = (TextView) convertView.findViewById(R.id.textLat);
+        TextView textLng        = (TextView) convertView.findViewById(R.id.textLng);
+        TextView valLevel       = (TextView) convertView.findViewById(R.id.valueLevel);
+        ProgressBar barLevel    = (ProgressBar)convertView.findViewById(R.id.barLevel);
 
-        ImageView delete = (ImageView) convertView.findViewById(R.id.delete);
-        delete.setOnClickListener(new OnClickListener() {
 
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Do you want to remove?");
-                builder.setCancelable(false);
-                builder.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                List<String> child =
-                                        laptopCollections.get(laptops.get(groupPosition));
-                                child.remove(childPosition);
-                                notifyDataSetChanged();
-                            }
-                        });
-                builder.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-        });
+        textLat.setText(String.format("%f",tlm.getLatitude()));
+        textLng.setText(String.format("%f",tlm.getLongitude()));
+        valLevel.setText(String.format("%.1f",tlm.getValLevel()));
+        barLevel.setMax((int) tlm.getLevel().getTol().getMax());
+        barLevel.setProgress((int)tlm.getValLevel());
 
-        item.setText(laptop);
         return convertView;
     }
 
     public int getChildrenCount(int groupPosition) {
-        return laptopCollections.get(laptops.get(groupPosition)).size();
+        return 1;
     }
 
     public Object getGroup(int groupPosition) {
-        return laptops.get(groupPosition);
+        return groupPosition<trackers.length?trackers[groupPosition]:null;
     }
 
     public int getGroupCount() {
-        return laptops.size();
+        return trackers.length;
     }
 
     public long getGroupId(int groupPosition) {
@@ -104,18 +90,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
 
-        String laptopName = (String) getGroup(groupPosition);
+        Tracker tracker = (Tracker) getGroup(groupPosition);
 
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.group_status_item,
-                    null);
+
+            LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.group_status_item, null);
         }
 
         TextView item = (TextView) convertView.findViewById(R.id.laptop);
         item.setTypeface(null, Typeface.BOLD);
-        item.setText(laptopName);
+        item.setText(String.format("Tracker: %05d",tracker.getAddress()));
         return convertView;
     }
 

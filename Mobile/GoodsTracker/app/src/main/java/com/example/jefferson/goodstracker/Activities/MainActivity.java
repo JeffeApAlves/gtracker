@@ -17,7 +17,12 @@ import android.view.MenuItem;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.example.jefferson.goodstracker.Communication.Communication;
+import com.example.jefferson.goodstracker.Communication.TYPE_COMMUNICATION;
+import com.example.jefferson.goodstracker.Domain.Tracker;
 import com.example.jefferson.goodstracker.R;
+
+import java.io.IOException;
 
 import static android.widget.ExpandableListView.*;
 
@@ -26,8 +31,9 @@ import static android.widget.ExpandableListView.*;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    ExpandableListView  expListView;
+    Tracker[]   trackers;
 
+    ExpandableListView  expListView;
     TrackerListView     trackerListView = new TrackerListView();
 
 
@@ -36,7 +42,14 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        Communication.create(TYPE_COMMUNICATION.AMQP);
+
+        NavigationView navigationView   = (NavigationView) findViewById(R.id.nav_view);
+        expListView                     = (ExpandableListView) findViewById(R.id.laptop_list);
+        Toolbar toolbar                 = (Toolbar) findViewById(R.id.toolbar);
+
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -54,18 +67,18 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //setGroupIndicatorToRight();
+        createTrackers();
 
-        expListView = (ExpandableListView) findViewById(R.id.laptop_list);
+        createList();
+    }
 
-        final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
-                this, trackerListView.getGroupList(), trackerListView.getLaptopCollection());
+    private void createList() {
+
+        final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(this, trackers);
 
         expListView.setAdapter(expListAdapter);
-
 
         expListView.setOnChildClickListener(new OnChildClickListener() {
 
@@ -165,5 +178,22 @@ public class MainActivity extends AppCompatActivity
         final float scale = getResources().getDisplayMetrics().density;
         // Convert the dps to pixels, based on density scale
         return (int) (pixels * scale + 0.5f);
+    }
+
+    public void createTrackers(){
+
+        try {
+
+            trackers = new Tracker[5];
+
+            for(int i=0;i<trackers.length;i++){
+
+                trackers[i] = new Tracker(i+1);
+                trackers[i].requestBehavior();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

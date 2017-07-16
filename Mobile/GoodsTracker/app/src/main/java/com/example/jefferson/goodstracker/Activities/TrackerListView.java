@@ -15,7 +15,6 @@ public class TrackerListView {
     List<String> childList;
     Map<String, List<String>> collection;
 
-
     TrackerListView(){
 
         createGroupList();
@@ -33,44 +32,41 @@ public class TrackerListView {
     }
 
     public void createCollection() {
+
+        String[] list = null;
+
         // preparing laptops collection(child)
-        String[] hpModels = {"HP Pavilion G6-2014TX", "ProBook HP 4540",
-                "HP Envy 4-1025TX"};
-        String[] hclModels = {"HCL S2101", "HCL L2102", "HCL V2002"};
-        String[] lenovoModels = {"IdeaPad Z Series", "Essential G Series",
-                "ThinkPad X Series", "Ideapad Z Series"};
-        String[] sonyModels = {"VAIO E Series", "VAIO Z Series",
-                "VAIO S Series", "VAIO YB Series"};
-        String[] dellModels = {"Inspiron", "Vostro", "XPS"};
-        String[] samsungModels = {"NP Series", "Series 5", "SF Series"};
+        String[] hpModels       = {"HP Pavilion G6-2014TX", "ProBook HP 4540", "HP Envy 4-1025TX"};
+        String[] hclModels      = {"HCL S2101", "HCL L2102", "HCL V2002"};
+        String[] lenovoModels   = {"IdeaPad Z Series", "Essential G Series", "ThinkPad X Series", "Ideapad Z Series"};
+        String[] sonyModels     = {"VAIO E Series", "VAIO Z Series", "VAIO S Series", "VAIO YB Series"};
+        String[] dellModels     = {"Inspiron", "Vostro", "XPS"};
+        String[] samsungModels  = {"NP Series", "Series 5", "SF Series"};
 
         collection = new LinkedHashMap<String, List<String>>();
 
         for (String laptop : groupList) {
-            if (laptop.equals("HP")) {
-                loadChild(hpModels);
-            } else if (laptop.equals("Dell"))
-                loadChild(dellModels);
-            else if (laptop.equals("Sony"))
-                loadChild(sonyModels);
-            else if (laptop.equals("HCL"))
-                loadChild(hclModels);
-            else if (laptop.equals("Samsung"))
-                loadChild(samsungModels);
-            else
-                loadChild(lenovoModels);
 
-            collection.put(laptop, childList);
+            if (laptop.equals("HP"))            list = hpModels;
+            else if (laptop.equals("Dell"))     list = dellModels;
+            else if (laptop.equals("Sony"))     list = sonyModels;
+            else if (laptop.equals("HCL"))      list = hclModels;
+            else if (laptop.equals("Samsung"))  list = samsungModels;
+            else                                list = lenovoModels;
+
+            loadChild(laptop,list);
         }
     }
 
-    public void loadChild(String[] laptopModels) {
+    private void loadChild(String laptop,String[] laptopModels) {
 
         childList = new ArrayList<String>();
 
         for (String model : laptopModels) {
             childList.add(model);
         }
+
+        collection.put(laptop, childList);
     }
 
     public List<String> getGroupList() {

@@ -1,110 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp">
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/laptop"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Tracker: 000000 " />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/labelLat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="Latitude: " />
+    android:padding="10dp"
+    android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/textLat"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/labelLat"
-            android:text="00.000000" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1,3">
 
-    </LinearLayout>
+        <TableRow>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/labelLat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="Lat.: " />
 
-        <TextView
-            android:id="@+id/labelLng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="Longitude: " />
+            <TextView
+                android:id="@+id/textLat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="00.000000" />
 
-        <TextView
-            android:id="@+id/textLng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/labelLng"
-            android:text="00.000000" />
+            <TextView
+                android:id="@+id/labelLng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="Lng.: " />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textLng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00.000000" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/labelLevel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="Level: " />
+        </TableRow>
 
-        <ProgressBar
-            android:id="@+id/level"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="53dp"
-            android:layout_marginEnd="278dp"
-            android:layout_toRightOf="@id/labelLevel"
-            android:layout_toStartOf="@+id/delete" />
+        <TableRow>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/labelLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="Level: " />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/labellock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lock: " />
+                <TextView
+                    android:id="@+id/valueLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="000" />
 
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/labellock"
-            android:id="@+id/lock"
-            android:onClick="onLock"/>
+                <TextView
+                    android:id="@+id/unitLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="[L]" />
 
-    </LinearLayout>
+            </LinearLayout>
 
+            <ProgressBar
+                android:id="@+id/barLevel"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_span="4" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/labellock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lock: " />
+
+            <Switch
+                android:id="@+id/lock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onLock"
+                android:layout_span="4" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_span="5"
+                android:stretchColumns="1,2">
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/labelAxis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="[Eixo] " />
+
+                    <TextView
+                        android:id="@+id/labelAcc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="[Acc] " />
+
+                    <TextView
+                        android:id="@+id/labelRot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="[Rot] " />
+
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/labelX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="X: " />
+
+                    <TextView
+                        android:id="@+id/accX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="0.0" />
+
+                    <TextView
+                        android:id="@+id/rotX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="0.0" />
+
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/labelY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Y: " />
+
+                    <TextView
+                        android:id="@+id/accY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="0.0" />
+
+                    <TextView
+                        android:id="@+id/rotY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="0.0" />
+
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/labelZ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z: " />
+
+                    <TextView
+                        android:id="@+id/accZ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="0.0" />
+
+                    <TextView
+                        android:id="@+id/rotZ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="0.0" />
+
+
+                </TableRow>
+
+            </TableLayout>
+
+        </TableRow>
+
+    </TableLayout>
 
 </LinearLayout>
