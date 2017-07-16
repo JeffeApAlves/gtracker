@@ -26,13 +26,13 @@ import com.example.jefferson.goodstracker.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-    private Activity                    context;
-    private Tracker[]                   trackers;
+    private Activity    context;
+    private Tracker[]   trackers;
 
     public ExpandableListAdapter(Activity context, Tracker[] list) {
 
-        this.context            = context;
-        this.trackers            = list;
+        this.context    = context;
+        this.trackers   = list;
     }
 
     public Object getChild(int groupPosition, int childPosition) {

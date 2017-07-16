@@ -28,9 +28,6 @@ import static android.widget.ExpandableListView.*;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-//    ExpandableListView  expListView;
-//    TrackerListView     trackerListView = new TrackerListView();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity
         Communication.create(TYPE_COMMUNICATION.AMQP);
 
         NavigationView navigationView   = (NavigationView) findViewById(R.id.nav_view);
-  //      expListView                     = (ExpandableListView) findViewById(R.id.laptop_list);
+
         Toolbar toolbar                 = (Toolbar) findViewById(R.id.toolbar);
 
 
@@ -63,29 +60,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-
-//        createList();
     }
-/*
-    private void createList() {
-
-        final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(this, trackers);
-
-        expListView.setAdapter(expListAdapter);
-
-        expListView.setOnChildClickListener(new OnChildClickListener() {
-
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                final String selected = (String) expListAdapter.getChild(
-                        groupPosition, childPosition);
-                Toast.makeText(getBaseContext(), selected, Toast.LENGTH_LONG)
-                        .show();
-
-                return true;
-            }
-        });
-    }*/
 
     @Override
     public void onBackPressed() {
