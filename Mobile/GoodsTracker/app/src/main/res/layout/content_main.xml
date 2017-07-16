@@ -8,11 +8,5 @@
     tools:context="com.example.jefferson.goodstracker.Activities.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <ExpandableListView
-        android:id="@+id/laptop_list"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
-    </ExpandableListView>
-
 
 </android.support.constraint.ConstraintLayout>

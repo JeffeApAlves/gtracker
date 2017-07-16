@@ -14,12 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import com.example.jefferson.goodstracker.Communication.Communication;
 import com.example.jefferson.goodstracker.Communication.TYPE_COMMUNICATION;
-import com.example.jefferson.goodstracker.Domain.Tracker;
 import com.example.jefferson.goodstracker.R;
 
 import java.io.IOException;
@@ -31,10 +28,8 @@ import static android.widget.ExpandableListView.*;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Tracker[]   trackers;
-
-    ExpandableListView  expListView;
-    TrackerListView     trackerListView = new TrackerListView();
+//    ExpandableListView  expListView;
+//    TrackerListView     trackerListView = new TrackerListView();
 
 
     @Override
@@ -46,7 +41,7 @@ public class MainActivity extends AppCompatActivity
         Communication.create(TYPE_COMMUNICATION.AMQP);
 
         NavigationView navigationView   = (NavigationView) findViewById(R.id.nav_view);
-        expListView                     = (ExpandableListView) findViewById(R.id.laptop_list);
+  //      expListView                     = (ExpandableListView) findViewById(R.id.laptop_list);
         Toolbar toolbar                 = (Toolbar) findViewById(R.id.toolbar);
 
 
@@ -69,11 +64,9 @@ public class MainActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        createTrackers();
-
-        createList();
+//        createList();
     }
-
+/*
     private void createList() {
 
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(this, trackers);
@@ -92,7 +85,7 @@ public class MainActivity extends AppCompatActivity
                 return true;
             }
         });
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -134,14 +127,14 @@ public class MainActivity extends AppCompatActivity
 
         switch (id){
 
-            case R.id.nav_camera:                           break;
+            case R.id.nav_trip:     showTripActivit();      break;
+            case R.id.nav_camera:   showTrackerActivity();  break;
             case R.id.nav_gallery:                          break;
             case R.id.nav_slideshow:                        break;
             case R.id.nav_manage:                           break;
             case R.id.nav_share:                            break;
             case R.id.nav_send:                             break;
             case R.id.nav_server:   showServerActivity();   break;
-            case R.id.nav_trip:     showTripActivit();      break;
         }
 
 
@@ -150,15 +143,21 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void showTrackerActivity(){
+
+        Intent it = new Intent(this,   TrackerActivity.class);
+        startActivity(it);
+    }
+
     private void showServerActivity() {
 
-        Intent it = new Intent(MainActivity.this,   RabbitActivity.class);
+        Intent it = new Intent(this,   RabbitActivity.class);
         startActivity(it);
     }
 
     public void showTripActivit(){
 
-        Intent it = new Intent(MainActivity.this,   TripActivity.class);
+        Intent it = new Intent(this,   TripActivity.class);
         startActivity(it);
     }
 
@@ -167,9 +166,9 @@ public class MainActivity extends AppCompatActivity
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
-
+/*
         expListView.setIndicatorBounds( width - getDipsFromPixel(35),
-                                        width - getDipsFromPixel(5));
+                                        width - getDipsFromPixel(5));*/
     }
 
     // Convert pixel to dip
@@ -178,22 +177,5 @@ public class MainActivity extends AppCompatActivity
         final float scale = getResources().getDisplayMetrics().density;
         // Convert the dps to pixels, based on density scale
         return (int) (pixels * scale + 0.5f);
-    }
-
-    public void createTrackers(){
-
-        try {
-
-            trackers = new Tracker[5];
-
-            for(int i=0;i<trackers.length;i++){
-
-                trackers[i] = new Tracker(i+1);
-                trackers[i].requestBehavior();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
