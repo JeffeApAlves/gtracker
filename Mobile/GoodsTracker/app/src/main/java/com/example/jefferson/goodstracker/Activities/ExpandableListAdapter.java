@@ -10,15 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.jefferson.goodstracker.Domain.DataTelemetria;
 import com.example.jefferson.goodstracker.Domain.Notification;
 import com.example.jefferson.goodstracker.Domain.Tracker;
 import com.example.jefferson.goodstracker.R;
 
-import java.util.Map;
 
 //http://theopentutorials.com/tutorials/android/listview/android-expandable-list-view-example/
 

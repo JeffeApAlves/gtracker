@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.DisplayMetrics;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -120,24 +119,6 @@ public class MainActivity extends AppCompatActivity
 
         Intent it = new Intent(this,   TripActivity.class);
         startActivity(it);
-    }
-
-    private void setGroupIndicatorToRight() {
-        /* Get the screen width */
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int width = dm.widthPixels;
-/*
-        expListView.setIndicatorBounds( width - getDipsFromPixel(35),
-                                        width - getDipsFromPixel(5));*/
-    }
-
-    // Convert pixel to dip
-    public int getDipsFromPixel(float pixels) {
-        // Get the screen's density scale
-        final float scale = getResources().getDisplayMetrics().density;
-        // Convert the dps to pixels, based on density scale
-        return (int) (pixels * scale + 0.5f);
     }
 
     /**

@@ -7,6 +7,8 @@ import com.example.jefferson.goodstracker.Communication.Operation;
 import com.example.jefferson.goodstracker.Communication.RESOURCE_TYPE;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Jefferson on 09/07/2017.
@@ -105,12 +107,19 @@ public class Tracker extends CommunicationUnit {
 
     public Notification[] getNotifications() {
 
-        Notification[] teste  = {   new Notification("A", Notification.type_notification.DANGER),
-                                    new Notification("B", Notification.type_notification.OK),
-                                    new Notification("C", Notification.type_notification.WARNING),
-                                    new Notification("D", Notification.type_notification.DANGER)
-                                };
+        List<Notification> teste = new ArrayList<Notification>();
 
-        return teste;
+        teste.add(new Notification("Velocidade", Notification.type_notification.OK));
+        teste.add(new Notification("Tempo de viagem", Notification.type_notification.WARNING));
+        teste.add(new Notification("Fora do perimetro", Notification.type_notification.DANGER));
+
+        if(! (tlm.getAxisX().OK() && tlm.getAxisY().OK() && tlm.getAxisZ().OK())){
+
+            teste.add(new Notification("Acc\\Rot NOK", Notification.type_notification.WARNING));
+        }
+
+        Notification[] array = new Notification[teste.size()];
+
+        return teste.toArray(array);
     }
 }
