@@ -2,10 +2,11 @@ package com.example.jefferson.goodstracker.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,46 +20,37 @@ import com.example.jefferson.goodstracker.Communication.Communication;
 import com.example.jefferson.goodstracker.Communication.TYPE_COMMUNICATION;
 import com.example.jefferson.goodstracker.R;
 
-import java.io.IOException;
-
-import static android.widget.ExpandableListView.*;
-
-//http://theopentutorials.com/tutorials/android/listview/android-expandable-list-view-example/
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
 
         Communication.create(TYPE_COMMUNICATION.AMQP);
 
-        NavigationView navigationView   = (NavigationView) findViewById(R.id.nav_view);
+        showFragment(new TrackerHome());
 
-        Toolbar toolbar                 = (Toolbar) findViewById(R.id.toolbar);
-
+        // Toolbar
+        Toolbar toolbar         = (Toolbar) findViewById(R.id.toolbar);
+        DrawerLayout drawer     = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        // Botton menu
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // Menu Lateral
+        NavigationView navigationView   = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -97,13 +89,13 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         switch (id){
 
             case R.id.nav_trip:     showTripActivit();      break;
-            case R.id.nav_camera:   showTrackerActivity();  break;
+            case R.id.nav_camera:                           break;
             case R.id.nav_gallery:                          break;
             case R.id.nav_slideshow:                        break;
             case R.id.nav_manage:                           break;
@@ -112,16 +104,10 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_server:   showServerActivity();   break;
         }
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
-    }
-
-    private void showTrackerActivity(){
-
-        Intent it = new Intent(this,   TrackerActivity.class);
-        startActivity(it);
     }
 
     private void showServerActivity() {
@@ -152,5 +138,34 @@ public class MainActivity extends AppCompatActivity
         final float scale = getResources().getDisplayMetrics().density;
         // Convert the dps to pixels, based on density scale
         return (int) (pixels * scale + 0.5f);
+    }
+
+    /**
+     * Handle bottom menu
+     *
+     */
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+
+                case R.id.navigation_home:          showFragment(new TrackerHome());
+                    return true;
+                case R.id.navigation_dashboard:     showFragment(new TrackerDashBoard());
+                    return true;
+                case R.id.navigation_notifications: showFragment(new TrackerNotification());
+                    return true;
+            }
+            return false;
+        }
+    };
+
+    protected void showFragment(Fragment fragment) {
+
+        FragmentTransaction t = getSupportFragmentManager().beginTransaction();
+        t.replace(R.id.content, fragment);
+        t.commit();
     }
 }

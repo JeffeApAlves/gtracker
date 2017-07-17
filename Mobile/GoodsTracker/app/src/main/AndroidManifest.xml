@@ -49,9 +49,6 @@
         <activity
             android:name=".Activities.RabbitActivity"
             android:label="@string/title_activity_rabbit" />
-        <activity
-            android:name=".Activities.TrackerActivity"
-            android:label="@string/title_activity_tracker"></activity>
     </application>
 
 </manifest>

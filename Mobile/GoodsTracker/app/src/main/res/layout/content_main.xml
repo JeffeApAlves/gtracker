@@ -8,5 +8,11 @@
     tools:context="com.example.jefferson.goodstracker.Activities.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></FrameLayout>
+
 
 </android.support.constraint.ConstraintLayout>

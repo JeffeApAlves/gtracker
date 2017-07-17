@@ -102,4 +102,15 @@ public class Tracker extends CommunicationUnit {
 
         return tlm.getValLevel();
     }
+
+    public Notification[] getNotifications() {
+
+        Notification[] teste  = {   new Notification("A", Notification.type_notification.DANGER),
+                                    new Notification("B", Notification.type_notification.OK),
+                                    new Notification("C", Notification.type_notification.WARNING),
+                                    new Notification("D", Notification.type_notification.DANGER)
+                                };
+
+        return teste;
+    }
 }

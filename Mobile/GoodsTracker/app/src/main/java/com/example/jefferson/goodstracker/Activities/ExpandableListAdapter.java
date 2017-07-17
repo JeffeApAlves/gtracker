@@ -2,27 +2,25 @@ package com.example.jefferson.goodstracker.Activities; /**
  * Created by Jefferson on 06/07/2017.
  */
 
-import java.util.List;
-import java.util.Map;
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Typeface;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.jefferson.goodstracker.Domain.DataTelemetria;
+import com.example.jefferson.goodstracker.Domain.Notification;
 import com.example.jefferson.goodstracker.Domain.Tracker;
 import com.example.jefferson.goodstracker.R;
+
+import java.util.Map;
+
+//http://theopentutorials.com/tutorials/android/listview/android-expandable-list-view-example/
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -36,7 +34,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     public Object getChild(int groupPosition, int childPosition) {
-        return groupPosition<trackers.length?trackers[groupPosition]:null;
+
+        return trackers[groupPosition].getNotifications()[childPosition];
     }
 
     public long getChildId(int groupPosition, int childPosition) {
@@ -47,32 +46,23 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final Tracker tracker   = (Tracker) getGroup(groupPosition);
-        DataTelemetria tlm      = tracker.getTlm();
-
         if (convertView == null) {
 
             LayoutInflater inflater = context.getLayoutInflater();
             convertView             = inflater.inflate(R.layout.child_status_item, null);
         }
 
-        TextView textLat        = (TextView) convertView.findViewById(R.id.textLat);
-        TextView textLng        = (TextView) convertView.findViewById(R.id.textLng);
-        TextView valLevel       = (TextView) convertView.findViewById(R.id.valueLevel);
-        ProgressBar barLevel    = (ProgressBar)convertView.findViewById(R.id.barLevel);
+        Notification notification   = (Notification)getChild(groupPosition,childPosition);
 
+        TextView textMsg        = (TextView) convertView.findViewById(R.id.textMsg);
 
-        textLat.setText(String.format("%f",tlm.getLatitude()));
-        textLng.setText(String.format("%f",tlm.getLongitude()));
-        valLevel.setText(String.format("%.1f",tlm.getValLevel()));
-        barLevel.setMax((int) tlm.getLevel().getTol().getMax());
-        barLevel.setProgress((int)tlm.getValLevel());
+        textMsg.setText(notification.getMessage());
 
         return convertView;
     }
 
     public int getChildrenCount(int groupPosition) {
-        return 1;
+        return trackers[groupPosition].getNotifications().length;
     }
 
     public Object getGroup(int groupPosition) {
@@ -87,10 +77,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return groupPosition;
     }
 
-    public View getGroupView(int groupPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
-
-        Tracker tracker = (Tracker) getGroup(groupPosition);
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
 
@@ -98,7 +85,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.group_status_item, null);
         }
 
-        TextView item = (TextView) convertView.findViewById(R.id.laptop);
+        Tracker tracker = (Tracker) getGroup(groupPosition);
+
+        TextView item = (TextView) convertView.findViewById(R.id.name_tracker);
         item.setTypeface(null, Typeface.BOLD);
         item.setText(String.format("Tracker: %05d",tracker.getAddress()));
         return convertView;
