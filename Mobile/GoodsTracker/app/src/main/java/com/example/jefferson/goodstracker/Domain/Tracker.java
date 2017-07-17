@@ -1,6 +1,7 @@
 package com.example.jefferson.goodstracker.Domain;
 
 import com.example.jefferson.goodstracker.Communication.AnsCmd;
+import com.example.jefferson.goodstracker.Communication.ChatMessage;
 import com.example.jefferson.goodstracker.Communication.Cmd;
 import com.example.jefferson.goodstracker.Communication.CommunicationUnit;
 import com.example.jefferson.goodstracker.Communication.Operation;
@@ -16,7 +17,8 @@ import java.util.List;
 
 public class Tracker extends CommunicationUnit {
 
-    private DataTelemetria  tlm = new DataTelemetria();
+    private DataTelemetria          tlm     = new DataTelemetria();
+    private ArrayList<ChatMessage>  chat    = new ArrayList<ChatMessage>();
 
     public Tracker(int val) throws IOException {
 
@@ -65,6 +67,13 @@ public class Tracker extends CommunicationUnit {
 
             // Nothing to do at the moment
         }
+    }
+
+
+    @Override
+    public void onReceiveChat(ChatMessage chatMessage) {
+
+        chat.add(chatMessage);
     }
 
     void updateDataTelemetria(AnsCmd ans) {

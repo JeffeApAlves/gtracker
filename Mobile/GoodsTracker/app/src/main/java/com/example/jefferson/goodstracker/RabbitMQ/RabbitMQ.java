@@ -93,16 +93,21 @@ public class RabbitMQ  extends Object {
 
         if(frame==null) return;
 
+        publish(exchange,routing,frame.toString());
+    }
+
+    public void publish(String exchange,String routing,String msg) {
+
         try {
 
             channel.confirmSelect();
 
             try{
-                channel.basicPublish(exchange, routing, null, frame.toBytesArray());
+                channel.basicPublish(exchange, routing, null, msg.getBytes());
                 channel.waitForConfirmsOrDie();
-                Log.d("", "[sucesso] " + frame.toString());
+                Log.d("", "[sucesso] " + msg);
             } catch (Exception e){
-                Log.d("","[fail] " + frame.toString());
+                Log.d("","[fail] " + msg);
 
                 throw e;
             }
@@ -115,9 +120,23 @@ public class RabbitMQ  extends Object {
 
     public void createExchange()throws java.io.IOException {
 
+        channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.CHAT, RABBITMQ_CONST.EXCHANGE.TYPE.TOPIC);
         channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.CMD, RABBITMQ_CONST.EXCHANGE.TYPE.TOPIC);
         channel.exchangeDeclare(RABBITMQ_CONST.EXCHANGE.ANS, RABBITMQ_CONST.EXCHANGE.TYPE.TOPIC);
     }
+
+    /**
+     *
+     *
+     */
+
+     public void createAllConsumers(int address,Handler handler){
+
+         createConsumerAns(address, handler);
+         createConsumerCmd(address, handler);
+         createConsumerChat(address, handler);
+     }
+
 
     /**
      *
@@ -129,6 +148,22 @@ public class RabbitMQ  extends Object {
 
             ConsumerCmd consumerCmd = new ConsumerCmd(address);
             consumerCmd.setHandler(handler);
+
+        } catch (Exception e) {
+
+            Log.d("","Problema na criacao dos consumidores: " + e.getClass().getName());
+        }
+    }
+
+    /**
+     *
+     *
+     */
+    public void createConsumerChat(int address,Handler handler) {
+
+        try {
+
+            new ConsumerChat(address).setHandler(handler);
 
         } catch (Exception e) {
 
@@ -226,6 +261,50 @@ public class RabbitMQ  extends Object {
                 Message msg = handler.obtainMessage();
 
                 msg.what = IdMessage.CMD.ordinal();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("PAYLOAD", message);
+                msg.setData(bundle);
+
+                handler.sendMessage(msg);
+            }
+        }
+
+        public void setHandler(Handler handler) {
+            this.handler = handler;
+        }
+    }
+
+
+    class ConsumerChat extends DefaultConsumer{
+
+        private Handler handler = null;
+
+        public ConsumerChat(int address) throws IOException {
+
+            super(channel);
+            String str_address  = String.format("%05d",address);
+            String queue        = RABBITMQ_CONST.EXCHANGE.CHAT+str_address;
+            String route        = "chat."+ str_address;
+
+            channel.queueDeclare(   queue,  false,false,false,null);
+            channel.queueBind(      queue, RABBITMQ_CONST.EXCHANGE.CHAT, route);
+            channel.basicConsume(   queue, true, this);
+        }
+
+        @Override
+        public void handleDelivery(String consumerTag, Envelope envelope,
+                                   AMQP.BasicProperties properties, byte[] body) throws IOException {
+
+            String message = new String(body, "UTF-8");
+
+            Log.d("","[chat] " + message);
+
+            if(handler!=null) {
+
+                Message msg = handler.obtainMessage();
+
+                msg.what = IdMessage.CHAT.ordinal();
 
                 Bundle bundle = new Bundle();
                 bundle.putString("PAYLOAD", message);

@@ -1,5 +1,6 @@
 package com.example.jefferson.goodstracker.RabbitMQ;
 
+import com.example.jefferson.goodstracker.Communication.ChatMessage;
 import com.example.jefferson.goodstracker.Communication.Communication;
 import com.example.jefferson.goodstracker.Communication.DataFrame;
 import com.example.jefferson.goodstracker.Communication.ObserverCommunication;
@@ -28,6 +29,15 @@ public class AMQPCommunication extends Communication {
         return rabbitMQ.connect();
     }
 
+
+    @Override
+    public void producerFrame(ChatMessage message) {
+
+        String routing = "chat." + message.getDest();
+
+        rabbitMQ.publish(RABBITMQ_CONST.EXCHANGE.CHAT, routing, message.getBody());
+    }
+
     @Override
     public void producerFrame(DataFrame frame) {
 
@@ -43,20 +53,18 @@ public class AMQPCommunication extends Communication {
 
         // Declare all things inside of server rabbitmq
         rabbitMQ.createExchange();
-        rabbitMQ.createConsumerAns(observer.getAddress(), getHandlerConsumer());
-        rabbitMQ.createConsumerCmd(observer.getAddress(), getHandlerConsumer());
+        rabbitMQ.createAllConsumers(observer.getAddress(), getHandlerConsumer());
     }
 
     @Override
     public void notifyConnEstablished() {
 
         // Criando consumer e definindo handler de manipulacao das mensagens recebidas para cada unidade
-        for (ObserverCommunication ob : getArrayOfUnit()) {
+        for (ObserverCommunication observer : getArrayOfUnit()) {
 
-            rabbitMQ.createConsumerAns(ob.getAddress(), getHandlerConsumer());
-            rabbitMQ.createConsumerCmd(ob.getAddress(), getHandlerConsumer());
+            rabbitMQ.createAllConsumers(observer.getAddress(), getHandlerConsumer());
 
-            ob.connEstablished();
+            observer.connEstablished();
         }
     }
 }

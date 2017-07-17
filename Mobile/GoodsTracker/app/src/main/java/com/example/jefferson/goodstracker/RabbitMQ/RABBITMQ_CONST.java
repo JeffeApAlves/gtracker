@@ -17,6 +17,7 @@ public class RABBITMQ_CONST  extends Object{
 
         public static final String ANS    = "ANS";
         public static final String CMD    = "CMD";
+        public static final String CHAT    = "CHAT";
 
         public class TYPE{
 
@@ -29,5 +30,6 @@ public class RABBITMQ_CONST  extends Object{
 
         public static final String CMD       = "CMD";
         public static final String TLM       = "TLM";
+        public static final String MSG       = "MSG_BOX";
     }
 }

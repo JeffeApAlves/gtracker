@@ -51,12 +51,21 @@ abstract public class CommunicationUnit  extends Object implements ObserverCommu
      * Notifica a unidade
      */
     @Override
-    public void updateAnswer(AnsCmd ans){
+    public void updateCommunication(Object obj){
 
         try {
 
-            // Executa evento de recebmento de resposta de comando
-            onReceiveAnswer(ans);
+
+            if(obj instanceof  AnsCmd) {
+
+                // Executa evento de recebmento de resposta de comando
+                onReceiveAnswer((AnsCmd)obj);
+
+            }else if(obj instanceof ChatMessage){
+
+                // Evento recebimento menssagem do chat
+                onReceiveChat((ChatMessage) obj);
+            }
         }
         catch (Exception e) {
 
@@ -73,4 +82,6 @@ abstract public class CommunicationUnit  extends Object implements ObserverCommu
     }
 
     abstract public void onReceiveAnswer(AnsCmd ans);
+
+    abstract public void onReceiveChat(ChatMessage chatMessage);
 }

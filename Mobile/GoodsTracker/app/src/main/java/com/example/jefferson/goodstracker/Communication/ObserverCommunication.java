@@ -8,5 +8,5 @@ public interface ObserverCommunication {
 
     public int getAddress();
     public void connEstablished();
-    public void updateAnswer(AnsCmd ans);
+    public void updateCommunication(Object obj);
 }

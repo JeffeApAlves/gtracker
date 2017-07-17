@@ -6,6 +6,7 @@ package com.example.jefferson.goodstracker.Communication;
 
 public enum IdMessage {
 
+    CHAT,
     CMD,
     ANS
 

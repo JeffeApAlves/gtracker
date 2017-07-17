@@ -291,17 +291,23 @@ abstract public class Communication extends Object implements Communic,Observabl
     @Override
     public void notifyObserver(Object obj){
 
+        int address = -1;
+
         if(obj instanceof AnsCmd) {
 
             AnsCmd ans = (AnsCmd)obj;
+            address = ans.getHeader().getAddress();
 
-            if (units.containsKey(ans.getHeader().getAddress())) {
+        }else if(obj instanceof ChatMessage) {
 
-                ObserverCommunication ob = units.get(ans.getHeader().getAddress());
+            ChatMessage chat = (ChatMessage)obj;
+            address = chat.getAddress();
+        }
 
-                // Notifica apenas entidade respectiva do address
-                ob.updateAnswer(ans);
-            }
+        if (units.containsKey(address)) {
+
+            ObserverCommunication ob = units.get(address);
+            ob.updateCommunication(obj);
         }
     }
 
@@ -443,6 +449,7 @@ abstract public class Communication extends Object implements Communic,Observabl
 
                 case ANS:   consumerFrame(  new DataFrame(data,TypeFrame.OWNER));   break;
                 case CMD:   consumerCmd(    new DataFrame(data,TypeFrame.OWNER));   break;
+                case CHAT:  break;
             }
         }
 
