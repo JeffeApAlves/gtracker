@@ -55,7 +55,6 @@ abstract public class CommunicationUnit  extends Object implements ObserverCommu
 
         try {
 
-
             if(obj instanceof  AnsCmd) {
 
                 // Executa evento de recebmento de resposta de comando
@@ -69,7 +68,7 @@ abstract public class CommunicationUnit  extends Object implements ObserverCommu
         }
         catch (Exception e) {
 
-            System.out.println("Erro na execucao da callback pela unidade");
+            System.out.println("Erro na execucao da callback de comando");
             System.out.println(e.toString());
             Log.d("",e.toString());
         }

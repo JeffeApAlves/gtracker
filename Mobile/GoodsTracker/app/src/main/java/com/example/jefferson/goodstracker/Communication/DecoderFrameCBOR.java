@@ -14,6 +14,11 @@ package com.example.jefferson.goodstracker.Communication;
 public class DecoderFrameCBOR extends DecoderFrame{
 
     @Override
+    public boolean frame_to_chat(DataFrame frame, ChatMessage chat) {
+        return false;
+    }
+
+    @Override
     public boolean frame_to_cmd(DataFrame frame, Cmd cmd){
 
         return false;
@@ -47,5 +52,10 @@ public class DecoderFrameCBOR extends DecoderFrame{
     @Override
     public Header str_to_header(String data) {
         return null;
+    }
+
+    @Override
+    public boolean chat_to_frame(ChatMessage chatMessage, DataFrame frame) {
+        return false;
     }
 }

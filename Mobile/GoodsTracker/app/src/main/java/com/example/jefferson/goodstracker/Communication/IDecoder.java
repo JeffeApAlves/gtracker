@@ -8,12 +8,15 @@ import java.io.IOException;
 
 public interface IDecoder {
 
-    public boolean frame_to_cmd(DataFrame frame,Cmd cmd);
-    public boolean ans_to_frame(AnsCmd ans, DataFrame frame);
-    public boolean frame_to_ans(DataFrame frame, AnsCmd ans);
-    public boolean cmd_to_frame(Cmd cmd, DataFrame frame);
-    public boolean str_to_ans(String data, AnsCmd ans);
+    boolean frame_to_chat(DataFrame frame,ChatMessage chat);
+    boolean frame_to_cmd(DataFrame frame,Cmd cmd);
+    boolean ans_to_frame(AnsCmd ans, DataFrame frame);
+    boolean frame_to_ans(DataFrame frame, AnsCmd ans);
+    boolean cmd_to_frame(Cmd cmd, DataFrame frame);
+    boolean str_to_ans(String data, AnsCmd ans);
     
-    public String header_to_str(Header header);
-    public Header str_to_header(String data);
+    String header_to_str(Header header);
+    Header str_to_header(String data);
+
+    boolean chat_to_frame(ChatMessage chatMessage, DataFrame frame);
 }

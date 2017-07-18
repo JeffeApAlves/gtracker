@@ -50,6 +50,12 @@ public class Tracker extends CommunicationUnit {
         sendCMD(cmd);
     }
 
+
+    public void sendMsgChat(String msg){
+
+
+    }
+
     /*
      *
      * Hook para processamento das respostas dos comandos
@@ -69,6 +75,11 @@ public class Tracker extends CommunicationUnit {
         }
     }
 
+    /**
+     * Procesamento de recebimento de mensagens do chat
+     *
+     * @param chatMessage
+     */
 
     @Override
     public void onReceiveChat(ChatMessage chatMessage) {

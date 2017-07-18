@@ -56,10 +56,18 @@ public class DecoderFrameOwner extends DecoderFrame{
     @Override
     public boolean str_to_ans(String data, AnsCmd ans){
 
-        DataFrame frame = new DataFrame(TypeFrame.OWNER);
+        DataFrame frame = new DataFrame(FormatFrame.OWNER,TypeFrame.ANS);
         frame.setData(data);
 
         return frame_to_ans(frame,ans);
+    }
+
+    @Override
+    public boolean frame_to_chat(DataFrame frame, ChatMessage chat) {
+
+        chat.setPayLoad(frame.getPayLoad());
+
+        return true;
     }
 
     /**
@@ -91,7 +99,7 @@ public class DecoderFrameOwner extends DecoderFrame{
                 if (header.getResource().equals(RESOURCE_TYPE.TLM) &&
                         header.getOperation().equals(Operation.AN)) {
 
-                    cmd.setPayload(frame.getPayload());
+                    cmd.setPayload(frame.getPayLoad());
                 }
 
                 ret = true;
@@ -125,7 +133,7 @@ public class DecoderFrameOwner extends DecoderFrame{
         PayLoad payLoad     = buildPayload(ans.getTelemetria());
 
         frame.setHeader(header);
-        frame.setPayload(payLoad);
+        frame.setPayLoad(payLoad);
 
         return true;
     }
@@ -199,7 +207,7 @@ public class DecoderFrameOwner extends DecoderFrame{
     @Override
     public boolean cmd_to_frame(Cmd cmd, DataFrame frame) {
 
-        frame.setPayload(cmd.getPayload());
+        frame.setPayLoad(cmd.getPayload());
         frame.setHeader(cmd.getHeader());
         return true;
     }
@@ -246,6 +254,15 @@ public class DecoderFrameOwner extends DecoderFrame{
     public Header str_to_header(String data) {
 
         return decoderHeader(data.split(String.valueOf(CONST_COM.CHAR.SEPARATOR)));
+    }
+
+    @Override
+    public boolean chat_to_frame(ChatMessage chatMessage, DataFrame frame) {
+
+        frame.setPayLoad(chatMessage.getPayLoad());
+        frame.setHeader(chatMessage.getHeader());
+
+        return false;
     }
 
     // Telemetria to Payload

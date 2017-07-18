@@ -6,7 +6,7 @@ import android.os.Message;
 import android.util.Log;
 
 import com.example.jefferson.goodstracker.Communication.DataFrame;
-import com.example.jefferson.goodstracker.Communication.IdMessage;
+import com.example.jefferson.goodstracker.Communication.TypeFrame;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
@@ -89,9 +89,29 @@ public class RabbitMQ  extends Object {
      *
      *
      */
-    public void publish(String exchange,String routing,DataFrame frame) {
+    public void publish(DataFrame frame) {
 
         if(frame==null) return;
+
+        String exchange="",routing="";
+
+        if(TypeFrame.CHAT.equals(frame.getTypeFrame())){
+
+            exchange= RABBITMQ_CONST.EXCHANGE.CHAT;
+            routing = "chat.";
+
+        }else if(TypeFrame.CMD.equals(frame.getTypeFrame())){
+
+            exchange= RABBITMQ_CONST.EXCHANGE.CMD;
+            routing = "cmd.";
+
+        }else if(TypeFrame.ANS.equals(frame.getTypeFrame())){
+
+            exchange= RABBITMQ_CONST.EXCHANGE.ANS;
+            routing = "ans.";
+        }
+
+        routing += String.format("%05d",frame.getHeader().getDest());
 
         publish(exchange,routing,frame.toString());
     }
@@ -217,7 +237,7 @@ public class RabbitMQ  extends Object {
 
                 Message msg = handler.obtainMessage();
 
-                msg.what    = IdMessage.ANS.ordinal();
+                msg.what    = TypeFrame.ANS.ordinal();
 
                 Bundle bundle = new Bundle();
                 bundle.putString("PAYLOAD", message);
@@ -260,7 +280,7 @@ public class RabbitMQ  extends Object {
 
                 Message msg = handler.obtainMessage();
 
-                msg.what = IdMessage.CMD.ordinal();
+                msg.what = TypeFrame.CMD.ordinal();
 
                 Bundle bundle = new Bundle();
                 bundle.putString("PAYLOAD", message);
@@ -304,7 +324,7 @@ public class RabbitMQ  extends Object {
 
                 Message msg = handler.obtainMessage();
 
-                msg.what = IdMessage.CHAT.ordinal();
+                msg.what = TypeFrame.CHAT.ordinal();
 
                 Bundle bundle = new Bundle();
                 bundle.putString("PAYLOAD", message);

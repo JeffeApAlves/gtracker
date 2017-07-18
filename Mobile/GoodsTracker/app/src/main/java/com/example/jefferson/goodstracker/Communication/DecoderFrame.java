@@ -6,17 +6,16 @@ package com.example.jefferson.goodstracker.Communication;
 
 abstract public class DecoderFrame extends Object implements IDecoder {
 
-
     protected DecoderFrame() {
 
     }
 
     static IDecoder create(DataFrame frame) {
 
-        return create(frame.getTypeFrame());
+        return create(frame.getFormatFrame());
     }
 
-    static IDecoder create(TypeFrame type){
+    static IDecoder create(FormatFrame type){
 
         IDecoder decoder = null;
 

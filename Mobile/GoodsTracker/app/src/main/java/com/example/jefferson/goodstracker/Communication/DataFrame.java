@@ -6,24 +6,25 @@ package com.example.jefferson.goodstracker.Communication;
 
 public class DataFrame  extends Object {
 
-    protected   TypeFrame   typeFrame;
-    protected   Header      header;
-    protected   PayLoad     payload;
-    protected   String      data;
+    protected   TypeFrame       typeFrame;
+    protected   FormatFrame     formatFrame;
+    protected   Header          header;
+    protected   PayLoad         payload;
+    protected   String          data;
 
+    public DataFrame(FormatFrame format,TypeFrame type,String data) {
 
-    public DataFrame(String data,TypeFrame type) {
-
-        this.typeFrame = type;
+        this.typeFrame      = type;
+        this.formatFrame    = format;
         setData(data);
     }
 
-    public DataFrame(TypeFrame type) {
+    public DataFrame(FormatFrame format,TypeFrame type) {
 
-        this.typeFrame = type;
-        header  = new Header();
-        payload = new PayLoad();
-        data    = "";
+        this.formatFrame    = format;
+        header              = new Header();
+        payload             = new PayLoad();
+        data                = "";
     }
 
     public Header getHeader() {
@@ -37,12 +38,12 @@ public class DataFrame  extends Object {
         updateData();
     }
 
-    PayLoad getPayload() {
+    PayLoad getPayLoad() {
 
         return payload;
     }
 
-    void setPayload(PayLoad value) {
+    void setPayLoad(PayLoad value) {
 
         payload = value;
         updateData();
@@ -55,7 +56,7 @@ public class DataFrame  extends Object {
 
     private void updateData(){
 
-        IDecoder decoder    = DecoderFrame.create(typeFrame);
+        IDecoder decoder    = DecoderFrame.create(formatFrame);
 
         data    =           decoder.header_to_str(header)           +
                             CONST_COM.CHAR.SEPARATOR                +
@@ -71,7 +72,7 @@ public class DataFrame  extends Object {
 
         if(data.length() >= HEADER_LENGTH+2){
 
-            IDecoder decoder = DecoderFrame.create(typeFrame);
+            IDecoder decoder = DecoderFrame.create(formatFrame);
 
             header  = decoder.str_to_header(data);
 
@@ -131,9 +132,9 @@ public class DataFrame  extends Object {
         return calcSum()==val;
     }
 
-    public TypeFrame getTypeFrame() {
+    public FormatFrame getFormatFrame() {
 
-        return typeFrame;
+        return formatFrame;
     }
 
     @Override
@@ -155,5 +156,17 @@ public class DataFrame  extends Object {
     public byte[] toBytesArray() {
 
         return  toString().getBytes();
+    }
+
+    public void setFormatFrame(FormatFrame formatFrame) {
+        this.formatFrame = formatFrame;
+    }
+
+    public TypeFrame getTypeFrame() {
+        return typeFrame;
+    }
+
+    public void setTypeFrame(TypeFrame typeFrame) {
+        this.typeFrame = typeFrame;
     }
 }

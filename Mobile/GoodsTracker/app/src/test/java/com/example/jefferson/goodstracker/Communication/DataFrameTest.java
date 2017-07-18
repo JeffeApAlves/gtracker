@@ -22,7 +22,7 @@ public class DataFrameTest {
     @Before
     public void executedBeforeEach() {
 
-        frame = new DataFrame(TypeFrame.OWNER);
+        frame = new DataFrame(FormatFrame.OWNER);
     }
 
     @Test

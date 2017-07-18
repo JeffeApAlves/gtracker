@@ -29,21 +29,10 @@ public class AMQPCommunication extends Communication {
         return rabbitMQ.connect();
     }
 
-
-    @Override
-    public void producerFrame(ChatMessage message) {
-
-        String routing = "chat." + message.getDest();
-
-        rabbitMQ.publish(RABBITMQ_CONST.EXCHANGE.CHAT, routing, message.getBody());
-    }
-
     @Override
     public void producerFrame(DataFrame frame) {
 
-        String routing = "cmd." + String.format("%05d", frame.getHeader().getDest());
-
-        rabbitMQ.publish(RABBITMQ_CONST.EXCHANGE.CMD, routing, frame);
+        rabbitMQ.publish(frame);
     }
 
     @Override

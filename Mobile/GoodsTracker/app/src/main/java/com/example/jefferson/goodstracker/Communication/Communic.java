@@ -10,7 +10,6 @@ public interface Communic {
     void close();
     void startWorkerProducer();
     void startWorkerConsumer();
-    void producerFrame(ChatMessage message);
     void producerFrame(DataFrame frame);
     void consumerFrame(DataFrame frame);
 }

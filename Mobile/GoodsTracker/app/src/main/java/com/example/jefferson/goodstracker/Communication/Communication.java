@@ -3,6 +3,7 @@ package com.example.jefferson.goodstracker.Communication;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.provider.ContactsContract;
 import android.util.Log;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ abstract public class Communication extends Object implements Communic,Observabl
     private static Map<String,Cmd>      txCmds              = new HashMap<String, Cmd>();
     private static Map<String,Cmd>      cmds                = new HashMap<String, Cmd>();
     private static List<AnsCmd>         answers             = new ArrayList<AnsCmd>();
+    private static List<ChatMessage>    msgs_chat           = new ArrayList<ChatMessage>();
     private static Map<Integer,ObserverCommunication>units  = new HashMap<Integer,ObserverCommunication>();
 
     private static WorkerProducer       workerProducer      = null;
@@ -138,6 +140,11 @@ abstract public class Communication extends Object implements Communic,Observabl
         return cmds.size() > 0;
     }
 
+    public static boolean isAnyChat() {
+
+        return msgs_chat.size() > 0;
+    }
+
     public static void addAns(AnsCmd ans) {
 
         if (ans != null) {
@@ -236,6 +243,19 @@ abstract public class Communication extends Object implements Communic,Observabl
         return ret;
     }
 
+    public static ChatMessage[] getArrayOfChat() {
+
+        ChatMessage[] ret = new ChatMessage[msgs_chat.size()];
+
+        if (isAnyCmd()) {
+
+            //TODO Verificar a conversao de map para array
+            ret = msgs_chat.toArray(ret);
+        }
+
+        return ret;
+    }
+
     public static AnsCmd[] getArrayOfAns() {
 
         AnsCmd[] ret = new AnsCmd[answers.size()];
@@ -261,6 +281,11 @@ abstract public class Communication extends Object implements Communic,Observabl
             removeTxCmd(cmd);
             removeAns(ans);
         }
+    }
+
+    public static ChatMessage takeFirstChat() {
+
+        return isAnyChat()?getArrayOfChat()[0]:null;
     }
 
     public static Cmd takeFirstCmd() {
@@ -368,7 +393,7 @@ abstract public class Communication extends Object implements Communic,Observabl
     public void publish(Cmd cmd) {
 
         addCmd(cmd);
-        workerProducer.flush(IdMessage.CMD);
+        workerProducer.flush(TypeFrame.CMD);
     }
 
     /**
@@ -378,7 +403,7 @@ abstract public class Communication extends Object implements Communic,Observabl
     public void publish(AnsCmd ans) {
 
         // TODO Criar lista de resposta para ser usada como slave
-        workerProducer.flush(IdMessage.ANS);
+        workerProducer.flush(TypeFrame.ANS);
     }
 
     /**
@@ -388,6 +413,28 @@ abstract public class Communication extends Object implements Communic,Observabl
      */
     @Override
     public void consumerFrame(DataFrame frame){
+
+        switch (frame.getTypeFrame()){
+
+            case ANS:   registerAnsCmd(frame);      break;
+            case CMD:   registerCmd(frame);         break;
+            case CHAT:  registerChat(frame);        break;
+        }
+    }
+
+    public void registerChat(DataFrame frame){
+
+        ChatMessage chat = new ChatMessage();
+
+        IDecoder decoder = DecoderFrame.create(frame);
+
+        if(decoder.frame_to_chat(frame,chat)){
+
+            msgs_chat.add(chat);
+        }
+    }
+
+    public void registerAnsCmd(DataFrame frame){
 
         AnsCmd ans = new AnsCmd();
 
@@ -399,7 +446,7 @@ abstract public class Communication extends Object implements Communic,Observabl
         }
     }
 
-    public void consumerCmd(DataFrame frame){
+    public void registerCmd(DataFrame frame){
 
         Cmd cmd = new Cmd();
 
@@ -436,21 +483,14 @@ abstract public class Communication extends Object implements Communic,Observabl
         @Override
         public boolean handleMessage(Message msg) {
 
-            String data = msg.getData().getString("PAYLOAD");
+            TypeFrame type  = TypeFrame.values()[msg.what];
+            String data     = msg.getData().getString("PAYLOAD");
 
-            doWork(IdMessage.values()[msg.what],data);
+            DataFrame frame = new DataFrame(FormatFrame.OWNER,type,data);
+
+            consumerFrame(frame);
 
             return true;
-        }
-
-        public void doWork(IdMessage i,String data) {
-
-            switch (i){
-
-                case ANS:   consumerFrame(  new DataFrame(data,TypeFrame.OWNER));   break;
-                case CMD:   consumerCmd(    new DataFrame(data,TypeFrame.OWNER));   break;
-                case CHAT:  break;
-            }
         }
 
         public Handler getHandler() {
@@ -473,28 +513,26 @@ abstract public class Communication extends Object implements Communic,Observabl
         @Override
         public boolean  handleMessage(Message msg) {
 
-            doWork(IdMessage.values()[msg.what]);
+            DataFrame frame = createFrame(TypeFrame.values()[msg.what]);
+
+            producerFrame(frame);
 
             return true;
         }
 
-        public void doWork(IdMessage i) {
+        public DataFrame createFrame(TypeFrame i) {
 
-            boolean flg = false;
-
-            DataFrame   frame   = new DataFrame(TypeFrame.OWNER);
+            DataFrame   frame   = new DataFrame(FormatFrame.OWNER,i);
             IDecoder    decoder = DecoderFrame.create(frame);
 
             switch (i){
 
-                case ANS:   flg = decoder.ans_to_frame(takeFirstAns(),frame);break;
-                case CMD:   flg = decoder.cmd_to_frame(takeFirstCmd(),frame);break;
+                case ANS:   decoder.ans_to_frame(takeFirstAns(),frame);break;
+                case CMD:   decoder.cmd_to_frame(takeFirstCmd(),frame);break;
+                case CHAT:  decoder.chat_to_frame(takeFirstChat(),frame);break;
             }
 
-            if(flg){
-
-                producerFrame(frame);
-            }
+            return frame;
         }
 
         public Handler getHandler() {
@@ -504,7 +542,7 @@ abstract public class Communication extends Object implements Communic,Observabl
         /**
          * O conteudo foi previamente inserido nos containers respectivo
          */
-        public void flush(IdMessage id) {
+        public void flush(TypeFrame id) {
 
             if (handler!=null) {
                 handler.sendEmptyMessage(id.ordinal());
