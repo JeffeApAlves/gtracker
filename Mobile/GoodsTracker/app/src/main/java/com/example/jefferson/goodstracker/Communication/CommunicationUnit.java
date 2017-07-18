@@ -81,6 +81,5 @@ abstract public class CommunicationUnit  extends Object implements ObserverCommu
     }
 
     abstract public void onReceiveAnswer(AnsCmd ans);
-
     abstract public void onReceiveChat(ChatMessage chatMessage);
 }

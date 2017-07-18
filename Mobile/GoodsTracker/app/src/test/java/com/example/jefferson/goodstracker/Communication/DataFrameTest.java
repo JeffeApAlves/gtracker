@@ -22,7 +22,7 @@ public class DataFrameTest {
     @Before
     public void executedBeforeEach() {
 
-        frame = new DataFrame(FormatFrame.OWNER);
+        frame = new DataFrame(FormatFrame.OWNER,TypeFrame.ANS);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class DataFrameTest {
         frame.setData("00001:00002:00005:AN:TLM:007:1:2:3:4");
 
         Header  header  = frame.getHeader();
-        PayLoad payLoad = frame.getPayload();
+        PayLoad payLoad = frame.getPayLoad();
 
         assertEquals(1,header.getAddress());
         assertEquals(2,header.getDest());

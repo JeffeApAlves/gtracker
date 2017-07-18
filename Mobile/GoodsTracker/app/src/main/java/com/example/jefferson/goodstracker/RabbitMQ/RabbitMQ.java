@@ -150,7 +150,9 @@ public class RabbitMQ  extends Object {
      *
      */
 
-     public void createAllConsumers(int address,Handler handler){
+     public void createAll(int address,Handler handler) throws IOException {
+
+         createExchange();
 
          createConsumerAns(address, handler);
          createConsumerCmd(address, handler);

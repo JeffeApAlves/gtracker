@@ -1,5 +1,7 @@
 package com.example.jefferson.goodstracker.RabbitMQ;
 
+import android.util.Log;
+
 import com.example.jefferson.goodstracker.Communication.ChatMessage;
 import com.example.jefferson.goodstracker.Communication.Communication;
 import com.example.jefferson.goodstracker.Communication.DataFrame;
@@ -41,19 +43,23 @@ public class AMQPCommunication extends Communication {
         super.registerObserver(observer);
 
         // Declare all things inside of server rabbitmq
-        rabbitMQ.createExchange();
-        rabbitMQ.createAllConsumers(observer.getAddress(), getHandlerConsumer());
+        rabbitMQ.createAll(observer.getAddress(), getHandlerConsumer());
     }
 
     @Override
     public void notifyConnEstablished() {
 
-        // Criando consumer e definindo handler de manipulacao das mensagens recebidas para cada unidade
-        for (ObserverCommunication observer : getArrayOfUnit()) {
+        try {
+            // Criando consumer e definindo handler de manipulacao das mensagens recebidas para cada unidade
+            for (ObserverCommunication observer : getArrayOfUnit()) {
 
-            rabbitMQ.createAllConsumers(observer.getAddress(), getHandlerConsumer());
+                rabbitMQ.createAll(observer.getAddress(), getHandlerConsumer());
 
-            observer.connEstablished();
+                observer.connEstablished();
+            }
+        }catch (IOException e){
+
+            Log.d("", "Problema na notificacao de estabilizacao da conexao: " + e.getClass().getName());
         }
     }
 }

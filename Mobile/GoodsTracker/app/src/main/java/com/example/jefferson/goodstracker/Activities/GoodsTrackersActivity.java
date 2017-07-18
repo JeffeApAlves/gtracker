@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -29,24 +30,9 @@ public class GoodsTrackersActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    public void onClick_btTrip(View view){
+    private void showChatActivity() {
 
-        showTripActivit();
-    };
-
-    public void onClick_btRabbit(View view){
-
-        showServerActivity();
-    };
-
-    public void onClick_btSetup(View view){
-
-        showSettingsActivit();
-    };
-
-    private void showServerActivity() {
-
-        Intent it = new Intent(this,   RabbitActivity.class);
+        Intent it = new Intent(this,   ChatActivity.class);
         startActivity(it);
     }
 
@@ -98,4 +84,25 @@ public class GoodsTrackersActivity extends AppCompatActivity {
 
         Communication.create(TYPE_COMMUNICATION.NONE);
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        switch (item.getItemId()){
+
+            case R.id.item1: showTripActivit();      break;
+            case R.id.item2: showChatActivity();     break;
+            case R.id.item3: showSettingsActivit();  break;
+        }
+
+        return true;
+    }
 }

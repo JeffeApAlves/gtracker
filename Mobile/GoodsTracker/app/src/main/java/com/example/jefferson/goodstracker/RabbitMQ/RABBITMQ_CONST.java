@@ -17,7 +17,7 @@ public class RABBITMQ_CONST  extends Object{
 
         public static final String ANS    = "ANS";
         public static final String CMD    = "CMD";
-        public static final String CHAT    = "CHAT";
+        public static final String CHAT   = "CHAT";
 
         public class TYPE{
 

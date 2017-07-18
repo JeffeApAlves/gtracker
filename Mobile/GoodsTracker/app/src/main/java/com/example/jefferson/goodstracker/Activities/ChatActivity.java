@@ -3,10 +3,8 @@ package com.example.jefferson.goodstracker.Activities;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,7 +18,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class RabbitActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity {
 
     private TextView        mTextMessage;
     BottomNavigationView    navigation;
@@ -31,9 +29,7 @@ public class RabbitActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_rabbit);
-
-        Communication.create(TYPE_COMMUNICATION.AMQP);
+        setContentView(R.layout.activity_chat);
 
 //        mTextMessage    = (TextView)                findViewById(R.id.message);
 //        tv              = (TextView)                findViewById(R.id.textView);
@@ -58,11 +54,7 @@ public class RabbitActivity extends AppCompatActivity {
         }
     };
 
-    public void onLock(View view){
-
-    };
-
-    public void onClick_btPublish(View view){
+    public void onClick_btSend(View view){
 
     };
 
@@ -77,5 +69,4 @@ public class RabbitActivity extends AppCompatActivity {
             tv.append(ft.format(now) + ' ' + message + '\n');
         }
     };
-
 }
