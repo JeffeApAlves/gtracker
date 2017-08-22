@@ -10,7 +10,6 @@ namespace GoodsTracker
         public TestData(int t)
         {
             setTime(t);
-            start();
         }
 
         public override void run()
@@ -26,7 +25,7 @@ namespace GoodsTracker
                                                 createAnsCmd());
                 if (frame != null)
                 {
-                    Communication.publishAnswer(frame);
+                    Communication.sendFrame(frame);
                 }
             }
         }

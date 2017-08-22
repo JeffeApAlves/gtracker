@@ -4,7 +4,6 @@ using System.Text;
 using System.Diagnostics;
 using RabbitMQ.Client.Events;
 
-
 namespace GoodsTracker
 {
     class RABBITMQ{
@@ -22,13 +21,12 @@ namespace GoodsTracker
 
     class RabbitMQ
     {
+        public acceptAnswerHandler acceptAnswer { get; set; }
         ConnectionFactory       factory;
         private IConnection     connection;
         private IModel          channel;
         EventingBasicConsumer   consumer;
-        Stopwatch               stopTx = new Stopwatch();
-        static int              count = 0;
-
+   
         public bool Close()
         {
             channel.Close();
@@ -43,7 +41,6 @@ namespace GoodsTracker
             {
                 factory = new ConnectionFactory()
                 {
-
                     HostName = RABBITMQ.HOSTNAME,
                     UserName = RABBITMQ.USER,
                     Password = RABBITMQ.PW,
@@ -58,23 +55,14 @@ namespace GoodsTracker
                 createQueues();
                 createBinds();
                 createConsumers();
-
             }
             catch (Exception e)
             {
                 Console.WriteLine("Problema na conexao com o broker de mensagem RabbitMQ");
                 Console.WriteLine(e.Message);
-
             }
   
-            stopTx.Start();
             return flg;
-        }
-
-        public void doCommunication()
-        {
-            processTx();
-            processRx();
         }
 
         private void createConsumers()
@@ -95,9 +83,7 @@ namespace GoodsTracker
 
                 if (decoder.getValues(out ans, frame))
                 {
-                    Communication.acceptAnswer(ans);
-
-                    printFrame(frame, "RX OK: ");
+                    acceptAnswer?.Invoke(ans);
                 }
             };
 
@@ -105,7 +91,7 @@ namespace GoodsTracker
 
             foreach (CommunicationUnit c in list){
                 channel.BasicConsume(queue:     RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
-                                     //noAck:     true,
+                                     autoAck:     true,
                                      consumer:  consumer);
             }
         }
@@ -153,36 +139,6 @@ namespace GoodsTracker
             }
         }
 
-        private void processTx()
-        {
-            try
-            {
-                if (stopTx.Elapsed.Milliseconds > 100)
-                {
-                    if (Communication.isAnyQueueCmd())
-                    {
-                        Cmd cmd             = Communication.getNextCmd();
-                        cmd.Header.Count    = count++;
-                        DataFrame frame     = new DataFrame(cmd.Header,cmd.Payload);
-
-                        publishCMD(frame);
-
-                        Communication.removeCmd(cmd);
-                        Communication.addTxCmd(cmd);
-
-                        printTx(frame, "TX OK: ");
-                        stopTx.Restart();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Erro no processamento da pilha de Transmissao AMQP");
-                Console.WriteLine(e.ToString());
-                Debug.WriteLine(e.ToString());
-            }
-        }
-
         private void processRx()
         {
             try
@@ -196,32 +152,28 @@ namespace GoodsTracker
             }
         }
 
-        private void publishCMD(DataFrame frame)
+        public bool publishCMD(DataFrame frame)
         {
-            var body = Encoding.UTF8.GetBytes(frame.Data);
+            bool flag = true;
 
-            channel.BasicPublish(   exchange:           RABBITMQ.EXCHANGE_CMD,
-                                    routingKey:         frame.Header.Dest.ToString("D5"),
-                                    basicProperties:    null,
-                                    body:               body);
+            try {
+
+                var body = Encoding.UTF8.GetBytes(frame.Data);
+
+                channel.BasicPublish(exchange: RABBITMQ.EXCHANGE_CMD,
+                                        routingKey: frame.Header.Dest.ToString("D5"),
+                                        basicProperties: null,
+                                        body: body);
+            }catch(Exception e){
+
+                Console.WriteLine(e);
+                flag = false;
+            }
+
+            return flag;
         }
 
-        private void printFrame(DataFrame frame, string str)
-        {
-            Debug.WriteLine(str);
-            foreach (char c in frame.Data)
-                Debug.Write(c.ToString());
-            Debug.Write("\r\n");
-        }
-
-        private void printTx(DataFrame frame, string str)
-        {
-            Debug.WriteLine("TX TO:{0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
-            printFrame(frame, str);
-        }
-
-        // Para testes
-        public void publishAnswer(DataFrame frame)
+        public void publishFrame(DataFrame frame)
         {
             var body = Encoding.UTF8.GetBytes(frame.Data);
 

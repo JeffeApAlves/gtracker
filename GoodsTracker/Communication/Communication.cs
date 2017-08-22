@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
+using System.Net;
 
 namespace GoodsTracker
 {
+    delegate void acceptAnswerHandler(AnsCmd ans);
+
     enum TYPE_COMMUNICATION
     {
         SERIAL,
@@ -13,11 +17,12 @@ namespace GoodsTracker
     {
         void Init();
         void DeInit();
-        void doCommunication();
-        void publishAnswer(DataFrame frame);
+        bool receive();
+        void send(DataFrame frame);
+        bool send(Cmd cmd);
     }
 
-    abstract class Communication : ThreadRun
+    abstract class Communication : ThreadRun, Communic
     {
         private static TYPE_COMMUNICATION type;
         private static Communic communic = null;
@@ -29,13 +34,15 @@ namespace GoodsTracker
 
         internal static TYPE_COMMUNICATION Type { get => type; set => type = value; }
         internal static Communic Communic { get => communic; set => communic = value; }
-
+        internal static int count = 0;
         public static int TIME_COMMUNICATION => _TIME_COMMUNICATION;
 
         internal static Dictionary<int, CommunicationUnit> Units { get => units; set => units = value; }
         internal static Dictionary<string, Cmd> TxCmds { get => txCmds; set => txCmds = value; }
         internal static Dictionary<string, Cmd> Cmds { get => cmds; set => cmds = value; }
         internal static List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
+
+        Stopwatch stopTx = new Stopwatch();
 
         public Communication()
         {
@@ -52,26 +59,8 @@ namespace GoodsTracker
 
         public override void run()
         {
-            if (communic != null)
-            {
-                communic.doCommunication();
-            }
-        }
-
-        internal static void Init()
-        {
-            if (communic != null)
-            {
-                communic.Init();
-            }
-        }
-
-        public static void DeInit()
-        {
-            if (communic != null)
-            {
-                communic.DeInit();
-            }
+            processTx();
+            processRx();
         }
 
         public static void create(TYPE_COMMUNICATION t)
@@ -79,15 +68,25 @@ namespace GoodsTracker
             if (type != t || communic == null)
             {
                 type = t;
-                DeInit();
+
+                if (communic != null)
+                {
+                    communic.DeInit();
+                }
 
                 switch (type)
                 {
                     case TYPE_COMMUNICATION.SERIAL: communic = new SerialCommunication(); break;
-                    case TYPE_COMMUNICATION.AMQP: communic = new AMQPCommunication(); break;
+                    case TYPE_COMMUNICATION.AMQP: communic = new AMPQCommunication(); break;
                 }
-
-                Init();
+                if (communic != null)
+                {
+                    communic.Init();
+                }
+                else
+                {
+                    Debug.WriteLine("Problema na inicializacao da comunicação");
+                }
             }
         }
 
@@ -183,26 +182,6 @@ namespace GoodsTracker
             return ret;
         }
 
-        public static void publishAnswer(DataFrame frame)
-        {
-            communic.publishAnswer(frame);
-        }
-
-        internal static void acceptAnswer(AnsCmd ans)
-        {
-            if (ans != null)
-            {
-                Cmd cmd = searchCmdOfAnswer(ans);
-
-                addAns(ans);
-
-                units[ans.Header.Address].processAnswer(ans);
-
-                removeTxCmd(cmd);
-                removeAns(ans);
-            }
-        }
-
         internal static Cmd getNextCmd()
         {
             Cmd cmd = null;
@@ -216,80 +195,102 @@ namespace GoodsTracker
 
             return cmd;
         }
-    }
 
-    /****************************************************************************************
-     * Comunicacao via Serial
-     ****************************************************************************************/
-    internal class SerialCommunication : Communication , Communic
-    {
-        static Protocol serialProtocol   = null;
-        static Serial   serialPort       = null;
-
-        public void doCommunication()
+        internal static void processAnswer(AnsCmd ans)
         {
-            serialProtocol.doCommunication();
-        }
-
-        public new void Init()
-        {
-            serialPort = new Serial();
-            serialPort.Open();
-
-            if (serialProtocol == null)
+            if (ans != null)
             {
-                serialProtocol = new Protocol(serialPort);
-            }
+                units[ans.Header.Address].processAnswer(ans);
 
-            start();
+            }
         }
 
-        public new void DeInit()
+        public virtual void DeInit()
         {
             RequestStop();
             join();
-            serialPort.Close();
         }
 
-        public new void publishAnswer(DataFrame frame)
+        private void processTx()
         {
-            serialProtocol.publishAnswer(frame);
-        }
-    }
-
-    /*************************************************************************************
-     * Comunicacao via AMQP
-     *************************************************************************************/ 
-    internal class AMQPCommunication : Communication, Communic
-    {
-        static RabbitMQ amqp = null;
-
-        public void doCommunication()
-        {
-            amqp.doCommunication();
-        }
-
-        public new void Init()
-        {
-            if (amqp == null)
+            try
             {
-                amqp = new RabbitMQ();
+                if (stopTx.Elapsed.Milliseconds > 100)
+                {
+                    if (isAnyQueueCmd())
+                    {
+                        Cmd cmd = getNextCmd();
+                        cmd.Header.Count = count++;
+
+                        if (send(cmd))
+                        {
+                            removeCmd(cmd);
+                            addTxCmd(cmd);
+                        }
+
+                        stopTx.Restart();
+                    }
+                }
             }
-
-            amqp.Open();
-            start();
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro no processamento da pilha de Transmissao");
+                Console.WriteLine(e.ToString());
+                Debug.WriteLine(e.ToString());
+            }
         }
 
-        public new void DeInit()
+        private void processRx()
         {
-            RequestStop();
-            join();
-            amqp.Close();
+            try
+            {
+                receive();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro no processamento da pilha de Recepcao");
+                Console.WriteLine(e.ToString());
+                Debug.WriteLine(e.ToString());
+            }
         }
 
-        public new void publishAnswer(DataFrame frame)
+        public virtual void Init()
         {
-            amqp.publishAnswer(frame);
+            stopTx.Start();
         }
+
+        public static void sendFrame(DataFrame frame)
+        {
+            if (communic != null)
+            {
+                communic.send(frame);
+            }
+        }
+
+         public static void stop()
+        {
+            if (communic != null)
+            {
+                communic.DeInit();
+            }
+        }
+
+        internal void printFrame(string str, DataFrame frame)
+        {
+            Debug.WriteLine(str);
+            foreach (char c in frame.Data)
+                Debug.Write(c.ToString());
+            Debug.Write("\r\n");
+        }
+
+        internal void printTx(string str, DataFrame frame)
+        {
+            Debug.WriteLine("TX TO:{0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
+            printFrame(str, frame);
+        }
+
+        public abstract bool receive();
+        public abstract bool send(Cmd cmd);
+        public abstract void send(DataFrame frame);
     }
 }

@@ -91,6 +91,8 @@
     <Compile Include="Communication\AnsCmd.cs" />
     <Compile Include="Communication\Communication.cs" />
     <Compile Include="Communication\IOCommunication.cs" />
+    <Compile Include="RabbitMQ\AMPQCommunication.cs" />
+    <Compile Include="SerialCommunication\SerialCommunication.cs" />
     <Compile Include="SerialCommunication\Serial.cs" />
     <Compile Include="Domain\DataTelemetria.cs" />
     <Compile Include="Domain\Master.cs" />
@@ -101,7 +103,6 @@
     <Compile Include="SerialCommunication\DataFrame.cs" />
     <Compile Include="Communication\CommunicationUnit.cs" />
     <Compile Include="SerialCommunication\DecoderFrame.cs" />
-    <Compile Include="display.cs" />
     <Compile Include="Domain\Fence.cs" />
     <Compile Include="FrontEnd\Form1.cs">
       <SubType>Form</SubType>
