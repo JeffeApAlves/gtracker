@@ -50,13 +50,16 @@
     <Reference Include="GMap.NET.WindowsPresentation, Version=1.7.6.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>..\packages\GMap.NET.Windows.1.8.0\lib\net40\GMap.NET.WindowsPresentation.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net40\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="RabbitMQ.Client, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
-      <HintPath>..\packages\RabbitMQ.Client.4.1.3\lib\net451\RabbitMQ.Client.dll</HintPath>
+    <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.5.0.1\lib\net451\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -88,16 +91,16 @@
     <Compile Include="Communication\AnsCmd.cs" />
     <Compile Include="Communication\Communication.cs" />
     <Compile Include="Communication\IOCommunication.cs" />
-    <Compile Include="Communication\Serial.cs" />
+    <Compile Include="SerialCommunication\Serial.cs" />
     <Compile Include="Domain\DataTelemetria.cs" />
     <Compile Include="Domain\Master.cs" />
     <Compile Include="Domain\tracker.cs" />
     <Compile Include="Domain\TrackerController .cs" />
     <Compile Include="FrontEnd\BuildTreeView.cs" />
     <Compile Include="Communication\Cmd.cs" />
-    <Compile Include="Communication\DataFrame.cs" />
+    <Compile Include="SerialCommunication\DataFrame.cs" />
     <Compile Include="Communication\CommunicationUnit.cs" />
-    <Compile Include="Communication\DecoderFrame.cs" />
+    <Compile Include="SerialCommunication\DecoderFrame.cs" />
     <Compile Include="display.cs" />
     <Compile Include="Domain\Fence.cs" />
     <Compile Include="FrontEnd\Form1.cs">
@@ -106,17 +109,14 @@
     <Compile Include="FrontEnd\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Domain\gps.cs" />
     <Compile Include="Domain\InterfaceTracker.cs" />
     <Compile Include="FrontEnd\LayerMap.cs" />
-    <Compile Include="Domain\padlock.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Communication\protocol.cs" />
-    <Compile Include="Communication\ringbuffer.cs" />
+    <Compile Include="SerialCommunication\protocol.cs" />
+    <Compile Include="SerialCommunication\ringbuffer.cs" />
     <Compile Include="Domain\Route.cs" />
     <Compile Include="Domain\ThreadRun.cs" />
-    <Compile Include="Domain\touchkey.cs" />
     <Compile Include="RabbitMQ\RabbitMQ.cs" />
     <Compile Include="TestData.cs" />
     <EmbeddedResource Include="FrontEnd\Form1.resx">

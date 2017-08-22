@@ -290,7 +290,7 @@ namespace GoodsTracker
             gMapControl1.Zoom = 15;
             gMapControl1.AutoScroll = true;
             gMapControl1.Position = new PointLatLng(SENAI_ANCHIETA.LATITUDE, SENAI_ANCHIETA.LONGITUDE);
-            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly;
+            //GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly;
         }
 
         private void initPanelTrip()

@@ -21,7 +21,7 @@ namespace GoodsTracker
             header              = new Header();
             header.Resource     = r;
             header.Operation    = o;
-            telemetria                = null;
+            telemetria          = null;
         }
     }
 }

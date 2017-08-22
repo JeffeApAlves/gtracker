@@ -4,6 +4,7 @@ using System.Text;
 using System.Diagnostics;
 using RabbitMQ.Client.Events;
 
+
 namespace GoodsTracker
 {
     class RABBITMQ{
@@ -12,8 +13,8 @@ namespace GoodsTracker
         public const string EXCHANGE_CMD    = "CMD";
         public const string HOSTNAME        = "localhost";
         public const int PORT               = 5672;
-        public const string PW              = "rna@1981";
-        public const string USER            = "rna";
+        public const string PW              = "senai";
+        public const string USER            = "senai";
         public const string VHOST           = "/";
         public const string CMD_QUEUE       = "CMD";
         public const string TLM_QUEUE       = "TLM";
@@ -38,22 +39,34 @@ namespace GoodsTracker
         {
             bool flg = false;
 
-            factory             = new ConnectionFactory();
-            
-            factory.HostName    = RABBITMQ.HOSTNAME;
-            factory.UserName    = RABBITMQ.USER;
-            factory.Password    = RABBITMQ.PW;
-            factory.VirtualHost = RABBITMQ.VHOST;
-            factory.Port        = RABBITMQ.PORT;
+            try
+            {
+                factory = new ConnectionFactory()
+                {
 
-            connection          = factory.CreateConnection();
-            channel             = connection.CreateModel();
+                    HostName = RABBITMQ.HOSTNAME,
+                    UserName = RABBITMQ.USER,
+                    Password = RABBITMQ.PW,
+                    VirtualHost = RABBITMQ.VHOST,
+                    Port = RABBITMQ.PORT,
+                };
 
-            createExchanges();
-            createQueues();
-            createBinds();
-            createConsumers();
+                connection = factory.CreateConnection();
+                channel = connection.CreateModel();
 
+                createExchanges();
+                createQueues();
+                createBinds();
+                createConsumers();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Problema na conexao com o broker de mensagem RabbitMQ");
+                Console.WriteLine(e.Message);
+
+            }
+  
             stopTx.Start();
             return flg;
         }
@@ -90,10 +103,9 @@ namespace GoodsTracker
 
             CommunicationUnit[] list = Communication.getArrayOfUnit();
 
-            foreach (CommunicationUnit c in list)
-            {
+            foreach (CommunicationUnit c in list){
                 channel.BasicConsume(queue:     RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
-                                     noAck:     true,
+                                     //noAck:     true,
                                      consumer:  consumer);
             }
         }
