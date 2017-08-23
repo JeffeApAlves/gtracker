@@ -90,14 +90,15 @@ namespace GoodsTracker
                 payload.Append(CONST_CHAR.SEPARATOR);
 
                 string str = b.Time.ToLongTimeString();
-                str = str.Remove(2, 1);
-                str = str.Remove(4, 1);
+                str = str.Replace(":","");
+                str = str.Replace(":","");
 
                 payload.Append(str);
                 payload.Append(CONST_CHAR.SEPARATOR);
 
                 str = b.Date.ToShortDateString().Remove(5, 1);
-                str = str.Remove(2, 1);
+                str = str.Replace("/", "");
+                str = str.Replace("/", "");
                 payload.Append(str);
 
                 ret = true;
@@ -239,7 +240,7 @@ namespace GoodsTracker
             {
                 string str = list[(int)index];
 
-                if (!str.Equals("") && str.Length > 5)
+                if (!str.Equals("") && str.Length >= 6)
                 {
                     str = str.Insert(2, ":");
                     str = str.Insert(5, ":");
@@ -260,7 +261,7 @@ namespace GoodsTracker
             {
                 string str = list[(int)index];
 
-                if (!str.Equals("") && str.Length>7)
+                if (!str.Equals("") && str.Length>=6)
                 {
                     str = str.Insert(2, "/");
                     str = str.Insert(5, "/");

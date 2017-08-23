@@ -130,7 +130,6 @@ namespace GoodsTracker
             // Verifica se recebeu nos ultimos 5s uma TLM caso negativo requisita
             if (tracker.getLastUpdate() > 10)
             {
-                Console.WriteLine("Requisitou");
                 tracker.requestBehavior(onTLM);
             }
         }
@@ -216,7 +215,7 @@ namespace GoodsTracker
 
         public void Init()
         {
-            //Inicia a Thread
+            // Inicia a Thread
             start();
         }
     }
