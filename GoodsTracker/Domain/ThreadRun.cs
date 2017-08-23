@@ -61,7 +61,10 @@ namespace GoodsTracker
 
         public void join()
         {
-            thread.Join();
+            if (thread.IsAlive)
+            {
+                thread.Join();
+            }
         }
 
         static internal void add(ThreadRun t)

@@ -13,7 +13,7 @@ namespace GoodsTracker
 
     interface Communic
     {
-        void register(BaseCommunication unit);
+        void register(DeviceBase unit);
         void Start();
         void Stop();
         bool receive();
@@ -26,7 +26,7 @@ namespace GoodsTracker
         private static TYPE_COMMUNICATION type;
         private static Communic communic = null;
         private const int _TIME_COMMUNICATION = 1;
-        private static Dictionary<int,BaseCommunication> devices = new Dictionary<int,BaseCommunication>();
+        private static Dictionary<int,DeviceBase> devices = new Dictionary<int,DeviceBase>();
         private static Dictionary<string, Cmd> txCmds = new Dictionary<string, Cmd>();
         private static Dictionary<string, Cmd> cmds = new Dictionary<string, Cmd>();
         private static List<AnsCmd> queueAnsCmd = new List<AnsCmd>();
@@ -36,7 +36,7 @@ namespace GoodsTracker
         internal static int count = 0;
         public static int TIME_COMMUNICATION => _TIME_COMMUNICATION;
 
-        internal static Dictionary<int, BaseCommunication> Devices { get => devices; set => devices = value; }
+        internal static Dictionary<int, DeviceBase> Devices { get => devices; set => devices = value; }
         internal static Dictionary<string, Cmd> TxCmds { get => txCmds; set => txCmds = value; }
         internal static Dictionary<string, Cmd> Cmds { get => cmds; set => cmds = value; }
         internal static List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
@@ -48,7 +48,7 @@ namespace GoodsTracker
             setTime(_TIME_COMMUNICATION);
         }
 
-        internal static void addDevice(BaseCommunication device)
+        internal static void addDevice(DeviceBase device)
         {
             if (device != null)
             {
@@ -168,13 +168,13 @@ namespace GoodsTracker
             return cmd;
         }
 
-        public static BaseCommunication[] getArrayOfDevices()
+        public static DeviceBase[] getArrayOfDevices()
         {
-            BaseCommunication[] ret = null;
+            DeviceBase[] ret = null;
 
             if (devices.Count > 0)
             {
-                ret = new BaseCommunication[devices.Count];
+                ret = new DeviceBase[devices.Count];
 
                 devices.Values.CopyTo(ret,0);
             }
@@ -261,7 +261,7 @@ namespace GoodsTracker
             DeInit();
         }
 
-        public static void registerDevice(BaseCommunication device)
+        public static void registerDevice(DeviceBase device)
         {
             //Adiciona no container
             addDevice(device);
@@ -309,6 +309,6 @@ namespace GoodsTracker
         public abstract bool sendCmd(Cmd cmd);
         public abstract bool sendAns(AnsCmd ans);
         public abstract bool receive();
-        public abstract void register(BaseCommunication unit);
+        public abstract void register(DeviceBase unit);
     }
 }

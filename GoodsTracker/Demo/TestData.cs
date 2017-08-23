@@ -19,6 +19,9 @@ namespace GoodsTracker
 
         static void publishAnswer()
         {
+            if (TrackerController.TrackerCtrl.anyRoute() &&
+                    TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > count_publish)
+
             // (/*Communication.isAnyTxCmd() &&*/ !Communication.isAnyAns() /*&& Communication.TxCmds.ContainsKey(RESOURCE.TLM)*/)
             {
                 AnsCmd ans = createAnsCmd();
@@ -42,13 +45,11 @@ namespace GoodsTracker
 
         static Telemetria createTelemetriaData()
         {
-            Telemetria b = null;
+            Telemetria b = new Telemetria();
 
             if (TrackerController.TrackerCtrl.anyRoute() &&
                 TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > count_publish)
             {
-                b = new Telemetria();
-
                 Random rnd = new Random();
                 PointLatLng p = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[count_publish++];
 

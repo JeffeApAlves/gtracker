@@ -39,7 +39,7 @@ namespace GoodsTracker
             return flag;
         }
 
-        public override void register(BaseCommunication unit)
+        public override void register(DeviceBase unit)
         {
             amqp.register(unit);
         }

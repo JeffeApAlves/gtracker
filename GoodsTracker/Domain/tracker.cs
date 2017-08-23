@@ -2,7 +2,7 @@
 
 namespace GoodsTracker
 {
-    class Tracker : BaseCommunication,InterfaceTracker
+    class Tracker : DeviceBase,InterfaceTracker
     {
         Telemetria  telemetriaData;
         Stopwatch sw_tlm = new Stopwatch();

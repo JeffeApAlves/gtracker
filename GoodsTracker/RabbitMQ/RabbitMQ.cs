@@ -184,9 +184,9 @@ namespace GoodsTracker
 
         public void registerAll()
         {
-            BaseCommunication[] list = Communication.getArrayOfDevices();
+            DeviceBase[] list = Communication.getArrayOfDevices();
 
-            foreach (BaseCommunication c in list)
+            foreach (DeviceBase c in list)
             {
                 register(c);
             }
@@ -197,7 +197,7 @@ namespace GoodsTracker
          * Cria filas,bind relacionado a um dispositivo
          * 
          */
-        public void register(BaseCommunication c)
+        public void register(DeviceBase c)
         {
             channel.QueueDeclare(    queue:      RABBITMQ.ANS_QUEUE + "." + c.Address.ToString("D5"),
                                      durable:    false,

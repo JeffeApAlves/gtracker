@@ -31,7 +31,7 @@ namespace GoodsTracker
             com_port.Close();
         }
 
-        public override void register(BaseCommunication unit)
+        public override void register(DeviceBase unit)
         {
             // Nothing TODO
         }

@@ -17,7 +17,7 @@ namespace GoodsTracker
     /*
      * Classe base para comunicacao 
      */
-    abstract class BaseCommunication
+    abstract class DeviceBase
     {
         /*
          * Endereco da unidade
@@ -35,7 +35,7 @@ namespace GoodsTracker
          * Construtor 
          * 
          */
-        internal BaseCommunication(int val)
+        internal DeviceBase(int val)
         {
             address = val;
 

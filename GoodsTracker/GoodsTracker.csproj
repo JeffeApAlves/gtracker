@@ -102,7 +102,7 @@
     <Compile Include="FrontEnd\BuildTreeView.cs" />
     <Compile Include="Communication\Cmd.cs" />
     <Compile Include="Communication\DataFrame.cs" />
-    <Compile Include="Communication\BaseCommunication.cs" />
+    <Compile Include="Communication\DeviceBase.cs" />
     <Compile Include="SerialCommunication\DecoderFrame.cs" />
     <Compile Include="Domain\Fence.cs" />
     <Compile Include="FrontEnd\Form1.cs">
