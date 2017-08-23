@@ -8,23 +8,22 @@ namespace GoodsTracker
 {
     class SerialCommunication : Communication
     {
- 
-        static Protocol serialProtocol = null;
-        static Serial serialPort = null;
+        static Protocol channel = null;
+        static Serial com_port = null;
 
         public override void Init()
         {
             base.Init();
 
-            serialPort = new Serial();
-            serialPort.Open();
+            com_port = new Serial();
+            com_port.Open();
 
-            if (serialProtocol == null)
+            if (channel == null)
             {
-                serialProtocol = new Protocol(serialPort);
+                channel = new Protocol(com_port);
             }
 
-            serialProtocol.acceptAnswer = acceptAnswer;
+            channel.acceptAnswer = acceptAnswer;
 
             start();
         }
@@ -32,12 +31,12 @@ namespace GoodsTracker
         public override void DeInit()
         {
             base.DeInit();
-            serialPort.Close();
+            com_port.Close();
         }
 
         public override void send(DataFrame frame)
         {
-            serialProtocol.sendFrame(frame);
+            channel.sendFrame(frame);
         }
 
         public override bool send(Cmd cmd)
@@ -46,8 +45,8 @@ namespace GoodsTracker
             try
             {
                 DataFrame frame = new DataFrame(cmd.Header, cmd.Payload);
-                serialProtocol.writeTx(frame);
-                printTx("TX OK: ",frame);
+                channel.writeTx(frame);
+                printTx("TX",frame);
 
                 flag = true;
             }catch(Exception e)
@@ -61,7 +60,7 @@ namespace GoodsTracker
 
         public override bool receive()
         {
-            serialProtocol.receive();
+            channel.receive();
  
             return true;
         }
@@ -75,7 +74,7 @@ namespace GoodsTracker
             Cmd cmd = searchCmdOfAnswer(ans);
 
             addAns(ans);
-            processAnswer(ans);
+            processAnswer(cmd,ans);
             removeTxCmd(cmd);
             removeAns(ans);
         };

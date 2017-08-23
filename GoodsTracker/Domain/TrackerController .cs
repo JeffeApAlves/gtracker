@@ -8,9 +8,10 @@ namespace GoodsTracker
 
     class TrackerController :ThreadRun
     {
+
         private static TrackerController singleton = null;
 
-        private const int _TIME_TELEMETRIA  = 5000;
+        private const int _TIME_TELEMETRIA  = 2000;
 
         onUpdateTelemetria  onDataTelemetria;
 
@@ -126,7 +127,12 @@ namespace GoodsTracker
 
         internal void requestBehavior()
         {
-            tracker.requestBehavior(onTLM);
+            // Verifica se recebeu nos ultimos 5s uma TLM caso negativo requisita
+            if (tracker.getLastUpdate() > 10)
+            {
+                Console.WriteLine("Requisitou");
+                tracker.requestBehavior(onTLM);
+            }
         }
 
         internal void lockVehicle(bool flg)

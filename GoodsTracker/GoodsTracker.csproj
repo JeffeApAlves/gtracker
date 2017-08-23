@@ -90,7 +90,8 @@
   <ItemGroup>
     <Compile Include="Communication\AnsCmd.cs" />
     <Compile Include="Communication\Communication.cs" />
-    <Compile Include="Communication\IOCommunication.cs" />
+    <Compile Include="Communication\IDecoderFrame.cs" />
+    <Compile Include="SerialCommunication\IOCommunication.cs" />
     <Compile Include="RabbitMQ\AMPQCommunication.cs" />
     <Compile Include="SerialCommunication\SerialCommunication.cs" />
     <Compile Include="SerialCommunication\Serial.cs" />
@@ -100,8 +101,8 @@
     <Compile Include="Domain\TrackerController .cs" />
     <Compile Include="FrontEnd\BuildTreeView.cs" />
     <Compile Include="Communication\Cmd.cs" />
-    <Compile Include="SerialCommunication\DataFrame.cs" />
-    <Compile Include="Communication\CommunicationUnit.cs" />
+    <Compile Include="Communication\DataFrame.cs" />
+    <Compile Include="Communication\BaseCommunication.cs" />
     <Compile Include="SerialCommunication\DecoderFrame.cs" />
     <Compile Include="Domain\Fence.cs" />
     <Compile Include="FrontEnd\Form1.cs">
@@ -112,14 +113,14 @@
     </Compile>
     <Compile Include="Domain\InterfaceTracker.cs" />
     <Compile Include="FrontEnd\LayerMap.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Domain\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialCommunication\protocol.cs" />
     <Compile Include="SerialCommunication\ringbuffer.cs" />
     <Compile Include="Domain\Route.cs" />
     <Compile Include="Domain\ThreadRun.cs" />
     <Compile Include="RabbitMQ\RabbitMQ.cs" />
-    <Compile Include="TestData.cs" />
+    <Compile Include="Demo\TestData.cs" />
     <EmbeddedResource Include="FrontEnd\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

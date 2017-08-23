@@ -33,17 +33,11 @@ namespace GoodsTracker
      * Somatoria
      */
 
-    interface IDecoderFrame
-    {
-        bool setValues(out PayLoad payload, DataTelemetria b);
-        bool getValues(out AnsCmd ans, DataFrame frame);
-    }
-
     public class RESOURCE
     {
-        public const string TLM         = "TLM";    // Data DataTelemetria
-        public const string LOCK        = "LCK";    // Trava 
-        public const string LCD         = "LCD";
+        public const string TLM     = "TLM";    // Data DataTelemetria
+        public const string LOCK    = "LCK";    // Trava 
+        public const string LCD     = "LCD";
     }
 
     public enum Operation

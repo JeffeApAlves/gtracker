@@ -87,9 +87,9 @@ namespace GoodsTracker
                 }
             };
 
-            CommunicationUnit[] list = Communication.getArrayOfUnit();
+            BaseCommunication[] list = Communication.getArrayOfUnit();
 
-            foreach (CommunicationUnit c in list){
+            foreach (BaseCommunication c in list){
                 channel.BasicConsume(queue:     RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
                                      autoAck:     true,
                                      consumer:  consumer);
@@ -104,9 +104,9 @@ namespace GoodsTracker
 
         private void createQueues()
         {
-            CommunicationUnit[] list = Communication.getArrayOfUnit();
+            BaseCommunication[] list = Communication.getArrayOfUnit();
 
-            foreach (CommunicationUnit c in list)
+            foreach (BaseCommunication c in list)
             {
                 channel.QueueDeclare(   queue: RABBITMQ.CMD_QUEUE + c.Address.ToString("D5"), 
                                         durable: false,
@@ -125,9 +125,9 @@ namespace GoodsTracker
 
         private void createBinds()
         {
-            CommunicationUnit[] list = Communication.getArrayOfUnit();
+            BaseCommunication[] list = Communication.getArrayOfUnit();
 
-            foreach (CommunicationUnit c in list)
+            foreach (BaseCommunication c in list)
             {
                 channel.QueueBind(  queue:      RABBITMQ.CMD_QUEUE + c.Address.ToString("D5"), 
                                     exchange:   RABBITMQ.EXCHANGE_CMD, 

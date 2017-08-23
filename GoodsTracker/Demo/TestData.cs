@@ -19,7 +19,7 @@ namespace GoodsTracker
 
         static void publishAnswer()
         {
-            if (Communication.isAnyTxCmd() && !Communication.isAnyAns() && Communication.TxCmds.ContainsKey(RESOURCE.TLM))
+            // (/*Communication.isAnyTxCmd() &&*/ !Communication.isAnyAns() /*&& Communication.TxCmds.ContainsKey(RESOURCE.TLM)*/)
             {
                 DataFrame frame = createFrame(  createTelemetriaData(), 
                                                 createAnsCmd());
@@ -77,7 +77,7 @@ namespace GoodsTracker
 
             ans.Header.Address = 2;
             ans.Header.Dest = 1;
-            ans.Header.Count = Communication.TxCmds[RESOURCE.TLM].Header.Count;
+            ans.Header.Count = Communication.TxCmds.ContainsKey(RESOURCE.TLM )?Communication.TxCmds[RESOURCE.TLM].Header.Count: count_publish++;
 
             return ans;
         }

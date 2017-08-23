@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Collections.Generic;
-using System.Net;
 
 namespace GoodsTracker
 {
@@ -27,7 +26,7 @@ namespace GoodsTracker
         private static TYPE_COMMUNICATION type;
         private static Communic communic = null;
         private const int _TIME_COMMUNICATION = 1;
-        private static Dictionary<int,CommunicationUnit> units = new Dictionary<int,CommunicationUnit>();
+        private static Dictionary<int,BaseCommunication> units = new Dictionary<int,BaseCommunication>();
         private static Dictionary<string, Cmd> txCmds = new Dictionary<string, Cmd>();
         private static Dictionary<string, Cmd> cmds = new Dictionary<string, Cmd>();
         private static List<AnsCmd> queueAnsCmd = new List<AnsCmd>();
@@ -37,7 +36,7 @@ namespace GoodsTracker
         internal static int count = 0;
         public static int TIME_COMMUNICATION => _TIME_COMMUNICATION;
 
-        internal static Dictionary<int, CommunicationUnit> Units { get => units; set => units = value; }
+        internal static Dictionary<int, BaseCommunication> Units { get => units; set => units = value; }
         internal static Dictionary<string, Cmd> TxCmds { get => txCmds; set => txCmds = value; }
         internal static Dictionary<string, Cmd> Cmds { get => cmds; set => cmds = value; }
         internal static List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
@@ -49,7 +48,7 @@ namespace GoodsTracker
             setTime(_TIME_COMMUNICATION);
         }
 
-        internal static void AddUnit(CommunicationUnit unit)
+        internal static void AddUnit(BaseCommunication unit)
         {
             if (unit != null)
             {
@@ -168,13 +167,13 @@ namespace GoodsTracker
             return cmd;
         }
 
-        public static CommunicationUnit[] getArrayOfUnit()
+        public static BaseCommunication[] getArrayOfUnit()
         {
-            CommunicationUnit[] ret = null;
+            BaseCommunication[] ret = null;
 
             if (units.Count > 0)
             {
-                ret = new CommunicationUnit[units.Count];
+                ret = new BaseCommunication[units.Count];
 
                 units.Values.CopyTo(ret,0);
             }
@@ -196,12 +195,11 @@ namespace GoodsTracker
             return cmd;
         }
 
-        internal static void processAnswer(AnsCmd ans)
+        internal static void processAnswer(Cmd cmd, AnsCmd ans)
         {
-            if (ans != null)
+            if (units.ContainsKey(ans.Header.Address))
             {
-                units[ans.Header.Address].processAnswer(ans);
-
+                units[ans.Header.Address].processAnswer(cmd, ans);
             }
         }
 
@@ -215,7 +213,7 @@ namespace GoodsTracker
         {
             try
             {
-                if (stopTx.Elapsed.Milliseconds > 100)
+                if (stopTx.Elapsed.Seconds > 2)
                 {
                     if (isAnyQueueCmd())
                     {
@@ -277,7 +275,7 @@ namespace GoodsTracker
 
         internal void printFrame(string str, DataFrame frame)
         {
-            Debug.WriteLine(str);
+            Debug.Write(str+": ");
             foreach (char c in frame.Data)
                 Debug.Write(c.ToString());
             Debug.Write("\r\n");
@@ -285,7 +283,7 @@ namespace GoodsTracker
 
         internal void printTx(string str, DataFrame frame)
         {
-            Debug.WriteLine("TX TO:{0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
+            Debug.WriteLine("TX: {0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
             printFrame(str, frame);
         }
 

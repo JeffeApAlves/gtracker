@@ -29,7 +29,7 @@ namespace GoodsTracker
             {
                 DataFrame frame = new DataFrame(cmd.Header, cmd.Payload);
                 amqp.publishCMD(frame);
-                printTx("TX OK: ",frame);
+                printTx("TX",frame);
 
                 flag = true;
             }
@@ -67,9 +67,8 @@ namespace GoodsTracker
         acceptAnswerHandler acceptAnswer = (AnsCmd ans) =>
         {
             addAns(ans);
-            processAnswer(ans);
+            processAnswer(null,ans);
             removeAns(ans);
         };
-
     }
 }

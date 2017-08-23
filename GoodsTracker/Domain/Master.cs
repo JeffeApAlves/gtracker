@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoodsTracker
 {
-    class Master : CommunicationUnit
+    class Master : BaseCommunication
     {
         // Server
         public const int ADDRESS = 1;

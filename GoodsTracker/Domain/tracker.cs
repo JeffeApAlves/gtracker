@@ -1,12 +1,13 @@
-﻿using System;
+﻿using System.Diagnostics;
 
 namespace GoodsTracker
 {
-    class Tracker : CommunicationUnit,InterfaceTracker
+    class Tracker : BaseCommunication,InterfaceTracker
     {
         DataTelemetria  telemetriaData;
+        Stopwatch sw_tlm = new Stopwatch();
 
-        bool            statusLock;
+        bool statusLock;
 
         internal DataTelemetria TelemetriaData { get => telemetriaData; set => telemetriaData = value; }
         public bool StatusLock { get => statusLock; set => statusLock = value; }
@@ -14,6 +15,7 @@ namespace GoodsTracker
         internal Tracker(int val):base(val)
         {
             statusLock = false;
+            sw_tlm.Start();
         }
 
         public double getLevel()
@@ -24,10 +26,7 @@ namespace GoodsTracker
         public void requestBehavior(onAnswerCmd on_ans)
         {
             Cmd cmd = createCMD(2, Operation.RD, RESOURCE.TLM);
-
-            cmd.EventAnswerCmd = on_ans;
-
-            sendCMD(cmd);
+            sendCMD(cmd, on_ans);
         }
 
         public void lockVehicle(onAnswerCmd on_ans)
@@ -36,9 +35,7 @@ namespace GoodsTracker
 
             statusLock = true;
             cmd.Append("1");
-            cmd.EventAnswerCmd = on_ans;
-
-            sendCMD(cmd);
+            sendCMD(cmd, on_ans);
         }
 
         public void unLockVehicle(onAnswerCmd on_ans)
@@ -47,9 +44,7 @@ namespace GoodsTracker
 
             statusLock = false;
             cmd.Append("0");
-            cmd.EventAnswerCmd = on_ans;
-
-            sendCMD(cmd);
+            sendCMD(cmd, on_ans);
         }
 
         /*
@@ -62,6 +57,7 @@ namespace GoodsTracker
             if(ans.Header.Resource.Equals(RESOURCE.TLM))
             {
                 updateDataTelemetria(ans);
+                sw_tlm.Restart();
             }
             else if(ans.Header.Resource.Equals(RESOURCE.LOCK)){
 
@@ -77,6 +73,11 @@ namespace GoodsTracker
         public DataTelemetria getTelemetria()
         {
             return telemetriaData;
+        }
+
+        public int getLastUpdate()
+        {
+            return sw_tlm.Elapsed.Seconds;
         }
     }
 }

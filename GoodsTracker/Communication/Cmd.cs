@@ -4,11 +4,9 @@ namespace GoodsTracker
 {
     class Cmd
     {
-        onAnswerCmd onAnswerCmd;
         Header      header;
         PayLoad     payload;
         
-        public onAnswerCmd EventAnswerCmd { get => onAnswerCmd; set => onAnswerCmd = value; }
         internal Header Header { get => header; set => header = value; }
         internal PayLoad Payload { get => payload; set => payload = value; }
 
@@ -24,6 +22,16 @@ namespace GoodsTracker
         internal void Append(string str)
         {
             payload.Append(str);
+        }
+
+        /**
+         * 
+         * Evento chamado quando recebe a resposta respectiva ao comando
+         * 
+         */
+        public void EventAnswerCmd()
+        {
+            //TODO se necessario
         }
     }
 }
