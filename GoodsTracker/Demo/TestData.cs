@@ -21,43 +21,36 @@ namespace GoodsTracker
         {
             // (/*Communication.isAnyTxCmd() &&*/ !Communication.isAnyAns() /*&& Communication.TxCmds.ContainsKey(RESOURCE.TLM)*/)
             {
-                DataFrame frame = createFrame(  createTelemetriaData(), 
-                                                createAnsCmd());
-                if (frame != null)
+                AnsCmd ans = createAnsCmd();
+                if (ans != null)
                 {
-                    Communication.sendFrame(frame);
+                    Communication.Communic.send(createAnsCmd());
                 }
             }
         }
 
-        static DataFrame createFrame(DataTelemetria b,AnsCmd cmd)
+        static AnsCmd createAnsCmd()
         {
-            DataFrame frame = null;
+            AnsCmd ans = new AnsCmd(RESOURCE.TLM, Operation.AN);
 
-            if (b != null)
-            {
-                PayLoad payload;
-
-                DecoderFrame decoder = new DecoderFrame();
-                decoder.setValues(out payload, b);
-
-                frame = new DataFrame(cmd.Header, payload);
-            }
-
-            return frame;
+            ans.Header.Address = 2;
+            ans.Header.Dest = 1;
+            ans.Header.Count = Communication.TxCmds.ContainsKey(RESOURCE.TLM )?Communication.TxCmds[RESOURCE.TLM].Header.Count: count_publish++;
+            ans.Telemetria = createTelemetriaData();
+            return ans;
         }
 
-        static DataTelemetria createTelemetriaData()
+        static Telemetria createTelemetriaData()
         {
-            DataTelemetria b = null;
+            Telemetria b = null;
 
             if (TrackerController.TrackerCtrl.anyRoute() &&
                 TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > count_publish)
             {
-                b = new DataTelemetria();
+                b = new Telemetria();
 
-                Random rnd      = new Random();
-                PointLatLng p   = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[count_publish++];
+                Random rnd = new Random();
+                PointLatLng p = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[count_publish++];
 
                 b.setPosition(p.Lat * 100, p.Lng * 100);
                 b.setAcceleration(rnd.Next(0, 4), rnd.Next(5, 9), rnd.Next(10, 14));
@@ -69,17 +62,6 @@ namespace GoodsTracker
             }
 
             return b;
-        }
-
-        static AnsCmd createAnsCmd()
-        {
-            AnsCmd ans = new AnsCmd(RESOURCE.TLM, Operation.AN);
-
-            ans.Header.Address = 2;
-            ans.Header.Dest = 1;
-            ans.Header.Count = Communication.TxCmds.ContainsKey(RESOURCE.TLM )?Communication.TxCmds[RESOURCE.TLM].Header.Count: count_publish++;
-
-            return ans;
         }
     }
 }

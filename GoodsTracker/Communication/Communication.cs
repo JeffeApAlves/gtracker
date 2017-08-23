@@ -8,16 +8,16 @@ namespace GoodsTracker
 
     enum TYPE_COMMUNICATION
     {
-        SERIAL,
-        AMQP
+        SERIAL,AMQP
     }
 
     interface Communic
     {
-        void Init();
-        void DeInit();
+        void register(BaseCommunication unit);
+        void Start();
+        void Stop();
         bool receive();
-        void send(DataFrame frame);
+        bool send(AnsCmd ans);
         bool send(Cmd cmd);
     }
 
@@ -26,7 +26,7 @@ namespace GoodsTracker
         private static TYPE_COMMUNICATION type;
         private static Communic communic = null;
         private const int _TIME_COMMUNICATION = 1;
-        private static Dictionary<int,BaseCommunication> units = new Dictionary<int,BaseCommunication>();
+        private static Dictionary<int,BaseCommunication> devices = new Dictionary<int,BaseCommunication>();
         private static Dictionary<string, Cmd> txCmds = new Dictionary<string, Cmd>();
         private static Dictionary<string, Cmd> cmds = new Dictionary<string, Cmd>();
         private static List<AnsCmd> queueAnsCmd = new List<AnsCmd>();
@@ -36,23 +36,23 @@ namespace GoodsTracker
         internal static int count = 0;
         public static int TIME_COMMUNICATION => _TIME_COMMUNICATION;
 
-        internal static Dictionary<int, BaseCommunication> Units { get => units; set => units = value; }
+        internal static Dictionary<int, BaseCommunication> Devices { get => devices; set => devices = value; }
         internal static Dictionary<string, Cmd> TxCmds { get => txCmds; set => txCmds = value; }
         internal static Dictionary<string, Cmd> Cmds { get => cmds; set => cmds = value; }
         internal static List<AnsCmd> QueueAnsCmd { get => queueAnsCmd; set => queueAnsCmd = value; }
 
-        Stopwatch stopTx = new Stopwatch();
+        private Stopwatch stopTx = new Stopwatch();
 
         public Communication()
         {
             setTime(_TIME_COMMUNICATION);
         }
 
-        internal static void AddUnit(BaseCommunication unit)
+        internal static void addDevice(BaseCommunication device)
         {
-            if (unit != null)
+            if (device != null)
             {
-                units[unit.Address] = unit;
+                devices[device.Address] = device;
             }
         }
 
@@ -70,17 +70,18 @@ namespace GoodsTracker
 
                 if (communic != null)
                 {
-                    communic.DeInit();
+                    communic.Stop();
                 }
 
                 switch (type)
                 {
-                    case TYPE_COMMUNICATION.SERIAL: communic = new SerialCommunication(); break;
-                    case TYPE_COMMUNICATION.AMQP: communic = new AMPQCommunication(); break;
+                    case TYPE_COMMUNICATION.SERIAL: communic    = new SerialCommunication(); break;
+                    case TYPE_COMMUNICATION.AMQP: communic      = new AMPQCommunication(); break;
                 }
+
                 if (communic != null)
                 {
-                    communic.Init();
+                    communic.Start();
                 }
                 else
                 {
@@ -167,15 +168,15 @@ namespace GoodsTracker
             return cmd;
         }
 
-        public static BaseCommunication[] getArrayOfUnit()
+        public static BaseCommunication[] getArrayOfDevices()
         {
             BaseCommunication[] ret = null;
 
-            if (units.Count > 0)
+            if (devices.Count > 0)
             {
-                ret = new BaseCommunication[units.Count];
+                ret = new BaseCommunication[devices.Count];
 
-                units.Values.CopyTo(ret,0);
+                devices.Values.CopyTo(ret,0);
             }
 
             return ret;
@@ -197,16 +198,10 @@ namespace GoodsTracker
 
         internal static void processAnswer(Cmd cmd, AnsCmd ans)
         {
-            if (units.ContainsKey(ans.Header.Address))
+            if (devices.ContainsKey(ans.Header.Address))
             {
-                units[ans.Header.Address].processAnswer(cmd, ans);
+                devices[ans.Header.Address].processAnswer(cmd, ans);
             }
-        }
-
-        public virtual void DeInit()
-        {
-            RequestStop();
-            join();
         }
 
         private void processTx()
@@ -220,7 +215,7 @@ namespace GoodsTracker
                         Cmd cmd = getNextCmd();
                         cmd.Header.Count = count++;
 
-                        if (send(cmd))
+                        if (sendCmd(cmd))
                         {
                             removeCmd(cmd);
                             addTxCmd(cmd);
@@ -242,6 +237,7 @@ namespace GoodsTracker
         {
             try
             {
+                // Implementada pela classe especialista
                 receive();
             }
             catch (Exception e)
@@ -252,43 +248,67 @@ namespace GoodsTracker
             }
         }
 
-        public virtual void Init()
+        public void Start()
         {
             stopTx.Start();
+            Init();
         }
 
-        public static void sendFrame(DataFrame frame)
+        public void Stop()
         {
+            RequestStop();
+            join();
+            DeInit();
+        }
+
+        public static void registerDevice(BaseCommunication device)
+        {
+            //Adiciona no container
+            addDevice(device);
+
+            //Atribui a interface de comunicacaoque sera usada pelo periferico
+            device.Communic = Communic;
+
             if (communic != null)
             {
-                communic.send(frame);
+                Communic.register(device);
             }
         }
 
-         public static void stop()
+        public virtual bool send(Cmd cmd)
         {
-            if (communic != null)
-            {
-                communic.DeInit();
-            }
+            Communication.addCmd(cmd);
+
+            return true;
         }
 
-        internal void printFrame(string str, DataFrame frame)
+        public virtual bool send(AnsCmd ans)
         {
-            Debug.Write(str+": ");
+            return sendAns(ans);
+        }
+
+        //Debug
+        protected void printFrame(string str, DataFrame frame)
+        {
+            Debug.Write(str + ": ");
             foreach (char c in frame.Data)
                 Debug.Write(c.ToString());
             Debug.Write("\r\n");
         }
 
-        internal void printTx(string str, DataFrame frame)
+        //Debug
+        protected void printTx(string str, DataFrame frame)
         {
-            Debug.WriteLine("TX: {0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
+            Debug.WriteLine(str + ": {0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
             printFrame(str, frame);
         }
 
+        //Implementação que será feita pela classe especialista
+        public abstract void Init();
+        public abstract void DeInit();
+        public abstract bool sendCmd(Cmd cmd);
+        public abstract bool sendAns(AnsCmd ans);
         public abstract bool receive();
-        public abstract bool send(Cmd cmd);
-        public abstract void send(DataFrame frame);
+        public abstract void register(BaseCommunication unit);
     }
 }

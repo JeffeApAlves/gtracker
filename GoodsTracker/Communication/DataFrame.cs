@@ -33,7 +33,7 @@ namespace GoodsTracker
      * Somatoria
      */
 
-    public class RESOURCE
+    public struct RESOURCE
     {
         public const string TLM     = "TLM";    // Data DataTelemetria
         public const string LOCK    = "LCK";    // Trava 

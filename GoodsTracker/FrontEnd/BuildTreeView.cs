@@ -27,13 +27,13 @@ namespace GoodsTracker
         bool forceClear     = false;
 
         TreeView treeView;
-        DataTelemetria[] behaviors;
+        Telemetria[] behaviors;
 
         int filter = 0;
 
         public TreeView TreeView { get => treeView; set => treeView = value; }
 
-        public DataTelemetria[] Behaviors
+        public Telemetria[] Behaviors
         {
             get
             {
@@ -168,7 +168,7 @@ namespace GoodsTracker
 
                 TreeNode root = createRootTreeView();
 
-                foreach (DataTelemetria b in behaviors)
+                foreach (Telemetria b in behaviors)
                 {
                     addTelemetria(b,root);
                 }
@@ -184,7 +184,7 @@ namespace GoodsTracker
             return TreeView.Nodes.Count <= 0 ? 0 : TreeView.Nodes[0].Nodes.Count;
         }
 
-        internal void addTelemetria(DataTelemetria b,TreeNode    root)
+        internal void addTelemetria(Telemetria b,TreeNode    root)
         {
             if (b != null)
             {
@@ -237,7 +237,7 @@ namespace GoodsTracker
             return root;
         }
 
-        internal TreeNode createLocTreeView(DataTelemetria b, TreeNode root)
+        internal TreeNode createLocTreeView(Telemetria b, TreeNode root)
         {
             TreeNode loc;
 
@@ -254,7 +254,7 @@ namespace GoodsTracker
             return loc;
         }
 
-        internal void createPositionTreeView(DataTelemetria b, TreeNode reg)
+        internal void createPositionTreeView(Telemetria b, TreeNode reg)
         {
             TreeNode info, loc;
 
@@ -277,7 +277,7 @@ namespace GoodsTracker
                 info.SelectedImageIndex = info.ImageIndex;
         }
 
-        internal void createSpeedTreeView(DataTelemetria b, TreeNode reg)
+        internal void createSpeedTreeView(Telemetria b, TreeNode reg)
         {
             TreeNode info, vel;
 
@@ -295,7 +295,7 @@ namespace GoodsTracker
                 info.SelectedImageIndex = info.ImageIndex;
         }
 
-        internal void createLevelTreeView(DataTelemetria b, TreeNode reg)
+        internal void createLevelTreeView(Telemetria b, TreeNode reg)
         {
             TreeNode info, level;
 
@@ -313,7 +313,7 @@ namespace GoodsTracker
                 info.SelectedImageIndex = info.ImageIndex;
         }
 
-        internal void createLockTreeView(DataTelemetria b, TreeNode reg)
+        internal void createLockTreeView(Telemetria b, TreeNode reg)
         {
             TreeNode info, _lock;
 
@@ -365,13 +365,13 @@ namespace GoodsTracker
 
         private void test()
         {
-            List<DataTelemetria> be = new List<DataTelemetria>();
-            List<DataTelemetria> v = new List<DataTelemetria>();
+            List<Telemetria> be = new List<Telemetria>();
+            List<Telemetria> v = new List<Telemetria>();
 
-            DataTelemetria e1 = new DataTelemetria();
-            DataTelemetria e2 = new DataTelemetria();
-            DataTelemetria e3 = new DataTelemetria();
-            DataTelemetria e4 = new DataTelemetria();
+            Telemetria e1 = new Telemetria();
+            Telemetria e2 = new Telemetria();
+            Telemetria e3 = new Telemetria();
+            Telemetria e4 = new Telemetria();
 
             be.Add(e1);
             be.Add(e2);

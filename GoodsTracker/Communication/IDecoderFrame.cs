@@ -8,7 +8,7 @@ namespace GoodsTracker
 {
     interface IDecoderFrame
     {
-        bool setValues(out PayLoad payload, DataTelemetria b);
+        bool setValues(out PayLoad payload, Telemetria b);
         bool getValues(out AnsCmd ans, DataFrame frame);
     }
 }

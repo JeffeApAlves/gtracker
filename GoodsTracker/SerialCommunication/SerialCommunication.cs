@@ -13,8 +13,6 @@ namespace GoodsTracker
 
         public override void Init()
         {
-            base.Init();
-
             com_port = new Serial();
             com_port.Open();
 
@@ -30,16 +28,15 @@ namespace GoodsTracker
 
         public override void DeInit()
         {
-            base.DeInit();
             com_port.Close();
         }
 
-        public override void send(DataFrame frame)
+        public override void register(BaseCommunication unit)
         {
-            channel.sendFrame(frame);
+            // Nothing TODO
         }
 
-        public override bool send(Cmd cmd)
+        public override bool sendCmd(Cmd cmd)
         {
             bool flag = false;
             try
@@ -57,6 +54,42 @@ namespace GoodsTracker
 
             return flag;
         }
+
+        public override bool sendAns(AnsCmd ans)
+        {
+            bool flag = false;
+
+            try
+            {
+                DataFrame frame = null;
+ 
+                if (ans.Header.Resource.Equals(RESOURCE.TLM))
+                {
+                    PayLoad payload;
+
+                    DecoderFrame decoder = new DecoderFrame();
+                    decoder.setValues(out payload, ans.Telemetria);
+
+                    frame = new DataFrame(ans.Header, payload);
+                }
+
+                if (frame != null)
+                {
+                    channel.writeTx(frame);
+                    printTx("TX", frame);
+
+                    flag = true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                flag = false;
+            }
+
+            return flag;
+        }
+
 
         public override bool receive()
         {

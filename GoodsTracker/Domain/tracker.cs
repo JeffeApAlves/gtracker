@@ -4,12 +4,12 @@ namespace GoodsTracker
 {
     class Tracker : BaseCommunication,InterfaceTracker
     {
-        DataTelemetria  telemetriaData;
+        Telemetria  telemetriaData;
         Stopwatch sw_tlm = new Stopwatch();
 
         bool statusLock;
 
-        internal DataTelemetria TelemetriaData { get => telemetriaData; set => telemetriaData = value; }
+        internal Telemetria TelemetriaData { get => telemetriaData; set => telemetriaData = value; }
         public bool StatusLock { get => statusLock; set => statusLock = value; }
 
         internal Tracker(int val):base(val)
@@ -25,13 +25,13 @@ namespace GoodsTracker
 
         public void requestBehavior(onAnswerCmd on_ans)
         {
-            Cmd cmd = createCMD(2, Operation.RD, RESOURCE.TLM);
+            Cmd cmd = createCMD(Master.ADDRESS,2, Operation.RD, RESOURCE.TLM);
             sendCMD(cmd, on_ans);
         }
 
         public void lockVehicle(onAnswerCmd on_ans)
         {
-            Cmd cmd = createCMD(2, Operation.WR, RESOURCE.LOCK);
+            Cmd cmd = createCMD(Master.ADDRESS, 2, Operation.WR, RESOURCE.LOCK);
 
             statusLock = true;
             cmd.Append("1");
@@ -40,7 +40,7 @@ namespace GoodsTracker
 
         public void unLockVehicle(onAnswerCmd on_ans)
         {
-            Cmd cmd = createCMD(2, Operation.WR, RESOURCE.LOCK);
+            Cmd cmd = createCMD(Master.ADDRESS, 2, Operation.WR, RESOURCE.LOCK);
 
             statusLock = false;
             cmd.Append("0");
@@ -70,7 +70,7 @@ namespace GoodsTracker
             telemetriaData = ans.Telemetria;
         }
 
-        public DataTelemetria getTelemetria()
+        public Telemetria getTelemetria()
         {
             return telemetriaData;
         }
@@ -78,6 +78,11 @@ namespace GoodsTracker
         public int getLastUpdate()
         {
             return sw_tlm.Elapsed.Seconds;
+        }
+
+        public void publishTLM(Telemetria tlm)
+        {
+            AnsCmd ans = createAnsCmd(2,Master.ADDRESS, RESOURCE.TLM);
         }
     }
 }

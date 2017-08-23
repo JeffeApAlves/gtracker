@@ -14,47 +14,65 @@ namespace GoodsTracker
         EXEC_SUCCESS    = 0,
     };
 
+    /*
+     * Classe base para comunicacao 
+     */
     abstract class BaseCommunication
     {
         /*
          * Endereco da unidade
          */
         protected int   address;
-        internal int    Address { get => address; set => address = value; }
-        private static  Dictionary<string, onAnswerCmd> answerHandler = new Dictionary<string, onAnswerCmd>();
-
+        private static Dictionary<string, onAnswerCmd> answerHandler = new Dictionary<string, onAnswerCmd>();
+        private Communic communic;
         protected abstract void onReceiveAnswer(AnsCmd ans);
 
+        internal int    Address { get => address; set => address = value; }
+        public Communic Communic { get => communic; set => communic = value; }
+
+
+        /**
+         * Construtor 
+         * 
+         */
         internal BaseCommunication(int val)
         {
             address = val;
-            Communication.AddUnit(this);
+
+            Communication.registerDevice(this);
         }
 
-        internal Cmd createCMD(int dest, Operation o, string resource)
+        /*
+         * Cria cmd's se associado ao endereço do periferico 
+         * 
+         */
+        internal Cmd createCMD(int address,int dest, Operation o, string resource)
         {
             Cmd c               = new Cmd(resource, o);
             c.Header.Dest       = dest;
-            c.Header.Address    = Master.ADDRESS;
+            c.Header.Address    = address;
 
             return c;
         }
 
-        internal void sendCMD(Cmd cmd, onAnswerCmd handler)
-        {
-            answerHandler[cmd.Header.Resource] = handler;
 
-            Communication.addCmd(cmd);
-        }
-
-        internal void sendCMD(Cmd cmd)
-        {
-            Communication.addCmd(cmd);
-        }
-
-        /**
+        /*
+         * Cria ans's e associa ao endereço do periferico 
          * 
-         * Metodo invocado quando se recebe qualquer resposta
+         */
+        internal AnsCmd createAnsCmd(int address, int dest,string resource)
+        {
+            AnsCmd ans = new AnsCmd(resource, Operation.AN);
+
+            ans.Header.Address = address;
+            ans.Header.Dest = dest;
+ 
+            return ans;
+        }
+
+         /**
+         * 
+         * Metodo invocado quando se recebe qualquer resposta para o endereço
          * 
          */
         internal void processAnswer(Cmd cmd,AnsCmd ans)
@@ -71,8 +89,8 @@ namespace GoodsTracker
                 }
 
                 // Executa callback do comando
-                if (cmd != null){
-
+                if (cmd != null)
+                {
                     // Especifico do comando
                     cmd.EventAnswerCmd();
                 }
@@ -83,6 +101,33 @@ namespace GoodsTracker
                 Console.WriteLine(e.ToString());
                 Debug.WriteLine(e.ToString());
             }
+        }
+
+        /**
+          * Envia um comando colocando ele na FIFO de saida que sera processada na Thread de comunicação
+          */
+        internal void sendCMD(Cmd cmd, onAnswerCmd handler)
+        {
+            answerHandler[cmd.Header.Resource] = handler;
+
+            communic.send(cmd);
+        }
+
+        /**
+         * Envia um comando colocando ele na FIFO de saida que sera processada na Thread de comunicação
+         */
+        internal void sendCMD(Cmd cmd)
+        {
+            communic.send(cmd);
+        }
+
+        /*
+         * Envia telemetria
+         * 
+         */
+        internal void sendTLM(AnsCmd ans)
+        {
+            communic.send(ans);
         }
     }
 }

@@ -245,7 +245,7 @@ namespace GoodsTracker
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             ThreadRun.stopAll();
-            Communication.stop();
+            Communication.Communic.Stop();
         }
 
         /*************************************************************************
@@ -258,6 +258,8 @@ namespace GoodsTracker
          */
         void initAllEntities()
         {
+            Communication.create(TYPE_COMMUNICATION.AMQP);
+
             trackerController = TrackerController.TrackerCtrl;
             trackerController.Init();
 
@@ -266,8 +268,6 @@ namespace GoodsTracker
 
             // Inicia todas as threads
             //ThreadManager.start();
-
-            Communication.create(TYPE_COMMUNICATION.AMQP);
 
             timer1.Enabled = true;
         }
@@ -388,7 +388,7 @@ namespace GoodsTracker
          */
         void updateStatusLock()
         {
-            DataTelemetria telemetria = trackerController.getTelemetria();
+            Telemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria == null)
             {
@@ -412,7 +412,7 @@ namespace GoodsTracker
          */
         void updateStatusFence()
         {
-            DataTelemetria telemetria = trackerController.getTelemetria();
+            Telemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria == null)
             {
@@ -436,7 +436,7 @@ namespace GoodsTracker
          */
         void updatelevel()
         {
-            DataTelemetria telemetria = trackerController.getTelemetria();
+            Telemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria == null)
             {
@@ -465,13 +465,13 @@ namespace GoodsTracker
          */
         void showMarkerBehavior()
         {
-            DataTelemetria[] listCurrentBehavior = bTV.Behaviors;
+            Telemetria[] listCurrentBehavior = bTV.Behaviors;
 
             if (listCurrentBehavior != null)
             {
                 layerBehavior.removeAllMarkers();
 
-                foreach (DataTelemetria b in listCurrentBehavior)
+                foreach (Telemetria b in listCurrentBehavior)
                 {
                     PointLatLng p = new PointLatLng(b.Latitude, b.Longitude);
 
@@ -501,7 +501,7 @@ namespace GoodsTracker
          */
         private void lckMng()
         {
-            DataTelemetria telemetria = trackerController.getTelemetria();
+            Telemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria != null)
             {
@@ -714,7 +714,7 @@ namespace GoodsTracker
          * Evento de recepcao de dados de telemetria
          * 
          */
-        private void onDataTelemetria(DataTelemetria telemetria)
+        private void onDataTelemetria(Telemetria telemetria)
         {
             // Atualiza o status da se esta dentro de alguma cerca
             layerFence.PointIsInsidePolygon(telemetria);

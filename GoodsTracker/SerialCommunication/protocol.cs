@@ -16,7 +16,7 @@ namespace GoodsTracker
         RX_FRAME_NOK,
     };
 
-    public class CONST_CHAR
+    public struct CONST_CHAR
     {        
         public const char RX_FRAME_START    = '[';
         public const char RX_FRAME_END      = ']';

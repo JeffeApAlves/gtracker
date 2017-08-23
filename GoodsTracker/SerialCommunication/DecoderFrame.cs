@@ -3,9 +3,9 @@ using System.Diagnostics;
 
 namespace GoodsTracker
 {
-    internal class DecoderFrame : IDecoderFrame
+    class DecoderFrame : IDecoderFrame
     {
-        class INDEX
+        struct INDEX
         {
             public const int ADDRESS = 0;
             public const int DEST = 1;
@@ -59,7 +59,7 @@ namespace GoodsTracker
             return ret;
         }
 
-        public bool setValues(out PayLoad payload, DataTelemetria b)
+        public bool setValues(out PayLoad payload, Telemetria b)
         {
             bool ret    = false;
             payload     = new PayLoad();
@@ -164,9 +164,9 @@ namespace GoodsTracker
             return ret;
         }
 
-        private DataTelemetria decoderTelemetria(string[] list)
+        private Telemetria decoderTelemetria(string[] list)
         {
-            DataTelemetria telemetria = new DataTelemetria();
+            Telemetria telemetria = new Telemetria();
 
             try
             {
@@ -189,7 +189,7 @@ namespace GoodsTracker
             }
             catch (Exception e)
             {
-                telemetria = new DataTelemetria();
+                telemetria = new Telemetria();
 
                 Console.WriteLine("Erro na decodificacao dos dados da Telemetria");
                 Console.WriteLine(e.ToString());
@@ -278,7 +278,7 @@ namespace GoodsTracker
             {
                 dest = Convert.ToInt16(list[(int)index]);
             }
-
+              
             return dest;
         }
 

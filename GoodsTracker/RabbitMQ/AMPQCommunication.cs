@@ -8,8 +8,6 @@ namespace GoodsTracker
 
         public override void Init()
         {
-            base.Init();
-
             amqp = new RabbitMQ();
             amqp.acceptAnswer = acceptAnswer;
             amqp.Open();
@@ -18,18 +16,17 @@ namespace GoodsTracker
 
         public override void DeInit()
         {
-            base.DeInit();
             amqp.Close();
         }
 
-        public override bool send(Cmd cmd)
+        public override bool sendCmd(Cmd cmd)
         {
             bool flag = false;
             try
             {
                 DataFrame frame = new DataFrame(cmd.Header, cmd.Payload);
                 amqp.publishCMD(frame);
-                printTx("TX",frame);
+                printTx("PB",frame);
 
                 flag = true;
             }
@@ -42,9 +39,43 @@ namespace GoodsTracker
             return flag;
         }
 
-        public override void send(DataFrame frame)
+        public override void register(BaseCommunication unit)
         {
-            amqp.publishFrame(frame);
+            amqp.register(unit);
+        }
+
+        public override bool sendAns(AnsCmd ans)
+        {
+            bool flag = false;
+
+            try
+            {
+                DataFrame frame = null;
+
+                if (ans.Header.Resource.Equals(RESOURCE.TLM))
+                {
+                    PayLoad payload;
+
+                    DecoderFrame decoder = new DecoderFrame();
+                    decoder.setValues(out payload, ans.Telemetria);
+
+                    frame = new DataFrame(ans.Header, payload);
+                }
+
+                if (frame != null)
+                {
+                    amqp.publishAns(frame);
+                    flag = true;
+                    printTx("PB", frame);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                flag = false;
+            }
+
+            return flag;
         }
 
         /**
@@ -54,7 +85,7 @@ namespace GoodsTracker
          */
         public override bool receive()
         {
-            // Nao fazer nada pois a callback ira chamar direto a funcao delegate accepAnser previamente 
+            // Nao fazer nada, pois a callback ira chamar direto a funcao delegate accepAnser previamente 
             // atribuida na propriedade
  
             return true;

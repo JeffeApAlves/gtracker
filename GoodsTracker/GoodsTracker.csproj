@@ -95,7 +95,7 @@
     <Compile Include="RabbitMQ\AMPQCommunication.cs" />
     <Compile Include="SerialCommunication\SerialCommunication.cs" />
     <Compile Include="SerialCommunication\Serial.cs" />
-    <Compile Include="Domain\DataTelemetria.cs" />
+    <Compile Include="Domain\Telemetria.cs" />
     <Compile Include="Domain\Master.cs" />
     <Compile Include="Domain\tracker.cs" />
     <Compile Include="Domain\TrackerController .cs" />
