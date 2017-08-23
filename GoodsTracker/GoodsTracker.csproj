@@ -113,7 +113,7 @@
     </Compile>
     <Compile Include="Domain\InterfaceTracker.cs" />
     <Compile Include="FrontEnd\LayerMap.cs" />
-    <Compile Include="Domain\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialCommunication\protocol.cs" />
     <Compile Include="SerialCommunication\ringbuffer.cs" />
