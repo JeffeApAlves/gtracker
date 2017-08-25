@@ -91,7 +91,7 @@
     <Compile Include="Communication\AnsCmd.cs" />
     <Compile Include="Communication\Communic.cs" />
     <Compile Include="Communication\Communication.cs" />
-    <Compile Include="Communication\IDecoderFrame.cs" />
+    <Compile Include="Communication\FrameSerialization.cs" />
     <Compile Include="GoodsTrackers\GoodsTrackers.cs" />
     <Compile Include="SerialCommunication\IOCommunication.cs" />
     <Compile Include="RabbitMQ\AMPQCommunication.cs" />

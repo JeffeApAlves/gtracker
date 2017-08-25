@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace GoodsTracker
 {
-    class DecoderFrame : IDecoderFrame
+    class DecoderFrame : FrameSerialization
     {
         struct INDEX
         {
@@ -59,7 +59,7 @@ namespace GoodsTracker
             return ret;
         }
 
-        public bool setValues(out PayLoad payload, Telemetria b)
+        public bool encode(out PayLoad payload, Telemetria b)
         {
             bool ret    = false;
             payload     = new PayLoad();
@@ -116,7 +116,7 @@ namespace GoodsTracker
             return ret;
         }
 
-        public bool getValues(out AnsCmd ans, DataFrame frame)
+        public bool decode(out AnsCmd ans, DataFrame frame)
         {
             bool ret    = false;
             ans         = new AnsCmd();

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GoodsTracker
 {
-    interface IDecoderFrame
+    interface FrameSerialization
     {
-        bool setValues(out PayLoad payload, Telemetria b);
-        bool getValues(out AnsCmd ans, DataFrame frame);
+        bool encode(out PayLoad payload, Telemetria b);
+        bool decode(out AnsCmd ans, DataFrame frame);
     }
 }

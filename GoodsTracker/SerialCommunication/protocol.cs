@@ -129,10 +129,10 @@ namespace GoodsTracker
 
         void verifyFrame()
         {
-            IDecoderFrame decoder = new DecoderFrame();
+            FrameSerialization decoder = new DecoderFrame();
             AnsCmd ans;
 
-            if (decoder.getValues(out ans, rxFrame))
+            if (decoder.decode(out ans, rxFrame))
             {
                 if (ans != null)
                 {

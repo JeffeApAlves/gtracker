@@ -86,13 +86,13 @@ namespace GoodsTracker
                 var message             = Encoding.UTF8.GetString(body);
                 var routingKey          = ea.RoutingKey;
 
-                IDecoderFrame decoder   = new DecoderFrame();
+                FrameSerialization decoder   = new DecoderFrame();
                 AnsCmd ans;
                 DataFrame frame         = new DataFrame();
                 frame.Data              = message + ":";
                 frame.Data              = frame.Data+frame.checkSum().ToString("X2");
 
-                if (decoder.getValues(out ans, frame))
+                if (decoder.decode(out ans, frame))
                 {
                     acceptAnswer?.Invoke(ans);
                 }

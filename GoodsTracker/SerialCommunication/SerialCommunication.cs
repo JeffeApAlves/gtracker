@@ -63,7 +63,7 @@ namespace GoodsTracker
                     PayLoad payload;
 
                     DecoderFrame decoder = new DecoderFrame();
-                    decoder.setValues(out payload, ans.Telemetria);
+                    decoder.encode(out payload, ans.Telemetria);
 
                     frame = new DataFrame(ans.Header, payload);
                 }
