@@ -31,11 +31,6 @@ namespace GoodsTracker
             com_port.Close();
         }
 
-        public override void register(DeviceBase unit)
-        {
-            // Nothing TODO
-        }
-
         public override bool sendCmd(Cmd cmd)
         {
             bool flag = false;

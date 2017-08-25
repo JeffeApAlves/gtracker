@@ -38,8 +38,7 @@ namespace GoodsTracker
         internal DeviceBase(int val)
         {
             address = val;
-
-            Communication.registerDevice(this);
+            GTracker.Communic.register(this);
         }
 
         /*

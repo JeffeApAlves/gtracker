@@ -39,9 +39,10 @@ namespace GoodsTracker
             return flag;
         }
 
-        public override void register(DeviceBase unit)
+        public override void register(DeviceBase device)
         {
-            amqp.register(unit);
+            base.register(device);
+            amqp.register(device);
         }
 
         public override bool sendAns(AnsCmd ans)

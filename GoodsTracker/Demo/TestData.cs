@@ -19,7 +19,9 @@ namespace GoodsTracker
 
         static void publishAnswer()
         {
-            if (TrackerController.TrackerCtrl.anyRoute() &&
+            Communic communic = GTracker.Communic;
+
+            if (communic!=null && TrackerController.TrackerCtrl.anyRoute() &&
                     TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > count_publish)
 
             // (/*Communication.isAnyTxCmd() &&*/ !Communication.isAnyAns() /*&& Communication.TxCmds.ContainsKey(RESOURCE.TLM)*/)
@@ -27,7 +29,7 @@ namespace GoodsTracker
                 AnsCmd ans = createAnsCmd();
                 if (ans != null)
                 {
-                    Communication.Communic.send(createAnsCmd());
+                    communic.send(createAnsCmd());
                 }
             }
         }

@@ -245,7 +245,7 @@ namespace GoodsTracker
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             ThreadRun.stopAll();
-            Communication.Communic.Stop();
+            GTracker.stopCommunication();
         }
 
         /*************************************************************************
@@ -258,7 +258,7 @@ namespace GoodsTracker
          */
         void initAllEntities()
         {
-            Communication.create(TYPE_COMMUNICATION.AMQP);
+            GTracker.createCommunication(TYPE_COMMUNICATION.AMQP);
 
             trackerController = TrackerController.TrackerCtrl;
             trackerController.Init();

@@ -11,20 +11,10 @@ namespace GoodsTracker
         SERIAL,AMQP
     }
 
-    interface Communic
-    {
-        void register(DeviceBase unit);
-        void Start();
-        void Stop();
-        bool receive();
-        bool send(AnsCmd ans);
-        bool send(Cmd cmd);
-    }
-
     abstract class Communication : ThreadRun, Communic
     {
         private static TYPE_COMMUNICATION type;
-        private static Communic communic = null;
+        //private static Communic singletonCoomunic = null;
         private const int _TIME_COMMUNICATION = 1;
         private static Dictionary<int,DeviceBase> devices = new Dictionary<int,DeviceBase>();
         private static Dictionary<string, Cmd> txCmds = new Dictionary<string, Cmd>();
@@ -32,7 +22,7 @@ namespace GoodsTracker
         private static List<AnsCmd> queueAnsCmd = new List<AnsCmd>();
 
         internal static TYPE_COMMUNICATION Type { get => type; set => type = value; }
-        internal static Communic Communic { get => communic; set => communic = value; }
+        //internal static Communic Communic { get => communic; set => communic = value; }
         internal static int count = 0;
         public static int TIME_COMMUNICATION => _TIME_COMMUNICATION;
 
@@ -62,39 +52,25 @@ namespace GoodsTracker
             processRx();
         }
 
-        public static void create(TYPE_COMMUNICATION t)
+        public static Communic create(TYPE_COMMUNICATION t)
         {
-            if (type != t || communic == null)
+            type = t;
+
+            Communic communic = null;
+
+            switch (type)
             {
-                type = t;
-
-                if (communic != null)
-                {
-                    communic.Stop();
-                }
-
-                switch (type)
-                {
-                    case TYPE_COMMUNICATION.SERIAL: communic    = new SerialCommunication(); break;
-                    case TYPE_COMMUNICATION.AMQP: communic      = new AMPQCommunication(); break;
-                }
-
-                if (communic != null)
-                {
-                    communic.Start();
-                }
-                else
-                {
-                    Debug.WriteLine("Problema na inicializacao da comunicação");
-                }
+                case TYPE_COMMUNICATION.SERIAL: communic    = new SerialCommunication(); break;
+                case TYPE_COMMUNICATION.AMQP: communic      = new AMPQCommunication(); break;
             }
+
+            return communic;
         }
 
         public static bool isAnyTxCmd()
         {
             return txCmds.Count > 0;
         }
-
 
         public static bool isAnyAns()
         {
@@ -261,18 +237,13 @@ namespace GoodsTracker
             DeInit();
         }
 
-        public static void registerDevice(DeviceBase device)
+        public virtual void register(DeviceBase device)
         {
-            //Adiciona no container
+            // Adiciona no container
             addDevice(device);
 
-            //Atribui a interface de comunicacaoque sera usada pelo periferico
-            device.Communic = Communic;
-
-            if (communic != null)
-            {
-                Communic.register(device);
-            }
+            // Atribui a interface de comunicacaoque sera usada pelo periferico
+            device.Communic = this;
         }
 
         public virtual bool send(Cmd cmd)
@@ -309,6 +280,5 @@ namespace GoodsTracker
         public abstract bool sendCmd(Cmd cmd);
         public abstract bool sendAns(AnsCmd ans);
         public abstract bool receive();
-        public abstract void register(DeviceBase unit);
     }
 }
