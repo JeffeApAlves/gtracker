@@ -162,6 +162,8 @@ static portTASK_FUNCTION(runTx_task, pvParameters) {
 	for (;;) {
 
 		processTx();
+
+		vTaskDelay(xCommunicationDelay);
 	}
 
 	vTaskDelete(runTx_task);

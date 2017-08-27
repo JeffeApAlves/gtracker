@@ -8,22 +8,22 @@ void tlm2String(DataTLM* info,ArrayPayLoad* ans){
 
 		clearArrayPayLoad(ans);
 
-		XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s:%s",
-				info->Lat,
-				info->Lng,
-				info->Axis[AXIS_X],
-				info->Axis[AXIS_Y],
-				info->Axis[AXIS_Z],
-				info->G[AXIS_X],
-				info->G[AXIS_Y],
-				info->G[AXIS_Z],
-				info->Speed,
-				info->Level,
-				info->Lock,
-				info->Time,
-				info->Date);
+	XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s:%s",
+				info->GPS.Lat,
+				info->GPS.Lng,
+				info->Accelerometer.Axis[AXIS_X],
+				info->Accelerometer.Axis[AXIS_Y],
+				info->Accelerometer.Axis[AXIS_Z],
+				info->Accelerometer.G[AXIS_X],
+				info->Accelerometer.G[AXIS_Y],
+				info->Accelerometer.G[AXIS_Z],
+				info->GPS.Speed,
+				info->Tank.Level,
+				info->Tank.Lock,
+				info->GPS.Time,
+				info->GPS.Date);
 
-		ans->Count = strlen(ans->Data);
+		ans->Length = strlen(ans->Data);
 	}
 }
 //------------------------------------------------------------------------

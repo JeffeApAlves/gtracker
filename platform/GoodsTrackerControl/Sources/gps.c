@@ -20,9 +20,9 @@ static RingBuffer	bufferRxNMEA;
 static ArrayFrame	frameNMEA;
 static StatusNMEA	statusNMEA = NMEA_INIT;
 static DataNMEA		dataNMEA;
-static DataTLM		infoGPS;
+static DataGPS		infoGPS;
 
-DataTLM*	pInfoGPS = &infoGPS;
+DataGPS*	pInfoGPS = &infoGPS;
 
 void runNMEA(void) {
 
@@ -66,14 +66,14 @@ static void NMEA_receiveFrame(void)
 
 	if(getGPSData(&ch)) {
 
-		if(ch==NMEA_CHAR_START || frameNMEA.Count>=LEN_FRAME) {
+		if(ch==NMEA_CHAR_START || frameNMEA.Length>=LEN_FRAME) {
 
 			NMEA_errorRxFrame();
 		}
 		else
 		  if(ch==NMEA_CHAR_END) {
 
-			 if(frameNMEA.Count>=NMEA_SIZE_MIN_FRAME) {
+			 if(frameNMEA.Length>=NMEA_SIZE_MIN_FRAME) {
 
 				 setGPSStatus(NMEA_RX_END);
 			 }
@@ -166,7 +166,7 @@ static void NMEA_acceptRxFrame(void)
 	strcpy(pInfoGPS->Date,dataNMEA.Date);
 	pInfoGPS->Speed = dataNMEA.Speed;
 
-    if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pInfoGPS, ( TickType_t ) 1 ) ){
+    if(xQueueSendToBack( xQueueGPS , ( void * ) &pInfoGPS, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleCallBackTask , BIT_UPDATE_GPS , eSetBits );
     }
@@ -197,7 +197,7 @@ static bool NMEA_decoderFrame(void){
 
 			// Checksum
 			unsigned int checksum_rx;
-			unsigned int checksum_calc = calcChecksum(frameNMEA.Data, frameNMEA.Count);
+			unsigned int checksum_calc = calcChecksum(frameNMEA.Data, frameNMEA.Length);
 			checksum_rx = ~checksum_calc;
 			checksum_rx = strtol(frameNMEA.checksum, NULL, 16);
 

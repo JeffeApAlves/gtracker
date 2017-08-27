@@ -23,6 +23,11 @@ namespace GoodsTracker
             return bufferRx.putData(data);
         }
 
+        public bool hasAnyData()
+        {
+            return bufferRx.Count > 0;
+        }
+
         /*
          * 
          * Le um caracter da fila Rx
@@ -187,6 +192,7 @@ namespace GoodsTracker
             sb.Append(" ");
             sb.Append(info);
 
+            Console.WriteLine("");
             Console.WriteLine(sb.ToString());
             stopSerial.Start();
         }

@@ -2,7 +2,6 @@
 #include "I2C2.h"
 
 static MMA8451_TDataState deviceData;
-static int8_t xyz[LEN_XYZ];
 
 uint8_t ReadReg(uint8_t addr, uint8_t *data, short dataSize) {
 
@@ -42,31 +41,9 @@ uint8_t WriteReg(uint8_t addr, uint8_t val) {
 }
 //--------------------------------------------------------------------------------------------
 
-void MMA845x_Run(void) {
-
-	int16_t x, y, z;
-	float x_g, y_g, z_g;
-	uint8_t res;
-
-	deviceData.handle = I2C2_Init(&deviceData);
-
-	/* F_READ: Fast read mode, data format limited to single byte (auto increment counter will skip LSB)
-	 * ACTIVE: Full scale selection
-	 */
-	res = WriteReg(MMA8451_CTRL_REG_1,  MMA8451_F_READ_BIT_MASK | MMA8451_ACTIVE_BIT_MASK);
-
-	if (res==ERR_OK) {
-
-		for(;;) {
-			res = ReadReg(MMA8451_OUT_X_MSB, (uint8_t*)&xyz,LEN_XYZ);
-		}
-	}
-
-	I2C2_Deinit(deviceData.handle);
-}
-//--------------------------------------------------------------------------------------------
-
 bool MMA845x_getValues(int* axis){
+
+	int8_t xyz[LEN_XYZ];
 
 	tword x,y,z;
 
@@ -77,15 +54,7 @@ bool MMA845x_getValues(int* axis){
 
 	if ((res==ERR_OK) && (status & MMA8451_ZYXDR_BIT_MASK)){
 
-		res = ReadReg(MMA8451_OUT_X_MSB, (uint8_t*)&xyz,LEN_XYZ);
-/*
-		if(res==ERR_OK){
-
-			axis[0] = ( xyz[0] << 8  );
-			axis[1] = ( xyz[1] << 8  );
-			axis[2] = ( xyz[2] << 8  );
-		}*/
-
+		res = ReadReg(MMA8451_OUT_X_MSB, (uint8_t*)&xyz,sizeof(xyz));
 
 		if(res==ERR_OK){
 
@@ -103,24 +72,6 @@ bool MMA845x_getValues(int* axis){
 			axis[0] = x.Word;
 			axis[1] = y.Word;
 			axis[2] = z.Word;
-
-/*
-			axis[0] = ((( xyz[0] << 8  ) | (xyz[1] & 0x00FF ))>>2) & 0x3FFF;
-			axis[1] = ((( xyz[2] << 8  ) | (xyz[3] & 0x00FF ))>>2) & 0x3FFF;
-			axis[2] = ((( xyz[4] << 8  ) | (xyz[5] & 0x00FF ))>>2) & 0x3FFF;
-
-			if(xyz[0]>0x7F){
-				axis[0] |= 0x8000;
-			}
-
-			if(xyz[2]>0x7F){
-				axis[1] |= 0x8000;
-			}
-
-			if(xyz[4]>0x7F){
-				axis[2] |= 0x8000;
-			}
-			*/
 		}
 	}
 
@@ -128,17 +79,16 @@ bool MMA845x_getValues(int* axis){
 }
 //--------------------------------------------------------------------------------------------
 
+/*
+** Read current value of System Control 1 Register.
+** Put sensor into Standby Mode by clearing the Active bit
+** Return with previous value of System Control 1 Register.
+*/
 void MMA845x_Standby (void)
 {
-	/*
-	** Read current value of System Control 1 Register.
-	** Put sensor into Standby Mode by clearing the Active bit
-	** Return with previous value of System Control 1 Register.
-	*/
 	uint8_t ctrl;
 
 	ReadReg(MMA8451_CTRL_REG_1, &ctrl, 1);
-
 	WriteReg(MMA8451_CTRL_REG_1, ctrl & (~MMA8451_ACTIVE_BIT_MASK));
 }
 //--------------------------------------------------------------------------------------------
@@ -148,11 +98,9 @@ void MMA845x_Active(void)
 	uint8_t ctrl;
 
 	ReadReg(MMA8451_CTRL_REG_1, &ctrl, 1);
-
 	WriteReg(MMA8451_CTRL_REG_1, ctrl | MMA8451_ACTIVE_BIT_MASK);
 }
 //--------------------------------------------------------------------------------------------
-
 
 void MMA845x_init(void){
 
@@ -162,9 +110,7 @@ void MMA845x_init(void){
 	deviceData.handle = I2C2_Init(&deviceData);
 
 	MMA845x_Standby();
-
 	ReadReg(MMA8451_CTRL_REG_1,&ctrl,1);
-
 	WriteReg(MMA8451_CTRL_REG_1,ctrl & (~MMA8451_F_READ_BIT_MASK));
 
 	MMA845x_Active();
@@ -203,6 +149,16 @@ void convertDecimal (tword* data)
 		//SCI_CharOut ('+');
 		out[0] = '+';
 	}
+
+	/*
+		axis[0] = ((( xyz[0] << 8  ) | (xyz[1] & 0x00FF ))>>2) & 0x3FFF;
+
+		if(xyz[0]>0x7F){
+			axis[0] |= 0x8000;
+		}
+
+		*/
+
 	/*
 	** Calculate decimal equivalence:
 	** a = thousands

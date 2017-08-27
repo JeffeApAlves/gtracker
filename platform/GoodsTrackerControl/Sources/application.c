@@ -244,7 +244,7 @@ pCallBack getCallBack(Resource* r) {
 
 void initApp(void){
 
-	clearDataTLM(&dataTLM);
+	clearDataTLM(DataTLM,&dataTLM);
 	clearArrayPayLoad(&msg2send);
 }
 //------------------------------------------------------------------------

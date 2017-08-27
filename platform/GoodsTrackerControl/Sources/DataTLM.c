@@ -37,17 +37,13 @@ void updateTLM(uint32_t ulNotifiedValue){
 
 void updateDataGPS(void) {
 
-	if (xQueueDataTLM != 0) {
+	if (xQueueGPS != 0) {
 
-		DataTLM* data;
+		DataGPS* data;
 
-		if (xQueueReceive(xQueueDataTLM, &(data), (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueGPS, &(data), (TickType_t ) 1)) {
 
-			dataTLM.Lat = data->Lat;
-			dataTLM.Lng = data->Lng;
-			strcpy(dataTLM.Date, data->Date);
-			strcpy(dataTLM.Time, data->Time);
-			dataTLM.Speed	= data->Speed;
+			dataTLM.GPS = *data;
 		}
 	}
 }
@@ -55,14 +51,13 @@ void updateDataGPS(void) {
 
 void updateDataAcce(void) {
 
-	if (xQueueDataTLM != 0) {
+	if (xQueueAcc != 0) {
 
-		DataTLM* data;
+		DataAccelerometer* data;
 
-		if (xQueueReceive(xQueueDataTLM, &(data), (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueAcc, &(data), (TickType_t ) 1)) {
 
-			memcpy(dataTLM.Axis,data->Axis,sizeof(dataTLM.G));
-			memcpy(dataTLM.G,data->G,sizeof(dataTLM.G));
+			dataTLM.Accelerometer  = *data;
 		}
 	}
 }
@@ -70,13 +65,13 @@ void updateDataAcce(void) {
 
 void updateDataLevel(void) {
 
-	if (xQueueDataTLM != 0) {
+	if (xQueueTank != 0) {
 
-		DataTLM* data;
+		DataTank* data;
 
-		if (xQueueReceive(xQueueDataTLM, &(data), (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueTank, &(data), (TickType_t ) 1)) {
 
-			dataTLM.Level = data->Level;
+			dataTLM.Tank  = *data;
 		}
 	}
 }

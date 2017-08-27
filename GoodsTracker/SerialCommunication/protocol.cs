@@ -38,17 +38,20 @@
 
         public void receive()
         {
-            switch (statusRx)
+            while (IOComunic.hasAnyData())
             {
-                default:
-                case StatusRx.RX_FRAME_INIT:        initRxCMD();        break;
-                case StatusRx.RX_FRAME_BEGIN:       rxStartCMD();       break;
-                case StatusRx.RX_FRAME_RX_START:    receiveFrame();     break;
-                case StatusRx.RX_FRAME_RX_FRAME:    receiveFrame();     break;
-                case StatusRx.RX_FRAME_RX_END:      rxCR();             break;
-                case StatusRx.RX_FRAME_RX_CR:       rxNL();             break;
-                case StatusRx.RX_FRAME_RX_NL:       verifyFrame();      break;
-                case StatusRx.RX_FRAME_NOK:         errorRxFrame();     break;
+                switch (statusRx)
+                {
+                    default:
+                    case StatusRx.RX_FRAME_INIT: initRxCMD(); break;
+                    case StatusRx.RX_FRAME_BEGIN: rxStartCMD(); break;
+                    case StatusRx.RX_FRAME_RX_START: receiveFrame(); break;
+                    case StatusRx.RX_FRAME_RX_FRAME: receiveFrame(); break;
+                    case StatusRx.RX_FRAME_RX_END: rxCR(); break;
+                    case StatusRx.RX_FRAME_RX_CR: rxNL(); break;
+                    case StatusRx.RX_FRAME_RX_NL: verifyFrame(); break;
+                    case StatusRx.RX_FRAME_NOK: errorRxFrame(); break;
+                }
             }
     }
 

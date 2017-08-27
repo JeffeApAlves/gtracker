@@ -104,14 +104,14 @@ static void receiveFrame (void) {
 
 	if(getRxData(&ch)) {
 
-		if(ch==CHAR_START || frameCom.Count>=LEN_FRAME) {
+		if(ch==CHAR_START || frameCom.Length>=LEN_FRAME) {
 
 			errorRxFrame();
 		}
 		else
 		  if(ch==CHAR_END) {
 
-			 if(frameCom.Count>=SIZE_MIN_FRAME) {
+			 if(frameCom.Length>=SIZE_MIN_FRAME) {
 
 				setStatusRx(CMD_RX_END);
 			 }
@@ -195,7 +195,7 @@ static bool decoderFrame(void) {
 
 			//-2 para desconsiderar o checksum que esta no frame recebido
 			unsigned int checksum_rx;
-			unsigned int checksum_calc = calcChecksum(frameCom.Data, frameCom.Count - LEN_CHECKSUM);
+			unsigned int checksum_calc = calcChecksum(frameCom.Data, frameCom.Length - LEN_CHECKSUM);
 			checksum_rx = ~checksum_calc;
 
 			AsHex(&checksum_rx,&list,list.count-1);
@@ -207,7 +207,7 @@ static bool decoderFrame(void) {
 				AsInteger(&dataCom.countFrame,		&list,2);
 				AsString(&dataCom.operacao,			&list,3);
 				AsString(&dataCom.resource.name,	&list,4);
-				AsInteger(&dataCom.PayLoad.Count,	&list,5);
+				AsInteger(&dataCom.PayLoad.Length,	&list,5);
 				AsString(&dataCom.PayLoad.Data,		&list,6);
 
 				ret = true;
@@ -283,7 +283,7 @@ static void sendFrame(void){
 	putTxData(CHAR_CR);						// Envia caracteres de controle
 	putTxData(CHAR_LF);
 }
-//------------------------------------------------------------------------
+//-------------------1-----------------------------------------------------
 
 static inline void setStatusRx(StatusRx sts) {
 
@@ -390,7 +390,7 @@ static void copyHeaderToFrame(void) {
 				dataCom.countFrame,		CHAR_SEPARATOR,
 				dataCom.operacao, 		CHAR_SEPARATOR,
 				dataCom.resource.name,	CHAR_SEPARATOR,
-				dataCom.PayLoad.Count,	CHAR_SEPARATOR);
+				dataCom.PayLoad.Length,	CHAR_SEPARATOR);
 }
 //------------------------------------------------------------------------
 
@@ -415,7 +415,7 @@ static void copyCheckSumToFrame(void) {
 	char separator[] = {CHAR_SEPARATOR,CHAR_STR_END};
 
 	AppendFrame(&frameCom,separator);
-	XF1_xsprintf(frameCom.checksum, "%02X", calcChecksum (frameCom.Data,frameCom.Count));
+	XF1_xsprintf(frameCom.checksum, "%02X", calcChecksum (frameCom.Data,frameCom.Length));
 	AppendFrame(&frameCom,frameCom.checksum);
 }
 //------------------------------------------------------------------------
@@ -431,7 +431,7 @@ static void setPayLoad(ArrayPayLoad* ans) {
 
 		dataCom.PayLoad =  *ans;
 
-		if(dataCom.PayLoad.Count > LEN_PAYLOAD){
+		if(dataCom.PayLoad.Length > LEN_PAYLOAD){
 
 			//TODO Tratar array do payload maior que o buffer provisionado
 		}

@@ -22,10 +22,10 @@ const TickType_t xAccelDelay			= (100 / portTICK_PERIOD_MS);
 TaskHandle_t 	xHandleMainTask		= NULL, xHandleCommunicationTask	= NULL,
 				xHandleDataTask		= NULL, xHandleIHMTask				= NULL,
 				xHandleGPSTask		= NULL,	xHandleAccelTask			= NULL,
-				xHandleCallBackTask	= NULL,xHandleRunTxTask				= NULL;
+				xHandleCallBackTask	= NULL, xHandleRunTxTask			= NULL;
 
 // Queues
-QueueHandle_t	xQueueCom, xQueueLCD, xQueueAnswer, xQueueDataTLM;
+QueueHandle_t	xQueueCom, xQueueLCD, xQueueAnswer, xQueueGPS, xQueueAcc , xQueueTank;
 
 /**
  * Cria todas as filas de menssagens
@@ -33,8 +33,10 @@ QueueHandle_t	xQueueCom, xQueueLCD, xQueueAnswer, xQueueDataTLM;
  */
 void initQueues(void){
 
-	xQueueCom		= xQueueCreate( 3, sizeof( DataCom* ));
-	xQueueAnswer	= xQueueCreate( 3, sizeof( ArrayPayLoad* ));
-	xQueueDataTLM	= xQueueCreate( 5, sizeof( DataTLM* ));
+	xQueueCom		= xQueueCreate( 5, sizeof( DataCom* ));
+	xQueueAnswer	= xQueueCreate( 5, sizeof( ArrayPayLoad* ));
+	xQueueGPS		= xQueueCreate( 2, sizeof( DataGPS* ));
+	xQueueAcc		= xQueueCreate( 2, sizeof( DataAccelerometer* ));
+	xQueueTank		= xQueueCreate( 2, sizeof( DataTank* ));
 }
 //-----------------------------------------------------------------------------

@@ -45,7 +45,7 @@ namespace GoodsTracker
                 index_producer %= data.Length;
                 count++;
 
-                //LogConsole("PUT:", ch);
+                //LogConsole("PUT", ch);
 
                 semaforo.Release();
 
@@ -53,11 +53,12 @@ namespace GoodsTracker
             }
             else
             {
+/*
                 Debug.WriteLine("\n\nRing Buffer cheio \n\n !!!");
                 Debug.WriteLine("RingBuffer: {0}/{1} {2}", index_consumer, index_producer, data.Length);
                 foreach (char c in data)
                     Debug.Write(c.ToString());
-                Debug.Write("\n");
+                Debug.Write("\n");*/
             }
 
 
@@ -78,7 +79,7 @@ namespace GoodsTracker
                 index_consumer %= data.Length;
                 count--;
 
-                //LogConsole("GET:", ch);
+                //LogConsole("GET", ch);
 
                 semaforo.Release();
 
@@ -128,18 +129,15 @@ namespace GoodsTracker
             StringBuilder sb = new StringBuilder();
 
             sb.Append(str);
-            sb.Append(" ");
-            sb.Append(stopPUT.Elapsed.Milliseconds.ToString("D5"));
-            sb.Append(" ");
-            sb.Append(count.ToString("D5"));
-            sb.Append(" ");
-            sb.Append(index_producer.ToString("D5"));
+            sb.Append(": " + stopPUT.Elapsed.Milliseconds.ToString("D5") + " ms");
+            sb.Append(" Nr: "+count.ToString("D5")+"\n");
+            sb.Append(" P: " + index_producer.ToString("D5"));
             sb.Append("\\");
-            sb.Append(index_consumer.ToString("D5"));
-            sb.Append(" ");
+            sb.Append(" C: " + index_consumer.ToString("D5") + " ");
             sb.Append(ch);
 
-            Console.WriteLine(sb);
+            //Console.WriteLine(sb);
+            Debug.WriteLine(sb);
             stopPUT.Start();
         }
     }

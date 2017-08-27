@@ -262,7 +262,6 @@ namespace GoodsTracker
         //Debug
         protected void printFrame(string str, DataFrame frame)
         {
-            Debug.Write(str + ": ");
             foreach (char c in frame.Data)
                 Debug.Write(c.ToString());
             Debug.Write("\r\n");
@@ -271,7 +270,7 @@ namespace GoodsTracker
         //Debug
         protected void printTxFrame(string str, DataFrame frame)
         {
-            Debug.WriteLine(str + ": {0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
+            Debug.WriteLine(str + ": {2}{3} ms {0}[{1}]", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
             printFrame(str, frame);
         }
 

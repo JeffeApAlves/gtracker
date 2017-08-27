@@ -2,22 +2,23 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="isAny" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="isany"/>
-			<item value="isAny"/>
-			<item value="FRAME_NOK"/>
-			<item value="erro"/>
-			<item value="NMEA_errorRxFrame"/>
-			<item value="NMEA_FRAME_NOK"/>
-			<item value="NOK"/>
-			<item value="errorRxFrame"/>
+			<item value="clearArrayPayLoad"/>
+			<item value="clear"/>
+			<item value="Accelerometer."/>
+			<item value="updateDataGPS"/>
+			<item value="datatlm"/>
+			<item value="dtatlm"/>
+			<item value="sendq"/>
+			<item value="send"/>
 		</list>
 		<list key="replacehistory">
+			<item value="data-&gt;"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

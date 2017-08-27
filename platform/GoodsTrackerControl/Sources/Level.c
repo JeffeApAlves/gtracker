@@ -10,9 +10,9 @@
 #include "Level.h"
 
 static uint16_t	ADValues[AD1_CHANNEL_COUNT];
-static DataTLM		adInfo;
+static DataTank		adInfo;
 
-DataTLM*	pInfo = &adInfo;
+DataTank*	pInfo = &adInfo;
 
 volatile	bool AD_finished = FALSE;
 
@@ -26,7 +26,7 @@ void runAnalog(void){
 
 			pInfo->Level = ADValues[2];
 
-		    if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pInfo, ( TickType_t ) 1 ) ){
+		    if(xQueueSendToBack( xQueueTank , ( void * ) &pInfo, ( TickType_t ) 1 ) ){
 
 		    	xTaskNotify( xHandleCallBackTask, BIT_UPDATE_AD , eSetBits );
 		    }

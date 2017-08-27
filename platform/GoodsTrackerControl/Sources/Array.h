@@ -20,7 +20,7 @@ typedef struct{
 	int		CountCheckSum;
 	char	checksum[LEN_CHECKSUM];
 
-	int		Count;
+	int		Length;
 	char	Data[LEN_FRAME];
 
 } ArrayFrame;
@@ -28,7 +28,7 @@ typedef struct{
 
 typedef struct{
 
-	int		Count;
+	int		Length;
 	char	Data[LEN_PAYLOAD];
 
 } ArrayPayLoad;
@@ -36,7 +36,7 @@ typedef struct{
 
 typedef struct{
 
-	int		count;
+	int		Length;
 	char	data[LEN_HEADER];
 
 } ArrayHeader;
