@@ -35,8 +35,9 @@ void initApp(void);
 void decoderLockPayLoad(ArrayPayLoad* payload);
 void answerTime(void);
 void answerTLM(void);
+void execCMD(uint32_t ulNotifiedValue);
 
-void runCallBack(void);
+void runApp(void);
 pCallBack getCallBack(Resource* r);
 
 #endif /* SOURCES_APPLICATION_H_ */

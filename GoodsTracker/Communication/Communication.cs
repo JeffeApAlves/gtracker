@@ -14,7 +14,6 @@ namespace GoodsTracker
     abstract class Communication : ThreadRun, Communic
     {
         private static TYPE_COMMUNICATION type;
-        //private static Communic singletonCoomunic = null;
         private const int _TIME_COMMUNICATION = 1;
         private static Dictionary<int,DeviceBase> devices = new Dictionary<int,DeviceBase>();
         private static Dictionary<string, Cmd> txCmds = new Dictionary<string, Cmd>();
@@ -22,7 +21,6 @@ namespace GoodsTracker
         private static List<AnsCmd> queueAnsCmd = new List<AnsCmd>();
 
         internal static TYPE_COMMUNICATION Type { get => type; set => type = value; }
-        //internal static Communic Communic { get => communic; set => communic = value; }
         internal static int count = 0;
         public static int TIME_COMMUNICATION => _TIME_COMMUNICATION;
 
@@ -184,7 +182,7 @@ namespace GoodsTracker
         {
             try
             {
-                if (stopTx.Elapsed.Seconds > 2)
+                if (stopTx.Elapsed.Milliseconds > 500)
                 {
                     if (isAnyQueueCmd())
                     {
@@ -271,6 +269,13 @@ namespace GoodsTracker
         protected void printTx(string str, DataFrame frame)
         {
             Debug.WriteLine(str + ": {0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
+            printFrame(str, frame);
+        }
+
+        //Debug
+        protected void printRx(string str, DataFrame frame)
+        {
+            Debug.WriteLine(str + ": {0}[{1}]", frame.Header.Resource, frame.Header.Count.ToString("D5"));
             printFrame(str, frame);
         }
 

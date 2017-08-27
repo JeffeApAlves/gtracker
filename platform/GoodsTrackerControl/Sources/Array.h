@@ -10,18 +10,18 @@
 
 #include "stdlib.h"
 
-#define SIZE_HEADER		30
-#define SIZE_PAYLOAD	256
-#define SIZE_FRAME		300
-#define SIZE_CHECKSUM	3
+#define LEN_HEADER		30
+#define LEN_PAYLOAD		256
+#define LEN_FRAME		300
+#define LEN_CHECKSUM	3
 
 typedef struct{
 
 	int		CountCheckSum;
-	char	checksum[SIZE_CHECKSUM];
+	char	checksum[LEN_CHECKSUM];
 
 	int		Count;
-	char	Data[SIZE_FRAME];
+	char	Data[LEN_FRAME];
 
 } ArrayFrame;
 
@@ -29,7 +29,7 @@ typedef struct{
 typedef struct{
 
 	int		Count;
-	char	Data[SIZE_PAYLOAD];
+	char	Data[LEN_PAYLOAD];
 
 } ArrayPayLoad;
 
@@ -37,7 +37,7 @@ typedef struct{
 typedef struct{
 
 	int		count;
-	char	data[SIZE_HEADER];
+	char	data[LEN_HEADER];
 
 } ArrayHeader;
 

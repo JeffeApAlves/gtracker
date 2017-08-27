@@ -22,28 +22,40 @@ static ArrayPayLoad	msg2send;
 
 ArrayPayLoad*	pAnswer = &msg2send;
 
-void runCallBack(void){
+void runApp(void){
 
 	uint32_t ulNotifiedValue;
 
-	xTaskNotifyWait( 0x0, 0xFFFF ,  &ulNotifiedValue, portMAX_DELAY );
+	//xTaskNotifyWait( 0x0, 0xFFFF ,  &ulNotifiedValue, portMAX_DELAY );
 
+	xTaskNotifyWait( 0x0, BIT_RX_FRAME | BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY);
 
-	DataCom* data;
+	execCMD(ulNotifiedValue);
 
-	if (xQueueReceive(xQueueCom, &(data), (TickType_t ) 1)) {
+	updateTLM(ulNotifiedValue);
+}
+//-------------------------------------------------------------------------
 
-		if(data!=NULL) {
+void execCMD(uint32_t ulNotifiedValue){
 
-			pCallBack cb = getCallBack(&data->resource);
+	if(ulNotifiedValue & BIT_RX_FRAME){
 
-			if(cb!=NULL){
+		DataCom* data;
 
-				if(cb(&data->PayLoad) == CMD_RESULT_EXEC_SUCCESS) {
+		if (xQueueReceive(xQueueCom, &(data), (TickType_t ) 1)) {
 
-				}
-				else {
+			if(data!=NULL) {
 
+				pCallBack cb = getCallBack(&data->resource);
+
+				if(cb!=NULL){
+
+					if(cb(&data->PayLoad) == CMD_RESULT_EXEC_SUCCESS) {
+
+					}
+					else {
+
+					}
 				}
 			}
 		}
@@ -135,7 +147,7 @@ ResultExec onTelemetry(ArrayPayLoad* frame){
 
 	if (frame) {
 
-		updateTLM();
+		//updateTLM();
 
 		answerTLM();
 
@@ -181,12 +193,12 @@ void tlm2String(DataTLM* info,ArrayPayLoad* ans){
 		XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s:%s",
 				info->Lat,
 				info->Lng,
-				info->Acc[AXIS_X],
-				info->Acc[AXIS_Y],
-				info->Acc[AXIS_Z],
-				info->Inc[AXIS_X],
-				info->Inc[AXIS_Y],
-				info->Inc[AXIS_Z],
+				info->Axis[AXIS_X],
+				info->Axis[AXIS_Y],
+				info->Axis[AXIS_Z],
+				info->G[AXIS_X],
+				info->G[AXIS_Y],
+				info->G[AXIS_Z],
 				info->Speed,
 				info->Level,
 				info->Lock,

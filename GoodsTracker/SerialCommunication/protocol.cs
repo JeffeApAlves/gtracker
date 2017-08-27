@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-
-namespace GoodsTracker
+﻿namespace GoodsTracker
 {
     public enum StatusRx
     {

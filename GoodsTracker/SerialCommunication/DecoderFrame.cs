@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace GoodsTracker
 {
@@ -178,6 +179,10 @@ namespace GoodsTracker
                                             AsDouble(list, INDEX.ACCEL_Y),
                                             AsDouble(list, INDEX.ACCEL_Z));
 
+                Debug.WriteLine("X:" + telemetria.AxisX.Acceleration.Val);
+                Debug.WriteLine("Y:" + telemetria.AxisY.Acceleration.Val);
+                Debug.WriteLine("Z:" + telemetria.AxisZ.Acceleration.Val);
+
                 telemetria.setRotation(AsDouble(list, INDEX.ROT_X),
                                         AsDouble(list, INDEX.ROT_Y),
                                         AsDouble(list, INDEX.ROT_Z));
@@ -234,7 +239,9 @@ namespace GoodsTracker
 
         static private DateTime AsTime(string[] list, int index)
         {
-            DateTime d = Convert.ToDateTime("00:00:00");
+            CultureInfo culture = new CultureInfo("pt-BR");
+
+            DateTime d = new DateTime();
 
             if ((int)index < list.Length)
             {
@@ -246,7 +253,7 @@ namespace GoodsTracker
                     str = str.Insert(5, ":");
                     str = str.Substring(0, str.Length - 4);
 
-                    d = Convert.ToDateTime(str);
+                    d = Convert.ToDateTime(str,culture);
                 }
             }
 
@@ -255,7 +262,9 @@ namespace GoodsTracker
 
         static private DateTime AsDate(string[] list, int index)
         {
-            DateTime d = Convert.ToDateTime("01/01/1900");
+            CultureInfo culture = new CultureInfo("pt-BR");
+
+            DateTime d = new DateTime();
 
             if ((int)index < list.Length)
             {
@@ -265,9 +274,10 @@ namespace GoodsTracker
                 {
                     str = str.Insert(2, "/");
                     str = str.Insert(5, "/");
-                    d = Convert.ToDateTime(str);
+                    d = Convert.ToDateTime(str, culture);
                 }                
             }
+            
             return d;
         }
 

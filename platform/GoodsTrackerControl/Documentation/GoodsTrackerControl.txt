@@ -539,15 +539,6 @@ Module "LED_B"     (component LED)
    - LED_B_Deinit -Deinitializes the driver
    - LED_B_Init -Performs the LED driver initialization.
 
-Module "AD1"       (component ADC)
-   - AD1_Measure -This method performs one measurement on all channels that are set in the component inspector. (Note: If the 
-                <number of conversions> is more than one the conversion of A/D channels is performed specified number of times.)
-   - AD1_GetValue16 -This method returns the last measured values of all channels. Compared with <GetValue> method this method 
-                returns more accurate result if the <number of conversions> is greater than 1 and <AD resolution> is less than 
-                16 bits. In addition, the user code dependency on <AD resolution> is eliminated.
-   - AD1_Calibrate -This method starts self calibration process. Calibration is typically used to remove the effects of the 
-                gain and offset from a specific reading.
-
 Module "TI1"       (component TimerInt)
 
 Module "LCDout"    (component LCDHTA)
@@ -686,71 +677,12 @@ Module "UTIL1"     (component Utility)
    - UTIL1_SetValue24LE -Stores a 24bit value in memory as Little Endian
    - UTIL1_SetValue32LE -Stores a 32bit value in memory as Little Endian
    - UTIL1_map -Maps a value from one range to another
+   - UTIL1_map64 -Maps a value from one range to another, using 64bit math
    - UTIL1_constrain -Makes sure that a given input value is inside a given range.
    - UTIL1_random -Provides a random value. You have to call intialize the random number generator with randomSetSeed() first!
    - UTIL1_randomSetSeed -Sets a seed for the random number generator
    - UTIL1_Deinit -Driver De-Initialization
    - UTIL1_Init -Driver Initialization
-
-Module "MMA1"      (component MMA8451Q)
-   - MMA1_Enable -Enables the device with setting the ACTIVE bit in the CTRL register 1
-   - MMA1_Disable -Disables the device with clearing the ACTIVE bit in the CTRL register 1
-   - MMA1_isEnabled -Returns the status of the the ACTIVE bit in the CTRL register 1
-   - MMA1_SwReset -Perform a software reset using the rst bit in the CTRL register 2
-   - MMA1_ReadReg8 -Reads an 8bit device register
-   - MMA1_WriteReg8 -Write an 8bit device register
-   - MMA1_GetX -Retrieves the value for the X axis. The value is adjusted with the zero calibration value (0 for 0 g, negative 
-                for negative acceleration and positive for positive acceleration).
-   - MMA1_GetY -Retrieves the value for the Y axis. The value is adjusted with the zero calibration value (0 for 0 g, negative 
-                for negative acceleration and positive for positive acceleration).
-   - MMA1_GetZ -Retrieves the value for the Z axis. The value is adjusted with the zero calibration value (0 for 0 g, negative 
-                for negative acceleration and positive for positive acceleration).
-   - MMA1_GetRaw8XYZ -Returns in an array the x, y and z accelerometer as 8bit values.
-   - MMA1_CalibrateX1g -Performs a calibration of the sensor. It is assumed that the Y and Z sensors have 0 g, and the X sensor 
-                has 1 g.
-   - MMA1_CalibrateY1g -Performs a calibration of the sensor. It is assumed that the X and Z sensors have 0 g, and the Y sensor 
-                has 1 g.
-   - MMA1_CalibrateZ1g -Performs a calibration of the sensor. It is assumed that the X and Y sensors have 0 g, and the Z sensor 
-                has 1 g.
-   - MMA1_GetXmg -Returns the X value in mg
-   - MMA1_GetYmg -Returns the Y value in mg
-   - MMA1_GetZmg -Returns the Z value in mg
-   - MMA1_MeasureGetRawX -Performs a measurement on X channel and returns the raw value.
-   - MMA1_MeasureGetRawY -Performs a measurement on Y channel and returns the raw value.
-   - MMA1_MeasureGetRawZ -Performs a measurement on Z channel and returns the raw value.
-   - MMA1_GetXOffset -Returns the offset applied to the X value.
-   - MMA1_GetYOffset -Returns the offset applied to the Y value.
-   - MMA1_GetZOffset -Returns the offset applied to the Z value.
-   - MMA1_GetX1gValue -Returns the value for 1g for channel  X.
-   - MMA1_GetY1gValue -Returns the value for 1g for channel  Y.
-   - MMA1_GetZ1gValue -Returns the value for 1g for channel  Z.
-   - MMA1_SetFastMode -Turns the F_READ (Fast Read Mode) on or off
-   - MMA1_WhoAmI -Returns the value of the WHO_AM_I (0x0D) register
-   - MMA1_Deinit -Counterpart to Init() method.
-   - MMA1_Init -Initializes the device driver
-
-Module "GI2C1"     (component GenericI2C)
-   - GI2C1_SelectSlave -Selects the slave device on the bus. Method might use a semaphore to protect bus access.
-   - GI2C1_UnselectSlave -Unselects the device. Method will release a used a semaphore.
-   - GI2C1_RequestBus -Starts a critical section for accessing the bus.
-   - GI2C1_ReleaseBus -Finishes a critical section for accessing the bus.
-   - GI2C1_WriteBlock -Write a block to the device.
-   - GI2C1_ReadBlock -Read from the device a block.
-   - GI2C1_ReadAddress -Read from the device. This writes (S+i2cAddr+0), (memAddr), (Sr+i2cAddr+1), (data)...(data+P)
-   - GI2C1_WriteAddress -Write to the device: (S+i2cAddr+0), (memAddr), (data)...(data+P)
-   - GI2C1_ReadByteAddress8 -Read a byte from the device using an 8bit memory address. This writes (S+i2cAddr+0), (memAddr), 
-                (Sr+i2cAddr+1), (data)...(data+P)
-   - GI2C1_WriteByteAddress8 -Write a byte to the device using an 8bit memory address: (S+i2cAddr+0), (memAddr), (data)...
-                (data+P)
-   - GI2C1_ReadWordAddress8 -Read a word from the device using an 8bit memory address. This writes (S+i2cAddr+0), (memAddr), 
-                (Sr+i2cAddr+1), (data)...(data+P)
-   - GI2C1_WriteWordAddress8 -Write a word to the device using an 8bit memory address: (S+i2cAddr+0), (memAddr), (data)...
-                (data+P)
-   - GI2C1_ProbeACK -Accesses the bus to check if the device responds with an ACK (ACK polling).
-   - GI2C1_GetSemaphore -Returns the currently allocated semaphore.
-   - GI2C1_ScanDevice -Checks if a device responds on the bus with an ACK.
-   - GI2C1_Deinit -Deinitializes the driver.
-   - GI2C1_Init -Initializes the driver.
 
 Module "WAIT2"     (component Wait)
    - WAIT2_Wait10Cycles -Wait for 10 CPU cycles.
@@ -778,15 +710,28 @@ Module "WAIT3"     (component Wait)
    - WAIT3_Init -Driver initialization routine.
    - WAIT3_DeInit -Driver de-initialization routine
 
-Module "CI2C1"     (component I2C_LDD)
-   - CI2C1_Init -Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets 
+Module "WAIT4"     (component Wait)
+   - WAIT4_Wait10Cycles -Wait for 10 CPU cycles.
+   - WAIT4_Wait100Cycles -Wait for 100 CPU cycles.
+   - WAIT4_WaitCycles -Wait for a specified number of CPU cycles (16bit data type).
+   - WAIT4_WaitLongCycles -Wait for a specified number of CPU cycles (32bit data type).
+   - WAIT4_Waitms -Wait for a specified time in milliseconds.
+   - WAIT4_Waitus -Wait for a specified time in microseconds.
+   - WAIT4_Waitns -Wait for a specified time in nano seconds.
+   - WAIT4_WaitOSms -If an RTOS is enabled, this routine will use a non-blocking wait method. Otherwise it will do a 
+                busy/blocking wait.
+   - WAIT4_Init -Driver initialization routine.
+   - WAIT4_DeInit -Driver de-initialization routine
+
+Module "I2C2"      (component I2C_LDD)
+   - I2C2_Init -Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets 
                 interrupt priority, sets pin routing, sets timing, etc.   If the "Enable in init. code" is set to "yes" value 
                 then the device is also enabled(see the description of the Enable() method). In this case the Enable() method 
                 is not necessary and needn't to be generated.    This method can be called only once. Before the second call of 
                 Init() the Deinit() must be called first.
-   - CI2C1_Deinit -Deinitializes the device. Switches off the device, frees the device data structure memory, interrupts 
-                vectors, etc.
-   - CI2C1_MasterSendBlock -This method writes one (7-bit addressing) or two (10-bit addressing) slave address bytes inclusive 
+   - I2C2_Deinit -Deinitializes the device. Switches off the device, frees the device data structure memory, interrupts vectors,
+                etc.
+   - I2C2_MasterSendBlock -This method writes one (7-bit addressing) or two (10-bit addressing) slave address bytes inclusive 
                 of R/W bit = 0 to the I2C bus and then writes the block of characters to the bus. The slave address must be 
                 specified before, by the "SelectSlaveDevice" method or in component initialization section, "Target slave 
                 address init" property. If the method returns ERR_OK, it doesn't mean that transmission was successful. The 
@@ -794,7 +739,7 @@ Module "CI2C1"     (component I2C_LDD)
                 not copied to an internal buffer and remains in the original location. Therefore the content of the buffer 
                 should not be changed until the transmission is complete. Event "OnMasterBlockSent"can be used to detect the 
                 end of the transmission. This method is available only for the MASTER or MASTER - SLAVE mode.
-   - CI2C1_MasterReceiveBlock -This method writes one (7-bit addressing) or two (10-bit addressing) slave address bytes 
+   - I2C2_MasterReceiveBlock -This method writes one (7-bit addressing) or two (10-bit addressing) slave address bytes 
                 inclusive of R/W bit = 1 to the I2C bus and then receives the block of characters from the bus. The slave 
                 address must be specified before, by the "SelectSlaveDevice" method or in component initialization section, 
                 "Target slave address init" property. If the method returns ERR_OK, it doesn't mean that reception was 
@@ -802,9 +747,15 @@ Module "CI2C1"     (component I2C_LDD)
                 be received are not copied to an internal buffer and remains in the original location. Therefore the content of 
                 the buffer should not be changed until the transmission is complete. Event "OnMasterBlockReceived"can be used 
                 to detect the end of the reception. This method is available only for the MASTER or MASTER - SLAVE mode.
-   - CI2C1_SelectSlaveDevice -This method selects a new slave for communication by its 7-bit slave, 10-bit address or general 
-                call value. Any send or receive method directs to or from selected device, until a new slave device is selected 
-                by this method. This method is available for the MASTER mode.
+
+Module "AD1"       (component ADC)
+   - AD1_Measure -This method performs one measurement on all channels that are set in the component inspector. (Note: If the 
+                <number of conversions> is more than one the conversion of A/D channels is performed specified number of times.)
+   - AD1_GetValue16 -This method returns the last measured values of all channels. Compared with <GetValue> method this method 
+                returns more accurate result if the <number of conversions> is greater than 1 and <AD resolution> is less than 
+                16 bits. In addition, the user code dependency on <AD resolution> is eliminated.
+   - AD1_Calibrate -This method starts self calibration process. Calibration is typically used to remove the effects of the 
+                gain and offset from a specific reading.
 
 Module "Cpu"       (component MKL25Z128LK4)
 

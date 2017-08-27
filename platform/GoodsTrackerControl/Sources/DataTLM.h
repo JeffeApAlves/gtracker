@@ -17,8 +17,8 @@ typedef struct{
 
 		float		Lat;
 		float		Lng;
-		uint16_t	Acc[3];
-		uint16_t	Inc[3];
+		int			Axis[3];
+		int			G[3];
 		int			Speed ;
 		int			Level;
 		int			Lock;
@@ -30,7 +30,7 @@ typedef struct{
 void updateDataLevel(void);
 void updateDataAcce(void);
 void updateDataGPS(void);
-void updateTLM(void);
+void updateTLM(uint32_t ulNotifiedValue);
 
 #define clearDataTLM(f) memset((void*)f,0,sizeof(DataTLM));
 

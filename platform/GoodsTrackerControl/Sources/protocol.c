@@ -4,6 +4,8 @@
 
 #include "XF1.h"
 #include "Array.h"
+#include "AS1.h"
+#include "Events.h"
 #include "RingBuffer.h"
 #include "AppQueues.h"
 #include "protocol.h"
@@ -111,7 +113,7 @@ static void receiveFrame (void) {
 
 	if(getRxData(&ch)) {
 
-		if(ch==CHAR_START || frameCom.Count>=SIZE_FRAME) {
+		if(ch==CHAR_START || frameCom.Count>=LEN_FRAME) {
 
 			setStatusRx(CMD_FRAME_NOK);
 		}
@@ -347,7 +349,8 @@ static void acceptRxFrame(void) {
 
 	if(xQueueSendToBack( xQueueCom , ( void * ) &pDataCom, ( TickType_t ) 1 ) ){
 
-		xTaskNotify( xHandleCallBackTask , (uint32_t) 0  ,eIncrement);
+		//xTaskNotify( xHandleCallBackTask , (uint32_t) 0  ,eIncrement);
+		xTaskNotify( xHandleCallBackTask , BIT_RX_FRAME , eSetBits );
 	}
 
 	setStatusRx(CMD_INIT_OK);
@@ -444,7 +447,7 @@ static void setPayLoad(ArrayPayLoad* ans) {
 
 		dataCom.PayLoad =  *ans;
 
-		if(dataCom.PayLoad.Count > SIZE_PAYLOAD){
+		if(dataCom.PayLoad.Count > LEN_PAYLOAD){
 
 			//TODO Tratar array do payload maior que o buffer provisionado
 		}

@@ -67,7 +67,7 @@ static void NMEA_receiveFrame(void)
 
 	if(getGPSData(&ch)) {
 
-		if(ch==NMEA_CHAR_START || frameNMEA.Count>=SIZE_FRAME) {
+		if(ch==NMEA_CHAR_START || frameNMEA.Count>=LEN_FRAME) {
 
 			setGPSStatus(NMEA_FRAME_NOK);
 		}
@@ -172,9 +172,9 @@ static void NMEA_acceptRxFrame(void)
     if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pInfoGPS, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleCallBackTask , BIT_UPDATE_GPS , eSetBits );
-
-    	setGPSStatus(NMEA_INIT_OK);
     }
+
+    setGPSStatus(NMEA_INIT_OK);
 }
 //------------------------------------------------------------------------
 

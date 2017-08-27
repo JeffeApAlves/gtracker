@@ -15,6 +15,7 @@
 #define		BIT_UPDATE_GPS	0x01
 #define		BIT_UPDATE_AD	0x02
 #define		BIT_UPDATE_ACCE	0x04
+#define		BIT_RX_FRAME	0x08
 
 void initQueues(void);
 

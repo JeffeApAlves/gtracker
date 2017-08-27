@@ -4,10 +4,10 @@
 **     Project     : GoodsTrackerControl
 **     Processor   : MKL25Z128VLK4
 **     Component   : FreeRTOS
-**     Version     : Component 01.539, Driver 01.00, CPU db: 3.00.000
+**     Version     : Component 01.546, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-07-03, 01:55, # CodeGen: 65
+**     Date/Time   : 2017-08-25, 18:46, # CodeGen: 72
 **     Abstract    :
 **          This component implements the FreeRTOS Realtime Operating System
 **     Settings    :
@@ -37,7 +37,7 @@
 **          Scheduler                                      : Settings for the scheduler
 **            ColdFire V1                                  : Disabled
 **            ColdFire V2                                  : Disabled
-**            ARM (Kinetis)                                : Enabled
+**            ARM Cortex-M                                 : Enabled
 **              ARM Family                                 : Cortex-M4
 **              Max SysCall Interrupt Priority             : 5
 **              RTOS Interrupt Priority                    : 15
@@ -75,8 +75,11 @@
 **          Timers                                         : Disabled
 **          Memory                                         : Settings for the memory and heap allocation
 **            Dynamic Allocation                           : Enabled
-**              Heap Size                                  : 10000
 **              Application allocated Heap                 : no
+**              Heap Size                                  : 10000
+**              Linker Heap Base Symbol                    : __HeapBase
+**              Linker Heap Limit Symbol                   : __HeapLimit
+**              Linker Heap Size Symbol                    : __heap_size
 **              Memory Allocation Scheme                   : Scheme 4: merge free blocks
 **            Static Allocation                            : Disabled
 **            User Memory Section                          : Disabled

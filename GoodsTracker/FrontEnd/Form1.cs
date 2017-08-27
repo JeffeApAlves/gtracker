@@ -258,13 +258,13 @@ namespace GoodsTracker
          */
         void initAllEntities()
         {
-            GTracker.createCommunication(TYPE_COMMUNICATION.AMQP);
+            GTracker.createCommunication(TYPE_COMMUNICATION.SERIAL);
 
             trackerController = TrackerController.TrackerCtrl;
             trackerController.Init();
 
             // Dados para testes
-            demoData = new TestData(TrackerController.TIME_TELEMETRIA);
+            //demoData = new TestData(TrackerController.TIME_TELEMETRIA);
 
             // Inicia todas as threads
             //ThreadManager.start();
@@ -595,19 +595,22 @@ namespace GoodsTracker
          */
         private void setEndPoint(PointLatLng point)
         {
-            route.stopAddress(point);
+            if (point != null)
+            {
+                route.stopAddress(point);
 
-            txtLatStop.Text = point.Lat.ToString();
-            txtLngStop.Text = point.Lng.ToString();
+                txtLatStop.Text = point.Lat.ToString();
+                txtLngStop.Text = point.Lng.ToString();
 
-            txtLatStop.BackColor = Color.FromArgb(61, 120, 165);
-            txtLngStop.BackColor = Color.FromArgb(61, 120, 165);
+                txtLatStop.BackColor = Color.FromArgb(61, 120, 165);
+                txtLngStop.BackColor = Color.FromArgb(61, 120, 165);
 
-            layerRoute.add(point, GMarkerGoogleType.blue);
+                layerRoute.add(point, GMarkerGoogleType.blue);
 
-            statusTrip = STATUS_GUI.INIT_OK;
+                statusTrip = STATUS_GUI.INIT_OK;
 
-            add(route);
+                add(route);
+            }
         }
  
         /*
@@ -636,7 +639,7 @@ namespace GoodsTracker
             endAddress.Text     = route.EndAddress();
 
             //Debug
-            demoData.start();
+            //demoData.start();
         }
 
         /*

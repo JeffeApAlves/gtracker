@@ -92,6 +92,7 @@
     <Compile Include="Communication\Communic.cs" />
     <Compile Include="Communication\Communication.cs" />
     <Compile Include="Communication\FrameSerialization.cs" />
+    <Compile Include="Communication\ResultExec.cs" />
     <Compile Include="GoodsTrackers\GoodsTrackers.cs" />
     <Compile Include="SerialCommunication\IOCommunication.cs" />
     <Compile Include="RabbitMQ\AMPQCommunication.cs" />
@@ -100,7 +101,7 @@
     <Compile Include="Domain\Telemetria.cs" />
     <Compile Include="Domain\Master.cs" />
     <Compile Include="Domain\tracker.cs" />
-    <Compile Include="Domain\TrackerController .cs" />
+    <Compile Include="Controllers\TrackerController .cs" />
     <Compile Include="FrontEnd\BuildTreeView.cs" />
     <Compile Include="Communication\Cmd.cs" />
     <Compile Include="Communication\DataFrame.cs" />

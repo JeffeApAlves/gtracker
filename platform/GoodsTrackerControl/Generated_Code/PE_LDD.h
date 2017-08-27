@@ -6,7 +6,7 @@
 **     Version     : Component 01.025, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-07-03, 01:55, # CodeGen: 65
+**     Date/Time   : 2017-08-25, 23:34, # CodeGen: 90
 **     Abstract    :
 **
 **     Settings    :
@@ -74,8 +74,6 @@
 #include "LED_B.h"
 #include "LEDpin3.h"
 #include "BitIoLdd3.h"
-#include "AD1.h"
-#include "AdcLdd1.h"
 #include "TI1.h"
 #include "TimerIntLdd1.h"
 #include "LCDout.h"
@@ -99,11 +97,12 @@
 #include "TU1.h"
 #include "MCUC1.h"
 #include "UTIL1.h"
-#include "MMA1.h"
-#include "GI2C1.h"
 #include "WAIT2.h"
 #include "WAIT3.h"
-#include "CI2C1.h"
+#include "WAIT4.h"
+#include "I2C2.h"
+#include "AD1.h"
+#include "AdcLdd1.h"
 
 
 /*

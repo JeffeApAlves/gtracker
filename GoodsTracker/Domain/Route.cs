@@ -23,6 +23,13 @@ namespace GoodsTracker
         public GMapRoute MapRoute { get => mapRoute; set => mapRoute = value; }
         internal List<Telemetria> Behaviors { get => behaviors; /*set => behaviors = value;*/ }
 
+        internal Route()
+        {
+            name = "";
+            points = new List<PointLatLng>();
+            behaviors = new List<Telemetria>();
+        }
+
         internal Route(string n)
         {
             name        = n;

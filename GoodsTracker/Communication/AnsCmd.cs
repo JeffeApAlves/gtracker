@@ -1,5 +1,12 @@
 ﻿using System;
 
+/**
+ * 
+ * Abstracao do comando que sera enviado aos dispositivos
+ * 
+ * 
+ */
+
 namespace GoodsTracker
 {
     class AnsCmd

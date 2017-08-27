@@ -6,8 +6,8 @@
  */
 
 #include "DataTLM.h"
-#include "MMA1.h"
 #include "AppQueues.h"
+#include "MMA8451.h"
 #include "Accelerometer.h"
 
 static DataTLM	acceInfo;
@@ -15,18 +15,7 @@ DataTLM*	pAcceInfo = &acceInfo;
 
 void runAccelerometer(void) {
 
-//	MMA1_GetRaw8XYZ(&pAcceInfo->Acc[0]);
-
-	pAcceInfo->Acc[AXIS_X] = MMA1_GetXmg();
-	pAcceInfo->Acc[AXIS_Y] = MMA1_GetYmg();
-	pAcceInfo->Acc[AXIS_Z] = MMA1_GetZmg();
-//	pAcceInfo->AcceXYZ[AXIS_X]	= 20;
-//	pAcceInfo->AcceXYZ[AXIS_Y]	= 21;
-//	pAcceInfo->AcceXYZ[AXIS_Z]	= 22;
-
-	pAcceInfo->Inc[AXIS_X]	= 30;
-	pAcceInfo->Inc[AXIS_Y]	= 31;
-	pAcceInfo->Inc[AXIS_Z]	= 32;
+	MMA845x_getValues(pAcceInfo->Axis,pAcceInfo->G);
 
     if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pAcceInfo, ( TickType_t ) 1 ) ){
 
@@ -35,13 +24,15 @@ void runAccelerometer(void) {
 }
 //------------------------------------------------------------------------
 
-void initAccel(void){
-
-	if(MMA1_Init()==ERR_OK){
-
-		MMA1_Enable();
-	}
+void initAccelerometer(void){
 
 	clearDataTLM(pAcceInfo);
+	MMA845x_init();
+}
+//------------------------------------------------------------------------
+
+void deInitAccelerometer(void){
+
+	deInit_MMA8451();
 }
 //------------------------------------------------------------------------

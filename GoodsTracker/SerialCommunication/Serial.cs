@@ -72,7 +72,7 @@ namespace GoodsTracker
             {
                 bufferRx.init();
 
-                port        = new SerialPort("COM3",57600, Parity.None, 8, StopBits.One);
+                port        = new SerialPort("COM4",57600, Parity.None, 8, StopBits.One);
 
                 port.ReadBufferSize     = SIZE_BUFFER_RX;
                 port.WriteBufferSize    = SIZE_BUFFER_TX;

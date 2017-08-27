@@ -4,39 +4,33 @@
  *  Created on: 01/07/2017
  *      Author: Jefferson
  */
-
+#include <string.h>
 #include "Accelerometer.h"
 #include "AppQueues.h"
 #include "DataTLM.h"
 
 DataTLM		dataTLM;
 
-
 /**
  *
  * Atualiza a s informcoes de telemetria que estao na lista de menssagem xQueueDataTLM
  *
  */
-void updateTLM(void){
+void updateTLM(uint32_t ulNotifiedValue){
 
-	uint32_t ulNotifiedValue =0 ;
+	if(ulNotifiedValue & BIT_UPDATE_GPS){
 
-	if(xTaskNotifyWait( 0x0, BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, TIMEOUT_TLM )==pdTRUE){
+		updateDataGPS();
+	}
 
-		if(ulNotifiedValue & BIT_UPDATE_GPS){
+	if(ulNotifiedValue & BIT_UPDATE_ACCE){
 
-			updateDataGPS();
-		}
+		updateDataAcce();
+	}
 
-		if(ulNotifiedValue & BIT_UPDATE_ACCE){
+	if(ulNotifiedValue & BIT_UPDATE_AD){
 
-			updateDataAcce();
-		}
-
-		if(ulNotifiedValue & BIT_UPDATE_AD){
-
-			updateDataLevel();
-		}
+		updateDataLevel();
 	}
 }
 //-------------------------------------------------------------------------
@@ -67,12 +61,8 @@ void updateDataAcce(void) {
 
 		if (xQueueReceive(xQueueDataTLM, &(data), (TickType_t ) 1)) {
 
-			dataTLM.Acc[AXIS_X] = data->Acc[AXIS_X];
-			dataTLM.Acc[AXIS_Y] = data->Acc[AXIS_Y];
-			dataTLM.Acc[AXIS_Z] = data->Acc[AXIS_Z];
-			dataTLM.Inc[AXIS_X] = data->Inc[AXIS_X];
-			dataTLM.Inc[AXIS_Y] = data->Inc[AXIS_Y];
-			dataTLM.Inc[AXIS_Z] = data->Inc[AXIS_Z];
+			memcpy(dataTLM.Axis,data->Axis,sizeof(dataTLM.G));
+			memcpy(dataTLM.G,data->G,sizeof(dataTLM.G));
 		}
 	}
 }

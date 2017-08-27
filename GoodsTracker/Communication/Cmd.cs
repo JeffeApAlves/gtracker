@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GoodsTracker
+﻿namespace GoodsTracker
 {
     class Cmd
     {

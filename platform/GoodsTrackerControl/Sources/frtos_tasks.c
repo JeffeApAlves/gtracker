@@ -106,7 +106,7 @@ static portTASK_FUNCTION(gps_task, pvParameters) {
 
 static portTASK_FUNCTION(accel_task, pvParameters) {
 
-	initAccel();
+	initAccelerometer();
 
 	for (;;) {
 
@@ -129,7 +129,7 @@ static portTASK_FUNCTION(callback_task, pvParameters) {
 
 	for (;;) {
 
-		runCallBack();
+		runApp();
 	}
 
 	vTaskDelete(callback_task);
