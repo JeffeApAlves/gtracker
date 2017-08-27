@@ -13,17 +13,16 @@ namespace GoodsTracker
 
     abstract class Communication : ThreadRun, Communic
     {
-        private static TYPE_COMMUNICATION type;
         private const int _TIME_COMMUNICATION = 1;
+
+        private static TYPE_COMMUNICATION type;
         private static Dictionary<int,DeviceBase> devices = new Dictionary<int,DeviceBase>();
         private static Dictionary<string, Cmd> txCmds = new Dictionary<string, Cmd>();
         private static Dictionary<string, Cmd> cmds = new Dictionary<string, Cmd>();
         private static List<AnsCmd> queueAnsCmd = new List<AnsCmd>();
-
         internal static TYPE_COMMUNICATION Type { get => type; set => type = value; }
         internal static int count = 0;
         public static int TIME_COMMUNICATION => _TIME_COMMUNICATION;
-
         internal static Dictionary<int, DeviceBase> Devices { get => devices; set => devices = value; }
         internal static Dictionary<string, Cmd> TxCmds { get => txCmds; set => txCmds = value; }
         internal static Dictionary<string, Cmd> Cmds { get => cmds; set => cmds = value; }
@@ -130,13 +129,17 @@ namespace GoodsTracker
 
         public static Cmd searchCmdOfAnswer(AnsCmd ans)
         {
-            Cmd cmd = txCmds[ans.Header.Resource];
+            Cmd cmd = null;
 
-            if ((ans.Header.Resource != cmd.Header.Resource) ||
-                (ans.Header.Dest != cmd.Header.Address) || 
-                (ans.Header.Count!=cmd.Header.Count))
-            {
-                cmd = null;
+            if (txCmds.ContainsKey(ans.Header.Resource)) {
+
+                cmd = txCmds[ans.Header.Resource];
+
+                if ((ans.Header.Dest != cmd.Header.Address)/* || 
+                (ans.Header.Count!=cmd.Header.Count)*/)
+                {
+                    cmd = null;
+                }
             }
 
             return cmd;
@@ -170,11 +173,11 @@ namespace GoodsTracker
             return cmd;
         }
 
-        internal static void processAnswer(Cmd cmd, AnsCmd ans)
+        internal static void acceptAnswerDevice(Cmd cmd, AnsCmd ans)
         {
             if (devices.ContainsKey(ans.Header.Address))
             {
-                devices[ans.Header.Address].processAnswer(cmd, ans);
+                devices[ans.Header.Address].acceptAnswer(cmd, ans);
             }
         }
 
@@ -182,7 +185,7 @@ namespace GoodsTracker
         {
             try
             {
-                if (stopTx.Elapsed.Milliseconds > 500)
+                if (stopTx.Elapsed.Seconds > 1)
                 {
                     if (isAnyQueueCmd())
                     {

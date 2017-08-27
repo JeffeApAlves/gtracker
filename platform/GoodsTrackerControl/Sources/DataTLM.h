@@ -11,7 +11,9 @@
 #include <stdint.h>
 #include <string.h>
 
-#define	TIMEOUT_TLM		10
+enum {AXIS_X=0,AXIS_Y=1,AXIS_Z=2};
+
+//#define	TIMEOUT_TLM		10
 
 typedef struct{
 

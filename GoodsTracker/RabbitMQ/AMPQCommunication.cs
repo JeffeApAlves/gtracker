@@ -99,7 +99,7 @@ namespace GoodsTracker
         acceptAnswerHandler acceptAnswer = (AnsCmd ans) =>
         {
             addAns(ans);
-            processAnswer(null,ans);
+            acceptAnswerDevice(null,ans);
             removeAns(ans);
         };
     }

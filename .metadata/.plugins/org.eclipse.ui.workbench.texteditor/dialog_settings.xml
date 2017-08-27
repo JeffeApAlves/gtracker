@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="isAny" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="XF1_xsprintf"/>
-			<item value="print"/>
-			<item value="xque"/>
-			<item value="NMEA_acceptRxFrame"/>
-			<item value="task"/>
-			<item value="NMEA_verifyFrame"/>
-			<item value="NMEA_receiveFrame"/>
-			<item value="NMEA_rxStart"/>
+			<item value="isany"/>
+			<item value="isAny"/>
+			<item value="FRAME_NOK"/>
+			<item value="erro"/>
+			<item value="NMEA_errorRxFrame"/>
+			<item value="NMEA_FRAME_NOK"/>
+			<item value="NOK"/>
+			<item value="errorRxFrame"/>
 		</list>
 		<list key="replacehistory">
 		</list>

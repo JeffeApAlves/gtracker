@@ -35,36 +35,27 @@ Resource	ListCmd[]	= {	{.id = CMD_NONE,	.name = "---\0"},
 
 const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Resource);
 
-/**
- *
- * Processamento da comunicacao
- *
- */
-//void runCommunication(void) {
-//
-//	processRx();
-//	processTx();
-//}
-//------------------------------------------------------------------------
-
 /*
- *
+ * Processa maquina de estado de recepção do protocolo de comunicação com o Host
+ * Chamada pela task ''
  *
  */
 void processRx(void){
 
-	switch(statusRx){
+	while(isAnyRxData()){
 
-		default:
-		case CMD_INIT:			initCommunication();	break;
-		case CMD_INIT_OK:		rxStartCMD();			break;
-		case CMD_RX_START:		receiveFrame();			break;
-		case CMD_RX_FRAME:		receiveFrame();			break;
-		case CMD_RX_END:		rxCR();					break;
-		case CMD_RX_CR:			rxLF();					break;
-		case CMD_RX_LF:			verifyFrame();			break;
-		case CMD_FRAME_OK:		acceptRxFrame();		break;
-		case CMD_FRAME_NOK:		errorRxFrame();			break;
+		switch(statusRx){
+
+			default:
+			case CMD_INIT:			initCommunication();	break;
+			case CMD_INIT_OK:		rxStartCMD();			break;
+			case CMD_RX_START:		receiveFrame();			break;
+			case CMD_RX_FRAME:		receiveFrame();			break;
+			case CMD_RX_END:		rxCR();					break;
+			case CMD_RX_CR:			rxLF();					break;
+			case CMD_RX_LF:			verifyFrame();			break;
+			case CMD_FRAME_NOK:		errorRxFrame();			break;
+		}
 	}
 }
 //------------------------------------------------------------------------
@@ -115,7 +106,7 @@ static void receiveFrame (void) {
 
 		if(ch==CHAR_START || frameCom.Count>=LEN_FRAME) {
 
-			setStatusRx(CMD_FRAME_NOK);
+			errorRxFrame();
 		}
 		else
 		  if(ch==CHAR_END) {
@@ -126,7 +117,7 @@ static void receiveFrame (void) {
 			 }
 			 else {
 
-			   setStatusRx(CMD_FRAME_NOK);
+			   errorRxFrame();
 			 }
 		}
 		else {
@@ -150,7 +141,7 @@ static void rxLF(void) {
 
 		}else {
 
-			setStatusRx(CMD_FRAME_NOK);
+			errorRxFrame();
 		}
 	}
 }
@@ -168,7 +159,7 @@ static void rxCR(void) {
 
 		}else{
 
-			setStatusRx(CMD_FRAME_NOK);
+			errorRxFrame();
 		}
 	}
 }
@@ -178,13 +169,9 @@ static void verifyFrame(void) {
 
 	if(decoderFrame()){
 
-//		setStatusRx(CMD_FRAME_OK);
-
 		acceptRxFrame();
 
 	}else{
-
-//		setStatusRx(CMD_FRAME_NOK);
 
 		errorRxFrame();
 	}
@@ -349,7 +336,6 @@ static void acceptRxFrame(void) {
 
 	if(xQueueSendToBack( xQueueCom , ( void * ) &pDataCom, ( TickType_t ) 1 ) ){
 
-		//xTaskNotify( xHandleCallBackTask , (uint32_t) 0  ,eIncrement);
 		xTaskNotify( xHandleCallBackTask , BIT_RX_FRAME , eSetBits );
 	}
 
@@ -363,10 +349,8 @@ static void acceptRxFrame(void) {
  */
 static void errorRxFrame(void){
 
-	// TODO implementar algo quando der erro na recepcao do frame
-
+	setStatusRx(CMD_FRAME_NOK);
 	clearData(&dataCom);
-
 	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
@@ -464,7 +448,7 @@ void doAnswer(ArrayPayLoad* ans) {
 
 	if (ans) {
 
-		setHeaderInfo(ADDRESS,dataCom.address, OPERATION_AN);
+		setHeaderInfo(ADDRESS,dataCom.address, (char*)OPERATION_AN);
 
 		setPayLoad(ans);
 
@@ -509,9 +493,15 @@ static void startTX(void){
 }
 //------------------------------------------------------------------------
 
+inline bool isAnyRxData(){
+
+	return getCount(&bufferRx)>0;
+}
+//------------------------------------------------------------------------
+
 /**
  *
- * Inicializa a comunicacao
+ * Inicializa a comunicação
  *
  */
 void initCommunication(void) {

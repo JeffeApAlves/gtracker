@@ -47,9 +47,7 @@ static void NMEA_rxCR(void);
 static void NMEA_rxLF(void);
 static void NMEA_verifyFrame(void);
 static void NMEA_acceptRxFrame(void);
-static void NMEA_sendResult(void);
 static void NMEA_errorRxFrame(void);
-static void NMEA_errorExec(void);
 
 static void setGPSStatus(StatusNMEA sts);
 static bool NMEA_decoderFrame(void);
@@ -62,5 +60,6 @@ bool getGPSData(char* ch);
 bool putGPSData(char data);
 void runNMEA(void);
 void NMEA_init(void);
+bool isAnyGPSData();
 
 #endif /* SOURCES_GPS_H_ */

@@ -30,7 +30,6 @@ ResultExec onAccel(ArrayPayLoad* cmd);
 ResultExec onTelemetry(ArrayPayLoad* frame);
 ResultExec onLock(ArrayPayLoad* frame);
 
-void tlm2String(DataTLM* info,ArrayPayLoad* ans);
 void initApp(void);
 void decoderLockPayLoad(ArrayPayLoad* payload);
 void answerTime(void);

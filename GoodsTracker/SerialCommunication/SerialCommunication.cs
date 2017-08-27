@@ -103,7 +103,7 @@ namespace GoodsTracker
             Cmd cmd = searchCmdOfAnswer(ans);
 
             addAns(ans);
-            processAnswer(cmd,ans);
+            acceptAnswerDevice(cmd,ans);
             removeTxCmd(cmd);
             removeAns(ans);
         };

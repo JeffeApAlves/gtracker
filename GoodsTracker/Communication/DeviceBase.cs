@@ -16,6 +16,8 @@ namespace GoodsTracker
          */
         protected int   address;
         private static Dictionary<string, onAnswerCmd> answerHandler = new Dictionary<string, onAnswerCmd>();
+
+        // Interface de comunicação que ´é definida quando é registrada
         private Communic communic;
         protected abstract void onReceiveAnswer(AnsCmd ans);
 
@@ -66,7 +68,7 @@ namespace GoodsTracker
          * Metodo invocado quando se recebe qualquer resposta para o endereço
          * 
          */
-        internal void processAnswer(Cmd cmd,AnsCmd ans)
+        internal void acceptAnswer(Cmd cmd,AnsCmd ans)
         {
             try
             {

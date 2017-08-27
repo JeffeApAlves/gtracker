@@ -26,21 +26,20 @@ DataTLM*	pInfoGPS = &infoGPS;
 
 void runNMEA(void) {
 
-	switch(statusNMEA){
+	while(isAnyGPSData()){
 
-		default:
-		case NMEA_INIT:			NMEA_init();			break;
-		case NMEA_INIT_OK:		NMEA_rxStart();			break;
-		case NMEA_RX_START:		NMEA_receiveFrame();	break;
-		case NMEA_RX_FRAME:		NMEA_receiveFrame();	break;
-		case NMEA_RX_END:		NMEA_receiveCheckSum();	break;
-		case NMEA_RX_CHECKSUM:	NMEA_rxCR();			break;
-		case NMEA_RX_CR:		NMEA_rxLF();			break;
-		case NMEA_RX_LF:		NMEA_verifyFrame();		break;
-		case NMEA_FRAME_OK:		NMEA_acceptRxFrame();	break;
-		case NMEA_FRAME_NOK:	NMEA_errorRxFrame();	break;
-		case NMEA_EXEC:			NMEA_sendResult();		break;
-		case NMEA_EXEC_ERROR:	NMEA_errorExec();		break;
+		switch(statusNMEA){
+			default:
+			case NMEA_INIT:			NMEA_init();			break;
+			case NMEA_INIT_OK:		NMEA_rxStart();			break;
+			case NMEA_RX_START:		NMEA_receiveFrame();	break;
+			case NMEA_RX_FRAME:		NMEA_receiveFrame();	break;
+			case NMEA_RX_END:		NMEA_receiveCheckSum();	break;
+			case NMEA_RX_CHECKSUM:	NMEA_rxCR();			break;
+			case NMEA_RX_CR:		NMEA_rxLF();			break;
+			case NMEA_RX_LF:		NMEA_verifyFrame();		break;
+			case NMEA_FRAME_NOK:	NMEA_errorRxFrame();	break;
+		}
 	}
 }
 //------------------------------------------------------------------------
@@ -69,7 +68,7 @@ static void NMEA_receiveFrame(void)
 
 		if(ch==NMEA_CHAR_START || frameNMEA.Count>=LEN_FRAME) {
 
-			setGPSStatus(NMEA_FRAME_NOK);
+			NMEA_errorRxFrame();
 		}
 		else
 		  if(ch==NMEA_CHAR_END) {
@@ -80,7 +79,7 @@ static void NMEA_receiveFrame(void)
 			 }
 			 else {
 
-				 setGPSStatus(NMEA_FRAME_NOK);
+				 NMEA_errorRxFrame();
 			 }
 		}
 		else {
@@ -122,7 +121,7 @@ static void NMEA_rxCR(void)
 
 		}else{
 
-			setGPSStatus(NMEA_FRAME_NOK);
+			NMEA_errorRxFrame();
 		}
 	}
 }
@@ -140,7 +139,7 @@ static void NMEA_rxLF(void)
 
 		}else {
 
-			setGPSStatus(NMEA_FRAME_NOK);
+			NMEA_errorRxFrame();
 		}
 	}
 }
@@ -150,24 +149,22 @@ static void NMEA_verifyFrame(void)
 {
 	if(NMEA_decoderFrame()){
 
-		setGPSStatus(NMEA_FRAME_OK);
+		NMEA_acceptRxFrame();
 
 	}else{
 
-		setGPSStatus(NMEA_FRAME_NOK);
+		NMEA_errorRxFrame();
 	}
 }
 //------------------------------------------------------------------------
 
 static void NMEA_acceptRxFrame(void)
 {
-
 	pInfoGPS->Lat = dataNMEA.Lat;
 	pInfoGPS->Lng = dataNMEA.Lng;
 	strcpy(pInfoGPS->Time,dataNMEA.Time_UTC);
 	strcpy(pInfoGPS->Date,dataNMEA.Date);
 	pInfoGPS->Speed = dataNMEA.Speed;
-
 
     if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pInfoGPS, ( TickType_t ) 1 ) ){
 
@@ -178,21 +175,10 @@ static void NMEA_acceptRxFrame(void)
 }
 //------------------------------------------------------------------------
 
-static void NMEA_sendResult(void)
-{
-
-	setGPSStatus(NMEA_INIT_OK);
-}
-//------------------------------------------------------------------------
-
 static void NMEA_errorRxFrame(void)
 {
-	setGPSStatus(NMEA_INIT_OK);
-}
-//------------------------------------------------------------------------
-
-static void NMEA_errorExec(void)
-{
+	setGPSStatus(NMEA_FRAME_NOK);
+	//TODO
 	setGPSStatus(NMEA_INIT_OK);
 }
 //------------------------------------------------------------------------
@@ -383,6 +369,12 @@ inline bool getGPSData(char* ch){
 inline bool putGPSData(char data) {
 
 	return putData(&bufferRxNMEA,data);
+}
+//------------------------------------------------------------------------
+
+inline bool isAnyGPSData(){
+
+	return getCount(&bufferRxNMEA)>0;
 }
 //------------------------------------------------------------------------
 

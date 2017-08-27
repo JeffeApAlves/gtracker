@@ -9,12 +9,12 @@
 #include <stdbool.h>
 
 #include "AppQueues.h"
-#include "XF1.h"
 #include "lock.h"
 #include "DataTLM.h"
 #include "NMEAFrame.h"
 #include "Level.h"
 #include "Accelerometer.h"
+#include "Serialization.h"
 #include "application.h"
 
 static 	int			_lock;
@@ -26,13 +26,11 @@ void runApp(void){
 
 	uint32_t ulNotifiedValue;
 
-	//xTaskNotifyWait( 0x0, 0xFFFF ,  &ulNotifiedValue, portMAX_DELAY );
-
 	xTaskNotifyWait( 0x0, BIT_RX_FRAME | BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY);
 
-	execCMD(ulNotifiedValue);
-
 	updateTLM(ulNotifiedValue);
+
+	execCMD(ulNotifiedValue);
 }
 //-------------------------------------------------------------------------
 
@@ -89,7 +87,6 @@ ResultExec onAnalog(ArrayPayLoad* frame){
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
 
-
 	return res;
 }
 //-------------------------------------------------------------------------
@@ -104,7 +101,6 @@ ResultExec onAccel(ArrayPayLoad* frame){
 
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
-
 
 	return res;
 }
@@ -136,7 +132,6 @@ ResultExec onPWM(ArrayPayLoad* frame){
 		res = CMD_RESULT_EXEC_SUCCESS;
 	}
 
-
 	return res;
 }
 //------------------------------------------------------------------------
@@ -146,8 +141,6 @@ ResultExec onTelemetry(ArrayPayLoad* frame){
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
 	if (frame) {
-
-		//updateTLM();
 
 		answerTLM();
 
@@ -181,32 +174,6 @@ ResultExec onLock(ArrayPayLoad* frame){
 	}
 
 	return res;
-}
-//------------------------------------------------------------------------
-
-void tlm2String(DataTLM* info,ArrayPayLoad* ans){
-
-	if(info!=NULL && ans!= NULL){
-
-		clearArrayPayLoad(ans);
-
-		XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s:%s",
-				info->Lat,
-				info->Lng,
-				info->Axis[AXIS_X],
-				info->Axis[AXIS_Y],
-				info->Axis[AXIS_Z],
-				info->G[AXIS_X],
-				info->G[AXIS_Y],
-				info->G[AXIS_Z],
-				info->Speed,
-				info->Level,
-				info->Lock,
-				info->Time,
-				info->Date);
-
-		ans->Count = strlen(ans->Data);
-	}
 }
 //------------------------------------------------------------------------
 
@@ -281,3 +248,4 @@ void initApp(void){
 	clearArrayPayLoad(&msg2send);
 }
 //------------------------------------------------------------------------
+

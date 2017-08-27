@@ -12,38 +12,7 @@
 #include "utils.h"
 #include "DataFrame.h"
 
-    /**
-     *
-     * Frame Coomunication
-     * [ End. de orig[5] : End dest[5] :  COUNT[5] :Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
-     *
-     * End. de orig:
-     * Range: 00000~65535 (00000) Broadcast
-     *
-     * End. de dest:
-     * Range: 00000~65535 (00000) Broadcast
-     *
-     * Operacao:
-     * Possiveis:
-     * RD = READ
-     * WR = WRITE
-     * AN + ANSWER
-     *
-     * Recurso:
-     * Range: A-Z a-z 0~9
-     *
-     * SizePayload:
-     * Range: 0~255
-     *
-     * Payload:
-     * Conteudo App
-     * Observacao: '[' ']' sao caracteres especiais entao usar \] e \[
-     *
-     * CheckSum
-     * Somatoria
-     */
-
-// Endereco desse Rastreador
+//Endereco desse Rastreador
 #define	ADDRESS			2
 
 #define	BIT_TX			0x01
@@ -88,6 +57,7 @@ bool putRxData(char ch);
 bool getTxData(char* ch);
 bool hasTxData(void);
 void initCommunication(void);
-//void runCommunication(void);
+bool isAnyRxData();
+
 
 #endif /* SOURCES_PROTOCOL_H_ */
