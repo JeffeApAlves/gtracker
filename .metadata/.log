@@ -8231,3 +8231,178 @@ org.eclipse.core.runtime.CoreException: PEmicro GDB Launch Failure : Another GDB
 !MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@17c027a): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
 !SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-27 10:22:47.086
 !MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:33:28.900
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@124b714): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:33:28.900
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:33:29.116
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1b8a9e4): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:33:29.116
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:33:29.122
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@165f64): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:33:29.122
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:33:29.130
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1dce81a): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:33:29.130
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:33:29.137
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@13e7962): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:33:29.137
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:35:46.215
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@ccc96b): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:35:46.215
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:35:46.223
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@163e5b0): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:35:46.224
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:35:46.231
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1a4d8c0): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:35:46.231
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:35:46.238
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1e7e47c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:35:46.238
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:35:46.245
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@e1ac80): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:35:46.246
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:47:15.830
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@51319d): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-27 11:47:15.830
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:47:15.844
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1c89f2d): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-27 11:47:15.844
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:47:15.852
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1d01590): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-27 11:47:15.852
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:47:15.863
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1f86dfc): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-27 11:47:15.863
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:47:15.871
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@607e87): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-27 11:47:15.871
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:47:55.423
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@142676c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:47:55.423
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:47:55.435
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1d373b4): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:47:55.435
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:47:55.446
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1ad8ee8): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:47:55.446
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:47:55.455
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@14d59aa): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:47:55.455
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:47:55.465
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1aa3168): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:47:55.465
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:49:10.803
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@a10d87): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:49:10.803
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:49:10.816
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@f91242): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:49:10.816
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:49:10.828
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@16054bb): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:49:10.828
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:49:10.839
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@c24301): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:49:10.839
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 11:49:10.849
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@6ba9ab): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 11:49:10.850
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 12:23:20.292
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@70c2e1): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-27 12:23:20.292
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 12:23:20.303
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1373538): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-27 12:23:20.303
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 12:23:20.311
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@8b8b4f): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-27 12:23:20.311
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 12:23:20.320
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1935b39): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-27 12:23:20.320
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 12:23:20.328
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@13afce0): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-27 12:23:20.329
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 12:25:29.874
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@6a5617): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 12:25:29.874
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 12:25:29.882
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@4059db): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 12:25:29.882
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 12:25:29.891
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@85d20a): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 12:25:29.891
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 12:25:29.898
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1192044): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 12:25:29.899
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-27 12:25:29.905
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@16d0f5e): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-27 12:25:29.905
+!MESSAGE Target not available.

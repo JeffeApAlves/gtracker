@@ -26,7 +26,7 @@ namespace GoodsTracker
             {
                 DataFrame frame = new DataFrame(cmd.Header, cmd.Payload);
                 amqp.publishCMD(frame);
-                printTx("PB",frame);
+                printTxFrame("AMPQP",frame);
 
                 flag = true;
             }
@@ -67,7 +67,7 @@ namespace GoodsTracker
                 {
                     amqp.publishAns(frame);
                     flag = true;
-                    printTx("PB", frame);
+                    printTxFrame("AMPQP", frame);
                 }
             }
             catch (Exception e)

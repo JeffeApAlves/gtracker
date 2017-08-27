@@ -39,7 +39,7 @@ namespace GoodsTracker
             {
                 DataFrame frame = new DataFrame(cmd.Header, cmd.Payload);
                 channel.writeTx(frame);
-                printTx("TX",frame);
+                printTxFrame("Serial:",frame);
 
                 flag = true;
             }catch(Exception e)
@@ -72,7 +72,7 @@ namespace GoodsTracker
                 if (frame != null)
                 {
                     channel.writeTx(frame);
-                    printTx("TX", frame);
+                    printFrame("Serial", frame);
 
                     flag = true;
                 }

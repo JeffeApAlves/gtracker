@@ -15,7 +15,7 @@ DataTLM*	pAcceInfo = &acceInfo;
 
 void runAccelerometer(void) {
 
-	MMA845x_getValues(pAcceInfo->Axis,pAcceInfo->G);
+	MMA845x_getValues(pAcceInfo->Axis);
 
     if(xQueueSendToBack( xQueueDataTLM , ( void * ) &pAcceInfo, ( TickType_t ) 1 ) ){
 
@@ -33,6 +33,6 @@ void initAccelerometer(void){
 
 void deInitAccelerometer(void){
 
-	deInit_MMA8451();
+	MMA845x_deInit();
 }
 //------------------------------------------------------------------------

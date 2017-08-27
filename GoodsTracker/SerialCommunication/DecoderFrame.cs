@@ -178,11 +178,7 @@ namespace GoodsTracker
                 telemetria.setAcceleration(AsDouble(list, INDEX.ACCEL_X),
                                             AsDouble(list, INDEX.ACCEL_Y),
                                             AsDouble(list, INDEX.ACCEL_Z));
-
-                Debug.WriteLine("X:" + telemetria.AxisX.Acceleration.Val);
-                Debug.WriteLine("Y:" + telemetria.AxisY.Acceleration.Val);
-                Debug.WriteLine("Z:" + telemetria.AxisZ.Acceleration.Val);
-
+  
                 telemetria.setRotation(AsDouble(list, INDEX.ROT_X),
                                         AsDouble(list, INDEX.ROT_Y),
                                         AsDouble(list, INDEX.ROT_Z));

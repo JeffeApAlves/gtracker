@@ -66,7 +66,9 @@ void MMA845x_Run(void) {
 }
 //--------------------------------------------------------------------------------------------
 
-bool MMA845x_getValues(int* axis,float* g){
+bool MMA845x_getValues(int* axis){
+
+	tword x,y,z;
 
 	uint8_t res = ERR_FAILED;
 	uint8_t status;
@@ -87,6 +89,22 @@ bool MMA845x_getValues(int* axis,float* g){
 
 		if(res==ERR_OK){
 
+			x.Byte.hi	= xyz[0];
+			x.Byte.low	= xyz[1];
+			y.Byte.hi	= xyz[2];
+			y.Byte.low	= xyz[3];
+			z.Byte.hi	= xyz[4];
+			z.Byte.low	= xyz[5];
+
+			convertDecimal (&x);
+			convertDecimal (&y);
+			convertDecimal (&z);
+
+			axis[0] = x.Word;
+			axis[1] = y.Word;
+			axis[2] = z.Word;
+
+/*
 			axis[0] = ((( xyz[0] << 8  ) | (xyz[1] & 0x00FF ))>>2) & 0x3FFF;
 			axis[1] = ((( xyz[2] << 8  ) | (xyz[3] & 0x00FF ))>>2) & 0x3FFF;
 			axis[2] = ((( xyz[4] << 8  ) | (xyz[5] & 0x00FF ))>>2) & 0x3FFF;
@@ -102,23 +120,10 @@ bool MMA845x_getValues(int* axis,float* g){
 			if(xyz[4]>0x7F){
 				axis[2] |= 0x8000;
 			}
+			*/
 		}
 	}
-/*
-	res = WriteReg(MMA8451_CTRL_REG_1,  MMA8451_F_READ_BIT_MASK | MMA8451_ACTIVE_BIT_MASK);
 
-	if (res==ERR_OK) {
-
-		res = ReadReg(MMA8451_OUT_X_MSB, (uint8_t*)&xyz,LEN_XYZ);
-	}
-
-	if(res==ERR_OK){
-
-		axis[0] = xyz[0];
-		axis[1] = xyz[1];
-		axis[2] = xyz[2];
-	}
-*/
 	return res == ERR_OK;
 }
 //--------------------------------------------------------------------------------------------
@@ -169,5 +174,77 @@ void MMA845x_init(void){
 void MMA845x_deInit(void){
 
 	I2C2_Deinit(deviceData.handle);
+}
+//--------------------------------------------------------------------------------------------
+
+void convertDecimal (tword* data)
+{
+	char out[6];
+/*
+ * 				0xFAB1	= -1339
+	Example:	0xABCC = -1349
+				0x5443 = +1349*/
+
+//	data->Word = 0xABCC;
+
+	byte a, b, c, d;
+	word r;
+	/*
+	** Determine sign and output
+	*/
+	if (data->Byte.hi > 0x7F){
+
+		//SCI_CharOut ('-');
+		out[0] = '-';
+		data->Word = (~data->Word) + 1;
+
+	}else{
+
+		//SCI_CharOut ('+');
+		out[0] = '+';
+	}
+	/*
+	** Calculate decimal equivalence:
+	** a = thousands
+	** b = hundreds
+	** c = tens
+	** d = ones
+	*/
+	a = (byte)((data->Word >>2) / 1000);
+	r = (data->Word >>2) % 1000;
+	b = (byte)(r / 100);
+	r %= 100;
+	c = (byte)(r / 10);
+	d = (byte)(r % 10);
+	/*
+	**
+	*/
+	if (a == '0'){
+
+		a = 0xF0;
+
+		if (b == '0'){
+
+			b = 0xF0;
+			if (c == '0'){
+
+				c = 0xF0;
+			}
+		}
+	}
+	/*
+	* Output result
+	*/
+
+	out[1] = a;
+	out[2] = b;
+	out[3] = c;
+	out[4] = d;
+	out[5] = '\0';
+
+//	SCI_NibbOut (a);
+//	SCI_NibbOut (b);
+//	SCI_NibbOut (c);
+//	SCI_NibbOut (d);
 }
 //--------------------------------------------------------------------------------------------

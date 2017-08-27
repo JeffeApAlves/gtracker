@@ -9,6 +9,20 @@
 #include "PE_Types.h"
 #include "PE_LDD.h"
 
+typedef struct {
+
+	union{
+
+		struct{
+			byte low;
+			byte hi;
+		}Byte;
+
+		word Word;
+	};
+
+} tword;
+
 /* External 3-axis accelerometer control register addresses */
 #define MMA8451_CTRL_REG_1 0x2A
 #define MMA8451_STATUS_00_REG 0x00
@@ -36,10 +50,11 @@ typedef struct {
 } MMA8451_TDataState;
 
 void MMA845x_Run(void);
-bool MMA845x_getValues(int* axis,float* g);
+bool MMA845x_getValues(int* axis);
 void MMA845x_deInit(void);
 void MMA845x_init(void);
 void MMA845x_Standby(void);
 void MMA845x_Active (void);
+void convertDecimal(tword* data);
 
 #endif /* MMA8451_H_ */

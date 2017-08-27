@@ -258,7 +258,7 @@ namespace GoodsTracker
         {
             return sendAns(ans);
         }
-
+ 
         //Debug
         protected void printFrame(string str, DataFrame frame)
         {
@@ -269,19 +269,19 @@ namespace GoodsTracker
         }
 
         //Debug
-        protected void printTx(string str, DataFrame frame)
+        protected void printTxFrame(string str, DataFrame frame)
         {
             Debug.WriteLine(str + ": {0}[{1}] {2}{3} ms", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
             printFrame(str, frame);
         }
 
         //Debug
-        protected void printRx(string str, DataFrame frame)
+        protected void printRxFrame(string str, DataFrame frame)
         {
             Debug.WriteLine(str + ": {0}[{1}]", frame.Header.Resource, frame.Header.Count.ToString("D5"));
             printFrame(str, frame);
         }
-
+ 
         //Implementação que será feita pela classe especialista
         public abstract void Init();
         public abstract void DeInit();
