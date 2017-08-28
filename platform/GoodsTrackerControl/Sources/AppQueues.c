@@ -15,7 +15,7 @@ const TickType_t xMainDelay				= (10000 / portTICK_PERIOD_MS);
 const TickType_t xCommunicationDelay	= (10 / portTICK_PERIOD_MS);
 const TickType_t xDataDelay				= (200 / portTICK_PERIOD_MS);
 const TickType_t xIHMDelay				= (50 / portTICK_PERIOD_MS);
-const TickType_t xGPSDelay				= (50 / portTICK_PERIOD_MS);
+const TickType_t xGPSDelay				= (1000 / portTICK_PERIOD_MS);
 const TickType_t xAccelDelay			= (100 / portTICK_PERIOD_MS);
 
 // Handles Tasks

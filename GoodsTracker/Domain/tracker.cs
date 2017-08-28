@@ -59,9 +59,9 @@ namespace GoodsTracker
             if(ans.Header.Resource.Equals(RESOURCE.TLM))
             {
                 Debug.WriteLine("ans:" + ans.Header.Count);
-                Debug.WriteLine("X:" + ans.Telemetria.AxisX.Acceleration.Val);
-                Debug.WriteLine("Y:" + ans.Telemetria.AxisY.Acceleration.Val);
-                Debug.WriteLine("Z:" + ans.Telemetria.AxisZ.Acceleration.Val);
+                Debug.WriteLine("X: {0} : {1}",ans.Telemetria.AxisX.Acceleration.Val , ans.Telemetria.AxisX.Rotation.Val);
+                Debug.WriteLine("Y: {0} : {1}",ans.Telemetria.AxisY.Acceleration.Val, ans.Telemetria.AxisY.Rotation.Val);
+                Debug.WriteLine("Z: {0} : {1}",ans.Telemetria.AxisZ.Acceleration.Val, ans.Telemetria.AxisZ.Rotation.Val);
 
                 updateDataTelemetria(ans);
                 sw_tlm.Restart();

@@ -15,7 +15,7 @@ DataAccelerometer*	pAcceInfo = &acceInfo;
 
 void runAccelerometer(void) {
 
-	MMA845x_getValues(pAcceInfo->Axis);
+	MMA845x_getValues(pAcceInfo);
 
     if(xQueueSendToBack( xQueueAcc , ( void * ) &pAcceInfo, ( TickType_t ) 1 ) ){
 

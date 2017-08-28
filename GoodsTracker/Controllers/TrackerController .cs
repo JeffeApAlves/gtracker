@@ -128,7 +128,7 @@ namespace GoodsTracker
         internal void requestBehavior()
         {
             // Verifica se recebeu nos ultimos 5s uma TLM caso negativo requisita
-            if (tracker.getLastUpdate() > 1000)
+            if (tracker.getLastUpdate() > 2000)
             {
                 tracker.requestBehavior(onTLM);
             }

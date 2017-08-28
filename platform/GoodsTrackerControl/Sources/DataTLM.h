@@ -11,8 +11,6 @@
 #include <stdint.h>
 #include <string.h>
 
-enum {AXIS_X=0,AXIS_Y=1,AXIS_Z=2};
-
 typedef struct{
 
 	float	Lat;
@@ -25,8 +23,8 @@ typedef struct{
 
 typedef struct{
 
-	int		Axis[3];
-	int		G[3];
+	int		x,y,z;
+	float	x_g,y_g,z_g;
 
 } DataAccelerometer;
 
@@ -44,7 +42,6 @@ typedef struct{
 	DataAccelerometer	Accelerometer;
 
 } DataTLM;
-
 
 void updateDataLevel(void);
 void updateDataAcce(void);

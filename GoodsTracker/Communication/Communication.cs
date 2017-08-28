@@ -185,7 +185,7 @@ namespace GoodsTracker
         {
             try
             {
-                if (stopTx.Elapsed.Seconds > 1)
+                if (stopTx.Elapsed.Milliseconds > 50)
                 {
                     if (isAnyQueueCmd())
                     {

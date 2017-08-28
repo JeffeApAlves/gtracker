@@ -338,22 +338,21 @@ namespace GoodsTracker
             /*
              *   |
              * Eixo[x]
-             *   |__ A: Val:0 Min:0 Max:0
-             *   |__ N: Val:0 Min:0 Max:0
+             *   |__ G: Val:0 Min:0 Max:0
              */
             eixo = loc.Nodes.Add(string.Format(neixo));
             eixo.ImageIndex = (int)IMG_TREEVIEW.AXIS;
             eixo.SelectedImageIndex = (int)IMG_TREEVIEW.AXIS;
 
-
+/*
             spec = eixo.Nodes.Add(string.Format("A: Val:{0} Min:{1} Max:{2}",
                                         axis.Acceleration.Val,
                                         axis.Acceleration.Tol.Min,
                                         axis.Acceleration.Tol.Max));
             spec.ImageIndex = (int)(axis.Acceleration.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
             spec.SelectedImageIndex = spec.ImageIndex;
-
-            spec = eixo.Nodes.Add(string.Format("N: Val:{0} Min:{1} Max:{2}",
+*/
+            spec = eixo.Nodes.Add(string.Format("G: Val:{0} Min:{1} Max:{2}",
                                         axis.Rotation.Val,
                                         axis.Rotation.Tol.Min,
                                         axis.Rotation.Tol.Max));

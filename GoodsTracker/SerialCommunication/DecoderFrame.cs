@@ -22,9 +22,9 @@ namespace GoodsTracker
             public const int ACCEL_Y = 9;
             public const int ACCEL_Z = 10;
 
-            public const int ROT_X = 11;
-            public const int ROT_Y = 12;
-            public const int ROT_Z = 13;
+            public const int ACCEL_XG = 11;
+            public const int ACCEL_YG = 12;
+            public const int ACCEL_ZG = 13;
 
             public const int SPEED = 14;
             public const int LEVEL = 15;
@@ -179,9 +179,9 @@ namespace GoodsTracker
                                             AsDouble(list, INDEX.ACCEL_Y),
                                             AsDouble(list, INDEX.ACCEL_Z));
   
-                telemetria.setRotation(AsDouble(list, INDEX.ROT_X),
-                                        AsDouble(list, INDEX.ROT_Y),
-                                        AsDouble(list, INDEX.ROT_Z));
+                telemetria.setRotation(AsDouble(list, INDEX.ACCEL_XG),
+                                        AsDouble(list, INDEX.ACCEL_YG),
+                                        AsDouble(list, INDEX.ACCEL_ZG));
 
                 telemetria.Speed.Val = AsDouble(list, INDEX.SPEED);
                 telemetria.Level.Val = AsDouble(list, INDEX.LEVEL);

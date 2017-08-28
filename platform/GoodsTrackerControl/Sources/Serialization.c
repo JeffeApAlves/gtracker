@@ -8,15 +8,15 @@ void tlm2String(DataTLM* info,ArrayPayLoad* ans){
 
 		clearArrayPayLoad(ans);
 
-	XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%d:%d:%d:%d:%d:%d:%s:%s",
+	XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%.3f:%.3f:%.2f:%d:%d:%d:%s:%s",
 				info->GPS.Lat,
 				info->GPS.Lng,
-				info->Accelerometer.Axis[AXIS_X],
-				info->Accelerometer.Axis[AXIS_Y],
-				info->Accelerometer.Axis[AXIS_Z],
-				info->Accelerometer.G[AXIS_X],
-				info->Accelerometer.G[AXIS_Y],
-				info->Accelerometer.G[AXIS_Z],
+				info->Accelerometer.x,
+				info->Accelerometer.y,
+				info->Accelerometer.z,
+				info->Accelerometer.x_g,
+				info->Accelerometer.y_g,
+				info->Accelerometer.z_g,
 				info->GPS.Speed,
 				info->Tank.Level,
 				info->Tank.Lock,

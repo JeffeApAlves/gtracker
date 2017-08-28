@@ -3,7 +3,13 @@
 
 static MMA8451_TDataState deviceData;
 
-uint8_t ReadReg(uint8_t addr, uint8_t *data, short dataSize) {
+uint8_t I2C_Read(uint8_t addr, uint8_t *data) {
+
+	I2C_ReadBuffer(addr,data,1);
+}
+//--------------------------------------------------------------------------------------------
+
+uint8_t I2C_ReadBuffer(uint8_t addr, uint8_t *data, short dataSize) {
 
   uint8_t res;
 
@@ -26,52 +32,53 @@ uint8_t ReadReg(uint8_t addr, uint8_t *data, short dataSize) {
 }
 //--------------------------------------------------------------------------------------------
 
-uint8_t WriteReg(uint8_t addr, uint8_t val) {
+uint8_t I2C_Write(uint8_t addr, uint8_t val) {
+
   uint8_t buf[2], res;
 
   buf[0] = addr;
   buf[1] = val;
   res = I2C2_MasterSendBlock(deviceData.handle, &buf, 2U, LDD_I2C_SEND_STOP); /* Send OutData (3 bytes with address) on the I2C bus and generates not a stop condition to end transmission */
   if (res!=ERR_OK) {
-    return ERR_FAILED;
+	  return ERR_FAILED;
   }
+
   while (!deviceData.dataTransmittedFlg) {}  /* Wait until date is sent */
+
   deviceData.dataTransmittedFlg = FALSE;
   return ERR_OK;
 }
 //--------------------------------------------------------------------------------------------
 
-bool MMA845x_getValues(int* axis){
+bool MMA845x_getValues(DataAccelerometer* acc){
 
 	int8_t xyz[LEN_XYZ];
-
-	tword x,y,z;
 
 	uint8_t res = ERR_FAILED;
 	uint8_t status;
 
-	res = ReadReg(MMA8451_STATUS_00_REG,&status,1);
+	res = I2C_Read(MMA8451_STATUS,&status);
 
 	if ((res==ERR_OK) && (status & MMA8451_ZYXDR_BIT_MASK)){
 
-		res = ReadReg(MMA8451_OUT_X_MSB, (uint8_t*)&xyz,sizeof(xyz));
+		res = I2C_ReadBuffer(MMA8451_OUT_X_MSB, (uint8_t*)&xyz,LEN_XYZ);
 
 		if(res==ERR_OK){
 
-			x.Byte.hi	= xyz[0];
-			x.Byte.low	= xyz[1];
-			y.Byte.hi	= xyz[2];
-			y.Byte.low	= xyz[3];
-			z.Byte.hi	= xyz[4];
-			z.Byte.low	= xyz[5];
+			mma8451_range_t range = MMA845x_getRange();
 
-			convertDecimal (&x);
-			convertDecimal (&y);
-			convertDecimal (&z);
+			acc->x = toDecimal(xyz);
+			acc->y = toDecimal(xyz+2);
+			acc->z = toDecimal(xyz+4);
 
-			axis[0] = x.Word;
-			axis[1] = y.Word;
-			axis[2] = z.Word;
+			float divider = 1.0;
+			if (range == MMA8451_RANGE_8_G) divider = 1024.0;
+			if (range == MMA8451_RANGE_4_G) divider = 2048.0;
+			if (range == MMA8451_RANGE_2_G) divider = 4096.0;
+
+			acc->x_g = (float)acc->x / divider;
+			acc->y_g = (float)acc->y / divider;
+			acc->z_g = (float)acc->z / divider;
 		}
 	}
 
@@ -79,17 +86,12 @@ bool MMA845x_getValues(int* axis){
 }
 //--------------------------------------------------------------------------------------------
 
-/*
-** Read current value of System Control 1 Register.
-** Put sensor into Standby Mode by clearing the Active bit
-** Return with previous value of System Control 1 Register.
-*/
 void MMA845x_Standby (void)
 {
 	uint8_t ctrl;
 
-	ReadReg(MMA8451_CTRL_REG_1, &ctrl, 1);
-	WriteReg(MMA8451_CTRL_REG_1, ctrl & (~MMA8451_ACTIVE_BIT_MASK));
+	I2C_Read(MMA8451_CTRL_REG1, &ctrl);
+	I2C_Write(MMA8451_CTRL_REG1, ctrl & (~MMA8451_ACTIVE_BIT_MASK));
 }
 //--------------------------------------------------------------------------------------------
 
@@ -97,21 +99,37 @@ void MMA845x_Active(void)
 {
 	uint8_t ctrl;
 
-	ReadReg(MMA8451_CTRL_REG_1, &ctrl, 1);
-	WriteReg(MMA8451_CTRL_REG_1, ctrl | MMA8451_ACTIVE_BIT_MASK);
+	I2C_Read(MMA8451_CTRL_REG1, &ctrl);
+	I2C_Write(MMA8451_CTRL_REG1, ctrl | MMA8451_ACTIVE_BIT_MASK);
 }
 //--------------------------------------------------------------------------------------------
 
 void MMA845x_init(void){
 
-	uint8_t ctrl;
-
+	uint8_t ctrlReg1;
 
 	deviceData.handle = I2C2_Init(&deviceData);
 
 	MMA845x_Standby();
-	ReadReg(MMA8451_CTRL_REG_1,&ctrl,1);
-	WriteReg(MMA8451_CTRL_REG_1,ctrl & (~MMA8451_F_READ_BIT_MASK));
+
+	I2C_Read(MMA8451_CTRL_REG1,&ctrlReg1);
+
+	// MMA8451_F_READ_BIT_MASK = 0 Hi Lo index
+	ctrlReg1 &= (~MMA8451_F_READ_BIT_MASK);
+
+	// MMA8451_L_NOISE_BIT_MASK = 1
+	ctrlReg1 |= MMA8451_L_NOISE_BIT_MASK;
+
+	ctrlReg1 &= ~(MMA8451_DATARATE_MASK << 3);
+	ctrlReg1 |= (MMA8451_DATARATE_100_HZ << 3);
+
+	I2C_Write(MMA8451_CTRL_REG1,ctrlReg1);
+
+	// Range
+	I2C_Write(MMA8451_XYZ_DATA_CFG,  MMA8451_RANGE_8_G);
+
+	// Set the debounce counter 5 -> 100 ms at 50 Hz
+	I2C_Write(MMA8451_PL_COUNT,  5);
 
 	MMA845x_Active();
 }
@@ -123,84 +141,105 @@ void MMA845x_deInit(void){
 }
 //--------------------------------------------------------------------------------------------
 
-void convertDecimal (tword* data)
+mma8451_range_t MMA845x_getRange(void){
+
+	uint8_t data_cfg;
+
+	if(I2C_Read(MMA8451_XYZ_DATA_CFG, &data_cfg)){
+
+		return 0;
+	}
+
+	return (mma8451_range_t)(data_cfg  & 0x02);
+}
+//--------------------------------------------------------------------------------------------
+
+uint8_t MMA845x_Reset(void)
 {
-	char out[6];
-/*
- * 				0xFAB1	= -1339
-	Example:	0xABCC = -1349
-				0x5443 = +1349*/
+	uint8_t res;
+	uint8_t ctrlReg2;
 
-//	data->Word = 0xABCC;
+	I2C_Write(MMA8451_CTRL_REG2, 0x40 );
 
-	byte a, b, c, d;
-	word r;
-	/*
-	** Determine sign and output
-	*/
-	if (data->Byte.hi > 0x7F){
+	do{
+		I2C_Read(MMA8451_CTRL_REG2,&ctrlReg2);
+	}while (ctrlReg2 & 0x40);
 
-		//SCI_CharOut ('-');
-		out[0] = '-';
-		data->Word = (~data->Word) + 1;
+	return ERR_OK;
+}
+//--------------------------------------------------------------------------------------------
 
-	}else{
+uint8_t MMA845x_getOrientation( void )
+{
+    uint8_t orientation = 0;
 
-		//SCI_CharOut ('+');
-		out[0] = '+';
-	}
+    I2C_Read(MMA8451_PL_STATUS, &orientation);
+    return orientation;
+}
+//--------------------------------------------------------------------------------------------
 
-	/*
-		axis[0] = ((( xyz[0] << 8  ) | (xyz[1] & 0x00FF ))>>2) & 0x3FFF;
+void MMA845x_setDataRate(mma8451_dataRate_t dataRate)
+{
+	uint8_t res;
+	uint8_t ctrlReg1;
 
-		if(xyz[0]>0x7F){
-			axis[0] |= 0x8000;
+	res = I2C_Read(MMA8451_CTRL_REG1,&ctrlReg1);
+
+	MMA845x_Standby();
+
+	ctrlReg1 &= ~(MMA8451_DATARATE_MASK << 3);
+	ctrlReg1 |= (dataRate << 3);
+
+	res = I2C_Write(MMA8451_CTRL_REG1,ctrlReg1);
+
+	MMA845x_Active();
+}
+//--------------------------------------------------------------------------------------------
+
+
+void MMA845x_setNoise(bool flag)
+{
+	uint8_t res;
+	uint8_t ctrlReg1;
+
+	res = I2C_Read(MMA8451_CTRL_REG1,&ctrlReg1);
+
+	if(res==ERR_OK){
+
+		MMA845x_Standby();
+
+		ctrlReg1 &= ~MMA8451_L_NOISE_BIT_MASK;
+
+		if(flag){
+
+			ctrlReg1 |= MMA8451_L_NOISE_BIT_MASK;
 		}
 
-		*/
+		res = I2C_Write(MMA8451_CTRL_REG1,ctrlReg1);
 
-	/*
-	** Calculate decimal equivalence:
-	** a = thousands
-	** b = hundreds
-	** c = tens
-	** d = ones
-	*/
-	a = (byte)((data->Word >>2) / 1000);
-	r = (data->Word >>2) % 1000;
-	b = (byte)(r / 100);
-	r %= 100;
-	c = (byte)(r / 10);
-	d = (byte)(r % 10);
-	/*
-	**
-	*/
-	if (a == '0'){
-
-		a = 0xF0;
-
-		if (b == '0'){
-
-			b = 0xF0;
-			if (c == '0'){
-
-				c = 0xF0;
-			}
-		}
+		MMA845x_Active();
 	}
-	/*
-	* Output result
-	*/
+}
+//--------------------------------------------------------------------------------------------
 
-	out[1] = a;
-	out[2] = b;
-	out[3] = c;
-	out[4] = d;
-	out[5] = '\0';
+void MMA845x_setRange(mma8451_range_t range){
 
-//	SCI_NibbOut (a);
-//	SCI_NibbOut (b);
-//	SCI_NibbOut (c);
-//	SCI_NibbOut (d);
+  MMA845x_Standby();
+  I2C_Write(MMA8451_XYZ_DATA_CFG, range & 0x2);
+  MMA845x_Active();
+}
+//--------------------------------------------------------------------------------------------
+
+short toDecimal (int8_t* hi_lo){
+
+	short word = ((hi_lo[0]<<8) | hi_lo[1])>>2;
+
+	if (hi_lo[0] > 0x7F){
+
+		word = ((~word) + 1);
+		word *= -1;
+	}
+
+	return word;
 }
 //--------------------------------------------------------------------------------------------
