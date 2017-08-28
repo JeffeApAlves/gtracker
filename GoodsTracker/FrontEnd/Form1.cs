@@ -471,22 +471,22 @@ namespace GoodsTracker
             {
                 layerBehavior.removeAllMarkers();
 
-                foreach (Telemetria b in listCurrentBehavior)
+                foreach (Telemetria tlm in listCurrentBehavior)
                 {
-                    PointLatLng p = new PointLatLng(b.Latitude, b.Longitude);
+                    PointLatLng p = new PointLatLng(tlm.Latitude, tlm.Longitude);
 
                     GMarkerGoogleType color;
 
-                    if (b.IsInsideOfFence())
+                    if (tlm.IsInsideOfFence())
                     {
                         color = GMarkerGoogleType.brown_small;
                     }
                     else
                     {
-                        color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
+                        color = tlm.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
                     }
 
-                    layerBehavior.add(p, b.getStrNOK(), color);
+                    layerBehavior.add(p, tlm.getStrNOK(), color);
                 }
             }
         }

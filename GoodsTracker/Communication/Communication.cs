@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Text;
 
 namespace GoodsTracker
 {
@@ -14,6 +15,7 @@ namespace GoodsTracker
     abstract class Communication : ThreadRun, Communic
     {
         private const int _TIME_COMMUNICATION = 1;
+        private const int TIME_BETWEEN_CMD = 25;
 
         private static TYPE_COMMUNICATION type;
         private static Dictionary<int,DeviceBase> devices = new Dictionary<int,DeviceBase>();
@@ -185,7 +187,7 @@ namespace GoodsTracker
         {
             try
             {
-                if (stopTx.Elapsed.Milliseconds > 50)
+                if (stopTx.Elapsed.Milliseconds > TIME_BETWEEN_CMD)
                 {
                     if (isAnyQueueCmd())
                     {
@@ -258,30 +260,44 @@ namespace GoodsTracker
         {
             return sendAns(ans);
         }
- 
-        //Debug
-        protected void printFrame(string str, DataFrame frame)
-        {
-            foreach (char c in frame.Data)
-                Debug.Write(c.ToString());
-            Debug.Write("\r\n");
-        }
 
-        //Debug
+        // Debug
         protected void printTxFrame(string str, DataFrame frame)
         {
-            Debug.WriteLine(str + ": {2}{3} ms {0}[{1}]", frame.Header.Resource, frame.Header.Count.ToString("D5"), stopTx.Elapsed.Seconds.ToString("D2"), stopTx.Elapsed.Milliseconds.ToString("D3"));
-            printFrame(str, frame);
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(str + " :");
+            sb.Append(" " + stopTx.Elapsed.Seconds.ToString("D2") + stopTx.Elapsed.Milliseconds.ToString("D3") + " ms");
+            sb.Append(" " + frame.Header.Resource);
+            sb.Append(" ["+frame.Header.Count.ToString("D5")+"] ");
+
+            foreach (char c in frame.Data)
+            {
+                sb.Append(c.ToString());
+            }
+ 
+            Debug.WriteLine(sb);
+
         }
 
-        //Debug
+        // Debug
         protected void printRxFrame(string str, DataFrame frame)
         {
-            Debug.WriteLine(str + ": {0}[{1}]", frame.Header.Resource, frame.Header.Count.ToString("D5"));
-            printFrame(str, frame);
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(str + " :");
+            sb.Append(" " + frame.Header.Resource);
+            sb.Append(" [" + frame.Header.Count.ToString("D5") + "] ");
+
+            foreach (char c in frame.Data)
+            {
+                sb.Append(c.ToString());
+            }
+
+            Debug.WriteLine(sb);
         }
- 
-        //Implementação que será feita pela classe especialista
+
+        // Implementação que será feita pela classe especialista
         public abstract void Init();
         public abstract void DeInit();
         public abstract bool sendCmd(Cmd cmd);

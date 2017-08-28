@@ -82,8 +82,8 @@ namespace GoodsTracker
                 port.ReadBufferSize     = SIZE_BUFFER_RX;
                 port.WriteBufferSize    = SIZE_BUFFER_TX;
                 port.Handshake          = Handshake.None;
-                port.ReadTimeout        = 100;
-                port.WriteTimeout       = 100;
+                port.ReadTimeout        = 10;
+                port.WriteTimeout       = 10;
                 port.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
                 port.ErrorReceived += new SerialErrorReceivedEventHandler(_serialPort_DataErroReceived);
 

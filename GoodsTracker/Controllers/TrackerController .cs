@@ -11,7 +11,7 @@ namespace GoodsTracker
 
         private static TrackerController singleton = null;
 
-        private const int _TIME_TELEMETRIA  = 2000;
+        private const int _TIME_TELEMETRIA  = 100;
 
         onUpdateTelemetria  onDataTelemetria;
 
@@ -57,16 +57,7 @@ namespace GoodsTracker
          */
         public override void run()
         {
-            try
-            {
-                requestBehavior();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Erro no controller");
-                Console.WriteLine(e.ToString());
-                Debug.WriteLine(e.ToString());
-            }
+            requestBehavior();
         }
 
         /*

@@ -104,7 +104,7 @@ static void receiveFrame (void) {
 
 	if(getRxData(&ch)) {
 
-		if(ch==CHAR_START || frameCom.Length>=LEN_FRAME) {
+		if(ch==CHAR_START || frameCom.Length>=ARRAY_LEN_FRAME) {
 
 			errorRxFrame();
 		}
@@ -431,7 +431,7 @@ static void setPayLoad(ArrayPayLoad* ans) {
 
 		dataCom.PayLoad =  *ans;
 
-		if(dataCom.PayLoad.Length > LEN_PAYLOAD){
+		if(dataCom.PayLoad.Length > ARRAY_LEN_PAYLOAD){
 
 			//TODO Tratar array do payload maior que o buffer provisionado
 		}

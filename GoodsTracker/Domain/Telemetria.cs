@@ -68,7 +68,7 @@ namespace GoodsTracker
 
         public override string ToString()
         {
-            return "A: "+acceleration.ToString() + " R: " + rotation.ToString();
+            return /*"A: "+acceleration.ToString() + */ " G: " + rotation.ToString();
         }
     }
 

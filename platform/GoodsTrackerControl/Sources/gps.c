@@ -66,7 +66,7 @@ static void NMEA_receiveFrame(void)
 
 	if(getGPSData(&ch)) {
 
-		if(ch==NMEA_CHAR_START || frameNMEA.Length>=LEN_FRAME) {
+		if(ch==NMEA_CHAR_START || frameNMEA.Length>=ARRAY_LEN_FRAME) {
 
 			NMEA_errorRxFrame();
 		}

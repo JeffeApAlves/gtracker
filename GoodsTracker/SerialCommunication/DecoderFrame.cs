@@ -172,8 +172,8 @@ namespace GoodsTracker
 
             try
             {
-                telemetria.setPosition((AsDouble(list, INDEX.LAT)/100.0),
-                                        (AsDouble(list, INDEX.LNG) / 100.0));
+                telemetria.setPosition((AsGrauDecimal(list, INDEX.LAT)),
+                                        (AsGrauDecimal(list, INDEX.LNG)));
 
                 telemetria.setAcceleration(AsDouble(list, INDEX.ACCEL_X),
                                             AsDouble(list, INDEX.ACCEL_Y),
@@ -287,6 +287,19 @@ namespace GoodsTracker
             }
               
             return dest;
+        }
+
+        static private double AsGrauDecimal(string[] list, int index)
+        {
+            double dest = AsDouble(list, index);
+
+            double minutos = dest % 100;
+            double graus = dest - minutos;
+            double dec = (minutos / 60.0);
+
+
+            return Math.Round((graus/100.0)+dec,4);
+
         }
 
         static private double AsDouble(string[] list, int index)

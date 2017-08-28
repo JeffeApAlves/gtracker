@@ -13,7 +13,7 @@ inline unsigned int putDataArray(ArrayFrame *frame, char data) {
 
 	if(frame!=NULL){
 		frame->Data[frame->Length++] = data;
-		frame->Length%=LEN_FRAME;
+		frame->Length%=ARRAY_LEN_FRAME;
 	}
 }
 //----------------------------------------------------------------------------------
