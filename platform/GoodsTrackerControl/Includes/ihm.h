@@ -43,12 +43,12 @@ typedef struct {
 /**
  *
  */
-void ihm_initialize();
+void initIHM();
 
 /**
  *
  */
-void ihm_terminate();
+void deInitIHM();
 
 /**
  *
@@ -61,5 +61,11 @@ void runIHM();
 int ihm_put_slide_event(TSS_CSASlider *event);
 
 void ihm_process_events(ihmStruct *ihm);
+
+void initEvents();
+
+void printLCD(int linha,int coluna,char* str);
+
+void printClock(char* time_str);
 
 #endif /* SOURCES_IHM_H_ */

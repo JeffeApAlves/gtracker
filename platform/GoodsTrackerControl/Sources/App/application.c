@@ -9,6 +9,7 @@
 #include <stdbool.h>
 
 #include "AppQueues.h"
+#include "clock.h"
 #include "lock.h"
 #include "DataTLM.h"
 #include "NMEAFrame.h"
@@ -31,6 +32,27 @@ void runApp(void){
 	updateTLM(ulNotifiedValue);
 
 	execCMD(ulNotifiedValue);
+}
+//-------------------------------------------------------------------------
+
+void runMain(void){
+
+//	uint32_t ulNotifiedValue;
+
+//	xTaskNotifyWait( 0x0, 0x0 ,  &ulNotifiedValue, portMAX_DELAY);
+
+//	if(ulNotifiedValue & BIT_UPDATE_GPS){
+
+		if (xQueueGPS != 0) {
+
+			DataGPS* gps;
+
+			if (xQueuePeek(xQueueGPS, &(gps), (TickType_t ) 1)) {
+
+				setClockByString(gps->Time,gps->Date);
+			}
+		}
+//	}
 }
 //-------------------------------------------------------------------------
 
@@ -193,7 +215,7 @@ void answerTime(void){
 
 	clearArrayPayLoad(&msg2send);
 
-	AppendPayLoad(&msg2send,"23/06/2017 19.52");
+	AppendPayLoad(&msg2send,timestamp.str);
 
 
 	if(xQueueSendToBack( xQueueAnswer , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){

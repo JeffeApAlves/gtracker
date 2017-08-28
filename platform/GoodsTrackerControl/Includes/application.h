@@ -36,6 +36,7 @@ void answerTime(void);
 void answerTLM(void);
 void execCMD(uint32_t ulNotifiedValue);
 
+void runMain(void);
 void runApp(void);
 pCallBack getCallBack(Resource* r);
 
