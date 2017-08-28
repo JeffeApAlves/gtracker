@@ -1,0 +1,52 @@
+#include <inttypes.h>
+#include <stdio.h>
+#include <string.h>
+#include "XF1.h"
+#include "clock.h"
+#include "Serialization.h"
+
+#define LEN_TIME_STAMP	33
+
+void tlm2String(DataTLM* info,ArrayPayLoad* ans){
+
+	//char timestamp[ LEN_TIME_STAMP];
+
+	if(info!=NULL && ans!= NULL){
+
+		clearArrayPayLoad(ans);
+
+		//XF1_xsprintf(timestamp,"%d",getCurrentTimeStamp());
+
+		XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%.3f:%.3f:%.2f:%d:%d:%d:%d:%s",
+				info->GPS.Lat,
+				info->GPS.Lng,
+				info->Accelerometer.x,
+				info->Accelerometer.y,
+				info->Accelerometer.z,
+				info->Accelerometer.x_g,
+				info->Accelerometer.y_g,
+				info->Accelerometer.z_g,
+				info->GPS.Speed,
+				info->Tank.Level,
+				info->Tank.Lock,
+				//info->GPS.Time,
+				getCurrentTimeStamp(),
+				info->GPS.Date);
+
+		ans->Length = strlen(ans->Data);
+	}
+}
+//------------------------------------------------------------------------
+
+/*
+void getTimeStamp(char* timestamp,char* date,char* time){
+
+	memset(timestamp,0, LEN_TIME_STAMP);
+	strncpy(timestamp,"20",2);
+	strncat(timestamp,date+4,2);
+	strncat(timestamp,date+2,2);
+	strncat(timestamp,date,2);
+	strcat(timestamp, time);
+}
+//------------------------------------------------------------------------
+*/

@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-08-25, 23:34, # CodeGen: 90
+**     Date/Time   : 2017-08-28, 15:30, # CodeGen: 115
 **     Abstract    :
 **
 **     Settings    :
@@ -22,8 +22,21 @@
 **              Initialize slow trim value                 : no
 **              Fast internal reference clock [MHz]        : 4
 **              Initialize fast trim value                 : no
-**            RTC clock input                              : Disabled
-**            System oscillator 0                          : Disabled
+**            RTC clock input                              : Enabled
+**              Clock frequency [MHz]                      : 0.032768
+**              Pin name                                   : ADC0_SE15/TSI0_CH14/PTC1/LLWU_P6/RTC_CLKIN/I2C1_SCL/TPM0_CH0
+**              Pin signal                                 : 
+**            System oscillator 0                          : Enabled
+**              Clock source                               : External crystal
+**                Clock input pin                          : 
+**                  Pin name                               : EXTAL0/PTA18/UART1_RX/TPM_CLKIN0
+**                  Pin signal                             : 
+**                Clock output pin                         : 
+**                  Pin name                               : XTAL0/PTA19/UART1_TX/TPM_CLKIN1/LPTMR0_ALT1
+**                  Pin signal                             : 
+**                Clock frequency [MHz]                    : 8
+**                Capacitor load                           : 0pF
+**                Oscillator operating mode                : Low power
 **            Clock source settings                        : 1
 **              Clock source setting 0                     : 
 **                Internal reference clock                 : 
@@ -34,14 +47,14 @@
 **                External reference clock                 : 
 **                  OSC0ERCLK clock                        : Enabled
 **                  OSC0ERCLK in stop                      : Disabled
-**                  OSC0ERCLK clock [MHz]                  : 0
-**                  ERCLK32K clock source                  : Auto select
-**                  ERCLK32K. clock [MHz]                  : 0.001
+**                  OSC0ERCLK clock [MHz]                  : 8
+**                  ERCLK32K clock source                  : RTC clock input
+**                  ERCLK32K. clock [MHz]                  : 0.032768
 **                MCG settings                             : 
 **                  MCG mode                               : FEI
 **                  MCG output clock                       : FLL clock
 **                  MCG output [MHz]                       : 20.97152
-**                  MCG external ref. clock [MHz]          : 0
+**                  MCG external ref. clock [MHz]          : 8
 **                  Clock monitor                          : Disabled
 **                  FLL settings                           : 
 **                    FLL module                           : Enabled
@@ -148,7 +161,10 @@
 **                LVD interrupt                            : Disabled
 **                LVW interrupt                            : Disabled
 **            System Integration Module                    : 
-**              CLKOUT pin control                         : Disabled
+**              CLKOUT pin control                         : Enabled
+**                CLKOUT pin                               : PTC3/LLWU_P7/UART1_RX/TPM0_CH2/CLKOUTa
+**                CLKOUT pin signal                        : 
+**                CLKOUT pin output                        : MCGIRCLK
 **              Clock gating control                       : Disabled
 **          CPU interrupts/resets                          : 
 **            NMI interrupt                                : Enabled
@@ -187,8 +203,8 @@
 **                MCG mode                                 : FEI
 **                MCG output [MHz]                         : 20.97152
 **                MCGIRCLK clock [MHz]                     : 0.032768
-**                OSCERCLK clock [MHz]                     : 0
-**                ERCLK32K. clock [MHz]                    : 0.001
+**                OSCERCLK clock [MHz]                     : 8
+**                ERCLK32K. clock [MHz]                    : 0.032768
 **                MCGFFCLK [kHz]                           : 32.768
 **              System clocks                              : 
 **                Core clock prescaler                     : Auto select
@@ -289,6 +305,7 @@
 #include "I2C2.h"
 #include "AD1.h"
 #include "AdcLdd1.h"
+#include "RTC1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -396,22 +413,30 @@ void __init_hardware(void)
   SIM_CLKDIV1 = (SIM_CLKDIV1_OUTDIV1(0x00) | SIM_CLKDIV1_OUTDIV4(0x00)); /* Update system prescalers */
   /* SIM_SOPT2: ??=0,PLLFLLSEL=0 */
   SIM_SOPT2 &= (uint32_t)~(uint32_t)((SIM_SOPT2_PLLFLLSEL_MASK | 0x00020000U)); /* Select FLL as a clock source for various peripherals */
-  /* SIM_SOPT1: OSC32KSEL=3 */
-  SIM_SOPT1 |= SIM_SOPT1_OSC32KSEL(0x03); /* LPO 1kHz oscillator drives 32 kHz clock for various peripherals */
+  /* SIM_SOPT1: OSC32KSEL=2 */
+  SIM_SOPT1 = (uint32_t)((SIM_SOPT1 & (uint32_t)~(uint32_t)(
+               SIM_SOPT1_OSC32KSEL(0x01)
+              )) | (uint32_t)(
+               SIM_SOPT1_OSC32KSEL(0x02)
+              ));                      /* System oscillator drives 32 kHz clock for various peripherals */
   /* SIM_SOPT2: TPMSRC=1 */
   SIM_SOPT2 = (uint32_t)((SIM_SOPT2 & (uint32_t)~(uint32_t)(
                SIM_SOPT2_TPMSRC(0x02)
               )) | (uint32_t)(
                SIM_SOPT2_TPMSRC(0x01)
               ));                      /* Set the TPM clock */
+  /* PORTA_PCR18: ISF=0,MUX=0 */
+  PORTA_PCR18 &= (uint32_t)~(uint32_t)((PORT_PCR_ISF_MASK | PORT_PCR_MUX(0x07)));
+  /* PORTA_PCR19: ISF=0,MUX=0 */
+  PORTA_PCR19 &= (uint32_t)~(uint32_t)((PORT_PCR_ISF_MASK | PORT_PCR_MUX(0x07)));
   /* Switch to FEI Mode */
   /* MCG_C1: CLKS=0,FRDIV=0,IREFS=1,IRCLKEN=1,IREFSTEN=0 */
   MCG_C1 = MCG_C1_CLKS(0x00) |
            MCG_C1_FRDIV(0x00) |
            MCG_C1_IREFS_MASK |
            MCG_C1_IRCLKEN_MASK;
-  /* MCG_C2: LOCRE0=0,??=0,RANGE0=0,HGO0=0,EREFS0=0,LP=0,IRCS=0 */
-  MCG_C2 = MCG_C2_RANGE0(0x00);
+  /* MCG_C2: LOCRE0=0,??=0,RANGE0=2,HGO0=0,EREFS0=1,LP=0,IRCS=0 */
+  MCG_C2 = (MCG_C2_RANGE0(0x02) | MCG_C2_EREFS0_MASK);
   /* MCG_C4: DMX32=0,DRST_DRS=0 */
   MCG_C4 &= (uint8_t)~(uint8_t)((MCG_C4_DMX32_MASK | MCG_C4_DRST_DRS(0x03)));
   /* OSC0_CR: ERCLKEN=1,??=0,EREFSTEN=0,??=0,SC2P=0,SC4P=0,SC8P=0,SC16P=0 */
@@ -424,6 +449,14 @@ void __init_hardware(void)
   }
   while((MCG_S & 0x0CU) != 0x00U) {    /* Wait until output of the FLL is selected */
   }
+  /* Initialization of the RTC_CLKIN pin */
+  /* PORTC_PCR1: ISF=0,MUX=1 */
+  PORTC_PCR1 = (uint32_t)((PORTC_PCR1 & (uint32_t)~(uint32_t)(
+                PORT_PCR_ISF_MASK |
+                PORT_PCR_MUX(0x06)
+               )) | (uint32_t)(
+                PORT_PCR_MUX(0x01)
+               ));
   /*** End of PE initialization code after reset ***/
 
   /*** !!! Here you can place your own code after PE initialization using property "User code after PE initialization" on the build options tab. !!! ***/
@@ -449,6 +482,12 @@ void PE_low_level_init(void)
     PEX_RTOS_INIT();                   /* Initialization of the selected RTOS. Macro is defined by the RTOS component. */
   #endif
       /* Initialization of the SIM module */
+  /* SIM_SOPT2: CLKOUTSEL=4 */
+  SIM_SOPT2 = (uint32_t)((SIM_SOPT2 & (uint32_t)~(uint32_t)(
+               SIM_SOPT2_CLKOUTSEL(0x03)
+              )) | (uint32_t)(
+               SIM_SOPT2_CLKOUTSEL(0x04)
+              ));
   /* PORTA_PCR4: ISF=0,MUX=7 */
   PORTA_PCR4 = (uint32_t)((PORTA_PCR4 & (uint32_t)~(uint32_t)(
                 PORT_PCR_ISF_MASK
@@ -489,6 +528,13 @@ void PE_low_level_init(void)
   /* SMC_PMPROT: ??=0,??=0,AVLP=0,??=0,ALLS=0,??=0,AVLLS=0,??=0 */
   SMC_PMPROT = 0x00U;                  /* Setup Power mode protection register */
   /* Common initialization of the CPU registers */
+  /* PORTC_PCR3: ISF=0,MUX=5 */
+  PORTC_PCR3 = (uint32_t)((PORTC_PCR3 & (uint32_t)~(uint32_t)(
+                PORT_PCR_ISF_MASK |
+                PORT_PCR_MUX(0x02)
+               )) | (uint32_t)(
+                PORT_PCR_MUX(0x05)
+               ));
   /* PORTA_PCR20: ISF=0,MUX=7 */
   PORTA_PCR20 = (uint32_t)((PORTA_PCR20 & (uint32_t)~(uint32_t)(
                  PORT_PCR_ISF_MASK

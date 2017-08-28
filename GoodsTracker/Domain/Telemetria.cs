@@ -82,8 +82,7 @@ namespace GoodsTracker
         Axis        axisX, axisY, axisZ;
 
         bool        statusLock;
-        DateTime    date;
-        DateTime    time;
+        DateTime    date_time;
 
         public Value Speed { get => speed; set => speed = value; }
         public Axis AxisX { get => axisX; set => axisX = value; }
@@ -94,8 +93,7 @@ namespace GoodsTracker
         public Value Level { get => level; set => level = value; }
         public Dictionary<int, bool> InsideOfFence { get => insideOfFence; set => insideOfFence = value; }
         public bool StatusLock { get => statusLock; set => statusLock = value; }
-        public DateTime Date { get => date; set => date = value; }
-        public DateTime Time { get => time; set => time = value; }
+        public DateTime DateTime { get => date_time; set => date_time = value; }
 
         public Telemetria()
         {

@@ -6,7 +6,7 @@
 **     Version     : Component 01.025, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-08-25, 23:34, # CodeGen: 90
+**     Date/Time   : 2017-08-28, 13:42, # CodeGen: 110
 **     Abstract    :
 **
 **     Settings    :
@@ -103,6 +103,7 @@
 #include "I2C2.h"
 #include "AD1.h"
 #include "AdcLdd1.h"
+#include "RTC1.h"
 
 
 /*

@@ -22,8 +22,8 @@
             <MCG_mode v="FEI" />
             <MCG_output__MHz_ v="20.971520000000" />
             <MCGIRCLK_clock__MHz_ v="0.032768" />
-            <OSCERCLK_clock__MHz_ v="0" />
-            <ERCLK32K__clock__MHz_ v="0.001" />
+            <OSCERCLK_clock__MHz_ v="8" />
+            <ERCLK32K__clock__MHz_ v="0.032768" />
             <MCGFFCLK__kHz_ v="32.768" />
           </enumgroup>
           <group name="System clocks">
@@ -2389,6 +2389,69 @@ Autoselect
         <Event_procedure_name v="AD1_OnCalibrationEnd" />
         <Priority v="same as interrupt" />
       </event>
+    </Events>
+  </Bean>
+  <Bean name="RTC1" type="RTC_LDD">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="RTC1" />
+      <Device v="RTC" />
+      <Input_clock_frequency__s_ v="1 sec" />
+      <boolgroup name="Interrupt service/event" v="Enabled">
+        <Interrupt v="INT_RTC" />
+        <Interrupt_priority v="medium priority" />
+        <Interrupt v="INT_RTC_Seconds" />
+        <Interrupt_priority v="medium priority" />
+      </boolgroup>
+      <Min_year v="2000" />
+      <Max_year v="2099" />
+      <group name="Initialization">
+        <Enabled_in_init__code v="yes" />
+        <boolgroup name="Auto Initialization" v="no" />
+        <group name="Event mask">
+          <OnAlarm v="Disabled" />
+          <OnSecond v="Enabled" />
+          <OnTimeOverflow v="Disabled" />
+          <OnTimeInvalid v="Disabled" />
+        </group>
+        <group name="Time and date settings">
+          <Time v="00:00:01" />
+          <Date v="2000-01-01" />
+        </group>
+        <boolgroup name="Alarm settings" v="Enabled">
+          <Alarm_time v="00:00:00" />
+          <Alarm_date v="2000-01-01" />
+        </boolgroup>
+        <group name="Compensation settings">
+          <Compensation_period__s_ v="0" />
+          <Compensation_value__clock_cycles_ v="0" />
+        </group>
+      </group>
+    </Properties>
+    <Methods>
+      <Init v="generate code" />
+      <Deinit v="don&amp;apos;t generate code" />
+      <Enable v="don&amp;apos;t generate code" />
+      <Disable v="don&amp;apos;t generate code" />
+      <GetEventMask v="don&amp;apos;t generate code" />
+      <SetEventMask v="don&amp;apos;t generate code" />
+      <GetStatus v="don&amp;apos;t generate code" />
+      <GetTime v="generate code" />
+      <SetTime v="generate code" />
+      <GetAlarm v="don&amp;apos;t generate code" />
+      <SetAlarm v="don&amp;apos;t generate code" />
+      <SetCompensationPeriodAndValue v="don&amp;apos;t generate code" />
+      <SetOperationMode v="don&amp;apos;t generate code" />
+      <GetDriverState v="don&amp;apos;t generate code" />
+    </Methods>
+    <Events>
+      <Event_module_name v="Events" />
+      <event name="OnAlarm" v="don&amp;apos;t generate code" />
+      <event name="OnSecond" v="generate code">
+        <Event_procedure_name v="RTC1_OnSecond" />
+      </event>
+      <event name="OnTimeOverflow" v="don&amp;apos;t generate code" />
+      <event name="OnTimeInvalid" v="don&amp;apos;t generate code" />
     </Events>
   </Bean>
 </PE_PROJECT_SETTINGS_DOCUMENTATION>

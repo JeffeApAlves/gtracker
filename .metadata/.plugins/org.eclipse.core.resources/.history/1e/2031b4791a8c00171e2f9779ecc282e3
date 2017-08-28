@@ -1,0 +1,19 @@
+/*
+ * clock.h
+ *
+ *  Created on: Aug 28, 2017
+ *      Author: Jefferson
+ */
+
+#ifndef INCLUDES_CLOCK_H_
+#define INCLUDES_CLOCK_H_
+
+
+void initClock();
+void setClock();
+void getClock();
+void updateClock();
+
+extern char timestamp[20];
+
+#endif /* INCLUDES_CLOCK_H_ */

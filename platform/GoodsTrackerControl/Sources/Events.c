@@ -40,6 +40,7 @@ extern "C" {
 #include "MMA8451.h"
 #include "protocol.h"
 #include "Level.h"
+#include "clock.h"
 #include "ihm.h"
 
 
@@ -556,6 +557,29 @@ void I2C2_OnMasterBlockReceived(LDD_TUserData *UserDataPtr)
 void AD1_OnCalibrationEnd(void)
 {
   /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  RTC1_OnSecond (module Events)
+**
+**     Component   :  RTC1 [RTC_LDD]
+*/
+/*!
+**     @brief
+**         Called each second if OnSecond event is enabled (see
+**         [SetEventMask] and [GetEventMask] methods) and RTC device is
+**         enabled. This event is available only if [Interrupt
+**         service/event] is enabled.
+**     @param
+**         UserDataPtr     - Pointer to the user or
+**                           RTOS specific data. This pointer is passed
+**                           as the parameter of Init method. 
+*/
+/* ===================================================================*/
+void RTC1_OnSecond(LDD_TUserData *UserDataPtr)
+{
+	updateTimeStamp();
 }
 
 /* END Events */

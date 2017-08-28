@@ -38,6 +38,7 @@
 #include "I2C2.h"
 #include "AD1.h"
 #include "AdcLdd1.h"
+#include "RTC1.h"
 #include "MCUC1.h"
 #include "TSK1.h"
 #include "LED_R.h"

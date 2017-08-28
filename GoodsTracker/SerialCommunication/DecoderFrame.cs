@@ -29,8 +29,8 @@ namespace GoodsTracker
             public const int SPEED = 14;
             public const int LEVEL = 15;
             public const int TRAVA = 16;
+            public const int TIME_STAMP = 17;
             public const int TIME = 17;
-            public const int DATE = 18;
         };
 
         static public bool setHeader(Header header)
@@ -90,18 +90,16 @@ namespace GoodsTracker
                 payload.Append(b.StatusLock);
                 payload.Append(CONST_CHAR.SEPARATOR);
 
-                string str = b.Time.ToLongTimeString();
+                // TODO Conversao para timestamp
+
+                string str = b.DateTime.ToLongTimeString();
                 str = str.Replace(":","");
                 str = str.Replace(":","");
-
-                payload.Append(str);
-                payload.Append(CONST_CHAR.SEPARATOR);
-
-                str = b.Date.ToShortDateString().Remove(5, 1);
                 str = str.Replace("/", "");
                 str = str.Replace("/", "");
-                payload.Append(str);
 
+                payload.Append(str);
+ 
                 ret = true;
             }
             catch (Exception e)
@@ -186,8 +184,7 @@ namespace GoodsTracker
                 telemetria.Speed.Val = AsDouble(list, INDEX.SPEED);
                 telemetria.Level.Val = AsDouble(list, INDEX.LEVEL);
                 telemetria.StatusLock = AsBool(list, INDEX.TRAVA);
-                telemetria.Date      = AsDate(list, INDEX.DATE);
-                telemetria.Time     = AsTime(list, INDEX.TIME);
+                telemetria.DateTime     = AsDateTime(list, INDEX.TIME);
             }
             catch (Exception e)
             {
@@ -233,47 +230,19 @@ namespace GoodsTracker
             return (Operation)Enum.Parse(typeof(Operation), str);
         }
 
-        static private DateTime AsTime(string[] list, int index)
+        static private DateTime AsDateTime(string[] list, int index)
         {
             CultureInfo culture = new CultureInfo("pt-BR");
 
-            DateTime d = new DateTime();
+            DateTime d = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
 
             if ((int)index < list.Length)
             {
-                string str = list[(int)index];
+                double timestamp = AsDouble(list, index);
 
-                if (!str.Equals("") && str.Length >= 6)
-                {
-                    str = str.Insert(2, ":");
-                    str = str.Insert(5, ":");
-                    str = str.Substring(0, str.Length - 4);
-
-                    d = Convert.ToDateTime(str,culture);
-                }
+                d = d.AddSeconds(timestamp).ToLocalTime();
             }
 
-            return d;
-        }
-
-        static private DateTime AsDate(string[] list, int index)
-        {
-            CultureInfo culture = new CultureInfo("pt-BR");
-
-            DateTime d = new DateTime();
-
-            if ((int)index < list.Length)
-            {
-                string str = list[(int)index];
-
-                if (!str.Equals("") && str.Length>=6)
-                {
-                    str = str.Insert(2, "/");
-                    str = str.Insert(5, "/");
-                    d = Convert.ToDateTime(str, culture);
-                }                
-            }
-            
             return d;
         }
 

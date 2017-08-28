@@ -46,8 +46,17 @@
     <SourceCodePaths>
       <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\</Path>
       <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Project_Settings\Startup_Code\</Path>
+      <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Accelerometer\</Path>
+      <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\App\</Path>
+      <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\</Path>
+      <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Domain\</Path>
       <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\</Path>
+      <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\GPS\</Path>
+      <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\IHM\</Path>
       <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\</Path>
+      <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Tank\</Path>
+      <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\</Path>
+      <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\clock\</Path>
     </SourceCodePaths>
     <LibPaths>
       <Path>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\</Path>
@@ -88,6 +97,7 @@
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\MCUC1.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\PE_LDD.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\RS1.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\RTC1.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\TI1.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\TSK1.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\TSSin.c</PathName>
@@ -115,30 +125,31 @@
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\tasks.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\timers.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Project_Settings\Startup_Code\startup.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Accelerometer.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\AppQueues.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Array.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\DataTLM.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Accelerometer\Accelerometer.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Accelerometer\MMA8451.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\App\AppQueues.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\App\application.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\Serialization.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\protocol.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Domain\DataTLM.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Events.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Level.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\MMA8451.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\RingBuffer.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Serialization.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\GPS\gps.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\IHM\ihm.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\IHM\lcd.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_Freemaster.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_Sensor.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_SensorGPIO.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_SensorTSI.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_SensorTSIL.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_SystemSetupData.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\application.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Tank\Level.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Tank\lock.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\Array.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\RingBuffer.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\utils.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\clock\clock.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\frtos_tasks.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\gps.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\ihm.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\lcd.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\lock.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\main.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\utils.c</PathName>
     </GeneratedCs>
     <GeneratedHs>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\AD1.h</PathName>
@@ -185,6 +196,7 @@
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\PE_LDD.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\PE_Types.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\RS1.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\RTC1.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\StackMacros.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\TI1.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\TSK1.h</PathName>
@@ -218,16 +230,26 @@
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\semphr.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\task.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\timers.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\AppQueues.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Array.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\DataFrame.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\DataTLM.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\AppQueues.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\Array.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\DataFrame.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\DataTLM.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\Level.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\MMA8451.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\NMEAFrame.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\RingBuffer.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\Serialization.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\TSS_SystemSetup.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\accelerometer.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\application.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\clock.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\gps.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\ihm.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\lcd.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\lock.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\protocol.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\utils.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Events.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Level.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\MMA8451.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\NMEAFrame.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\RingBuffer.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Serialization.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_API.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_DataTypes.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_GPIO.h</PathName>
@@ -239,16 +261,8 @@
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_SystemSetupVal.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_Timer.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS_SystemSetup.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\accelerometer.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\application.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\derivative.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\frtos_tasks.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\gps.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\ihm.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\lcd.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\lock.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\protocol.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\utils.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Static_Code\IO_Map\MKL25Z4.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Static_Code\PDD\ADC_PDD.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Static_Code\PDD\CMP_PDD.h</PathName>

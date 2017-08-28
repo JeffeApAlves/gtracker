@@ -7,6 +7,9 @@
 					<entry kind="includePath" name="/GoodsTrackerControl/Static_Code/PDD">
 						<flag value="BUILTIN|READONLY|VALUE_WORKSPACE_PATH|RESOLVED"/>
 					</entry>
+					<entry kind="includePath" name="/GoodsTrackerControl/Includes">
+						<flag value="BUILTIN|READONLY|VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
 					<entry kind="includePath" name="/GoodsTrackerControl/Static_Code/IO_Map">
 						<flag value="BUILTIN|READONLY|VALUE_WORKSPACE_PATH|RESOLVED"/>
 					</entry>
@@ -1063,6 +1066,9 @@
 				</language>
 				<language id="org.eclipse.cdt.core.g++">
 					<entry kind="includePath" name="/GoodsTrackerControl/Static_Code/PDD">
+						<flag value="BUILTIN|READONLY|VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/GoodsTrackerControl/Includes">
 						<flag value="BUILTIN|READONLY|VALUE_WORKSPACE_PATH|RESOLVED"/>
 					</entry>
 					<entry kind="includePath" name="/GoodsTrackerControl/Static_Code/IO_Map">

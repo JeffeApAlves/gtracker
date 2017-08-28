@@ -757,6 +757,17 @@ Module "AD1"       (component ADC)
    - AD1_Calibrate -This method starts self calibration process. Calibration is typically used to remove the effects of the 
                 gain and offset from a specific reading.
 
+Module "RTC1"      (component RTC_LDD)
+   - RTC1_Init -Initializes the device. There are two modes of initialization.   1) RTC device is NOT battery backed up. 
+                (SoftInit = FALSE)     All registers (interrupts, counters, clock routing …) that influence RTC behavior are 
+                initialized.      Note: This initialization mode doesn't preserve time and date settings.   2) RTC device IS 
+                battery backed up.     (SoftInit = TRUE). Only registers that are not backed up are initialized (Interrupt 
+                priority …). RTC device is running, time and date a preserved, RTC interrupts (events) are preserved too.   
+                Allocates memory for the device data structure.   This method can be called only once. Before the second call 
+                of Init() the Deinit() must be called first.
+   - RTC1_GetTime -Returns actual time and date.    Note: Fields not supported by HW are calculated in software.
+   - RTC1_SetTime -Sets new time and date.   Note: All LDD_RTC_TTime structure members must be correctly filled in.
+
 Module "Cpu"       (component MKL25Z128LK4)
 
 ===================================================================================
