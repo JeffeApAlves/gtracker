@@ -28,11 +28,7 @@ LDD_TDeviceData		*MyRTCPtr;
 LDD_RTC_TTime		Time;
 LDD_TError			Error;
 
-timestamp_t timestamp;
-
 void initClock(){
-
-	memset(&timestamp,0,sizeof(timestamp_t));
 
 	MyRTCPtr = RTC1_Init((LDD_TUserData *)NULL, FALSE);        /* Initialize the device, preserve time settings */
 }
@@ -82,6 +78,8 @@ void setClock(LDD_RTC_TTime* time){
 	if(Error==ERR_OK){
 		RTC1_GetTime(MyRTCPtr, &Time);
 	}
+
+	Time.timestamp = getCurrentTimeStamp();
 }
 //-------------------------------------------------------------------------------------------------------------------
 
@@ -92,13 +90,10 @@ void getClock(){
 }
 //-------------------------------------------------------------------------------------------------------------------
 
-void updateTimeStamp(){
+void updateEntityClock(){
 
 	RTC1_GetTime(MyRTCPtr, &Time);
-	timestamp.val = getCurrentTimeStamp();
-	XF1_xsprintf(timestamp.str,"%d\n", timestamp.val);
-	XF1_xsprintf(timestamp.strTime,"%02d:%02d:%02d \n", Time.Hour+FUSO_HORARIO_BR, Time.Minute, Time.Second);
-
+	Time.timestamp++;
 }
 //-------------------------------------------------------------------------------------------------------------------
 

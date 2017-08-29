@@ -91,11 +91,17 @@
     <Compile Include="Communication\AnsCmd.cs" />
     <Compile Include="Communication\Communic.cs" />
     <Compile Include="Communication\Communication.cs" />
+    <Compile Include="Communication\CommunicationFrame.cs" />
     <Compile Include="Communication\FrameSerialization.cs" />
+    <Compile Include="Communication\HeaderFrame.cs" />
+    <Compile Include="Communication\PayLoad.cs" />
     <Compile Include="Communication\ResultExec.cs" />
     <Compile Include="GoodsTrackers\GoodsTrackers.cs" />
+    <Compile Include="RabbitMQCommunication\FrameAMQP.cs" />
+    <Compile Include="SerialCommunication\FieldFrame.cs" />
+    <Compile Include="SerialCommunication\FrameSerial.cs" />
     <Compile Include="SerialCommunication\IOCommunication.cs" />
-    <Compile Include="RabbitMQ\AMPQCommunication.cs" />
+    <Compile Include="RabbitMQCommunication\AMPQCommunication.cs" />
     <Compile Include="SerialCommunication\SerialCommunication.cs" />
     <Compile Include="SerialCommunication\Serial.cs" />
     <Compile Include="Domain\Telemetria.cs" />
@@ -104,9 +110,7 @@
     <Compile Include="Controllers\TrackerController .cs" />
     <Compile Include="FrontEnd\BuildTreeView.cs" />
     <Compile Include="Communication\Cmd.cs" />
-    <Compile Include="Communication\DataFrame.cs" />
     <Compile Include="Communication\DeviceBase.cs" />
-    <Compile Include="SerialCommunication\DecoderFrame.cs" />
     <Compile Include="Domain\Fence.cs" />
     <Compile Include="FrontEnd\Form1.cs">
       <SubType>Form</SubType>
@@ -122,8 +126,9 @@
     <Compile Include="SerialCommunication\ringbuffer.cs" />
     <Compile Include="Domain\Route.cs" />
     <Compile Include="Domain\ThreadRun.cs" />
-    <Compile Include="RabbitMQ\RabbitMQ.cs" />
+    <Compile Include="RabbitMQCommunication\RabbitMQ.cs" />
     <Compile Include="Demo\TestData.cs" />
+    <Compile Include="SerialCommunication\SerialSerialization.cs" />
     <EmbeddedResource Include="FrontEnd\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -579,7 +579,7 @@ void AD1_OnCalibrationEnd(void)
 /* ===================================================================*/
 void RTC1_OnSecond(LDD_TUserData *UserDataPtr)
 {
-	updateTimeStamp();
+	updateEntityClock();
 }
 
 /* END Events */

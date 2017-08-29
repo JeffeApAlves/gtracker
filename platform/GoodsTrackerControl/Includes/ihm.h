@@ -8,6 +8,7 @@
 #define SOURCES_IHM_H_
 
 #include <stdint.h>
+#include "PE_Types.h"
 
 #include "TSS_API.h"
 
@@ -65,7 +66,6 @@ void ihm_process_events(ihmStruct *ihm);
 void initEvents();
 
 void printLCD(int linha,int coluna,char* str);
-
-void printClock(char* time_str);
+void printClock(LDD_RTC_TTime* time);
 
 #endif /* SOURCES_IHM_H_ */

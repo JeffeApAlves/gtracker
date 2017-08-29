@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GoodsTracker
+﻿namespace GoodsTracker
 {
     class SerialCommunication : Communication
     {
         static Protocol channel = null;
-        static Serial com_port = null;
+        static Serial com_port  = null;
 
         public override void Init()
         {
@@ -34,58 +27,28 @@ namespace GoodsTracker
 
         public override bool sendCmd(Cmd cmd)
         {
-            bool flag = false;
-            try
-            {
-                DataFrame frame = new DataFrame(cmd.Header, cmd.Payload);
-                channel.writeTx(frame);
-                printTxFrame("TX",frame);
+            CommunicationFrame frame = new FrameSerial(cmd.Header, cmd.Payload);
+            channel.writeTx(frame);
+            printTxFrame("TX", frame);
 
-                flag = true;
-            }catch(Exception e)
-            {
-                Console.WriteLine(e);
-                flag = false;
-            }
-
-            return flag;
+            return true;
         }
 
         public override bool sendAns(AnsCmd ans)
         {
-            bool flag = false;
+            bool        flag_res = false;
+            CommunicationFrame   frame = new FrameSerial();
 
-            try
+            frame.encode(ans);
+
+            if (channel.writeTx(frame))
             {
-                DataFrame frame = null;
- 
-                if (ans.Header.Resource.Equals(RESOURCE.TLM))
-                {
-                    PayLoad payload;
-
-                    DecoderFrame decoder = new DecoderFrame();
-                    decoder.encode(out payload, ans.Telemetria);
-
-                    frame = new DataFrame(ans.Header, payload);
-                }
-
-                if (frame != null)
-                {
-                    channel.writeTx(frame);
-                    printTxFrame("TX", frame);
-
-                    flag = true;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                flag = false;
+                flag_res = true;
+                printTxFrame("TX", frame);
             }
 
-            return flag;
+            return flag_res ;
         }
-
 
         public override bool receive()
         {

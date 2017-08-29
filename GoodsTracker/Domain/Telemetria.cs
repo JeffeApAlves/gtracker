@@ -213,5 +213,10 @@ namespace GoodsTracker
 
             return ret;
         }
+
+        public Int32 getTimeStamp()
+        {
+            return (Int32)(DateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+        }
     }
 }

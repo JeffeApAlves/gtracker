@@ -17,7 +17,7 @@ const char* OPERATION_WR = "WR";
 static StatusRx	statusRx = CMD_INIT;
 static RingBuffer	bufferRx,bufferTx;
 static DataCom		dataCom;
-static ArrayFrame	frameCom;
+static ArrayFrame	frameRx,frameTx;
 
 DataCom*	pDataCom = &dataCom;
 
@@ -75,7 +75,7 @@ void processTx(void){
 
 		ArrayPayLoad* payload;
 
-		if (xQueueReceive(xQueueAnswer, &(payload), (TickType_t ) 1)) {
+		while (xQueueReceive(xQueueAnswer, &(payload), (TickType_t ) 1)) {
 
 			doAnswer(payload);
 		}
@@ -91,7 +91,7 @@ static void rxStartCMD (void) {
 
 		if(ch==CHAR_START){
 
-			clearArrayFrame(&frameCom);
+			clearArrayFrame(&frameRx);
 			setStatusRx(CMD_RX_START);
 		}
 	}
@@ -104,14 +104,14 @@ static void receiveFrame (void) {
 
 	if(getRxData(&ch)) {
 
-		if(ch==CHAR_START || frameCom.Length>=ARRAY_LEN_FRAME) {
+		if(ch==CHAR_START || frameRx.Length>=ARRAY_LEN_FRAME) {
 
 			errorRxFrame();
 		}
 		else
 		  if(ch==CHAR_END) {
 
-			 if(frameCom.Length>=SIZE_MIN_FRAME) {
+			 if(frameRx.Length>=SIZE_MIN_FRAME) {
 
 				setStatusRx(CMD_RX_END);
 			 }
@@ -122,7 +122,7 @@ static void receiveFrame (void) {
 		}
 		else {
 
-			putDataArray(&frameCom,ch);
+			putDataArray(&frameRx,ch);
 			setStatusRx(CMD_RX_FRAME);
 		}
 	}
@@ -184,7 +184,7 @@ static bool decoderFrame(void) {
 
 	List	list;
 
-	str_split(&list, frameCom.Data, CHAR_SEPARATOR);
+	str_split(&list, frameRx.Data, CHAR_SEPARATOR);
 
 	clearData(&dataCom);
 
@@ -195,7 +195,7 @@ static bool decoderFrame(void) {
 
 			//-2 para desconsiderar o checksum que esta no frame recebido
 			unsigned int checksum_rx;
-			unsigned int checksum_calc = calcChecksum(frameCom.Data, frameCom.Length - LEN_CHECKSUM);
+			unsigned int checksum_calc = calcChecksum(frameRx.Data, frameRx.Length - LEN_CHECKSUM);
 			checksum_rx = ~checksum_calc;
 
 			AsHex(&checksum_rx,&list,list.count-1);
@@ -276,7 +276,7 @@ static void sendFrame(void){
 
 	putTxData(CHAR_START);					// Envia caracter de inicio
 
-	putString(&bufferTx,frameCom.Data);		// Envia o frame
+	putString(&bufferTx,frameTx.Data);		// Envia o frame
 
 	putTxData(CHAR_END);					// Envia o caracter de fim
 
@@ -384,7 +384,7 @@ static void buildFrame(void) {
  */
 static void copyHeaderToFrame(void) {
 
-	XF1_xsprintf(frameCom.Data,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
+	XF1_xsprintf(frameTx.Data,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
 				dataCom.address, 		CHAR_SEPARATOR,
 				dataCom.dest, 			CHAR_SEPARATOR,
 				dataCom.countFrame,		CHAR_SEPARATOR,
@@ -401,7 +401,7 @@ static void copyHeaderToFrame(void) {
  */
 inline static void copyPayLoadToFrame(void) {
 
-	AppendFrame(&frameCom,dataCom.PayLoad.Data);
+	AppendFrame(&frameTx,dataCom.PayLoad.Data);
 }
 //------------------------------------------------------------------------
 
@@ -414,9 +414,9 @@ static void copyCheckSumToFrame(void) {
 
 	char separator[] = {CHAR_SEPARATOR,CHAR_STR_END};
 
-	AppendFrame(&frameCom,separator);
-	XF1_xsprintf(frameCom.checksum, "%02X", calcChecksum (frameCom.Data,frameCom.Length));
-	AppendFrame(&frameCom,frameCom.checksum);
+	AppendFrame(&frameTx,separator);
+	XF1_xsprintf(frameTx.checksum, "%02X", calcChecksum (frameTx.Data,frameTx.Length));
+	AppendFrame(&frameTx,frameTx.checksum);
 }
 //------------------------------------------------------------------------
 
@@ -507,7 +507,8 @@ inline bool isAnyRxData(){
 void initCommunication(void) {
 
 	clearData(&dataCom);
-	clearArrayFrame(&frameCom);
+	clearArrayFrame(&frameTx);
+	clearArrayFrame(&frameRx);
 	clearBuffer(&bufferRx);
 	clearBuffer(&bufferTx);
 	setStatusRx(CMD_INIT_OK);

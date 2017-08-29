@@ -10,7 +10,7 @@ namespace GoodsTracker
     {
         const int SIZE_BUFFER_RX    = (256);
         const int SIZE_BUFFER_TX    = (256);
-        const int SIZE_RING_BUFFER_RX = (1024);
+        const int SIZE_RING_BUFFER_RX = (256);
 
         static SerialPort port = null;
         static RingBuffer bufferRx = new RingBuffer(SIZE_RING_BUFFER_RX);

@@ -11,7 +11,7 @@ void tlm2String(DataTLM* info,ArrayPayLoad* ans){
 
 		clearArrayPayLoad(ans);
 
-		XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%.3f:%.3f:%.2f:%d:%d:%d:%s",
+		XF1_xsprintf(ans->Data,"%.8f:%.8f:%d:%d:%d:%.3f:%.3f:%.2f:%d:%d:%d:%d",
 				info->GPS.Lat,
 				info->GPS.Lng,
 				info->Accelerometer.x,
@@ -23,7 +23,7 @@ void tlm2String(DataTLM* info,ArrayPayLoad* ans){
 				info->GPS.Speed,
 				info->Tank.Level,
 				info->Tank.Lock,
-				timestamp.str);
+				Time.timestamp);
 
 		ans->Length = strlen(ans->Data);
 	}

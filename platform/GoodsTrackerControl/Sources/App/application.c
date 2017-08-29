@@ -7,11 +7,11 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include <Telemetria.h>
 
 #include "AppQueues.h"
 #include "clock.h"
 #include "lock.h"
-#include "DataTLM.h"
 #include "NMEAFrame.h"
 #include "Level.h"
 #include "Accelerometer.h"
@@ -40,7 +40,6 @@ void runMain(void){
 //	uint32_t ulNotifiedValue;
 
 //	xTaskNotifyWait( 0x0, 0x0 ,  &ulNotifiedValue, portMAX_DELAY);
-
 //	if(ulNotifiedValue & BIT_UPDATE_GPS){
 
 		if (xQueueGPS != 0) {
@@ -62,7 +61,7 @@ void execCMD(uint32_t ulNotifiedValue){
 
 		DataCom* data;
 
-		if (xQueueReceive(xQueueCom, &(data), (TickType_t ) 1)) {
+		while (xQueueReceive(xQueueCom, &(data), (TickType_t ) 1)) {
 
 			if(data!=NULL) {
 
@@ -72,9 +71,11 @@ void execCMD(uint32_t ulNotifiedValue){
 
 					if(cb(&data->PayLoad) == CMD_RESULT_EXEC_SUCCESS) {
 
+						// TODO Sucesso na execução
 					}
 					else {
 
+						// TODO Sem sucesso na execução
 					}
 				}
 			}
@@ -215,7 +216,7 @@ void answerTime(void){
 
 	clearArrayPayLoad(&msg2send);
 
-	AppendPayLoad(&msg2send,timestamp.str);
+	AppendPayLoad(&msg2send,"1569695954");
 
 
 	if(xQueueSendToBack( xQueueAnswer , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){

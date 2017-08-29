@@ -66,6 +66,20 @@ namespace GoodsTracker
             return communic;
         }
 
+        public static FrameSerialization createSerialization()
+        {
+
+            FrameSerialization serialization = null;
+
+            switch (type)
+            {
+                case TYPE_COMMUNICATION.SERIAL: serialization   = new SerialSerialization(); break;
+                case TYPE_COMMUNICATION.AMQP: serialization     = new SerialSerialization(); break;
+            }
+
+            return serialization;
+        }
+
         public static bool isAnyTxCmd()
         {
             return txCmds.Count > 0;
@@ -191,15 +205,26 @@ namespace GoodsTracker
                 {
                     if (isAnyQueueCmd())
                     {
-                        Cmd cmd = getNextCmd();
-                        cmd.Header.Count = count++;
+                        try
+                        {
+                            Cmd cmd = getNextCmd();
+                            cmd.Header.Count = count++;
 
+                            sendCmd(cmd);
+                            addTxCmd(cmd);
+                            removeCmd(cmd);
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.WriteLine(e);
+                        }
+/*
                         if (sendCmd(cmd))
                         {
                             removeCmd(cmd);
                             addTxCmd(cmd);
                         }
-
+*/
                         stopTx.Restart();
                     }
                 }
@@ -258,11 +283,24 @@ namespace GoodsTracker
 
         public virtual bool send(AnsCmd ans)
         {
-            return sendAns(ans);
+            bool ret = false;
+
+            try
+            {
+                sendAns(ans);
+
+                ret = true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+
+            return ret;
         }
 
         // Debug
-        protected void printTxFrame(string str, DataFrame frame)
+        protected void printTxFrame(string str, CommunicationFrame frame)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -281,7 +319,7 @@ namespace GoodsTracker
         }
 
         // Debug
-        protected void printRxFrame(string str, DataFrame frame)
+        protected void printRxFrame(string str, CommunicationFrame frame)
         {
             StringBuilder sb = new StringBuilder();
 

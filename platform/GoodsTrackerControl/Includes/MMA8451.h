@@ -6,9 +6,9 @@
 #ifndef MMA8451_H_
 #define MMA8451_H_
 
+#include <Telemetria.h>
 #include "PE_Types.h"
 #include "PE_LDD.h"
-#include "DataTLM.h"
 
 #define LEN_XYZ		6
 

@@ -1,4 +1,7 @@
-﻿namespace GoodsTracker
+﻿using System;
+using System.Diagnostics;
+
+namespace GoodsTracker
 {
     public enum StatusRx
     {
@@ -29,7 +32,7 @@
 
         IOCommunication IOComunic;
         StatusRx            statusRx = StatusRx.RX_FRAME_INIT;
-        DataFrame           rxFrame;
+        CommunicationFrame           rxFrame;
 
         public Protocol(IOCommunication io)
         {
@@ -129,26 +132,27 @@
 
         void verifyFrame()
         {
-            FrameSerialization decoder = new DecoderFrame();
-            AnsCmd ans;
-
-            if (decoder.decode(out ans, rxFrame))
+            try
             {
+                FrameSerialization serialization = Communication.createSerialization();
+
+                AnsCmd ans;
+
+                serialization.decode(out ans, rxFrame);
+
                 if (ans != null)
                 {
                     acceptAnswer?.Invoke(ans);
 
                     setStatusRx(StatusRx.RX_FRAME_OK);
                 }
-
-                // Fazer algo ????
-
-                setStatusRx(StatusRx.RX_FRAME_BEGIN);
             }
-            else
+            catch (Exception e)
             {
-                setStatusRx(StatusRx.RX_FRAME_NOK);
+                Debug.WriteLine(e);
             }
+
+            setStatusRx(StatusRx.RX_FRAME_BEGIN);
         }
 
         void errorRxFrame()
@@ -169,7 +173,7 @@
 
         void clearRxFrame()
         {
-            rxFrame = new DataFrame();
+            rxFrame = new CommunicationFrame();
         }
 
         internal bool readByteRx(out char ch)
@@ -177,7 +181,7 @@
             return IOComunic.getRxData(out ch);
         }
 
-        public bool writeTx(DataFrame frame)
+        public bool writeTx(CommunicationFrame frame)
         {
             bool flag = false;
 
@@ -194,7 +198,7 @@
             return flag;
         }
 
-        public void sendFrame(DataFrame frame)
+        public void sendFrame(CommunicationFrame frame)
         {
             if (frame != null && !frame.isFrameEmpty())
             {

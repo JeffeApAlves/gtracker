@@ -9,6 +9,7 @@
 #include "ihm.h"
 #include "TSSin.h"
 #include "lcd.h"
+#include "XF1.h"
 #include "clock.h"
 
 char* functionsArray[] = { "OPTION 1", "OPTION 3", "OPTION 2" };
@@ -21,7 +22,7 @@ void runIHM() {
 
 	ihm_process_events(&ihmGlobal);
 
-	printClock(timestamp.strTime);
+	printClock(&Time);
 }
 //-----------------------------------------------------------------------------------------
 
@@ -139,13 +140,15 @@ void initIHM() {
 
 	initEvents();
 
-	printLCD(1,1,".GOODSTRACKER.");
+	printLCD(1,2,".GOODSTRACKER.");
 	printLCD(2,1,"V.0.2 -");
 }
 //-----------------------------------------------------------------------------------------
 
-void printClock(char* time_str){
+void printClock(LDD_RTC_TTime* time){
 
+	char time_str[10];
+	XF1_xsprintf(time_str,"%02d:%02d:%02d \n", time->Hour+FUSO_HORARIO_BR, time->Minute, time->Second);
 	printLCD(2,9,time_str);
 }
 //-----------------------------------------------------------------------------------------

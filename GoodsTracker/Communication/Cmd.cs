@@ -2,15 +2,15 @@
 {
     class Cmd
     {
-        Header      header;
+        HeaderFrame header;
         PayLoad     payload;
         
-        internal Header Header { get => header; set => header = value; }
+        internal HeaderFrame Header { get => header; set => header = value; }
         internal PayLoad Payload { get => payload; set => payload = value; }
 
         internal Cmd(string r,Operation o)
         {
-            header = new Header();
+            header  = new HeaderFrame();
             payload = new PayLoad();
 
             header.Resource = r;
