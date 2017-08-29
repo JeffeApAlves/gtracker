@@ -258,14 +258,12 @@ namespace GoodsTracker
          */
         void initAllEntities()
         {
-            GTracker.createCommunication(TYPE_COMMUNICATION.SERIAL);
+            GTracker.createCommunication(TYPE_COMMUNICATION.AMQP);
 
             trackerController = TrackerController.TrackerCtrl;
             trackerController.Init();
 
-            // Dados para testes
-            //demoData = new TestData(TrackerController.TIME_TELEMETRIA);
-
+ 
             // Inicia todas as threads
             //ThreadManager.start();
 
@@ -638,8 +636,9 @@ namespace GoodsTracker
             startAddress.Text   = route.StartAddress();
             endAddress.Text     = route.EndAddress();
 
-            //Debug
-            //demoData.start();
+            //Debug - Dados para testes
+            demoData = new TestData(2000);
+            demoData.start();
         }
 
         /*

@@ -14,8 +14,8 @@ namespace GoodsTracker
 
     abstract class Communication : ThreadRun, Communic
     {
-        private const int _TIME_COMMUNICATION = 1;
-        private const int TIME_BETWEEN_CMD = 25;
+        private const int _TIME_COMMUNICATION   = 1;
+        private const int TIME_BETWEEN_CMD      = 25;
 
         private static TYPE_COMMUNICATION type;
         private static Dictionary<int,DeviceBase> devices = new Dictionary<int,DeviceBase>();
@@ -59,8 +59,8 @@ namespace GoodsTracker
 
             switch (type)
             {
-                case TYPE_COMMUNICATION.SERIAL: communic    = new SerialCommunication(); break;
-                case TYPE_COMMUNICATION.AMQP: communic      = new AMPQCommunication(); break;
+                case TYPE_COMMUNICATION.SERIAL: communic    = new SerialCommunication();    break;
+                case TYPE_COMMUNICATION.AMQP:   communic    = new AMPQCommunication();      break;
             }
 
             return communic;
@@ -68,13 +68,12 @@ namespace GoodsTracker
 
         public static FrameSerialization createSerialization()
         {
-
             FrameSerialization serialization = null;
 
             switch (type)
             {
                 case TYPE_COMMUNICATION.SERIAL: serialization   = new SerialSerialization(); break;
-                case TYPE_COMMUNICATION.AMQP: serialization     = new SerialSerialization(); break;
+                case TYPE_COMMUNICATION.AMQP:   serialization   = new SerialSerialization(); break;
             }
 
             return serialization;
@@ -151,8 +150,7 @@ namespace GoodsTracker
 
                 cmd = txCmds[ans.Header.Resource];
 
-                if ((ans.Header.Dest != cmd.Header.Address)/* || 
-                (ans.Header.Count!=cmd.Header.Count)*/)
+                if ((ans.Header.Dest != cmd.Header.Address))
                 {
                     cmd = null;
                 }
@@ -218,13 +216,7 @@ namespace GoodsTracker
                         {
                             Debug.WriteLine(e);
                         }
-/*
-                        if (sendCmd(cmd))
-                        {
-                            removeCmd(cmd);
-                            addTxCmd(cmd);
-                        }
-*/
+
                         stopTx.Restart();
                     }
                 }
@@ -270,7 +262,7 @@ namespace GoodsTracker
             // Adiciona no container
             addDevice(device);
 
-            // Atribui a interface de comunicacaoque sera usada pelo periferico
+            // Atribui a interface de comunicação que sera usada pelo periférico
             device.Communic = this;
         }
 
@@ -307,7 +299,7 @@ namespace GoodsTracker
             sb.Append(str + " :");
             sb.Append(" " + stopTx.Elapsed.Seconds.ToString("D2") + stopTx.Elapsed.Milliseconds.ToString("D3") + " ms");
             sb.Append(" " + frame.Header.Resource);
-            sb.Append(" ["+frame.Header.Count.ToString("D5")+"] ");
+            sb.Append(" ["+ frame.Header.Count.ToString("D5")+"] ");
 
             foreach (char c in frame.Data)
             {

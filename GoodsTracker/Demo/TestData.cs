@@ -24,7 +24,7 @@ namespace GoodsTracker
             if (communic!=null && TrackerController.TrackerCtrl.anyRoute() &&
                     TrackerController.TrackerCtrl.Routes[0].MapRoute.Points.Count > count_publish)
 
-            // (/*Communication.isAnyTxCmd() &&*/ !Communication.isAnyAns() /*&& Communication.TxCmds.ContainsKey(RESOURCE.TLM)*/)
+            if(Communication.isAnyTxCmd() && !Communication.isAnyAns() && Communication.TxCmds.ContainsKey(RESOURCE.TLM))
             {
                 AnsCmd ans = createAnsCmd();
                 if (ans != null)
@@ -38,10 +38,10 @@ namespace GoodsTracker
         {
             AnsCmd ans = new AnsCmd(RESOURCE.TLM, Operation.AN);
 
-            ans.Header.Address = 2;
-            ans.Header.Dest = 1;
-            ans.Header.Count = Communication.TxCmds.ContainsKey(RESOURCE.TLM )?Communication.TxCmds[RESOURCE.TLM].Header.Count: count_publish++;
-            ans.Telemetria = createTelemetriaData();
+            ans.Header.Address      = 2;
+            ans.Header.Dest         = 1;
+            ans.Header.Count        = Communication.TxCmds.ContainsKey(RESOURCE.TLM )?Communication.TxCmds[RESOURCE.TLM].Header.Count: count_publish++;
+            ans.Telemetria      = createTelemetriaData();
             return ans;
         }
 
@@ -55,15 +55,24 @@ namespace GoodsTracker
                 Random rnd = new Random();
                 PointLatLng p = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[count_publish++];
 
-                b.setPosition(p.Lat * 100, p.Lng * 100);
+                b.setPosition(AsGrauSexagesimal(p.Lat) * 100, AsGrauSexagesimal(p.Lng) * 100);
                 b.setAcceleration(rnd.Next(0, 4), rnd.Next(5, 9), rnd.Next(10, 14));
-                b.setRotation(rnd.Next(15, 20), rnd.Next(21, 25), rnd.Next(26, 30));
+                b.setRotation(rnd.Next(-100, 100)/100, rnd.Next(-100, 100)/100, rnd.Next(-100, 100)/100);
                 b.setSpeed(rnd.Next(40, 120));
-                b.setLevel(rnd.Next(10000, 50000));
+                b.setLevel(rnd.Next(5000, 32000));
                 b.DateTime = DateTime.Now;
             }
 
             return b;
+        }
+
+        static private double AsGrauSexagesimal(double dest)
+        {
+            double minutos = dest % 1;
+            double graus = dest - minutos;
+            double dec = (minutos *0.60);
+
+            return Math.Round(graus + dec, 4);
         }
     }
 }

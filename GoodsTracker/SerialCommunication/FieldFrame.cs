@@ -64,7 +64,7 @@ namespace GoodsTracker
                     //TypeCode tipo = Type.GetTypeCode(val.GetType());
                     Type tipo = typeof(T);
 
-                    //Debug.WriteLine(" Conversão de string '{0}' para {1}", strField, tipo.ToString());
+                    //Debug.WriteLine(" Conversão da string '{0}' para {1}", strField, tipo.ToString());
 
                     if (tipo == typeof(String))
                     {

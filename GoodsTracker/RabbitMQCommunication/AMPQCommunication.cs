@@ -1,5 +1,9 @@
 ﻿namespace GoodsTracker 
 {
+    /*
+     * Comunicação via broker de mensagem
+     * 
+     */
     class AMPQCommunication : Communication
     {
         static RabbitMQ amqp = null;
