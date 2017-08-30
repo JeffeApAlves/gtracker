@@ -6,7 +6,7 @@
 **     Component   : PE_Types
 **     Version     : Driver 01.01
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-08-28, 13:42, # CodeGen: 110
+**     Date/Time   : 2017-08-29, 22:33, # CodeGen: 130
 **     Abstract    :
 **         PE_Types.h - contains definitions of basic types,
 **         register access macros and hardware specific macros
@@ -2185,7 +2185,7 @@ typedef struct {
   uint32_t Day;                        /*!< day (1 - 31) */
   uint32_t Month;                      /*!< month (1 - 12) */
   uint32_t Year;                       /*!< year */
-  uint32_t timestamp;				   /*contador em segundos desde 01/01/1970*/
+  uint32_t timestamp;
 } LDD_RTC_TTime;
 
 

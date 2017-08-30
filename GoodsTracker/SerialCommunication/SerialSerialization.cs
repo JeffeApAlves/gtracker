@@ -83,7 +83,7 @@ namespace GoodsTracker
                     else
                     {
                         ret = false;
-                        throw new Exception("Erro no payload");
+                        throw new Exception("Tipo de payload(Resource) não reconhecido");
                     }
                 }
                 else
@@ -110,14 +110,14 @@ namespace GoodsTracker
 
             FieldFrame<double> lat = new FieldFrame<double>(INDEX.LAT, list, UNIT_FIELD.GRAU_SEXAGESIMAL);
             FieldFrame<double> lng = new FieldFrame<double>(INDEX.LNG, list, UNIT_FIELD.GRAU_SEXAGESIMAL);
-            FieldFrame<int> a_x = new FieldFrame<int>(INDEX.ACCEL_X, list);
-            FieldFrame<int> a_y = new FieldFrame<int>(INDEX.ACCEL_Y, list);
-            FieldFrame<int> a_z = new FieldFrame<int>(INDEX.ACCEL_Z, list);
+            FieldFrame<Int32> a_x = new FieldFrame<Int32>(INDEX.ACCEL_X, list);
+            FieldFrame<Int32> a_y = new FieldFrame<Int32>(INDEX.ACCEL_Y, list);
+            FieldFrame<Int32> a_z = new FieldFrame<Int32>(INDEX.ACCEL_Z, list);
             FieldFrame<double> g_x = new FieldFrame<double>(INDEX.ACCEL_XG, list);
             FieldFrame<double> g_y = new FieldFrame<double>(INDEX.ACCEL_YG, list);
             FieldFrame<double> g_z = new FieldFrame<double>(INDEX.ACCEL_ZG, list);
-            FieldFrame<int> speed = new FieldFrame<int>(INDEX.SPEED, list);
-            FieldFrame<int> level = new FieldFrame<int>(INDEX.LEVEL, list);
+            FieldFrame<Int32> speed = new FieldFrame<Int32>(INDEX.SPEED, list);
+            FieldFrame<Int32> level = new FieldFrame<Int32>(INDEX.LEVEL, list);
             FieldFrame<bool> bLCk = new FieldFrame<bool>(INDEX.TRAVA, list);
             FieldFrame<DateTime> dt = new FieldFrame<DateTime>(INDEX.TIME_STAMP, list);
 

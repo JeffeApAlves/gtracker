@@ -7,7 +7,7 @@
 **     Version     : Component 01.697, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-08-25, 23:34, # CodeGen: 90
+**     Date/Time   : 2017-08-29, 18:02, # CodeGen: 123
 **     Abstract    :
 **         This device "ADC" implements an A/D converter,
 **         its control methods and interrupt/event handling procedure.
@@ -19,13 +19,17 @@
 **          Interrupt service/event                        : Enabled
 **            A/D interrupt                                : INT_ADC0
 **            A/D interrupt priority                       : medium priority
-**          A/D channels                                   : 1
+**          A/D channels                                   : 2
 **            Channel0                                     : 
-**              A/D channel (pin)                          : ADC0_DP0/ADC0_SE0/PTE20/TPM1_CH0/UART0_TX
+**              A/D channel (pin)                          : ADC0_SE8/TSI0_CH0/PTB0/LLWU_P5/I2C0_SCL/TPM1_CH0
 **              A/D channel (pin) signal                   : 
 **              Mode select                                : Single Ended
-**          A/D resolution                                 : Autoselect
-**          Conversion time                                : 19.230769 µs
+**            Channel1                                     : 
+**              A/D channel (pin)                          : ADC0_SE9/TSI0_CH6/PTB1/I2C0_SDA/TPM1_CH1
+**              A/D channel (pin) signal                   : 
+**              Mode select                                : Single Ended
+**          A/D resolution                                 : 16 bits
+**          Conversion time                                : 6.25 µs
 **          Low-power mode                                 : Disabled
 **          High-speed conversion mode                     : Disabled
 **          Asynchro clock output                          : Disabled
@@ -101,14 +105,32 @@ extern "C" {
 #define SINGLE          0x03U          /* SINGLE state         */
 #define CALIBRATING     0x04U          /* CALIBRATING state    */
 
+static volatile byte SumChan;          /* Counter of measured channels */
 static volatile byte ModeFlg;          /* Current state of device */
 LDD_TDeviceData *AdcLdd1_DeviceDataPtr; /* Device data pointer */
 /* Sample group configuration */
 static LDD_ADC_TSample SampleGroup[AD1_SAMPLE_GROUP_SIZE];
+/* Measure multiple channels flags  */
 /* Temporary buffer for converting results */
-volatile word AD1_OutV;                /* Sum of measured values */
+volatile word AD1_OutV[AD1_SAMPLE_GROUP_SIZE]; /* Sum of measured values */
 /* Calibration in progress flag */
 static volatile bool OutFlg;           /* Measurement finish flag */
+
+/*
+** ===================================================================
+**     Method      :  ClrSumV (component ADC)
+**
+**     Description :
+**         The method clears the internal buffers used to store sum of a 
+**         number of last conversions.
+**         This method is internal. It is used by Processor Expert only.
+** ===================================================================
+*/
+static void ClrSumV(void)
+{
+  AD1_OutV[0] = 0U;                    /* Set variable for storing measured values to 0 */
+  AD1_OutV[1] = 0U;                    /* Set variable for storing measured values to 0 */
+}
 
 /*
 ** ===================================================================
@@ -124,7 +146,9 @@ static volatile bool OutFlg;           /* Measurement finish flag */
 void AD1_HWEnDi(void)
 {
   if (ModeFlg) {                       /* Start or stop measurement? */
-    OutFlg = FALSE;                    /* Output value isn't available */
+    OutFlg = FALSE;                    /* Output values aren't available */
+    SumChan = 0U;                      /* Set the counter of measured channels to 0 */
+    ClrSumV();                         /* Clear measured values */
     SampleGroup[0].ChannelIdx = 0U;
     (void)AdcLdd1_CreateSampleGroup(AdcLdd1_DeviceDataPtr, (LDD_ADC_TSample *)SampleGroup, 1U); /* Configure sample group */
     (void)AdcLdd1_StartSingleMeasurement(AdcLdd1_DeviceDataPtr);
@@ -210,7 +234,8 @@ byte AD1_GetValue16(word *Values)
   if (!OutFlg) {                       /* Is output flag set? */
     return ERR_NOTAVAIL;               /* If no then error */
   }
-  *Values = AD1_OutV;                  /* Save measured values to the output buffer */
+  Values[0] = AD1_OutV[0];             /* Save measured values to the output buffer */
+  Values[1] = AD1_OutV[1];             /* Save measured values to the output buffer */
   return ERR_OK;                       /* OK */
 }
 
@@ -278,10 +303,18 @@ void AdcLdd1_OnMeasurementComplete(LDD_TUserData *UserDataPtr)
     AD1_OnCalibrationEnd();            /* If yes then invoke user event */
     return;                            /* Return from interrupt */
   }
-  AdcLdd1_GetMeasuredValues(AdcLdd1_DeviceDataPtr, (LDD_TData *)&AD1_OutV);
-  OutFlg = TRUE;                       /* Measured values are available */
-  AD1_OnEnd();                         /* If yes then invoke user event */
-  ModeFlg = STOP;                      /* Set the device to the stop mode */
+  AdcLdd1_GetMeasuredValues(AdcLdd1_DeviceDataPtr, (LDD_TData *)&AD1_OutV[SumChan]);
+  SumChan++;                           /* Increase counter of measured channels*/
+  if (SumChan == 2U) {                 /* Is number of measured channels equal to the number of channels used in the component? */
+    SumChan = 0U;                      /* If yes then set the counter of measured channels to 0 */
+    OutFlg = TRUE;                     /* Measured values are available */
+    AD1_OnEnd();                       /* If yes then invoke user event */
+    ModeFlg = STOP;                    /* Set the device to the stop mode */
+    return;                            /* Return from interrupt */
+  }
+  SampleGroup[0].ChannelIdx = SumChan; /* Start measurement of next channel */
+  (void)AdcLdd1_CreateSampleGroup(AdcLdd1_DeviceDataPtr, (LDD_ADC_TSample *)SampleGroup, 1U); /* Configure sample group */
+  (void)AdcLdd1_StartSingleMeasurement(AdcLdd1_DeviceDataPtr);
 }
 
 /*

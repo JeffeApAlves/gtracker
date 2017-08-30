@@ -187,7 +187,7 @@ PE_DEBUGHALT();
       <group name="Memory">
         <boolgroup name="Dynamic Allocation" v="Enabled">
           <Application_allocated_Heap v="no" />
-          <Heap_Size v="10000" />
+          <Heap_Size v="10500" />
           <Linker_Heap_Base_Symbol v="__HeapBase" />
           <Linker_Heap_Limit_Symbol v="__HeapLimit" />
           <Linker_Heap_Size_Symbol v="__heap_size" />
@@ -2238,33 +2238,35 @@ PE_DEBUGHALT();
             <A_D_interrupt_priority v="medium priority" />
           </boolgroup>
           <boolgroup name="DMA" v="Disabled" />
-          <list name="A/D channel list" v="1">
+          <list name="A/D channel list" v="2">
             <group name="Channel 0">
               <enumgroup name="Channel mode" v="Single Ended">
                 <group name="Input">
-                  <A_D_channel__pin_ v="ADC0_DP0/ADC0_SE0/PTE20/TPM1_CH0/UART0_TX" />
+                  <A_D_channel__pin_ v="ADC0_SE8/TSI0_CH0/PTB0/LLWU_P5/I2C0_SCL/TPM1_CH0" />
+                </group>
+              </enumgroup>
+            </group>
+            <group name="Channel 1">
+              <enumgroup name="Channel mode" v="Single Ended">
+                <group name="Input">
+                  <A_D_channel__pin_ v="ADC0_SE9/TSI0_CH6/PTB1/I2C0_SDA/TPM1_CH1" />
                 </group>
               </enumgroup>
             </group>
           </list>
           <boolgroup name="Static sample groups" v="Disabled" />
-          <A_D_resolution sel_value="16 bits">
-            
-Autoselect
-
-            <EmptySection_DummyValue />
-          </A_D_resolution>
+          <A_D_resolution v="16 bits" />
           <Low_power_mode v="Disabled" />
           <High_speed_conversion_mode v="Disabled" />
           <Asynchro_clock_output v="Disabled" />
           <Sample_time v="4 clock periods" />
           <Number_of_conversions v="1" />
-          <Conversion_time v="19.230769 &amp;#181;s" />
-          <ADC_clock v="1.31 MHz (762.939 ns)" />
-          <Single_conversion_time___Single_ended v="23.126 us" />
-          <Single_conversion_time___Differential v="29.993 us" />
-          <Additional_conversion_time___Single_ended v="19.073 us" />
-          <Additional_conversion_time___Differential v="25.939 us" />
+          <Conversion_time v="6.25 &amp;#181;s" />
+          <ADC_clock v="4 MHz (250 ns)" />
+          <Single_conversion_time___Single_ended v="7.738 us" />
+          <Single_conversion_time___Differential v="9.988 us" />
+          <Additional_conversion_time___Single_ended v="6.25 us" />
+          <Additional_conversion_time___Differential v="8.5 us" />
           <Result_type v="unsigned 16 bits, right justified" />
           <boolgroup name="Trigger" v="Disabled" />
           <group name="Voltage reference">
@@ -2322,19 +2324,18 @@ Autoselect
         <A_D_interrupt v="INT_ADC0" />
         <A_D_interrupt_priority v="medium priority" />
       </boolgroup>
-      <list name="A/D channels" v="1">
+      <list name="A/D channels" v="2">
         <group name="Channel0">
-          <A_D_channel__pin_ v="ADC0_DP0/ADC0_SE0/PTE20/TPM1_CH0/UART0_TX" />
+          <A_D_channel__pin_ v="ADC0_SE8/TSI0_CH0/PTB0/LLWU_P5/I2C0_SCL/TPM1_CH0" />
+          <boolgroup name="Mode select" v="Single Ended" />
+        </group>
+        <group name="Channel1">
+          <A_D_channel__pin_ v="ADC0_SE9/TSI0_CH6/PTB1/I2C0_SDA/TPM1_CH1" />
           <boolgroup name="Mode select" v="Single Ended" />
         </group>
       </list>
-      <A_D_resolution sel_value="16 bits">
-        
-Autoselect
-
-        <EmptySection_DummyValue />
-      </A_D_resolution>
-      <Conversion_time v="19.230769 &amp;#181;s" />
+      <A_D_resolution v="16 bits" />
+      <Conversion_time v="6.25 &amp;#181;s" />
       <Low_power_mode v="Disabled" />
       <High_speed_conversion_mode v="Disabled" />
       <Asynchro_clock_output v="Disabled" />

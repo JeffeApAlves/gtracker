@@ -140,7 +140,7 @@ namespace GoodsTracker
 
         private int AsInteger()
         {
-            return Convert.ToInt16(strField);
+            return Convert.ToInt32(strField);
         }
 
         private double AsGrauDecimal()

@@ -7,7 +7,7 @@
 **     Version     : Component 01.697, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-08-25, 23:34, # CodeGen: 90
+**     Date/Time   : 2017-08-29, 18:02, # CodeGen: 123
 **     Abstract    :
 **         This device "ADC" implements an A/D converter,
 **         its control methods and interrupt/event handling procedure.
@@ -19,13 +19,17 @@
 **          Interrupt service/event                        : Enabled
 **            A/D interrupt                                : INT_ADC0
 **            A/D interrupt priority                       : medium priority
-**          A/D channels                                   : 1
+**          A/D channels                                   : 2
 **            Channel0                                     : 
-**              A/D channel (pin)                          : ADC0_DP0/ADC0_SE0/PTE20/TPM1_CH0/UART0_TX
+**              A/D channel (pin)                          : ADC0_SE8/TSI0_CH0/PTB0/LLWU_P5/I2C0_SCL/TPM1_CH0
 **              A/D channel (pin) signal                   : 
 **              Mode select                                : Single Ended
-**          A/D resolution                                 : Autoselect
-**          Conversion time                                : 19.230769 µs
+**            Channel1                                     : 
+**              A/D channel (pin)                          : ADC0_SE9/TSI0_CH6/PTB1/I2C0_SDA/TPM1_CH1
+**              A/D channel (pin) signal                   : 
+**              Mode select                                : Single Ended
+**          A/D resolution                                 : 16 bits
+**          Conversion time                                : 6.25 µs
 **          Low-power mode                                 : Disabled
 **          High-speed conversion mode                     : Disabled
 **          Asynchro clock output                          : Disabled
@@ -112,7 +116,7 @@ extern "C" {
 
 
 
-#define AD1_SAMPLE_GROUP_SIZE 1U
+#define AD1_SAMPLE_GROUP_SIZE 2U
 void AD1_HWEnDi(void);
 /*
 ** ===================================================================

@@ -10,7 +10,6 @@
 
 #include "stdlib.h"
 
-#define ARRAY_LEN_HEADER	30
 #define ARRAY_LEN_PAYLOAD	256
 #define ARRAY_LEN_FRAME		300
 #define ARRAY_LEN_CHECKSUM	3
@@ -25,22 +24,12 @@ typedef struct{
 
 } ArrayFrame;
 
-
 typedef struct{
 
 	int		Length;
 	char	Data[ARRAY_LEN_PAYLOAD];
 
 } ArrayPayLoad;
-
-
-typedef struct{
-
-	int		Length;
-	char	data[ARRAY_LEN_HEADER];
-
-} ArrayHeader;
-
 
 unsigned int calcChecksum(const char *buff, size_t sz);
 

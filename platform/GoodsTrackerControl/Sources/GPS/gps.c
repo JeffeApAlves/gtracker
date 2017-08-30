@@ -22,8 +22,6 @@ static StatusNMEA	statusNMEA = NMEA_INIT;
 static DataNMEA		dataNMEA;
 static DataGPS		infoGPS;
 
-DataGPS*	pInfoGPS = &infoGPS;
-
 void runNMEA(void) {
 
 	while(isAnyGPSData()){
@@ -160,13 +158,13 @@ static void NMEA_verifyFrame(void)
 
 static void NMEA_acceptRxFrame(void)
 {
-	pInfoGPS->Lat = dataNMEA.Lat;
-	pInfoGPS->Lng = dataNMEA.Lng;
-	strcpy(pInfoGPS->Time,dataNMEA.Time_UTC);
-	strcpy(pInfoGPS->Date,dataNMEA.Date);
-	pInfoGPS->Speed = dataNMEA.Speed;
+	infoGPS.Lat = dataNMEA.Lat;
+	infoGPS.Lng = dataNMEA.Lng;
+	strcpy(infoGPS.Time,dataNMEA.Time_UTC);
+	strcpy(infoGPS.Date,dataNMEA.Date);
+	infoGPS.Speed = dataNMEA.Speed;
 
-    if(xQueueSendToBack( xQueueGPS , ( void * ) &pInfoGPS, ( TickType_t ) 1 ) ){
+    if(xQueueSendToBack( xQueueGPS ,(void*) &infoGPS, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleCallBackTask , BIT_UPDATE_GPS , eSetBits );
     }

@@ -7,7 +7,7 @@
 **     Version     : Component 01.546, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-08-25, 18:46, # CodeGen: 72
+**     Date/Time   : 2017-08-29, 22:33, # CodeGen: 130
 **     Abstract    :
 **          This component implements the FreeRTOS Realtime Operating System
 **     Settings    :
@@ -76,7 +76,7 @@
 **          Memory                                         : Settings for the memory and heap allocation
 **            Dynamic Allocation                           : Enabled
 **              Application allocated Heap                 : no
-**              Heap Size                                  : 10000
+**              Heap Size                                  : 10500
 **              Linker Heap Base Symbol                    : __HeapBase
 **              Linker Heap Limit Symbol                   : __HeapLimit
 **              Linker Heap Size Symbol                    : __heap_size

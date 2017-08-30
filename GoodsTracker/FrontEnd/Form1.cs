@@ -258,7 +258,7 @@ namespace GoodsTracker
          */
         void initAllEntities()
         {
-            GTracker.createCommunication(TYPE_COMMUNICATION.AMQP);
+            GTracker.createCommunication(TYPE_COMMUNICATION.SERIAL);
 
             trackerController = TrackerController.TrackerCtrl;
             trackerController.Init();
@@ -637,8 +637,8 @@ namespace GoodsTracker
             endAddress.Text     = route.EndAddress();
 
             //Debug - Dados para testes
-            demoData = new TestData(2000);
-            demoData.start();
+            //demoData = new TestData(2000);
+            //demoData.start();
         }
 
         /*

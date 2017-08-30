@@ -19,9 +19,7 @@
 #include "application.h"
 
 static 	int			_lock;
-static ArrayPayLoad	msg2send;
-
-ArrayPayLoad*	pAnswer = &msg2send;
+static 	DataCom		Answer,Cmd;
 
 void runApp(void){
 
@@ -37,21 +35,15 @@ void runApp(void){
 
 void runMain(void){
 
-//	uint32_t ulNotifiedValue;
+	if (xQueueGPS != 0) {
 
-//	xTaskNotifyWait( 0x0, 0x0 ,  &ulNotifiedValue, portMAX_DELAY);
-//	if(ulNotifiedValue & BIT_UPDATE_GPS){
+		DataGPS* gps;
 
-		if (xQueueGPS != 0) {
+		if (xQueuePeek(xQueueGPS, &(gps), (TickType_t ) 1)) {
 
-			DataGPS* gps;
-
-			if (xQueuePeek(xQueueGPS, &(gps), (TickType_t ) 1)) {
-
-				setClockByString(gps->Time,gps->Date);
-			}
+			setClockByString(gps->Time,gps->Date);
 		}
-//	}
+	}
 }
 //-------------------------------------------------------------------------
 
@@ -59,24 +51,22 @@ void execCMD(uint32_t ulNotifiedValue){
 
 	if(ulNotifiedValue & BIT_RX_FRAME){
 
-		DataCom* data;
+		while (xQueueReceive(xQueueCom, &Cmd, (TickType_t ) 1)) {
 
-		while (xQueueReceive(xQueueCom, &(data), (TickType_t ) 1)) {
+			pCallBack cb = getCallBack(&Cmd.resource);
 
-			if(data!=NULL) {
+			if(cb!=NULL){
 
-				pCallBack cb = getCallBack(&data->resource);
+				//Preenche para retorno
+				setHeaderInfo(&Cmd);
 
-				if(cb!=NULL){
+				if(cb(&Cmd) == CMD_RESULT_EXEC_SUCCESS) {
 
-					if(cb(&data->PayLoad) == CMD_RESULT_EXEC_SUCCESS) {
+					// TODO Sucesso na execução
+				}
+				else {
 
-						// TODO Sucesso na execução
-					}
-					else {
-
-						// TODO Sem sucesso na execução
-					}
+					// TODO Sem sucesso na execução
 				}
 			}
 		}
@@ -84,7 +74,7 @@ void execCMD(uint32_t ulNotifiedValue){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onLED(ArrayPayLoad* frame){
+ResultExec onLED(DataCom* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
@@ -99,11 +89,11 @@ ResultExec onLED(ArrayPayLoad* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAnalog(ArrayPayLoad* frame){
+ResultExec onAnalog(DataCom* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (frame) {
+	if (cmd) {
 
 		answerTime();
 
@@ -114,11 +104,11 @@ ResultExec onAnalog(ArrayPayLoad* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAccel(ArrayPayLoad* frame){
+ResultExec onAccel(DataCom* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (frame) {
+	if (cmd) {
 
 		answerTime();
 
@@ -129,11 +119,11 @@ ResultExec onAccel(ArrayPayLoad* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onTouch(ArrayPayLoad* frame){
+ResultExec onTouch(DataCom* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (frame) {
+	if (cmd) {
 
 		answerTime();
 
@@ -144,11 +134,11 @@ ResultExec onTouch(ArrayPayLoad* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onPWM(ArrayPayLoad* frame){
+ResultExec onPWM(DataCom* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (frame) {
+	if (cmd) {
 
 		answerTime();
 
@@ -159,11 +149,11 @@ ResultExec onPWM(ArrayPayLoad* frame){
 }
 //------------------------------------------------------------------------
 
-ResultExec onTelemetry(ArrayPayLoad* frame){
+ResultExec onTelemetry(DataCom* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (frame) {
+	if (cmd) {
 
 		answerTLM();
 
@@ -174,13 +164,13 @@ ResultExec onTelemetry(ArrayPayLoad* frame){
 }
 //------------------------------------------------------------------------
 
-ResultExec onLock(ArrayPayLoad* frame){
+ResultExec onLock(DataCom* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (frame) {
+	if (cmd) {
 
-		decoderLockPayLoad(frame);
+		decoderLockPayLoad(&cmd->PayLoad);
 
 		if(_lock){
 
@@ -214,12 +204,12 @@ void decoderLockPayLoad(ArrayPayLoad* payload){
 
 void answerTime(void){
 
-	clearArrayPayLoad(&msg2send);
+	clearArrayPayLoad(&Answer.PayLoad);
 
-	AppendPayLoad(&msg2send,"1569695954");
+	AppendPayLoad(&Answer.PayLoad,"1569695954");
 
 
-	if(xQueueSendToBack( xQueueAnswer , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){
+	if(xQueueSendToBack( xQueueAnswer , &Answer, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
 
@@ -232,9 +222,9 @@ void answerTime(void){
 
 void answerTLM(void){
 
-	tlm2String(&dataTLM,&msg2send);
+	tlm2String(&dataTLM,&Answer.PayLoad);
 
-	if(xQueueSendToBack( xQueueAnswer , ( void * ) &pAnswer, ( TickType_t ) 1 ) ){
+	if(xQueueSendToBack( xQueueAnswer , &Answer, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
 
@@ -244,6 +234,20 @@ void answerTLM(void){
 	}
 }
 //-------------------------------------------------------------------------
+
+/*
+ *
+ * Set endereco de origem e destino e o tipo da operacao
+ *
+ */
+static void setHeaderInfo(DataCom* data){
+
+	strcpy(Answer.operacao,OPERATION_AN);
+	Answer.resource	= data->resource;
+	Answer.dest		= data->address;
+	Answer.address	= ADDRESS;
+}
+//------------------------------------------------------------------------
 
 pCallBack getCallBack(Resource* r) {
 
@@ -268,7 +272,7 @@ pCallBack getCallBack(Resource* r) {
 void initApp(void){
 
 	clearDataTLM(DataTLM,&dataTLM);
-	clearArrayPayLoad(&msg2send);
+	clearData(&Answer);
 }
 //------------------------------------------------------------------------
 

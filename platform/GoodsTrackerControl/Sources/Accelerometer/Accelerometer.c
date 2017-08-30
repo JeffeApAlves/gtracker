@@ -10,14 +10,13 @@
 #include "MMA8451.h"
 #include "Accelerometer.h"
 
-static DataAccelerometer	acceInfo;
-DataAccelerometer*	pAcceInfo = &acceInfo;
+DataAccelerometer	acceInfo;
 
 void runAccelerometer(void) {
 
-	MMA845x_getValues(pAcceInfo);
+	MMA845x_getValues(&acceInfo);
 
-    if(xQueueSendToBack( xQueueAcc , ( void * ) &pAcceInfo, ( TickType_t ) 1 ) ){
+    if(xQueueSendToBack( xQueueAcc ,  &acceInfo, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleCallBackTask , BIT_UPDATE_ACCE , eSetBits );
     }
@@ -26,7 +25,7 @@ void runAccelerometer(void) {
 
 void initAccelerometer(void){
 
-	clearDataTLM(DataAccelerometer,pAcceInfo);
+	clearDataTLM(DataAccelerometer,&acceInfo);
 	MMA845x_init();
 }
 //------------------------------------------------------------------------

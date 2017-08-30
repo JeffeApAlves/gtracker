@@ -39,11 +39,8 @@ void updateDataGPS(void) {
 
 	if (xQueueGPS != 0) {
 
-		DataGPS* data;
+		if (xQueueReceive(xQueueGPS, &dataTLM.GPS, (TickType_t ) 1)) {
 
-		if (xQueueReceive(xQueueGPS, &(data), (TickType_t ) 1)) {
-
-			dataTLM.GPS = *data;
 		}
 	}
 }
@@ -53,11 +50,8 @@ void updateDataAcce(void) {
 
 	if (xQueueAcc != 0) {
 
-		DataAccelerometer* data;
+		if (xQueueReceive(xQueueAcc, &dataTLM.Accelerometer, (TickType_t ) 1)) {
 
-		if (xQueueReceive(xQueueAcc, &(data), (TickType_t ) 1)) {
-
-			dataTLM.Accelerometer  = *data;
 		}
 	}
 }
@@ -67,11 +61,8 @@ void updateDataLevel(void) {
 
 	if (xQueueTank != 0) {
 
-		DataTank* data;
+		if (xQueueReceive(xQueueTank, &dataTLM.Tank, (TickType_t ) 1)) {
 
-		if (xQueueReceive(xQueueTank, &(data), (TickType_t ) 1)) {
-
-			dataTLM.Tank  = *data;
 		}
 	}
 }

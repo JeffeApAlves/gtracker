@@ -12,7 +12,7 @@
 //#include "Cpu.h"
 //#include "PE_Types.h"
 
-#define BUFFER_SIZE		256
+#define BUFFER_SIZE		128
 
 typedef struct{
 
