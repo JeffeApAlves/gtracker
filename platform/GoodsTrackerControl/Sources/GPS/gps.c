@@ -185,42 +185,35 @@ static bool NMEA_decoderFrame(void){
 
 	bool ret = false;
 
-	List	list;
+	uint16 count = getNumField(frameNMEA.Data,NMEA_CHAR_SEPARATOR);
 
-	str_split(&list, frameNMEA.Data, NMEA_CHAR_SEPARATOR);
+	if(count >= 5){
 
-	if(list.itens!=NULL) {
+		// Checksum
+		unsigned int checksum_rx;
+		unsigned int checksum_calc = calcChecksum(frameNMEA.Data, frameNMEA.Length);
+		checksum_rx = ~checksum_calc;
+		checksum_rx = strtol(frameNMEA.checksum, NULL, 16);
 
-		if(list.count >= 5){
+		if(checksum_rx==checksum_calc) {
 
-			// Checksum
-			unsigned int checksum_rx;
-			unsigned int checksum_calc = calcChecksum(frameNMEA.Data, frameNMEA.Length);
-			checksum_rx = ~checksum_calc;
-			checksum_rx = strtol(frameNMEA.checksum, NULL, 16);
+			char id[NMEA_LEN_ID];
 
-			if(checksum_rx==checksum_calc) {
+			ret = true;
 
-				char id[NMEA_LEN_ID];
+			AsString(id,frameNMEA.Data,0,NMEA_CHAR_SEPARATOR);
 
-				ret = true;
+			if(strcmp(GGA,id+2)==0){		decoderGGA(frameNMEA.Data,&dataNMEA);
 
-				AsString(id,&list,0);
+			}else if(strcmp(RMC,id+2)==0){	decoderRMC(frameNMEA.Data,&dataNMEA);
 
-				if(strcmp(GGA,id+2)==0){		decoderGGA(&list,&dataNMEA);
+			}else if(strcmp(GSA,id+2)==0){	decoderGSA(frameNMEA.Data,&dataNMEA);
 
-				}else if(strcmp(RMC,id+2)==0){	decoderRMC(&list,&dataNMEA);
+			}else{
 
-				}else if(strcmp(GSA,id+2)==0){	decoderGSA(&list,&dataNMEA);
-
-				}else{
-
-					ret = false;
-				}
+				ret = false;
 			}
 		}
-
-		removeList(&list);
 	}
 }
 //------------------------------------------------------------------------
@@ -251,28 +244,28 @@ type 1 or 9 update, null field when DGPS is not used
 14) Differential reference station ID, 0000-1023
 15) Checksum
 */
-static void decoderGGA(List* list,DataNMEA* frame){
+static void decoderGGA(char* frame,DataNMEA* data){
 
-	AsString(&frame->Identifier,			list,0);
-	AsString(&frame->Time_UTC,			list,1);
-	AsFloat(&frame->Lat,				list,2);
-	AsChar(&frame->LatDirection,		list,3);
-	AsFloat(&frame->Lng,				list,4);
-	AsChar(&frame->LngDirection,		list,5);
-	AsInteger(&frame->FixQuality,		list,6);
-	AsInteger(&frame->NumberOfSatelites,list,7);
-	AsFloat(&frame->HDOP,				list,8);
-	AsFloat(&frame->Altitude,			list,9);
-	AsFloat(&frame->HGeoid,				list,11);
+	AsString(&data->Identifier,			frame,0, NMEA_CHAR_SEPARATOR);
+	AsString(&data->Time_UTC,			frame,1, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->Lat,					frame,2, NMEA_CHAR_SEPARATOR);
+	AsChar(&data->LatDirection,			frame,3, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->Lng,					frame,4, NMEA_CHAR_SEPARATOR);
+	AsChar(&data->LngDirection,			frame,5, NMEA_CHAR_SEPARATOR);
+	AsInteger(&data->FixQuality,		frame,6, NMEA_CHAR_SEPARATOR);
+	AsInteger(&data->NumberOfSatelites,	frame,7, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->HDOP,				frame,8, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->Altitude,			frame,9, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->HGeoid,				frame,11,NMEA_CHAR_SEPARATOR);
 
-	if(frame->LatDirection==SOUTH){
+	if(data->LatDirection==SOUTH){
 
-		frame->Lat *=-1;
+		data->Lat *=-1;
 	}
 
-	if(frame->LngDirection == WEST){
+	if(data->LngDirection == WEST){
 
-		frame->Lng *=-1;
+		data->Lng *=-1;
 	}
 }
 //------------------------------------------------------------------------
@@ -293,27 +286,27 @@ $--RMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,xxxx,x.x,a*hh
 11) E or W
 12) Checksum
 */
-static void decoderRMC(List* list,DataNMEA* frame){
+static void decoderRMC(char* frame,DataNMEA* data){
 
-	AsString(&frame->Identifier,	list,0);
-	AsString(&frame->Time_UTC,		list,1);
-	AsChar(&frame->Status,			list,2);
-	AsFloat(&frame->Lat,			list,3);
-	AsChar(&frame->LatDirection,	list,4);
-	AsFloat(&frame->Lng,			list,5);
-	AsChar(&frame->LngDirection,	list,6);
-	AsInteger(&frame->Speed,		list,7);
-	AsString(&frame->Date,			list,9);
-	AsFloat(&frame->MagVariation,	list,10);
+	AsString(&data->Identifier,		frame,0, NMEA_CHAR_SEPARATOR);
+	AsString(&data->Time_UTC,		frame,1, NMEA_CHAR_SEPARATOR);
+	AsChar(&data->Status,			frame,2, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->Lat,				frame,3, NMEA_CHAR_SEPARATOR);
+	AsChar(&data->LatDirection,		frame,4, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->Lng,				frame,5, NMEA_CHAR_SEPARATOR);
+	AsChar(&data->LngDirection,		frame,6, NMEA_CHAR_SEPARATOR);
+	AsInteger(&data->Speed,			frame,7, NMEA_CHAR_SEPARATOR);
+	AsString(&data->Date,			frame,9, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->MagVariation,	frame,10, NMEA_CHAR_SEPARATOR);
 
-	if(frame->LatDirection==SOUTH){
+	if(data->LatDirection==SOUTH){
 
-		frame->Lat *=-1;
+		data->Lat *=-1;
 	}
 
-	if(frame->LngDirection == WEST){
+	if(data->LngDirection == WEST){
 
-		frame->Lng *=-1;
+		data->Lng *=-1;
 	}
 }
 //------------------------------------------------------------------------
@@ -334,21 +327,21 @@ $--GSA,a,a,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x.x,x.x,x.x*hh
 17) VDOP in meters
 18) Checksum
 */
-static void decoderGSA(List* list,DataNMEA* frame){
+static void decoderGSA(char* frame,DataNMEA* data){
 
-	AsString(&frame->Identifier,	list,0);
-	AsChar(&frame->SelectionMode,	list,1);
-	AsChar(&frame->Mode,			list,2);
+	AsString(&data->Identifier,		frame,0, NMEA_CHAR_SEPARATOR);
+	AsChar(&data->SelectionMode,	frame,1, NMEA_CHAR_SEPARATOR);
+	AsChar(&data->Mode,				frame,2, NMEA_CHAR_SEPARATOR);
 
 	char i;
 	for(i=0;i<12;i++){
 
-		AsInteger(frame->PRNNumber+i,	list,i+3);
+		AsInteger(data->PRNNumber+i,frame,i+3, NMEA_CHAR_SEPARATOR);
 	}
 
-	AsFloat(&frame->PDOP,			list,15);
-	AsFloat(&frame->HDOP,			list,16);
-	AsFloat(&frame->VDOP,			list,17);
+	AsFloat(&data->PDOP,			frame,15, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->HDOP,			frame,16, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->VDOP,			frame,17, NMEA_CHAR_SEPARATOR);
 }
 //------------------------------------------------------------------------
 

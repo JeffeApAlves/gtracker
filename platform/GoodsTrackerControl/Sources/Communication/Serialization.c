@@ -5,7 +5,7 @@
 #include "clock.h"
 #include "Serialization.h"
 
-void tlm2String(DataTLM* info,ArrayPayLoad* ans){
+void tlm2String(Telemetria* info,ArrayPayLoad* ans){
 
 	if(info!=NULL && ans!= NULL){
 

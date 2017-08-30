@@ -8,29 +8,49 @@
 #include "stdlib.h"
 #include "string.h"
 #include "XF1.h"
+#include "Telemetria.h"
 #include "clock.h"
 
 // Referencias:	https://github.com/msolters/make-unix-timestamp-c
 //				https://community.nxp.com/docs/DOC-94734
 
-char *DayOfWeekName[] = {
-  "Dom",
-  "Seg",
-  "Ter",
-  "Qua",
-  "Qui",
-  "Sex",
-  "Sab"
+const char *DayOfWeekName[] = {
+  "Dom","Seg","Ter","Qua","Qui","Sex","Sab"
+};
+
+const static int days_per_month[2][MOS_PER_YEAR] = {
+  { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
+  { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }
+};
+
+const static int days_per_year[2] = {
+  365, 366
 };
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
 LDD_TDeviceData		*MyRTCPtr;
 LDD_RTC_TTime		Time;
 LDD_TError			Error;
+bool adjustedCLock	= FALSE;
 
 void initClock(){
 
 	MyRTCPtr = RTC1_Init((LDD_TUserData *)NULL, FALSE);        /* Initialize the device, preserve time settings */
+
+	LDD_RTC_TTime date_time;
+
+	date_time.Hour		= 0;
+	date_time.Minute	= 0;
+	date_time.Second	= 0;
+	date_time.Year		= 1970;
+	date_time.Month		= 1;
+	date_time.Day		= 1;
+
+	setClock(&date_time);
+
+	getClock(&Time);
+
+	adjustedCLock	= FALSE;
 }
 //-------------------------------------------------------------------------------------------------------------------
 
@@ -40,9 +60,38 @@ void initClock(){
  *
  *
  */
-void setClockByString(char* time,char* date){
+bool setClockByString(char* date,char* time){
 
 	LDD_RTC_TTime date_time;
+
+	strToData(&date_time,date,time);
+
+	return setClock(&date_time);
+}
+//-------------------------------------------------------------------------------------------------------------------
+
+bool setClock(LDD_RTC_TTime* time){
+
+	bool flag =FALSE;
+
+	if(time!=NULL && time->Year>=2017){
+
+		Time	= *time;
+		Error	= RTC1_SetTime(MyRTCPtr, &Time);
+
+		if(Error==ERR_OK){
+
+			getClock(&Time);
+
+			flag = TRUE;
+		}
+	}
+
+	return flag;
+}
+//-------------------------------------------------------------------------------------------------------------------
+
+void strToData(	LDD_RTC_TTime* date_time,char* date,char* time){
 
 	char year[5];	year[4]		= '\0';
 	char month[3];	month[2]	= '\0';
@@ -59,33 +108,19 @@ void setClockByString(char* time,char* date){
 	strncpy(year,	"20",2);	// ano 4 digitos
 	strncpy(year+2,	date+4,2);
 
-	date_time.Hour		= atoi(hrs);
-	date_time.Minute	= atoi(min);
-	date_time.Second	= atoi(sec);
-	date_time.Year		= atoi(year);
-	date_time.Month		= atoi(month);
-	date_time.Day		= atoi(day);
-
-	setClock(&date_time);
+	date_time->Hour		= atoi(hrs);
+	date_time->Minute	= atoi(min);
+	date_time->Second	= atoi(sec);
+	date_time->Year		= atoi(year);
+	date_time->Month	= atoi(month);
+	date_time->Day		= atoi(day);
 }
 //-------------------------------------------------------------------------------------------------------------------
 
-void setClock(LDD_RTC_TTime* time){
+void getClock(LDD_RTC_TTime* time){
 
-	Time	= *time;
-	Error	= RTC1_SetTime(MyRTCPtr, &Time);
-
-	if(Error==ERR_OK){
-		RTC1_GetTime(MyRTCPtr, &Time);
-	}
-
+	RTC1_GetTime(MyRTCPtr, time);
 	Time.timestamp = getCurrentTimeStamp();
-}
-//-------------------------------------------------------------------------------------------------------------------
-
-void getClock(){
-
-	RTC1_GetTime(MyRTCPtr, &Time);
 	//XF1_xsprintf(timestamp,"Current time: %d:%d:%d %d.%d.%d %s\n", Time.Hour, Time.Minute, Time.Second, Time.Day, Time.Month, Time.Year, DayOfWeekName[Time.DayOfWeek]);
 }
 //-------------------------------------------------------------------------------------------------------------------
@@ -94,6 +129,18 @@ void updateEntityClock(){
 
 	RTC1_GetTime(MyRTCPtr, &Time);
 	Time.timestamp++;
+}
+//-------------------------------------------------------------------------------------------------------------------
+
+void adjusteClock(){
+
+	if(!adjustedCLock){
+
+		if(setClockByString(telemetria.GPS.Date,telemetria.GPS.Time)){
+
+			adjustedCLock = TRUE;
+		}
+	}
 }
 //-------------------------------------------------------------------------------------------------------------------
 

@@ -10,7 +10,7 @@
 #include "MMA8451.h"
 #include "Accelerometer.h"
 
-DataAccelerometer	acceInfo;
+Accelerometer	acceInfo;
 
 void runAccelerometer(void) {
 
@@ -25,7 +25,7 @@ void runAccelerometer(void) {
 
 void initAccelerometer(void){
 
-	clearDataTLM(DataAccelerometer,&acceInfo);
+	clearAccelerometer(&acceInfo);
 	MMA845x_init();
 }
 //------------------------------------------------------------------------

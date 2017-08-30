@@ -40,6 +40,16 @@ typedef enum {
 
 } StatusNMEA;
 
+typedef struct{
+
+	float	Lat;
+	float	Lng;
+	int		Speed ;
+	char	Time[11];
+	char	Date[7];
+
+} DataGPS;
+
 static void NMEA_rxStart(void);
 static void NMEA_receiveFrame(void);
 static void NMEA_receiveCheckSum(void);
@@ -51,9 +61,9 @@ static void NMEA_errorRxFrame(void);
 
 static void setGPSStatus(StatusNMEA sts);
 static bool NMEA_decoderFrame(void);
-static void decoderGGA(List* list,DataNMEA* data);
-static void decoderRMC(List* list,DataNMEA* data);
-static void decoderGSA(List* list,DataNMEA* data);
+static void decoderGGA(char* frame,DataNMEA* data);
+static void decoderRMC(char* frame,DataNMEA* data);
+static void decoderGSA(char* frame,DataNMEA* data);
 
 //API
 bool getGPSData(char* ch);

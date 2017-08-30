@@ -10,6 +10,13 @@
 
 #include "AD1.h"
 
+typedef struct{
+
+	int		Level;
+	int		Lock;
+
+} Tank;
+
 void runAnalog(void);
 
 extern volatile bool AD_finished;

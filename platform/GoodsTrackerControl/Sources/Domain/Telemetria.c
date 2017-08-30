@@ -9,7 +9,7 @@
 #include "AppQueues.h"
 #include "Telemetria.h"
 
-DataTLM		dataTLM;
+Telemetria	telemetria;
 
 /**
  *
@@ -39,8 +39,9 @@ void updateDataGPS(void) {
 
 	if (xQueueGPS != 0) {
 
-		if (xQueueReceive(xQueueGPS, &dataTLM.GPS, (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueGPS, &telemetria.GPS, (TickType_t ) 1)) {
 
+			adjusteClock();
 		}
 	}
 }
@@ -50,7 +51,7 @@ void updateDataAcce(void) {
 
 	if (xQueueAcc != 0) {
 
-		if (xQueueReceive(xQueueAcc, &dataTLM.Accelerometer, (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueAcc, &telemetria.Accelerometer, (TickType_t ) 1)) {
 
 		}
 	}
@@ -61,7 +62,7 @@ void updateDataLevel(void) {
 
 	if (xQueueTank != 0) {
 
-		if (xQueueReceive(xQueueTank, &dataTLM.Tank, (TickType_t ) 1)) {
+		if (xQueueReceive(xQueueTank, &telemetria.Tank, (TickType_t ) 1)) {
 
 		}
 	}

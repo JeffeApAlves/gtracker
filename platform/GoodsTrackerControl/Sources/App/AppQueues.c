@@ -35,8 +35,8 @@ void initQueues(void){
 
 	xQueueCom		= xQueueCreate( 1, sizeof( DataCom ));
 	xQueueAnswer	= xQueueCreate( 1, sizeof( DataCom ));
-	xQueueGPS		= xQueueCreate( 2, sizeof( DataGPS ));
-	xQueueAcc		= xQueueCreate( 2, sizeof( DataAccelerometer ));
-	xQueueTank		= xQueueCreate( 2, sizeof( DataTank ));
+	xQueueGPS		= xQueueCreate( 1, sizeof( DataGPS ));
+	xQueueAcc		= xQueueCreate( 1, sizeof( Accelerometer ));
+	xQueueTank		= xQueueCreate( 1, sizeof( Tank ));
 }
 //-----------------------------------------------------------------------------

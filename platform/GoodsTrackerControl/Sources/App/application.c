@@ -37,12 +37,12 @@ void runMain(void){
 
 	if (xQueueGPS != 0) {
 
-		DataGPS* gps;
+		//DataGPS gps;
 
-		if (xQueuePeek(xQueueGPS, &(gps), (TickType_t ) 1)) {
+		//if (xQueuePeek(xQueueGPS, &(gps), (TickType_t ) 1)) {
 
-			setClockByString(gps->Time,gps->Date);
-		}
+			//setClockByString(gps.Time,gps.Date);
+		//}
 	}
 }
 //-------------------------------------------------------------------------
@@ -57,8 +57,8 @@ void execCMD(uint32_t ulNotifiedValue){
 
 			if(cb!=NULL){
 
-				//Preenche para retorno
-				setHeaderInfo(&Cmd);
+				//Preenche dados do Header para retorno
+				setHeaderAnswer(&Cmd);
 
 				if(cb(&Cmd) == CMD_RESULT_EXEC_SUCCESS) {
 
@@ -192,13 +192,7 @@ ResultExec onLock(DataCom* cmd){
 
 void decoderLockPayLoad(ArrayPayLoad* payload){
 
-	List	list;
-
-	str_split(&list, payload->Data, CHAR_SEPARATOR);
-
-	AsInteger(&_lock,		&list,0);
-
-	removeList(&list);
+	AsInteger(&_lock,payload->Data,0,CHAR_SEPARATOR);
 }
 //------------------------------------------------------------------------
 
@@ -222,7 +216,7 @@ void answerTime(void){
 
 void answerTLM(void){
 
-	tlm2String(&dataTLM,&Answer.PayLoad);
+	tlm2String(&telemetria,&Answer.PayLoad);
 
 	if(xQueueSendToBack( xQueueAnswer , &Answer, ( TickType_t ) 1 ) ){
 
@@ -240,12 +234,13 @@ void answerTLM(void){
  * Set endereco de origem e destino e o tipo da operacao
  *
  */
-static void setHeaderInfo(DataCom* data){
+static void setHeaderAnswer(DataCom* data){
 
 	strcpy(Answer.operacao,OPERATION_AN);
-	Answer.resource	= data->resource;
-	Answer.dest		= data->address;
-	Answer.address	= ADDRESS;
+	Answer.resource		= data->resource;
+	Answer.dest			= data->address;
+	Answer.address		= ADDRESS;
+	Answer.countFrame	= data->countFrame;
 }
 //------------------------------------------------------------------------
 
@@ -271,7 +266,7 @@ pCallBack getCallBack(Resource* r) {
 
 void initApp(void){
 
-	clearDataTLM(DataTLM,&dataTLM);
+	clearTelemetria(&telemetria);
 	clearData(&Answer);
 }
 //------------------------------------------------------------------------

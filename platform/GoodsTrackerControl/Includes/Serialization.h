@@ -11,6 +11,6 @@
 #include <Telemetria.h>
 #include "Array.h"
 
-void tlm2String(DataTLM* info,ArrayPayLoad* ans);
+void tlm2String(Telemetria* info,ArrayPayLoad* ans);
 
 #endif /* SOURCES_SERIALIZATION_H_ */

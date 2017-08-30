@@ -36,7 +36,7 @@ void decoderLockPayLoad(ArrayPayLoad* payload);
 void answerTime(void);
 void answerTLM(void);
 void execCMD(uint32_t ulNotifiedValue);
-static void setHeaderInfo(DataCom* data);
+static void setHeaderAnswer(DataCom* data);
 
 void runMain(void);
 void runApp(void);

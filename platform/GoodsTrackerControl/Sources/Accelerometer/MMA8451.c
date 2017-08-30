@@ -50,7 +50,7 @@ uint8_t I2C_Write(uint8_t addr, uint8_t val) {
 }
 //--------------------------------------------------------------------------------------------
 
-bool MMA845x_getValues(DataAccelerometer* acc){
+bool MMA845x_getValues(Accelerometer* acc){
 
 	int8_t xyz[LEN_XYZ];
 

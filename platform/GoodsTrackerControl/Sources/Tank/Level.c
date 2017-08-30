@@ -10,7 +10,7 @@
 #include "Level.h"
 
 static uint16_t	ADValues[AD1_CHANNEL_COUNT];
-static DataTank		adInfo;
+static Tank		adInfo;
 
 volatile	bool AD_finished = FALSE;
 

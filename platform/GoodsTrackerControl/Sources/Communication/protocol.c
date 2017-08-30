@@ -176,39 +176,32 @@ static bool decoderFrame(void) {
 
 	bool ret = false;
 
-	List	list;
-
-	str_split(&list, frameRx.Data, CHAR_SEPARATOR);
-
 	clearData(&dataComRx);
 
-	if(list.itens!=NULL) {
+	uint16 count = getNumField(frameRx.Data,CHAR_SEPARATOR);
 
-		// Minimo 8 itens
-		if(list.count >= 8){
+	// Minimo de 8 itens
+	if(count >= 8){
 
-			//-2 para desconsiderar o checksum que esta no frame recebido
-			unsigned int checksum_rx;
-			unsigned int checksum_calc = calcChecksum(frameRx.Data, frameRx.Length - LEN_CHECKSUM);
-			checksum_rx = ~checksum_calc;
+		//-2 para desconsiderar o checksum que esta no frame recebido
+		unsigned int checksum_rx;
+		unsigned int checksum_calc = calcChecksum(frameRx.Data, frameRx.Length - LEN_CHECKSUM);
+		checksum_rx = ~checksum_calc;
 
-			AsHex(&checksum_rx,&list,list.count-1);
+		AsHex(&checksum_rx,frameRx.Data,count-1,CHAR_SEPARATOR);
 
-			if(checksum_rx==checksum_calc) {
+		if(checksum_rx==checksum_calc) {
 
-				AsInteger(&dataComRx.address,			&list,0);
-				AsInteger(&dataComRx.dest,				&list,1);
-				AsInteger(&dataComRx.countFrame,		&list,2);
-				AsString(&dataComRx.operacao,			&list,3);
-				AsString(&dataComRx.resource.name,		&list,4);
-				AsInteger(&dataComRx.PayLoad.Length,	&list,5);
-				AsString(&dataComRx.PayLoad.Data,		&list,6);
+			AsInteger(&dataComRx.address,		frameRx.Data,0,CHAR_SEPARATOR);
+			AsInteger(&dataComRx.dest,			frameRx.Data,1,CHAR_SEPARATOR);
+			AsInteger(&dataComRx.countFrame,	frameRx.Data,2,CHAR_SEPARATOR);
+			AsString(&dataComRx.operacao,		frameRx.Data,3,CHAR_SEPARATOR);
+			AsString(&dataComRx.resource.name,	frameRx.Data,4,CHAR_SEPARATOR);
+			AsInteger(&dataComRx.PayLoad.Length,frameRx.Data,5,CHAR_SEPARATOR);
+			AsString(&dataComRx.PayLoad.Data,	frameRx.Data,6,CHAR_SEPARATOR);
 
-				ret = true;
-			}
+			ret = true;
 		}
-
-		removeList(&list);
 	}
 
 	return ret;

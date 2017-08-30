@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Receive" key="selection"/>
+		<item value="execCMD" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="RECEIVE"/>
-			<item value="doAnswer"/>
-			<item value="queue"/>
-			<item value="ArrayPayLoad"/>
-			<item value="copyCheckSumToFram"/>
-			<item value="copyHeaderToFrame"/>
-			<item value="buildFrame"/>
-			<item value="sendFrame"/>
+			<item value="execCMD"/>
+			<item value="adju"/>
+			<item value="getc"/>
+			<item value="getclo"/>
+			<item value="get"/>
+			<item value="setclo"/>
+			<item value="receive"/>
+			<item value="send"/>
 		</list>
 		<list key="replacehistory">
 			<item value="data-&gt;"/>

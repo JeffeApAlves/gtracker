@@ -58,11 +58,6 @@ namespace GoodsTracker
         {
             if(ans.Header.Resource.Equals(RESOURCE.TLM))
             {
-                Debug.WriteLine("ans:" + ans.Header.Count);
-                Debug.WriteLine("X: {0} : {1}",ans.Telemetria.AxisX.Acceleration.Val , ans.Telemetria.AxisX.Rotation.Val);
-                Debug.WriteLine("Y: {0} : {1}",ans.Telemetria.AxisY.Acceleration.Val, ans.Telemetria.AxisY.Rotation.Val);
-                Debug.WriteLine("Z: {0} : {1}",ans.Telemetria.AxisZ.Acceleration.Val, ans.Telemetria.AxisZ.Rotation.Val);
-
                 updateDataTelemetria(ans);
                 sw_tlm.Restart();
             }
@@ -75,6 +70,14 @@ namespace GoodsTracker
         void updateDataTelemetria(AnsCmd ans)
         {
             telemetriaData = ans.Telemetria;
+
+        
+            Debug.WriteLine("ANS:" + ans.Header.Count);
+            Debug.WriteLine("X: {0} : {1}", telemetriaData.AxisX.Acceleration.Val, telemetriaData.AxisX.Rotation.Val);
+            Debug.WriteLine("Y: {0} : {1}", telemetriaData.AxisY.Acceleration.Val, telemetriaData.AxisY.Rotation.Val);
+            Debug.WriteLine("Z: {0} : {1}", telemetriaData.AxisZ.Acceleration.Val, telemetriaData.AxisZ.Rotation.Val);
+            Debug.WriteLine("Lat: {0} Lng:{1}", telemetriaData.Latitude, telemetriaData.Longitude);
+            Debug.WriteLine("timestamp: "+ ans.Telemetria.DateTime.ToString());
         }
 
         public Telemetria getTelemetria()

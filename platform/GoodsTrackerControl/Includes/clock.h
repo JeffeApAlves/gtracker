@@ -21,21 +21,14 @@
 #define EPOCH_YEAR          1970
 #define IS_LEAP_YEAR(year)  ( (((year)%4 == 0) && ((year)%100 != 0)) || ((year)%400 == 0) )
 
-static int days_per_month[2][MOS_PER_YEAR] = {
-  { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
-  { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }
-};
-
-static int days_per_year[2] = {
-  365, 366
-};
-
 uint32_t getCurrentTimeStamp();
 void initClock();
-void setClock(LDD_RTC_TTime* time);
-void getClock();
+bool setClock(LDD_RTC_TTime* time);
+bool setClockByString(char* date,char* time);
+void getClock(LDD_RTC_TTime* time);
 void updateEntityClock();
-void setClockByString(char* time,char* date);
+void adjusteClock();
+void strToData(	LDD_RTC_TTime* date_time,char* date,char* time);
 
 uint32_t unix_time_in_seconds(uint8_t sec, uint8_t min, uint8_t hrs,
 		uint8_t day, uint8_t mon, uint16_t year);
