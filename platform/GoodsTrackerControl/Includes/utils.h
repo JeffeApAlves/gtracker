@@ -10,7 +10,7 @@
 
 #include <string.h>
 #include "PE_Types.h"
-
+#include "DataFrame.h"
 
 typedef enum {
 
@@ -62,5 +62,6 @@ void AsString(char* out,char *str,uint16 index,const char a_delim);
 void AsHex(int* out,char *str,uint16 index,const char a_delim);
 void AsChar(char* out,char *str,uint16 index,const char a_delim);
 void AsFloat(float* out,char *str,uint16 index,const char a_delim);
+void AsResource(Resource* out,char *str,uint16 index,const char a_delim);
 
 #endif /* SOURCES_UTILS_H_ */

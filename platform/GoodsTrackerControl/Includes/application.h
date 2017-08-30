@@ -21,25 +21,23 @@ typedef enum
 /**
  * Ponteiro para as call backs
  */
-typedef ResultExec(*pCallBack)(DataCom*);
+typedef ResultExec(*pCallBack)(DataFrame*);
 
-ResultExec onAnalog(DataCom* cmd);
-ResultExec onLED(DataCom* cmd);
-ResultExec onPWM(DataCom* cmd);
-ResultExec onTouch(DataCom* cmd);
-ResultExec onAccel(DataCom* cmd);
-ResultExec onTelemetry(DataCom* frame);
-ResultExec onLock(DataCom* frame);
+ResultExec onAnalog(DataFrame* cmd);
+ResultExec onLED(DataFrame* cmd);
+ResultExec onPWM(DataFrame* cmd);
+ResultExec onTouch(DataFrame* cmd);
+ResultExec onAccel(DataFrame* cmd);
+ResultExec onTelemetry(DataFrame* frame);
+ResultExec onLock(DataFrame* frame);
 
 void initApp(void);
-void decoderLockPayLoad(ArrayPayLoad* payload);
-void answerTime(void);
-void answerTLM(void);
+void decoderLockPayLoad(PayLoad* payload);
 void execCMD(uint32_t ulNotifiedValue);
-static void setHeaderAnswer(DataCom* data);
+static void setHeaderAnswer(DataFrame* data);
 
 void runMain(void);
 void runApp(void);
-pCallBack getCallBack(Resource* r);
+pCallBack getCallBack(Resource r);
 
 #endif /* SOURCES_APPLICATION_H_ */

@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include "Array.h"
 #include "utils.h"
+#include "protocol.h"
 
 void str_split(List* result, char* str, const char a_delim) {
 
@@ -193,52 +194,7 @@ void removeList(List* list){
 	_free(list->itens);
 }
 //------------------------------------------------------------------------
-/*
-void AsString(char* out,List *list,int index){
 
-	if(index<list->count && out!=NULL){
-
-		strcpy(out, list->itens[index]);
-	}
-}
-//------------------------------------------------------------------------
-
-void AsInteger(int* out,List *list,int index){
-
-	if(index<list->count && out!=NULL){
-
-		*out = atoi(list->itens[index]);
-	}
-}
-//------------------------------------------------------------------------
-
-void AsHex(int* out,List *list,int index){
-
-	if(index<list->count && out!=NULL){
-
-		*out = strtol(list->itens[index], NULL, 16);
-	}
-}
-//------------------------------------------------------------------------
-
-void AsFloat(float* out,List *list,int index){
-
-	if(index<list->count && out!=NULL){
-
-		*out = atof(list->itens[index]);
-	}
-}
-//------------------------------------------------------------------------
-
-void AsChar(char* out,List *list,int index){
-
-	if(index<list->count && out!=NULL){
-
-		*out = list->itens[index][0];
-	}
-}
-//------------------------------------------------------------------------
-*/
 void AsInteger(int* out,char *str,uint16 index,const char a_delim){
 
 	char field[10];
@@ -282,5 +238,15 @@ void AsChar(char* out,char *str,uint16 index,const char a_delim){
 	getField(str,field,index,a_delim);
 
 	*out = field[0];
+}
+//------------------------------------------------------------------------
+
+void AsResource(Resource* out,char *str,uint16 index,const char a_delim){
+
+	char field[4];
+
+	getField(str,field,index,a_delim);
+
+	*out = getResource(field);
 }
 //------------------------------------------------------------------------

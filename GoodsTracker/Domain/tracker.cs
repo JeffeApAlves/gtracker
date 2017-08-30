@@ -72,7 +72,7 @@ namespace GoodsTracker
             telemetriaData = ans.Telemetria;
 
         
-            Debug.WriteLine("ANS:" + ans.Header.Count);
+            Debug.WriteLine("ANS:" + ans.Header.TimeStamp);
             Debug.WriteLine("X: {0} : {1}", telemetriaData.AxisX.Acceleration.Val, telemetriaData.AxisX.Rotation.Val);
             Debug.WriteLine("Y: {0} : {1}", telemetriaData.AxisY.Acceleration.Val, telemetriaData.AxisY.Rotation.Val);
             Debug.WriteLine("Z: {0} : {1}", telemetriaData.AxisZ.Acceleration.Val, telemetriaData.AxisZ.Rotation.Val);

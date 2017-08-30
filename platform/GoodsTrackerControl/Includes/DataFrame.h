@@ -8,49 +8,49 @@
 #ifndef SOURCES_DATAFRAME_H_
 #define SOURCES_DATAFRAME_H_
 
-    /**
-     *
-     * Frame Coomunication
-     * [ End. de orig[5] : End dest[5] :  COUNT[5] :Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
-     *
-     * End. de orig:
-     * Range: 00000~65535 (00000) Broadcast
-     *
-     * End. de dest:
-     * Range: 00000~65535 (00000) Broadcast
-     *
-     * Operacao:
-     * Possiveis:
-     * RD = READ
-     * WR = WRITE
-     * AN + ANSWER
-     *
-     * Recurso:
-     * Range: A-Z a-z 0~9
-     *
-     * SizePayload:
-     * Range: 0~255
-     *
-     * Payload:
-     * Informações para a camda aplicação
-     * Observacao: '[' ']' sao caracteres especiais entao usar \] e \[
-     *
-     * CheckSum
-     * Somatoria
-     */
+/**
+ *
+ * Frame Coomunication
+ * [ End. de orig[5] : End dest[5] :  TIME STAMP[10] :Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
+ *
+ * End. de orig:
+ * Range: 00000~65535 (00000) Broadcast
+ *
+ * End. de dest:
+ * Range: 00000~65535 (00000) Broadcast
+ *
+ * Operacao:
+ * Possiveis:
+ * RD = READ
+ * WR = WRITE
+ * AN + ANSWER
+ *
+ * Recurso:
+ * Range: A-Z a-z 0~9
+ *
+ * SizePayload:
+ * Range: 0~255
+ *
+ * Payload:
+ * Informações para a camda aplicação
+ * Observacao: '[' ']' sao caracteres especiais entao usar \] e \[
+ *
+ * CheckSum
+ * Somatoria
+ */
 
 #include "Array.h"
 
 #define LEN_ADDRESS		5
 #define LEN_ORIGEM		5
-#define LEN_COUNT		5
+#define LEN_TIME_STAMP	10
 #define LEN_OPERATION	2
 #define LEN_RESOURCE	3
 #define LEN_SIZE_PL		3
 #define LEN_CHECKSUM	2
 
-#define SIZE_HEADER			(LEN_ADDRESS+LEN_ORIGEM+LEN_OPERATION+LEN_RESOURCE+LEN_SIZE_PL+4)	// 4 separadores do cabecalho
-#define SIZE_MIN_FRAME		(SIZE_HEADER+2)														// 2 separador do payload vazio
+#define SIZE_HEADER			(LEN_ADDRESS + LEN_ORIGEM + LEN_TIME_STAMP + LEN_OPERATION + LEN_RESOURCE + LEN_SIZE_PL+5)	// 5 separadores do cabecalho
+#define SIZE_MIN_FRAME		(SIZE_HEADER+2)																				// 2 separador do payload vazio
 
 /*
  *
@@ -81,7 +81,9 @@ typedef enum {
 	CMD_LOCK,
 	CMD_LCD
 
-}ResourceID;
+}Resource;
+
+#define SIZE_LIST_CMD	9
 
 /**
  *
@@ -98,20 +100,7 @@ typedef enum {
 	CMD_RX_LF,
 	CMD_FRAME_OK,
 	CMD_FRAME_NOK,
-//	CMD_EXEC,
-//	CMD_EXEC_ERROR,
 } StatusRx;
-
-/**
- *
- */
-typedef struct{
-
-	ResourceID	id;
-	char		name[LEN_RESOURCE + 1];
-
-} Resource;
-
 
 /*
  * Estrutura de dados do frame
@@ -119,15 +108,15 @@ typedef struct{
  */
 typedef struct{
 
-	int				address;
-	int				dest;
-	int				countFrame;
-	char			operacao[LEN_OPERATION + 1];
-	Resource		resource;
-	ArrayPayLoad	PayLoad;
+	int			address;
+	int			dest;
+	int32		time_stamp;
+	char		operacao[LEN_OPERATION + 1];
+	Resource	resource;
+	PayLoad		PayLoad;
 
-} DataCom;
+} DataFrame;
 
-#define clearData(f) memset((void*)f,0,sizeof(DataCom));
+#define clearData(f) memset((void*)f,0,sizeof(DataFrame));
 
 #endif /* SOURCES_DATAFRAME_H_ */

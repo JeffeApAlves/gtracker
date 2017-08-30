@@ -34,6 +34,8 @@ uint32_t unix_time_in_seconds(uint8_t sec, uint8_t min, uint8_t hrs,
 		uint8_t day, uint8_t mon, uint16_t year);
 
 
+typedef enum{CLOCK_INIT,CLOCK_STARTED,CLOCK_UPDATE,CLOCK_ADJUSTED} STATUS_CLOCK;
+
 extern LDD_RTC_TTime	Time;
 
 #endif /* INCLUDES_CLOCK_H_ */

@@ -44,7 +44,7 @@ namespace GoodsTracker
         {
             header.Append(header.Address.ToString("D5") + CONST_CHAR.SEPARATOR);
             header.Append(header.Dest.ToString("D5") + CONST_CHAR.SEPARATOR);
-            header.Append(header.Count.ToString("D5") + CONST_CHAR.SEPARATOR);
+            header.Append(header.TimeStamp.ToString("D10") + CONST_CHAR.SEPARATOR);
             header.Append(header.Operation.ToString() + CONST_CHAR.SEPARATOR);
             header.Append(header.Resource);
 
@@ -119,7 +119,7 @@ namespace GoodsTracker
             FieldFrame<Int32> speed = new FieldFrame<Int32>(INDEX.SPEED, list);
             FieldFrame<Int32> level = new FieldFrame<Int32>(INDEX.LEVEL, list);
             FieldFrame<bool> bLCk = new FieldFrame<bool>(INDEX.TRAVA, list);
-            FieldFrame<DateTime> dt = new FieldFrame<DateTime>(INDEX.TIME_STAMP, list);
+            FieldFrame<DateTime> dt = new FieldFrame<DateTime>(INDEX.TIME_STAMP_PL, list);
 
             telemetria.setPosition(lat.getVal(), lng.getVal());
             telemetria.setAcceleration(a_x.getVal(), a_y.getVal(), a_z.getVal());
@@ -142,14 +142,14 @@ namespace GoodsTracker
 
             FieldFrame<int> addr = new FieldFrame<int>(INDEX.ADDRESS, list);
             FieldFrame<int> dest = new FieldFrame<int>(INDEX.DEST, list);
-            FieldFrame<int> count = new FieldFrame<int>(INDEX.COUNT, list);
+            FieldFrame<Int32> timestamp = new FieldFrame<Int32>(INDEX.TIME_STAMP, list);
             FieldFrame<Operation> op = new FieldFrame<Operation>(INDEX.OPERACAO, list);
             FieldFrame<string> res = new FieldFrame<string>(INDEX.RESOURCE, list);
             FieldFrame<int> s_pl = new FieldFrame<int>(INDEX.SIZE_PAYLOAD, list);
 
             header.Address = addr.getVal();
             header.Dest = dest.getVal();
-            header.Count = count.getVal();
+            header.TimeStamp = timestamp.getVal();
             header.Operation = op.getVal();
             header.Resource = res.getVal();
             header.SizePayLoad = s_pl.getVal();

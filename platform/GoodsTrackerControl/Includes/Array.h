@@ -29,15 +29,15 @@ typedef struct{
 	int		Length;
 	char	Data[ARRAY_LEN_PAYLOAD];
 
-} ArrayPayLoad;
+} PayLoad;
 
 unsigned int calcChecksum(const char *buff, size_t sz);
 
 #define clearArrayFrame(f)		memset((void*)f,0,sizeof(ArrayFrame));
-#define clearArrayPayLoad(f)	memset((void*)f,0,sizeof(ArrayPayLoad));
+#define clearArrayPayLoad(f)	memset((void*)f,0,sizeof(PayLoad));
 
 unsigned int putDataArray(ArrayFrame *frame, char data);
-void AppendPayLoad(ArrayPayLoad* payload,const char* data);
+void AppendPayLoad(PayLoad* payload,const char* data);
 void AppendFrame(ArrayFrame* frame,const char* data);
 
 #endif /* SOURCES_ARRAY_H_ */

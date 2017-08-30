@@ -206,7 +206,7 @@ namespace GoodsTracker
                         try
                         {
                             Cmd cmd = getNextCmd();
-                            cmd.Header.Count = count++;
+                            cmd.Header.TimeStamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 
                             sendCmd(cmd);
                             addTxCmd(cmd);
@@ -299,7 +299,7 @@ namespace GoodsTracker
             sb.Append(str + " :");
             sb.Append(" " + stopTx.Elapsed.Seconds.ToString("D2") + stopTx.Elapsed.Milliseconds.ToString("D3") + " ms");
             sb.Append(" " + frame.Header.Resource);
-            sb.Append(" ["+ frame.Header.Count.ToString("D5")+"] ");
+            sb.Append(" ["+ frame.Header.TimeStamp.ToString("D10")+"] ");
 
             foreach (char c in frame.Data)
             {
@@ -317,7 +317,7 @@ namespace GoodsTracker
 
             sb.Append(str + " :");
             sb.Append(" " + frame.Header.Resource);
-            sb.Append(" [" + frame.Header.Count.ToString("D5") + "] ");
+            sb.Append(" [" + frame.Header.TimeStamp.ToString("D10") + "] ");
 
             foreach (char c in frame.Data)
             {

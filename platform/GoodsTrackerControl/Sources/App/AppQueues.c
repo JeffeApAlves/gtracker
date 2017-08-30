@@ -24,17 +24,17 @@ TaskHandle_t 	xHandleMainTask		= NULL, xHandleCommunicationTask	= NULL,
 				xHandleGPSTask		= NULL,	xHandleAccelTask			= NULL,
 				xHandleCallBackTask	= NULL, xHandleRunTxTask			= NULL;
 
-// Queues
+// Handles das Queues
 QueueHandle_t	xQueueCom, xQueueLCD, xQueueAnswer, xQueueGPS, xQueueAcc , xQueueTank;
 
 /**
- * Cria todas as filas de menssagens
+ * Cria todas as filas de menssagens utilizada na aplicação
  *
  */
 void initQueues(void){
 
-	xQueueCom		= xQueueCreate( 1, sizeof( DataCom ));
-	xQueueAnswer	= xQueueCreate( 1, sizeof( DataCom ));
+	xQueueCom		= xQueueCreate( 1, sizeof( DataFrame ));
+	xQueueAnswer	= xQueueCreate( 1, sizeof( DataFrame ));
 	xQueueGPS		= xQueueCreate( 1, sizeof( DataGPS ));
 	xQueueAcc		= xQueueCreate( 1, sizeof( Accelerometer ));
 	xQueueTank		= xQueueCreate( 1, sizeof( Tank ));

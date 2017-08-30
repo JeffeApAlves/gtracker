@@ -40,7 +40,7 @@ namespace GoodsTracker
 
             ans.Header.Address      = 2;
             ans.Header.Dest         = 1;
-            ans.Header.Count        = Communication.TxCmds.ContainsKey(RESOURCE.TLM )?Communication.TxCmds[RESOURCE.TLM].Header.Count: count_publish++;
+            ans.Header.TimeStamp    = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             ans.Telemetria      = createTelemetriaData();
             return ans;
         }

@@ -9,7 +9,7 @@ namespace GoodsTracker
     /**
      * 
      * Frame Coomunication
-     * [ End. de orig[5] : End dest[5] : Count frame[5] : Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
+     * [ End. de orig[5] : End dest[5] : tIME STAMP fr[5] : Operacao[2] : Recurso[3] : SizePayload[3] : payload[ 0 ~ 255] : CheckSum[2] ] \r\n
      * 
      * End. de orig: 
      * Range: 00000~65535 (00000) Broadcast
@@ -41,7 +41,7 @@ namespace GoodsTracker
     {
         ADDRESS = 0,
         DEST = 1,
-        COUNT = 2,
+        TIME_STAMP = 2,
         OPERACAO = 3,
         RESOURCE = 4,
         SIZE_PAYLOAD = 5,
@@ -56,7 +56,7 @@ namespace GoodsTracker
         SPEED = 14,
         LEVEL = 15,
         TRAVA = 16,
-        TIME_STAMP = 17,
+        TIME_STAMP_PL = 17,
     };
 
     class FrameSerial : CommunicationFrame

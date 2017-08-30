@@ -19,7 +19,7 @@
 #include "application.h"
 
 static 	int			_lock;
-static 	DataCom		Answer,Cmd;
+static 	DataFrame	Answer,Cmd;
 
 void runApp(void){
 
@@ -35,15 +35,7 @@ void runApp(void){
 
 void runMain(void){
 
-	if (xQueueGPS != 0) {
-
-		//DataGPS gps;
-
-		//if (xQueuePeek(xQueueGPS, &(gps), (TickType_t ) 1)) {
-
-			//setClockByString(gps.Time,gps.Date);
-		//}
-	}
+// TODO
 }
 //-------------------------------------------------------------------------
 
@@ -53,7 +45,7 @@ void execCMD(uint32_t ulNotifiedValue){
 
 		while (xQueueReceive(xQueueCom, &Cmd, (TickType_t ) 1)) {
 
-			pCallBack cb = getCallBack(&Cmd.resource);
+			pCallBack cb = getCallBack(Cmd.resource);
 
 			if(cb!=NULL){
 
@@ -62,7 +54,15 @@ void execCMD(uint32_t ulNotifiedValue){
 
 				if(cb(&Cmd) == CMD_RESULT_EXEC_SUCCESS) {
 
-					// TODO Sucesso na execução
+					// Publica resposta na fila
+					if(xQueueSendToBack( xQueueAnswer , &Answer, ( TickType_t ) 1 ) ){
+
+				    	xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
+
+					}else{
+
+						//TODO erro na resposta
+					}
 				}
 				else {
 
@@ -74,181 +74,134 @@ void execCMD(uint32_t ulNotifiedValue){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onLED(DataCom* frame){
+ResultExec onLED(DataFrame* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (frame) {
+// TODO
+	AppendPayLoad(&Answer.PayLoad,"1569695954");
 
-		answerTime();
-
-		res = CMD_RESULT_EXEC_SUCCESS;
-	}
+	res = CMD_RESULT_EXEC_SUCCESS;
 
 	return res;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAnalog(DataCom* cmd){
+ResultExec onAnalog(DataFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (cmd) {
+// TODO
+	AppendPayLoad(&Answer.PayLoad,"1569695954");;
 
-		answerTime();
-
-		res = CMD_RESULT_EXEC_SUCCESS;
-	}
+	res = CMD_RESULT_EXEC_SUCCESS;
 
 	return res;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAccel(DataCom* cmd){
+ResultExec onAccel(DataFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (cmd) {
+// TODO
+	AppendPayLoad(&Answer.PayLoad,"1569695954");;
 
-		answerTime();
-
-		res = CMD_RESULT_EXEC_SUCCESS;
-	}
+	res = CMD_RESULT_EXEC_SUCCESS;
 
 	return res;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onTouch(DataCom* cmd){
+ResultExec onTouch(DataFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (cmd) {
+// TODO
+	AppendPayLoad(&Answer.PayLoad,"1569695954");;
 
-		answerTime();
-
-		res = CMD_RESULT_EXEC_SUCCESS;
-	}
+	res = CMD_RESULT_EXEC_SUCCESS;
 
 	return res;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onPWM(DataCom* cmd){
+ResultExec onPWM(DataFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (cmd) {
+// TODO
+	AppendPayLoad(&Answer.PayLoad,"1569695954");;
 
-		answerTime();
-
-		res = CMD_RESULT_EXEC_SUCCESS;
-	}
+	res = CMD_RESULT_EXEC_SUCCESS;
 
 	return res;
 }
 //------------------------------------------------------------------------
 
-ResultExec onTelemetry(DataCom* cmd){
+ResultExec onTelemetry(DataFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (cmd) {
+	tlm2String(&telemetria,&Answer.PayLoad);
 
-		answerTLM();
-
-		res = CMD_RESULT_EXEC_SUCCESS;
-	}
+	res = CMD_RESULT_EXEC_SUCCESS;
 
 	return res;
 }
 //------------------------------------------------------------------------
 
-ResultExec onLock(DataCom* cmd){
+ResultExec onLock(DataFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	if (cmd) {
+	decoderLockPayLoad(&cmd->PayLoad);
 
-		decoderLockPayLoad(&cmd->PayLoad);
+	if(_lock){
 
-		if(_lock){
+		lock();
 
-			lock();
+	}else{
 
-		}else{
-
-			unLock();
-		}
-
-		answerTime();
-
-		res = CMD_RESULT_EXEC_SUCCESS;
+		unLock();
 	}
+
+	AppendPayLoad(&Answer.PayLoad,"1569695954");;
+
+	res = CMD_RESULT_EXEC_SUCCESS;
 
 	return res;
 }
 //------------------------------------------------------------------------
 
-void decoderLockPayLoad(ArrayPayLoad* payload){
+void decoderLockPayLoad(PayLoad* payload){
 
 	AsInteger(&_lock,payload->Data,0,CHAR_SEPARATOR);
 }
 //------------------------------------------------------------------------
-
-void answerTime(void){
-
-	clearArrayPayLoad(&Answer.PayLoad);
-
-	AppendPayLoad(&Answer.PayLoad,"1569695954");
-
-
-	if(xQueueSendToBack( xQueueAnswer , &Answer, ( TickType_t ) 1 ) ){
-
-    	xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
-
-	}else{
-
-		//TODO erro na resposta
-	}
-}
-//-------------------------------------------------------------------------
-
-void answerTLM(void){
-
-	tlm2String(&telemetria,&Answer.PayLoad);
-
-	if(xQueueSendToBack( xQueueAnswer , &Answer, ( TickType_t ) 1 ) ){
-
-    	xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
-
-	}else{
-
-		//TODO erro na resposta
-	}
-}
-//-------------------------------------------------------------------------
 
 /*
  *
  * Set endereco de origem e destino e o tipo da operacao
  *
  */
-static void setHeaderAnswer(DataCom* data){
+static void setHeaderAnswer(DataFrame* data){
+
+	clearArrayPayLoad(&Answer.PayLoad);
 
 	strcpy(Answer.operacao,OPERATION_AN);
 	Answer.resource		= data->resource;
 	Answer.dest			= data->address;
 	Answer.address		= ADDRESS;
-	Answer.countFrame	= data->countFrame;
+	Answer.time_stamp	= Time.timestamp;
 }
 //------------------------------------------------------------------------
 
-pCallBack getCallBack(Resource* r) {
+pCallBack getCallBack(Resource r) {
 
 	pCallBack	cb = NULL;
 
-	switch(r->id){
+	switch(r){
 
 		case CMD_LED:		cb = onLED;			break;
 		case CMD_ANALOG:	cb = onAnalog;		break;

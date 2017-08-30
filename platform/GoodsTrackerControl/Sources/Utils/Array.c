@@ -39,7 +39,7 @@ unsigned int calcChecksum(const char *buff, size_t sz) {
 }
 //------------------------------------------------------------------------
 
-void AppendPayLoad(ArrayPayLoad* payload,const char* data){
+void AppendPayLoad(PayLoad* payload,const char* data){
 
 	strcat(payload->Data,data);
 	payload->Length = strlen(payload->Data);

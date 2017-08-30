@@ -7,7 +7,7 @@
         string      data;
         int         dest;
         int         address;
-        int         count = 0;
+        int         timeStamp = 0;
         Operation   operation;
         string      resource;
         int         sizePayLoad;
@@ -17,11 +17,11 @@
         public Operation Operation { get => operation; set => operation = value; }
         public string Resource { get => resource; set => resource = value; }
         public int SizePayLoad { get => sizePayLoad; set => sizePayLoad = value; }
-        public int Count { get => count; set => count = value; }
+        public int TimeStamp { get => timeStamp; set => timeStamp = value; }
 
         internal HeaderFrame()
         {
-            count = 0;
+            timeStamp = 0;
             address = 0;
             dest = 0;
             resource = "";

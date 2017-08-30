@@ -138,7 +138,7 @@ namespace GoodsTracker
             return dt;
         }
 
-        private int AsInteger()
+        private Int32 AsInteger()
         {
             return Convert.ToInt32(strField);
         }

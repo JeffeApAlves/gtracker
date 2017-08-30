@@ -16,27 +16,9 @@ const char* OPERATION_WR = "WR";
 
 static StatusRx		statusRx = CMD_INIT;
 static RingBuffer	bufferRx,bufferTx;
-static DataCom		dataComRx,AnsCmd;
+static DataFrame	dataComRx,AnsCmd;
 static ArrayFrame	frameRx,frameTx;
 
-Resource	ListCmd[]	= {	{.id = CMD_NONE,	.name = "---\0"},
-							{.id = CMD_LED,		.name = "LED\0"},
-							{.id = CMD_ANALOG,	.name = "ANL\0"},
-							{.id = CMD_PWM,		.name = "PWM\0"},
-							{.id = CMD_ACC,		.name = "ACC\0"},
-							{.id = CMD_TOUCH,	.name = "TOU\0"},
-							{.id = CMD_TLM,		.name = "TLM\0"},
-							{.id = CMD_LOCK,	.name = "LCK\0"},
-							{.id = CMD_LCD,		.name = "LCD\0"},
-				};
-
-const unsigned char SIZE_LIST_CMD = sizeof(ListCmd)/sizeof(Resource);
-
-/*
- * Processa maquina de estado de recepção do protocolo de comunicação com o Host
- * Chamada pela task ''
- *
- */
 void processRx(void){
 
 	while(isAnyRxData()){
@@ -194,9 +176,9 @@ static bool decoderFrame(void) {
 
 			AsInteger(&dataComRx.address,		frameRx.Data,0,CHAR_SEPARATOR);
 			AsInteger(&dataComRx.dest,			frameRx.Data,1,CHAR_SEPARATOR);
-			AsInteger(&dataComRx.countFrame,	frameRx.Data,2,CHAR_SEPARATOR);
+			AsInteger(&dataComRx.time_stamp,	frameRx.Data,2,CHAR_SEPARATOR);
 			AsString(&dataComRx.operacao,		frameRx.Data,3,CHAR_SEPARATOR);
-			AsString(&dataComRx.resource.name,	frameRx.Data,4,CHAR_SEPARATOR);
+			AsResource(&dataComRx.resource,		frameRx.Data,4,CHAR_SEPARATOR);
 			AsInteger(&dataComRx.PayLoad.Length,frameRx.Data,5,CHAR_SEPARATOR);
 			AsString(&dataComRx.PayLoad.Data,	frameRx.Data,6,CHAR_SEPARATOR);
 
@@ -208,22 +190,39 @@ static bool decoderFrame(void) {
 }
 //------------------------------------------------------------------------
 
-static Resource getResource(char* name) {
+Resource getResource(char* name) {
 
-	Resource	r = ListCmd[0];
+	Resource r;
 
-	unsigned char i;
-
-	for(i = 1; i < SIZE_LIST_CMD; i++){
-
-		if(strcmp(ListCmd[i].name, name) == 0){
-
-			r = ListCmd[i];
-			break;
-		}
-	}
+	if(strcmp(name, 	"LED") == 0)	r = CMD_LED;
+	else if(strcmp(name,"LCK") == 0)	r = CMD_LOCK;
+	else if(strcmp(name,"TLM") == 0)	r = CMD_TLM;
+	else if(strcmp(name,"LCD") == 0)	r = CMD_LCD;
+	else if(strcmp(name,"TOU") == 0)	r = CMD_TOUCH;
+	else if(strcmp(name,"ACC") == 0)	r = CMD_ACC;
+	else if(strcmp(name,"PWM") == 0)	r = CMD_PWM;
+	else if(strcmp(name,"ANL") == 0)	r = CMD_ANALOG;
+	else								r = CMD_NONE;
 
 	return r;
+}
+//------------------------------------------------------------------------
+
+void getResourceName(char* out,Resource resource) {
+
+	switch(resource){
+
+		default:
+		case CMD_NONE:		strcpy(out,"---");	break;
+		case CMD_LOCK:		strcpy(out,"LCK");	break;
+		case CMD_TLM:		strcpy(out,"TLM");	break;
+		case CMD_LCD:		strcpy(out,"LCD");	break;
+		case CMD_TOUCH:		strcpy(out,"TOU");	break;
+		case CMD_ACC:		strcpy(out,"ACC");	break;
+		case CMD_PWM:		strcpy(out,"PWM");	break;
+		case CMD_ANALOG:	strcpy(out,"ANL");	break;
+		case CMD_LED:		strcpy(out,"LED");	break;
+	}
 }
 //------------------------------------------------------------------------
 
@@ -295,7 +294,7 @@ inline bool getRxData(char* ch){
  */
 static void acceptRxFrame(void) {
 
-	dataComRx.resource = getResource(dataComRx.resource.name);
+	//dataComRx.resource = getResource(dataComRx.resource.name);
 
 	if(xQueueSendToBack( xQueueCom , &dataComRx, ( TickType_t ) 1 ) ){
 
@@ -332,7 +331,7 @@ inline bool hasTxData(void){
  *  Preenche todo o frame  de envio
  *
  */
-static void buildFrame(DataCom* data,ArrayFrame* frame) {
+static void buildFrame(DataFrame* data,ArrayFrame* frame) {
 
 	clearArrayFrame(frame);
 
@@ -347,14 +346,18 @@ static void buildFrame(DataCom* data,ArrayFrame* frame) {
  * Adiciona o cabecalho no frame
  *
  */
-static void copyHeaderToFrame(DataCom* data,ArrayFrame* frame) {
+static void copyHeaderToFrame(DataFrame* data,ArrayFrame* frame) {
 
-	XF1_xsprintf(frame->Data,"%05d%c%05d%c%05d%c%s%c%s%c%03d%c",
+	char resource[4];
+
+	getResourceName(resource,data->resource);
+
+	XF1_xsprintf(frame->Data,"%05d%c%05d%c%010d%c%s%c%s%c%03d%c",
 				data->address, 			CHAR_SEPARATOR,
 				data->dest, 			CHAR_SEPARATOR,
-				data->countFrame,		CHAR_SEPARATOR,
+				data->time_stamp,		CHAR_SEPARATOR,
 				data->operacao, 		CHAR_SEPARATOR,
-				data->resource.name,	CHAR_SEPARATOR,
+				resource,				CHAR_SEPARATOR,
 				data->PayLoad.Length,	CHAR_SEPARATOR
 				);
 }
@@ -365,7 +368,7 @@ static void copyHeaderToFrame(DataCom* data,ArrayFrame* frame) {
  * Adiciona o Payload no Frame
  *
  */
-inline static void copyPayLoadToFrame(DataCom* data,ArrayFrame* frame) {
+inline static void copyPayLoadToFrame(DataFrame* data,ArrayFrame* frame) {
 
 	AppendFrame(frame,data->PayLoad.Data);
 }
@@ -391,7 +394,7 @@ static void copyCheckSumToFrame(ArrayFrame* frame) {
  * Funcao disponibilizada para aplicacao preencher o payload
  *
  */
-void doAnswer(DataCom* ans) {
+void doAnswer(DataFrame* ans) {
 
 	if (ans) {
 

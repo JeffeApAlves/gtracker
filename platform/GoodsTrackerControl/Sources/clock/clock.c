@@ -14,7 +14,7 @@
 // Referencias:	https://github.com/msolters/make-unix-timestamp-c
 //				https://community.nxp.com/docs/DOC-94734
 
-const char *DayOfWeekName[] = {
+const static char *DayOfWeekName[] = {
   "Dom","Seg","Ter","Qua","Qui","Sex","Sab"
 };
 
@@ -30,8 +30,9 @@ const static int days_per_year[2] = {
 /* User includes (#include below this line is not maintained by Processor Expert) */
 LDD_TDeviceData		*MyRTCPtr;
 LDD_RTC_TTime		Time;
-LDD_TError			Error;
-bool adjustedCLock	= FALSE;
+
+
+STATUS_CLOCK statuc_clock = CLOCK_INIT;
 
 void initClock(){
 
@@ -48,9 +49,7 @@ void initClock(){
 
 	setClock(&date_time);
 
-	getClock(&Time);
-
-	adjustedCLock	= FALSE;
+	statuc_clock = CLOCK_STARTED;
 }
 //-------------------------------------------------------------------------------------------------------------------
 
@@ -72,7 +71,9 @@ bool setClockByString(char* date,char* time){
 
 bool setClock(LDD_RTC_TTime* time){
 
-	bool flag =FALSE;
+	LDD_TError	Error;
+
+	bool flag = FALSE;
 
 	if(time!=NULL && time->Year>=2017){
 
@@ -121,24 +122,26 @@ void getClock(LDD_RTC_TTime* time){
 
 	RTC1_GetTime(MyRTCPtr, time);
 	Time.timestamp = getCurrentTimeStamp();
-	//XF1_xsprintf(timestamp,"Current time: %d:%d:%d %d.%d.%d %s\n", Time.Hour, Time.Minute, Time.Second, Time.Day, Time.Month, Time.Year, DayOfWeekName[Time.DayOfWeek]);
 }
 //-------------------------------------------------------------------------------------------------------------------
 
 void updateEntityClock(){
 
-	RTC1_GetTime(MyRTCPtr, &Time);
-	Time.timestamp++;
+	if(statuc_clock == CLOCK_ADJUSTED){
+
+		RTC1_GetTime(MyRTCPtr, &Time);
+		Time.timestamp++;
+	}
 }
 //-------------------------------------------------------------------------------------------------------------------
 
 void adjusteClock(){
 
-	if(!adjustedCLock){
+	if(statuc_clock == CLOCK_STARTED){
 
 		if(setClockByString(telemetria.GPS.Date,telemetria.GPS.Time)){
 
-			adjustedCLock = TRUE;
+			statuc_clock = CLOCK_ADJUSTED;
 		}
 	}
 }
