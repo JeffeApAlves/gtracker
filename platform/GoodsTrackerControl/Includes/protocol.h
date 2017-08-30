@@ -25,6 +25,23 @@
 #define CHAR_LF			'\n'
 #define CHAR_STR_END	'\0'
 
+/**
+ *
+ * Maquina de estado para recebimento do frame
+ */
+typedef enum {
+
+	CMD_INIT,
+	CMD_INIT_OK,
+	CMD_RX_START,
+	CMD_RX_FRAME,
+	CMD_RX_END,
+	CMD_RX_CR,
+	CMD_RX_LF,
+	CMD_FRAME_OK,
+	CMD_FRAME_NOK,
+} StatusRx;
+
 static void rxStartCMD (void);
 static void receiveFrame (void);
 static void rxLF(void);
@@ -57,6 +74,8 @@ void initCommunication(void);
 bool isAnyRxData();
 Resource getResource(char* name);
 void getResourceName(char* name,Resource resource);
+void headerToStr(char* out,DataFrame* data);
+void sendDataFrame(DataFrame* data);
 
 extern const char* OPERATION_AN;
 extern const char* OPERATION_RD;

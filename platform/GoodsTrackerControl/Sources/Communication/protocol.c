@@ -10,6 +10,7 @@
 #include "AppQueues.h"
 #include "protocol.h"
 
+char SEPARATOR[] = {CHAR_SEPARATOR,CHAR_STR_END};
 const char* OPERATION_AN = "AN";
 const char* OPERATION_RD = "RD";
 const char* OPERATION_WR = "WR";
@@ -17,7 +18,7 @@ const char* OPERATION_WR = "WR";
 static StatusRx		statusRx = CMD_INIT;
 static RingBuffer	bufferRx,bufferTx;
 static DataFrame	dataComRx,AnsCmd;
-static ArrayFrame	frameRx,frameTx;
+static ArrayFrame	frameRx;
 
 void processRx(void){
 
@@ -294,8 +295,6 @@ inline bool getRxData(char* ch){
  */
 static void acceptRxFrame(void) {
 
-	//dataComRx.resource = getResource(dataComRx.resource.name);
-
 	if(xQueueSendToBack( xQueueCom , &dataComRx, ( TickType_t ) 1 ) ){
 
 		xTaskNotify( xHandleCallBackTask , BIT_RX_FRAME , eSetBits );
@@ -348,20 +347,56 @@ static void buildFrame(DataFrame* data,ArrayFrame* frame) {
  */
 static void copyHeaderToFrame(DataFrame* data,ArrayFrame* frame) {
 
+	headerToStr(frame->Data,data);
+}
+//------------------------------------------------------------------------
+
+void headerToStr(char* out,DataFrame* data){
+
 	char resource[4];
 
 	getResourceName(resource,data->resource);
 
-	XF1_xsprintf(frame->Data,"%05d%c%05d%c%010d%c%s%c%s%c%03d%c",
+	XF1_xsprintf(out,"%05d%c%05d%c%010d%c%s%c%s%c%03d%c",
 				data->address, 			CHAR_SEPARATOR,
 				data->dest, 			CHAR_SEPARATOR,
 				data->time_stamp,		CHAR_SEPARATOR,
 				data->operacao, 		CHAR_SEPARATOR,
 				resource,				CHAR_SEPARATOR,
 				data->PayLoad.Length,	CHAR_SEPARATOR
-				);
+	);
 }
 //------------------------------------------------------------------------
+
+void sendDataFrame(DataFrame* data){
+
+	char	checksum_str[LEN_CHECKSUM+2],
+			header_str[SIZE_HEADER+1];
+
+	unsigned int  checksum;
+
+	headerToStr(header_str,data);
+
+	checksum  = calcChecksum (header_str,SIZE_HEADER) ^
+				calcChecksum (data->PayLoad.Data,data->PayLoad.Length)^
+				CHAR_SEPARATOR;
+
+	XF1_xsprintf(checksum_str, "%c%02X", CHAR_SEPARATOR , checksum);
+
+	putTxData(CHAR_START);						// Envia caracter de inicio
+
+	putString(&bufferTx,header_str);			// Envia header
+	putString(&bufferTx,data->PayLoad.Data);	// Envia payload
+	putString(&bufferTx,checksum_str);			// Envia checksum
+
+	putTxData(CHAR_END);						// Envia o caracter de fim
+	putTxData(CHAR_CR);							// Envia caracteres de controle
+	putTxData(CHAR_LF);
+
+	startTX();									// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
+}
+//------------------------------------------------------------------------
+
 
 /**
  *
@@ -381,9 +416,7 @@ inline static void copyPayLoadToFrame(DataFrame* data,ArrayFrame* frame) {
  */
 static void copyCheckSumToFrame(ArrayFrame* frame) {
 
-	char separator[] = {CHAR_SEPARATOR,CHAR_STR_END};
-
-	AppendFrame(frame,separator);
+	AppendFrame(frame,SEPARATOR);
 	XF1_xsprintf(frame->checksum, "%02X", calcChecksum (frame->Data,frame->Length));
 	AppendFrame(frame,frame->checksum);
 }
@@ -400,9 +433,11 @@ void doAnswer(DataFrame* ans) {
 
 //		ArrayFrame	frameTx;
 
-		buildFrame(ans,&frameTx);
+		//buildFrame(ans,&frameTx);
 
-		sendFrame(frameTx.Data);
+		//sendFrame(frameTx.Data)
+
+		sendDataFrame(ans);
 	}
 	else {
 

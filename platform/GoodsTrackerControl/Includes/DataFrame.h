@@ -1,10 +1,3 @@
-/*
- * DataFrame.h
- *
- *  Created on: 27/06/2017
- *      Author: Jefferson
- */
-
 #ifndef SOURCES_DATAFRAME_H_
 #define SOURCES_DATAFRAME_H_
 
@@ -49,58 +42,8 @@
 #define LEN_SIZE_PL		3
 #define LEN_CHECKSUM	2
 
-#define SIZE_HEADER			(LEN_ADDRESS + LEN_ORIGEM + LEN_TIME_STAMP + LEN_OPERATION + LEN_RESOURCE + LEN_SIZE_PL+5)	// 5 separadores do cabecalho
-#define SIZE_MIN_FRAME		(SIZE_HEADER+2)																				// 2 separador do payload vazio
-
-/*
- *
- *Retorno das callbacks
- */
-typedef enum {
-
-	CMD_RESULT_EXEC_UNSUCCESS	= -3,
-	CMD_RESULT_INVALID_CMD		= -2,
-	CMD_RESULT_INVALID_PARAM	= -1,
-	CMD_RESULT_EXEC_SUCCESS		= 0,
-
-}ResultExec;
-
-/*
- *
- * Id dos recursos
- */
-typedef enum {
-
-	CMD_NONE,
-	CMD_LED,
-	CMD_ANALOG,
-	CMD_PWM,
-	CMD_TOUCH,
-	CMD_ACC,
-	CMD_TLM,
-	CMD_LOCK,
-	CMD_LCD
-
-}Resource;
-
-#define SIZE_LIST_CMD	9
-
-/**
- *
- * Maquina de estado para recebimento do frame
- */
-typedef enum {
-
-	CMD_INIT,
-	CMD_INIT_OK,
-	CMD_RX_START,
-	CMD_RX_FRAME,
-	CMD_RX_END,
-	CMD_RX_CR,
-	CMD_RX_LF,
-	CMD_FRAME_OK,
-	CMD_FRAME_NOK,
-} StatusRx;
+#define SIZE_HEADER		(LEN_ADDRESS + LEN_ORIGEM + LEN_TIME_STAMP + LEN_OPERATION + LEN_RESOURCE + LEN_SIZE_PL+6)	// 5 separadores do cabecalho
+#define SIZE_MIN_FRAME	(SIZE_HEADER+2)																				// 2 separador do payload vazio
 
 /*
  * Estrutura de dados do frame

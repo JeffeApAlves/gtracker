@@ -183,8 +183,7 @@ static void NMEA_errorRxFrame(void)
 
 static bool NMEA_decoderFrame(void){
 
-	bool ret = false;
-
+	bool ret = FALSE;
 	uint16 count = getNumField(frameNMEA.Data,NMEA_CHAR_SEPARATOR);
 
 	if(count >= 5){
@@ -197,9 +196,9 @@ static bool NMEA_decoderFrame(void){
 
 		if(checksum_rx==checksum_calc) {
 
-			char id[NMEA_LEN_ID];
+			ret = TRUE;
 
-			ret = true;
+			char id[NMEA_LEN_ID];
 
 			AsString(id,frameNMEA.Data,0,NMEA_CHAR_SEPARATOR);
 
@@ -211,10 +210,12 @@ static bool NMEA_decoderFrame(void){
 
 			}else{
 
-				ret = false;
+				ret = FALSE;
 			}
 		}
 	}
+
+	return ret;
 }
 //------------------------------------------------------------------------
 

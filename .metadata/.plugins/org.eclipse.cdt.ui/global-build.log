@@ -1,9 +1,66 @@
-15:29:26 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+20:08:31 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
-Building file: ../Sources/App/application.c
+Building file: ../Sources/GPS/gps.c
 Invoking: Cross ARM GNU C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/App/application.d" -MT"Sources/App/application.o" -c -o "Sources/App/application.o" "../Sources/App/application.c"
-Finished building: ../Sources/App/application.c
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/TSS" -MMD -MP -MF"Sources/GPS/gps.d" -MT"Sources/GPS/gps.o" -c -o "Sources/GPS/gps.o" "../Sources/GPS/gps.c"
+../Sources/GPS/gps.c: In function 'decoderGGA':
+../Sources/GPS/gps.c:250:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Identifier,   frame,0, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:12:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:13,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:61:6: note: expected 'char *' but argument is of type 'char (*)[6]'
+ void AsString(char* out,char *str,uint16 index,const char a_delim);
+      ^~~~~~~~
+../Sources/GPS/gps.c:251:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Time_UTC,   frame,1, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:12:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:13,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:61:6: note: expected 'char *' but argument is of type 'char (*)[11]'
+ void AsString(char* out,char *str,uint16 index,const char a_delim);
+      ^~~~~~~~
+../Sources/GPS/gps.c: In function 'decoderRMC':
+../Sources/GPS/gps.c:292:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Identifier,  frame,0, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:12:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:13,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:61:6: note: expected 'char *' but argument is of type 'char (*)[6]'
+ void AsString(char* out,char *str,uint16 index,const char a_delim);
+      ^~~~~~~~
+../Sources/GPS/gps.c:293:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Time_UTC,  frame,1, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:12:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:13,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:61:6: note: expected 'char *' but argument is of type 'char (*)[11]'
+ void AsString(char* out,char *str,uint16 index,const char a_delim);
+      ^~~~~~~~
+../Sources/GPS/gps.c:300:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Date,   frame,9, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:12:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:13,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:61:6: note: expected 'char *' but argument is of type 'char (*)[7]'
+ void AsString(char* out,char *str,uint16 index,const char a_delim);
+      ^~~~~~~~
+../Sources/GPS/gps.c: In function 'decoderGSA':
+../Sources/GPS/gps.c:333:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Identifier,  frame,0, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:12:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:13,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:61:6: note: expected 'char *' but argument is of type 'char (*)[6]'
+ void AsString(char* out,char *str,uint16 index,const char a_delim);
+      ^~~~~~~~
+Finished building: ../Sources/GPS/gps.c
  
 Building target: GoodsTrackerControl.elf
 Invoking: Cross ARM GNU C++ Linker
@@ -17,22 +74,22 @@ Finished building: GoodsTrackerControl.srec
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  67552	    532	  14756	  82840	  14398	GoodsTrackerControl.elf
+  67400	    532	  14444	  82376	  141c8	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
-15:29:36 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+20:08:37 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  67552	    532	  14756	  82840	  14398	GoodsTrackerControl.elf
+  67400	    532	  14444	  82376	  141c8	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
-15:29:54 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+20:10:48 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  67552	    532	  14756	  82840	  14398	GoodsTrackerControl.elf
+  67400	    532	  14444	  82376	  141c8	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  

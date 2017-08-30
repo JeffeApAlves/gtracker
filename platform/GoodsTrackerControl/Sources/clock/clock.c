@@ -106,7 +106,7 @@ void strToData(	LDD_RTC_TTime* date_time,char* date,char* time){
 	strncpy(sec, 	time+4,2);
 	strncpy(day, 	date,2);
 	strncpy(month,	date+2,2);
-	strncpy(year,	"20",2);	// ano 4 digitos
+	strncpy(year,	"20",2);	// adiona o inicio do ano para o formato de 4 digitos
 	strncpy(year+2,	date+4,2);
 
 	date_time->Hour		= atoi(hrs);

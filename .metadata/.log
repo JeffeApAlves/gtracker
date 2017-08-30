@@ -10946,3 +10946,1641 @@ org.eclipse.core.runtime.CoreException: PEmicro GDB Launch Failure : Another GDB
 
 !ENTRY org.eclipse.core.jobs 2 2 2017-08-30 15:38:33.483
 !MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: com.processorexpert.core.internal.PMOpenProjectFromHistory$1
+!SESSION 2017-08-30 17:28:07.208 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2017-08-30 17:28:27.294
+!MESSAGE Plugin org.eclipse.cdt.ui, extension org.eclipse.ui.decorators, id org.eclipse.cdt.internal.ui.CustomBuildSettingsDecorator: Duplicate id found: org.eclipse.cdt.internal.ui.CustomBuildSettingsDecorator
+
+!ENTRY org.eclipse.ui 4 4 2017-08-30 17:28:27.394
+!MESSAGE Plugin org.eclipse.cdt.ui, extension org.eclipse.ui.decorators, id org.eclipse.cdt.internal.ui.CustomBuildSettingsDecorator: Unknown extension tag found: decorator
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-08-30 17:28:40.123
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui.workbench 4 2 2017-08-30 17:28:47.810
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Executable extension definition for "class" not found.
+	at org.eclipse.core.internal.registry.ConfigurationElement.throwException(ConfigurationElement.java:62)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:222)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:291)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:286)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 17:28:47.825
+!MESSAGE Executable extension definition for "class" not found.
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 17:28:47.825
+!MESSAGE Executable extension definition for "class" not found.
+
+!ENTRY org.eclipse.ui 4 0 2017-08-30 17:28:47.841
+!MESSAGE Unable to execute early startup code for the org.eclipse.ui.IStartup extension contributed by the 'com.freescale.processorexpert.compatibility' plug-in.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Executable extension definition for "class" not found.
+	at org.eclipse.core.internal.registry.ConfigurationElement.throwException(ConfigurationElement.java:62)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:222)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:291)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:286)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 17:28:47.841
+!MESSAGE Executable extension definition for "class" not found.
+
+!ENTRY org.eclipse.ui.workbench 4 2 2017-08-30 17:28:47.862
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Executable extension definition for "class" not found.
+	at org.eclipse.core.internal.registry.ConfigurationElement.throwException(ConfigurationElement.java:62)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:222)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:282)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 17:28:47.862
+!MESSAGE Executable extension definition for "class" not found.
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 17:28:47.862
+!MESSAGE Executable extension definition for "class" not found.
+
+!ENTRY org.eclipse.ui 4 0 2017-08-30 17:28:47.877
+!MESSAGE Unable to execute early startup code for the org.eclipse.ui.IStartup extension contributed by the 'com.freescale.processorexpert.core' plug-in.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Executable extension definition for "class" not found.
+	at org.eclipse.core.internal.registry.ConfigurationElement.throwException(ConfigurationElement.java:62)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:222)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:282)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 17:28:47.877
+!MESSAGE Executable extension definition for "class" not found.
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-08-30 17:28:49.156
+!MESSAGE External elements location C:\nxp\MCUXpressoIDE_10.0.2_411\ide\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY com.freescale.processorexpert.core 4 0 2017-08-30 17:50:43.124
+!MESSAGE org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+	at org.eclipse.cdt.managedbuilder.internal.core.Option.getBasicStringListValue(Option.java:2546)
+	at com.processorexpert.core.compiler.BuildSettingsReader.modifyIncludePathAdv(BuildSettingsReader.java:728)
+	at com.processorexpert.core.compiler.LkrFile.updateToolchainSettings(LkrReader.java:417)
+	at com.processorexpert.core.compiler.LkrReader.updateToolchainSettings(LkrReader.java:618)
+	at com.processorexpert.core.ProjectPE.updateCompilerSettingsFromSymbols(ProjectPE.java:4125)
+	at com.processorexpert.core.ProjectPE.synchronizeGeneratedFiles(ProjectPE.java:3918)
+	at com.processorexpert.core.client.ProjectPEclient.synchronizeGeneratedFiles(ProjectPEclient.java:1935)
+	at com.processorexpert.core.builder.PEBuilder.buildIfNeeded(PEBuilder.java:269)
+	at com.processorexpert.core.builder.PEBuilder.fullBuild(PEBuilder.java:196)
+	at com.processorexpert.core.builder.PEBuilder.build(PEBuilder.java:81)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:735)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:301)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:304)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:360)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:383)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:487)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:406)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:285)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2017-08-30 18:25:10.501 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-08-30 18:25:14.289
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui 4 4 2017-08-30 18:25:26.884
+!MESSAGE Plugin org.eclipse.cdt.ui, extension org.eclipse.ui.decorators, id org.eclipse.cdt.internal.ui.CustomBuildSettingsDecorator: Duplicate id found: org.eclipse.cdt.internal.ui.CustomBuildSettingsDecorator
+
+!ENTRY org.eclipse.ui 4 4 2017-08-30 18:25:26.900
+!MESSAGE Plugin org.eclipse.cdt.ui, extension org.eclipse.ui.decorators, id org.eclipse.cdt.internal.ui.CustomBuildSettingsDecorator: Unknown extension tag found: decorator
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-08-30 18:25:35.967
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jefferson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui.workbench 4 2 2017-08-30 18:25:44.111
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Executable extension definition for "class" not found.
+	at org.eclipse.core.internal.registry.ConfigurationElement.throwException(ConfigurationElement.java:62)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:222)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:291)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:286)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 18:25:44.163
+!MESSAGE Executable extension definition for "class" not found.
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 18:25:44.163
+!MESSAGE Executable extension definition for "class" not found.
+
+!ENTRY org.eclipse.ui 4 0 2017-08-30 18:25:44.178
+!MESSAGE Unable to execute early startup code for the org.eclipse.ui.IStartup extension contributed by the 'com.freescale.processorexpert.compatibility' plug-in.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Executable extension definition for "class" not found.
+	at org.eclipse.core.internal.registry.ConfigurationElement.throwException(ConfigurationElement.java:62)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:222)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:291)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:52)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:286)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 18:25:44.178
+!MESSAGE Executable extension definition for "class" not found.
+
+!ENTRY org.eclipse.ui.workbench 4 2 2017-08-30 18:25:44.194
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Executable extension definition for "class" not found.
+	at org.eclipse.core.internal.registry.ConfigurationElement.throwException(ConfigurationElement.java:62)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:222)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:282)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 18:25:44.194
+!MESSAGE Executable extension definition for "class" not found.
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 18:25:44.194
+!MESSAGE Executable extension definition for "class" not found.
+
+!ENTRY org.eclipse.ui 4 0 2017-08-30 18:25:44.194
+!MESSAGE Unable to execute early startup code for the org.eclipse.ui.IStartup extension contributed by the 'com.freescale.processorexpert.core' plug-in.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Executable extension definition for "class" not found.
+	at org.eclipse.core.internal.registry.ConfigurationElement.throwException(ConfigurationElement.java:62)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:222)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:282)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:53)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2835)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2017-08-30 18:25:44.194
+!MESSAGE Executable extension definition for "class" not found.
+
+!ENTRY com.processorexpert.core.ide.wizard.ui 2 0 2017-08-30 18:25:45.145
+!MESSAGE External elements location C:\nxp\MCUXpressoIDE_10.0.2_411\ide\ProcessorExpert\BoardConfigurations/wizard_data does not exist
+
+!ENTRY com.freescale.processorexpert.core 4 0 2017-08-30 18:47:31.914
+!MESSAGE org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Type of option value is inconsistent with option type
+	at org.eclipse.cdt.managedbuilder.internal.core.Option.getBasicStringListValue(Option.java:2546)
+	at com.processorexpert.core.compiler.BuildSettingsReader.modifyIncludePathAdv(BuildSettingsReader.java:728)
+	at com.processorexpert.core.compiler.LkrFile.updateToolchainSettings(LkrReader.java:417)
+	at com.processorexpert.core.compiler.LkrReader.updateToolchainSettings(LkrReader.java:618)
+	at com.processorexpert.core.ProjectPE.updateCompilerSettingsFromSymbols(ProjectPE.java:4125)
+	at com.processorexpert.core.ProjectPE.synchronizeGeneratedFiles(ProjectPE.java:3918)
+	at com.processorexpert.core.client.ProjectPEclient.synchronizeGeneratedFiles(ProjectPEclient.java:1935)
+	at com.processorexpert.core.builder.PEBuilder.buildIfNeeded(PEBuilder.java:269)
+	at com.processorexpert.core.builder.PEBuilder.fullBuild(PEBuilder.java:196)
+	at com.processorexpert.core.builder.PEBuilder.build(PEBuilder.java:81)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:735)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:301)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:304)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:360)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:383)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:487)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:406)
+	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:285)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:43.791
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@10d99da): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:43.791
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:43.989
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@2cff9c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:43.989
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:43.989
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1a78423): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:43.989
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.004
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@171784): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.004
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.004
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@32c326): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.004
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.020
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1fdab1f): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.020
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.036
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@147eef9): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.036
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.036
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@964a5c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.036
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.036
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@7331de): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.036
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.051
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@d2c2dc): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.051
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.067
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@3c7710): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.067
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.067
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1b2d79c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.067
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.087
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1a5c70f): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.087
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.088
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@165dffb): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.088
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.088
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@82b630): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.088
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.103
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@a6d906): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.103
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.119
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@16f088): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.119
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.119
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@439fac): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.119
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.119
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@7a827a): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.119
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 18:50:44.134
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@8a041a): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 18:50:44.134
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:05:15.261
+!MESSAGE Request monitor: 'Sequence "", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:05:15.337
+!MESSAGE Request monitor: 'Sequence "Initializing debugger services", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:05:15.348
+!MESSAGE Request monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@1f1732e): Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY com.pemicro.debug.gdbjtag.pne 4 5012 2017-08-30 19:05:15.383
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:424)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:387)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:312)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+!SUBENTRY 1 com.pemicro.debug.gdbjtag.pne 8 1 2017-08-30 19:05:15.384
+!MESSAGE PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:05:34.053
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@613bc5): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:05:34.053
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:05:34.069
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@668058): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:05:34.069
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:05:34.069
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@11078a2): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:05:34.069
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:05:34.084
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@5bb9c7): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:05:34.084
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:05:34.084
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1a3189a): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:05:34.084
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.481
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@16846e8): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.481
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.559
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@d6830b): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.559
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.566
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@190de11): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.566
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.573
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1ed6b8d): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.573
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.579
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@a53c9e): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.579
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.594
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@aee854): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.594
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.601
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@13c879b): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.601
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.609
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1b69064): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.609
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.617
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@c86501): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.617
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.625
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1a5d904): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.625
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.638
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@9c4629): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.638
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.645
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@e03086): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.645
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.652
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1ecb6b9): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.652
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.658
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@baee0d): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.658
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.668
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@341fd): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.668
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.681
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@102317d): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.681
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.688
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@9b5cb5): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.688
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.694
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1dffd1b): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.694
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.700
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1894492): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.700
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:12:05.705
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1c615c7): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:12:05.705
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:17:29.917
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@19c7b6c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:17:29.917
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:17:29.984
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1dfd2fa): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:17:29.984
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:17:29.992
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1c10c6c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:17:29.992
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:17:30.001
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@9326b1): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:17:30.001
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:17:30.009
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@5a6b54): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:17:30.009
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:20:11.780
+!MESSAGE Request monitor: 'Sequence "", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:20:11.856
+!MESSAGE Request monitor: 'Sequence "Initializing debugger services", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:20:11.864
+!MESSAGE Request monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@93459e): Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY com.pemicro.debug.gdbjtag.pne 4 5012 2017-08-30 19:20:11.876
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:424)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:387)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:312)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+!SUBENTRY 1 com.pemicro.debug.gdbjtag.pne 8 1 2017-08-30 19:20:11.877
+!MESSAGE PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:21:26.756
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@11a541f): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:21:26.756
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:21:26.807
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1b3425c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:21:26.807
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:21:26.818
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1efa654): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:21:26.818
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:21:26.829
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@2dc554): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:21:26.829
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:21:26.837
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@174d062): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:21:26.837
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:25:36.446
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@17fe374): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:25:36.446
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:25:36.517
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@93f655): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:25:36.517
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:25:36.524
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@7719fc): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:25:36.524
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:25:36.532
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@146878c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:25:36.532
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:25:36.542
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1d2b113): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:25:36.542
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:25:37.880
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@fbd9e0): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:25:37.880
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:25:37.890
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@13e2dba): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:25:37.890
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:25:37.900
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@136fb4c): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:25:37.900
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:25:37.907
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@31bd58): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:25:37.907
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:25:37.916
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@8b45e7): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:25:37.916
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.007
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1d59ed3): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.007
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.019
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1cd5717): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.019
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.027
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1d35727): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.027
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.034
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@173ba47): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.034
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.041
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@ab85fc): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.041
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.056
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@11c1f73): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.056
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.063
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@b2ca5): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.063
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.072
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@51ef9e): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.072
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.078
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@12838e5): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.078
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.088
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@c656b4): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.088
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.098
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@f2b1ff): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.098
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.105
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@18196b3): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.105
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.111
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@912504): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.111
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.116
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@8b4827): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.117
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.123
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1af6380): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.123
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.163
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@11f1682): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.163
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.170
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@32e51a): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.170
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.178
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@f01708): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.178
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.185
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@18a5bcb): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.185
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:28:42.191
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@b4f37e): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:28:42.191
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:46.893
+!MESSAGE Request monitor: 'Sequence "", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:46.906
+!MESSAGE Request monitor: 'Sequence "Initializing debugger services", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:46.919
+!MESSAGE Request monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@96f303): Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY com.pemicro.debug.gdbjtag.pne 4 5012 2017-08-30 19:30:46.934
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:424)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:387)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:312)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+!SUBENTRY 1 com.pemicro.debug.gdbjtag.pne 8 1 2017-08-30 19:30:46.935
+!MESSAGE PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:55.522
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1f653da): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-30 19:30:55.523
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:55.532
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@87a4a5): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-30 19:30:55.532
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:55.542
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@f1cc08): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-30 19:30:55.542
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:55.552
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1061c6c): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-30 19:30:55.552
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:55.564
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@41e5d5): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-30 19:30:55.564
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:55.589
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@113e0fe): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-30 19:30:55.589
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:55.597
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@13b0491): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-30 19:30:55.597
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:55.607
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@545b8): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-30 19:30:55.607
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:55.615
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@10917cb): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-30 19:30:55.615
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:30:55.622
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1970584): Status ERROR: com.crt.dsfdebug code=10001 GDB Control not accessible. null' resulted in an error.
+!SUBENTRY 1 com.crt.dsfdebug 4 10001 2017-08-30 19:30:55.622
+!MESSAGE GDB Control not accessible.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:36:10.272
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@f5658a): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:36:10.273
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:36:10.283
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@10b7ebd): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:36:10.283
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:36:10.293
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@7fdcfc): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:36:10.293
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:36:10.303
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@6ef0d2): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:36:10.303
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:36:10.312
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1b00c60): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:36:10.312
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:36:11.664
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@83264c): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:36:11.664
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:36:11.674
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@697e61): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:36:11.674
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:36:11.682
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@18522c4): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:36:11.682
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:36:11.690
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1b37937): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:36:11.690
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:36:11.700
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@ab950b): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:36:11.700
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:44.899
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1a42560): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:44.899
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:44.910
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@a21b45): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:44.910
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:44.920
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@6475ca): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:44.920
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:44.930
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@3601a8): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:44.930
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:44.942
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@bb52b): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:44.942
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:44.961
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@ece84c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:44.961
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:44.977
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@226211): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:44.977
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:44.987
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1d58c6c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:44.987
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:44.998
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@4ee5ca): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:44.998
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:45.010
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1c3cc47): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:45.010
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:45.027
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@3670a8): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:45.027
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:45.036
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@f4a433): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:45.036
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:45.043
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1d488e1): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:45.043
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:45.050
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@687b5e): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:45.051
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:45.059
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@132e34b): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:44:45.059
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:46.356
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1fe42de): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:44:46.356
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:46.365
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1d6c0cf): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:44:46.365
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:46.372
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@191903d): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:44:46.372
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:46.380
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@2a7f43): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:44:46.380
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:44:46.391
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@197282a): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2017-08-30 19:44:46.391
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.021
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@12e14e9): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.021
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.035
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1306e39): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.036
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.046
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@523d8a): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.046
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.056
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@b6ebf8): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.056
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.065
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@11a351b): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.065
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.081
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@b8a1b3): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.081
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.091
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1aa5dac): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.091
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.099
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1cc61e): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.099
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.109
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@2738d9): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.109
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.121
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1e9a897): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.121
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.140
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@175f37f): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.140
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.150
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@84150c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.150
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.158
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@ae1134): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.158
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.164
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@7840ba): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.164
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.173
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@4ab441): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.173
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.186
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@17cd8a6): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.186
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.193
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@2b3640): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.193
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.203
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@595afc): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.203
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.209
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1d49fdd): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.209
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 19:53:19.216
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@e4dbe9): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 19:53:19.216
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.528
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1fadaab): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.528
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.609
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@e727df): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.609
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.617
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1dcc6c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.617
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.624
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1068d69): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.624
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.633
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@c23420): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.633
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.648
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@14b0466): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.648
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.657
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@945f9e): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.657
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.666
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@109e222): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.666
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.674
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@16c33ea): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.674
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.681
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1b6255): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.681
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.693
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@b715ff): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.693
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.699
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@5ae3c5): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.699
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.705
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@10868cb): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.705
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.711
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@138fb24): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.711
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.717
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@13215d1): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.717
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.730
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@120b9f4): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.730
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.737
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@9bea9c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.737
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.745
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@d966d9): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.745
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.751
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@13b0147): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.751
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:06:06.758
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1a4f74d): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:06:06.758
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:14.929
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1b1232): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:14.929
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.070
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1c78e31): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.070
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.076
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@5ca314): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.076
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.083
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@109cb02): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.083
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.091
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@127d8d3): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.091
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.105
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1285fea): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.105
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.114
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@b90866): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.114
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.121
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1f376c1): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.121
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.129
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@6d9465): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.129
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.135
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@19550cd): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.135
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.146
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@7ffd75): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.146
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.152
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1e2dc1c): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.152
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.158
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@14c76d8): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.158
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.163
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@b2cb68): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.163
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:15.169
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1f1031e): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:09:15.169
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:19.902
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@486647): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:19.902
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:19.915
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1924a1): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:19.915
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:19.933
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1a78b88): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:19.933
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:19.950
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@f13e7c): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:19.950
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:19.967
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1156f90): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:19.967
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:19.979
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1057189): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:19.979
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:19.991
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@5fea26): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:19.991
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:20.007
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@16e394f): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:20.007
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:20.019
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@123b69d): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:20.019
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:20.033
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1640b09): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:20.033
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:20.044
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@ebcb19): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:20.044
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:09:20.055
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@732aca): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:09:20.055
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.190
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@12179fe): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.190
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.208
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1b8f41): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.208
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.226
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@ba590a): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.226
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.241
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@56f6f5): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.241
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.256
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@f08288): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.256
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.271
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@ad7e50): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.271
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.287
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1dba3af): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.287
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.303
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@b32edd): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.303
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.317
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@eece65): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.317
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.339
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@fcd98c): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.340
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.354
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1b0f039): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.354
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:23.368
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@36e314): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002 java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2017-08-30 20:10:23.368
+!MESSAGE Failed to execute MI command:
+-list-thread-groups i1
+Error message from debugger back end:
+Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+!STACK 0
+java.lang.Exception: Remote failure reply: EB510000000000003B1B00003B1B000000000000A5A5A5A5A5A5A5A580090020A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A578090020ABBC000074BC000000020021D02F0020900D002000000002
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:940)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:769)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:53.616
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@d745d9): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:10:53.616
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:53.634
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@134a1fd): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:10:53.634
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:53.646
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@1cb6354): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:10:53.646
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:53.655
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@328547): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:10:53.655
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:53.664
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@5bf015): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:10:53.664
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:53.684
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@250995): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:10:53.684
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:53.691
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@f9ff58): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:10:53.691
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:53.699
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@195a995): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:10:53.699
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:53.706
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@14013a8): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:10:53.706
+!MESSAGE Target not available.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2017-08-30 20:10:53.712
+!MESSAGE Request for monitor: 'RequestMonitor (com.crt.dsfdebug.ui.DebugAllHelper$3$2@191d674): Status ERROR: org.eclipse.cdt.dsf code=10001 Target not available. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10001 2017-08-30 20:10:53.712
+!MESSAGE Target not available.

@@ -61,12 +61,12 @@ void execCMD(uint32_t ulNotifiedValue){
 
 					}else{
 
-						//TODO erro na resposta
+						// Erro ao tentar publicar a resposta
 					}
 				}
 				else {
 
-					// TODO Sem sucesso na execução
+					// Sem sucesso na execução do comando
 				}
 			}
 		}
@@ -78,7 +78,6 @@ ResultExec onLED(DataFrame* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-// TODO
 	AppendPayLoad(&Answer.PayLoad,"1569695954");
 
 	res = CMD_RESULT_EXEC_SUCCESS;
@@ -91,7 +90,6 @@ ResultExec onAnalog(DataFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-// TODO
 	AppendPayLoad(&Answer.PayLoad,"1569695954");;
 
 	res = CMD_RESULT_EXEC_SUCCESS;
@@ -104,7 +102,6 @@ ResultExec onAccel(DataFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-// TODO
 	AppendPayLoad(&Answer.PayLoad,"1569695954");;
 
 	res = CMD_RESULT_EXEC_SUCCESS;
@@ -117,7 +114,6 @@ ResultExec onTouch(DataFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-// TODO
 	AppendPayLoad(&Answer.PayLoad,"1569695954");;
 
 	res = CMD_RESULT_EXEC_SUCCESS;
@@ -130,7 +126,6 @@ ResultExec onPWM(DataFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-// TODO
 	AppendPayLoad(&Answer.PayLoad,"1569695954");;
 
 	res = CMD_RESULT_EXEC_SUCCESS;
