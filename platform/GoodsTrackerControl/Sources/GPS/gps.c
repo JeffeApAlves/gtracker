@@ -17,9 +17,8 @@ const char* GSA	= "GSA";
 #define		WEST	'W'
 
 static RingBuffer	bufferRxNMEA;
-static Frame	frameNMEA;
+static Frame		frameNMEA;
 static StatusNMEA	statusNMEA = NMEA_INIT;
-static DataNMEA		dataNMEA;
 static DataGPS		infoGPS;
 
 void runNMEA(void) {
@@ -158,12 +157,6 @@ static void NMEA_verifyFrame(void)
 
 static void NMEA_acceptRxFrame(void)
 {
-	infoGPS.Lat = dataNMEA.Lat;
-	infoGPS.Lng = dataNMEA.Lng;
-	strcpy(infoGPS.Time,dataNMEA.Time_UTC);
-	strcpy(infoGPS.Date,dataNMEA.Date);
-	infoGPS.Speed = dataNMEA.Speed;
-
     if(xQueueSendToBack( xQueueGPS ,(void*) &infoGPS, ( TickType_t ) 1 ) ){
 
     	xTaskNotify( xHandleCallBackTask , BIT_UPDATE_GPS , eSetBits );
@@ -205,11 +198,11 @@ static bool NMEA_decoderFrame(void){
 
 			AsString(id,frameNMEA.Data,0,NMEA_CHAR_SEPARATOR);
 
-			if(strcmp(GGA,id+2)==0){		decoderGGA(frameNMEA.Data,&dataNMEA);
+			if(strcmp(GGA,id+2)==0){		decoderGGA(frameNMEA.Data,&infoGPS);
 
-			}else if(strcmp(RMC,id+2)==0){	decoderRMC(frameNMEA.Data,&dataNMEA);
+			}else if(strcmp(RMC,id+2)==0){	decoderRMC(frameNMEA.Data,&infoGPS);
 
-			}else if(strcmp(GSA,id+2)==0){	decoderGSA(frameNMEA.Data,&dataNMEA);
+			}else if(strcmp(GSA,id+2)==0){	decoderGSA(frameNMEA.Data,&infoGPS);
 
 			}else{
 
@@ -248,7 +241,7 @@ type 1 or 9 update, null field when DGPS is not used
 14) Differential reference station ID, 0000-1023
 15) Checksum
 */
-static void decoderGGA(char* frame,DataNMEA* data){
+static void decoderGGA(char* frame,DataGPS* data){
 
 	AsString(&data->Identifier,			frame,0, NMEA_CHAR_SEPARATOR);
 	AsString(&data->Time_UTC,			frame,1, NMEA_CHAR_SEPARATOR);
@@ -290,7 +283,7 @@ $--RMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,xxxx,x.x,a*hh
 11) E or W
 12) Checksum
 */
-static void decoderRMC(char* frame,DataNMEA* data){
+static void decoderRMC(char* frame,DataGPS* data){
 
 	AsString(&data->Identifier,		frame,0, NMEA_CHAR_SEPARATOR);
 	AsString(&data->Time_UTC,		frame,1, NMEA_CHAR_SEPARATOR);
@@ -301,7 +294,7 @@ static void decoderRMC(char* frame,DataNMEA* data){
 	AsChar(&data->LngDirection,		frame,6, NMEA_CHAR_SEPARATOR);
 	AsInteger(&data->Speed,			frame,7, NMEA_CHAR_SEPARATOR);
 	AsString(&data->Date,			frame,9, NMEA_CHAR_SEPARATOR);
-	AsFloat(&data->MagVariation,	frame,10, NMEA_CHAR_SEPARATOR);
+	AsFloat(&data->MagVariation,	frame,10,NMEA_CHAR_SEPARATOR);
 
 	if(data->LatDirection==SOUTH){
 
@@ -331,7 +324,7 @@ $--GSA,a,a,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x.x,x.x,x.x*hh
 17) VDOP in meters
 18) Checksum
 */
-static void decoderGSA(char* frame,DataNMEA* data){
+static void decoderGSA(char* frame,DataGPS* data){
 
 	AsString(&data->Identifier,		frame,0, NMEA_CHAR_SEPARATOR);
 	AsChar(&data->SelectionMode,	frame,1, NMEA_CHAR_SEPARATOR);
@@ -376,7 +369,7 @@ inline bool isAnyGPSData(){
 void NMEA_init(void)
 {
 	clearBuffer(&bufferRxNMEA);
-	clearDataNMEA(&dataNMEA);
+	clearGPS(&infoGPS);
 	clearArrayFrame(&frameNMEA);
 	setGPSStatus(NMEA_INIT_OK);
 }

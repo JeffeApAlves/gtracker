@@ -38,4 +38,6 @@ typedef enum{CLOCK_INIT,CLOCK_STARTED,CLOCK_UPDATE,CLOCK_ADJUSTED} STATUS_CLOCK;
 
 extern LDD_RTC_TTime	Time;
 
+extern volatile STATUS_CLOCK statuc_clock;
+
 #endif /* INCLUDES_CLOCK_H_ */

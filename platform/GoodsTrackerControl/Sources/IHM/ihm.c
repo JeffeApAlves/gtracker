@@ -148,8 +148,28 @@ void initIHM() {
 void printClock(LDD_RTC_TTime* time){
 
 	char time_str[10];
-	XF1_xsprintf(time_str,"%02d:%02d:%02d \n", time->Hour+FUSO_HORARIO_BR, time->Minute, time->Second);
-	printLCD(2,9,time_str);
+
+
+	switch(statuc_clock){
+
+		case CLOCK_INIT:
+			XF1_xsprintf(time_str,"CLKINIT\n");
+
+			break;
+		case CLOCK_STARTED:
+			XF1_xsprintf(time_str,"CLKSTART\n");
+			break;
+		case CLOCK_UPDATE:
+			XF1_xsprintf(time_str,"CLKUPD\n");
+			break;
+		case CLOCK_ADJUSTED:
+			XF1_xsprintf(time_str,"%02d.%02d.%4d %02d:%02d:%02d \n",time->Day,time->Month,time->Year,time->Hour+FUSO_HORARIO_BR, time->Minute, time->Second);
+			break;
+	}
+
+//	printLCD(2,9,time_str);
+	printLCD(2,1,time_str);
+
 }
 //-----------------------------------------------------------------------------------------
 

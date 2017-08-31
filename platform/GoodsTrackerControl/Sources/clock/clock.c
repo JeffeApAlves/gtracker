@@ -27,29 +27,33 @@ const static int days_per_year[2] = {
   365, 366
 };
 
-/* User includes (#include below this line is not maintained by Processor Expert) */
 LDD_TDeviceData		*MyRTCPtr;
 LDD_RTC_TTime		Time;
 
-
-STATUS_CLOCK statuc_clock = CLOCK_INIT;
+volatile STATUS_CLOCK statuc_clock = CLOCK_INIT;
 
 void initClock(){
 
-	MyRTCPtr = RTC1_Init((LDD_TUserData *)NULL, FALSE);        /* Initialize the device, preserve time settings */
+	/* Initialize the device, preserve time settings */
+	MyRTCPtr = RTC1_Init((LDD_TUserData *)NULL, FALSE);
 
-	LDD_RTC_TTime date_time;
+	if(MyRTCPtr!=NULL){
+/*
+		LDD_RTC_TTime date_time = {
 
-	date_time.Hour		= 0;
-	date_time.Minute	= 0;
-	date_time.Second	= 0;
-	date_time.Year		= 1970;
-	date_time.Month		= 1;
-	date_time.Day		= 1;
+			.Hour		= 0,
+			.Minute		= 0,
+			.Second		= 0,
+			.Year		= 1970,
+			.Month		= 1,
+			.Day		= 1,
+			.timestamp	= 0
+		};
 
-	setClock(&date_time);
-
-	statuc_clock = CLOCK_STARTED;
+		setClock(&date_time);
+*/
+		statuc_clock = CLOCK_STARTED;
+	}
 }
 //-------------------------------------------------------------------------------------------------------------------
 
@@ -75,10 +79,12 @@ bool setClock(LDD_RTC_TTime* time){
 
 	bool flag = FALSE;
 
-	if(time!=NULL && time->Year>=2017){
+	if(		time!=NULL &&
+			time->Year>EPOCH_YEAR &&
+			time->Day>0 && time->Day<=31 &&
+			time->Month>0 && time->Month<=12){
 
-		Time	= *time;
-		Error	= RTC1_SetTime(MyRTCPtr, &Time);
+		Error	= RTC1_SetTime(MyRTCPtr,time);
 
 		if(Error==ERR_OK){
 
@@ -92,31 +98,6 @@ bool setClock(LDD_RTC_TTime* time){
 }
 //-------------------------------------------------------------------------------------------------------------------
 
-void strToData(	LDD_RTC_TTime* date_time,char* date,char* time){
-
-	char year[5];	year[4]		= '\0';
-	char month[3];	month[2]	= '\0';
-	char day[3];	day[2]		= '\0';
-	char hrs[3];	hrs[2] 		= '\0';
-	char min[3];	min[2] 		= '\0';
-	char sec[3];	sec[2] 		= '\0';
-
-	strncpy(hrs, 	time,2);
-	strncpy(min, 	time+2,2);
-	strncpy(sec, 	time+4,2);
-	strncpy(day, 	date,2);
-	strncpy(month,	date+2,2);
-	strncpy(year,	"20",2);	// adiona o inicio do ano para o formato de 4 digitos
-	strncpy(year+2,	date+4,2);
-
-	date_time->Hour		= atoi(hrs);
-	date_time->Minute	= atoi(min);
-	date_time->Second	= atoi(sec);
-	date_time->Year		= atoi(year);
-	date_time->Month	= atoi(month);
-	date_time->Day		= atoi(day);
-}
-//-------------------------------------------------------------------------------------------------------------------
 
 void getClock(LDD_RTC_TTime* time){
 
@@ -139,7 +120,7 @@ void adjusteClock(){
 
 	if(statuc_clock == CLOCK_STARTED){
 
-		if(setClockByString(telemetria.GPS.Date,telemetria.GPS.Time)){
+		if(setClockByString(telemetria.GPS.Date,telemetria.GPS.Time_UTC)){
 
 			statuc_clock = CLOCK_ADJUSTED;
 		}
@@ -151,6 +132,45 @@ uint32_t getCurrentTimeStamp(){
 
 	return unix_time_in_seconds((uint8_t)Time.Second, (uint8_t)Time.Minute, (uint8_t)Time.Hour,
 			(uint8_t)Time.Day, (uint8_t)Time.Month, (uint16_t)Time.Year);
+}
+//-------------------------------------------------------------------------------------------------------------------
+
+void strToData(	LDD_RTC_TTime* date_time,char* date,char* time){
+
+	char year[3];	year[2]		= '\0';
+	char month[3];	month[2]	= '\0';
+	char day[3];	day[2]		= '\0';
+	char hrs[3];	hrs[2] 		= '\0';
+	char min[3];	min[2] 		= '\0';
+	char sec[3];	sec[2] 		= '\0';
+
+	memset(date_time,0,sizeof(LDD_RTC_TTime));
+
+	if(strlen(time)>=6){
+		strncpy(hrs, 	time,2);
+		strncpy(min, 	time+2,2);
+		strncpy(sec, 	time+4,2);
+
+		date_time->Hour		= atoi(hrs);
+		date_time->Minute	= atoi(min);
+		date_time->Second	= atoi(sec);
+	}
+
+	if(strlen(date)>=6){
+
+		strncpy(day, 	date,2);
+		strncpy(month,	date+2,2);
+		strncpy(year,	date+4,2);
+
+		date_time->Year		= atoi(year);
+		date_time->Month	= atoi(month);
+		date_time->Day		= atoi(day);
+
+		// ano de 2 digitos
+		if(date_time->Year>0 && date_time->Year<100){
+			date_time->Year+=2000;
+		}
+	}
 }
 //-------------------------------------------------------------------------------------------------------------------
 

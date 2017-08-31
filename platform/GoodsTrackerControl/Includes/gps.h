@@ -40,13 +40,35 @@ typedef enum {
 
 } StatusNMEA;
 
+/*
+ * Estrutura de dados do frame NMEA
+ *
+ */
+
 typedef struct{
 
+	char	Identifier[NMEA_LEN_ID];
+	char	Time_UTC[NMEA_LEN_TIME];
+	char	Date[NMEA_LEN_DATE];
 	float	Lat;
 	float	Lng;
-	int		Speed ;
-	char	Time[11];
-	char	Date[7];
+
+	char	LatDirection;
+	char	LngDirection;
+	char	Status;
+	char	SelectionMode;
+	char	Mode;
+	int		PRNNumber[12];
+
+	int		Speed;
+	int		FixQuality;
+	int		NumberOfSatelites;
+	float	HDOP;
+	float	PDOP;
+	float	VDOP;
+	float	Altitude;
+	float	HGeoid;
+	float	MagVariation;
 
 } DataGPS;
 
@@ -61,9 +83,9 @@ static void NMEA_errorRxFrame(void);
 
 static void setGPSStatus(StatusNMEA sts);
 static bool NMEA_decoderFrame(void);
-static void decoderGGA(char* frame,DataNMEA* data);
-static void decoderRMC(char* frame,DataNMEA* data);
-static void decoderGSA(char* frame,DataNMEA* data);
+static void decoderGGA(char* frame,DataGPS* data);
+static void decoderRMC(char* frame,DataGPS* data);
+static void decoderGSA(char* frame,DataGPS* data);
 
 //API
 bool getGPSData(char* ch);
@@ -71,5 +93,7 @@ bool putGPSData(char data);
 void runNMEA(void);
 void NMEA_init(void);
 bool isAnyGPSData();
+
+#define clearGPS(f) memset((void*)f,0,sizeof(DataGPS));
 
 #endif /* SOURCES_GPS_H_ */

@@ -296,7 +296,7 @@ namespace GoodsTracker
 
             sb.Append(str + " :");
             sb.Append(" " + stopTx.Elapsed.Seconds.ToString("D2") + stopTx.Elapsed.Milliseconds.ToString("D3") + " ms");
-            sb.Append(" " + frame.Header.Resource);
+            sb.Append(" " + frame.Header.Resource + " ");
             //sb.Append(" ["+ frame.Header.TimeStamp.ToString("D10")+"] ");
 
             foreach (char c in frame.Data)

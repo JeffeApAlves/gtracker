@@ -80,10 +80,15 @@ namespace GoodsTracker
 
                         ret = true;
                     }
+                    else if (ans.Header.Resource.Equals(RESOURCE.LCK) &&
+                    ans.Header.Operation.Equals(Operation.AN) && list.Length >= 8)
+                    {
+                        ret = true;
+                    }
                     else
                     {
                         ret = false;
-                        throw new Exception("Tipo de payload(Resource) não reconhecido");
+                        throw new Exception("Payload(Resource =" + ans.Header.Resource + ") não reconhecido");
                     }
                 }
                 else

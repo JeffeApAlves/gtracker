@@ -5,7 +5,7 @@ namespace GoodsTracker
     public struct RESOURCE
     {
         public const string TLM = "TLM";    // Data DataTelemetria
-        public const string LOCK= "LCK";    // Trava 
+        public const string LCK = "LCK";    // Trava 
         public const string LCD = "LCD";
     }
 

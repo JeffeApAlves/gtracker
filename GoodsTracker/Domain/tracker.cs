@@ -31,22 +31,20 @@ namespace GoodsTracker
 
         public void lockVehicle(onAnswerCmd on_ans)
         {
-            /*
-            Cmd cmd = createCMD(Master.ADDRESS, 2, Operation.WR, RESOURCE.LOCK);
+            Cmd cmd = createCMD(Master.ADDRESS, 2, Operation.WR, RESOURCE.LCK);
 
             statusLock = true;
             cmd.Append("1");
-            sendCMD(cmd, on_ans);*/
+            sendCMD(cmd, on_ans);
         }
 
         public void unLockVehicle(onAnswerCmd on_ans)
         {
-            /*
-            Cmd cmd = createCMD(Master.ADDRESS, 2, Operation.WR, RESOURCE.LOCK);
+            Cmd cmd = createCMD(Master.ADDRESS, 2, Operation.WR, RESOURCE.LCK);
 
             statusLock = false;
             cmd.Append("0");
-            sendCMD(cmd, on_ans);*/
+            sendCMD(cmd, on_ans);
         }
 
         /*
@@ -61,7 +59,7 @@ namespace GoodsTracker
                 updateDataTelemetria(ans);
                 sw_tlm.Restart();
             }
-            else if(ans.Header.Resource.Equals(RESOURCE.LOCK)){
+            else if(ans.Header.Resource.Equals(RESOURCE.LCK)){
 
                 telemetriaData.StatusLock = statusLock;
             }
