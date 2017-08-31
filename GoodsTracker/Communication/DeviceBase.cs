@@ -90,8 +90,7 @@ namespace GoodsTracker
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erro na execucao das callbacks de communicacao");
-                Console.WriteLine(e.ToString());
+                Debug.WriteLine("Erro na execucao das callbacks de communicacao");
                 Debug.WriteLine(e.ToString());
             }
         }

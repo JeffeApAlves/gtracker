@@ -2,6 +2,7 @@
 using RabbitMQ.Client;
 using System.Text;
 using RabbitMQ.Client.Events;
+using System.Diagnostics;
 
 namespace GoodsTracker
 {
@@ -69,8 +70,8 @@ namespace GoodsTracker
             }
             catch (Exception e)
             {
-                Console.WriteLine("Problema na conexao com o broker de mensagem RabbitMQ");
-                Console.WriteLine(e.Message);
+                Debug.WriteLine("Problema na conexao com o broker de mensagem RabbitMQ");
+                Debug.WriteLine(e.Message);
             }
   
             return flg;
@@ -174,8 +175,8 @@ namespace GoodsTracker
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erro ao publicar o frame no server");
-                Console.WriteLine(e);
+                Debug.WriteLine("Erro ao publicar o frame no server");
+                Debug.WriteLine(e);
                 flag = false;
             }
 

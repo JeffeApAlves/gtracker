@@ -91,8 +91,7 @@ namespace GoodsTracker
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erro na inicializacao da porta");
-                Console.WriteLine(e.ToString());
+                Debug.WriteLine("Erro na inicializacao da porta");
                 Debug.WriteLine(e.ToString());
 
                 return false;
@@ -153,8 +152,8 @@ namespace GoodsTracker
             }
             catch(System.IO.IOException ex)
             {
-                Console.WriteLine("Erro na recepcao dos dados");
-                Console.WriteLine(ex.ToString());
+                Debug.WriteLine("Erro na recepcao dos dados");
+                Debug.WriteLine(ex.ToString());
                 Debug.WriteLine(ex.ToString());
             }
         }

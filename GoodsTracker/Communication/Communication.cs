@@ -223,8 +223,7 @@ namespace GoodsTracker
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erro no processamento da pilha de Transmissao");
-                Console.WriteLine(e.ToString());
+                Debug.WriteLine("Erro no processamento da pilha de Transmissao");
                 Debug.WriteLine(e.ToString());
             }
         }
@@ -238,8 +237,7 @@ namespace GoodsTracker
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erro no processamento da pilha de Recepcao");
-                Console.WriteLine(e.ToString());
+                Debug.WriteLine("Erro no processamento da pilha de Recepcao");
                 Debug.WriteLine(e.ToString());
             }
         }
@@ -299,7 +297,7 @@ namespace GoodsTracker
             sb.Append(str + " :");
             sb.Append(" " + stopTx.Elapsed.Seconds.ToString("D2") + stopTx.Elapsed.Milliseconds.ToString("D3") + " ms");
             sb.Append(" " + frame.Header.Resource);
-            sb.Append(" ["+ frame.Header.TimeStamp.ToString("D10")+"] ");
+            //sb.Append(" ["+ frame.Header.TimeStamp.ToString("D10")+"] ");
 
             foreach (char c in frame.Data)
             {

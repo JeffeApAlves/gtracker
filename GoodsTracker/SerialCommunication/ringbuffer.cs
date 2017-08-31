@@ -136,7 +136,6 @@ namespace GoodsTracker
             sb.Append(" C: " + index_consumer.ToString("D5") + " ");
             sb.Append(ch);
 
-            //Console.WriteLine(sb);
             Debug.WriteLine(sb);
             stopPUT.Start();
         }

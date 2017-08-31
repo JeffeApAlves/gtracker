@@ -72,12 +72,12 @@ namespace GoodsTracker
             telemetriaData = ans.Telemetria;
 
         
-            Debug.WriteLine("ANS:" + ans.Header.TimeStamp);
+            Debug.WriteLine("timestamp[Header]:" + ans.Header.TimeStamp);
             Debug.WriteLine("X: {0} : {1}", telemetriaData.AxisX.Acceleration.Val, telemetriaData.AxisX.Rotation.Val);
             Debug.WriteLine("Y: {0} : {1}", telemetriaData.AxisY.Acceleration.Val, telemetriaData.AxisY.Rotation.Val);
             Debug.WriteLine("Z: {0} : {1}", telemetriaData.AxisZ.Acceleration.Val, telemetriaData.AxisZ.Rotation.Val);
             Debug.WriteLine("Lat: {0} Lng:{1}", telemetriaData.Latitude, telemetriaData.Longitude);
-            Debug.WriteLine("timestamp: "+ ans.Telemetria.DateTime.ToString());
+            Debug.WriteLine("data/hora da tlm: "+ ans.Telemetria.DateTime.ToString());
         }
 
         public Telemetria getTelemetria()
