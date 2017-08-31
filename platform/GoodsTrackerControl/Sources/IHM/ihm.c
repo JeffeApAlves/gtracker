@@ -38,7 +38,11 @@ void runIHM() {
 			time_update = 5;
 			printXYZ(&telemetria);
 		}
-		printClock(&Time);
+		if(flag_1s){
+
+			flag_1s = FALSE;
+			printClock(&Time);
+		}
 	}
 }
 //-----------------------------------------------------------------------------------------

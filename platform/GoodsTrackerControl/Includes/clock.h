@@ -40,4 +40,6 @@ extern LDD_RTC_TTime	Time;
 
 extern volatile STATUS_CLOCK statuc_clock;
 
+extern bool flag_1s;
+
 #endif /* INCLUDES_CLOCK_H_ */

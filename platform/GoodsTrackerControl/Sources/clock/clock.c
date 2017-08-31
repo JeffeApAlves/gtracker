@@ -32,6 +32,8 @@ LDD_RTC_TTime		Time;
 
 volatile STATUS_CLOCK statuc_clock = CLOCK_INIT;
 
+bool flag_1s = TRUE;
+
 void initClock(){
 
 	/* Initialize the device, preserve time settings */
@@ -113,6 +115,8 @@ void updateEntityClock(){
 		RTC1_GetTime(MyRTCPtr, &Time);
 		Time.timestamp++;
 	}
+
+	flag_1s = TRUE;
 }
 //-------------------------------------------------------------------------------------------------------------------
 

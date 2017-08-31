@@ -121,12 +121,12 @@ void MMA845x_init(void){
 	ctrlReg1 |= MMA8451_L_NOISE_BIT_MASK;
 
 	ctrlReg1 &= ~(MMA8451_DATARATE_MASK << 3);
-	ctrlReg1 |= (MMA8451_DATARATE_100_HZ << 3);
+	ctrlReg1 |= (MMA8451_DATARATE_50_HZ << 3);
 
 	I2C_Write(MMA8451_CTRL_REG1,ctrlReg1);
 
 	// Range
-	I2C_Write(MMA8451_XYZ_DATA_CFG,  MMA8451_RANGE_8_G);
+	I2C_Write(MMA8451_XYZ_DATA_CFG,  MMA8451_RANGE_2_G);
 
 	// Set the debounce counter 5 -> 100 ms at 50 Hz
 	I2C_Write(MMA8451_PL_COUNT,  5);
