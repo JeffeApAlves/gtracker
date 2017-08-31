@@ -31,20 +31,20 @@ namespace GoodsTracker
 
         public void lockVehicle(onAnswerCmd on_ans)
         {
-            Cmd cmd = createCMD(Master.ADDRESS, 2, Operation.WR, RESOURCE.LCK);
+         /*   Cmd cmd = createCMD(Master.ADDRESS, 2, Operation.WR, RESOURCE.LCK);
 
             statusLock = true;
             cmd.Append("1");
-            sendCMD(cmd, on_ans);
+            sendCMD(cmd, on_ans);*/
         }
 
         public void unLockVehicle(onAnswerCmd on_ans)
         {
-            Cmd cmd = createCMD(Master.ADDRESS, 2, Operation.WR, RESOURCE.LCK);
+            /*Cmd cmd = createCMD(Master.ADDRESS, 2, Operation.WR, RESOURCE.LCK);
 
             statusLock = false;
             cmd.Append("0");
-            sendCMD(cmd, on_ans);
+            sendCMD(cmd, on_ans);*/
         }
 
         /*

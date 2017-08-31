@@ -122,7 +122,7 @@ namespace GoodsTracker
             FieldFrame<double> g_y = new FieldFrame<double>(INDEX.ACCEL_YG, list);
             FieldFrame<double> g_z = new FieldFrame<double>(INDEX.ACCEL_ZG, list);
             FieldFrame<Int32> speed = new FieldFrame<Int32>(INDEX.SPEED, list);
-            FieldFrame<Int32> level = new FieldFrame<Int32>(INDEX.LEVEL, list);
+            FieldFrame<UInt32> level = new FieldFrame<UInt32>(INDEX.LEVEL, list);
             FieldFrame<bool> bLCk = new FieldFrame<bool>(INDEX.TRAVA, list);
             FieldFrame<DateTime> dt = new FieldFrame<DateTime>(INDEX.TIME_STAMP_PL, list);
 

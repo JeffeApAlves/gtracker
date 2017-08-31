@@ -67,5 +67,7 @@ void initEvents();
 
 void printLCD(int linha,int coluna,char* str);
 void printClock(LDD_RTC_TTime* time);
+void showSplah();
+void printXYZ();
 
 #endif /* SOURCES_IHM_H_ */

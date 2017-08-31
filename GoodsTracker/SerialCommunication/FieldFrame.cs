@@ -81,6 +81,11 @@ namespace GoodsTracker
                         v = AsInteger();
 
                     }
+                    else if (tipo == typeof(uint) || tipo == typeof(UInt16) || tipo == typeof(UInt32))
+                    {
+                        v = AsUInteger();
+
+                    }
                     else if (tipo == typeof(Double))
                     {
                         if (UNIT_FIELD.GRAU_DECIMAL.Equals(unit))
@@ -141,6 +146,11 @@ namespace GoodsTracker
         private Int32 AsInteger()
         {
             return Convert.ToInt32(strField);
+        }
+
+        private UInt32 AsUInteger()
+        {
+            return Convert.ToUInt32(strField);
         }
 
         private double AsGrauDecimal()

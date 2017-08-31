@@ -5,14 +5,18 @@
  *      Author: Fl�vio Soares
  */
 #include <stdio.h>
+#include <math.h>
 #include <string.h>
 #include "ihm.h"
 #include "TSSin.h"
 #include "lcd.h"
 #include "XF1.h"
+#include "Telemetria.h"
 #include "clock.h"
 
 char* functionsArray[] = { "OPTION 1", "OPTION 3", "OPTION 2" };
+int time_splah = 20;
+int time_update= 0;
 
 static ihmStruct ihmGlobal;
 
@@ -22,9 +26,38 @@ void runIHM() {
 
 	ihm_process_events(&ihmGlobal);
 
-	printClock(&Time);
+	if(time_splah){
+		time_splah--;
+
+		showSplah();
+	}else {
+
+		if(time_update){
+			time_update--;
+		}else{
+			time_update = 5;
+			printXYZ(&telemetria);
+		}
+		printClock(&Time);
+	}
 }
 //-----------------------------------------------------------------------------------------
+
+void printXYZ(){
+
+	char buffer_lcd[17];
+
+	memset(buffer_lcd,0,17);
+
+	XF1_xsprintf(buffer_lcd,"%c%.2f%c%.2f%c%.2f",	telemetria.Accelerometer.x_g>0?'+':'-',fabs(telemetria.Accelerometer.x_g),
+													telemetria.Accelerometer.y_g>0?'+':'-',fabs(telemetria.Accelerometer.y_g),
+													telemetria.Accelerometer.z_g>0?'+':'-',fabs(telemetria.Accelerometer.z_g)
+													);
+
+	printLCD(1,1,buffer_lcd);
+}
+//-----------------------------------------------------------------------------------------
+
 
 void ihm_process_events(ihmStruct *ihm) {
 
@@ -139,37 +172,38 @@ void initIHM() {
 	ihmGlobal.option = 0;
 
 	initEvents();
+}
+//-----------------------------------------------------------------------------------------
 
-	printLCD(1,2,".GOODSTRACKER.");
-	printLCD(2,1,"V.0.2 -");
+void showSplah(){
+
+	printLCD(1,1," .GOODSTRACKER. ");
+	printLCD(2,1,"    VER. 0.2    ");
 }
 //-----------------------------------------------------------------------------------------
 
 void printClock(LDD_RTC_TTime* time){
 
-	char time_str[10];
-
+	char buffer_lcd[17];
 
 	switch(statuc_clock){
 
 		case CLOCK_INIT:
-			XF1_xsprintf(time_str,"CLKINIT\n");
+			XF1_xsprintf(buffer_lcd,"    CLKINIT    ");
 
 			break;
 		case CLOCK_STARTED:
-			XF1_xsprintf(time_str,"CLKSTART\n");
+			XF1_xsprintf(buffer_lcd,"    CLKSTART    ");
 			break;
 		case CLOCK_UPDATE:
-			XF1_xsprintf(time_str,"CLKUPD\n");
+			XF1_xsprintf(buffer_lcd,"     CLKUPD     ");
 			break;
 		case CLOCK_ADJUSTED:
-			XF1_xsprintf(time_str,"%02d.%02d.%4d %02d:%02d:%02d \n",time->Day,time->Month,time->Year,time->Hour+FUSO_HORARIO_BR, time->Minute, time->Second);
+			XF1_xsprintf(buffer_lcd," %02d.%02d %02d:%02d:%02d \n",time->Day,time->Month,time->Hour+FUSO_HORARIO_BR, time->Minute, time->Second);
 			break;
 	}
 
-//	printLCD(2,9,time_str);
-	printLCD(2,1,time_str);
-
+	printLCD(2,1,buffer_lcd);
 }
 //-----------------------------------------------------------------------------------------
 
