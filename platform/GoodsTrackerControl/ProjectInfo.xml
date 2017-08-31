@@ -129,6 +129,7 @@
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Accelerometer\MMA8451.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\App\AppQueues.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\App\application.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\CommunicationFrame.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\Serialization.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\protocol.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Domain\Telemetria.c</PathName>
@@ -144,7 +145,7 @@
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\TSS\TSS_SystemSetupData.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Tank\Level.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Tank\lock.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\Array.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\Frame.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\RingBuffer.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\utils.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\clock\clock.c</PathName>
@@ -231,8 +232,9 @@
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\task.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Generated_Code\timers.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\AppQueues.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\Array.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\DataFrame.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\Cmd.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\CommunicationFrame.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\Frame.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\Level.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\MMA8451.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\NMEAFrame.h</PathName>

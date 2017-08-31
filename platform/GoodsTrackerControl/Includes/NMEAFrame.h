@@ -8,7 +8,7 @@
 #ifndef SOURCES_NMEAFRAME_H_
 #define SOURCES_NMEAFRAME_H_
 
-#include "Array.h"
+#include <Frame.h>
 
 #define	NMEA_SIZE_MIN_FRAME		30
 #define	NMEA_LEN_CHECKSUM		2

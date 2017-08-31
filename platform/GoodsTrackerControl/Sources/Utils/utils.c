@@ -8,10 +8,15 @@
 #include <string.h>
 #include <assert.h>
 #include <stdlib.h>
-#include "Array.h"
-#include "utils.h"
+#include "Frame.h"
 #include "protocol.h"
+#include "utils.h"
 
+/**
+ *
+ * Cria um array de string
+ *
+ */
 void str_split(List* result, char* str, const char a_delim) {
 
 	char delim[2];
@@ -58,69 +63,9 @@ void str_split(List* result, char* str, const char a_delim) {
 }
 //------------------------------------------------------------------------
 
-void getField(char* str, char* out,uint16 num,const char a_delim) {
-
-	uint16 i,start,end,f;
-
-	f		= 0;
-	start	= 0;
-	end		= 0;
-	out[0]	= '\0';
-
-	for(i=0;i<ARRAY_LEN_PAYLOAD;i++){
-
-		if(str[i]=='\0'){
-
-			end = i;
-			break;
-		}
-
-		if(str[i]==a_delim){
-
-			f++;
-
-			if(f==num){
-				start = i+1;
-			}
-
-			if(f==(num+1)){
-
-				end = i;
-				break;
-			}
-		}
-	}
-
-	if((end-start)>0){
-
-		strncpy(out,str+start,end-start);
-		out[end-start] = '\0';
-	}
-}
-//------------------------------------------------------------------------
-
-int getNumField(char* str,const char a_delim) {
-
-	uint16 i,f;
-
-	i		= 0;
-	f		= 0;
-
-	while((str[i]!='\0') && (i<ARRAY_LEN_PAYLOAD)){
-
-		if(str[i++]==a_delim){
-
-			f++;
-		}
-	}
-
-	return f+1;
-}
-//------------------------------------------------------------------------
-
 /*
  *
- *  Use strpbrk() for multiple delimiters.
+ *  Usa strpbrk() para multiplos delimitadores.
  *
  **/
 buffer_t memtok(const void *s, size_t length, const char *delim, buffer_t *save_ptr){
@@ -195,58 +140,103 @@ void removeList(List* list){
 }
 //------------------------------------------------------------------------
 
-void AsInteger(int* out,char *str,uint16 index,const char a_delim){
+bool AsInteger(int* out,char *str,uint16 index,const char a_delim){
+
+	bool ret = FALSE;
 
 	char field[10];
 
 	getField(str,field,index,a_delim);
 
-	*out = atoi(field);
+	if(strlen(str)>0){
+
+		*out = atoi(field);
+
+		ret = TRUE;
+	}
+
+	return ret;
 }
 //------------------------------------------------------------------------
 
-void AsString(char* out,char *str,uint16 index,const char a_delim){
+bool AsString(char* out,char *str,uint16 index,const char a_delim){
 
 	getField(str,out,index,a_delim);
+
+	return TRUE;
 }
 //-----------------------------------------------------------------------
 
-void AsHex(int* out,char *str,uint16 index,const char a_delim){
+bool AsHex(uint16* out,char *str,uint16 index,const char a_delim){
 
-	char field[10];
+	bool ret = FALSE;
+
+	char field[5];
 
 	getField(str,field,index,a_delim);
 
-	*out = strtol(field, NULL, 16);
+	if(strlen(str)>0){
+
+		*out = strtol(field, NULL, 16);
+		ret = TRUE;
+	}
+	return ret;
 }
 //-----------------------------------------------------------------------
 
-void AsFloat(float* out,char *str,uint16 index,const char a_delim){
+bool AsFloat(float* out,char *str,uint16 index,const char a_delim){
+
+	bool ret = FALSE;
 
 	char field[20];
 
 	getField(str,field,index,a_delim);
 
-	*out = atof(field);
+	if(strlen(str)>0){
+
+		*out = atof(field);
+		ret = TRUE;
+	}
+
+	return ret;
 }
 //------------------------------------------------------------------------
 
-void AsChar(char* out,char *str,uint16 index,const char a_delim){
+bool AsChar(char* out,char *str,uint16 index,const char a_delim){
+
+	bool ret = FALSE;
 
 	char field[2];
 
 	getField(str,field,index,a_delim);
 
-	*out = field[0];
+	if(strlen(str)>0){
+
+		*out = field[0];
+		ret = TRUE;
+	}
+
+	return ret;
 }
 //------------------------------------------------------------------------
 
-void AsResource(Resource* out,char *str,uint16 index,const char a_delim){
+bool AsResource(Resource* out,char *str,uint16 index,const char a_delim){
+
+	bool ret = FALSE;
 
 	char field[4];
 
 	getField(str,field,index,a_delim);
 
-	*out = getResource(field);
+	if(strlen(str)>0){
+
+		*out = getResource(field);
+		ret = TRUE;
+
+	}else{
+		*out = CMD_NONE;
+	}
+
+	return ret;
 }
 //------------------------------------------------------------------------

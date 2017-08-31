@@ -1,11 +1,11 @@
-20:10:48 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+11:02:18 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  67400	    532	  14444	  82376	  141c8	GoodsTrackerControl.elf
+  67640	    532	  14444	  82616	  142b8	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
 
-20:10:48 Build Finished (took 901ms)
+11:02:19 Build Finished (took 1s.147ms)
 

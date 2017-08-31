@@ -8,10 +8,10 @@
 #ifndef SOURCES_APPLICATION_H_
 #define SOURCES_APPLICATION_H_
 
+#include <CommunicationFrame.h>
+#include <Frame.h>
 #include <Telemetria.h>
 #include "protocol.h"
-#include "Array.h"
-#include "DataFrame.h"
 
 typedef enum
 	{LED_GREEN	=0,
@@ -21,20 +21,20 @@ typedef enum
 /**
  * Ponteiro para as call backs
  */
-typedef ResultExec(*pCallBack)(DataFrame*);
+typedef ResultExec(*pCallBack)(CommunicationFrame*);
 
-ResultExec onAnalog(DataFrame* cmd);
-ResultExec onLED(DataFrame* cmd);
-ResultExec onPWM(DataFrame* cmd);
-ResultExec onTouch(DataFrame* cmd);
-ResultExec onAccel(DataFrame* cmd);
-ResultExec onTelemetry(DataFrame* frame);
-ResultExec onLock(DataFrame* frame);
+ResultExec onAnalog(CommunicationFrame* cmd);
+ResultExec onLED(CommunicationFrame* cmd);
+ResultExec onPWM(CommunicationFrame* cmd);
+ResultExec onTouch(CommunicationFrame* cmd);
+ResultExec onAccel(CommunicationFrame* cmd);
+ResultExec onTelemetry(CommunicationFrame* frame);
+ResultExec onLock(CommunicationFrame* frame);
 
 void initApp(void);
 void decoderLockPayLoad(PayLoad* payload);
 void execCMD(uint32_t ulNotifiedValue);
-static void setHeaderAnswer(DataFrame* data);
+static void setHeaderAnswer(CommunicationFrame* data);
 
 void runMain(void);
 void runApp(void);

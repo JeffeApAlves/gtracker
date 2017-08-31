@@ -19,7 +19,7 @@
 #include "application.h"
 
 static 	int			_lock;
-static 	DataFrame	Answer,Cmd;
+static 	CommunicationFrame	Answer,Cmd;
 
 void runApp(void){
 
@@ -74,7 +74,7 @@ void execCMD(uint32_t ulNotifiedValue){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onLED(DataFrame* frame){
+ResultExec onLED(CommunicationFrame* frame){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
@@ -86,7 +86,7 @@ ResultExec onLED(DataFrame* frame){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAnalog(DataFrame* cmd){
+ResultExec onAnalog(CommunicationFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
@@ -98,7 +98,7 @@ ResultExec onAnalog(DataFrame* cmd){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAccel(DataFrame* cmd){
+ResultExec onAccel(CommunicationFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
@@ -110,7 +110,7 @@ ResultExec onAccel(DataFrame* cmd){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onTouch(DataFrame* cmd){
+ResultExec onTouch(CommunicationFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
@@ -122,7 +122,7 @@ ResultExec onTouch(DataFrame* cmd){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onPWM(DataFrame* cmd){
+ResultExec onPWM(CommunicationFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
@@ -134,7 +134,7 @@ ResultExec onPWM(DataFrame* cmd){
 }
 //------------------------------------------------------------------------
 
-ResultExec onTelemetry(DataFrame* cmd){
+ResultExec onTelemetry(CommunicationFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
@@ -146,7 +146,7 @@ ResultExec onTelemetry(DataFrame* cmd){
 }
 //------------------------------------------------------------------------
 
-ResultExec onLock(DataFrame* cmd){
+ResultExec onLock(CommunicationFrame* cmd){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
@@ -180,7 +180,7 @@ void decoderLockPayLoad(PayLoad* payload){
  * Set endereco de origem e destino e o tipo da operacao
  *
  */
-static void setHeaderAnswer(DataFrame* data){
+static void setHeaderAnswer(CommunicationFrame* data){
 
 	clearArrayPayLoad(&Answer.PayLoad);
 

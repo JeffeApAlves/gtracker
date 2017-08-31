@@ -8,9 +8,10 @@
 #ifndef SOURCES_PROTOCOL_H_
 #define SOURCES_PROTOCOL_H_
 
+#include <CommunicationFrame.h>
 #include <stdbool.h>
 #include "utils.h"
-#include "DataFrame.h"
+#include "Cmd.h"
 
 //Endereco desse Rastreador
 #define	ADDRESS			2
@@ -54,11 +55,11 @@ static bool decoderFrame(void);
 static void verifyFrame(void);
 static void startTX(void);
 static void setPayLoad(PayLoad* ans);
-static void doAnswer(DataFrame* ans);
-static void copyHeaderToFrame(DataFrame* data,ArrayFrame* frame);
-static void copyPayLoadToFrame(DataFrame* data,ArrayFrame* frame);
-static void copyCheckSumToFrame(ArrayFrame* frame);
-static void buildFrame(DataFrame* data,ArrayFrame* frame);
+static void doAnswer(CommunicationFrame* ans);
+static void copyHeaderToFrame(CommunicationFrame* data,Frame* frame);
+static void copyPayLoadToFrame(CommunicationFrame* data,Frame* frame);
+static void copyCheckSumToFrame(Frame* frame);
+static void buildFrame(CommunicationFrame* data,Frame* frame);
 static void sendFrame(char* frame);
 void processTx(void);
 void processRx(void);
@@ -74,8 +75,8 @@ void initCommunication(void);
 bool isAnyRxData();
 Resource getResource(char* name);
 void getResourceName(char* name,Resource resource);
-void headerToStr(char* out,DataFrame* data);
-void sendDataFrame(DataFrame* data);
+void headerToStr(char* out,CommunicationFrame* data);
+void sendDataFrame(CommunicationFrame* data);
 
 extern const char* OPERATION_AN;
 extern const char* OPERATION_RD;

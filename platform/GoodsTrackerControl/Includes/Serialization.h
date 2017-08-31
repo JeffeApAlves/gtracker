@@ -8,8 +8,8 @@
 #ifndef SOURCES_SERIALIZATION_H_
 #define SOURCES_SERIALIZATION_H_
 
-#include <Telemetria.h>
-#include "Array.h"
+#include <CommunicationFrame.h>
+#include "Telemetria.h"
 
 void tlm2String(Telemetria* info,PayLoad* ans);
 

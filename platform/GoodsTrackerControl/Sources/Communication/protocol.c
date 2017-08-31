@@ -1,9 +1,9 @@
+#include <Frame.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 #include "XF1.h"
-#include "Array.h"
 #include "AS1.h"
 #include "Events.h"
 #include "RingBuffer.h"
@@ -17,8 +17,8 @@ const char* OPERATION_WR = "WR";
 
 static StatusRx		statusRx = CMD_INIT;
 static RingBuffer	bufferRx,bufferTx;
-static DataFrame	dataComRx,AnsCmd;
-static ArrayFrame	frameRx;
+static CommunicationFrame	dataComRx,AnsCmd;
+static Frame	frameRx;
 
 void processRx(void){
 
@@ -81,7 +81,7 @@ static void receiveFrame (void) {
 
 	if(getRxData(&ch)) {
 
-		if(ch==CHAR_START || frameRx.Length>=ARRAY_LEN_FRAME) {
+		if(ch==CHAR_START || frameRx.Length>=LEN_FRAME) {
 
 			errorRxFrame();
 		}
@@ -163,27 +163,33 @@ static bool decoderFrame(void) {
 
 	uint16 count = getNumField(frameRx.Data,CHAR_SEPARATOR);
 
-	// Minimo de 8 itens
+	// O minimo são 8  itens (7 + checksun)
 	if(count >= 8){
 
-		//-2 para desconsiderar o checksum que esta no frame recebido
-		unsigned int checksum_rx;
-		unsigned int checksum_calc = calcChecksum(frameRx.Data, frameRx.Length - LEN_CHECKSUM);
+		uint16 checksum_rx,checksum_calc;
+
+		//Desconsiderando LEN_CHECKSUM no calculo do checksum que esta no frame recebido
+		checksum_calc = calcChecksum(frameRx.Data, frameRx.Length - LEN_CHECKSUM);
+		// garante que estao diferentes antes de ler.
 		checksum_rx = ~checksum_calc;
 
 		AsHex(&checksum_rx,frameRx.Data,count-1,CHAR_SEPARATOR);
 
 		if(checksum_rx==checksum_calc) {
 
-			AsInteger(&dataComRx.address,		frameRx.Data,0,CHAR_SEPARATOR);
-			AsInteger(&dataComRx.dest,			frameRx.Data,1,CHAR_SEPARATOR);
-			AsInteger(&dataComRx.time_stamp,	frameRx.Data,2,CHAR_SEPARATOR);
-			AsString(&dataComRx.operacao,		frameRx.Data,3,CHAR_SEPARATOR);
-			AsResource(&dataComRx.resource,		frameRx.Data,4,CHAR_SEPARATOR);
-			AsInteger(&dataComRx.PayLoad.Length,frameRx.Data,5,CHAR_SEPARATOR);
-			AsString(&dataComRx.PayLoad.Data,	frameRx.Data,6,CHAR_SEPARATOR);
-
-			ret = true;
+			if(
+				AsInteger(&dataComRx.address,		frameRx.Data,0,CHAR_SEPARATOR) &&
+				AsInteger(&dataComRx.dest,			frameRx.Data,1,CHAR_SEPARATOR) &&
+				AsInteger(&dataComRx.time_stamp,	frameRx.Data,2,CHAR_SEPARATOR) &&
+				AsString(&dataComRx.operacao,		frameRx.Data,3,CHAR_SEPARATOR) &&
+				AsResource(&dataComRx.resource,		frameRx.Data,4,CHAR_SEPARATOR) &&
+				AsInteger(&dataComRx.PayLoad.Length,frameRx.Data,5,CHAR_SEPARATOR) &&
+				AsString(&dataComRx.PayLoad.Data,	frameRx.Data,6,CHAR_SEPARATOR)
+			){
+				ret = true;
+			}else{
+				clearData(&dataComRx);
+			}
 		}
 	}
 
@@ -330,7 +336,7 @@ inline bool hasTxData(void){
  *  Preenche todo o frame  de envio
  *
  */
-static void buildFrame(DataFrame* data,ArrayFrame* frame) {
+static void buildFrame(CommunicationFrame* data,Frame* frame) {
 
 	clearArrayFrame(frame);
 
@@ -345,13 +351,13 @@ static void buildFrame(DataFrame* data,ArrayFrame* frame) {
  * Adiciona o cabecalho no frame
  *
  */
-static void copyHeaderToFrame(DataFrame* data,ArrayFrame* frame) {
+static void copyHeaderToFrame(CommunicationFrame* data,Frame* frame) {
 
 	headerToStr(frame->Data,data);
 }
 //------------------------------------------------------------------------
 
-void headerToStr(char* out,DataFrame* data){
+void headerToStr(char* out,CommunicationFrame* data){
 
 	char resource[4];
 
@@ -368,7 +374,12 @@ void headerToStr(char* out,DataFrame* data){
 }
 //------------------------------------------------------------------------
 
-void sendDataFrame(DataFrame* data){
+/*
+ *
+ * Transmite o frame ao Host
+ *
+ */
+void sendDataFrame(CommunicationFrame* data){
 
 	char	checksum_str[LEN_CHECKSUM+2],
 			header_str[SIZE_HEADER+1];
@@ -397,13 +408,12 @@ void sendDataFrame(DataFrame* data){
 }
 //------------------------------------------------------------------------
 
-
 /**
  *
  * Adiciona o Payload no Frame
  *
  */
-inline static void copyPayLoadToFrame(DataFrame* data,ArrayFrame* frame) {
+inline static void copyPayLoadToFrame(CommunicationFrame* data,Frame* frame) {
 
 	AppendFrame(frame,data->PayLoad.Data);
 }
@@ -414,7 +424,7 @@ inline static void copyPayLoadToFrame(DataFrame* data,ArrayFrame* frame) {
  * Adiciona o CheckSum no Frame
  *
  */
-static void copyCheckSumToFrame(ArrayFrame* frame) {
+static void copyCheckSumToFrame(Frame* frame) {
 
 	AppendFrame(frame,SEPARATOR);
 	XF1_xsprintf(frame->checksum, "%02X", calcChecksum (frame->Data,frame->Length));
@@ -424,17 +434,15 @@ static void copyCheckSumToFrame(ArrayFrame* frame) {
 
 /**
  *
- * Funcao disponibilizada para aplicacao preencher o payload
+ * Executada quando se recebe uma menssagem na fila de repsotas de comandos
  *
  */
-void doAnswer(DataFrame* ans) {
+void doAnswer(CommunicationFrame* ans) {
 
 	if (ans) {
 
-//		ArrayFrame	frameTx;
-
+		//ArrayFrame frameTx;
 		//buildFrame(ans,&frameTx);
-
 		//sendFrame(frameTx.Data)
 
 		sendDataFrame(ans);
@@ -464,6 +472,11 @@ static void startTX(void){
 }
 //------------------------------------------------------------------------
 
+/*
+ *
+ * Verifica se exsite algum dado no buffer circular de recebimento
+ *
+ */
 inline bool isAnyRxData(){
 
 	return getCount(&bufferRx)>0;
@@ -472,7 +485,7 @@ inline bool isAnyRxData(){
 
 /**
  *
- * Inicializa a comunicação
+ * Inicializa a comunicação com o Host via porta serial
  *
  */
 void initCommunication(void) {

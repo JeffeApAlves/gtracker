@@ -5,9 +5,9 @@
  *      Author: Jefferson
  */
 
+#include <CommunicationFrame.h>
+#include <Frame.h>
 #include "Telemetria.h"
-#include "Array.h"
-#include "DataFrame.h"
 #include "AppQueues.h"
 
 // Tasks Delay
@@ -33,8 +33,8 @@ QueueHandle_t	xQueueCom, xQueueLCD, xQueueAnswer, xQueueGPS, xQueueAcc , xQueueT
  */
 void initQueues(void){
 
-	xQueueCom		= xQueueCreate( 1, sizeof( DataFrame ));
-	xQueueAnswer	= xQueueCreate( 1, sizeof( DataFrame ));
+	xQueueCom		= xQueueCreate( 1, sizeof( CommunicationFrame ));
+	xQueueAnswer	= xQueueCreate( 1, sizeof( CommunicationFrame ));
 	xQueueGPS		= xQueueCreate( 1, sizeof( DataGPS ));
 	xQueueAcc		= xQueueCreate( 1, sizeof( Accelerometer ));
 	xQueueTank		= xQueueCreate( 1, sizeof( Tank ));

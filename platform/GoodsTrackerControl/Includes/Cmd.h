@@ -8,7 +8,6 @@
 #ifndef INCLUDES_CMD_H_
 #define INCLUDES_CMD_H_
 
-
 /*
  *
  *Retorno das callbacks

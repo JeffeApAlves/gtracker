@@ -4,7 +4,7 @@
  *      Author: Jefferson
  */
 
-#include <Telemetria.h>
+#include "Telemetria.h"
 #include "AppQueues.h"
 #include "RingBuffer.h"
 #include "gps.h"
@@ -17,7 +17,7 @@ const char* GSA	= "GSA";
 #define		WEST	'W'
 
 static RingBuffer	bufferRxNMEA;
-static ArrayFrame	frameNMEA;
+static Frame	frameNMEA;
 static StatusNMEA	statusNMEA = NMEA_INIT;
 static DataNMEA		dataNMEA;
 static DataGPS		infoGPS;
@@ -64,7 +64,7 @@ static void NMEA_receiveFrame(void)
 
 	if(getGPSData(&ch)) {
 
-		if(ch==NMEA_CHAR_START || frameNMEA.Length>=ARRAY_LEN_FRAME) {
+		if(ch==NMEA_CHAR_START || frameNMEA.Length>=LEN_FRAME) {
 
 			NMEA_errorRxFrame();
 		}
@@ -188,10 +188,13 @@ static bool NMEA_decoderFrame(void){
 
 	if(count >= 5){
 
+		uint16 checksum_rx,checksum_calc;
+
 		// Checksum
-		unsigned int checksum_rx;
-		unsigned int checksum_calc = calcChecksum(frameNMEA.Data, frameNMEA.Length);
+		checksum_calc = calcChecksum(frameNMEA.Data, frameNMEA.Length);
+		// garante que estao diferentes antes de ler.
 		checksum_rx = ~checksum_calc;
+		// Converte de string para numero o checksum recebido
 		checksum_rx = strtol(frameNMEA.checksum, NULL, 16);
 
 		if(checksum_rx==checksum_calc) {
