@@ -38,10 +38,15 @@
 
 
 /* MMA8451 3-axis accelerometer control register bit masks */
-#define MMA8451_ACTIVE_BIT_MASK 	0x01
-#define MMA8451_F_READ_BIT_MASK 	0x02
-#define MMA8451_ZYXDR_BIT_MASK		0x08
-#define MMA8451_L_NOISE_BIT_MASK	0x04
+#define MMA8451_ACTIVE_BIT 		0x01
+#define MMA8451_F_READ_BIT 		0x02
+#define MMA8451_ZYXDR_BIT		0x08
+#define MMA8451_L_NOISE_BIT		0x04
+
+//REG2
+#define MMA8451_MODS_MASK		0x03
+#define MMA8451_MODS0_BIT		0x01
+#define MMA8451_MODS1_BIT		0x02
 
 #define MMA8451_PL_PUF            0
 #define MMA8451_PL_PUB            1

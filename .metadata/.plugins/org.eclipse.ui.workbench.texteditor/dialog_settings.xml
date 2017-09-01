@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Read" key="selection"/>
+		<item value="FUSO" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="read"/>
-			<item value="time"/>
-			<item value="print"/>
-			<item value="spla"/>
-			<item value="plas"/>
-			<item value="printre"/>
-			<item value="printxyz"/>
-			<item value="clock"/>
+			<item value="FUSO"/>
+			<item value="50"/>
+			<item value="acce"/>
+			<item value="MMA8451_F_READ_BIT"/>
+			<item value="mask"/>
+			<item value="mod"/>
+			<item value="reset"/>
+			<item value="MMA845x_Reset"/>
 		</list>
 		<list key="replacehistory">
 			<item value="data-&gt;"/>
@@ -23,7 +23,7 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="284" key="DIALOG_WIDTH"/>
-		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="391" key="DIALOG_HEIGHT"/>
 		<item value="821" key="DIALOG_X_ORIGIN"/>
 		<item value="188" key="DIALOG_Y_ORIGIN"/>

@@ -188,6 +188,7 @@ void showSplah(){
 
 void printClock(LDD_RTC_TTime* time){
 
+	int hour;
 	char buffer_lcd[17];
 
 	switch(statuc_clock){
@@ -203,7 +204,9 @@ void printClock(LDD_RTC_TTime* time){
 			XF1_xsprintf(buffer_lcd,"     CLKUPD     ");
 			break;
 		case CLOCK_ADJUSTED:
-			XF1_xsprintf(buffer_lcd," %02d.%02d %02d:%02d:%02d \n",time->Day,time->Month,time->Hour+FUSO_HORARIO_BR, time->Minute, time->Second);
+			hour = time->Hour+FUSO_HORARIO_BR;
+			hour = hour<0?hour+24:hour;
+			XF1_xsprintf(buffer_lcd," %02d.%02d %02d:%02d:%02d \n",time->Day,time->Month, hour, time->Minute, time->Second);
 			break;
 	}
 

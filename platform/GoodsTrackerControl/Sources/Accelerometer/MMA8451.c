@@ -59,7 +59,7 @@ bool MMA845x_getValues(Accelerometer* acc){
 
 	res = I2C_Read(MMA8451_STATUS,&status);
 
-	if ((res==ERR_OK) && (status & MMA8451_ZYXDR_BIT_MASK)){
+	if ((res==ERR_OK) && (status & MMA8451_ZYXDR_BIT)){
 
 		res = I2C_ReadBuffer(MMA8451_OUT_X_MSB, (uint8_t*)&xyz,LEN_XYZ);
 
@@ -91,7 +91,7 @@ void MMA845x_Standby (void)
 	uint8_t ctrl;
 
 	I2C_Read(MMA8451_CTRL_REG1, &ctrl);
-	I2C_Write(MMA8451_CTRL_REG1, ctrl & (~MMA8451_ACTIVE_BIT_MASK));
+	I2C_Write(MMA8451_CTRL_REG1, ctrl & (~MMA8451_ACTIVE_BIT));
 }
 //--------------------------------------------------------------------------------------------
 
@@ -100,36 +100,42 @@ void MMA845x_Active(void)
 	uint8_t ctrl;
 
 	I2C_Read(MMA8451_CTRL_REG1, &ctrl);
-	I2C_Write(MMA8451_CTRL_REG1, ctrl | MMA8451_ACTIVE_BIT_MASK);
+	I2C_Write(MMA8451_CTRL_REG1, ctrl | MMA8451_ACTIVE_BIT);
 }
 //--------------------------------------------------------------------------------------------
 
 void MMA845x_init(void){
 
-	uint8_t ctrlReg1;
+	uint8_t ctrlReg1,ctrlReg2;
 
 	deviceData.handle = I2C2_Init(&deviceData);
 
 	MMA845x_Standby();
 
+	// Espelha registradores
 	I2C_Read(MMA8451_CTRL_REG1,&ctrlReg1);
+	I2C_Read(MMA8451_CTRL_REG2,&ctrlReg2);
 
-	// MMA8451_F_READ_BIT_MASK = 0 Hi Lo index
-	ctrlReg1 &= (~MMA8451_F_READ_BIT_MASK);
+	// High Resolution
+	ctrlReg2 &= ~MMA8451_MODS_MASK;
+	ctrlReg2 |= MMA8451_MODS1_BIT;
 
-	// MMA8451_L_NOISE_BIT_MASK = 1
-	ctrlReg1 |= MMA8451_L_NOISE_BIT_MASK;
+	// Hi e Lo indexados
+	ctrlReg1 &= (~MMA8451_F_READ_BIT);
 
+	//Low noise
+	ctrlReg1 |= MMA8451_L_NOISE_BIT;
+
+	// Date rate = 50Hz (20 ms)
 	ctrlReg1 &= ~(MMA8451_DATARATE_MASK << 3);
 	ctrlReg1 |= (MMA8451_DATARATE_50_HZ << 3);
-
-	I2C_Write(MMA8451_CTRL_REG1,ctrlReg1);
 
 	// Range
 	I2C_Write(MMA8451_XYZ_DATA_CFG,  MMA8451_RANGE_2_G);
 
-	// Set the debounce counter 5 -> 100 ms at 50 Hz
-	I2C_Write(MMA8451_PL_COUNT,  5);
+	// Atualiza registradores
+	I2C_Write(MMA8451_CTRL_REG2,ctrlReg2);
+	I2C_Write(MMA8451_CTRL_REG1,ctrlReg1);
 
 	MMA845x_Active();
 }
@@ -208,11 +214,11 @@ void MMA845x_setNoise(bool flag)
 
 		MMA845x_Standby();
 
-		ctrlReg1 &= ~MMA8451_L_NOISE_BIT_MASK;
+		ctrlReg1 &= ~MMA8451_L_NOISE_BIT;
 
 		if(flag){
 
-			ctrlReg1 |= MMA8451_L_NOISE_BIT_MASK;
+			ctrlReg1 |= MMA8451_L_NOISE_BIT;
 		}
 
 		res = I2C_Write(MMA8451_CTRL_REG1,ctrlReg1);
