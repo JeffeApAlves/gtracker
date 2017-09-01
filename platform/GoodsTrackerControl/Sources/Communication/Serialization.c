@@ -23,7 +23,7 @@ void tlm2String(Telemetria* info,PayLoad* ans){
 				info->GPS.Speed,
 				info->Tank.Level,
 				info->Tank.Lock,
-				Time.timestamp);
+				getCurrentTimeStamp());
 
 		ans->Length = strlen(ans->Data);
 	}

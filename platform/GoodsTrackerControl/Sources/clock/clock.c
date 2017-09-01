@@ -4,6 +4,7 @@
  *  Created on: Aug 28, 2017
  *      Author: Jefferson
  */
+#include <time.h>
 #include "Cpu.h"
 #include "stdlib.h"
 #include "string.h"
@@ -28,7 +29,8 @@ const static int days_per_year[2] = {
 };
 
 LDD_TDeviceData		*MyRTCPtr;
-LDD_RTC_TTime		Time;
+
+static uint32_t		timestamp;
 
 volatile STATUS_CLOCK statuc_clock = CLOCK_INIT;
 
@@ -39,20 +41,23 @@ void initClock(){
 	/* Initialize the device, preserve time settings */
 	MyRTCPtr = RTC1_Init((LDD_TUserData *)NULL, FALSE);
 
+	timestamp = 0;
+
 	if(MyRTCPtr!=NULL){
 /*
-		LDD_RTC_TTime date_time = {
+		char* teste;
 
-			.Hour		= 0,
-			.Minute		= 0,
-			.Second		= 0,
-			.Year		= 1970,
-			.Month		= 1,
-			.Day		= 1,
-			.timestamp	= 0
-		};
+		teste = getenv("TZ");
 
-		setClock(&date_time);
+		if(setenv("TZ", "UTC0", 1)<0){
+
+			tzset();
+			statuc_clock = CLOCK_ERROR;
+		}
+		else{
+
+			statuc_clock = CLOCK_STARTED;
+		}
 */
 		statuc_clock = CLOCK_STARTED;
 	}
@@ -90,7 +95,7 @@ bool setClock(LDD_RTC_TTime* time){
 
 		if(Error==ERR_OK){
 
-			getClock(&Time);
+//			getClock(&Time);
 
 			flag = TRUE;
 		}
@@ -100,11 +105,47 @@ bool setClock(LDD_RTC_TTime* time){
 }
 //-------------------------------------------------------------------------------------------------------------------
 
-
-void getClock(LDD_RTC_TTime* time){
+inline void getClock(LDD_RTC_TTime* time){
 
 	RTC1_GetTime(MyRTCPtr, time);
-	Time.timestamp = getCurrentTimeStamp();
+}
+//-------------------------------------------------------------------------------------------------------------------
+
+bool getLocalClock(LDD_RTC_TTime* time){
+
+	struct tm		tim,*mt;
+	time_t			mtt;
+
+	getClock(time);
+
+	tim.tm_hour = time->Hour;
+	tim.tm_min  = time->Minute;
+	tim.tm_sec  = time->Second;
+	tim.tm_year = time->Year-1900;
+	tim.tm_mon  = time->Month;
+	tim.tm_mday	= time->Day;
+	tim.tm_isdst= 0;
+
+	mtt	= mktime(&tim) + FUSO_HORARIO_BR;
+	mt	= localtime(&mtt);
+
+	if(mt!=NULL){
+		time->Day	= mt->tm_mday;
+		time->Month	= mt->tm_mon;
+		time->Year	= mt->tm_year;
+		time->Minute= mt->tm_min;
+		time->Hour	= mt->tm_hour;
+		time->Second= mt->tm_sec;
+
+		return TRUE;
+	}
+	return FALSE;
+}
+//-------------------------------------------------------------------------------------------------------------------
+
+inline uint32_t getTimeStamp()
+{
+	return timestamp;
 }
 //-------------------------------------------------------------------------------------------------------------------
 
@@ -112,11 +153,20 @@ void updateEntityClock(){
 
 	if(statuc_clock == CLOCK_ADJUSTED){
 
-		RTC1_GetTime(MyRTCPtr, &Time);
-		Time.timestamp++;
+		timestamp++;
 	}
 
 	flag_1s = TRUE;
+}
+//-------------------------------------------------------------------------------------------------------------------
+
+uint32_t getCurrentTimeStamp(){
+
+	LDD_RTC_TTime	time;
+	getClock(&time);
+
+	return unix_time_in_seconds((uint8_t)time.Second, (uint8_t)time.Minute, (uint8_t)time.Hour,
+			(uint8_t)time.Day, (uint8_t)time.Month, (uint16_t)time.Year);
 }
 //-------------------------------------------------------------------------------------------------------------------
 
@@ -129,13 +179,6 @@ void adjusteClock(){
 			statuc_clock = CLOCK_ADJUSTED;
 		}
 	}
-}
-//-------------------------------------------------------------------------------------------------------------------
-
-uint32_t getCurrentTimeStamp(){
-
-	return unix_time_in_seconds((uint8_t)Time.Second, (uint8_t)Time.Minute, (uint8_t)Time.Hour,
-			(uint8_t)Time.Day, (uint8_t)Time.Month, (uint16_t)Time.Year);
 }
 //-------------------------------------------------------------------------------------------------------------------
 

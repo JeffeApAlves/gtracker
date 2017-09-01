@@ -66,7 +66,7 @@ void ihm_process_events(ihmStruct *ihm);
 void initEvents();
 
 void printLCD(int linha,int coluna,char* str);
-void printClock(LDD_RTC_TTime* time);
+void printClock(void);
 void showSplah();
 void printXYZ();
 

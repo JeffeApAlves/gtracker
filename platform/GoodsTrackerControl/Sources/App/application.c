@@ -188,7 +188,7 @@ static void setHeaderAnswer(CommunicationFrame* data){
 	Answer.resource		= data->resource;
 	Answer.dest			= data->address;
 	Answer.address		= ADDRESS;
-	Answer.time_stamp	= Time.timestamp;
+	Answer.time_stamp	= getCurrentTimeStamp();
 }
 //------------------------------------------------------------------------
 

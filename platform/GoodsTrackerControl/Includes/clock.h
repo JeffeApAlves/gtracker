@@ -12,7 +12,7 @@
 #include "RTC1.h"
 #include "PE_Types.h"
 
-#define	FUSO_HORARIO_BR		-3
+#define	FUSO_HORARIO_BR		(-3*60*60)
 
 #define SEC_PER_MIN         60
 #define SEC_PER_HOUR        3600
@@ -34,9 +34,13 @@ uint32_t unix_time_in_seconds(uint8_t sec, uint8_t min, uint8_t hrs,
 		uint8_t day, uint8_t mon, uint16_t year);
 
 
-typedef enum{CLOCK_INIT,CLOCK_STARTED,CLOCK_UPDATE,CLOCK_ADJUSTED} STATUS_CLOCK;
+uint32_t getTimeStamp();
+bool getLocalClock(LDD_RTC_TTime* time);
 
-extern LDD_RTC_TTime	Time;
+
+typedef enum{CLOCK_INIT,CLOCK_STARTED,CLOCK_UPDATE,CLOCK_ADJUSTED,CLOCK_ERROR} STATUS_CLOCK;
+
+//extern LDD_RTC_TTime	Time;
 
 extern volatile STATUS_CLOCK statuc_clock;
 

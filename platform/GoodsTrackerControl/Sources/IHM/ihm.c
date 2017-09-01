@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <time.h>
 #include "ihm.h"
 #include "TSSin.h"
 #include "lcd.h"
@@ -17,6 +18,7 @@
 char* functionsArray[] = { "OPTION 1", "OPTION 3", "OPTION 2" };
 int time_splah = 20;
 int time_update= 0;
+uint32_t last_timestamp = 0;
 
 static ihmStruct ihmGlobal;
 
@@ -38,10 +40,12 @@ void runIHM() {
 			time_update = 5;
 			printXYZ(&telemetria);
 		}
-		if(flag_1s){
+		if(getTimeStamp()!=last_timestamp || flag_1s ){
 
+
+			last_timestamp = getTimeStamp();
 			flag_1s = FALSE;
-			printClock(&Time);
+			printClock();
 		}
 	}
 }
@@ -186,10 +190,12 @@ void showSplah(){
 }
 //-----------------------------------------------------------------------------------------
 
-void printClock(LDD_RTC_TTime* time){
+void printClock(void){
 
-	int hour;
+	LDD_RTC_TTime	time;
+
 	char buffer_lcd[17];
+	buffer_lcd[0] = '\0';
 
 	switch(statuc_clock){
 
@@ -204,10 +210,19 @@ void printClock(LDD_RTC_TTime* time){
 			XF1_xsprintf(buffer_lcd,"     CLKUPD     ");
 			break;
 		case CLOCK_ADJUSTED:
-			hour = time->Hour+FUSO_HORARIO_BR;
-			hour = hour<0?hour+24:hour;
-			XF1_xsprintf(buffer_lcd," %02d.%02d %02d:%02d:%02d \n",time->Day,time->Month, hour, time->Minute, time->Second);
+			if(getLocalClock(&time)){
+				XF1_xsprintf(buffer_lcd," %02d.%02d %02d:%02d:%02d \n",time.Day,time.Month,time.Hour, time.Minute, time.Second);
+
+			}else{
+				statuc_clock = CLOCK_ERROR;
+			}
+
 			break;
+
+		case CLOCK_ERROR:
+			XF1_xsprintf(buffer_lcd,"     ERROR     ");
+			break;
+
 	}
 
 	printLCD(2,1,buffer_lcd);

@@ -7,6 +7,7 @@
 #include <string.h>
 #include "Accelerometer.h"
 #include "AppQueues.h"
+#include "clock.h"
 #include "Telemetria.h"
 
 Telemetria	telemetria;
@@ -41,7 +42,9 @@ void updateDataGPS(void) {
 
 		if (xQueueReceive(xQueueGPS, &telemetria.GPS, (TickType_t ) 1)) {
 
-			adjusteClock();
+			if(telemetria.GPS.FixQuality>0){
+				adjusteClock();
+			}
 		}
 	}
 }

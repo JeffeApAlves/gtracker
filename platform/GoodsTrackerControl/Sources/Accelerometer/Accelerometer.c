@@ -14,12 +14,13 @@ Accelerometer	acceInfo;
 
 void runAccelerometer(void) {
 
-	MMA845x_getValues(&acceInfo);
+	if(MMA845x_getXYZ(&acceInfo)){
 
-    if(xQueueSendToBack( xQueueAcc ,  &acceInfo, ( TickType_t ) 1 ) ){
+		if(xQueueSendToBack( xQueueAcc ,  &acceInfo, ( TickType_t ) 1 ) ){
 
-    	xTaskNotify( xHandleCallBackTask , BIT_UPDATE_ACCE , eSetBits );
-    }
+			xTaskNotify( xHandleCallBackTask , BIT_UPDATE_ACCE , eSetBits );
+		}
+	}
 }
 //------------------------------------------------------------------------
 

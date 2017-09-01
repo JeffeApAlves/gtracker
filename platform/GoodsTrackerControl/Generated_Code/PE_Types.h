@@ -6,7 +6,7 @@
 **     Component   : PE_Types
 **     Version     : Driver 01.01
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-08-31, 22:02, # CodeGen: 152
+**     Date/Time   : 2017-09-01, 13:30, # CodeGen: 156
 **     Abstract    :
 **         PE_Types.h - contains definitions of basic types,
 **         register access macros and hardware specific macros
@@ -1249,7 +1249,7 @@ typedef struct LDD_USB_TDevDescriptor_Struct {
   uint16_t  bcdDevice;                 /*!< Device release number in binary-coded decimal */
   uint8_t   iManufacturer;             /*!< Index of string descriptor describing manufacturer */
   uint8_t   iProduct;                  /*!< Index of string descriptor describing product */
-  uint8_t   iSerialNumber;             /*!< Index of string descriptor describing the deviceï¿½s serial number */
+  uint8_t   iSerialNumber;             /*!< Index of string descriptor describing the device’s serial number */
   uint8_t   bNumConfigurations;        /*!< Number of possible configurations */
 } LDD_USB_TDevDescriptor;
 
@@ -2185,7 +2185,6 @@ typedef struct {
   uint32_t Day;                        /*!< day (1 - 31) */
   uint32_t Month;                      /*!< month (1 - 12) */
   uint32_t Year;                       /*!< year */
-  uint32_t timestamp;
 } LDD_RTC_TTime;
 
 

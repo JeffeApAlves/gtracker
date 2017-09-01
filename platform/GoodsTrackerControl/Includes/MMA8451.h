@@ -99,7 +99,7 @@ uint8_t I2C_ReadBuffer(uint8_t addr, uint8_t *data, short dataSize);
 uint8_t I2C_Read(uint8_t addr, uint8_t *data);
 uint8_t I2C_Write(uint8_t addr, uint8_t val);
 
-bool MMA845x_getValues(Accelerometer* acc);
+bool MMA845x_getXYZ(Accelerometer* acc);
 void MMA845x_deInit(void);
 void MMA845x_init(void);
 void MMA845x_Standby(void);
