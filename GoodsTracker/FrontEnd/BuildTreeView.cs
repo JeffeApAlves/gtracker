@@ -346,17 +346,17 @@ namespace GoodsTracker
 
 /*
             spec = eixo.Nodes.Add(string.Format("A: Val:{0} Min:{1} Max:{2}",
-                                        axis.Acceleration.Val,
-                                        axis.Acceleration.Tol.Min,
-                                        axis.Acceleration.Tol.Max));
-            spec.ImageIndex = (int)(axis.Acceleration.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+                                        axis.Val.Val,
+                                        axis.Val.Tol.Min,
+                                        axis.Val.Tol.Max));
+            spec.ImageIndex = (int)(axis.Val.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
             spec.SelectedImageIndex = spec.ImageIndex;
 */
             spec = eixo.Nodes.Add(string.Format("G: Val:{0} Min:{1} Max:{2}",
-                                        axis.Rotation.Val,
-                                        axis.Rotation.Tol.Min,
-                                        axis.Rotation.Tol.Max));
-            spec.ImageIndex = (int)(axis.Rotation.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
+                                        axis.Val_G.Val,
+                                        axis.Val_G.Tol.Min,
+                                        axis.Val_G.Tol.Max));
+            spec.ImageIndex = (int)(axis.Val_G.OK() ? IMG_TREEVIEW.OK : IMG_TREEVIEW.NOK);
             spec.SelectedImageIndex = spec.ImageIndex;
 
             return eixo;

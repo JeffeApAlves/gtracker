@@ -50,25 +50,25 @@ namespace GoodsTracker
 
     class Axis
     {
-        Value acceleration, rotation;
+        Value val, val_g;
 
         public Axis()
         {
-            Acceleration    = new Value(0,15);
-            Rotation        = new Value(15,30);
+            Val     = new Value(0,4095);
+            Val_G   = new Value(-1.0,1.0);
         }
 
-        public Value Acceleration { get => acceleration; set => acceleration = value; }
-        public Value Rotation { get => rotation; set => rotation = value; }
+        public Value Val { get => val; set => val = value; }
+        public Value Val_G { get => val_g; set => val_g = value; }
 
         public bool OK()
         {
-            return acceleration.OK() && rotation.OK();
+            return val.OK() && val_g.OK();
         }
 
         public override string ToString()
         {
-            return /*"A: "+acceleration.ToString() + */ " G: " + rotation.ToString();
+            return " G: " + val_g.ToString();
         }
     }
 
@@ -151,18 +151,18 @@ namespace GoodsTracker
             return sb.ToString();
         }
 
-        public void setAcceleration(double x, double y, double z)
+        public void setXYZ(double x, double y, double z)
         {
-            AxisX.Acceleration.Val = x;
-            AxisY.Acceleration.Val = y;
-            AxisZ.Acceleration.Val = z;
+            AxisX.Val.Val = x;
+            AxisY.Val.Val = y;
+            AxisZ.Val.Val = z;
         }
 
-        public void setRotation(double x, double y, double z)
+        public void setXYZ_G(double x, double y, double z)
         {
-            axisX.Rotation.Val = x;
-            axisY.Rotation.Val = y;
-            axisZ.Rotation.Val = z;
+            axisX.Val_G.Val = x;
+            axisY.Val_G.Val = y;
+            axisZ.Val_G.Val = z;
         }
 
         public void setValues(Telemetria values)

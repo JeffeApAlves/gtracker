@@ -41,7 +41,7 @@ namespace GoodsTracker
             ans.Header.Address      = 2;
             ans.Header.Dest         = 1;
             ans.Header.TimeStamp    = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            ans.Telemetria      = createTelemetriaData();
+            ans.Telemetria          = createTelemetriaData();
             return ans;
         }
 
@@ -56,8 +56,8 @@ namespace GoodsTracker
                 PointLatLng p = TrackerController.TrackerCtrl.Routes[0].MapRoute.Points[count_publish++];
 
                 b.setPosition(AsGrauSexagesimal(p.Lat) * 100, AsGrauSexagesimal(p.Lng) * 100);
-                b.setAcceleration(rnd.Next(0, 4), rnd.Next(5, 9), rnd.Next(10, 14));
-                b.setRotation(rnd.Next(-100, 100)/100, rnd.Next(-100, 100)/100, rnd.Next(-100, 100)/100);
+                b.setXYZ(rnd.Next(0, 4), rnd.Next(0,4095), rnd.Next(0, 4095));
+                b.setXYZ_G(rnd.Next(-120, 120)/100.0, rnd.Next(-120, 120)/100.0, rnd.Next(-120, 120)/100.0);
                 b.setSpeed(rnd.Next(40, 120));
                 b.setLevel(rnd.Next(5000, 32000));
                 b.DateTime = DateTime.Now;

@@ -13,17 +13,17 @@ namespace GoodsTracker
             payload.Append(CONST_CHAR.SEPARATOR);
             payload.Append(b.Longitude);
             payload.Append(CONST_CHAR.SEPARATOR);
-            payload.Append(b.AxisX.Acceleration.Val);
+            payload.Append(b.AxisX.Val.Val);
             payload.Append(CONST_CHAR.SEPARATOR);
-            payload.Append(b.AxisY.Acceleration.Val);
+            payload.Append(b.AxisY.Val.Val);
             payload.Append(CONST_CHAR.SEPARATOR);
-            payload.Append(b.AxisZ.Acceleration.Val);
+            payload.Append(b.AxisZ.Val.Val);
             payload.Append(CONST_CHAR.SEPARATOR);
-            payload.Append(b.AxisX.Rotation.Val);
+            payload.Append(b.AxisX.Val_G.Val);
             payload.Append(CONST_CHAR.SEPARATOR);
-            payload.Append(b.AxisY.Rotation.Val);
+            payload.Append(b.AxisY.Val_G.Val);
             payload.Append(CONST_CHAR.SEPARATOR);
-            payload.Append(b.AxisZ.Rotation.Val);
+            payload.Append(b.AxisZ.Val_G.Val);
             payload.Append(CONST_CHAR.SEPARATOR);
             payload.Append(b.Speed.Val);
             payload.Append(CONST_CHAR.SEPARATOR);
@@ -127,8 +127,8 @@ namespace GoodsTracker
             FieldFrame<DateTime> dt = new FieldFrame<DateTime>(INDEX.TIME_STAMP_PL, list);
 
             telemetria.setPosition(lat.getVal(), lng.getVal());
-            telemetria.setAcceleration(a_x.getVal(), a_y.getVal(), a_z.getVal());
-            telemetria.setRotation(g_x.getVal(), g_y.getVal(), g_z.getVal());
+            telemetria.setXYZ(a_x.getVal(), a_y.getVal(), a_z.getVal());
+            telemetria.setXYZ_G(g_x.getVal(), g_y.getVal(), g_z.getVal());
 
             telemetria.Speed.Val = speed.getVal();
             telemetria.Level.Val = level.getVal();

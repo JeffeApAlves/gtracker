@@ -637,8 +637,8 @@ namespace GoodsTracker
             endAddress.Text     = route.EndAddress();
 
             //Debug - Dados para testes
-            //demoData = new TestData(2000);
-            //demoData.start();
+            demoData = new TestData(2000);
+            demoData.start();
         }
 
         /*

@@ -221,6 +221,48 @@ void strToData(	LDD_RTC_TTime* date_time,char* date,char* time){
 }
 //-------------------------------------------------------------------------------------------------------------------
 
+uint32_t strToTimeStamp(char* date,char* time){
+
+	uint8_t sec,min, hrs, day, mon;
+	uint16_t year;
+
+	char str_year[3];	str_year[2]		= '\0';
+	char str_month[3];	str_month[2]	= '\0';
+	char str_day[3];	str_day[2]		= '\0';
+	char str_hrs[3];	str_hrs[2] 		= '\0';
+	char str_min[3];	str_min[2] 		= '\0';
+	char str_sec[3];	str_sec[2] 		= '\0';
+
+	if(strlen(time)>=6){
+		strncpy(str_hrs, 	time,2);
+		strncpy(str_min, 	time+2,2);
+		strncpy(str_sec, 	time+4,2);
+
+		hrs	= atoi(str_hrs);
+		min	= atoi(str_min);
+		sec	= atoi(str_sec);
+	}
+
+	if(strlen(date)>=6){
+
+		strncpy(str_day, 	date,2);
+		strncpy(str_month,	date+2,2);
+		strncpy(str_year,	date+4,2);
+
+		year	= atoi(str_year);
+		mon		= atoi(str_month);
+		day		= atoi(str_day);
+
+		// ano de 2 digitos
+		if(year>0 && year<100){
+			year+=2000;
+		}
+	}
+
+	return unix_time_in_seconds(sec,min, hrs,  day, mon, year);
+}
+//-------------------------------------------------------------------------------------------------------------------
+
 uint32_t unix_time_in_seconds(uint8_t sec, uint8_t min, uint8_t hrs,
 		uint8_t day, uint8_t mon, uint16_t year) {
 
