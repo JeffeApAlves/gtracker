@@ -10,25 +10,22 @@ namespace GoodsTracker
 {
     public partial class MainForm : Form
     {
-        LayerMap    layerFence, layerRoute, layerBehavior;
+        LayerMap layerFence, layerRoute, layerBehavior;
 
-        STATUS_GUI  statusFence = STATUS_GUI.INIT;
-        STATUS_GUI  statusTrip  = STATUS_GUI.INIT;
-        TrackerController trackerController = TrackerController.TrackerCtrl;
+        STATUS_GUI statusFence = STATUS_GUI.INIT;
+        STATUS_GUI statusTrip = STATUS_GUI.INIT;
+        TrackerController trackerController;
 
-        Fence       fence;
-        Route       route;
-        BuildTreeView   bTV     = null;
-        int     itemselected    = -1;
+        Fence fence;
+        Route route;
+        BuildTreeView bTV = null;
+        int itemselected = -1;
         private bool lockVehicle;
-        //        TestData demoData       = null;
+        TestData demoData = null;
 
         /*************************************************************************
-         *                                                                       *
          *                          Eventos                                      *
-         *                                                                       *
          *************************************************************************/
-
 
         public MainForm()
         {
@@ -37,9 +34,11 @@ namespace GoodsTracker
 
         /*
          * Evento de carga do form
-         */ 
+         */
         private void MainForm_Load(object sender, EventArgs e)
         {
+            initAllEntities();
+
             initTrackerControl();
             initMapControl();
             initLayers();
@@ -48,8 +47,6 @@ namespace GoodsTracker
             initPanelBehavior();
             initPanelConfig();
             collapseAllPanel();
-            Protocol.Communication.init();
-            initAllThreads();
         }
 
         /*
@@ -190,10 +187,10 @@ namespace GoodsTracker
          */
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bTV.Filter      = cbFilter.SelectedIndex;
+            bTV.Filter = cbFilter.SelectedIndex;
 
             // Atualiza lista de behaviors
-            bTV.Behaviors   = trackerController.getBehaviorFiltered(bTV.Filter);
+            bTV.Behaviors = trackerController.getBehaviorFiltered(bTV.Filter);
         }
 
         /*
@@ -247,29 +244,29 @@ namespace GoodsTracker
          */
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ThreadManager.stop();
-
-            Serial.Close();
+            ThreadRun.stopAll();
+            GTracker.stopCommunication();
         }
 
         /*************************************************************************
-         *                                                                       *
          *                          Inicializacoes                               *
-         *                                                                       *
          *************************************************************************/
-
 
         /*
          * Inicializa as threads
          * 
          */
-        void initAllThreads()
+        void initAllEntities()
         {
-            // Dados para testes
-            //demoData = new TestData(TrackerController.TIME_TELEMETRIA);
+            GTracker.createCommunication(TYPE_COMMUNICATION.SERIAL);
 
+            trackerController = TrackerController.TrackerCtrl;
+            trackerController.Init();
+
+ 
             // Inicia todas as threads
-            ThreadManager.start();
+            //ThreadManager.start();
+
             timer1.Enabled = true;
         }
 
@@ -291,7 +288,7 @@ namespace GoodsTracker
             gMapControl1.Zoom = 15;
             gMapControl1.AutoScroll = true;
             gMapControl1.Position = new PointLatLng(SENAI_ANCHIETA.LATITUDE, SENAI_ANCHIETA.LONGITUDE);
-            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly;
+            //GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly;
         }
 
         private void initPanelTrip()
@@ -311,9 +308,9 @@ namespace GoodsTracker
 
         private void initLayers()
         {
-            layerFence      = new LayerMap(gMapControl1, "Fence");
-            layerRoute      = new LayerMap(gMapControl1, "Route");
-            layerBehavior   = new LayerMap(gMapControl1, "DataTelemetria");
+            layerFence = new LayerMap(gMapControl1, "Fence");
+            layerRoute = new LayerMap(gMapControl1, "Route");
+            layerBehavior = new LayerMap(gMapControl1, "DataTelemetria");
         }
 
         void initPanelConfig()
@@ -322,32 +319,34 @@ namespace GoodsTracker
             checkedListBox1.SetItemCheckState(1, layerBehavior.isVisible() ? CheckState.Checked : CheckState.Unchecked);
             checkedListBox1.SetItemCheckState(2, layerFence.isVisible() ? CheckState.Checked : CheckState.Unchecked);
             checkedListBox1.SetItemCheckState(3, gMapControl1.MapProvider.Equals(GMapProviders.GoogleChinaSatelliteMap) ? CheckState.Checked : CheckState.Unchecked);
+
+            cbCommunication.SelectedIndex = (int)Communication.Type;
         }
 
         void initPanelBehavior()
         {
             bTV = new BuildTreeView(tvBehavior);
 
-            cbFilter.SelectedIndex  = 0;
+            cbFilter.SelectedIndex = 0;
 
             bTV.Behaviors = trackerController.getBehaviorFiltered(bTV.Filter);
         }
 
         private void initSelectRoute()
         {
-            txtLatStop.BackColor    = Color.White;
-            txtLngStop.BackColor    = Color.White;
-            txtLatStart.BackColor   = Color.White;
-            txtLngStart.BackColor   = Color.White;
+            txtLatStop.BackColor = Color.White;
+            txtLngStop.BackColor = Color.White;
+            txtLatStart.BackColor = Color.White;
+            txtLngStart.BackColor = Color.White;
 
-            statusTrip              = STATUS_GUI.START_POINT;
+            statusTrip = STATUS_GUI.START_POINT;
 
-            txtLatStart.Text        = "";
-            txtLngStart.Text        = "";
-            txtLatStop.Text         = "";
-            txtLngStop.Text         = "";
-            startAddress.Text       = "";
-            endAddress.Text         = "";
+            txtLatStart.Text = "";
+            txtLngStart.Text = "";
+            txtLatStop.Text = "";
+            txtLngStop.Text = "";
+            startAddress.Text = "";
+            endAddress.Text = "";
 
             txtLatStart.Focus();
             tvBehavior.Nodes.Clear();
@@ -356,9 +355,7 @@ namespace GoodsTracker
         }
 
         /*************************************************************************
-         *                                                                       *
          *                          Updates                                      *
-         *                                                                       *
          *************************************************************************/
 
         /*
@@ -377,7 +374,7 @@ namespace GoodsTracker
         }
 
         /*
-         * Atualiza oa tela com informacoes sobre telemetria
+         * Atualiza o treeview e o mapa(marcadores) na tela com informacoes sobre telemetria
          */
         void updateBehavior()
         {
@@ -389,7 +386,7 @@ namespace GoodsTracker
          */
         void updateStatusLock()
         {
-            DataTelemetria telemetria = trackerController.getTelemetria();
+            Telemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria == null)
             {
@@ -398,13 +395,13 @@ namespace GoodsTracker
             }
             else if (telemetria.StatusLock)
             {
-                labelStatusLock.BackColor   = Color.Red;
-                labelStatusLock.Text        = "LOCK";
+                labelStatusLock.BackColor = Color.Red;
+                labelStatusLock.Text = "LOCK";
             }
             else
             {
-                labelStatusLock.BackColor   = Color.Green;
-                labelStatusLock.Text        = "UNLOCK";
+                labelStatusLock.BackColor = Color.Green;
+                labelStatusLock.Text = "UNLOCK";
             }
         }
 
@@ -413,7 +410,7 @@ namespace GoodsTracker
          */
         void updateStatusFence()
         {
-            DataTelemetria telemetria = trackerController.getTelemetria();
+            Telemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria == null)
             {
@@ -437,7 +434,7 @@ namespace GoodsTracker
          */
         void updatelevel()
         {
-            DataTelemetria telemetria = trackerController.getTelemetria();
+            Telemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria == null)
             {
@@ -445,15 +442,15 @@ namespace GoodsTracker
                 lmax.Text = "---";
                 lVal.Text = "---";
 
-                levelBar.Maximum    = 100;
-                levelBar.Minimum    = 0;
-                levelBar.Value      = 0;
+                levelBar.Maximum = 100;
+                levelBar.Minimum = 0;
+                levelBar.Value = 0;
             }
-            else 
+            else
             {
-                levelBar.Maximum    = (int)telemetria.Level.Tol.Max;
-                levelBar.Minimum    = (int)telemetria.Level.Tol.Min;
-                levelBar.Value      = (int)telemetria.Level.Val;
+                levelBar.Maximum = (int)telemetria.Level.Tol.Max;
+                levelBar.Minimum = (int)telemetria.Level.Tol.Min;
+                levelBar.Value = (int)telemetria.Level.Val;
 
                 lmin.Text = levelBar.Minimum.ToString();
                 lmax.Text = levelBar.Maximum.ToString();
@@ -466,30 +463,35 @@ namespace GoodsTracker
          */
         void showMarkerBehavior()
         {
-            DataTelemetria[] listCurrentBehavior = bTV.Behaviors;
+            Telemetria[] listCurrentBehavior = bTV.Behaviors;
 
             if (listCurrentBehavior != null)
             {
                 layerBehavior.removeAllMarkers();
 
-                foreach (DataTelemetria b in listCurrentBehavior)
+                foreach (Telemetria tlm in listCurrentBehavior)
                 {
-                    PointLatLng p = new PointLatLng(b.Latitude, b.Longitude);
+                    PointLatLng p = new PointLatLng(tlm.Latitude, tlm.Longitude);
 
                     GMarkerGoogleType color;
 
-                    if (b.IsInsideOfFence())
+                    if (tlm.IsInsideOfFence())
                     {
                         color = GMarkerGoogleType.brown_small;
                     }
                     else
                     {
-                        color = b.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
+                        color = tlm.OK() ? GMarkerGoogleType.green : GMarkerGoogleType.red;
                     }
-                    
-                    layerBehavior.add(p, b.getStrNOK(), color);
+
+                    layerBehavior.add(p, tlm.getStrNOK(), color);
                 }
             }
+        }
+
+        public bool isAnyRoute()
+        {
+            return trackerController.anyRoute();
         }
 
         /**
@@ -497,7 +499,7 @@ namespace GoodsTracker
          */
         private void lckMng()
         {
-            DataTelemetria telemetria = trackerController.getTelemetria();
+            Telemetria telemetria = trackerController.getTelemetria();
 
             if (telemetria != null)
             {
@@ -513,11 +515,8 @@ namespace GoodsTracker
         }
 
         /*************************************************************************
-         *                                                                       *
          *                          Painel                                       *
-         *                                                                       *
          *************************************************************************/
-
 
         /*
           * Seleciona (expande) o painel
@@ -553,11 +552,8 @@ namespace GoodsTracker
         }
 
         /*************************************************************************
-         *                                                                       *
          *                          Set's                                        *
-         *                                                                       *
          *************************************************************************/
-
 
         /*
          * Processa o selecionamento dos pontos para montagem da cerca
@@ -597,19 +593,22 @@ namespace GoodsTracker
          */
         private void setEndPoint(PointLatLng point)
         {
-            route.stopAddress(point);
+            if (point != null)
+            {
+                route.stopAddress(point);
 
-            txtLatStop.Text = point.Lat.ToString();
-            txtLngStop.Text = point.Lng.ToString();
+                txtLatStop.Text = point.Lat.ToString();
+                txtLngStop.Text = point.Lng.ToString();
 
-            txtLatStop.BackColor = Color.FromArgb(61, 120, 165);
-            txtLngStop.BackColor = Color.FromArgb(61, 120, 165);
+                txtLatStop.BackColor = Color.FromArgb(61, 120, 165);
+                txtLngStop.BackColor = Color.FromArgb(61, 120, 165);
 
-            layerRoute.add(point, GMarkerGoogleType.blue);
+                layerRoute.add(point, GMarkerGoogleType.blue);
 
-            statusTrip = STATUS_GUI.INIT_OK;
+                statusTrip = STATUS_GUI.INIT_OK;
 
-            add(route);
+                add(route);
+            }
         }
  
         /*
@@ -636,6 +635,10 @@ namespace GoodsTracker
 
             startAddress.Text   = route.StartAddress();
             endAddress.Text     = route.EndAddress();
+
+            //Debug - Dados para testes
+            demoData = new TestData(2000);
+            demoData.start();
         }
 
         /*
@@ -683,6 +686,19 @@ namespace GoodsTracker
             }
         }
 
+        private void cbCommunication_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbCommunication.SelectedIndex==0)
+            {
+                Communication.create(TYPE_COMMUNICATION.SERIAL);
+
+            }
+            else
+            {
+                Communication.create(TYPE_COMMUNICATION.AMQP);
+            }
+        }
+
         /*
          * Adiciona posicao da cerca
          */
@@ -693,16 +709,14 @@ namespace GoodsTracker
         }
 
         /*************************************************************************
-         *                                                                       *
          *                          CALL BACKS                                   *
-         *                                                                       *
          *************************************************************************/
 
         /*
          * Evento de recepcao de dados de telemetria
          * 
          */
-        private void onDataTelemetria(DataTelemetria telemetria)
+        private void onDataTelemetria(Telemetria telemetria)
         {
             // Atualiza o status da se esta dentro de alguma cerca
             layerFence.PointIsInsidePolygon(telemetria);

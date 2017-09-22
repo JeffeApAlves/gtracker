@@ -28,10 +28,10 @@ by the component.
 <td class="regNotResetVal">0x00000400</td>
  <td>PORTE_PCR22 register, peripheral ASerialLdd2.</td></tr>
 <tr><td>0xE000E40C</td><td>NVIC_IPR3</td>
-<td class="regNotResetVal">0x80800080</td>
+<td class="regNotResetVal">0x00800080</td>
  <td>NVIC_IPR3 register, peripheral ASerialLdd2.</td></tr>
 <tr><td>0xE000E100</td><td>NVIC_ISER</td>
-<td class="regNotResetVal">0x0002D000</td>
+<td class="regNotResetVal">0x00025000</td>
  <td>NVIC_ISER register, peripheral ASerialLdd2.</td></tr>
 <tr><td>0x4006C002</td><td>UART2_C1</td>
 <td class="regResetVal">0x00000000</td>
@@ -260,10 +260,10 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0xE000E40C</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x80800080</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00800080</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
-<tr><td>24 - 31</td><td>PRI_15</td><td>0x80</td><td>Priority of interrupt 15</td>
+<tr><td>24 - 31</td><td>PRI_15</td><td>0x00</td><td>Priority of interrupt 15</td>
 <tr><td>16 - 23</td><td>PRI_14</td><td>0x80</td><td>Priority of interrupt 14</td>
 <tr><td>8 - 15</td><td>PRI_13</td><td>0x00</td><td>Priority of interrupt 12</td>
 <tr><td>0 - 7</td><td>PRI_12</td><td>0x80</td><td>Priority of interrupt 11</td>
@@ -305,7 +305,7 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0xE000E100</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x0002D000</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x00025000</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
 <tr><td>0 - 31</td><td>SETENA</td><td>0x00</td><td>Interrupt set enable bits</td>

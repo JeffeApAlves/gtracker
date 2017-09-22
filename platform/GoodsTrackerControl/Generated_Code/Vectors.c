@@ -6,7 +6,7 @@
 **     Version     : Component 01.025, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-30, 02:07, # CodeGen: 48
+**     Date/Time   : 2017-08-28, 13:58, # CodeGen: 114
 **     Abstract    :
 **
 **     Settings    :
@@ -68,8 +68,6 @@
   #include "LED_B.h"
   #include "LEDpin3.h"
   #include "BitIoLdd3.h"
-  #include "AD1.h"
-  #include "AdcLdd1.h"
   #include "TI1.h"
   #include "TimerIntLdd1.h"
   #include "LCDout.h"
@@ -93,11 +91,13 @@
   #include "TU1.h"
   #include "MCUC1.h"
   #include "UTIL1.h"
-  #include "MMA1.h"
-  #include "GI2C1.h"
   #include "WAIT2.h"
   #include "WAIT3.h"
-  #include "CI2C1.h"
+  #include "WAIT4.h"
+  #include "I2C2.h"
+  #include "AD1.h"
+  #include "AdcLdd1.h"
+  #include "RTC1.h"
   #include "Events.h"
 
 
@@ -141,7 +141,7 @@
     (tIsrFunc)&Cpu_Interrupt,          /* 0x15  0x00000054   -   ivINT_FTFA                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x16  0x00000058   -   ivINT_LVD_LVW                 unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x17  0x0000005C   -   ivINT_LLWU                    unused by PE */
-    (tIsrFunc)&CI2C1_Interrupt,        /* 0x18  0x00000060   2   ivINT_I2C0                    used by PE */
+    (tIsrFunc)&I2C2_Interrupt,         /* 0x18  0x00000060   2   ivINT_I2C0                    used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x19  0x00000064   -   ivINT_I2C1                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x1A  0x00000068   -   ivINT_SPI0                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x1B  0x0000006C   -   ivINT_SPI1                    unused by PE */
@@ -153,8 +153,8 @@
     (tIsrFunc)&TU1_Interrupt,          /* 0x21  0x00000084   2   ivINT_TPM0                    used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x22  0x00000088   -   ivINT_TPM1                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x23  0x0000008C   -   ivINT_TPM2                    unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x24  0x00000090   -   ivINT_RTC                     unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x25  0x00000094   -   ivINT_RTC_Seconds             unused by PE */
+    (tIsrFunc)&RTC1_Interrupt,         /* 0x24  0x00000090   2   ivINT_RTC                     used by PE */
+    (tIsrFunc)&RTC1_SecondsInterrupt,  /* 0x25  0x00000094   2   ivINT_RTC_Seconds             used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x26  0x00000098   -   ivINT_PIT                     unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x27  0x0000009C   -   ivINT_Reserved39              unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x28  0x000000A0   -   ivINT_USB0                    unused by PE */

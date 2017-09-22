@@ -1,16 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
-
 
 namespace GoodsTracker
 {
     abstract class ThreadRun
     {
+        static List<ThreadRun> threads = new List<ThreadRun>();
+
         protected Thread thread;
-
         private int time_ms = 10000;
-
         private volatile bool _shouldStop;
 
         public void DoWork()
@@ -25,8 +25,7 @@ namespace GoodsTracker
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Erro na execucao de alguma Thread");
-                    Console.WriteLine(e.ToString());
+                    Debug.WriteLine("Erro na execucao de alguma Thread");
                     Debug.WriteLine(e.ToString());
 
                     _shouldStop = true;
@@ -39,7 +38,7 @@ namespace GoodsTracker
         {
             thread = new Thread(DoWork);
 
-            ThreadManager.add(this);
+            add(this);
         }
 
         abstract public void run();
@@ -61,7 +60,35 @@ namespace GoodsTracker
 
         public void join()
         {
-            thread.Join();
+            if (thread.IsAlive)
+            {
+                thread.Join();
+            }
+        }
+
+        static internal void add(ThreadRun t)
+        {
+            if (t != null)
+            {
+                threads.Add(t);
+            }
+        }
+
+        static public void startAll()
+        {
+            foreach (ThreadRun t in threads)
+            {
+                t.start();
+            }
+        }
+
+        static public void stopAll()
+        {
+            foreach (ThreadRun t in threads)
+            {
+                t.RequestStop();
+                t.join();
+            }
         }
     }
 }

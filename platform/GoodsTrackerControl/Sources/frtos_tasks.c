@@ -21,23 +21,27 @@
 #include "application.h"
 #include "AppQueues.h"
 #include "ihm.h"
+#include "clock.h"
 #include "protocol.h"
 #include "Level.h"
 #include "accelerometer.h"
 #include "gps.h"
 
-/*############################################################################################
-  # Main task
-  # Espera as notificacoes para atualizacoes das informacoes de telemtria
-  ############################################################################################*/
+/*********************************************************************************************
+  * Main task
+  * Espera as notificacoes para atualizacoes das informacoes de telemtria
+  *
+  ********************************************************************************************/
 
 static portTASK_FUNCTION(main_task, pvParameters) {
 
 	initQueues();
 
+	initClock();
+
 	for (;;) {
 
-		//TODO main task
+		runMain();
 
 		vTaskDelay(xMainDelay);
 	}
@@ -45,9 +49,10 @@ static portTASK_FUNCTION(main_task, pvParameters) {
 	vTaskDelete(main_task);
 }
 
-/*############################################################################################
- #  Leitura do AD
- ############################################################################################*/
+/*********************************************************************************************
+ *  Leitura dos canais analogicos e digitais
+ *
+ ********************************************************************************************/
 
 static portTASK_FUNCTION(data_task, pvParameters) {
 
@@ -61,13 +66,14 @@ static portTASK_FUNCTION(data_task, pvParameters) {
 	vTaskDelete(data_task);
 }
 
-/*############################################################################################
- #  Gerencimento do IHM LCD-Touch
- ############################################################################################*/
+/*********************************************************************************************
+ *  Gerencimento do IHM LCD-Touch
+ *
+ ********************************************************************************************/
 
 static portTASK_FUNCTION(ihm_task, pvParameters) {
 
-	ihm_initialize();
+	initIHM();
 
 	for (;;) {
 
@@ -76,15 +82,16 @@ static portTASK_FUNCTION(ihm_task, pvParameters) {
 		vTaskDelay(xIHMDelay);
 	}
 
-	ihm_terminate();
+	deInitIHM();
 
 	vTaskDelete(ihm_task);
 }
 
 
-/*############################################################################################
- #  Task de gerenciamento do GPS e protocolo NMEA
- ############################################################################################*/
+/*********************************************************************************************
+ *  Task de gerenciamento do GPS/NMEA
+ *
+ *********************************************************************************************/
 
 static portTASK_FUNCTION(gps_task, pvParameters) {
 
@@ -100,13 +107,15 @@ static portTASK_FUNCTION(gps_task, pvParameters) {
 	vTaskDelete(gps_task);
 }
 
-/*############################################################################################
- #  Task leitura do acelerometro
- ############################################################################################*/
+/*********************************************************************************************
+ *
+ *  Task leitura do acelerometro
+ *
+ ********************************************************************************************/
 
 static portTASK_FUNCTION(accel_task, pvParameters) {
 
-	initAccel();
+	initAccelerometer();
 
 	for (;;) {
 
@@ -118,10 +127,11 @@ static portTASK_FUNCTION(accel_task, pvParameters) {
 	vTaskDelete(accel_task);
 }
 
-/*############################################################################################
- #  Task para execucao da call back dos cmds recebidos
- #  O comando de telemetria espera as notificacoes para atualizacoes das informacoes via fila de mensagens
- ############################################################################################*/
+/*********************************************************************************************
+ *  Task para execucao da call back dos cmds recebidos
+ *  O comando de telemetria espera as notificacoes para atualizacoes das informacoes via fila de mensagens
+ *
+ *********************************************************************************************/
 
 static portTASK_FUNCTION(callback_task, pvParameters) {
 
@@ -129,15 +139,16 @@ static portTASK_FUNCTION(callback_task, pvParameters) {
 
 	for (;;) {
 
-		runCallBack();
+		runApp();
 	}
 
 	vTaskDelete(callback_task);
 }
 
-/*############################################################################################
- # Task para processamento da recepcao dos dados
- ############################################################################################*/
+/*********************************************************************************************
+ * Task para processamento da recepcao dos dados
+ *
+ *********************************************************************************************/
 
 static portTASK_FUNCTION(communication_task, pvParameters) {
 
@@ -153,23 +164,27 @@ static portTASK_FUNCTION(communication_task, pvParameters) {
 	vTaskDelete(communication_task);
 }
 
-/*############################################################################################
- #  Task para processamento das transmissao
- ############################################################################################*/
+/*********************************************************************************************
+ *  Task para processamento das transmissao
+ *
+ ********************************************************************************************/
 
 static portTASK_FUNCTION(runTx_task, pvParameters) {
 
 	for (;;) {
 
 		processTx();
+
+		vTaskDelay(xCommunicationDelay);
 	}
 
 	vTaskDelete(runTx_task);
 }
 
-/*############################################################################################
- #  Funcao para criacao das tasks
- ############################################################################################*/
+/*********************************************************************************************
+ *  Funcao para criacao das tasks
+ *
+ ********************************************************************************************/
 
 void CreateTasks(void) {
 

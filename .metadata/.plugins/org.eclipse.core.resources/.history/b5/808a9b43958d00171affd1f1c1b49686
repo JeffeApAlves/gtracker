@@ -1,0 +1,35 @@
+/*
+ * Data.h
+ *
+ *  Created on: 29/06/2017
+ *      Author: Jefferson
+ */
+
+#ifndef SOURCES_TELEMETRIA_H_
+#define SOURCES_TELEMETRIA_H_
+
+#include <stdint.h>
+#include <string.h>
+
+#include	"GPS.h"
+#include	"Level.h"
+#include	"Accelerometer.h"
+
+typedef struct{
+
+	DataGPS				GPS;
+	DataTank			Tank;
+	DataAccelerometer	Accelerometer;
+
+} Telemetria;
+
+void updateDataLevel(void);
+void updateDataAcce(void);
+void updateDataGPS(void);
+void updateTLM(uint32_t ulNotifiedValue);
+
+#define clearDataTLM(t,f) memset((void*)f,0,sizeof(t));
+
+extern Telemetria			dataTLM;
+
+#endif /* SOURCES_DATATLM_H_ */

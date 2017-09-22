@@ -1,27 +1,34 @@
 ﻿using System;
 
+/**
+ * 
+ * Abstracao do comando que sera enviado aos dispositivos
+ * 
+ * 
+ */
+
 namespace GoodsTracker
 {
-    internal class AnsCmd
+    class AnsCmd
     {
-        Header          header;
-        DataTelemetria  telemetria;
+        HeaderFrame header;
+        Telemetria  telemetria;
 
-        internal DataTelemetria Telemetria { get => telemetria; set => telemetria = value; }
-        internal Header Header { get => header; set => header = value; }
+        internal Telemetria Telemetria { get => telemetria; set => telemetria = value; }
+        internal HeaderFrame Header { get => header; set => header = value; }
 
         internal AnsCmd()
         {
-            header  = new Header();
-            telemetria    = null;
+            header      = new HeaderFrame();
+            telemetria  = null;
         }
 
         internal AnsCmd(string r,Operation o)
         {
-            header              = new Header();
+            header              = new HeaderFrame();
             header.Resource     = r;
             header.Operation    = o;
-            telemetria                = null;
+            telemetria          = null;
         }
     }
 }

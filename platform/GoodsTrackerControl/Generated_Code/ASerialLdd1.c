@@ -7,7 +7,7 @@
 **     Version     : Component 01.188, Driver 01.12, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-06-24, 12:17, # CodeGen: 0
+**     Date/Time   : 2017-08-28, 13:37, # CodeGen: 109
 **     Abstract    :
 **         This component "Serial_LDD" implements an asynchronous serial
 **         communication. The component supports different settings of
@@ -212,8 +212,8 @@ LDD_TDeviceData* ASerialLdd1_Init(LDD_TUserData *UserDataPtr)
   UART0_C4 = UART0_C4_OSR(0x00);       /*  Set the C4 register */
   /* UART0_S2: LBKDIF=0,RXEDGIF=0,MSBF=0,RXINV=0,RWUID=0,BRK13=0,LBKDE=0,RAF=0 */
   UART0_S2 = 0x00U;                    /*  Set the S2 register */
-  SIM_PDD_SetClockSourceUART0(SIM_BASE_PTR, SIM_PDD_UART0_PLL_FLL_CLOCK);
-  UART0_PDD_SetBaudRate(UART0_BASE_PTR, 91U); /* Set the baud rate register. */
+  SIM_PDD_SetClockSourceUART0(SIM_BASE_PTR, SIM_PDD_UART0_EXTERNAL_REF_CLOCK);
+  UART0_PDD_SetBaudRate(UART0_BASE_PTR, 35U); /* Set the baud rate register. */
   UART0_PDD_SetOversamplingRatio(UART0_BASE_PTR, 3U);
   UART0_PDD_EnableSamplingOnBothEdges(UART0_BASE_PTR, PDD_ENABLE);
   UART0_PDD_EnableTransmitter(UART0_BASE_PTR, PDD_ENABLE); /* Enable transmitter */

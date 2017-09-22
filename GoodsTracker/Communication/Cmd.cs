@@ -1,20 +1,16 @@
-﻿using System;
-
-namespace GoodsTracker
+﻿namespace GoodsTracker
 {
     class Cmd
     {
-        onAnswerCmd onAnswerCmd;
-        Header      header;
+        HeaderFrame header;
         PayLoad     payload;
         
-        public onAnswerCmd EventAnswerCmd { get => onAnswerCmd; set => onAnswerCmd = value; }
-        internal Header Header { get => header; set => header = value; }
+        internal HeaderFrame Header { get => header; set => header = value; }
         internal PayLoad Payload { get => payload; set => payload = value; }
 
         internal Cmd(string r,Operation o)
         {
-            header = new Header();
+            header  = new HeaderFrame();
             payload = new PayLoad();
 
             header.Resource = r;
@@ -24,6 +20,16 @@ namespace GoodsTracker
         internal void Append(string str)
         {
             payload.Append(str);
+        }
+
+        /**
+         * 
+         * Evento chamado quando recebe a resposta respectiva ao comando
+         * 
+         */
+        public void EventAnswerCmd()
+        {
+            //TODO se necessario
         }
     }
 }

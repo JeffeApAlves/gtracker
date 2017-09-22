@@ -37,8 +37,10 @@ extern "C" {
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
 #include "gps.h"
+#include "MMA8451.h"
 #include "protocol.h"
 #include "Level.h"
+#include "clock.h"
 #include "ihm.h"
 
 
@@ -281,25 +283,6 @@ void AD1_OnEnd(void)
 
 /*
 ** ===================================================================
-**     Event       :  AD1_OnCalibrationEnd (module Events)
-**
-**     Component   :  AD1 [ADC]
-**     Description :
-**         This event is called when the calibration has been finished.
-**         User should check if the calibration pass or fail by
-**         Calibration status method./nThis event is enabled only if
-**         the <Interrupt service/event> property is enabled.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-void AD1_OnCalibrationEnd(void)
-{
-  /* Write your code here ... */
-}
-
-/*
-** ===================================================================
 **     Event       :  TI1_OnInterrupt (module Events)
 **
 **     Component   :  TI1 [TimerInt]
@@ -506,6 +489,97 @@ void AS2_OnRxChar(void)
 void AS2_OnTxChar(void)
 {
   /* Write your code here ... */
+}
+
+
+/*
+** ===================================================================
+**     Event       :  I2C2_OnMasterBlockSent (module Events)
+**
+**     Component   :  I2C2 [I2C_LDD]
+*/
+/*!
+**     @brief
+**         This event is called when I2C in master mode finishes the
+**         transmission of the data successfully. This event is not
+**         available for the SLAVE mode and if MasterSendBlock is
+**         disabled. 
+**     @param
+**         UserDataPtr     - Pointer to the user or
+**                           RTOS specific data. This pointer is passed
+**                           as the parameter of Init method.
+*/
+/* ===================================================================*/
+void I2C2_OnMasterBlockSent(LDD_TUserData *UserDataPtr)
+{
+	MMA8451_TDataState *ptr = (MMA8451_TDataState*)UserDataPtr;
+	ptr->dataTransmittedFlg = TRUE;
+}
+
+/*
+** ===================================================================
+**     Event       :  I2C2_OnMasterBlockReceived (module Events)
+**
+**     Component   :  I2C2 [I2C_LDD]
+*/
+/*!
+**     @brief
+**         This event is called when I2C is in master mode and finishes
+**         the reception of the data successfully. This event is not
+**         available for the SLAVE mode and if MasterReceiveBlock is
+**         disabled.
+**     @param
+**         UserDataPtr     - Pointer to the user or
+**                           RTOS specific data. This pointer is passed
+**                           as the parameter of Init method.
+*/
+/* ===================================================================*/
+void I2C2_OnMasterBlockReceived(LDD_TUserData *UserDataPtr)
+{
+	MMA8451_TDataState *ptr	= (MMA8451_TDataState*)UserDataPtr;
+	ptr->dataReceivedFlg	= TRUE;
+}
+
+/*
+** ===================================================================
+**     Event       :  AD1_OnCalibrationEnd (module Events)
+**
+**     Component   :  AD1 [ADC]
+**     Description :
+**         This event is called when the calibration has been finished.
+**         User should check if the calibration pass or fail by
+**         Calibration status method./nThis event is enabled only if
+**         the <Interrupt service/event> property is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void AD1_OnCalibrationEnd(void)
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  RTC1_OnSecond (module Events)
+**
+**     Component   :  RTC1 [RTC_LDD]
+*/
+/*!
+**     @brief
+**         Called each second if OnSecond event is enabled (see
+**         [SetEventMask] and [GetEventMask] methods) and RTC device is
+**         enabled. This event is available only if [Interrupt
+**         service/event] is enabled.
+**     @param
+**         UserDataPtr     - Pointer to the user or
+**                           RTOS specific data. This pointer is passed
+**                           as the parameter of Init method. 
+*/
+/* ===================================================================*/
+void RTC1_OnSecond(LDD_TUserData *UserDataPtr)
+{
+	updateEntityClock();
 }
 
 /* END Events */

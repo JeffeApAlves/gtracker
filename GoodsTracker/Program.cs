@@ -26,7 +26,6 @@ namespace GoodsTracker
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erro na aplicao");
                 Debug.WriteLine("Erro na aplicao");
                 Debug.WriteLine(e.ToString());
             }            

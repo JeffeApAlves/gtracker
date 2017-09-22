@@ -1,0 +1,80 @@
+/*
+ * DataFrame.c
+ *
+ *  Created on: Aug 31, 2017
+ *      Author: Jefferson
+ */
+
+#include <CommunicationFrame.h>
+#include <string.h>
+
+
+void AppendPayLoad(PayLoad* payload,const char* data){
+
+	strcat(payload->Data,data);
+	payload->Length = strlen(payload->Data);
+}
+//------------------------------------------------------------------------
+
+uint16 getNumField(char* str,const char a_delim,size_t size) {
+
+	uint16 i,f;
+
+	i		= 0;
+	f		= 0;
+
+	while((str[i]!='\0') && (i<size)){
+
+		if(str[i++]==a_delim){
+
+			f++;
+		}
+	}
+
+	return f+1;
+}
+//------------------------------------------------------------------------
+
+void getField(char* str, char* out,uint16 num_field,const char a_delim) {
+
+	uint16 i,start,end,index_field;
+
+	index_field	= 0;
+	start		= 0;
+	end			= 0;
+	out[0]		= '\0';
+
+	for(i=0;i<LEN_PAYLOAD;i++){
+
+		if(str[i]=='\0'){
+
+			end = i;
+			break;
+		}
+
+		if(str[i]==a_delim){
+
+			// Proximo campo
+			index_field++;
+
+			if(index_field==num_field){
+
+				start = i+1;
+			}
+
+			if(index_field==(num_field+1)){
+
+				end = i;
+				break;
+			}
+		}
+	}
+
+	if((end-start)>0){
+
+		strncpy(out,str+start,end-start);
+		out[end-start] = '\0';
+	}
+}
+//------------------------------------------------------------------------
+

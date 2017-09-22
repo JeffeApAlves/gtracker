@@ -1,0 +1,240 @@
+
+/*!
+** @}
+*/
+/*
+** ###################################################################
+**
+**     This file was created by Processor Expert 10.5 [05.21]
+**     for the Freescale Kinetis series of microcontrollers.
+**
+** ###################################################################
+*/
+
+/* Begin of <includes> initialization, DO NOT MODIFY LINES BELOW */
+
+#include "TSK1.h"
+#include "FRTOS1.h"
+#include "frtos_tasks.h"
+
+/* End <includes> initialization, DO NOT MODIFY LINES ABOVE */
+
+static portTASK_FUNCTION(app_taskTask, pvParameters) {
+
+  /* Write your task initialization code here ... */
+
+  for(;;) {
+    /* Write your task code here ... */
+
+    /* You can use a task delay like
+       vTaskDelay(1000/portTICK_RATE_MS);
+     */
+  }
+  /* Destroy the task */
+  vTaskDelete(app_taskTask);
+}
+
+static portTASK_FUNCTION(communication_taskTask, pvParameters) {
+
+  /* Write your task initialization code here ... */
+
+  for(;;) {
+    /* Write your task code here ... */
+
+    /* You can use a task delay like
+       vTaskDelay(1000/portTICK_RATE_MS);
+     */
+  }
+  /* Destroy the task */
+  vTaskDelete(communication_taskTask);
+}
+
+static portTASK_FUNCTION(data_taskTask, pvParameters) {
+
+  /* Write your task initialization code here ... */
+
+  for(;;) {
+    /* Write your task code here ... */
+
+    /* You can use a task delay like
+       vTaskDelay(1000/portTICK_RATE_MS);
+     */
+  }
+  /* Destroy the task */
+  vTaskDelete(data_taskTask);
+}
+
+static portTASK_FUNCTION(ihm_taskTask, pvParameters) {
+
+  /* Write your task initialization code here ... */
+
+  for(;;) {
+    /* Write your task code here ... */
+
+    /* You can use a task delay like
+       vTaskDelay(1000/portTICK_RATE_MS);
+     */
+  }
+  /* Destroy the task */
+  vTaskDelete(ihm_taskTask);
+}
+
+static portTASK_FUNCTION(gps_taskTask, pvParameters) {
+
+  /* Write your task initialization code here ... */
+
+  for(;;) {
+    /* Write your task code here ... */
+
+    /* You can use a task delay like
+       vTaskDelay(1000/portTICK_RATE_MS);
+     */
+  }
+  /* Destroy the task */
+  vTaskDelete(gps_taskTask);
+}
+
+static portTASK_FUNCTION(accel_taskTask, pvParameters) {
+
+  /* Write your task initialization code here ... */
+
+  for(;;) {
+    /* Write your task code here ... */
+
+    /* You can use a task delay like
+       vTaskDelay(1000/portTICK_RATE_MS);
+     */
+  }
+  /* Destroy the task */
+  vTaskDelete(accel_taskTask);
+}
+
+static portTASK_FUNCTION(callback_taskTask, pvParameters) {
+
+  /* Write your task initialization code here ... */
+
+  for(;;) {
+    /* Write your task code here ... */
+
+    /* You can use a task delay like
+       vTaskDelay(1000/portTICK_RATE_MS);
+     */
+  }
+  /* Destroy the task */
+  vTaskDelete(callback_taskTask);
+}
+
+static portTASK_FUNCTION(runTx_taskTask, pvParameters) {
+
+  /* Write your task initialization code here ... */
+
+  for(;;) {
+    /* Write your task code here ... */
+
+    /* You can use a task delay like
+       vTaskDelay(1000/portTICK_RATE_MS);
+     */
+  }
+  /* Destroy the task */
+  vTaskDelete(runTx_taskTask);
+}
+
+void CreateTasks(void) {
+  if (FRTOS1_xTaskCreate(
+     app_taskTask,  /* pointer to the task */
+      "app_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+  if (FRTOS1_xTaskCreate(
+     communication_taskTask,  /* pointer to the task */
+      "communication_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+  if (FRTOS1_xTaskCreate(
+     data_taskTask,  /* pointer to the task */
+      "data_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+  if (FRTOS1_xTaskCreate(
+     ihm_taskTask,  /* pointer to the task */
+      "ihm_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+  if (FRTOS1_xTaskCreate(
+     gps_taskTask,  /* pointer to the task */
+      "gps_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+  if (FRTOS1_xTaskCreate(
+     accel_taskTask,  /* pointer to the task */
+      "accel_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+  if (FRTOS1_xTaskCreate(
+     callback_taskTask,  /* pointer to the task */
+      "callback_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+  if (FRTOS1_xTaskCreate(
+     runTx_taskTask,  /* pointer to the task */
+      "runTx_task", /* task name for kernel awareness debugging */
+      configMINIMAL_STACK_SIZE + 0, /* task stack size */
+      (void*)NULL, /* optional task startup argument */
+      tskIDLE_PRIORITY + 0,  /* initial priority */
+      (xTaskHandle*)NULL /* optional task handle to create */
+    ) != pdPASS) {
+      /*lint -e527 */
+      for(;;){}; /* error! probably out of memory */
+      /*lint +e527 */
+  }
+}
+
