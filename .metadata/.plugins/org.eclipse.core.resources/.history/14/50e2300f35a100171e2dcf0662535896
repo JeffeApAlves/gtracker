@@ -1,0 +1,20 @@
+/*
+ * AppQueues.h
+ *
+ *  Created on: 29/06/2017
+ *      Author: Jefferson
+ */
+
+#ifndef SOURCES_APPQUEUES_H_
+#define SOURCES_APPQUEUES_H_
+
+extern const TickType_t xMainDelay,
+						xDataDelay,
+						xIHMDelay,
+						xGPSDelay,
+						xAccelDelay;
+
+extern	TaskHandle_t xHandleMainTask,
+		xHandleCallBackTask;
+
+#endif /* SOURCES_APPQUEUES_H_ */

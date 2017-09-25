@@ -8,8 +8,11 @@
 #define SOURCES_IHM_H_
 
 #include <stdint.h>
-#include "PE_Types.h"
+#include <stdbool.h>
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
 #include "TSS_API.h"
 
 typedef enum {
@@ -26,11 +29,11 @@ typedef struct {
 
 #define IHM_MAX_EVENTS 16
 typedef struct {
-	uint8 option;
+	uint8_t option;
 	struct {
 		ihmEvent event[IHM_MAX_EVENTS]; //TODO - USAR BUFFER CIRCULAR
-		uint8 head;
-		uint8 tail;
+		uint8_t head;
+		uint8_t tail;
 	} ihmEventBuffer;
 
 } ihmStruct;
@@ -54,7 +57,7 @@ void deInitIHM();
 /**
  *
  */
-void runIHM();
+void ihm_task();
 
 /**
  *
@@ -69,5 +72,10 @@ void printLCD(int linha,int coluna,char* str);
 void printClock(void);
 void showSplah();
 void printXYZ();
+
+//extern QueueHandle_t	xQueueLCD;
+
+extern TaskHandle_t		xHandleIHMTask;
+
 
 #endif /* SOURCES_IHM_H_ */

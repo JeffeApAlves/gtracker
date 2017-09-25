@@ -6,6 +6,7 @@
  */
 
 #include <stdlib.h>
+
 #include "RingBuffer.h"
 
 bool putData(RingBuffer* buffer,char ch){

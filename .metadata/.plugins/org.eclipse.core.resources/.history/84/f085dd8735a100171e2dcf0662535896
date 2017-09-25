@@ -1,0 +1,21 @@
+/*
+ * AppQueues.c
+ *
+ *  Created on: 29/06/2017
+ *      Author: Jefferson
+ */
+
+#include "communication.h"
+#include "Telemetria.h"
+#include "AppQueues.h"
+
+// Tasks Delay
+
+// Handles Tasks
+TaskHandle_t 	xHandleMainTask	,
+				xHandleIHMTask,
+				xHandleGPSTask;
+
+// Handles das Queues
+QueueHandle_t	xQueueLCD, xQueueAcc , xQueueTank;
+

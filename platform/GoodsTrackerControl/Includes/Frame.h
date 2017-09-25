@@ -8,8 +8,8 @@
 #ifndef SOURCES_FRAME_H_
 #define SOURCES_FRAME_H_
 
-#include "stdlib.h"
-#include "PE_Types.h"
+#include <stdlib.h>
+#include <stdint.h>
 
 #define	LEN_FRAME			300
 #define ARRAY_LEN_CHECKSUM	3
@@ -33,7 +33,7 @@ unsigned int calcChecksum(const char *buff, size_t sz);
 unsigned int putDataArray(Frame *frame, char data);
 void AppendFrame(Frame* frame,const char* data);
 
-void getField(char* str, char* out,uint16 num,const char a_delim);
-uint16 getNumField(char* str,const char a_delim);
+void getField(char* str, char* out,uint16_t num,const char a_delim);
+uint16_t getNumField(char* str,const char a_delim);
 
 #endif /* SOURCES_ARRAY_H_ */

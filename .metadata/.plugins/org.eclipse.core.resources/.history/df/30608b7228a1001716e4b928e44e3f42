@@ -1,0 +1,19 @@
+/*
+ * Communication.h
+ *
+ *  Created on: Sep 24, 2017
+ *      Author: Jefferson
+ */
+
+#ifndef INCLUDES_COMMUNICATION_H_
+#define INCLUDES_COMMUNICATION_H_
+
+#include "CommunicationFrame.h"
+
+#define		BIT_RX_FRAME	0x08
+#define		BIT_TX_FRAME	0x04
+
+void rxPackage_task();
+void txPackage_task();
+
+#endif /* INCLUDES_COMMUNICATION_H_ */

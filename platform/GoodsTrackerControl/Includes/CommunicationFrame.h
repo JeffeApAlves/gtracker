@@ -32,7 +32,8 @@
  * Somatoria
  */
 
-#include "PE_Types.h"
+#include <stdint.h>
+
 #include "Cmd.h"
 
 #define LEN_ADDRESS		5
@@ -47,6 +48,23 @@
 #define SIZE_HEADER		(LEN_ADDRESS + LEN_ORIGEM + LEN_TIME_STAMP + LEN_OPERATION + LEN_RESOURCE + LEN_SIZE_PL+6)	// 5 separadores do cabecalho
 #define SIZE_MIN_FRAME	(SIZE_HEADER+2)																				// 2 separador do payload vazio
 
+#define CHAR_START		'['
+#define CHAR_END		']'
+#define CHAR_SEPARATOR	':'
+#define CHAR_CR			'\r'
+#define CHAR_LF			'\n'
+#define CHAR_STR_END	'\0'
+
+typedef struct{
+
+	int			address;
+	int			dest;
+	int32_t		time_stamp;
+	char		operacao[LEN_OPERATION + 1];
+	Resource	resource;
+	int			lengthPayLoad;
+} Header;
+
 typedef struct{
 
 	int		Length;
@@ -60,18 +78,14 @@ typedef struct{
  */
 typedef struct{
 
-	int			address;
-	int			dest;
-	int32		time_stamp;
-	char		operacao[LEN_OPERATION + 1];
-	Resource	resource;
+	Header		Header;
 	PayLoad		PayLoad;
 
-} CommunicationFrame;
+} CommunicationPackage;
 
 #define clearArrayPayLoad(f)	memset((void*)f,0,sizeof(PayLoad));
 void AppendPayLoad(PayLoad* payload,const char* data);
-#define clearData(f) memset((void*)f,0,sizeof(CommunicationFrame));
+#define clearData(f) memset((void*)f,0,sizeof(CommunicationPackage));
 
 
 #endif /* SOURCES_DATAFRAME_H_ */

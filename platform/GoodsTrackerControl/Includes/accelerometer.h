@@ -8,7 +8,9 @@
 #ifndef SOURCES_ACCELEROMETER_H_
 #define SOURCES_ACCELEROMETER_H_
 
-#include <string.h>
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
 
 typedef struct{
 
@@ -17,10 +19,14 @@ typedef struct{
 
 } Accelerometer;
 
-void runAccelerometer(void);
-void initAccelerometer(void);
+void accelerometer_task(void);
+void accelerometer_init(void);
 void deInitAccelerometer(void);
 
 #define clearAccelerometer(f) memset((void*)f,0,sizeof(Accelerometer));
+
+extern QueueHandle_t	xQueueAcc;
+
+extern TaskHandle_t xHandleAccelTask;
 
 #endif /* SOURCES_ACCELEROMETER_H_ */

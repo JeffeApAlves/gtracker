@@ -4,8 +4,7 @@
  *      Author: Jefferson
  */
 
-#include "Telemetria.h"
-#include "AppQueues.h"
+#include "application.h"
 #include "RingBuffer.h"
 #include "gps.h"
 
@@ -21,13 +20,19 @@ static Frame		frameNMEA;
 static StatusNMEA	statusNMEA = NMEA_INIT;
 static DataGPS		infoGPS;
 
-void runNMEA(void) {
+QueueHandle_t	xQueueGPS;
+
+TaskHandle_t	xHandleGPSTask;
+
+static const TickType_t xTaskDelay = (500 / portTICK_PERIOD_MS);
+
+void gps_task(void) {
 
 	while(isAnyGPSData()){
 
 		switch(statusNMEA){
 			default:
-			case NMEA_INIT:			NMEA_init();			break;
+			case NMEA_INIT:			gps_init();				break;
 			case NMEA_INIT_OK:		NMEA_rxStart();			break;
 			case NMEA_RX_START:		NMEA_receiveFrame();	break;
 			case NMEA_RX_FRAME:		NMEA_receiveFrame();	break;
@@ -38,6 +43,8 @@ void runNMEA(void) {
 			case NMEA_FRAME_NOK:	NMEA_errorRxFrame();	break;
 		}
 	}
+
+	vTaskDelay(xTaskDelay);
 }
 //------------------------------------------------------------------------
 
@@ -366,8 +373,10 @@ inline bool isAnyGPSData(){
 }
 //------------------------------------------------------------------------
 
-void NMEA_init(void)
+void gps_init(void)
 {
+	xQueueGPS		= xQueueCreate( 1, sizeof( DataGPS ));
+
 	clearBuffer(&bufferRxNMEA);
 	clearGPS(&infoGPS);
 	clearArrayFrame(&frameNMEA);

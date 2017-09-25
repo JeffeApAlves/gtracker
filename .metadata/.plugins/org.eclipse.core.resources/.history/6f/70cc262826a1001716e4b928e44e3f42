@@ -1,0 +1,66 @@
+/*
+ * Communication.c
+ *
+ *  Created on: Sep 24, 2017
+ *      Author: Jefferson
+ */
+#include "FreeRTOS.h"
+
+#include "protocol.h"
+#include "communication.h"
+
+static const TickType_t xCommunicationDelay	= (100 / portTICK_PERIOD_MS);
+
+void rxPackage_task(){
+
+	while(1){
+
+		processRx();
+
+		vTaskDelay(xCommunicationDelay);
+	}
+}
+//------------------------------------------------------------------------------------
+
+/**
+ * Task para envios dos frames, recebidos com sucesso pelo broker ou adicionados pela aplicação, na UART.
+ *
+ */
+void txPackage_task(){
+
+	while(1){
+
+		uint32_t ulNotifiedValue;
+
+		xTaskNotifyWait( 0x0, BIT_TX,  &ulNotifiedValue, portMAX_DELAY );
+
+		if(ulNotifiedValue & BIT_TX){
+
+			CommunicationPackage	package_tx;
+
+			while (xQueueReceive(xQueueAnswer, &package_tx, (TickType_t ) 1)) {
+
+				doAnswer(&package_tx);
+			}
+		}
+	}
+}
+//------------------------------------------------------------------------------------
+
+void putPackageRx(CommunicationPackage* package_rx){
+
+	if(xQueueSendToBack( xQueueCom ,package_rx, ( TickType_t ) 1 ) ){
+
+		xTaskNotify( xHandleCallBackTask , BIT_RX_FRAME , eSetBits );
+	}
+}
+//------------------------------------------------------------------------------------
+
+void communication_init(void){
+
+	xQueueRx		= xQueueCreate( 1, sizeof( CommunicationPackage ));
+	xQueueTx	= xQueueCreate( 1, sizeof( CommunicationPackage ));
+
+	protocol_init();
+}
+//------------------------------------------------------------------------------------

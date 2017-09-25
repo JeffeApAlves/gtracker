@@ -5,14 +5,20 @@
  *      Author: Jefferson
  */
 
-#include <Telemetria.h>
-#include "AppQueues.h"
 #include "MMA8451.h"
+
+#include "application.h"
 #include "Accelerometer.h"
 
 Accelerometer	acceInfo;
 
-void runAccelerometer(void) {
+QueueHandle_t	xQueueAcc;
+
+TaskHandle_t xHandleAccelTask;
+
+static const TickType_t xTaskDelay = (100 / portTICK_PERIOD_MS);
+
+void accelerometer_task(void) {
 
 	if(MMA845x_getXYZ(&acceInfo)){
 
@@ -21,10 +27,14 @@ void runAccelerometer(void) {
 			xTaskNotify( xHandleCallBackTask , BIT_UPDATE_ACCE , eSetBits );
 		}
 	}
+
+	vTaskDelay(xTaskDelay);
 }
 //------------------------------------------------------------------------
 
-void initAccelerometer(void){
+void accelerometer_init(void){
+
+	xQueueAcc		= xQueueCreate( 1, sizeof( Accelerometer ));
 
 	clearAccelerometer(&acceInfo);
 	MMA845x_init();

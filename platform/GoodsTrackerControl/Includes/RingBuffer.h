@@ -9,8 +9,6 @@
 #define SOURCES_RINGBUFFER_H_
 
 #include <stdbool.h>
-//#include "Cpu.h"
-//#include "PE_Types.h"
 
 #define BUFFER_SIZE		128
 
