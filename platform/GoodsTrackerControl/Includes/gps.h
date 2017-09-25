@@ -9,6 +9,11 @@
 #define SOURCES_GPS_H_
 
 #include <stdbool.h>
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+
 #include "utils.h"
 #include "NMEAFrame.h"
 
@@ -90,10 +95,14 @@ static void decoderGSA(char* frame,DataGPS* data);
 //API
 bool getGPSData(char* ch);
 bool putGPSData(char data);
-void runNMEA(void);
-void NMEA_init(void);
+void gps_task(void);
+void gps_init(void);
 bool isAnyGPSData();
 
 #define clearGPS(f) memset((void*)f,0,sizeof(DataGPS));
+
+extern QueueHandle_t xQueueGPS;
+
+extern	TaskHandle_t	xHandleGPSTask;
 
 #endif /* SOURCES_GPS_H_ */

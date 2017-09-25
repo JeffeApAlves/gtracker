@@ -8,8 +8,7 @@
 #include <string.h>
 #include <assert.h>
 #include <stdlib.h>
-#include "Frame.h"
-#include "protocol.h"
+
 #include "utils.h"
 
 /**
@@ -140,9 +139,9 @@ void removeList(List* list){
 }
 //------------------------------------------------------------------------
 
-bool AsInteger(int* out,char *str,uint16 index,const char a_delim){
+bool AsInteger(int* out,char *str,uint16_t index,const char a_delim){
 
-	bool ret = FALSE;
+	bool ret = false;
 
 	char field[10];
 
@@ -152,24 +151,24 @@ bool AsInteger(int* out,char *str,uint16 index,const char a_delim){
 
 		*out = atoi(field);
 
-		ret = TRUE;
+		ret = true;
 	}
 
 	return ret;
 }
 //------------------------------------------------------------------------
 
-bool AsString(char* out,char *str,uint16 index,const char a_delim){
+bool AsString(char* out,char *str,uint16_t index,const char a_delim){
 
 	getField(str,out,index,a_delim);
 
-	return TRUE;
+	return true;
 }
 //-----------------------------------------------------------------------
 
-bool AsHex(uint16* out,char *str,uint16 index,const char a_delim){
+bool AsHex(uint16_t* out,char *str,uint16_t index,const char a_delim){
 
-	bool ret = FALSE;
+	bool ret = false;
 
 	char field[5];
 
@@ -178,15 +177,15 @@ bool AsHex(uint16* out,char *str,uint16 index,const char a_delim){
 	if(strlen(str)>0){
 
 		*out = strtol(field, NULL, 16);
-		ret = TRUE;
+		ret = true;
 	}
 	return ret;
 }
 //-----------------------------------------------------------------------
 
-bool AsFloat(float* out,char *str,uint16 index,const char a_delim){
+bool AsFloat(float* out,char *str,uint16_t index,const char a_delim){
 
-	bool ret = FALSE;
+	bool ret = false;
 
 	char field[20];
 
@@ -195,16 +194,16 @@ bool AsFloat(float* out,char *str,uint16 index,const char a_delim){
 	if(strlen(str)>0){
 
 		*out = atof(field);
-		ret = TRUE;
+		ret = true;
 	}
 
 	return ret;
 }
 //------------------------------------------------------------------------
 
-bool AsChar(char* out,char *str,uint16 index,const char a_delim){
+bool AsChar(char* out,char *str,uint16_t index,const char a_delim){
 
-	bool ret = FALSE;
+	bool ret = false;
 
 	char field[2];
 
@@ -213,16 +212,16 @@ bool AsChar(char* out,char *str,uint16 index,const char a_delim){
 	if(strlen(str)>0){
 
 		*out = field[0];
-		ret = TRUE;
+		ret = true;
 	}
 
 	return ret;
 }
 //------------------------------------------------------------------------
 
-bool AsResource(Resource* out,char *str,uint16 index,const char a_delim){
+bool AsResource(Resource* out,char *str,uint16_t index,const char a_delim){
 
-	bool ret = FALSE;
+	bool ret = false;
 
 	char field[4];
 
@@ -231,7 +230,7 @@ bool AsResource(Resource* out,char *str,uint16 index,const char a_delim){
 	if(strlen(str)>0){
 
 		*out = getResource(field);
-		ret = TRUE;
+		ret = true;
 
 	}else{
 		*out = CMD_NONE;

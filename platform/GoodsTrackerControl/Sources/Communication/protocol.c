@@ -1,13 +1,14 @@
-#include <Frame.h>
-#include <string.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include <string.h>
 
 #include "XF1.h"
 #include "AS1.h"
 #include "Events.h"
+
+#include "Frame.h"
 #include "RingBuffer.h"
-#include "AppQueues.h"
+#include "communication.h"
+#include "Serialization.h"
 #include "protocol.h"
 
 char SEPARATOR[] = {CHAR_SEPARATOR,CHAR_STR_END};
@@ -15,48 +16,31 @@ const char* OPERATION_AN = "AN";
 const char* OPERATION_RD = "RD";
 const char* OPERATION_WR = "WR";
 
-static StatusRx		statusRx = CMD_INIT;
-static RingBuffer	bufferRx,bufferTx;
-static CommunicationFrame	dataComRx,AnsCmd;
-static Frame	frameRx;
+static StatusRx				statusRx = CMD_INIT;
+static RingBuffer			bufferRx,bufferTx;
+static Frame				frameRx;
 
-void processRx(void){
+bool processRx(void){
+
+	bool rx_ok = false;
 
 	while(isAnyRxData()){
 
 		switch(statusRx){
 
 			default:
-			case CMD_INIT:			initCommunication();	break;
+			case CMD_INIT:			protocol_init();		break;
 			case CMD_INIT_OK:		rxStartCMD();			break;
 			case CMD_RX_START:		receiveFrame();			break;
 			case CMD_RX_FRAME:		receiveFrame();			break;
 			case CMD_RX_END:		rxCR();					break;
 			case CMD_RX_CR:			rxLF();					break;
-			case CMD_RX_LF:			verifyFrame();			break;
+			case CMD_RX_LF:			rx_ok = verifyFrame();	break;
 			case CMD_FRAME_NOK:		errorRxFrame();			break;
 		}
 	}
-}
-//------------------------------------------------------------------------
 
-/*
- *
- *
- */
-void processTx(void){
-
-	uint32_t ulNotifiedValue;
-
-	xTaskNotifyWait( 0x0, BIT_TX,  &ulNotifiedValue, portMAX_DELAY );
-
-	if(ulNotifiedValue & BIT_TX){
-
-		while (xQueueReceive(xQueueAnswer, &AnsCmd, (TickType_t ) 1)) {
-
-			doAnswer(&AnsCmd);
-		}
-	}
+	return rx_ok;
 }
 //------------------------------------------------------------------------
 
@@ -142,24 +126,32 @@ static void rxCR(void) {
 }
 //------------------------------------------------------------------------
 
-static void verifyFrame(void) {
+static bool verifyFrame(void) {
 
-	if(decoderFrame()){
+	bool rx_ok = false;
 
-		acceptRxFrame();
+	CommunicationPackage	package_rx;
+
+	if(decoderFrame(&package_rx)){
+
+		acceptRxFrame(&package_rx);
+
+		rx_ok = true;
 
 	}else{
 
 		errorRxFrame();
 	}
+
+	return rx_ok;
 }
 //------------------------------------------------------------------------
 
-static bool decoderFrame(void) {
+static bool decoderFrame(CommunicationPackage* package_rx) {
 
 	bool ret = false;
 
-	clearData(&dataComRx);
+	clearData(package_rx);
 
 	uint16 count = getNumField(frameRx.Data,CHAR_SEPARATOR);
 
@@ -178,17 +170,18 @@ static bool decoderFrame(void) {
 		if(checksum_rx==checksum_calc) {
 
 			if(
-				AsInteger(&dataComRx.address,		frameRx.Data,0,CHAR_SEPARATOR) &&
-				AsInteger(&dataComRx.dest,			frameRx.Data,1,CHAR_SEPARATOR) &&
-				AsInteger(&dataComRx.time_stamp,	frameRx.Data,2,CHAR_SEPARATOR) &&
-				AsString(&dataComRx.operacao,		frameRx.Data,3,CHAR_SEPARATOR) &&
-				AsResource(&dataComRx.resource,		frameRx.Data,4,CHAR_SEPARATOR) &&
-				AsInteger(&dataComRx.PayLoad.Length,frameRx.Data,5,CHAR_SEPARATOR) &&
-				AsString(&dataComRx.PayLoad.Data,	frameRx.Data,6,CHAR_SEPARATOR)
+				AsInteger(&package_rx->Header.address,		frameRx.Data,0,CHAR_SEPARATOR) &&
+				AsInteger(&package_rx->Header.dest,			frameRx.Data,1,CHAR_SEPARATOR) &&
+				AsInteger(&package_rx->Header.time_stamp,	frameRx.Data,2,CHAR_SEPARATOR) &&
+				AsString(&package_rx->Header.operacao,		frameRx.Data,3,CHAR_SEPARATOR) &&
+				AsResource(&package_rx->Header.resource,	frameRx.Data,4,CHAR_SEPARATOR) &&
+				AsInteger(&package_rx->Header.lengthPayLoad,frameRx.Data,5,CHAR_SEPARATOR) &&
+				AsString(&package_rx->PayLoad.Data,			frameRx.Data,6,CHAR_SEPARATOR)
 			){
+				package_rx->PayLoad.Length = package_rx->Header.lengthPayLoad;
 				ret = true;
 			}else{
-				clearData(&dataComRx);
+				clearData(&package_rx);
 			}
 		}
 	}
@@ -233,27 +226,6 @@ void getResourceName(char* out,Resource resource) {
 }
 //------------------------------------------------------------------------
 
-/**
- *
- * Envia o frame
- *
- */
-static void sendFrame(char* frame){
-
-	putTxData(CHAR_START);					// Envia caracter de inicio
-
-	putString(&bufferTx,frame);				// Envia o frame
-
-	putTxData(CHAR_END);					// Envia o caracter de fim
-
-	putTxData(CHAR_CR);						// Envia caracteres de controle
-	putTxData(CHAR_LF);
-
-	startTX();	// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
-
-}
-//-------------------1-----------------------------------------------------
-
 static inline void setStatusRx(StatusRx sts) {
 
 	statusRx = sts;
@@ -265,7 +237,6 @@ inline bool putTxData(char data) {
 	return putData(&bufferTx,data);
 }
 //------------------------------------------------------------------------
-
 
 inline bool putRxData(char data) {
 
@@ -299,12 +270,9 @@ inline bool getRxData(char* ch){
  * Recepcao do frame OK
  *
  */
-static void acceptRxFrame(void) {
+static void acceptRxFrame(CommunicationPackage* package_rx) {
 
-	if(xQueueSendToBack( xQueueCom , &dataComRx, ( TickType_t ) 1 ) ){
-
-		xTaskNotify( xHandleCallBackTask , BIT_RX_FRAME , eSetBits );
-	}
+	putPackageRx(package_rx);
 
 	setStatusRx(CMD_INIT_OK);
 }
@@ -317,7 +285,7 @@ static void acceptRxFrame(void) {
 static void errorRxFrame(void){
 
 	setStatusRx(CMD_FRAME_NOK);
-	clearData(&dataComRx);
+	//clearData(&package_rx);
 	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
@@ -336,12 +304,12 @@ inline bool hasTxData(void){
  *  Preenche todo o frame  de envio
  *
  */
-static void buildFrame(CommunicationFrame* data,Frame* frame) {
+static void buildFrame(CommunicationPackage* package,Frame* frame) {
 
 	clearArrayFrame(frame);
 
-	copyHeaderToFrame(data,frame);
-	copyPayLoadToFrame(data,frame);
+	copyHeaderToFrame(package,frame);
+	copyPayLoadToFrame(package,frame);
 	copyCheckSumToFrame(frame);
 }
 //------------------------------------------------------------------------
@@ -351,26 +319,29 @@ static void buildFrame(CommunicationFrame* data,Frame* frame) {
  * Adiciona o cabecalho no frame
  *
  */
-static void copyHeaderToFrame(CommunicationFrame* data,Frame* frame) {
+static void copyHeaderToFrame(CommunicationPackage* package,Frame* frame) {
 
-	headerToStr(frame->Data,data);
+	headerToStr(frame->Data,package);
 }
 //------------------------------------------------------------------------
 
-void headerToStr(char* out,CommunicationFrame* data){
+/**
+ *
+ * Envia o frame
+ *
+ */
+void sendFrame(char* frame){
 
-	char resource[4];
+	putTxData(CHAR_START);					// Envia caracter de inicio
 
-	getResourceName(resource,data->resource);
+	putString(&bufferTx,frame);				// Envia o frame
 
-	XF1_xsprintf(out,"%05d%c%05d%c%010d%c%s%c%s%c%03d%c",
-				data->address, 			CHAR_SEPARATOR,
-				data->dest, 			CHAR_SEPARATOR,
-				data->time_stamp,		CHAR_SEPARATOR,
-				data->operacao, 		CHAR_SEPARATOR,
-				resource,				CHAR_SEPARATOR,
-				data->PayLoad.Length,	CHAR_SEPARATOR
-	);
+	putTxData(CHAR_END);					// Envia o caracter de fim
+
+	putTxData(CHAR_CR);						// Envia caracteres de controle
+	putTxData(CHAR_LF);
+
+	startTX();	// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
 }
 //------------------------------------------------------------------------
 
@@ -379,17 +350,19 @@ void headerToStr(char* out,CommunicationFrame* data){
  * Transmite o frame ao Host
  *
  */
-void sendDataFrame(CommunicationFrame* data){
+void sendPackage(CommunicationPackage* package){
 
 	char	checksum_str[LEN_CHECKSUM+2],
 			header_str[SIZE_HEADER+1];
 
 	unsigned int  checksum;
 
-	headerToStr(header_str,data);
+	package->Header.lengthPayLoad = package->PayLoad.Length;
+
+	header2String(&package->Header,header_str);
 
 	checksum  = calcChecksum (header_str,SIZE_HEADER) ^
-				calcChecksum (data->PayLoad.Data,data->PayLoad.Length)^
+				calcChecksum (package->PayLoad.Data,package->PayLoad.Length)^
 				CHAR_SEPARATOR;
 
 	XF1_xsprintf(checksum_str, "%c%02X", CHAR_SEPARATOR , checksum);
@@ -397,7 +370,7 @@ void sendDataFrame(CommunicationFrame* data){
 	putTxData(CHAR_START);						// Envia caracter de inicio
 
 	putString(&bufferTx,header_str);			// Envia header
-	putString(&bufferTx,data->PayLoad.Data);	// Envia payload
+	putString(&bufferTx,package->PayLoad.Data);	// Envia payload
 	putString(&bufferTx,checksum_str);			// Envia checksum
 
 	putTxData(CHAR_END);						// Envia o caracter de fim
@@ -413,9 +386,9 @@ void sendDataFrame(CommunicationFrame* data){
  * Adiciona o Payload no Frame
  *
  */
-inline static void copyPayLoadToFrame(CommunicationFrame* data,Frame* frame) {
+inline static void copyPayLoadToFrame(CommunicationPackage* package,Frame* frame) {
 
-	AppendFrame(frame,data->PayLoad.Data);
+	AppendFrame(frame,package->PayLoad.Data);
 }
 //------------------------------------------------------------------------
 
@@ -437,15 +410,11 @@ static void copyCheckSumToFrame(Frame* frame) {
  * Executada quando se recebe uma menssagem na fila de repsotas de comandos
  *
  */
-void doAnswer(CommunicationFrame* ans) {
+void doAnswer(CommunicationPackage* package) {
 
-	if (ans) {
+	if (package) {
 
-		//ArrayFrame frameTx;
-		//buildFrame(ans,&frameTx);
-		//sendFrame(frameTx.Data)
-
-		sendDataFrame(ans);
+		sendPackage(package);
 	}
 	else {
 
@@ -488,9 +457,8 @@ inline bool isAnyRxData(){
  * Inicializa a comunicação com o Host via porta serial
  *
  */
-void initCommunication(void) {
+void protocol_init(void) {
 
-	clearData(&dataComRx);
 	clearArrayFrame(&frameRx);
 	clearBuffer(&bufferRx);
 	clearBuffer(&bufferTx);

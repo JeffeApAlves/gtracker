@@ -1,0 +1,70 @@
+/*
+ * AppQueues.c
+ *
+ *  Created on: 29/06/2017
+ *      Author: Jefferson
+ */
+
+#include "communication.h"
+#include "Telemetria.h"
+#include "AppQueues.h"
+
+// Tasks Delay
+const TickType_t xMainDelay				= (60000 / portTICK_PERIOD_MS);
+const TickType_t xDataDelay				= (500 / portTICK_PERIOD_MS);
+const TickType_t xIHMDelay				= (100 / portTICK_PERIOD_MS);
+const TickType_t xGPSDelay				= (500 / portTICK_PERIOD_MS);
+const TickType_t xAccelDelay			= (100 / portTICK_PERIOD_MS);
+
+// Handles Tasks
+TaskHandle_t 	xHandleMainTask		= NULL, xHandleCommunicationTask	= NULL,
+				xHandleDataTask		= NULL, xHandleIHMTask				= NULL,
+				xHandleGPSTask		= NULL,	xHandleAccelTask			= NULL,
+				xHandleCallBackTask	= NULL, xHandleRunTxTask			= NULL;
+
+// Handles das Queues
+QueueHandle_t	xQueueLCD, xQueueGPS, xQueueAcc , xQueueTank;
+
+/**
+ * Coloca pacote recebido na fila e notifica a thread que executa callback
+ *
+ */
+void putPackageRx(CommunicationPackage* package_rx){
+
+	if(xQueueSendToBack( xQueueRx ,package_rx, ( TickType_t ) 1 ) ){
+
+		xTaskNotify( xHandleCallBackTask , BIT_RX_FRAME , eSetBits );
+	}
+}
+//------------------------------------------------------------------------------------
+
+/**
+ *
+ *Coloca pacote na fila e avisa a thread responsável pelo envio.
+ *
+ */
+void putPackageTx(CommunicationPackage* package_tx){
+
+	// Publica resposta na fila
+	if(xQueueSendToBack( xQueueTx , package_tx, ( TickType_t ) 1 ) ){
+
+		xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
+
+	}else{
+
+		// Erro ao tentar publicar a resposta
+	}
+}
+//------------------------------------------------------------------------------------
+
+/**
+ * Cria todas as filas de menssagens utilizada na aplicação
+ *
+ */
+void initQueues(void){
+
+	xQueueGPS		= xQueueCreate( 1, sizeof( DataGPS ));
+	xQueueAcc		= xQueueCreate( 1, sizeof( Accelerometer ));
+	xQueueTank		= xQueueCreate( 1, sizeof( Tank ));
+}
+//-----------------------------------------------------------------------------

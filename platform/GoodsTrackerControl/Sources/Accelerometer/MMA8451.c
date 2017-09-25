@@ -1,5 +1,5 @@
-#include "MMA8451.h"
 #include "I2C2.h"
+#include "MMA8451.h"
 
 static MMA8451_TDataState deviceData;
 

@@ -8,12 +8,15 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
-#include "ihm.h"
+
 #include "TSSin.h"
 #include "lcd.h"
 #include "XF1.h"
-#include "Telemetria.h"
+
+#include "application.h"
 #include "clock.h"
+#include "ihm.h"
+
 
 char* functionsArray[] = { "OPTION 1", "OPTION 3", "OPTION 2" };
 int time_splah = 20;
@@ -22,7 +25,13 @@ uint32_t last_timestamp = 0;
 
 static ihmStruct ihmGlobal;
 
-void runIHM() {
+//QueueHandle_t	xQueueLCD;
+
+TaskHandle_t	xHandleIHMTask;
+
+static const TickType_t xTaskDelay = (100 / portTICK_PERIOD_MS);
+
+void ihm_task() {
 
 	TSS_Task(); /* call TSS library to process touches */
 
@@ -48,6 +57,8 @@ void runIHM() {
 			printClock();
 		}
 	}
+
+	vTaskDelay(xTaskDelay);
 }
 //-----------------------------------------------------------------------------------------
 

@@ -12,6 +12,7 @@
 
 /* Begin of <includes> initialization, DO NOT MODIFY LINES BELOW */
 
+#include <Tank.h>
 #include "TSK1.h"
 #include "FRTOS1.h"
 #include "frtos_tasks.h"
@@ -19,34 +20,43 @@
 /* End <includes> initialization, DO NOT MODIFY LINES ABOVE */
 
 #include "application.h"
-#include "AppQueues.h"
 #include "ihm.h"
 #include "clock.h"
-#include "protocol.h"
-#include "Level.h"
+#include "communication.h"
 #include "accelerometer.h"
 #include "gps.h"
 
+TaskHandle_t xHandleMainTask;
+
+static const TickType_t xMainDelay				= (60000 / portTICK_PERIOD_MS);
 /*********************************************************************************************
   * Main task
   * Espera as notificacoes para atualizacoes das informacoes de telemtria
   *
   ********************************************************************************************/
 
-static portTASK_FUNCTION(main_task, pvParameters) {
+static portTASK_FUNCTION(run_main, pvParameters) {
 
-	initQueues();
+	tank_init();
 
-	initClock();
+	gps_init();
 
-	for (;;) {
+	accelerometer_init();
 
-		runMain();
+	clock_init();
+
+	communication_init();
+
+	app_init();
+
+	while(1) {
+
+		 // até o momento sem demanda para execução periodica na main task
 
 		vTaskDelay(xMainDelay);
 	}
 
-	vTaskDelete(main_task);
+	vTaskDelete(xHandleMainTask);
 }
 
 /*********************************************************************************************
@@ -54,16 +64,14 @@ static portTASK_FUNCTION(main_task, pvParameters) {
  *
  ********************************************************************************************/
 
-static portTASK_FUNCTION(data_task, pvParameters) {
+static portTASK_FUNCTION(run_data, pvParameters) {
 
-	for (;;) {
+	while(1) {
 
-		runAnalog();
-
-		vTaskDelay(xDataDelay);
+		tank_task();
 	}
 
-	vTaskDelete(data_task);
+	vTaskDelete(xHandleDataTask);
 }
 
 /*********************************************************************************************
@@ -71,20 +79,18 @@ static portTASK_FUNCTION(data_task, pvParameters) {
  *
  ********************************************************************************************/
 
-static portTASK_FUNCTION(ihm_task, pvParameters) {
+static portTASK_FUNCTION(run_ihm, pvParameters) {
 
 	initIHM();
 
-	for (;;) {
+	while(1) {
 
-		runIHM();
-
-		vTaskDelay(xIHMDelay);
+		ihm_task();
 	}
 
 	deInitIHM();
 
-	vTaskDelete(ihm_task);
+	vTaskDelete(xHandleIHMTask);
 }
 
 
@@ -93,18 +99,14 @@ static portTASK_FUNCTION(ihm_task, pvParameters) {
  *
  *********************************************************************************************/
 
-static portTASK_FUNCTION(gps_task, pvParameters) {
+static portTASK_FUNCTION(run_gps, pvParameters) {
 
-	NMEA_init();
+	while(1) {
 
-	for (;;) {
-
-		runNMEA();
-
-		vTaskDelay(xGPSDelay);
+		gps_task();
 	}
 
-	vTaskDelete(gps_task);
+	vTaskDelete(xHandleGPSTask);
 }
 
 /*********************************************************************************************
@@ -113,18 +115,14 @@ static portTASK_FUNCTION(gps_task, pvParameters) {
  *
  ********************************************************************************************/
 
-static portTASK_FUNCTION(accel_task, pvParameters) {
+static portTASK_FUNCTION(run_accel, pvParameters) {
 
-	initAccelerometer();
+	while(1) {
 
-	for (;;) {
-
-		runAccelerometer();
-
-		vTaskDelay(xAccelDelay);
+		accelerometer_task();
 	}
 
-	vTaskDelete(accel_task);
+	vTaskDelete(xHandleAccelTask);
 }
 
 /*********************************************************************************************
@@ -133,16 +131,14 @@ static portTASK_FUNCTION(accel_task, pvParameters) {
  *
  *********************************************************************************************/
 
-static portTASK_FUNCTION(callback_task, pvParameters) {
+static portTASK_FUNCTION(run_callback, pvParameters) {
 
-	initApp();
+	while(1) {
 
-	for (;;) {
-
-		runApp();
+		callback_task();
 	}
 
-	vTaskDelete(callback_task);
+	vTaskDelete(xHandleCallBackTask);
 }
 
 /*********************************************************************************************
@@ -150,18 +146,14 @@ static portTASK_FUNCTION(callback_task, pvParameters) {
  *
  *********************************************************************************************/
 
-static portTASK_FUNCTION(communication_task, pvParameters) {
+static portTASK_FUNCTION(run_RX, pvParameters) {
 
-	initCommunication();
+	while(1) {
 
-	for (;;) {
-
-		processRx();
-
-		vTaskDelay(xCommunicationDelay);
+		rxPackage_task();
 	}
 
-	vTaskDelete(communication_task);
+	vTaskDelete(xHandleRxTask);
 }
 
 /*********************************************************************************************
@@ -169,16 +161,14 @@ static portTASK_FUNCTION(communication_task, pvParameters) {
  *
  ********************************************************************************************/
 
-static portTASK_FUNCTION(runTx_task, pvParameters) {
+static portTASK_FUNCTION(run_TX, pvParameters) {
 
-	for (;;) {
+	while(1) {
 
-		processTx();
-
-		vTaskDelay(xCommunicationDelay);
+		txPackage_task();
 	}
 
-	vTaskDelete(runTx_task);
+	vTaskDelete(xHandleTxTask);
 }
 
 /*********************************************************************************************
@@ -189,11 +179,11 @@ static portTASK_FUNCTION(runTx_task, pvParameters) {
 void CreateTasks(void) {
 
 	if (FRTOS1_xTaskCreate(
-			main_task, /* pointer to the task */
-			"mains_task", /* task name for kernel awareness debugging */
+			run_main, /* pointer to the task */
+			"run_main", /* task name for kernel awareness debugging */
 			configMINIMAL_STACK_SIZE, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
-			tskIDLE_PRIORITY + 0, /* initial priority */
+			tskIDLE_PRIORITY + 10, /* initial priority */
 			&xHandleMainTask /* optional task handle to create */
 	) != pdPASS) {
 		/*lint -e527 */
@@ -202,12 +192,12 @@ void CreateTasks(void) {
 		/*lint +e527 */
 	}
 	if (FRTOS1_xTaskCreate(
-			communication_task, /* pointer to the task */
-			"communication_task", /* task name for kernel awareness debugging */
-			configMINIMAL_STACK_SIZE, /* task stack size */
+			run_RX, /* pointer to the task */
+			"run_RX", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE+50, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
 			tskIDLE_PRIORITY + 0, /* initial priority */
-			&xHandleCommunicationTask /* optional task handle to create */
+			&xHandleRxTask /* optional task handle to create */
 	) != pdPASS) {
 		/*lint -e527 */
 		for (;;) {
@@ -215,8 +205,8 @@ void CreateTasks(void) {
 		/*lint +e527 */
 	}
 	if (FRTOS1_xTaskCreate(
-			data_task, /* pointer to the task */
-			"data_task", /* task name for kernel awareness debugging */
+			run_data, /* pointer to the task */
+			"run_data", /* task name for kernel awareness debugging */
 			configMINIMAL_STACK_SIZE + 0, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
 			tskIDLE_PRIORITY + 0, /* initial priority */
@@ -228,11 +218,11 @@ void CreateTasks(void) {
 		/*lint +e527 */
 	}
 	if (FRTOS1_xTaskCreate(
-			ihm_task, /* pointer to the task */
-			"ihm_task", /* task name for kernel awareness debugging */
+			run_ihm, /* pointer to the task */
+			"run_ihm", /* task name for kernel awareness debugging */
 			configMINIMAL_STACK_SIZE + 0, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
-			tskIDLE_PRIORITY + 0, /* initial priority */
+			tskIDLE_PRIORITY + 3, /* initial priority */
 			&xHandleIHMTask /* optional task handle to create */
 	) != pdPASS) {
 		/*lint -e527 */
@@ -242,11 +232,11 @@ void CreateTasks(void) {
 	}
 
 	if (FRTOS1_xTaskCreate(
-			gps_task, /* pointer to the task */
-			"gps_task", /* task name for kernel awareness debugging */
+			run_gps, /* pointer to the task */
+			"run_gps", /* task name for kernel awareness debugging */
 			configMINIMAL_STACK_SIZE + 0, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
-			tskIDLE_PRIORITY + 0, /* initial priority */
+			tskIDLE_PRIORITY + 4, /* initial priority */
 			&xHandleGPSTask /* optional task handle to create */
 	) != pdPASS) {
 		/*lint -e527 */
@@ -256,8 +246,8 @@ void CreateTasks(void) {
 	}
 
 	if (FRTOS1_xTaskCreate(
-			accel_task, /* pointer to the task */
-			"accel_task", /* task name for kernel awareness debugging */
+			run_accel, /* pointer to the task */
+			"run_accel", /* task name for kernel awareness debugging */
 			configMINIMAL_STACK_SIZE + 0, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
 			tskIDLE_PRIORITY + 0, /* initial priority */
@@ -270,11 +260,11 @@ void CreateTasks(void) {
 	}
 
 	if (FRTOS1_xTaskCreate(
-			callback_task, /* pointer to the task */
-			"callback_task", /* task name for kernel awareness debugging */
-			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			run_callback, /* pointer to the task */
+			"run_callback", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE + 50, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
-			tskIDLE_PRIORITY + 0, /* initial priority */
+			tskIDLE_PRIORITY + 5, /* initial priority */
 			&xHandleCallBackTask /* optional task handle to create */
 	) != pdPASS) {
 		/*lint -e527 */
@@ -284,12 +274,12 @@ void CreateTasks(void) {
 	}
 
 	if (FRTOS1_xTaskCreate(
-			runTx_task, /* pointer to the task */
-			"runTx_task", /* task name for kernel awareness debugging */
-			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			run_TX, /* pointer to the task */
+			"run_TX", /* task name for kernel awareness debugging */
+			configMINIMAL_STACK_SIZE+50, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
 			tskIDLE_PRIORITY + 0, /* initial priority */
-			&xHandleRunTxTask /* optional task handle to create */
+			&xHandleTxTask /* optional task handle to create */
 	) != pdPASS) {
 		/*lint -e527 */
 		for (;;) {

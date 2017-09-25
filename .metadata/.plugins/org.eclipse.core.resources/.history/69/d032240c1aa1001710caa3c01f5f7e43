@@ -1,0 +1,77 @@
+/*
+ * protocol.h
+ *
+ *  Created on: 09/06/2017
+ *      Author: Suporte
+ */
+
+#ifndef SOURCES_PROTOCOL_H_
+#define SOURCES_PROTOCOL_H_
+
+#include <CommunicationFrame.h>
+#include <stdbool.h>
+#include "utils.h"
+#include "Cmd.h"
+
+//Endereco desse Rastreador
+#define	ADDRESS			2
+
+#define	BIT_TX			0x01
+#define	BIT_RX			0x02
+
+/**
+ *
+ * Maquina de estado para recebimento do frame
+ */
+typedef enum {
+
+	CMD_INIT,
+	CMD_INIT_OK,
+	CMD_RX_START,
+	CMD_RX_FRAME,
+	CMD_RX_END,
+	CMD_RX_CR,
+	CMD_RX_LF,
+	CMD_FRAME_OK,
+	CMD_FRAME_NOK,
+} StatusRx;
+
+static void rxStartCMD (void);
+static void receiveFrame (void);
+static void rxLF(void);
+static void rxCR(void);
+static void acceptRxFrame();
+static void setStatusRx(StatusRx sts);
+static void sendString(const char* str);
+static void errorRxFrame(void);
+static bool decoderFrame(void);
+static void verifyFrame(void);
+static void startTX(void);
+static void setPayLoad(PayLoad* ans);
+static void doAnswer(CommunicationPackage* ans);
+static void copyHeaderToFrame(CommunicationPackage* data,Frame* frame);
+static void copyPayLoadToFrame(CommunicationPackage* data,Frame* frame);
+static void copyCheckSumToFrame(Frame* frame);
+static void buildFrame(CommunicationPackage* data,Frame* frame);
+static void sendFrame(char* frame);
+void processTx(void);
+void processRx(void);
+
+
+/*interface*/
+bool getRxData(char* ch);
+bool putTxData(char data);
+bool putRxData(char ch);
+bool getTxData(char* ch);
+bool hasTxData(void);
+void initCommunication(void);
+bool isAnyRxData();
+Resource getResource(char* name);
+void getResourceName(char* name,Resource resource);
+void sendDataFrame(CommunicationPackage* data);
+
+extern const char* OPERATION_AN;
+extern const char* OPERATION_RD;
+extern const char* OPERATION_WR;
+
+#endif /* SOURCES_PROTOCOL_H_ */

@@ -9,8 +9,9 @@
 #define INCLUDES_CLOCK_H_
 
 #include <stdint.h>
+#include <stdbool.h>
+
 #include "RTC1.h"
-#include "PE_Types.h"
 
 
 #define SEC_PER_MIN         60
@@ -22,12 +23,12 @@
 #define	FUSO_HORARIO_BR		((-3)*SEC_PER_HOUR)
 
 uint32_t getCurrentTimeStamp();
-void initClock();
+void clock_init();
 bool setClock(LDD_RTC_TTime* time);
 bool setClockByString(char* date,char* time);
 void getClock(LDD_RTC_TTime* time);
 void updateEntityClock();
-void adjusteClock();
+void adjusteClock(char* date,char* time);
 void strToData(	LDD_RTC_TTime* date_time,char* date,char* time);
 uint32_t strToTimeStamp(char* date,char* time);
 uint32_t unix_time_in_seconds(uint8_t sec, uint8_t min, uint8_t hrs,

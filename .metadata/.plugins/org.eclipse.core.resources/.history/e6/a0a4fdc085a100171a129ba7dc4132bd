@@ -1,0 +1,65 @@
+/*
+ * consumer.c
+ *
+ *  Created on: Sep 24, 2017
+ *      Author: Jefferson
+ */
+
+#include "Clock.h"
+#include "Level.h"
+#include "Accelerometer.h"
+#include "gps.h"
+#include "consumer.h"
+
+void updateDataGPS(void) {
+
+	if (xQueueReceive(xQueueGPS, &telemetria.GPS, (TickType_t ) 1)) {
+
+		if(telemetria.GPS.FixQuality>0){
+			adjusteClock();
+		}
+	}
+}
+//-------------------------------------------------------------------------
+
+void updateDataAcce(void) {
+
+	if (xQueueReceive(xQueueAcc, &telemetria.Accelerometer, (TickType_t ) 1)) {
+
+	}
+}
+//-------------------------------------------------------------------------
+
+void updateDataLevel(void) {
+
+	if (xQueueReceive(xQueueTank, &telemetria.Tank, (TickType_t ) 1)) {
+
+	}
+}
+//-------------------------------------------------------------------------
+
+/**
+ *
+ * Atualiza as informções de telemetria que estão na lista de menssagens
+ *
+ */
+void updateTLM(Telemetria* tlm,uint32_t ulNotifiedValue){
+
+	if(ulNotifiedValue & BIT_UPDATE_GPS){
+
+		updateDataGPS(tlm);
+	}
+
+	if(ulNotifiedValue & BIT_UPDATE_ACCE){
+
+		updateDataAcce(tlm);
+	}
+
+	if(ulNotifiedValue & BIT_UPDATE_AD){
+
+		updateDataLevel(tlm);
+	}
+}
+//-------------------------------------------------------------------------
+
+

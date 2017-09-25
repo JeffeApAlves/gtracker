@@ -5,9 +5,10 @@
  *      Author: Jefferson
  */
 #include <time.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "Cpu.h"
-#include "stdlib.h"
-#include "string.h"
 #include "XF1.h"
 #include "Telemetria.h"
 #include "clock.h"
@@ -36,7 +37,7 @@ volatile STATUS_CLOCK statuc_clock = CLOCK_INIT;
 
 bool flag_1s = TRUE;
 
-void initClock(){
+void clock_init(){
 
 	/* Initialize the device, preserve time settings */
 	MyRTCPtr = RTC1_Init((LDD_TUserData *)NULL, FALSE);
@@ -170,11 +171,11 @@ uint32_t getCurrentTimeStamp(){
 }
 //-------------------------------------------------------------------------------------------------------------------
 
-void adjusteClock(){
+void adjusteClock(char* date,char* time){
 
 	if(statuc_clock == CLOCK_STARTED){
 
-		if(setClockByString(telemetria.GPS.Date,telemetria.GPS.Time_UTC)){
+		if(setClockByString(date,time)){
 
 			statuc_clock = CLOCK_ADJUSTED;
 		}

@@ -8,8 +8,9 @@
 #ifndef SOURCES_UTILS_H_
 #define SOURCES_UTILS_H_
 
-#include <string.h>
-#include "PE_Types.h"
+#include <stdint.h>
+#include <stdbool.h>
+
 #include "Cmd.h"
 
 typedef enum {
@@ -49,11 +50,11 @@ void str_split(List* result,char* a_str, const char a_delim);
 void str_append(char subject[], char insert[], int pos);
 void removeList(List* list);
 
-bool AsInteger(int* out,char *str,uint16 index,const char a_delim);
-bool AsString(char* out,char *str,uint16 index,const char a_delim);
-bool AsHex(uint16* out,char *str,uint16 index,const char a_delim);
-bool AsChar(char* out,char *str,uint16 index,const char a_delim);
-bool AsFloat(float* out,char *str,uint16 index,const char a_delim);
-bool AsResource(Resource* out,char *str,uint16 index,const char a_delim);
+bool AsInteger(int* out,char *str,uint16_t index,const char a_delim);
+bool AsString(char* out,char *str,uint16_t index,const char a_delim);
+bool AsHex(uint16_t* out,char *str,uint16_t index,const char a_delim);
+bool AsChar(char* out,char *str,uint16_t index,const char a_delim);
+bool AsFloat(float* out,char *str,uint16_t index,const char a_delim);
+bool AsResource(Resource* out,char *str,uint16_t index,const char a_delim);
 
 #endif /* SOURCES_UTILS_H_ */

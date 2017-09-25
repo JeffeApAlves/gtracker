@@ -5,37 +5,33 @@
  *      Author: Jefferson
  */
 
-#include <stdlib.h>
-#include <stdbool.h>
-#include <Telemetria.h>
+#include <stdio.h>
 
-#include "AppQueues.h"
+#include "Tank.h"
+#include "Telemetria.h"
 #include "clock.h"
 #include "lock.h"
 #include "NMEAFrame.h"
-#include "Level.h"
 #include "Accelerometer.h"
 #include "Serialization.h"
+#include "communication.h"
+#include "consumer.h"
 #include "application.h"
 
-static 	int			_lock;
-static 	CommunicationFrame	Answer,Cmd;
+static 	int		_lock;
+Telemetria		telemetria;
 
-void runApp(void){
+TaskHandle_t	xHandleCallBackTask;
+
+void callback_task(void){
 
 	uint32_t ulNotifiedValue;
 
 	xTaskNotifyWait( 0x0, BIT_RX_FRAME | BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY);
 
-	updateTLM(ulNotifiedValue);
+	updateTLM(&telemetria,ulNotifiedValue);
 
 	execCMD(ulNotifiedValue);
-}
-//-------------------------------------------------------------------------
-
-void runMain(void){
-
-// TODO
 }
 //-------------------------------------------------------------------------
 
@@ -43,30 +39,21 @@ void execCMD(uint32_t ulNotifiedValue){
 
 	if(ulNotifiedValue & BIT_RX_FRAME){
 
-		while (xQueueReceive(xQueueCom, &Cmd, (TickType_t ) 1)) {
+		CommunicationPackage	package;
 
-			pCallBack cb = getCallBack(Cmd.resource);
+		while (xQueueReceive(xQueueRx, &package, (TickType_t ) 1)) {
+
+			pCallBack cb = getCallBack(package.Header.resource);
 
 			if(cb!=NULL){
 
-				//Preenche dados do Header para retorno
-				setHeaderAnswer(&Cmd);
+				if(cb(&package) == CMD_RESULT_EXEC_SUCCESS) {
 
-				if(cb(&Cmd) == CMD_RESULT_EXEC_SUCCESS) {
-
-					// Publica resposta na fila
-					if(xQueueSendToBack( xQueueAnswer , &Answer, ( TickType_t ) 1 ) ){
-
-				    	xTaskNotify( xHandleRunTxTask , BIT_TX , eSetBits );
-
-					}else{
-
-						// Erro ao tentar publicar a resposta
-					}
+					 putPackageTx(&package);
 				}
 				else {
 
-					// Sem sucesso na execução do comando
+					execError(&package);
 				}
 			}
 		}
@@ -74,83 +61,113 @@ void execCMD(uint32_t ulNotifiedValue){
 }
 //-------------------------------------------------------------------------
 
-ResultExec onLED(CommunicationFrame* frame){
+ResultExec onLED(CommunicationPackage* package){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	AppendPayLoad(&Answer.PayLoad,"1569695954");
+	// ... Implementação da execução do cmd ...
 
 	res = CMD_RESULT_EXEC_SUCCESS;
+
+	initPackageAnswer(package);
+
+	// Preenche payload com resultado
+	AppendPayLoad(&package->PayLoad,"1569695954");
 
 	return res;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAnalog(CommunicationFrame* cmd){
+ResultExec onAnalog(CommunicationPackage* package){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	AppendPayLoad(&Answer.PayLoad,"1569695954");;
+	// ... Implementação da execução do cmd ...
 
 	res = CMD_RESULT_EXEC_SUCCESS;
+
+	initPackageAnswer(package);
+
+	// Preenche payload com resultado
+	AppendPayLoad(&package->PayLoad,"1569695954");;
 
 	return res;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAccel(CommunicationFrame* cmd){
+ResultExec onAccel(CommunicationPackage* package){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	AppendPayLoad(&Answer.PayLoad,"1569695954");;
+	// ... Implementação da execução do cmd ...
 
 	res = CMD_RESULT_EXEC_SUCCESS;
+
+	initPackageAnswer(package);
+
+	// Preenche payload com resultado
+	AppendPayLoad(&package->PayLoad,"1569695954");;
 
 	return res;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onTouch(CommunicationFrame* cmd){
+ResultExec onTouch(CommunicationPackage* package){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	AppendPayLoad(&Answer.PayLoad,"1569695954");;
+	// ... Implementação da execução do cmd ...
 
 	res = CMD_RESULT_EXEC_SUCCESS;
+
+	initPackageAnswer(package);
+
+	// Preenche payload com resultado
+	AppendPayLoad(&package->PayLoad,"1569695954");;
 
 	return res;
 }
 //-------------------------------------------------------------------------
 
-ResultExec onPWM(CommunicationFrame* cmd){
+ResultExec onPWM(CommunicationPackage* package){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	AppendPayLoad(&Answer.PayLoad,"1569695954");;
+	// ... Implementação da execução do cmd ...
 
 	res = CMD_RESULT_EXEC_SUCCESS;
+
+	initPackageAnswer(package);
+
+	// Preenche payload com resultado
+	AppendPayLoad(&package->PayLoad,"1569695954");;
 
 	return res;
 }
 //------------------------------------------------------------------------
 
-ResultExec onTelemetry(CommunicationFrame* cmd){
+ResultExec onTelemetry(CommunicationPackage* package){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	tlm2String(&telemetria,&Answer.PayLoad);
+	// ... Implementação da execução do cmd ...
 
 	res = CMD_RESULT_EXEC_SUCCESS;
+
+	initPackageAnswer(package);
+
+	// Preenche payload com resultado
+	tlm2String(&telemetria,&package->PayLoad);
 
 	return res;
 }
 //------------------------------------------------------------------------
 
-ResultExec onLock(CommunicationFrame* cmd){
+ResultExec onLock(CommunicationPackage* package){
 
 	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
 
-	decoderLockPayLoad(&cmd->PayLoad);
+	decoderLockPayLoad(&package->PayLoad);
 
 	if(_lock){
 
@@ -161,11 +178,22 @@ ResultExec onLock(CommunicationFrame* cmd){
 		unLock();
 	}
 
-	AppendPayLoad(&Answer.PayLoad,"1569695954");;
-
 	res = CMD_RESULT_EXEC_SUCCESS;
 
+	initPackageAnswer(package);
+
+	// Preenche payload com resultado
+	AppendPayLoad(&package->PayLoad,"1569695954");;
+
 	return res;
+}
+//------------------------------------------------------------------------
+
+void execError(CommunicationPackage* package){
+
+	initPackageAnswer(package);
+
+	AppendPayLoad(&package->PayLoad,"EXEC ERROR");;
 }
 //------------------------------------------------------------------------
 
@@ -180,15 +208,18 @@ void decoderLockPayLoad(PayLoad* payload){
  * Set endereco de origem e destino e o tipo da operacao
  *
  */
-static void setHeaderAnswer(CommunicationFrame* data){
+static void initPackageAnswer(CommunicationPackage* package){
 
-	clearArrayPayLoad(&Answer.PayLoad);
+	if(package){
 
-	strcpy(Answer.operacao,OPERATION_AN);
-	Answer.resource		= data->resource;
-	Answer.dest			= data->address;
-	Answer.address		= ADDRESS;
-	Answer.time_stamp	= getCurrentTimeStamp();
+		// Payload do cmd apagado
+		clearArrayPayLoad(&package->PayLoad);
+
+		strcpy(package->Header.operacao,OPERATION_AN);
+		package->Header.dest			= package->Header.address;
+		package->Header.address			= ADDRESS;
+		package->Header.time_stamp		= getCurrentTimeStamp();
+	}
 }
 //------------------------------------------------------------------------
 
@@ -212,10 +243,8 @@ pCallBack getCallBack(Resource r) {
 }
 //------------------------------------------------------------------------
 
-void initApp(void){
+void app_init(void){
 
 	clearTelemetria(&telemetria);
-	clearData(&Answer);
 }
 //------------------------------------------------------------------------
-

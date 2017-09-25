@@ -5,8 +5,8 @@
  *      Author: Jefferson
  */
 
-#include <Frame.h>
 #include "string.h"
+#include "Frame.h"
 
 inline unsigned int putDataArray(Frame *frame, char data) {
 
@@ -45,9 +45,9 @@ void AppendFrame(Frame* frame,const char* data){
 }
 //------------------------------------------------------------------------
 
-uint16 getNumField(char* str,const char a_delim) {
+uint16_t getNumField(char* str,const char a_delim) {
 
-	uint16 i,f;
+	uint16_t i,f;
 
 	i		= 0;
 	f		= 0;
@@ -64,9 +64,9 @@ uint16 getNumField(char* str,const char a_delim) {
 }
 //------------------------------------------------------------------------
 
-void getField(char* str, char* out,uint16 num_field,const char a_delim) {
+void getField(char* str, char* out,uint16_t num_field,const char a_delim) {
 
-	uint16 i,start,end,index_field;
+	uint16_t i,start,end,index_field;
 
 	index_field	= 0;		// ja aponta para o field 0
 	start		= 0;		// ques inicia na posicao 0
