@@ -13,7 +13,13 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
+#include "event_groups.h"
+
 #include "TSS_API.h"
+
+//Eventos do clock
+#define	BIT_UPDATE_LCD			0x01
+#define	BIT_UPDATE_LCD_XYZ		0x02
 
 typedef enum {
 	IHM_EVENT_NONE,
@@ -45,19 +51,19 @@ typedef struct {
  */
 
 /**
- *
+ * Inicializa interface homem máquina
  */
-void initIHM();
+void ihm_init(void);
 
 /**
  *
  */
-void deInitIHM();
+void ihm_deInit(void);
 
 /**
  *
  */
-void ihm_task();
+void ihm_task(void);
 
 /**
  *
@@ -66,16 +72,15 @@ int ihm_put_slide_event(TSS_CSASlider *event);
 
 void ihm_process_events(ihmStruct *ihm);
 
-void initEvents();
+void initEvents(void);
 
 void printLCD(int linha,int coluna,char* str);
 void printClock(void);
-void showSplah();
-void printXYZ();
-
-//extern QueueHandle_t	xQueueLCD;
+void printSplah(void);
+void printAccelerometer(void);
 
 extern TaskHandle_t		xHandleIHMTask;
 
+extern EventGroupHandle_t	ihm_events;
 
 #endif /* SOURCES_IHM_H_ */

@@ -12,7 +12,6 @@
 
 /* Begin of <includes> initialization, DO NOT MODIFY LINES BELOW */
 
-#include <Tank.h>
 #include "TSK1.h"
 #include "FRTOS1.h"
 #include "frtos_tasks.h"
@@ -38,6 +37,8 @@ static const TickType_t xMainDelay				= (60000 / portTICK_PERIOD_MS);
 static portTASK_FUNCTION(run_main, pvParameters) {
 
 	tank_init();
+
+	ihm_init();
 
 	gps_init();
 
@@ -80,8 +81,6 @@ static portTASK_FUNCTION(run_data, pvParameters) {
  ********************************************************************************************/
 
 static portTASK_FUNCTION(run_ihm, pvParameters) {
-
-	initIHM();
 
 	while(1) {
 

@@ -8,9 +8,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "ihm.h"
 #include "Cpu.h"
 #include "XF1.h"
-#include "Telemetria.h"
 #include "clock.h"
 
 // Referencias:	https://github.com/msolters/make-unix-timestamp-c
@@ -35,14 +35,13 @@ static uint32_t		timestamp;
 
 volatile STATUS_CLOCK statuc_clock = CLOCK_INIT;
 
-bool flag_1s = TRUE;
 
 void clock_init(){
 
 	/* Initialize the device, preserve time settings */
 	MyRTCPtr = RTC1_Init((LDD_TUserData *)NULL, FALSE);
 
-	timestamp = 0;
+	timestamp		= 0;
 
 	if(MyRTCPtr!=NULL){
 /*
@@ -157,7 +156,18 @@ void updateEntityClock(){
 		timestamp++;
 	}
 
-	flag_1s = TRUE;
+	xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
+/*
+	BaseType_t xHigherPriorityTaskWoken, xResult;
+
+	xHigherPriorityTaskWoken = pdFALSE;
+
+	xEventGroupSetBitsFromISR(ihm_events, UPDATE_CLOCK,&xHigherPriorityTaskWoken);
+
+	if( xResult != pdFAIL ){
+
+		portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
+	}*/
 }
 //-------------------------------------------------------------------------------------------------------------------
 

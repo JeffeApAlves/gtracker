@@ -10,6 +10,7 @@
 #include "Accelerometer.h"
 #include "gps.h"
 #include "application.h"
+#include "ihm.h"
 #include "consumer.h"
 
 void updateDataGPS(Telemetria* tlm) {
@@ -55,6 +56,9 @@ void updateTLM(Telemetria* tlm,uint32_t ulNotifiedValue){
 	if(ulNotifiedValue & BIT_UPDATE_ACCE){
 
 		updateDataAcce(tlm);
+
+		//Gera evento de atualização do LCD
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_XYZ);
 	}
 
 	if(ulNotifiedValue & BIT_UPDATE_AD){

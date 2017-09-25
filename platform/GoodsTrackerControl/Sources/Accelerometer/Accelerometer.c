@@ -16,7 +16,7 @@ QueueHandle_t	xQueueAcc;
 
 TaskHandle_t xHandleAccelTask;
 
-static const TickType_t xTaskDelay = (100 / portTICK_PERIOD_MS);
+static const TickType_t xTaskDelay = (200 / portTICK_PERIOD_MS);
 
 void accelerometer_task(void) {
 

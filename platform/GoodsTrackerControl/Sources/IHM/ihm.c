@@ -17,52 +17,48 @@
 #include "clock.h"
 #include "ihm.h"
 
-
-char* functionsArray[] = { "OPTION 1", "OPTION 3", "OPTION 2" };
-int time_splah = 20;
-int time_update= 0;
-uint32_t last_timestamp = 0;
+static int time_splah	= 2;		//2 segundos
 
 static ihmStruct ihmGlobal;
 
-//QueueHandle_t	xQueueLCD;
-
 TaskHandle_t	xHandleIHMTask;
 
-static const TickType_t xTaskDelay = (100 / portTICK_PERIOD_MS);
+EventGroupHandle_t	ihm_events;
 
-void ihm_task() {
+void ihm_task(void) {
 
-	TSS_Task(); /* call TSS library to process touches */
-
-	ihm_process_events(&ihmGlobal);
-
-	if(time_splah){
-		time_splah--;
-
-		showSplah();
-	}else {
-
-		if(time_update){
-			time_update--;
-		}else{
-			time_update = 5;
-			printXYZ(&telemetria);
-		}
-		if(getTimeStamp()!=last_timestamp || flag_1s ){
+	EventBits_t uxBits	= xEventGroupWaitBits(
+									ihm_events,
+									BIT_UPDATE_LCD | BIT_UPDATE_LCD_XYZ,
+									pdTRUE,
+									pdFALSE,
+									portMAX_DELAY );
 
 
-			last_timestamp = getTimeStamp();
-			flag_1s = FALSE;
-			printClock();
+	if(uxBits & BIT_UPDATE_LCD_XYZ){
+
+		if(!time_splah){
+			printAccelerometer();
 		}
 	}
 
-	vTaskDelay(xTaskDelay);
+	if(uxBits & BIT_UPDATE_LCD){
+
+		if(time_splah){
+
+			time_splah--;
+
+			// Mostrando o splah
+
+		}else {
+
+			printClock();
+		}
+	}
 }
 //-----------------------------------------------------------------------------------------
 
-void printXYZ(){
+void printAccelerometer(void){
 
 	char buffer_lcd[17];
 
@@ -77,6 +73,82 @@ void printXYZ(){
 }
 //-----------------------------------------------------------------------------------------
 
+void printSplah(void){
+
+	printLCD(1,1," .GOODSTRACKER. ");
+	printLCD(2,1,"    VER. 0.2    ");
+}
+//-----------------------------------------------------------------------------------------
+
+void printClock(void){
+
+	LDD_RTC_TTime	time;
+
+	char buffer_lcd[17];
+	buffer_lcd[0] = '\0';
+
+	switch(statuc_clock){
+
+		case CLOCK_INIT:
+			XF1_xsprintf(buffer_lcd,"    CLKINIT    ");
+
+			break;
+		case CLOCK_STARTED:
+			XF1_xsprintf(buffer_lcd,"    CLKSTART    ");
+			break;
+		case CLOCK_UPDATE:
+			XF1_xsprintf(buffer_lcd,"     CLKUPD     ");
+			break;
+		case CLOCK_ADJUSTED:
+			if(getLocalClock(&time)){
+				XF1_xsprintf(buffer_lcd," %02d.%02d %02d:%02d:%02d \n",time.Day,time.Month,time.Hour, time.Minute, time.Second);
+
+			}else{
+				statuc_clock = CLOCK_ERROR;
+			}
+
+			break;
+
+		case CLOCK_ERROR:
+			XF1_xsprintf(buffer_lcd,"     ERROR     ");
+			break;
+
+	}
+
+	printLCD(2,1,buffer_lcd);
+}
+//-----------------------------------------------------------------------------------------
+
+void printLCD(int linha,int col,char* str){
+
+	LCDGotoXY(linha,col);
+	LCDWriteString(str);
+}
+//-----------------------------------------------------------------------------------------
+
+/*
+ *
+ * Inicializa LCD
+ *
+ */
+void ihm_init(void) {
+
+	ihm_events	= xEventGroupCreate();
+
+	TSSin_Configure(); /* initialize TSS library */
+
+	LCDInit();
+
+	printSplah();
+
+	initEvents();
+}
+//-----------------------------------------------------------------------------------------
+
+void ihm_deInit(void) {
+
+}
+//-----------------------------------------------------------------------------------------
 
 void ihm_process_events(ihmStruct *ihm) {
 
@@ -142,25 +214,15 @@ int ihm_put_slide_event(TSS_CSASlider *event) {
 		if (TSSin_cKey0.Events.Touch) {
 			if (!(TSSin_cKey0.Events.InvalidPos)) {
 
-//				LED_R_Put(0);
-//				LED_G_Put(1);
-//				LED_B_Put(0);
-
 				ev->evType = IHM_EVENT_CHOOSE_OK;
 			}
 		}
 
 		if (TSSin_cKey0.DynamicStatus.Displacement > (UINT8) 15) {
 			if (TSSin_cKey0.DynamicStatus.Direction) {
-//				LED_R_Put(1);
-//				LED_G_Put(0);
-//				LED_B_Put(0);
 
 				ev->evType = IHM_EVENT_CHOOSE_LEFT;
 			} else {
-//				LED_R_Put(0);
-//				LED_G_Put(0);
-//				LED_B_Put(1);
 
 				ev->evType = IHM_EVENT_CHOOSE_RIGHT;
 			}
@@ -172,94 +234,22 @@ int ihm_put_slide_event(TSS_CSASlider *event) {
 }
 //-----------------------------------------------------------------------------------------
 
-void deInitIHM() {
-
-}
-//-----------------------------------------------------------------------------------------
-
-/*
- *
- * Inicializa LCD
- *
- */
-void initIHM() {
-
-	TSSin_Configure(); /* initialize TSS library */
-
-	LCDInit();
-
-	ihmGlobal.option = 0;
-
-	initEvents();
-}
-//-----------------------------------------------------------------------------------------
-
-void showSplah(){
-
-	printLCD(1,1," .GOODSTRACKER. ");
-	printLCD(2,1,"    VER. 0.2    ");
-}
-//-----------------------------------------------------------------------------------------
-
-void printClock(void){
-
-	LDD_RTC_TTime	time;
-
-	char buffer_lcd[17];
-	buffer_lcd[0] = '\0';
-
-	switch(statuc_clock){
-
-		case CLOCK_INIT:
-			XF1_xsprintf(buffer_lcd,"    CLKINIT    ");
-
-			break;
-		case CLOCK_STARTED:
-			XF1_xsprintf(buffer_lcd,"    CLKSTART    ");
-			break;
-		case CLOCK_UPDATE:
-			XF1_xsprintf(buffer_lcd,"     CLKUPD     ");
-			break;
-		case CLOCK_ADJUSTED:
-			if(getLocalClock(&time)){
-				XF1_xsprintf(buffer_lcd," %02d.%02d %02d:%02d:%02d \n",time.Day,time.Month,time.Hour, time.Minute, time.Second);
-
-			}else{
-				statuc_clock = CLOCK_ERROR;
-			}
-
-			break;
-
-		case CLOCK_ERROR:
-			XF1_xsprintf(buffer_lcd,"     ERROR     ");
-			break;
-
-	}
-
-	printLCD(2,1,buffer_lcd);
-}
-//-----------------------------------------------------------------------------------------
-
-void printLCD(int linha,int col,char* str){
-
-	LCDGotoXY(linha,col);
-	LCDWriteString(str);
-}
-//-----------------------------------------------------------------------------------------
-
 /*
  * Inicializa a estrutura de eventos
  *
  */
-void initEvents(){
+void initEvents(void){
 
 	unsigned char i;
+	ihmGlobal.option = 0;
+
 	ihmGlobal.ihmEventBuffer.head = 0;
 	ihmGlobal.ihmEventBuffer.tail = 0;
+
 	for (i = 0; i < IHM_MAX_EVENTS; i++) {
 		ihmGlobal.ihmEventBuffer.event[i].evType = IHM_EVENT_NONE;
 		/*INICIALIZAMOS COMO J� TRATADO PARA N�O ENTRAR A 1a VEZ A TOA*/
-		ihmGlobal.ihmEventBuffer.event[i].eventTreated = TRUE;
+		ihmGlobal.ihmEventBuffer.event[i].eventTreated = true;
 	}
 }
 //-----------------------------------------------------------------------------------------

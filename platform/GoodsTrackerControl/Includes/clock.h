@@ -13,7 +13,6 @@
 
 #include "RTC1.h"
 
-
 #define SEC_PER_MIN         60
 #define SEC_PER_HOUR        3600
 #define SEC_PER_DAY         86400
@@ -40,7 +39,5 @@ bool getLocalClock(LDD_RTC_TTime* time);
 typedef enum{CLOCK_INIT,CLOCK_STARTED,CLOCK_UPDATE,CLOCK_ADJUSTED,CLOCK_ERROR} STATUS_CLOCK;
 
 extern volatile STATUS_CLOCK statuc_clock;
-
-extern bool flag_1s;
 
 #endif /* INCLUDES_CLOCK_H_ */
