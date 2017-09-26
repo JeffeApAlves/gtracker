@@ -18,25 +18,25 @@
 #include "TSS_API.h"
 
 //Eventos do clock
-#define	BIT_UPDATE_LCD			0x01
-#define	BIT_UPDATE_LCD_XYZ		0x02
-#define	BIT_UPDATE_LCD_STAT_COM	0x04
-#define	BIT_UPDATE_LCD_STAT_GPS	0x08
-
+#define	BIT_UPDATE_LCD_CLOCK	0x01
+#define	BIT_UPDATE_LCD_STAT_COM	0x02
+#define	BIT_UPDATE_LCD_STAT_GPS	0x04
+#define	BIT_UPDATE_LCD_TANK		0x10
+#define	BIT_UPDATE_LCD_GPS		0x20
+#define	BIT_UPDATE_LCD_XYZ		0x40
 typedef enum{
 
-	SCREEN_NONE,
 	SCREEN_SPLASH,
-	SCREEN_ACCE,
 	SCREEN_CLOCK,
+	SCREEN_ACCE,
+	SCREEN_TANK,
+	SCREEN_GPS,
 	SCREEN_STAT_COM,
 	SCREEN_STAT_GPS,
 
+	NUM_OF_SCREEN,
+
 }screen;
-/**
- * CHAMANDO ESTA ESTRUTURA DE IHM (INTERFACE HOMEM-M�QUINA) EM VEZ DE
- * MMI (MEN-MACHINE INTERFACE) POR PURO GOSTO PESSOAL... :)
- */
 
 /**
  * Inicializa interface homem máquina
@@ -51,20 +51,22 @@ void ihm_deInit(void);
 /**
  * Task paara gerenciamento do ihm
  */
-void ihm_task(void);
-
-void initEvents(void);
-
 void printLCD(int linha,int coluna,char* str);
 void printClock(void);
 void printSplash(void);
 void printAccelerometer(void);
 void printStatCom(void);
 void printStatGPS(void);
+void printTank(void);
+void printGPS(void);
 
+void ihm_task(void);
 void ihm_handle_update(void);
-void ihm_event_notify(const EventBits_t uxBitsToSet);
+void ihm_event_notify(EventBits_t uxBitsToSet);
+void ihm_notify_screen_stat(void);
+void ihm_notify_screen_tlm(void);
+void ihm_set_active_screen(screen s);
 
-extern TaskHandle_t		xHandleIHMTask;
+extern TaskHandle_t	xHandleIHMTask;
 
 #endif /* SOURCES_IHM_H_ */

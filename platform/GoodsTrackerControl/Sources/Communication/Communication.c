@@ -10,8 +10,7 @@
 #include "application.h"
 #include "communication.h"
 
-static const TickType_t xCommunicationDelay	= (100 / portTICK_PERIOD_MS);
-
+// Handle das tasks para processamento das pilha de TX e RX
 TaskHandle_t 	xHandleRxTask,xHandleTxTask;
 
 // Handles das Queues
@@ -23,12 +22,10 @@ QueueHandle_t	xQueueRx, xQueueTx;
  */
 void rxPackage_task(){
 
-	if(processRx()){
+	if(receivePackage()){
 
-		// chegou pacote
+		// pacote recebido com sucesso e esta na fila
 	}
-
-	vTaskDelay(xCommunicationDelay);
 }
 //------------------------------------------------------------------------------------
 

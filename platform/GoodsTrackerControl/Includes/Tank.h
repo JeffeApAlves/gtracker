@@ -24,6 +24,8 @@ typedef struct{
 } Tank;
 
 void tank_task(void);
+void lock(void);
+void unLock(void);
 void tank_init(void);
 
 extern volatile bool AD_finished;

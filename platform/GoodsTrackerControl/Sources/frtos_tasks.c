@@ -27,7 +27,12 @@
 
 TaskHandle_t xHandleMainTask;
 
-static const TickType_t xMainDelay				= (60000 / portTICK_PERIOD_MS);
+static const TickType_t xMainDelay		= (200 / portTICK_PERIOD_MS);
+static const TickType_t xTankDelay		= (200 / portTICK_PERIOD_MS);
+static const TickType_t xGPSDelay 		= (200 / portTICK_PERIOD_MS);
+static const TickType_t xAcceDelay		= (200 / portTICK_PERIOD_MS);
+static const TickType_t xRxComDelay		= (200 / portTICK_PERIOD_MS);
+
 /*********************************************************************************************
   * Main task
   * Espera as notificacoes para atualizacoes das informacoes de telemtria
@@ -52,7 +57,9 @@ static portTASK_FUNCTION(run_main, pvParameters) {
 
 	while(1) {
 
-		 // até o momento sem demanda para execução periodica na main task
+		ihm_notify_screen_stat();
+
+		readKey();
 
 		vTaskDelay(xMainDelay);
 	}
@@ -70,6 +77,8 @@ static portTASK_FUNCTION(run_data, pvParameters) {
 	while(1) {
 
 		tank_task();
+
+		vTaskDelay(xTankDelay);
 	}
 
 	vTaskDelete(xHandleDataTask);
@@ -103,6 +112,8 @@ static portTASK_FUNCTION(run_gps, pvParameters) {
 	while(1) {
 
 		gps_task();
+
+		vTaskDelay(xGPSDelay);
 	}
 
 	vTaskDelete(xHandleGPSTask);
@@ -119,6 +130,8 @@ static portTASK_FUNCTION(run_accel, pvParameters) {
 	while(1) {
 
 		accelerometer_task();
+
+		vTaskDelay(xAcceDelay);
 	}
 
 	vTaskDelete(xHandleAccelTask);
@@ -150,6 +163,8 @@ static portTASK_FUNCTION(run_RX, pvParameters) {
 	while(1) {
 
 		rxPackage_task();
+
+		vTaskDelay(xRxComDelay);
 	}
 
 	vTaskDelete(xHandleRxTask);
@@ -219,7 +234,7 @@ void CreateTasks(void) {
 	if (FRTOS1_xTaskCreate(
 			run_ihm, /* pointer to the task */
 			"run_ihm", /* task name for kernel awareness debugging */
-			configMINIMAL_STACK_SIZE + 0, /* task stack size */
+			configMINIMAL_STACK_SIZE + 50, /* task stack size */
 			(void*)NULL, /* optional task startup argument */
 			tskIDLE_PRIORITY + 3, /* initial priority */
 			&xHandleIHMTask /* optional task handle to create */

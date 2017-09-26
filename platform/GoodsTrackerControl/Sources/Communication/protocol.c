@@ -20,7 +20,7 @@ static StatusRx				statusRx = CMD_INIT;
 RingBuffer					bufferRx,bufferTx;
 static Frame				frameRx;
 
-bool processRx(void){
+bool receivePackage(void){
 
 	bool rx_ok = false;
 
@@ -347,7 +347,7 @@ void sendFrame(char* frame){
 
 /*
  *
- * Transmite o frame ao Host
+ * Faz a serialização reaproveitando o payload da camada aplicação e transmite via serial
  *
  */
 void sendPackage(CommunicationPackage* package){
@@ -436,7 +436,7 @@ inline bool isAnyRxData(){
 
 /**
  *
- * Inicializa a comunicação com o Host via porta serial
+ * Inicializa p protocolo de comunicação
  *
  */
 void protocol_init(void) {

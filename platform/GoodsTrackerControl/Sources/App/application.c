@@ -10,7 +10,6 @@
 #include "Tank.h"
 #include "Telemetria.h"
 #include "clock.h"
-#include "lock.h"
 #include "NMEAFrame.h"
 #include "Accelerometer.h"
 #include "Serialization.h"

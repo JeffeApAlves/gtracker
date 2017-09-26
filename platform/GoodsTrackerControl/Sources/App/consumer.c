@@ -51,19 +51,25 @@ void updateTLM(Telemetria* tlm,uint32_t ulNotifiedValue){
 	if(ulNotifiedValue & BIT_UPDATE_GPS){
 
 		updateDataGPS(tlm);
+
+		//Gera evento respectivo de atualização do LCD
+		ihm_notify_screen_tlm();
 	}
 
 	if(ulNotifiedValue & BIT_UPDATE_ACCE){
 
 		updateDataAcce(tlm);
 
-		//Gera evento de atualização do LCD
-		ihm_event_notify(BIT_UPDATE_LCD_XYZ);
+		//Gera evento respectivo de atualização do LCD
+		ihm_notify_screen_tlm();
 	}
 
 	if(ulNotifiedValue & BIT_UPDATE_AD){
 
 		updateDataLevel(tlm);
+
+		//Gera evento respectivo de atualização do LCD
+		ihm_notify_screen_tlm();
 	}
 }
 //-------------------------------------------------------------------------

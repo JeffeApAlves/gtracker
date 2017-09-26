@@ -18,7 +18,7 @@ typedef struct{
 	short	index_producer;
 	short	index_consumer;
 	short	count;
-
+	short	max_count;
 } RingBuffer;
 
 bool getData(RingBuffer* buffer,char* ch);

@@ -26,6 +26,10 @@ bool putData(RingBuffer* buffer,char ch){
 				buffer->count++;
 			}
 
+			if(buffer->count>buffer->max_count){
+				buffer->max_count = buffer->count;
+			}
+
 			flag = true;
 		}
 

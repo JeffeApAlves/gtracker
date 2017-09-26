@@ -24,8 +24,6 @@ QueueHandle_t	xQueueGPS;
 
 TaskHandle_t	xHandleGPSTask;
 
-static const TickType_t xTaskDelay = (250 / portTICK_PERIOD_MS);
-
 void gps_task(void) {
 
 	while(isAnyGPSData()){
@@ -43,8 +41,6 @@ void gps_task(void) {
 			case NMEA_FRAME_NOK:	NMEA_errorRxFrame();	break;
 		}
 	}
-
-	vTaskDelay(xTaskDelay);
 }
 //------------------------------------------------------------------------
 

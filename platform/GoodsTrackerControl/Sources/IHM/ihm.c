@@ -19,8 +19,11 @@
 #include "clock.h"
 #include "ihm.h"
 
+#define KEY        	(1<<7)
+#define KEY_INPUT	(~KEY)
+
 static screen active_screen;
-static char line_lcd[17];
+static char line_lcd[20];
 
 static int time_splash	= 3;		//3 segundos
 
@@ -32,77 +35,92 @@ void ihm_task(void) {
 
 	EventBits_t uxBits	= xEventGroupWaitBits(
 									ihm_events,
-									BIT_UPDATE_LCD |
-									BIT_UPDATE_LCD_XYZ |
+									BIT_UPDATE_LCD_CLOCK	|
+									BIT_UPDATE_LCD_XYZ		|
 									BIT_UPDATE_LCD_STAT_COM |
-									BIT_UPDATE_LCD_STAT_GPS,
+									BIT_UPDATE_LCD_STAT_GPS |
+									BIT_UPDATE_LCD_GPS		|
+									BIT_UPDATE_LCD_TANK,
 									pdTRUE,
 									pdFALSE,
 									portMAX_DELAY );
 
 
-	if(uxBits & BIT_UPDATE_LCD_XYZ){
+	//Hook de processamento dos eventos
 
-		printAccelerometer();
-	}
-
-	if(uxBits & BIT_UPDATE_LCD){
+	if(uxBits & BIT_UPDATE_LCD_CLOCK){
 
 		printClock();
 	}
 
-	if(uxBits & BIT_UPDATE_LCD_STAT_COM){
+	if(uxBits & BIT_UPDATE_LCD_XYZ){
+		printAccelerometer();
+	}
 
+	if(uxBits & BIT_UPDATE_LCD_STAT_COM){
 		printStatCom();
 	}
 
 	if(uxBits & BIT_UPDATE_LCD_STAT_GPS){
-
 		printStatGPS();
 	}
+
+	if(uxBits & BIT_UPDATE_LCD_TANK){
+		printTank();
+	}
+
+	if(uxBits & BIT_UPDATE_LCD_GPS){
+		printGPS();
+	}
+}
+//-----------------------------------------------------------------------------------------
+
+void printGPS(void){
+
+	XF1_xsprintf(line_lcd,"Lat:%12.7f",	telemetria.GPS.Lat);
+	printLCD(1,1,line_lcd);
+
+	XF1_xsprintf(line_lcd,"Lng:%12.7f",	telemetria.GPS.Lng);
+	printLCD(2,1,line_lcd);
+}
+//-----------------------------------------------------------------------------------------
+
+void printTank(void){
+
+	XF1_xsprintf(line_lcd,"Level: %05d    ",	telemetria.Tank.Level);
+	printLCD(1,1,line_lcd);
+
+	XF1_xsprintf(line_lcd,"Lock:  %d         ",	telemetria.Tank.Lock);
+	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
 
 void printAccelerometer(void){
 
-	XF1_xsprintf(line_lcd,"%c%.2f%c%.2f%c%.2f",	telemetria.Accelerometer.x_g>0?'+':'-',fabs(telemetria.Accelerometer.x_g),
-													telemetria.Accelerometer.y_g>0?'+':'-',fabs(telemetria.Accelerometer.y_g),
-													telemetria.Accelerometer.z_g>0?'+':'-',fabs(telemetria.Accelerometer.z_g)
+	XF1_xsprintf(line_lcd,"X:%c%4.2f Y:%c%4.2f%  ",	telemetria.Accelerometer.x_g>=0?'+':'-',fabs(telemetria.Accelerometer.x_g),
+													telemetria.Accelerometer.y_g>=0?'+':'-',fabs(telemetria.Accelerometer.y_g)
 													);
-
 	printLCD(1,1,line_lcd);
+
+	XF1_xsprintf(line_lcd,"Z:%c%4.2f         ",	telemetria.Accelerometer.z_g>=0?'+':'-',fabs(telemetria.Accelerometer.z_g)
+													);
+	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
 
 void printStatCom(void){
 
-	static int max_count_tx=0,max_count_rx=0;
-
-	if(bufferRx.count>max_count_rx){
-		max_count_rx = bufferRx.count;
-	}
-
-	if(bufferTx.count>max_count_tx){
-		max_count_tx = bufferTx.count;
-	}
-
-	XF1_xsprintf(line_lcd,"RX:%03d          ",max_count_rx);
+	XF1_xsprintf(line_lcd,"RM:%03dP:%03dC:%03d",bufferRx.max_count,bufferRx.index_producer,bufferRx.index_consumer);
 	printLCD(1,1,line_lcd);
 
-	XF1_xsprintf(line_lcd,"TX:%03d          ",max_count_tx);
+	XF1_xsprintf(line_lcd,"TM:%03dP:%03dC:%03d",bufferTx.max_count,bufferTx.index_producer,bufferTx.index_consumer);
 	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
 
 void printStatGPS(void){
 
-	static int max=0;
-
-	if(bufferRxNMEA.count>max){
-		max = bufferRxNMEA.count;
-	}
-
-	XF1_xsprintf(line_lcd,"RX:%03d          ",max);
+	XF1_xsprintf(line_lcd,"RX: %03d         ",bufferRxNMEA.max_count);
 	printLCD(1,1,line_lcd);
 
 	XF1_xsprintf(line_lcd,"RX: C:%03d P:%03d ",bufferRxNMEA.index_consumer,bufferRxNMEA.index_producer);
@@ -149,6 +167,7 @@ void printClock(void){
 
 	}
 
+	printLCD(1,1,"**GOODSTRACKER**");
 	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
@@ -160,11 +179,11 @@ void printLCD(int linha,int col,char* str){
 }
 //-----------------------------------------------------------------------------------------
 
-void ihm_event_notify(const EventBits_t uxBitsToSet){
+void ihm_event_notify(EventBits_t uxBitsToSet){
 
 	bool flag = false;
 
-	if((active_screen ==SCREEN_CLOCK) && (uxBitsToSet & BIT_UPDATE_LCD)){
+	if((active_screen ==SCREEN_CLOCK) && (uxBitsToSet & BIT_UPDATE_LCD_CLOCK)){
 
 		flag = true;
 	}
@@ -184,6 +203,17 @@ void ihm_event_notify(const EventBits_t uxBitsToSet){
 		flag = true;
 	}
 
+	if((active_screen ==SCREEN_GPS) && (uxBitsToSet & BIT_UPDATE_LCD_GPS)){
+
+		flag = true;
+	}
+
+
+	if((active_screen ==SCREEN_TANK) && (uxBitsToSet & BIT_UPDATE_LCD_TANK)){
+
+		flag = true;
+	}
+
 	if(flag){
 
 		xEventGroupSetBits(ihm_events, uxBitsToSet);
@@ -191,21 +221,67 @@ void ihm_event_notify(const EventBits_t uxBitsToSet){
 }
 //-----------------------------------------------------------------------------------------
 
+void ihm_notify_screen_stat(void){
+
+	EventBits_t uxBitsToSet = 0;
+
+	if(active_screen == SCREEN_STAT_COM){
+
+		uxBitsToSet = BIT_UPDATE_LCD_STAT_COM;
+
+	}else if(active_screen == SCREEN_STAT_GPS){
+
+		uxBitsToSet = BIT_UPDATE_LCD_STAT_GPS;
+	}
+
+	ihm_event_notify(uxBitsToSet);
+}
+//-----------------------------------------------------------------------------------------
+
+void ihm_notify_screen_tlm(void){
+
+	EventBits_t uxBitsToSet = 0;
+
+	if(active_screen == SCREEN_ACCE){
+
+		uxBitsToSet = BIT_UPDATE_LCD_XYZ;
+
+	} else if(active_screen == SCREEN_TANK){
+
+		uxBitsToSet = BIT_UPDATE_LCD_TANK;
+
+	} else if(active_screen == SCREEN_GPS){
+
+		uxBitsToSet = BIT_UPDATE_LCD_GPS;
+	}
+
+	ihm_event_notify(uxBitsToSet);
+}
+//-----------------------------------------------------------------------------------------
+
 void ihm_handle_update(void){
 
 	if(time_splash>0){
 
+		// Detecta o momento da transição para o zero
 		if(--time_splash<=0){
 
-			active_screen = SCREEN_CLOCK;
+			ihm_set_active_screen(SCREEN_ACCE);
 		}
+
 	}else{
 
-		ihm_event_notify(BIT_UPDATE_LCD);
+		//TODO verificar a função correta quando chamado dentro de uma interrupção
+		ihm_event_notify(BIT_UPDATE_LCD_CLOCK);
 	}
 }
 //-----------------------------------------------------------------------------------------
 
+inline void ihm_set_active_screen(screen s){
+
+	active_screen = s;
+}
+//-----------------------------------------------------------------------------------------
 
 /*
  *
@@ -216,13 +292,38 @@ void ihm_init(void) {
 
 	ihm_events	= xEventGroupCreate();
 
-	TSSin_Configure(); /* initialize TSS library */
+	TSSin_Configure();
 
 	LCDInit();
 
 	active_screen = SCREEN_SPLASH;
 
+	// Habilitar o clock dos ports que serão utilizados (PORTD).
+	SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK;
+
+	// Seleciona a função de GPIO
+	PORTD_PCR7 = PORT_PCR_MUX(1);
+
+	// Configura como entrada
+	GPIOD_PDDR &= KEY_INPUT;
+
 	printSplash();
+}
+//-----------------------------------------------------------------------------------------
+
+void readKey(void){
+
+	if(!(GPIOD_PDIR & KEY)){
+
+		if(active_screen< (NUM_OF_SCREEN-1)){
+
+			active_screen++;
+
+		}else{
+
+			ihm_set_active_screen(SCREEN_ACCE);
+		}
+	}
 }
 //-----------------------------------------------------------------------------------------
 

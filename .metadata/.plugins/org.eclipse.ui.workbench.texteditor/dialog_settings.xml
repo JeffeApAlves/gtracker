@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="STAT_COM" key="selection"/>
+		<item value="printAcc" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="STAT_COM"/>
-			<item value="stat_com"/>
-			<item value="sta_com"/>
-			<item value="gps.h"/>
-			<item value="nmea"/>
-			<item value="stat"/>
+			<item value="printacc"/>
+			<item value="acce"/>
+			<item value="ac"/>
+			<item value="splash"/>
+			<item value="read"/>
+			<item value="rea"/>
 			<item value="lock"/>
-			<item value="printsta"/>
+			<item value="gps"/>
 		</list>
 		<list key="replacehistory">
 			<item value="true"/>

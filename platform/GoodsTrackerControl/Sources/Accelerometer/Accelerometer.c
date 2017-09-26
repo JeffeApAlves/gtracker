@@ -16,8 +16,6 @@ QueueHandle_t	xQueueAcc;
 
 TaskHandle_t xHandleAccelTask;
 
-static const TickType_t xTaskDelay = (200 / portTICK_PERIOD_MS);
-
 void accelerometer_task(void) {
 
 	if(MMA845x_getXYZ(&acceInfo)){
@@ -27,8 +25,6 @@ void accelerometer_task(void) {
 			xTaskNotify( xHandleCallBackTask , BIT_UPDATE_ACCE , eSetBits );
 		}
 	}
-
-	vTaskDelay(xTaskDelay);
 }
 //------------------------------------------------------------------------
 

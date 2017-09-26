@@ -65,7 +65,7 @@ Resource getResource(char* name);
 void getResourceName(char* name,Resource resource);
 void sendFrame(char* frame);
 void sendPackage(CommunicationPackage* package);
-bool processRx(void);
+bool receivePackage(void);
 
 extern const char* OPERATION_AN;
 extern const char* OPERATION_RD;

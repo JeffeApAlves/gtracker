@@ -5,6 +5,10 @@
  *      Author: Jefferson
  */
 
+#include "LED_B.h"
+#include "LED_G.h"
+#include "LED_R.h"
+
 #include "application.h"
 #include "Tank.h"
 
@@ -18,8 +22,6 @@ QueueHandle_t	xQueueTank;
 
 // Handles das Task
 TaskHandle_t	xHandleDataTask;
-
-static const TickType_t xTaskDelay	= (500 / portTICK_PERIOD_MS);
 
 void tank_task(void){
 
@@ -39,8 +41,20 @@ void tank_task(void){
 		    }
 		}
 	}
+}
+//------------------------------------------------------------------------
 
-	vTaskDelay(xTaskDelay);
+void lock(void){
+
+	LED_R_On();
+	LED_G_Off();
+}
+//------------------------------------------------------------------------
+
+void unLock(void){
+
+	LED_G_On();
+	LED_R_Off();
 }
 //------------------------------------------------------------------------
 
@@ -50,3 +64,4 @@ void tank_init(void){
 	AD_finished		= false;
 }
 //-----------------------------------------------------------------------------
+
