@@ -1,0 +1,629 @@
+\hypertarget{_sys_tick___p_d_d_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+Sys\+Tick\+\_\+\+P\+DD.h File Reference}
+\label{_sys_tick___p_d_d_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+Sys\+Tick\+\_\+\+P\+D\+D.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+{\ttfamily \#include \char`\"{}P\+D\+D\+\_\+\+Types.\+h\char`\"{}}\newline
+Include dependency graph for Sys\+Tick\+\_\+\+P\+D\+D.\+h\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_a4c7aee830904e315f59c44c91e8ebbd3}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK}~0x1U
+\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_aa6aaceec9a7a9bbec23b2ebd997a7aac}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns interrupt mask. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_aeb73daaeeae99343c24f4596f2208525}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns interrupt flag bit. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_a9bcf8faa8402819b339d05f306ea6c2e}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Enables the Sys\+Tick interrupt. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_a3f2d3a8a9bd7d169782939da6da146e6}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Disables the Sys\+Tick interrupt. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_a68511315d6e2f673d17a75bec049e54f}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Clears Sys\+Tick interrupt flag. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_a7be8c743b1ee19c2095c1e9d990fc830}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em Enables the Sys\+Tick device. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_aac2453775439cb7e836bb82d9ffe09e1}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns current state of Sys\+Tick device. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_af6d7f50b452a02df6d296546f5ea6430}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Set\+Clk\+Source}(Peripheral\+Base,  Clk\+Source)
+\begin{DoxyCompactList}\small\item\em Sets clock source. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_acca8a89b604cf4eeeada630879b04890}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Clk\+Source}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Gets clock source. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_adb97cb1b03505e48df7659994205f568}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the control and status register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_a682f0abdfc14fa244f1ee3a808ac8538}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the control and status register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_aedf15e8d1ceec0a785bd5837eaa7ec7e}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Reload\+Value\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the reload register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_aa3c535cd2b62e5616e672c3565c5dced}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Reload\+Value\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the reload register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_ae4a60feb4105462454074cdc54f82dd6}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Current\+Value\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the current value register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_a6767614cd7fb92f94c3f202448a2dfb3}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Current\+Value\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the current value register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_sys_tick___p_d_d_8h_a9b2cc70d70854b1e928048be2773fb62}{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Calibration\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the calibration register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_a68511315d6e2f673d17a75bec049e54f}\label{_sys_tick___p_d_d_8h_a68511315d6e2f673d17a75bec049e54f}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}{SysTick\_PDD\_ClearInterruptFlag}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_CSR\_REG(PeripheralBase) &= \(\backslash\)
+     (uint32\_t)(~(uint32\_t)\hyperlink{group___sys_tick___register___masks_ga5ae827629fd47e5a050f706576f7b425}{SysTick\_CSR\_COUNTFLAG\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Clears Sys\+Tick interrupt flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_sys_tick___p_d_d_8h_a68511315d6e2f673d17a75bec049e54f}{SysTick\_PDD\_ClearInterruptFlag}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_a4c7aee830904e315f59c44c91e8ebbd3}\label{_sys_tick___p_d_d_8h_a4c7aee830904e315f59c44c91e8ebbd3}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK}{SysTick\_PDD\_CORE\_CLOCK}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK~0x1U}
+
+1 \mbox{\Hypertarget{_sys_tick___p_d_d_8h_a3f2d3a8a9bd7d169782939da6da146e6}\label{_sys_tick___p_d_d_8h_a3f2d3a8a9bd7d169782939da6da146e6}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}{SysTick\_PDD\_DisableInterrupt}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_CSR\_REG(PeripheralBase) &= \(\backslash\)
+     (uint32\_t)(~(uint32\_t)\hyperlink{group___sys_tick___register___masks_ga8b51f1d83c7a482e111b09e4c5964a2b}{SysTick\_CSR\_TICKINT\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Disables the Sys\+Tick interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_sys_tick___p_d_d_8h_a3f2d3a8a9bd7d169782939da6da146e6}{SysTick\_PDD\_DisableInterrupt}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_a7be8c743b1ee19c2095c1e9d990fc830}\label{_sys_tick___p_d_d_8h_a7be8c743b1ee19c2095c1e9d990fc830}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}{SysTick\_PDD\_EnableDevice}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_CSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(( \(\backslash\)
+       \hyperlink{group___sys_tick___register___accessor___macros_gaf55a190fd4086e13691f11a798185b64}{SysTick\_CSR\_REG}(PeripheralBase)) & ( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___sys_tick___register___masks_gac780b47ad7830f8b054650cf9ae10600}{SysTick\_CSR\_ENABLE\_MASK})))) | ( \(\backslash\)
+      (uint32\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables the Sys\+Tick device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Requested state of Sys\+Tick device. This parameter is of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})" type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_sys_tick___p_d_d_8h_a7be8c743b1ee19c2095c1e9d990fc830}{SysTick\_PDD\_EnableDevice}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_a9bcf8faa8402819b339d05f306ea6c2e}\label{_sys_tick___p_d_d_8h_a9bcf8faa8402819b339d05f306ea6c2e}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}{SysTick\_PDD\_EnableInterrupt}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_CSR\_REG(PeripheralBase) |= \(\backslash\)
+     SysTick\_CSR\_TICKINT\_MASK \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables the Sys\+Tick interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_sys_tick___p_d_d_8h_a9bcf8faa8402819b339d05f306ea6c2e}{SysTick\_PDD\_EnableInterrupt}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_acca8a89b604cf4eeeada630879b04890}\label{_sys_tick___p_d_d_8h_acca8a89b604cf4eeeada630879b04890}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Clk\+Source@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Clk\+Source}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Clk\+Source@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Clk\+Source}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Clk\+Source}{SysTick\_PDD\_GetClkSource}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Clk\+Source(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      0x1U \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Gets clock source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Use constants from group \char`\"{}\+Clock source constants.\char`\"{} for processing return value. The value is cast to \char`\"{}uint8\+\_\+t\char`\"{}. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_sys_tick___p_d_d_8h_acca8a89b604cf4eeeada630879b04890}{SysTick\_PDD\_GetClkSource}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_aac2453775439cb7e836bb82d9ffe09e1}\label{_sys_tick___p_d_d_8h_aac2453775439cb7e836bb82d9ffe09e1}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}{SysTick\_PDD\_GetEnableDeviceStatus}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint32\_t)(\hyperlink{group___sys_tick___register___accessor___macros_gaf55a190fd4086e13691f11a798185b64}{SysTick\_CSR\_REG}(PeripheralBase) & 
+      \hyperlink{group___sys_tick___register___masks_gac780b47ad7830f8b054650cf9ae10600}{SysTick\_CSR\_ENABLE\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns current state of Sys\+Tick device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result =
+\hyperlink{_sys_tick___p_d_d_8h_aac2453775439cb7e836bb82d9ffe09e1}{SysTick\_PDD\_GetEnableDeviceStatus}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_aeb73daaeeae99343c24f4596f2208525}\label{_sys_tick___p_d_d_8h_aeb73daaeeae99343c24f4596f2208525}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}{SysTick\_PDD\_GetInterruptFlag}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint32\_t)(\hyperlink{group___sys_tick___register___accessor___macros_gaf55a190fd4086e13691f11a798185b64}{SysTick\_CSR\_REG}(PeripheralBase) & 
+      \hyperlink{group___sys_tick___register___masks_ga5ae827629fd47e5a050f706576f7b425}{SysTick\_CSR\_COUNTFLAG\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns interrupt flag bit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_sys_tick___p_d_d_8h_aeb73daaeeae99343c24f4596f2208525}{SysTick\_PDD\_GetInterruptFlag}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_aa6aaceec9a7a9bbec23b2ebd997a7aac}\label{_sys_tick___p_d_d_8h_aa6aaceec9a7a9bbec23b2ebd997a7aac}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}{SysTick\_PDD\_GetInterruptMask}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint32\_t)(\hyperlink{group___sys_tick___register___accessor___macros_gaf55a190fd4086e13691f11a798185b64}{SysTick\_CSR\_REG}(PeripheralBase) & 
+      \hyperlink{group___sys_tick___register___masks_ga8b51f1d83c7a482e111b09e4c5964a2b}{SysTick\_CSR\_TICKINT\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns interrupt mask. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_sys_tick___p_d_d_8h_aa6aaceec9a7a9bbec23b2ebd997a7aac}{SysTick\_PDD\_GetInterruptMask}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_a9b2cc70d70854b1e928048be2773fb62}\label{_sys_tick___p_d_d_8h_a9b2cc70d70854b1e928048be2773fb62}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Calibration\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Calibration\+Reg}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Calibration\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Calibration\+Reg}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Calibration\+Reg}{SysTick\_PDD\_ReadCalibrationReg}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Calibration\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_CALIB\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the calibration register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+A\+L\+IB. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_sys_tick___p_d_d_8h_a9b2cc70d70854b1e928048be2773fb62}{SysTick\_PDD\_ReadCalibrationReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_a682f0abdfc14fa244f1ee3a808ac8538}\label{_sys_tick___p_d_d_8h_a682f0abdfc14fa244f1ee3a808ac8538}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg}{SysTick\_PDD\_ReadControlStatusReg}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_CSR\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the control and status register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result =
+\hyperlink{_sys_tick___p_d_d_8h_a682f0abdfc14fa244f1ee3a808ac8538}{SysTick\_PDD\_ReadControlStatusReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_a6767614cd7fb92f94c3f202448a2dfb3}\label{_sys_tick___p_d_d_8h_a6767614cd7fb92f94c3f202448a2dfb3}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Current\+Value\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Current\+Value\+Reg}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Current\+Value\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Current\+Value\+Reg}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Current\+Value\+Reg}{SysTick\_PDD\_ReadCurrentValueReg}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Current\+Value\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_CVR\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the current value register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+VR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result =
+\hyperlink{_sys_tick___p_d_d_8h_a6767614cd7fb92f94c3f202448a2dfb3}{SysTick\_PDD\_ReadCurrentValueReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_aa3c535cd2b62e5616e672c3565c5dced}\label{_sys_tick___p_d_d_8h_aa3c535cd2b62e5616e672c3565c5dced}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Reload\+Value\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Reload\+Value\+Reg}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Reload\+Value\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Reload\+Value\+Reg}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Reload\+Value\+Reg}{SysTick\_PDD\_ReadReloadValueReg}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Read\+Reload\+Value\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_RVR\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the reload register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+R\+VR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_sys_tick___p_d_d_8h_aa3c535cd2b62e5616e672c3565c5dced}{SysTick\_PDD\_ReadReloadValueReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_af6d7f50b452a02df6d296546f5ea6430}\label{_sys_tick___p_d_d_8h_af6d7f50b452a02df6d296546f5ea6430}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Set\+Clk\+Source@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Set\+Clk\+Source}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Set\+Clk\+Source@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Set\+Clk\+Source}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Set\+Clk\+Source}{SysTick\_PDD\_SetClkSource}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Set\+Clk\+Source(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Clk\+Source }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_CSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(( \(\backslash\)
+       \hyperlink{group___sys_tick___register___accessor___macros_gaf55a190fd4086e13691f11a798185b64}{SysTick\_CSR\_REG}(PeripheralBase)) & ( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___sys_tick___register___masks_ga7e5a1e63ec805119d87e8584a2404831}{SysTick\_CSR\_CLKSOURCE\_MASK})))) | ( \(\backslash\)
+      (uint32\_t)((uint32\_t)(ClkSource) << \hyperlink{group___sys_tick___register___masks_ga99922ae5d9a4c34aa9e2c1673c65d8a4}{SysTick\_CSR\_CLKSOURCE\_SHIFT}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Sets clock source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Clk\+Source} & New value of the clock source. Use constants from group \char`\"{}\+Clock source constants.\char`\"{}. This parameter is 1 bit wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_sys_tick___p_d_d_8h_af6d7f50b452a02df6d296546f5ea6430}{SysTick\_PDD\_SetClkSource}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_sys_tick___p_d_d_8h_a4c7aee830904e315f59c44c91e8ebbd3}{SysTick\_PDD\_CORE\_CLOCK});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_adb97cb1b03505e48df7659994205f568}\label{_sys_tick___p_d_d_8h_adb97cb1b03505e48df7659994205f568}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg}{SysTick\_PDD\_WriteControlStatusReg}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_CSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the control and status register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & New content of the control and status register. This parameter is a 32-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_sys_tick___p_d_d_8h_adb97cb1b03505e48df7659994205f568}{SysTick\_PDD\_WriteControlStatusReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_ae4a60feb4105462454074cdc54f82dd6}\label{_sys_tick___p_d_d_8h_ae4a60feb4105462454074cdc54f82dd6}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Current\+Value\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Current\+Value\+Reg}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Current\+Value\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Current\+Value\+Reg}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Current\+Value\+Reg}{SysTick\_PDD\_WriteCurrentValueReg}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Current\+Value\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_CVR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the current value register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & New content of the current value register. This parameter is a 32-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+C\+VR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_sys_tick___p_d_d_8h_ae4a60feb4105462454074cdc54f82dd6}{SysTick\_PDD\_WriteCurrentValueReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_sys_tick___p_d_d_8h_aedf15e8d1ceec0a785bd5837eaa7ec7e}\label{_sys_tick___p_d_d_8h_aedf15e8d1ceec0a785bd5837eaa7ec7e}} 
+\index{Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}!Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Reload\+Value\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Reload\+Value\+Reg}}
+\index{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Reload\+Value\+Reg@{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Reload\+Value\+Reg}!Sys\+Tick\+\_\+\+P\+D\+D.\+h@{Sys\+Tick\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Reload\+Value\+Reg}{SysTick\_PDD\_WriteReloadValueReg}}
+{\footnotesize\ttfamily \#define Sys\+Tick\+\_\+\+P\+D\+D\+\_\+\+Write\+Reload\+Value\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SysTick\_RVR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the reload register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & New content of the reload register. This parameter is a 32-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: S\+Y\+S\+T\+\_\+\+R\+VR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_sys_tick___p_d_d_8h_aedf15e8d1ceec0a785bd5837eaa7ec7e}{SysTick\_PDD\_WriteReloadValueReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}

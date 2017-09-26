@@ -1,0 +1,167 @@
+\hypertarget{clock_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/clock/clock.c File Reference}
+\label{clock_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/clock/clock.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/clock/clock.\+c}}
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}ihm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}X\+F1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\newline
+Include dependency graph for clock.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{clock_8c_ae9cc0a879e88eea28e4e8b57318ef8e5}{clock\+\_\+init} ()
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{clock_8c_aab33aa252100dcd4b97413fdc9ad4dbc}{set\+Clock\+By\+String} (char $\ast$date, char $\ast$time)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{clock_8c_a3b0047dd15eb5bd8108d439e5c29e72f}{set\+Clock} (\hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$time)
+\item 
+void \hyperlink{clock_8c_a9c5c73cc8932ae6bdccb582ddf88ed91}{get\+Clock} (\hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$time)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{clock_8c_ac0c5cb8f98b5b10d96b4aed8de7973ed}{get\+Local\+Clock} (\hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$time)
+\item 
+uint32\+\_\+t \hyperlink{clock_8c_aedc3416c01f1577e16320985582ceaf4}{get\+Time\+Stamp} ()
+\item 
+void \hyperlink{clock_8c_a70ec69864aa7e10f84728c91849abb66}{update\+Entity\+Clock} ()
+\item 
+uint32\+\_\+t \hyperlink{clock_8c_ab80b0181c2433b5033be3d6f4346187d}{get\+Current\+Time\+Stamp} ()
+\item 
+void \hyperlink{clock_8c_a1ad38ec8207624d23826d5c5b41c3aab}{adjuste\+Clock} (char $\ast$date, char $\ast$time)
+\item 
+void \hyperlink{clock_8c_a0b7cca781d24b1849f21b6a57410356d}{str\+To\+Data} (\hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$date\+\_\+time, char $\ast$date, char $\ast$time)
+\item 
+uint32\+\_\+t \hyperlink{clock_8c_ae11b9efceb4bc7f2aa38c00fe8ac3bb0}{str\+To\+Time\+Stamp} (char $\ast$date, char $\ast$time)
+\item 
+uint32\+\_\+t \hyperlink{clock_8c_a90ddb7c444f1d03ebd65306812e0fa5d}{unix\+\_\+time\+\_\+in\+\_\+seconds} (uint8\+\_\+t sec, uint8\+\_\+t min, uint8\+\_\+t hrs, uint8\+\_\+t day, uint8\+\_\+t mon, uint16\+\_\+t year)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{clock_8c_a83fab9ee6c8989bf1697e2674dc76639}{My\+R\+T\+C\+Ptr}
+\item 
+volatile \hyperlink{clock_8h_a273c9f1b7a6696a8ebd7cf571ea7df1b}{S\+T\+A\+T\+U\+S\+\_\+\+C\+L\+O\+CK} \hyperlink{clock_8c_afcdc4ec63cce4ebafaadd1d33d832e15}{statuc\+\_\+clock} = \hyperlink{clock_8h_a273c9f1b7a6696a8ebd7cf571ea7df1ba77de2b49d98e03ace746414634db8403}{C\+L\+O\+C\+K\+\_\+\+I\+N\+IT}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{clock_8c_a1ad38ec8207624d23826d5c5b41c3aab}\label{clock_8c_a1ad38ec8207624d23826d5c5b41c3aab}} 
+\index{clock.\+c@{clock.\+c}!adjuste\+Clock@{adjuste\+Clock}}
+\index{adjuste\+Clock@{adjuste\+Clock}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{adjuste\+Clock()}{adjusteClock()}}
+{\footnotesize\ttfamily void adjuste\+Clock (\begin{DoxyParamCaption}\item[{char $\ast$}]{date,  }\item[{char $\ast$}]{time }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{clock_8c_ae9cc0a879e88eea28e4e8b57318ef8e5}\label{clock_8c_ae9cc0a879e88eea28e4e8b57318ef8e5}} 
+\index{clock.\+c@{clock.\+c}!clock\+\_\+init@{clock\+\_\+init}}
+\index{clock\+\_\+init@{clock\+\_\+init}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{clock\+\_\+init()}{clock\_init()}}
+{\footnotesize\ttfamily void clock\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{clock_8c_a9c5c73cc8932ae6bdccb582ddf88ed91}\label{clock_8c_a9c5c73cc8932ae6bdccb582ddf88ed91}} 
+\index{clock.\+c@{clock.\+c}!get\+Clock@{get\+Clock}}
+\index{get\+Clock@{get\+Clock}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{get\+Clock()}{getClock()}}
+{\footnotesize\ttfamily void get\+Clock (\begin{DoxyParamCaption}\item[{\hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{clock_8c_ab80b0181c2433b5033be3d6f4346187d}\label{clock_8c_ab80b0181c2433b5033be3d6f4346187d}} 
+\index{clock.\+c@{clock.\+c}!get\+Current\+Time\+Stamp@{get\+Current\+Time\+Stamp}}
+\index{get\+Current\+Time\+Stamp@{get\+Current\+Time\+Stamp}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{get\+Current\+Time\+Stamp()}{getCurrentTimeStamp()}}
+{\footnotesize\ttfamily uint32\+\_\+t get\+Current\+Time\+Stamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{clock_8c_ac0c5cb8f98b5b10d96b4aed8de7973ed}\label{clock_8c_ac0c5cb8f98b5b10d96b4aed8de7973ed}} 
+\index{clock.\+c@{clock.\+c}!get\+Local\+Clock@{get\+Local\+Clock}}
+\index{get\+Local\+Clock@{get\+Local\+Clock}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{get\+Local\+Clock()}{getLocalClock()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} get\+Local\+Clock (\begin{DoxyParamCaption}\item[{\hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$}]{time }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{clock_8c_aedc3416c01f1577e16320985582ceaf4}\label{clock_8c_aedc3416c01f1577e16320985582ceaf4}} 
+\index{clock.\+c@{clock.\+c}!get\+Time\+Stamp@{get\+Time\+Stamp}}
+\index{get\+Time\+Stamp@{get\+Time\+Stamp}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{get\+Time\+Stamp()}{getTimeStamp()}}
+{\footnotesize\ttfamily uint32\+\_\+t get\+Time\+Stamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{clock_8c_a3b0047dd15eb5bd8108d439e5c29e72f}\label{clock_8c_a3b0047dd15eb5bd8108d439e5c29e72f}} 
+\index{clock.\+c@{clock.\+c}!set\+Clock@{set\+Clock}}
+\index{set\+Clock@{set\+Clock}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{set\+Clock()}{setClock()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} set\+Clock (\begin{DoxyParamCaption}\item[{\hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$}]{time }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{clock_8c_aab33aa252100dcd4b97413fdc9ad4dbc}\label{clock_8c_aab33aa252100dcd4b97413fdc9ad4dbc}} 
+\index{clock.\+c@{clock.\+c}!set\+Clock\+By\+String@{set\+Clock\+By\+String}}
+\index{set\+Clock\+By\+String@{set\+Clock\+By\+String}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{set\+Clock\+By\+String()}{setClockByString()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} set\+Clock\+By\+String (\begin{DoxyParamCaption}\item[{char $\ast$}]{date,  }\item[{char $\ast$}]{time }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{clock_8c_a0b7cca781d24b1849f21b6a57410356d}\label{clock_8c_a0b7cca781d24b1849f21b6a57410356d}} 
+\index{clock.\+c@{clock.\+c}!str\+To\+Data@{str\+To\+Data}}
+\index{str\+To\+Data@{str\+To\+Data}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{str\+To\+Data()}{strToData()}}
+{\footnotesize\ttfamily void str\+To\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$}]{date\+\_\+time,  }\item[{char $\ast$}]{date,  }\item[{char $\ast$}]{time }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{clock_8c_ae11b9efceb4bc7f2aa38c00fe8ac3bb0}\label{clock_8c_ae11b9efceb4bc7f2aa38c00fe8ac3bb0}} 
+\index{clock.\+c@{clock.\+c}!str\+To\+Time\+Stamp@{str\+To\+Time\+Stamp}}
+\index{str\+To\+Time\+Stamp@{str\+To\+Time\+Stamp}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{str\+To\+Time\+Stamp()}{strToTimeStamp()}}
+{\footnotesize\ttfamily uint32\+\_\+t str\+To\+Time\+Stamp (\begin{DoxyParamCaption}\item[{char $\ast$}]{date,  }\item[{char $\ast$}]{time }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{clock_8c_a90ddb7c444f1d03ebd65306812e0fa5d}\label{clock_8c_a90ddb7c444f1d03ebd65306812e0fa5d}} 
+\index{clock.\+c@{clock.\+c}!unix\+\_\+time\+\_\+in\+\_\+seconds@{unix\+\_\+time\+\_\+in\+\_\+seconds}}
+\index{unix\+\_\+time\+\_\+in\+\_\+seconds@{unix\+\_\+time\+\_\+in\+\_\+seconds}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{unix\+\_\+time\+\_\+in\+\_\+seconds()}{unix\_time\_in\_seconds()}}
+{\footnotesize\ttfamily uint32\+\_\+t unix\+\_\+time\+\_\+in\+\_\+seconds (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sec,  }\item[{uint8\+\_\+t}]{min,  }\item[{uint8\+\_\+t}]{hrs,  }\item[{uint8\+\_\+t}]{day,  }\item[{uint8\+\_\+t}]{mon,  }\item[{uint16\+\_\+t}]{year }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{clock_8c_a70ec69864aa7e10f84728c91849abb66}\label{clock_8c_a70ec69864aa7e10f84728c91849abb66}} 
+\index{clock.\+c@{clock.\+c}!update\+Entity\+Clock@{update\+Entity\+Clock}}
+\index{update\+Entity\+Clock@{update\+Entity\+Clock}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{update\+Entity\+Clock()}{updateEntityClock()}}
+{\footnotesize\ttfamily void update\+Entity\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{clock_8c_a83fab9ee6c8989bf1697e2674dc76639}\label{clock_8c_a83fab9ee6c8989bf1697e2674dc76639}} 
+\index{clock.\+c@{clock.\+c}!My\+R\+T\+C\+Ptr@{My\+R\+T\+C\+Ptr}}
+\index{My\+R\+T\+C\+Ptr@{My\+R\+T\+C\+Ptr}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{My\+R\+T\+C\+Ptr}{MyRTCPtr}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data}$\ast$ My\+R\+T\+C\+Ptr}
+
+\mbox{\Hypertarget{clock_8c_afcdc4ec63cce4ebafaadd1d33d832e15}\label{clock_8c_afcdc4ec63cce4ebafaadd1d33d832e15}} 
+\index{clock.\+c@{clock.\+c}!statuc\+\_\+clock@{statuc\+\_\+clock}}
+\index{statuc\+\_\+clock@{statuc\+\_\+clock}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{statuc\+\_\+clock}{statuc\_clock}}
+{\footnotesize\ttfamily volatile \hyperlink{clock_8h_a273c9f1b7a6696a8ebd7cf571ea7df1b}{S\+T\+A\+T\+U\+S\+\_\+\+C\+L\+O\+CK} statuc\+\_\+clock = \hyperlink{clock_8h_a273c9f1b7a6696a8ebd7cf571ea7df1ba77de2b49d98e03ace746414634db8403}{C\+L\+O\+C\+K\+\_\+\+I\+N\+IT}}
+

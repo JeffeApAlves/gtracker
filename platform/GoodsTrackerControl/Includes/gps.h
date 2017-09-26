@@ -14,6 +14,7 @@
 #include "task.h"
 #include "queue.h"
 
+#include "RingBuffer.h"
 #include "utils.h"
 #include "NMEAFrame.h"
 
@@ -75,7 +76,7 @@ typedef struct{
 	float	HGeoid;
 	float	MagVariation;
 
-} DataGPS;
+} GPS;
 
 static void NMEA_rxStart(void);
 static void NMEA_receiveFrame(void);
@@ -88,9 +89,9 @@ static void NMEA_errorRxFrame(void);
 
 static void setGPSStatus(StatusNMEA sts);
 static bool NMEA_decoderFrame(void);
-static void decoderGGA(char* frame,DataGPS* data);
-static void decoderRMC(char* frame,DataGPS* data);
-static void decoderGSA(char* frame,DataGPS* data);
+static void decoderGGA(char* frame,GPS* data);
+static void decoderRMC(char* frame,GPS* data);
+static void decoderGSA(char* frame,GPS* data);
 
 //API
 bool getGPSData(char* ch);
@@ -99,10 +100,12 @@ void gps_task(void);
 void gps_init(void);
 bool isAnyGPSData();
 
-#define clearGPS(f) memset((void*)f,0,sizeof(DataGPS));
+#define clearGPS(f) memset((void*)f,0,sizeof(GPS));
 
-extern QueueHandle_t xQueueGPS;
+extern QueueHandle_t	xQueueGPS;
 
 extern	TaskHandle_t	xHandleGPSTask;
+
+extern	RingBuffer		bufferRxNMEA;
 
 #endif /* SOURCES_GPS_H_ */

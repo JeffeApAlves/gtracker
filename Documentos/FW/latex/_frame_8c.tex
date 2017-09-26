@@ -1,0 +1,56 @@
+\hypertarget{_frame_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Frame.c File Reference}
+\label{_frame_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Frame.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Frame.\+c}}
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Frame.\+h\char`\"{}}\newline
+Include dependency graph for Frame.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{_frame_8c_ac9628941bd444a1329b64f36ac50f439}{put\+Data\+Array} (\hyperlink{struct_frame}{Frame} $\ast$frame, char data)
+\item 
+unsigned int \hyperlink{_frame_8c_ad495fac4de1a27ddfbadf1dbe5c6af0f}{calc\+Checksum} (const char $\ast$buff, size\+\_\+t sz)
+\item 
+void \hyperlink{_frame_8c_aa590f0ed30fbb41a2577c65c80c1dffd}{Append\+Frame} (\hyperlink{struct_frame}{Frame} $\ast$frame, const char $\ast$data)
+\item 
+uint16\+\_\+t \hyperlink{_frame_8c_a547bd8b6653fcf9f85fe84993e69fe78}{get\+Num\+Field} (char $\ast$str, const char a\+\_\+delim)
+\item 
+void \hyperlink{_frame_8c_a017d89462fb1d0fe90311e08eefb39ce}{get\+Field} (char $\ast$str, char $\ast$out, uint16\+\_\+t num\+\_\+field, const char a\+\_\+delim)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_frame_8c_aa590f0ed30fbb41a2577c65c80c1dffd}\label{_frame_8c_aa590f0ed30fbb41a2577c65c80c1dffd}} 
+\index{Frame.\+c@{Frame.\+c}!Append\+Frame@{Append\+Frame}}
+\index{Append\+Frame@{Append\+Frame}!Frame.\+c@{Frame.\+c}}
+\subsubsection{\texorpdfstring{Append\+Frame()}{AppendFrame()}}
+{\footnotesize\ttfamily void Append\+Frame (\begin{DoxyParamCaption}\item[{\hyperlink{struct_frame}{Frame} $\ast$}]{frame,  }\item[{const char $\ast$}]{data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_frame_8c_ad495fac4de1a27ddfbadf1dbe5c6af0f}\label{_frame_8c_ad495fac4de1a27ddfbadf1dbe5c6af0f}} 
+\index{Frame.\+c@{Frame.\+c}!calc\+Checksum@{calc\+Checksum}}
+\index{calc\+Checksum@{calc\+Checksum}!Frame.\+c@{Frame.\+c}}
+\subsubsection{\texorpdfstring{calc\+Checksum()}{calcChecksum()}}
+{\footnotesize\ttfamily unsigned int calc\+Checksum (\begin{DoxyParamCaption}\item[{const char $\ast$}]{buff,  }\item[{size\+\_\+t}]{sz }\end{DoxyParamCaption})}
+
+Calcula o check\+Sum da string buff Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{_frame_8c_a017d89462fb1d0fe90311e08eefb39ce}\label{_frame_8c_a017d89462fb1d0fe90311e08eefb39ce}} 
+\index{Frame.\+c@{Frame.\+c}!get\+Field@{get\+Field}}
+\index{get\+Field@{get\+Field}!Frame.\+c@{Frame.\+c}}
+\subsubsection{\texorpdfstring{get\+Field()}{getField()}}
+{\footnotesize\ttfamily void get\+Field (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{out,  }\item[{uint16\+\_\+t}]{num\+\_\+field,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{_frame_8c_a547bd8b6653fcf9f85fe84993e69fe78}\label{_frame_8c_a547bd8b6653fcf9f85fe84993e69fe78}} 
+\index{Frame.\+c@{Frame.\+c}!get\+Num\+Field@{get\+Num\+Field}}
+\index{get\+Num\+Field@{get\+Num\+Field}!Frame.\+c@{Frame.\+c}}
+\subsubsection{\texorpdfstring{get\+Num\+Field()}{getNumField()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+Num\+Field (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_frame_8c_ac9628941bd444a1329b64f36ac50f439}\label{_frame_8c_ac9628941bd444a1329b64f36ac50f439}} 
+\index{Frame.\+c@{Frame.\+c}!put\+Data\+Array@{put\+Data\+Array}}
+\index{put\+Data\+Array@{put\+Data\+Array}!Frame.\+c@{Frame.\+c}}
+\subsubsection{\texorpdfstring{put\+Data\+Array()}{putDataArray()}}
+{\footnotesize\ttfamily unsigned int put\+Data\+Array (\begin{DoxyParamCaption}\item[{\hyperlink{struct_frame}{Frame} $\ast$}]{frame,  }\item[{char}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['arotary_5fautorepeatrate_5fregister',['ARotary_AutoRepeatRate_Register',['../_t_s_s___a_p_i_8h.html#a08001bc4348fdd671f2971738e603ef6a2924baf78da8a2f1902c426dd19a26cd',1,'TSS_API.h']]],
+  ['arotary_5fcontrolconfig_5fregister',['ARotary_ControlConfig_Register',['../_t_s_s___a_p_i_8h.html#a08001bc4348fdd671f2971738e603ef6ad8e84da1fc5339d4c93193c0cbeacdce',1,'TSS_API.h']]],
+  ['arotary_5fcontrolid_5fregister',['ARotary_ControlId_Register',['../_t_s_s___a_p_i_8h.html#a08001bc4348fdd671f2971738e603ef6adc4649a0e3c5130142cf7df76851f44f',1,'TSS_API.h']]],
+  ['arotary_5fdynamicstatus_5fregister',['ARotary_DynamicStatus_Register',['../_t_s_s___a_p_i_8h.html#a08001bc4348fdd671f2971738e603ef6af42a36023ce9c3cfa2f41284e251e82f',1,'TSS_API.h']]],
+  ['arotary_5fevents_5fregister',['ARotary_Events_Register',['../_t_s_s___a_p_i_8h.html#a08001bc4348fdd671f2971738e603ef6a35c2823e7d22bcf7896f2ca05b4ff69e',1,'TSS_API.h']]],
+  ['arotary_5fmovementtimeout_5fregister',['ARotary_MovementTimeout_Register',['../_t_s_s___a_p_i_8h.html#a08001bc4348fdd671f2971738e603ef6afb925ac480d348acaa2d7c336be583c1',1,'TSS_API.h']]],
+  ['arotary_5fposition_5fregister',['ARotary_Position_Register',['../_t_s_s___a_p_i_8h.html#a08001bc4348fdd671f2971738e603ef6a5d6a4e913af4675ffb09f09e767c2754',1,'TSS_API.h']]],
+  ['arotary_5frange_5fregister',['ARotary_Range_Register',['../_t_s_s___a_p_i_8h.html#a08001bc4348fdd671f2971738e603ef6a965d33a3440f18fe43f86119366499ef',1,'TSS_API.h']]],
+  ['aslider_5fautorepeatrate_5fregister',['ASlider_AutoRepeatRate_Register',['../_t_s_s___a_p_i_8h.html#a3b41d2b2114ec6627dc132169e005d88a67675a7546ff0833a71f1bb4c6b49eea',1,'TSS_API.h']]],
+  ['aslider_5fcontrolconfig_5fregister',['ASlider_ControlConfig_Register',['../_t_s_s___a_p_i_8h.html#a3b41d2b2114ec6627dc132169e005d88aa8b0cc71e12be28063ac8be4240ff012',1,'TSS_API.h']]],
+  ['aslider_5fcontrolid_5fregister',['ASlider_ControlId_Register',['../_t_s_s___a_p_i_8h.html#a3b41d2b2114ec6627dc132169e005d88a2f3170029e7431330e3136745f8b6f3d',1,'TSS_API.h']]],
+  ['aslider_5fdynamicstatus_5fregister',['ASlider_DynamicStatus_Register',['../_t_s_s___a_p_i_8h.html#a3b41d2b2114ec6627dc132169e005d88ad4d48d3141307f33d834ced1061fb3e6',1,'TSS_API.h']]],
+  ['aslider_5fevents_5fregister',['ASlider_Events_Register',['../_t_s_s___a_p_i_8h.html#a3b41d2b2114ec6627dc132169e005d88a5683c7baa534a8e87ac4d425b33fee59',1,'TSS_API.h']]],
+  ['aslider_5fmovementtimeout_5fregister',['ASlider_MovementTimeout_Register',['../_t_s_s___a_p_i_8h.html#a3b41d2b2114ec6627dc132169e005d88a3d50c673591ae395c68533a67fe767b1',1,'TSS_API.h']]],
+  ['aslider_5fposition_5fregister',['ASlider_Position_Register',['../_t_s_s___a_p_i_8h.html#a3b41d2b2114ec6627dc132169e005d88a58aebb8756306dd27e338f6924b6b596',1,'TSS_API.h']]],
+  ['aslider_5frange_5fregister',['ASlider_Range_Register',['../_t_s_s___a_p_i_8h.html#a3b41d2b2114ec6627dc132169e005d88a3955ca832a09213d6f0fa6265b376d39',1,'TSS_API.h']]]
+];

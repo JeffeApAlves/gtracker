@@ -1,0 +1,47 @@
+\hypertarget{_a_d1_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+A\+D1.h File Reference}
+\label{_a_d1_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+A\+D1.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+A\+D1.\+h}}
+
+
+This device \char`\"{}\+A\+D\+C\char`\"{} implements an A/D converter, its control methods and interrupt/event handling procedure.  
+
+
+{\ttfamily \#include \char`\"{}P\+E\+\_\+\+Types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}P\+E\+\_\+\+Error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}P\+E\+\_\+\+Const.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I\+O\+\_\+\+Map.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Adc\+Ldd1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cpu.\+h\char`\"{}}\newline
+Include dependency graph for A\+D1.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___a_d1__module_ga323a6cae0ef39913d475643e325ab53d}{A\+D1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT}~\hyperlink{group___adc_ldd1__module_ga1fd3f1eef1222a8b6fd2b9f83736a49a}{Adc\+Ldd1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT}
+\item 
+\#define \hyperlink{group___a_d1__module_ga1eb5337254a206f5ec353e3eb156bcd0}{A\+D1\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+S\+I\+ZE}~2U
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___a_d1__module_ga4e331d6fe384835bec07cb2878de30c7}{A\+D1\+\_\+\+H\+W\+En\+Di} (void)
+\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_d1__module_ga84c2908baf7bf49c540b20b5b8d14da6}{A\+D1\+\_\+\+Measure} (\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Wait\+For\+Result)
+\begin{DoxyCompactList}\small\item\em This method performs one measurement on all channels that are set in the component inspector. (Note\+: If the \mbox{[}number of conversions\mbox{]} is more than one the conversion of A/D channels is performed specified number of times.) \end{DoxyCompactList}\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_d1__module_gabdd15b1c1e2b3a51eb6b1109fd0c6d75}{A\+D1\+\_\+\+Get\+Value16} (\hyperlink{group___p_e___types__module_ga285e72252c100e2508e4e933a0738f2b}{word} $\ast$Values)
+\begin{DoxyCompactList}\small\item\em This method returns the last measured values of all channels. Compared with \mbox{[}Get\+Value\mbox{]} method this method returns more accurate result if the \mbox{[}number of conversions\mbox{]} is greater than 1 and \mbox{[}AD resolution\mbox{]} is less than 16 bits. In addition, the user code dependency on \mbox{[}AD resolution\mbox{]} is eliminated. \end{DoxyCompactList}\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_d1__module_ga3d618d37cfbbece5ca5f3b6c1cce93c5}{A\+D1\+\_\+\+Calibrate} (\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Wait\+For\+Result)
+\begin{DoxyCompactList}\small\item\em This method returns the last measured values of all channels. Compared with \mbox{[}Get\+Value\mbox{]} method this method returns more accurate result if the \mbox{[}number of conversions\mbox{]} is greater than 1 and \mbox{[}AD resolution\mbox{]} is less than 16 bits. In addition, the user code dependency on \mbox{[}AD resolution\mbox{]} is eliminated. \end{DoxyCompactList}\item 
+void \hyperlink{group___a_d1__module_ga4776d32af94d7918f74bc7377ae5351f}{Adc\+Ldd1\+\_\+\+On\+Measurement\+Complete} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\item 
+void \hyperlink{group___a_d1__module_ga018b22b1bc9627ef871cf94bb3e3bbe1}{A\+D1\+\_\+\+Init} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This device \char`\"{}\+A\+D\+C\char`\"{} implements an A/D converter, its control methods and interrupt/event handling procedure. 
+
+\begin{DoxyVersion}{Version}
+01.\+00 
+\end{DoxyVersion}

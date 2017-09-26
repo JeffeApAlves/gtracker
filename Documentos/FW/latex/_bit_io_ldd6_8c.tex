@@ -1,0 +1,39 @@
+\hypertarget{_bit_io_ldd6_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Bit\+Io\+Ldd6.c File Reference}
+\label{_bit_io_ldd6_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Bit\+Io\+Ldd6.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Bit\+Io\+Ldd6.\+c}}
+
+
+The H\+AL Bit\+IO component provides a low level A\+PI for unified access to general purpose digital input/output pins across various device designs.  
+
+
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Bit\+Io\+Ldd6.\+h\char`\"{}}\newline
+Include dependency graph for Bit\+Io\+Ldd6.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_bit_io_ldd6___t_device_data}{Bit\+Io\+Ldd6\+\_\+\+T\+Device\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{struct_bit_io_ldd6___t_device_data}{Bit\+Io\+Ldd6\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___bit_io_ldd6__module_gac323e30f9c86e0e2acefd4ef43f79bd9}{Bit\+Io\+Ldd6\+\_\+\+T\+Device\+Data\+Ptr}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___bit_io_ldd6__module_gaff0c7e309720dbf2e46e7ce4f96b3035}{Bit\+Io\+Ldd6\+\_\+\+Init} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the \char`\"{}\+Enable
+    in init. code\char`\"{} is set to \char`\"{}yes\char`\"{} value then the device is also enabled(see the description of the Enable() method). In this case the Enable() method is not necessary and needn\textquotesingle{}t to be generated. \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd6__module_gafd64ff152f22fe76fa77ffb453306285}{Bit\+Io\+Ldd6\+\_\+\+Clr\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Clears (set to zero) the output value. It is equivalent to the \mbox{[}Put\+Val(\+F\+A\+L\+S\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd6__module_ga349b97d02eb4a3fd7be6930aa55d08cc}{Bit\+Io\+Ldd6\+\_\+\+Set\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Sets (to one) the output value. It is equivalent to the \mbox{[}Put\+Val(\+T\+R\+U\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The H\+AL Bit\+IO component provides a low level A\+PI for unified access to general purpose digital input/output pins across various device designs. 
+
+\begin{DoxyVersion}{Version}
+01.\+03 R\+T\+OS drivers using H\+AL Bit\+IO A\+PI are simpler and more portable to various microprocessors. 
+\end{DoxyVersion}

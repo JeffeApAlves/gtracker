@@ -1,0 +1,80 @@
+\hypertarget{_a_s1_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+A\+S1.c File Reference}
+\label{_a_s1_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+A\+S1.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+A\+S1.\+c}}
+
+
+This component \char`\"{}\+Asynchro\+Serial\char`\"{} implements an asynchronous serial communication. The component supports different settings of parity, word width, stop-\/bit and communication speed, user can select interrupt or polling handler. Communication speed can be changed also in runtime. The component requires one on-\/chip asynchronous serial channel.  
+
+
+{\ttfamily \#include \char`\"{}A\+S1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Events.\+h\char`\"{}}\newline
+Include dependency graph for A\+S1.\+c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___a_s1__module_ga59f58864bb61f9450d236b712214a9d0}{O\+V\+E\+R\+R\+U\+N\+\_\+\+E\+RR}~0x01\+U         /$\ast$ Overrun error flag bit    $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_ga19cf3fb3576b5fa62d2a0d781e2a724b}{F\+R\+A\+M\+I\+N\+G\+\_\+\+E\+RR}~0x02\+U         /$\ast$ Framing error flag bit    $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_gac8a34f3fae782b1f62195c0d8f1d5d38}{P\+A\+R\+I\+T\+Y\+\_\+\+E\+RR}~0x04\+U         /$\ast$ Parity error flag bit     $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_ga99960abe909f47f501b4c31003fbcade}{C\+H\+A\+R\+\_\+\+I\+N\+\_\+\+RX}~0x08\+U         /$\ast$ Char is in R\+X buffer      $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_ga4642a25898b62e449c4f53559e7fdd5a}{F\+U\+L\+L\+\_\+\+TX}~0x10\+U         /$\ast$ Full transmit buffer      $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_gaf4dcc39d70d3e855818d2a06f0f88adc}{R\+U\+N\+I\+N\+T\+\_\+\+F\+R\+O\+M\+\_\+\+TX}~0x20\+U         /$\ast$ Interrupt is in progress  $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_ga548b5122de8b4aa86a3098e1a45c447f}{F\+U\+L\+L\+\_\+\+RX}~0x40\+U         /$\ast$ Full receive buffer       $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_ga826432ddfcc8e042fb9781a5b325d962}{N\+O\+I\+S\+E\+\_\+\+E\+RR}~0x80\+U         /$\ast$ Noise error flag bit      $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_ga4584e89e739c19496724ba117e62aed9}{I\+D\+L\+E\+\_\+\+E\+RR}~0x0100\+U       /$\ast$ Idle character flag bit   $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_ga0cb4d61ee3347eb62142ca0eb1d02a53}{B\+R\+E\+A\+K\+\_\+\+E\+RR}~0x0200\+U       /$\ast$ Break detect              $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_ga86e7d2a6a6227d9fbb84d459454c2359}{C\+O\+M\+M\+O\+N\+\_\+\+E\+RR}~0x0800\+U       /$\ast$ Common error of R\+X       $\ast$/
+\item 
+\#define \hyperlink{group___a_s1__module_gab5034f048fef6a41e7901a4e34368f3d}{O\+N\+\_\+\+E\+R\+R\+OR}~0x01U
+\item 
+\#define \hyperlink{group___a_s1__module_ga2cf6b6a2b8c83f7d1d7e6134c6bd9a4a}{O\+N\+\_\+\+F\+U\+L\+L\+\_\+\+RX}~0x02U
+\item 
+\#define \hyperlink{group___a_s1__module_gad07f43952e300ba1e45521ce777c09d4}{O\+N\+\_\+\+R\+X\+\_\+\+C\+H\+AR}~0x04U
+\item 
+\#define \hyperlink{group___a_s1__module_ga71d35387335972e4f6ae07ecccf27724}{O\+N\+\_\+\+F\+R\+E\+E\+\_\+\+TX}~0x01U
+\item 
+\#define \hyperlink{group___a_s1__module_gaf02aa8bfc7e9b5338168db9ff9077c0d}{O\+N\+\_\+\+T\+X\+\_\+\+C\+H\+AR}~0x02U
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_s1__module_ga9b8f8ba49f2260fa77c5dc04d6d0b19c}{A\+S1\+\_\+\+Recv\+Char} (\hyperlink{group___a_s1__module_ga621222f7d90195f6b0edb2abeb534e3b}{A\+S1\+\_\+\+T\+Com\+Data} $\ast$Chr)
+\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_s1__module_gadd3d17688519945b315fcc55a5459f92}{A\+S1\+\_\+\+Send\+Char} (\hyperlink{group___a_s1__module_ga621222f7d90195f6b0edb2abeb534e3b}{A\+S1\+\_\+\+T\+Com\+Data} Chr)
+\item 
+\hyperlink{group___p_e___types__module_ga285e72252c100e2508e4e933a0738f2b}{word} \hyperlink{group___a_s1__module_ga7f982fbc183fdc49ae898b0cc9a05b4d}{A\+S1\+\_\+\+Get\+Chars\+In\+Rx\+Buf} (void)
+\item 
+\hyperlink{group___p_e___types__module_ga285e72252c100e2508e4e933a0738f2b}{word} \hyperlink{group___a_s1__module_gada23618356da6913f8709b30d4defef6}{A\+S1\+\_\+\+Get\+Chars\+In\+Tx\+Buf} (void)
+\item 
+void \hyperlink{group___a_s1__module_ga38b6ab56f67ae07e420858f55a8aa7a1}{A\+S1\+\_\+\+Init} (void)
+\item 
+void \hyperlink{group___a_s1__module_ga617597f21766b4f72d7f2883c21e6dd8}{A\+Serial\+Ldd1\+\_\+\+On\+Block\+Received} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\item 
+void \hyperlink{group___a_s1__module_ga5b8a51aef1d1fede97ee58e31c945b78}{A\+Serial\+Ldd1\+\_\+\+On\+Block\+Sent} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\item 
+void \hyperlink{group___a_s1__module_gab11d6ff796e37ab8d6c35dd8cc258f9a}{A\+Serial\+Ldd1\+\_\+\+On\+Error} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\item 
+void \hyperlink{group___a_s1__module_gaff0fe796ad334f68b2a86273f5ade786}{A\+Serial\+Ldd1\+\_\+\+On\+Break} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___a_s1__module_ga19d4b715e209f6228d76c65b3d3e13b1}{A\+Serial\+Ldd1\+\_\+\+Device\+Data\+Ptr}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This component \char`\"{}\+Asynchro\+Serial\char`\"{} implements an asynchronous serial communication. The component supports different settings of parity, word width, stop-\/bit and communication speed, user can select interrupt or polling handler. Communication speed can be changed also in runtime. The component requires one on-\/chip asynchronous serial channel. 
+
+\begin{DoxyVersion}{Version}
+01.\+01 
+\end{DoxyVersion}

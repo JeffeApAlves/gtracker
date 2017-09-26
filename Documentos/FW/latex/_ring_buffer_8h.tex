@@ -1,0 +1,102 @@
+\hypertarget{_ring_buffer_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/\+Ring\+Buffer.h File Reference}
+\label{_ring_buffer_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/\+Ring\+Buffer.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/\+Ring\+Buffer.\+h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for Ring\+Buffer.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_ring_buffer}{Ring\+Buffer}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_ring_buffer_8h_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}~128
+\item 
+\#define \hyperlink{_ring_buffer_8h_a8557aaa7160b0550f27e4d70d8d1642a}{clear\+Buffer}(buf)~memset((void$\ast$)buf,0,sizeof(\hyperlink{struct_ring_buffer}{Ring\+Buffer}))
+\item 
+\#define \hyperlink{_ring_buffer_8h_a66cae34ddcea10af3bb88a3379de001e}{has\+Data}(buf)~(\hyperlink{_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33}{get\+Count}(buf)$>$0)
+\item 
+\#define \hyperlink{_ring_buffer_8h_ad07eccc8593722beb0ad8238bdb87d03}{is\+Full}(buf)~(\hyperlink{_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33}{get\+Count}(buf)$>$= \hyperlink{_ring_buffer_8h_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{_ring_buffer_8h_afc58de5fd336eea8b648561cc107e47d}{get\+Data} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer, char $\ast$ch)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{_ring_buffer_8h_a6ee0cb22cb73101504e06239d37e64de}{put\+Data} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer, char ch)
+\item 
+short \hyperlink{_ring_buffer_8h_a2e19e42bd781463e59dddc3687efce33}{get\+Count} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer)
+\item 
+void \hyperlink{_ring_buffer_8h_a9c3374a6c654c18f3b7e81e8e771451b}{put\+String} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer, char $\ast$str)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_ring_buffer_8h_a6b20d41d6252e9871430c242cb1a56e7}\label{_ring_buffer_8h_a6b20d41d6252e9871430c242cb1a56e7}} 
+\index{Ring\+Buffer.\+h@{Ring\+Buffer.\+h}!B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!Ring\+Buffer.\+h@{Ring\+Buffer.\+h}}
+\subsubsection{\texorpdfstring{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~128}
+
+\mbox{\Hypertarget{_ring_buffer_8h_a8557aaa7160b0550f27e4d70d8d1642a}\label{_ring_buffer_8h_a8557aaa7160b0550f27e4d70d8d1642a}} 
+\index{Ring\+Buffer.\+h@{Ring\+Buffer.\+h}!clear\+Buffer@{clear\+Buffer}}
+\index{clear\+Buffer@{clear\+Buffer}!Ring\+Buffer.\+h@{Ring\+Buffer.\+h}}
+\subsubsection{\texorpdfstring{clear\+Buffer}{clearBuffer}}
+{\footnotesize\ttfamily \#define clear\+Buffer(\begin{DoxyParamCaption}\item[{}]{buf }\end{DoxyParamCaption})~memset((void$\ast$)buf,0,sizeof(\hyperlink{struct_ring_buffer}{Ring\+Buffer}))}
+
+\mbox{\Hypertarget{_ring_buffer_8h_a66cae34ddcea10af3bb88a3379de001e}\label{_ring_buffer_8h_a66cae34ddcea10af3bb88a3379de001e}} 
+\index{Ring\+Buffer.\+h@{Ring\+Buffer.\+h}!has\+Data@{has\+Data}}
+\index{has\+Data@{has\+Data}!Ring\+Buffer.\+h@{Ring\+Buffer.\+h}}
+\subsubsection{\texorpdfstring{has\+Data}{hasData}}
+{\footnotesize\ttfamily \#define has\+Data(\begin{DoxyParamCaption}\item[{}]{buf }\end{DoxyParamCaption})~(\hyperlink{_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33}{get\+Count}(buf)$>$0)}
+
+\mbox{\Hypertarget{_ring_buffer_8h_ad07eccc8593722beb0ad8238bdb87d03}\label{_ring_buffer_8h_ad07eccc8593722beb0ad8238bdb87d03}} 
+\index{Ring\+Buffer.\+h@{Ring\+Buffer.\+h}!is\+Full@{is\+Full}}
+\index{is\+Full@{is\+Full}!Ring\+Buffer.\+h@{Ring\+Buffer.\+h}}
+\subsubsection{\texorpdfstring{is\+Full}{isFull}}
+{\footnotesize\ttfamily \#define is\+Full(\begin{DoxyParamCaption}\item[{}]{buf }\end{DoxyParamCaption})~(\hyperlink{_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33}{get\+Count}(buf)$>$= \hyperlink{_ring_buffer_8h_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE})}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_ring_buffer_8h_a2e19e42bd781463e59dddc3687efce33}\label{_ring_buffer_8h_a2e19e42bd781463e59dddc3687efce33}} 
+\index{Ring\+Buffer.\+h@{Ring\+Buffer.\+h}!get\+Count@{get\+Count}}
+\index{get\+Count@{get\+Count}!Ring\+Buffer.\+h@{Ring\+Buffer.\+h}}
+\subsubsection{\texorpdfstring{get\+Count()}{getCount()}}
+{\footnotesize\ttfamily short get\+Count (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{_ring_buffer_8h_afc58de5fd336eea8b648561cc107e47d}\label{_ring_buffer_8h_afc58de5fd336eea8b648561cc107e47d}} 
+\index{Ring\+Buffer.\+h@{Ring\+Buffer.\+h}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!Ring\+Buffer.\+h@{Ring\+Buffer.\+h}}
+\subsubsection{\texorpdfstring{get\+Data()}{getData()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} get\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer,  }\item[{char $\ast$}]{ch }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{_ring_buffer_8h_a6ee0cb22cb73101504e06239d37e64de}\label{_ring_buffer_8h_a6ee0cb22cb73101504e06239d37e64de}} 
+\index{Ring\+Buffer.\+h@{Ring\+Buffer.\+h}!put\+Data@{put\+Data}}
+\index{put\+Data@{put\+Data}!Ring\+Buffer.\+h@{Ring\+Buffer.\+h}}
+\subsubsection{\texorpdfstring{put\+Data()}{putData()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} put\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer,  }\item[{char}]{ch }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{_ring_buffer_8h_a9c3374a6c654c18f3b7e81e8e771451b}\label{_ring_buffer_8h_a9c3374a6c654c18f3b7e81e8e771451b}} 
+\index{Ring\+Buffer.\+h@{Ring\+Buffer.\+h}!put\+String@{put\+String}}
+\index{put\+String@{put\+String}!Ring\+Buffer.\+h@{Ring\+Buffer.\+h}}
+\subsubsection{\texorpdfstring{put\+String()}{putString()}}
+{\footnotesize\ttfamily void put\+String (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8

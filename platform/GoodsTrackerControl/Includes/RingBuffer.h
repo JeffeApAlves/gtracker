@@ -24,7 +24,7 @@ typedef struct{
 bool getData(RingBuffer* buffer,char* ch);
 bool putData(RingBuffer* buffer,char ch);
 short getCount(RingBuffer* buffer);
-void putString(RingBuffer* buffer,const char* str);
+void putString(RingBuffer* buffer,char* str);
 
 #define clearBuffer(buf)	memset((void*)buf,0,sizeof(RingBuffer))
 #define hasData(buf)		(getCount(buf)>0)

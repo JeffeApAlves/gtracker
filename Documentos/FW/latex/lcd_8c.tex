@@ -1,0 +1,154 @@
+\hypertarget{lcd_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+I\+H\+M/lcd.c File Reference}
+\label{lcd_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+I\+H\+M/lcd.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+I\+H\+M/lcd.\+c}}
+{\ttfamily \#include \char`\"{}L\+C\+Dout.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\newline
+Include dependency graph for lcd.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{lcd_8c_a69a36b77d20e71a330aa6c55d81f06a0}{L\+C\+D\+Init} ()
+\item 
+void \hyperlink{lcd_8c_af0f156a8186a58d9d56446353f97b330}{L\+C\+D\+Write} (char ch)
+\item 
+void \hyperlink{lcd_8c_a84b4cd6173c448ce2bb6952d7bb0b0c5}{L\+C\+D\+Write\+Ln} (void)
+\item 
+void \hyperlink{lcd_8c_a965f9c27f8b460226e9759bb09309e8c}{L\+C\+D\+Write\+Line\+Str} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} line, char $\ast$str)
+\item 
+void \hyperlink{lcd_8c_a4205352061362232a8130293f8e20ef0}{L\+C\+D\+Write\+String} (char $\ast$str)
+\item 
+void \hyperlink{lcd_8c_a3a816210fa81cb08679682b1aaacc88c}{L\+C\+D\+Shift\+Left} (void)
+\item 
+void \hyperlink{lcd_8c_a2a809f636e0ea48a2e5818a583ceaacc}{L\+C\+D\+Shift\+Right} (void)
+\item 
+void \hyperlink{lcd_8c_a1f3d66657d093194aaa77bf6a8022e14}{L\+C\+D\+Goto\+XY} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} line, \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} column)
+\item 
+void \hyperlink{lcd_8c_a7e456bc7ee63eb9e04b03af60651a266}{L\+C\+D\+Set\+Entry\+Mode} (\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} increment, \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} shift\+Left)
+\item 
+void \hyperlink{lcd_8c_a0bc281aa4bdebab69cee3e7a29a92ed7}{L\+C\+D\+Cursor\+Shift\+Right} (void)
+\item 
+void \hyperlink{lcd_8c_aac46f5d4b0f052e4ce914b79c2564406}{L\+C\+D\+Cursor\+Shift\+Left} (void)
+\item 
+void \hyperlink{lcd_8c_aaafcc9bb116e4ac997a76fb626b64f67}{L\+C\+D\+Home} (void)
+\item 
+void \hyperlink{lcd_8c_ab1480235eb299639d7f9b72c2c7884a2}{L\+C\+D\+Line} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} line)
+\item 
+void \hyperlink{lcd_8c_a3a94c0f44f76db891e66d98966f904e8}{L\+C\+D\+Clear} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{lcd_8c_a3a94c0f44f76db891e66d98966f904e8}\label{lcd_8c_a3a94c0f44f76db891e66d98966f904e8}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Clear@{L\+C\+D\+Clear}}
+\index{L\+C\+D\+Clear@{L\+C\+D\+Clear}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Clear()}{LCDClear()}}
+{\footnotesize\ttfamily void L\+C\+D\+Clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{lcd_8c_aac46f5d4b0f052e4ce914b79c2564406}\label{lcd_8c_aac46f5d4b0f052e4ce914b79c2564406}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Cursor\+Shift\+Left@{L\+C\+D\+Cursor\+Shift\+Left}}
+\index{L\+C\+D\+Cursor\+Shift\+Left@{L\+C\+D\+Cursor\+Shift\+Left}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Cursor\+Shift\+Left()}{LCDCursorShiftLeft()}}
+{\footnotesize\ttfamily void L\+C\+D\+Cursor\+Shift\+Left (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{lcd_8c_a0bc281aa4bdebab69cee3e7a29a92ed7}\label{lcd_8c_a0bc281aa4bdebab69cee3e7a29a92ed7}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Cursor\+Shift\+Right@{L\+C\+D\+Cursor\+Shift\+Right}}
+\index{L\+C\+D\+Cursor\+Shift\+Right@{L\+C\+D\+Cursor\+Shift\+Right}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Cursor\+Shift\+Right()}{LCDCursorShiftRight()}}
+{\footnotesize\ttfamily void L\+C\+D\+Cursor\+Shift\+Right (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{lcd_8c_a1f3d66657d093194aaa77bf6a8022e14}\label{lcd_8c_a1f3d66657d093194aaa77bf6a8022e14}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Goto\+XY@{L\+C\+D\+Goto\+XY}}
+\index{L\+C\+D\+Goto\+XY@{L\+C\+D\+Goto\+XY}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Goto\+X\+Y()}{LCDGotoXY()}}
+{\footnotesize\ttfamily void L\+C\+D\+Goto\+XY (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{line,  }\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{column }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{lcd_8c_aaafcc9bb116e4ac997a76fb626b64f67}\label{lcd_8c_aaafcc9bb116e4ac997a76fb626b64f67}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Home@{L\+C\+D\+Home}}
+\index{L\+C\+D\+Home@{L\+C\+D\+Home}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Home()}{LCDHome()}}
+{\footnotesize\ttfamily void L\+C\+D\+Home (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{lcd_8c_a69a36b77d20e71a330aa6c55d81f06a0}\label{lcd_8c_a69a36b77d20e71a330aa6c55d81f06a0}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Init@{L\+C\+D\+Init}}
+\index{L\+C\+D\+Init@{L\+C\+D\+Init}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Init()}{LCDInit()}}
+{\footnotesize\ttfamily int L\+C\+D\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{lcd_8c_ab1480235eb299639d7f9b72c2c7884a2}\label{lcd_8c_ab1480235eb299639d7f9b72c2c7884a2}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Line@{L\+C\+D\+Line}}
+\index{L\+C\+D\+Line@{L\+C\+D\+Line}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Line()}{LCDLine()}}
+{\footnotesize\ttfamily void L\+C\+D\+Line (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{line }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{lcd_8c_a7e456bc7ee63eb9e04b03af60651a266}\label{lcd_8c_a7e456bc7ee63eb9e04b03af60651a266}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Set\+Entry\+Mode@{L\+C\+D\+Set\+Entry\+Mode}}
+\index{L\+C\+D\+Set\+Entry\+Mode@{L\+C\+D\+Set\+Entry\+Mode}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Set\+Entry\+Mode()}{LCDSetEntryMode()}}
+{\footnotesize\ttfamily void L\+C\+D\+Set\+Entry\+Mode (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool}}]{increment,  }\item[{\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool}}]{shift\+Left }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{lcd_8c_a3a816210fa81cb08679682b1aaacc88c}\label{lcd_8c_a3a816210fa81cb08679682b1aaacc88c}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Shift\+Left@{L\+C\+D\+Shift\+Left}}
+\index{L\+C\+D\+Shift\+Left@{L\+C\+D\+Shift\+Left}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Shift\+Left()}{LCDShiftLeft()}}
+{\footnotesize\ttfamily void L\+C\+D\+Shift\+Left (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{lcd_8c_a2a809f636e0ea48a2e5818a583ceaacc}\label{lcd_8c_a2a809f636e0ea48a2e5818a583ceaacc}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Shift\+Right@{L\+C\+D\+Shift\+Right}}
+\index{L\+C\+D\+Shift\+Right@{L\+C\+D\+Shift\+Right}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Shift\+Right()}{LCDShiftRight()}}
+{\footnotesize\ttfamily void L\+C\+D\+Shift\+Right (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{lcd_8c_af0f156a8186a58d9d56446353f97b330}\label{lcd_8c_af0f156a8186a58d9d56446353f97b330}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Write@{L\+C\+D\+Write}}
+\index{L\+C\+D\+Write@{L\+C\+D\+Write}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Write()}{LCDWrite()}}
+{\footnotesize\ttfamily void L\+C\+D\+Write (\begin{DoxyParamCaption}\item[{char}]{ch }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{lcd_8c_a965f9c27f8b460226e9759bb09309e8c}\label{lcd_8c_a965f9c27f8b460226e9759bb09309e8c}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Write\+Line\+Str@{L\+C\+D\+Write\+Line\+Str}}
+\index{L\+C\+D\+Write\+Line\+Str@{L\+C\+D\+Write\+Line\+Str}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Write\+Line\+Str()}{LCDWriteLineStr()}}
+{\footnotesize\ttfamily void L\+C\+D\+Write\+Line\+Str (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{line,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{lcd_8c_a84b4cd6173c448ce2bb6952d7bb0b0c5}\label{lcd_8c_a84b4cd6173c448ce2bb6952d7bb0b0c5}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Write\+Ln@{L\+C\+D\+Write\+Ln}}
+\index{L\+C\+D\+Write\+Ln@{L\+C\+D\+Write\+Ln}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Write\+Ln()}{LCDWriteLn()}}
+{\footnotesize\ttfamily void L\+C\+D\+Write\+Ln (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{lcd_8c_a4205352061362232a8130293f8e20ef0}\label{lcd_8c_a4205352061362232a8130293f8e20ef0}} 
+\index{lcd.\+c@{lcd.\+c}!L\+C\+D\+Write\+String@{L\+C\+D\+Write\+String}}
+\index{L\+C\+D\+Write\+String@{L\+C\+D\+Write\+String}!lcd.\+c@{lcd.\+c}}
+\subsubsection{\texorpdfstring{L\+C\+D\+Write\+String()}{LCDWriteString()}}
+{\footnotesize\ttfamily void L\+C\+D\+Write\+String (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15

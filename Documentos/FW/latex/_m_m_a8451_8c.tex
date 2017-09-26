@@ -1,0 +1,180 @@
+\hypertarget{_m_m_a8451_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/\+M\+M\+A8451.c File Reference}
+\label{_m_m_a8451_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/\+M\+M\+A8451.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/\+M\+M\+A8451.\+c}}
+{\ttfamily \#include \char`\"{}I2\+C2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}M\+M\+A8451.\+h\char`\"{}}\newline
+Include dependency graph for M\+M\+A8451.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{_m_m_a8451_8c_a80d820ba78d081f0c2e04af03801726f}{I2\+C\+\_\+\+Read} (uint8\+\_\+t addr, uint8\+\_\+t $\ast$data)
+\item 
+uint8\+\_\+t \hyperlink{_m_m_a8451_8c_ac77754b79167a1caf098c606513dc6ac}{I2\+C\+\_\+\+Read\+Buffer} (uint8\+\_\+t addr, uint8\+\_\+t $\ast$data, short data\+Size)
+\item 
+uint8\+\_\+t \hyperlink{_m_m_a8451_8c_a0e8629ad586c9518afa0db28d5dcb4a2}{I2\+C\+\_\+\+Write} (uint8\+\_\+t addr, uint8\+\_\+t val)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{_m_m_a8451_8c_af2abdfa0f6df1f55e7ab9337a127aaa0}{M\+M\+A845x\+\_\+get\+X\+YZ} (\hyperlink{struct_accelerometer}{Accelerometer} $\ast$acc)
+\item 
+void \hyperlink{_m_m_a8451_8c_a91842bf3851e273e2929e320fb68635e}{M\+M\+A845x\+\_\+\+Standby} (void)
+\item 
+void \hyperlink{_m_m_a8451_8c_adc545c7b801b54f51a08d947ecf4ef80}{M\+M\+A845x\+\_\+\+Active} (void)
+\item 
+void \hyperlink{_m_m_a8451_8c_a525869d3f463eab57cf9240a452eb612}{M\+M\+A845x\+\_\+init} (void)
+\item 
+void \hyperlink{_m_m_a8451_8c_a008d93080f6e4e3f833b57b289d181b4}{M\+M\+A845x\+\_\+de\+Init} (void)
+\item 
+\hyperlink{_m_m_a8451_8h_a0e13c29d618e6adff405b7125b6fb042}{mma8451\+\_\+range\+\_\+t} \hyperlink{_m_m_a8451_8c_ada546ad7c1ca2dd415d341ad8eafa182}{M\+M\+A845x\+\_\+get\+Range} (void)
+\item 
+uint8\+\_\+t \hyperlink{_m_m_a8451_8c_ae637055d69d5c9360316cd6ecc3861f9}{M\+M\+A845x\+\_\+\+Reset} (void)
+\item 
+uint8\+\_\+t \hyperlink{_m_m_a8451_8c_aa47ac9bcc80b7c31e4295e425183bd6c}{M\+M\+A845x\+\_\+get\+Orientation} (void)
+\item 
+void \hyperlink{_m_m_a8451_8c_a4b98eab84f4cdce02e412ff4fcd20803}{M\+M\+A845x\+\_\+set\+Data\+Rate} (\hyperlink{_m_m_a8451_8h_a313dbf4a24e2b7d215d4553ee753b555}{mma8451\+\_\+data\+Rate\+\_\+t} data\+Rate)
+\item 
+void \hyperlink{_m_m_a8451_8c_aaeb95ff6febc988863cd4d5b15d3cd7b}{M\+M\+A845x\+\_\+set\+Noise} (\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} flag)
+\item 
+void \hyperlink{_m_m_a8451_8c_aec369c1c39df77e524df365b636253dc}{M\+M\+A845x\+\_\+set\+Range} (\hyperlink{_m_m_a8451_8h_a0e13c29d618e6adff405b7125b6fb042}{mma8451\+\_\+range\+\_\+t} range)
+\item 
+short \hyperlink{_m_m_a8451_8c_aa7938c3d33b88321d9cf68b0de4df633}{to\+Decimal} (int8\+\_\+t $\ast$hi\+\_\+lo)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_m_m_a8451_8c_a80d820ba78d081f0c2e04af03801726f}\label{_m_m_a8451_8c_a80d820ba78d081f0c2e04af03801726f}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!I2\+C\+\_\+\+Read@{I2\+C\+\_\+\+Read}}
+\index{I2\+C\+\_\+\+Read@{I2\+C\+\_\+\+Read}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{I2\+C\+\_\+\+Read()}{I2C\_Read()}}
+{\footnotesize\ttfamily uint8\+\_\+t I2\+C\+\_\+\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t $\ast$}]{data }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{_m_m_a8451_8c_ac77754b79167a1caf098c606513dc6ac}\label{_m_m_a8451_8c_ac77754b79167a1caf098c606513dc6ac}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!I2\+C\+\_\+\+Read\+Buffer@{I2\+C\+\_\+\+Read\+Buffer}}
+\index{I2\+C\+\_\+\+Read\+Buffer@{I2\+C\+\_\+\+Read\+Buffer}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{I2\+C\+\_\+\+Read\+Buffer()}{I2C\_ReadBuffer()}}
+{\footnotesize\ttfamily uint8\+\_\+t I2\+C\+\_\+\+Read\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{short}]{data\+Size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{_m_m_a8451_8c_a0e8629ad586c9518afa0db28d5dcb4a2}\label{_m_m_a8451_8c_a0e8629ad586c9518afa0db28d5dcb4a2}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!I2\+C\+\_\+\+Write@{I2\+C\+\_\+\+Write}}
+\index{I2\+C\+\_\+\+Write@{I2\+C\+\_\+\+Write}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{I2\+C\+\_\+\+Write()}{I2C\_Write()}}
+{\footnotesize\ttfamily uint8\+\_\+t I2\+C\+\_\+\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t}]{val }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{_m_m_a8451_8c_adc545c7b801b54f51a08d947ecf4ef80}\label{_m_m_a8451_8c_adc545c7b801b54f51a08d947ecf4ef80}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+\+Active@{M\+M\+A845x\+\_\+\+Active}}
+\index{M\+M\+A845x\+\_\+\+Active@{M\+M\+A845x\+\_\+\+Active}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+\+Active()}{MMA845x\_Active()}}
+{\footnotesize\ttfamily void M\+M\+A845x\+\_\+\+Active (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{_m_m_a8451_8c_a008d93080f6e4e3f833b57b289d181b4}\label{_m_m_a8451_8c_a008d93080f6e4e3f833b57b289d181b4}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+de\+Init@{M\+M\+A845x\+\_\+de\+Init}}
+\index{M\+M\+A845x\+\_\+de\+Init@{M\+M\+A845x\+\_\+de\+Init}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+de\+Init()}{MMA845x\_deInit()}}
+{\footnotesize\ttfamily void M\+M\+A845x\+\_\+de\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{_m_m_a8451_8c_aa47ac9bcc80b7c31e4295e425183bd6c}\label{_m_m_a8451_8c_aa47ac9bcc80b7c31e4295e425183bd6c}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+get\+Orientation@{M\+M\+A845x\+\_\+get\+Orientation}}
+\index{M\+M\+A845x\+\_\+get\+Orientation@{M\+M\+A845x\+\_\+get\+Orientation}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+get\+Orientation()}{MMA845x\_getOrientation()}}
+{\footnotesize\ttfamily uint8\+\_\+t M\+M\+A845x\+\_\+get\+Orientation (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{_m_m_a8451_8c_ada546ad7c1ca2dd415d341ad8eafa182}\label{_m_m_a8451_8c_ada546ad7c1ca2dd415d341ad8eafa182}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+get\+Range@{M\+M\+A845x\+\_\+get\+Range}}
+\index{M\+M\+A845x\+\_\+get\+Range@{M\+M\+A845x\+\_\+get\+Range}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+get\+Range()}{MMA845x\_getRange()}}
+{\footnotesize\ttfamily \hyperlink{_m_m_a8451_8h_a0e13c29d618e6adff405b7125b6fb042}{mma8451\+\_\+range\+\_\+t} M\+M\+A845x\+\_\+get\+Range (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{_m_m_a8451_8c_af2abdfa0f6df1f55e7ab9337a127aaa0}\label{_m_m_a8451_8c_af2abdfa0f6df1f55e7ab9337a127aaa0}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+get\+X\+YZ@{M\+M\+A845x\+\_\+get\+X\+YZ}}
+\index{M\+M\+A845x\+\_\+get\+X\+YZ@{M\+M\+A845x\+\_\+get\+X\+YZ}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+get\+X\+Y\+Z()}{MMA845x\_getXYZ()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} M\+M\+A845x\+\_\+get\+X\+YZ (\begin{DoxyParamCaption}\item[{\hyperlink{struct_accelerometer}{Accelerometer} $\ast$}]{acc }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{_m_m_a8451_8c_a525869d3f463eab57cf9240a452eb612}\label{_m_m_a8451_8c_a525869d3f463eab57cf9240a452eb612}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+init@{M\+M\+A845x\+\_\+init}}
+\index{M\+M\+A845x\+\_\+init@{M\+M\+A845x\+\_\+init}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+init()}{MMA845x\_init()}}
+{\footnotesize\ttfamily void M\+M\+A845x\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\mbox{\Hypertarget{_m_m_a8451_8c_ae637055d69d5c9360316cd6ecc3861f9}\label{_m_m_a8451_8c_ae637055d69d5c9360316cd6ecc3861f9}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+\+Reset@{M\+M\+A845x\+\_\+\+Reset}}
+\index{M\+M\+A845x\+\_\+\+Reset@{M\+M\+A845x\+\_\+\+Reset}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+\+Reset()}{MMA845x\_Reset()}}
+{\footnotesize\ttfamily uint8\+\_\+t M\+M\+A845x\+\_\+\+Reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 18
+\mbox{\Hypertarget{_m_m_a8451_8c_a4b98eab84f4cdce02e412ff4fcd20803}\label{_m_m_a8451_8c_a4b98eab84f4cdce02e412ff4fcd20803}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+set\+Data\+Rate@{M\+M\+A845x\+\_\+set\+Data\+Rate}}
+\index{M\+M\+A845x\+\_\+set\+Data\+Rate@{M\+M\+A845x\+\_\+set\+Data\+Rate}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+set\+Data\+Rate()}{MMA845x\_setDataRate()}}
+{\footnotesize\ttfamily void M\+M\+A845x\+\_\+set\+Data\+Rate (\begin{DoxyParamCaption}\item[{\hyperlink{_m_m_a8451_8h_a313dbf4a24e2b7d215d4553ee753b555}{mma8451\+\_\+data\+Rate\+\_\+t}}]{data\+Rate }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 19
+\mbox{\Hypertarget{_m_m_a8451_8c_aaeb95ff6febc988863cd4d5b15d3cd7b}\label{_m_m_a8451_8c_aaeb95ff6febc988863cd4d5b15d3cd7b}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+set\+Noise@{M\+M\+A845x\+\_\+set\+Noise}}
+\index{M\+M\+A845x\+\_\+set\+Noise@{M\+M\+A845x\+\_\+set\+Noise}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+set\+Noise()}{MMA845x\_setNoise()}}
+{\footnotesize\ttfamily void M\+M\+A845x\+\_\+set\+Noise (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool}}]{flag }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 20
+\mbox{\Hypertarget{_m_m_a8451_8c_aec369c1c39df77e524df365b636253dc}\label{_m_m_a8451_8c_aec369c1c39df77e524df365b636253dc}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+set\+Range@{M\+M\+A845x\+\_\+set\+Range}}
+\index{M\+M\+A845x\+\_\+set\+Range@{M\+M\+A845x\+\_\+set\+Range}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+set\+Range()}{MMA845x\_setRange()}}
+{\footnotesize\ttfamily void M\+M\+A845x\+\_\+set\+Range (\begin{DoxyParamCaption}\item[{\hyperlink{_m_m_a8451_8h_a0e13c29d618e6adff405b7125b6fb042}{mma8451\+\_\+range\+\_\+t}}]{range }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 21
+\mbox{\Hypertarget{_m_m_a8451_8c_a91842bf3851e273e2929e320fb68635e}\label{_m_m_a8451_8c_a91842bf3851e273e2929e320fb68635e}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!M\+M\+A845x\+\_\+\+Standby@{M\+M\+A845x\+\_\+\+Standby}}
+\index{M\+M\+A845x\+\_\+\+Standby@{M\+M\+A845x\+\_\+\+Standby}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{M\+M\+A845x\+\_\+\+Standby()}{MMA845x\_Standby()}}
+{\footnotesize\ttfamily void M\+M\+A845x\+\_\+\+Standby (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 22
+Here is the caller graph for this function\+:
+% FIG 23
+\mbox{\Hypertarget{_m_m_a8451_8c_aa7938c3d33b88321d9cf68b0de4df633}\label{_m_m_a8451_8c_aa7938c3d33b88321d9cf68b0de4df633}} 
+\index{M\+M\+A8451.\+c@{M\+M\+A8451.\+c}!to\+Decimal@{to\+Decimal}}
+\index{to\+Decimal@{to\+Decimal}!M\+M\+A8451.\+c@{M\+M\+A8451.\+c}}
+\subsubsection{\texorpdfstring{to\+Decimal()}{toDecimal()}}
+{\footnotesize\ttfamily short to\+Decimal (\begin{DoxyParamCaption}\item[{int8\+\_\+t $\ast$}]{hi\+\_\+lo }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 24

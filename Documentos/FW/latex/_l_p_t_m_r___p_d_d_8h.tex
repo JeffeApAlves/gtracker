@@ -1,0 +1,1416 @@
+\hypertarget{_l_p_t_m_r___p_d_d_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+L\+P\+T\+M\+R\+\_\+\+P\+DD.h File Reference}
+\label{_l_p_t_m_r___p_d_d_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+{\ttfamily \#include \char`\"{}P\+D\+D\+\_\+\+Types.\+h\char`\"{}}\newline
+Include dependency graph for L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a86c14da076d0b3ab7c0a1d0c8505893b}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+E\+N\+A\+B\+L\+ED}~0U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aedadc31f2cf3a45acd67adb9c40d4a9e}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+D\+I\+S\+A\+B\+L\+ED}~\hyperlink{group___l_p_t_m_r___register___masks_gaca581598c0f319b0002deda730479842}{L\+P\+T\+M\+R\+\_\+\+C\+S\+R\+\_\+\+T\+F\+C\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a89d804e586acb02e4ec7721d13a8a085}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+E\+R\+N\+AL}~0U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a17c9c803b28f6267d6566b8ed1bc0cb3}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+E\+R\+N\+AL}~\hyperlink{group___l_p_t_m_r___register___masks_ga57ee593a57d844d7bb4b87c127765558}{L\+P\+T\+M\+R\+\_\+\+C\+S\+R\+\_\+\+T\+M\+S\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ad25d78a07229bff77f05eb6f6b6a9957}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2}~0U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ab7f5563827455c1c1d0bf42a2d586cf4}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4}~0x1U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a29b26bce7b8f87e7d4b6e712cd2827bf}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8}~0x2U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a6f2b2859aba5c559160f138fbcd5fee3}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16}~0x3U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_acd0c835415263fb41a5df252db18d0e3}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32}~0x4U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a807aa0a275b2a6c4544dd6eb5d23494c}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+64}~0x5U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a157cf9426466b4aae79d7fb98e932083}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+128}~0x6U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a3ad0dca74786d512654ac1a40c76f508}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+256}~0x7U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_af6b978fbfd5ccc76fbf41e3de59f0167}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+512}~0x8U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ae29a3cd8d2faf20557ca32b1000655d9}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+1024}~0x9U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a076707ce09fe6714d457af860cb8160e}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2048}~0x\+AU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_acc1f5d9dcf0860c1bfae2ee1211258ad}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4096}~0x\+BU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a583c790cb625f8dba200b1911d134a7b}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8192}~0x\+CU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aa5a0747ff24ed321800b2d90e46baf45}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16384}~0x\+DU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a72978938f3f1461eb5719a2590d21cc1}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32768}~0x\+EU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a817bcfca550c4b460afaa4946068c4d2}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+65536}~0x\+FU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_af511134e450a213b5960004bfbd1a3d2}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2}~0x1U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a0fb02077d7968db9a610373b697038c1}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4}~0x2U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aa99a40d580d3f615fda6d149948d5c0b}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8}~0x3U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a653e00c48f2baa85a0557156d3de4d35}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16}~0x4U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a7bb35949196e64dce4d892da844988ef}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32}~0x5U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_acdbba816b1b27dd44779859fbe7c9ef0}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+64}~0x6U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a03fdca2d39b846276edb8d1cd777dd00}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+128}~0x7U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ad9c35f7765f513d58fc4e384d151ee17}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+256}~0x8U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aa96a102d6cdf8161a3d5a087f74f6639}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+512}~0x9U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a721c103710ddc317b24098da1ead9cb1}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+1024}~0x\+AU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a8a3e5d8763543364c86a813e6ccc74e4}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2048}~0x\+BU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a12d62a19c0d7895120276949e7cf9eb9}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4096}~0x\+CU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ae25a6fb134892c7d6288a6335f7eccc7}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8192}~0x\+DU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aabaa10ffbef8e543d16e42ab8b98eada}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16384}~0x\+EU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a8cb8247e7f7771740b43e141faa8b6e3}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32768}~0x\+FU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ac9089756effc9ae8898e323ff126fcf2}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1}~0x1U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a3e460493410706d288ebd6463e541db1}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2}~0U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a9697339e4f312fb17089396a4d165ebd}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4}~0x2U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a136ee2acb5cbcb7f8d54a5aef7eb2e81}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8}~0x4U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a42e7daccabbe72349d85d2f1c9231ba9}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16}~0x6U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a37ab52c2a261acb2ffd8fea0b6482b9e}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32}~0x8U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ac278e8e3d126d740e30b00ae52f609ae}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+64}~0x\+AU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ac34a6973958163e8fd41ee1973fd0fe5}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+128}~0x\+CU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a9572f2b715cd7da67369938de217039a}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+256}~0x\+EU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a1e952625c6ea729c1f8cb8a235878c53}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+512}~0x10U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ae16950c394be1b4089746c9f5d1430bd}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1024}~0x12U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a8aa5ae33f888258cbb0fcec8718a09ff}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2048}~0x14U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a5c99336c1821e8cd55ab399361fb898e}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4096}~0x16U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aa0367f99079e2efd211e15d39c68077b}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8192}~0x18U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aadd9954fcf355a0f51558361ba1f0294}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16384}~0x1\+AU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a7269db865e830919bde25621ee838299}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32768}~0x1\+CU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_afbf0ddf182da1a1e82f8611cef5aa46d}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+65536}~0x1\+EU
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_af4389257f6052408be44731c08429562}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+H\+S\+C\+MP}~0U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a869312552e9cdd3aba2ac9594cb99429}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+1}~0x10U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a86ba312906b45a2dd1625c0e3c138896}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+2}~0x20U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a7197dc98bc35d87a7fd74471547aa872}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+3}~0x30U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ac9f7fca521308e96a85c2e523eef1dd4}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+R\+I\+S\+I\+NG}~0U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a44b3701fcc75af34840bb6dbc63f1389}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+F\+A\+L\+L\+I\+NG}~0x8U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a939d81ff12283a2d27a622beb2186c7e}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+D\+I\+S\+A\+B\+L\+ED}~0U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ae333bfb928581bfac8ac514904dc7757}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+E\+N\+A\+B\+L\+ED}~0x4U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a62479c349499253b2f7d5915efe36077}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+R\+EF}~0U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_afb43861bd3ef0de9c46dbb2fdc119e30}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+L\+P\+O1\+K\+HZ}~0x1U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a64c2527c9e24bbfb724ceca1b7f1f9f9}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T32\+K\+HZ}~0x2U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aff8b828fd759314488b337eaf51f81bf}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+R\+EF}~0x3U
+\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a048e99bd8d683b60f621207d2e696e1d}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns interrupt mask. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a3171afae047b32ce05999bb41a29572e}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns interrupt flag bit. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a1c3ab3e00bea633c8d38dd0fb864add7}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Enables the L\+PT interrupt. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aa047baf160234424e1fb0c74fc360df3}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Disables the L\+PT interrupt. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_ab56dd547fcc5c2e8ec4bdca19deec6df}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Clears L\+PT interrupt flag. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a8c7604749f0b01ab5f98b6907ff567b7}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Pin}(Peripheral\+Base,  T\+P\+S\+\_\+val)
+\begin{DoxyCompactList}\small\item\em Sets Timer Pin Select bits. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aac6bbf96852625f43691de6c4b1e7617}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Pin\+Polarity}(Peripheral\+Base,  Edge)
+\begin{DoxyCompactList}\small\item\em Configures the polarity of the input source. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a5dabefb3f8a8f56d29f7fba14f0da3aa}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Freerun}(Peripheral\+Base,  Restart)
+\begin{DoxyCompactList}\small\item\em Configures the freerun mode. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a1e8bb7ce24149a9c485c2a27a7f7bc72}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Timer\+Mode}(Peripheral\+Base,  Source)
+\begin{DoxyCompactList}\small\item\em Selects timer mode. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a866690f2d9044aaad421e66603593667}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em Enables the L\+PT device. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_afe2bb40d37bfd5ac1d0f0d1f03d1c4d0}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns current state of L\+PT device. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_aba43f60390cd97aba59f7c354f0c4bed}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Prescaler}(Peripheral\+Base,  Prescaler)
+\begin{DoxyCompactList}\small\item\em Sets prescale value. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_afc391489a618d4f0a6d778a2b2acd8da}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Prescaler\+Bypass}(Peripheral\+Base,  Bypass)
+\begin{DoxyCompactList}\small\item\em Sets prescaler bypass. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a929e0c59fb4a886561064c7e86e5f7fb}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Divider}(Peripheral\+Base,  Divider)
+\begin{DoxyCompactList}\small\item\em Sets both prescale value and bypass value. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a535eba48f599c296feee9d6f4960594e}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Prescaler\+Source}(Peripheral\+Base,  Source)
+\begin{DoxyCompactList}\small\item\em Selects clock source. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a1fa0a5121fa78647d7cf33d60e53ad3e}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Compare\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the compare register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a8110bcde3c93d52a55eb01a9cd091819}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Compare\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the compare register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a262daa317d09c5466402a80697148a9c}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Counter\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the counter register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a956741ac2c623cfb13bb3ee711047b27}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the control status register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a89051c7c257f85b2d53de6fed112a608}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the control status register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a9f57a23177efc763d74a29f42d569ff9}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Prescale\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the prescale register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_l_p_t_m_r___p_d_d_8h_a70e9b757df1b965cabe41fb9839756ee}{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Prescale\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the prescale register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a939d81ff12283a2d27a622beb2186c7e}\label{_l_p_t_m_r___p_d_d_8h_a939d81ff12283a2d27a622beb2186c7e}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+D\+I\+S\+A\+B\+L\+ED@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+D\+I\+S\+A\+B\+L\+ED}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+D\+I\+S\+A\+B\+L\+ED@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+D\+I\+S\+A\+B\+L\+ED}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+D\+I\+S\+A\+B\+L\+ED}{LPTMR\_PDD\_BYPASS\_DISABLED}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+D\+I\+S\+A\+B\+L\+ED~0U}
+
+Disabled \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ae333bfb928581bfac8ac514904dc7757}\label{_l_p_t_m_r___p_d_d_8h_ae333bfb928581bfac8ac514904dc7757}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+E\+N\+A\+B\+L\+ED@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+E\+N\+A\+B\+L\+ED@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+E\+N\+A\+B\+L\+ED}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+E\+N\+A\+B\+L\+ED}{LPTMR\_PDD\_BYPASS\_ENABLED}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+B\+Y\+P\+A\+S\+S\+\_\+\+E\+N\+A\+B\+L\+ED~0x4U}
+
+Enabled \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ab56dd547fcc5c2e8ec4bdca19deec6df}\label{_l_p_t_m_r___p_d_d_8h_ab56dd547fcc5c2e8ec4bdca19deec6df}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}{LPTMR\_PDD\_ClearInterruptFlag}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CSR\_REG(PeripheralBase) |= \(\backslash\)
+     LPTMR\_CSR\_TCF\_MASK \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Clears L\+PT interrupt flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_ab56dd547fcc5c2e8ec4bdca19deec6df}{LPTMR\_PDD\_ClearInterruptFlag}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aa047baf160234424e1fb0c74fc360df3}\label{_l_p_t_m_r___p_d_d_8h_aa047baf160234424e1fb0c74fc360df3}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}{LPTMR\_PDD\_DisableInterrupt}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CSR\_REG(PeripheralBase) &= \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_gabb726cb43d5f6ee38339048c69a5f086}{LPTMR\_CSR\_TIE\_MASK})) & ( \(\backslash\)
+      (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga13b5dd6085ca2a8cf0f06550b7557b6b}{LPTMR\_CSR\_TCF\_MASK}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Disables the L\+PT interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_aa047baf160234424e1fb0c74fc360df3}{LPTMR\_PDD\_DisableInterrupt}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ac9089756effc9ae8898e323ff126fcf2}\label{_l_p_t_m_r___p_d_d_8h_ac9089756effc9ae8898e323ff126fcf2}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1}{LPTMR\_PDD\_DIVIDER\_1}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1~0x1U}
+
+1 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ae16950c394be1b4089746c9f5d1430bd}\label{_l_p_t_m_r___p_d_d_8h_ae16950c394be1b4089746c9f5d1430bd}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1024@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1024}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1024@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1024}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1024}{LPTMR\_PDD\_DIVIDER\_1024}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+1024~0x12U}
+
+1024 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ac34a6973958163e8fd41ee1973fd0fe5}\label{_l_p_t_m_r___p_d_d_8h_ac34a6973958163e8fd41ee1973fd0fe5}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+128@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+128}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+128@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+128}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+128}{LPTMR\_PDD\_DIVIDER\_128}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+128~0x\+CU}
+
+128 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a42e7daccabbe72349d85d2f1c9231ba9}\label{_l_p_t_m_r___p_d_d_8h_a42e7daccabbe72349d85d2f1c9231ba9}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16}{LPTMR\_PDD\_DIVIDER\_16}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16~0x6U}
+
+16 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aadd9954fcf355a0f51558361ba1f0294}\label{_l_p_t_m_r___p_d_d_8h_aadd9954fcf355a0f51558361ba1f0294}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16384@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16384}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16384@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16384}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16384}{LPTMR\_PDD\_DIVIDER\_16384}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+16384~0x1\+AU}
+
+16384 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a3e460493410706d288ebd6463e541db1}\label{_l_p_t_m_r___p_d_d_8h_a3e460493410706d288ebd6463e541db1}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2}{LPTMR\_PDD\_DIVIDER\_2}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2~0U}
+
+2 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a8aa5ae33f888258cbb0fcec8718a09ff}\label{_l_p_t_m_r___p_d_d_8h_a8aa5ae33f888258cbb0fcec8718a09ff}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2048@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2048}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2048@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2048}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2048}{LPTMR\_PDD\_DIVIDER\_2048}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+2048~0x14U}
+
+2048 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a9572f2b715cd7da67369938de217039a}\label{_l_p_t_m_r___p_d_d_8h_a9572f2b715cd7da67369938de217039a}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+256@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+256}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+256@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+256}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+256}{LPTMR\_PDD\_DIVIDER\_256}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+256~0x\+EU}
+
+256 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a37ab52c2a261acb2ffd8fea0b6482b9e}\label{_l_p_t_m_r___p_d_d_8h_a37ab52c2a261acb2ffd8fea0b6482b9e}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32}{LPTMR\_PDD\_DIVIDER\_32}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32~0x8U}
+
+32 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a7269db865e830919bde25621ee838299}\label{_l_p_t_m_r___p_d_d_8h_a7269db865e830919bde25621ee838299}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32768@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32768}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32768@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32768}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32768}{LPTMR\_PDD\_DIVIDER\_32768}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+32768~0x1\+CU}
+
+32768 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a9697339e4f312fb17089396a4d165ebd}\label{_l_p_t_m_r___p_d_d_8h_a9697339e4f312fb17089396a4d165ebd}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4}{LPTMR\_PDD\_DIVIDER\_4}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4~0x2U}
+
+4 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a5c99336c1821e8cd55ab399361fb898e}\label{_l_p_t_m_r___p_d_d_8h_a5c99336c1821e8cd55ab399361fb898e}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4096@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4096}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4096@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4096}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4096}{LPTMR\_PDD\_DIVIDER\_4096}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+4096~0x16U}
+
+4096 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a1e952625c6ea729c1f8cb8a235878c53}\label{_l_p_t_m_r___p_d_d_8h_a1e952625c6ea729c1f8cb8a235878c53}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+512@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+512}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+512@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+512}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+512}{LPTMR\_PDD\_DIVIDER\_512}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+512~0x10U}
+
+512 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ac278e8e3d126d740e30b00ae52f609ae}\label{_l_p_t_m_r___p_d_d_8h_ac278e8e3d126d740e30b00ae52f609ae}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+64@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+64}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+64@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+64}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+64}{LPTMR\_PDD\_DIVIDER\_64}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+64~0x\+AU}
+
+64 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_afbf0ddf182da1a1e82f8611cef5aa46d}\label{_l_p_t_m_r___p_d_d_8h_afbf0ddf182da1a1e82f8611cef5aa46d}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+65536@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+65536}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+65536@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+65536}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+65536}{LPTMR\_PDD\_DIVIDER\_65536}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+65536~0x1\+EU}
+
+65536 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a136ee2acb5cbcb7f8d54a5aef7eb2e81}\label{_l_p_t_m_r___p_d_d_8h_a136ee2acb5cbcb7f8d54a5aef7eb2e81}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8}{LPTMR\_PDD\_DIVIDER\_8}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8~0x4U}
+
+8 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aa0367f99079e2efd211e15d39c68077b}\label{_l_p_t_m_r___p_d_d_8h_aa0367f99079e2efd211e15d39c68077b}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8192@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8192}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8192@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8192}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8192}{LPTMR\_PDD\_DIVIDER\_8192}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+D\+I\+V\+I\+D\+E\+R\+\_\+8192~0x18U}
+
+8192 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a866690f2d9044aaad421e66603593667}\label{_l_p_t_m_r___p_d_d_8h_a866690f2d9044aaad421e66603593667}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}{LPTMR\_PDD\_EnableDevice}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(( \(\backslash\)
+       \hyperlink{group___l_p_t_m_r___register___accessor___macros_ga3e6fc450d0d86591343057973f33b114}{LPTMR\_CSR\_REG}(PeripheralBase)) & (( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga4ed197f1cb8d0e954324b4854ff14a83}{LPTMR\_CSR\_TEN\_MASK})) & ( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga13b5dd6085ca2a8cf0f06550b7557b6b}{LPTMR\_CSR\_TCF\_MASK}))))) | ( \(\backslash\)
+      (uint32\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables the L\+PT device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Requested state of L\+PT device. This parameter is of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})" type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a866690f2d9044aaad421e66603593667}{LPTMR\_PDD\_EnableDevice}(<peripheral>\_BASE\_PTR, \hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a5dabefb3f8a8f56d29f7fba14f0da3aa}\label{_l_p_t_m_r___p_d_d_8h_a5dabefb3f8a8f56d29f7fba14f0da3aa}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Freerun@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Freerun}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Freerun@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Freerun}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Freerun}{LPTMR\_PDD\_EnableFreerun}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Freerun(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Restart }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(( \(\backslash\)
+       \hyperlink{group___l_p_t_m_r___register___accessor___macros_ga3e6fc450d0d86591343057973f33b114}{LPTMR\_CSR\_REG}(PeripheralBase)) & (( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_gaca581598c0f319b0002deda730479842}{LPTMR\_CSR\_TFC\_MASK})) & ( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga13b5dd6085ca2a8cf0f06550b7557b6b}{LPTMR\_CSR\_TCF\_MASK}))))) | ( \(\backslash\)
+      (uint32\_t)(Restart))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Configures the freerun mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Restart} & New value of the restart. Use constants from group \char`\"{}\+Enable
+       freerun constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a5dabefb3f8a8f56d29f7fba14f0da3aa}{LPTMR\_PDD\_EnableFreerun}(<peripheral>\_BASE\_PTR,
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a86c14da076d0b3ab7c0a1d0c8505893b}{LPTMR\_PDD\_RESTART\_ENABLED});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a1c3ab3e00bea633c8d38dd0fb864add7}\label{_l_p_t_m_r___p_d_d_8h_a1c3ab3e00bea633c8d38dd0fb864add7}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}{LPTMR\_PDD\_EnableInterrupt}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(\hyperlink{group___l_p_t_m_r___register___accessor___macros_ga3e6fc450d0d86591343057973f33b114}{LPTMR\_CSR\_REG}(PeripheralBase) | \hyperlink{group___l_p_t_m_r___register___masks_gabb726cb43d5f6ee38339048c69a5f086}{LPTMR\_CSR\_TIE\_MASK})) & ( \(\backslash\)
+      (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga13b5dd6085ca2a8cf0f06550b7557b6b}{LPTMR\_CSR\_TCF\_MASK}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables the L\+PT interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a1c3ab3e00bea633c8d38dd0fb864add7}{LPTMR\_PDD\_EnableInterrupt}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_afc391489a618d4f0a6d778a2b2acd8da}\label{_l_p_t_m_r___p_d_d_8h_afc391489a618d4f0a6d778a2b2acd8da}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Prescaler\+Bypass@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Prescaler\+Bypass}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Prescaler\+Bypass@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Prescaler\+Bypass}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Prescaler\+Bypass}{LPTMR\_PDD\_EnablePrescalerBypass}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Enable\+Prescaler\+Bypass(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Bypass }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_PSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(\hyperlink{group___l_p_t_m_r___register___accessor___macros_ga5466d25d6ed5404f2257f2d06c0d21f5}{LPTMR\_PSR\_REG}(PeripheralBase) & (uint32\_t)(~(uint32\_t)
+      \hyperlink{group___l_p_t_m_r___register___masks_gab3daae6085cf702b31db5be78fe03872}{LPTMR\_PSR\_PBYP\_MASK}))) | ( \(\backslash\)
+      (uint32\_t)(Bypass))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Sets prescaler bypass. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Bypass} & New value of the bypass. This parameter is of \char`\"{}\+Prescaler bypass
+       constants.\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+P\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_afc391489a618d4f0a6d778a2b2acd8da}{LPTMR\_PDD\_EnablePrescalerBypass}(<peripheral>\_BASE\_PTR,
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a939d81ff12283a2d27a622beb2186c7e}{LPTMR\_PDD\_BYPASS\_DISABLED});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a721c103710ddc317b24098da1ead9cb1}\label{_l_p_t_m_r___p_d_d_8h_a721c103710ddc317b24098da1ead9cb1}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+1024@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+1024}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+1024@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+1024}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+1024}{LPTMR\_PDD\_FILTER\_1024}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+1024~0x\+AU}
+
+1024 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a03fdca2d39b846276edb8d1cd777dd00}\label{_l_p_t_m_r___p_d_d_8h_a03fdca2d39b846276edb8d1cd777dd00}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+128@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+128}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+128@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+128}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+128}{LPTMR\_PDD\_FILTER\_128}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+128~0x7U}
+
+128 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a653e00c48f2baa85a0557156d3de4d35}\label{_l_p_t_m_r___p_d_d_8h_a653e00c48f2baa85a0557156d3de4d35}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16}{LPTMR\_PDD\_FILTER\_16}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16~0x4U}
+
+16 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aabaa10ffbef8e543d16e42ab8b98eada}\label{_l_p_t_m_r___p_d_d_8h_aabaa10ffbef8e543d16e42ab8b98eada}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16384@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16384}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16384@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16384}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16384}{LPTMR\_PDD\_FILTER\_16384}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+16384~0x\+EU}
+
+16384 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_af511134e450a213b5960004bfbd1a3d2}\label{_l_p_t_m_r___p_d_d_8h_af511134e450a213b5960004bfbd1a3d2}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2}{LPTMR\_PDD\_FILTER\_2}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2~0x1U}
+
+2 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a8a3e5d8763543364c86a813e6ccc74e4}\label{_l_p_t_m_r___p_d_d_8h_a8a3e5d8763543364c86a813e6ccc74e4}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2048@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2048}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2048@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2048}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2048}{LPTMR\_PDD\_FILTER\_2048}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+2048~0x\+BU}
+
+2048 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ad9c35f7765f513d58fc4e384d151ee17}\label{_l_p_t_m_r___p_d_d_8h_ad9c35f7765f513d58fc4e384d151ee17}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+256@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+256}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+256@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+256}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+256}{LPTMR\_PDD\_FILTER\_256}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+256~0x8U}
+
+256 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a7bb35949196e64dce4d892da844988ef}\label{_l_p_t_m_r___p_d_d_8h_a7bb35949196e64dce4d892da844988ef}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32}{LPTMR\_PDD\_FILTER\_32}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32~0x5U}
+
+32 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a8cb8247e7f7771740b43e141faa8b6e3}\label{_l_p_t_m_r___p_d_d_8h_a8cb8247e7f7771740b43e141faa8b6e3}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32768@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32768}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32768@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32768}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32768}{LPTMR\_PDD\_FILTER\_32768}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+32768~0x\+FU}
+
+32768 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a0fb02077d7968db9a610373b697038c1}\label{_l_p_t_m_r___p_d_d_8h_a0fb02077d7968db9a610373b697038c1}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4}{LPTMR\_PDD\_FILTER\_4}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4~0x2U}
+
+4 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a12d62a19c0d7895120276949e7cf9eb9}\label{_l_p_t_m_r___p_d_d_8h_a12d62a19c0d7895120276949e7cf9eb9}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4096@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4096}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4096@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4096}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4096}{LPTMR\_PDD\_FILTER\_4096}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+4096~0x\+CU}
+
+4096 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aa96a102d6cdf8161a3d5a087f74f6639}\label{_l_p_t_m_r___p_d_d_8h_aa96a102d6cdf8161a3d5a087f74f6639}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+512@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+512}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+512@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+512}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+512}{LPTMR\_PDD\_FILTER\_512}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+512~0x9U}
+
+512 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_acdbba816b1b27dd44779859fbe7c9ef0}\label{_l_p_t_m_r___p_d_d_8h_acdbba816b1b27dd44779859fbe7c9ef0}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+64@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+64}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+64@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+64}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+64}{LPTMR\_PDD\_FILTER\_64}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+64~0x6U}
+
+64 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aa99a40d580d3f615fda6d149948d5c0b}\label{_l_p_t_m_r___p_d_d_8h_aa99a40d580d3f615fda6d149948d5c0b}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8}{LPTMR\_PDD\_FILTER\_8}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8~0x3U}
+
+8 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ae25a6fb134892c7d6288a6335f7eccc7}\label{_l_p_t_m_r___p_d_d_8h_ae25a6fb134892c7d6288a6335f7eccc7}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8192@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8192}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8192@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8192}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8192}{LPTMR\_PDD\_FILTER\_8192}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+8192~0x\+DU}
+
+8192 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_afe2bb40d37bfd5ac1d0f0d1f03d1c4d0}\label{_l_p_t_m_r___p_d_d_8h_afe2bb40d37bfd5ac1d0f0d1f03d1c4d0}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}{LPTMR\_PDD\_GetEnableDeviceStatus}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint32\_t)(\hyperlink{group___l_p_t_m_r___register___accessor___macros_ga3e6fc450d0d86591343057973f33b114}{LPTMR\_CSR\_REG}(PeripheralBase) & \hyperlink{group___l_p_t_m_r___register___masks_ga4ed197f1cb8d0e954324b4854ff14a83}{LPTMR\_CSR\_TEN\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns current state of L\+PT device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result =
+\hyperlink{_l_p_t_m_r___p_d_d_8h_afe2bb40d37bfd5ac1d0f0d1f03d1c4d0}{LPTMR\_PDD\_GetEnableDeviceStatus}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a3171afae047b32ce05999bb41a29572e}\label{_l_p_t_m_r___p_d_d_8h_a3171afae047b32ce05999bb41a29572e}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}{LPTMR\_PDD\_GetInterruptFlag}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint32\_t)(\hyperlink{group___l_p_t_m_r___register___accessor___macros_ga3e6fc450d0d86591343057973f33b114}{LPTMR\_CSR\_REG}(PeripheralBase) & \hyperlink{group___l_p_t_m_r___register___masks_ga13b5dd6085ca2a8cf0f06550b7557b6b}{LPTMR\_CSR\_TCF\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns interrupt flag bit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_l_p_t_m_r___p_d_d_8h_a3171afae047b32ce05999bb41a29572e}{LPTMR\_PDD\_GetInterruptFlag}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a048e99bd8d683b60f621207d2e696e1d}\label{_l_p_t_m_r___p_d_d_8h_a048e99bd8d683b60f621207d2e696e1d}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}{LPTMR\_PDD\_GetInterruptMask}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint32\_t)(\hyperlink{group___l_p_t_m_r___register___accessor___macros_ga3e6fc450d0d86591343057973f33b114}{LPTMR\_CSR\_REG}(PeripheralBase) & \hyperlink{group___l_p_t_m_r___register___masks_gabb726cb43d5f6ee38339048c69a5f086}{LPTMR\_CSR\_TIE\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns interrupt mask. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_l_p_t_m_r___p_d_d_8h_a048e99bd8d683b60f621207d2e696e1d}{LPTMR\_PDD\_GetInterruptMask}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_af4389257f6052408be44731c08429562}\label{_l_p_t_m_r___p_d_d_8h_af4389257f6052408be44731c08429562}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+H\+S\+C\+MP@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+H\+S\+C\+MP}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+H\+S\+C\+MP@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+H\+S\+C\+MP}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+H\+S\+C\+MP}{LPTMR\_PDD\_HSCMP}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+H\+S\+C\+MP~0U}
+
+Alt 0 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a869312552e9cdd3aba2ac9594cb99429}\label{_l_p_t_m_r___p_d_d_8h_a869312552e9cdd3aba2ac9594cb99429}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+1@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+1}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+1@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+1}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+1}{LPTMR\_PDD\_PIN\_1}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+1~0x10U}
+
+Alt 1 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a86ba312906b45a2dd1625c0e3c138896}\label{_l_p_t_m_r___p_d_d_8h_a86ba312906b45a2dd1625c0e3c138896}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+2@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+2}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+2@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+2}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+2}{LPTMR\_PDD\_PIN\_2}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+2~0x20U}
+
+Alt 2 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a7197dc98bc35d87a7fd74471547aa872}\label{_l_p_t_m_r___p_d_d_8h_a7197dc98bc35d87a7fd74471547aa872}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+3@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+3}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+3@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+3}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+3}{LPTMR\_PDD\_PIN\_3}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+I\+N\+\_\+3~0x30U}
+
+Alt 3 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a44b3701fcc75af34840bb6dbc63f1389}\label{_l_p_t_m_r___p_d_d_8h_a44b3701fcc75af34840bb6dbc63f1389}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+F\+A\+L\+L\+I\+NG@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+F\+A\+L\+L\+I\+NG}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+F\+A\+L\+L\+I\+NG@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+F\+A\+L\+L\+I\+NG}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+F\+A\+L\+L\+I\+NG}{LPTMR\_PDD\_POLARITY\_FALLING}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+F\+A\+L\+L\+I\+NG~0x8U}
+
+Falling \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ac9f7fca521308e96a85c2e523eef1dd4}\label{_l_p_t_m_r___p_d_d_8h_ac9f7fca521308e96a85c2e523eef1dd4}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+R\+I\+S\+I\+NG@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+R\+I\+S\+I\+NG}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+R\+I\+S\+I\+NG@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+R\+I\+S\+I\+NG}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+R\+I\+S\+I\+NG}{LPTMR\_PDD\_POLARITY\_RISING}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+O\+L\+A\+R\+I\+T\+Y\+\_\+\+R\+I\+S\+I\+NG~0U}
+
+Rising \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ae29a3cd8d2faf20557ca32b1000655d9}\label{_l_p_t_m_r___p_d_d_8h_ae29a3cd8d2faf20557ca32b1000655d9}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+1024@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+1024}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+1024@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+1024}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+1024}{LPTMR\_PDD\_PRESCALER\_1024}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+1024~0x9U}
+
+1024 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a157cf9426466b4aae79d7fb98e932083}\label{_l_p_t_m_r___p_d_d_8h_a157cf9426466b4aae79d7fb98e932083}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+128@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+128}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+128@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+128}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+128}{LPTMR\_PDD\_PRESCALER\_128}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+128~0x6U}
+
+128 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a6f2b2859aba5c559160f138fbcd5fee3}\label{_l_p_t_m_r___p_d_d_8h_a6f2b2859aba5c559160f138fbcd5fee3}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16}{LPTMR\_PDD\_PRESCALER\_16}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16~0x3U}
+
+16 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aa5a0747ff24ed321800b2d90e46baf45}\label{_l_p_t_m_r___p_d_d_8h_aa5a0747ff24ed321800b2d90e46baf45}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16384@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16384}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16384@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16384}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16384}{LPTMR\_PDD\_PRESCALER\_16384}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+16384~0x\+DU}
+
+16384 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ad25d78a07229bff77f05eb6f6b6a9957}\label{_l_p_t_m_r___p_d_d_8h_ad25d78a07229bff77f05eb6f6b6a9957}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2}{LPTMR\_PDD\_PRESCALER\_2}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2~0U}
+
+2 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a076707ce09fe6714d457af860cb8160e}\label{_l_p_t_m_r___p_d_d_8h_a076707ce09fe6714d457af860cb8160e}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2048@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2048}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2048@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2048}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2048}{LPTMR\_PDD\_PRESCALER\_2048}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+2048~0x\+AU}
+
+2048 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a3ad0dca74786d512654ac1a40c76f508}\label{_l_p_t_m_r___p_d_d_8h_a3ad0dca74786d512654ac1a40c76f508}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+256@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+256}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+256@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+256}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+256}{LPTMR\_PDD\_PRESCALER\_256}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+256~0x7U}
+
+256 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_acd0c835415263fb41a5df252db18d0e3}\label{_l_p_t_m_r___p_d_d_8h_acd0c835415263fb41a5df252db18d0e3}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32}{LPTMR\_PDD\_PRESCALER\_32}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32~0x4U}
+
+32 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a72978938f3f1461eb5719a2590d21cc1}\label{_l_p_t_m_r___p_d_d_8h_a72978938f3f1461eb5719a2590d21cc1}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32768@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32768}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32768@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32768}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32768}{LPTMR\_PDD\_PRESCALER\_32768}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+32768~0x\+EU}
+
+32768 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_ab7f5563827455c1c1d0bf42a2d586cf4}\label{_l_p_t_m_r___p_d_d_8h_ab7f5563827455c1c1d0bf42a2d586cf4}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4}{LPTMR\_PDD\_PRESCALER\_4}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4~0x1U}
+
+4 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_acc1f5d9dcf0860c1bfae2ee1211258ad}\label{_l_p_t_m_r___p_d_d_8h_acc1f5d9dcf0860c1bfae2ee1211258ad}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4096@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4096}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4096@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4096}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4096}{LPTMR\_PDD\_PRESCALER\_4096}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+4096~0x\+BU}
+
+4096 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_af6b978fbfd5ccc76fbf41e3de59f0167}\label{_l_p_t_m_r___p_d_d_8h_af6b978fbfd5ccc76fbf41e3de59f0167}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+512@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+512}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+512@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+512}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+512}{LPTMR\_PDD\_PRESCALER\_512}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+512~0x8U}
+
+512 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a807aa0a275b2a6c4544dd6eb5d23494c}\label{_l_p_t_m_r___p_d_d_8h_a807aa0a275b2a6c4544dd6eb5d23494c}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+64@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+64}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+64@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+64}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+64}{LPTMR\_PDD\_PRESCALER\_64}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+64~0x5U}
+
+64 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a817bcfca550c4b460afaa4946068c4d2}\label{_l_p_t_m_r___p_d_d_8h_a817bcfca550c4b460afaa4946068c4d2}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+65536@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+65536}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+65536@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+65536}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+65536}{LPTMR\_PDD\_PRESCALER\_65536}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+65536~0x\+FU}
+
+65536 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a29b26bce7b8f87e7d4b6e712cd2827bf}\label{_l_p_t_m_r___p_d_d_8h_a29b26bce7b8f87e7d4b6e712cd2827bf}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8}{LPTMR\_PDD\_PRESCALER\_8}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8~0x2U}
+
+8 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a583c790cb625f8dba200b1911d134a7b}\label{_l_p_t_m_r___p_d_d_8h_a583c790cb625f8dba200b1911d134a7b}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8192@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8192}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8192@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8192}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8192}{LPTMR\_PDD\_PRESCALER\_8192}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+8192~0x\+CU}
+
+8192 \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a8110bcde3c93d52a55eb01a9cd091819}\label{_l_p_t_m_r___p_d_d_8h_a8110bcde3c93d52a55eb01a9cd091819}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Compare\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Compare\+Reg}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Compare\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Compare\+Reg}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Compare\+Reg}{LPTMR\_PDD\_ReadCompareReg}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Compare\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CMR\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the compare register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+MR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_l_p_t_m_r___p_d_d_8h_a8110bcde3c93d52a55eb01a9cd091819}{LPTMR\_PDD\_ReadCompareReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a89051c7c257f85b2d53de6fed112a608}\label{_l_p_t_m_r___p_d_d_8h_a89051c7c257f85b2d53de6fed112a608}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg}{LPTMR\_PDD\_ReadControlStatusReg}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Status\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CSR\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the control status register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_l_p_t_m_r___p_d_d_8h_a89051c7c257f85b2d53de6fed112a608}{LPTMR\_PDD\_ReadControlStatusReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a262daa317d09c5466402a80697148a9c}\label{_l_p_t_m_r___p_d_d_8h_a262daa317d09c5466402a80697148a9c}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Counter\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Counter\+Reg}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Counter\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Counter\+Reg}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Counter\+Reg}{LPTMR\_PDD\_ReadCounterReg}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Counter\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      (\hyperlink{group___l_p_t_m_r___register___accessor___macros_ga0256237249b333d5beffb46f115f5659}{LPTMR\_CNR\_REG}(PeripheralBase) = \(\backslash\)
+       0U), \(\backslash\)
+      \hyperlink{group___l_p_t_m_r___register___accessor___macros_ga0256237249b333d5beffb46f115f5659}{LPTMR\_CNR\_REG}(PeripheralBase) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Returns the content of the counter register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+NR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_l_p_t_m_r___p_d_d_8h_a262daa317d09c5466402a80697148a9c}{LPTMR\_PDD\_ReadCounterReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a70e9b757df1b965cabe41fb9839756ee}\label{_l_p_t_m_r___p_d_d_8h_a70e9b757df1b965cabe41fb9839756ee}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Prescale\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Prescale\+Reg}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Prescale\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Prescale\+Reg}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Prescale\+Reg}{LPTMR\_PDD\_ReadPrescaleReg}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Read\+Prescale\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_PSR\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the prescale register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+P\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_l_p_t_m_r___p_d_d_8h_a70e9b757df1b965cabe41fb9839756ee}{LPTMR\_PDD\_ReadPrescaleReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aedadc31f2cf3a45acd67adb9c40d4a9e}\label{_l_p_t_m_r___p_d_d_8h_aedadc31f2cf3a45acd67adb9c40d4a9e}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+D\+I\+S\+A\+B\+L\+ED@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+D\+I\+S\+A\+B\+L\+ED}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+D\+I\+S\+A\+B\+L\+ED@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+D\+I\+S\+A\+B\+L\+ED}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+D\+I\+S\+A\+B\+L\+ED}{LPTMR\_PDD\_RESTART\_DISABLED}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+D\+I\+S\+A\+B\+L\+ED~\hyperlink{group___l_p_t_m_r___register___masks_gaca581598c0f319b0002deda730479842}{L\+P\+T\+M\+R\+\_\+\+C\+S\+R\+\_\+\+T\+F\+C\+\_\+\+M\+A\+SK}}
+
+Disabled \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a86c14da076d0b3ab7c0a1d0c8505893b}\label{_l_p_t_m_r___p_d_d_8h_a86c14da076d0b3ab7c0a1d0c8505893b}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+E\+N\+A\+B\+L\+ED@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+E\+N\+A\+B\+L\+ED@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+E\+N\+A\+B\+L\+ED}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+E\+N\+A\+B\+L\+ED}{LPTMR\_PDD\_RESTART\_ENABLED}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+E\+N\+A\+B\+L\+ED~0U}
+
+Enabled \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a8c7604749f0b01ab5f98b6907ff567b7}\label{_l_p_t_m_r___p_d_d_8h_a8c7604749f0b01ab5f98b6907ff567b7}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Pin@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Pin}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Pin@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Pin}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Pin}{LPTMR\_PDD\_SelectPin}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Pin(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{T\+P\+S\+\_\+val }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(( \(\backslash\)
+       \hyperlink{group___l_p_t_m_r___register___accessor___macros_ga3e6fc450d0d86591343057973f33b114}{LPTMR\_CSR\_REG}(PeripheralBase)) & (( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga3502ccff1cbdb70bb99b73c035ab1e19}{LPTMR\_CSR\_TPS\_MASK})) & ( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga13b5dd6085ca2a8cf0f06550b7557b6b}{LPTMR\_CSR\_TCF\_MASK}))))) | ( \(\backslash\)
+      (uint32\_t)(TPS\_val))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Sets Timer Pin Select bits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em T\+P\+S\+\_\+val} & New value of the T\+PS. This parameter is of \char`\"{}\+Timer Pin Select
+       constants.\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a8c7604749f0b01ab5f98b6907ff567b7}{LPTMR\_PDD\_SelectPin}(<peripheral>\_BASE\_PTR, \hyperlink{_l_p_t_m_r___p_d_d_8h_af4389257f6052408be44731c08429562}{LPTMR\_PDD\_HSCMP});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a535eba48f599c296feee9d6f4960594e}\label{_l_p_t_m_r___p_d_d_8h_a535eba48f599c296feee9d6f4960594e}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Prescaler\+Source@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Prescaler\+Source}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Prescaler\+Source@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Prescaler\+Source}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Prescaler\+Source}{LPTMR\_PDD\_SelectPrescalerSource}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Select\+Prescaler\+Source(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Source }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_PSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(\hyperlink{group___l_p_t_m_r___register___accessor___macros_ga5466d25d6ed5404f2257f2d06c0d21f5}{LPTMR\_PSR\_REG}(PeripheralBase) & (uint32\_t)(~(uint32\_t)
+      \hyperlink{group___l_p_t_m_r___register___masks_ga40daa10db43ec0c0a1944e6289ca29cc}{LPTMR\_PSR\_PCS\_MASK}))) | ( \(\backslash\)
+      (uint32\_t)(Source))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Selects clock source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Source} & New value of the source. This parameter is of \char`\"{}\+Clock source
+       constants.\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+P\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a535eba48f599c296feee9d6f4960594e}{LPTMR\_PDD\_SelectPrescalerSource}(<peripheral>\_BASE\_PTR,
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a62479c349499253b2f7d5915efe36077}{LPTMR\_PDD\_SOURCE\_INTREF});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a929e0c59fb4a886561064c7e86e5f7fb}\label{_l_p_t_m_r___p_d_d_8h_a929e0c59fb4a886561064c7e86e5f7fb}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Divider@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Divider}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Divider@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Divider}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Divider}{LPTMR\_PDD\_SetDivider}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Divider(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Divider }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_PSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(( \(\backslash\)
+       \hyperlink{group___l_p_t_m_r___register___accessor___macros_ga5466d25d6ed5404f2257f2d06c0d21f5}{LPTMR\_PSR\_REG}(PeripheralBase)) & (( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga93a6fe3fb169a73716a837cedb92dbef}{LPTMR\_PSR\_PRESCALE\_MASK})) & ( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_gab3daae6085cf702b31db5be78fe03872}{LPTMR\_PSR\_PBYP\_MASK}))))) | (( \(\backslash\)
+      (uint32\_t)((uint32\_t)((uint32\_t)(Divider) >> 1U) << 
+      \hyperlink{group___l_p_t_m_r___register___masks_ga7ed76902e13634d0c543ade3ef47525a}{LPTMR\_PSR\_PRESCALE\_SHIFT})) | ( \(\backslash\)
+      (uint32\_t)((uint32\_t)((uint32\_t)(Divider) & 0x1U) << \hyperlink{group___l_p_t_m_r___register___masks_ga4bb5021e396db697f5e597fdcdc222e3}{LPTMR\_PSR\_PBYP\_SHIFT})))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Sets both prescale value and bypass value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Divider} & New value of the divider. Use constants from group \char`\"{}\+Divider
+       constants\char`\"{}. This parameter is 5 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+P\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a929e0c59fb4a886561064c7e86e5f7fb}{LPTMR\_PDD\_SetDivider}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_l_p_t_m_r___p_d_d_8h_ac9089756effc9ae8898e323ff126fcf2}{LPTMR\_PDD\_DIVIDER\_1});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aac6bbf96852625f43691de6c4b1e7617}\label{_l_p_t_m_r___p_d_d_8h_aac6bbf96852625f43691de6c4b1e7617}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Pin\+Polarity@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Pin\+Polarity}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Pin\+Polarity@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Pin\+Polarity}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Pin\+Polarity}{LPTMR\_PDD\_SetPinPolarity}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Pin\+Polarity(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Edge }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(( \(\backslash\)
+       \hyperlink{group___l_p_t_m_r___register___accessor___macros_ga3e6fc450d0d86591343057973f33b114}{LPTMR\_CSR\_REG}(PeripheralBase)) & (( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga020eee1550f2943c10d51f8b56930e62}{LPTMR\_CSR\_TPP\_MASK})) & ( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga13b5dd6085ca2a8cf0f06550b7557b6b}{LPTMR\_CSR\_TCF\_MASK}))))) | ( \(\backslash\)
+      (uint32\_t)(Edge))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Configures the polarity of the input source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Edge} & New value of the polarity. This parameter is of \char`\"{}\+Timer Pin
+       Polarity constants.\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_aac6bbf96852625f43691de6c4b1e7617}{LPTMR\_PDD\_SetPinPolarity}(<peripheral>\_BASE\_PTR,
+\hyperlink{_l_p_t_m_r___p_d_d_8h_ac9f7fca521308e96a85c2e523eef1dd4}{LPTMR\_PDD\_POLARITY\_RISING});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aba43f60390cd97aba59f7c354f0c4bed}\label{_l_p_t_m_r___p_d_d_8h_aba43f60390cd97aba59f7c354f0c4bed}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Prescaler@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Prescaler}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Prescaler@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Prescaler}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Prescaler}{LPTMR\_PDD\_SetPrescaler}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Prescaler(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Prescaler }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_PSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(\hyperlink{group___l_p_t_m_r___register___accessor___macros_ga5466d25d6ed5404f2257f2d06c0d21f5}{LPTMR\_PSR\_REG}(PeripheralBase) & (uint32\_t)(~(uint32\_t)
+      \hyperlink{group___l_p_t_m_r___register___masks_ga93a6fe3fb169a73716a837cedb92dbef}{LPTMR\_PSR\_PRESCALE\_MASK}))) | ( \(\backslash\)
+      (uint32\_t)((uint32\_t)(Prescaler) << \hyperlink{group___l_p_t_m_r___register___masks_ga7ed76902e13634d0c543ade3ef47525a}{LPTMR\_PSR\_PRESCALE\_SHIFT}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Sets prescale value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Prescaler} & New value of the prescaler. Use constants from group \char`\"{}\+Prescaler/\+Filter constants\char`\"{}. This parameter is 4 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+P\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_aba43f60390cd97aba59f7c354f0c4bed}{LPTMR\_PDD\_SetPrescaler}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_l_p_t_m_r___p_d_d_8h_ad25d78a07229bff77f05eb6f6b6a9957}{LPTMR\_PDD\_PRESCALER\_2});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a1e8bb7ce24149a9c485c2a27a7f7bc72}\label{_l_p_t_m_r___p_d_d_8h_a1e8bb7ce24149a9c485c2a27a7f7bc72}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Timer\+Mode@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Timer\+Mode}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Timer\+Mode@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Timer\+Mode}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Timer\+Mode}{LPTMR\_PDD\_SetTimerMode}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Set\+Timer\+Mode(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Source }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(( \(\backslash\)
+       \hyperlink{group___l_p_t_m_r___register___accessor___macros_ga3e6fc450d0d86591343057973f33b114}{LPTMR\_CSR\_REG}(PeripheralBase)) & (( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga57ee593a57d844d7bb4b87c127765558}{LPTMR\_CSR\_TMS\_MASK})) & ( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___l_p_t_m_r___register___masks_ga13b5dd6085ca2a8cf0f06550b7557b6b}{LPTMR\_CSR\_TCF\_MASK}))))) | ( \(\backslash\)
+      (uint32\_t)(Source))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Selects timer mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Source} & New value of the source. Use constants from group \char`\"{}\+Timer mode
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a1e8bb7ce24149a9c485c2a27a7f7bc72}{LPTMR\_PDD\_SetTimerMode}(<peripheral>\_BASE\_PTR,
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a89d804e586acb02e4ec7721d13a8a085}{LPTMR\_PDD\_SOURCE\_INTERNAL});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a64c2527c9e24bbfb724ceca1b7f1f9f9}\label{_l_p_t_m_r___p_d_d_8h_a64c2527c9e24bbfb724ceca1b7f1f9f9}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T32\+K\+HZ@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T32\+K\+HZ}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T32\+K\+HZ@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T32\+K\+HZ}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T32\+K\+HZ}{LPTMR\_PDD\_SOURCE\_EXT32KHZ}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T32\+K\+HZ~0x2U}
+
+External 32 k\+Hz clock \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a17c9c803b28f6267d6566b8ed1bc0cb3}\label{_l_p_t_m_r___p_d_d_8h_a17c9c803b28f6267d6566b8ed1bc0cb3}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+E\+R\+N\+AL@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+E\+R\+N\+AL}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+E\+R\+N\+AL@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+E\+R\+N\+AL}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+E\+R\+N\+AL}{LPTMR\_PDD\_SOURCE\_EXTERNAL}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+E\+R\+N\+AL~\hyperlink{group___l_p_t_m_r___register___masks_ga57ee593a57d844d7bb4b87c127765558}{L\+P\+T\+M\+R\+\_\+\+C\+S\+R\+\_\+\+T\+M\+S\+\_\+\+M\+A\+SK}}
+
+External \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_aff8b828fd759314488b337eaf51f81bf}\label{_l_p_t_m_r___p_d_d_8h_aff8b828fd759314488b337eaf51f81bf}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+R\+EF@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+R\+EF}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+R\+EF@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+R\+EF}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+R\+EF}{LPTMR\_PDD\_SOURCE\_EXTREF}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+E\+X\+T\+R\+EF~0x3U}
+
+External reference clock \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a89d804e586acb02e4ec7721d13a8a085}\label{_l_p_t_m_r___p_d_d_8h_a89d804e586acb02e4ec7721d13a8a085}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+E\+R\+N\+AL@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+E\+R\+N\+AL}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+E\+R\+N\+AL@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+E\+R\+N\+AL}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+E\+R\+N\+AL}{LPTMR\_PDD\_SOURCE\_INTERNAL}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+E\+R\+N\+AL~0U}
+
+Internal \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a62479c349499253b2f7d5915efe36077}\label{_l_p_t_m_r___p_d_d_8h_a62479c349499253b2f7d5915efe36077}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+R\+EF@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+R\+EF}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+R\+EF@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+R\+EF}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+R\+EF}{LPTMR\_PDD\_SOURCE\_INTREF}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+I\+N\+T\+R\+EF~0U}
+
+Internal reference clock \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_afb43861bd3ef0de9c46dbb2fdc119e30}\label{_l_p_t_m_r___p_d_d_8h_afb43861bd3ef0de9c46dbb2fdc119e30}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+L\+P\+O1\+K\+HZ@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+L\+P\+O1\+K\+HZ}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+L\+P\+O1\+K\+HZ@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+L\+P\+O1\+K\+HZ}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+L\+P\+O1\+K\+HZ}{LPTMR\_PDD\_SOURCE\_LPO1KHZ}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+L\+P\+O1\+K\+HZ~0x1U}
+
+Low power oscillator clock \mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a1fa0a5121fa78647d7cf33d60e53ad3e}\label{_l_p_t_m_r___p_d_d_8h_a1fa0a5121fa78647d7cf33d60e53ad3e}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Compare\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Compare\+Reg}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Compare\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Compare\+Reg}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Compare\+Reg}{LPTMR\_PDD\_WriteCompareReg}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Compare\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CMR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the compare register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & New content of the compare register. This parameter is a 32-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+MR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a1fa0a5121fa78647d7cf33d60e53ad3e}{LPTMR\_PDD\_WriteCompareReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a956741ac2c623cfb13bb3ee711047b27}\label{_l_p_t_m_r___p_d_d_8h_a956741ac2c623cfb13bb3ee711047b27}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg}{LPTMR\_PDD\_WriteControlStatusReg}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Status\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_CSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the control status register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & New content of the control status register. This parameter is a 32-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+C\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a956741ac2c623cfb13bb3ee711047b27}{LPTMR\_PDD\_WriteControlStatusReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_l_p_t_m_r___p_d_d_8h_a9f57a23177efc763d74a29f42d569ff9}\label{_l_p_t_m_r___p_d_d_8h_a9f57a23177efc763d74a29f42d569ff9}} 
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Prescale\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Prescale\+Reg}}
+\index{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Prescale\+Reg@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Prescale\+Reg}!L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h@{L\+P\+T\+M\+R\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Prescale\+Reg}{LPTMR\_PDD\_WritePrescaleReg}}
+{\footnotesize\ttfamily \#define L\+P\+T\+M\+R\+\_\+\+P\+D\+D\+\_\+\+Write\+Prescale\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    LPTMR\_PSR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the prescale register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & New content of the prescale register. This parameter is a 32-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+P\+T\+M\+R0\+\_\+\+P\+SR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_l_p_t_m_r___p_d_d_8h_a9f57a23177efc763d74a29f42d569ff9}{LPTMR\_PDD\_WritePrescaleReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}

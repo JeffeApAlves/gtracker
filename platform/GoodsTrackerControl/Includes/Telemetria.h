@@ -14,7 +14,7 @@
 
 typedef struct{
 
-	DataGPS			GPS;
+	GPS			GPS;
 	Tank			Tank;
 	Accelerometer	Accelerometer;
 

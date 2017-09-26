@@ -1,0 +1,260 @@
+\hypertarget{application_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/application.h File Reference}
+\label{application_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/application.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/application.\+h}}
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Communication\+Frame.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Frame.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Telemetria.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}protocol.\+h\char`\"{}}\newline
+Include dependency graph for application.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{application_8h_a63820b99f699eae970477ea04d4a3ced}{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+G\+PS}~0x01
+\item 
+\#define \hyperlink{application_8h_a669e97e302923c873eb39b19c444bbe0}{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+AD}~0x02
+\item 
+\#define \hyperlink{application_8h_aaa54a79aec4090b2a5c0ba491ee6454e}{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+A\+C\+CE}~0x04
+\item 
+\#define \hyperlink{application_8h_a0080120b265731ded7ecd4aa9c0cf2f7}{B\+I\+T\+\_\+\+R\+X\+\_\+\+F\+R\+A\+ME}~0x08
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec}($\ast$ \hyperlink{application_8h_a8dbc155a71cc7fc130c28deddba08f64}{p\+Call\+Back}) (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{application_8h_ae975483a053cd084e7de7c30dc3f38b6}{L\+E\+DS} \{ \hyperlink{application_8h_ae975483a053cd084e7de7c30dc3f38b6a0ad916c7f80666dc88f6b5b22a72e742}{L\+E\+D\+\_\+\+G\+R\+E\+EN} =0, 
+\hyperlink{application_8h_ae975483a053cd084e7de7c30dc3f38b6ad80f13022b6d309268fadc7b1da89cb9}{L\+E\+D\+\_\+\+R\+ED} =1, 
+\hyperlink{application_8h_ae975483a053cd084e7de7c30dc3f38b6aa67c57c0ff22a2772cb6a5751a3327bf}{L\+E\+D\+\_\+\+B\+L\+UE} =2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8h_a19d536bb6b81225ea969943fa7cdb187}{on\+Analog} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8h_a26e34f1e9f250c3bce87c46788f6e842}{on\+L\+ED} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8h_a9d2529ee67bc957ed13c989fb4a2b5bd}{on\+P\+WM} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8h_a26d4948f2a5beb423e8a12d900fac4ba}{on\+Touch} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8h_aa8989982343862b556b7f9c74c714184}{on\+Accel} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8h_ae7b76a5462b43b54354bcde387ef474e}{on\+Telemetry} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8h_a1142c813402b7b27e9c98a1d7b6bdad9}{on\+Lock} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+void \hyperlink{application_8h_a4e7244df7e2772f5d59bac3466d65cba}{exec\+Error} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+void \hyperlink{application_8h_add3190cf715f513666f4be42874d91e2}{app\+\_\+init} (void)
+\item 
+void \hyperlink{application_8h_a41062f6bcdd666c901673c4a6d60f64d}{decoder\+Lock\+Pay\+Load} (\hyperlink{struct_pay_load}{Pay\+Load} $\ast$payload)
+\item 
+void \hyperlink{application_8h_a7dc5bd6d3a807b672e2e28d4115aa17d}{exec\+C\+MD} (uint32\+\_\+t ul\+Notified\+Value)
+\item 
+void \hyperlink{application_8h_a2c8ccd0dabb95641e2c5c64c0e50363a}{callback\+\_\+task} (void)
+\item 
+\hyperlink{application_8h_a8dbc155a71cc7fc130c28deddba08f64}{p\+Call\+Back} \hyperlink{application_8h_a0d546d65b742e65f538ab67edb9bf000}{get\+Call\+Back} (\hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource} r)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} \hyperlink{application_8h_af2a922b939b7c0e4d311a4ffda60cd6b}{x\+Handle\+Call\+Back\+Task}
+\item 
+\hyperlink{struct_telemetria}{Telemetria} \hyperlink{application_8h_abdc819d236ba910833b4c7885fe29766}{telemetria}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{application_8h_a0080120b265731ded7ecd4aa9c0cf2f7}\label{application_8h_a0080120b265731ded7ecd4aa9c0cf2f7}} 
+\index{application.\+h@{application.\+h}!B\+I\+T\+\_\+\+R\+X\+\_\+\+F\+R\+A\+ME@{B\+I\+T\+\_\+\+R\+X\+\_\+\+F\+R\+A\+ME}}
+\index{B\+I\+T\+\_\+\+R\+X\+\_\+\+F\+R\+A\+ME@{B\+I\+T\+\_\+\+R\+X\+\_\+\+F\+R\+A\+ME}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+R\+X\+\_\+\+F\+R\+A\+ME}{BIT\_RX\_FRAME}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+R\+X\+\_\+\+F\+R\+A\+ME~0x08}
+
+\mbox{\Hypertarget{application_8h_aaa54a79aec4090b2a5c0ba491ee6454e}\label{application_8h_aaa54a79aec4090b2a5c0ba491ee6454e}} 
+\index{application.\+h@{application.\+h}!B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+A\+C\+CE@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+A\+C\+CE}}
+\index{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+A\+C\+CE@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+A\+C\+CE}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+A\+C\+CE}{BIT\_UPDATE\_ACCE}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+A\+C\+CE~0x04}
+
+\mbox{\Hypertarget{application_8h_a669e97e302923c873eb39b19c444bbe0}\label{application_8h_a669e97e302923c873eb39b19c444bbe0}} 
+\index{application.\+h@{application.\+h}!B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+AD@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+AD}}
+\index{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+AD@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+AD}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+AD}{BIT\_UPDATE\_AD}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+AD~0x02}
+
+\mbox{\Hypertarget{application_8h_a63820b99f699eae970477ea04d4a3ced}\label{application_8h_a63820b99f699eae970477ea04d4a3ced}} 
+\index{application.\+h@{application.\+h}!B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+G\+PS@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+G\+PS}}
+\index{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+G\+PS@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+G\+PS}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+G\+PS}{BIT\_UPDATE\_GPS}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+G\+PS~0x01}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{application_8h_a8dbc155a71cc7fc130c28deddba08f64}\label{application_8h_a8dbc155a71cc7fc130c28deddba08f64}} 
+\index{application.\+h@{application.\+h}!p\+Call\+Back@{p\+Call\+Back}}
+\index{p\+Call\+Back@{p\+Call\+Back}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{p\+Call\+Back}{pCallBack}}
+{\footnotesize\ttfamily typedef \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec}($\ast$ p\+Call\+Back) (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$)}
+
+Ponteiro para as call backs 
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{application_8h_ae975483a053cd084e7de7c30dc3f38b6}\label{application_8h_ae975483a053cd084e7de7c30dc3f38b6}} 
+\index{application.\+h@{application.\+h}!L\+E\+DS@{L\+E\+DS}}
+\index{L\+E\+DS@{L\+E\+DS}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{L\+E\+DS}{LEDS}}
+{\footnotesize\ttfamily enum \hyperlink{application_8h_ae975483a053cd084e7de7c30dc3f38b6}{L\+E\+DS}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+D\+\_\+\+G\+R\+E\+EN@{L\+E\+D\+\_\+\+G\+R\+E\+EN}!application.\+h@{application.\+h}}\index{application.\+h@{application.\+h}!L\+E\+D\+\_\+\+G\+R\+E\+EN@{L\+E\+D\+\_\+\+G\+R\+E\+EN}}}\mbox{\Hypertarget{application_8h_ae975483a053cd084e7de7c30dc3f38b6a0ad916c7f80666dc88f6b5b22a72e742}\label{application_8h_ae975483a053cd084e7de7c30dc3f38b6a0ad916c7f80666dc88f6b5b22a72e742}} 
+L\+E\+D\+\_\+\+G\+R\+E\+EN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+D\+\_\+\+R\+ED@{L\+E\+D\+\_\+\+R\+ED}!application.\+h@{application.\+h}}\index{application.\+h@{application.\+h}!L\+E\+D\+\_\+\+R\+ED@{L\+E\+D\+\_\+\+R\+ED}}}\mbox{\Hypertarget{application_8h_ae975483a053cd084e7de7c30dc3f38b6ad80f13022b6d309268fadc7b1da89cb9}\label{application_8h_ae975483a053cd084e7de7c30dc3f38b6ad80f13022b6d309268fadc7b1da89cb9}} 
+L\+E\+D\+\_\+\+R\+ED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+D\+\_\+\+B\+L\+UE@{L\+E\+D\+\_\+\+B\+L\+UE}!application.\+h@{application.\+h}}\index{application.\+h@{application.\+h}!L\+E\+D\+\_\+\+B\+L\+UE@{L\+E\+D\+\_\+\+B\+L\+UE}}}\mbox{\Hypertarget{application_8h_ae975483a053cd084e7de7c30dc3f38b6aa67c57c0ff22a2772cb6a5751a3327bf}\label{application_8h_ae975483a053cd084e7de7c30dc3f38b6aa67c57c0ff22a2772cb6a5751a3327bf}} 
+L\+E\+D\+\_\+\+B\+L\+UE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{application_8h_add3190cf715f513666f4be42874d91e2}\label{application_8h_add3190cf715f513666f4be42874d91e2}} 
+\index{application.\+h@{application.\+h}!app\+\_\+init@{app\+\_\+init}}
+\index{app\+\_\+init@{app\+\_\+init}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{app\+\_\+init()}{app\_init()}}
+{\footnotesize\ttfamily void app\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{application_8h_a2c8ccd0dabb95641e2c5c64c0e50363a}\label{application_8h_a2c8ccd0dabb95641e2c5c64c0e50363a}} 
+\index{application.\+h@{application.\+h}!callback\+\_\+task@{callback\+\_\+task}}
+\index{callback\+\_\+task@{callback\+\_\+task}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{callback\+\_\+task()}{callback\_task()}}
+{\footnotesize\ttfamily void callback\+\_\+task (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{application_8h_a41062f6bcdd666c901673c4a6d60f64d}\label{application_8h_a41062f6bcdd666c901673c4a6d60f64d}} 
+\index{application.\+h@{application.\+h}!decoder\+Lock\+Pay\+Load@{decoder\+Lock\+Pay\+Load}}
+\index{decoder\+Lock\+Pay\+Load@{decoder\+Lock\+Pay\+Load}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{decoder\+Lock\+Pay\+Load()}{decoderLockPayLoad()}}
+{\footnotesize\ttfamily void decoder\+Lock\+Pay\+Load (\begin{DoxyParamCaption}\item[{\hyperlink{struct_pay_load}{Pay\+Load} $\ast$}]{payload }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{application_8h_a7dc5bd6d3a807b672e2e28d4115aa17d}\label{application_8h_a7dc5bd6d3a807b672e2e28d4115aa17d}} 
+\index{application.\+h@{application.\+h}!exec\+C\+MD@{exec\+C\+MD}}
+\index{exec\+C\+MD@{exec\+C\+MD}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{exec\+C\+M\+D()}{execCMD()}}
+{\footnotesize\ttfamily void exec\+C\+MD (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Notified\+Value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{application_8h_a4e7244df7e2772f5d59bac3466d65cba}\label{application_8h_a4e7244df7e2772f5d59bac3466d65cba}} 
+\index{application.\+h@{application.\+h}!exec\+Error@{exec\+Error}}
+\index{exec\+Error@{exec\+Error}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{exec\+Error()}{execError()}}
+{\footnotesize\ttfamily void exec\+Error (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{application_8h_a0d546d65b742e65f538ab67edb9bf000}\label{application_8h_a0d546d65b742e65f538ab67edb9bf000}} 
+\index{application.\+h@{application.\+h}!get\+Call\+Back@{get\+Call\+Back}}
+\index{get\+Call\+Back@{get\+Call\+Back}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{get\+Call\+Back()}{getCallBack()}}
+{\footnotesize\ttfamily \hyperlink{application_8h_a8dbc155a71cc7fc130c28deddba08f64}{p\+Call\+Back} get\+Call\+Back (\begin{DoxyParamCaption}\item[{\hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource}}]{r }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{application_8h_aa8989982343862b556b7f9c74c714184}\label{application_8h_aa8989982343862b556b7f9c74c714184}} 
+\index{application.\+h@{application.\+h}!on\+Accel@{on\+Accel}}
+\index{on\+Accel@{on\+Accel}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{on\+Accel()}{onAccel()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+Accel (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{application_8h_a19d536bb6b81225ea969943fa7cdb187}\label{application_8h_a19d536bb6b81225ea969943fa7cdb187}} 
+\index{application.\+h@{application.\+h}!on\+Analog@{on\+Analog}}
+\index{on\+Analog@{on\+Analog}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{on\+Analog()}{onAnalog()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+Analog (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{application_8h_a26e34f1e9f250c3bce87c46788f6e842}\label{application_8h_a26e34f1e9f250c3bce87c46788f6e842}} 
+\index{application.\+h@{application.\+h}!on\+L\+ED@{on\+L\+ED}}
+\index{on\+L\+ED@{on\+L\+ED}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{on\+L\+E\+D()}{onLED()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+L\+ED (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{application_8h_a1142c813402b7b27e9c98a1d7b6bdad9}\label{application_8h_a1142c813402b7b27e9c98a1d7b6bdad9}} 
+\index{application.\+h@{application.\+h}!on\+Lock@{on\+Lock}}
+\index{on\+Lock@{on\+Lock}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{on\+Lock()}{onLock()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+Lock (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{application_8h_a9d2529ee67bc957ed13c989fb4a2b5bd}\label{application_8h_a9d2529ee67bc957ed13c989fb4a2b5bd}} 
+\index{application.\+h@{application.\+h}!on\+P\+WM@{on\+P\+WM}}
+\index{on\+P\+WM@{on\+P\+WM}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{on\+P\+W\+M()}{onPWM()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+P\+WM (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{application_8h_ae7b76a5462b43b54354bcde387ef474e}\label{application_8h_ae7b76a5462b43b54354bcde387ef474e}} 
+\index{application.\+h@{application.\+h}!on\+Telemetry@{on\+Telemetry}}
+\index{on\+Telemetry@{on\+Telemetry}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{on\+Telemetry()}{onTelemetry()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+Telemetry (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{application_8h_a26d4948f2a5beb423e8a12d900fac4ba}\label{application_8h_a26d4948f2a5beb423e8a12d900fac4ba}} 
+\index{application.\+h@{application.\+h}!on\+Touch@{on\+Touch}}
+\index{on\+Touch@{on\+Touch}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{on\+Touch()}{onTouch()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+Touch (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 17
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{application_8h_abdc819d236ba910833b4c7885fe29766}\label{application_8h_abdc819d236ba910833b4c7885fe29766}} 
+\index{application.\+h@{application.\+h}!telemetria@{telemetria}}
+\index{telemetria@{telemetria}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{telemetria}{telemetria}}
+{\footnotesize\ttfamily \hyperlink{struct_telemetria}{Telemetria} telemetria}
+
+\mbox{\Hypertarget{application_8h_af2a922b939b7c0e4d311a4ffda60cd6b}\label{application_8h_af2a922b939b7c0e4d311a4ffda60cd6b}} 
+\index{application.\+h@{application.\+h}!x\+Handle\+Call\+Back\+Task@{x\+Handle\+Call\+Back\+Task}}
+\index{x\+Handle\+Call\+Back\+Task@{x\+Handle\+Call\+Back\+Task}!application.\+h@{application.\+h}}
+\subsubsection{\texorpdfstring{x\+Handle\+Call\+Back\+Task}{xHandleCallBackTask}}
+{\footnotesize\ttfamily \hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} x\+Handle\+Call\+Back\+Task}
+

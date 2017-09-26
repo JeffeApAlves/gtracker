@@ -1,0 +1,802 @@
+\hypertarget{_t_s_s___status_codes_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+T\+S\+S/\+T\+S\+S\+\_\+\+Status\+Codes.h File Reference}
+\label{_t_s_s___status_codes_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+T\+S\+S/\+T\+S\+S\+\_\+\+Status\+Codes.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+T\+S\+S/\+T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+
+
+\hyperlink{struct_header}{Header} file that defines the Return Status Codes used by the T\+SS Library.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a978e2e02673283c4ea167110227c201e}{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}~0u
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_acd9a1f79b66b4c1a02cda5bc9b4e1e7b}{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}~1u
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a0d16de29c8c5cf8cf26c5a1cb143e589}{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT}~2u
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a85e95bf7aa1f3466b4e6e4a106241de4}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}~0x00u   /$\ast$ Command for Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a761744c49014358d83a76d1135641dad}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+S\+T\+A\+RT}~0x01u   /$\ast$ Command for Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_aeb8f864eb7840de333d1f6fd5f556eac}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS}~0x02u   /$\ast$ Command for Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a7b6f946e089fc0123aea97a2d39f46b4}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+IB}~0x03u   /$\ast$ Command for Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a637f643cc3a0d80c8d5b49b5f3ec437b}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE}~0x04u   /$\ast$ Command for Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_adff0e76574b86fd5f31bce3faed48ab5}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE}~0x05u   /$\ast$ Command for Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a14f93a2458c2c58cce8f5525f9d9e1f7}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}~0x00u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_af8c8129faf26cd16c0282e2f7f74179e}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}~0x01u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a47e2d7984cb9e211277c229d058a9512}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED}~0x02u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_aaa7849dbe6f5f096b0e54d64909c4048}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+L\+O\+C\+AP}~0x03u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ab4833fb4200524264f061e1c2ddf6109}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+H\+I\+C\+AP}~0x04u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_af7097dfeaf6c62b715ccbfebc83ca18f}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+P\+E\+R\+I\+OD}~0x05u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a2cfaf70ed345ffe1158be15fc49bfb84}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+H\+A\+R\+G\+E\+\_\+\+T\+I\+M\+E\+O\+UT}~0x06u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a76c819da781866186976574fd5939e34}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP}~0x07u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a164c039adde5479e81c798fbc3c55794}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+A\+U\+T\+O\+T\+R\+G\+\_\+\+P\+E\+R\+I\+OD}~\hyperlink{_t_s_s___status_codes_8h_af7097dfeaf6c62b715ccbfebc83ca18f}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+P\+E\+R\+I\+OD}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_abf7294dcf8dbea01ebb22344f2d93684}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}~0x00u   /$\ast$ Command for Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ae32cac343ca549b9ee0466e521d6636a}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+M\+O\+D\+U\+L\+ES}~0x01u   /$\ast$ Command for Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ada4bf6575ad8b27801f8b1b0d054dfad}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}~0x02u   /$\ast$ Command for Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_afc186e8ba258f79e44fac166209c97b5}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+T\+\_\+\+N\+S\+A\+M\+P\+L\+ES}~0x03u   /$\ast$ Command for Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a2df3d13c7f1b7ad3e4b751b4e2e9ebe4}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+T\+R\+I\+G\+G\+ER}~0x04u   /$\ast$ Command for Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a310f4bcf9e5ff2c7940d5d17cfa90bb8}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER}~0x05u   /$\ast$ Command for Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_afa156831cf63a3171745276c8cc102e8}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+L\+O\+W\+P\+O\+W\+ER}~0x06u   /$\ast$ Command for Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a3fc2aeac6ec476b4ab878031a55e786f}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+O\+T\+O\+\_\+\+L\+O\+W\+P\+O\+W\+ER}~0x07u   /$\ast$ Command for Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a1de7ee8a7165cce471c53c56a5681682}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+TE}~0x08u   /$\ast$ Command for Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a394a326e2d205bc99f59680728d931f0}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}~0x00u   /$\ast$ Return values from Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ad0599003e042e1c9727c11f17e99eedf}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+ET}~0x01u   /$\ast$ Return values from Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a4791202d7582f53c1ae624895445ef6e}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+E\+L\+E\+C\+\_\+\+S\+ET}~0x02u   /$\ast$ Return values from Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a3afdf37bcaeaffc7a4689169822fb540}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET}~0x04u   /$\ast$ Return values from Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_aa77e123e162d212ca63e6583f8cb6550}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET}~0x08u   /$\ast$ Return values from Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_aea6be4e799efde26b6edce03d6613dff}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED}~0x10u   /$\ast$ Return values from Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a1f5e5b1696b82aa7d61ff410e7e526d6}{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+F\+A\+U\+LT}~0x20u   /$\ast$ Return values from Sensor\+Init function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a8e1ef4bbdd237543d594d20d4896b76d}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}~0x00u   /$\ast$ Command for Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a5b079fcc489084f7488c5d500a47933f}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS}~0x01u   /$\ast$ Command for Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_acc5c94b1da4eea4198294f9590f4a655}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+O\+U\+C\+H\+\_\+\+S\+T\+A\+T\+US}~0x02u   /$\ast$ Command for Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a5bf71eed7b0faf90d83ea079deff81a0}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+I\+D\+L\+E\+\_\+\+S\+C\+A\+N\+\_\+\+R\+A\+TE}~0x03u   /$\ast$ Command for Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a23c9363c844751d606ec3e328d2d1785}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+IT}~0x04u   /$\ast$ Command for Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_afd8511fcc0185be33bec82f0a4930bb1}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+S\+T\+A\+T\+US}~0x05u   /$\ast$ Command for Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a7a62d4a79355464ed668cd89ec4b366e}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+H\+R\+S\+H\+L\+D\+\_\+\+R\+A\+T\+IO}~0x06u   /$\ast$ Command for Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ae81de4c22418c7abf3dfb4cb1a4b0821}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}~0x00u   /$\ast$ Return values from Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_af9ddbdbdb62f7f0fca349b82f937d421}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+O\+U\+C\+H\+ED}~0x01u   /$\ast$ Return values from Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ad8458cfc1935e8928f5c1b71af31768f}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}~0x02u   /$\ast$ Return values from Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_abffc6a18aea9f9a24df1dbd957a15a32}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+B\+U\+SY}~0x03u   /$\ast$ Return values from Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a41cbb0e7fb6bddb888ae7639db1dc14a}{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+N\+A\+B\+L\+ED}~0x04u   /$\ast$ Return values from Decoder function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a24b9d4d8aecdd67bef5428b3f3fedd69}{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}~0x00u   /$\ast$ Return value from the Key\+Detector function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a948038900e755abfb279847fe1901c3d}{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}~0x01u   /$\ast$ Return value from the Key\+Detector function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a7f8bce842c37989de9dccd9e57252c7b}{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+L\+A\+R\+G\+E\+\_\+\+C\+AP}~0x02u   /$\ast$ Return value from the Key\+Detector function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_afe4fee60e64f6bcf0ff33fec1f7a7dc2}{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP}~0x04u   /$\ast$ Return value from the Key\+Detector function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_aa1d048de7b79325a3d1cd87b8fd3f5a5}{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+V\+AL}~0x08u   /$\ast$ Return value from the Key\+Detector function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_adde2a46aaab1b48d8eadbc8b2c96b389}{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+B\+U\+SY}~0x10u   /$\ast$ Return value from the Key\+Detector function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a7c58eacb25bf45ced97d77440f185d4b}{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+W\+A\+IT}~0x20u   /$\ast$ Return value from the Key\+Detector function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a6e8af4e7e4ca31154fd6d24ae81f2410}{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+W\+A\+IT}~0x40u   /$\ast$ Return value from the Key\+Detector function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ac5d32f669c8b4bda0b7b3b3b13c53b84}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}~0x11u   /$\ast$ Return values from the Key\+Pad\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a8a899f6485bf7cf374739b96efefb7cd}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~0x12u   /$\ast$ Return values from the Key\+Pad\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a203272fc4f4ad0ac657fa9602068b31b}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~0x13u   /$\ast$ Return values from the Key\+Pad\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a85b25a90598cd255c413a4b59804ff27}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}~0x14u   /$\ast$ Return values from the Key\+Pad\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a0b0164611d2496274628851003063fd8}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}~0x15u   /$\ast$ Return values from the Key\+Pad\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a51a5e7d9ef3e622754ec0fa71c23238f}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}~0x21u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a6b5e3fc451e78566fcceffd3ea1aeeac}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~0x22u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ab190b020524f9ac90cd3acff46fe9d54}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~0x23u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a6e1e5d736be64dfdadacd2ca5dceb851}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}~0x24u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a7e63d9c20af55e9fe39139d5d48688a8}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}~0x25u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a4bc41ec28665a98f97222812bd12cb3b}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}~\hyperlink{_t_s_s___status_codes_8h_a51a5e7d9ef3e622754ec0fa71c23238f}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ac1c74194cadf257f77ee0c12575424fd}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~\hyperlink{_t_s_s___status_codes_8h_a6b5e3fc451e78566fcceffd3ea1aeeac}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_af26449df82c3e7e39f5ed9df3d3fc01c}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~\hyperlink{_t_s_s___status_codes_8h_ab190b020524f9ac90cd3acff46fe9d54}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a7bf3a4e63d9ce08153fee3e33e16648d}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}~\hyperlink{_t_s_s___status_codes_8h_a6e1e5d736be64dfdadacd2ca5dceb851}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a639bc3791dd1808df719b3ecaaef8ebe}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}~\hyperlink{_t_s_s___status_codes_8h_a7e63d9c20af55e9fe39139d5d48688a8}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a47b80f12f65f8882b189600d524002d8}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}~0x31u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a5b502703c449b1a90e679a0bbd8032b9}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~0x32u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a81211ba6dee9f4f0af3466d45360bbfb}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~0x33u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a73a827d8a1ffea1c97d0f79670ab82e6}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}~0x34u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a2b82e273ea0c104f667114c43a4cbfe8}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}~0x35u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a4b6a6806002c255972d1d9e9e2459d25}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}~0x36u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_aa032b5626b4cac50958fdb177e730f02}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}~\hyperlink{_t_s_s___status_codes_8h_a47b80f12f65f8882b189600d524002d8}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_aa6ec7b39a76b24233c25f82f064d799b}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~\hyperlink{_t_s_s___status_codes_8h_a5b502703c449b1a90e679a0bbd8032b9}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ae3c3ffe613dfb2a479a02674fb665b3b}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~\hyperlink{_t_s_s___status_codes_8h_a81211ba6dee9f4f0af3466d45360bbfb}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a37285ef50f2e75d7479ba437c634e1b9}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}~\hyperlink{_t_s_s___status_codes_8h_a73a827d8a1ffea1c97d0f79670ab82e6}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a751f89580626ea1da7b57012759b08e1}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}~\hyperlink{_t_s_s___status_codes_8h_a2b82e273ea0c104f667114c43a4cbfe8}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a64058be59ad42fc14c65f18ef224fe34}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}~\hyperlink{_t_s_s___status_codes_8h_a4b6a6806002c255972d1d9e9e2459d25}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_aff9c3f61c685ac2dfbfb7e011c66768b}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}~0x41u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a9207ef2db4813315d35837e44dfc334f}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~0x42u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a561e71adc8697f8dbfbf39b6b28892b4}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~0x43u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_aac9490b010beb81d233a8cbeb211cc6f}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}~0x44u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_acddcb71145b6254f8edef63849eb967c}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}~0x45u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_abbdaa4ada3eb6b65eb85f3e301943a58}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}~0x46u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a46817d56a7032aee010057aed7e0ae9d}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}~0x01u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a648e5b897de3fb4e7d37af55f5e34b66}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~0x02u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ad1cb640d0571f15f318485e098dfcfea}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}~0x03u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a06f467a88e082f4e526bb6c549442ad7}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}~0x04u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_aae50d86b69c6a8522fc5d63fa7512ad1}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA}~0x05u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a783685b1b6f25529d15e20581f4cc224}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+EL}~0x06u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_ac1320b72e00d07cf27774beea761bf8c}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA}~0x07u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_af4b612e356d9513fc3054c154a149580}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+C\+A\+L\+L\+B\+A\+C\+K\+\_\+\+NA}~0x08u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a68c6b44eac25fe3a254561ac52d25120}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT}~0x09u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/
+\item 
+\#define \hyperlink{_t_s_s___status_codes_8h_a2541cfa74d7984e6224ab06d379608e7}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+S\+H\+I\+E\+L\+D\+\_\+\+NA}~0x0\+Au   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{struct_header}{Header} file that defines the Return Status Codes used by the T\+SS Library. 
+
+\begin{DoxyVersion}{Version}
+1.\+0.\+32.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+Sep-\/12-\/2012
+\end{DoxyDate}
+These Return Status Codes are used by the User Application Level and also internally in the Library 
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a8e1ef4bbdd237543d594d20d4896b76d}\label{_t_s_s___status_codes_8h_a8e1ef4bbdd237543d594d20d4896b76d}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}{TSS\_DECODER\_COMMAND\_DUMMY}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY~0x00u   /$\ast$ Command for Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_afd8511fcc0185be33bec82f0a4930bb1}\label{_t_s_s___status_codes_8h_afd8511fcc0185be33bec82f0a4930bb1}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+S\+T\+A\+T\+US@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+S\+T\+A\+T\+US}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+S\+T\+A\+T\+US@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+S\+T\+A\+T\+US}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+S\+T\+A\+T\+US}{TSS\_DECODER\_COMMAND\_GET\_ENABLE\_STATUS}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+S\+T\+A\+T\+US~0x05u   /$\ast$ Command for Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a5bf71eed7b0faf90d83ea079deff81a0}\label{_t_s_s___status_codes_8h_a5bf71eed7b0faf90d83ea079deff81a0}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+I\+D\+L\+E\+\_\+\+S\+C\+A\+N\+\_\+\+R\+A\+TE@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+I\+D\+L\+E\+\_\+\+S\+C\+A\+N\+\_\+\+R\+A\+TE}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+I\+D\+L\+E\+\_\+\+S\+C\+A\+N\+\_\+\+R\+A\+TE@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+I\+D\+L\+E\+\_\+\+S\+C\+A\+N\+\_\+\+R\+A\+TE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+I\+D\+L\+E\+\_\+\+S\+C\+A\+N\+\_\+\+R\+A\+TE}{TSS\_DECODER\_COMMAND\_GET\_IDLE\_SCAN\_RATE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+I\+D\+L\+E\+\_\+\+S\+C\+A\+N\+\_\+\+R\+A\+TE~0x03u   /$\ast$ Command for Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a7a62d4a79355464ed668cd89ec4b366e}\label{_t_s_s___status_codes_8h_a7a62d4a79355464ed668cd89ec4b366e}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+H\+R\+S\+H\+L\+D\+\_\+\+R\+A\+T\+IO@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+H\+R\+S\+H\+L\+D\+\_\+\+R\+A\+T\+IO}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+H\+R\+S\+H\+L\+D\+\_\+\+R\+A\+T\+IO@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+H\+R\+S\+H\+L\+D\+\_\+\+R\+A\+T\+IO}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+H\+R\+S\+H\+L\+D\+\_\+\+R\+A\+T\+IO}{TSS\_DECODER\_COMMAND\_GET\_THRSHLD\_RATIO}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+H\+R\+S\+H\+L\+D\+\_\+\+R\+A\+T\+IO~0x06u   /$\ast$ Command for Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_acc5c94b1da4eea4198294f9590f4a655}\label{_t_s_s___status_codes_8h_acc5c94b1da4eea4198294f9590f4a655}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+O\+U\+C\+H\+\_\+\+S\+T\+A\+T\+US@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+O\+U\+C\+H\+\_\+\+S\+T\+A\+T\+US}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+O\+U\+C\+H\+\_\+\+S\+T\+A\+T\+US@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+O\+U\+C\+H\+\_\+\+S\+T\+A\+T\+US}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+O\+U\+C\+H\+\_\+\+S\+T\+A\+T\+US}{TSS\_DECODER\_COMMAND\_GET\_TOUCH\_STATUS}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+T\+O\+U\+C\+H\+\_\+\+S\+T\+A\+T\+US~0x02u   /$\ast$ Command for Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a23c9363c844751d606ec3e328d2d1785}\label{_t_s_s___status_codes_8h_a23c9363c844751d606ec3e328d2d1785}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+IT@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+IT}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+IT@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+IT}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+IT}{TSS\_DECODER\_COMMAND\_INIT}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+IT~0x04u   /$\ast$ Command for Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a5b079fcc489084f7488c5d500a47933f}\label{_t_s_s___status_codes_8h_a5b079fcc489084f7488c5d500a47933f}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS}{TSS\_DECODER\_COMMAND\_PROCESS}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS~0x01u   /$\ast$ Command for Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ad8458cfc1935e8928f5c1b71af31768f}\label{_t_s_s___status_codes_8h_ad8458cfc1935e8928f5c1b71af31768f}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}{TSS\_DECODER\_ERROR\_ILLEGAL\_CONTROL\_TYPE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE~0x02u   /$\ast$ Return values from Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_abffc6a18aea9f9a24df1dbd957a15a32}\label{_t_s_s___status_codes_8h_abffc6a18aea9f9a24df1dbd957a15a32}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+B\+U\+SY@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+B\+U\+SY}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+B\+U\+SY@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+B\+U\+SY}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+B\+U\+SY}{TSS\_DECODER\_STATUS\_BUSY}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+B\+U\+SY~0x03u   /$\ast$ Return values from Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a41cbb0e7fb6bddb888ae7639db1dc14a}\label{_t_s_s___status_codes_8h_a41cbb0e7fb6bddb888ae7639db1dc14a}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+N\+A\+B\+L\+ED@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+N\+A\+B\+L\+ED@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+N\+A\+B\+L\+ED}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+N\+A\+B\+L\+ED}{TSS\_DECODER\_STATUS\_ENABLED}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+N\+A\+B\+L\+ED~0x04u   /$\ast$ Return values from Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ae81de4c22418c7abf3dfb4cb1a4b0821}\label{_t_s_s___status_codes_8h_ae81de4c22418c7abf3dfb4cb1a4b0821}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}{TSS\_DECODER\_STATUS\_OK}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK~0x00u   /$\ast$ Return values from Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_af9ddbdbdb62f7f0fca349b82f937d421}\label{_t_s_s___status_codes_8h_af9ddbdbdb62f7f0fca349b82f937d421}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+O\+U\+C\+H\+ED@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+O\+U\+C\+H\+ED}}
+\index{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+O\+U\+C\+H\+ED@{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+O\+U\+C\+H\+ED}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+O\+U\+C\+H\+ED}{TSS\_DECODER\_STATUS\_TOUCHED}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+O\+U\+C\+H\+ED~0x01u   /$\ast$ Return values from Decoder function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a64058be59ad42fc14c65f18ef224fe34}\label{_t_s_s___status_codes_8h_a64058be59ad42fc14c65f18ef224fe34}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}{TSS\_ERROR\_AROTARY\_ILLEGAL\_CONTROL\_TYPE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE~\hyperlink{_t_s_s___status_codes_8h_a4b6a6806002c255972d1d9e9e2459d25}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_aa6ec7b39a76b24233c25f82f064d799b}\label{_t_s_s___status_codes_8h_aa6ec7b39a76b24233c25f82f064d799b}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_AROTARY\_ILLEGAL\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~\hyperlink{_t_s_s___status_codes_8h_a5b502703c449b1a90e679a0bbd8032b9}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a37285ef50f2e75d7479ba437c634e1b9}\label{_t_s_s___status_codes_8h_a37285ef50f2e75d7479ba437c634e1b9}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}{TSS\_ERROR\_AROTARY\_ILLEGAL\_VALUE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE~\hyperlink{_t_s_s___status_codes_8h_a73a827d8a1ffea1c97d0f79670ab82e6}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_aa032b5626b4cac50958fdb177e730f02}\label{_t_s_s___status_codes_8h_aa032b5626b4cac50958fdb177e730f02}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}{TSS\_ERROR\_AROTARY\_NOT\_IDLE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE~\hyperlink{_t_s_s___status_codes_8h_a47b80f12f65f8882b189600d524002d8}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a751f89580626ea1da7b57012759b08e1}\label{_t_s_s___status_codes_8h_a751f89580626ea1da7b57012759b08e1}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}{TSS\_ERROR\_AROTARY\_OUT\_OF\_RANGE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE~\hyperlink{_t_s_s___status_codes_8h_a2b82e273ea0c104f667114c43a4cbfe8}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ae3c3ffe613dfb2a479a02674fb665b3b}\label{_t_s_s___status_codes_8h_ae3c3ffe613dfb2a479a02674fb665b3b}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_AROTARY\_READ\_ONLY\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~\hyperlink{_t_s_s___status_codes_8h_a81211ba6dee9f4f0af3466d45360bbfb}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a73a827d8a1ffea1c97d0f79670ab82e6}\label{_t_s_s___status_codes_8h_a73a827d8a1ffea1c97d0f79670ab82e6}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}{TSS\_ERROR\_ASLIDER\_ILEGAL\_VALUE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE~0x34u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a4b6a6806002c255972d1d9e9e2459d25}\label{_t_s_s___status_codes_8h_a4b6a6806002c255972d1d9e9e2459d25}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}{TSS\_ERROR\_ASLIDER\_ILLEGAL\_CONTROL\_TYPE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE~0x36u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a5b502703c449b1a90e679a0bbd8032b9}\label{_t_s_s___status_codes_8h_a5b502703c449b1a90e679a0bbd8032b9}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_ASLIDER\_ILLEGAL\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~0x32u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a47b80f12f65f8882b189600d524002d8}\label{_t_s_s___status_codes_8h_a47b80f12f65f8882b189600d524002d8}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}{TSS\_ERROR\_ASLIDER\_NOT\_IDLE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE~0x31u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a2b82e273ea0c104f667114c43a4cbfe8}\label{_t_s_s___status_codes_8h_a2b82e273ea0c104f667114c43a4cbfe8}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}{TSS\_ERROR\_ASLIDER\_OUT\_OF\_RANGE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE~0x35u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a81211ba6dee9f4f0af3466d45360bbfb}\label{_t_s_s___status_codes_8h_a81211ba6dee9f4f0af3466d45360bbfb}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_ASLIDER\_READ\_ONLY\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+A\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~0x33u   /$\ast$ Return values from the T\+S\+S\+\_\+\+A\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a648e5b897de3fb4e7d37af55f5e34b66}\label{_t_s_s___status_codes_8h_a648e5b897de3fb4e7d37af55f5e34b66}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_CONFSYS\_ILLEGAL\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~0x02u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a783685b1b6f25529d15e20581f4cc224}\label{_t_s_s___status_codes_8h_a783685b1b6f25529d15e20581f4cc224}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+EL@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+EL}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+EL@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+EL}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+EL}{TSS\_ERROR\_CONFSYS\_INCORRECT\_LOWPOWER\_EL}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+EL~0x06u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_aae50d86b69c6a8522fc5d63fa7512ad1}\label{_t_s_s___status_codes_8h_aae50d86b69c6a8522fc5d63fa7512ad1}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA}{TSS\_ERROR\_CONFSYS\_LOWPOWER\_SOURCE\_NA}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA~0x05u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a46817d56a7032aee010057aed7e0ae9d}\label{_t_s_s___status_codes_8h_a46817d56a7032aee010057aed7e0ae9d}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}{TSS\_ERROR\_CONFSYS\_NOT\_IDLE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE~0x01u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a06f467a88e082f4e526bb6c549442ad7}\label{_t_s_s___status_codes_8h_a06f467a88e082f4e526bb6c549442ad7}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}{TSS\_ERROR\_CONFSYS\_OUT\_OF\_RANGE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE~0x04u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_af4b612e356d9513fc3054c154a149580}\label{_t_s_s___status_codes_8h_af4b612e356d9513fc3054c154a149580}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+C\+A\+L\+L\+B\+A\+C\+K\+\_\+\+NA@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+C\+A\+L\+L\+B\+A\+C\+K\+\_\+\+NA}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+C\+A\+L\+L\+B\+A\+C\+K\+\_\+\+NA@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+C\+A\+L\+L\+B\+A\+C\+K\+\_\+\+NA}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+C\+A\+L\+L\+B\+A\+C\+K\+\_\+\+NA}{TSS\_ERROR\_CONFSYS\_PROXIMITY\_CALLBACK\_NA}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+C\+A\+L\+L\+B\+A\+C\+K\+\_\+\+NA~0x08u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ad1cb640d0571f15f318485e098dfcfea}\label{_t_s_s___status_codes_8h_ad1cb640d0571f15f318485e098dfcfea}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_CONFSYS\_READ\_ONLY\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~0x03u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a68c6b44eac25fe3a254561ac52d25120}\label{_t_s_s___status_codes_8h_a68c6b44eac25fe3a254561ac52d25120}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT}{TSS\_ERROR\_CONFSYS\_RECALIBRATION\_FAULT}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT~0x09u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a2541cfa74d7984e6224ab06d379608e7}\label{_t_s_s___status_codes_8h_a2541cfa74d7984e6224ab06d379608e7}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+S\+H\+I\+E\+L\+D\+\_\+\+NA@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+S\+H\+I\+E\+L\+D\+\_\+\+NA}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+S\+H\+I\+E\+L\+D\+\_\+\+NA@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+S\+H\+I\+E\+L\+D\+\_\+\+NA}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+S\+H\+I\+E\+L\+D\+\_\+\+NA}{TSS\_ERROR\_CONFSYS\_SHIELD\_NA}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+S\+H\+I\+E\+L\+D\+\_\+\+NA~0x0\+Au   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ac1320b72e00d07cf27774beea761bf8c}\label{_t_s_s___status_codes_8h_ac1320b72e00d07cf27774beea761bf8c}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA}{TSS\_ERROR\_CONFSYS\_TRIGGER\_SOURCE\_NA}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+O\+N\+F\+S\+Y\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+NA~0x07u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Set\+System\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a0b0164611d2496274628851003063fd8}\label{_t_s_s___status_codes_8h_a0b0164611d2496274628851003063fd8}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}{TSS\_ERROR\_KEYPAD\_ILLEGAL\_CONTROL\_TYPE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE~0x15u   /$\ast$ Return values from the Key\+Pad\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a8a899f6485bf7cf374739b96efefb7cd}\label{_t_s_s___status_codes_8h_a8a899f6485bf7cf374739b96efefb7cd}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_KEYPAD\_ILLEGAL\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~0x12u   /$\ast$ Return values from the Key\+Pad\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ac5d32f669c8b4bda0b7b3b3b13c53b84}\label{_t_s_s___status_codes_8h_ac5d32f669c8b4bda0b7b3b3b13c53b84}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}{TSS\_ERROR\_KEYPAD\_NOT\_IDLE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE~0x11u   /$\ast$ Return values from the Key\+Pad\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a85b25a90598cd255c413a4b59804ff27}\label{_t_s_s___status_codes_8h_a85b25a90598cd255c413a4b59804ff27}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}{TSS\_ERROR\_KEYPAD\_OUT\_OF\_RANGE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE~0x14u   /$\ast$ Return values from the Key\+Pad\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a203272fc4f4ad0ac657fa9602068b31b}\label{_t_s_s___status_codes_8h_a203272fc4f4ad0ac657fa9602068b31b}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_KEYPAD\_READ\_ONLY\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+K\+E\+Y\+P\+A\+D\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~0x13u   /$\ast$ Return values from the Key\+Pad\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_aac9490b010beb81d233a8cbeb211cc6f}\label{_t_s_s___status_codes_8h_aac9490b010beb81d233a8cbeb211cc6f}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE}{TSS\_ERROR\_MATRIX\_ILEGAL\_VALUE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+E\+G\+A\+L\+\_\+\+V\+A\+L\+UE~0x44u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_abbdaa4ada3eb6b65eb85f3e301943a58}\label{_t_s_s___status_codes_8h_abbdaa4ada3eb6b65eb85f3e301943a58}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}{TSS\_ERROR\_MATRIX\_ILLEGAL\_CONTROL\_TYPE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE~0x46u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a9207ef2db4813315d35837e44dfc334f}\label{_t_s_s___status_codes_8h_a9207ef2db4813315d35837e44dfc334f}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_MATRIX\_ILLEGAL\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~0x42u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_aff9c3f61c685ac2dfbfb7e011c66768b}\label{_t_s_s___status_codes_8h_aff9c3f61c685ac2dfbfb7e011c66768b}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}{TSS\_ERROR\_MATRIX\_NOT\_IDLE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE~0x41u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_acddcb71145b6254f8edef63849eb967c}\label{_t_s_s___status_codes_8h_acddcb71145b6254f8edef63849eb967c}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}{TSS\_ERROR\_MATRIX\_OUT\_OF\_RANGE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE~0x45u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a561e71adc8697f8dbfbf39b6b28892b4}\label{_t_s_s___status_codes_8h_a561e71adc8697f8dbfbf39b6b28892b4}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_MATRIX\_READ\_ONLY\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+A\+T\+R\+I\+X\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~0x43u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Matrix\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a639bc3791dd1808df719b3ecaaef8ebe}\label{_t_s_s___status_codes_8h_a639bc3791dd1808df719b3ecaaef8ebe}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}{TSS\_ERROR\_ROTARY\_ILLEGAL\_CONTROL\_TYPE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE~\hyperlink{_t_s_s___status_codes_8h_a7e63d9c20af55e9fe39139d5d48688a8}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ac1c74194cadf257f77ee0c12575424fd}\label{_t_s_s___status_codes_8h_ac1c74194cadf257f77ee0c12575424fd}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_ROTARY\_ILLEGAL\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~\hyperlink{_t_s_s___status_codes_8h_a6b5e3fc451e78566fcceffd3ea1aeeac}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a4bc41ec28665a98f97222812bd12cb3b}\label{_t_s_s___status_codes_8h_a4bc41ec28665a98f97222812bd12cb3b}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}{TSS\_ERROR\_ROTARY\_NOT\_IDLE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE~\hyperlink{_t_s_s___status_codes_8h_a51a5e7d9ef3e622754ec0fa71c23238f}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a7bf3a4e63d9ce08153fee3e33e16648d}\label{_t_s_s___status_codes_8h_a7bf3a4e63d9ce08153fee3e33e16648d}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}{TSS\_ERROR\_ROTARY\_OUT\_OF\_RANGE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE~\hyperlink{_t_s_s___status_codes_8h_a6e1e5d736be64dfdadacd2ca5dceb851}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_af26449df82c3e7e39f5ed9df3d3fc01c}\label{_t_s_s___status_codes_8h_af26449df82c3e7e39f5ed9df3d3fc01c}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_ROTARY\_READ\_ONLY\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+O\+T\+A\+R\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~\hyperlink{_t_s_s___status_codes_8h_ab190b020524f9ac90cd3acff46fe9d54}{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a7e63d9c20af55e9fe39139d5d48688a8}\label{_t_s_s___status_codes_8h_a7e63d9c20af55e9fe39139d5d48688a8}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE}{TSS\_ERROR\_SLIDER\_ILLEGAL\_CONTROL\_TYPE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+T\+Y\+PE~0x25u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a6b5e3fc451e78566fcceffd3ea1aeeac}\label{_t_s_s___status_codes_8h_a6b5e3fc451e78566fcceffd3ea1aeeac}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_SLIDER\_ILLEGAL\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~0x22u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a51a5e7d9ef3e622754ec0fa71c23238f}\label{_t_s_s___status_codes_8h_a51a5e7d9ef3e622754ec0fa71c23238f}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE}{TSS\_ERROR\_SLIDER\_NOT\_IDLE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+N\+O\+T\+\_\+\+I\+D\+LE~0x21u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a6e1e5d736be64dfdadacd2ca5dceb851}\label{_t_s_s___status_codes_8h_a6e1e5d736be64dfdadacd2ca5dceb851}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE}{TSS\_ERROR\_SLIDER\_OUT\_OF\_RANGE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+R\+A\+N\+GE~0x24u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ab190b020524f9ac90cd3acff46fe9d54}\label{_t_s_s___status_codes_8h_ab190b020524f9ac90cd3acff46fe9d54}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}}
+\index{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER@{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER}{TSS\_ERROR\_SLIDER\_READ\_ONLY\_PARAMETER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+L\+I\+D\+E\+R\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+P\+A\+R\+A\+M\+E\+T\+ER~0x23u   /$\ast$ Return values from the T\+S\+S\+\_\+\+Slider\+Config function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_abf7294dcf8dbea01ebb22344f2d93684}\label{_t_s_s___status_codes_8h_abf7294dcf8dbea01ebb22344f2d93684}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}{TSS\_INIT\_COMMAND\_DUMMY}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY~0x00u   /$\ast$ Command for Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ada4bf6575ad8b27801f8b1b0d054dfad}\label{_t_s_s___status_codes_8h_ada4bf6575ad8b27801f8b1b0d054dfad}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}{TSS\_INIT\_COMMAND\_ENABLE\_ELECTRODES}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES~0x02u   /$\ast$ Command for Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a3fc2aeac6ec476b4ab878031a55e786f}\label{_t_s_s___status_codes_8h_a3fc2aeac6ec476b4ab878031a55e786f}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+O\+T\+O\+\_\+\+L\+O\+W\+P\+O\+W\+ER@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+O\+T\+O\+\_\+\+L\+O\+W\+P\+O\+W\+ER}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+O\+T\+O\+\_\+\+L\+O\+W\+P\+O\+W\+ER@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+O\+T\+O\+\_\+\+L\+O\+W\+P\+O\+W\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+O\+T\+O\+\_\+\+L\+O\+W\+P\+O\+W\+ER}{TSS\_INIT\_COMMAND\_GOTO\_LOWPOWER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+O\+T\+O\+\_\+\+L\+O\+W\+P\+O\+W\+ER~0x07u   /$\ast$ Command for Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_afa156831cf63a3171745276c8cc102e8}\label{_t_s_s___status_codes_8h_afa156831cf63a3171745276c8cc102e8}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+L\+O\+W\+P\+O\+W\+ER@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+L\+O\+W\+P\+O\+W\+ER}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+L\+O\+W\+P\+O\+W\+ER@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+L\+O\+W\+P\+O\+W\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+L\+O\+W\+P\+O\+W\+ER}{TSS\_INIT\_COMMAND\_INIT\_LOWPOWER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+L\+O\+W\+P\+O\+W\+ER~0x06u   /$\ast$ Command for Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ae32cac343ca549b9ee0466e521d6636a}\label{_t_s_s___status_codes_8h_ae32cac343ca549b9ee0466e521d6636a}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+M\+O\+D\+U\+L\+ES@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+M\+O\+D\+U\+L\+ES}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+M\+O\+D\+U\+L\+ES@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+M\+O\+D\+U\+L\+ES}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+M\+O\+D\+U\+L\+ES}{TSS\_INIT\_COMMAND\_INIT\_MODULES}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+M\+O\+D\+U\+L\+ES~0x01u   /$\ast$ Command for Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a2df3d13c7f1b7ad3e4b751b4e2e9ebe4}\label{_t_s_s___status_codes_8h_a2df3d13c7f1b7ad3e4b751b4e2e9ebe4}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+T\+R\+I\+G\+G\+ER@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+T\+R\+I\+G\+G\+ER}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+T\+R\+I\+G\+G\+ER@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+T\+R\+I\+G\+G\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+T\+R\+I\+G\+G\+ER}{TSS\_INIT\_COMMAND\_INIT\_TRIGGER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+I\+N\+I\+T\+\_\+\+T\+R\+I\+G\+G\+ER~0x04u   /$\ast$ Command for Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a1de7ee8a7165cce471c53c56a5681682}\label{_t_s_s___status_codes_8h_a1de7ee8a7165cce471c53c56a5681682}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+TE@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+TE}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+TE@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+TE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+TE}{TSS\_INIT\_COMMAND\_RECALIBRATE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+TE~0x08u   /$\ast$ Command for Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_afc186e8ba258f79e44fac166209c97b5}\label{_t_s_s___status_codes_8h_afc186e8ba258f79e44fac166209c97b5}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+T\+\_\+\+N\+S\+A\+M\+P\+L\+ES@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+T\+\_\+\+N\+S\+A\+M\+P\+L\+ES}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+T\+\_\+\+N\+S\+A\+M\+P\+L\+ES@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+T\+\_\+\+N\+S\+A\+M\+P\+L\+ES}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+T\+\_\+\+N\+S\+A\+M\+P\+L\+ES}{TSS\_INIT\_COMMAND\_SET\_NSAMPLES}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+T\+\_\+\+N\+S\+A\+M\+P\+L\+ES~0x03u   /$\ast$ Command for Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a310f4bcf9e5ff2c7940d5d17cfa90bb8}\label{_t_s_s___status_codes_8h_a310f4bcf9e5ff2c7940d5d17cfa90bb8}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER}{TSS\_INIT\_COMMAND\_SW\_TRIGGER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER~0x05u   /$\ast$ Command for Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a1f5e5b1696b82aa7d61ff410e7e526d6}\label{_t_s_s___status_codes_8h_a1f5e5b1696b82aa7d61ff410e7e526d6}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+F\+A\+U\+LT@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+F\+A\+U\+LT}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+F\+A\+U\+LT@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+F\+A\+U\+LT}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+F\+A\+U\+LT}{TSS\_INIT\_ERROR\_RECALIB\_FAULT}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+F\+A\+U\+LT~0x20u   /$\ast$ Return values from Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_aa77e123e162d212ca63e6583f8cb6550}\label{_t_s_s___status_codes_8h_aa77e123e162d212ca63e6583f8cb6550}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET}{TSS\_INIT\_STATUS\_AUTOTRIGGER\_SET}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET~0x08u   /$\ast$ Return values from Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_aea6be4e799efde26b6edce03d6613dff}\label{_t_s_s___status_codes_8h_aea6be4e799efde26b6edce03d6613dff}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED}{TSS\_INIT\_STATUS\_CALIBRATION\_CHANGED}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED~0x10u   /$\ast$ Return values from Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a4791202d7582f53c1ae624895445ef6e}\label{_t_s_s___status_codes_8h_a4791202d7582f53c1ae624895445ef6e}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+E\+L\+E\+C\+\_\+\+S\+ET@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+E\+L\+E\+C\+\_\+\+S\+ET}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+E\+L\+E\+C\+\_\+\+S\+ET@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+E\+L\+E\+C\+\_\+\+S\+ET}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+E\+L\+E\+C\+\_\+\+S\+ET}{TSS\_INIT\_STATUS\_LOWPOWER\_ELEC\_SET}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+E\+L\+E\+C\+\_\+\+S\+ET~0x02u   /$\ast$ Return values from Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ad0599003e042e1c9727c11f17e99eedf}\label{_t_s_s___status_codes_8h_ad0599003e042e1c9727c11f17e99eedf}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+ET@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+ET}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+ET@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+ET}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+ET}{TSS\_INIT\_STATUS\_LOWPOWER\_SET}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+S\+ET~0x01u   /$\ast$ Return values from Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a394a326e2d205bc99f59680728d931f0}\label{_t_s_s___status_codes_8h_a394a326e2d205bc99f59680728d931f0}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}{TSS\_INIT\_STATUS\_OK}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK~0x00u   /$\ast$ Return values from Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a3afdf37bcaeaffc7a4689169822fb540}\label{_t_s_s___status_codes_8h_a3afdf37bcaeaffc7a4689169822fb540}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET}}
+\index{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET@{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET}{TSS\_INIT\_STATUS\_TRIGGER\_SET}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+I\+N\+I\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+ET~0x04u   /$\ast$ Return values from Sensor\+Init function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a7f8bce842c37989de9dccd9e57252c7b}\label{_t_s_s___status_codes_8h_a7f8bce842c37989de9dccd9e57252c7b}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+L\+A\+R\+G\+E\+\_\+\+C\+AP@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+L\+A\+R\+G\+E\+\_\+\+C\+AP}}
+\index{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+L\+A\+R\+G\+E\+\_\+\+C\+AP@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+L\+A\+R\+G\+E\+\_\+\+C\+AP}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+L\+A\+R\+G\+E\+\_\+\+C\+AP}{TSS\_KEYDETECT\_ERROR\_LARGE\_CAP}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+L\+A\+R\+G\+E\+\_\+\+C\+AP~0x02u   /$\ast$ Return value from the Key\+Detector function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_afe4fee60e64f6bcf0ff33fec1f7a7dc2}\label{_t_s_s___status_codes_8h_afe4fee60e64f6bcf0ff33fec1f7a7dc2}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP}}
+\index{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP}{TSS\_KEYDETECT\_ERROR\_SMALL\_CAP}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP~0x04u   /$\ast$ Return value from the Key\+Detector function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_aa1d048de7b79325a3d1cd87b8fd3f5a5}\label{_t_s_s___status_codes_8h_aa1d048de7b79325a3d1cd87b8fd3f5a5}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+V\+AL@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+V\+AL}}
+\index{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+V\+AL@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+V\+AL}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+V\+AL}{TSS\_KEYDETECT\_ERROR\_SMALL\_TRIGGER\_VAL}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+V\+AL~0x08u   /$\ast$ Return value from the Key\+Detector function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_adde2a46aaab1b48d8eadbc8b2c96b389}\label{_t_s_s___status_codes_8h_adde2a46aaab1b48d8eadbc8b2c96b389}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+B\+U\+SY@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+B\+U\+SY}}
+\index{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+B\+U\+SY@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+B\+U\+SY}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+B\+U\+SY}{TSS\_KEYDETECT\_STATUS\_DECODER\_BUSY}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+D\+E\+C\+O\+D\+E\+R\+\_\+\+B\+U\+SY~0x10u   /$\ast$ Return value from the Key\+Detector function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a24b9d4d8aecdd67bef5428b3f3fedd69}\label{_t_s_s___status_codes_8h_a24b9d4d8aecdd67bef5428b3f3fedd69}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}}
+\index{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}{TSS\_KEYDETECT\_STATUS\_OK}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK~0x00u   /$\ast$ Return value from the Key\+Detector function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a948038900e755abfb279847fe1901c3d}\label{_t_s_s___status_codes_8h_a948038900e755abfb279847fe1901c3d}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}}
+\index{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}{TSS\_KEYDETECT\_STATUS\_PROCESSING}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG~0x01u   /$\ast$ Return value from the Key\+Detector function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a6e8af4e7e4ca31154fd6d24ae81f2410}\label{_t_s_s___status_codes_8h_a6e8af4e7e4ca31154fd6d24ae81f2410}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+W\+A\+IT@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+W\+A\+IT}}
+\index{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+W\+A\+IT@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+W\+A\+IT}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+W\+A\+IT}{TSS\_KEYDETECT\_STATUS\_PROXIMITY\_WAIT}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+X\+I\+M\+I\+T\+Y\+\_\+\+W\+A\+IT~0x40u   /$\ast$ Return value from the Key\+Detector function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a7c58eacb25bf45ced97d77440f185d4b}\label{_t_s_s___status_codes_8h_a7c58eacb25bf45ced97d77440f185d4b}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+W\+A\+IT@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+W\+A\+IT}}
+\index{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+W\+A\+IT@{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+W\+A\+IT}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+W\+A\+IT}{TSS\_KEYDETECT\_STATUS\_TRIGGER\_WAIT}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+K\+E\+Y\+D\+E\+T\+E\+C\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+W\+A\+IT~0x20u   /$\ast$ Return value from the Key\+Detector function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a85e95bf7aa1f3466b4e6e4a106241de4}\label{_t_s_s___status_codes_8h_a85e95bf7aa1f3466b4e6e4a106241de4}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY}{TSS\_SAMPLE\_COMMAND\_DUMMY}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+D\+U\+M\+MY~0x00u   /$\ast$ Command for Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_adff0e76574b86fd5f31bce3faed48ab5}\label{_t_s_s___status_codes_8h_adff0e76574b86fd5f31bce3faed48ab5}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE}{TSS\_SAMPLE\_COMMAND\_ENABLE\_ELECTRODE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE~0x05u   /$\ast$ Command for Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a637f643cc3a0d80c8d5b49b5f3ec437b}\label{_t_s_s___status_codes_8h_a637f643cc3a0d80c8d5b49b5f3ec437b}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE}{TSS\_SAMPLE\_COMMAND\_GET\_NEXT\_ELECTRODE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+E\+L\+E\+C\+T\+R\+O\+DE~0x04u   /$\ast$ Command for Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_aeb8f864eb7840de333d1f6fd5f556eac}\label{_t_s_s___status_codes_8h_aeb8f864eb7840de333d1f6fd5f556eac}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS}{TSS\_SAMPLE\_COMMAND\_PROCESS}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+R\+O\+C\+E\+SS~0x02u   /$\ast$ Command for Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a7b6f946e089fc0123aea97a2d39f46b4}\label{_t_s_s___status_codes_8h_a7b6f946e089fc0123aea97a2d39f46b4}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+IB@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+IB}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+IB@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+IB}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+IB}{TSS\_SAMPLE\_COMMAND\_RECALIB}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+C\+A\+L\+IB~0x03u   /$\ast$ Command for Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a761744c49014358d83a76d1135641dad}\label{_t_s_s___status_codes_8h_a761744c49014358d83a76d1135641dad}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+S\+T\+A\+RT@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+S\+T\+A\+RT}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+S\+T\+A\+RT@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+S\+T\+A\+RT}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+S\+T\+A\+RT}{TSS\_SAMPLE\_COMMAND\_RESTART}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+R\+E\+S\+T\+A\+RT~0x01u   /$\ast$ Command for Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a2cfaf70ed345ffe1158be15fc49bfb84}\label{_t_s_s___status_codes_8h_a2cfaf70ed345ffe1158be15fc49bfb84}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+H\+A\+R\+G\+E\+\_\+\+T\+I\+M\+E\+O\+UT@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+H\+A\+R\+G\+E\+\_\+\+T\+I\+M\+E\+O\+UT}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+H\+A\+R\+G\+E\+\_\+\+T\+I\+M\+E\+O\+UT@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+H\+A\+R\+G\+E\+\_\+\+T\+I\+M\+E\+O\+UT}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+H\+A\+R\+G\+E\+\_\+\+T\+I\+M\+E\+O\+UT}{TSS\_SAMPLE\_ERROR\_CHARGE\_TIMEOUT}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+H\+A\+R\+G\+E\+\_\+\+T\+I\+M\+E\+O\+UT~0x06u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a164c039adde5479e81c798fbc3c55794}\label{_t_s_s___status_codes_8h_a164c039adde5479e81c798fbc3c55794}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+A\+U\+T\+O\+T\+R\+G\+\_\+\+P\+E\+R\+I\+OD@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+A\+U\+T\+O\+T\+R\+G\+\_\+\+P\+E\+R\+I\+OD}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+A\+U\+T\+O\+T\+R\+G\+\_\+\+P\+E\+R\+I\+OD@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+A\+U\+T\+O\+T\+R\+G\+\_\+\+P\+E\+R\+I\+OD}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+A\+U\+T\+O\+T\+R\+G\+\_\+\+P\+E\+R\+I\+OD}{TSS\_SAMPLE\_ERROR\_SMALL\_AUTOTRG\_PERIOD}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+A\+U\+T\+O\+T\+R\+G\+\_\+\+P\+E\+R\+I\+OD~\hyperlink{_t_s_s___status_codes_8h_af7097dfeaf6c62b715ccbfebc83ca18f}{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+P\+E\+R\+I\+OD}}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a76c819da781866186976574fd5939e34}\label{_t_s_s___status_codes_8h_a76c819da781866186976574fd5939e34}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP}{TSS\_SAMPLE\_ERROR\_SMALL\_CAP}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+C\+AP~0x07u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_af7097dfeaf6c62b715ccbfebc83ca18f}\label{_t_s_s___status_codes_8h_af7097dfeaf6c62b715ccbfebc83ca18f}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+P\+E\+R\+I\+OD@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+P\+E\+R\+I\+OD}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+P\+E\+R\+I\+OD@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+P\+E\+R\+I\+OD}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+P\+E\+R\+I\+OD}{TSS\_SAMPLE\_ERROR\_SMALL\_TRIGGER\_PERIOD}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+M\+A\+L\+L\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+P\+E\+R\+I\+OD~0x05u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_ab4833fb4200524264f061e1c2ddf6109}\label{_t_s_s___status_codes_8h_ab4833fb4200524264f061e1c2ddf6109}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+H\+I\+C\+AP@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+H\+I\+C\+AP}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+H\+I\+C\+AP@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+H\+I\+C\+AP}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+H\+I\+C\+AP}{TSS\_SAMPLE\_RECALIB\_REQUEST\_HICAP}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+H\+I\+C\+AP~0x04u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_aaa7849dbe6f5f096b0e54d64909c4048}\label{_t_s_s___status_codes_8h_aaa7849dbe6f5f096b0e54d64909c4048}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+L\+O\+C\+AP@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+L\+O\+C\+AP}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+L\+O\+C\+AP@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+L\+O\+C\+AP}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+L\+O\+C\+AP}{TSS\_SAMPLE\_RECALIB\_REQUEST\_LOCAP}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+E\+C\+A\+L\+I\+B\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+L\+O\+C\+AP~0x03u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a47e2d7984cb9e211277c229d058a9512}\label{_t_s_s___status_codes_8h_a47e2d7984cb9e211277c229d058a9512}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED}{TSS\_SAMPLE\_STATUS\_CALIBRATION\_CHANGED}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+C\+H\+A\+N\+G\+ED~0x02u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a14f93a2458c2c58cce8f5525f9d9e1f7}\label{_t_s_s___status_codes_8h_a14f93a2458c2c58cce8f5525f9d9e1f7}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}{TSS\_SAMPLE\_STATUS\_OK}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK~0x00u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_af8c8129faf26cd16c0282e2f7f74179e}\label{_t_s_s___status_codes_8h_af8c8129faf26cd16c0282e2f7f74179e}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}}
+\index{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG@{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}{TSS\_SAMPLE\_STATUS\_PROCESSING}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG~0x01u   /$\ast$ Return value from the Sample\+Electrode function $\ast$/}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a978e2e02673283c4ea167110227c201e}\label{_t_s_s___status_codes_8h_a978e2e02673283c4ea167110227c201e}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}}
+\index{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}{TSS\_STATUS\_OK}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK~0u}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_acd9a1f79b66b4c1a02cda5bc9b4e1e7b}\label{_t_s_s___status_codes_8h_acd9a1f79b66b4c1a02cda5bc9b4e1e7b}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG@{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}}
+\index{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG@{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG}{TSS\_STATUS\_PROCESSING}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+R\+O\+C\+E\+S\+S\+I\+NG~1u}
+
+\mbox{\Hypertarget{_t_s_s___status_codes_8h_a0d16de29c8c5cf8cf26c5a1cb143e589}\label{_t_s_s___status_codes_8h_a0d16de29c8c5cf8cf26c5a1cb143e589}} 
+\index{T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}!T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT@{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT}}
+\index{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT@{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT}!T\+S\+S\+\_\+\+Status\+Codes.\+h@{T\+S\+S\+\_\+\+Status\+Codes.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT}{TSS\_STATUS\_RECALIBRATION\_FAULT}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+F\+A\+U\+LT~2u}
+

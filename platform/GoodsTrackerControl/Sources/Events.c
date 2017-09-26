@@ -404,10 +404,10 @@ void TSSin_fOnInit(void)
 */
 void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId)
 {
+#if 0
 
   ihm_put_slide_event(&TSSin_cKey0);
 
-#if 0
   if (TSSin_cKey0.DynamicStatus.Movement)
   {
     if (TSSin_cKey0.Events.Touch)

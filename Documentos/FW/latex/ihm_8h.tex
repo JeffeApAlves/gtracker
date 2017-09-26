@@ -1,0 +1,233 @@
+\hypertarget{ihm_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/ihm.h File Reference}
+\label{ihm_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/ihm.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/ihm.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}event\+\_\+groups.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}T\+S\+S\+\_\+\+A\+P\+I.\+h\char`\"{}}\newline
+Include dependency graph for ihm.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ihm_8h_a6d5d1f64f9ce4bdd0a537fd032fe223c}{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+CD}~0x01
+\item 
+\#define \hyperlink{ihm_8h_a0e440913de4498bcb8cc005a714dc3f1}{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+X\+YZ}~0x02
+\item 
+\#define \hyperlink{ihm_8h_ae098f378fdb65fd09df86069eb921404}{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM}~0x04
+\item 
+\#define \hyperlink{ihm_8h_a691287a6b81745f1553267fac2482181}{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS}~0x08
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{ihm_8h_a72bba37476e63c27f023823f17619987}{screen} \{ \newline
+\hyperlink{ihm_8h_a72bba37476e63c27f023823f17619987a8d1f48e130456374a28ccd606e24a6ea}{S\+C\+R\+E\+E\+N\+\_\+\+N\+O\+NE}, 
+\hyperlink{ihm_8h_a72bba37476e63c27f023823f17619987ad1090b9d88829fd8203a08876f84df29}{S\+C\+R\+E\+E\+N\+\_\+\+S\+P\+L\+A\+SH}, 
+\hyperlink{ihm_8h_a72bba37476e63c27f023823f17619987a8fa1da9c54ebf7d6d138968101f5eb0f}{S\+C\+R\+E\+E\+N\+\_\+\+A\+C\+CE}, 
+\hyperlink{ihm_8h_a72bba37476e63c27f023823f17619987ad5380a22a439ac9f3c8778fb231dbe4a}{S\+C\+R\+E\+E\+N\+\_\+\+C\+L\+O\+CK}, 
+\newline
+\hyperlink{ihm_8h_a72bba37476e63c27f023823f17619987a7433ffa7e7e9755795d6660ed05b2c40}{S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM}, 
+\hyperlink{ihm_8h_a72bba37476e63c27f023823f17619987af6bc1d2a046f555c7d4bec7eb297ec5f}{S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{ihm_8h_ab7525a17874344457aed52055ffa7a0e}{ihm\+\_\+init} (void)
+\item 
+void \hyperlink{ihm_8h_a83a6ff6445a0ad9d23957ec3c1491709}{ihm\+\_\+de\+Init} (void)
+\item 
+void \hyperlink{ihm_8h_ac0d0f6666ddf438052d064944f013a66}{ihm\+\_\+task} (void)
+\item 
+void \hyperlink{ihm_8h_a9cb9b4e2b9e0ef7e1efa7334ce48dbd4}{init\+Events} (void)
+\item 
+void \hyperlink{ihm_8h_afc1c82323bbedc72f8355197a332aa2f}{print\+L\+CD} (int linha, int coluna, char $\ast$str)
+\item 
+void \hyperlink{ihm_8h_a1738496bf95622a87ffff6a884d79b93}{print\+Clock} (void)
+\item 
+void \hyperlink{ihm_8h_a64aa0a8973357ff0206a6cff9c0a1177}{print\+Splash} (void)
+\item 
+void \hyperlink{ihm_8h_a9befc3c004d018e2c3797510b8edd626}{print\+Accelerometer} (void)
+\item 
+void \hyperlink{ihm_8h_aaf351523f863052651b11a58c77dcef7}{print\+Stat\+Com} (void)
+\item 
+void \hyperlink{ihm_8h_a27fc124c43c9544a1b0afc58e9a535d1}{print\+Stat\+G\+PS} (void)
+\item 
+void \hyperlink{ihm_8h_ab5b9d955132087ac121d2ce9666d3135}{ihm\+\_\+handle\+\_\+update} (void)
+\item 
+void \hyperlink{ihm_8h_aae71b0cc97b53ec475e8ac3a3b225c7c}{ihm\+\_\+event\+\_\+notify} (const \hyperlink{event__groups_8h_ab2f21b93db0b2a0ab64d7a81ff32ac2e}{Event\+Bits\+\_\+t} ux\+Bits\+To\+Set)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} \hyperlink{ihm_8h_ad58fa417ce33baeb6bc5ca8763918ec4}{x\+Handle\+I\+H\+M\+Task}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{ihm_8h_a6d5d1f64f9ce4bdd0a537fd032fe223c}\label{ihm_8h_a6d5d1f64f9ce4bdd0a537fd032fe223c}} 
+\index{ihm.\+h@{ihm.\+h}!B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+CD@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+CD}}
+\index{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+CD@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+CD}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+CD}{BIT\_UPDATE\_LCD}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+CD~0x01}
+
+\mbox{\Hypertarget{ihm_8h_ae098f378fdb65fd09df86069eb921404}\label{ihm_8h_ae098f378fdb65fd09df86069eb921404}} 
+\index{ihm.\+h@{ihm.\+h}!B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM}}
+\index{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM}{BIT\_UPDATE\_LCD\_STAT\_COM}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM~0x04}
+
+\mbox{\Hypertarget{ihm_8h_a691287a6b81745f1553267fac2482181}\label{ihm_8h_a691287a6b81745f1553267fac2482181}} 
+\index{ihm.\+h@{ihm.\+h}!B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS}}
+\index{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS}{BIT\_UPDATE\_LCD\_STAT\_GPS}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS~0x08}
+
+\mbox{\Hypertarget{ihm_8h_a0e440913de4498bcb8cc005a714dc3f1}\label{ihm_8h_a0e440913de4498bcb8cc005a714dc3f1}} 
+\index{ihm.\+h@{ihm.\+h}!B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+X\+YZ@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+X\+YZ}}
+\index{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+X\+YZ@{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+X\+YZ}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+X\+YZ}{BIT\_UPDATE\_LCD\_XYZ}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+L\+C\+D\+\_\+\+X\+YZ~0x02}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{ihm_8h_a72bba37476e63c27f023823f17619987}\label{ihm_8h_a72bba37476e63c27f023823f17619987}} 
+\index{ihm.\+h@{ihm.\+h}!screen@{screen}}
+\index{screen@{screen}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily enum \hyperlink{ihm_8h_a72bba37476e63c27f023823f17619987}{screen}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+C\+R\+E\+E\+N\+\_\+\+N\+O\+NE@{S\+C\+R\+E\+E\+N\+\_\+\+N\+O\+NE}!ihm.\+h@{ihm.\+h}}\index{ihm.\+h@{ihm.\+h}!S\+C\+R\+E\+E\+N\+\_\+\+N\+O\+NE@{S\+C\+R\+E\+E\+N\+\_\+\+N\+O\+NE}}}\mbox{\Hypertarget{ihm_8h_a72bba37476e63c27f023823f17619987a8d1f48e130456374a28ccd606e24a6ea}\label{ihm_8h_a72bba37476e63c27f023823f17619987a8d1f48e130456374a28ccd606e24a6ea}} 
+S\+C\+R\+E\+E\+N\+\_\+\+N\+O\+NE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+C\+R\+E\+E\+N\+\_\+\+S\+P\+L\+A\+SH@{S\+C\+R\+E\+E\+N\+\_\+\+S\+P\+L\+A\+SH}!ihm.\+h@{ihm.\+h}}\index{ihm.\+h@{ihm.\+h}!S\+C\+R\+E\+E\+N\+\_\+\+S\+P\+L\+A\+SH@{S\+C\+R\+E\+E\+N\+\_\+\+S\+P\+L\+A\+SH}}}\mbox{\Hypertarget{ihm_8h_a72bba37476e63c27f023823f17619987ad1090b9d88829fd8203a08876f84df29}\label{ihm_8h_a72bba37476e63c27f023823f17619987ad1090b9d88829fd8203a08876f84df29}} 
+S\+C\+R\+E\+E\+N\+\_\+\+S\+P\+L\+A\+SH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+C\+R\+E\+E\+N\+\_\+\+A\+C\+CE@{S\+C\+R\+E\+E\+N\+\_\+\+A\+C\+CE}!ihm.\+h@{ihm.\+h}}\index{ihm.\+h@{ihm.\+h}!S\+C\+R\+E\+E\+N\+\_\+\+A\+C\+CE@{S\+C\+R\+E\+E\+N\+\_\+\+A\+C\+CE}}}\mbox{\Hypertarget{ihm_8h_a72bba37476e63c27f023823f17619987a8fa1da9c54ebf7d6d138968101f5eb0f}\label{ihm_8h_a72bba37476e63c27f023823f17619987a8fa1da9c54ebf7d6d138968101f5eb0f}} 
+S\+C\+R\+E\+E\+N\+\_\+\+A\+C\+CE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+C\+R\+E\+E\+N\+\_\+\+C\+L\+O\+CK@{S\+C\+R\+E\+E\+N\+\_\+\+C\+L\+O\+CK}!ihm.\+h@{ihm.\+h}}\index{ihm.\+h@{ihm.\+h}!S\+C\+R\+E\+E\+N\+\_\+\+C\+L\+O\+CK@{S\+C\+R\+E\+E\+N\+\_\+\+C\+L\+O\+CK}}}\mbox{\Hypertarget{ihm_8h_a72bba37476e63c27f023823f17619987ad5380a22a439ac9f3c8778fb231dbe4a}\label{ihm_8h_a72bba37476e63c27f023823f17619987ad5380a22a439ac9f3c8778fb231dbe4a}} 
+S\+C\+R\+E\+E\+N\+\_\+\+C\+L\+O\+CK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM@{S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM}!ihm.\+h@{ihm.\+h}}\index{ihm.\+h@{ihm.\+h}!S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM@{S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM}}}\mbox{\Hypertarget{ihm_8h_a72bba37476e63c27f023823f17619987a7433ffa7e7e9755795d6660ed05b2c40}\label{ihm_8h_a72bba37476e63c27f023823f17619987a7433ffa7e7e9755795d6660ed05b2c40}} 
+S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+C\+OM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS@{S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS}!ihm.\+h@{ihm.\+h}}\index{ihm.\+h@{ihm.\+h}!S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS@{S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS}}}\mbox{\Hypertarget{ihm_8h_a72bba37476e63c27f023823f17619987af6bc1d2a046f555c7d4bec7eb297ec5f}\label{ihm_8h_a72bba37476e63c27f023823f17619987af6bc1d2a046f555c7d4bec7eb297ec5f}} 
+S\+C\+R\+E\+E\+N\+\_\+\+S\+T\+A\+T\+\_\+\+G\+PS&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{ihm_8h_a83a6ff6445a0ad9d23957ec3c1491709}\label{ihm_8h_a83a6ff6445a0ad9d23957ec3c1491709}} 
+\index{ihm.\+h@{ihm.\+h}!ihm\+\_\+de\+Init@{ihm\+\_\+de\+Init}}
+\index{ihm\+\_\+de\+Init@{ihm\+\_\+de\+Init}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{ihm\+\_\+de\+Init()}{ihm\_deInit()}}
+{\footnotesize\ttfamily void ihm\+\_\+de\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ihm_8h_aae71b0cc97b53ec475e8ac3a3b225c7c}\label{ihm_8h_aae71b0cc97b53ec475e8ac3a3b225c7c}} 
+\index{ihm.\+h@{ihm.\+h}!ihm\+\_\+event\+\_\+notify@{ihm\+\_\+event\+\_\+notify}}
+\index{ihm\+\_\+event\+\_\+notify@{ihm\+\_\+event\+\_\+notify}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{ihm\+\_\+event\+\_\+notify()}{ihm\_event\_notify()}}
+{\footnotesize\ttfamily void ihm\+\_\+event\+\_\+notify (\begin{DoxyParamCaption}\item[{const \hyperlink{event__groups_8h_ab2f21b93db0b2a0ab64d7a81ff32ac2e}{Event\+Bits\+\_\+t}}]{ux\+Bits\+To\+Set }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{ihm_8h_ab5b9d955132087ac121d2ce9666d3135}\label{ihm_8h_ab5b9d955132087ac121d2ce9666d3135}} 
+\index{ihm.\+h@{ihm.\+h}!ihm\+\_\+handle\+\_\+update@{ihm\+\_\+handle\+\_\+update}}
+\index{ihm\+\_\+handle\+\_\+update@{ihm\+\_\+handle\+\_\+update}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{ihm\+\_\+handle\+\_\+update()}{ihm\_handle\_update()}}
+{\footnotesize\ttfamily void ihm\+\_\+handle\+\_\+update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ihm_8h_ab7525a17874344457aed52055ffa7a0e}\label{ihm_8h_ab7525a17874344457aed52055ffa7a0e}} 
+\index{ihm.\+h@{ihm.\+h}!ihm\+\_\+init@{ihm\+\_\+init}}
+\index{ihm\+\_\+init@{ihm\+\_\+init}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{ihm\+\_\+init()}{ihm\_init()}}
+{\footnotesize\ttfamily void ihm\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+C\+H\+A\+M\+A\+N\+DO E\+S\+TA E\+S\+T\+R\+U\+T\+U\+RA DE I\+HM (I\+N\+T\+E\+R\+F\+A\+CE H\+O\+M\+E\+M-\/\+M�\+Q\+U\+I\+NA) EM V\+EZ DE M\+MI (M\+E\+N-\/\+M\+A\+C\+H\+I\+NE I\+N\+T\+E\+R\+F\+A\+CE) P\+OR P\+U\+RO G\+O\+S\+TO P\+E\+S\+S\+O\+AL... \+:) Inicializa interface homem máquina \mbox{\Hypertarget{ihm_8h_ac0d0f6666ddf438052d064944f013a66}\label{ihm_8h_ac0d0f6666ddf438052d064944f013a66}} 
+\index{ihm.\+h@{ihm.\+h}!ihm\+\_\+task@{ihm\+\_\+task}}
+\index{ihm\+\_\+task@{ihm\+\_\+task}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{ihm\+\_\+task()}{ihm\_task()}}
+{\footnotesize\ttfamily void ihm\+\_\+task (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Task paara gerenciamento do ihm Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{ihm_8h_a9cb9b4e2b9e0ef7e1efa7334ce48dbd4}\label{ihm_8h_a9cb9b4e2b9e0ef7e1efa7334ce48dbd4}} 
+\index{ihm.\+h@{ihm.\+h}!init\+Events@{init\+Events}}
+\index{init\+Events@{init\+Events}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{init\+Events()}{initEvents()}}
+{\footnotesize\ttfamily void init\+Events (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ihm_8h_a9befc3c004d018e2c3797510b8edd626}\label{ihm_8h_a9befc3c004d018e2c3797510b8edd626}} 
+\index{ihm.\+h@{ihm.\+h}!print\+Accelerometer@{print\+Accelerometer}}
+\index{print\+Accelerometer@{print\+Accelerometer}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{print\+Accelerometer()}{printAccelerometer()}}
+{\footnotesize\ttfamily void print\+Accelerometer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{ihm_8h_a1738496bf95622a87ffff6a884d79b93}\label{ihm_8h_a1738496bf95622a87ffff6a884d79b93}} 
+\index{ihm.\+h@{ihm.\+h}!print\+Clock@{print\+Clock}}
+\index{print\+Clock@{print\+Clock}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{print\+Clock()}{printClock()}}
+{\footnotesize\ttfamily void print\+Clock (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{ihm_8h_afc1c82323bbedc72f8355197a332aa2f}\label{ihm_8h_afc1c82323bbedc72f8355197a332aa2f}} 
+\index{ihm.\+h@{ihm.\+h}!print\+L\+CD@{print\+L\+CD}}
+\index{print\+L\+CD@{print\+L\+CD}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{print\+L\+C\+D()}{printLCD()}}
+{\footnotesize\ttfamily void print\+L\+CD (\begin{DoxyParamCaption}\item[{int}]{linha,  }\item[{int}]{coluna,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{ihm_8h_a64aa0a8973357ff0206a6cff9c0a1177}\label{ihm_8h_a64aa0a8973357ff0206a6cff9c0a1177}} 
+\index{ihm.\+h@{ihm.\+h}!print\+Splash@{print\+Splash}}
+\index{print\+Splash@{print\+Splash}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{print\+Splash()}{printSplash()}}
+{\footnotesize\ttfamily void print\+Splash (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{ihm_8h_aaf351523f863052651b11a58c77dcef7}\label{ihm_8h_aaf351523f863052651b11a58c77dcef7}} 
+\index{ihm.\+h@{ihm.\+h}!print\+Stat\+Com@{print\+Stat\+Com}}
+\index{print\+Stat\+Com@{print\+Stat\+Com}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{print\+Stat\+Com()}{printStatCom()}}
+{\footnotesize\ttfamily void print\+Stat\+Com (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{ihm_8h_a27fc124c43c9544a1b0afc58e9a535d1}\label{ihm_8h_a27fc124c43c9544a1b0afc58e9a535d1}} 
+\index{ihm.\+h@{ihm.\+h}!print\+Stat\+G\+PS@{print\+Stat\+G\+PS}}
+\index{print\+Stat\+G\+PS@{print\+Stat\+G\+PS}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{print\+Stat\+G\+P\+S()}{printStatGPS()}}
+{\footnotesize\ttfamily void print\+Stat\+G\+PS (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{ihm_8h_ad58fa417ce33baeb6bc5ca8763918ec4}\label{ihm_8h_ad58fa417ce33baeb6bc5ca8763918ec4}} 
+\index{ihm.\+h@{ihm.\+h}!x\+Handle\+I\+H\+M\+Task@{x\+Handle\+I\+H\+M\+Task}}
+\index{x\+Handle\+I\+H\+M\+Task@{x\+Handle\+I\+H\+M\+Task}!ihm.\+h@{ihm.\+h}}
+\subsubsection{\texorpdfstring{x\+Handle\+I\+H\+M\+Task}{xHandleIHMTask}}
+{\footnotesize\ttfamily \hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} x\+Handle\+I\+H\+M\+Task}
+

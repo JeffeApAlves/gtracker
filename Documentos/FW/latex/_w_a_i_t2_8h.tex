@@ -1,0 +1,59 @@
+\hypertarget{_w_a_i_t2_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+W\+A\+I\+T2.h File Reference}
+\label{_w_a_i_t2_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+W\+A\+I\+T2.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+W\+A\+I\+T2.\+h}}
+
+
+Implements busy waiting routines.  
+
+
+{\ttfamily \#include \char`\"{}M\+C\+U\+C1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}W\+A\+I\+T2config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+Include dependency graph for W\+A\+I\+T2.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___w_a_i_t2__module_ga42be87062ba4bee82e74182008e6afbc}{W\+A\+I\+T2\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}~\hyperlink{group___cpu__module_ga9dee0abd722c849e54c662ab11a1d2cf}{C\+P\+U\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+K\+\_\+\+HZ} /$\ast$ for Kinetis, use core clock as base for instruction execution $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t2__module_gaf13a8ab79ece3a554abaaff60399e8c8}{W\+A\+I\+T2\+\_\+\+Nof\+Cycles\+Ms}(ms,  hz)~((ms)$\ast$((hz)/1000)) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t2__module_gaea93c12588315526fa7ebe7c305ea8f0}{W\+A\+I\+T2\+\_\+\+Nof\+Cycles\+Us}(us,  hz)~((us)$\ast$(((hz)/1000)/1000)) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t2__module_gacbc1ee8c0a39d4fab8af0efd19fe798f}{W\+A\+I\+T2\+\_\+\+Nof\+Cycles\+Ns}(ns,  hz)~(((ns)$\ast$(((hz)/1000)/1000))/1000) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t2__module_ga79daf93af3a325f56dfa4c24c325c03f}{W\+A\+I\+T2\+\_\+\+W\+A\+I\+T\+\_\+C}(cycles)
+\item 
+\#define \hyperlink{group___w_a_i_t2__module_ga42b1b78d02425ac522fcacd744e66d91}{W\+A\+I\+T2\+\_\+\+Waitus}(us)
+\item 
+\#define \hyperlink{group___w_a_i_t2__module_ga395bbf074bbc2214cb866b60ee51a93d}{W\+A\+I\+T2\+\_\+\+Waitns}(ns)
+\item 
+\#define \hyperlink{group___w_a_i_t2__module_gadcb672b21de6ee7a7239a4ec1372474b}{W\+A\+I\+T2\+\_\+\+Wait\+O\+Sms}(ms)~\hyperlink{group___w_a_i_t2__module_ga0ca6d6b6223491aaa5fca0ef97ecee27}{W\+A\+I\+T2\+\_\+\+Waitms}(ms) /$\ast$ use normal wait $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___w_a_i_t2__module_ga6b9655eaa0aea0b7d727bf57dae98c52}{W\+A\+I\+T2\+\_\+\+Wait10\+Cycles} (void)
+\item 
+void \hyperlink{group___w_a_i_t2__module_ga545ebe42a76d7f779ab3d58533827638}{W\+A\+I\+T2\+\_\+\+Wait100\+Cycles} (void)
+\item 
+void \hyperlink{group___w_a_i_t2__module_ga0b3ae724f3fe49461aeb652417583368}{W\+A\+I\+T2\+\_\+\+Wait\+Cycles} (uint16\+\_\+t cycles)
+\item 
+void \hyperlink{group___w_a_i_t2__module_ga0ca6d6b6223491aaa5fca0ef97ecee27}{W\+A\+I\+T2\+\_\+\+Waitms} (uint16\+\_\+t ms)
+\item 
+void \hyperlink{group___w_a_i_t2__module_ga5519763aaeaee6e8b167520411235c92}{W\+A\+I\+T2\+\_\+\+Wait\+Long\+Cycles} (uint32\+\_\+t cycles)
+\item 
+void \hyperlink{group___w_a_i_t2__module_ga02e3940dac9ccd5ffc55a0ea68162a6b}{W\+A\+I\+T2\+\_\+\+Init} (void)
+\item 
+void \hyperlink{group___w_a_i_t2__module_ga1f7e715f7e7119d3b036a08c1635a3c3}{W\+A\+I\+T2\+\_\+\+De\+Init} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implements busy waiting routines. 
+
+\begin{DoxyVersion}{Version}
+01.\+00 
+\end{DoxyVersion}

@@ -1,0 +1,59 @@
+\hypertarget{_a_s1_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+A\+S1.h File Reference}
+\label{_a_s1_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+A\+S1.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+A\+S1.\+h}}
+
+
+This component \char`\"{}\+Asynchro\+Serial\char`\"{} implements an asynchronous serial communication. The component supports different settings of parity, word width, stop-\/bit and communication speed, user can select interrupt or polling handler. Communication speed can be changed also in runtime. The component requires one on-\/chip asynchronous serial channel.  
+
+
+{\ttfamily \#include \char`\"{}A\+Serial\+Ldd1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cpu.\+h\char`\"{}}\newline
+Include dependency graph for A\+S1.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \hyperlink{union_a_s1___t_error}{A\+S1\+\_\+\+T\+Error}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___a_s1__module_ga88b60b019dfe95745d800b2c9a0d2197}{\+\_\+\+\_\+\+B\+W\+User\+Type\+\_\+\+A\+S1\+\_\+\+T\+Error}
+\item 
+\#define \hyperlink{group___a_s1__module_ga5deab30f29af11135db490a516abd823}{\+\_\+\+\_\+\+B\+W\+User\+Type\+\_\+\+A\+S1\+\_\+\+T\+Com\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_s1__module_ga621222f7d90195f6b0edb2abeb534e3b}{A\+S1\+\_\+\+T\+Com\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_s1__module_ga9b8f8ba49f2260fa77c5dc04d6d0b19c}{A\+S1\+\_\+\+Recv\+Char} (\hyperlink{group___a_s1__module_ga621222f7d90195f6b0edb2abeb534e3b}{A\+S1\+\_\+\+T\+Com\+Data} $\ast$Chr)
+\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_s1__module_gadd3d17688519945b315fcc55a5459f92}{A\+S1\+\_\+\+Send\+Char} (\hyperlink{group___a_s1__module_ga621222f7d90195f6b0edb2abeb534e3b}{A\+S1\+\_\+\+T\+Com\+Data} Chr)
+\item 
+\hyperlink{group___p_e___types__module_ga285e72252c100e2508e4e933a0738f2b}{word} \hyperlink{group___a_s1__module_ga7f982fbc183fdc49ae898b0cc9a05b4d}{A\+S1\+\_\+\+Get\+Chars\+In\+Rx\+Buf} (void)
+\item 
+\hyperlink{group___p_e___types__module_ga285e72252c100e2508e4e933a0738f2b}{word} \hyperlink{group___a_s1__module_gada23618356da6913f8709b30d4defef6}{A\+S1\+\_\+\+Get\+Chars\+In\+Tx\+Buf} (void)
+\item 
+void \hyperlink{group___a_s1__module_ga38b6ab56f67ae07e420858f55a8aa7a1}{A\+S1\+\_\+\+Init} (void)
+\item 
+void \hyperlink{group___a_s1__module_ga617597f21766b4f72d7f2883c21e6dd8}{A\+Serial\+Ldd1\+\_\+\+On\+Block\+Received} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\item 
+void \hyperlink{group___a_s1__module_ga5b8a51aef1d1fede97ee58e31c945b78}{A\+Serial\+Ldd1\+\_\+\+On\+Block\+Sent} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\item 
+void \hyperlink{group___a_s1__module_gab11d6ff796e37ab8d6c35dd8cc258f9a}{A\+Serial\+Ldd1\+\_\+\+On\+Error} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\item 
+void \hyperlink{group___a_s1__module_gaff0fe796ad334f68b2a86273f5ade786}{A\+Serial\+Ldd1\+\_\+\+On\+Break} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This component \char`\"{}\+Asynchro\+Serial\char`\"{} implements an asynchronous serial communication. The component supports different settings of parity, word width, stop-\/bit and communication speed, user can select interrupt or polling handler. Communication speed can be changed also in runtime. The component requires one on-\/chip asynchronous serial channel. 
+
+\begin{DoxyVersion}{Version}
+01.\+01 
+\end{DoxyVersion}

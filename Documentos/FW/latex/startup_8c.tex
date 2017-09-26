@@ -1,0 +1,142 @@
+\hypertarget{startup_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Project\+\_\+\+Settings/\+Startup\+\_\+\+Code/startup.c File Reference}
+\label{startup_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Project\+\_\+\+Settings/\+Startup\+\_\+\+Code/startup.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Project\+\_\+\+Settings/\+Startup\+\_\+\+Code/startup.\+c}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}I\+O\+\_\+\+Map.\+h\char`\"{}}\newline
+Include dependency graph for startup.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_rom_info}{Rom\+Info}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_rom_info}{Rom\+Info} \hyperlink{startup_8c_a87a90b453816d841226cbd57a8d7b9c9}{Rom\+Info}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{startup_8c_a8b67a6ff3f33fae9b3f1b142005c0bc2}{\+\_\+start} (void)
+\item 
+void \hyperlink{startup_8c_a85078be29214e670653250f605ff797e}{\+\_\+\+\_\+init\+\_\+registers} ()
+\item 
+void \hyperlink{group___cpu__module_ga32a8d86789a3326b3120bf1e1c1d4252}{\+\_\+\+\_\+init\+\_\+hardware} ()
+\item 
+void \hyperlink{startup_8c_abdb8586df61436f61fae8a1aa8ab4306}{\+\_\+\+\_\+init\+\_\+user} ()
+\item 
+void \hyperlink{startup_8c_ae5ea2704fd7338a3858d5b46e8ebc3f8}{\+\_\+\+\_\+copy\+\_\+rom\+\_\+sections\+\_\+to\+\_\+ram} (void)
+\item 
+\hyperlink{struct_rom_info}{Rom\+Info} \+\_\+\+\_\+\+S\+\_\+romp \mbox{[}$\,$\mbox{]} \hyperlink{startup_8c_a201468129b483039afc5a619e2d31097}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((weak))
+\item 
+void \hyperlink{startup_8c_a20116053dd02c0128d685fcd5078c3a7}{\+\_\+\+\_\+copy\+\_\+rom\+\_\+section} (unsigned long dst, unsigned long src, unsigned long size)
+\item 
+void \hyperlink{startup_8c_ab4ccc436ed44ffac8d3ab82bba93476d}{\+\_\+\+\_\+iar\+\_\+program\+\_\+start} (void)
+\item 
+void \hyperlink{startup_8c_a1291096ffdfeb4d928a6020b5e9a8ccc}{\+\_\+\+\_\+thumb\+\_\+startup} (void)
+\item 
+\hyperlink{startup_8c_a2804a023941a956288c32ad08b2cf59e}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((naked))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{startup_8c_a9a02e1b0a900afb3980a9bbfffbf1ec1}{\+\_\+\+\_\+\+S\+P\+\_\+\+I\+N\+IT} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{startup_8c_a87a90b453816d841226cbd57a8d7b9c9}\label{startup_8c_a87a90b453816d841226cbd57a8d7b9c9}} 
+\index{startup.\+c@{startup.\+c}!Rom\+Info@{Rom\+Info}}
+\index{Rom\+Info@{Rom\+Info}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{Rom\+Info}{RomInfo}}
+{\footnotesize\ttfamily typedef struct \hyperlink{struct_rom_info}{Rom\+Info}  \hyperlink{struct_rom_info}{Rom\+Info}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{startup_8c_a201468129b483039afc5a619e2d31097}\label{startup_8c_a201468129b483039afc5a619e2d31097}} 
+\index{startup.\+c@{startup.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(weak)}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{startup_8c_a2804a023941a956288c32ad08b2cf59e}\label{startup_8c_a2804a023941a956288c32ad08b2cf59e}} 
+\index{startup.\+c@{startup.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(naked)}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{startup_8c_a20116053dd02c0128d685fcd5078c3a7}\label{startup_8c_a20116053dd02c0128d685fcd5078c3a7}} 
+\index{startup.\+c@{startup.\+c}!\+\_\+\+\_\+copy\+\_\+rom\+\_\+section@{\+\_\+\+\_\+copy\+\_\+rom\+\_\+section}}
+\index{\+\_\+\+\_\+copy\+\_\+rom\+\_\+section@{\+\_\+\+\_\+copy\+\_\+rom\+\_\+section}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+copy\+\_\+rom\+\_\+section()}{\_\_copy\_rom\_section()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+copy\+\_\+rom\+\_\+section (\begin{DoxyParamCaption}\item[{unsigned long}]{dst,  }\item[{unsigned long}]{src,  }\item[{unsigned long}]{size }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{startup_8c_ae5ea2704fd7338a3858d5b46e8ebc3f8}\label{startup_8c_ae5ea2704fd7338a3858d5b46e8ebc3f8}} 
+\index{startup.\+c@{startup.\+c}!\+\_\+\+\_\+copy\+\_\+rom\+\_\+sections\+\_\+to\+\_\+ram@{\+\_\+\+\_\+copy\+\_\+rom\+\_\+sections\+\_\+to\+\_\+ram}}
+\index{\+\_\+\+\_\+copy\+\_\+rom\+\_\+sections\+\_\+to\+\_\+ram@{\+\_\+\+\_\+copy\+\_\+rom\+\_\+sections\+\_\+to\+\_\+ram}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+copy\+\_\+rom\+\_\+sections\+\_\+to\+\_\+ram()}{\_\_copy\_rom\_sections\_to\_ram()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+copy\+\_\+rom\+\_\+sections\+\_\+to\+\_\+ram (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{startup_8c_ab4ccc436ed44ffac8d3ab82bba93476d}\label{startup_8c_ab4ccc436ed44ffac8d3ab82bba93476d}} 
+\index{startup.\+c@{startup.\+c}!\+\_\+\+\_\+iar\+\_\+program\+\_\+start@{\+\_\+\+\_\+iar\+\_\+program\+\_\+start}}
+\index{\+\_\+\+\_\+iar\+\_\+program\+\_\+start@{\+\_\+\+\_\+iar\+\_\+program\+\_\+start}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+iar\+\_\+program\+\_\+start()}{\_\_iar\_program\_start()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+iar\+\_\+program\+\_\+start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{startup_8c_a85078be29214e670653250f605ff797e}\label{startup_8c_a85078be29214e670653250f605ff797e}} 
+\index{startup.\+c@{startup.\+c}!\+\_\+\+\_\+init\+\_\+registers@{\+\_\+\+\_\+init\+\_\+registers}}
+\index{\+\_\+\+\_\+init\+\_\+registers@{\+\_\+\+\_\+init\+\_\+registers}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+registers()}{\_\_init\_registers()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+init\+\_\+registers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{startup_8c_abdb8586df61436f61fae8a1aa8ab4306}\label{startup_8c_abdb8586df61436f61fae8a1aa8ab4306}} 
+\index{startup.\+c@{startup.\+c}!\+\_\+\+\_\+init\+\_\+user@{\+\_\+\+\_\+init\+\_\+user}}
+\index{\+\_\+\+\_\+init\+\_\+user@{\+\_\+\+\_\+init\+\_\+user}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+user()}{\_\_init\_user()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+init\+\_\+user (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{startup_8c_a1291096ffdfeb4d928a6020b5e9a8ccc}\label{startup_8c_a1291096ffdfeb4d928a6020b5e9a8ccc}} 
+\index{startup.\+c@{startup.\+c}!\+\_\+\+\_\+thumb\+\_\+startup@{\+\_\+\+\_\+thumb\+\_\+startup}}
+\index{\+\_\+\+\_\+thumb\+\_\+startup@{\+\_\+\+\_\+thumb\+\_\+startup}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+thumb\+\_\+startup()}{\_\_thumb\_startup()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+thumb\+\_\+startup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{startup_8c_a8b67a6ff3f33fae9b3f1b142005c0bc2}\label{startup_8c_a8b67a6ff3f33fae9b3f1b142005c0bc2}} 
+\index{startup.\+c@{startup.\+c}!\+\_\+start@{\+\_\+start}}
+\index{\+\_\+start@{\+\_\+start}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+start()}{\_start()}}
+{\footnotesize\ttfamily void \+\_\+start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{startup_8c_a9a02e1b0a900afb3980a9bbfffbf1ec1}\label{startup_8c_a9a02e1b0a900afb3980a9bbfffbf1ec1}} 
+\index{startup.\+c@{startup.\+c}!\+\_\+\+\_\+\+S\+P\+\_\+\+I\+N\+IT@{\+\_\+\+\_\+\+S\+P\+\_\+\+I\+N\+IT}}
+\index{\+\_\+\+\_\+\+S\+P\+\_\+\+I\+N\+IT@{\+\_\+\+\_\+\+S\+P\+\_\+\+I\+N\+IT}!startup.\+c@{startup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+\+S\+P\+\_\+\+I\+N\+IT}{\_\_SP\_INIT}}
+{\footnotesize\ttfamily char \+\_\+\+\_\+\+S\+P\+\_\+\+I\+N\+IT\mbox{[}$\,$\mbox{]}}
+

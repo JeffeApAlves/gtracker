@@ -1,0 +1,163 @@
+\hypertarget{_c_o_p___p_d_d_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+C\+O\+P\+\_\+\+P\+DD.h File Reference}
+\label{_c_o_p___p_d_d_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+C\+O\+P\+\_\+\+P\+D\+D.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+C\+O\+P\+\_\+\+P\+D\+D.\+h}}
+{\ttfamily \#include \char`\"{}P\+D\+D\+\_\+\+Types.\+h\char`\"{}}\newline
+Include dependency graph for C\+O\+P\+\_\+\+P\+D\+D.\+h\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_c_o_p___p_d_d_8h_afa109ba267acb14f23dad1f00b0602f3}{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+1}~0x55U
+\item 
+\#define \hyperlink{_c_o_p___p_d_d_8h_ab0dc41ff54ff383d9bce9d7fe8e32e96}{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+2}~0x\+A\+AU
+\item 
+\#define \hyperlink{_c_o_p___p_d_d_8h_afe295e337fe233e87b877e8740d2a5cd}{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns current state of the C\+OP device. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_o_p___p_d_d_8h_a13d9fb39b8e711a481a061a22cc25ea9}{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the control register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_o_p___p_d_d_8h_a1c3b972d62bcc77aa5ddcfbf3e7f3081}{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the control register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_c_o_p___p_d_d_8h_a2714c87d7546ac333cc5486e20ddcc8f}{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Service\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the service C\+OP register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_c_o_p___p_d_d_8h_afe295e337fe233e87b877e8740d2a5cd}\label{_c_o_p___p_d_d_8h_afe295e337fe233e87b877e8740d2a5cd}} 
+\index{C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}!C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}}
+\index{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}!C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}{COP\_PDD\_GetEnableDeviceStatus}}
+{\footnotesize\ttfamily \#define C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint8\_t)(\hyperlink{group___s_i_m___register___accessor___macros_ga24b7bb2caf49ac6a5bea962ae761d371}{SIM\_COPC\_REG}(PeripheralBase) & \hyperlink{group___s_i_m___register___masks_gaf9109bf584bb00c7c6bcf002582b2905}{SIM\_COPC\_COPT\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns current state of the C\+OP device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_c_o_p___p_d_d_8h_afe295e337fe233e87b877e8740d2a5cd}{COP\_PDD\_GetEnableDeviceStatus}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_c_o_p___p_d_d_8h_afa109ba267acb14f23dad1f00b0602f3}\label{_c_o_p___p_d_d_8h_afa109ba267acb14f23dad1f00b0602f3}} 
+\index{C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}!C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+1@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+1}}
+\index{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+1@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+1}!C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+1}{COP\_PDD\_KEY\_1}}
+{\footnotesize\ttfamily \#define C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+1~0x55U}
+
+First key \mbox{\Hypertarget{_c_o_p___p_d_d_8h_ab0dc41ff54ff383d9bce9d7fe8e32e96}\label{_c_o_p___p_d_d_8h_ab0dc41ff54ff383d9bce9d7fe8e32e96}} 
+\index{C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}!C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+2@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+2}}
+\index{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+2@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+2}!C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+2}{COP\_PDD\_KEY\_2}}
+{\footnotesize\ttfamily \#define C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+K\+E\+Y\+\_\+2~0x\+A\+AU}
+
+Second key \mbox{\Hypertarget{_c_o_p___p_d_d_8h_a1c3b972d62bcc77aa5ddcfbf3e7f3081}\label{_c_o_p___p_d_d_8h_a1c3b972d62bcc77aa5ddcfbf3e7f3081}} 
+\index{C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}!C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg}}
+\index{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg}!C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg}{COP\_PDD\_ReadControlReg}}
+{\footnotesize\ttfamily \#define C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SIM\_COPC\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the control register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_c_o_p___p_d_d_8h_a1c3b972d62bcc77aa5ddcfbf3e7f3081}{COP\_PDD\_ReadControlReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_c_o_p___p_d_d_8h_a13d9fb39b8e711a481a061a22cc25ea9}\label{_c_o_p___p_d_d_8h_a13d9fb39b8e711a481a061a22cc25ea9}} 
+\index{C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}!C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg}}
+\index{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg}!C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg}{COP\_PDD\_WriteControlReg}}
+{\footnotesize\ttfamily \#define C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SIM\_COPC\_REG(PeripheralBase) = (Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the control register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & New content of the control register. This parameter is a 8-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_c_o_p___p_d_d_8h_a13d9fb39b8e711a481a061a22cc25ea9}{COP\_PDD\_WriteControlReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_c_o_p___p_d_d_8h_a2714c87d7546ac333cc5486e20ddcc8f}\label{_c_o_p___p_d_d_8h_a2714c87d7546ac333cc5486e20ddcc8f}} 
+\index{C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}!C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Service\+Reg@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Service\+Reg}}
+\index{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Service\+Reg@{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Service\+Reg}!C\+O\+P\+\_\+\+P\+D\+D.\+h@{C\+O\+P\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Service\+Reg}{COP\_PDD\_WriteServiceReg}}
+{\footnotesize\ttfamily \#define C\+O\+P\+\_\+\+P\+D\+D\+\_\+\+Write\+Service\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    SIM\_SRVCOP\_REG(PeripheralBase) = (Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the service C\+OP register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & Service constant. This parameter is a 8-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_c_o_p___p_d_d_8h_a2714c87d7546ac333cc5486e20ddcc8f}{COP\_PDD\_WriteServiceReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}

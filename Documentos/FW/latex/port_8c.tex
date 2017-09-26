@@ -1,0 +1,470 @@
+\hypertarget{port_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/port.c File Reference}
+\label{port_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/port.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/port.\+c}}
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}portmacro.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}port\+Ticks.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}M\+C\+U\+C1.\+h\char`\"{}}\newline
+Include dependency graph for port.\+c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{port_8c_a254a1ddd7499c6ec36b38e2fc3486b80}{port\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS}~\hyperlink{_free_r_t_o_s_config_8h_a605356c2be7be7455f7fdd35368c41b5}{config\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS}
+\item 
+\#define \hyperlink{port_8c_a22d512233038153702e7d0880307ca2b}{E\+N\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER}()~\hyperlink{port_8c_adad03b75dbce86018cd8f77724f5f89a}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG} = \hyperlink{port_8c_a94a387a85f1ebbd3d23feceb63d995c5}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT} $\vert$ \hyperlink{port_8c_aeb00c00ae5a1b5c39ef0d008cdc2aabe}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT} $\vert$ \hyperlink{port_8c_a4c9342fc3940bcd756f344e3489a030e}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+IT}
+\item 
+\#define \hyperlink{port_8c_a24e58fc2bee05a2a3872630b43c0a731}{D\+I\+S\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER}()~\hyperlink{port_8c_adad03b75dbce86018cd8f77724f5f89a}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG} = \hyperlink{port_8c_a94a387a85f1ebbd3d23feceb63d995c5}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT} $\vert$ \hyperlink{port_8c_aeb00c00ae5a1b5c39ef0d008cdc2aabe}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT}
+\item 
+\#define \hyperlink{port_8c_a40626e7db11af7a259cbadb1debb1c49}{R\+E\+S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+AL}()~\hyperlink{port_8c_a840264c4ada33651c41921488329f127}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG} = 0 /$\ast$\hyperlink{port_8c_a6fb185b6f87a37fcb11be7f5f7f74c3c}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG}$\ast$/
+\item 
+\#define \hyperlink{port_8c_a265e3e9a10bc317b8cf13ab0737c47d5}{A\+C\+K\+N\+O\+W\+L\+E\+D\+G\+E\+\_\+\+T\+I\+C\+K\+\_\+\+I\+SR}()~/$\ast$ not needed $\ast$/
+\item 
+\#define \hyperlink{port_8c_a4aa0064766df22a9c94dc7eadc1fc956}{T\+I\+C\+K\+\_\+\+N\+O\+F\+\_\+\+B\+I\+TS}~24
+\item 
+\#define \hyperlink{port_8c_a2f292ae4527ffdea331c840e2b0445c8}{C\+O\+U\+N\+T\+S\+\_\+\+UP}~0 /$\ast$ Sys\+Tick is counting down to zero $\ast$/
+\item 
+\#define \hyperlink{port_8c_a4cc32a54df5693092bf829646278ed62}{S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON}(val)~\hyperlink{port_8c_a6fb185b6f87a37fcb11be7f5f7f74c3c}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG} = val
+\item 
+\#define \hyperlink{port_8c_ad528fad6450d61a8549d187362c661c2}{G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON}()~\hyperlink{port_8c_a6fb185b6f87a37fcb11be7f5f7f74c3c}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG}
+\item 
+\#define \hyperlink{port_8c_a0035f9ed5a20303a3f54bc02f76266ce}{G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+AL}(addr)~$\ast$(addr)=\hyperlink{port_8c_a840264c4ada33651c41921488329f127}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG}
+\item 
+\#define \hyperlink{port_8c_a0386051be2597a341746143a974f91c5}{T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+N\+T\+S\+\_\+\+F\+O\+R\+\_\+\+O\+N\+E\+\_\+\+T\+I\+CK}~(\hyperlink{_free_r_t_o_s_config_8h_aa6c52b1b434ca2a708c56fdee02e7946}{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}/\hyperlink{_free_r_t_o_s_config_8h_a2f0258dd1e3b877e5bc013be54c2db6a}{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ})
+\item 
+\#define \hyperlink{port_8c_ac4d0dccf5f3a96cf955bd2cf5ff987a2}{port\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+A\+SK}~( ( \hyperlink{portmacro_8h_a84e9a8ba132feed0b2401c1f4e2ac63c}{Stack\+Type\+\_\+t} ) 0xfffffffe\+U\+L )
+\item 
+\#define \hyperlink{port_8c_adad03b75dbce86018cd8f77724f5f89a}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG}~($\ast$((volatile unsigned long $\ast$)0xe000e010)) /$\ast$ S\+Y\+S\+T\+\_\+\+C\+S\+R, Sys\+Tick Control and Status Register $\ast$/
+\item 
+\#define \hyperlink{port_8c_a6fb185b6f87a37fcb11be7f5f7f74c3c}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG}~($\ast$((volatile unsigned long $\ast$)0xe000e014)) /$\ast$ S\+Y\+S\+T\+\_\+\+R\+V\+R, Sys\+Tick reload value register $\ast$/
+\item 
+\#define \hyperlink{port_8c_a840264c4ada33651c41921488329f127}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG}~($\ast$((volatile unsigned long $\ast$)0xe000e018)) /$\ast$ S\+Y\+S\+T\+\_\+\+C\+V\+R, Sys\+Tick current value register $\ast$/
+\item 
+\#define \hyperlink{port_8c_a3873c41363543f9d37337100858653e7}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+A\+L\+I\+B\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG}~($\ast$((volatile unsigned long $\ast$)0xe000e01\+C)) /$\ast$ S\+Y\+S\+T\+\_\+\+C\+A\+L\+I\+B, Sys\+Tick calibration value register $\ast$/
+\item 
+\#define \hyperlink{port_8c_a1774a206db4e93668b7508965338893f}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+IT}~(1\+U\+L$<$$<$16\+U\+L) /$\ast$ returns 1 if timer counted to 0 since the last read of the register $\ast$/
+\item 
+\#define \hyperlink{port_8c_a94a387a85f1ebbd3d23feceb63d995c5}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT}~(1\+U\+L$<$$<$2\+U\+L) /$\ast$ clock source. 1\+: core clock, 0\+: external reference clock $\ast$/
+\item 
+\#define \hyperlink{port_8c_aeb00c00ae5a1b5c39ef0d008cdc2aabe}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT}~(1\+U\+L$<$$<$1\+U\+L)  /$\ast$ Sys\+Tick interrupt enable bit $\ast$/
+\item 
+\#define \hyperlink{port_8c_a4c9342fc3940bcd756f344e3489a030e}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+IT}~(1\+U\+L$<$$<$0\+U\+L)  /$\ast$ Sys\+Tick enable bit $\ast$/
+\item 
+\#define \hyperlink{port_8c_a947759849fc561d70f3bad8a15f5737c}{port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+RL}~((volatile unsigned long$\ast$)0xe000ed04) /$\ast$ interrupt control and state register (\+I\+C\+S\+R) $\ast$/
+\item 
+\#define \hyperlink{port_8c_a16830bf8349e14cdeed05193af234d5e}{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+S\+E\+T\+\_\+\+B\+IT}~(1\+U\+L$<$$<$28\+U\+L) /$\ast$ bit 28 in port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+R\+L (\+P\+E\+N\+D\+S\+V\+S\+E\+T), see http\+://infocenter.\+arm.\+com/help/index.\+jsp?topic=/com.\+arm.\+doc.\+dui0552a/\+Cihfaaha.\+html $\ast$/
+\item 
+\#define \hyperlink{port_8c_a786050ea368d9645ca097b3b8a51af2e}{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+C\+L\+E\+A\+R\+\_\+\+B\+IT}~(1\+U\+L$<$$<$27\+U\+L) /$\ast$ bit 27 in port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+R\+L (\+P\+E\+N\+D\+S\+V\+C\+L\+R) $\ast$/
+\item 
+\#define \hyperlink{port_8c_a43f217e6869c9a449eebc837c267562f}{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+S\+E\+T\+\_\+\+B\+IT}~(1\+U\+L$<$$<$26\+U\+L) /$\ast$ bit 26 in port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+R\+L (\+P\+E\+N\+D\+S\+T\+S\+E\+T) $\ast$/
+\item 
+\#define \hyperlink{port_8c_a8c6cabffb5fdea8c959c2025f1e0488f}{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+E\+A\+R\+\_\+\+B\+IT}~(1\+U\+L$<$$<$25\+U\+L) /$\ast$ bit 25 in port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+R\+L (\+P\+E\+N\+D\+S\+T\+C\+L\+R) $\ast$/
+\item 
+\#define \hyperlink{port_8c_a9689a77ef2aeb5ba5bd6042e6379c163}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I2}~((volatile unsigned long$\ast$)0xe000ed1c) /$\ast$ system handler priority register 2 (\+S\+H\+P\+R2), used for S\+V\+Call priority, http\+://infocenter.\+arm.\+com/help/index.\+jsp?topic=/com.\+arm.\+doc.\+dui0662b/\+C\+I\+A\+G\+E\+C\+D\+D.\+html $\ast$/
+\item 
+\#define \hyperlink{port_8c_a3a452e11441e1126baad192297df6fb6}{port\+N\+V\+I\+C\+\_\+\+S\+V\+C\+A\+L\+L\+\_\+\+P\+RI}~(((unsigned long)\hyperlink{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY})$<$$<$24) /$\ast$ priority of S\+V\+Call interrupt (in \hyperlink{port_8c_a9689a77ef2aeb5ba5bd6042e6379c163}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I2}) $\ast$/
+\item 
+\#define \hyperlink{port_8c_a7dd5459aaa3478f0fc1c4ad7ddb280e8}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3}~((volatile unsigned long$\ast$)0xe000ed20) /$\ast$ system handler priority register 3 (\+S\+H\+P\+R3), used for Sys\+Tick and Pend\+S\+V priority, http\+://infocenter.\+arm.\+com/help/index.\+jsp?topic=/com.\+arm.\+doc.\+dui0662b/\+C\+I\+A\+G\+E\+C\+D\+D.\+html $\ast$/
+\item 
+\#define \hyperlink{port_8c_ae4ddaa528bc05260d1a5a607c8a00d9f}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+P\+RI}~(((unsigned long)\hyperlink{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY})$<$$<$24) /$\ast$ priority of Sys\+Tick interrupt (in \hyperlink{port_8c_a7dd5459aaa3478f0fc1c4ad7ddb280e8}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3}) $\ast$/
+\item 
+\#define \hyperlink{port_8c_a71a0b2492ed73217b5864c1e3ba8c9be}{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+\_\+\+P\+RI}~(((unsigned long)\hyperlink{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY})$<$$<$16) /$\ast$ priority of Pendable\+Service interrupt (in \hyperlink{port_8c_a7dd5459aaa3478f0fc1c4ad7ddb280e8}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3}) $\ast$/
+\item 
+\#define \hyperlink{port_8c_a1010efe0c911716648277f6fdd0e04fc}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I7}~((volatile unsigned long$\ast$)0xe000e41c) /$\ast$ system handler priority register 7, P\+R\+I\+\_\+28 is L\+P\+T\+M\+R $\ast$/
+\item 
+\#define \hyperlink{port_8c_aa722db5af2a860f847358808ba7d89f6}{port\+N\+V\+I\+C\+\_\+\+L\+P\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+RI}~(((unsigned long)\hyperlink{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY})$<$$<$0) /$\ast$ priority of low power timer interrupt $\ast$/
+\item 
+\#define \hyperlink{port_8c_a062d03aca8ae932b4552a2aa19853b44}{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+X\+P\+SR}~(0x01000000)
+\item 
+\#define \hyperlink{port_8c_afa77fdc6875b0f0e41e3cbf76443b5d5}{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+E\+X\+E\+C\+\_\+\+R\+E\+T\+U\+RN}~(0xfffffffd)
+\item 
+\#define \hyperlink{port_8c_a841afcdc52ed68a2d5cc0884ff9a67b0}{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+U\+N\+P\+R\+I\+V\+I\+L\+E\+G\+ED}~(0x03)
+\item 
+\#define \hyperlink{port_8c_a6cc91f3151d1a38897a23ccacefe3388}{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+P\+R\+I\+V\+I\+L\+E\+G\+ED}~(0x02)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned long \hyperlink{port_8c_a7e73ad2ea8c8bbeba1b130ec15f9b338}{Tick\+Counter\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{port_8c_a1f156a1435c0f5a18647e0d12230d9df}{prv\+Task\+Exit\+Error} (void)
+\item 
+\hyperlink{portmacro_8h_a84e9a8ba132feed0b2401c1f4e2ac63c}{Stack\+Type\+\_\+t} $\ast$ \hyperlink{port_8c_a68e568b7833a80950f3b86fc0ed13392}{px\+Port\+Initialise\+Stack} (\hyperlink{portmacro_8h_ab0a294066ac7369b8f59a52d9491a92c}{port\+S\+T\+A\+C\+K\+\_\+\+T\+Y\+PE} $\ast$px\+Top\+Of\+Stack, \hyperlink{_free_r_t_o_s_8h_a74cee96c96792dab96bdc57ba9007b24}{pd\+T\+A\+S\+K\+\_\+\+C\+O\+DE} px\+Code, void $\ast$pv\+Parameters)
+\item 
+void \hyperlink{port_8c_a3dec5189e26fa767705bb7cf2f214c1a}{v\+Port\+Init\+Tick\+Timer} (void)
+\item 
+void \hyperlink{port_8c_ae8de116bc285b53e87a96a014685d144}{v\+Port\+Start\+Tick\+Timer} (void)
+\item 
+void \hyperlink{port_8c_a65552cbba872b99991e8e332ff39cab7}{v\+Port\+Stop\+Tick\+Timer} (void)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{port_8c_ade5a8c6666e7413a0355cc252029c5c6}{x\+Port\+Start\+Scheduler} (void)
+\item 
+void \hyperlink{port_8c_af76f3c0b44c5b5c06fc046a4ee1a6423}{v\+Port\+End\+Scheduler} (void)
+\item 
+void \hyperlink{port_8c_a2ed3554a3de09a3bd09d396ee081ab69}{v\+Port\+Enter\+Critical} (void)
+\item 
+void \hyperlink{port_8c_aed20ada05b957181a0de042802a82a5b}{v\+Port\+Exit\+Critical} (void)
+\item 
+void \hyperlink{port_8c_afdcc79704f1ce3c8790268b732b7911d}{v\+Port\+Yield\+From\+I\+SR} (void)
+\item 
+\hyperlink{portmacro_8h_a6bbebff6020ac333ab6ec2ffd7f77001}{port\+L\+O\+NG} \hyperlink{port_8c_a27b389b1c78416aa49ceb18124f4a284}{ux\+Get\+Tick\+Counter\+Value} (void)
+\begin{DoxyCompactList}\small\item\em Return the tick raw counter value. It is assumed that the counter register has been reset at the last tick time. \end{DoxyCompactList}\item 
+void \hyperlink{group___f_r_t_o_s1__module_ga1f0fdb64040c66499e4e087bed8b2c90}{v\+Port\+Tick\+Handler} (void)
+\item 
+\hyperlink{port_8c_ad62826e478a753740ffb406eeb04f274}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((noinline))
+\item 
+\hyperlink{port_8c_a2804a023941a956288c32ad08b2cf59e}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((naked))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile const int \hyperlink{port_8c_a653bbc645eddea90d580b395d8d43c9d}{ux\+Top\+Used\+Priority} = \hyperlink{_free_r_t_o_s_config_8h_a9a78f5ac61e6cb172dadf2a51f11db38}{config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}-\/1
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{port_8c_a265e3e9a10bc317b8cf13ab0737c47d5}\label{port_8c_a265e3e9a10bc317b8cf13ab0737c47d5}} 
+\index{port.\+c@{port.\+c}!A\+C\+K\+N\+O\+W\+L\+E\+D\+G\+E\+\_\+\+T\+I\+C\+K\+\_\+\+I\+SR@{A\+C\+K\+N\+O\+W\+L\+E\+D\+G\+E\+\_\+\+T\+I\+C\+K\+\_\+\+I\+SR}}
+\index{A\+C\+K\+N\+O\+W\+L\+E\+D\+G\+E\+\_\+\+T\+I\+C\+K\+\_\+\+I\+SR@{A\+C\+K\+N\+O\+W\+L\+E\+D\+G\+E\+\_\+\+T\+I\+C\+K\+\_\+\+I\+SR}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{A\+C\+K\+N\+O\+W\+L\+E\+D\+G\+E\+\_\+\+T\+I\+C\+K\+\_\+\+I\+SR}{ACKNOWLEDGE\_TICK\_ISR}}
+{\footnotesize\ttfamily \#define A\+C\+K\+N\+O\+W\+L\+E\+D\+G\+E\+\_\+\+T\+I\+C\+K\+\_\+\+I\+SR(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~/$\ast$ not needed $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a2f292ae4527ffdea331c840e2b0445c8}\label{port_8c_a2f292ae4527ffdea331c840e2b0445c8}} 
+\index{port.\+c@{port.\+c}!C\+O\+U\+N\+T\+S\+\_\+\+UP@{C\+O\+U\+N\+T\+S\+\_\+\+UP}}
+\index{C\+O\+U\+N\+T\+S\+\_\+\+UP@{C\+O\+U\+N\+T\+S\+\_\+\+UP}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{C\+O\+U\+N\+T\+S\+\_\+\+UP}{COUNTS\_UP}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+S\+\_\+\+UP~0 /$\ast$ Sys\+Tick is counting down to zero $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a24e58fc2bee05a2a3872630b43c0a731}\label{port_8c_a24e58fc2bee05a2a3872630b43c0a731}} 
+\index{port.\+c@{port.\+c}!D\+I\+S\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER@{D\+I\+S\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER}}
+\index{D\+I\+S\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER@{D\+I\+S\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+S\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER}{DISABLE\_TICK\_COUNTER}}
+{\footnotesize\ttfamily \#define D\+I\+S\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{port_8c_adad03b75dbce86018cd8f77724f5f89a}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG} = \hyperlink{port_8c_a94a387a85f1ebbd3d23feceb63d995c5}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT} $\vert$ \hyperlink{port_8c_aeb00c00ae5a1b5c39ef0d008cdc2aabe}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT}}
+
+\mbox{\Hypertarget{port_8c_a22d512233038153702e7d0880307ca2b}\label{port_8c_a22d512233038153702e7d0880307ca2b}} 
+\index{port.\+c@{port.\+c}!E\+N\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER@{E\+N\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER}}
+\index{E\+N\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER@{E\+N\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{E\+N\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER}{ENABLE\_TICK\_COUNTER}}
+{\footnotesize\ttfamily \#define E\+N\+A\+B\+L\+E\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+ER(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{port_8c_adad03b75dbce86018cd8f77724f5f89a}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG} = \hyperlink{port_8c_a94a387a85f1ebbd3d23feceb63d995c5}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT} $\vert$ \hyperlink{port_8c_aeb00c00ae5a1b5c39ef0d008cdc2aabe}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT} $\vert$ \hyperlink{port_8c_a4c9342fc3940bcd756f344e3489a030e}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+IT}}
+
+\mbox{\Hypertarget{port_8c_a0035f9ed5a20303a3f54bc02f76266ce}\label{port_8c_a0035f9ed5a20303a3f54bc02f76266ce}} 
+\index{port.\+c@{port.\+c}!G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+AL@{G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+AL}}
+\index{G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+AL@{G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+AL}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+AL}{GET\_TICK\_CURRENT\_VAL}}
+{\footnotesize\ttfamily \#define G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+AL(\begin{DoxyParamCaption}\item[{}]{addr }\end{DoxyParamCaption})~$\ast$(addr)=\hyperlink{port_8c_a840264c4ada33651c41921488329f127}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG}}
+
+\mbox{\Hypertarget{port_8c_ad528fad6450d61a8549d187362c661c2}\label{port_8c_ad528fad6450d61a8549d187362c661c2}} 
+\index{port.\+c@{port.\+c}!G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON@{G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON}}
+\index{G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON@{G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON}{GET\_TICK\_DURATION}}
+{\footnotesize\ttfamily \#define G\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{port_8c_a6fb185b6f87a37fcb11be7f5f7f74c3c}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG}}
+
+\mbox{\Hypertarget{port_8c_a6cc91f3151d1a38897a23ccacefe3388}\label{port_8c_a6cc91f3151d1a38897a23ccacefe3388}} 
+\index{port.\+c@{port.\+c}!port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+P\+R\+I\+V\+I\+L\+E\+G\+ED@{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+P\+R\+I\+V\+I\+L\+E\+G\+ED}}
+\index{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+P\+R\+I\+V\+I\+L\+E\+G\+ED@{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+P\+R\+I\+V\+I\+L\+E\+G\+ED}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+P\+R\+I\+V\+I\+L\+E\+G\+ED}{portINITIAL\_CONTROL\_IF\_PRIVILEGED}}
+{\footnotesize\ttfamily \#define port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+P\+R\+I\+V\+I\+L\+E\+G\+ED~(0x02)}
+
+\mbox{\Hypertarget{port_8c_a841afcdc52ed68a2d5cc0884ff9a67b0}\label{port_8c_a841afcdc52ed68a2d5cc0884ff9a67b0}} 
+\index{port.\+c@{port.\+c}!port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+U\+N\+P\+R\+I\+V\+I\+L\+E\+G\+ED@{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+U\+N\+P\+R\+I\+V\+I\+L\+E\+G\+ED}}
+\index{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+U\+N\+P\+R\+I\+V\+I\+L\+E\+G\+ED@{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+U\+N\+P\+R\+I\+V\+I\+L\+E\+G\+ED}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+U\+N\+P\+R\+I\+V\+I\+L\+E\+G\+ED}{portINITIAL\_CONTROL\_IF\_UNPRIVILEGED}}
+{\footnotesize\ttfamily \#define port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+I\+F\+\_\+\+U\+N\+P\+R\+I\+V\+I\+L\+E\+G\+ED~(0x03)}
+
+\mbox{\Hypertarget{port_8c_afa77fdc6875b0f0e41e3cbf76443b5d5}\label{port_8c_afa77fdc6875b0f0e41e3cbf76443b5d5}} 
+\index{port.\+c@{port.\+c}!port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+E\+X\+E\+C\+\_\+\+R\+E\+T\+U\+RN@{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+E\+X\+E\+C\+\_\+\+R\+E\+T\+U\+RN}}
+\index{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+E\+X\+E\+C\+\_\+\+R\+E\+T\+U\+RN@{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+E\+X\+E\+C\+\_\+\+R\+E\+T\+U\+RN}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+E\+X\+E\+C\+\_\+\+R\+E\+T\+U\+RN}{portINITIAL\_EXEC\_RETURN}}
+{\footnotesize\ttfamily \#define port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+E\+X\+E\+C\+\_\+\+R\+E\+T\+U\+RN~(0xfffffffd)}
+
+\mbox{\Hypertarget{port_8c_a062d03aca8ae932b4552a2aa19853b44}\label{port_8c_a062d03aca8ae932b4552a2aa19853b44}} 
+\index{port.\+c@{port.\+c}!port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+X\+P\+SR@{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+X\+P\+SR}}
+\index{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+X\+P\+SR@{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+X\+P\+SR}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+X\+P\+SR}{portINITIAL\_XPSR}}
+{\footnotesize\ttfamily \#define port\+I\+N\+I\+T\+I\+A\+L\+\_\+\+X\+P\+SR~(0x01000000)}
+
+\mbox{\Hypertarget{port_8c_a947759849fc561d70f3bad8a15f5737c}\label{port_8c_a947759849fc561d70f3bad8a15f5737c}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+RL@{port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+RL}}
+\index{port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+RL@{port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+RL}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+RL}{portNVIC\_INT\_CTRL}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+RL~((volatile unsigned long$\ast$)0xe000ed04) /$\ast$ interrupt control and state register (\+I\+C\+S\+R) $\ast$/}
+
+\mbox{\Hypertarget{port_8c_aa722db5af2a860f847358808ba7d89f6}\label{port_8c_aa722db5af2a860f847358808ba7d89f6}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+L\+P\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+RI@{port\+N\+V\+I\+C\+\_\+\+L\+P\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+RI}}
+\index{port\+N\+V\+I\+C\+\_\+\+L\+P\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+RI@{port\+N\+V\+I\+C\+\_\+\+L\+P\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+RI}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+L\+P\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+RI}{portNVIC\_LP\_TIMER\_PRI}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+L\+P\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+RI~(((unsigned long)\hyperlink{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY})$<$$<$0) /$\ast$ priority of low power timer interrupt $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a8c6cabffb5fdea8c959c2025f1e0488f}\label{port_8c_a8c6cabffb5fdea8c959c2025f1e0488f}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+E\+A\+R\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+E\+A\+R\+\_\+\+B\+IT}}
+\index{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+E\+A\+R\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+E\+A\+R\+\_\+\+B\+IT}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+E\+A\+R\+\_\+\+B\+IT}{portNVIC\_PEND\_SYSTICK\_CLEAR\_BIT}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+E\+A\+R\+\_\+\+B\+IT~(1\+U\+L$<$$<$25\+U\+L) /$\ast$ bit 25 in port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+R\+L (\+P\+E\+N\+D\+S\+T\+C\+L\+R) $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a43f217e6869c9a449eebc837c267562f}\label{port_8c_a43f217e6869c9a449eebc837c267562f}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+S\+E\+T\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+S\+E\+T\+\_\+\+B\+IT}}
+\index{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+S\+E\+T\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+S\+E\+T\+\_\+\+B\+IT}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+S\+E\+T\+\_\+\+B\+IT}{portNVIC\_PEND\_SYSTICK\_SET\_BIT}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+S\+E\+T\+\_\+\+B\+IT~(1\+U\+L$<$$<$26\+U\+L) /$\ast$ bit 26 in port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+R\+L (\+P\+E\+N\+D\+S\+T\+S\+E\+T) $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a71a0b2492ed73217b5864c1e3ba8c9be}\label{port_8c_a71a0b2492ed73217b5864c1e3ba8c9be}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+\_\+\+P\+RI@{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+\_\+\+P\+RI}}
+\index{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+\_\+\+P\+RI@{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+\_\+\+P\+RI}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+\_\+\+P\+RI}{portNVIC\_PENDSV\_PRI}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+\_\+\+P\+RI~(((unsigned long)\hyperlink{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY})$<$$<$16) /$\ast$ priority of Pendable\+Service interrupt (in \hyperlink{port_8c_a7dd5459aaa3478f0fc1c4ad7ddb280e8}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3}) $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a786050ea368d9645ca097b3b8a51af2e}\label{port_8c_a786050ea368d9645ca097b3b8a51af2e}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+C\+L\+E\+A\+R\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+C\+L\+E\+A\+R\+\_\+\+B\+IT}}
+\index{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+C\+L\+E\+A\+R\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+C\+L\+E\+A\+R\+\_\+\+B\+IT}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+C\+L\+E\+A\+R\+\_\+\+B\+IT}{portNVIC\_PENDSVCLEAR\_BIT}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+C\+L\+E\+A\+R\+\_\+\+B\+IT~(1\+U\+L$<$$<$27\+U\+L) /$\ast$ bit 27 in port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+R\+L (\+P\+E\+N\+D\+S\+V\+C\+L\+R) $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a16830bf8349e14cdeed05193af234d5e}\label{port_8c_a16830bf8349e14cdeed05193af234d5e}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+S\+E\+T\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+S\+E\+T\+\_\+\+B\+IT}}
+\index{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+S\+E\+T\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+S\+E\+T\+\_\+\+B\+IT}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+S\+E\+T\+\_\+\+B\+IT}{portNVIC\_PENDSVSET\_BIT}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+P\+E\+N\+D\+S\+V\+S\+E\+T\+\_\+\+B\+IT~(1\+U\+L$<$$<$28\+U\+L) /$\ast$ bit 28 in port\+N\+V\+I\+C\+\_\+\+I\+N\+T\+\_\+\+C\+T\+R\+L (\+P\+E\+N\+D\+S\+V\+S\+E\+T), see http\+://infocenter.\+arm.\+com/help/index.\+jsp?topic=/com.\+arm.\+doc.\+dui0552a/\+Cihfaaha.\+html $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a3a452e11441e1126baad192297df6fb6}\label{port_8c_a3a452e11441e1126baad192297df6fb6}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+V\+C\+A\+L\+L\+\_\+\+P\+RI@{port\+N\+V\+I\+C\+\_\+\+S\+V\+C\+A\+L\+L\+\_\+\+P\+RI}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+V\+C\+A\+L\+L\+\_\+\+P\+RI@{port\+N\+V\+I\+C\+\_\+\+S\+V\+C\+A\+L\+L\+\_\+\+P\+RI}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+V\+C\+A\+L\+L\+\_\+\+P\+RI}{portNVIC\_SVCALL\_PRI}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+V\+C\+A\+L\+L\+\_\+\+P\+RI~(((unsigned long)\hyperlink{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY})$<$$<$24) /$\ast$ priority of S\+V\+Call interrupt (in \hyperlink{port_8c_a9689a77ef2aeb5ba5bd6042e6379c163}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I2}) $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a9689a77ef2aeb5ba5bd6042e6379c163}\label{port_8c_a9689a77ef2aeb5ba5bd6042e6379c163}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I2@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I2}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I2@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I2}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I2}{portNVIC\_SYSPRI2}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I2~((volatile unsigned long$\ast$)0xe000ed1c) /$\ast$ system handler priority register 2 (\+S\+H\+P\+R2), used for S\+V\+Call priority, http\+://infocenter.\+arm.\+com/help/index.\+jsp?topic=/com.\+arm.\+doc.\+dui0662b/\+C\+I\+A\+G\+E\+C\+D\+D.\+html $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a7dd5459aaa3478f0fc1c4ad7ddb280e8}\label{port_8c_a7dd5459aaa3478f0fc1c4ad7ddb280e8}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3}{portNVIC\_SYSPRI3}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3~((volatile unsigned long$\ast$)0xe000ed20) /$\ast$ system handler priority register 3 (\+S\+H\+P\+R3), used for Sys\+Tick and Pend\+S\+V priority, http\+://infocenter.\+arm.\+com/help/index.\+jsp?topic=/com.\+arm.\+doc.\+dui0662b/\+C\+I\+A\+G\+E\+C\+D\+D.\+html $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a1010efe0c911716648277f6fdd0e04fc}\label{port_8c_a1010efe0c911716648277f6fdd0e04fc}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I7@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I7}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I7@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I7}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I7}{portNVIC\_SYSPRI7}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I7~((volatile unsigned long$\ast$)0xe000e41c) /$\ast$ system handler priority register 7, P\+R\+I\+\_\+28 is L\+P\+T\+M\+R $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a3873c41363543f9d37337100858653e7}\label{port_8c_a3873c41363543f9d37337100858653e7}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+A\+L\+I\+B\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+A\+L\+I\+B\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+A\+L\+I\+B\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+A\+L\+I\+B\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+A\+L\+I\+B\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG}{portNVIC\_SYSTICK\_CALIB\_VALUE\_REG}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+A\+L\+I\+B\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG~($\ast$((volatile unsigned long $\ast$)0xe000e01\+C)) /$\ast$ S\+Y\+S\+T\+\_\+\+C\+A\+L\+I\+B, Sys\+Tick calibration value register $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a94a387a85f1ebbd3d23feceb63d995c5}\label{port_8c_a94a387a85f1ebbd3d23feceb63d995c5}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT}{portNVIC\_SYSTICK\_CLK\_BIT}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+K\+\_\+\+B\+IT~(1\+U\+L$<$$<$2\+U\+L) /$\ast$ clock source. 1\+: core clock, 0\+: external reference clock $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a1774a206db4e93668b7508965338893f}\label{port_8c_a1774a206db4e93668b7508965338893f}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+IT}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+IT}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+IT}{portNVIC\_SYSTICK\_COUNT\_FLAG\_BIT}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+\_\+\+F\+L\+A\+G\+\_\+\+B\+IT~(1\+U\+L$<$$<$16\+U\+L) /$\ast$ returns 1 if timer counted to 0 since the last read of the register $\ast$/}
+
+\mbox{\Hypertarget{port_8c_adad03b75dbce86018cd8f77724f5f89a}\label{port_8c_adad03b75dbce86018cd8f77724f5f89a}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG}{portNVIC\_SYSTICK\_CTRL\_REG}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+T\+R\+L\+\_\+\+R\+EG~($\ast$((volatile unsigned long $\ast$)0xe000e010)) /$\ast$ S\+Y\+S\+T\+\_\+\+C\+S\+R, Sys\+Tick Control and Status Register $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a840264c4ada33651c41921488329f127}\label{port_8c_a840264c4ada33651c41921488329f127}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG}{portNVIC\_SYSTICK\_CURRENT\_VALUE\_REG}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG~($\ast$((volatile unsigned long $\ast$)0xe000e018)) /$\ast$ S\+Y\+S\+T\+\_\+\+C\+V\+R, Sys\+Tick current value register $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a4c9342fc3940bcd756f344e3489a030e}\label{port_8c_a4c9342fc3940bcd756f344e3489a030e}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+IT}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+IT}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+IT}{portNVIC\_SYSTICK\_ENABLE\_BIT}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+B\+IT~(1\+U\+L$<$$<$0\+U\+L)  /$\ast$ Sys\+Tick enable bit $\ast$/}
+
+\mbox{\Hypertarget{port_8c_aeb00c00ae5a1b5c39ef0d008cdc2aabe}\label{port_8c_aeb00c00ae5a1b5c39ef0d008cdc2aabe}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT}{portNVIC\_SYSTICK\_INT\_BIT}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+B\+IT~(1\+U\+L$<$$<$1\+U\+L)  /$\ast$ Sys\+Tick interrupt enable bit $\ast$/}
+
+\mbox{\Hypertarget{port_8c_a6fb185b6f87a37fcb11be7f5f7f74c3c}\label{port_8c_a6fb185b6f87a37fcb11be7f5f7f74c3c}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG}{portNVIC\_SYSTICK\_LOAD\_REG}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG~($\ast$((volatile unsigned long $\ast$)0xe000e014)) /$\ast$ S\+Y\+S\+T\+\_\+\+R\+V\+R, Sys\+Tick reload value register $\ast$/}
+
+\mbox{\Hypertarget{port_8c_ae4ddaa528bc05260d1a5a607c8a00d9f}\label{port_8c_ae4ddaa528bc05260d1a5a607c8a00d9f}} 
+\index{port.\+c@{port.\+c}!port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+P\+RI@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+P\+RI}}
+\index{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+P\+RI@{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+P\+RI}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+P\+RI}{portNVIC\_SYSTICK\_PRI}}
+{\footnotesize\ttfamily \#define port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+P\+RI~(((unsigned long)\hyperlink{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY})$<$$<$24) /$\ast$ priority of Sys\+Tick interrupt (in \hyperlink{port_8c_a7dd5459aaa3478f0fc1c4ad7ddb280e8}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+P\+R\+I3}) $\ast$/}
+
+\mbox{\Hypertarget{port_8c_ac4d0dccf5f3a96cf955bd2cf5ff987a2}\label{port_8c_ac4d0dccf5f3a96cf955bd2cf5ff987a2}} 
+\index{port.\+c@{port.\+c}!port\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+A\+SK@{port\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+A\+SK}}
+\index{port\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+A\+SK@{port\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+A\+SK}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+A\+SK}{portSTART\_ADDRESS\_MASK}}
+{\footnotesize\ttfamily \#define port\+S\+T\+A\+R\+T\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+A\+SK~( ( \hyperlink{portmacro_8h_a84e9a8ba132feed0b2401c1f4e2ac63c}{Stack\+Type\+\_\+t} ) 0xfffffffe\+U\+L )}
+
+\mbox{\Hypertarget{port_8c_a254a1ddd7499c6ec36b38e2fc3486b80}\label{port_8c_a254a1ddd7499c6ec36b38e2fc3486b80}} 
+\index{port.\+c@{port.\+c}!port\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS@{port\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{port\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS@{port\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{port\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS}{portTASK\_RETURN\_ADDRESS}}
+{\footnotesize\ttfamily \#define port\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS~\hyperlink{_free_r_t_o_s_config_8h_a605356c2be7be7455f7fdd35368c41b5}{config\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS}}
+
+\mbox{\Hypertarget{port_8c_a40626e7db11af7a259cbadb1debb1c49}\label{port_8c_a40626e7db11af7a259cbadb1debb1c49}} 
+\index{port.\+c@{port.\+c}!R\+E\+S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+AL@{R\+E\+S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+AL}}
+\index{R\+E\+S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+AL@{R\+E\+S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+AL}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+AL}{RESET\_TICK\_COUNTER\_VAL}}
+{\footnotesize\ttfamily \#define R\+E\+S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+AL(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{port_8c_a840264c4ada33651c41921488329f127}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+R\+EG} = 0 /$\ast$\hyperlink{port_8c_a6fb185b6f87a37fcb11be7f5f7f74c3c}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG}$\ast$/}
+
+\mbox{\Hypertarget{port_8c_a4cc32a54df5693092bf829646278ed62}\label{port_8c_a4cc32a54df5693092bf829646278ed62}} 
+\index{port.\+c@{port.\+c}!S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON@{S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON}}
+\index{S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON@{S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON}{SET\_TICK\_DURATION}}
+{\footnotesize\ttfamily \#define S\+E\+T\+\_\+\+T\+I\+C\+K\+\_\+\+D\+U\+R\+A\+T\+I\+ON(\begin{DoxyParamCaption}\item[{}]{val }\end{DoxyParamCaption})~\hyperlink{port_8c_a6fb185b6f87a37fcb11be7f5f7f74c3c}{port\+N\+V\+I\+C\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+A\+D\+\_\+\+R\+EG} = val}
+
+\mbox{\Hypertarget{port_8c_a4aa0064766df22a9c94dc7eadc1fc956}\label{port_8c_a4aa0064766df22a9c94dc7eadc1fc956}} 
+\index{port.\+c@{port.\+c}!T\+I\+C\+K\+\_\+\+N\+O\+F\+\_\+\+B\+I\+TS@{T\+I\+C\+K\+\_\+\+N\+O\+F\+\_\+\+B\+I\+TS}}
+\index{T\+I\+C\+K\+\_\+\+N\+O\+F\+\_\+\+B\+I\+TS@{T\+I\+C\+K\+\_\+\+N\+O\+F\+\_\+\+B\+I\+TS}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{T\+I\+C\+K\+\_\+\+N\+O\+F\+\_\+\+B\+I\+TS}{TICK\_NOF\_BITS}}
+{\footnotesize\ttfamily \#define T\+I\+C\+K\+\_\+\+N\+O\+F\+\_\+\+B\+I\+TS~24}
+
+\mbox{\Hypertarget{port_8c_a0386051be2597a341746143a974f91c5}\label{port_8c_a0386051be2597a341746143a974f91c5}} 
+\index{port.\+c@{port.\+c}!T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+N\+T\+S\+\_\+\+F\+O\+R\+\_\+\+O\+N\+E\+\_\+\+T\+I\+CK@{T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+N\+T\+S\+\_\+\+F\+O\+R\+\_\+\+O\+N\+E\+\_\+\+T\+I\+CK}}
+\index{T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+N\+T\+S\+\_\+\+F\+O\+R\+\_\+\+O\+N\+E\+\_\+\+T\+I\+CK@{T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+N\+T\+S\+\_\+\+F\+O\+R\+\_\+\+O\+N\+E\+\_\+\+T\+I\+CK}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+N\+T\+S\+\_\+\+F\+O\+R\+\_\+\+O\+N\+E\+\_\+\+T\+I\+CK}{TIMER\_COUNTS\_FOR\_ONE\_TICK}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+N\+T\+S\+\_\+\+F\+O\+R\+\_\+\+O\+N\+E\+\_\+\+T\+I\+CK~(\hyperlink{_free_r_t_o_s_config_8h_aa6c52b1b434ca2a708c56fdee02e7946}{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}/\hyperlink{_free_r_t_o_s_config_8h_a2f0258dd1e3b877e5bc013be54c2db6a}{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ})}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{port_8c_a7e73ad2ea8c8bbeba1b130ec15f9b338}\label{port_8c_a7e73ad2ea8c8bbeba1b130ec15f9b338}} 
+\index{port.\+c@{port.\+c}!Tick\+Counter\+\_\+t@{Tick\+Counter\+\_\+t}}
+\index{Tick\+Counter\+\_\+t@{Tick\+Counter\+\_\+t}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{Tick\+Counter\+\_\+t}{TickCounter\_t}}
+{\footnotesize\ttfamily typedef unsigned long \hyperlink{port_8c_a7e73ad2ea8c8bbeba1b130ec15f9b338}{Tick\+Counter\+\_\+t}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{port_8c_ad62826e478a753740ffb406eeb04f274}\label{port_8c_ad62826e478a753740ffb406eeb04f274}} 
+\index{port.\+c@{port.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(noinline)}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{port_8c_a2804a023941a956288c32ad08b2cf59e}\label{port_8c_a2804a023941a956288c32ad08b2cf59e}} 
+\index{port.\+c@{port.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(naked)}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{port_8c_a1f156a1435c0f5a18647e0d12230d9df}\label{port_8c_a1f156a1435c0f5a18647e0d12230d9df}} 
+\index{port.\+c@{port.\+c}!prv\+Task\+Exit\+Error@{prv\+Task\+Exit\+Error}}
+\index{prv\+Task\+Exit\+Error@{prv\+Task\+Exit\+Error}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{prv\+Task\+Exit\+Error()}{prvTaskExitError()}}
+{\footnotesize\ttfamily void prv\+Task\+Exit\+Error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{port_8c_a68e568b7833a80950f3b86fc0ed13392}\label{port_8c_a68e568b7833a80950f3b86fc0ed13392}} 
+\index{port.\+c@{port.\+c}!px\+Port\+Initialise\+Stack@{px\+Port\+Initialise\+Stack}}
+\index{px\+Port\+Initialise\+Stack@{px\+Port\+Initialise\+Stack}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{px\+Port\+Initialise\+Stack()}{pxPortInitialiseStack()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a84e9a8ba132feed0b2401c1f4e2ac63c}{Stack\+Type\+\_\+t}$\ast$ px\+Port\+Initialise\+Stack (\begin{DoxyParamCaption}\item[{\hyperlink{portmacro_8h_ab0a294066ac7369b8f59a52d9491a92c}{port\+S\+T\+A\+C\+K\+\_\+\+T\+Y\+PE} $\ast$}]{px\+Top\+Of\+Stack,  }\item[{\hyperlink{_free_r_t_o_s_8h_a74cee96c96792dab96bdc57ba9007b24}{pd\+T\+A\+S\+K\+\_\+\+C\+O\+DE}}]{px\+Code,  }\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{port_8c_a27b389b1c78416aa49ceb18124f4a284}\label{port_8c_a27b389b1c78416aa49ceb18124f4a284}} 
+\index{port.\+c@{port.\+c}!ux\+Get\+Tick\+Counter\+Value@{ux\+Get\+Tick\+Counter\+Value}}
+\index{ux\+Get\+Tick\+Counter\+Value@{ux\+Get\+Tick\+Counter\+Value}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{ux\+Get\+Tick\+Counter\+Value()}{uxGetTickCounterValue()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a6bbebff6020ac333ab6ec2ffd7f77001}{port\+L\+O\+NG} ux\+Get\+Tick\+Counter\+Value (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Return the tick raw counter value. It is assumed that the counter register has been reset at the last tick time. 
+
+\begin{DoxyReturn}{Returns}
+Tick counter value. The value is reset at tick interrupt time. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{port_8c_af76f3c0b44c5b5c06fc046a4ee1a6423}\label{port_8c_af76f3c0b44c5b5c06fc046a4ee1a6423}} 
+\index{port.\+c@{port.\+c}!v\+Port\+End\+Scheduler@{v\+Port\+End\+Scheduler}}
+\index{v\+Port\+End\+Scheduler@{v\+Port\+End\+Scheduler}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{v\+Port\+End\+Scheduler()}{vPortEndScheduler()}}
+{\footnotesize\ttfamily void v\+Port\+End\+Scheduler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{port_8c_a2ed3554a3de09a3bd09d396ee081ab69}\label{port_8c_a2ed3554a3de09a3bd09d396ee081ab69}} 
+\index{port.\+c@{port.\+c}!v\+Port\+Enter\+Critical@{v\+Port\+Enter\+Critical}}
+\index{v\+Port\+Enter\+Critical@{v\+Port\+Enter\+Critical}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{v\+Port\+Enter\+Critical()}{vPortEnterCritical()}}
+{\footnotesize\ttfamily void v\+Port\+Enter\+Critical (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{port_8c_aed20ada05b957181a0de042802a82a5b}\label{port_8c_aed20ada05b957181a0de042802a82a5b}} 
+\index{port.\+c@{port.\+c}!v\+Port\+Exit\+Critical@{v\+Port\+Exit\+Critical}}
+\index{v\+Port\+Exit\+Critical@{v\+Port\+Exit\+Critical}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{v\+Port\+Exit\+Critical()}{vPortExitCritical()}}
+{\footnotesize\ttfamily void v\+Port\+Exit\+Critical (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{port_8c_a3dec5189e26fa767705bb7cf2f214c1a}\label{port_8c_a3dec5189e26fa767705bb7cf2f214c1a}} 
+\index{port.\+c@{port.\+c}!v\+Port\+Init\+Tick\+Timer@{v\+Port\+Init\+Tick\+Timer}}
+\index{v\+Port\+Init\+Tick\+Timer@{v\+Port\+Init\+Tick\+Timer}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{v\+Port\+Init\+Tick\+Timer()}{vPortInitTickTimer()}}
+{\footnotesize\ttfamily void v\+Port\+Init\+Tick\+Timer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{port_8c_ae8de116bc285b53e87a96a014685d144}\label{port_8c_ae8de116bc285b53e87a96a014685d144}} 
+\index{port.\+c@{port.\+c}!v\+Port\+Start\+Tick\+Timer@{v\+Port\+Start\+Tick\+Timer}}
+\index{v\+Port\+Start\+Tick\+Timer@{v\+Port\+Start\+Tick\+Timer}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{v\+Port\+Start\+Tick\+Timer()}{vPortStartTickTimer()}}
+{\footnotesize\ttfamily void v\+Port\+Start\+Tick\+Timer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{port_8c_a65552cbba872b99991e8e332ff39cab7}\label{port_8c_a65552cbba872b99991e8e332ff39cab7}} 
+\index{port.\+c@{port.\+c}!v\+Port\+Stop\+Tick\+Timer@{v\+Port\+Stop\+Tick\+Timer}}
+\index{v\+Port\+Stop\+Tick\+Timer@{v\+Port\+Stop\+Tick\+Timer}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{v\+Port\+Stop\+Tick\+Timer()}{vPortStopTickTimer()}}
+{\footnotesize\ttfamily void v\+Port\+Stop\+Tick\+Timer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{port_8c_afdcc79704f1ce3c8790268b732b7911d}\label{port_8c_afdcc79704f1ce3c8790268b732b7911d}} 
+\index{port.\+c@{port.\+c}!v\+Port\+Yield\+From\+I\+SR@{v\+Port\+Yield\+From\+I\+SR}}
+\index{v\+Port\+Yield\+From\+I\+SR@{v\+Port\+Yield\+From\+I\+SR}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{v\+Port\+Yield\+From\+I\+S\+R()}{vPortYieldFromISR()}}
+{\footnotesize\ttfamily void v\+Port\+Yield\+From\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{port_8c_ade5a8c6666e7413a0355cc252029c5c6}\label{port_8c_ade5a8c6666e7413a0355cc252029c5c6}} 
+\index{port.\+c@{port.\+c}!x\+Port\+Start\+Scheduler@{x\+Port\+Start\+Scheduler}}
+\index{x\+Port\+Start\+Scheduler@{x\+Port\+Start\+Scheduler}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{x\+Port\+Start\+Scheduler()}{xPortStartScheduler()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Port\+Start\+Scheduler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{port_8c_a653bbc645eddea90d580b395d8d43c9d}\label{port_8c_a653bbc645eddea90d580b395d8d43c9d}} 
+\index{port.\+c@{port.\+c}!ux\+Top\+Used\+Priority@{ux\+Top\+Used\+Priority}}
+\index{ux\+Top\+Used\+Priority@{ux\+Top\+Used\+Priority}!port.\+c@{port.\+c}}
+\subsubsection{\texorpdfstring{ux\+Top\+Used\+Priority}{uxTopUsedPriority}}
+{\footnotesize\ttfamily volatile const int ux\+Top\+Used\+Priority = \hyperlink{_free_r_t_o_s_config_8h_a9a78f5ac61e6cb172dadf2a51f11db38}{config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}-\/1}
+

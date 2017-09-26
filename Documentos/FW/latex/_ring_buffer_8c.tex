@@ -1,0 +1,58 @@
+\hypertarget{_ring_buffer_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Ring\+Buffer.c File Reference}
+\label{_ring_buffer_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Ring\+Buffer.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Ring\+Buffer.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Ring\+Buffer.\+h\char`\"{}}\newline
+Include dependency graph for Ring\+Buffer.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de}{put\+Data} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer, char ch)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d}{get\+Data} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer, char $\ast$ch)
+\item 
+short \hyperlink{_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33}{get\+Count} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer)
+\item 
+void \hyperlink{_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b}{put\+String} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer, char $\ast$str)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33}\label{_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33}} 
+\index{Ring\+Buffer.\+c@{Ring\+Buffer.\+c}!get\+Count@{get\+Count}}
+\index{get\+Count@{get\+Count}!Ring\+Buffer.\+c@{Ring\+Buffer.\+c}}
+\subsubsection{\texorpdfstring{get\+Count()}{getCount()}}
+{\footnotesize\ttfamily short get\+Count (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d}\label{_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d}} 
+\index{Ring\+Buffer.\+c@{Ring\+Buffer.\+c}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!Ring\+Buffer.\+c@{Ring\+Buffer.\+c}}
+\subsubsection{\texorpdfstring{get\+Data()}{getData()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} get\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer,  }\item[{char $\ast$}]{ch }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de}\label{_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de}} 
+\index{Ring\+Buffer.\+c@{Ring\+Buffer.\+c}!put\+Data@{put\+Data}}
+\index{put\+Data@{put\+Data}!Ring\+Buffer.\+c@{Ring\+Buffer.\+c}}
+\subsubsection{\texorpdfstring{put\+Data()}{putData()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} put\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer,  }\item[{char}]{ch }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b}\label{_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b}} 
+\index{Ring\+Buffer.\+c@{Ring\+Buffer.\+c}!put\+String@{put\+String}}
+\index{put\+String@{put\+String}!Ring\+Buffer.\+c@{Ring\+Buffer.\+c}}
+\subsubsection{\texorpdfstring{put\+String()}{putString()}}
+{\footnotesize\ttfamily void put\+String (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7

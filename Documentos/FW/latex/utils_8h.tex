@@ -1,0 +1,192 @@
+\hypertarget{utils_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/utils.h File Reference}
+\label{utils_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/utils.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/utils.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Cmd.\+h\char`\"{}}\newline
+Include dependency graph for utils.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbuffer__t}{buffer\+\_\+t}
+\item 
+struct \hyperlink{struct_list}{List}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{utils_8h_a6a63a283980fe56c5209490edd28fe38}{\+\_\+malloc}(size)~\hyperlink{portable_8h_a237d63f90b28e0950bd86f76815cd6e3}{pv\+Port\+Malloc}(size)
+\item 
+\#define \hyperlink{utils_8h_a6f8110b886be577e354f9f5ec2773ce6}{\+\_\+free}(ptr)~\hyperlink{portable_8h_a735cd3085bb7ba06ff8e47565bfd7016}{v\+Port\+Free}(ptr);ptr=\hyperlink{_t_s_s___data_types_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef char $\ast$$\ast$ \hyperlink{utils_8h_a45dac1002976b90f5c46861b91ed58fd}{Itens}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{utils_8h_acf5f3f3377120fa28bbae939e526a295}{T\+Y\+P\+E\+\_\+\+I\+N\+FO} \{ \hyperlink{utils_8h_acf5f3f3377120fa28bbae939e526a295a5a063e265d2ac903b6808e9f6e73ec46}{I\+N\+T\+E\+G\+ER}, 
+\hyperlink{utils_8h_acf5f3f3377120fa28bbae939e526a295aee847e634a4297b274316de8a8ca9921}{S\+T\+R\+I\+NG}, 
+\hyperlink{utils_8h_acf5f3f3377120fa28bbae939e526a295a9cf4a0866224b0bb4a7a895da27c9c4c}{F\+L\+O\+AT}, 
+\hyperlink{utils_8h_acf5f3f3377120fa28bbae939e526a295ad3c20094c5fe3327350484d01c44c137}{H\+EX}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structbuffer__t}{buffer\+\_\+t} \hyperlink{utils_8h_ac25a7a185d5bbf3af3783cb4b5f6681b}{memtok} (const void $\ast$s, size\+\_\+t length, const char $\ast$delim, \hyperlink{structbuffer__t}{buffer\+\_\+t} $\ast$save\+\_\+ptr)
+\item 
+void \hyperlink{utils_8h_ab2c54b12f65bfbb0724c494bf53d6422}{str\+\_\+split} (\hyperlink{struct_list}{List} $\ast$result, char $\ast$a\+\_\+str, const char a\+\_\+delim)
+\item 
+void \hyperlink{utils_8h_ae595f51afa4b8d2094c67c712f58672c}{str\+\_\+append} (char subject\mbox{[}$\,$\mbox{]}, char insert\mbox{[}$\,$\mbox{]}, int pos)
+\item 
+void \hyperlink{utils_8h_a7534210b51411827455e99a64c4a38c4}{remove\+List} (\hyperlink{struct_list}{List} $\ast$list)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8h_ad72fd4e8e76d00112d891c80e093c5b2}{As\+Integer} (int $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8h_a5dfc2c81b7a50603a3e5e28a2e2833a0}{As\+String} (char $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8h_a055affa58ad782554797910db50b8d6d}{As\+Hex} (uint16\+\_\+t $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8h_ac3ef2c7a4ce78b2f6fd1f339283442d7}{As\+Char} (char $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8h_a6976c2856f66fc78309038d7c6c3cc56}{As\+Float} (float $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8h_afc53dea59857d91538b40420069fea6d}{As\+Resource} (\hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource} $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{utils_8h_a6f8110b886be577e354f9f5ec2773ce6}\label{utils_8h_a6f8110b886be577e354f9f5ec2773ce6}} 
+\index{utils.\+h@{utils.\+h}!\+\_\+free@{\+\_\+free}}
+\index{\+\_\+free@{\+\_\+free}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+free}{\_free}}
+{\footnotesize\ttfamily \#define \+\_\+free(\begin{DoxyParamCaption}\item[{}]{ptr }\end{DoxyParamCaption})~\hyperlink{portable_8h_a735cd3085bb7ba06ff8e47565bfd7016}{v\+Port\+Free}(ptr);ptr=\hyperlink{_t_s_s___data_types_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}}
+
+\mbox{\Hypertarget{utils_8h_a6a63a283980fe56c5209490edd28fe38}\label{utils_8h_a6a63a283980fe56c5209490edd28fe38}} 
+\index{utils.\+h@{utils.\+h}!\+\_\+malloc@{\+\_\+malloc}}
+\index{\+\_\+malloc@{\+\_\+malloc}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+malloc}{\_malloc}}
+{\footnotesize\ttfamily \#define \+\_\+malloc(\begin{DoxyParamCaption}\item[{}]{size }\end{DoxyParamCaption})~\hyperlink{portable_8h_a237d63f90b28e0950bd86f76815cd6e3}{pv\+Port\+Malloc}(size)}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{utils_8h_a45dac1002976b90f5c46861b91ed58fd}\label{utils_8h_a45dac1002976b90f5c46861b91ed58fd}} 
+\index{utils.\+h@{utils.\+h}!Itens@{Itens}}
+\index{Itens@{Itens}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{Itens}{Itens}}
+{\footnotesize\ttfamily typedef char$\ast$$\ast$ \hyperlink{utils_8h_a45dac1002976b90f5c46861b91ed58fd}{Itens}}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{utils_8h_acf5f3f3377120fa28bbae939e526a295}\label{utils_8h_acf5f3f3377120fa28bbae939e526a295}} 
+\index{utils.\+h@{utils.\+h}!T\+Y\+P\+E\+\_\+\+I\+N\+FO@{T\+Y\+P\+E\+\_\+\+I\+N\+FO}}
+\index{T\+Y\+P\+E\+\_\+\+I\+N\+FO@{T\+Y\+P\+E\+\_\+\+I\+N\+FO}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{T\+Y\+P\+E\+\_\+\+I\+N\+FO}{TYPE\_INFO}}
+{\footnotesize\ttfamily enum \hyperlink{utils_8h_acf5f3f3377120fa28bbae939e526a295}{T\+Y\+P\+E\+\_\+\+I\+N\+FO}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+T\+E\+G\+ER@{I\+N\+T\+E\+G\+ER}!utils.\+h@{utils.\+h}}\index{utils.\+h@{utils.\+h}!I\+N\+T\+E\+G\+ER@{I\+N\+T\+E\+G\+ER}}}\mbox{\Hypertarget{utils_8h_acf5f3f3377120fa28bbae939e526a295a5a063e265d2ac903b6808e9f6e73ec46}\label{utils_8h_acf5f3f3377120fa28bbae939e526a295a5a063e265d2ac903b6808e9f6e73ec46}} 
+I\+N\+T\+E\+G\+ER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+T\+R\+I\+NG@{S\+T\+R\+I\+NG}!utils.\+h@{utils.\+h}}\index{utils.\+h@{utils.\+h}!S\+T\+R\+I\+NG@{S\+T\+R\+I\+NG}}}\mbox{\Hypertarget{utils_8h_acf5f3f3377120fa28bbae939e526a295aee847e634a4297b274316de8a8ca9921}\label{utils_8h_acf5f3f3377120fa28bbae939e526a295aee847e634a4297b274316de8a8ca9921}} 
+S\+T\+R\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+O\+AT@{F\+L\+O\+AT}!utils.\+h@{utils.\+h}}\index{utils.\+h@{utils.\+h}!F\+L\+O\+AT@{F\+L\+O\+AT}}}\mbox{\Hypertarget{utils_8h_acf5f3f3377120fa28bbae939e526a295a9cf4a0866224b0bb4a7a895da27c9c4c}\label{utils_8h_acf5f3f3377120fa28bbae939e526a295a9cf4a0866224b0bb4a7a895da27c9c4c}} 
+F\+L\+O\+AT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+EX@{H\+EX}!utils.\+h@{utils.\+h}}\index{utils.\+h@{utils.\+h}!H\+EX@{H\+EX}}}\mbox{\Hypertarget{utils_8h_acf5f3f3377120fa28bbae939e526a295ad3c20094c5fe3327350484d01c44c137}\label{utils_8h_acf5f3f3377120fa28bbae939e526a295ad3c20094c5fe3327350484d01c44c137}} 
+H\+EX&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{utils_8h_ac3ef2c7a4ce78b2f6fd1f339283442d7}\label{utils_8h_ac3ef2c7a4ce78b2f6fd1f339283442d7}} 
+\index{utils.\+h@{utils.\+h}!As\+Char@{As\+Char}}
+\index{As\+Char@{As\+Char}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{As\+Char()}{AsChar()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+Char (\begin{DoxyParamCaption}\item[{char $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{utils_8h_a6976c2856f66fc78309038d7c6c3cc56}\label{utils_8h_a6976c2856f66fc78309038d7c6c3cc56}} 
+\index{utils.\+h@{utils.\+h}!As\+Float@{As\+Float}}
+\index{As\+Float@{As\+Float}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{As\+Float()}{AsFloat()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+Float (\begin{DoxyParamCaption}\item[{float $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{utils_8h_a055affa58ad782554797910db50b8d6d}\label{utils_8h_a055affa58ad782554797910db50b8d6d}} 
+\index{utils.\+h@{utils.\+h}!As\+Hex@{As\+Hex}}
+\index{As\+Hex@{As\+Hex}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{As\+Hex()}{AsHex()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+Hex (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{utils_8h_ad72fd4e8e76d00112d891c80e093c5b2}\label{utils_8h_ad72fd4e8e76d00112d891c80e093c5b2}} 
+\index{utils.\+h@{utils.\+h}!As\+Integer@{As\+Integer}}
+\index{As\+Integer@{As\+Integer}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{As\+Integer()}{AsInteger()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+Integer (\begin{DoxyParamCaption}\item[{int $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{utils_8h_afc53dea59857d91538b40420069fea6d}\label{utils_8h_afc53dea59857d91538b40420069fea6d}} 
+\index{utils.\+h@{utils.\+h}!As\+Resource@{As\+Resource}}
+\index{As\+Resource@{As\+Resource}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{As\+Resource()}{AsResource()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+Resource (\begin{DoxyParamCaption}\item[{\hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource} $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{utils_8h_a5dfc2c81b7a50603a3e5e28a2e2833a0}\label{utils_8h_a5dfc2c81b7a50603a3e5e28a2e2833a0}} 
+\index{utils.\+h@{utils.\+h}!As\+String@{As\+String}}
+\index{As\+String@{As\+String}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{As\+String()}{AsString()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+String (\begin{DoxyParamCaption}\item[{char $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{utils_8h_ac25a7a185d5bbf3af3783cb4b5f6681b}\label{utils_8h_ac25a7a185d5bbf3af3783cb4b5f6681b}} 
+\index{utils.\+h@{utils.\+h}!memtok@{memtok}}
+\index{memtok@{memtok}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{memtok()}{memtok()}}
+{\footnotesize\ttfamily \hyperlink{structbuffer__t}{buffer\+\_\+t} memtok (\begin{DoxyParamCaption}\item[{const void $\ast$}]{s,  }\item[{size\+\_\+t}]{length,  }\item[{const char $\ast$}]{delim,  }\item[{\hyperlink{structbuffer__t}{buffer\+\_\+t} $\ast$}]{save\+\_\+ptr }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{utils_8h_a7534210b51411827455e99a64c4a38c4}\label{utils_8h_a7534210b51411827455e99a64c4a38c4}} 
+\index{utils.\+h@{utils.\+h}!remove\+List@{remove\+List}}
+\index{remove\+List@{remove\+List}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{remove\+List()}{removeList()}}
+{\footnotesize\ttfamily void remove\+List (\begin{DoxyParamCaption}\item[{\hyperlink{struct_list}{List} $\ast$}]{list }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utils_8h_ae595f51afa4b8d2094c67c712f58672c}\label{utils_8h_ae595f51afa4b8d2094c67c712f58672c}} 
+\index{utils.\+h@{utils.\+h}!str\+\_\+append@{str\+\_\+append}}
+\index{str\+\_\+append@{str\+\_\+append}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{str\+\_\+append()}{str\_append()}}
+{\footnotesize\ttfamily void str\+\_\+append (\begin{DoxyParamCaption}\item[{char}]{subject\mbox{[}$\,$\mbox{]},  }\item[{char}]{insert\mbox{[}$\,$\mbox{]},  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utils_8h_ab2c54b12f65bfbb0724c494bf53d6422}\label{utils_8h_ab2c54b12f65bfbb0724c494bf53d6422}} 
+\index{utils.\+h@{utils.\+h}!str\+\_\+split@{str\+\_\+split}}
+\index{str\+\_\+split@{str\+\_\+split}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{str\+\_\+split()}{str\_split()}}
+{\footnotesize\ttfamily void str\+\_\+split (\begin{DoxyParamCaption}\item[{\hyperlink{struct_list}{List} $\ast$}]{result,  }\item[{char $\ast$}]{str,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Cria um array de string Here is the call graph for this function\+:
+% FIG 10

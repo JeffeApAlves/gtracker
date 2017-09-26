@@ -1,0 +1,20 @@
+<map id="vPortExitCritical" name="vPortExitCritical">
+<area shape="rect" id="node2" href="$_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="168,107,235,133"/>
+<area shape="rect" id="node14" href="$_ring_buffer_8c.html#afc58de5fd336eea8b648561cc107e47d" title="getData" alt="" coords="168,233,235,260"/>
+<area shape="rect" id="node3" href="$protocol_8c.html#a67f18f909de210cc4208454854658231" title="putTxData" alt="" coords="289,107,371,133"/>
+<area shape="rect" id="node7" href="$protocol_8c.html#ac16b96f951e608c644a64b16712a595f" title="putRxData" alt="" coords="289,157,371,184"/>
+<area shape="rect" id="node10" href="$gps_8c.html#aa36479de7472a7ae297778b1fdad8c2f" title="putGPSData" alt="" coords="283,5,377,32"/>
+<area shape="rect" id="node13" href="$_ring_buffer_8c.html#a9c3374a6c654c18f3b7e81e8e771451b" title="putString" alt="" coords="293,56,367,83"/>
+<area shape="rect" id="node4" href="$protocol_8c.html#a302a9d8b5d0da5d55aa1dec9c4da3f56" title="sendFrame" alt="" coords="439,107,526,133"/>
+<area shape="rect" id="node5" href="$protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="432,56,533,83"/>
+<area shape="rect" id="node6" href="$_communication_8c.html#aff899dab1f89ad1053aed4cf3dd37602" title="txPackage_task" alt="" coords="631,56,747,83"/>
+<area shape="rect" id="node8" href="$group___events__module.html#gac72aa34766c66a614f29b1267cadfccc" title="AS1_OnRxChar" alt="" coords="425,157,540,184"/>
+<area shape="rect" id="node9" href="$group___a_s1__module.html#ga617597f21766b4f72d7f2883c21e6dd8" title="ASerialLdd1_OnBlockReceived" alt="" coords="588,157,789,184"/>
+<area shape="rect" id="node11" href="$group___events__module.html#gadc4e66d9db0a63b063b37ad5a70a10be" title="AS2_OnRxChar" alt="" coords="425,5,540,32"/>
+<area shape="rect" id="node12" href="$group___a_s2__module.html#ga7a02cc6280b30d13707952d78f8e6c73" title="ASerialLdd2_OnBlockReceived" alt="" coords="588,5,789,32"/>
+<area shape="rect" id="node15" href="$protocol_8c.html#a75107164823272beb9f467666391c752" title="getTxData" alt="" coords="289,208,371,235"/>
+<area shape="rect" id="node18" href="$protocol_8c.html#a95b387870ebff076b64b5bbfbf43f13f" title="getRxData" alt="" coords="289,259,371,285"/>
+<area shape="rect" id="node19" href="$gps_8c.html#a90fab271d7ff61d91f3b5f33bc99c847" title="getGPSData" alt="" coords="283,309,377,336"/>
+<area shape="rect" id="node16" href="$group___events__module.html#gad4ca2c06cb7fdb57a52811247371565c" title="AS1_OnTxChar" alt="" coords="427,208,539,235"/>
+<area shape="rect" id="node17" href="$group___a_s1__module.html#ga5b8a51aef1d1fede97ee58e31c945b78" title="ASerialLdd1_OnBlockSent" alt="" coords="601,208,777,235"/>
+</map>

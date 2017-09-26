@@ -156,7 +156,8 @@ void updateEntityClock(){
 		timestamp++;
 	}
 
-	xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
+	ihm_handle_update();
+
 /*
 	BaseType_t xHigherPriorityTaskWoken, xResult;
 

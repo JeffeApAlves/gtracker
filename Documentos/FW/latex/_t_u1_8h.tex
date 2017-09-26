@@ -1,0 +1,62 @@
+\hypertarget{_t_u1_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+T\+U1.h File Reference}
+\label{_t_u1_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+T\+U1.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+T\+U1.\+h}}
+
+
+This Timer\+Unit component provides a low level A\+PI for unified hardware access across various timer devices using the Prescaler-\/\+Counter-\/\+Compare-\/\+Capture timer structure.  
+
+
+{\ttfamily \#include \char`\"{}P\+E\+\_\+\+Types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}P\+E\+\_\+\+Error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}P\+E\+\_\+\+Const.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I\+O\+\_\+\+Map.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}T\+P\+M\+\_\+\+P\+D\+D.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cpu.\+h\char`\"{}}\newline
+Include dependency graph for T\+U1.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___t_u1__module_gaf0b58bf613a080724fc73a1d8b13ff39}{\+\_\+\+\_\+\+B\+W\+User\+Type\+\_\+\+T\+U1\+\_\+\+T\+Value\+Type}
+\item 
+\#define \hyperlink{group___t_u1__module_ga85cc4897457440a2308166668f49da10}{T\+U1\+\_\+\+C\+N\+T\+\_\+\+I\+N\+P\+\_\+\+F\+R\+E\+Q\+\_\+\+U\+\_\+0}~0x01400000\+U\+L /$\ast$ Counter input frequency in Hz $\ast$/
+\item 
+\#define \hyperlink{group___t_u1__module_ga4913c95039859613c2db9d00795ab5d6}{T\+U1\+\_\+\+C\+N\+T\+\_\+\+I\+N\+P\+\_\+\+F\+R\+E\+Q\+\_\+\+R\+\_\+0}~20971395.\+017196544\+F /$\ast$ Counter input frequency in Hz $\ast$/
+\item 
+\#define \hyperlink{group___t_u1__module_ga855f7e71146b18903d56643ec80c5ddb}{T\+U1\+\_\+\+C\+N\+T\+\_\+\+I\+N\+P\+\_\+\+F\+R\+E\+Q\+\_\+\+C\+O\+U\+NT}~0\+U      /$\ast$ Count of predefined counter input frequencies $\ast$/
+\item 
+\#define \hyperlink{group___t_u1__module_ga17e6ec4b6bb1df9067daf9ac4204db66}{T\+U1\+\_\+\+P\+E\+R\+I\+O\+D\+\_\+\+T\+I\+C\+KS}~0x51\+E\+C\+U\+L    /$\ast$ Initialization value of period in \textquotesingle{}counter ticks\textquotesingle{} $\ast$/
+\item 
+\#define \hyperlink{group___t_u1__module_ga15dbabf955f2e2b0f888b98320eabfa3}{T\+U1\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+C\+H\+A\+N\+N\+E\+LS}~0x00\+U   /$\ast$ Count of predefined channels $\ast$/
+\item 
+\#define \hyperlink{group___t_u1__module_ga1f7080987fb558b36a77447a61d7ec4a}{T\+U1\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+W\+I\+D\+TH}~0x10\+U       /$\ast$ Counter width in bits  $\ast$/
+\item 
+\#define \hyperlink{group___t_u1__module_ga199a6b62d73e2782f77ac6c4f7a5ea41}{T\+U1\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+D\+IR}~\hyperlink{group___p_e___types__module_gga89181fe4df1c4701239176768b4a9ce5a0b76fb863426c07c6c997a8d9523257b}{D\+I\+R\+\_\+\+UP}      /$\ast$ Direction of counting $\ast$/
+\item 
+\#define \hyperlink{group___t_u1__module_ga791d7a56f94f745b0dbb9a0ff09ee0d4}{T\+U1\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}~0x40038000U
+\item 
+\#define \hyperlink{group___t_u1__module_ga2532ba47f579738a2f954e79d2d99e9d}{T\+U1\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___t_u1__module_ga776fe3d89696e57b98cf36b71dbcc86c}{T\+U1\+\_\+\+On\+Counter\+Restart\+\_\+\+E\+V\+E\+N\+T\+\_\+\+E\+N\+A\+B\+L\+ED}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint16\+\_\+t \hyperlink{group___t_u1__module_ga10e196ba4fbf739bb461e1e9379ab405}{T\+U1\+\_\+\+T\+Value\+Type}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___t_u1__module_ga9bfbdf45fe9128c8d9e4245e3480d6da}{T\+U1\+\_\+\+Init} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the property \mbox{[}\char`\"{}\+Enable in init. code\char`\"{}\mbox{]} is set to \char`\"{}yes\char`\"{} value then the device is also enabled (see the description of the \mbox{[}Enable\mbox{]} method). In this case the \mbox{[}Enable\mbox{]} method is not necessary and needn\textquotesingle{}t to be generated. This method can be called only once. Before the second call of Init the \mbox{[}Deinit\mbox{]} must be called first. \end{DoxyCompactList}\item 
+\hyperlink{group___t_u1__module_gaa41b92c05e2ee5c591e4960928551eb0}{P\+E\+\_\+\+I\+SR} (T\+U1\+\_\+\+Interrupt)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This Timer\+Unit component provides a low level A\+PI for unified hardware access across various timer devices using the Prescaler-\/\+Counter-\/\+Compare-\/\+Capture timer structure. 
+
+\begin{DoxyVersion}{Version}
+01.\+11 
+\end{DoxyVersion}

@@ -1,0 +1,179 @@
+\hypertarget{application_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+App/application.c File Reference}
+\label{application_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+App/application.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+App/application.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Tank.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Telemetria.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lock.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}N\+M\+E\+A\+Frame.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Accelerometer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Serialization.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}communication.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}consumer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}application.\+h\char`\"{}}\newline
+Include dependency graph for application.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{application_8c_a2c8ccd0dabb95641e2c5c64c0e50363a}{callback\+\_\+task} (void)
+\item 
+void \hyperlink{application_8c_a7dc5bd6d3a807b672e2e28d4115aa17d}{exec\+C\+MD} (uint32\+\_\+t ul\+Notified\+Value)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8c_a26e34f1e9f250c3bce87c46788f6e842}{on\+L\+ED} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8c_a19d536bb6b81225ea969943fa7cdb187}{on\+Analog} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8c_aa8989982343862b556b7f9c74c714184}{on\+Accel} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8c_a26d4948f2a5beb423e8a12d900fac4ba}{on\+Touch} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8c_a9d2529ee67bc957ed13c989fb4a2b5bd}{on\+P\+WM} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8c_ae7b76a5462b43b54354bcde387ef474e}{on\+Telemetry} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} \hyperlink{application_8c_a1142c813402b7b27e9c98a1d7b6bdad9}{on\+Lock} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+void \hyperlink{application_8c_a4e7244df7e2772f5d59bac3466d65cba}{exec\+Error} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+void \hyperlink{application_8c_a41062f6bcdd666c901673c4a6d60f64d}{decoder\+Lock\+Pay\+Load} (\hyperlink{struct_pay_load}{Pay\+Load} $\ast$payload)
+\item 
+\hyperlink{application_8h_a8dbc155a71cc7fc130c28deddba08f64}{p\+Call\+Back} \hyperlink{application_8c_a0d546d65b742e65f538ab67edb9bf000}{get\+Call\+Back} (\hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource} r)
+\item 
+void \hyperlink{application_8c_add3190cf715f513666f4be42874d91e2}{app\+\_\+init} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_telemetria}{Telemetria} \hyperlink{application_8c_abdc819d236ba910833b4c7885fe29766}{telemetria}
+\item 
+\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} \hyperlink{application_8c_af2a922b939b7c0e4d311a4ffda60cd6b}{x\+Handle\+Call\+Back\+Task}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{application_8c_add3190cf715f513666f4be42874d91e2}\label{application_8c_add3190cf715f513666f4be42874d91e2}} 
+\index{application.\+c@{application.\+c}!app\+\_\+init@{app\+\_\+init}}
+\index{app\+\_\+init@{app\+\_\+init}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{app\+\_\+init()}{app\_init()}}
+{\footnotesize\ttfamily void app\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{application_8c_a2c8ccd0dabb95641e2c5c64c0e50363a}\label{application_8c_a2c8ccd0dabb95641e2c5c64c0e50363a}} 
+\index{application.\+c@{application.\+c}!callback\+\_\+task@{callback\+\_\+task}}
+\index{callback\+\_\+task@{callback\+\_\+task}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{callback\+\_\+task()}{callback\_task()}}
+{\footnotesize\ttfamily void callback\+\_\+task (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{application_8c_a41062f6bcdd666c901673c4a6d60f64d}\label{application_8c_a41062f6bcdd666c901673c4a6d60f64d}} 
+\index{application.\+c@{application.\+c}!decoder\+Lock\+Pay\+Load@{decoder\+Lock\+Pay\+Load}}
+\index{decoder\+Lock\+Pay\+Load@{decoder\+Lock\+Pay\+Load}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{decoder\+Lock\+Pay\+Load()}{decoderLockPayLoad()}}
+{\footnotesize\ttfamily void decoder\+Lock\+Pay\+Load (\begin{DoxyParamCaption}\item[{\hyperlink{struct_pay_load}{Pay\+Load} $\ast$}]{payload }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{application_8c_a7dc5bd6d3a807b672e2e28d4115aa17d}\label{application_8c_a7dc5bd6d3a807b672e2e28d4115aa17d}} 
+\index{application.\+c@{application.\+c}!exec\+C\+MD@{exec\+C\+MD}}
+\index{exec\+C\+MD@{exec\+C\+MD}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{exec\+C\+M\+D()}{execCMD()}}
+{\footnotesize\ttfamily void exec\+C\+MD (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ul\+Notified\+Value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{application_8c_a4e7244df7e2772f5d59bac3466d65cba}\label{application_8c_a4e7244df7e2772f5d59bac3466d65cba}} 
+\index{application.\+c@{application.\+c}!exec\+Error@{exec\+Error}}
+\index{exec\+Error@{exec\+Error}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{exec\+Error()}{execError()}}
+{\footnotesize\ttfamily void exec\+Error (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{application_8c_a0d546d65b742e65f538ab67edb9bf000}\label{application_8c_a0d546d65b742e65f538ab67edb9bf000}} 
+\index{application.\+c@{application.\+c}!get\+Call\+Back@{get\+Call\+Back}}
+\index{get\+Call\+Back@{get\+Call\+Back}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{get\+Call\+Back()}{getCallBack()}}
+{\footnotesize\ttfamily \hyperlink{application_8h_a8dbc155a71cc7fc130c28deddba08f64}{p\+Call\+Back} get\+Call\+Back (\begin{DoxyParamCaption}\item[{\hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource}}]{r }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{application_8c_aa8989982343862b556b7f9c74c714184}\label{application_8c_aa8989982343862b556b7f9c74c714184}} 
+\index{application.\+c@{application.\+c}!on\+Accel@{on\+Accel}}
+\index{on\+Accel@{on\+Accel}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{on\+Accel()}{onAccel()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+Accel (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{application_8c_a19d536bb6b81225ea969943fa7cdb187}\label{application_8c_a19d536bb6b81225ea969943fa7cdb187}} 
+\index{application.\+c@{application.\+c}!on\+Analog@{on\+Analog}}
+\index{on\+Analog@{on\+Analog}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{on\+Analog()}{onAnalog()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+Analog (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{application_8c_a26e34f1e9f250c3bce87c46788f6e842}\label{application_8c_a26e34f1e9f250c3bce87c46788f6e842}} 
+\index{application.\+c@{application.\+c}!on\+L\+ED@{on\+L\+ED}}
+\index{on\+L\+ED@{on\+L\+ED}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{on\+L\+E\+D()}{onLED()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+L\+ED (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{application_8c_a1142c813402b7b27e9c98a1d7b6bdad9}\label{application_8c_a1142c813402b7b27e9c98a1d7b6bdad9}} 
+\index{application.\+c@{application.\+c}!on\+Lock@{on\+Lock}}
+\index{on\+Lock@{on\+Lock}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{on\+Lock()}{onLock()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+Lock (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{application_8c_a9d2529ee67bc957ed13c989fb4a2b5bd}\label{application_8c_a9d2529ee67bc957ed13c989fb4a2b5bd}} 
+\index{application.\+c@{application.\+c}!on\+P\+WM@{on\+P\+WM}}
+\index{on\+P\+WM@{on\+P\+WM}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{on\+P\+W\+M()}{onPWM()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+P\+WM (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{application_8c_ae7b76a5462b43b54354bcde387ef474e}\label{application_8c_ae7b76a5462b43b54354bcde387ef474e}} 
+\index{application.\+c@{application.\+c}!on\+Telemetry@{on\+Telemetry}}
+\index{on\+Telemetry@{on\+Telemetry}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{on\+Telemetry()}{onTelemetry()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+Telemetry (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{application_8c_a26d4948f2a5beb423e8a12d900fac4ba}\label{application_8c_a26d4948f2a5beb423e8a12d900fac4ba}} 
+\index{application.\+c@{application.\+c}!on\+Touch@{on\+Touch}}
+\index{on\+Touch@{on\+Touch}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{on\+Touch()}{onTouch()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_a01b2f1df9c80b1de562183ce1e82d297}{Result\+Exec} on\+Touch (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{application_8c_abdc819d236ba910833b4c7885fe29766}\label{application_8c_abdc819d236ba910833b4c7885fe29766}} 
+\index{application.\+c@{application.\+c}!telemetria@{telemetria}}
+\index{telemetria@{telemetria}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{telemetria}{telemetria}}
+{\footnotesize\ttfamily \hyperlink{struct_telemetria}{Telemetria} telemetria}
+
+\mbox{\Hypertarget{application_8c_af2a922b939b7c0e4d311a4ffda60cd6b}\label{application_8c_af2a922b939b7c0e4d311a4ffda60cd6b}} 
+\index{application.\+c@{application.\+c}!x\+Handle\+Call\+Back\+Task@{x\+Handle\+Call\+Back\+Task}}
+\index{x\+Handle\+Call\+Back\+Task@{x\+Handle\+Call\+Back\+Task}!application.\+c@{application.\+c}}
+\subsubsection{\texorpdfstring{x\+Handle\+Call\+Back\+Task}{xHandleCallBackTask}}
+{\footnotesize\ttfamily \hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} x\+Handle\+Call\+Back\+Task}
+

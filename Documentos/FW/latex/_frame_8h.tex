@@ -1,0 +1,93 @@
+\hypertarget{_frame_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/\+Frame.h File Reference}
+\label{_frame_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/\+Frame.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Includes/\+Frame.\+h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for Frame.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_frame}{Frame}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_frame_8h_a3709c155f7aad2c88988bf0e2487f5ec}{L\+E\+N\+\_\+\+F\+R\+A\+ME}~300
+\item 
+\#define \hyperlink{_frame_8h_a0bd31c58e354837779303a475f697a6f}{A\+R\+R\+A\+Y\+\_\+\+L\+E\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM}~3
+\item 
+\#define \hyperlink{_frame_8h_a1ffd41efa94754b344c9b24f93c5983b}{clear\+Array\+Frame}(f)~memset((void$\ast$)f,0,sizeof(\hyperlink{struct_frame}{Frame}));
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{_frame_8h_ad495fac4de1a27ddfbadf1dbe5c6af0f}{calc\+Checksum} (const char $\ast$buff, size\+\_\+t sz)
+\item 
+unsigned int \hyperlink{_frame_8h_ac9628941bd444a1329b64f36ac50f439}{put\+Data\+Array} (\hyperlink{struct_frame}{Frame} $\ast$frame, char data)
+\item 
+void \hyperlink{_frame_8h_aa590f0ed30fbb41a2577c65c80c1dffd}{Append\+Frame} (\hyperlink{struct_frame}{Frame} $\ast$frame, const char $\ast$data)
+\item 
+void \hyperlink{_frame_8h_a76f671cc78f793fbd59a9afa31daa410}{get\+Field} (char $\ast$str, char $\ast$out, uint16\+\_\+t num, const char a\+\_\+delim)
+\item 
+uint16\+\_\+t \hyperlink{_frame_8h_a547bd8b6653fcf9f85fe84993e69fe78}{get\+Num\+Field} (char $\ast$str, const char a\+\_\+delim)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_frame_8h_a0bd31c58e354837779303a475f697a6f}\label{_frame_8h_a0bd31c58e354837779303a475f697a6f}} 
+\index{Frame.\+h@{Frame.\+h}!A\+R\+R\+A\+Y\+\_\+\+L\+E\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM@{A\+R\+R\+A\+Y\+\_\+\+L\+E\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM}}
+\index{A\+R\+R\+A\+Y\+\_\+\+L\+E\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM@{A\+R\+R\+A\+Y\+\_\+\+L\+E\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM}!Frame.\+h@{Frame.\+h}}
+\subsubsection{\texorpdfstring{A\+R\+R\+A\+Y\+\_\+\+L\+E\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM}{ARRAY\_LEN\_CHECKSUM}}
+{\footnotesize\ttfamily \#define A\+R\+R\+A\+Y\+\_\+\+L\+E\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM~3}
+
+\mbox{\Hypertarget{_frame_8h_a1ffd41efa94754b344c9b24f93c5983b}\label{_frame_8h_a1ffd41efa94754b344c9b24f93c5983b}} 
+\index{Frame.\+h@{Frame.\+h}!clear\+Array\+Frame@{clear\+Array\+Frame}}
+\index{clear\+Array\+Frame@{clear\+Array\+Frame}!Frame.\+h@{Frame.\+h}}
+\subsubsection{\texorpdfstring{clear\+Array\+Frame}{clearArrayFrame}}
+{\footnotesize\ttfamily \#define clear\+Array\+Frame(\begin{DoxyParamCaption}\item[{}]{f }\end{DoxyParamCaption})~memset((void$\ast$)f,0,sizeof(\hyperlink{struct_frame}{Frame}));}
+
+\mbox{\Hypertarget{_frame_8h_a3709c155f7aad2c88988bf0e2487f5ec}\label{_frame_8h_a3709c155f7aad2c88988bf0e2487f5ec}} 
+\index{Frame.\+h@{Frame.\+h}!L\+E\+N\+\_\+\+F\+R\+A\+ME@{L\+E\+N\+\_\+\+F\+R\+A\+ME}}
+\index{L\+E\+N\+\_\+\+F\+R\+A\+ME@{L\+E\+N\+\_\+\+F\+R\+A\+ME}!Frame.\+h@{Frame.\+h}}
+\subsubsection{\texorpdfstring{L\+E\+N\+\_\+\+F\+R\+A\+ME}{LEN\_FRAME}}
+{\footnotesize\ttfamily \#define L\+E\+N\+\_\+\+F\+R\+A\+ME~300}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_frame_8h_aa590f0ed30fbb41a2577c65c80c1dffd}\label{_frame_8h_aa590f0ed30fbb41a2577c65c80c1dffd}} 
+\index{Frame.\+h@{Frame.\+h}!Append\+Frame@{Append\+Frame}}
+\index{Append\+Frame@{Append\+Frame}!Frame.\+h@{Frame.\+h}}
+\subsubsection{\texorpdfstring{Append\+Frame()}{AppendFrame()}}
+{\footnotesize\ttfamily void Append\+Frame (\begin{DoxyParamCaption}\item[{\hyperlink{struct_frame}{Frame} $\ast$}]{frame,  }\item[{const char $\ast$}]{data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_frame_8h_ad495fac4de1a27ddfbadf1dbe5c6af0f}\label{_frame_8h_ad495fac4de1a27ddfbadf1dbe5c6af0f}} 
+\index{Frame.\+h@{Frame.\+h}!calc\+Checksum@{calc\+Checksum}}
+\index{calc\+Checksum@{calc\+Checksum}!Frame.\+h@{Frame.\+h}}
+\subsubsection{\texorpdfstring{calc\+Checksum()}{calcChecksum()}}
+{\footnotesize\ttfamily unsigned int calc\+Checksum (\begin{DoxyParamCaption}\item[{const char $\ast$}]{buff,  }\item[{size\+\_\+t}]{sz }\end{DoxyParamCaption})}
+
+Calcula o check\+Sum da string buff Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{_frame_8h_a76f671cc78f793fbd59a9afa31daa410}\label{_frame_8h_a76f671cc78f793fbd59a9afa31daa410}} 
+\index{Frame.\+h@{Frame.\+h}!get\+Field@{get\+Field}}
+\index{get\+Field@{get\+Field}!Frame.\+h@{Frame.\+h}}
+\subsubsection{\texorpdfstring{get\+Field()}{getField()}}
+{\footnotesize\ttfamily void get\+Field (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{out,  }\item[{uint16\+\_\+t}]{num,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{_frame_8h_a547bd8b6653fcf9f85fe84993e69fe78}\label{_frame_8h_a547bd8b6653fcf9f85fe84993e69fe78}} 
+\index{Frame.\+h@{Frame.\+h}!get\+Num\+Field@{get\+Num\+Field}}
+\index{get\+Num\+Field@{get\+Num\+Field}!Frame.\+h@{Frame.\+h}}
+\subsubsection{\texorpdfstring{get\+Num\+Field()}{getNumField()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+Num\+Field (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_frame_8h_ac9628941bd444a1329b64f36ac50f439}\label{_frame_8h_ac9628941bd444a1329b64f36ac50f439}} 
+\index{Frame.\+h@{Frame.\+h}!put\+Data\+Array@{put\+Data\+Array}}
+\index{put\+Data\+Array@{put\+Data\+Array}!Frame.\+h@{Frame.\+h}}
+\subsubsection{\texorpdfstring{put\+Data\+Array()}{putDataArray()}}
+{\footnotesize\ttfamily unsigned int put\+Data\+Array (\begin{DoxyParamCaption}\item[{\hyperlink{struct_frame}{Frame} $\ast$}]{frame,  }\item[{char}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

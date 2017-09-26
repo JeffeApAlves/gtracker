@@ -9,7 +9,7 @@
 #include "Tank.h"
 
 static uint16_t	ADValues[AD1_CHANNEL_COUNT];
-static Tank		adInfo;
+static Tank		tank;
 
 volatile	bool AD_finished;
 
@@ -31,9 +31,9 @@ void tank_task(void){
 
 		if(AD1_GetValue16(&ADValues[0])==ERR_OK){
 
-			adInfo.Level = ADValues[0];
+			tank.Level = ADValues[0];
 
-		    if(xQueueSendToBack( xQueueTank ,  &adInfo, ( TickType_t ) 1 ) ){
+		    if(xQueueSendToBack( xQueueTank ,  &tank, ( TickType_t ) 1 ) ){
 
 		    	xTaskNotify( xHandleCallBackTask, BIT_UPDATE_AD , eSetBits );
 		    }
@@ -46,7 +46,7 @@ void tank_task(void){
 
 void tank_init(void){
 
-	AD_finished		= false;
 	xQueueTank		= xQueueCreate( 1, sizeof( Tank ));
+	AD_finished		= false;
 }
 //-----------------------------------------------------------------------------

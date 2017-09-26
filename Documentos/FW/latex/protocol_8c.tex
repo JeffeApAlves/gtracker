@@ -1,0 +1,204 @@
+\hypertarget{protocol_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/protocol.c File Reference}
+\label{protocol_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/protocol.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/protocol.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}X\+F1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}A\+S1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Events.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Frame.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Ring\+Buffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}communication.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Serialization.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}protocol.\+h\char`\"{}}\newline
+Include dependency graph for protocol.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{protocol_8c_a5a763e43d6e4f1fdf520075476f11d2d}{process\+Rx} (void)
+\item 
+\hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource} \hyperlink{protocol_8c_a415580096e7729144bcd26b365c0b48d}{get\+Resource} (char $\ast$name)
+\item 
+void \hyperlink{protocol_8c_ad34e045d5bf9a12559d00cc39093f063}{get\+Resource\+Name} (char $\ast$out, \hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource} resource)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{protocol_8c_a67f18f909de210cc4208454854658231}{put\+Tx\+Data} (char data)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{protocol_8c_ac16b96f951e608c644a64b16712a595f}{put\+Rx\+Data} (char data)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{protocol_8c_a75107164823272beb9f467666391c752}{get\+Tx\+Data} (char $\ast$ch)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{protocol_8c_a95b387870ebff076b64b5bbfbf43f13f}{get\+Rx\+Data} (char $\ast$ch)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{protocol_8c_a253ec485742da753e8b5e5c568646eba}{has\+Tx\+Data} (void)
+\item 
+void \hyperlink{protocol_8c_a302a9d8b5d0da5d55aa1dec9c4da3f56}{send\+Frame} (char $\ast$frame)
+\item 
+void \hyperlink{protocol_8c_aeba727db883a5ed9fdd0fd7777bf1666}{send\+Package} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{protocol_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a}{is\+Any\+Rx\+Data} ()
+\item 
+void \hyperlink{protocol_8c_a76ce041fe8cb759070d0472abfa2fcaa}{protocol\+\_\+init} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{protocol_8c_aaaf7d01c4eb3eca0747f8a82bd51e82a}{S\+E\+P\+A\+R\+A\+T\+OR} \mbox{[}$\,$\mbox{]} = \{\hyperlink{_communication_frame_8h_ab5bbc755386730bc28733532b848661f}{C\+H\+A\+R\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR},\hyperlink{_communication_frame_8h_abe0d4fed622e22bf428d3860df9b9f2f}{C\+H\+A\+R\+\_\+\+S\+T\+R\+\_\+\+E\+ND}\}
+\item 
+const char $\ast$ \hyperlink{protocol_8c_aa7223d760429da396f2ea5e0f630718f}{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+AN} = \char`\"{}AN\char`\"{}
+\item 
+const char $\ast$ \hyperlink{protocol_8c_aa79373273b4874ef0cd12a1adc808477}{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+RD} = \char`\"{}RD\char`\"{}
+\item 
+const char $\ast$ \hyperlink{protocol_8c_ab6f8b9ee27ca0aff065a8e80c1994253}{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+WR} = \char`\"{}WR\char`\"{}
+\item 
+\hyperlink{struct_ring_buffer}{Ring\+Buffer} \hyperlink{protocol_8c_abdc2c7324a6e65beb2d6a296acb841bc}{buffer\+Rx}
+\item 
+\hyperlink{struct_ring_buffer}{Ring\+Buffer} \hyperlink{protocol_8c_a0fc9b5feb297bb921f3b3a5b92ed5bd8}{buffer\+Tx}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{protocol_8c_a415580096e7729144bcd26b365c0b48d}\label{protocol_8c_a415580096e7729144bcd26b365c0b48d}} 
+\index{protocol.\+c@{protocol.\+c}!get\+Resource@{get\+Resource}}
+\index{get\+Resource@{get\+Resource}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{get\+Resource()}{getResource()}}
+{\footnotesize\ttfamily \hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource} get\+Resource (\begin{DoxyParamCaption}\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{protocol_8c_ad34e045d5bf9a12559d00cc39093f063}\label{protocol_8c_ad34e045d5bf9a12559d00cc39093f063}} 
+\index{protocol.\+c@{protocol.\+c}!get\+Resource\+Name@{get\+Resource\+Name}}
+\index{get\+Resource\+Name@{get\+Resource\+Name}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{get\+Resource\+Name()}{getResourceName()}}
+{\footnotesize\ttfamily void get\+Resource\+Name (\begin{DoxyParamCaption}\item[{char $\ast$}]{out,  }\item[{\hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource}}]{resource }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{protocol_8c_a95b387870ebff076b64b5bbfbf43f13f}\label{protocol_8c_a95b387870ebff076b64b5bbfbf43f13f}} 
+\index{protocol.\+c@{protocol.\+c}!get\+Rx\+Data@{get\+Rx\+Data}}
+\index{get\+Rx\+Data@{get\+Rx\+Data}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{get\+Rx\+Data()}{getRxData()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} get\+Rx\+Data (\begin{DoxyParamCaption}\item[{char $\ast$}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{protocol_8c_a75107164823272beb9f467666391c752}\label{protocol_8c_a75107164823272beb9f467666391c752}} 
+\index{protocol.\+c@{protocol.\+c}!get\+Tx\+Data@{get\+Tx\+Data}}
+\index{get\+Tx\+Data@{get\+Tx\+Data}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{get\+Tx\+Data()}{getTxData()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} get\+Tx\+Data (\begin{DoxyParamCaption}\item[{char $\ast$}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{protocol_8c_a253ec485742da753e8b5e5c568646eba}\label{protocol_8c_a253ec485742da753e8b5e5c568646eba}} 
+\index{protocol.\+c@{protocol.\+c}!has\+Tx\+Data@{has\+Tx\+Data}}
+\index{has\+Tx\+Data@{has\+Tx\+Data}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{has\+Tx\+Data()}{hasTxData()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} has\+Tx\+Data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Verifica se existe dados no buffer circular de transmiassa \mbox{\Hypertarget{protocol_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a}\label{protocol_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a}} 
+\index{protocol.\+c@{protocol.\+c}!is\+Any\+Rx\+Data@{is\+Any\+Rx\+Data}}
+\index{is\+Any\+Rx\+Data@{is\+Any\+Rx\+Data}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{is\+Any\+Rx\+Data()}{isAnyRxData()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} is\+Any\+Rx\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{protocol_8c_a5a763e43d6e4f1fdf520075476f11d2d}\label{protocol_8c_a5a763e43d6e4f1fdf520075476f11d2d}} 
+\index{protocol.\+c@{protocol.\+c}!process\+Rx@{process\+Rx}}
+\index{process\+Rx@{process\+Rx}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{process\+Rx()}{processRx()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} process\+Rx (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{protocol_8c_a76ce041fe8cb759070d0472abfa2fcaa}\label{protocol_8c_a76ce041fe8cb759070d0472abfa2fcaa}} 
+\index{protocol.\+c@{protocol.\+c}!protocol\+\_\+init@{protocol\+\_\+init}}
+\index{protocol\+\_\+init@{protocol\+\_\+init}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{protocol\+\_\+init()}{protocol\_init()}}
+{\footnotesize\ttfamily void protocol\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Inicializa a comunicação com o Host via porta serial Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{protocol_8c_ac16b96f951e608c644a64b16712a595f}\label{protocol_8c_ac16b96f951e608c644a64b16712a595f}} 
+\index{protocol.\+c@{protocol.\+c}!put\+Rx\+Data@{put\+Rx\+Data}}
+\index{put\+Rx\+Data@{put\+Rx\+Data}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{put\+Rx\+Data()}{putRxData()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} put\+Rx\+Data (\begin{DoxyParamCaption}\item[{char}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{protocol_8c_a67f18f909de210cc4208454854658231}\label{protocol_8c_a67f18f909de210cc4208454854658231}} 
+\index{protocol.\+c@{protocol.\+c}!put\+Tx\+Data@{put\+Tx\+Data}}
+\index{put\+Tx\+Data@{put\+Tx\+Data}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{put\+Tx\+Data()}{putTxData()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} put\+Tx\+Data (\begin{DoxyParamCaption}\item[{char}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{protocol_8c_a302a9d8b5d0da5d55aa1dec9c4da3f56}\label{protocol_8c_a302a9d8b5d0da5d55aa1dec9c4da3f56}} 
+\index{protocol.\+c@{protocol.\+c}!send\+Frame@{send\+Frame}}
+\index{send\+Frame@{send\+Frame}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{send\+Frame()}{sendFrame()}}
+{\footnotesize\ttfamily void send\+Frame (\begin{DoxyParamCaption}\item[{char $\ast$}]{frame }\end{DoxyParamCaption})}
+
+Envia o frame Here is the call graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{protocol_8c_aeba727db883a5ed9fdd0fd7777bf1666}\label{protocol_8c_aeba727db883a5ed9fdd0fd7777bf1666}} 
+\index{protocol.\+c@{protocol.\+c}!send\+Package@{send\+Package}}
+\index{send\+Package@{send\+Package}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{send\+Package()}{sendPackage()}}
+{\footnotesize\ttfamily void send\+Package (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{protocol_8c_abdc2c7324a6e65beb2d6a296acb841bc}\label{protocol_8c_abdc2c7324a6e65beb2d6a296acb841bc}} 
+\index{protocol.\+c@{protocol.\+c}!buffer\+Rx@{buffer\+Rx}}
+\index{buffer\+Rx@{buffer\+Rx}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{buffer\+Rx}{bufferRx}}
+{\footnotesize\ttfamily \hyperlink{struct_ring_buffer}{Ring\+Buffer} buffer\+Rx}
+
+\mbox{\Hypertarget{protocol_8c_a0fc9b5feb297bb921f3b3a5b92ed5bd8}\label{protocol_8c_a0fc9b5feb297bb921f3b3a5b92ed5bd8}} 
+\index{protocol.\+c@{protocol.\+c}!buffer\+Tx@{buffer\+Tx}}
+\index{buffer\+Tx@{buffer\+Tx}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{buffer\+Tx}{bufferTx}}
+{\footnotesize\ttfamily \hyperlink{struct_ring_buffer}{Ring\+Buffer} buffer\+Tx}
+
+\mbox{\Hypertarget{protocol_8c_aa7223d760429da396f2ea5e0f630718f}\label{protocol_8c_aa7223d760429da396f2ea5e0f630718f}} 
+\index{protocol.\+c@{protocol.\+c}!O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+AN@{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+AN}}
+\index{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+AN@{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+AN}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+AN}{OPERATION\_AN}}
+{\footnotesize\ttfamily const char$\ast$ O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+AN = \char`\"{}AN\char`\"{}}
+
+\mbox{\Hypertarget{protocol_8c_aa79373273b4874ef0cd12a1adc808477}\label{protocol_8c_aa79373273b4874ef0cd12a1adc808477}} 
+\index{protocol.\+c@{protocol.\+c}!O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+RD@{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+RD}}
+\index{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+RD@{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+RD}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+RD}{OPERATION\_RD}}
+{\footnotesize\ttfamily const char$\ast$ O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+RD = \char`\"{}RD\char`\"{}}
+
+\mbox{\Hypertarget{protocol_8c_ab6f8b9ee27ca0aff065a8e80c1994253}\label{protocol_8c_ab6f8b9ee27ca0aff065a8e80c1994253}} 
+\index{protocol.\+c@{protocol.\+c}!O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+WR@{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+WR}}
+\index{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+WR@{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+WR}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+WR}{OPERATION\_WR}}
+{\footnotesize\ttfamily const char$\ast$ O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+WR = \char`\"{}WR\char`\"{}}
+
+\mbox{\Hypertarget{protocol_8c_aaaf7d01c4eb3eca0747f8a82bd51e82a}\label{protocol_8c_aaaf7d01c4eb3eca0747f8a82bd51e82a}} 
+\index{protocol.\+c@{protocol.\+c}!S\+E\+P\+A\+R\+A\+T\+OR@{S\+E\+P\+A\+R\+A\+T\+OR}}
+\index{S\+E\+P\+A\+R\+A\+T\+OR@{S\+E\+P\+A\+R\+A\+T\+OR}!protocol.\+c@{protocol.\+c}}
+\subsubsection{\texorpdfstring{S\+E\+P\+A\+R\+A\+T\+OR}{SEPARATOR}}
+{\footnotesize\ttfamily char S\+E\+P\+A\+R\+A\+T\+OR\mbox{[}$\,$\mbox{]} = \{\hyperlink{_communication_frame_8h_ab5bbc755386730bc28733532b848661f}{C\+H\+A\+R\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR},\hyperlink{_communication_frame_8h_abe0d4fed622e22bf428d3860df9b9f2f}{C\+H\+A\+R\+\_\+\+S\+T\+R\+\_\+\+E\+ND}\}}
+

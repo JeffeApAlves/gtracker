@@ -1,0 +1,78 @@
+\hypertarget{_t_s_s___sensor_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+T\+S\+S/\+T\+S\+S\+\_\+\+Sensor.c File Reference}
+\label{_t_s_s___sensor_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+T\+S\+S/\+T\+S\+S\+\_\+\+Sensor.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+T\+S\+S/\+T\+S\+S\+\_\+\+Sensor.\+c}}
+
+
+Contains functions to Perform the sensing ot the electrodes and set the status for each electrode.  
+
+
+{\ttfamily \#include \char`\"{}T\+S\+S\+\_\+\+Sensor\+G\+P\+I\+O.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}T\+S\+S\+\_\+\+Sensor\+T\+S\+I.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}T\+S\+S\+\_\+\+Sensor\+T\+S\+I\+L.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}T\+S\+S\+\_\+\+Sensor.\+h\char`\"{}}\newline
+Include dependency graph for T\+S\+S\+\_\+\+Sensor.\+c\+:
+% FIG 0
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8} \hyperlink{_t_s_s___sensor_8c_a3ef11f2a76941c118d0b4e407ca39cfb}{tss\+\_\+u8\+Sample\+Int\+Flag}
+\item 
+volatile \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8} \hyperlink{_t_s_s___sensor_8c_a23867e063a1196f5cb2dcd607bef004d}{tss\+\_\+u8\+H\+W\+Timer\+Flag} = 0u
+\item 
+\hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8}($\ast$const \hyperlink{_t_s_s___sensor_8c_a681e722e2eb4e432556c1ee0f973ae23}{tss\+\_\+fa\+Sample\+Electrode} \mbox{[}\hyperlink{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}\mbox{]})(\hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8} u8\+Elec\+Num, \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8} u8\+Command)
+\item 
+\hyperlink{_t_s_s___data_types_8h_a09f1a1fb2293e33483cc8d44aefb1eb1}{U\+I\+N\+T16}($\ast$const \hyperlink{_t_s_s___sensor_8c_ac4686371c6630fd38236037a82bb852e}{tss\+\_\+fa\+Sample\+Electrode\+Low} \mbox{[}\hyperlink{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}\mbox{]})(void)
+\item 
+const \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8} $\ast$const \hyperlink{_t_s_s___sensor_8c_af76c09dde27b4af1cb1c3dd6e2e4280a}{tss\+\_\+acp8\+Electrode\+R\+O\+M\+Data} \mbox{[}\hyperlink{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}\mbox{]}
+\item 
+const \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8} $\ast$ \hyperlink{_t_s_s___sensor_8c_a1aa11cb0ff5db1b46c15c942fbb40939}{tss\+\_\+acp8\+Electrode\+R\+A\+M\+Data} \mbox{[}\hyperlink{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains functions to Perform the sensing ot the electrodes and set the status for each electrode. 
+
+\begin{DoxyVersion}{Version}
+1.\+0.\+79.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+Aug-\/9-\/2012 
+\end{DoxyDate}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_t_s_s___sensor_8c_a1aa11cb0ff5db1b46c15c942fbb40939}\label{_t_s_s___sensor_8c_a1aa11cb0ff5db1b46c15c942fbb40939}} 
+\index{T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}!tss\+\_\+acp8\+Electrode\+R\+A\+M\+Data@{tss\+\_\+acp8\+Electrode\+R\+A\+M\+Data}}
+\index{tss\+\_\+acp8\+Electrode\+R\+A\+M\+Data@{tss\+\_\+acp8\+Electrode\+R\+A\+M\+Data}!T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}}
+\subsubsection{\texorpdfstring{tss\+\_\+acp8\+Electrode\+R\+A\+M\+Data}{tss\_acp8ElectrodeRAMData}}
+{\footnotesize\ttfamily const \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8}$\ast$ tss\+\_\+acp8\+Electrode\+R\+A\+M\+Data\mbox{[}\hyperlink{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}\mbox{]}}
+
+\mbox{\Hypertarget{_t_s_s___sensor_8c_af76c09dde27b4af1cb1c3dd6e2e4280a}\label{_t_s_s___sensor_8c_af76c09dde27b4af1cb1c3dd6e2e4280a}} 
+\index{T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}!tss\+\_\+acp8\+Electrode\+R\+O\+M\+Data@{tss\+\_\+acp8\+Electrode\+R\+O\+M\+Data}}
+\index{tss\+\_\+acp8\+Electrode\+R\+O\+M\+Data@{tss\+\_\+acp8\+Electrode\+R\+O\+M\+Data}!T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}}
+\subsubsection{\texorpdfstring{tss\+\_\+acp8\+Electrode\+R\+O\+M\+Data}{tss\_acp8ElectrodeROMData}}
+{\footnotesize\ttfamily const \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8}$\ast$ const tss\+\_\+acp8\+Electrode\+R\+O\+M\+Data\mbox{[}\hyperlink{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}\mbox{]}}
+
+\mbox{\Hypertarget{_t_s_s___sensor_8c_a681e722e2eb4e432556c1ee0f973ae23}\label{_t_s_s___sensor_8c_a681e722e2eb4e432556c1ee0f973ae23}} 
+\index{T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}!tss\+\_\+fa\+Sample\+Electrode@{tss\+\_\+fa\+Sample\+Electrode}}
+\index{tss\+\_\+fa\+Sample\+Electrode@{tss\+\_\+fa\+Sample\+Electrode}!T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}}
+\subsubsection{\texorpdfstring{tss\+\_\+fa\+Sample\+Electrode}{tss\_faSampleElectrode}}
+{\footnotesize\ttfamily \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8}($\ast$ const tss\+\_\+fa\+Sample\+Electrode\mbox{[}\hyperlink{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}\mbox{]})(\hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8} u8\+Elec\+Num, \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8} u8\+Command)}
+
+\mbox{\Hypertarget{_t_s_s___sensor_8c_ac4686371c6630fd38236037a82bb852e}\label{_t_s_s___sensor_8c_ac4686371c6630fd38236037a82bb852e}} 
+\index{T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}!tss\+\_\+fa\+Sample\+Electrode\+Low@{tss\+\_\+fa\+Sample\+Electrode\+Low}}
+\index{tss\+\_\+fa\+Sample\+Electrode\+Low@{tss\+\_\+fa\+Sample\+Electrode\+Low}!T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}}
+\subsubsection{\texorpdfstring{tss\+\_\+fa\+Sample\+Electrode\+Low}{tss\_faSampleElectrodeLow}}
+{\footnotesize\ttfamily \hyperlink{_t_s_s___data_types_8h_a09f1a1fb2293e33483cc8d44aefb1eb1}{U\+I\+N\+T16}($\ast$ const tss\+\_\+fa\+Sample\+Electrode\+Low\mbox{[}\hyperlink{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}\mbox{]})(void)}
+
+\mbox{\Hypertarget{_t_s_s___sensor_8c_a23867e063a1196f5cb2dcd607bef004d}\label{_t_s_s___sensor_8c_a23867e063a1196f5cb2dcd607bef004d}} 
+\index{T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}!tss\+\_\+u8\+H\+W\+Timer\+Flag@{tss\+\_\+u8\+H\+W\+Timer\+Flag}}
+\index{tss\+\_\+u8\+H\+W\+Timer\+Flag@{tss\+\_\+u8\+H\+W\+Timer\+Flag}!T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}}
+\subsubsection{\texorpdfstring{tss\+\_\+u8\+H\+W\+Timer\+Flag}{tss\_u8HWTimerFlag}}
+{\footnotesize\ttfamily volatile \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8} tss\+\_\+u8\+H\+W\+Timer\+Flag = 0u}
+
+\mbox{\Hypertarget{_t_s_s___sensor_8c_a3ef11f2a76941c118d0b4e407ca39cfb}\label{_t_s_s___sensor_8c_a3ef11f2a76941c118d0b4e407ca39cfb}} 
+\index{T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}!tss\+\_\+u8\+Sample\+Int\+Flag@{tss\+\_\+u8\+Sample\+Int\+Flag}}
+\index{tss\+\_\+u8\+Sample\+Int\+Flag@{tss\+\_\+u8\+Sample\+Int\+Flag}!T\+S\+S\+\_\+\+Sensor.\+c@{T\+S\+S\+\_\+\+Sensor.\+c}}
+\subsubsection{\texorpdfstring{tss\+\_\+u8\+Sample\+Int\+Flag}{tss\_u8SampleIntFlag}}
+{\footnotesize\ttfamily volatile \hyperlink{_t_s_s___data_types_8h_ab27e9918b538ce9d8ca692479b375b6a}{U\+I\+N\+T8} tss\+\_\+u8\+Sample\+Int\+Flag}
+

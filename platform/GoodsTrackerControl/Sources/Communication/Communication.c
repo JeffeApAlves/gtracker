@@ -5,6 +5,7 @@
  *      Author: Jefferson
  */
 
+#include "ihm.h"
 #include "protocol.h"
 #include "application.h"
 #include "communication.h"
@@ -47,7 +48,7 @@ void txPackage_task(){
 
 		while (xQueueReceive(xQueueTx, &package_tx, (TickType_t ) 1)) {
 
-			doAnswer(&package_tx);
+			sendPackage(&package_tx);
 		}
 	}
 }

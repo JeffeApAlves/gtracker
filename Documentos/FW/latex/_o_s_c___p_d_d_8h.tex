@@ -1,0 +1,574 @@
+\hypertarget{_o_s_c___p_d_d_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+O\+S\+C\+\_\+\+P\+DD.h File Reference}
+\label{_o_s_c___p_d_d_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+O\+S\+C\+\_\+\+P\+D\+D.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+{\ttfamily \#include \char`\"{}P\+D\+D\+\_\+\+Types.\+h\char`\"{}}\newline
+Include dependency graph for O\+S\+C\+\_\+\+P\+D\+D.\+h\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_ac6039e3a6dfbea476f62c512ee6b0d17}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em Enables or disables the O\+S\+C0 external reference clock for use as O\+S\+C\+E\+R\+C\+LK. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_a088fa8a0d93dfd972b51084e7237c31f}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+Enabled}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the O\+S\+C0 O\+S\+C\+E\+R\+C\+LK enable state. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_af736d7ca855de7dc7f5f4d017fd8c446}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0\+In\+Stop}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em Enables or disables the O\+S\+C0 external reference clock for use as O\+S\+C\+E\+R\+C\+LK in S\+T\+OP mode. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_a3226421ec348cdf55307d266f538bf05}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+In\+Stop\+Enabled}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the O\+S\+C0 O\+S\+C\+E\+R\+C\+LK in S\+T\+OP mode enable state. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_ae42923196faaf23737832397d8689ee6}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load2pF}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em Enables or disables the O\+S\+C0 2 pF capacitor load. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_a68d0a56398d0ed059975738aca95f785}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load2p\+F\+Enabled}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the O\+S\+C0 2 pF capacitor load enable state. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_a88d2605a378fe6aacada8b5e6d7cb65a}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load4pF}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em Enables or disables the O\+S\+C0 4 pF capacitor load. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_a3906ae8b2acc3c3e1987e9b7317bf2f1}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load4p\+F\+Enabled}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the O\+S\+C0 4 pF capacitor load enable state. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_a6bbab7c1e6ee489ef7d15c657ae53f3a}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load8pF}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em Enables or disables the O\+S\+C0 8 pF capacitor load. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_a8e91fae02834b4230d2ed4b1c3975efe}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load8p\+F\+Enabled}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the O\+S\+C0 8 pF capacitor load enable state. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_a01f094e900a18a56774b38c387cfdd36}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load16pF}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em Enables or disables the O\+S\+C0 16 pF capacitor load. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_a5b4aa93c81f0174abce20f0d67ed9ca7}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load16p\+F\+Enabled}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the O\+S\+C0 16 pF capacitor load enable state. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_a1ddd23a1bb6b9bb2350a476590ba3ed6}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes the control register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_o_s_c___p_d_d_8h_acd1382ee233c33c0cd77b840bfa41b36}{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the control register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_ac6039e3a6dfbea476f62c512ee6b0d17}\label{_o_s_c___p_d_d_8h_ac6039e3a6dfbea476f62c512ee6b0d17}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0}{OSC\_PDD\_EnableExternalReferenceOutput0}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    OSC\_CR\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___o_s_c___register___masks_gab96140627de270278cbdfc81fbef63fc}{OSC\_CR\_ERCLKEN\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)((uint8\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}) << \hyperlink{group___o_s_c___register___masks_ga56f4aa6f215268327accda5434671187}{OSC\_CR\_ERCLKEN\_SHIFT}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables or disables the O\+S\+C0 external reference clock for use as O\+S\+C\+E\+R\+C\+LK. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Parameter specifying whether the O\+S\+C\+E\+R\+C\+LK is generated or not. This parameter is of \char`\"{}\+Global enumeration used for specifying general
+       enable/disable states (\+P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+L\+E and P\+D\+D\+\_\+\+E\+N\+A\+B\+L\+E defined in P\+D\+D\+\_\+\+Types.\+h)\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_o_s_c___p_d_d_8h_ac6039e3a6dfbea476f62c512ee6b0d17}{OSC\_PDD\_EnableExternalReferenceOutput0}(<peripheral>\_BASE\_PTR,
+\hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_af736d7ca855de7dc7f5f4d017fd8c446}\label{_o_s_c___p_d_d_8h_af736d7ca855de7dc7f5f4d017fd8c446}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0\+In\+Stop@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0\+In\+Stop}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0\+In\+Stop@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0\+In\+Stop}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0\+In\+Stop}{OSC\_PDD\_EnableExternalReferenceOutput0InStop}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+External\+Reference\+Output0\+In\+Stop(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    OSC\_CR\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___o_s_c___register___masks_ga3024913f44011d333c6f48ddb00fbf9d}{OSC\_CR\_EREFSTEN\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)((uint8\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}) << \hyperlink{group___o_s_c___register___masks_gac1b9c5d7f156f1792255204dae816aba}{OSC\_CR\_EREFSTEN\_SHIFT}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables or disables the O\+S\+C0 external reference clock for use as O\+S\+C\+E\+R\+C\+LK in S\+T\+OP mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Parameter specifying whether the O\+S\+C\+E\+R\+C\+LK is generated or not. This parameter is of \char`\"{}\+Global enumeration used for specifying general
+       enable/disable states (\+P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+L\+E and P\+D\+D\+\_\+\+E\+N\+A\+B\+L\+E defined in P\+D\+D\+\_\+\+Types.\+h)\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_o_s_c___p_d_d_8h_af736d7ca855de7dc7f5f4d017fd8c446}{OSC\_PDD\_EnableExternalReferenceOutput0InStop}(<peripheral>
+      \_BASE\_PTR,
+\hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_a01f094e900a18a56774b38c387cfdd36}\label{_o_s_c___p_d_d_8h_a01f094e900a18a56774b38c387cfdd36}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load16pF@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load16pF}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load16pF@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load16pF}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load16pF}{OSC\_PDD\_EnableLoad16pF}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load16pF(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    OSC\_CR\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___o_s_c___register___masks_ga8c73f0e22875a434f8031986a9e5f8b4}{OSC\_CR\_SC16P\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables or disables the O\+S\+C0 16 pF capacitor load. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Parameter specifying whether the load is added to the oscillator total load or not. This parameter is of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})" type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_o_s_c___p_d_d_8h_a01f094e900a18a56774b38c387cfdd36}{OSC\_PDD\_EnableLoad16pF}(<peripheral>\_BASE\_PTR, \hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_ae42923196faaf23737832397d8689ee6}\label{_o_s_c___p_d_d_8h_ae42923196faaf23737832397d8689ee6}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load2pF@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load2pF}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load2pF@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load2pF}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load2pF}{OSC\_PDD\_EnableLoad2pF}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load2pF(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    OSC\_CR\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___o_s_c___register___masks_ga94a8b0e48d18793bde1a3aaaea44b92c}{OSC\_CR\_SC2P\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)((uint8\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}) << \hyperlink{group___o_s_c___register___masks_ga0ec9adaf1ca3ec309f1a2c2fd37d3f4d}{OSC\_CR\_SC2P\_SHIFT}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables or disables the O\+S\+C0 2 pF capacitor load. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Parameter specifying whether the load is added to the oscillator total load or not. This parameter is of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})" type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_o_s_c___p_d_d_8h_ae42923196faaf23737832397d8689ee6}{OSC\_PDD\_EnableLoad2pF}(<peripheral>\_BASE\_PTR, \hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_a88d2605a378fe6aacada8b5e6d7cb65a}\label{_o_s_c___p_d_d_8h_a88d2605a378fe6aacada8b5e6d7cb65a}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load4pF@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load4pF}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load4pF@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load4pF}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load4pF}{OSC\_PDD\_EnableLoad4pF}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load4pF(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    OSC\_CR\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___o_s_c___register___masks_ga18f4104a5a6c0d94f0592ee06732fe03}{OSC\_CR\_SC4P\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)((uint8\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}) << \hyperlink{group___o_s_c___register___masks_gab1724a5b1e96efb22e48a9478ae8cf25}{OSC\_CR\_SC4P\_SHIFT}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables or disables the O\+S\+C0 4 pF capacitor load. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Parameter specifying whether the load is added to the oscillator total load or not. This parameter is of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})" type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_o_s_c___p_d_d_8h_a88d2605a378fe6aacada8b5e6d7cb65a}{OSC\_PDD\_EnableLoad4pF}(<peripheral>\_BASE\_PTR, \hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_a6bbab7c1e6ee489ef7d15c657ae53f3a}\label{_o_s_c___p_d_d_8h_a6bbab7c1e6ee489ef7d15c657ae53f3a}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load8pF@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load8pF}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load8pF@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load8pF}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load8pF}{OSC\_PDD\_EnableLoad8pF}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Load8pF(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    OSC\_CR\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___o_s_c___register___masks_ga1a5a0db08efaf66c34caf98136cbec11}{OSC\_CR\_SC8P\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)((uint8\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}) << \hyperlink{group___o_s_c___register___masks_ga6f17376a1571a200e55cac51d1358503}{OSC\_CR\_SC8P\_SHIFT}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables or disables the O\+S\+C0 8 pF capacitor load. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Parameter specifying whether the load is added to the oscillator total load or not. This parameter is of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})" type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_o_s_c___p_d_d_8h_a6bbab7c1e6ee489ef7d15c657ae53f3a}{OSC\_PDD\_EnableLoad8pF}(<peripheral>\_BASE\_PTR, \hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_a088fa8a0d93dfd972b51084e7237c31f}\label{_o_s_c___p_d_d_8h_a088fa8a0d93dfd972b51084e7237c31f}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+Enabled}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+Enabled}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+Enabled}{OSC\_PDD\_GetExternalReferenceOutput0Enabled}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+Enabled(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    ((uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & \hyperlink{group___o_s_c___register___masks_gab96140627de270278cbdfc81fbef63fc}{OSC\_CR\_ERCLKEN\_MASK}) == 0U) ? ( \(\backslash\)
+      PDD\_DISABLE) : ( \(\backslash\)
+      \hyperlink{_p_d_d___types_8h_accb3a19a48072a198e95e411154dd0b4}{PDD\_ENABLE}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the O\+S\+C0 O\+S\+C\+E\+R\+C\+LK enable state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})\char`\"{} type. The value is cast to \char`\"{}uint8\+\_\+t". 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result =
+\hyperlink{_o_s_c___p_d_d_8h_a088fa8a0d93dfd972b51084e7237c31f}{OSC\_PDD\_GetExternalReferenceOutput0Enabled}(<peripheral>\_BASE\_PTR)
+      ;
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_a3226421ec348cdf55307d266f538bf05}\label{_o_s_c___p_d_d_8h_a3226421ec348cdf55307d266f538bf05}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+In\+Stop\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+In\+Stop\+Enabled}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+In\+Stop\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+In\+Stop\+Enabled}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+In\+Stop\+Enabled}{OSC\_PDD\_GetExternalReferenceOutput0InStopEnabled}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+External\+Reference\+Output0\+In\+Stop\+Enabled(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    ((uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & \hyperlink{group___o_s_c___register___masks_ga3024913f44011d333c6f48ddb00fbf9d}{OSC\_CR\_EREFSTEN\_MASK}) == 0U) ? ( 
+      \(\backslash\)
+      PDD\_DISABLE) : ( \(\backslash\)
+      \hyperlink{_p_d_d___types_8h_accb3a19a48072a198e95e411154dd0b4}{PDD\_ENABLE}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the O\+S\+C0 O\+S\+C\+E\+R\+C\+LK in S\+T\+OP mode enable state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})\char`\"{} type. The value is cast to \char`\"{}uint8\+\_\+t". 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result =
+\hyperlink{_o_s_c___p_d_d_8h_a3226421ec348cdf55307d266f538bf05}{OSC\_PDD\_GetExternalReferenceOutput0InStopEnabled}(<
+      peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_a5b4aa93c81f0174abce20f0d67ed9ca7}\label{_o_s_c___p_d_d_8h_a5b4aa93c81f0174abce20f0d67ed9ca7}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load16p\+F\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load16p\+F\+Enabled}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load16p\+F\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load16p\+F\+Enabled}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load16p\+F\+Enabled}{OSC\_PDD\_GetLoad16pFEnabled}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load16p\+F\+Enabled(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & \hyperlink{group___o_s_c___register___masks_ga8c73f0e22875a434f8031986a9e5f8b4}{OSC\_CR\_SC16P\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the O\+S\+C0 16 pF capacitor load enable state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})\char`\"{} type. The value is cast to \char`\"{}uint8\+\_\+t". 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_o_s_c___p_d_d_8h_a5b4aa93c81f0174abce20f0d67ed9ca7}{OSC\_PDD\_GetLoad16pFEnabled}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_a68d0a56398d0ed059975738aca95f785}\label{_o_s_c___p_d_d_8h_a68d0a56398d0ed059975738aca95f785}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load2p\+F\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load2p\+F\+Enabled}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load2p\+F\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load2p\+F\+Enabled}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load2p\+F\+Enabled}{OSC\_PDD\_GetLoad2pFEnabled}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load2p\+F\+Enabled(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    ((uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & \hyperlink{group___o_s_c___register___masks_ga94a8b0e48d18793bde1a3aaaea44b92c}{OSC\_CR\_SC2P\_MASK}) == 0U) ? ( \(\backslash\)
+      PDD\_DISABLE) : ( \(\backslash\)
+      \hyperlink{_p_d_d___types_8h_accb3a19a48072a198e95e411154dd0b4}{PDD\_ENABLE}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the O\+S\+C0 2 pF capacitor load enable state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})\char`\"{} type. The value is cast to \char`\"{}uint8\+\_\+t". 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_o_s_c___p_d_d_8h_a68d0a56398d0ed059975738aca95f785}{OSC\_PDD\_GetLoad2pFEnabled}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_a3906ae8b2acc3c3e1987e9b7317bf2f1}\label{_o_s_c___p_d_d_8h_a3906ae8b2acc3c3e1987e9b7317bf2f1}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load4p\+F\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load4p\+F\+Enabled}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load4p\+F\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load4p\+F\+Enabled}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load4p\+F\+Enabled}{OSC\_PDD\_GetLoad4pFEnabled}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load4p\+F\+Enabled(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    ((uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & \hyperlink{group___o_s_c___register___masks_ga18f4104a5a6c0d94f0592ee06732fe03}{OSC\_CR\_SC4P\_MASK}) == 0U) ? ( \(\backslash\)
+      PDD\_DISABLE) : ( \(\backslash\)
+      \hyperlink{_p_d_d___types_8h_accb3a19a48072a198e95e411154dd0b4}{PDD\_ENABLE}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the O\+S\+C0 4 pF capacitor load enable state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})\char`\"{} type. The value is cast to \char`\"{}uint8\+\_\+t". 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_o_s_c___p_d_d_8h_a3906ae8b2acc3c3e1987e9b7317bf2f1}{OSC\_PDD\_GetLoad4pFEnabled}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_a8e91fae02834b4230d2ed4b1c3975efe}\label{_o_s_c___p_d_d_8h_a8e91fae02834b4230d2ed4b1c3975efe}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load8p\+F\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load8p\+F\+Enabled}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load8p\+F\+Enabled@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load8p\+F\+Enabled}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load8p\+F\+Enabled}{OSC\_PDD\_GetLoad8pFEnabled}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Load8p\+F\+Enabled(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    ((uint8\_t)(\hyperlink{group___o_s_c___register___accessor___macros_gabcb7eab28c1f1c1d2b742a84f826de10}{OSC\_CR\_REG}(PeripheralBase) & \hyperlink{group___o_s_c___register___masks_ga1a5a0db08efaf66c34caf98136cbec11}{OSC\_CR\_SC8P\_MASK}) == 0U) ? ( \(\backslash\)
+      PDD\_DISABLE) : ( \(\backslash\)
+      \hyperlink{_p_d_d___types_8h_accb3a19a48072a198e95e411154dd0b4}{PDD\_ENABLE}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the O\+S\+C0 8 pF capacitor load enable state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})\char`\"{} type. The value is cast to \char`\"{}uint8\+\_\+t". 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_o_s_c___p_d_d_8h_a8e91fae02834b4230d2ed4b1c3975efe}{OSC\_PDD\_GetLoad8pFEnabled}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_acd1382ee233c33c0cd77b840bfa41b36}\label{_o_s_c___p_d_d_8h_acd1382ee233c33c0cd77b840bfa41b36}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg}{OSC\_PDD\_ReadControlReg}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    OSC\_CR\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the control register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_o_s_c___p_d_d_8h_acd1382ee233c33c0cd77b840bfa41b36}{OSC\_PDD\_ReadControlReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_o_s_c___p_d_d_8h_a1ddd23a1bb6b9bb2350a476590ba3ed6}\label{_o_s_c___p_d_d_8h_a1ddd23a1bb6b9bb2350a476590ba3ed6}} 
+\index{O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}!O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg}}
+\index{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg@{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg}!O\+S\+C\+\_\+\+P\+D\+D.\+h@{O\+S\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg}{OSC\_PDD\_WriteControlReg}}
+{\footnotesize\ttfamily \#define O\+S\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    OSC\_CR\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes the control register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & Parameter specifying new register value. This parameter is a 8-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: O\+S\+C\+\_\+\+CR, O\+S\+C0\+\_\+\+CR, O\+S\+C1\+\_\+\+CR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_o_s_c___p_d_d_8h_a1ddd23a1bb6b9bb2350a476590ba3ed6}{OSC\_PDD\_WriteControlReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}

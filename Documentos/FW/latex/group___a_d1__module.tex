@@ -1,0 +1,217 @@
+\hypertarget{group___a_d1__module}{}\section{A\+D1 module documentation}
+\label{group___a_d1__module}\index{A\+D1 module documentation@{A\+D1 module documentation}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___a_d1__module_gae19b6bb2940d2fbe0a79852b070eeafd}{S\+T\+OP}~0x00\+U          /$\ast$ S\+T\+O\+P state           $\ast$/
+\item 
+\#define \hyperlink{group___a_d1__module_ga4691aeea76a4f3a3bdbff68ce5ab56a1}{M\+E\+A\+S\+U\+RE}~0x01\+U          /$\ast$ M\+E\+S\+U\+R\+E state         $\ast$/
+\item 
+\#define \hyperlink{group___a_d1__module_gacf80826c205230fbc6a84ab9c46ff9af}{C\+O\+N\+T\+I\+N\+U\+O\+US}~0x02\+U          /$\ast$ C\+O\+N\+T\+I\+N\+U\+O\+U\+S state     $\ast$/
+\item 
+\#define \hyperlink{group___a_d1__module_gaae597f206a8cf88b5a0593f39044b937}{S\+I\+N\+G\+LE}~0x03\+U          /$\ast$ S\+I\+N\+G\+L\+E state         $\ast$/
+\item 
+\#define \hyperlink{group___a_d1__module_ga26c3762ed87f9dd7c55b86b162e8461f}{C\+A\+L\+I\+B\+R\+A\+T\+I\+NG}~0x04\+U          /$\ast$ C\+A\+L\+I\+B\+R\+A\+T\+I\+N\+G state    $\ast$/
+\item 
+\#define \hyperlink{group___a_d1__module_ga323a6cae0ef39913d475643e325ab53d}{A\+D1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT}~\hyperlink{group___adc_ldd1__module_ga1fd3f1eef1222a8b6fd2b9f83736a49a}{Adc\+Ldd1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT}
+\item 
+\#define \hyperlink{group___a_d1__module_ga1eb5337254a206f5ec353e3eb156bcd0}{A\+D1\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+S\+I\+ZE}~2U
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___a_d1__module_ga4e331d6fe384835bec07cb2878de30c7}{A\+D1\+\_\+\+H\+W\+En\+Di} (void)
+\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_d1__module_ga84c2908baf7bf49c540b20b5b8d14da6}{A\+D1\+\_\+\+Measure} (\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Wait\+For\+Result)
+\begin{DoxyCompactList}\small\item\em This method performs one measurement on all channels that are set in the component inspector. (Note\+: If the \mbox{[}number of conversions\mbox{]} is more than one the conversion of A/D channels is performed specified number of times.) \end{DoxyCompactList}\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_d1__module_gabdd15b1c1e2b3a51eb6b1109fd0c6d75}{A\+D1\+\_\+\+Get\+Value16} (\hyperlink{group___p_e___types__module_ga285e72252c100e2508e4e933a0738f2b}{word} $\ast$Values)
+\begin{DoxyCompactList}\small\item\em This method returns the last measured values of all channels. Compared with \mbox{[}Get\+Value\mbox{]} method this method returns more accurate result if the \mbox{[}number of conversions\mbox{]} is greater than 1 and \mbox{[}AD resolution\mbox{]} is less than 16 bits. In addition, the user code dependency on \mbox{[}AD resolution\mbox{]} is eliminated. \end{DoxyCompactList}\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___a_d1__module_ga3d618d37cfbbece5ca5f3b6c1cce93c5}{A\+D1\+\_\+\+Calibrate} (\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Wait\+For\+Result)
+\begin{DoxyCompactList}\small\item\em This method returns the last measured values of all channels. Compared with \mbox{[}Get\+Value\mbox{]} method this method returns more accurate result if the \mbox{[}number of conversions\mbox{]} is greater than 1 and \mbox{[}AD resolution\mbox{]} is less than 16 bits. In addition, the user code dependency on \mbox{[}AD resolution\mbox{]} is eliminated. \end{DoxyCompactList}\item 
+void \hyperlink{group___a_d1__module_ga4776d32af94d7918f74bc7377ae5351f}{Adc\+Ldd1\+\_\+\+On\+Measurement\+Complete} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\item 
+void \hyperlink{group___a_d1__module_ga018b22b1bc9627ef871cf94bb3e3bbe1}{A\+D1\+\_\+\+Init} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___a_d1__module_ga6a1ba182ca9bc85d625f7019e5dc2c65}{Adc\+Ldd1\+\_\+\+Device\+Data\+Ptr}
+\item 
+volatile \hyperlink{group___p_e___types__module_ga285e72252c100e2508e4e933a0738f2b}{word} \hyperlink{group___a_d1__module_ga0b52eda7f6607827892e83f3b72b5637}{A\+D1\+\_\+\+OutV} \mbox{[}\hyperlink{group___a_d1__module_ga1eb5337254a206f5ec353e3eb156bcd0}{A\+D1\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+S\+I\+ZE}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___a_d1__module_ga323a6cae0ef39913d475643e325ab53d}\label{group___a_d1__module_ga323a6cae0ef39913d475643e325ab53d}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!A\+D1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT@{A\+D1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT}}
+\index{A\+D1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT@{A\+D1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{A\+D1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT}{AD1\_CHANNEL\_COUNT}}
+{\footnotesize\ttfamily \#define A\+D1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT~\hyperlink{group___adc_ldd1__module_ga1fd3f1eef1222a8b6fd2b9f83736a49a}{Adc\+Ldd1\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+C\+O\+U\+NT}}
+
+\mbox{\Hypertarget{group___a_d1__module_ga1eb5337254a206f5ec353e3eb156bcd0}\label{group___a_d1__module_ga1eb5337254a206f5ec353e3eb156bcd0}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!A\+D1\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+S\+I\+ZE@{A\+D1\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+S\+I\+ZE}}
+\index{A\+D1\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+S\+I\+ZE@{A\+D1\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+S\+I\+ZE}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{A\+D1\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+S\+I\+ZE}{AD1\_SAMPLE\_GROUP\_SIZE}}
+{\footnotesize\ttfamily \#define A\+D1\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+S\+I\+ZE~2U}
+
+\mbox{\Hypertarget{group___a_d1__module_ga26c3762ed87f9dd7c55b86b162e8461f}\label{group___a_d1__module_ga26c3762ed87f9dd7c55b86b162e8461f}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!C\+A\+L\+I\+B\+R\+A\+T\+I\+NG@{C\+A\+L\+I\+B\+R\+A\+T\+I\+NG}}
+\index{C\+A\+L\+I\+B\+R\+A\+T\+I\+NG@{C\+A\+L\+I\+B\+R\+A\+T\+I\+NG}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{C\+A\+L\+I\+B\+R\+A\+T\+I\+NG}{CALIBRATING}}
+{\footnotesize\ttfamily \#define C\+A\+L\+I\+B\+R\+A\+T\+I\+NG~0x04\+U          /$\ast$ C\+A\+L\+I\+B\+R\+A\+T\+I\+N\+G state    $\ast$/}
+
+\mbox{\Hypertarget{group___a_d1__module_gacf80826c205230fbc6a84ab9c46ff9af}\label{group___a_d1__module_gacf80826c205230fbc6a84ab9c46ff9af}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!C\+O\+N\+T\+I\+N\+U\+O\+US@{C\+O\+N\+T\+I\+N\+U\+O\+US}}
+\index{C\+O\+N\+T\+I\+N\+U\+O\+US@{C\+O\+N\+T\+I\+N\+U\+O\+US}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{C\+O\+N\+T\+I\+N\+U\+O\+US}{CONTINUOUS}}
+{\footnotesize\ttfamily \#define C\+O\+N\+T\+I\+N\+U\+O\+US~0x02\+U          /$\ast$ C\+O\+N\+T\+I\+N\+U\+O\+U\+S state     $\ast$/}
+
+\mbox{\Hypertarget{group___a_d1__module_ga4691aeea76a4f3a3bdbff68ce5ab56a1}\label{group___a_d1__module_ga4691aeea76a4f3a3bdbff68ce5ab56a1}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!M\+E\+A\+S\+U\+RE@{M\+E\+A\+S\+U\+RE}}
+\index{M\+E\+A\+S\+U\+RE@{M\+E\+A\+S\+U\+RE}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{M\+E\+A\+S\+U\+RE}{MEASURE}}
+{\footnotesize\ttfamily \#define M\+E\+A\+S\+U\+RE~0x01\+U          /$\ast$ M\+E\+S\+U\+R\+E state         $\ast$/}
+
+\mbox{\Hypertarget{group___a_d1__module_gaae597f206a8cf88b5a0593f39044b937}\label{group___a_d1__module_gaae597f206a8cf88b5a0593f39044b937}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!S\+I\+N\+G\+LE@{S\+I\+N\+G\+LE}}
+\index{S\+I\+N\+G\+LE@{S\+I\+N\+G\+LE}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{S\+I\+N\+G\+LE}{SINGLE}}
+{\footnotesize\ttfamily \#define S\+I\+N\+G\+LE~0x03\+U          /$\ast$ S\+I\+N\+G\+L\+E state         $\ast$/}
+
+\mbox{\Hypertarget{group___a_d1__module_gae19b6bb2940d2fbe0a79852b070eeafd}\label{group___a_d1__module_gae19b6bb2940d2fbe0a79852b070eeafd}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!S\+T\+OP@{S\+T\+OP}}
+\index{S\+T\+OP@{S\+T\+OP}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{S\+T\+OP}{STOP}}
+{\footnotesize\ttfamily \#define S\+T\+OP~0x00\+U          /$\ast$ S\+T\+O\+P state           $\ast$/}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___a_d1__module_ga3d618d37cfbbece5ca5f3b6c1cce93c5}\label{group___a_d1__module_ga3d618d37cfbbece5ca5f3b6c1cce93c5}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!A\+D1\+\_\+\+Calibrate@{A\+D1\+\_\+\+Calibrate}}
+\index{A\+D1\+\_\+\+Calibrate@{A\+D1\+\_\+\+Calibrate}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{A\+D1\+\_\+\+Calibrate()}{AD1\_Calibrate()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} A\+D1\+\_\+\+Calibrate (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool}}]{Wait\+For\+Result }\end{DoxyParamCaption})}
+
+
+
+This method returns the last measured values of all channels. Compared with \mbox{[}Get\+Value\mbox{]} method this method returns more accurate result if the \mbox{[}number of conversions\mbox{]} is greater than 1 and \mbox{[}AD resolution\mbox{]} is less than 16 bits. In addition, the user code dependency on \mbox{[}AD resolution\mbox{]} is eliminated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Values} & -\/ Pointer to the array that contains the measured data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Error code, possible codes\+: E\+R\+R\+\_\+\+OK -\/ OK E\+R\+R\+\_\+\+S\+P\+E\+ED -\/ This device does not work in the active speed mode E\+R\+R\+\_\+\+N\+O\+T\+A\+V\+A\+IL -\/ Requested value not available E\+R\+R\+\_\+\+O\+V\+E\+R\+R\+UN -\/ External trigger overrun flag was detected after the last value(s) was obtained (for example by Get\+Value). This error may not be supported on some C\+P\+Us (see generated code). 
+\end{DoxyItemize}
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{group___a_d1__module_gabdd15b1c1e2b3a51eb6b1109fd0c6d75}\label{group___a_d1__module_gabdd15b1c1e2b3a51eb6b1109fd0c6d75}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!A\+D1\+\_\+\+Get\+Value16@{A\+D1\+\_\+\+Get\+Value16}}
+\index{A\+D1\+\_\+\+Get\+Value16@{A\+D1\+\_\+\+Get\+Value16}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{A\+D1\+\_\+\+Get\+Value16()}{AD1\_GetValue16()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} A\+D1\+\_\+\+Get\+Value16 (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga285e72252c100e2508e4e933a0738f2b}{word} $\ast$}]{Values }\end{DoxyParamCaption})}
+
+
+
+This method returns the last measured values of all channels. Compared with \mbox{[}Get\+Value\mbox{]} method this method returns more accurate result if the \mbox{[}number of conversions\mbox{]} is greater than 1 and \mbox{[}AD resolution\mbox{]} is less than 16 bits. In addition, the user code dependency on \mbox{[}AD resolution\mbox{]} is eliminated. 
+
+This method performs one measurement on all channels that are set in the component inspector. (Note\+: If the \mbox{[}number of conversions\mbox{]} is more than one the conversion of A/D channels is performed specified number of times.)
+
+
+\begin{DoxyParams}{Parameters}
+{\em Values} & -\/ Pointer to the array that contains the measured data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Error code, possible codes\+: E\+R\+R\+\_\+\+OK -\/ OK E\+R\+R\+\_\+\+S\+P\+E\+ED -\/ This device does not work in the active speed mode E\+R\+R\+\_\+\+N\+O\+T\+A\+V\+A\+IL -\/ Requested value not available E\+R\+R\+\_\+\+O\+V\+E\+R\+R\+UN -\/ External trigger overrun flag was detected after the last value(s) was obtained (for example by Get\+Value). This error may not be supported on some C\+P\+Us (see generated code).
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Wait\+For\+Result} & -\/ Wait for a result of a conversion. If \mbox{[}interrupt service\mbox{]} is disabled, A/D peripheral doesn\textquotesingle{}t support measuring all channels at once or Autoscan mode property isn\textquotesingle{}t enabled and at the same time the \mbox{[}number of channels\mbox{]} is greater than 1, then the Wait\+For\+Result parameter is ignored and the method waits for each result every time. If the \mbox{[}interrupt service\mbox{]} is disabled and a \mbox{[}number of conversions\mbox{]} is greater than 1, the parameter is ignored and the method also waits for each result every time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Error code, possible codes\+: E\+R\+R\+\_\+\+OK -\/ OK E\+R\+R\+\_\+\+S\+P\+E\+ED -\/ This device does not work in the active speed mode E\+R\+R\+\_\+\+D\+I\+S\+A\+B\+L\+ED -\/ Device is disabled E\+R\+R\+\_\+\+B\+U\+SY -\/ A conversion is already running 
+\end{DoxyItemize}
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{group___a_d1__module_ga4e331d6fe384835bec07cb2878de30c7}\label{group___a_d1__module_ga4e331d6fe384835bec07cb2878de30c7}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!A\+D1\+\_\+\+H\+W\+En\+Di@{A\+D1\+\_\+\+H\+W\+En\+Di}}
+\index{A\+D1\+\_\+\+H\+W\+En\+Di@{A\+D1\+\_\+\+H\+W\+En\+Di}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{A\+D1\+\_\+\+H\+W\+En\+Di()}{AD1\_HWEnDi()}}
+{\footnotesize\ttfamily void A\+D1\+\_\+\+H\+W\+En\+Di (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{group___a_d1__module_ga018b22b1bc9627ef871cf94bb3e3bbe1}\label{group___a_d1__module_ga018b22b1bc9627ef871cf94bb3e3bbe1}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!A\+D1\+\_\+\+Init@{A\+D1\+\_\+\+Init}}
+\index{A\+D1\+\_\+\+Init@{A\+D1\+\_\+\+Init}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{A\+D1\+\_\+\+Init()}{AD1\_Init()}}
+{\footnotesize\ttfamily void A\+D1\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{group___a_d1__module_ga84c2908baf7bf49c540b20b5b8d14da6}\label{group___a_d1__module_ga84c2908baf7bf49c540b20b5b8d14da6}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!A\+D1\+\_\+\+Measure@{A\+D1\+\_\+\+Measure}}
+\index{A\+D1\+\_\+\+Measure@{A\+D1\+\_\+\+Measure}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{A\+D1\+\_\+\+Measure()}{AD1\_Measure()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} A\+D1\+\_\+\+Measure (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool}}]{Wait\+For\+Result }\end{DoxyParamCaption})}
+
+
+
+This method performs one measurement on all channels that are set in the component inspector. (Note\+: If the \mbox{[}number of conversions\mbox{]} is more than one the conversion of A/D channels is performed specified number of times.) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Wait\+For\+Result} & -\/ Wait for a result of a conversion. If \mbox{[}interrupt service\mbox{]} is disabled, A/D peripheral doesn\textquotesingle{}t support measuring all channels at once or Autoscan mode property isn\textquotesingle{}t enabled and at the same time the \mbox{[}number of channels\mbox{]} is greater than 1, then the Wait\+For\+Result parameter is ignored and the method waits for each result every time. If the \mbox{[}interrupt service\mbox{]} is disabled and a \mbox{[}number of conversions\mbox{]} is greater than 1, the parameter is ignored and the method also waits for each result every time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Error code, possible codes\+: E\+R\+R\+\_\+\+OK -\/ OK E\+R\+R\+\_\+\+S\+P\+E\+ED -\/ This device does not work in the active speed mode E\+R\+R\+\_\+\+D\+I\+S\+A\+B\+L\+ED -\/ Device is disabled E\+R\+R\+\_\+\+B\+U\+SY -\/ A conversion is already running 
+\end{DoxyItemize}
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{group___a_d1__module_ga4776d32af94d7918f74bc7377ae5351f}\label{group___a_d1__module_ga4776d32af94d7918f74bc7377ae5351f}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!Adc\+Ldd1\+\_\+\+On\+Measurement\+Complete@{Adc\+Ldd1\+\_\+\+On\+Measurement\+Complete}}
+\index{Adc\+Ldd1\+\_\+\+On\+Measurement\+Complete@{Adc\+Ldd1\+\_\+\+On\+Measurement\+Complete}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{Adc\+Ldd1\+\_\+\+On\+Measurement\+Complete()}{AdcLdd1\_OnMeasurementComplete()}}
+{\footnotesize\ttfamily void Adc\+Ldd1\+\_\+\+On\+Measurement\+Complete (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{group___a_d1__module_ga0b52eda7f6607827892e83f3b72b5637}\label{group___a_d1__module_ga0b52eda7f6607827892e83f3b72b5637}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!A\+D1\+\_\+\+OutV@{A\+D1\+\_\+\+OutV}}
+\index{A\+D1\+\_\+\+OutV@{A\+D1\+\_\+\+OutV}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{A\+D1\+\_\+\+OutV}{AD1\_OutV}}
+{\footnotesize\ttfamily volatile \hyperlink{group___p_e___types__module_ga285e72252c100e2508e4e933a0738f2b}{word} A\+D1\+\_\+\+OutV\mbox{[}\hyperlink{group___a_d1__module_ga1eb5337254a206f5ec353e3eb156bcd0}{A\+D1\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+S\+I\+ZE}\mbox{]}}
+
+\mbox{\Hypertarget{group___a_d1__module_ga6a1ba182ca9bc85d625f7019e5dc2c65}\label{group___a_d1__module_ga6a1ba182ca9bc85d625f7019e5dc2c65}} 
+\index{A\+D1 module documentation@{A\+D1 module documentation}!Adc\+Ldd1\+\_\+\+Device\+Data\+Ptr@{Adc\+Ldd1\+\_\+\+Device\+Data\+Ptr}}
+\index{Adc\+Ldd1\+\_\+\+Device\+Data\+Ptr@{Adc\+Ldd1\+\_\+\+Device\+Data\+Ptr}!A\+D1 module documentation@{A\+D1 module documentation}}
+\subsubsection{\texorpdfstring{Adc\+Ldd1\+\_\+\+Device\+Data\+Ptr}{AdcLdd1\_DeviceDataPtr}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data}$\ast$ Adc\+Ldd1\+\_\+\+Device\+Data\+Ptr}
+

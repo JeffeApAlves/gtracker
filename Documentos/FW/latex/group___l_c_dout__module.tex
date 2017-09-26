@@ -1,0 +1,716 @@
+\hypertarget{group___l_c_dout__module}{}\section{L\+C\+Dout module documentation}
+\label{group___l_c_dout__module}\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___l_c_dout__module_gad79f3a7e407993eec92f8155fe538a35}{Clear\+Display\+Cmd}~0x01 /$\ast$ clears the display $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga1e54b2825d579021519966e810226775}{Return\+Home\+Cmd}~0x02 /$\ast$ moves the cursor to the beginning of the first line $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga9bf6e1eaf96d58ae7fd5e7537c31990f}{Entry\+Mode\+Set\+Cmd}~0x04
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaef76af283c18ed2c215c30e8e2b42fef}{Entry\+Mode\+Set\+\_\+\+Shift\+On}~1 /$\ast$ S flag\+: shift display $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gacd898a9abee27eb4049f8aa143f89d14}{Entry\+Mode\+Set\+\_\+\+Increment\+On}~2 /$\ast$ I/D flag\+: increment cursor $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga3b2367f5a0e84cf3da89a0a6fb35bdba}{Display\+On\+Off\+Control\+Cmd}~0x08 /$\ast$ Display on/off control command. There are 3 bits D, C and B as well $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga11fe1bd58bee9f6843dd43098fbfab9c}{Display\+On\+Off\+Control\+\_\+\+Blink\+On}~1 /$\ast$ B flag\+: blinking cursor on/off; B=1 blinking, B=0 not blinking $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gafca1b197032325da26c96dc02829b761}{Display\+On\+Off\+Control\+\_\+\+Cursor\+On}~2 /$\ast$ C flag\+: cursor on/off, C=1 cursor on, C=0 cursor off $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gab20d52ec2b8dcc5e664dcab5f9312c62}{Display\+On\+Off\+Control\+\_\+\+Display\+On}~4 /$\ast$ D flag\+: display on/off, D=1 display on, D=0 display off $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga22ef3c53a94af104d297715ae02b1fe1}{Function\+Set\+Cmd}~0x20
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga4efcc2c400a4404c7f7e2b67ca1c7ad0}{Function\+Set\+\_\+8bit}~0x10 /$\ast$ D\+L flag\+: D\+L=1\+: 8bit, D\+L=0\+: 4bit $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaf4728ebdcdbeadca8a5a661de7121ef0}{Function\+Set\+\_\+4bit}~0 /$\ast$ DL flag\+: DL=1\+: 8bit, D\+L=0\+: 4bit $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga3b815f5c38fa2f22fa32ae29234f7d56}{Function\+Set\+\_\+2\+Lines}~0x08 /$\ast$ N flag\+: number of display lines\+: N=1 2 or 4 lines, N=0 1 line $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga3dd50a45dee8a496257e555bd2b1736b}{Function\+Set\+\_\+1\+Line}~0 /$\ast$ N flag\+: number of display lines\+: N=1 2 or 4 lines, N=0 1 line $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gad08dcbe4bb043f30a7fdbcc4b3e2a37c}{Function\+Set\+\_\+\+Font5x10}~0x04 /$\ast$ F flag\+: character font, F=1 5x10 dots, F=0 5x8 dots $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga7cab1ff724b979b2d317a05b7fa57d49}{Function\+Set\+\_\+\+Font5x8}~0 /$\ast$ F flag\+: character font, F=1 5x10 dots, F=0 5x8 dots $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaaa0092ec392cce949a3b7661e24e9e5f}{Cursor\+On\+Cmd}~(\hyperlink{group___l_c_dout__module_ga3b2367f5a0e84cf3da89a0a6fb35bdba}{Display\+On\+Off\+Control\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_gab20d52ec2b8dcc5e664dcab5f9312c62}{Display\+On\+Off\+Control\+\_\+\+Display\+On}$\vert$\hyperlink{group___l_c_dout__module_gafca1b197032325da26c96dc02829b761}{Display\+On\+Off\+Control\+\_\+\+Cursor\+On})
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaaf0c399193210740cdb2e3d744492241}{Cursor\+Off\+Cmd}~(\hyperlink{group___l_c_dout__module_ga3b2367f5a0e84cf3da89a0a6fb35bdba}{Display\+On\+Off\+Control\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_gab20d52ec2b8dcc5e664dcab5f9312c62}{Display\+On\+Off\+Control\+\_\+\+Display\+On})
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}{Goto\+X\+Y\+Cmd}~0x80  /$\ast$ 0x80 $\vert$ Display R\+A\+M address $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga828873cb58a5c5e3be56b42b4f912971}{Line1\+Offset}~0x00 /$\ast$ Display R\+A\+M address of first line, usually 0x00 $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga061bfbda406ff15f77abd39b86248af0}{Line2\+Offset}~0x40 /$\ast$ Display R\+A\+M address of second line, usually 0x40 $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gab49ac7d7f3fec79cbff79461b462851c}{Line3\+Offset}~0x10 /$\ast$ Display R\+A\+M address of third line, usually 0x10 $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaaca195da9d6ce241e676d63d1c30cba8}{Line4\+Offset}~0x50 /$\ast$ Display R\+A\+M address of fourth line, usually 0x50 $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gab1e128803e53a3b6874808e03b1daee3}{First\+Line\+Cmd}~(\hyperlink{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}{Goto\+X\+Y\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_ga828873cb58a5c5e3be56b42b4f912971}{Line1\+Offset})
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga9be73084c3ebaa321c70235c055b2e83}{Second\+Line\+Cmd}~(\hyperlink{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}{Goto\+X\+Y\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_ga061bfbda406ff15f77abd39b86248af0}{Line2\+Offset})
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga623aa368d709ced6054c6f8a3e808ab8}{Third\+Line\+Cmd}~(\hyperlink{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}{Goto\+X\+Y\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_gab49ac7d7f3fec79cbff79461b462851c}{Line3\+Offset})
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga6546149295013cf50debb3903ab27b67}{Fourth\+Line\+Cmd}~(\hyperlink{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}{Goto\+X\+Y\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_gaaca195da9d6ce241e676d63d1c30cba8}{Line4\+Offset})
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga79e72f0a70f1fe2f60a649437dc8c51e}{Right\+Shift\+Cmd}~0x1C
+\item 
+\#define \hyperlink{group___l_c_dout__module_gad09b53b89ff73869a1d34832da5996ee}{Left\+Shift\+Cmd}~0x18
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga06e3b1b119133d624e66a5e0d4a6928a}{Right\+Shift\+Cursor}~0x14
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaf8c8659caf758cb404268479f0c8adda}{Left\+Shift\+Cursor}~0x10
+\item 
+\#define \hyperlink{group___l_c_dout__module_gab6cd43cab23534e6ab1c25e3df796486}{Busy\+Flag}~0x80 /$\ast$ B\+F Flag $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga48698b399485b66ba7dfc31a013051d1}{Clr\+RS}()~\hyperlink{group___r_s1__module_ga80a16b6defc90b3dcdd0487896e7f501}{R\+S1\+\_\+\+Clr\+Val}()                    /$\ast$ RS=0\+: command mode $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga89324c79060dbcd48cf84a2449b8dcf7}{Set\+RS}()~\hyperlink{group___r_s1__module_ga3bde9e90d3782ef979a2a3dad1065923}{R\+S1\+\_\+\+Set\+Val}()                    /$\ast$ RS=1\+: data mode $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gade5bb4e9701865774469ffa4f0faa0a4}{Clr\+EN}()~\hyperlink{group___e_n1__module_ga0718e5ac4d0e7ab38732c8922621a8fa}{E\+N1\+\_\+\+Clr\+Val}()                    /$\ast$ EN=0 $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaec84cffa098c36c430eb24489996efb6}{Set\+EN}()~\hyperlink{group___e_n1__module_ga7ce18b948cb7d929e432e30bf341150f}{E\+N1\+\_\+\+Set\+Val}()                    /$\ast$ EN=1 $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga5b3cfebf028413a32d1dade331d0c771}{Data\+As\+Output}()
+\item 
+\#define \hyperlink{group___l_c_dout__module_gad0f89f5bc0230daa681556fb18dba368}{Data\+As\+Input}()
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaf3c67d898300e7dc084ae6a81e07aab0}{Waitns}(x)~\hyperlink{group___w_a_i_t1__module_ga69b0cc93f0910d7f8f238d3e7d43c2c3}{W\+A\+I\+T1\+\_\+\+Waitns}(x)                 /$\ast$ Wait x ns $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga880e1e0202bcfeb24d3c9711d1e38342}{Waitus}(x)~\hyperlink{group___w_a_i_t1__module_ga3bad7338e555cbbbaa870ee3fe2db0f6}{W\+A\+I\+T1\+\_\+\+Waitus}(x)                 /$\ast$ Wait x us $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaf22068cba254d10c0c3593b20dbe68c3}{Waitms}(x)~\hyperlink{group___w_a_i_t1__module_ga04b03075f856862ff2bc4ff69825aeb6}{W\+A\+I\+T1\+\_\+\+Waitms}(x)                 /$\ast$ Wait x ms $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga50389ce73daf078fb327aeb519b51ceb}{Timing\+\_\+\+P\+Weh\+\_\+ns}~230 /$\ast$ P\+Weh\+: Enable Pulse width (high level) $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga55cee78f4ec3382e70a9591cf62d39ae}{Timing\+\_\+t\+A\+S\+\_\+ns}~40 /$\ast$ t\+A\+B\+: Address set-\/up time (RS, RW to E ) $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga810679ed8f5d999d2cb82a42f3050cbe}{Timing\+\_\+t\+D\+D\+R\+\_\+ns}~160 /$\ast$ t\+D\+D\+R\+: Data delay time $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga0b0f0c3aa01af1970b89e42b31016b75}{Timing\+\_\+t\+C\+Y\+C\+L\+E\+\_\+ns}~500 /$\ast$ t\+C\+Y\+L\+E\+: Enable Cycle time $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gab2dd24fe025a082d0931687a3e25829a}{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+US}~1000 /$\ast$ wait time as specified in properties $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga4b1fe0f47af2512f9d493c05604064de}{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A1\+\_\+\+US}~15 /$\ast$ wait time after first 4bit data $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga8a46e7dd310d785e7f142bb8b44ad070}{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A2\+\_\+\+US}~60 /$\ast$ wait time after second 4bit data $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga6ed6cef49988ba6dddeb83b004b1f2d6}{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+UE}~1 /$\ast$$<$! ID for \textquotesingle{}ü\textquotesingle{} $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga52c0d2745a2e6f87ce808d8da292d760}{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+AE}~2 /$\ast$$<$! ID for \textquotesingle{}ä\textquotesingle{} $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga3fb5e3ab73fb11e02546b1107e668503}{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+OE}~3 /$\ast$$<$! ID for \textquotesingle{}ö\textquotesingle{} $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaeb42fa4a9518874854f29e0f718a929e}{L\+C\+Dout\+\_\+\+M\+A\+X\+\_\+\+L\+C\+D\+\_\+\+L\+I\+N\+E\+\_\+\+C\+H\+A\+RS}~16 /$\ast$ number of chars of the L\+CD on a line $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gad482e0178deba0b317279ece3f82e379}{L\+C\+Dout\+\_\+\+Write}(ch)~\hyperlink{group___l_c_dout__module_ga4c2c42b869579a4033c3ea26b5fd8b44}{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data}((\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte})ch)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___l_c_dout__module_gac22fb83749f0e6f881c82fa2ca4e5a8d}{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Command} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} cmd)
+\item 
+void \hyperlink{group___l_c_dout__module_ga52dbb0059469cd8d31b902bb1e02f2ad}{L\+C\+Dout\+\_\+\+Clear} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga381874990d6c1c89db754439cc1486af}{L\+C\+Dout\+\_\+\+Home} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga4c2c42b869579a4033c3ea26b5fd8b44}{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} ch)
+\item 
+void \hyperlink{group___l_c_dout__module_ga62e6c646d15cb1ad5e91c7738138adb2}{L\+C\+Dout\+\_\+\+Goto\+XY} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} line, \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} column)
+\item 
+void \hyperlink{group___l_c_dout__module_ga6cf5c1bb9b142caf3d06f19643fa0af4}{L\+C\+Dout\+\_\+\+Shift\+Left} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga2cb97a527f94e423930285883e131bea}{L\+C\+Dout\+\_\+\+Write\+Ln} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga3f1e3ac39129521bda0a9bd3f8ed91fd}{L\+C\+Dout\+\_\+\+Write\+String} (char $\ast$str)
+\item 
+void \hyperlink{group___l_c_dout__module_ga6cf19a943f4cb49d88f60198348e7e17}{L\+C\+Dout\+\_\+\+Write\+Line\+Str} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} line, char $\ast$str)
+\item 
+void \hyperlink{group___l_c_dout__module_gad440859311c277df8a0d54f2df45d419}{L\+C\+Dout\+\_\+\+Line} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} line)
+\item 
+void \hyperlink{group___l_c_dout__module_ga92d9c37466746b85aa619ad291addb81}{L\+C\+Dout\+\_\+\+Init} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_gaccb1d0aad25fdfd1fcf1343567b77697}{L\+C\+Dout\+\_\+\+Shift\+Right} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_gac2b3ac6c71fafbda024b02300d392ba5}{L\+C\+Dout\+\_\+\+Set\+Entry\+Mode} (\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} increment, \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} shift\+Left)
+\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga91507851ce7b3cd0ac6e857fe7859dae}{L\+C\+Dout\+\_\+\+Use\+Display} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} display)
+\item 
+void \hyperlink{group___l_c_dout__module_ga6e6c1e6c3c9ef9543e8cb4e1ac2c4e11}{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Right} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga1acb6df425eac1c5afb5c00b0d1f221f}{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Left} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_gac4883fe388870605e399c3b4b7a2f88a}{L\+C\+Dout\+\_\+\+Wait\+For\+L\+C\+D\+Ready} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga42ec038c4f64bcb4d697c255d5184408}{L\+C\+Dout\+\_\+\+Soft\+Char\+UE} \mbox{[}8\mbox{]}
+\item 
+const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga01871fed00e6be55a7c9020f393a1e5a}{L\+C\+Dout\+\_\+\+Soft\+Char\+AE} \mbox{[}8\mbox{]}
+\item 
+const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga2e1e69b87f6a8ccbcfbad1c054547352}{L\+C\+Dout\+\_\+\+Soft\+Char\+OE} \mbox{[}8\mbox{]}
+\item 
+const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga42ec038c4f64bcb4d697c255d5184408}{L\+C\+Dout\+\_\+\+Soft\+Char\+UE} \mbox{[}8\mbox{]}
+\item 
+const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga01871fed00e6be55a7c9020f393a1e5a}{L\+C\+Dout\+\_\+\+Soft\+Char\+AE} \mbox{[}8\mbox{]}
+\item 
+const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga2e1e69b87f6a8ccbcfbad1c054547352}{L\+C\+Dout\+\_\+\+Soft\+Char\+OE} \mbox{[}8\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___l_c_dout__module_gab6cd43cab23534e6ab1c25e3df796486}\label{group___l_c_dout__module_gab6cd43cab23534e6ab1c25e3df796486}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Busy\+Flag@{Busy\+Flag}}
+\index{Busy\+Flag@{Busy\+Flag}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Busy\+Flag}{BusyFlag}}
+{\footnotesize\ttfamily \#define Busy\+Flag~0x80 /$\ast$ B\+F Flag $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gad79f3a7e407993eec92f8155fe538a35}\label{group___l_c_dout__module_gad79f3a7e407993eec92f8155fe538a35}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Clear\+Display\+Cmd@{Clear\+Display\+Cmd}}
+\index{Clear\+Display\+Cmd@{Clear\+Display\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Clear\+Display\+Cmd}{ClearDisplayCmd}}
+{\footnotesize\ttfamily \#define Clear\+Display\+Cmd~0x01 /$\ast$ clears the display $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gade5bb4e9701865774469ffa4f0faa0a4}\label{group___l_c_dout__module_gade5bb4e9701865774469ffa4f0faa0a4}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Clr\+EN@{Clr\+EN}}
+\index{Clr\+EN@{Clr\+EN}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Clr\+EN}{ClrEN}}
+{\footnotesize\ttfamily \#define Clr\+EN(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{group___e_n1__module_ga0718e5ac4d0e7ab38732c8922621a8fa}{E\+N1\+\_\+\+Clr\+Val}()                    /$\ast$ EN=0 $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga48698b399485b66ba7dfc31a013051d1}\label{group___l_c_dout__module_ga48698b399485b66ba7dfc31a013051d1}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Clr\+RS@{Clr\+RS}}
+\index{Clr\+RS@{Clr\+RS}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Clr\+RS}{ClrRS}}
+{\footnotesize\ttfamily \#define Clr\+RS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{group___r_s1__module_ga80a16b6defc90b3dcdd0487896e7f501}{R\+S1\+\_\+\+Clr\+Val}()                    /$\ast$ RS=0\+: command mode $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gaaf0c399193210740cdb2e3d744492241}\label{group___l_c_dout__module_gaaf0c399193210740cdb2e3d744492241}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Cursor\+Off\+Cmd@{Cursor\+Off\+Cmd}}
+\index{Cursor\+Off\+Cmd@{Cursor\+Off\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Cursor\+Off\+Cmd}{CursorOffCmd}}
+{\footnotesize\ttfamily \#define Cursor\+Off\+Cmd~(\hyperlink{group___l_c_dout__module_ga3b2367f5a0e84cf3da89a0a6fb35bdba}{Display\+On\+Off\+Control\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_gab20d52ec2b8dcc5e664dcab5f9312c62}{Display\+On\+Off\+Control\+\_\+\+Display\+On})}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gaaa0092ec392cce949a3b7661e24e9e5f}\label{group___l_c_dout__module_gaaa0092ec392cce949a3b7661e24e9e5f}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Cursor\+On\+Cmd@{Cursor\+On\+Cmd}}
+\index{Cursor\+On\+Cmd@{Cursor\+On\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Cursor\+On\+Cmd}{CursorOnCmd}}
+{\footnotesize\ttfamily \#define Cursor\+On\+Cmd~(\hyperlink{group___l_c_dout__module_ga3b2367f5a0e84cf3da89a0a6fb35bdba}{Display\+On\+Off\+Control\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_gab20d52ec2b8dcc5e664dcab5f9312c62}{Display\+On\+Off\+Control\+\_\+\+Display\+On}$\vert$\hyperlink{group___l_c_dout__module_gafca1b197032325da26c96dc02829b761}{Display\+On\+Off\+Control\+\_\+\+Cursor\+On})}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gad0f89f5bc0230daa681556fb18dba368}\label{group___l_c_dout__module_gad0f89f5bc0230daa681556fb18dba368}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Data\+As\+Input@{Data\+As\+Input}}
+\index{Data\+As\+Input@{Data\+As\+Input}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Data\+As\+Input}{DataAsInput}}
+{\footnotesize\ttfamily \#define Data\+As\+Input(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{group___d_b41__module_gaa1db55b4896cbc1f99a174982e295b6d}{DB41\_SetInput}();                \textcolor{comment}{/* set data port as input */} \(\backslash\)
+        DB51\_SetInput();                \textcolor{comment}{/* set data port as input */} \(\backslash\)
+        DB61\_SetInput();                \textcolor{comment}{/* set data port as input */} \(\backslash\)
+        DB71\_SetInput()                 \textcolor{comment}{/* set data port as input */}
+\end{DoxyCode}
+\mbox{\Hypertarget{group___l_c_dout__module_ga5b3cfebf028413a32d1dade331d0c771}\label{group___l_c_dout__module_ga5b3cfebf028413a32d1dade331d0c771}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Data\+As\+Output@{Data\+As\+Output}}
+\index{Data\+As\+Output@{Data\+As\+Output}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Data\+As\+Output}{DataAsOutput}}
+{\footnotesize\ttfamily \#define Data\+As\+Output(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{group___d_b41__module_ga5c1975bcc0f0c43162e4c157d3c60fa4}{DB41\_SetOutput}();               \textcolor{comment}{/* set data port as output */} \(\backslash\)
+        DB51\_SetOutput();               \textcolor{comment}{/* set data port as output */} \(\backslash\)
+        DB61\_SetOutput();               \textcolor{comment}{/* set data port as output */} \(\backslash\)
+        DB71\_SetOutput()                \textcolor{comment}{/* set data port as output */}
+\end{DoxyCode}
+\mbox{\Hypertarget{group___l_c_dout__module_ga11fe1bd58bee9f6843dd43098fbfab9c}\label{group___l_c_dout__module_ga11fe1bd58bee9f6843dd43098fbfab9c}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Display\+On\+Off\+Control\+\_\+\+Blink\+On@{Display\+On\+Off\+Control\+\_\+\+Blink\+On}}
+\index{Display\+On\+Off\+Control\+\_\+\+Blink\+On@{Display\+On\+Off\+Control\+\_\+\+Blink\+On}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Display\+On\+Off\+Control\+\_\+\+Blink\+On}{DisplayOnOffControl\_BlinkOn}}
+{\footnotesize\ttfamily \#define Display\+On\+Off\+Control\+\_\+\+Blink\+On~1 /$\ast$ B flag\+: blinking cursor on/off; B=1 blinking, B=0 not blinking $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gafca1b197032325da26c96dc02829b761}\label{group___l_c_dout__module_gafca1b197032325da26c96dc02829b761}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Display\+On\+Off\+Control\+\_\+\+Cursor\+On@{Display\+On\+Off\+Control\+\_\+\+Cursor\+On}}
+\index{Display\+On\+Off\+Control\+\_\+\+Cursor\+On@{Display\+On\+Off\+Control\+\_\+\+Cursor\+On}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Display\+On\+Off\+Control\+\_\+\+Cursor\+On}{DisplayOnOffControl\_CursorOn}}
+{\footnotesize\ttfamily \#define Display\+On\+Off\+Control\+\_\+\+Cursor\+On~2 /$\ast$ C flag\+: cursor on/off, C=1 cursor on, C=0 cursor off $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gab20d52ec2b8dcc5e664dcab5f9312c62}\label{group___l_c_dout__module_gab20d52ec2b8dcc5e664dcab5f9312c62}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Display\+On\+Off\+Control\+\_\+\+Display\+On@{Display\+On\+Off\+Control\+\_\+\+Display\+On}}
+\index{Display\+On\+Off\+Control\+\_\+\+Display\+On@{Display\+On\+Off\+Control\+\_\+\+Display\+On}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Display\+On\+Off\+Control\+\_\+\+Display\+On}{DisplayOnOffControl\_DisplayOn}}
+{\footnotesize\ttfamily \#define Display\+On\+Off\+Control\+\_\+\+Display\+On~4 /$\ast$ D flag\+: display on/off, D=1 display on, D=0 display off $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga3b2367f5a0e84cf3da89a0a6fb35bdba}\label{group___l_c_dout__module_ga3b2367f5a0e84cf3da89a0a6fb35bdba}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Display\+On\+Off\+Control\+Cmd@{Display\+On\+Off\+Control\+Cmd}}
+\index{Display\+On\+Off\+Control\+Cmd@{Display\+On\+Off\+Control\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Display\+On\+Off\+Control\+Cmd}{DisplayOnOffControlCmd}}
+{\footnotesize\ttfamily \#define Display\+On\+Off\+Control\+Cmd~0x08 /$\ast$ Display on/off control command. There are 3 bits D, C and B as well $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gacd898a9abee27eb4049f8aa143f89d14}\label{group___l_c_dout__module_gacd898a9abee27eb4049f8aa143f89d14}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Entry\+Mode\+Set\+\_\+\+Increment\+On@{Entry\+Mode\+Set\+\_\+\+Increment\+On}}
+\index{Entry\+Mode\+Set\+\_\+\+Increment\+On@{Entry\+Mode\+Set\+\_\+\+Increment\+On}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Entry\+Mode\+Set\+\_\+\+Increment\+On}{EntryModeSet\_IncrementOn}}
+{\footnotesize\ttfamily \#define Entry\+Mode\+Set\+\_\+\+Increment\+On~2 /$\ast$ I/D flag\+: increment cursor $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gaef76af283c18ed2c215c30e8e2b42fef}\label{group___l_c_dout__module_gaef76af283c18ed2c215c30e8e2b42fef}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Entry\+Mode\+Set\+\_\+\+Shift\+On@{Entry\+Mode\+Set\+\_\+\+Shift\+On}}
+\index{Entry\+Mode\+Set\+\_\+\+Shift\+On@{Entry\+Mode\+Set\+\_\+\+Shift\+On}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Entry\+Mode\+Set\+\_\+\+Shift\+On}{EntryModeSet\_ShiftOn}}
+{\footnotesize\ttfamily \#define Entry\+Mode\+Set\+\_\+\+Shift\+On~1 /$\ast$ S flag\+: shift display $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga9bf6e1eaf96d58ae7fd5e7537c31990f}\label{group___l_c_dout__module_ga9bf6e1eaf96d58ae7fd5e7537c31990f}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Entry\+Mode\+Set\+Cmd@{Entry\+Mode\+Set\+Cmd}}
+\index{Entry\+Mode\+Set\+Cmd@{Entry\+Mode\+Set\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Entry\+Mode\+Set\+Cmd}{EntryModeSetCmd}}
+{\footnotesize\ttfamily \#define Entry\+Mode\+Set\+Cmd~0x04}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gab1e128803e53a3b6874808e03b1daee3}\label{group___l_c_dout__module_gab1e128803e53a3b6874808e03b1daee3}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!First\+Line\+Cmd@{First\+Line\+Cmd}}
+\index{First\+Line\+Cmd@{First\+Line\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{First\+Line\+Cmd}{FirstLineCmd}}
+{\footnotesize\ttfamily \#define First\+Line\+Cmd~(\hyperlink{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}{Goto\+X\+Y\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_ga828873cb58a5c5e3be56b42b4f912971}{Line1\+Offset})}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga6546149295013cf50debb3903ab27b67}\label{group___l_c_dout__module_ga6546149295013cf50debb3903ab27b67}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Fourth\+Line\+Cmd@{Fourth\+Line\+Cmd}}
+\index{Fourth\+Line\+Cmd@{Fourth\+Line\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Fourth\+Line\+Cmd}{FourthLineCmd}}
+{\footnotesize\ttfamily \#define Fourth\+Line\+Cmd~(\hyperlink{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}{Goto\+X\+Y\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_gaaca195da9d6ce241e676d63d1c30cba8}{Line4\+Offset})}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga3dd50a45dee8a496257e555bd2b1736b}\label{group___l_c_dout__module_ga3dd50a45dee8a496257e555bd2b1736b}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Function\+Set\+\_\+1\+Line@{Function\+Set\+\_\+1\+Line}}
+\index{Function\+Set\+\_\+1\+Line@{Function\+Set\+\_\+1\+Line}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Function\+Set\+\_\+1\+Line}{FunctionSet\_1Line}}
+{\footnotesize\ttfamily \#define Function\+Set\+\_\+1\+Line~0 /$\ast$ N flag\+: number of display lines\+: N=1 2 or 4 lines, N=0 1 line $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga3b815f5c38fa2f22fa32ae29234f7d56}\label{group___l_c_dout__module_ga3b815f5c38fa2f22fa32ae29234f7d56}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Function\+Set\+\_\+2\+Lines@{Function\+Set\+\_\+2\+Lines}}
+\index{Function\+Set\+\_\+2\+Lines@{Function\+Set\+\_\+2\+Lines}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Function\+Set\+\_\+2\+Lines}{FunctionSet\_2Lines}}
+{\footnotesize\ttfamily \#define Function\+Set\+\_\+2\+Lines~0x08 /$\ast$ N flag\+: number of display lines\+: N=1 2 or 4 lines, N=0 1 line $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gaf4728ebdcdbeadca8a5a661de7121ef0}\label{group___l_c_dout__module_gaf4728ebdcdbeadca8a5a661de7121ef0}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Function\+Set\+\_\+4bit@{Function\+Set\+\_\+4bit}}
+\index{Function\+Set\+\_\+4bit@{Function\+Set\+\_\+4bit}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Function\+Set\+\_\+4bit}{FunctionSet\_4bit}}
+{\footnotesize\ttfamily \#define Function\+Set\+\_\+4bit~0 /$\ast$ DL flag\+: DL=1\+: 8bit, D\+L=0\+: 4bit $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga4efcc2c400a4404c7f7e2b67ca1c7ad0}\label{group___l_c_dout__module_ga4efcc2c400a4404c7f7e2b67ca1c7ad0}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Function\+Set\+\_\+8bit@{Function\+Set\+\_\+8bit}}
+\index{Function\+Set\+\_\+8bit@{Function\+Set\+\_\+8bit}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Function\+Set\+\_\+8bit}{FunctionSet\_8bit}}
+{\footnotesize\ttfamily \#define Function\+Set\+\_\+8bit~0x10 /$\ast$ D\+L flag\+: D\+L=1\+: 8bit, D\+L=0\+: 4bit $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gad08dcbe4bb043f30a7fdbcc4b3e2a37c}\label{group___l_c_dout__module_gad08dcbe4bb043f30a7fdbcc4b3e2a37c}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Function\+Set\+\_\+\+Font5x10@{Function\+Set\+\_\+\+Font5x10}}
+\index{Function\+Set\+\_\+\+Font5x10@{Function\+Set\+\_\+\+Font5x10}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Function\+Set\+\_\+\+Font5x10}{FunctionSet\_Font5x10}}
+{\footnotesize\ttfamily \#define Function\+Set\+\_\+\+Font5x10~0x04 /$\ast$ F flag\+: character font, F=1 5x10 dots, F=0 5x8 dots $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga7cab1ff724b979b2d317a05b7fa57d49}\label{group___l_c_dout__module_ga7cab1ff724b979b2d317a05b7fa57d49}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Function\+Set\+\_\+\+Font5x8@{Function\+Set\+\_\+\+Font5x8}}
+\index{Function\+Set\+\_\+\+Font5x8@{Function\+Set\+\_\+\+Font5x8}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Function\+Set\+\_\+\+Font5x8}{FunctionSet\_Font5x8}}
+{\footnotesize\ttfamily \#define Function\+Set\+\_\+\+Font5x8~0 /$\ast$ F flag\+: character font, F=1 5x10 dots, F=0 5x8 dots $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga22ef3c53a94af104d297715ae02b1fe1}\label{group___l_c_dout__module_ga22ef3c53a94af104d297715ae02b1fe1}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Function\+Set\+Cmd@{Function\+Set\+Cmd}}
+\index{Function\+Set\+Cmd@{Function\+Set\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Function\+Set\+Cmd}{FunctionSetCmd}}
+{\footnotesize\ttfamily \#define Function\+Set\+Cmd~0x20}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}\label{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Goto\+X\+Y\+Cmd@{Goto\+X\+Y\+Cmd}}
+\index{Goto\+X\+Y\+Cmd@{Goto\+X\+Y\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Goto\+X\+Y\+Cmd}{GotoXYCmd}}
+{\footnotesize\ttfamily \#define Goto\+X\+Y\+Cmd~0x80  /$\ast$ 0x80 $\vert$ Display R\+A\+M address $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gaeb42fa4a9518874854f29e0f718a929e}\label{group___l_c_dout__module_gaeb42fa4a9518874854f29e0f718a929e}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+M\+A\+X\+\_\+\+L\+C\+D\+\_\+\+L\+I\+N\+E\+\_\+\+C\+H\+A\+RS@{L\+C\+Dout\+\_\+\+M\+A\+X\+\_\+\+L\+C\+D\+\_\+\+L\+I\+N\+E\+\_\+\+C\+H\+A\+RS}}
+\index{L\+C\+Dout\+\_\+\+M\+A\+X\+\_\+\+L\+C\+D\+\_\+\+L\+I\+N\+E\+\_\+\+C\+H\+A\+RS@{L\+C\+Dout\+\_\+\+M\+A\+X\+\_\+\+L\+C\+D\+\_\+\+L\+I\+N\+E\+\_\+\+C\+H\+A\+RS}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+M\+A\+X\+\_\+\+L\+C\+D\+\_\+\+L\+I\+N\+E\+\_\+\+C\+H\+A\+RS}{LCDout\_MAX\_LCD\_LINE\_CHARS}}
+{\footnotesize\ttfamily \#define L\+C\+Dout\+\_\+\+M\+A\+X\+\_\+\+L\+C\+D\+\_\+\+L\+I\+N\+E\+\_\+\+C\+H\+A\+RS~16 /$\ast$ number of chars of the L\+CD on a line $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga52c0d2745a2e6f87ce808d8da292d760}\label{group___l_c_dout__module_ga52c0d2745a2e6f87ce808d8da292d760}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+AE@{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+AE}}
+\index{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+AE@{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+AE}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+AE}{LCDout\_SOFTCHAR\_AE}}
+{\footnotesize\ttfamily \#define L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+AE~2 /$\ast$$<$! ID for \textquotesingle{}ä\textquotesingle{} $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga3fb5e3ab73fb11e02546b1107e668503}\label{group___l_c_dout__module_ga3fb5e3ab73fb11e02546b1107e668503}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+OE@{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+OE}}
+\index{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+OE@{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+OE}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+OE}{LCDout\_SOFTCHAR\_OE}}
+{\footnotesize\ttfamily \#define L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+OE~3 /$\ast$$<$! ID for \textquotesingle{}ö\textquotesingle{} $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga6ed6cef49988ba6dddeb83b004b1f2d6}\label{group___l_c_dout__module_ga6ed6cef49988ba6dddeb83b004b1f2d6}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+UE@{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+UE}}
+\index{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+UE@{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+UE}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+UE}{LCDout\_SOFTCHAR\_UE}}
+{\footnotesize\ttfamily \#define L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+UE~1 /$\ast$$<$! ID for \textquotesingle{}ü\textquotesingle{} $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gab2dd24fe025a082d0931687a3e25829a}\label{group___l_c_dout__module_gab2dd24fe025a082d0931687a3e25829a}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+US@{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+US}}
+\index{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+US@{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+US}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+US}{LCDout\_WAIT\_DISPLAY\_US}}
+{\footnotesize\ttfamily \#define L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+US~1000 /$\ast$ wait time as specified in properties $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga4b1fe0f47af2512f9d493c05604064de}\label{group___l_c_dout__module_ga4b1fe0f47af2512f9d493c05604064de}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A1\+\_\+\+US@{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A1\+\_\+\+US}}
+\index{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A1\+\_\+\+US@{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A1\+\_\+\+US}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A1\+\_\+\+US}{LCDout\_WAIT\_LCD\_CMD\_AFTER\_4BIT\_DATA1\_US}}
+{\footnotesize\ttfamily \#define L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A1\+\_\+\+US~15 /$\ast$ wait time after first 4bit data $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga8a46e7dd310d785e7f142bb8b44ad070}\label{group___l_c_dout__module_ga8a46e7dd310d785e7f142bb8b44ad070}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A2\+\_\+\+US@{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A2\+\_\+\+US}}
+\index{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A2\+\_\+\+US@{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A2\+\_\+\+US}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A2\+\_\+\+US}{LCDout\_WAIT\_LCD\_CMD\_AFTER\_4BIT\_DATA2\_US}}
+{\footnotesize\ttfamily \#define L\+C\+Dout\+\_\+\+W\+A\+I\+T\+\_\+\+L\+C\+D\+\_\+\+C\+M\+D\+\_\+\+A\+F\+T\+E\+R\+\_\+4\+B\+I\+T\+\_\+\+D\+A\+T\+A2\+\_\+\+US~60 /$\ast$ wait time after second 4bit data $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gad482e0178deba0b317279ece3f82e379}\label{group___l_c_dout__module_gad482e0178deba0b317279ece3f82e379}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Write@{L\+C\+Dout\+\_\+\+Write}}
+\index{L\+C\+Dout\+\_\+\+Write@{L\+C\+Dout\+\_\+\+Write}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Write}{LCDout\_Write}}
+{\footnotesize\ttfamily \#define L\+C\+Dout\+\_\+\+Write(\begin{DoxyParamCaption}\item[{}]{ch }\end{DoxyParamCaption})~\hyperlink{group___l_c_dout__module_ga4c2c42b869579a4033c3ea26b5fd8b44}{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data}((\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte})ch)}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gad09b53b89ff73869a1d34832da5996ee}\label{group___l_c_dout__module_gad09b53b89ff73869a1d34832da5996ee}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Left\+Shift\+Cmd@{Left\+Shift\+Cmd}}
+\index{Left\+Shift\+Cmd@{Left\+Shift\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Left\+Shift\+Cmd}{LeftShiftCmd}}
+{\footnotesize\ttfamily \#define Left\+Shift\+Cmd~0x18}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gaf8c8659caf758cb404268479f0c8adda}\label{group___l_c_dout__module_gaf8c8659caf758cb404268479f0c8adda}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Left\+Shift\+Cursor@{Left\+Shift\+Cursor}}
+\index{Left\+Shift\+Cursor@{Left\+Shift\+Cursor}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Left\+Shift\+Cursor}{LeftShiftCursor}}
+{\footnotesize\ttfamily \#define Left\+Shift\+Cursor~0x10}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga828873cb58a5c5e3be56b42b4f912971}\label{group___l_c_dout__module_ga828873cb58a5c5e3be56b42b4f912971}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Line1\+Offset@{Line1\+Offset}}
+\index{Line1\+Offset@{Line1\+Offset}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Line1\+Offset}{Line1Offset}}
+{\footnotesize\ttfamily \#define Line1\+Offset~0x00 /$\ast$ Display R\+A\+M address of first line, usually 0x00 $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga061bfbda406ff15f77abd39b86248af0}\label{group___l_c_dout__module_ga061bfbda406ff15f77abd39b86248af0}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Line2\+Offset@{Line2\+Offset}}
+\index{Line2\+Offset@{Line2\+Offset}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Line2\+Offset}{Line2Offset}}
+{\footnotesize\ttfamily \#define Line2\+Offset~0x40 /$\ast$ Display R\+A\+M address of second line, usually 0x40 $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gab49ac7d7f3fec79cbff79461b462851c}\label{group___l_c_dout__module_gab49ac7d7f3fec79cbff79461b462851c}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Line3\+Offset@{Line3\+Offset}}
+\index{Line3\+Offset@{Line3\+Offset}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Line3\+Offset}{Line3Offset}}
+{\footnotesize\ttfamily \#define Line3\+Offset~0x10 /$\ast$ Display R\+A\+M address of third line, usually 0x10 $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gaaca195da9d6ce241e676d63d1c30cba8}\label{group___l_c_dout__module_gaaca195da9d6ce241e676d63d1c30cba8}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Line4\+Offset@{Line4\+Offset}}
+\index{Line4\+Offset@{Line4\+Offset}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Line4\+Offset}{Line4Offset}}
+{\footnotesize\ttfamily \#define Line4\+Offset~0x50 /$\ast$ Display R\+A\+M address of fourth line, usually 0x50 $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga1e54b2825d579021519966e810226775}\label{group___l_c_dout__module_ga1e54b2825d579021519966e810226775}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Return\+Home\+Cmd@{Return\+Home\+Cmd}}
+\index{Return\+Home\+Cmd@{Return\+Home\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Return\+Home\+Cmd}{ReturnHomeCmd}}
+{\footnotesize\ttfamily \#define Return\+Home\+Cmd~0x02 /$\ast$ moves the cursor to the beginning of the first line $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga79e72f0a70f1fe2f60a649437dc8c51e}\label{group___l_c_dout__module_ga79e72f0a70f1fe2f60a649437dc8c51e}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Right\+Shift\+Cmd@{Right\+Shift\+Cmd}}
+\index{Right\+Shift\+Cmd@{Right\+Shift\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Right\+Shift\+Cmd}{RightShiftCmd}}
+{\footnotesize\ttfamily \#define Right\+Shift\+Cmd~0x1C}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga06e3b1b119133d624e66a5e0d4a6928a}\label{group___l_c_dout__module_ga06e3b1b119133d624e66a5e0d4a6928a}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Right\+Shift\+Cursor@{Right\+Shift\+Cursor}}
+\index{Right\+Shift\+Cursor@{Right\+Shift\+Cursor}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Right\+Shift\+Cursor}{RightShiftCursor}}
+{\footnotesize\ttfamily \#define Right\+Shift\+Cursor~0x14}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga9be73084c3ebaa321c70235c055b2e83}\label{group___l_c_dout__module_ga9be73084c3ebaa321c70235c055b2e83}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Second\+Line\+Cmd@{Second\+Line\+Cmd}}
+\index{Second\+Line\+Cmd@{Second\+Line\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Second\+Line\+Cmd}{SecondLineCmd}}
+{\footnotesize\ttfamily \#define Second\+Line\+Cmd~(\hyperlink{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}{Goto\+X\+Y\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_ga061bfbda406ff15f77abd39b86248af0}{Line2\+Offset})}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gaec84cffa098c36c430eb24489996efb6}\label{group___l_c_dout__module_gaec84cffa098c36c430eb24489996efb6}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Set\+EN@{Set\+EN}}
+\index{Set\+EN@{Set\+EN}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Set\+EN}{SetEN}}
+{\footnotesize\ttfamily \#define Set\+EN(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{group___e_n1__module_ga7ce18b948cb7d929e432e30bf341150f}{E\+N1\+\_\+\+Set\+Val}()                    /$\ast$ EN=1 $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga89324c79060dbcd48cf84a2449b8dcf7}\label{group___l_c_dout__module_ga89324c79060dbcd48cf84a2449b8dcf7}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Set\+RS@{Set\+RS}}
+\index{Set\+RS@{Set\+RS}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Set\+RS}{SetRS}}
+{\footnotesize\ttfamily \#define Set\+RS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{group___r_s1__module_ga3bde9e90d3782ef979a2a3dad1065923}{R\+S1\+\_\+\+Set\+Val}()                    /$\ast$ RS=1\+: data mode $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga623aa368d709ced6054c6f8a3e808ab8}\label{group___l_c_dout__module_ga623aa368d709ced6054c6f8a3e808ab8}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Third\+Line\+Cmd@{Third\+Line\+Cmd}}
+\index{Third\+Line\+Cmd@{Third\+Line\+Cmd}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Third\+Line\+Cmd}{ThirdLineCmd}}
+{\footnotesize\ttfamily \#define Third\+Line\+Cmd~(\hyperlink{group___l_c_dout__module_ga4a5fbdac86cc052f04eba07cc9fa25c4}{Goto\+X\+Y\+Cmd}$\vert$\hyperlink{group___l_c_dout__module_gab49ac7d7f3fec79cbff79461b462851c}{Line3\+Offset})}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga50389ce73daf078fb327aeb519b51ceb}\label{group___l_c_dout__module_ga50389ce73daf078fb327aeb519b51ceb}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Timing\+\_\+\+P\+Weh\+\_\+ns@{Timing\+\_\+\+P\+Weh\+\_\+ns}}
+\index{Timing\+\_\+\+P\+Weh\+\_\+ns@{Timing\+\_\+\+P\+Weh\+\_\+ns}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Timing\+\_\+\+P\+Weh\+\_\+ns}{Timing\_PWeh\_ns}}
+{\footnotesize\ttfamily \#define Timing\+\_\+\+P\+Weh\+\_\+ns~230 /$\ast$ P\+Weh\+: Enable Pulse width (high level) $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga55cee78f4ec3382e70a9591cf62d39ae}\label{group___l_c_dout__module_ga55cee78f4ec3382e70a9591cf62d39ae}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Timing\+\_\+t\+A\+S\+\_\+ns@{Timing\+\_\+t\+A\+S\+\_\+ns}}
+\index{Timing\+\_\+t\+A\+S\+\_\+ns@{Timing\+\_\+t\+A\+S\+\_\+ns}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Timing\+\_\+t\+A\+S\+\_\+ns}{Timing\_tAS\_ns}}
+{\footnotesize\ttfamily \#define Timing\+\_\+t\+A\+S\+\_\+ns~40 /$\ast$ t\+A\+B\+: Address set-\/up time (RS, RW to E ) $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga0b0f0c3aa01af1970b89e42b31016b75}\label{group___l_c_dout__module_ga0b0f0c3aa01af1970b89e42b31016b75}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Timing\+\_\+t\+C\+Y\+C\+L\+E\+\_\+ns@{Timing\+\_\+t\+C\+Y\+C\+L\+E\+\_\+ns}}
+\index{Timing\+\_\+t\+C\+Y\+C\+L\+E\+\_\+ns@{Timing\+\_\+t\+C\+Y\+C\+L\+E\+\_\+ns}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Timing\+\_\+t\+C\+Y\+C\+L\+E\+\_\+ns}{Timing\_tCYCLE\_ns}}
+{\footnotesize\ttfamily \#define Timing\+\_\+t\+C\+Y\+C\+L\+E\+\_\+ns~500 /$\ast$ t\+C\+Y\+L\+E\+: Enable Cycle time $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga810679ed8f5d999d2cb82a42f3050cbe}\label{group___l_c_dout__module_ga810679ed8f5d999d2cb82a42f3050cbe}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Timing\+\_\+t\+D\+D\+R\+\_\+ns@{Timing\+\_\+t\+D\+D\+R\+\_\+ns}}
+\index{Timing\+\_\+t\+D\+D\+R\+\_\+ns@{Timing\+\_\+t\+D\+D\+R\+\_\+ns}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Timing\+\_\+t\+D\+D\+R\+\_\+ns}{Timing\_tDDR\_ns}}
+{\footnotesize\ttfamily \#define Timing\+\_\+t\+D\+D\+R\+\_\+ns~160 /$\ast$ t\+D\+D\+R\+: Data delay time $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gaf22068cba254d10c0c3593b20dbe68c3}\label{group___l_c_dout__module_gaf22068cba254d10c0c3593b20dbe68c3}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Waitms@{Waitms}}
+\index{Waitms@{Waitms}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Waitms}{Waitms}}
+{\footnotesize\ttfamily \#define Waitms(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~\hyperlink{group___w_a_i_t1__module_ga04b03075f856862ff2bc4ff69825aeb6}{W\+A\+I\+T1\+\_\+\+Waitms}(x)                 /$\ast$ Wait x ms $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gaf3c67d898300e7dc084ae6a81e07aab0}\label{group___l_c_dout__module_gaf3c67d898300e7dc084ae6a81e07aab0}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Waitns@{Waitns}}
+\index{Waitns@{Waitns}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Waitns}{Waitns}}
+{\footnotesize\ttfamily \#define Waitns(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~\hyperlink{group___w_a_i_t1__module_ga69b0cc93f0910d7f8f238d3e7d43c2c3}{W\+A\+I\+T1\+\_\+\+Waitns}(x)                 /$\ast$ Wait x ns $\ast$/}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga880e1e0202bcfeb24d3c9711d1e38342}\label{group___l_c_dout__module_ga880e1e0202bcfeb24d3c9711d1e38342}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!Waitus@{Waitus}}
+\index{Waitus@{Waitus}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{Waitus}{Waitus}}
+{\footnotesize\ttfamily \#define Waitus(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~\hyperlink{group___w_a_i_t1__module_ga3bad7338e555cbbbaa870ee3fe2db0f6}{W\+A\+I\+T1\+\_\+\+Waitus}(x)                 /$\ast$ Wait x us $\ast$/}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___l_c_dout__module_ga52dbb0059469cd8d31b902bb1e02f2ad}\label{group___l_c_dout__module_ga52dbb0059469cd8d31b902bb1e02f2ad}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Clear@{L\+C\+Dout\+\_\+\+Clear}}
+\index{L\+C\+Dout\+\_\+\+Clear@{L\+C\+Dout\+\_\+\+Clear}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Clear()}{LCDout\_Clear()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{group___l_c_dout__module_ga1acb6df425eac1c5afb5c00b0d1f221f}\label{group___l_c_dout__module_ga1acb6df425eac1c5afb5c00b0d1f221f}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Cursor\+Shift\+Left@{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Left}}
+\index{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Left@{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Left}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Left()}{LCDout\_CursorShiftLeft()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Cursor\+Shift\+Left (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{group___l_c_dout__module_ga6e6c1e6c3c9ef9543e8cb4e1ac2c4e11}\label{group___l_c_dout__module_ga6e6c1e6c3c9ef9543e8cb4e1ac2c4e11}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Cursor\+Shift\+Right@{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Right}}
+\index{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Right@{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Right}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Right()}{LCDout\_CursorShiftRight()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Cursor\+Shift\+Right (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{group___l_c_dout__module_ga62e6c646d15cb1ad5e91c7738138adb2}\label{group___l_c_dout__module_ga62e6c646d15cb1ad5e91c7738138adb2}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Goto\+XY@{L\+C\+Dout\+\_\+\+Goto\+XY}}
+\index{L\+C\+Dout\+\_\+\+Goto\+XY@{L\+C\+Dout\+\_\+\+Goto\+XY}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Goto\+X\+Y()}{LCDout\_GotoXY()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Goto\+XY (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{line,  }\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{column }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{group___l_c_dout__module_ga381874990d6c1c89db754439cc1486af}\label{group___l_c_dout__module_ga381874990d6c1c89db754439cc1486af}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Home@{L\+C\+Dout\+\_\+\+Home}}
+\index{L\+C\+Dout\+\_\+\+Home@{L\+C\+Dout\+\_\+\+Home}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Home()}{LCDout\_Home()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Home (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{group___l_c_dout__module_ga92d9c37466746b85aa619ad291addb81}\label{group___l_c_dout__module_ga92d9c37466746b85aa619ad291addb81}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Init@{L\+C\+Dout\+\_\+\+Init}}
+\index{L\+C\+Dout\+\_\+\+Init@{L\+C\+Dout\+\_\+\+Init}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Init()}{LCDout\_Init()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{group___l_c_dout__module_gad440859311c277df8a0d54f2df45d419}\label{group___l_c_dout__module_gad440859311c277df8a0d54f2df45d419}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Line@{L\+C\+Dout\+\_\+\+Line}}
+\index{L\+C\+Dout\+\_\+\+Line@{L\+C\+Dout\+\_\+\+Line}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Line()}{LCDout\_Line()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Line (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{line }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{group___l_c_dout__module_gac2b3ac6c71fafbda024b02300d392ba5}\label{group___l_c_dout__module_gac2b3ac6c71fafbda024b02300d392ba5}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Set\+Entry\+Mode@{L\+C\+Dout\+\_\+\+Set\+Entry\+Mode}}
+\index{L\+C\+Dout\+\_\+\+Set\+Entry\+Mode@{L\+C\+Dout\+\_\+\+Set\+Entry\+Mode}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Set\+Entry\+Mode()}{LCDout\_SetEntryMode()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Set\+Entry\+Mode (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool}}]{increment,  }\item[{\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool}}]{shift\+Left }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{group___l_c_dout__module_ga6cf5c1bb9b142caf3d06f19643fa0af4}\label{group___l_c_dout__module_ga6cf5c1bb9b142caf3d06f19643fa0af4}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Shift\+Left@{L\+C\+Dout\+\_\+\+Shift\+Left}}
+\index{L\+C\+Dout\+\_\+\+Shift\+Left@{L\+C\+Dout\+\_\+\+Shift\+Left}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Shift\+Left()}{LCDout\_ShiftLeft()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Shift\+Left (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 15
+Here is the caller graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{group___l_c_dout__module_gaccb1d0aad25fdfd1fcf1343567b77697}\label{group___l_c_dout__module_gaccb1d0aad25fdfd1fcf1343567b77697}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Shift\+Right@{L\+C\+Dout\+\_\+\+Shift\+Right}}
+\index{L\+C\+Dout\+\_\+\+Shift\+Right@{L\+C\+Dout\+\_\+\+Shift\+Right}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Shift\+Right()}{LCDout\_ShiftRight()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Shift\+Right (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 17
+Here is the caller graph for this function\+:
+% FIG 18
+\mbox{\Hypertarget{group___l_c_dout__module_ga91507851ce7b3cd0ac6e857fe7859dae}\label{group___l_c_dout__module_ga91507851ce7b3cd0ac6e857fe7859dae}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Use\+Display@{L\+C\+Dout\+\_\+\+Use\+Display}}
+\index{L\+C\+Dout\+\_\+\+Use\+Display@{L\+C\+Dout\+\_\+\+Use\+Display}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Use\+Display()}{LCDout\_UseDisplay()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} L\+C\+Dout\+\_\+\+Use\+Display (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{display }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gac4883fe388870605e399c3b4b7a2f88a}\label{group___l_c_dout__module_gac4883fe388870605e399c3b4b7a2f88a}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Wait\+For\+L\+C\+D\+Ready@{L\+C\+Dout\+\_\+\+Wait\+For\+L\+C\+D\+Ready}}
+\index{L\+C\+Dout\+\_\+\+Wait\+For\+L\+C\+D\+Ready@{L\+C\+Dout\+\_\+\+Wait\+For\+L\+C\+D\+Ready}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Wait\+For\+L\+C\+D\+Ready()}{LCDout\_WaitForLCDReady()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Wait\+For\+L\+C\+D\+Ready (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{group___l_c_dout__module_gac22fb83749f0e6f881c82fa2ca4e5a8d}\label{group___l_c_dout__module_gac22fb83749f0e6f881c82fa2ca4e5a8d}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Command@{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Command}}
+\index{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Command@{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Command}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Command()}{LCDout\_WriteLCDCommand()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Command (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{cmd }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 19
+\mbox{\Hypertarget{group___l_c_dout__module_ga4c2c42b869579a4033c3ea26b5fd8b44}\label{group___l_c_dout__module_ga4c2c42b869579a4033c3ea26b5fd8b44}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data@{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data}}
+\index{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data@{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data()}{LCDout\_WriteLCDData()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{ch }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga6cf19a943f4cb49d88f60198348e7e17}\label{group___l_c_dout__module_ga6cf19a943f4cb49d88f60198348e7e17}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Write\+Line\+Str@{L\+C\+Dout\+\_\+\+Write\+Line\+Str}}
+\index{L\+C\+Dout\+\_\+\+Write\+Line\+Str@{L\+C\+Dout\+\_\+\+Write\+Line\+Str}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Write\+Line\+Str()}{LCDout\_WriteLineStr()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Write\+Line\+Str (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{line,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
+\mbox{\Hypertarget{group___l_c_dout__module_ga2cb97a527f94e423930285883e131bea}\label{group___l_c_dout__module_ga2cb97a527f94e423930285883e131bea}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Write\+Ln@{L\+C\+Dout\+\_\+\+Write\+Ln}}
+\index{L\+C\+Dout\+\_\+\+Write\+Ln@{L\+C\+Dout\+\_\+\+Write\+Ln}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Write\+Ln()}{LCDout\_WriteLn()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Write\+Ln (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 22
+Here is the caller graph for this function\+:
+% FIG 23
+\mbox{\Hypertarget{group___l_c_dout__module_ga3f1e3ac39129521bda0a9bd3f8ed91fd}\label{group___l_c_dout__module_ga3f1e3ac39129521bda0a9bd3f8ed91fd}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Write\+String@{L\+C\+Dout\+\_\+\+Write\+String}}
+\index{L\+C\+Dout\+\_\+\+Write\+String@{L\+C\+Dout\+\_\+\+Write\+String}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Write\+String()}{LCDout\_WriteString()}}
+{\footnotesize\ttfamily void L\+C\+Dout\+\_\+\+Write\+String (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 24
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{group___l_c_dout__module_ga01871fed00e6be55a7c9020f393a1e5a}\label{group___l_c_dout__module_ga01871fed00e6be55a7c9020f393a1e5a}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Soft\+Char\+AE@{L\+C\+Dout\+\_\+\+Soft\+Char\+AE}}
+\index{L\+C\+Dout\+\_\+\+Soft\+Char\+AE@{L\+C\+Dout\+\_\+\+Soft\+Char\+AE}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Soft\+Char\+AE}{LCDout\_SoftCharAE}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} L\+C\+Dout\+\_\+\+Soft\+Char\+AE\mbox{[}8\mbox{]}}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga01871fed00e6be55a7c9020f393a1e5a}\label{group___l_c_dout__module_ga01871fed00e6be55a7c9020f393a1e5a}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Soft\+Char\+AE@{L\+C\+Dout\+\_\+\+Soft\+Char\+AE}}
+\index{L\+C\+Dout\+\_\+\+Soft\+Char\+AE@{L\+C\+Dout\+\_\+\+Soft\+Char\+AE}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Soft\+Char\+AE}{LCDout\_SoftCharAE}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} L\+C\+Dout\+\_\+\+Soft\+Char\+AE\mbox{[}8\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{ 
+  0x11, 0x00, 0x0E, 0x01, 0x0F, 0x11, 0x0F, 0
+
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{group___l_c_dout__module_ga2e1e69b87f6a8ccbcfbad1c054547352}\label{group___l_c_dout__module_ga2e1e69b87f6a8ccbcfbad1c054547352}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Soft\+Char\+OE@{L\+C\+Dout\+\_\+\+Soft\+Char\+OE}}
+\index{L\+C\+Dout\+\_\+\+Soft\+Char\+OE@{L\+C\+Dout\+\_\+\+Soft\+Char\+OE}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Soft\+Char\+OE}{LCDout\_SoftCharOE}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} L\+C\+Dout\+\_\+\+Soft\+Char\+OE\mbox{[}8\mbox{]}}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga2e1e69b87f6a8ccbcfbad1c054547352}\label{group___l_c_dout__module_ga2e1e69b87f6a8ccbcfbad1c054547352}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Soft\+Char\+OE@{L\+C\+Dout\+\_\+\+Soft\+Char\+OE}}
+\index{L\+C\+Dout\+\_\+\+Soft\+Char\+OE@{L\+C\+Dout\+\_\+\+Soft\+Char\+OE}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Soft\+Char\+OE}{LCDout\_SoftCharOE}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} L\+C\+Dout\+\_\+\+Soft\+Char\+OE\mbox{[}8\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{ 
+  0x11, 0x00, 0x0E, 0x11, 0x11, 0x11, 0x0E, 0
+
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{group___l_c_dout__module_ga42ec038c4f64bcb4d697c255d5184408}\label{group___l_c_dout__module_ga42ec038c4f64bcb4d697c255d5184408}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Soft\+Char\+UE@{L\+C\+Dout\+\_\+\+Soft\+Char\+UE}}
+\index{L\+C\+Dout\+\_\+\+Soft\+Char\+UE@{L\+C\+Dout\+\_\+\+Soft\+Char\+UE}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Soft\+Char\+UE}{LCDout\_SoftCharUE}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} L\+C\+Dout\+\_\+\+Soft\+Char\+UE\mbox{[}8\mbox{]}}
+
+\mbox{\Hypertarget{group___l_c_dout__module_ga42ec038c4f64bcb4d697c255d5184408}\label{group___l_c_dout__module_ga42ec038c4f64bcb4d697c255d5184408}} 
+\index{L\+C\+Dout module documentation@{L\+C\+Dout module documentation}!L\+C\+Dout\+\_\+\+Soft\+Char\+UE@{L\+C\+Dout\+\_\+\+Soft\+Char\+UE}}
+\index{L\+C\+Dout\+\_\+\+Soft\+Char\+UE@{L\+C\+Dout\+\_\+\+Soft\+Char\+UE}!L\+C\+Dout module documentation@{L\+C\+Dout module documentation}}
+\subsubsection{\texorpdfstring{L\+C\+Dout\+\_\+\+Soft\+Char\+UE}{LCDout\_SoftCharUE}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} L\+C\+Dout\+\_\+\+Soft\+Char\+UE\mbox{[}8\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{ 
+  0x11, 0x00, 0x11, 0x11, 0x11, 0x13, 0x0d, 0
+
+\}
+\end{DoxyCode}

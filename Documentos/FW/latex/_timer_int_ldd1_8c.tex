@@ -1,0 +1,42 @@
+\hypertarget{_timer_int_ldd1_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Timer\+Int\+Ldd1.c File Reference}
+\label{_timer_int_ldd1_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Timer\+Int\+Ldd1.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Timer\+Int\+Ldd1.\+c}}
+
+
+This Timer\+Int component implements a periodic interrupt. When the component and its events are enabled, the \char`\"{}\+On\+Interrupt\char`\"{} event is called periodically with the period that you specify. Timer\+Int supports also changing the period in runtime. This Timer\+Int component provides a high level A\+PI for unified hardware access to various timer devices using the Timer\+Unit component.  
+
+
+{\ttfamily \#include \char`\"{}T\+I1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Timer\+Int\+Ldd1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+Include dependency graph for Timer\+Int\+Ldd1.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_timer_int_ldd1___t_device_data}{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___timer_int_ldd1__module_ga5f04a8830cd52a3ffa1678d113f31aee}{A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+E\+V\+E\+N\+T\+S\+\_\+\+M\+A\+SK}~(\hyperlink{group___p_e___types__module_gafbe7f4d4e51560399c3bdd0218584533}{L\+D\+D\+\_\+\+T\+Event\+Mask})(\hyperlink{group___p_e___types__module_gad4a95a8e3f3036e88f99c792431b4d72}{L\+D\+D\+\_\+\+T\+I\+M\+E\+R\+I\+N\+T\+\_\+\+O\+N\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT})
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{struct_timer_int_ldd1___t_device_data}{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___timer_int_ldd1__module_ga24d5bad052ceefb0ed97378c80c8dc03}{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data\+Ptr}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___timer_int_ldd1__module_ga069f7459fc74e21fb9bcceadbe7cb9cb}{Timer\+Int\+Ldd1\+\_\+\+Init} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the property \mbox{[}\char`\"{}\+Enable in init. code\char`\"{}\mbox{]} is set to \char`\"{}yes\char`\"{} value then the device is also enabled (see the description of the \mbox{[}Enable\mbox{]} method). In this case the \mbox{[}Enable\mbox{]} method is not necessary and needn\textquotesingle{}t to be generated. This method can be called only once. Before the second call of Init the \mbox{[}Deinit\mbox{]} must be called first. \end{DoxyCompactList}\item 
+void \hyperlink{group___timer_int_ldd1__module_ga915c714e97fd2a66385fddc37d45352a}{T\+U1\+\_\+\+On\+Counter\+Restart} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This Timer\+Int component implements a periodic interrupt. When the component and its events are enabled, the \char`\"{}\+On\+Interrupt\char`\"{} event is called periodically with the period that you specify. Timer\+Int supports also changing the period in runtime. This Timer\+Int component provides a high level A\+PI for unified hardware access to various timer devices using the Timer\+Unit component. 
+
+\begin{DoxyVersion}{Version}
+01.\+02 
+\end{DoxyVersion}

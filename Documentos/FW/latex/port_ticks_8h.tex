@@ -1,0 +1,63 @@
+\hypertarget{port_ticks_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/port\+Ticks.h File Reference}
+\label{port_ticks_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/port\+Ticks.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/port\+Ticks.\+h}}
+{\ttfamily \#include \char`\"{}M\+C\+U\+C1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S\+Config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}portmacro.\+h\char`\"{}}\newline
+Include dependency graph for port\+Ticks.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{port_ticks_8h_a47422c46af823d9d21fb996a7a895b66}{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+D\+O\+W\+N\+\_\+\+C\+O\+U\+N\+T\+ER}~1 /$\ast$ Sys\+Tick is counting down $\ast$/
+\item 
+\#define \hyperlink{port_ticks_8h_a9660a674d0b4ad8cb2244e0f862cecd7}{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+P\+E\+R\+I\+OD}~((\hyperlink{_free_r_t_o_s_config_8h_aa68082df879e6fc96bcb9b26513639e7}{config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}/\hyperlink{_free_r_t_o_s_config_8h_a2f0258dd1e3b877e5bc013be54c2db6a}{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ})-\/1\+U\+L) /$\ast$ counter is decrementing from this value to zero $\ast$/
+\item 
+\#define \hyperlink{port_ticks_8h_a331cf4b9e07230b0f8ff33b26de9ff02}{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ}~\hyperlink{_free_r_t_o_s_config_8h_a2f0258dd1e3b877e5bc013be54c2db6a}{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{portmacro_8h_a6bbebff6020ac333ab6ec2ffd7f77001}{port\+L\+O\+NG} \hyperlink{port_ticks_8h_a27b389b1c78416aa49ceb18124f4a284}{ux\+Get\+Tick\+Counter\+Value} (void)
+\begin{DoxyCompactList}\small\item\em Return the tick raw counter value. It is assumed that the counter register has been reset at the last tick time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{port_ticks_8h_a47422c46af823d9d21fb996a7a895b66}\label{port_ticks_8h_a47422c46af823d9d21fb996a7a895b66}} 
+\index{port\+Ticks.\+h@{port\+Ticks.\+h}!F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+D\+O\+W\+N\+\_\+\+C\+O\+U\+N\+T\+ER@{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+D\+O\+W\+N\+\_\+\+C\+O\+U\+N\+T\+ER}}
+\index{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+D\+O\+W\+N\+\_\+\+C\+O\+U\+N\+T\+ER@{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+D\+O\+W\+N\+\_\+\+C\+O\+U\+N\+T\+ER}!port\+Ticks.\+h@{port\+Ticks.\+h}}
+\subsubsection{\texorpdfstring{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+D\+O\+W\+N\+\_\+\+C\+O\+U\+N\+T\+ER}{FREERTOS\_HWTC\_DOWN\_COUNTER}}
+{\footnotesize\ttfamily \#define F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+D\+O\+W\+N\+\_\+\+C\+O\+U\+N\+T\+ER~1 /$\ast$ Sys\+Tick is counting down $\ast$/}
+
+\mbox{\Hypertarget{port_ticks_8h_a331cf4b9e07230b0f8ff33b26de9ff02}\label{port_ticks_8h_a331cf4b9e07230b0f8ff33b26de9ff02}} 
+\index{port\+Ticks.\+h@{port\+Ticks.\+h}!F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ@{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ}}
+\index{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ@{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ}!port\+Ticks.\+h@{port\+Ticks.\+h}}
+\subsubsection{\texorpdfstring{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ}{FREERTOS\_HWTC\_FREQ\_HZ}}
+{\footnotesize\ttfamily \#define F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ~\hyperlink{_free_r_t_o_s_config_8h_a2f0258dd1e3b877e5bc013be54c2db6a}{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}}
+
+\mbox{\Hypertarget{port_ticks_8h_a9660a674d0b4ad8cb2244e0f862cecd7}\label{port_ticks_8h_a9660a674d0b4ad8cb2244e0f862cecd7}} 
+\index{port\+Ticks.\+h@{port\+Ticks.\+h}!F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+P\+E\+R\+I\+OD@{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+P\+E\+R\+I\+OD}}
+\index{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+P\+E\+R\+I\+OD@{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+P\+E\+R\+I\+OD}!port\+Ticks.\+h@{port\+Ticks.\+h}}
+\subsubsection{\texorpdfstring{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+P\+E\+R\+I\+OD}{FREERTOS\_HWTC\_PERIOD}}
+{\footnotesize\ttfamily \#define F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+H\+W\+T\+C\+\_\+\+P\+E\+R\+I\+OD~((\hyperlink{_free_r_t_o_s_config_8h_aa68082df879e6fc96bcb9b26513639e7}{config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}/\hyperlink{_free_r_t_o_s_config_8h_a2f0258dd1e3b877e5bc013be54c2db6a}{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ})-\/1\+U\+L) /$\ast$ counter is decrementing from this value to zero $\ast$/}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{port_ticks_8h_a27b389b1c78416aa49ceb18124f4a284}\label{port_ticks_8h_a27b389b1c78416aa49ceb18124f4a284}} 
+\index{port\+Ticks.\+h@{port\+Ticks.\+h}!ux\+Get\+Tick\+Counter\+Value@{ux\+Get\+Tick\+Counter\+Value}}
+\index{ux\+Get\+Tick\+Counter\+Value@{ux\+Get\+Tick\+Counter\+Value}!port\+Ticks.\+h@{port\+Ticks.\+h}}
+\subsubsection{\texorpdfstring{ux\+Get\+Tick\+Counter\+Value()}{uxGetTickCounterValue()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a6bbebff6020ac333ab6ec2ffd7f77001}{port\+L\+O\+NG} ux\+Get\+Tick\+Counter\+Value (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Return the tick raw counter value. It is assumed that the counter register has been reset at the last tick time. 
+
+\begin{DoxyReturn}{Returns}
+Tick counter value. The value is reset at tick interrupt time. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 2

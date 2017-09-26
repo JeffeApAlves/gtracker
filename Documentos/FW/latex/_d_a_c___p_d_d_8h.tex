@@ -1,0 +1,1566 @@
+\hypertarget{_d_a_c___p_d_d_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+D\+A\+C\+\_\+\+P\+DD.h File Reference}
+\label{_d_a_c___p_d_d_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+D\+A\+C\+\_\+\+P\+D\+D.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+{\ttfamily \#include \char`\"{}P\+D\+D\+\_\+\+Types.\+h\char`\"{}}\newline
+Include dependency graph for D\+A\+C\+\_\+\+P\+D\+D.\+h\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a7849fb001150f9a5510fcab310e0c0e2}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}~\hyperlink{group___d_a_c___register___masks_gad8a60a2fa6211ff08bba4b9648fb8daa}{D\+A\+C\+\_\+\+C0\+\_\+\+D\+A\+C\+B\+T\+I\+E\+N\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a24129b3a33113329852bfb441764be56}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}~\hyperlink{group___d_a_c___register___masks_gadc37ad99d42f4b9d0e26ce03f2ac79ad}{D\+A\+C\+\_\+\+C0\+\_\+\+D\+A\+C\+B\+B\+I\+E\+N\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a2f2167c6631366ac708bf091cadef8c6}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}~D\+A\+C\+\_\+\+C0\+\_\+\+D\+A\+C\+B\+W\+I\+E\+N\+\_\+\+M\+A\+SK
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a1d0500827114ea31a09c6726a414e8f8}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+L\+AG}~\hyperlink{group___d_a_c___register___masks_ga662e824677c1a7a94ddd36e90f3d37d5}{D\+A\+C\+\_\+\+S\+R\+\_\+\+D\+A\+C\+B\+F\+R\+P\+T\+F\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_ae78abda85c3dc34e52a77d8ce0bf245c}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+F\+L\+AG}~\hyperlink{group___d_a_c___register___masks_ga5af56fd75a9c5b74fe07c8f303d452aa}{D\+A\+C\+\_\+\+S\+R\+\_\+\+D\+A\+C\+B\+F\+R\+P\+B\+F\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_aca79af49e70233bd891e3f327daf2482}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+F\+L\+AG}~D\+A\+C\+\_\+\+S\+R\+\_\+\+D\+A\+C\+B\+F\+W\+M\+F\+\_\+\+M\+A\+SK
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_aa48c323ff54a79e488b9010dc0039b06}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+W\+\_\+\+T\+R\+I\+G\+G\+ER}~0U
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a96bd24827eefd1061b9731818aa52ec8}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER}~\hyperlink{group___d_a_c___register___masks_gac6dd81bc6500fc4b972c62bde339f31d}{D\+A\+C\+\_\+\+C0\+\_\+\+D\+A\+C\+T\+R\+G\+S\+E\+L\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_aee8decee3a87d32f9e5b92b651bfa1f1}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+M\+O\+DE}~0U
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_afb496717ea0d600adb8252d79e7706b8}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+W\+I\+N\+G\+\_\+\+M\+O\+DE}~0x1U
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_acc3bc0bc7089dd0dd8878a50a235d98a}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+T\+S\+C\+A\+N\+\_\+\+M\+O\+DE}~0x2U
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_aac81eca391f2cb4f746781f782e2d83b}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L1}~0U
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_ae13d605d8dc35e6b7c560416dd594ee1}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L2}~0x1U
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_abb06712c0c68b3a0158cefa2cc7ca11a}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L3}~0x2U
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a9a4765f411b2b1d74d6420f12cdf5fb8}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L4}~0x3U
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_ad20b2f938ed0319b886b754cac3c4cd7}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+I\+N\+T\+E\+R\+N\+AL}~0U
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_af97285499fdcad943c3597670cb6da1d}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+E\+X\+T\+E\+R\+N\+AL}~\hyperlink{group___d_a_c___register___masks_gadc1973eafb50599b83de95422477a1f5}{D\+A\+C\+\_\+\+C0\+\_\+\+D\+A\+C\+R\+F\+S\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a75aad683313bd3e460fd36a0a1ce2a3e}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+I\+G\+H\+\_\+\+P\+O\+W\+ER}~0U
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_ace5becfe8977a76ae90122801649aa3f}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+ER}~\hyperlink{group___d_a_c___register___masks_ga54a04b9ae84c5a4f8977ae2e1a889717}{D\+A\+C\+\_\+\+C0\+\_\+\+L\+P\+E\+N\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_af9b390a8c83bb2882c483749c288469b}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em Enables the D/A converter\textquotesingle{}s device. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_aeff11ee7a7909acb57fc9f021a91d32e}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Device\+Enabled}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns current state of D/A converter enable bit. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a93ebb3967d1c4891d20a693038db7722}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupts}(Peripheral\+Base,  Mask)
+\begin{DoxyCompactList}\small\item\em Enables interrupts defined by mask parameter. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a76a484d52cb4282c79519558c62f9ec2}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupts}(Peripheral\+Base,  Mask)
+\begin{DoxyCompactList}\small\item\em Disables interrupts defined by mask parameter. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_ada3453979311fe0bc1bdef7d55d503a2}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Interrupt\+Mask}(Peripheral\+Base,  Mask)
+\begin{DoxyCompactList}\small\item\em Sets all interrupts with value according to mask parameter. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a282ab51c86de7ac5ed22daa587c39644}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns interrupts mask. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_ac7b5b0453861833fc94d9fdbf4340f28}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flags}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns interrupt flag bits. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_aabc475cc972a901061da121671797835}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flags}(Peripheral\+Base,  Mask)
+\begin{DoxyCompactList}\small\item\em Clears interrupt flag bits defined by mask parameter. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a9f4c55d77bdb5bd8097db31f7411d25e}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Data}(Peripheral\+Base,  Data,  Reg\+Index)
+\begin{DoxyCompactList}\small\item\em Sets value of D/A converter\textquotesingle{}s data buffer word defined by Index parameter. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a47bab51031746162ac6a04e54def941d}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Buffer}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em D/A converter\textquotesingle{}s buffer enable. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a8215ba05833d8ffa3eac2bc737dcec12}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Enabled}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns current data buffer state. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a36e0458b46ee7e5b0e8ca4b92fc8efb6}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Trigger}(Peripheral\+Base,  Trigger)
+\begin{DoxyCompactList}\small\item\em Selects D/A converter\textquotesingle{}s trigger. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a8d2ebf63204b98c63bde242f07fa0d1d}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Trigger\+Source}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns current trigger source. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_abe4f8e80e3ca22515c61951a59c8294d}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Force\+Sw\+Trigger}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Forces D/A converter\textquotesingle{}s software trigger. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a216f59273fb9bb60fb405cf2221d17bd}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Mode}(Peripheral\+Base,  Mode)
+\begin{DoxyCompactList}\small\item\em Selects D/A converter\textquotesingle{}s buffer work mode. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a72e6e42ee57b020440357f6d27410375}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Watermark}(Peripheral\+Base,  Watermark)
+\begin{DoxyCompactList}\small\item\em Sets D/A converter\textquotesingle{}s buffer watermark. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_ae3b5beab919bbad16ac393841be09f8e}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Read\+Pointer}(Peripheral\+Base,  Pointer)
+\begin{DoxyCompactList}\small\item\em Sets D/A converter\textquotesingle{}s buffer read pointer. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a07f92a619ee333e4ec66f645cc1540ec}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Read\+Pointer}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns current data buffer read pointer value. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a38ec67989d558ea3f4065aa2ab8b7190}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Size}(Peripheral\+Base,  Size)
+\begin{DoxyCompactList}\small\item\em Sets D/A converter\textquotesingle{}s buffer upper limit. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a09908f900d80512142054c03827f2e15}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Size}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns current data buffer size. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a1199d11a393beb5ff1ac4102556c60fe}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Reference}(Peripheral\+Base,  Reference)
+\begin{DoxyCompactList}\small\item\em Selects D/A converter\textquotesingle{}s reference. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a40a5126ab4b64995d5cc9adda4fa0da3}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Power\+Mode}(Peripheral\+Base,  Mode)
+\begin{DoxyCompactList}\small\item\em Selects D/A converter\textquotesingle{}s low power mode. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a1a5ddc309535c81b355770c962c02c1d}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Dma\+Request}(Peripheral\+Base,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em D\+MA enable control. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_adf273f17aa7778b400de5668836be75d}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+Low\+Reg}(Peripheral\+Base,  Index,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the Data low register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_ac55a384fec80dc979ea842b099933cec}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+Low\+Reg}(Peripheral\+Base,  Index)
+\begin{DoxyCompactList}\small\item\em Returns the content of the Data low register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a66faead81e48b43ffd997bb05d1f4ea1}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+High\+Reg}(Peripheral\+Base,  Index,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the Data high register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a9696819bc6513eac6e4eb569a9ad524c}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+High\+Reg}(Peripheral\+Base,  Index)
+\begin{DoxyCompactList}\small\item\em Returns the content of the Data high register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a33e79d3ab45bfab76c341e9541303f0c}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Status\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the Status register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a5f43ddb66259c54d38068e8ae680b98f}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Status\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the Status register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a5bad1b34170bd6b751a40535d07909ec}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control0\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the Control 0 register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a4e928826e7d7f02066d2d8c20099cc08}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control0\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the Control 0 register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_ae060acd18bb902e07ecff6f42484dcec}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control1\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the Control 1 register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a95aff30b26097d441c91a9ede6b2f071}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control1\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the Control 1 register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a344f3d4c637c665f3d8409795565508e}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control2\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the Control 2 register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_d_a_c___p_d_d_8h_a6a11e33d7e7ade75e29638aa293320d8}{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control2\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the Control 2 register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_ae78abda85c3dc34e52a77d8ce0bf245c}\label{_d_a_c___p_d_d_8h_ae78abda85c3dc34e52a77d8ce0bf245c}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+F\+L\+AG@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+F\+L\+AG}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+F\+L\+AG@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+F\+L\+AG}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+F\+L\+AG}{DAC\_PDD\_BUFFER\_END\_FLAG}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+F\+L\+AG~\hyperlink{group___d_a_c___register___masks_ga5af56fd75a9c5b74fe07c8f303d452aa}{D\+A\+C\+\_\+\+S\+R\+\_\+\+D\+A\+C\+B\+F\+R\+P\+B\+F\+\_\+\+M\+A\+SK}}
+
+Buffer end (bottom position) flag. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_a24129b3a33113329852bfb441764be56}\label{_d_a_c___p_d_d_8h_a24129b3a33113329852bfb441764be56}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}{DAC\_PDD\_BUFFER\_END\_INTERRUPT}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+N\+D\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT~\hyperlink{group___d_a_c___register___masks_gadc37ad99d42f4b9d0e26ce03f2ac79ad}{D\+A\+C\+\_\+\+C0\+\_\+\+D\+A\+C\+B\+B\+I\+E\+N\+\_\+\+M\+A\+SK}}
+
+Buffer end (bottom position) interrupt mask. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_aee8decee3a87d32f9e5b92b651bfa1f1}\label{_d_a_c___p_d_d_8h_aee8decee3a87d32f9e5b92b651bfa1f1}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+M\+O\+DE@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+M\+O\+DE}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+M\+O\+DE@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+M\+O\+DE}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+M\+O\+DE}{DAC\_PDD\_BUFFER\_NORMAL\_MODE}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+M\+O\+DE~0U}
+
+Normal mode. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_acc3bc0bc7089dd0dd8878a50a235d98a}\label{_d_a_c___p_d_d_8h_acc3bc0bc7089dd0dd8878a50a235d98a}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+T\+S\+C\+A\+N\+\_\+\+M\+O\+DE@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+T\+S\+C\+A\+N\+\_\+\+M\+O\+DE}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+T\+S\+C\+A\+N\+\_\+\+M\+O\+DE@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+T\+S\+C\+A\+N\+\_\+\+M\+O\+DE}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+T\+S\+C\+A\+N\+\_\+\+M\+O\+DE}{DAC\_PDD\_BUFFER\_OTSCAN\_MODE}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+O\+T\+S\+C\+A\+N\+\_\+\+M\+O\+DE~0x2U}
+
+One-\/time mode. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_a1d0500827114ea31a09c6726a414e8f8}\label{_d_a_c___p_d_d_8h_a1d0500827114ea31a09c6726a414e8f8}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+L\+AG@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+L\+AG}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+L\+AG@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+L\+AG}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+L\+AG}{DAC\_PDD\_BUFFER\_START\_FLAG}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+L\+AG~\hyperlink{group___d_a_c___register___masks_ga662e824677c1a7a94ddd36e90f3d37d5}{D\+A\+C\+\_\+\+S\+R\+\_\+\+D\+A\+C\+B\+F\+R\+P\+T\+F\+\_\+\+M\+A\+SK}}
+
+Buffer start (top position) flag. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_a7849fb001150f9a5510fcab310e0c0e2}\label{_d_a_c___p_d_d_8h_a7849fb001150f9a5510fcab310e0c0e2}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}{DAC\_PDD\_BUFFER\_START\_INTERRUPT}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT~\hyperlink{group___d_a_c___register___masks_gad8a60a2fa6211ff08bba4b9648fb8daa}{D\+A\+C\+\_\+\+C0\+\_\+\+D\+A\+C\+B\+T\+I\+E\+N\+\_\+\+M\+A\+SK}}
+
+Buffer start (top position) interrupt mask. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_afb496717ea0d600adb8252d79e7706b8}\label{_d_a_c___p_d_d_8h_afb496717ea0d600adb8252d79e7706b8}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+W\+I\+N\+G\+\_\+\+M\+O\+DE@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+W\+I\+N\+G\+\_\+\+M\+O\+DE}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+W\+I\+N\+G\+\_\+\+M\+O\+DE@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+W\+I\+N\+G\+\_\+\+M\+O\+DE}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+W\+I\+N\+G\+\_\+\+M\+O\+DE}{DAC\_PDD\_BUFFER\_SWING\_MODE}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+W\+I\+N\+G\+\_\+\+M\+O\+DE~0x1U}
+
+Swing mode. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_aca79af49e70233bd891e3f327daf2482}\label{_d_a_c___p_d_d_8h_aca79af49e70233bd891e3f327daf2482}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+F\+L\+AG@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+F\+L\+AG}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+F\+L\+AG@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+F\+L\+AG}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+F\+L\+AG}{DAC\_PDD\_BUFFER\_WATERMARK\_FLAG}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+F\+L\+AG~D\+A\+C\+\_\+\+S\+R\+\_\+\+D\+A\+C\+B\+F\+W\+M\+F\+\_\+\+M\+A\+SK}
+
+Buffer watermark flag. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_a2f2167c6631366ac708bf091cadef8c6}\label{_d_a_c___p_d_d_8h_a2f2167c6631366ac708bf091cadef8c6}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}{DAC\_PDD\_BUFFER\_WATERMARK\_INTERRUPT}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT~D\+A\+C\+\_\+\+C0\+\_\+\+D\+A\+C\+B\+W\+I\+E\+N\+\_\+\+M\+A\+SK}
+
+Buffer watermark interrupt mask. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_aac81eca391f2cb4f746781f782e2d83b}\label{_d_a_c___p_d_d_8h_aac81eca391f2cb4f746781f782e2d83b}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L1@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L1}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L1@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L1}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L1}{DAC\_PDD\_BUFFER\_WATERMARK\_L1}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L1~0U}
+
+Level 1 watermark (1 word). \mbox{\Hypertarget{_d_a_c___p_d_d_8h_ae13d605d8dc35e6b7c560416dd594ee1}\label{_d_a_c___p_d_d_8h_ae13d605d8dc35e6b7c560416dd594ee1}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L2@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L2}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L2@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L2}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L2}{DAC\_PDD\_BUFFER\_WATERMARK\_L2}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L2~0x1U}
+
+Level 2 watermark (2 words). \mbox{\Hypertarget{_d_a_c___p_d_d_8h_abb06712c0c68b3a0158cefa2cc7ca11a}\label{_d_a_c___p_d_d_8h_abb06712c0c68b3a0158cefa2cc7ca11a}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L3@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L3}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L3@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L3}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L3}{DAC\_PDD\_BUFFER\_WATERMARK\_L3}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L3~0x2U}
+
+Level 3 watermark (3 words). \mbox{\Hypertarget{_d_a_c___p_d_d_8h_a9a4765f411b2b1d74d6420f12cdf5fb8}\label{_d_a_c___p_d_d_8h_a9a4765f411b2b1d74d6420f12cdf5fb8}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L4@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L4}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L4@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L4}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L4}{DAC\_PDD\_BUFFER\_WATERMARK\_L4}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+W\+A\+T\+E\+R\+M\+A\+R\+K\+\_\+\+L4~0x3U}
+
+Level 4 watermark (4 words). \mbox{\Hypertarget{_d_a_c___p_d_d_8h_aabc475cc972a901061da121671797835}\label{_d_a_c___p_d_d_8h_aabc475cc972a901061da121671797835}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flags@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flags}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flags@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flags}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flags}{DAC\_PDD\_ClearInterruptFlags}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flags(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Mask }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      DAC\_SR\_REG(PeripheralBase) = \(\backslash\)
+       (uint8\_t)(( \(\backslash\)
+        (uint8\_t)(( \(\backslash\)
+         \hyperlink{group___d_a_c___register___accessor___macros_ga689d7e5290e37e3690b476afe279548c}{DAC\_SR\_REG}(PeripheralBase)) & ( \(\backslash\)
+         (uint8\_t)(~(uint8\_t)(\hyperlink{group___d_a_c___register___masks_ga5af56fd75a9c5b74fe07c8f303d452aa}{DAC\_SR\_DACBFRPBF\_MASK} | (
+      \hyperlink{group___d_a_c___register___masks_ga662e824677c1a7a94ddd36e90f3d37d5}{DAC\_SR\_DACBFRPTF\_MASK} | DAC\_SR\_DACBFWMF\_MASK)))))) | ( \(\backslash\)
+        (uint8\_t)(( \(\backslash\)
+         (uint8\_t)(~(uint8\_t)(Mask))) & ( \(\backslash\)
+         (uint8\_t)(\hyperlink{group___d_a_c___register___masks_ga5af56fd75a9c5b74fe07c8f303d452aa}{DAC\_SR\_DACBFRPBF\_MASK} | (
+      \hyperlink{group___d_a_c___register___masks_ga662e824677c1a7a94ddd36e90f3d37d5}{DAC\_SR\_DACBFRPTF\_MASK} | DAC\_SR\_DACBFWMF\_MASK)))))) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Clears interrupt flag bits defined by mask parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Mask} & Mask of interrupt\textquotesingle{}s flags to clear. Use constants from group \char`\"{}\+Interrupts\textquotesingle{} flags.\char`\"{}. This parameter is 8 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+SR, D\+A\+C1\+\_\+\+SR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_aabc475cc972a901061da121671797835}{DAC\_PDD\_ClearInterruptFlags}(<peripheral>\_BASE\_PTR,
+\hyperlink{_d_a_c___p_d_d_8h_a1d0500827114ea31a09c6726a414e8f8}{DAC\_PDD\_BUFFER\_START\_FLAG});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a76a484d52cb4282c79519558c62f9ec2}\label{_d_a_c___p_d_d_8h_a76a484d52cb4282c79519558c62f9ec2}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupts@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupts}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupts@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupts}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupts}{DAC\_PDD\_DisableInterrupts}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupts(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Mask }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C0\_REG(PeripheralBase) &= \(\backslash\)
+     (uint8\_t)(~(uint8\_t)(Mask)) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Disables interrupts defined by mask parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Mask} & Mask of interrupts to disable. Use constants from group \char`\"{}\+Interrupts\textquotesingle{} masks.\char`\"{}. This parameter is 8 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a76a484d52cb4282c79519558c62f9ec2}{DAC\_PDD\_DisableInterrupts}(<peripheral>\_BASE\_PTR,
+\hyperlink{_d_a_c___p_d_d_8h_a7849fb001150f9a5510fcab310e0c0e2}{DAC\_PDD\_BUFFER\_START\_INTERRUPT});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a47bab51031746162ac6a04e54def941d}\label{_d_a_c___p_d_d_8h_a47bab51031746162ac6a04e54def941d}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Buffer@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Buffer}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Buffer@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Buffer}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Buffer}{DAC\_PDD\_EnableBuffer}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Buffer(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C1\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga5177a56f528748e9c9e8138a130a289d}{DAC\_C1\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___d_a_c___register___masks_ga61aa82d21d0c84ff4fe42d0856c506bd}{DAC\_C1\_DACBFEN\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+D/A converter\textquotesingle{}s buffer enable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Parameter specifying if D/A converter\textquotesingle{}s buffer will be enabled or disabled. This parameter is of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})" type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C1, D\+A\+C1\+\_\+\+C1 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a47bab51031746162ac6a04e54def941d}{DAC\_PDD\_EnableBuffer}(<peripheral>\_BASE\_PTR, \hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_af9b390a8c83bb2882c483749c288469b}\label{_d_a_c___p_d_d_8h_af9b390a8c83bb2882c483749c288469b}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}{DAC\_PDD\_EnableDevice}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C0\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga535f8efe3924aa0e193dc9a57b4cae83}{DAC\_C0\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___d_a_c___register___masks_ga6865b52ae9a9275ef4db48eb3eb5d62a}{DAC\_C0\_DACEN\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)((uint8\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}) << \hyperlink{group___d_a_c___register___masks_gae8835f0083d5a4e588402a32047e95cb}{DAC\_C0\_DACEN\_SHIFT}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables the D/A converter\textquotesingle{}s device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Requested state of D/A converter. This parameter is of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})" type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_af9b390a8c83bb2882c483749c288469b}{DAC\_PDD\_EnableDevice}(<peripheral>\_BASE\_PTR, \hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a1a5ddc309535c81b355770c962c02c1d}\label{_d_a_c___p_d_d_8h_a1a5ddc309535c81b355770c962c02c1d}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Dma\+Request@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Dma\+Request}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Dma\+Request@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Dma\+Request}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Dma\+Request}{DAC\_PDD\_EnableDmaRequest}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Dma\+Request(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C1\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga5177a56f528748e9c9e8138a130a289d}{DAC\_C1\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___d_a_c___register___masks_ga091be41dfd851b71978ab7298c372292}{DAC\_C1\_DMAEN\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)((uint8\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}) << \hyperlink{group___d_a_c___register___masks_ga481f558223c5c36402bebe924bdd00a3}{DAC\_C1\_DMAEN\_SHIFT}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+D\+MA enable control. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em State} & Parameter specifying if D\+MA requests will be enabled or disabled. This parameter is of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})" type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C1, D\+A\+C1\+\_\+\+C1 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a1a5ddc309535c81b355770c962c02c1d}{DAC\_PDD\_EnableDmaRequest}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a93ebb3967d1c4891d20a693038db7722}\label{_d_a_c___p_d_d_8h_a93ebb3967d1c4891d20a693038db7722}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupts@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupts}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupts@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupts}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupts}{DAC\_PDD\_EnableInterrupts}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupts(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Mask }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C0\_REG(PeripheralBase) |= \(\backslash\)
+     (uint8\_t)(Mask) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables interrupts defined by mask parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Mask} & Mask of interrupts to enable. Use constants from group \char`\"{}\+Interrupts\textquotesingle{} masks.\char`\"{}. This parameter is 8 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a93ebb3967d1c4891d20a693038db7722}{DAC\_PDD\_EnableInterrupts}(<peripheral>\_BASE\_PTR,
+\hyperlink{_d_a_c___p_d_d_8h_a7849fb001150f9a5510fcab310e0c0e2}{DAC\_PDD\_BUFFER\_START\_INTERRUPT});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_abe4f8e80e3ca22515c61951a59c8294d}\label{_d_a_c___p_d_d_8h_abe4f8e80e3ca22515c61951a59c8294d}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Force\+Sw\+Trigger@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Force\+Sw\+Trigger}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Force\+Sw\+Trigger@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Force\+Sw\+Trigger}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Force\+Sw\+Trigger}{DAC\_PDD\_ForceSwTrigger}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Force\+Sw\+Trigger(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C0\_REG(PeripheralBase) |= \(\backslash\)
+     DAC\_C0\_DACSWTRG\_MASK \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Forces D/A converter\textquotesingle{}s software trigger. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_abe4f8e80e3ca22515c61951a59c8294d}{DAC\_PDD\_ForceSwTrigger}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a8215ba05833d8ffa3eac2bc737dcec12}\label{_d_a_c___p_d_d_8h_a8215ba05833d8ffa3eac2bc737dcec12}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Enabled@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Enabled}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Enabled@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Enabled}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Enabled}{DAC\_PDD\_GetBufferEnabled}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Enabled(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga5177a56f528748e9c9e8138a130a289d}{DAC\_C1\_REG}(PeripheralBase) & \hyperlink{group___d_a_c___register___masks_ga61aa82d21d0c84ff4fe42d0856c506bd}{DAC\_C1\_DACBFEN\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns current data buffer state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C1, D\+A\+C1\+\_\+\+C1 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_a8215ba05833d8ffa3eac2bc737dcec12}{DAC\_PDD\_GetBufferEnabled}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a07f92a619ee333e4ec66f645cc1540ec}\label{_d_a_c___p_d_d_8h_a07f92a619ee333e4ec66f645cc1540ec}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Read\+Pointer@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Read\+Pointer}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Read\+Pointer@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Read\+Pointer}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Read\+Pointer}{DAC\_PDD\_GetBufferReadPointer}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Read\+Pointer(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      (uint8\_t)(( \(\backslash\)
+       (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga0960302c90bdaf9930ed8dd663893ec4}{DAC\_C2\_REG}(PeripheralBase) & \hyperlink{group___d_a_c___register___masks_ga64b53e5effabf2e736fca6088752e6ea}{DAC\_C2\_DACBFRP\_MASK})) >> ( \(\backslash\)
+       DAC\_C2\_DACBFRP\_SHIFT)) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Returns current data buffer read pointer value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 4-\/bit value. The value is cast to \char`\"{}uint8\+\_\+t\char`\"{}. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C2, D\+A\+C1\+\_\+\+C2 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_a07f92a619ee333e4ec66f645cc1540ec}{DAC\_PDD\_GetBufferReadPointer}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a09908f900d80512142054c03827f2e15}\label{_d_a_c___p_d_d_8h_a09908f900d80512142054c03827f2e15}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Size@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Size}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Size@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Size}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Size}{DAC\_PDD\_GetBufferSize}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Buffer\+Size(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga0960302c90bdaf9930ed8dd663893ec4}{DAC\_C2\_REG}(PeripheralBase) & \hyperlink{group___d_a_c___register___masks_ga329015367026aaee34f54edcbaab61bb}{DAC\_C2\_DACBFUP\_MASK}) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Returns current data buffer size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 4-\/bit value. The value is cast to \char`\"{}uint8\+\_\+t\char`\"{}. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C2, D\+A\+C1\+\_\+\+C2 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_a09908f900d80512142054c03827f2e15}{DAC\_PDD\_GetBufferSize}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_aeff11ee7a7909acb57fc9f021a91d32e}\label{_d_a_c___p_d_d_8h_aeff11ee7a7909acb57fc9f021a91d32e}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Device\+Enabled@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Device\+Enabled}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Device\+Enabled@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Device\+Enabled}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Device\+Enabled}{DAC\_PDD\_GetDeviceEnabled}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Device\+Enabled(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga535f8efe3924aa0e193dc9a57b4cae83}{DAC\_C0\_REG}(PeripheralBase) & \hyperlink{group___d_a_c___register___masks_ga6865b52ae9a9275ef4db48eb3eb5d62a}{DAC\_C0\_DACEN\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns current state of D/A converter enable bit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_aeff11ee7a7909acb57fc9f021a91d32e}{DAC\_PDD\_GetDeviceEnabled}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_ac7b5b0453861833fc94d9fdbf4340f28}\label{_d_a_c___p_d_d_8h_ac7b5b0453861833fc94d9fdbf4340f28}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flags@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flags}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flags@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flags}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flags}{DAC\_PDD\_GetInterruptFlags}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flags(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      (uint8\_t)(( \(\backslash\)
+       \hyperlink{group___d_a_c___register___accessor___macros_ga689d7e5290e37e3690b476afe279548c}{DAC\_SR\_REG}(PeripheralBase)) & ( \(\backslash\)
+       (uint8\_t)(\hyperlink{group___d_a_c___register___masks_ga5af56fd75a9c5b74fe07c8f303d452aa}{DAC\_SR\_DACBFRPBF\_MASK} | (
+      \hyperlink{group___d_a_c___register___masks_ga662e824677c1a7a94ddd36e90f3d37d5}{DAC\_SR\_DACBFRPTF\_MASK} | DAC\_SR\_DACBFWMF\_MASK)))) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Returns interrupt flag bits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Use constants from group \char`\"{}\+Interrupts\textquotesingle{} flags.\char`\"{} for processing return value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+SR, D\+A\+C1\+\_\+\+SR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_ac7b5b0453861833fc94d9fdbf4340f28}{DAC\_PDD\_GetInterruptFlags}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a282ab51c86de7ac5ed22daa587c39644}\label{_d_a_c___p_d_d_8h_a282ab51c86de7ac5ed22daa587c39644}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}{DAC\_PDD\_GetInterruptMask}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      (uint8\_t)(( \(\backslash\)
+       \hyperlink{group___d_a_c___register___accessor___macros_ga535f8efe3924aa0e193dc9a57b4cae83}{DAC\_C0\_REG}(PeripheralBase)) & ( \(\backslash\)
+       (uint8\_t)(\hyperlink{group___d_a_c___register___masks_gadc37ad99d42f4b9d0e26ce03f2ac79ad}{DAC\_C0\_DACBBIEN\_MASK} | (
+      \hyperlink{group___d_a_c___register___masks_gad8a60a2fa6211ff08bba4b9648fb8daa}{DAC\_C0\_DACBTIEN\_MASK} | DAC\_C0\_DACBWIEN\_MASK)))) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Returns interrupts mask. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Use constants from group \char`\"{}\+Interrupts\textquotesingle{} masks.\char`\"{} for processing return value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_a282ab51c86de7ac5ed22daa587c39644}{DAC\_PDD\_GetInterruptMask}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a8d2ebf63204b98c63bde242f07fa0d1d}\label{_d_a_c___p_d_d_8h_a8d2ebf63204b98c63bde242f07fa0d1d}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Trigger\+Source@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Trigger\+Source}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Trigger\+Source@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Trigger\+Source}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Trigger\+Source}{DAC\_PDD\_GetTriggerSource}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Get\+Trigger\+Source(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga535f8efe3924aa0e193dc9a57b4cae83}{DAC\_C0\_REG}(PeripheralBase) & \hyperlink{group___d_a_c___register___masks_gac6dd81bc6500fc4b972c62bde339f31d}{DAC\_C0\_DACTRGSEL\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns current trigger source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_a8d2ebf63204b98c63bde242f07fa0d1d}{DAC\_PDD\_GetTriggerSource}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a75aad683313bd3e460fd36a0a1ce2a3e}\label{_d_a_c___p_d_d_8h_a75aad683313bd3e460fd36a0a1ce2a3e}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+I\+G\+H\+\_\+\+P\+O\+W\+ER@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+I\+G\+H\+\_\+\+P\+O\+W\+ER}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+I\+G\+H\+\_\+\+P\+O\+W\+ER@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+I\+G\+H\+\_\+\+P\+O\+W\+ER}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+I\+G\+H\+\_\+\+P\+O\+W\+ER}{DAC\_PDD\_HIGH\_POWER}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+I\+G\+H\+\_\+\+P\+O\+W\+ER~0U}
+
+High power mode. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_aa48c323ff54a79e488b9010dc0039b06}\label{_d_a_c___p_d_d_8h_aa48c323ff54a79e488b9010dc0039b06}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+W\+\_\+\+T\+R\+I\+G\+G\+ER@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+W\+\_\+\+T\+R\+I\+G\+G\+ER}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+W\+\_\+\+T\+R\+I\+G\+G\+ER@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+W\+\_\+\+T\+R\+I\+G\+G\+ER}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+W\+\_\+\+T\+R\+I\+G\+G\+ER}{DAC\_PDD\_HW\_TRIGGER}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+H\+W\+\_\+\+T\+R\+I\+G\+G\+ER~0U}
+
+HW trigger. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_ace5becfe8977a76ae90122801649aa3f}\label{_d_a_c___p_d_d_8h_ace5becfe8977a76ae90122801649aa3f}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+ER@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+ER}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+ER@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+ER}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+ER}{DAC\_PDD\_LOW\_POWER}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+ER~\hyperlink{group___d_a_c___register___masks_ga54a04b9ae84c5a4f8977ae2e1a889717}{D\+A\+C\+\_\+\+C0\+\_\+\+L\+P\+E\+N\+\_\+\+M\+A\+SK}}
+
+Low power mode. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_a4e928826e7d7f02066d2d8c20099cc08}\label{_d_a_c___p_d_d_8h_a4e928826e7d7f02066d2d8c20099cc08}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control0\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control0\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control0\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control0\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control0\+Reg}{DAC\_PDD\_ReadControl0Reg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control0\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C0\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the Control 0 register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_a4e928826e7d7f02066d2d8c20099cc08}{DAC\_PDD\_ReadControl0Reg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a95aff30b26097d441c91a9ede6b2f071}\label{_d_a_c___p_d_d_8h_a95aff30b26097d441c91a9ede6b2f071}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control1\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control1\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control1\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control1\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control1\+Reg}{DAC\_PDD\_ReadControl1Reg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control1\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C1\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the Control 1 register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C1, D\+A\+C1\+\_\+\+C1 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_a95aff30b26097d441c91a9ede6b2f071}{DAC\_PDD\_ReadControl1Reg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a6a11e33d7e7ade75e29638aa293320d8}\label{_d_a_c___p_d_d_8h_a6a11e33d7e7ade75e29638aa293320d8}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control2\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control2\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control2\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control2\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control2\+Reg}{DAC\_PDD\_ReadControl2Reg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Control2\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C2\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the Control 2 register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C2, D\+A\+C1\+\_\+\+C2 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_a6a11e33d7e7ade75e29638aa293320d8}{DAC\_PDD\_ReadControl2Reg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a9696819bc6513eac6e4eb569a9ad524c}\label{_d_a_c___p_d_d_8h_a9696819bc6513eac6e4eb569a9ad524c}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+High\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+High\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+High\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+High\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+High\+Reg}{DAC\_PDD\_ReadDataHighReg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+High\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Index }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_DATH\_REG(PeripheralBase,(Index)) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the Data high register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Index} & Register index. This parameter is of index type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+TH\mbox{[}Index\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_a9696819bc6513eac6e4eb569a9ad524c}{DAC\_PDD\_ReadDataHighReg}(<peripheral>\_BASE\_PTR,
+periphID);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_ac55a384fec80dc979ea842b099933cec}\label{_d_a_c___p_d_d_8h_ac55a384fec80dc979ea842b099933cec}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+Low\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+Low\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+Low\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+Low\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+Low\+Reg}{DAC\_PDD\_ReadDataLowReg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Data\+Low\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Index }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_DATL\_REG(PeripheralBase,(Index)) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the Data low register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Index} & Register index. This parameter is of index type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+TL\mbox{[}Index\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_ac55a384fec80dc979ea842b099933cec}{DAC\_PDD\_ReadDataLowReg}(<peripheral>\_BASE\_PTR,
+periphID);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a5f43ddb66259c54d38068e8ae680b98f}\label{_d_a_c___p_d_d_8h_a5f43ddb66259c54d38068e8ae680b98f}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Status\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Status\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Status\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Status\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Status\+Reg}{DAC\_PDD\_ReadStatusReg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Read\+Status\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_SR\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the Status register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 8-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+SR, D\+A\+C1\+\_\+\+SR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint8\_t result = \hyperlink{_d_a_c___p_d_d_8h_a5f43ddb66259c54d38068e8ae680b98f}{DAC\_PDD\_ReadStatusReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a216f59273fb9bb60fb405cf2221d17bd}\label{_d_a_c___p_d_d_8h_a216f59273fb9bb60fb405cf2221d17bd}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Mode@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Mode}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Mode@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Mode}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Mode}{DAC\_PDD\_SetBufferMode}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Mode(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Mode }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      DAC\_C1\_REG(PeripheralBase) = \(\backslash\)
+       (uint8\_t)(( \(\backslash\)
+        (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga5177a56f528748e9c9e8138a130a289d}{DAC\_C1\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___d_a_c___register___masks_ga28373e4d9ae322da4f6a37933a340b78}{DAC\_C1\_DACBFMD\_MASK}))) | ( \(\backslash\)
+        (uint8\_t)((uint8\_t)(Mode) << \hyperlink{group___d_a_c___register___masks_ga779629844ed0967b310e7f2721c54624}{DAC\_C1\_DACBFMD\_SHIFT}))) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Selects D/A converter\textquotesingle{}s buffer work mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Mode} & Parameter specifying which data buffer work mode will be used. This parameter is of \char`\"{}\+D/\+A converter\textquotesingle{}s buffer work mode constant.\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C1, D\+A\+C1\+\_\+\+C1 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a216f59273fb9bb60fb405cf2221d17bd}{DAC\_PDD\_SetBufferMode}(<peripheral>\_BASE\_PTR,
+\hyperlink{_d_a_c___p_d_d_8h_aee8decee3a87d32f9e5b92b651bfa1f1}{DAC\_PDD\_BUFFER\_NORMAL\_MODE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_ae3b5beab919bbad16ac393841be09f8e}\label{_d_a_c___p_d_d_8h_ae3b5beab919bbad16ac393841be09f8e}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Read\+Pointer@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Read\+Pointer}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Read\+Pointer@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Read\+Pointer}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Read\+Pointer}{DAC\_PDD\_SetBufferReadPointer}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Read\+Pointer(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Pointer }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      DAC\_C2\_REG(PeripheralBase) = \(\backslash\)
+       (uint8\_t)(( \(\backslash\)
+        (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga0960302c90bdaf9930ed8dd663893ec4}{DAC\_C2\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___d_a_c___register___masks_ga64b53e5effabf2e736fca6088752e6ea}{DAC\_C2\_DACBFRP\_MASK}))) | ( \(\backslash\)
+        (uint8\_t)((uint8\_t)(Pointer) << \hyperlink{group___d_a_c___register___masks_ga0ab880f693c25ecf491d3b76df611456}{DAC\_C2\_DACBFRP\_SHIFT}))) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Sets D/A converter\textquotesingle{}s buffer read pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Pointer} & Parameter specifying new data buffer read pointer value. This parameter is a 4-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C2, D\+A\+C1\+\_\+\+C2 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_ae3b5beab919bbad16ac393841be09f8e}{DAC\_PDD\_SetBufferReadPointer}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a38ec67989d558ea3f4065aa2ab8b7190}\label{_d_a_c___p_d_d_8h_a38ec67989d558ea3f4065aa2ab8b7190}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Size@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Size}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Size@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Size}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Size}{DAC\_PDD\_SetBufferSize}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Size(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Size }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      DAC\_C2\_REG(PeripheralBase) = \(\backslash\)
+       (uint8\_t)(( \(\backslash\)
+        (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga0960302c90bdaf9930ed8dd663893ec4}{DAC\_C2\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___d_a_c___register___masks_ga329015367026aaee34f54edcbaab61bb}{DAC\_C2\_DACBFUP\_MASK}))) | ( \(\backslash\)
+        (uint8\_t)(Size))) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Sets D/A converter\textquotesingle{}s buffer upper limit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Size} & Buffer upper limit (buffer register maximal index). This parameter is a 4-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C2, D\+A\+C1\+\_\+\+C2 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a38ec67989d558ea3f4065aa2ab8b7190}{DAC\_PDD\_SetBufferSize}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a72e6e42ee57b020440357f6d27410375}\label{_d_a_c___p_d_d_8h_a72e6e42ee57b020440357f6d27410375}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Watermark@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Watermark}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Watermark@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Watermark}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Watermark}{DAC\_PDD\_SetBufferWatermark}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Buffer\+Watermark(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Watermark }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C1\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga5177a56f528748e9c9e8138a130a289d}{DAC\_C1\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)DAC\_C1\_DACBFWM\_MASK))) | ( \(\backslash\)
+      (uint8\_t)((uint8\_t)(Watermark) << DAC\_C1\_DACBFWM\_SHIFT))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Sets D/A converter\textquotesingle{}s buffer watermark. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Watermark} & Parameter specifying data buffer watermark level. This parameter is of \char`\"{}\+D/\+A converter\textquotesingle{}s buffer watermark constant. For exact value
+       representation see peripheral device documentation.\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C1, D\+A\+C1\+\_\+\+C1 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a72e6e42ee57b020440357f6d27410375}{DAC\_PDD\_SetBufferWatermark}(<peripheral>\_BASE\_PTR,
+\hyperlink{_d_a_c___p_d_d_8h_aac81eca391f2cb4f746781f782e2d83b}{DAC\_PDD\_BUFFER\_WATERMARK\_L1});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a9f4c55d77bdb5bd8097db31f7411d25e}\label{_d_a_c___p_d_d_8h_a9f4c55d77bdb5bd8097db31f7411d25e}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Data@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Data}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Data@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Data}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Data}{DAC\_PDD\_SetData}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Data(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Data,  }\item[{}]{Reg\+Index }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      (\hyperlink{group___d_a_c___register___accessor___macros_ga08d6968ef33456980d21911ea2ed00f5}{DAC\_DATL\_REG}(PeripheralBase,(RegIndex)) = \(\backslash\)
+       (uint8\_t)(Data)), \(\backslash\)
+      (\hyperlink{group___d_a_c___register___accessor___macros_ga53b85847dea8002316aa2880d5c27f68}{DAC\_DATH\_REG}(PeripheralBase,(RegIndex)) = \(\backslash\)
+       (uint8\_t)(( \(\backslash\)
+        (uint8\_t)(( \(\backslash\)
+         \hyperlink{group___d_a_c___register___accessor___macros_ga53b85847dea8002316aa2880d5c27f68}{DAC\_DATH\_REG}(PeripheralBase,(RegIndex))) & ( \(\backslash\)
+         (uint8\_t)(~(uint8\_t)\hyperlink{group___d_a_c___register___masks_ga98c0e999ae86d666b5d6fa8df700ba6f}{DAC\_DATH\_DATA1\_MASK})))) | ( \(\backslash\)
+        (uint8\_t)((uint16\_t)(Data) >> 8U)))) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Sets value of D/A converter\textquotesingle{}s data buffer word defined by Index parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Data} & Data word value. This parameter is a 12-\/bit value. \\
+\hline
+{\em Reg\+Index} & Buffer word index. This parameter is of index type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+TL\mbox{[}Reg\+Index\mbox{]}, D\+A\+TH\mbox{[}Reg\+Index\mbox{]} (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a9f4c55d77bdb5bd8097db31f7411d25e}{DAC\_PDD\_SetData}(<peripheral>\_BASE\_PTR, 1, periphID);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_ada3453979311fe0bc1bdef7d55d503a2}\label{_d_a_c___p_d_d_8h_ada3453979311fe0bc1bdef7d55d503a2}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Interrupt\+Mask@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Interrupt\+Mask}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Interrupt\+Mask@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Interrupt\+Mask}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Interrupt\+Mask}{DAC\_PDD\_SetInterruptMask}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Interrupt\+Mask(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Mask }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+      DAC\_C0\_REG(PeripheralBase) = \(\backslash\)
+       (uint8\_t)(( \(\backslash\)
+        (uint8\_t)(( \(\backslash\)
+         \hyperlink{group___d_a_c___register___accessor___macros_ga535f8efe3924aa0e193dc9a57b4cae83}{DAC\_C0\_REG}(PeripheralBase)) & ( \(\backslash\)
+         (uint8\_t)(~(uint8\_t)(\hyperlink{group___d_a_c___register___masks_gadc37ad99d42f4b9d0e26ce03f2ac79ad}{DAC\_C0\_DACBBIEN\_MASK} | (
+      \hyperlink{group___d_a_c___register___masks_gad8a60a2fa6211ff08bba4b9648fb8daa}{DAC\_C0\_DACBTIEN\_MASK} | DAC\_C0\_DACBWIEN\_MASK)))))) | ( \(\backslash\)
+        (uint8\_t)(Mask))) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Sets all interrupts with value according to mask parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Mask} & Mask of interrupts to enable -\/ rest will be disabled. Use constants from group \char`\"{}\+Interrupts\textquotesingle{} masks.\char`\"{}. This parameter is 8 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_ada3453979311fe0bc1bdef7d55d503a2}{DAC\_PDD\_SetInterruptMask}(<peripheral>\_BASE\_PTR,
+\hyperlink{_d_a_c___p_d_d_8h_a7849fb001150f9a5510fcab310e0c0e2}{DAC\_PDD\_BUFFER\_START\_INTERRUPT});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a40a5126ab4b64995d5cc9adda4fa0da3}\label{_d_a_c___p_d_d_8h_a40a5126ab4b64995d5cc9adda4fa0da3}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Power\+Mode@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Power\+Mode}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Power\+Mode@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Power\+Mode}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Power\+Mode}{DAC\_PDD\_SetPowerMode}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Power\+Mode(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Mode }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C0\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga535f8efe3924aa0e193dc9a57b4cae83}{DAC\_C0\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___d_a_c___register___masks_ga54a04b9ae84c5a4f8977ae2e1a889717}{DAC\_C0\_LPEN\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)(Mode))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Selects D/A converter\textquotesingle{}s low power mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Mode} & Parameter specifying if high or low power mode will be used. This parameter is of \char`\"{}\+D/\+A converter\textquotesingle{}s buffer low power mode constant.\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a40a5126ab4b64995d5cc9adda4fa0da3}{DAC\_PDD\_SetPowerMode}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_d_a_c___p_d_d_8h_a75aad683313bd3e460fd36a0a1ce2a3e}{DAC\_PDD\_HIGH\_POWER});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a1199d11a393beb5ff1ac4102556c60fe}\label{_d_a_c___p_d_d_8h_a1199d11a393beb5ff1ac4102556c60fe}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Reference@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Reference}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Reference@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Reference}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Reference}{DAC\_PDD\_SetReference}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Reference(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Reference }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C0\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga535f8efe3924aa0e193dc9a57b4cae83}{DAC\_C0\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___d_a_c___register___masks_gadc1973eafb50599b83de95422477a1f5}{DAC\_C0\_DACRFS\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)(Reference))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Selects D/A converter\textquotesingle{}s reference. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Reference} & Parameter specifying if internal or external voltage reference source will be used. This parameter is of \char`\"{}\+D/\+A converter\textquotesingle{}s buffer
+       reference constant.\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a1199d11a393beb5ff1ac4102556c60fe}{DAC\_PDD\_SetReference}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_d_a_c___p_d_d_8h_ad20b2f938ed0319b886b754cac3c4cd7}{DAC\_PDD\_V\_REF\_INTERNAL});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a36e0458b46ee7e5b0e8ca4b92fc8efb6}\label{_d_a_c___p_d_d_8h_a36e0458b46ee7e5b0e8ca4b92fc8efb6}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Trigger@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Trigger}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Trigger@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Trigger}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Trigger}{DAC\_PDD\_SetTrigger}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Set\+Trigger(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Trigger }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C0\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(( \(\backslash\)
+      (uint8\_t)(\hyperlink{group___d_a_c___register___accessor___macros_ga535f8efe3924aa0e193dc9a57b4cae83}{DAC\_C0\_REG}(PeripheralBase) & (uint8\_t)(~(uint8\_t)
+      \hyperlink{group___d_a_c___register___masks_gac6dd81bc6500fc4b972c62bde339f31d}{DAC\_C0\_DACTRGSEL\_MASK}))) | ( \(\backslash\)
+      (uint8\_t)(Trigger))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Selects D/A converter\textquotesingle{}s trigger. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Trigger} & Parameter specifying which trigger source will be used. This parameter is of \char`\"{}\+D/\+A converter\textquotesingle{}s trigger source constant.\char`\"{} type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a36e0458b46ee7e5b0e8ca4b92fc8efb6}{DAC\_PDD\_SetTrigger}(<peripheral>\_BASE\_PTR, \hyperlink{_d_a_c___p_d_d_8h_aa48c323ff54a79e488b9010dc0039b06}{DAC\_PDD\_HW\_TRIGGER});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a96bd24827eefd1061b9731818aa52ec8}\label{_d_a_c___p_d_d_8h_a96bd24827eefd1061b9731818aa52ec8}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER}{DAC\_PDD\_SW\_TRIGGER}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+S\+W\+\_\+\+T\+R\+I\+G\+G\+ER~\hyperlink{group___d_a_c___register___masks_gac6dd81bc6500fc4b972c62bde339f31d}{D\+A\+C\+\_\+\+C0\+\_\+\+D\+A\+C\+T\+R\+G\+S\+E\+L\+\_\+\+M\+A\+SK}}
+
+SW trigger. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_af97285499fdcad943c3597670cb6da1d}\label{_d_a_c___p_d_d_8h_af97285499fdcad943c3597670cb6da1d}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+E\+X\+T\+E\+R\+N\+AL@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+E\+X\+T\+E\+R\+N\+AL}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+E\+X\+T\+E\+R\+N\+AL@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+E\+X\+T\+E\+R\+N\+AL}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+E\+X\+T\+E\+R\+N\+AL}{DAC\_PDD\_V\_REF\_EXTERNAL}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+E\+X\+T\+E\+R\+N\+AL~\hyperlink{group___d_a_c___register___masks_gadc1973eafb50599b83de95422477a1f5}{D\+A\+C\+\_\+\+C0\+\_\+\+D\+A\+C\+R\+F\+S\+\_\+\+M\+A\+SK}}
+
+External reference source. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_ad20b2f938ed0319b886b754cac3c4cd7}\label{_d_a_c___p_d_d_8h_ad20b2f938ed0319b886b754cac3c4cd7}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+I\+N\+T\+E\+R\+N\+AL@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+I\+N\+T\+E\+R\+N\+AL}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+I\+N\+T\+E\+R\+N\+AL@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+I\+N\+T\+E\+R\+N\+AL}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+I\+N\+T\+E\+R\+N\+AL}{DAC\_PDD\_V\_REF\_INTERNAL}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+V\+\_\+\+R\+E\+F\+\_\+\+I\+N\+T\+E\+R\+N\+AL~0U}
+
+Internal reference source. \mbox{\Hypertarget{_d_a_c___p_d_d_8h_a5bad1b34170bd6b751a40535d07909ec}\label{_d_a_c___p_d_d_8h_a5bad1b34170bd6b751a40535d07909ec}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control0\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control0\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control0\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control0\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control0\+Reg}{DAC\_PDD\_WriteControl0Reg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control0\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C0\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the Control 0 register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & Parameter specifying new register value. This parameter is a 8-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C0, D\+A\+C1\+\_\+\+C0 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a5bad1b34170bd6b751a40535d07909ec}{DAC\_PDD\_WriteControl0Reg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_ae060acd18bb902e07ecff6f42484dcec}\label{_d_a_c___p_d_d_8h_ae060acd18bb902e07ecff6f42484dcec}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control1\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control1\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control1\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control1\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control1\+Reg}{DAC\_PDD\_WriteControl1Reg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control1\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C1\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the Control 1 register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & Parameter specifying new register value. This parameter is a 8-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C1, D\+A\+C1\+\_\+\+C1 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_ae060acd18bb902e07ecff6f42484dcec}{DAC\_PDD\_WriteControl1Reg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a344f3d4c637c665f3d8409795565508e}\label{_d_a_c___p_d_d_8h_a344f3d4c637c665f3d8409795565508e}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control2\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control2\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control2\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control2\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control2\+Reg}{DAC\_PDD\_WriteControl2Reg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Control2\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_C2\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the Control 2 register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & Parameter specifying new register value. This parameter is a 8-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+C2, D\+A\+C1\+\_\+\+C2 (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a344f3d4c637c665f3d8409795565508e}{DAC\_PDD\_WriteControl2Reg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a66faead81e48b43ffd997bb05d1f4ea1}\label{_d_a_c___p_d_d_8h_a66faead81e48b43ffd997bb05d1f4ea1}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+High\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+High\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+High\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+High\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+High\+Reg}{DAC\_PDD\_WriteDataHighReg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+High\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Index,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_DATH\_REG(PeripheralBase,(Index)) = \(\backslash\)
+     (uint8\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the Data high register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Index} & Register index. This parameter is of index type. \\
+\hline
+{\em Value} & Parameter specifying new register value. This parameter is a 8-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+TH\mbox{[}Index\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a66faead81e48b43ffd997bb05d1f4ea1}{DAC\_PDD\_WriteDataHighReg}(<peripheral>\_BASE\_PTR, periphID, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_adf273f17aa7778b400de5668836be75d}\label{_d_a_c___p_d_d_8h_adf273f17aa7778b400de5668836be75d}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+Low\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+Low\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+Low\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+Low\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+Low\+Reg}{DAC\_PDD\_WriteDataLowReg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Data\+Low\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Index,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_DATL\_REG(PeripheralBase,(Index)) = \(\backslash\)
+     (uint8\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the Data low register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Index} & Register index. This parameter is of index type. \\
+\hline
+{\em Value} & Parameter specifying new register value. This parameter is a 8-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+TL\mbox{[}Index\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_adf273f17aa7778b400de5668836be75d}{DAC\_PDD\_WriteDataLowReg}(<peripheral>\_BASE\_PTR, periphID, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_d_a_c___p_d_d_8h_a33e79d3ab45bfab76c341e9541303f0c}\label{_d_a_c___p_d_d_8h_a33e79d3ab45bfab76c341e9541303f0c}} 
+\index{D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}!D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Status\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Status\+Reg}}
+\index{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Status\+Reg@{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Status\+Reg}!D\+A\+C\+\_\+\+P\+D\+D.\+h@{D\+A\+C\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Status\+Reg}{DAC\_PDD\_WriteStatusReg}}
+{\footnotesize\ttfamily \#define D\+A\+C\+\_\+\+P\+D\+D\+\_\+\+Write\+Status\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    DAC\_SR\_REG(PeripheralBase) = \(\backslash\)
+     (uint8\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the Status register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & Parameter specifying new register value. This parameter is a 8-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: D\+A\+C0\+\_\+\+SR, D\+A\+C1\+\_\+\+SR (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_d_a_c___p_d_d_8h_a33e79d3ab45bfab76c341e9541303f0c}{DAC\_PDD\_WriteStatusReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}

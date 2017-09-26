@@ -10,6 +10,7 @@
 
 #include <stdbool.h>
 
+#include "RingBuffer.h"
 #include "Frame.h"
 #include "CommunicationFrame.h"
 #include "utils.h"
@@ -65,10 +66,11 @@ void getResourceName(char* name,Resource resource);
 void sendFrame(char* frame);
 void sendPackage(CommunicationPackage* package);
 bool processRx(void);
-void doAnswer(CommunicationPackage* ans);
 
 extern const char* OPERATION_AN;
 extern const char* OPERATION_RD;
 extern const char* OPERATION_WR;
+
+extern RingBuffer	bufferRx,bufferTx;
 
 #endif /* SOURCES_PROTOCOL_H_ */

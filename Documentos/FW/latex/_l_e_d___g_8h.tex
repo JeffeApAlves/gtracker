@@ -1,0 +1,54 @@
+\hypertarget{_l_e_d___g_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+L\+E\+D\+\_\+G.h File Reference}
+\label{_l_e_d___g_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+L\+E\+D\+\_\+\+G.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+L\+E\+D\+\_\+\+G.\+h}}
+
+
+This component implements a universal driver for a single L\+ED.  
+
+
+{\ttfamily \#include \char`\"{}M\+C\+U\+C1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}L\+E\+D\+\_\+\+Gconfig.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}L\+E\+Dpin2.\+h\char`\"{}}\newline
+Include dependency graph for L\+E\+D\+\_\+\+G.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___l_e_d___g__module_gaa2597e865b6615b8155dbda3d854e48a}{L\+E\+D\+\_\+\+G\+\_\+\+Clr\+Val}()~\hyperlink{group___l_e_dpin2__module_gaa47cab827e06b75f94eb46069f91515d}{L\+E\+Dpin2\+\_\+\+Clr\+Val}() /$\ast$ put the pin on low level $\ast$/
+\item 
+\#define \hyperlink{group___l_e_d___g__module_gaa55ebeac325a0d75872269ffab9a7e23}{L\+E\+D\+\_\+\+G\+\_\+\+Set\+Val}()~\hyperlink{group___l_e_dpin2__module_ga9937d1afa03ed5b4b392fc8ff4b0276a}{L\+E\+Dpin2\+\_\+\+Set\+Val}() /$\ast$ put the pin on high level $\ast$/
+\item 
+\#define \hyperlink{group___l_e_d___g__module_gaa12048317242db577e9ddcf82c250394}{L\+E\+D\+\_\+\+G\+\_\+\+Set\+Input}()~L\+E\+Dpin2\+\_\+\+Set\+Input() /$\ast$ use the pin as input pin $\ast$/
+\item 
+\#define \hyperlink{group___l_e_d___g__module_ga5068de2b652684b8d6853bf2877575b0}{L\+E\+D\+\_\+\+G\+\_\+\+Set\+Output}()~L\+E\+Dpin2\+\_\+\+Set\+Output() /$\ast$ use the pin as output pin $\ast$/
+\item 
+\#define \hyperlink{group___l_e_d___g__module_gaf884afaa3412629c6d271e21d9eaa1ae}{L\+E\+D\+\_\+\+G\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED}~0 /$\ast$ set to 1 if method Parse\+Command() is present, 0 otherwise $\ast$/
+\item 
+\#define \hyperlink{group___l_e_d___g__module_gaa2ba3dfac764cceec916eb2e938d1700}{L\+E\+D\+\_\+\+G\+\_\+\+On}()~\hyperlink{group___l_e_dpin2__module_gaa47cab827e06b75f94eb46069f91515d}{L\+E\+Dpin2\+\_\+\+Clr\+Val}()
+\item 
+\#define \hyperlink{group___l_e_d___g__module_ga1b82fa7a2e6460f0797f8cf1e3495af5}{L\+E\+D\+\_\+\+G\+\_\+\+Off}()~\hyperlink{group___l_e_dpin2__module_ga9937d1afa03ed5b4b392fc8ff4b0276a}{L\+E\+Dpin2\+\_\+\+Set\+Val}()
+\item 
+\#define \hyperlink{group___l_e_d___g__module_ga193d553cf44d91f5ccf241299a8f12b0}{L\+E\+D\+\_\+\+G\+\_\+\+Neg}()~\hyperlink{group___l_e_dpin2__module_ga785294b54fde11d21a6c5ed73ddbabdd}{L\+E\+Dpin2\+\_\+\+Neg\+Val}()
+\item 
+\#define \hyperlink{group___l_e_d___g__module_ga36526a32565ecc2a658213f28805990b}{L\+E\+D\+\_\+\+G\+\_\+\+Get}()~(!(\hyperlink{group___l_e_dpin2__module_ga061f97147af260178617a3fc72624300}{L\+E\+Dpin2\+\_\+\+Get\+Val}()))
+\item 
+\#define \hyperlink{group___l_e_d___g__module_ga35f6b8fa1277d7f555ee6d83f7b77329}{L\+E\+D\+\_\+\+G\+\_\+\+Put}(val)~((val) ? \hyperlink{group___l_e_d___g__module_gaa2ba3dfac764cceec916eb2e938d1700}{L\+E\+D\+\_\+\+G\+\_\+\+On}() \+: \hyperlink{group___l_e_d___g__module_ga1b82fa7a2e6460f0797f8cf1e3495af5}{L\+E\+D\+\_\+\+G\+\_\+\+Off}())
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___l_e_d___g__module_ga4f455fe170e1716cda4352d8d66aa85a}{L\+E\+D\+\_\+\+G\+\_\+\+Init} (void)
+\item 
+void \hyperlink{group___l_e_d___g__module_ga166e0bcc7d850029ce9a4c1ebdf18213}{L\+E\+D\+\_\+\+G\+\_\+\+Deinit} (void)
+\item 
+void \hyperlink{group___l_e_d___g__module_ga588b5552034684221f7c2b3fc1e04b24}{L\+E\+D\+\_\+\+G\+\_\+\+Set\+Ratio16} (uint16\+\_\+t ratio)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This component implements a universal driver for a single L\+ED. 
+
+\begin{DoxyVersion}{Version}
+01.\+00 
+\end{DoxyVersion}

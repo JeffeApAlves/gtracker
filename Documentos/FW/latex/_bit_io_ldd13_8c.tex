@@ -1,0 +1,49 @@
+\hypertarget{_bit_io_ldd13_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Bit\+Io\+Ldd13.c File Reference}
+\label{_bit_io_ldd13_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Bit\+Io\+Ldd13.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Bit\+Io\+Ldd13.\+c}}
+
+
+The H\+AL Bit\+IO component provides a low level A\+PI for unified access to general purpose digital input/output pins across various device designs.  
+
+
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Bit\+Io\+Ldd13.\+h\char`\"{}}\newline
+Include dependency graph for Bit\+Io\+Ldd13.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_bit_io_ldd13___t_device_data}{Bit\+Io\+Ldd13\+\_\+\+T\+Device\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{struct_bit_io_ldd13___t_device_data}{Bit\+Io\+Ldd13\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___bit_io_ldd13__module_ga42e669f48bfa755a4f674b03aa227551}{Bit\+Io\+Ldd13\+\_\+\+T\+Device\+Data\+Ptr}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___bit_io_ldd13__module_gab5711f568b658b5736ddc29999cf938b}{Bit\+Io\+Ldd13\+\_\+\+Init} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the \char`\"{}\+Enable
+    in init. code\char`\"{} is set to \char`\"{}yes\char`\"{} value then the device is also enabled(see the description of the Enable() method). In this case the Enable() method is not necessary and needn\textquotesingle{}t to be generated. \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd13__module_gaa510bc6987ce93bf7a866b1766f1a382}{Bit\+Io\+Ldd13\+\_\+\+Set\+Dir} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr, \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Dir)
+\begin{DoxyCompactList}\small\item\em Sets a pin direction (available only if the direction = {\itshape \mbox{[}input/output\mbox{]}}). \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd13__module_gac89f06fe1f95f685923b6f13ab290526}{Bit\+Io\+Ldd13\+\_\+\+Set\+Input} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Sets a pin direction to input (available only if the direction = {\itshape \mbox{[}input/output\mbox{]}}). \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd13__module_ga093dde10b8ace24f9342126bad933a77}{Bit\+Io\+Ldd13\+\_\+\+Set\+Output} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Sets a pin direction to output (available only if the direction = {\itshape \mbox{[}input/output\mbox{]}}). \end{DoxyCompactList}\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group___bit_io_ldd13__module_ga91a8447c1b3c4ab44bfa626ee06b0175}{Bit\+Io\+Ldd13\+\_\+\+Get\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Returns the input/output value. If the direction is \mbox{[}input\mbox{]} then the input value of the pin is read and returned. If the direction is \mbox{[}output\mbox{]} then the last written value is read and returned (see $<$\+Safe mode$>$=\char`\"{}\char`\"{}$>$ property for limitations). This method cannot be disabled if direction is \mbox{[}input\mbox{]}. \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd13__module_ga9e36ef0c8392418090d73328ba1b1d72}{Bit\+Io\+Ldd13\+\_\+\+Put\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr, \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Val)
+\begin{DoxyCompactList}\small\item\em The specified output value is set. If the direction is {\bfseries  input}, the component saves the value to a memory or a register and this value will be written to the pin after switching to the output mode (using {\ttfamily Set\+Dir(\+T\+R\+U\+E)}; see \href{BitIOProperties.html#SafeMode}{\tt Safe mode} property for limitations). If the direction is {\bfseries output}, it writes the value to the pin. (Method is available only if the direction = $<$u$>${\ttfamily output}$<$/u$>$ or $<$u$>${\ttfamily  input/output}$<$/u$>$). \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd13__module_gad416cb8b9b15c2afb948ef359da7140d}{Bit\+Io\+Ldd13\+\_\+\+Clr\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Clears (set to zero) the output value. It is equivalent to the \mbox{[}Put\+Val(\+F\+A\+L\+S\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd13__module_ga6525bcbb0341b742d9180be475410ac1}{Bit\+Io\+Ldd13\+\_\+\+Set\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Sets (to one) the output value. It is equivalent to the \mbox{[}Put\+Val(\+T\+R\+U\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The H\+AL Bit\+IO component provides a low level A\+PI for unified access to general purpose digital input/output pins across various device designs. 
+
+\begin{DoxyVersion}{Version}
+01.\+03 R\+T\+OS drivers using H\+AL Bit\+IO A\+PI are simpler and more portable to various microprocessors. 
+\end{DoxyVersion}

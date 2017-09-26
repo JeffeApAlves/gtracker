@@ -1,0 +1,1002 @@
+\hypertarget{group___f_r_t_o_s1__module}{}\section{F\+R\+T\+O\+S1 module documentation}
+\label{group___f_r_t_o_s1__module}\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga7f7bad2d2773d90a6f489fc082f5a468}{F\+R\+T\+O\+S1\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED}~0 /$\ast$ set to 1 if method Parse\+Command() is present, 0 otherwise $\ast$/
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga8175ab6e3cdee169c1b207249c018fbc}{F\+R\+T\+O\+S1\+\_\+\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+M\+A\+C\+R\+OS}~1  /$\ast$ set to 1 to generate the R\+T\+OS macros \hyperlink{group___f_r_t_o_s1__module_ga2ba609c134ea5b867c383afbd7191df0}{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+I\+N\+IT}() and \hyperlink{group___f_r_t_o_s1__module_ga78984a86d3c0738dfba6c7cffb1f9766}{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+S\+T\+A\+RT}() $\ast$/
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga2ba609c134ea5b867c383afbd7191df0}{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+I\+N\+IT}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga78984a86d3c0738dfba6c7cffb1f9766}{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+S\+T\+A\+RT}()~\hyperlink{group___f_r_t_o_s1__module_gaf792f2c8cca61f076134b057f6029677}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Start\+Scheduler}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gabee351bd31e8f22c295e36727dc0da2a}{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+C\+P\+U\+\_\+\+C\+O\+R\+T\+E\+X\+\_\+M}~0 /$\ast$ Cortex M0+ core $\ast$/
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gac3c1de9aa16951baa6a82649a5708f0a}{\+\_\+\+\_\+\+B\+W\+User\+Type\+\_\+\+Tsize\+\_\+t}
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga55bf9a88570413122c2313f4c889b1e4}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Create}(pv\+Task\+Code,  pc\+Name,  us\+Stack\+Depth,  pv\+Parameters,  ux\+Priority,  pv\+Created\+Task)~x\+Task\+Create(pv\+Task\+Code, pc\+Name, us\+Stack\+Depth, pv\+Parameters, ux\+Priority, pv\+Created\+Task)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaf792f2c8cca61f076134b057f6029677}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Start\+Scheduler}()~\hyperlink{tasks_8c_a598661cdd2a6af95a077245d11e3d142}{v\+Task\+Start\+Scheduler}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gae5068fcbc0ac5513a978a8ba03ef53e3}{F\+R\+T\+O\+S1\+\_\+task\+Y\+I\+E\+LD}()~\hyperlink{task_8h_a767e474430db1e60056e9678763f9202}{task\+Y\+I\+E\+LD}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaddc0c0064f175a3c83b24c83caf32128}{F\+R\+T\+O\+S1\+\_\+task\+E\+N\+T\+E\+R\+\_\+\+C\+R\+I\+T\+I\+C\+AL}()~\hyperlink{task_8h_ab7bf0ae866292ba8296091a9d5209689}{task\+E\+N\+T\+E\+R\+\_\+\+C\+R\+I\+T\+I\+C\+AL}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga1f3d51d9c8451ecf09eae1c5c816c54f}{F\+R\+T\+O\+S1\+\_\+task\+E\+X\+I\+T\+\_\+\+C\+R\+I\+T\+I\+C\+AL}()~\hyperlink{task_8h_aac8f36abc45ac4ee714bd6b81e3b1643}{task\+E\+X\+I\+T\+\_\+\+C\+R\+I\+T\+I\+C\+AL}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga89a659441dfc2c89b84234f8c3c205c7}{F\+R\+T\+O\+S1\+\_\+task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}()~\hyperlink{task_8h_aa455a648c2224964ee57758b8794198e}{task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga0c37f432c9538a279a6813a430a017aa}{F\+R\+T\+O\+S1\+\_\+task\+E\+N\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}()~\hyperlink{task_8h_a04361ba499e91eb35324e4cba6feea17}{task\+E\+N\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga473cb2c53465e4f4e41c98c28cadcbce}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend\+All}()~\hyperlink{tasks_8c_a084d232640bd1d04bcac0b8784417015}{v\+Task\+Suspend\+All}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga0b808ab2b4a42ef92dc5b7df25094b13}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+All}()~\hyperlink{tasks_8c_adf830ea0f150fcdfdaa944667137f080}{x\+Task\+Resume\+All}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga31e207c0eb1a496de7069e8ba6573287}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay}(x\+Ticks\+To\+Delay)~\hyperlink{tasks_8c_a9917b05abb77e75e959151ae67065dce}{v\+Task\+Delay}(x\+Ticks\+To\+Delay)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaac0258bd4992309055d82679f3ed2c71}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay\+Until}(px\+Previous\+Wake\+Time,  x\+Time\+Increment)~\hyperlink{tasks_8c_abbc32467f223c78ba36f577b56a32897}{v\+Task\+Delay\+Until}(px\+Previous\+Wake\+Time, x\+Time\+Increment)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gab9e7a0524de943a16f69ee914a73f8c6}{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Priority\+Get}(px\+Task)~\hyperlink{tasks_8c_ad8b107714d1aa93374558fbed8727748}{ux\+Task\+Priority\+Get}(px\+Task)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga23d9e89eba01c0ee9728034c78d496a4}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Priority\+Set}(px\+Task,  ux\+New\+Priority)~\hyperlink{tasks_8c_a364e424f7bf8efced5738f44803f6580}{v\+Task\+Priority\+Set}(px\+Task, ux\+New\+Priority)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga6593f05f6a61d2cbcc758280687799e4}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+Recursive}(x\+Mutex,  x\+Block\+Time)~x\+Semaphore\+Take\+Recursive(x\+Mutex, x\+Block\+Time)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga4f388c91ba2f9499d9e6a5f0423e1312}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+Recursive}(x\+Mutex)~x\+Semaphore\+Give\+Recursive(x\+Mutex)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga317f1f005a09cdbe6847dfb5f70d615d}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex}()~x\+Semaphore\+Create\+Recursive\+Mutex()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga4951eb3c0e567bbfa7fe61c2285ede9d}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend}(px\+Task\+To\+Suspend)~\hyperlink{tasks_8c_a7fa54417f854974ae4a2b38729b60f12}{v\+Task\+Suspend}(px\+Task\+To\+Suspend)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga3c579d386291c86d2a541b60269d37cf}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Resume}(px\+Task\+To\+Resume)~\hyperlink{tasks_8c_ad8abaa814e2cfc4830c276415d0935bb}{v\+Task\+Resume}(px\+Task\+To\+Resume)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gab8e8fcdf8b7ab36ee13bdefd97034ec2}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex}()~x\+Semaphore\+Create\+Mutex()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga29d5d4c3ac382b41af7ead92376a5c2b}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take}(x\+Mutex,  x\+Block\+Time)~\hyperlink{semphr_8h_af116e436d2a5ae5bd72dbade2b5ea930}{x\+Semaphore\+Take}(x\+Mutex, x\+Block\+Time)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga7f2fc0243afeed67a15187eece8a3455}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give}(x\+Mutex)~\hyperlink{semphr_8h_aae55761cabfa9bf85c8f4430f78c0953}{x\+Semaphore\+Give}(x\+Mutex)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gac7aa17de6801646d6be7adf73f5abe9d}{F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Create\+Binary}(x\+Semaphore)~v\+Semaphore\+Create\+Binary(x\+Semaphore)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaa431f20bcfa36f69179bdb80a798e40a}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting}(ux\+Max\+Count,  ux\+Initial\+Count)~x\+Semaphore\+Create\+Counting(ux\+Max\+Count, ux\+Initial\+Count)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga18a83a2ccf4fa347a7def57ab5da9a24}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+From\+I\+SR}(x\+Semaphore,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{semphr_8h_a68aa43df8b2a0dbe17d05fad74670ef0}{x\+Semaphore\+Give\+From\+I\+SR}(x\+Semaphore, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gabcd302b8e84702f8103fe5f5b3400cf2}{F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Delete}(x\+Semaphore)~\hyperlink{semphr_8h_acd7d0eda0923d7caeeaaee9202c43eab}{v\+Semaphore\+Delete}(x\+Semaphore)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga142a1a9cfad95cf49afe6405ee62c89d}{F\+R\+T\+O\+S1\+\_\+pv\+Port\+Malloc}(x\+Wanted\+Size)~\hyperlink{portable_8h_a237d63f90b28e0950bd86f76815cd6e3}{pv\+Port\+Malloc}(x\+Wanted\+Size)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga03852f53f5819af76e27fbdb63c7db05}{F\+R\+T\+O\+S1\+\_\+v\+Port\+Free}(pv)~\hyperlink{portable_8h_a735cd3085bb7ba06ff8e47565bfd7016}{v\+Port\+Free}(pv)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga64e1272667e382a1f6f34303551ba5a0}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count}()~\hyperlink{tasks_8c_a5fa24e36d5e1eeb57f5b73b72ea048e7}{x\+Task\+Get\+Tick\+Count}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga4c65a3925f657617b2bb70baad5b01ac}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Scheduler\+State}()~\hyperlink{tasks_8c_a95ee42e80f8afd6815d4b7080717cd7f}{x\+Task\+Get\+Scheduler\+State}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga69f4c16b76c4b4f247d578fe6a2b5c01}{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark}(x\+Task)~\hyperlink{tasks_8c_a906b3904161aec4874d0fae26c00bf86}{ux\+Task\+Get\+Stack\+High\+Water\+Mark}(x\+Task)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga5e6c4a5e6515fba1103b45d23a0b674d}{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Number\+Of\+Tasks}()~\hyperlink{tasks_8c_a4b660446c721df74158dddb9fc189c1e}{ux\+Task\+Get\+Number\+Of\+Tasks}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga1b1f79bf76eddf7de775d1dad57ff762}{F\+R\+T\+O\+S1\+\_\+x\+Port\+Get\+Free\+Heap\+Size}()~\hyperlink{portable_8h_a8f72fbee5c25c956bda528299ce6dd02}{x\+Port\+Get\+Free\+Heap\+Size}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gac8252acb1e18de782bb342837c8c8494}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create}(ux\+Queue\+Length,  ux\+Item\+Size)~x\+Queue\+Create(ux\+Queue\+Length, ux\+Item\+Size)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaf9606ddcf23b9e935c653dcbce5876ef}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front}(x\+Queue,  pv\+Item\+To\+Queue,  x\+Ticks\+To\+Wait)~\hyperlink{queue_8h_aa612fcc2b1ceee0200f34b942e300b41}{x\+Queue\+Send\+To\+Front}(x\+Queue, pv\+Item\+To\+Queue, x\+Ticks\+To\+Wait)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga2dafade8e0fcf46fe21f9b1d2607321c}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back}(x\+Queue,  pv\+Item\+To\+Queue,  x\+Ticks\+To\+Wait)~\hyperlink{queue_8h_a81d24a2c1199d58efb76fbee15853112}{x\+Queue\+Send\+To\+Back}(x\+Queue, pv\+Item\+To\+Queue, x\+Ticks\+To\+Wait)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gad7427f2ce5bedcbb303ab1c78f1b08e8}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive}(x\+Queue,  pv\+Buffer,  x\+Ticks\+To\+Wait)~\hyperlink{queue_8h_af1549eac0e7f05694a59a0b967c80be3}{x\+Queue\+Receive}(x\+Queue, pv\+Buffer, x\+Ticks\+To\+Wait)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gab392410953e79e4f03f1e842fc42911e}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek}(x\+Queue,  pv\+Buffer,  x\+Ticks\+To\+Wait)~\hyperlink{queue_8h_a2df70733bb875477cd9614c5b3446257}{x\+Queue\+Peek}(x\+Queue, pv\+Buffer, x\+Ticks\+To\+Wait)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga388235cc97c9014b4f9006b1bdfeea28}{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Delete}(px\+Queue\+To\+Delete)~\hyperlink{queue_8h_a707cbcfe3aed6b877b6aa6d9d75a3f22}{v\+Queue\+Delete}(px\+Queue\+To\+Delete)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gac773bdbaf0114e0fd5e474aaf45d920e}{F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waiting}(x\+Queue)~\hyperlink{queue_8h_add7ee0701ba35904d190811b9e5a4eda}{ux\+Queue\+Messages\+Waiting}(x\+Queue)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga4a6dd9ea24d057b81d2278d783b33358}{F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waitingfrom\+I\+SR}(x\+Queue)~ux\+Queue\+Messages\+Waitingfrom\+I\+SR(x\+Queue)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga704b51f1302338d677287f77fc9f2a99}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive\+From\+I\+SR}(x\+Queue,  pv\+Buffer,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{queue_8h_acdf528f5c91131ae2f31c669cfd65758}{x\+Queue\+Receive\+From\+I\+SR}(x\+Queue, pv\+Buffer, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga8197f076cd857ec5476ab2d359edc72a}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front\+From\+I\+SR}(x\+Queue,  pv\+Item\+To\+Queue,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{queue_8h_af03b83396462affe9e28302660e7b9c6}{x\+Queue\+Send\+To\+Front\+From\+I\+SR}(x\+Queue, pv\+Item\+To\+Queue, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gabd9e044ab8e80092cdb4be700154733a}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back\+From\+I\+SR}(x\+Queue,  pv\+Item\+To\+Queue,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{queue_8h_a51e9f73417b11441a181cdc4f33a68e9}{x\+Queue\+Send\+To\+Back\+From\+I\+SR}(x\+Queue, pv\+Item\+To\+Queue,px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga93f84683e0388ccd7a44fc1e9117116e}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+From\+I\+SR}(px\+Task\+To\+Resume)~\hyperlink{tasks_8c_a17fb13e7325d9dee9dec76f4a736138b}{x\+Task\+Resume\+From\+I\+SR}(px\+Task\+To\+Resume)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga2cfa9d51a66095c9a35136aca0a5d686}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Reset}(x\+Queue)~\hyperlink{queue_8h_a94df8d8bc938424151f8196db2f1177b}{x\+Queue\+Reset}(x\+Queue)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga93d06bc11bdc64cf1be4a5624db9cde5}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Get\+Mutex\+Holder}(x\+Semaphore)~\hyperlink{semphr_8h_a7403bfbc06fb8449b2334f55d939a4c4}{x\+Semaphore\+Get\+Mutex\+Holder}(x\+Semaphore)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gacd326292cbd616697e16439191b295af}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+From\+I\+SR}(x\+Semaphore,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{semphr_8h_a076419b58e072655686939016e7ca3c5}{x\+Semaphore\+Take\+From\+I\+SR}(x\+Semaphore, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga0d404ee76d0ebf0a8c05cc93758c9482}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Current\+Task\+Handle}()~\hyperlink{tasks_8c_a28aaeed93d0de14da726f3a1a8c33251}{x\+Task\+Get\+Current\+Task\+Handle}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga719ba1f67fd6fe47bdb913b189d11613}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Idle\+Task\+Handle}()~\hyperlink{tasks_8c_a38e3c3df6fc5b28c14459e32474917fb}{x\+Task\+Get\+Idle\+Task\+Handle}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga5287b9ac0fb65f22ea43233129941081}{F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Task\+Name}(x\+Task\+To\+Query)~\hyperlink{_free_r_t_o_s_8h_a626c65afa49005d067495a6cdaace885}{pc\+Task\+Get\+Task\+Name}(x\+Task\+To\+Query)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga94767df0ea5aaacb1f77ec1ab6d70b89}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count\+From\+I\+SR}()~\hyperlink{tasks_8c_ad58fd766b8f438b5703276f585738762}{x\+Task\+Get\+Tick\+Count\+From\+I\+SR}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga25b51ac12e32ed1b5da8495eb752ac27}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek\+From\+I\+SR}(x\+Queue,  pv\+Buffer,  x\+Ticks\+To\+Wait)~\hyperlink{queue_8h_ac402adf98be1fb8ca0345f30dc11a9dc}{x\+Queue\+Peek\+From\+I\+SR}(x\+Queue, pv\+Buffer, x\+Ticks\+To\+Wait)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga88c586d43b510fdf5a316b0ee1e028f7}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite}(x\+Queue,  pv\+Item\+To\+Queue)~\hyperlink{queue_8h_a8e9ced123b5a0e37a36d3bbdb2e56b4e}{x\+Queue\+Overwrite}(x\+Queue, pv\+Item\+To\+Queue)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga20061a4cc11e7fffd173618f77452ce0}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite\+From\+I\+SR}(x\+Queue,  pv\+Item\+To\+Queue,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{queue_8h_abdcd6a86ef82034d002193e79cfd3ce8}{x\+Queue\+Overwrite\+From\+I\+SR}(x\+Queue, pv\+Item\+To\+Queue, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gabe4547ea6de76b95d8851f20d18d0b8a}{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Add\+To\+Registry}(x\+Queue,  pc\+Queue\+Name)~\hyperlink{queue_8c_a1d5e2402c801e7a0ab079f6944b97f93}{v\+Queue\+Add\+To\+Registry}(x\+Queue, pc\+Queue\+Name)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga84040ca0e6ace32d61c5cc5a54acc205}{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Unregister\+Queue}(x\+Queue)~\hyperlink{queue_8c_ac695c7cde3c32b32a1db4689239603ed}{v\+Queue\+Unregister\+Queue}(x\+Queue)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gacd5e9efd0bfea7b8f039e35005631439}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Full\+From\+I\+SR}(x\+Queue)~\hyperlink{queue_8h_a81319b3aa562733957c5a12a088516d3}{x\+Queue\+Is\+Queue\+Full\+From\+I\+SR}(x\+Queue)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaf9752f7b1658c9ca5975583fa5e7cc5a}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR}(x\+Queue)~\hyperlink{queue_8h_aa11139c58f4eecaa0c50078f2976d010}{x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR}(x\+Queue)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga8a23ed0874763be44263ff417691b7f0}{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create}()~\hyperlink{event__groups_8c_a2e8622ce280fff2f60ad867dff0a4519}{x\+Event\+Group\+Create}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaaaf9b14121ed276e0f561a5a8e1cc861}{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Wait\+Bits}(x\+Event\+Group,  ux\+Bits\+To\+Wait\+For,  x\+Clear\+On\+Exit,  x\+Wait\+For\+All\+Bits,  x\+Ticks\+To\+Wait)~\hyperlink{event__groups_8h_aab9d5b405bc57b7624dcabe9a9a503db}{x\+Event\+Group\+Wait\+Bits}(x\+Event\+Group, ux\+Bits\+To\+Wait\+For, x\+Clear\+On\+Exit, x\+Wait\+For\+All\+Bits, x\+Ticks\+To\+Wait)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gacfc13f0806c012d7ce1f45a53652e8d8}{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits}(x\+Event\+Group,  ux\+Bits\+To\+Set)~\hyperlink{event__groups_8h_a02d7b3bb55f7e11d9c47116266c5fb2e}{x\+Event\+Group\+Set\+Bits}(x\+Event\+Group, ux\+Bits\+To\+Set)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga026d10dcfbf5bb1c651994daeca7d015}{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits\+From\+I\+SR}(x\+Event\+Group,  ux\+Bits\+To\+Set,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{event__groups_8h_a62b68278abac6358369ae8e390988a02}{x\+Event\+Group\+Set\+Bits\+From\+I\+SR}(x\+Event\+Group, ux\+Bits\+To\+Set, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga41690bf5d30d550652e67350237c6585}{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits}(x\+Event\+Group,  ux\+Bits\+To\+Set)~\hyperlink{event__groups_8h_a0fb72cfdd4f0d5f86d955fc3af448f2a}{x\+Event\+Group\+Clear\+Bits}(x\+Event\+Group, ux\+Bits\+To\+Set)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga130498ee79ddbd8867a976cf384a47b2}{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits\+From\+I\+SR}(x\+Event\+Group,  ux\+Bits\+To\+Set)~\hyperlink{event__groups_8h_a3d7de214a697f33fe7b914e26a93f33a}{x\+Event\+Group\+Clear\+Bits\+From\+I\+SR}(x\+Event\+Group, ux\+Bits\+To\+Set)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gae2840ba8082df53fca51d57763cc7b0c}{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits}(x\+Event\+Group)~\hyperlink{event__groups_8h_a0ae86f092fb07ccb475ae938f9a12584}{x\+Event\+Group\+Get\+Bits}(x\+Event\+Group)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga864e1abb78f3c4ef96e55fa5edf61d86}{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits\+From\+I\+SR}(x\+Event\+Group)~\hyperlink{event__groups_8h_a95822db4357d0b77c35aed0c7427eca0}{x\+Event\+Group\+Get\+Bits\+From\+I\+SR}(x\+Event\+Group)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga7154669843c8ffcb0b8047558cfe33eb}{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Sync}(x\+Event\+Group,  ux\+Bits\+To\+Set,  ux\+Bits\+To\+Wait\+For,  x\+Ticks\+To\+Wait)~\hyperlink{event__groups_8h_a869511456b86426f52e2eec898bff341}{x\+Event\+Group\+Sync}(x\+Event\+Group, ux\+Bits\+To\+Set, ux\+Bits\+To\+Wait\+For, x\+Ticks\+To\+Wait)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga998dd1002dc0119219ef6ccd6bf5e5b7}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Create}(pc\+Timer\+Name,  x\+Timer\+Period,  ux\+Auto\+Reload,  pv\+Timer\+ID,  px\+Callback\+Function)~x\+Timer\+Create(pc\+Timer\+Name, x\+Timer\+Period, ux\+Auto\+Reload, pv\+Timer\+ID, px\+Callback\+Function)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gac2a1918e4cb5def0bb5e75d2800ffae8}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Is\+Timer\+Active}(x\+Timer)~\hyperlink{timers_8h_a2cd9b1399fb25203be698f123846dc33}{x\+Timer\+Is\+Timer\+Active}(x\+Timer)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gadde1abf221f90cfea859799e54320aba}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start}(x\+Timer,  x\+Block\+Time)~\hyperlink{timers_8h_a3a9b838f48991e852ce05c986b0eeb8c}{x\+Timer\+Start}(x\+Timer, x\+Block\+Time)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gabb40a93c1aac5b401432f89a7844bcd4}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop}(x\+Timer,  x\+Block\+Time)~\hyperlink{timers_8h_a8327c7fc10aee414cb163b445c5269a4}{x\+Timer\+Stop}(x\+Timer, x\+Block\+Time)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga9575ef52338eb3c6f66e019595582fc9}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period}(x\+Timer,  x\+New\+Period,  x\+Block\+Time)~\hyperlink{timers_8h_ab12eac1c69a3437b8161ce81ff34b2f4}{x\+Timer\+Change\+Period}(x\+Timer, x\+New\+Period, x\+Block\+Time)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga4d68b3fec5c82215774a6243b14feace}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Delete}(x\+Timer,  x\+Block\+Time)~\hyperlink{timers_8h_a8c8e21f05ebe92e15449addc5d269d10}{x\+Timer\+Delete}(x\+Timer, x\+Block\+Time)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga64fb9b2acbe89ba94210906b511f85a7}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset}(x\+Timer,  x\+Block\+Time)~\hyperlink{timers_8h_a8081b4541b752908dc55df2693e53287}{x\+Timer\+Reset}(x\+Timer, x\+Block\+Time)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga6b25b13dac5c52cb4b3446715b0de4b5}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start\+From\+I\+SR}(x\+Timer,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{timers_8h_adab5809f9679e44a343b8dbb8fb7c67f}{x\+Timer\+Start\+From\+I\+SR}(x\+Timer, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaa0fc454ad8976c63fae1e5e73e835029}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop\+From\+I\+SR}(x\+Timer,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{timers_8h_aef0f53e7ecfaa881621da83d61072db7}{x\+Timer\+Stop\+From\+I\+SR}(x\+Timer, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga3774e7903c882b320eba3dd4abb349db}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period\+From\+I\+SR}(x\+Timer,  x\+New\+Period,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{timers_8h_a6d89ca6afb6e692e98932b5038c9e14a}{x\+Timer\+Change\+Period\+From\+I\+SR}(x\+Timer, x\+New\+Period, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga42fcc986fc89e580b9ceb148b0d8bbe9}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset\+From\+I\+SR}(x\+Timer,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{timers_8h_a448138d0cebf76044f107ca56c842230}{x\+Timer\+Reset\+From\+I\+SR}(x\+Timer, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gac7adcb919368fb838c08db51a4527a92}{F\+R\+T\+O\+S1\+\_\+pv\+Timer\+Get\+Timer\+ID}(x\+Timer)~\hyperlink{timers_8h_ae20907a90360107d72283eb9099685ad}{pv\+Timer\+Get\+Timer\+ID}(x\+Timer)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga7ed8fb2b7f99b344ac287c969c50194c}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Get\+Timer\+Daemon\+Task\+Handle}()~\hyperlink{timers_8h_ad2a0d15a1e213493bd898e748d9f7555}{x\+Timer\+Get\+Timer\+Daemon\+Task\+Handle}()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga24e3ac503fa0d8a6b279b2f268b903bf}{F\+R\+T\+O\+S1\+\_\+pc\+Timer\+Get\+Timer\+Name}(x\+Timer)~\hyperlink{_free_r_t_o_s_8h_a870358d5faa01a5290705b073de220ca}{pc\+Timer\+Get\+Timer\+Name}(x\+Timer)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga6c21b01372d4e1ae37373834463931b9}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call}(x\+Function\+To\+Pend,  pv\+Parameter1,  ul\+Parameter2,  x\+Ticks\+To\+Wait)~\hyperlink{timers_8h_a04e031135bd3276caaedd656d464dc23}{x\+Timer\+Pend\+Function\+Call}(x\+Function\+To\+Pend, pv\+Parameter1, ul\+Parameter2, x\+Ticks\+To\+Wait)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga4363dc4e6778d35b6690ccd1b00360f4}{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call\+From\+I\+SR}(x\+Function\+To\+Pend,  pv\+Parameter1,  ul\+Parameter2,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{timers_8h_ae0d9338933037e6feebe6437763fa299}{x\+Timer\+Pend\+Function\+Call\+From\+I\+SR}(x\+Function\+To\+Pend, pv\+Parameter1, ul\+Parameter2, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga21518a501d4f0f93d5621994c584d46a}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Give}(x\+Task\+To\+Notify)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaf1433e0d6225f6cc3a1c444062f733c8}{F\+R\+T\+O\+S1\+\_\+ul\+Task\+Notify\+Take}(x\+Clear\+Count\+On\+Exit,  x\+Ticks\+To\+Wait)~\hyperlink{tasks_8c_a1dd29cf3d25f9968ac86b0ca35af8ada}{ul\+Task\+Notify\+Take}(x\+Clear\+Count\+On\+Exit, x\+Ticks\+To\+Wait)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga73c2c7768f269d024adee0678786e15e}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Notify\+Give\+From\+I\+SR}(x\+Task\+To\+Notify,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{tasks_8c_a0c31cb4be76285f05909de23ede05331}{v\+Task\+Notify\+Give\+From\+I\+SR}(x\+Task\+To\+Notify, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga90bc9fa15ace079ad1d8fc419f51365d}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify}(x\+Task\+To\+Notify,  ul\+Value,  e\+Action)~\hyperlink{task_8h_a0d2d54fb8a64011dfbb54983e4ed06bd}{x\+Task\+Notify}(x\+Task\+To\+Notify, ul\+Value, e\+Action)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga9943041478b4b481aa0a8670c6edd4be}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+From\+I\+SR}(x\+Task\+To\+Notify,  ul\+Value,  e\+Action,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{task_8h_a1ed9129068b96a909356bd0369c5ecb0}{x\+Task\+Notify\+From\+I\+SR}(x\+Task\+To\+Notify, ul\+Value, e\+Action, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaa6ec29b95f2aeecae38d52ed20d63c10}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Wait}(ul\+Bits\+To\+Clear\+On\+Entry,  ul\+Bits\+To\+Clear\+On\+Exit,  pul\+Notification\+Value,  x\+Ticks\+To\+Wait)~\hyperlink{tasks_8c_a7cab914767933dc732f2c36e3915f6b0}{x\+Task\+Notify\+Wait}(ul\+Bits\+To\+Clear\+On\+Entry, ul\+Bits\+To\+Clear\+On\+Exit, pul\+Notification\+Value, x\+Ticks\+To\+Wait)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga7df09f2b8d36c2db315d58cc9879487f}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Set\+Thread\+Local\+Storage\+Pointer}(x\+Task\+To\+Set,  x\+Index,  pv\+Value)~v\+Task\+Set\+Thread\+Local\+Storage\+Pointer(x\+Task\+To\+Set, x\+Index, pv\+Value)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gac2a94f08f263fae6a729b0577b02a7d1}{F\+R\+T\+O\+S1\+\_\+pv\+Task\+Get\+Thread\+Local\+Storage\+Pointer}(x\+Task\+To\+Query,  x\+Index)~pv\+Task\+Get\+Thread\+Local\+Storage\+Pointer(x\+Task\+To\+Query, x\+Index)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga5c7b8fe8b16e29f5c01be043db9ae724}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary}()~x\+Semaphore\+Create\+Binary()
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga1706d3232e8e1e6c58095692a0601cf5}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query}(x\+Task\+To\+Notify,  ul\+Value,  e\+Action,  pul\+Previous\+Notify\+Value)~\hyperlink{task_8h_aaa80adec29a2eebbfe0a551684a0acca}{x\+Task\+Notify\+And\+Query}(x\+Task\+To\+Notify, ul\+Value, e\+Action, pul\+Previous\+Notify\+Value)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga0eb38927fbf0d0c1f6a5f3f24c9d25c3}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query\+From\+I\+SR}(x\+Task\+To\+Notify,  ul\+Value,  e\+Action,  pul\+Previous\+Notify\+Value,  px\+Higher\+Priority\+Task\+Woken)~\hyperlink{task_8h_a5c491b42e243a91c7473887d1fb96dd5}{x\+Task\+Notify\+And\+Query\+From\+I\+SR}(x\+Task\+To\+Notify, ul\+Value, e\+Action, pul\+Previous\+Notify\+Value, px\+Higher\+Priority\+Task\+Woken)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga8410210c01dcbc1ecdaba90f141a4732}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+State\+Clear}(x\+Task)~\hyperlink{tasks_8c_a4cb6c908a9d2d733e9d519d7dc27bb34}{x\+Task\+Notify\+State\+Clear}(x\+Task)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga30e411af81b88843d4023f1661e98a30}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Handle}(pc\+Name\+To\+Query)~\hyperlink{tasks_8c_a86e945a322943dca5023dc49d1458b0c}{x\+Task\+Get\+Handle}(pc\+Name\+To\+Query)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga728d43a9aeb1f635e2d1c64ab31241e9}{F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Name}(x\+Task\+To\+Query)~\hyperlink{tasks_8c_a2ee63040e19e7c0cd7dbd070b8e1bca5}{pc\+Task\+Get\+Name}(x\+Task\+To\+Query)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga2fc2dc9f0df2c8c50a91a1b6a32bb3b1}{F\+R\+T\+O\+S1\+\_\+x\+Task\+Create\+Static}(pv\+Task\+Code,  pc\+Name,  us\+Stack\+Depth,  pv\+Parameters,  ux\+Priority,  pux\+Stack\+Buffer,  px\+Task\+Buffer)~x\+Task\+Create\+Static(pv\+Task\+Code, pc\+Name, us\+Stack\+Depth, pv\+Parameters, ux\+Priority, pux\+Stack\+Buffer, px\+Task\+Buffer)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga5e5ab53690f521cdd9cfd798a4f65bc3}{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create\+Static}(ux\+Queue\+Length,  ux\+Item\+Size,  puc\+Queue\+Storage\+Buffer,  px\+Queue\+Buffer)~x\+Queue\+Create\+Static(ux\+Queue\+Length, ux\+Item\+Size, puc\+Queue\+Storage\+Buffer, px\+Queue\+Buffer)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gac9eec6e9aa8177a4b977c9923a8ad084}{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create\+Static}(px\+Event\+Group\+Buffer)~x\+Event\+Group\+Create\+Static(px\+Event\+Group\+Buffer)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaee8fc6683370dc412d53ba3f6df987b6}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary\+Static}(px\+Semaphore\+Buffer)~x\+Semaphore\+Create\+Binary\+Static(px\+Semaphore\+Buffer)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga45e7bd6787a8b178322d49848ff6f382}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting\+Static}(ux\+Max\+Count,  ux\+Initial\+Count,  px\+Sempahore\+Buffer)~x\+Semaphore\+Create\+Counting\+Static(ux\+Max\+Count, ux\+Initial\+Count, px\+Sempahore\+Buffer)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaa31fd23221fda3263fb4b40b88d1643a}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex\+Static}(px\+Mutex\+Buffer)~x\+Semaphore\+Create\+Mutex\+Static(px\+Mutex\+Buffer)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gaadb1f1cae4b01cb6a8a3cdf65f0270a6}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Get\+Info}(x\+Task,  px\+Task\+Status,  x\+Get\+Free\+Stack\+Space,  e\+State)~\hyperlink{task_8h_ac08c26d037d0dc685740eec9b2028715}{v\+Task\+Get\+Info}(x\+Task, px\+Task\+Status, x\+Get\+Free\+Stack\+Space, e\+State)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_ga1f3e62d8e496c0725b0beefb62bb9572}{F\+R\+T\+O\+S1\+\_\+ux\+Semaphore\+Get\+Count}(x\+Semaphore)~\hyperlink{semphr_8h_aa26a3d7cf9b5595a652daeb7f81229f3}{ux\+Semaphore\+Get\+Count}(x\+Semaphore)
+\item 
+\#define \hyperlink{group___f_r_t_o_s1__module_gae842ffded04aade1405792b39f2c0005}{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex\+Static}(px\+Mutex\+Buffer)~x\+Semaphore\+Create\+Recursive\+Mutex\+Static(px\+Mutex\+Buffer)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef size\+\_\+t \hyperlink{group___f_r_t_o_s1__module_ga978b77c999725d30847a41f218210fd5}{Tsize\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___f_r_t_o_s1__module_gaa6736fa261f845b8f407ca839b14c340}{F\+R\+T\+O\+S1\+\_\+\+Init} (void)
+\item 
+void \hyperlink{group___f_r_t_o_s1__module_gae59cd6cf4cfc95ca846900a4c8341760}{F\+R\+T\+O\+S1\+\_\+\+Deinit} (void)
+\item 
+uint32\+\_\+t \hyperlink{group___f_r_t_o_s1__module_gab1438703d0c195f86363fd284f256948}{F\+R\+T\+O\+S1\+\_\+\+App\+Get\+Runtime\+Counter\+Value\+From\+I\+SR} (void)
+\item 
+void \hyperlink{group___f_r_t_o_s1__module_ga859e86b6143d6bc4cf96b2867f408c75}{v\+Port\+S\+V\+C\+Handler} (void)
+\item 
+void \hyperlink{group___f_r_t_o_s1__module_ga511c6a9f325400e54badcc5d912d2917}{v\+Port\+Pend\+S\+V\+Handler} (void)
+\item 
+void \hyperlink{group___f_r_t_o_s1__module_ga1f0fdb64040c66499e4e087bed8b2c90}{v\+Port\+Tick\+Handler} (void)
+\item 
+void \hyperlink{group___f_r_t_o_s1__module_gaec4d75a40722a373e88bd57c4e899940}{F\+R\+T\+O\+S1\+\_\+\+App\+Configure\+Timer\+For\+Runtime\+Stats} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gac3c1de9aa16951baa6a82649a5708f0a}\label{group___f_r_t_o_s1__module_gac3c1de9aa16951baa6a82649a5708f0a}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!\+\_\+\+\_\+\+B\+W\+User\+Type\+\_\+\+Tsize\+\_\+t@{\+\_\+\+\_\+\+B\+W\+User\+Type\+\_\+\+Tsize\+\_\+t}}
+\index{\+\_\+\+\_\+\+B\+W\+User\+Type\+\_\+\+Tsize\+\_\+t@{\+\_\+\+\_\+\+B\+W\+User\+Type\+\_\+\+Tsize\+\_\+t}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+\+B\+W\+User\+Type\+\_\+\+Tsize\+\_\+t}{\_\_BWUserType\_Tsize\_t}}
+{\footnotesize\ttfamily \#define \+\_\+\+\_\+\+B\+W\+User\+Type\+\_\+\+Tsize\+\_\+t}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gabee351bd31e8f22c295e36727dc0da2a}\label{group___f_r_t_o_s1__module_gabee351bd31e8f22c295e36727dc0da2a}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+C\+P\+U\+\_\+\+C\+O\+R\+T\+E\+X\+\_\+M@{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+C\+P\+U\+\_\+\+C\+O\+R\+T\+E\+X\+\_\+M}}
+\index{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+C\+P\+U\+\_\+\+C\+O\+R\+T\+E\+X\+\_\+M@{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+C\+P\+U\+\_\+\+C\+O\+R\+T\+E\+X\+\_\+M}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+C\+P\+U\+\_\+\+C\+O\+R\+T\+E\+X\+\_\+M}{FREERTOS\_CPU\_CORTEX\_M}}
+{\footnotesize\ttfamily \#define F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+C\+P\+U\+\_\+\+C\+O\+R\+T\+E\+X\+\_\+M~0 /$\ast$ Cortex M0+ core $\ast$/}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga8175ab6e3cdee169c1b207249c018fbc}\label{group___f_r_t_o_s1__module_ga8175ab6e3cdee169c1b207249c018fbc}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+M\+A\+C\+R\+OS@{F\+R\+T\+O\+S1\+\_\+\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+M\+A\+C\+R\+OS}}
+\index{F\+R\+T\+O\+S1\+\_\+\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+M\+A\+C\+R\+OS@{F\+R\+T\+O\+S1\+\_\+\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+M\+A\+C\+R\+OS}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+M\+A\+C\+R\+OS}{FRTOS1\_GENERATE\_PEX\_RTOS\_MACROS}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+M\+A\+C\+R\+OS~1  /$\ast$ set to 1 to generate the R\+T\+OS macros \hyperlink{group___f_r_t_o_s1__module_ga2ba609c134ea5b867c383afbd7191df0}{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+I\+N\+IT}() and \hyperlink{group___f_r_t_o_s1__module_ga78984a86d3c0738dfba6c7cffb1f9766}{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+S\+T\+A\+RT}() $\ast$/}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga7f7bad2d2773d90a6f489fc082f5a468}\label{group___f_r_t_o_s1__module_ga7f7bad2d2773d90a6f489fc082f5a468}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{F\+R\+T\+O\+S1\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{F\+R\+T\+O\+S1\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{F\+R\+T\+O\+S1\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{FRTOS1\_PARSE\_COMMAND\_ENABLED}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED~0 /$\ast$ set to 1 if method Parse\+Command() is present, 0 otherwise $\ast$/}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga728d43a9aeb1f635e2d1c64ab31241e9}\label{group___f_r_t_o_s1__module_ga728d43a9aeb1f635e2d1c64ab31241e9}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Name@{F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Name}}
+\index{F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Name@{F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Name}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Name}{FRTOS1\_pcTaskGetName}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Name(\begin{DoxyParamCaption}\item[{}]{x\+Task\+To\+Query }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a2ee63040e19e7c0cd7dbd070b8e1bca5}{pc\+Task\+Get\+Name}(x\+Task\+To\+Query)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga5287b9ac0fb65f22ea43233129941081}\label{group___f_r_t_o_s1__module_ga5287b9ac0fb65f22ea43233129941081}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Task\+Name@{F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Task\+Name}}
+\index{F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Task\+Name@{F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Task\+Name}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Task\+Name}{FRTOS1\_pcTaskGetTaskName}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+pc\+Task\+Get\+Task\+Name(\begin{DoxyParamCaption}\item[{}]{x\+Task\+To\+Query }\end{DoxyParamCaption})~\hyperlink{_free_r_t_o_s_8h_a626c65afa49005d067495a6cdaace885}{pc\+Task\+Get\+Task\+Name}(x\+Task\+To\+Query)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga24e3ac503fa0d8a6b279b2f268b903bf}\label{group___f_r_t_o_s1__module_ga24e3ac503fa0d8a6b279b2f268b903bf}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+pc\+Timer\+Get\+Timer\+Name@{F\+R\+T\+O\+S1\+\_\+pc\+Timer\+Get\+Timer\+Name}}
+\index{F\+R\+T\+O\+S1\+\_\+pc\+Timer\+Get\+Timer\+Name@{F\+R\+T\+O\+S1\+\_\+pc\+Timer\+Get\+Timer\+Name}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+pc\+Timer\+Get\+Timer\+Name}{FRTOS1\_pcTimerGetTimerName}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+pc\+Timer\+Get\+Timer\+Name(\begin{DoxyParamCaption}\item[{}]{x\+Timer }\end{DoxyParamCaption})~\hyperlink{_free_r_t_o_s_8h_a870358d5faa01a5290705b073de220ca}{pc\+Timer\+Get\+Timer\+Name}(x\+Timer)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga142a1a9cfad95cf49afe6405ee62c89d}\label{group___f_r_t_o_s1__module_ga142a1a9cfad95cf49afe6405ee62c89d}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+pv\+Port\+Malloc@{F\+R\+T\+O\+S1\+\_\+pv\+Port\+Malloc}}
+\index{F\+R\+T\+O\+S1\+\_\+pv\+Port\+Malloc@{F\+R\+T\+O\+S1\+\_\+pv\+Port\+Malloc}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+pv\+Port\+Malloc}{FRTOS1\_pvPortMalloc}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+pv\+Port\+Malloc(\begin{DoxyParamCaption}\item[{}]{x\+Wanted\+Size }\end{DoxyParamCaption})~\hyperlink{portable_8h_a237d63f90b28e0950bd86f76815cd6e3}{pv\+Port\+Malloc}(x\+Wanted\+Size)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gac2a94f08f263fae6a729b0577b02a7d1}\label{group___f_r_t_o_s1__module_gac2a94f08f263fae6a729b0577b02a7d1}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+pv\+Task\+Get\+Thread\+Local\+Storage\+Pointer@{F\+R\+T\+O\+S1\+\_\+pv\+Task\+Get\+Thread\+Local\+Storage\+Pointer}}
+\index{F\+R\+T\+O\+S1\+\_\+pv\+Task\+Get\+Thread\+Local\+Storage\+Pointer@{F\+R\+T\+O\+S1\+\_\+pv\+Task\+Get\+Thread\+Local\+Storage\+Pointer}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+pv\+Task\+Get\+Thread\+Local\+Storage\+Pointer}{FRTOS1\_pvTaskGetThreadLocalStoragePointer}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+pv\+Task\+Get\+Thread\+Local\+Storage\+Pointer(\begin{DoxyParamCaption}\item[{}]{x\+Task\+To\+Query,  }\item[{}]{x\+Index }\end{DoxyParamCaption})~pv\+Task\+Get\+Thread\+Local\+Storage\+Pointer(x\+Task\+To\+Query, x\+Index)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gac7adcb919368fb838c08db51a4527a92}\label{group___f_r_t_o_s1__module_gac7adcb919368fb838c08db51a4527a92}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+pv\+Timer\+Get\+Timer\+ID@{F\+R\+T\+O\+S1\+\_\+pv\+Timer\+Get\+Timer\+ID}}
+\index{F\+R\+T\+O\+S1\+\_\+pv\+Timer\+Get\+Timer\+ID@{F\+R\+T\+O\+S1\+\_\+pv\+Timer\+Get\+Timer\+ID}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+pv\+Timer\+Get\+Timer\+ID}{FRTOS1\_pvTimerGetTimerID}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+pv\+Timer\+Get\+Timer\+ID(\begin{DoxyParamCaption}\item[{}]{x\+Timer }\end{DoxyParamCaption})~\hyperlink{timers_8h_ae20907a90360107d72283eb9099685ad}{pv\+Timer\+Get\+Timer\+ID}(x\+Timer)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga89a659441dfc2c89b84234f8c3c205c7}\label{group___f_r_t_o_s1__module_ga89a659441dfc2c89b84234f8c3c205c7}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS@{F\+R\+T\+O\+S1\+\_\+task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}}
+\index{F\+R\+T\+O\+S1\+\_\+task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS@{F\+R\+T\+O\+S1\+\_\+task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}{FRTOS1\_taskDISABLE\_INTERRUPTS}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{task_8h_aa455a648c2224964ee57758b8794198e}{task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga0c37f432c9538a279a6813a430a017aa}\label{group___f_r_t_o_s1__module_ga0c37f432c9538a279a6813a430a017aa}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+task\+E\+N\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS@{F\+R\+T\+O\+S1\+\_\+task\+E\+N\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}}
+\index{F\+R\+T\+O\+S1\+\_\+task\+E\+N\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS@{F\+R\+T\+O\+S1\+\_\+task\+E\+N\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+task\+E\+N\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}{FRTOS1\_taskENABLE\_INTERRUPTS}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+task\+E\+N\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{task_8h_a04361ba499e91eb35324e4cba6feea17}{task\+E\+N\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaddc0c0064f175a3c83b24c83caf32128}\label{group___f_r_t_o_s1__module_gaddc0c0064f175a3c83b24c83caf32128}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+task\+E\+N\+T\+E\+R\+\_\+\+C\+R\+I\+T\+I\+C\+AL@{F\+R\+T\+O\+S1\+\_\+task\+E\+N\+T\+E\+R\+\_\+\+C\+R\+I\+T\+I\+C\+AL}}
+\index{F\+R\+T\+O\+S1\+\_\+task\+E\+N\+T\+E\+R\+\_\+\+C\+R\+I\+T\+I\+C\+AL@{F\+R\+T\+O\+S1\+\_\+task\+E\+N\+T\+E\+R\+\_\+\+C\+R\+I\+T\+I\+C\+AL}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+task\+E\+N\+T\+E\+R\+\_\+\+C\+R\+I\+T\+I\+C\+AL}{FRTOS1\_taskENTER\_CRITICAL}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+task\+E\+N\+T\+E\+R\+\_\+\+C\+R\+I\+T\+I\+C\+AL(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{task_8h_ab7bf0ae866292ba8296091a9d5209689}{task\+E\+N\+T\+E\+R\+\_\+\+C\+R\+I\+T\+I\+C\+AL}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga1f3d51d9c8451ecf09eae1c5c816c54f}\label{group___f_r_t_o_s1__module_ga1f3d51d9c8451ecf09eae1c5c816c54f}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+task\+E\+X\+I\+T\+\_\+\+C\+R\+I\+T\+I\+C\+AL@{F\+R\+T\+O\+S1\+\_\+task\+E\+X\+I\+T\+\_\+\+C\+R\+I\+T\+I\+C\+AL}}
+\index{F\+R\+T\+O\+S1\+\_\+task\+E\+X\+I\+T\+\_\+\+C\+R\+I\+T\+I\+C\+AL@{F\+R\+T\+O\+S1\+\_\+task\+E\+X\+I\+T\+\_\+\+C\+R\+I\+T\+I\+C\+AL}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+task\+E\+X\+I\+T\+\_\+\+C\+R\+I\+T\+I\+C\+AL}{FRTOS1\_taskEXIT\_CRITICAL}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+task\+E\+X\+I\+T\+\_\+\+C\+R\+I\+T\+I\+C\+AL(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{task_8h_aac8f36abc45ac4ee714bd6b81e3b1643}{task\+E\+X\+I\+T\+\_\+\+C\+R\+I\+T\+I\+C\+AL}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gae5068fcbc0ac5513a978a8ba03ef53e3}\label{group___f_r_t_o_s1__module_gae5068fcbc0ac5513a978a8ba03ef53e3}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+task\+Y\+I\+E\+LD@{F\+R\+T\+O\+S1\+\_\+task\+Y\+I\+E\+LD}}
+\index{F\+R\+T\+O\+S1\+\_\+task\+Y\+I\+E\+LD@{F\+R\+T\+O\+S1\+\_\+task\+Y\+I\+E\+LD}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+task\+Y\+I\+E\+LD}{FRTOS1\_taskYIELD}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+task\+Y\+I\+E\+LD(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{task_8h_a767e474430db1e60056e9678763f9202}{task\+Y\+I\+E\+LD}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaf1433e0d6225f6cc3a1c444062f733c8}\label{group___f_r_t_o_s1__module_gaf1433e0d6225f6cc3a1c444062f733c8}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+ul\+Task\+Notify\+Take@{F\+R\+T\+O\+S1\+\_\+ul\+Task\+Notify\+Take}}
+\index{F\+R\+T\+O\+S1\+\_\+ul\+Task\+Notify\+Take@{F\+R\+T\+O\+S1\+\_\+ul\+Task\+Notify\+Take}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+ul\+Task\+Notify\+Take}{FRTOS1\_ulTaskNotifyTake}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+ul\+Task\+Notify\+Take(\begin{DoxyParamCaption}\item[{}]{x\+Clear\+Count\+On\+Exit,  }\item[{}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a1dd29cf3d25f9968ac86b0ca35af8ada}{ul\+Task\+Notify\+Take}(x\+Clear\+Count\+On\+Exit, x\+Ticks\+To\+Wait)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gac773bdbaf0114e0fd5e474aaf45d920e}\label{group___f_r_t_o_s1__module_gac773bdbaf0114e0fd5e474aaf45d920e}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waiting@{F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waiting}}
+\index{F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waiting@{F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waiting}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waiting}{FRTOS1\_uxQueueMessagesWaiting}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waiting(\begin{DoxyParamCaption}\item[{}]{x\+Queue }\end{DoxyParamCaption})~\hyperlink{queue_8h_add7ee0701ba35904d190811b9e5a4eda}{ux\+Queue\+Messages\+Waiting}(x\+Queue)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga4a6dd9ea24d057b81d2278d783b33358}\label{group___f_r_t_o_s1__module_ga4a6dd9ea24d057b81d2278d783b33358}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waitingfrom\+I\+SR@{F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waitingfrom\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waitingfrom\+I\+SR@{F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waitingfrom\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waitingfrom\+I\+SR}{FRTOS1\_uxQueueMessagesWaitingfromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+ux\+Queue\+Messages\+Waitingfrom\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Queue }\end{DoxyParamCaption})~ux\+Queue\+Messages\+Waitingfrom\+I\+SR(x\+Queue)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga1f3e62d8e496c0725b0beefb62bb9572}\label{group___f_r_t_o_s1__module_ga1f3e62d8e496c0725b0beefb62bb9572}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+ux\+Semaphore\+Get\+Count@{F\+R\+T\+O\+S1\+\_\+ux\+Semaphore\+Get\+Count}}
+\index{F\+R\+T\+O\+S1\+\_\+ux\+Semaphore\+Get\+Count@{F\+R\+T\+O\+S1\+\_\+ux\+Semaphore\+Get\+Count}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+ux\+Semaphore\+Get\+Count}{FRTOS1\_uxSemaphoreGetCount}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+ux\+Semaphore\+Get\+Count(\begin{DoxyParamCaption}\item[{}]{x\+Semaphore }\end{DoxyParamCaption})~\hyperlink{semphr_8h_aa26a3d7cf9b5595a652daeb7f81229f3}{ux\+Semaphore\+Get\+Count}(x\+Semaphore)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga5e6c4a5e6515fba1103b45d23a0b674d}\label{group___f_r_t_o_s1__module_ga5e6c4a5e6515fba1103b45d23a0b674d}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Number\+Of\+Tasks@{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Number\+Of\+Tasks}}
+\index{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Number\+Of\+Tasks@{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Number\+Of\+Tasks}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Number\+Of\+Tasks}{FRTOS1\_uxTaskGetNumberOfTasks}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Number\+Of\+Tasks(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a4b660446c721df74158dddb9fc189c1e}{ux\+Task\+Get\+Number\+Of\+Tasks}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga69f4c16b76c4b4f247d578fe6a2b5c01}\label{group___f_r_t_o_s1__module_ga69f4c16b76c4b4f247d578fe6a2b5c01}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark@{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark}}
+\index{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark@{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark}{FRTOS1\_uxTaskGetStackHighWaterMark}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark(\begin{DoxyParamCaption}\item[{}]{x\+Task }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a906b3904161aec4874d0fae26c00bf86}{ux\+Task\+Get\+Stack\+High\+Water\+Mark}(x\+Task)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gab9e7a0524de943a16f69ee914a73f8c6}\label{group___f_r_t_o_s1__module_gab9e7a0524de943a16f69ee914a73f8c6}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+ux\+Task\+Priority\+Get@{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Priority\+Get}}
+\index{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Priority\+Get@{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Priority\+Get}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+ux\+Task\+Priority\+Get}{FRTOS1\_uxTaskPriorityGet}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+ux\+Task\+Priority\+Get(\begin{DoxyParamCaption}\item[{}]{px\+Task }\end{DoxyParamCaption})~\hyperlink{tasks_8c_ad8b107714d1aa93374558fbed8727748}{ux\+Task\+Priority\+Get}(px\+Task)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga03852f53f5819af76e27fbdb63c7db05}\label{group___f_r_t_o_s1__module_ga03852f53f5819af76e27fbdb63c7db05}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Port\+Free@{F\+R\+T\+O\+S1\+\_\+v\+Port\+Free}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Port\+Free@{F\+R\+T\+O\+S1\+\_\+v\+Port\+Free}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Port\+Free}{FRTOS1\_vPortFree}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Port\+Free(\begin{DoxyParamCaption}\item[{}]{pv }\end{DoxyParamCaption})~\hyperlink{portable_8h_a735cd3085bb7ba06ff8e47565bfd7016}{v\+Port\+Free}(pv)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gabe4547ea6de76b95d8851f20d18d0b8a}\label{group___f_r_t_o_s1__module_gabe4547ea6de76b95d8851f20d18d0b8a}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Queue\+Add\+To\+Registry@{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Add\+To\+Registry}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Add\+To\+Registry@{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Add\+To\+Registry}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Add\+To\+Registry}{FRTOS1\_vQueueAddToRegistry}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Queue\+Add\+To\+Registry(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pc\+Queue\+Name }\end{DoxyParamCaption})~\hyperlink{queue_8c_a1d5e2402c801e7a0ab079f6944b97f93}{v\+Queue\+Add\+To\+Registry}(x\+Queue, pc\+Queue\+Name)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga388235cc97c9014b4f9006b1bdfeea28}\label{group___f_r_t_o_s1__module_ga388235cc97c9014b4f9006b1bdfeea28}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Queue\+Delete@{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Delete}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Delete@{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Delete}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Delete}{FRTOS1\_vQueueDelete}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Queue\+Delete(\begin{DoxyParamCaption}\item[{}]{px\+Queue\+To\+Delete }\end{DoxyParamCaption})~\hyperlink{queue_8h_a707cbcfe3aed6b877b6aa6d9d75a3f22}{v\+Queue\+Delete}(px\+Queue\+To\+Delete)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga84040ca0e6ace32d61c5cc5a54acc205}\label{group___f_r_t_o_s1__module_ga84040ca0e6ace32d61c5cc5a54acc205}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Queue\+Unregister\+Queue@{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Unregister\+Queue}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Unregister\+Queue@{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Unregister\+Queue}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Queue\+Unregister\+Queue}{FRTOS1\_vQueueUnregisterQueue}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Queue\+Unregister\+Queue(\begin{DoxyParamCaption}\item[{}]{x\+Queue }\end{DoxyParamCaption})~\hyperlink{queue_8c_ac695c7cde3c32b32a1db4689239603ed}{v\+Queue\+Unregister\+Queue}(x\+Queue)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gac7aa17de6801646d6be7adf73f5abe9d}\label{group___f_r_t_o_s1__module_gac7aa17de6801646d6be7adf73f5abe9d}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Create\+Binary@{F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Create\+Binary}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Create\+Binary@{F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Create\+Binary}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Create\+Binary}{FRTOS1\_vSemaphoreCreateBinary}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Create\+Binary(\begin{DoxyParamCaption}\item[{}]{x\+Semaphore }\end{DoxyParamCaption})~v\+Semaphore\+Create\+Binary(x\+Semaphore)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gabcd302b8e84702f8103fe5f5b3400cf2}\label{group___f_r_t_o_s1__module_gabcd302b8e84702f8103fe5f5b3400cf2}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Delete@{F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Delete}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Delete@{F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Delete}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Delete}{FRTOS1\_vSemaphoreDelete}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Semaphore\+Delete(\begin{DoxyParamCaption}\item[{}]{x\+Semaphore }\end{DoxyParamCaption})~\hyperlink{semphr_8h_acd7d0eda0923d7caeeaaee9202c43eab}{v\+Semaphore\+Delete}(x\+Semaphore)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga31e207c0eb1a496de7069e8ba6573287}\label{group___f_r_t_o_s1__module_ga31e207c0eb1a496de7069e8ba6573287}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay}{FRTOS1\_vTaskDelay}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay(\begin{DoxyParamCaption}\item[{}]{x\+Ticks\+To\+Delay }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a9917b05abb77e75e959151ae67065dce}{v\+Task\+Delay}(x\+Ticks\+To\+Delay)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaac0258bd4992309055d82679f3ed2c71}\label{group___f_r_t_o_s1__module_gaac0258bd4992309055d82679f3ed2c71}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay\+Until@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay\+Until}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay\+Until@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay\+Until}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay\+Until}{FRTOS1\_vTaskDelayUntil}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Task\+Delay\+Until(\begin{DoxyParamCaption}\item[{}]{px\+Previous\+Wake\+Time,  }\item[{}]{x\+Time\+Increment }\end{DoxyParamCaption})~\hyperlink{tasks_8c_abbc32467f223c78ba36f577b56a32897}{v\+Task\+Delay\+Until}(px\+Previous\+Wake\+Time, x\+Time\+Increment)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaadb1f1cae4b01cb6a8a3cdf65f0270a6}\label{group___f_r_t_o_s1__module_gaadb1f1cae4b01cb6a8a3cdf65f0270a6}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Task\+Get\+Info@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Get\+Info}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Task\+Get\+Info@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Get\+Info}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Task\+Get\+Info}{FRTOS1\_vTaskGetInfo}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Task\+Get\+Info(\begin{DoxyParamCaption}\item[{}]{x\+Task,  }\item[{}]{px\+Task\+Status,  }\item[{}]{x\+Get\+Free\+Stack\+Space,  }\item[{}]{e\+State }\end{DoxyParamCaption})~\hyperlink{task_8h_ac08c26d037d0dc685740eec9b2028715}{v\+Task\+Get\+Info}(x\+Task, px\+Task\+Status, x\+Get\+Free\+Stack\+Space, e\+State)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga73c2c7768f269d024adee0678786e15e}\label{group___f_r_t_o_s1__module_ga73c2c7768f269d024adee0678786e15e}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Task\+Notify\+Give\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Notify\+Give\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Task\+Notify\+Give\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Notify\+Give\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Task\+Notify\+Give\+From\+I\+SR}{FRTOS1\_vTaskNotifyGiveFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Task\+Notify\+Give\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Task\+To\+Notify,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a0c31cb4be76285f05909de23ede05331}{v\+Task\+Notify\+Give\+From\+I\+SR}(x\+Task\+To\+Notify, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga23d9e89eba01c0ee9728034c78d496a4}\label{group___f_r_t_o_s1__module_ga23d9e89eba01c0ee9728034c78d496a4}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Task\+Priority\+Set@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Priority\+Set}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Task\+Priority\+Set@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Priority\+Set}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Task\+Priority\+Set}{FRTOS1\_vTaskPrioritySet}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Task\+Priority\+Set(\begin{DoxyParamCaption}\item[{}]{px\+Task,  }\item[{}]{ux\+New\+Priority }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a364e424f7bf8efced5738f44803f6580}{v\+Task\+Priority\+Set}(px\+Task, ux\+New\+Priority)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga3c579d386291c86d2a541b60269d37cf}\label{group___f_r_t_o_s1__module_ga3c579d386291c86d2a541b60269d37cf}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Task\+Resume@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Resume}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Task\+Resume@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Resume}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Task\+Resume}{FRTOS1\_vTaskResume}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Task\+Resume(\begin{DoxyParamCaption}\item[{}]{px\+Task\+To\+Resume }\end{DoxyParamCaption})~\hyperlink{tasks_8c_ad8abaa814e2cfc4830c276415d0935bb}{v\+Task\+Resume}(px\+Task\+To\+Resume)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga7df09f2b8d36c2db315d58cc9879487f}\label{group___f_r_t_o_s1__module_ga7df09f2b8d36c2db315d58cc9879487f}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Task\+Set\+Thread\+Local\+Storage\+Pointer@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Set\+Thread\+Local\+Storage\+Pointer}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Task\+Set\+Thread\+Local\+Storage\+Pointer@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Set\+Thread\+Local\+Storage\+Pointer}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Task\+Set\+Thread\+Local\+Storage\+Pointer}{FRTOS1\_vTaskSetThreadLocalStoragePointer}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Task\+Set\+Thread\+Local\+Storage\+Pointer(\begin{DoxyParamCaption}\item[{}]{x\+Task\+To\+Set,  }\item[{}]{x\+Index,  }\item[{}]{pv\+Value }\end{DoxyParamCaption})~v\+Task\+Set\+Thread\+Local\+Storage\+Pointer(x\+Task\+To\+Set, x\+Index, pv\+Value)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaf792f2c8cca61f076134b057f6029677}\label{group___f_r_t_o_s1__module_gaf792f2c8cca61f076134b057f6029677}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Task\+Start\+Scheduler@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Start\+Scheduler}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Task\+Start\+Scheduler@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Start\+Scheduler}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Task\+Start\+Scheduler}{FRTOS1\_vTaskStartScheduler}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Task\+Start\+Scheduler(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a598661cdd2a6af95a077245d11e3d142}{v\+Task\+Start\+Scheduler}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga4951eb3c0e567bbfa7fe61c2285ede9d}\label{group___f_r_t_o_s1__module_ga4951eb3c0e567bbfa7fe61c2285ede9d}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend}{FRTOS1\_vTaskSuspend}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend(\begin{DoxyParamCaption}\item[{}]{px\+Task\+To\+Suspend }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a7fa54417f854974ae4a2b38729b60f12}{v\+Task\+Suspend}(px\+Task\+To\+Suspend)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga473cb2c53465e4f4e41c98c28cadcbce}\label{group___f_r_t_o_s1__module_ga473cb2c53465e4f4e41c98c28cadcbce}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend\+All@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend\+All}}
+\index{F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend\+All@{F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend\+All}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend\+All}{FRTOS1\_vTaskSuspendAll}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+v\+Task\+Suspend\+All(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a084d232640bd1d04bcac0b8784417015}{v\+Task\+Suspend\+All}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga41690bf5d30d550652e67350237c6585}\label{group___f_r_t_o_s1__module_ga41690bf5d30d550652e67350237c6585}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits}{FRTOS1\_xEventGroupClearBits}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits(\begin{DoxyParamCaption}\item[{}]{x\+Event\+Group,  }\item[{}]{ux\+Bits\+To\+Set }\end{DoxyParamCaption})~\hyperlink{event__groups_8h_a0fb72cfdd4f0d5f86d955fc3af448f2a}{x\+Event\+Group\+Clear\+Bits}(x\+Event\+Group, ux\+Bits\+To\+Set)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga130498ee79ddbd8867a976cf384a47b2}\label{group___f_r_t_o_s1__module_ga130498ee79ddbd8867a976cf384a47b2}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits\+From\+I\+SR}{FRTOS1\_xEventGroupClearBitsFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Clear\+Bits\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Event\+Group,  }\item[{}]{ux\+Bits\+To\+Set }\end{DoxyParamCaption})~\hyperlink{event__groups_8h_a3d7de214a697f33fe7b914e26a93f33a}{x\+Event\+Group\+Clear\+Bits\+From\+I\+SR}(x\+Event\+Group, ux\+Bits\+To\+Set)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga8a23ed0874763be44263ff417691b7f0}\label{group___f_r_t_o_s1__module_ga8a23ed0874763be44263ff417691b7f0}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create}{FRTOS1\_xEventGroupCreate}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{event__groups_8c_a2e8622ce280fff2f60ad867dff0a4519}{x\+Event\+Group\+Create}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gac9eec6e9aa8177a4b977c9923a8ad084}\label{group___f_r_t_o_s1__module_gac9eec6e9aa8177a4b977c9923a8ad084}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create\+Static}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create\+Static}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create\+Static}{FRTOS1\_xEventGroupCreateStatic}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Create\+Static(\begin{DoxyParamCaption}\item[{}]{px\+Event\+Group\+Buffer }\end{DoxyParamCaption})~x\+Event\+Group\+Create\+Static(px\+Event\+Group\+Buffer)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gae2840ba8082df53fca51d57763cc7b0c}\label{group___f_r_t_o_s1__module_gae2840ba8082df53fca51d57763cc7b0c}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits}{FRTOS1\_xEventGroupGetBits}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits(\begin{DoxyParamCaption}\item[{}]{x\+Event\+Group }\end{DoxyParamCaption})~\hyperlink{event__groups_8h_a0ae86f092fb07ccb475ae938f9a12584}{x\+Event\+Group\+Get\+Bits}(x\+Event\+Group)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga864e1abb78f3c4ef96e55fa5edf61d86}\label{group___f_r_t_o_s1__module_ga864e1abb78f3c4ef96e55fa5edf61d86}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits\+From\+I\+SR}{FRTOS1\_xEventGroupGetBitsFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Get\+Bits\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Event\+Group }\end{DoxyParamCaption})~\hyperlink{event__groups_8h_a95822db4357d0b77c35aed0c7427eca0}{x\+Event\+Group\+Get\+Bits\+From\+I\+SR}(x\+Event\+Group)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gacfc13f0806c012d7ce1f45a53652e8d8}\label{group___f_r_t_o_s1__module_gacfc13f0806c012d7ce1f45a53652e8d8}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits}{FRTOS1\_xEventGroupSetBits}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits(\begin{DoxyParamCaption}\item[{}]{x\+Event\+Group,  }\item[{}]{ux\+Bits\+To\+Set }\end{DoxyParamCaption})~\hyperlink{event__groups_8h_a02d7b3bb55f7e11d9c47116266c5fb2e}{x\+Event\+Group\+Set\+Bits}(x\+Event\+Group, ux\+Bits\+To\+Set)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga026d10dcfbf5bb1c651994daeca7d015}\label{group___f_r_t_o_s1__module_ga026d10dcfbf5bb1c651994daeca7d015}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits\+From\+I\+SR}{FRTOS1\_xEventGroupSetBitsFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Set\+Bits\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Event\+Group,  }\item[{}]{ux\+Bits\+To\+Set,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{event__groups_8h_a62b68278abac6358369ae8e390988a02}{x\+Event\+Group\+Set\+Bits\+From\+I\+SR}(x\+Event\+Group, ux\+Bits\+To\+Set, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga7154669843c8ffcb0b8047558cfe33eb}\label{group___f_r_t_o_s1__module_ga7154669843c8ffcb0b8047558cfe33eb}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Sync@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Sync}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Sync@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Sync}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Sync}{FRTOS1\_xEventGroupSync}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Sync(\begin{DoxyParamCaption}\item[{}]{x\+Event\+Group,  }\item[{}]{ux\+Bits\+To\+Set,  }\item[{}]{ux\+Bits\+To\+Wait\+For,  }\item[{}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})~\hyperlink{event__groups_8h_a869511456b86426f52e2eec898bff341}{x\+Event\+Group\+Sync}(x\+Event\+Group, ux\+Bits\+To\+Set, ux\+Bits\+To\+Wait\+For, x\+Ticks\+To\+Wait)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaaaf9b14121ed276e0f561a5a8e1cc861}\label{group___f_r_t_o_s1__module_gaaaf9b14121ed276e0f561a5a8e1cc861}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Wait\+Bits@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Wait\+Bits}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Wait\+Bits@{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Wait\+Bits}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Wait\+Bits}{FRTOS1\_xEventGroupWaitBits}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Event\+Group\+Wait\+Bits(\begin{DoxyParamCaption}\item[{}]{x\+Event\+Group,  }\item[{}]{ux\+Bits\+To\+Wait\+For,  }\item[{}]{x\+Clear\+On\+Exit,  }\item[{}]{x\+Wait\+For\+All\+Bits,  }\item[{}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})~\hyperlink{event__groups_8h_aab9d5b405bc57b7624dcabe9a9a503db}{x\+Event\+Group\+Wait\+Bits}(x\+Event\+Group, ux\+Bits\+To\+Wait\+For, x\+Clear\+On\+Exit, x\+Wait\+For\+All\+Bits, x\+Ticks\+To\+Wait)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga1b1f79bf76eddf7de775d1dad57ff762}\label{group___f_r_t_o_s1__module_ga1b1f79bf76eddf7de775d1dad57ff762}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Port\+Get\+Free\+Heap\+Size@{F\+R\+T\+O\+S1\+\_\+x\+Port\+Get\+Free\+Heap\+Size}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Port\+Get\+Free\+Heap\+Size@{F\+R\+T\+O\+S1\+\_\+x\+Port\+Get\+Free\+Heap\+Size}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Port\+Get\+Free\+Heap\+Size}{FRTOS1\_xPortGetFreeHeapSize}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Port\+Get\+Free\+Heap\+Size(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{portable_8h_a8f72fbee5c25c956bda528299ce6dd02}{x\+Port\+Get\+Free\+Heap\+Size}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gac8252acb1e18de782bb342837c8c8494}\label{group___f_r_t_o_s1__module_gac8252acb1e18de782bb342837c8c8494}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create}{FRTOS1\_xQueueCreate}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create(\begin{DoxyParamCaption}\item[{}]{ux\+Queue\+Length,  }\item[{}]{ux\+Item\+Size }\end{DoxyParamCaption})~x\+Queue\+Create(ux\+Queue\+Length, ux\+Item\+Size)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga5e5ab53690f521cdd9cfd798a4f65bc3}\label{group___f_r_t_o_s1__module_ga5e5ab53690f521cdd9cfd798a4f65bc3}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create\+Static}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create\+Static}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create\+Static}{FRTOS1\_xQueueCreateStatic}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Create\+Static(\begin{DoxyParamCaption}\item[{}]{ux\+Queue\+Length,  }\item[{}]{ux\+Item\+Size,  }\item[{}]{puc\+Queue\+Storage\+Buffer,  }\item[{}]{px\+Queue\+Buffer }\end{DoxyParamCaption})~x\+Queue\+Create\+Static(ux\+Queue\+Length, ux\+Item\+Size, puc\+Queue\+Storage\+Buffer, px\+Queue\+Buffer)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaf9752f7b1658c9ca5975583fa5e7cc5a}\label{group___f_r_t_o_s1__module_gaf9752f7b1658c9ca5975583fa5e7cc5a}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR}{FRTOS1\_xQueueIsQueueEmptyFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Queue }\end{DoxyParamCaption})~\hyperlink{queue_8h_aa11139c58f4eecaa0c50078f2976d010}{x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR}(x\+Queue)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gacd5e9efd0bfea7b8f039e35005631439}\label{group___f_r_t_o_s1__module_gacd5e9efd0bfea7b8f039e35005631439}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Full\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Full\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Full\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Full\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Full\+From\+I\+SR}{FRTOS1\_xQueueIsQueueFullFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Is\+Queue\+Full\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Queue }\end{DoxyParamCaption})~\hyperlink{queue_8h_a81319b3aa562733957c5a12a088516d3}{x\+Queue\+Is\+Queue\+Full\+From\+I\+SR}(x\+Queue)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga88c586d43b510fdf5a316b0ee1e028f7}\label{group___f_r_t_o_s1__module_ga88c586d43b510fdf5a316b0ee1e028f7}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite}{FRTOS1\_xQueueOverwrite}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pv\+Item\+To\+Queue }\end{DoxyParamCaption})~\hyperlink{queue_8h_a8e9ced123b5a0e37a36d3bbdb2e56b4e}{x\+Queue\+Overwrite}(x\+Queue, pv\+Item\+To\+Queue)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga20061a4cc11e7fffd173618f77452ce0}\label{group___f_r_t_o_s1__module_ga20061a4cc11e7fffd173618f77452ce0}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite\+From\+I\+SR}{FRTOS1\_xQueueOverwriteFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Overwrite\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pv\+Item\+To\+Queue,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{queue_8h_abdcd6a86ef82034d002193e79cfd3ce8}{x\+Queue\+Overwrite\+From\+I\+SR}(x\+Queue, pv\+Item\+To\+Queue, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gab392410953e79e4f03f1e842fc42911e}\label{group___f_r_t_o_s1__module_gab392410953e79e4f03f1e842fc42911e}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek}{FRTOS1\_xQueuePeek}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pv\+Buffer,  }\item[{}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})~\hyperlink{queue_8h_a2df70733bb875477cd9614c5b3446257}{x\+Queue\+Peek}(x\+Queue, pv\+Buffer, x\+Ticks\+To\+Wait)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga25b51ac12e32ed1b5da8495eb752ac27}\label{group___f_r_t_o_s1__module_ga25b51ac12e32ed1b5da8495eb752ac27}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek\+From\+I\+SR}{FRTOS1\_xQueuePeekFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Peek\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pv\+Buffer,  }\item[{}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})~\hyperlink{queue_8h_ac402adf98be1fb8ca0345f30dc11a9dc}{x\+Queue\+Peek\+From\+I\+SR}(x\+Queue, pv\+Buffer, x\+Ticks\+To\+Wait)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gad7427f2ce5bedcbb303ab1c78f1b08e8}\label{group___f_r_t_o_s1__module_gad7427f2ce5bedcbb303ab1c78f1b08e8}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive}{FRTOS1\_xQueueReceive}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pv\+Buffer,  }\item[{}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})~\hyperlink{queue_8h_af1549eac0e7f05694a59a0b967c80be3}{x\+Queue\+Receive}(x\+Queue, pv\+Buffer, x\+Ticks\+To\+Wait)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga704b51f1302338d677287f77fc9f2a99}\label{group___f_r_t_o_s1__module_ga704b51f1302338d677287f77fc9f2a99}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive\+From\+I\+SR}{FRTOS1\_xQueueReceiveFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Receive\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pv\+Buffer,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{queue_8h_acdf528f5c91131ae2f31c669cfd65758}{x\+Queue\+Receive\+From\+I\+SR}(x\+Queue, pv\+Buffer, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga2cfa9d51a66095c9a35136aca0a5d686}\label{group___f_r_t_o_s1__module_ga2cfa9d51a66095c9a35136aca0a5d686}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Reset@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Reset}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Reset@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Reset}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Reset}{FRTOS1\_xQueueReset}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Reset(\begin{DoxyParamCaption}\item[{}]{x\+Queue }\end{DoxyParamCaption})~\hyperlink{queue_8h_a94df8d8bc938424151f8196db2f1177b}{x\+Queue\+Reset}(x\+Queue)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga2dafade8e0fcf46fe21f9b1d2607321c}\label{group___f_r_t_o_s1__module_ga2dafade8e0fcf46fe21f9b1d2607321c}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back}{FRTOS1\_xQueueSendToBack}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pv\+Item\+To\+Queue,  }\item[{}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})~\hyperlink{queue_8h_a81d24a2c1199d58efb76fbee15853112}{x\+Queue\+Send\+To\+Back}(x\+Queue, pv\+Item\+To\+Queue, x\+Ticks\+To\+Wait)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gabd9e044ab8e80092cdb4be700154733a}\label{group___f_r_t_o_s1__module_gabd9e044ab8e80092cdb4be700154733a}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back\+From\+I\+SR}{FRTOS1\_xQueueSendToBackFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Back\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pv\+Item\+To\+Queue,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{queue_8h_a51e9f73417b11441a181cdc4f33a68e9}{x\+Queue\+Send\+To\+Back\+From\+I\+SR}(x\+Queue, pv\+Item\+To\+Queue,px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaf9606ddcf23b9e935c653dcbce5876ef}\label{group___f_r_t_o_s1__module_gaf9606ddcf23b9e935c653dcbce5876ef}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front}{FRTOS1\_xQueueSendToFront}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pv\+Item\+To\+Queue,  }\item[{}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})~\hyperlink{queue_8h_aa612fcc2b1ceee0200f34b942e300b41}{x\+Queue\+Send\+To\+Front}(x\+Queue, pv\+Item\+To\+Queue, x\+Ticks\+To\+Wait)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga8197f076cd857ec5476ab2d359edc72a}\label{group___f_r_t_o_s1__module_ga8197f076cd857ec5476ab2d359edc72a}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front\+From\+I\+SR}{FRTOS1\_xQueueSendToFrontFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Queue\+Send\+To\+Front\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Queue,  }\item[{}]{pv\+Item\+To\+Queue,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{queue_8h_af03b83396462affe9e28302660e7b9c6}{x\+Queue\+Send\+To\+Front\+From\+I\+SR}(x\+Queue, pv\+Item\+To\+Queue, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga5c7b8fe8b16e29f5c01be043db9ae724}\label{group___f_r_t_o_s1__module_ga5c7b8fe8b16e29f5c01be043db9ae724}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary}{FRTOS1\_xSemaphoreCreateBinary}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~x\+Semaphore\+Create\+Binary()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaee8fc6683370dc412d53ba3f6df987b6}\label{group___f_r_t_o_s1__module_gaee8fc6683370dc412d53ba3f6df987b6}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary\+Static}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary\+Static}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary\+Static}{FRTOS1\_xSemaphoreCreateBinaryStatic}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Binary\+Static(\begin{DoxyParamCaption}\item[{}]{px\+Semaphore\+Buffer }\end{DoxyParamCaption})~x\+Semaphore\+Create\+Binary\+Static(px\+Semaphore\+Buffer)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaa431f20bcfa36f69179bdb80a798e40a}\label{group___f_r_t_o_s1__module_gaa431f20bcfa36f69179bdb80a798e40a}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting}{FRTOS1\_xSemaphoreCreateCounting}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting(\begin{DoxyParamCaption}\item[{}]{ux\+Max\+Count,  }\item[{}]{ux\+Initial\+Count }\end{DoxyParamCaption})~x\+Semaphore\+Create\+Counting(ux\+Max\+Count, ux\+Initial\+Count)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga45e7bd6787a8b178322d49848ff6f382}\label{group___f_r_t_o_s1__module_ga45e7bd6787a8b178322d49848ff6f382}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting\+Static}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting\+Static}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting\+Static}{FRTOS1\_xSemaphoreCreateCountingStatic}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Counting\+Static(\begin{DoxyParamCaption}\item[{}]{ux\+Max\+Count,  }\item[{}]{ux\+Initial\+Count,  }\item[{}]{px\+Sempahore\+Buffer }\end{DoxyParamCaption})~x\+Semaphore\+Create\+Counting\+Static(ux\+Max\+Count, ux\+Initial\+Count, px\+Sempahore\+Buffer)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gab8e8fcdf8b7ab36ee13bdefd97034ec2}\label{group___f_r_t_o_s1__module_gab8e8fcdf8b7ab36ee13bdefd97034ec2}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex}{FRTOS1\_xSemaphoreCreateMutex}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~x\+Semaphore\+Create\+Mutex()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaa31fd23221fda3263fb4b40b88d1643a}\label{group___f_r_t_o_s1__module_gaa31fd23221fda3263fb4b40b88d1643a}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex\+Static}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex\+Static}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex\+Static}{FRTOS1\_xSemaphoreCreateMutexStatic}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Mutex\+Static(\begin{DoxyParamCaption}\item[{}]{px\+Mutex\+Buffer }\end{DoxyParamCaption})~x\+Semaphore\+Create\+Mutex\+Static(px\+Mutex\+Buffer)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga317f1f005a09cdbe6847dfb5f70d615d}\label{group___f_r_t_o_s1__module_ga317f1f005a09cdbe6847dfb5f70d615d}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex}{FRTOS1\_xSemaphoreCreateRecursiveMutex}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~x\+Semaphore\+Create\+Recursive\+Mutex()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gae842ffded04aade1405792b39f2c0005}\label{group___f_r_t_o_s1__module_gae842ffded04aade1405792b39f2c0005}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex\+Static}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex\+Static}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex\+Static}{FRTOS1\_xSemaphoreCreateRecursiveMutexStatic}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Create\+Recursive\+Mutex\+Static(\begin{DoxyParamCaption}\item[{}]{px\+Mutex\+Buffer }\end{DoxyParamCaption})~x\+Semaphore\+Create\+Recursive\+Mutex\+Static(px\+Mutex\+Buffer)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga93d06bc11bdc64cf1be4a5624db9cde5}\label{group___f_r_t_o_s1__module_ga93d06bc11bdc64cf1be4a5624db9cde5}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Get\+Mutex\+Holder@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Get\+Mutex\+Holder}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Get\+Mutex\+Holder@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Get\+Mutex\+Holder}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Get\+Mutex\+Holder}{FRTOS1\_xSemaphoreGetMutexHolder}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Get\+Mutex\+Holder(\begin{DoxyParamCaption}\item[{}]{x\+Semaphore }\end{DoxyParamCaption})~\hyperlink{semphr_8h_a7403bfbc06fb8449b2334f55d939a4c4}{x\+Semaphore\+Get\+Mutex\+Holder}(x\+Semaphore)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga7f2fc0243afeed67a15187eece8a3455}\label{group___f_r_t_o_s1__module_ga7f2fc0243afeed67a15187eece8a3455}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give}{FRTOS1\_xSemaphoreGive}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give(\begin{DoxyParamCaption}\item[{}]{x\+Mutex }\end{DoxyParamCaption})~\hyperlink{semphr_8h_aae55761cabfa9bf85c8f4430f78c0953}{x\+Semaphore\+Give}(x\+Mutex)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga18a83a2ccf4fa347a7def57ab5da9a24}\label{group___f_r_t_o_s1__module_ga18a83a2ccf4fa347a7def57ab5da9a24}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+From\+I\+SR}{FRTOS1\_xSemaphoreGiveFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Semaphore,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{semphr_8h_a68aa43df8b2a0dbe17d05fad74670ef0}{x\+Semaphore\+Give\+From\+I\+SR}(x\+Semaphore, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga4f388c91ba2f9499d9e6a5f0423e1312}\label{group___f_r_t_o_s1__module_ga4f388c91ba2f9499d9e6a5f0423e1312}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+Recursive@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+Recursive}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+Recursive@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+Recursive}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+Recursive}{FRTOS1\_xSemaphoreGiveRecursive}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Give\+Recursive(\begin{DoxyParamCaption}\item[{}]{x\+Mutex }\end{DoxyParamCaption})~x\+Semaphore\+Give\+Recursive(x\+Mutex)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga29d5d4c3ac382b41af7ead92376a5c2b}\label{group___f_r_t_o_s1__module_ga29d5d4c3ac382b41af7ead92376a5c2b}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take}{FRTOS1\_xSemaphoreTake}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take(\begin{DoxyParamCaption}\item[{}]{x\+Mutex,  }\item[{}]{x\+Block\+Time }\end{DoxyParamCaption})~\hyperlink{semphr_8h_af116e436d2a5ae5bd72dbade2b5ea930}{x\+Semaphore\+Take}(x\+Mutex, x\+Block\+Time)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gacd326292cbd616697e16439191b295af}\label{group___f_r_t_o_s1__module_gacd326292cbd616697e16439191b295af}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+From\+I\+SR}{FRTOS1\_xSemaphoreTakeFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Semaphore,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{semphr_8h_a076419b58e072655686939016e7ca3c5}{x\+Semaphore\+Take\+From\+I\+SR}(x\+Semaphore, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga6593f05f6a61d2cbcc758280687799e4}\label{group___f_r_t_o_s1__module_ga6593f05f6a61d2cbcc758280687799e4}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+Recursive@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+Recursive}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+Recursive@{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+Recursive}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+Recursive}{FRTOS1\_xSemaphoreTakeRecursive}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Semaphore\+Take\+Recursive(\begin{DoxyParamCaption}\item[{}]{x\+Mutex,  }\item[{}]{x\+Block\+Time }\end{DoxyParamCaption})~x\+Semaphore\+Take\+Recursive(x\+Mutex, x\+Block\+Time)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga55bf9a88570413122c2313f4c889b1e4}\label{group___f_r_t_o_s1__module_ga55bf9a88570413122c2313f4c889b1e4}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Create@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Create}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Create@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Create}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Create}{FRTOS1\_xTaskCreate}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Create(\begin{DoxyParamCaption}\item[{}]{pv\+Task\+Code,  }\item[{}]{pc\+Name,  }\item[{}]{us\+Stack\+Depth,  }\item[{}]{pv\+Parameters,  }\item[{}]{ux\+Priority,  }\item[{}]{pv\+Created\+Task }\end{DoxyParamCaption})~x\+Task\+Create(pv\+Task\+Code, pc\+Name, us\+Stack\+Depth, pv\+Parameters, ux\+Priority, pv\+Created\+Task)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga2fc2dc9f0df2c8c50a91a1b6a32bb3b1}\label{group___f_r_t_o_s1__module_ga2fc2dc9f0df2c8c50a91a1b6a32bb3b1}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Create\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Create\+Static}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Create\+Static@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Create\+Static}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Create\+Static}{FRTOS1\_xTaskCreateStatic}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Create\+Static(\begin{DoxyParamCaption}\item[{}]{pv\+Task\+Code,  }\item[{}]{pc\+Name,  }\item[{}]{us\+Stack\+Depth,  }\item[{}]{pv\+Parameters,  }\item[{}]{ux\+Priority,  }\item[{}]{pux\+Stack\+Buffer,  }\item[{}]{px\+Task\+Buffer }\end{DoxyParamCaption})~x\+Task\+Create\+Static(pv\+Task\+Code, pc\+Name, us\+Stack\+Depth, pv\+Parameters, ux\+Priority, pux\+Stack\+Buffer, px\+Task\+Buffer)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga0d404ee76d0ebf0a8c05cc93758c9482}\label{group___f_r_t_o_s1__module_ga0d404ee76d0ebf0a8c05cc93758c9482}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Current\+Task\+Handle@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Current\+Task\+Handle}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Current\+Task\+Handle@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Current\+Task\+Handle}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Current\+Task\+Handle}{FRTOS1\_xTaskGetCurrentTaskHandle}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Current\+Task\+Handle(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a28aaeed93d0de14da726f3a1a8c33251}{x\+Task\+Get\+Current\+Task\+Handle}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga30e411af81b88843d4023f1661e98a30}\label{group___f_r_t_o_s1__module_ga30e411af81b88843d4023f1661e98a30}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Handle@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Handle}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Handle@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Handle}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Handle}{FRTOS1\_xTaskGetHandle}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Handle(\begin{DoxyParamCaption}\item[{}]{pc\+Name\+To\+Query }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a86e945a322943dca5023dc49d1458b0c}{x\+Task\+Get\+Handle}(pc\+Name\+To\+Query)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga719ba1f67fd6fe47bdb913b189d11613}\label{group___f_r_t_o_s1__module_ga719ba1f67fd6fe47bdb913b189d11613}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Idle\+Task\+Handle@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Idle\+Task\+Handle}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Idle\+Task\+Handle@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Idle\+Task\+Handle}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Idle\+Task\+Handle}{FRTOS1\_xTaskGetIdleTaskHandle}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Idle\+Task\+Handle(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a38e3c3df6fc5b28c14459e32474917fb}{x\+Task\+Get\+Idle\+Task\+Handle}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga4c65a3925f657617b2bb70baad5b01ac}\label{group___f_r_t_o_s1__module_ga4c65a3925f657617b2bb70baad5b01ac}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Scheduler\+State@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Scheduler\+State}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Scheduler\+State@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Scheduler\+State}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Scheduler\+State}{FRTOS1\_xTaskGetSchedulerState}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Scheduler\+State(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a95ee42e80f8afd6815d4b7080717cd7f}{x\+Task\+Get\+Scheduler\+State}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga64e1272667e382a1f6f34303551ba5a0}\label{group___f_r_t_o_s1__module_ga64e1272667e382a1f6f34303551ba5a0}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count}{FRTOS1\_xTaskGetTickCount}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a5fa24e36d5e1eeb57f5b73b72ea048e7}{x\+Task\+Get\+Tick\+Count}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga94767df0ea5aaacb1f77ec1ab6d70b89}\label{group___f_r_t_o_s1__module_ga94767df0ea5aaacb1f77ec1ab6d70b89}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count\+From\+I\+SR}{FRTOS1\_xTaskGetTickCountFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Get\+Tick\+Count\+From\+I\+SR(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{tasks_8c_ad58fd766b8f438b5703276f585738762}{x\+Task\+Get\+Tick\+Count\+From\+I\+SR}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga90bc9fa15ace079ad1d8fc419f51365d}\label{group___f_r_t_o_s1__module_ga90bc9fa15ace079ad1d8fc419f51365d}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify}{FRTOS1\_xTaskNotify}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify(\begin{DoxyParamCaption}\item[{}]{x\+Task\+To\+Notify,  }\item[{}]{ul\+Value,  }\item[{}]{e\+Action }\end{DoxyParamCaption})~\hyperlink{task_8h_a0d2d54fb8a64011dfbb54983e4ed06bd}{x\+Task\+Notify}(x\+Task\+To\+Notify, ul\+Value, e\+Action)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga1706d3232e8e1e6c58095692a0601cf5}\label{group___f_r_t_o_s1__module_ga1706d3232e8e1e6c58095692a0601cf5}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query}{FRTOS1\_xTaskNotifyAndQuery}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query(\begin{DoxyParamCaption}\item[{}]{x\+Task\+To\+Notify,  }\item[{}]{ul\+Value,  }\item[{}]{e\+Action,  }\item[{}]{pul\+Previous\+Notify\+Value }\end{DoxyParamCaption})~\hyperlink{task_8h_aaa80adec29a2eebbfe0a551684a0acca}{x\+Task\+Notify\+And\+Query}(x\+Task\+To\+Notify, ul\+Value, e\+Action, pul\+Previous\+Notify\+Value)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga0eb38927fbf0d0c1f6a5f3f24c9d25c3}\label{group___f_r_t_o_s1__module_ga0eb38927fbf0d0c1f6a5f3f24c9d25c3}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query\+From\+I\+SR}{FRTOS1\_xTaskNotifyAndQueryFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+And\+Query\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Task\+To\+Notify,  }\item[{}]{ul\+Value,  }\item[{}]{e\+Action,  }\item[{}]{pul\+Previous\+Notify\+Value,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{task_8h_a5c491b42e243a91c7473887d1fb96dd5}{x\+Task\+Notify\+And\+Query\+From\+I\+SR}(x\+Task\+To\+Notify, ul\+Value, e\+Action, pul\+Previous\+Notify\+Value, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga9943041478b4b481aa0a8670c6edd4be}\label{group___f_r_t_o_s1__module_ga9943041478b4b481aa0a8670c6edd4be}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+From\+I\+SR}{FRTOS1\_xTaskNotifyFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Task\+To\+Notify,  }\item[{}]{ul\+Value,  }\item[{}]{e\+Action,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{task_8h_a1ed9129068b96a909356bd0369c5ecb0}{x\+Task\+Notify\+From\+I\+SR}(x\+Task\+To\+Notify, ul\+Value, e\+Action, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga21518a501d4f0f93d5621994c584d46a}\label{group___f_r_t_o_s1__module_ga21518a501d4f0f93d5621994c584d46a}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Give@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Give}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Give@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Give}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Give}{FRTOS1\_xTaskNotifyGive}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Give(\begin{DoxyParamCaption}\item[{}]{x\+Task\+To\+Notify }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga8410210c01dcbc1ecdaba90f141a4732}\label{group___f_r_t_o_s1__module_ga8410210c01dcbc1ecdaba90f141a4732}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+State\+Clear@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+State\+Clear}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+State\+Clear@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+State\+Clear}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+State\+Clear}{FRTOS1\_xTaskNotifyStateClear}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+State\+Clear(\begin{DoxyParamCaption}\item[{}]{x\+Task }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a4cb6c908a9d2d733e9d519d7dc27bb34}{x\+Task\+Notify\+State\+Clear}(x\+Task)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaa6ec29b95f2aeecae38d52ed20d63c10}\label{group___f_r_t_o_s1__module_gaa6ec29b95f2aeecae38d52ed20d63c10}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Wait@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Wait}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Wait@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Wait}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Wait}{FRTOS1\_xTaskNotifyWait}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Notify\+Wait(\begin{DoxyParamCaption}\item[{}]{ul\+Bits\+To\+Clear\+On\+Entry,  }\item[{}]{ul\+Bits\+To\+Clear\+On\+Exit,  }\item[{}]{pul\+Notification\+Value,  }\item[{}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a7cab914767933dc732f2c36e3915f6b0}{x\+Task\+Notify\+Wait}(ul\+Bits\+To\+Clear\+On\+Entry, ul\+Bits\+To\+Clear\+On\+Exit, pul\+Notification\+Value, x\+Ticks\+To\+Wait)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga0b808ab2b4a42ef92dc5b7df25094b13}\label{group___f_r_t_o_s1__module_ga0b808ab2b4a42ef92dc5b7df25094b13}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+All@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+All}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+All@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+All}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+All}{FRTOS1\_xTaskResumeAll}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+All(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{tasks_8c_adf830ea0f150fcdfdaa944667137f080}{x\+Task\+Resume\+All}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga93f84683e0388ccd7a44fc1e9117116e}\label{group___f_r_t_o_s1__module_ga93f84683e0388ccd7a44fc1e9117116e}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+From\+I\+SR}{FRTOS1\_xTaskResumeFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Task\+Resume\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{px\+Task\+To\+Resume }\end{DoxyParamCaption})~\hyperlink{tasks_8c_a17fb13e7325d9dee9dec76f4a736138b}{x\+Task\+Resume\+From\+I\+SR}(px\+Task\+To\+Resume)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga9575ef52338eb3c6f66e019595582fc9}\label{group___f_r_t_o_s1__module_ga9575ef52338eb3c6f66e019595582fc9}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period}{FRTOS1\_xTimerChangePeriod}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period(\begin{DoxyParamCaption}\item[{}]{x\+Timer,  }\item[{}]{x\+New\+Period,  }\item[{}]{x\+Block\+Time }\end{DoxyParamCaption})~\hyperlink{timers_8h_ab12eac1c69a3437b8161ce81ff34b2f4}{x\+Timer\+Change\+Period}(x\+Timer, x\+New\+Period, x\+Block\+Time)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga3774e7903c882b320eba3dd4abb349db}\label{group___f_r_t_o_s1__module_ga3774e7903c882b320eba3dd4abb349db}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period\+From\+I\+SR}{FRTOS1\_xTimerChangePeriodFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Change\+Period\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Timer,  }\item[{}]{x\+New\+Period,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{timers_8h_a6d89ca6afb6e692e98932b5038c9e14a}{x\+Timer\+Change\+Period\+From\+I\+SR}(x\+Timer, x\+New\+Period, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga998dd1002dc0119219ef6ccd6bf5e5b7}\label{group___f_r_t_o_s1__module_ga998dd1002dc0119219ef6ccd6bf5e5b7}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Create@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Create}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Create@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Create}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Create}{FRTOS1\_xTimerCreate}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Create(\begin{DoxyParamCaption}\item[{}]{pc\+Timer\+Name,  }\item[{}]{x\+Timer\+Period,  }\item[{}]{ux\+Auto\+Reload,  }\item[{}]{pv\+Timer\+ID,  }\item[{}]{px\+Callback\+Function }\end{DoxyParamCaption})~x\+Timer\+Create(pc\+Timer\+Name, x\+Timer\+Period, ux\+Auto\+Reload, pv\+Timer\+ID, px\+Callback\+Function)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga4d68b3fec5c82215774a6243b14feace}\label{group___f_r_t_o_s1__module_ga4d68b3fec5c82215774a6243b14feace}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Delete@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Delete}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Delete@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Delete}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Delete}{FRTOS1\_xTimerDelete}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Delete(\begin{DoxyParamCaption}\item[{}]{x\+Timer,  }\item[{}]{x\+Block\+Time }\end{DoxyParamCaption})~\hyperlink{timers_8h_a8c8e21f05ebe92e15449addc5d269d10}{x\+Timer\+Delete}(x\+Timer, x\+Block\+Time)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga7ed8fb2b7f99b344ac287c969c50194c}\label{group___f_r_t_o_s1__module_ga7ed8fb2b7f99b344ac287c969c50194c}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Get\+Timer\+Daemon\+Task\+Handle@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Get\+Timer\+Daemon\+Task\+Handle}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Get\+Timer\+Daemon\+Task\+Handle@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Get\+Timer\+Daemon\+Task\+Handle}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Get\+Timer\+Daemon\+Task\+Handle}{FRTOS1\_xTimerGetTimerDaemonTaskHandle}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Get\+Timer\+Daemon\+Task\+Handle(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{timers_8h_ad2a0d15a1e213493bd898e748d9f7555}{x\+Timer\+Get\+Timer\+Daemon\+Task\+Handle}()}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gac2a1918e4cb5def0bb5e75d2800ffae8}\label{group___f_r_t_o_s1__module_gac2a1918e4cb5def0bb5e75d2800ffae8}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Is\+Timer\+Active@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Is\+Timer\+Active}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Is\+Timer\+Active@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Is\+Timer\+Active}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Is\+Timer\+Active}{FRTOS1\_xTimerIsTimerActive}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Is\+Timer\+Active(\begin{DoxyParamCaption}\item[{}]{x\+Timer }\end{DoxyParamCaption})~\hyperlink{timers_8h_a2cd9b1399fb25203be698f123846dc33}{x\+Timer\+Is\+Timer\+Active}(x\+Timer)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga6c21b01372d4e1ae37373834463931b9}\label{group___f_r_t_o_s1__module_ga6c21b01372d4e1ae37373834463931b9}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call}{FRTOS1\_xTimerPendFunctionCall}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call(\begin{DoxyParamCaption}\item[{}]{x\+Function\+To\+Pend,  }\item[{}]{pv\+Parameter1,  }\item[{}]{ul\+Parameter2,  }\item[{}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})~\hyperlink{timers_8h_a04e031135bd3276caaedd656d464dc23}{x\+Timer\+Pend\+Function\+Call}(x\+Function\+To\+Pend, pv\+Parameter1, ul\+Parameter2, x\+Ticks\+To\+Wait)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga4363dc4e6778d35b6690ccd1b00360f4}\label{group___f_r_t_o_s1__module_ga4363dc4e6778d35b6690ccd1b00360f4}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call\+From\+I\+SR}{FRTOS1\_xTimerPendFunctionCallFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Pend\+Function\+Call\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Function\+To\+Pend,  }\item[{}]{pv\+Parameter1,  }\item[{}]{ul\+Parameter2,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{timers_8h_ae0d9338933037e6feebe6437763fa299}{x\+Timer\+Pend\+Function\+Call\+From\+I\+SR}(x\+Function\+To\+Pend, pv\+Parameter1, ul\+Parameter2, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga64fb9b2acbe89ba94210906b511f85a7}\label{group___f_r_t_o_s1__module_ga64fb9b2acbe89ba94210906b511f85a7}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset}{FRTOS1\_xTimerReset}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset(\begin{DoxyParamCaption}\item[{}]{x\+Timer,  }\item[{}]{x\+Block\+Time }\end{DoxyParamCaption})~\hyperlink{timers_8h_a8081b4541b752908dc55df2693e53287}{x\+Timer\+Reset}(x\+Timer, x\+Block\+Time)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga42fcc986fc89e580b9ceb148b0d8bbe9}\label{group___f_r_t_o_s1__module_ga42fcc986fc89e580b9ceb148b0d8bbe9}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset\+From\+I\+SR}{FRTOS1\_xTimerResetFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Reset\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Timer,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{timers_8h_a448138d0cebf76044f107ca56c842230}{x\+Timer\+Reset\+From\+I\+SR}(x\+Timer, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gadde1abf221f90cfea859799e54320aba}\label{group___f_r_t_o_s1__module_gadde1abf221f90cfea859799e54320aba}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start}{FRTOS1\_xTimerStart}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start(\begin{DoxyParamCaption}\item[{}]{x\+Timer,  }\item[{}]{x\+Block\+Time }\end{DoxyParamCaption})~\hyperlink{timers_8h_a3a9b838f48991e852ce05c986b0eeb8c}{x\+Timer\+Start}(x\+Timer, x\+Block\+Time)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga6b25b13dac5c52cb4b3446715b0de4b5}\label{group___f_r_t_o_s1__module_ga6b25b13dac5c52cb4b3446715b0de4b5}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start\+From\+I\+SR}{FRTOS1\_xTimerStartFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Start\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Timer,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{timers_8h_adab5809f9679e44a343b8dbb8fb7c67f}{x\+Timer\+Start\+From\+I\+SR}(x\+Timer, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gabb40a93c1aac5b401432f89a7844bcd4}\label{group___f_r_t_o_s1__module_gabb40a93c1aac5b401432f89a7844bcd4}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop}{FRTOS1\_xTimerStop}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop(\begin{DoxyParamCaption}\item[{}]{x\+Timer,  }\item[{}]{x\+Block\+Time }\end{DoxyParamCaption})~\hyperlink{timers_8h_a8327c7fc10aee414cb163b445c5269a4}{x\+Timer\+Stop}(x\+Timer, x\+Block\+Time)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaa0fc454ad8976c63fae1e5e73e835029}\label{group___f_r_t_o_s1__module_gaa0fc454ad8976c63fae1e5e73e835029}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop\+From\+I\+SR}{FRTOS1\_xTimerStopFromISR}}
+{\footnotesize\ttfamily \#define F\+R\+T\+O\+S1\+\_\+x\+Timer\+Stop\+From\+I\+SR(\begin{DoxyParamCaption}\item[{}]{x\+Timer,  }\item[{}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})~\hyperlink{timers_8h_aef0f53e7ecfaa881621da83d61072db7}{x\+Timer\+Stop\+From\+I\+SR}(x\+Timer, px\+Higher\+Priority\+Task\+Woken)}
+
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga2ba609c134ea5b867c383afbd7191df0}\label{group___f_r_t_o_s1__module_ga2ba609c134ea5b867c383afbd7191df0}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+I\+N\+IT@{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+I\+N\+IT}}
+\index{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+I\+N\+IT@{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+I\+N\+IT}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+I\+N\+IT}{PEX\_RTOS\_INIT}}
+{\footnotesize\ttfamily \#define P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+I\+N\+IT(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{comment}{/* macro called from PE\_low\_level\_init() */} \(\backslash\)
+    FRTOS1\_Init();
+\end{DoxyCode}
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga78984a86d3c0738dfba6c7cffb1f9766}\label{group___f_r_t_o_s1__module_ga78984a86d3c0738dfba6c7cffb1f9766}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+S\+T\+A\+RT@{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+S\+T\+A\+RT}}
+\index{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+S\+T\+A\+RT@{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+S\+T\+A\+RT}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+S\+T\+A\+RT}{PEX\_RTOS\_START}}
+{\footnotesize\ttfamily \#define P\+E\+X\+\_\+\+R\+T\+O\+S\+\_\+\+S\+T\+A\+RT(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{group___f_r_t_o_s1__module_gaf792f2c8cca61f076134b057f6029677}{F\+R\+T\+O\+S1\+\_\+v\+Task\+Start\+Scheduler}()}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga978b77c999725d30847a41f218210fd5}\label{group___f_r_t_o_s1__module_ga978b77c999725d30847a41f218210fd5}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!Tsize\+\_\+t@{Tsize\+\_\+t}}
+\index{Tsize\+\_\+t@{Tsize\+\_\+t}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{Tsize\+\_\+t}{Tsize\_t}}
+{\footnotesize\ttfamily typedef size\+\_\+t \hyperlink{group___f_r_t_o_s1__module_ga978b77c999725d30847a41f218210fd5}{Tsize\+\_\+t}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaec4d75a40722a373e88bd57c4e899940}\label{group___f_r_t_o_s1__module_gaec4d75a40722a373e88bd57c4e899940}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+\+App\+Configure\+Timer\+For\+Runtime\+Stats@{F\+R\+T\+O\+S1\+\_\+\+App\+Configure\+Timer\+For\+Runtime\+Stats}}
+\index{F\+R\+T\+O\+S1\+\_\+\+App\+Configure\+Timer\+For\+Runtime\+Stats@{F\+R\+T\+O\+S1\+\_\+\+App\+Configure\+Timer\+For\+Runtime\+Stats}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+\+App\+Configure\+Timer\+For\+Runtime\+Stats()}{FRTOS1\_AppConfigureTimerForRuntimeStats()}}
+{\footnotesize\ttfamily void F\+R\+T\+O\+S1\+\_\+\+App\+Configure\+Timer\+For\+Runtime\+Stats (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gab1438703d0c195f86363fd284f256948}\label{group___f_r_t_o_s1__module_gab1438703d0c195f86363fd284f256948}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+\+App\+Get\+Runtime\+Counter\+Value\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+\+App\+Get\+Runtime\+Counter\+Value\+From\+I\+SR}}
+\index{F\+R\+T\+O\+S1\+\_\+\+App\+Get\+Runtime\+Counter\+Value\+From\+I\+SR@{F\+R\+T\+O\+S1\+\_\+\+App\+Get\+Runtime\+Counter\+Value\+From\+I\+SR}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+\+App\+Get\+Runtime\+Counter\+Value\+From\+I\+S\+R()}{FRTOS1\_AppGetRuntimeCounterValueFromISR()}}
+{\footnotesize\ttfamily uint32\+\_\+t F\+R\+T\+O\+S1\+\_\+\+App\+Get\+Runtime\+Counter\+Value\+From\+I\+SR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gae59cd6cf4cfc95ca846900a4c8341760}\label{group___f_r_t_o_s1__module_gae59cd6cf4cfc95ca846900a4c8341760}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+\+Deinit@{F\+R\+T\+O\+S1\+\_\+\+Deinit}}
+\index{F\+R\+T\+O\+S1\+\_\+\+Deinit@{F\+R\+T\+O\+S1\+\_\+\+Deinit}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+\+Deinit()}{FRTOS1\_Deinit()}}
+{\footnotesize\ttfamily void F\+R\+T\+O\+S1\+\_\+\+Deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_gaa6736fa261f845b8f407ca839b14c340}\label{group___f_r_t_o_s1__module_gaa6736fa261f845b8f407ca839b14c340}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!F\+R\+T\+O\+S1\+\_\+\+Init@{F\+R\+T\+O\+S1\+\_\+\+Init}}
+\index{F\+R\+T\+O\+S1\+\_\+\+Init@{F\+R\+T\+O\+S1\+\_\+\+Init}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+\+Init()}{FRTOS1\_Init()}}
+{\footnotesize\ttfamily void F\+R\+T\+O\+S1\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga511c6a9f325400e54badcc5d912d2917}\label{group___f_r_t_o_s1__module_ga511c6a9f325400e54badcc5d912d2917}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!v\+Port\+Pend\+S\+V\+Handler@{v\+Port\+Pend\+S\+V\+Handler}}
+\index{v\+Port\+Pend\+S\+V\+Handler@{v\+Port\+Pend\+S\+V\+Handler}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{v\+Port\+Pend\+S\+V\+Handler()}{vPortPendSVHandler()}}
+{\footnotesize\ttfamily void v\+Port\+Pend\+S\+V\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga859e86b6143d6bc4cf96b2867f408c75}\label{group___f_r_t_o_s1__module_ga859e86b6143d6bc4cf96b2867f408c75}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!v\+Port\+S\+V\+C\+Handler@{v\+Port\+S\+V\+C\+Handler}}
+\index{v\+Port\+S\+V\+C\+Handler@{v\+Port\+S\+V\+C\+Handler}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{v\+Port\+S\+V\+C\+Handler()}{vPortSVCHandler()}}
+{\footnotesize\ttfamily void v\+Port\+S\+V\+C\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{group___f_r_t_o_s1__module_ga1f0fdb64040c66499e4e087bed8b2c90}\label{group___f_r_t_o_s1__module_ga1f0fdb64040c66499e4e087bed8b2c90}} 
+\index{F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}!v\+Port\+Tick\+Handler@{v\+Port\+Tick\+Handler}}
+\index{v\+Port\+Tick\+Handler@{v\+Port\+Tick\+Handler}!F\+R\+T\+O\+S1 module documentation@{F\+R\+T\+O\+S1 module documentation}}
+\subsubsection{\texorpdfstring{v\+Port\+Tick\+Handler()}{vPortTickHandler()}}
+{\footnotesize\ttfamily void v\+Port\+Tick\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 6

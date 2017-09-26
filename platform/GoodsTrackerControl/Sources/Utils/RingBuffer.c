@@ -71,15 +71,13 @@ inline short getCount(RingBuffer* buffer){
 }
 //------------------------------------------------------------------------
 
-void putString(RingBuffer* buffer,const char* str){
+void putString(RingBuffer* buffer,char* str){
 
-	char* p = (char *)str;
+	if(str!=NULL){
 
-	if(p!=NULL){
+		while(*str!='\0'){
 
-		while(*p!='\0'){
-
-			putData(buffer,*p++);
+			putData(buffer,*str++);
 		}
 	}
 }

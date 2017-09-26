@@ -58,7 +58,7 @@ void updateTLM(Telemetria* tlm,uint32_t ulNotifiedValue){
 		updateDataAcce(tlm);
 
 		//Gera evento de atualização do LCD
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_XYZ);
+		ihm_event_notify(BIT_UPDATE_LCD_XYZ);
 	}
 
 	if(ulNotifiedValue & BIT_UPDATE_AD){

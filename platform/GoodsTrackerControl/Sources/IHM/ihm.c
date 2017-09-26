@@ -13,23 +13,29 @@
 #include "lcd.h"
 #include "XF1.h"
 
+#include "gps.h"
 #include "application.h"
+#include "protocol.h"
 #include "clock.h"
 #include "ihm.h"
 
-static int time_splah	= 2;		//2 segundos
+static screen active_screen;
+static char line_lcd[17];
 
-static ihmStruct ihmGlobal;
+static int time_splash	= 3;		//3 segundos
 
 TaskHandle_t	xHandleIHMTask;
 
-EventGroupHandle_t	ihm_events;
+static EventGroupHandle_t	ihm_events;
 
 void ihm_task(void) {
 
 	EventBits_t uxBits	= xEventGroupWaitBits(
 									ihm_events,
-									BIT_UPDATE_LCD | BIT_UPDATE_LCD_XYZ,
+									BIT_UPDATE_LCD |
+									BIT_UPDATE_LCD_XYZ |
+									BIT_UPDATE_LCD_STAT_COM |
+									BIT_UPDATE_LCD_STAT_GPS,
 									pdTRUE,
 									pdFALSE,
 									portMAX_DELAY );
@@ -37,46 +43,77 @@ void ihm_task(void) {
 
 	if(uxBits & BIT_UPDATE_LCD_XYZ){
 
-		if(!time_splah){
-			printAccelerometer();
-		}
+		printAccelerometer();
 	}
 
 	if(uxBits & BIT_UPDATE_LCD){
 
-		if(time_splah){
+		printClock();
+	}
 
-			time_splah--;
+	if(uxBits & BIT_UPDATE_LCD_STAT_COM){
 
-			// Mostrando o splah
+		printStatCom();
+	}
 
-		}else {
+	if(uxBits & BIT_UPDATE_LCD_STAT_GPS){
 
-			printClock();
-		}
+		printStatGPS();
 	}
 }
 //-----------------------------------------------------------------------------------------
 
 void printAccelerometer(void){
 
-	char buffer_lcd[17];
-
-	memset(buffer_lcd,0,17);
-
-	XF1_xsprintf(buffer_lcd,"%c%.2f%c%.2f%c%.2f",	telemetria.Accelerometer.x_g>0?'+':'-',fabs(telemetria.Accelerometer.x_g),
+	XF1_xsprintf(line_lcd,"%c%.2f%c%.2f%c%.2f",	telemetria.Accelerometer.x_g>0?'+':'-',fabs(telemetria.Accelerometer.x_g),
 													telemetria.Accelerometer.y_g>0?'+':'-',fabs(telemetria.Accelerometer.y_g),
 													telemetria.Accelerometer.z_g>0?'+':'-',fabs(telemetria.Accelerometer.z_g)
 													);
 
-	printLCD(1,1,buffer_lcd);
+	printLCD(1,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
 
-void printSplah(void){
+void printStatCom(void){
 
-	printLCD(1,1," .GOODSTRACKER. ");
-	printLCD(2,1,"    VER. 0.2    ");
+	static int max_count_tx=0,max_count_rx=0;
+
+	if(bufferRx.count>max_count_rx){
+		max_count_rx = bufferRx.count;
+	}
+
+	if(bufferTx.count>max_count_tx){
+		max_count_tx = bufferTx.count;
+	}
+
+	XF1_xsprintf(line_lcd,"RX:%03d          ",max_count_rx);
+	printLCD(1,1,line_lcd);
+
+	XF1_xsprintf(line_lcd,"TX:%03d          ",max_count_tx);
+	printLCD(2,1,line_lcd);
+}
+//-----------------------------------------------------------------------------------------
+
+void printStatGPS(void){
+
+	static int max=0;
+
+	if(bufferRxNMEA.count>max){
+		max = bufferRxNMEA.count;
+	}
+
+	XF1_xsprintf(line_lcd,"RX:%03d          ",max);
+	printLCD(1,1,line_lcd);
+
+	XF1_xsprintf(line_lcd,"RX: C:%03d P:%03d ",bufferRxNMEA.index_consumer,bufferRxNMEA.index_producer);
+	printLCD(2,1,line_lcd);
+}
+//-----------------------------------------------------------------------------------------
+
+void printSplash(void){
+
+	printLCD(1,1,"**GOODSTRACKER**");
+	printLCD(2,1,"    VER. 0.3    ");
 }
 //-----------------------------------------------------------------------------------------
 
@@ -84,24 +121,21 @@ void printClock(void){
 
 	LDD_RTC_TTime	time;
 
-	char buffer_lcd[17];
-	buffer_lcd[0] = '\0';
-
 	switch(statuc_clock){
 
 		case CLOCK_INIT:
-			XF1_xsprintf(buffer_lcd,"    CLKINIT    ");
+			XF1_xsprintf(line_lcd,"    CLKINIT    ");
 
 			break;
 		case CLOCK_STARTED:
-			XF1_xsprintf(buffer_lcd,"    CLKSTART    ");
+			XF1_xsprintf(line_lcd,"    CLKSTART    ");
 			break;
 		case CLOCK_UPDATE:
-			XF1_xsprintf(buffer_lcd,"     CLKUPD     ");
+			XF1_xsprintf(line_lcd,"     CLKUPD     ");
 			break;
 		case CLOCK_ADJUSTED:
 			if(getLocalClock(&time)){
-				XF1_xsprintf(buffer_lcd," %02d.%02d %02d:%02d:%02d \n",time.Day,time.Month,time.Hour, time.Minute, time.Second);
+				XF1_xsprintf(line_lcd," %02d.%02d %02d:%02d:%02d \n",time.Day,time.Month,time.Hour, time.Minute, time.Second);
 
 			}else{
 				statuc_clock = CLOCK_ERROR;
@@ -110,12 +144,12 @@ void printClock(void){
 			break;
 
 		case CLOCK_ERROR:
-			XF1_xsprintf(buffer_lcd,"     ERROR     ");
+			XF1_xsprintf(line_lcd,"     ERROR     ");
 			break;
 
 	}
 
-	printLCD(2,1,buffer_lcd);
+	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
 
@@ -125,6 +159,53 @@ void printLCD(int linha,int col,char* str){
 	LCDWriteString(str);
 }
 //-----------------------------------------------------------------------------------------
+
+void ihm_event_notify(const EventBits_t uxBitsToSet){
+
+	bool flag = false;
+
+	if((active_screen ==SCREEN_CLOCK) && (uxBitsToSet & BIT_UPDATE_LCD)){
+
+		flag = true;
+	}
+
+	if((active_screen ==SCREEN_ACCE) && (uxBitsToSet & BIT_UPDATE_LCD_XYZ)){
+
+		flag = true;
+	}
+
+	if((active_screen ==SCREEN_STAT_COM) && (uxBitsToSet & BIT_UPDATE_LCD_STAT_COM)){
+
+		flag = true;
+	}
+
+	if((active_screen ==SCREEN_STAT_GPS) && (uxBitsToSet & BIT_UPDATE_LCD_STAT_GPS)){
+
+		flag = true;
+	}
+
+	if(flag){
+
+		xEventGroupSetBits(ihm_events, uxBitsToSet);
+	}
+}
+//-----------------------------------------------------------------------------------------
+
+void ihm_handle_update(void){
+
+	if(time_splash>0){
+
+		if(--time_splash<=0){
+
+			active_screen = SCREEN_CLOCK;
+		}
+	}else{
+
+		ihm_event_notify(BIT_UPDATE_LCD);
+	}
+}
+//-----------------------------------------------------------------------------------------
+
 
 /*
  *
@@ -139,117 +220,13 @@ void ihm_init(void) {
 
 	LCDInit();
 
-	printSplah();
+	active_screen = SCREEN_SPLASH;
 
-	initEvents();
+	printSplash();
 }
 //-----------------------------------------------------------------------------------------
 
 void ihm_deInit(void) {
 
-}
-//-----------------------------------------------------------------------------------------
-
-void ihm_process_events(ihmStruct *ihm) {
-
-	if (ihm) {
-#if 0
-		//TODO - ISSO � S� UMA VERS�O PRELIMINAR, O CERTO � TRATAR COMO RingBuffer
-		UINT8 evmax = ihm->ihmEventBuffer.head;
-		unsigned char i;
-		for (i = 0; i < evmax; i++) {
-			ihmEvent *ev = &ihm->ihmEventBuffer.event[i];
-			ihm_process_event(ev);
-		}
-#endif
-	}
-}
-//-----------------------------------------------------------------------------------------
-
-static void ihm_process_event(ihmEvent *ev) {
-
-	if (ev) {
-
-		switch (ev->evType) {
-		case IHM_EVENT_NONE:
-			break;
-		case IHM_EVENT_CHOOSE_LEFT:
-			LCDClear();
-			LCDWriteString("ESQUERDA");
-			break;
-		case IHM_EVENT_CHOOSE_RIGHT:
-			LCDClear();
-			LCDWriteString("DIREITA");
-			break;
-		case IHM_EVENT_CHOOSE_OK:
-			LCDClear();
-			LCDWriteString("OK");
-			break;
-		default:
-			break;
-		}
-
-	}
-}
-//-----------------------------------------------------------------------------------------
-
-//TODO - IMPLEMENTAR CHAMADA PARA RECEBER EVENTOS EM GERAL, ABSTRAIR MELHOR O HARDWARE
-//TODO - POR ENQUANTO FICA ASSIM PARA IMPLEMENTA��O B�SICA
-int ihm_put_slide_event(TSS_CSASlider *event) {
-
-	if (event == NULL)
-		return -1;
-
-	if (TSSin_cKey0.DynamicStatus.Movement) {
-		UINT8 evposit = ihmGlobal.ihmEventBuffer.head;
-		if (evposit >= IHM_MAX_EVENTS)
-			evposit = 0;
-		else
-			evposit++;
-
-		ihmGlobal.ihmEventBuffer.head = evposit;
-
-		ihmEvent *ev = &ihmGlobal.ihmEventBuffer.event[evposit];
-
-		if (TSSin_cKey0.Events.Touch) {
-			if (!(TSSin_cKey0.Events.InvalidPos)) {
-
-				ev->evType = IHM_EVENT_CHOOSE_OK;
-			}
-		}
-
-		if (TSSin_cKey0.DynamicStatus.Displacement > (UINT8) 15) {
-			if (TSSin_cKey0.DynamicStatus.Direction) {
-
-				ev->evType = IHM_EVENT_CHOOSE_LEFT;
-			} else {
-
-				ev->evType = IHM_EVENT_CHOOSE_RIGHT;
-			}
-		}
-
-	}
-
-	return 0;
-}
-//-----------------------------------------------------------------------------------------
-
-/*
- * Inicializa a estrutura de eventos
- *
- */
-void initEvents(void){
-
-	unsigned char i;
-	ihmGlobal.option = 0;
-
-	ihmGlobal.ihmEventBuffer.head = 0;
-	ihmGlobal.ihmEventBuffer.tail = 0;
-
-	for (i = 0; i < IHM_MAX_EVENTS; i++) {
-		ihmGlobal.ihmEventBuffer.event[i].evType = IHM_EVENT_NONE;
-		/*INICIALIZAMOS COMO J� TRATADO PARA N�O ENTRAR A 1a VEZ A TOA*/
-		ihmGlobal.ihmEventBuffer.event[i].eventTreated = true;
-	}
 }
 //-----------------------------------------------------------------------------------------

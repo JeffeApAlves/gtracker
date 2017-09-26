@@ -1,0 +1,142 @@
+\hypertarget{ihm_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+I\+H\+M/ihm.c File Reference}
+\label{ihm_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+I\+H\+M/ihm.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+I\+H\+M/ihm.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}T\+S\+Sin.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}X\+F1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gps.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}application.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}protocol.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ihm.\+h\char`\"{}}\newline
+Include dependency graph for ihm.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{ihm_8c_ac0d0f6666ddf438052d064944f013a66}{ihm\+\_\+task} (void)
+\item 
+void \hyperlink{ihm_8c_a9befc3c004d018e2c3797510b8edd626}{print\+Accelerometer} (void)
+\item 
+void \hyperlink{ihm_8c_aaf351523f863052651b11a58c77dcef7}{print\+Stat\+Com} (void)
+\item 
+void \hyperlink{ihm_8c_a27fc124c43c9544a1b0afc58e9a535d1}{print\+Stat\+G\+PS} (void)
+\item 
+void \hyperlink{ihm_8c_a64aa0a8973357ff0206a6cff9c0a1177}{print\+Splash} (void)
+\item 
+void \hyperlink{ihm_8c_a1738496bf95622a87ffff6a884d79b93}{print\+Clock} (void)
+\item 
+void \hyperlink{ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a}{print\+L\+CD} (int linha, int col, char $\ast$str)
+\item 
+void \hyperlink{ihm_8c_aae71b0cc97b53ec475e8ac3a3b225c7c}{ihm\+\_\+event\+\_\+notify} (const \hyperlink{event__groups_8h_ab2f21b93db0b2a0ab64d7a81ff32ac2e}{Event\+Bits\+\_\+t} ux\+Bits\+To\+Set)
+\item 
+void \hyperlink{ihm_8c_ab5b9d955132087ac121d2ce9666d3135}{ihm\+\_\+handle\+\_\+update} (void)
+\item 
+void \hyperlink{ihm_8c_ab7525a17874344457aed52055ffa7a0e}{ihm\+\_\+init} (void)
+\item 
+void \hyperlink{ihm_8c_a83a6ff6445a0ad9d23957ec3c1491709}{ihm\+\_\+de\+Init} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} \hyperlink{ihm_8c_ad58fa417ce33baeb6bc5ca8763918ec4}{x\+Handle\+I\+H\+M\+Task}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{ihm_8c_a83a6ff6445a0ad9d23957ec3c1491709}\label{ihm_8c_a83a6ff6445a0ad9d23957ec3c1491709}} 
+\index{ihm.\+c@{ihm.\+c}!ihm\+\_\+de\+Init@{ihm\+\_\+de\+Init}}
+\index{ihm\+\_\+de\+Init@{ihm\+\_\+de\+Init}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{ihm\+\_\+de\+Init()}{ihm\_deInit()}}
+{\footnotesize\ttfamily void ihm\+\_\+de\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ihm_8c_aae71b0cc97b53ec475e8ac3a3b225c7c}\label{ihm_8c_aae71b0cc97b53ec475e8ac3a3b225c7c}} 
+\index{ihm.\+c@{ihm.\+c}!ihm\+\_\+event\+\_\+notify@{ihm\+\_\+event\+\_\+notify}}
+\index{ihm\+\_\+event\+\_\+notify@{ihm\+\_\+event\+\_\+notify}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{ihm\+\_\+event\+\_\+notify()}{ihm\_event\_notify()}}
+{\footnotesize\ttfamily void ihm\+\_\+event\+\_\+notify (\begin{DoxyParamCaption}\item[{const \hyperlink{event__groups_8h_ab2f21b93db0b2a0ab64d7a81ff32ac2e}{Event\+Bits\+\_\+t}}]{ux\+Bits\+To\+Set }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{ihm_8c_ab5b9d955132087ac121d2ce9666d3135}\label{ihm_8c_ab5b9d955132087ac121d2ce9666d3135}} 
+\index{ihm.\+c@{ihm.\+c}!ihm\+\_\+handle\+\_\+update@{ihm\+\_\+handle\+\_\+update}}
+\index{ihm\+\_\+handle\+\_\+update@{ihm\+\_\+handle\+\_\+update}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{ihm\+\_\+handle\+\_\+update()}{ihm\_handle\_update()}}
+{\footnotesize\ttfamily void ihm\+\_\+handle\+\_\+update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ihm_8c_ab7525a17874344457aed52055ffa7a0e}\label{ihm_8c_ab7525a17874344457aed52055ffa7a0e}} 
+\index{ihm.\+c@{ihm.\+c}!ihm\+\_\+init@{ihm\+\_\+init}}
+\index{ihm\+\_\+init@{ihm\+\_\+init}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{ihm\+\_\+init()}{ihm\_init()}}
+{\footnotesize\ttfamily void ihm\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+C\+H\+A\+M\+A\+N\+DO E\+S\+TA E\+S\+T\+R\+U\+T\+U\+RA DE I\+HM (I\+N\+T\+E\+R\+F\+A\+CE H\+O\+M\+E\+M-\/\+M�\+Q\+U\+I\+NA) EM V\+EZ DE M\+MI (M\+E\+N-\/\+M\+A\+C\+H\+I\+NE I\+N\+T\+E\+R\+F\+A\+CE) P\+OR P\+U\+RO G\+O\+S\+TO P\+E\+S\+S\+O\+AL... \+:) Inicializa interface homem máquina \mbox{\Hypertarget{ihm_8c_ac0d0f6666ddf438052d064944f013a66}\label{ihm_8c_ac0d0f6666ddf438052d064944f013a66}} 
+\index{ihm.\+c@{ihm.\+c}!ihm\+\_\+task@{ihm\+\_\+task}}
+\index{ihm\+\_\+task@{ihm\+\_\+task}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{ihm\+\_\+task()}{ihm\_task()}}
+{\footnotesize\ttfamily void ihm\+\_\+task (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Task paara gerenciamento do ihm Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{ihm_8c_a9befc3c004d018e2c3797510b8edd626}\label{ihm_8c_a9befc3c004d018e2c3797510b8edd626}} 
+\index{ihm.\+c@{ihm.\+c}!print\+Accelerometer@{print\+Accelerometer}}
+\index{print\+Accelerometer@{print\+Accelerometer}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{print\+Accelerometer()}{printAccelerometer()}}
+{\footnotesize\ttfamily void print\+Accelerometer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{ihm_8c_a1738496bf95622a87ffff6a884d79b93}\label{ihm_8c_a1738496bf95622a87ffff6a884d79b93}} 
+\index{ihm.\+c@{ihm.\+c}!print\+Clock@{print\+Clock}}
+\index{print\+Clock@{print\+Clock}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{print\+Clock()}{printClock()}}
+{\footnotesize\ttfamily void print\+Clock (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a}\label{ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a}} 
+\index{ihm.\+c@{ihm.\+c}!print\+L\+CD@{print\+L\+CD}}
+\index{print\+L\+CD@{print\+L\+CD}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{print\+L\+C\+D()}{printLCD()}}
+{\footnotesize\ttfamily void print\+L\+CD (\begin{DoxyParamCaption}\item[{int}]{linha,  }\item[{int}]{col,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{ihm_8c_a64aa0a8973357ff0206a6cff9c0a1177}\label{ihm_8c_a64aa0a8973357ff0206a6cff9c0a1177}} 
+\index{ihm.\+c@{ihm.\+c}!print\+Splash@{print\+Splash}}
+\index{print\+Splash@{print\+Splash}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{print\+Splash()}{printSplash()}}
+{\footnotesize\ttfamily void print\+Splash (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{ihm_8c_aaf351523f863052651b11a58c77dcef7}\label{ihm_8c_aaf351523f863052651b11a58c77dcef7}} 
+\index{ihm.\+c@{ihm.\+c}!print\+Stat\+Com@{print\+Stat\+Com}}
+\index{print\+Stat\+Com@{print\+Stat\+Com}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{print\+Stat\+Com()}{printStatCom()}}
+{\footnotesize\ttfamily void print\+Stat\+Com (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{ihm_8c_a27fc124c43c9544a1b0afc58e9a535d1}\label{ihm_8c_a27fc124c43c9544a1b0afc58e9a535d1}} 
+\index{ihm.\+c@{ihm.\+c}!print\+Stat\+G\+PS@{print\+Stat\+G\+PS}}
+\index{print\+Stat\+G\+PS@{print\+Stat\+G\+PS}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{print\+Stat\+G\+P\+S()}{printStatGPS()}}
+{\footnotesize\ttfamily void print\+Stat\+G\+PS (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{ihm_8c_ad58fa417ce33baeb6bc5ca8763918ec4}\label{ihm_8c_ad58fa417ce33baeb6bc5ca8763918ec4}} 
+\index{ihm.\+c@{ihm.\+c}!x\+Handle\+I\+H\+M\+Task@{x\+Handle\+I\+H\+M\+Task}}
+\index{x\+Handle\+I\+H\+M\+Task@{x\+Handle\+I\+H\+M\+Task}!ihm.\+c@{ihm.\+c}}
+\subsubsection{\texorpdfstring{x\+Handle\+I\+H\+M\+Task}{xHandleIHMTask}}
+{\footnotesize\ttfamily \hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} x\+Handle\+I\+H\+M\+Task}
+

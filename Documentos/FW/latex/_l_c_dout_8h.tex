@@ -1,0 +1,90 @@
+\hypertarget{_l_c_dout_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+L\+C\+Dout.h File Reference}
+\label{_l_c_dout_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+L\+C\+Dout.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+L\+C\+Dout.\+h}}
+
+
+This component implements a driver for multiple 2x16 character displays.  
+
+
+{\ttfamily \#include \char`\"{}P\+E\+\_\+\+Types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}P\+E\+\_\+\+Error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}P\+E\+\_\+\+Const.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I\+O\+\_\+\+Map.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}E\+N1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}R\+S1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}D\+B41.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}D\+B51.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}D\+B61.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}D\+B71.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}W\+A\+I\+T1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cpu.\+h\char`\"{}}\newline
+Include dependency graph for L\+C\+Dout.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga6ed6cef49988ba6dddeb83b004b1f2d6}{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+UE}~1 /$\ast$$<$! ID for \textquotesingle{}ü\textquotesingle{} $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga52c0d2745a2e6f87ce808d8da292d760}{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+AE}~2 /$\ast$$<$! ID for \textquotesingle{}ä\textquotesingle{} $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_ga3fb5e3ab73fb11e02546b1107e668503}{L\+C\+Dout\+\_\+\+S\+O\+F\+T\+C\+H\+A\+R\+\_\+\+OE}~3 /$\ast$$<$! ID for \textquotesingle{}ö\textquotesingle{} $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gaeb42fa4a9518874854f29e0f718a929e}{L\+C\+Dout\+\_\+\+M\+A\+X\+\_\+\+L\+C\+D\+\_\+\+L\+I\+N\+E\+\_\+\+C\+H\+A\+RS}~16 /$\ast$ number of chars of the L\+CD on a line $\ast$/
+\item 
+\#define \hyperlink{group___l_c_dout__module_gad482e0178deba0b317279ece3f82e379}{L\+C\+Dout\+\_\+\+Write}(ch)~\hyperlink{group___l_c_dout__module_ga4c2c42b869579a4033c3ea26b5fd8b44}{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data}((\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte})ch)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___l_c_dout__module_ga4c2c42b869579a4033c3ea26b5fd8b44}{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Data} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} ch)
+\item 
+void \hyperlink{group___l_c_dout__module_ga92d9c37466746b85aa619ad291addb81}{L\+C\+Dout\+\_\+\+Init} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga52dbb0059469cd8d31b902bb1e02f2ad}{L\+C\+Dout\+\_\+\+Clear} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga381874990d6c1c89db754439cc1486af}{L\+C\+Dout\+\_\+\+Home} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga62e6c646d15cb1ad5e91c7738138adb2}{L\+C\+Dout\+\_\+\+Goto\+XY} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} line, \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} column)
+\item 
+void \hyperlink{group___l_c_dout__module_ga6cf5c1bb9b142caf3d06f19643fa0af4}{L\+C\+Dout\+\_\+\+Shift\+Left} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga2cb97a527f94e423930285883e131bea}{L\+C\+Dout\+\_\+\+Write\+Ln} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga3f1e3ac39129521bda0a9bd3f8ed91fd}{L\+C\+Dout\+\_\+\+Write\+String} (char $\ast$str)
+\item 
+void \hyperlink{group___l_c_dout__module_ga6cf19a943f4cb49d88f60198348e7e17}{L\+C\+Dout\+\_\+\+Write\+Line\+Str} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} line, char $\ast$str)
+\item 
+void \hyperlink{group___l_c_dout__module_gad440859311c277df8a0d54f2df45d419}{L\+C\+Dout\+\_\+\+Line} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} line)
+\item 
+void \hyperlink{group___l_c_dout__module_gaccb1d0aad25fdfd1fcf1343567b77697}{L\+C\+Dout\+\_\+\+Shift\+Right} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_gac2b3ac6c71fafbda024b02300d392ba5}{L\+C\+Dout\+\_\+\+Set\+Entry\+Mode} (\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} increment, \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} shift\+Left)
+\item 
+void \hyperlink{group___l_c_dout__module_gac4883fe388870605e399c3b4b7a2f88a}{L\+C\+Dout\+\_\+\+Wait\+For\+L\+C\+D\+Ready} (void)
+\item 
+\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga91507851ce7b3cd0ac6e857fe7859dae}{L\+C\+Dout\+\_\+\+Use\+Display} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} display)
+\item 
+void \hyperlink{group___l_c_dout__module_ga6e6c1e6c3c9ef9543e8cb4e1ac2c4e11}{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Right} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_ga1acb6df425eac1c5afb5c00b0d1f221f}{L\+C\+Dout\+\_\+\+Cursor\+Shift\+Left} (void)
+\item 
+void \hyperlink{group___l_c_dout__module_gac22fb83749f0e6f881c82fa2ca4e5a8d}{L\+C\+Dout\+\_\+\+Write\+L\+C\+D\+Command} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} cmd)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga42ec038c4f64bcb4d697c255d5184408}{L\+C\+Dout\+\_\+\+Soft\+Char\+UE} \mbox{[}8\mbox{]}
+\item 
+const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga01871fed00e6be55a7c9020f393a1e5a}{L\+C\+Dout\+\_\+\+Soft\+Char\+AE} \mbox{[}8\mbox{]}
+\item 
+const \hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} \hyperlink{group___l_c_dout__module_ga2e1e69b87f6a8ccbcfbad1c054547352}{L\+C\+Dout\+\_\+\+Soft\+Char\+OE} \mbox{[}8\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This component implements a driver for multiple 2x16 character displays. 
+
+\begin{DoxyVersion}{Version}
+01.\+00 
+\end{DoxyVersion}

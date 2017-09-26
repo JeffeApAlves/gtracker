@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['matrix_5fautorepeatrate_5fregister',['Matrix_AutoRepeatRate_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2a0f7b106f9c256843e0268aa553ba12af',1,'TSS_API.h']]],
+  ['matrix_5fcontrolconfig_5fregister',['Matrix_ControlConfig_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2a9b52ce5c40464790c74c261f4368161a',1,'TSS_API.h']]],
+  ['matrix_5fcontrolid_5fregister',['Matrix_ControlId_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2a8949b53c02d528b0599d07ae337242ea',1,'TSS_API.h']]],
+  ['matrix_5fdynamicstatusx_5fregister',['Matrix_DynamicStatusX_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2ae80ff1413378f0f1ca26536bae9b8e77',1,'TSS_API.h']]],
+  ['matrix_5fdynamicstatusy_5fregister',['Matrix_DynamicStatusY_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2ae16bbaa09dfecb49588b8ab97ab893f9',1,'TSS_API.h']]],
+  ['matrix_5fevents_5fregister',['Matrix_Events_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2a72c316c4bf252bf9392a029cbf986e00',1,'TSS_API.h']]],
+  ['matrix_5fgesturedistancex_5fregister',['Matrix_GestureDistanceX_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2a564dc2fb972609855c19fe172c122fae',1,'TSS_API.h']]],
+  ['matrix_5fgesturedistancey_5fregister',['Matrix_GestureDistanceY_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2a81e50e74ca5cd95acdbd8a9152e6fd82',1,'TSS_API.h']]],
+  ['matrix_5fmovementtimeout_5fregister',['Matrix_MovementTimeout_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2a3d03dc7ab5606d58ad23a6120450d4cc',1,'TSS_API.h']]],
+  ['matrix_5fpositionx_5fregister',['Matrix_PositionX_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2ae7a232b8c86b5545ba7e6d4a1340f7af',1,'TSS_API.h']]],
+  ['matrix_5fpositiony_5fregister',['Matrix_PositionY_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2a5a13e51360273898343d7238a4af87da',1,'TSS_API.h']]],
+  ['matrix_5frangex_5fregister',['Matrix_RangeX_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2a2eec9d64a2e18f62f009d65117cb67c6',1,'TSS_API.h']]],
+  ['matrix_5frangey_5fregister',['Matrix_RangeY_Register',['../_t_s_s___a_p_i_8h.html#ac0e1ad36e06a19c72a369650d2db03d2aafa96eb1e39df5bd23140271952f69bf',1,'TSS_API.h']]],
+  ['mma8451_5fdatarate_5f100_5fhz',['MMA8451_DATARATE_100_HZ',['../_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555aabd19d5a88817064c8c2b4bbdb0d8d78',1,'MMA8451.h']]],
+  ['mma8451_5fdatarate_5f12_5f5_5fhz',['MMA8451_DATARATE_12_5_HZ',['../_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555a3bd68387d8e42fef985f7db2c74b8b6f',1,'MMA8451.h']]],
+  ['mma8451_5fdatarate_5f1_5f56_5fhz',['MMA8451_DATARATE_1_56_HZ',['../_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555a83f2422a4ee37cc9eda6590a2f46f5c8',1,'MMA8451.h']]],
+  ['mma8451_5fdatarate_5f200_5fhz',['MMA8451_DATARATE_200_HZ',['../_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555a66a2d1a54ec1f6e325aaf7979c2e9c8c',1,'MMA8451.h']]],
+  ['mma8451_5fdatarate_5f400_5fhz',['MMA8451_DATARATE_400_HZ',['../_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555a3d49d69b53ffd7e91095c5d2c66c0973',1,'MMA8451.h']]],
+  ['mma8451_5fdatarate_5f50_5fhz',['MMA8451_DATARATE_50_HZ',['../_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555a787d0366f43bdd6d631e97a3ba5f6aac',1,'MMA8451.h']]],
+  ['mma8451_5fdatarate_5f6_5f25_5fhz',['MMA8451_DATARATE_6_25_HZ',['../_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555a1f444ea0d64c9781d0b58612110d57da',1,'MMA8451.h']]],
+  ['mma8451_5fdatarate_5f800_5fhz',['MMA8451_DATARATE_800_HZ',['../_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555a7c1437d95036c9e4fdaa9b4eb18927f6',1,'MMA8451.h']]],
+  ['mma8451_5fdatarate_5fmask',['MMA8451_DATARATE_MASK',['../_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555a5746dd125c52cbaf6b55ae73d404767d',1,'MMA8451.h']]],
+  ['mma8451_5frange_5f2_5fg',['MMA8451_RANGE_2_G',['../_m_m_a8451_8h.html#a0e13c29d618e6adff405b7125b6fb042acb09c1675a94099c6fa906e104e1b296',1,'MMA8451.h']]],
+  ['mma8451_5frange_5f4_5fg',['MMA8451_RANGE_4_G',['../_m_m_a8451_8h.html#a0e13c29d618e6adff405b7125b6fb042ad371228b10347fd9bcd603da4f450328',1,'MMA8451.h']]],
+  ['mma8451_5frange_5f8_5fg',['MMA8451_RANGE_8_G',['../_m_m_a8451_8h.html#a0e13c29d618e6adff405b7125b6fb042a0e1655ff094c563bbc4f1c6425cf5633',1,'MMA8451.h']]]
+];

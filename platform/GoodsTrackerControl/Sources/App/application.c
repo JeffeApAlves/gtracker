@@ -20,7 +20,6 @@
 
 static 	int		_lock;
 Telemetria		telemetria;
-
 TaskHandle_t	xHandleCallBackTask;
 
 void callback_task(void){

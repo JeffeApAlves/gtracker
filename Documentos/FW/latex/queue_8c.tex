@@ -1,0 +1,391 @@
+\hypertarget{queue_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/queue.c File Reference}
+\label{queue_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/queue.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/queue.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
+Include dependency graph for queue.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_queue_definition}{Queue\+Definition}
+\item 
+struct \hyperlink{struct_q_u_e_u_e___r_e_g_i_s_t_r_y___i_t_e_m}{Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+I\+T\+EM}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{queue_8c_ab622d8c674f2a417a666a7ed89109e79}{M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE}
+\item 
+\#define \hyperlink{queue_8c_acdb781ba6b38714cf41f7417de8fe6bf}{queue\+U\+N\+L\+O\+C\+K\+ED}~( ( int8\+\_\+t ) -\/1 )
+\item 
+\#define \hyperlink{queue_8c_a60a95aa91f84782416755f38616231fd}{queue\+L\+O\+C\+K\+E\+D\+\_\+\+U\+N\+M\+O\+D\+I\+F\+I\+ED}~( ( int8\+\_\+t ) 0 )
+\item 
+\#define \hyperlink{queue_8c_a2b09c2ec35345544f7c904da7c824a52}{px\+Mutex\+Holder}~pc\+Tail
+\item 
+\#define \hyperlink{queue_8c_afe3f7afb2a02c085f2d634003902cbc0}{ux\+Queue\+Type}~pc\+Head
+\item 
+\#define \hyperlink{queue_8c_a0799077a434aea43f5cca3cda3625aa8}{queue\+Q\+U\+E\+U\+E\+\_\+\+I\+S\+\_\+\+M\+U\+T\+EX}~\hyperlink{_t_s_s___data_types_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+\#define \hyperlink{queue_8c_adfb14d07644ad4da4bd2303105884227}{queue\+S\+E\+M\+A\+P\+H\+O\+R\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+I\+T\+E\+M\+\_\+\+L\+E\+N\+G\+TH}~( ( \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} ) 0 )
+\item 
+\#define \hyperlink{queue_8c_a166c89c5c3a213c7e52283e024bb1d50}{queue\+M\+U\+T\+E\+X\+\_\+\+G\+I\+V\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+T\+I\+ME}~( ( \hyperlink{portmacro_8h_aa69c48c6e902ce54f70886e6573c92a9}{Tick\+Type\+\_\+t} ) 0\+U )
+\item 
+\#define \hyperlink{queue_8c_adb4472163ac5b0e8ad72183d69387b81}{queue\+Y\+I\+E\+L\+D\+\_\+\+I\+F\+\_\+\+U\+S\+I\+N\+G\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON}()~\hyperlink{_free_r_t_o_s_8h_af4484fc07631a16e45ac5f29a3f0556e}{port\+Y\+I\+E\+L\+D\+\_\+\+W\+I\+T\+H\+I\+N\+\_\+\+A\+PI}()
+\item 
+\#define \hyperlink{queue_8c_ae4efd14c0f4dee7f189ef2e4d9ce1f1b}{prv\+Lock\+Queue}(px\+Queue)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_queue_definition}{Queue\+Definition} \hyperlink{queue_8c_a0a752aab32c1d5543a2aa40618ad453f}{x\+Q\+U\+E\+UE}
+\item 
+typedef \hyperlink{queue_8c_a0a752aab32c1d5543a2aa40618ad453f}{x\+Q\+U\+E\+UE} \hyperlink{queue_8c_ade16d14675fc1ac34af04a1162a6b883}{Queue\+\_\+t}
+\item 
+typedef struct \hyperlink{struct_q_u_e_u_e___r_e_g_i_s_t_r_y___i_t_e_m}{Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+I\+T\+EM} \hyperlink{queue_8c_a20ffa7764ab5a45c2ec9475f29c75fc2}{x\+Queue\+Registry\+Item}
+\item 
+typedef \hyperlink{queue_8c_a20ffa7764ab5a45c2ec9475f29c75fc2}{x\+Queue\+Registry\+Item} \hyperlink{queue_8c_a51b5b21c8a33be452f8b5c663e07c6f2}{Queue\+Registry\+Item\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_a5e54273dbe3f56b8bdc8f7abee67a871}{x\+Queue\+Generic\+Reset} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue, \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+New\+Queue)
+\item 
+\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} \hyperlink{queue_8c_ac999cdfbb09fff396fa818bb9a30b4e5}{x\+Queue\+Generic\+Create} (const \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} ux\+Queue\+Length, const \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} ux\+Item\+Size, const uint8\+\_\+t uc\+Queue\+Type)
+\item 
+\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} \hyperlink{queue_8c_a2cde35e52724005fa736c80f8c9bc9ee}{x\+Queue\+Create\+Mutex} (const uint8\+\_\+t uc\+Queue\+Type)
+\item 
+void $\ast$ \hyperlink{queue_8c_a6a46d20b7120c5b596bfd960fa07fae6}{x\+Queue\+Get\+Mutex\+Holder} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Semaphore)
+\item 
+void $\ast$ \hyperlink{queue_8c_a98572c8b34bdc0accabccbcb15fb9e3c}{x\+Queue\+Get\+Mutex\+Holder\+From\+I\+SR} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Semaphore)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_a73ad84b979640a8c3f79dc253e0fa9b5}{x\+Queue\+Give\+Mutex\+Recursive} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Mutex)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_aa17470144b72ed310ef73275a0928e09}{x\+Queue\+Take\+Mutex\+Recursive} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Mutex, \hyperlink{portmacro_8h_aa69c48c6e902ce54f70886e6573c92a9}{Tick\+Type\+\_\+t} x\+Ticks\+To\+Wait)
+\item 
+\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} \hyperlink{queue_8c_a94632b0b3d9fc1961140bd2f6bc01fea}{x\+Queue\+Create\+Counting\+Semaphore} (const \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} ux\+Max\+Count, const \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} ux\+Initial\+Count)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_acb67c81366c00896b21cd826e07d885d}{x\+Queue\+Generic\+Send} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue, const void $\ast$const pv\+Item\+To\+Queue, \hyperlink{portmacro_8h_aa69c48c6e902ce54f70886e6573c92a9}{Tick\+Type\+\_\+t} x\+Ticks\+To\+Wait, const \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Copy\+Position)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_a0fb58b25eb396a5cf8e1688b7e1a56cb}{x\+Queue\+Generic\+Send\+From\+I\+SR} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue, const void $\ast$const pv\+Item\+To\+Queue, \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} $\ast$const px\+Higher\+Priority\+Task\+Woken, const \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Copy\+Position)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_a4df49fafb6ba4400ede6f2d07a40865f}{x\+Queue\+Give\+From\+I\+SR} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue, \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} $\ast$const px\+Higher\+Priority\+Task\+Woken)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_ace632b55c3955bacae20978e261129a6}{x\+Queue\+Generic\+Receive} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue, void $\ast$const pv\+Buffer, \hyperlink{portmacro_8h_aa69c48c6e902ce54f70886e6573c92a9}{Tick\+Type\+\_\+t} x\+Ticks\+To\+Wait, const \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Just\+Peeking)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_ac61ec62828e70ed35d18559a35550462}{x\+Queue\+Receive\+From\+I\+SR} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue, void $\ast$const pv\+Buffer, \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} $\ast$const px\+Higher\+Priority\+Task\+Woken)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_af67763957452955ac663c374d71278ce}{x\+Queue\+Peek\+From\+I\+SR} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue, void $\ast$const pv\+Buffer)
+\item 
+\hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} \hyperlink{queue_8c_a4158a6134c9d1c60ffdb18d279d475b1}{ux\+Queue\+Messages\+Waiting} (const \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue)
+\item 
+\hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} \hyperlink{queue_8c_a27d6fb77ce7a0b5a16f6471730d33201}{ux\+Queue\+Spaces\+Available} (const \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue)
+\item 
+\hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} \hyperlink{queue_8c_ad5d110bc27c691ff8da238e0116bf92a}{ux\+Queue\+Messages\+Waiting\+From\+I\+SR} (const \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue)
+\item 
+void \hyperlink{queue_8c_a35c0b4f9a0e940cb3a86ca4c5e84c41c}{v\+Queue\+Delete} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_a7d076f57a56ef50315418f8bbfba96fd}{x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR} (const \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue)
+\item 
+\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} \hyperlink{queue_8c_a76bbe8ebd21b3e89784e865d06f1058c}{x\+Queue\+Is\+Queue\+Full\+From\+I\+SR} (const \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue)
+\item 
+void \hyperlink{queue_8c_a1d5e2402c801e7a0ab079f6944b97f93}{v\+Queue\+Add\+To\+Registry} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue, const char $\ast$pc\+Queue\+Name)
+\item 
+const char $\ast$ \hyperlink{queue_8c_a55e1b28cbe37603142f8391bd419eb68}{pc\+Queue\+Get\+Name} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue)
+\item 
+void \hyperlink{queue_8c_ac695c7cde3c32b32a1db4689239603ed}{v\+Queue\+Unregister\+Queue} (\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{mpu__wrappers_8h_a56a0b54ca924c56d192d4389ba585ed5}{P\+R\+I\+V\+I\+L\+E\+G\+E\+D\+\_\+\+D\+A\+TA} \hyperlink{queue_8c_a51b5b21c8a33be452f8b5c663e07c6f2}{Queue\+Registry\+Item\+\_\+t} \hyperlink{queue_8c_a591a492f5f9b83cdc8ed02b5c13a5af5}{x\+Queue\+Registry} \mbox{[}\hyperlink{_free_r_t_o_s_config_8h_aa4b5138c4e42a180f0abd4f2455f90fb}{config\+Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+S\+I\+ZE}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{queue_8c_ab622d8c674f2a417a666a7ed89109e79}\label{queue_8c_ab622d8c674f2a417a666a7ed89109e79}} 
+\index{queue.\+c@{queue.\+c}!M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE@{M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE}}
+\index{M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE@{M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE}{MPU\_WRAPPERS\_INCLUDED\_FROM\_API\_FILE}}
+{\footnotesize\ttfamily \#define M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE}
+
+\mbox{\Hypertarget{queue_8c_ae4efd14c0f4dee7f189ef2e4d9ce1f1b}\label{queue_8c_ae4efd14c0f4dee7f189ef2e4d9ce1f1b}} 
+\index{queue.\+c@{queue.\+c}!prv\+Lock\+Queue@{prv\+Lock\+Queue}}
+\index{prv\+Lock\+Queue@{prv\+Lock\+Queue}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{prv\+Lock\+Queue}{prvLockQueue}}
+{\footnotesize\ttfamily \#define prv\+Lock\+Queue(\begin{DoxyParamCaption}\item[{}]{px\+Queue }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{task_8h_ab7bf0ae866292ba8296091a9d5209689}{taskENTER\_CRITICAL}();                                 \(\backslash\)
+    \{                                                       \(\backslash\)
+        if( ( pxQueue )->cRxLock == \hyperlink{queue_8c_acdb781ba6b38714cf41f7417de8fe6bf}{queueUNLOCKED} )            \(\backslash\)
+        \{                                                   \(\backslash\)
+            ( pxQueue )->cRxLock = \hyperlink{queue_8c_a60a95aa91f84782416755f38616231fd}{queueLOCKED\_UNMODIFIED};    \(\backslash\)
+        \}                                                   \(\backslash\)
+        if( ( pxQueue )->cTxLock == \hyperlink{queue_8c_acdb781ba6b38714cf41f7417de8fe6bf}{queueUNLOCKED} )            \(\backslash\)
+        \{                                                   \(\backslash\)
+            ( pxQueue )->cTxLock = \hyperlink{queue_8c_a60a95aa91f84782416755f38616231fd}{queueLOCKED\_UNMODIFIED};    \(\backslash\)
+        \}                                                   \(\backslash\)
+    \}                                                       \(\backslash\)
+    taskEXIT\_CRITICAL()
+\end{DoxyCode}
+\mbox{\Hypertarget{queue_8c_a2b09c2ec35345544f7c904da7c824a52}\label{queue_8c_a2b09c2ec35345544f7c904da7c824a52}} 
+\index{queue.\+c@{queue.\+c}!px\+Mutex\+Holder@{px\+Mutex\+Holder}}
+\index{px\+Mutex\+Holder@{px\+Mutex\+Holder}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{px\+Mutex\+Holder}{pxMutexHolder}}
+{\footnotesize\ttfamily \#define px\+Mutex\+Holder~pc\+Tail}
+
+\mbox{\Hypertarget{queue_8c_a60a95aa91f84782416755f38616231fd}\label{queue_8c_a60a95aa91f84782416755f38616231fd}} 
+\index{queue.\+c@{queue.\+c}!queue\+L\+O\+C\+K\+E\+D\+\_\+\+U\+N\+M\+O\+D\+I\+F\+I\+ED@{queue\+L\+O\+C\+K\+E\+D\+\_\+\+U\+N\+M\+O\+D\+I\+F\+I\+ED}}
+\index{queue\+L\+O\+C\+K\+E\+D\+\_\+\+U\+N\+M\+O\+D\+I\+F\+I\+ED@{queue\+L\+O\+C\+K\+E\+D\+\_\+\+U\+N\+M\+O\+D\+I\+F\+I\+ED}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+L\+O\+C\+K\+E\+D\+\_\+\+U\+N\+M\+O\+D\+I\+F\+I\+ED}{queueLOCKED\_UNMODIFIED}}
+{\footnotesize\ttfamily \#define queue\+L\+O\+C\+K\+E\+D\+\_\+\+U\+N\+M\+O\+D\+I\+F\+I\+ED~( ( int8\+\_\+t ) 0 )}
+
+\mbox{\Hypertarget{queue_8c_a166c89c5c3a213c7e52283e024bb1d50}\label{queue_8c_a166c89c5c3a213c7e52283e024bb1d50}} 
+\index{queue.\+c@{queue.\+c}!queue\+M\+U\+T\+E\+X\+\_\+\+G\+I\+V\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+T\+I\+ME@{queue\+M\+U\+T\+E\+X\+\_\+\+G\+I\+V\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+T\+I\+ME}}
+\index{queue\+M\+U\+T\+E\+X\+\_\+\+G\+I\+V\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+T\+I\+ME@{queue\+M\+U\+T\+E\+X\+\_\+\+G\+I\+V\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+T\+I\+ME}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+M\+U\+T\+E\+X\+\_\+\+G\+I\+V\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+T\+I\+ME}{queueMUTEX\_GIVE\_BLOCK\_TIME}}
+{\footnotesize\ttfamily \#define queue\+M\+U\+T\+E\+X\+\_\+\+G\+I\+V\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+T\+I\+ME~( ( \hyperlink{portmacro_8h_aa69c48c6e902ce54f70886e6573c92a9}{Tick\+Type\+\_\+t} ) 0\+U )}
+
+\mbox{\Hypertarget{queue_8c_a0799077a434aea43f5cca3cda3625aa8}\label{queue_8c_a0799077a434aea43f5cca3cda3625aa8}} 
+\index{queue.\+c@{queue.\+c}!queue\+Q\+U\+E\+U\+E\+\_\+\+I\+S\+\_\+\+M\+U\+T\+EX@{queue\+Q\+U\+E\+U\+E\+\_\+\+I\+S\+\_\+\+M\+U\+T\+EX}}
+\index{queue\+Q\+U\+E\+U\+E\+\_\+\+I\+S\+\_\+\+M\+U\+T\+EX@{queue\+Q\+U\+E\+U\+E\+\_\+\+I\+S\+\_\+\+M\+U\+T\+EX}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+Q\+U\+E\+U\+E\+\_\+\+I\+S\+\_\+\+M\+U\+T\+EX}{queueQUEUE\_IS\_MUTEX}}
+{\footnotesize\ttfamily \#define queue\+Q\+U\+E\+U\+E\+\_\+\+I\+S\+\_\+\+M\+U\+T\+EX~\hyperlink{_t_s_s___data_types_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}}
+
+\mbox{\Hypertarget{queue_8c_adfb14d07644ad4da4bd2303105884227}\label{queue_8c_adfb14d07644ad4da4bd2303105884227}} 
+\index{queue.\+c@{queue.\+c}!queue\+S\+E\+M\+A\+P\+H\+O\+R\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+I\+T\+E\+M\+\_\+\+L\+E\+N\+G\+TH@{queue\+S\+E\+M\+A\+P\+H\+O\+R\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+I\+T\+E\+M\+\_\+\+L\+E\+N\+G\+TH}}
+\index{queue\+S\+E\+M\+A\+P\+H\+O\+R\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+I\+T\+E\+M\+\_\+\+L\+E\+N\+G\+TH@{queue\+S\+E\+M\+A\+P\+H\+O\+R\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+I\+T\+E\+M\+\_\+\+L\+E\+N\+G\+TH}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+S\+E\+M\+A\+P\+H\+O\+R\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+I\+T\+E\+M\+\_\+\+L\+E\+N\+G\+TH}{queueSEMAPHORE\_QUEUE\_ITEM\_LENGTH}}
+{\footnotesize\ttfamily \#define queue\+S\+E\+M\+A\+P\+H\+O\+R\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+I\+T\+E\+M\+\_\+\+L\+E\+N\+G\+TH~( ( \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} ) 0 )}
+
+\mbox{\Hypertarget{queue_8c_acdb781ba6b38714cf41f7417de8fe6bf}\label{queue_8c_acdb781ba6b38714cf41f7417de8fe6bf}} 
+\index{queue.\+c@{queue.\+c}!queue\+U\+N\+L\+O\+C\+K\+ED@{queue\+U\+N\+L\+O\+C\+K\+ED}}
+\index{queue\+U\+N\+L\+O\+C\+K\+ED@{queue\+U\+N\+L\+O\+C\+K\+ED}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+U\+N\+L\+O\+C\+K\+ED}{queueUNLOCKED}}
+{\footnotesize\ttfamily \#define queue\+U\+N\+L\+O\+C\+K\+ED~( ( int8\+\_\+t ) -\/1 )}
+
+\mbox{\Hypertarget{queue_8c_adb4472163ac5b0e8ad72183d69387b81}\label{queue_8c_adb4472163ac5b0e8ad72183d69387b81}} 
+\index{queue.\+c@{queue.\+c}!queue\+Y\+I\+E\+L\+D\+\_\+\+I\+F\+\_\+\+U\+S\+I\+N\+G\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON@{queue\+Y\+I\+E\+L\+D\+\_\+\+I\+F\+\_\+\+U\+S\+I\+N\+G\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON}}
+\index{queue\+Y\+I\+E\+L\+D\+\_\+\+I\+F\+\_\+\+U\+S\+I\+N\+G\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON@{queue\+Y\+I\+E\+L\+D\+\_\+\+I\+F\+\_\+\+U\+S\+I\+N\+G\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{queue\+Y\+I\+E\+L\+D\+\_\+\+I\+F\+\_\+\+U\+S\+I\+N\+G\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON}{queueYIELD\_IF\_USING\_PREEMPTION}}
+{\footnotesize\ttfamily \#define queue\+Y\+I\+E\+L\+D\+\_\+\+I\+F\+\_\+\+U\+S\+I\+N\+G\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{_free_r_t_o_s_8h_af4484fc07631a16e45ac5f29a3f0556e}{port\+Y\+I\+E\+L\+D\+\_\+\+W\+I\+T\+H\+I\+N\+\_\+\+A\+PI}()}
+
+\mbox{\Hypertarget{queue_8c_afe3f7afb2a02c085f2d634003902cbc0}\label{queue_8c_afe3f7afb2a02c085f2d634003902cbc0}} 
+\index{queue.\+c@{queue.\+c}!ux\+Queue\+Type@{ux\+Queue\+Type}}
+\index{ux\+Queue\+Type@{ux\+Queue\+Type}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{ux\+Queue\+Type}{uxQueueType}}
+{\footnotesize\ttfamily \#define ux\+Queue\+Type~pc\+Head}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{queue_8c_ade16d14675fc1ac34af04a1162a6b883}\label{queue_8c_ade16d14675fc1ac34af04a1162a6b883}} 
+\index{queue.\+c@{queue.\+c}!Queue\+\_\+t@{Queue\+\_\+t}}
+\index{Queue\+\_\+t@{Queue\+\_\+t}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{Queue\+\_\+t}{Queue\_t}}
+{\footnotesize\ttfamily typedef \hyperlink{queue_8c_a0a752aab32c1d5543a2aa40618ad453f}{x\+Q\+U\+E\+UE} \hyperlink{queue_8c_ade16d14675fc1ac34af04a1162a6b883}{Queue\+\_\+t}}
+
+\mbox{\Hypertarget{queue_8c_a51b5b21c8a33be452f8b5c663e07c6f2}\label{queue_8c_a51b5b21c8a33be452f8b5c663e07c6f2}} 
+\index{queue.\+c@{queue.\+c}!Queue\+Registry\+Item\+\_\+t@{Queue\+Registry\+Item\+\_\+t}}
+\index{Queue\+Registry\+Item\+\_\+t@{Queue\+Registry\+Item\+\_\+t}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{Queue\+Registry\+Item\+\_\+t}{QueueRegistryItem\_t}}
+{\footnotesize\ttfamily typedef \hyperlink{queue_8c_a20ffa7764ab5a45c2ec9475f29c75fc2}{x\+Queue\+Registry\+Item} \hyperlink{queue_8c_a51b5b21c8a33be452f8b5c663e07c6f2}{Queue\+Registry\+Item\+\_\+t}}
+
+\mbox{\Hypertarget{queue_8c_a0a752aab32c1d5543a2aa40618ad453f}\label{queue_8c_a0a752aab32c1d5543a2aa40618ad453f}} 
+\index{queue.\+c@{queue.\+c}!x\+Q\+U\+E\+UE@{x\+Q\+U\+E\+UE}}
+\index{x\+Q\+U\+E\+UE@{x\+Q\+U\+E\+UE}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Q\+U\+E\+UE}{xQUEUE}}
+{\footnotesize\ttfamily typedef struct \hyperlink{struct_queue_definition}{Queue\+Definition}  \hyperlink{queue_8c_a0a752aab32c1d5543a2aa40618ad453f}{x\+Q\+U\+E\+UE}}
+
+\mbox{\Hypertarget{queue_8c_a20ffa7764ab5a45c2ec9475f29c75fc2}\label{queue_8c_a20ffa7764ab5a45c2ec9475f29c75fc2}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Registry\+Item@{x\+Queue\+Registry\+Item}}
+\index{x\+Queue\+Registry\+Item@{x\+Queue\+Registry\+Item}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Registry\+Item}{xQueueRegistryItem}}
+{\footnotesize\ttfamily typedef struct \hyperlink{struct_q_u_e_u_e___r_e_g_i_s_t_r_y___i_t_e_m}{Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+I\+T\+EM}  \hyperlink{queue_8c_a20ffa7764ab5a45c2ec9475f29c75fc2}{x\+Queue\+Registry\+Item}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{queue_8c_a55e1b28cbe37603142f8391bd419eb68}\label{queue_8c_a55e1b28cbe37603142f8391bd419eb68}} 
+\index{queue.\+c@{queue.\+c}!pc\+Queue\+Get\+Name@{pc\+Queue\+Get\+Name}}
+\index{pc\+Queue\+Get\+Name@{pc\+Queue\+Get\+Name}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{pc\+Queue\+Get\+Name()}{pcQueueGetName()}}
+{\footnotesize\ttfamily const char$\ast$ pc\+Queue\+Get\+Name (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_a4158a6134c9d1c60ffdb18d279d475b1}\label{queue_8c_a4158a6134c9d1c60ffdb18d279d475b1}} 
+\index{queue.\+c@{queue.\+c}!ux\+Queue\+Messages\+Waiting@{ux\+Queue\+Messages\+Waiting}}
+\index{ux\+Queue\+Messages\+Waiting@{ux\+Queue\+Messages\+Waiting}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{ux\+Queue\+Messages\+Waiting()}{uxQueueMessagesWaiting()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} ux\+Queue\+Messages\+Waiting (\begin{DoxyParamCaption}\item[{const \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_ad5d110bc27c691ff8da238e0116bf92a}\label{queue_8c_ad5d110bc27c691ff8da238e0116bf92a}} 
+\index{queue.\+c@{queue.\+c}!ux\+Queue\+Messages\+Waiting\+From\+I\+SR@{ux\+Queue\+Messages\+Waiting\+From\+I\+SR}}
+\index{ux\+Queue\+Messages\+Waiting\+From\+I\+SR@{ux\+Queue\+Messages\+Waiting\+From\+I\+SR}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{ux\+Queue\+Messages\+Waiting\+From\+I\+S\+R()}{uxQueueMessagesWaitingFromISR()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} ux\+Queue\+Messages\+Waiting\+From\+I\+SR (\begin{DoxyParamCaption}\item[{const \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_a27d6fb77ce7a0b5a16f6471730d33201}\label{queue_8c_a27d6fb77ce7a0b5a16f6471730d33201}} 
+\index{queue.\+c@{queue.\+c}!ux\+Queue\+Spaces\+Available@{ux\+Queue\+Spaces\+Available}}
+\index{ux\+Queue\+Spaces\+Available@{ux\+Queue\+Spaces\+Available}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{ux\+Queue\+Spaces\+Available()}{uxQueueSpacesAvailable()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t} ux\+Queue\+Spaces\+Available (\begin{DoxyParamCaption}\item[{const \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_a1d5e2402c801e7a0ab079f6944b97f93}\label{queue_8c_a1d5e2402c801e7a0ab079f6944b97f93}} 
+\index{queue.\+c@{queue.\+c}!v\+Queue\+Add\+To\+Registry@{v\+Queue\+Add\+To\+Registry}}
+\index{v\+Queue\+Add\+To\+Registry@{v\+Queue\+Add\+To\+Registry}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{v\+Queue\+Add\+To\+Registry()}{vQueueAddToRegistry()}}
+{\footnotesize\ttfamily void v\+Queue\+Add\+To\+Registry (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue,  }\item[{const char $\ast$}]{pc\+Queue\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_a35c0b4f9a0e940cb3a86ca4c5e84c41c}\label{queue_8c_a35c0b4f9a0e940cb3a86ca4c5e84c41c}} 
+\index{queue.\+c@{queue.\+c}!v\+Queue\+Delete@{v\+Queue\+Delete}}
+\index{v\+Queue\+Delete@{v\+Queue\+Delete}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{v\+Queue\+Delete()}{vQueueDelete()}}
+{\footnotesize\ttfamily void v\+Queue\+Delete (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{queue_8c_ac695c7cde3c32b32a1db4689239603ed}\label{queue_8c_ac695c7cde3c32b32a1db4689239603ed}} 
+\index{queue.\+c@{queue.\+c}!v\+Queue\+Unregister\+Queue@{v\+Queue\+Unregister\+Queue}}
+\index{v\+Queue\+Unregister\+Queue@{v\+Queue\+Unregister\+Queue}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{v\+Queue\+Unregister\+Queue()}{vQueueUnregisterQueue()}}
+{\footnotesize\ttfamily void v\+Queue\+Unregister\+Queue (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{queue_8c_a94632b0b3d9fc1961140bd2f6bc01fea}\label{queue_8c_a94632b0b3d9fc1961140bd2f6bc01fea}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Create\+Counting\+Semaphore@{x\+Queue\+Create\+Counting\+Semaphore}}
+\index{x\+Queue\+Create\+Counting\+Semaphore@{x\+Queue\+Create\+Counting\+Semaphore}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Create\+Counting\+Semaphore()}{xQueueCreateCountingSemaphore()}}
+{\footnotesize\ttfamily \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue\+Create\+Counting\+Semaphore (\begin{DoxyParamCaption}\item[{const \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t}}]{ux\+Max\+Count,  }\item[{const \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t}}]{ux\+Initial\+Count }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{queue_8c_a2cde35e52724005fa736c80f8c9bc9ee}\label{queue_8c_a2cde35e52724005fa736c80f8c9bc9ee}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Create\+Mutex@{x\+Queue\+Create\+Mutex}}
+\index{x\+Queue\+Create\+Mutex@{x\+Queue\+Create\+Mutex}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Create\+Mutex()}{xQueueCreateMutex()}}
+{\footnotesize\ttfamily \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue\+Create\+Mutex (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{uc\+Queue\+Type }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{queue_8c_ac999cdfbb09fff396fa818bb9a30b4e5}\label{queue_8c_ac999cdfbb09fff396fa818bb9a30b4e5}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Generic\+Create@{x\+Queue\+Generic\+Create}}
+\index{x\+Queue\+Generic\+Create@{x\+Queue\+Generic\+Create}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Generic\+Create()}{xQueueGenericCreate()}}
+{\footnotesize\ttfamily \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue\+Generic\+Create (\begin{DoxyParamCaption}\item[{const \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t}}]{ux\+Queue\+Length,  }\item[{const \hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{U\+Base\+Type\+\_\+t}}]{ux\+Item\+Size,  }\item[{const uint8\+\_\+t}]{uc\+Queue\+Type }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{queue_8c_ace632b55c3955bacae20978e261129a6}\label{queue_8c_ace632b55c3955bacae20978e261129a6}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Generic\+Receive@{x\+Queue\+Generic\+Receive}}
+\index{x\+Queue\+Generic\+Receive@{x\+Queue\+Generic\+Receive}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Generic\+Receive()}{xQueueGenericReceive()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Generic\+Receive (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue,  }\item[{void $\ast$const}]{pv\+Buffer,  }\item[{\hyperlink{portmacro_8h_aa69c48c6e902ce54f70886e6573c92a9}{Tick\+Type\+\_\+t}}]{x\+Ticks\+To\+Wait,  }\item[{const \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t}}]{x\+Just\+Peeking }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{queue_8c_a5e54273dbe3f56b8bdc8f7abee67a871}\label{queue_8c_a5e54273dbe3f56b8bdc8f7abee67a871}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Generic\+Reset@{x\+Queue\+Generic\+Reset}}
+\index{x\+Queue\+Generic\+Reset@{x\+Queue\+Generic\+Reset}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Generic\+Reset()}{xQueueGenericReset()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Generic\+Reset (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue,  }\item[{\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t}}]{x\+New\+Queue }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{queue_8c_acb67c81366c00896b21cd826e07d885d}\label{queue_8c_acb67c81366c00896b21cd826e07d885d}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Generic\+Send@{x\+Queue\+Generic\+Send}}
+\index{x\+Queue\+Generic\+Send@{x\+Queue\+Generic\+Send}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Generic\+Send()}{xQueueGenericSend()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Generic\+Send (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue,  }\item[{const void $\ast$const}]{pv\+Item\+To\+Queue,  }\item[{\hyperlink{portmacro_8h_aa69c48c6e902ce54f70886e6573c92a9}{Tick\+Type\+\_\+t}}]{x\+Ticks\+To\+Wait,  }\item[{const \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t}}]{x\+Copy\+Position }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{queue_8c_a0fb58b25eb396a5cf8e1688b7e1a56cb}\label{queue_8c_a0fb58b25eb396a5cf8e1688b7e1a56cb}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Generic\+Send\+From\+I\+SR@{x\+Queue\+Generic\+Send\+From\+I\+SR}}
+\index{x\+Queue\+Generic\+Send\+From\+I\+SR@{x\+Queue\+Generic\+Send\+From\+I\+SR}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Generic\+Send\+From\+I\+S\+R()}{xQueueGenericSendFromISR()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Generic\+Send\+From\+I\+SR (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue,  }\item[{const void $\ast$const}]{pv\+Item\+To\+Queue,  }\item[{\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} $\ast$const}]{px\+Higher\+Priority\+Task\+Woken,  }\item[{const \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t}}]{x\+Copy\+Position }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_a6a46d20b7120c5b596bfd960fa07fae6}\label{queue_8c_a6a46d20b7120c5b596bfd960fa07fae6}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Get\+Mutex\+Holder@{x\+Queue\+Get\+Mutex\+Holder}}
+\index{x\+Queue\+Get\+Mutex\+Holder@{x\+Queue\+Get\+Mutex\+Holder}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Get\+Mutex\+Holder()}{xQueueGetMutexHolder()}}
+{\footnotesize\ttfamily void$\ast$ x\+Queue\+Get\+Mutex\+Holder (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Semaphore }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_a98572c8b34bdc0accabccbcb15fb9e3c}\label{queue_8c_a98572c8b34bdc0accabccbcb15fb9e3c}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Get\+Mutex\+Holder\+From\+I\+SR@{x\+Queue\+Get\+Mutex\+Holder\+From\+I\+SR}}
+\index{x\+Queue\+Get\+Mutex\+Holder\+From\+I\+SR@{x\+Queue\+Get\+Mutex\+Holder\+From\+I\+SR}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Get\+Mutex\+Holder\+From\+I\+S\+R()}{xQueueGetMutexHolderFromISR()}}
+{\footnotesize\ttfamily void$\ast$ x\+Queue\+Get\+Mutex\+Holder\+From\+I\+SR (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Semaphore }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_a4df49fafb6ba4400ede6f2d07a40865f}\label{queue_8c_a4df49fafb6ba4400ede6f2d07a40865f}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Give\+From\+I\+SR@{x\+Queue\+Give\+From\+I\+SR}}
+\index{x\+Queue\+Give\+From\+I\+SR@{x\+Queue\+Give\+From\+I\+SR}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Give\+From\+I\+S\+R()}{xQueueGiveFromISR()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Give\+From\+I\+SR (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue,  }\item[{\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} $\ast$const}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{queue_8c_a73ad84b979640a8c3f79dc253e0fa9b5}\label{queue_8c_a73ad84b979640a8c3f79dc253e0fa9b5}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Give\+Mutex\+Recursive@{x\+Queue\+Give\+Mutex\+Recursive}}
+\index{x\+Queue\+Give\+Mutex\+Recursive@{x\+Queue\+Give\+Mutex\+Recursive}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Give\+Mutex\+Recursive()}{xQueueGiveMutexRecursive()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Give\+Mutex\+Recursive (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Mutex }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{queue_8c_a7d076f57a56ef50315418f8bbfba96fd}\label{queue_8c_a7d076f57a56ef50315418f8bbfba96fd}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR@{x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR}}
+\index{x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR@{x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Is\+Queue\+Empty\+From\+I\+S\+R()}{xQueueIsQueueEmptyFromISR()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Is\+Queue\+Empty\+From\+I\+SR (\begin{DoxyParamCaption}\item[{const \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_a76bbe8ebd21b3e89784e865d06f1058c}\label{queue_8c_a76bbe8ebd21b3e89784e865d06f1058c}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Is\+Queue\+Full\+From\+I\+SR@{x\+Queue\+Is\+Queue\+Full\+From\+I\+SR}}
+\index{x\+Queue\+Is\+Queue\+Full\+From\+I\+SR@{x\+Queue\+Is\+Queue\+Full\+From\+I\+SR}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Is\+Queue\+Full\+From\+I\+S\+R()}{xQueueIsQueueFullFromISR()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Is\+Queue\+Full\+From\+I\+SR (\begin{DoxyParamCaption}\item[{const \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{queue_8c_af67763957452955ac663c374d71278ce}\label{queue_8c_af67763957452955ac663c374d71278ce}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Peek\+From\+I\+SR@{x\+Queue\+Peek\+From\+I\+SR}}
+\index{x\+Queue\+Peek\+From\+I\+SR@{x\+Queue\+Peek\+From\+I\+SR}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Peek\+From\+I\+S\+R()}{xQueuePeekFromISR()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Peek\+From\+I\+SR (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue,  }\item[{void $\ast$const}]{pv\+Buffer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_ac61ec62828e70ed35d18559a35550462}\label{queue_8c_ac61ec62828e70ed35d18559a35550462}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Receive\+From\+I\+SR@{x\+Queue\+Receive\+From\+I\+SR}}
+\index{x\+Queue\+Receive\+From\+I\+SR@{x\+Queue\+Receive\+From\+I\+SR}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Receive\+From\+I\+S\+R()}{xQueueReceiveFromISR()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Receive\+From\+I\+SR (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Queue,  }\item[{void $\ast$const}]{pv\+Buffer,  }\item[{\hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} $\ast$const}]{px\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{queue_8c_aa17470144b72ed310ef73275a0928e09}\label{queue_8c_aa17470144b72ed310ef73275a0928e09}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Take\+Mutex\+Recursive@{x\+Queue\+Take\+Mutex\+Recursive}}
+\index{x\+Queue\+Take\+Mutex\+Recursive@{x\+Queue\+Take\+Mutex\+Recursive}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Take\+Mutex\+Recursive()}{xQueueTakeMutexRecursive()}}
+{\footnotesize\ttfamily \hyperlink{portmacro_8h_a46fb21e00ae0729d7515c0fbf2269796}{Base\+Type\+\_\+t} x\+Queue\+Take\+Mutex\+Recursive (\begin{DoxyParamCaption}\item[{\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t}}]{x\+Mutex,  }\item[{\hyperlink{portmacro_8h_aa69c48c6e902ce54f70886e6573c92a9}{Tick\+Type\+\_\+t}}]{x\+Ticks\+To\+Wait }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 16
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{queue_8c_a591a492f5f9b83cdc8ed02b5c13a5af5}\label{queue_8c_a591a492f5f9b83cdc8ed02b5c13a5af5}} 
+\index{queue.\+c@{queue.\+c}!x\+Queue\+Registry@{x\+Queue\+Registry}}
+\index{x\+Queue\+Registry@{x\+Queue\+Registry}!queue.\+c@{queue.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Registry}{xQueueRegistry}}
+{\footnotesize\ttfamily \hyperlink{mpu__wrappers_8h_a56a0b54ca924c56d192d4389ba585ed5}{P\+R\+I\+V\+I\+L\+E\+G\+E\+D\+\_\+\+D\+A\+TA} \hyperlink{queue_8c_a51b5b21c8a33be452f8b5c663e07c6f2}{Queue\+Registry\+Item\+\_\+t} x\+Queue\+Registry\mbox{[}\hyperlink{_free_r_t_o_s_config_8h_aa4b5138c4e42a180f0abd4f2455f90fb}{config\+Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+S\+I\+ZE}\mbox{]}}
+

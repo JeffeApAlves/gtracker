@@ -1,0 +1,61 @@
+\hypertarget{consumer_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+App/consumer.c File Reference}
+\label{consumer_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+App/consumer.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+App/consumer.\+c}}
+{\ttfamily \#include \char`\"{}Tank.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Clock.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Accelerometer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gps.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}application.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ihm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}consumer.\+h\char`\"{}}\newline
+Include dependency graph for consumer.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{consumer_8c_a5676d14c1814a7f1ddd20d14ab588881}{update\+Data\+G\+PS} (\hyperlink{struct_telemetria}{Telemetria} $\ast$tlm)
+\item 
+void \hyperlink{consumer_8c_aa3192b235f18ac25da7535eec79f3a12}{update\+Data\+Acce} (\hyperlink{struct_telemetria}{Telemetria} $\ast$tlm)
+\item 
+void \hyperlink{consumer_8c_a338b66cdc55eb26b616b8422906d8a9b}{update\+Data\+Level} (\hyperlink{struct_telemetria}{Telemetria} $\ast$tlm)
+\item 
+void \hyperlink{consumer_8c_a83f8f5f565600e7d8ea6efbd2b583612}{update\+T\+LM} (\hyperlink{struct_telemetria}{Telemetria} $\ast$tlm, uint32\+\_\+t ul\+Notified\+Value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{consumer_8c_aa3192b235f18ac25da7535eec79f3a12}\label{consumer_8c_aa3192b235f18ac25da7535eec79f3a12}} 
+\index{consumer.\+c@{consumer.\+c}!update\+Data\+Acce@{update\+Data\+Acce}}
+\index{update\+Data\+Acce@{update\+Data\+Acce}!consumer.\+c@{consumer.\+c}}
+\subsubsection{\texorpdfstring{update\+Data\+Acce()}{updateDataAcce()}}
+{\footnotesize\ttfamily void update\+Data\+Acce (\begin{DoxyParamCaption}\item[{\hyperlink{struct_telemetria}{Telemetria} $\ast$}]{tlm }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{consumer_8c_a5676d14c1814a7f1ddd20d14ab588881}\label{consumer_8c_a5676d14c1814a7f1ddd20d14ab588881}} 
+\index{consumer.\+c@{consumer.\+c}!update\+Data\+G\+PS@{update\+Data\+G\+PS}}
+\index{update\+Data\+G\+PS@{update\+Data\+G\+PS}!consumer.\+c@{consumer.\+c}}
+\subsubsection{\texorpdfstring{update\+Data\+G\+P\+S()}{updateDataGPS()}}
+{\footnotesize\ttfamily void update\+Data\+G\+PS (\begin{DoxyParamCaption}\item[{\hyperlink{struct_telemetria}{Telemetria} $\ast$}]{tlm }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{consumer_8c_a338b66cdc55eb26b616b8422906d8a9b}\label{consumer_8c_a338b66cdc55eb26b616b8422906d8a9b}} 
+\index{consumer.\+c@{consumer.\+c}!update\+Data\+Level@{update\+Data\+Level}}
+\index{update\+Data\+Level@{update\+Data\+Level}!consumer.\+c@{consumer.\+c}}
+\subsubsection{\texorpdfstring{update\+Data\+Level()}{updateDataLevel()}}
+{\footnotesize\ttfamily void update\+Data\+Level (\begin{DoxyParamCaption}\item[{\hyperlink{struct_telemetria}{Telemetria} $\ast$}]{tlm }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{consumer_8c_a83f8f5f565600e7d8ea6efbd2b583612}\label{consumer_8c_a83f8f5f565600e7d8ea6efbd2b583612}} 
+\index{consumer.\+c@{consumer.\+c}!update\+T\+LM@{update\+T\+LM}}
+\index{update\+T\+LM@{update\+T\+LM}!consumer.\+c@{consumer.\+c}}
+\subsubsection{\texorpdfstring{update\+T\+L\+M()}{updateTLM()}}
+{\footnotesize\ttfamily void update\+T\+LM (\begin{DoxyParamCaption}\item[{\hyperlink{struct_telemetria}{Telemetria} $\ast$}]{tlm,  }\item[{uint32\+\_\+t}]{ul\+Notified\+Value }\end{DoxyParamCaption})}
+
+Atualiza as informções de telemetria que estão na lista de menssagens Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6

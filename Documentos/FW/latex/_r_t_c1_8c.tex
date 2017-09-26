@@ -1,0 +1,44 @@
+\hypertarget{_r_t_c1_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+R\+T\+C1.c File Reference}
+\label{_r_t_c1_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+R\+T\+C1.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+R\+T\+C1.\+c}}
+
+
+This component implements a real time clock (R\+TC). Actual date may also be obtained and an alarm function is included.  
+
+
+{\ttfamily \#include \char`\"{}Events.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}R\+T\+C1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}R\+T\+C\+\_\+\+P\+D\+D.\+h\char`\"{}}\newline
+Include dependency graph for R\+T\+C1.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_r_t_c1___t_device_data}{R\+T\+C1\+\_\+\+T\+Device\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_r_t_c1___t_device_data}{R\+T\+C1\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___r_t_c1__module_gae1dda9bbc5f3626dcc3df64cb57a2984}{R\+T\+C1\+\_\+\+T\+Device\+Data\+Ptr}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___r_t_c1__module_ga844f34d73a2540c6cd99df66b247dd49}{R\+T\+C1\+\_\+\+Init} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr, \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Soft\+Init)
+\begin{DoxyCompactList}\small\item\em Initializes the device. There are two modes of initialization. 1) R\+TC device is N\+OT battery backed up. (Soft\+Init = F\+A\+L\+SE) All registers (interrupts, counters, clock routing …) that influence R\+TC behavior are initialized. Note\+: This initialization mode doesn\textquotesingle{}t preserve time and date settings. 2) R\+TC device IS battery backed up. (Soft\+Init = T\+R\+UE). Only registers that are not backed up are initialized (Interrupt priority …). R\+TC device is running, time and date a preserved, R\+TC interrupts (events) are preserved too. Allocates memory for the device data structure. This method can be called only once. Before the second call of Init() the Deinit() must be called first. \end{DoxyCompactList}\item 
+void \hyperlink{group___r_t_c1__module_gaeed73f4c93bfd44f15170c28028c81fb}{R\+T\+C1\+\_\+\+Get\+Time} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr, \hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$Time\+Ptr)
+\begin{DoxyCompactList}\small\item\em Returns actual time and date. Note\+: Fields not supported by HW are calculated in software. \end{DoxyCompactList}\item 
+\hyperlink{group___p_e___types__module_ga24c2b045fd04e79e85f261ce4df35588}{L\+D\+D\+\_\+\+T\+Error} \hyperlink{group___r_t_c1__module_ga91540e2cd845981f45f915884360d1fa}{R\+T\+C1\+\_\+\+Set\+Time} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr, \hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$Time\+Ptr)
+\begin{DoxyCompactList}\small\item\em Sets new time and date. Note\+: All \hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} structure members must be correctly filled in. \end{DoxyCompactList}\item 
+\hyperlink{group___r_t_c1__module_gad10e63c95cadae5f5b9bd1db4f857477}{P\+E\+\_\+\+I\+SR} (R\+T\+C1\+\_\+\+Interrupt)
+\item 
+\hyperlink{group___r_t_c1__module_ga15e68e29f9659063d40fb03dbf1f8f25}{P\+E\+\_\+\+I\+SR} (R\+T\+C1\+\_\+\+Seconds\+Interrupt)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This component implements a real time clock (R\+TC). Actual date may also be obtained and an alarm function is included. 
+
+\begin{DoxyVersion}{Version}
+01.\+08 
+\end{DoxyVersion}

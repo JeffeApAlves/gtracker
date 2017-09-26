@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['observe',['OBSERVE',['../struct_u_s_b___mem_map.html#a4d4155ad45912de6f47166b4268fed6f',1,'USB_MemMap']]],
+  ['ofs',['OFS',['../struct_a_d_c___mem_map.html#a917f361e89fd45e7bf2e7733fda76f86',1,'ADC_MemMap']]],
+  ['oncomplete',['OnComplete',['../struct_l_d_d___d_m_a___t_transfer_descriptor.html#aa5f0f9c4b4184409be1a37ecfa110156',1,'LDD_DMA_TTransferDescriptor']]],
+  ['oncompleteeventptr',['OnCompleteEventPtr',['../struct_l_d_d___d_m_a___t_transfer_descriptor.html#a80aa18ef41bc87c254728cf86f6b0ce3',1,'LDD_DMA_TTransferDescriptor']]],
+  ['onerror',['OnError',['../struct_l_d_d___d_m_a___t_transfer_descriptor.html#adaf3a82b2f9c667291b5b75015afd8d3',1,'LDD_DMA_TTransferDescriptor']]],
+  ['onerroreventptr',['OnErrorEventPtr',['../struct_l_d_d___d_m_a___t_transfer_descriptor.html#aa16634a2ed2be93715b4f13be512e7be',1,'LDD_DMA_TTransferDescriptor']]],
+  ['operacao',['operacao',['../struct_header.html#ac8bc9851d68fde59ab31b3bc66fe4967',1,'Header']]],
+  ['operation_5fan',['OPERATION_AN',['../protocol_8h.html#aa7223d760429da396f2ea5e0f630718f',1,'OPERATION_AN():&#160;protocol.c'],['../protocol_8c.html#aa7223d760429da396f2ea5e0f630718f',1,'OPERATION_AN():&#160;protocol.c']]],
+  ['operation_5frd',['OPERATION_RD',['../protocol_8h.html#aa79373273b4874ef0cd12a1adc808477',1,'OPERATION_RD():&#160;protocol.c'],['../protocol_8c.html#aa79373273b4874ef0cd12a1adc808477',1,'OPERATION_RD():&#160;protocol.c']]],
+  ['operation_5fwr',['OPERATION_WR',['../protocol_8h.html#ab6f8b9ee27ca0aff065a8e80c1994253',1,'OPERATION_WR():&#160;protocol.c'],['../protocol_8c.html#ab6f8b9ee27ca0aff065a8e80c1994253',1,'OPERATION_WR():&#160;protocol.c']]],
+  ['operations',['Operations',['../struct_l_d_d___s_d_h_c___t_card_caps.html#a84cee2e15fdb67f7f98ae012d8c9f268',1,'LDD_SDHC_TCardCaps']]],
+  ['otgctl',['OTGCTL',['../struct_u_s_b___mem_map.html#a568c7325541772f0455c8bc732e10a61',1,'USB_MemMap']]],
+  ['otgicr',['OTGICR',['../struct_u_s_b___mem_map.html#a377a3bd77416462f581c6f00f7abc263',1,'USB_MemMap']]],
+  ['otgistat',['OTGISTAT',['../struct_u_s_b___mem_map.html#a418c1814b43ee98065383e8270708b5e',1,'USB_MemMap']]],
+  ['otgstat',['OTGSTAT',['../struct_u_s_b___mem_map.html#a2100eaae4e423ee246bbbac4568423eb',1,'USB_MemMap']]],
+  ['outdatanumreq',['OutDataNumReq',['../struct_a_serial_ldd1___t_device_data.html#ac1f71c26f2de1b9f56290052e94e0776',1,'ASerialLdd1_TDeviceData::OutDataNumReq()'],['../struct_a_serial_ldd2___t_device_data.html#ac1f71c26f2de1b9f56290052e94e0776',1,'ASerialLdd2_TDeviceData::OutDataNumReq()']]],
+  ['outdataptr',['OutDataPtr',['../struct_a_serial_ldd1___t_device_data.html#a9dc8846e18053ac742a73b80f1619083',1,'ASerialLdd1_TDeviceData::OutDataPtr()'],['../struct_a_serial_ldd2___t_device_data.html#a9dc8846e18053ac742a73b80f1619083',1,'ASerialLdd2_TDeviceData::OutDataPtr()']]],
+  ['outerlooplinkedchannel',['OuterLoopLinkedChannel',['../struct_l_d_d___d_m_a___t_transfer_descriptor.html#aa33953a3b83351822ad5e82e497d6886',1,'LDD_DMA_TTransferDescriptor']]],
+  ['outlenm',['OutLenM',['../struct_i2_c2___t_device_data.html#a064426c48cafd0c15962acdf0d76793f',1,'I2C2_TDeviceData']]],
+  ['outptrm',['OutPtrM',['../struct_i2_c2___t_device_data.html#af8d434e5670125554b6859d0aca9de41',1,'I2C2_TDeviceData']]],
+  ['outputtransposemode',['OutputTransposeMode',['../struct_l_d_d___c_r_c___t_user_c_r_c_standard.html#a1bfeb8c16e67ef1c8032166ab592afe6',1,'LDD_CRC_TUserCRCStandard']]],
+  ['outsentdatanum',['OutSentDataNum',['../struct_a_serial_ldd1___t_device_data.html#aaec34f70eb2398302180ce4c52ed4fad',1,'ASerialLdd1_TDeviceData::OutSentDataNum()'],['../struct_a_serial_ldd2___t_device_data.html#aaec34f70eb2398302180ce4c52ed4fad',1,'ASerialLdd2_TDeviceData::OutSentDataNum()']]],
+  ['overrun',['OverRun',['../union_a_s1___t_error.html#ae15421a6d353dfef2478432985ea60f7',1,'AS1_TError::OverRun()'],['../union_a_s2___t_error.html#ae15421a6d353dfef2478432985ea60f7',1,'AS2_TError::OverRun()']]],
+  ['overrunerrors',['OverrunErrors',['../struct_l_d_d___s_e_r_i_a_l___t_stats.html#a72193f2eac817d954b3bcc526907fe06',1,'LDD_SERIAL_TStats']]]
+];

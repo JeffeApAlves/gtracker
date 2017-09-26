@@ -1,0 +1,51 @@
+<map id="F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code/AS1.c" name="F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code/AS1.c">
+<area shape="rect" id="node2" href="$_a_s1_8h.html" title="This component &quot;AsynchroSerial&quot; implements an asynchronous serial communication. The component suppor..." alt="" coords="961,184,1020,211"/>
+<area shape="rect" id="node9" href="$_events_8h.html" title="This is user&#39;s event module. Put your event handler code here. " alt="" coords="3489,109,3561,136"/>
+<area shape="rect" id="node3" href="$_a_serial_ldd1_8h.html" title="This component &quot;Serial_LDD&quot; implements an asynchronous serial communication. The component supports d..." alt="" coords="967,259,1070,285"/>
+<area shape="rect" id="node4" href="$_cpu_8h.html" title="Cpu.h" alt="" coords="2779,483,2835,509"/>
+<area shape="rect" id="node5" href="$_p_e___types_8h.html" title="PE_Types.h &#45; contains definitions of basic types, register access macros and hardware specific macros..." alt="" coords="2241,557,2335,584"/>
+<area shape="rect" id="node6" href="$_p_e___error_8h.html" title="This component &quot;PE_Error&quot; contains internal definitions of the error constants. " alt="" coords="3741,557,3827,584"/>
+<area shape="rect" id="node7" href="$_p_e___const_8h.html" title="This component &quot;PE_Const&quot; contains internal definitions of the constants. " alt="" coords="2818,557,2910,584"/>
+<area shape="rect" id="node8" href="$_i_o___map_8h.html" title="IO_Map.h &#45; implements an IO device&#39;s mapping. This module contains symbol definitions of all peripher..." alt="" coords="3238,557,3317,584"/>
+<area shape="rect" id="node10" href="$_f_r_t_o_s1_8h.html" title="This component implements the FreeRTOS Realtime Operating System. " alt="" coords="5747,259,5829,285"/>
+<area shape="rect" id="node11" href="$_m_c_u_c1_8h.html" title="MCUC1.h" alt="" coords="5339,408,5418,435"/>
+<area shape="rect" id="node12" href="$_u_t_i_l1_8h.html" title="Contains various utility functions. " alt="" coords="5755,333,5821,360"/>
+<area shape="rect" id="node13" href="$_w_a_i_t2_8h.html" title="Implements busy waiting routines. " alt="" coords="5343,184,5415,211"/>
+<area shape="rect" id="node14" href="$_w_a_i_t3_8h.html" title="Implements busy waiting routines. " alt="" coords="5019,184,5091,211"/>
+<area shape="rect" id="node15" href="$_w_a_i_t4_8h.html" title="Implements busy waiting routines. " alt="" coords="5116,184,5188,211"/>
+<area shape="rect" id="node16" href="$_i2_c2_8h.html" title="This component encapsulates the internal I2C communication interface. The implementation of the inter..." alt="" coords="1272,408,1331,435"/>
+<area shape="rect" id="node17" href="$_a_d1_8h.html" title="This device &quot;ADC&quot; implements an A/D converter, its control methods and interrupt/event handling proce..." alt="" coords="3637,333,3696,360"/>
+<area shape="rect" id="node18" href="$_adc_ldd1_8h.html" title="This device &quot;ADC_LDD&quot; implements an A/D converter, its control methods and interrupt/event handling p..." alt="" coords="3451,408,3535,435"/>
+<area shape="rect" id="node19" href="$_r_t_c1_8h.html" title="This component implements a real time clock (RTC). Actual date may also be obtained and an alarm func..." alt="" coords="2686,184,2751,211"/>
+<area shape="rect" id="node20" href="$_t_s_k1_8h.html" title="TSK1.h" alt="" coords="5575,184,5641,211"/>
+<area shape="rect" id="node21" href="$_l_e_d___r_8h.html" title="This component implements a universal driver for a single LED. " alt="" coords="4229,259,4304,285"/>
+<area shape="rect" id="node22" href="$_l_e_dpin1_8h.html" title="This component &quot;BitIO&quot; implements an one&#45;bit input/output. It uses one bit/pin of a port..." alt="" coords="4005,333,4088,360"/>
+<area shape="rect" id="node23" href="$_bit_io_ldd1_8h.html" title="The HAL BitIO component provides a low level API for unified access to general purpose digital input/..." alt="" coords="4017,408,4103,435"/>
+<area shape="rect" id="node24" href="$_l_e_d___g_8h.html" title="This component implements a universal driver for a single LED. " alt="" coords="4080,259,4155,285"/>
+<area shape="rect" id="node25" href="$_l_e_dpin2_8h.html" title="This component &quot;BitIO&quot; implements an one&#45;bit input/output. It uses one bit/pin of a port..." alt="" coords="3531,333,3613,360"/>
+<area shape="rect" id="node26" href="$_bit_io_ldd2_8h.html" title="The HAL BitIO component provides a low level API for unified access to general purpose digital input/..." alt="" coords="3289,408,3375,435"/>
+<area shape="rect" id="node27" href="$_l_e_d___b_8h.html" title="This component implements a universal driver for a single LED. " alt="" coords="4868,259,4943,285"/>
+<area shape="rect" id="node28" href="$_l_e_dpin3_8h.html" title="This component &quot;BitIO&quot; implements an one&#45;bit input/output. It uses one bit/pin of a port..." alt="" coords="4607,333,4689,360"/>
+<area shape="rect" id="node29" href="$_bit_io_ldd3_8h.html" title="The HAL BitIO component provides a low level API for unified access to general purpose digital input/..." alt="" coords="4813,408,4899,435"/>
+<area shape="rect" id="node30" href="$_t_u1_8h.html" title="This TimerUnit component provides a low level API for unified hardware access across various timer de..." alt="" coords="2144,408,2200,435"/>
+<area shape="rect" id="node31" href="$_t_i1_8h.html" title="This component &quot;TimerInt&quot; implements a periodic interrupt. When the component and its events are enab..." alt="" coords="1196,259,1247,285"/>
+<area shape="rect" id="node32" href="$_timer_int_ldd1_8h.html" title="This TimerInt component implements a periodic interrupt. When the component and its events are enable..." alt="" coords="1709,333,1816,360"/>
+<area shape="rect" id="node33" href="$_w_a_i_t1_8h.html" title="Implements busy waiting routines. " alt="" coords="4943,333,5015,360"/>
+<area shape="rect" id="node34" href="$_l_c_dout_8h.html" title="This component implements a driver for multiple 2x16 character displays. " alt="" coords="3162,259,3238,285"/>
+<area shape="rect" id="node35" href="$_e_n1_8h.html" title="This component &quot;BitIO&quot; implements an one&#45;bit input/output. It uses one bit/pin of a port..." alt="" coords="1372,333,1431,360"/>
+<area shape="rect" id="node36" href="$_bit_io_ldd6_8h.html" title="The HAL BitIO component provides a low level API for unified access to general purpose digital input/..." alt="" coords="691,408,778,435"/>
+<area shape="rect" id="node37" href="$_r_s1_8h.html" title="This component &quot;BitIO&quot; implements an one&#45;bit input/output. It uses one bit/pin of a port..." alt="" coords="2121,333,2180,360"/>
+<area shape="rect" id="node38" href="$_bit_io_ldd7_8h.html" title="The HAL BitIO component provides a low level API for unified access to general purpose digital input/..." alt="" coords="2033,408,2119,435"/>
+<area shape="rect" id="node39" href="$_d_b41_8h.html" title="This component &quot;BitIO&quot; implements an one&#45;bit input/output. It uses one bit/pin of a port..." alt="" coords="1850,333,1915,360"/>
+<area shape="rect" id="node40" href="$_bit_io_ldd12_8h.html" title="The HAL BitIO component provides a low level API for unified access to general purpose digital input/..." alt="" coords="1761,408,1855,435"/>
+<area shape="rect" id="node41" href="$_d_b51_8h.html" title="This component &quot;BitIO&quot; implements an one&#45;bit input/output. It uses one bit/pin of a port..." alt="" coords="3865,333,3930,360"/>
+<area shape="rect" id="node42" href="$_bit_io_ldd13_8h.html" title="The HAL BitIO component provides a low level API for unified access to general purpose digital input/..." alt="" coords="4401,408,4495,435"/>
+<area shape="rect" id="node43" href="$_d_b61_8h.html" title="This component &quot;BitIO&quot; implements an one&#45;bit input/output. It uses one bit/pin of a port..." alt="" coords="4263,333,4329,360"/>
+<area shape="rect" id="node44" href="$_bit_io_ldd14_8h.html" title="The HAL BitIO component provides a low level API for unified access to general purpose digital input/..." alt="" coords="4230,408,4325,435"/>
+<area shape="rect" id="node45" href="$_d_b71_8h.html" title="This component &quot;BitIO&quot; implements an one&#45;bit input/output. It uses one bit/pin of a port..." alt="" coords="1455,333,1521,360"/>
+<area shape="rect" id="node46" href="$_bit_io_ldd15_8h.html" title="The HAL BitIO component provides a low level API for unified access to general purpose digital input/..." alt="" coords="874,408,969,435"/>
+<area shape="rect" id="node47" href="$_t_s_sin_8h.html" title="TSSin.h" alt="" coords="1115,408,1183,435"/>
+<area shape="rect" id="node48" href="$_x_f1_8h.html" title="XF1.h" alt="" coords="5213,184,5267,211"/>
+<area shape="rect" id="node49" href="$_a_s2_8h.html" title="This component &quot;AsynchroSerial&quot; implements an asynchronous serial communication. The component suppor..." alt="" coords="2843,184,2901,211"/>
+<area shape="rect" id="node50" href="$_a_serial_ldd2_8h.html" title="This component &quot;Serial_LDD&quot; implements an asynchronous serial communication. The component supports d..." alt="" coords="2731,259,2834,285"/>
+</map>

@@ -1,0 +1,823 @@
+\hypertarget{_p_i_t___p_d_d_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+P\+I\+T\+\_\+\+P\+DD.h File Reference}
+\label{_p_i_t___p_d_d_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+P\+I\+T\+\_\+\+P\+D\+D.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+{\ttfamily \#include \char`\"{}P\+D\+D\+\_\+\+Types.\+h\char`\"{}}\newline
+Include dependency graph for P\+I\+T\+\_\+\+P\+D\+D.\+h\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+0}~0U
+\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a32fa482b98c40f5c918b920bc8243825}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1}~0x1U
+\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a1baa8e0760dfb2f2fb4d9190ff52ad88}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2}~0x2U
+\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a2a17416da9f069d63ff214067dbb137c}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+3}~0x3U
+\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_ab0bce25d8a47268b5b3ed2192e4e6ede}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+E\+N\+A\+B\+L\+ED}~0U
+\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_aa357d0aa091dac1e51363e2eeba3b5e1}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+S\+A\+B\+L\+ED}~\hyperlink{group___p_i_t___register___masks_ga024258b2c23ff75f3e161e56adbbe733}{P\+I\+T\+\_\+\+M\+C\+R\+\_\+\+M\+D\+I\+S\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a9c60ba7c9df3639eaa23d988e1227baf}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+R\+UN}~0U
+\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a89650cc749c545312972ca6c213ff3f7}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+S\+T\+O\+P\+P\+ED}~\hyperlink{group___p_i_t___register___masks_ga8149a0bb21843632dd4528b540480ba7}{P\+I\+T\+\_\+\+M\+C\+R\+\_\+\+F\+R\+Z\+\_\+\+M\+A\+SK}
+\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a9b8423ec9658d4dbfb99af7e2151bd50}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}(Peripheral\+Base,  Channel\+Idx)
+\begin{DoxyCompactList}\small\item\em Returns interrupt mask. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a95cc6a9d5ff29df4b26d2aa38a264f2c}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}(Peripheral\+Base,  Channel\+Idx)
+\begin{DoxyCompactList}\small\item\em Returns interrupt flag bit. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_ae602dc6d96d872c2cc490697e21f7902}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}(Peripheral\+Base,  Channel\+Idx)
+\begin{DoxyCompactList}\small\item\em Enables the P\+IT interrupt. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_ab65218d2770f56d0ae5d44cf173c6b59}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}(Peripheral\+Base,  Channel\+Idx)
+\begin{DoxyCompactList}\small\item\em Disables the P\+IT interrupt. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a889d5a146dbe4ca54f6b800b5cdf633b}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}(Peripheral\+Base,  Channel\+Idx)
+\begin{DoxyCompactList}\small\item\em Clears P\+IT interrupt flag. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a6107f3946ddcf15c4ea19f5860c70ced}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Clock}(Peripheral\+Base,  Clock)
+\begin{DoxyCompactList}\small\item\em Enables/disables P\+IT module clock. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_aee2c6eeaf2f69dafb9d48f9dbc4cc20a}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Freeze}(Peripheral\+Base,  Freeze)
+\begin{DoxyCompactList}\small\item\em Allows the timers to be stopped when the device enters debug mode. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a1aeb615fe63f53ba425ee59f8f4adf1e}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Load\+Reg}(Peripheral\+Base,  Channel\+Idx,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the load register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a96518aaadfe8675b9a710dfdd2824a35}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Load\+Reg}(Peripheral\+Base,  Channel\+Idx)
+\begin{DoxyCompactList}\small\item\em Returns the content of the load register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a61b09844929a3ed804f5c6b1b57738a4}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Value\+Reg}(Peripheral\+Base,  Channel\+Idx)
+\begin{DoxyCompactList}\small\item\em Returns the content of the current timer value register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_ae724917f2d74fba39d415401d478fe1f}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}(Peripheral\+Base,  Channel\+Idx,  \hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State})
+\begin{DoxyCompactList}\small\item\em Enables the P\+IT channel device. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_ad5078d5a8fc000d59f0e1dac9ca4cf1b}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}(Peripheral\+Base,  Channel\+Idx)
+\begin{DoxyCompactList}\small\item\em Returns current state of P\+IT channel device. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_acaf57868fd184d8a7d1dc4ef9beb24bb}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Module\+Control\+Reg}(Peripheral\+Base,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the module control register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_ac5d87173562762e8bedb8124b20cf7a6}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Module\+Control\+Reg}(Peripheral\+Base)
+\begin{DoxyCompactList}\small\item\em Returns the content of the module control register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a5f5c72e6c87f769599e5e3394bb4f18d}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Control\+Reg}(Peripheral\+Base,  Channel\+Idx,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the timer control register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_af055c0ea908fb70d74bf0ca9ee05e7b5}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Control\+Reg}(Peripheral\+Base,  Channel\+Idx)
+\begin{DoxyCompactList}\small\item\em Returns the content of the timer control register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_aaa7340185fbdb8779d75c7750b114a02}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Flag\+Reg}(Peripheral\+Base,  Channel\+Idx,  Value)
+\begin{DoxyCompactList}\small\item\em Writes value to the timer flag register. \end{DoxyCompactList}\item 
+\#define \hyperlink{_p_i_t___p_d_d_8h_a91cb43200cde9febdb00bad678af838b}{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Flag\+Reg}(Peripheral\+Base,  Channel\+Idx)
+\begin{DoxyCompactList}\small\item\em Returns the content of the timer flag register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}\label{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+0@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+0}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+0@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+0}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+0}{PIT\_PDD\_CHANNEL\_0}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+0~0U}
+
+0 \mbox{\Hypertarget{_p_i_t___p_d_d_8h_a32fa482b98c40f5c918b920bc8243825}\label{_p_i_t___p_d_d_8h_a32fa482b98c40f5c918b920bc8243825}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1}{PIT\_PDD\_CHANNEL\_1}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+1~0x1U}
+
+1 \mbox{\Hypertarget{_p_i_t___p_d_d_8h_a1baa8e0760dfb2f2fb4d9190ff52ad88}\label{_p_i_t___p_d_d_8h_a1baa8e0760dfb2f2fb4d9190ff52ad88}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2}{PIT\_PDD\_CHANNEL\_2}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+2~0x2U}
+
+2 \mbox{\Hypertarget{_p_i_t___p_d_d_8h_a2a17416da9f069d63ff214067dbb137c}\label{_p_i_t___p_d_d_8h_a2a17416da9f069d63ff214067dbb137c}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+3@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+3}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+3@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+3}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+3}{PIT\_PDD\_CHANNEL\_3}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+3~0x3U}
+
+3 \mbox{\Hypertarget{_p_i_t___p_d_d_8h_a889d5a146dbe4ca54f6b800b5cdf633b}\label{_p_i_t___p_d_d_8h_a889d5a146dbe4ca54f6b800b5cdf633b}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag}{PIT\_PDD\_ClearInterruptFlag}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Clear\+Interrupt\+Flag(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (\hyperlink{group___p_i_t___register___accessor___macros_gae38fd2f9c8baca1504582bc5f3973932}{PIT\_TFLG\_REG}(PeripheralBase,(ChannelIdx)) = \(\backslash\)
+     PIT\_TFLG\_TIF\_MASK), \(\backslash\)
+    (\textcolor{keywordtype}{void})\hyperlink{group___p_i_t___register___accessor___macros_gaa1c49ea81e45e7ae3407b2b804432381}{PIT\_LDVAL\_REG}(PeripheralBase,(ChannelIdx)) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Clears P\+IT interrupt flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+F\+LG\mbox{[}Channel\+Idx\mbox{]}, L\+D\+V\+AL\mbox{[}Channel\+Idx\mbox{]} (depending on the peripheral). 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_p_i_t___p_d_d_8h_a889d5a146dbe4ca54f6b800b5cdf633b}{PIT\_PDD\_ClearInterruptFlag}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_aa357d0aa091dac1e51363e2eeba3b5e1}\label{_p_i_t___p_d_d_8h_aa357d0aa091dac1e51363e2eeba3b5e1}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+S\+A\+B\+L\+ED@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+S\+A\+B\+L\+ED}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+S\+A\+B\+L\+ED@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+S\+A\+B\+L\+ED}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+S\+A\+B\+L\+ED}{PIT\_PDD\_CLOCK\_DISABLED}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+S\+A\+B\+L\+ED~\hyperlink{group___p_i_t___register___masks_ga024258b2c23ff75f3e161e56adbbe733}{P\+I\+T\+\_\+\+M\+C\+R\+\_\+\+M\+D\+I\+S\+\_\+\+M\+A\+SK}}
+
+Disabled \mbox{\Hypertarget{_p_i_t___p_d_d_8h_ab0bce25d8a47268b5b3ed2192e4e6ede}\label{_p_i_t___p_d_d_8h_ab0bce25d8a47268b5b3ed2192e4e6ede}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+E\+N\+A\+B\+L\+ED@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+E\+N\+A\+B\+L\+ED@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+E\+N\+A\+B\+L\+ED}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+E\+N\+A\+B\+L\+ED}{PIT\_PDD\_CLOCK\_ENABLED}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+C\+L\+O\+C\+K\+\_\+\+E\+N\+A\+B\+L\+ED~0U}
+
+Enabled \mbox{\Hypertarget{_p_i_t___p_d_d_8h_ab65218d2770f56d0ae5d44cf173c6b59}\label{_p_i_t___p_d_d_8h_ab65218d2770f56d0ae5d44cf173c6b59}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt}{PIT\_PDD\_DisableInterrupt}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Disable\+Interrupt(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_TCTRL\_REG(PeripheralBase,(ChannelIdx)) &= \(\backslash\)
+     (uint32\_t)(~(uint32\_t)\hyperlink{group___p_i_t___register___masks_ga99639aabcac1d6042d14e7893d00bf67}{PIT\_TCTRL\_TIE\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Disables the P\+IT interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+C\+T\+RL\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_p_i_t___p_d_d_8h_ab65218d2770f56d0ae5d44cf173c6b59}{PIT\_PDD\_DisableInterrupt}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_ae724917f2d74fba39d415401d478fe1f}\label{_p_i_t___p_d_d_8h_ae724917f2d74fba39d415401d478fe1f}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device}{PIT\_PDD\_EnableDevice}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Device(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx,  }\item[{}]{\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_TCTRL\_REG(PeripheralBase,(ChannelIdx)) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(( \(\backslash\)
+       \hyperlink{group___p_i_t___register___accessor___macros_gaa338edf83b961108a6dcdd43c80ed8c6}{PIT\_TCTRL\_REG}(PeripheralBase,(ChannelIdx))) & ( \(\backslash\)
+       (uint32\_t)(~(uint32\_t)\hyperlink{group___p_i_t___register___masks_ga1099670711f996f5fa84e33bbfe794b2}{PIT\_TCTRL\_TEN\_MASK})))) | ( \(\backslash\)
+      (uint32\_t)(\hyperlink{group___x_f1__module_ga5d74787dedbc4e11c1ab15bf487e61f8}{State}))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables the P\+IT channel device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+{\em State} & Requested state of P\+IT channel. This parameter is of "Global enumeration used for specifying general enable/disable states (P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE and P\+D\+D\+\_\+\+E\+N\+A\+B\+LE defined in \hyperlink{_p_d_d___types_8h}{P\+D\+D\+\_\+\+Types.\+h})" type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+C\+T\+RL\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_p_i_t___p_d_d_8h_ae724917f2d74fba39d415401d478fe1f}{PIT\_PDD\_EnableDevice}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0},
+\hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{PDD\_DISABLE});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_ae602dc6d96d872c2cc490697e21f7902}\label{_p_i_t___p_d_d_8h_ae602dc6d96d872c2cc490697e21f7902}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt}{PIT\_PDD\_EnableInterrupt}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Enable\+Interrupt(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_TCTRL\_REG(PeripheralBase,(ChannelIdx)) |= \(\backslash\)
+     PIT\_TCTRL\_TIE\_MASK \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables the P\+IT interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+C\+T\+RL\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_p_i_t___p_d_d_8h_ae602dc6d96d872c2cc490697e21f7902}{PIT\_PDD\_EnableInterrupt}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_ad5078d5a8fc000d59f0e1dac9ca4cf1b}\label{_p_i_t___p_d_d_8h_ad5078d5a8fc000d59f0e1dac9ca4cf1b}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status}{PIT\_PDD\_GetEnableDeviceStatus}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Enable\+Device\+Status(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint32\_t)(\hyperlink{group___p_i_t___register___accessor___macros_gaa338edf83b961108a6dcdd43c80ed8c6}{PIT\_TCTRL\_REG}(PeripheralBase,(ChannelIdx)) & 
+      \hyperlink{group___p_i_t___register___masks_ga1099670711f996f5fa84e33bbfe794b2}{PIT\_TCTRL\_TEN\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns current state of P\+IT channel device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+C\+T\+RL\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_p_i_t___p_d_d_8h_ad5078d5a8fc000d59f0e1dac9ca4cf1b}{PIT\_PDD\_GetEnableDeviceStatus}(<peripheral>\_BASE\_PTR,
+\hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_a95cc6a9d5ff29df4b26d2aa38a264f2c}\label{_p_i_t___p_d_d_8h_a95cc6a9d5ff29df4b26d2aa38a264f2c}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag}{PIT\_PDD\_GetInterruptFlag}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Flag(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint32\_t)(\hyperlink{group___p_i_t___register___accessor___macros_gae38fd2f9c8baca1504582bc5f3973932}{PIT\_TFLG\_REG}(PeripheralBase,(ChannelIdx)) & 
+      \hyperlink{group___p_i_t___register___masks_ga9de8d708b43c9ca35df26c7b43f09769}{PIT\_TFLG\_TIF\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns interrupt flag bit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+F\+LG\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_p_i_t___p_d_d_8h_a95cc6a9d5ff29df4b26d2aa38a264f2c}{PIT\_PDD\_GetInterruptFlag}(<peripheral>\_BASE\_PTR,
+\hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_a9b8423ec9658d4dbfb99af7e2151bd50}\label{_p_i_t___p_d_d_8h_a9b8423ec9658d4dbfb99af7e2151bd50}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask}{PIT\_PDD\_GetInterruptMask}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Get\+Interrupt\+Mask(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    (uint32\_t)(\hyperlink{group___p_i_t___register___accessor___macros_gaa338edf83b961108a6dcdd43c80ed8c6}{PIT\_TCTRL\_REG}(PeripheralBase,(ChannelIdx)) & 
+      \hyperlink{group___p_i_t___register___masks_ga99639aabcac1d6042d14e7893d00bf67}{PIT\_TCTRL\_TIE\_MASK}) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns interrupt mask. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+C\+T\+RL\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_p_i_t___p_d_d_8h_a9b8423ec9658d4dbfb99af7e2151bd50}{PIT\_PDD\_GetInterruptMask}(<peripheral>\_BASE\_PTR,
+\hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_a6107f3946ddcf15c4ea19f5860c70ced}\label{_p_i_t___p_d_d_8h_a6107f3946ddcf15c4ea19f5860c70ced}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Clock@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Clock}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Clock@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Clock}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Clock}{PIT\_PDD\_ModuleClock}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Clock(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Clock }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_MCR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(\hyperlink{group___p_i_t___register___accessor___macros_ga01f1ee5f7f451b1f6f7f1b3549c63303}{PIT\_MCR\_REG}(PeripheralBase) & (uint32\_t)(~(uint32\_t)
+      \hyperlink{group___p_i_t___register___masks_ga024258b2c23ff75f3e161e56adbbe733}{PIT\_MCR\_MDIS\_MASK}))) | ( \(\backslash\)
+      (uint32\_t)(Clock))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Enables/disables P\+IT module clock. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Clock} & New value of the clock. Use constants from group \char`\"{}\+Module clock
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: P\+I\+T\+\_\+\+M\+CR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_p_i_t___p_d_d_8h_a6107f3946ddcf15c4ea19f5860c70ced}{PIT\_PDD\_ModuleClock}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_i_t___p_d_d_8h_ab0bce25d8a47268b5b3ed2192e4e6ede}{PIT\_PDD\_CLOCK\_ENABLED});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_aee2c6eeaf2f69dafb9d48f9dbc4cc20a}\label{_p_i_t___p_d_d_8h_aee2c6eeaf2f69dafb9d48f9dbc4cc20a}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Freeze@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Freeze}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Freeze@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Freeze}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Freeze}{PIT\_PDD\_ModuleFreeze}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Module\+Freeze(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Freeze }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_MCR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(( \(\backslash\)
+      (uint32\_t)(\hyperlink{group___p_i_t___register___accessor___macros_ga01f1ee5f7f451b1f6f7f1b3549c63303}{PIT\_MCR\_REG}(PeripheralBase) & (uint32\_t)(~(uint32\_t)
+      \hyperlink{group___p_i_t___register___masks_ga8149a0bb21843632dd4528b540480ba7}{PIT\_MCR\_FRZ\_MASK}))) | ( \(\backslash\)
+      (uint32\_t)(Freeze))) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Allows the timers to be stopped when the device enters debug mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Freeze} & New value of the freeze. Use constants from group \char`\"{}\+Freeze
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: P\+I\+T\+\_\+\+M\+CR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_p_i_t___p_d_d_8h_aee2c6eeaf2f69dafb9d48f9dbc4cc20a}{PIT\_PDD\_ModuleFreeze}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_i_t___p_d_d_8h_a9c60ba7c9df3639eaa23d988e1227baf}{PIT\_PDD\_TIMERS\_RUN});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_a96518aaadfe8675b9a710dfdd2824a35}\label{_p_i_t___p_d_d_8h_a96518aaadfe8675b9a710dfdd2824a35}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Load\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Load\+Reg}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Load\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Load\+Reg}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Load\+Reg}{PIT\_PDD\_ReadLoadReg}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Load\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_LDVAL\_REG(PeripheralBase,(ChannelIdx)) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the load register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+D\+V\+AL\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_p_i_t___p_d_d_8h_a96518aaadfe8675b9a710dfdd2824a35}{PIT\_PDD\_ReadLoadReg}(<peripheral>\_BASE\_PTR,
+\hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_ac5d87173562762e8bedb8124b20cf7a6}\label{_p_i_t___p_d_d_8h_ac5d87173562762e8bedb8124b20cf7a6}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Module\+Control\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Module\+Control\+Reg}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Module\+Control\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Module\+Control\+Reg}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Module\+Control\+Reg}{PIT\_PDD\_ReadModuleControlReg}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Module\+Control\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_MCR\_REG(PeripheralBase) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the module control register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: P\+I\+T\+\_\+\+M\+CR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_p_i_t___p_d_d_8h_ac5d87173562762e8bedb8124b20cf7a6}{PIT\_PDD\_ReadModuleControlReg}(<peripheral>\_BASE\_PTR);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_af055c0ea908fb70d74bf0ca9ee05e7b5}\label{_p_i_t___p_d_d_8h_af055c0ea908fb70d74bf0ca9ee05e7b5}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Control\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Control\+Reg}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Control\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Control\+Reg}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Control\+Reg}{PIT\_PDD\_ReadTimerControlReg}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Control\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_TCTRL\_REG(PeripheralBase,(ChannelIdx)) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the timer control register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+C\+T\+RL\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_p_i_t___p_d_d_8h_af055c0ea908fb70d74bf0ca9ee05e7b5}{PIT\_PDD\_ReadTimerControlReg}(<peripheral>\_BASE\_PTR,
+\hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_a91cb43200cde9febdb00bad678af838b}\label{_p_i_t___p_d_d_8h_a91cb43200cde9febdb00bad678af838b}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Flag\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Flag\+Reg}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Flag\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Flag\+Reg}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Flag\+Reg}{PIT\_PDD\_ReadTimerFlagReg}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Flag\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_TFLG\_REG(PeripheralBase,(ChannelIdx)) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the timer flag register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+F\+LG\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_p_i_t___p_d_d_8h_a91cb43200cde9febdb00bad678af838b}{PIT\_PDD\_ReadTimerFlagReg}(<peripheral>\_BASE\_PTR,
+\hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_a61b09844929a3ed804f5c6b1b57738a4}\label{_p_i_t___p_d_d_8h_a61b09844929a3ed804f5c6b1b57738a4}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Value\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Value\+Reg}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Value\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Value\+Reg}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Value\+Reg}{PIT\_PDD\_ReadTimerValueReg}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Read\+Timer\+Value\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_CVAL\_REG(PeripheralBase,(ChannelIdx)) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Returns the content of the current timer value register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a 32-\/bit value. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: C\+V\+AL\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+uint32\_t result = \hyperlink{_p_i_t___p_d_d_8h_a61b09844929a3ed804f5c6b1b57738a4}{PIT\_PDD\_ReadTimerValueReg}(<peripheral>\_BASE\_PTR,
+\hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0});
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_a9c60ba7c9df3639eaa23d988e1227baf}\label{_p_i_t___p_d_d_8h_a9c60ba7c9df3639eaa23d988e1227baf}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+R\+UN@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+R\+UN}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+R\+UN@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+R\+UN}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+R\+UN}{PIT\_PDD\_TIMERS\_RUN}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+R\+UN~0U}
+
+Run \mbox{\Hypertarget{_p_i_t___p_d_d_8h_a89650cc749c545312972ca6c213ff3f7}\label{_p_i_t___p_d_d_8h_a89650cc749c545312972ca6c213ff3f7}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+S\+T\+O\+P\+P\+ED@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+S\+T\+O\+P\+P\+ED}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+S\+T\+O\+P\+P\+ED@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+S\+T\+O\+P\+P\+ED}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+S\+T\+O\+P\+P\+ED}{PIT\_PDD\_TIMERS\_STOPPED}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+T\+I\+M\+E\+R\+S\+\_\+\+S\+T\+O\+P\+P\+ED~\hyperlink{group___p_i_t___register___masks_ga8149a0bb21843632dd4528b540480ba7}{P\+I\+T\+\_\+\+M\+C\+R\+\_\+\+F\+R\+Z\+\_\+\+M\+A\+SK}}
+
+Stopped \mbox{\Hypertarget{_p_i_t___p_d_d_8h_a1aeb615fe63f53ba425ee59f8f4adf1e}\label{_p_i_t___p_d_d_8h_a1aeb615fe63f53ba425ee59f8f4adf1e}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Load\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Load\+Reg}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Load\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Load\+Reg}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Load\+Reg}{PIT\_PDD\_WriteLoadReg}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Load\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_LDVAL\_REG(PeripheralBase,(ChannelIdx)) = \(\backslash\)
+     (uint32\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the load register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+{\em Value} & New content of the load register. This parameter is a 32-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: L\+D\+V\+AL\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_p_i_t___p_d_d_8h_a1aeb615fe63f53ba425ee59f8f4adf1e}{PIT\_PDD\_WriteLoadReg}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0}, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_acaf57868fd184d8a7d1dc4ef9beb24bb}\label{_p_i_t___p_d_d_8h_acaf57868fd184d8a7d1dc4ef9beb24bb}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Module\+Control\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Module\+Control\+Reg}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Module\+Control\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Module\+Control\+Reg}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Module\+Control\+Reg}{PIT\_PDD\_WriteModuleControlReg}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Module\+Control\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_MCR\_REG(PeripheralBase) = \(\backslash\)
+     (uint32\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the module control register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Value} & New content of the module control register. This parameter is a 32-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: P\+I\+T\+\_\+\+M\+CR. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_p_i_t___p_d_d_8h_acaf57868fd184d8a7d1dc4ef9beb24bb}{PIT\_PDD\_WriteModuleControlReg}(<peripheral>\_BASE\_PTR, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_a5f5c72e6c87f769599e5e3394bb4f18d}\label{_p_i_t___p_d_d_8h_a5f5c72e6c87f769599e5e3394bb4f18d}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Control\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Control\+Reg}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Control\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Control\+Reg}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Control\+Reg}{PIT\_PDD\_WriteTimerControlReg}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Control\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_TCTRL\_REG(PeripheralBase,(ChannelIdx)) = \(\backslash\)
+     (uint32\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the timer control register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+{\em Value} & New content of the timer control register. This parameter is a 32-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+C\+T\+RL\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_p_i_t___p_d_d_8h_a5f5c72e6c87f769599e5e3394bb4f18d}{PIT\_PDD\_WriteTimerControlReg}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0},
+1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{_p_i_t___p_d_d_8h_aaa7340185fbdb8779d75c7750b114a02}\label{_p_i_t___p_d_d_8h_aaa7340185fbdb8779d75c7750b114a02}} 
+\index{P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}!P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Flag\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Flag\+Reg}}
+\index{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Flag\+Reg@{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Flag\+Reg}!P\+I\+T\+\_\+\+P\+D\+D.\+h@{P\+I\+T\+\_\+\+P\+D\+D.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Flag\+Reg}{PIT\_PDD\_WriteTimerFlagReg}}
+{\footnotesize\ttfamily \#define P\+I\+T\+\_\+\+P\+D\+D\+\_\+\+Write\+Timer\+Flag\+Reg(\begin{DoxyParamCaption}\item[{}]{Peripheral\+Base,  }\item[{}]{Channel\+Idx,  }\item[{}]{Value }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \(\backslash\)
+    PIT\_TFLG\_REG(PeripheralBase,(ChannelIdx)) = \(\backslash\)
+     (uint32\_t)(Value) \(\backslash\)
+  )
+\end{DoxyCode}
+
+
+Writes value to the timer flag register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Peripheral\+Base} & Pointer to a peripheral registers structure (peripheral base address). You can use the constant defined in the registers definition header file ($<$peripheral$>$\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR) or the constant defined in the peripheral initialization component header file ($<$component\+\_\+name$>$\+\_\+\+D\+E\+V\+I\+CE). \\
+\hline
+{\em Channel\+Idx} & P\+IT channel index. Use constants from group \char`\"{}\+P\+I\+T channel
+       constants\char`\"{}. This parameter is 32 bits wide. \\
+\hline
+{\em Value} & New content of the timer flag register. This parameter is a 32-\/bit value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a value of void type. 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The macro accesses the following registers\+: T\+F\+LG\mbox{[}Channel\+Idx\mbox{]}. 
+\end{DoxyRemark}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}
+\hyperlink{_p_i_t___p_d_d_8h_aaa7340185fbdb8779d75c7750b114a02}{PIT\_PDD\_WriteTimerFlagReg}(<peripheral>\_BASE\_PTR, 
+      \hyperlink{_p_i_t___p_d_d_8h_a8db71e822c517f5ee01271410549f8ad}{PIT\_PDD\_CHANNEL\_0}, 1);
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}

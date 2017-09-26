@@ -1,0 +1,726 @@
+\hypertarget{_free_r_t_o_s_config_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Free\+R\+T\+O\+S\+Config.h File Reference}
+\label{_free_r_t_o_s_config_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Free\+R\+T\+O\+S\+Config.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+Free\+R\+T\+O\+S\+Config.\+h}}
+{\ttfamily \#include \char`\"{}M\+C\+U\+C1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}F\+R\+T\+O\+S1config.\+h\char`\"{}}\newline
+Include dependency graph for Free\+R\+T\+O\+S\+Config.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a90fad7fe3febe486b110f10635404469}{config\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+T\+A\+S\+K\+\_\+\+C\+\_\+\+A\+D\+D\+I\+T\+I\+O\+N\+S\+\_\+H}~0 /$\ast$ 1\+: include additional header file at the end of task.\+c to help with debugging in G\+DB in combination with \hyperlink{_free_r_t_o_s_config_8h_a27f5ee137dc9f125681a31f0b0a4b3be}{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY}; 0\+: no extra file included. $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a29cb668a772027ec38824e7f0116fe55}{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+U\+S\+E\+\_\+\+T\+I\+C\+KS}~0 /$\ast$ 1\+: Use the R\+T\+OS tick counter as runtime counter. 0\+: use extra timer $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ad8081822f3ebc7c917b63bd7bdd7bc58}{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS}~0 /$\ast$ 1\+: generate runtime statistics; 0\+: no runtime statistics $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a727939bcdb98501e0eba0ec8a1841e1b}{port\+C\+O\+N\+F\+I\+G\+U\+R\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+F\+O\+R\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS}()~/$\ast$ nothing $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aa7cb8c79fb40bf2d4caccf5ba9ae6737}{port\+G\+E\+T\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+A\+L\+UE}()~/$\ast$ nothing $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_adde83486022745409c40605922b0bdd6}{config\+U\+S\+E\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON}~1 /$\ast$ 1\+: pre-\/emptive mode; 0\+: cooperative mode $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a493c5763eb7a39bd80779a1c58de0d82}{config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+\_\+\+S\+L\+I\+C\+I\+NG}~1 /$\ast$ 1\+: use time slicing; 0\+: don\textquotesingle{}t time slice at tick interrupt time $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ac637ae45863c19fa2e919db0ed49301f}{config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+OK}~1 /$\ast$ 1\+: use Idle hook; 0\+: no Idle hook $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a7b1a36b1ce1e12ecd3ca8cecee79f145}{config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}~\hyperlink{group___events__module_ga47ee4f5ef904e733b7690af3ef89a1b0}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Idle\+Hook}
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a23c5922c077106fad3f70b54d9071466}{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+OK}~1 /$\ast$ 1\+: use Tick hook; 0\+: no Tick hook $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ab8a1710d0aa36b36ef4747995975c855}{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}~\hyperlink{group___events__module_gaf8fe6769cea9aeb943962871b26b203b}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Tick\+Hook}
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_abdf48e7c9cf513f083aa9cbed0dd7cd7}{config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+OK}~1 /$\ast$ 1\+: use Malloc\+Failed hook; 0\+: no Malloc\+Failed hook $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_adfc33dbfbdbf17719368f28c4b3d4660}{config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}~\hyperlink{group___events__module_ga83b87d2e8c6b269bbdc03cf06d1164a2}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Malloc\+Failed\+Hook}
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a2f0258dd1e3b877e5bc013be54c2db6a}{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}~(100) /$\ast$ frequency of tick interrupt $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a744a9b006dc27fe53584ec8e7baa2b33}{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+ER}~0 /$\ast$ If using Kinetis Low Power Timer (L\+P\+T\+MR) instead of Sys\+Tick timer $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aec17f61cdf26a7d91b0918dba973d759}{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}~1 /$\ast$ 1 k\+Hz L\+PO timer. Set to 1 if not used $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aa68082df879e6fc96bcb9b26513639e7}{config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}~\hyperlink{group___cpu__module_ga9dee0abd722c849e54c662ab11a1d2cf}{C\+P\+U\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+K\+\_\+\+HZ} /$\ast$ C\+PU core clock defined in Cpu.\+h $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a1d7d375bba7ee8d8dfd93a5ece734259}{config\+B\+U\+S\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}~\hyperlink{group___cpu__module_ga532954dc988486bfe48200c796380120}{C\+P\+U\+\_\+\+B\+U\+S\+\_\+\+C\+L\+K\+\_\+\+HZ} /$\ast$ C\+PU bus clock defined in Cpu.\+h $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a7b085c8df461943cb3450c9d9ae47039}{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK}~1 /$\ast$ System Tick is using core clock  $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_abb54167443b4edc9f15ee215947807dd}{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+V\+I\+D\+ER}~1 /$\ast$ no divider $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aa6c52b1b434ca2a708c56fdee02e7946}{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}~((\hyperlink{_free_r_t_o_s_config_8h_aa68082df879e6fc96bcb9b26513639e7}{config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ})/\hyperlink{_free_r_t_o_s_config_8h_abb54167443b4edc9f15ee215947807dd}{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+V\+I\+D\+ER}) /$\ast$ frequency of system tick counter $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a6c534a6cf8a00528fe0be42083484f9a}{config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}~(200) /$\ast$ stack size in addressable stack units $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a5901e13ffdf02f250b3b3d18de9278b1}{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME}~4 /$\ast$ either 1 (only alloc), 2 (alloc/free), 3 (malloc), 4 (coalesc blocks), 5 (multiple blocks), 6 (newlib) $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aaa51b39e4b94bc2a55f8ec381803a0d6}{config\+F\+R\+T\+O\+S\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+S\+C\+H\+E\+ME}~\hyperlink{_free_r_t_o_s_config_8h_a5901e13ffdf02f250b3b3d18de9278b1}{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME} /$\ast$ for backwards compatible only with legacy name $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a9f213227674effff0122a75d94d87938}{config\+T\+O\+T\+A\+L\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+ZE}~(12200) /$\ast$ size of heap in bytes $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ad9bc3a2a132cbffd6e35eea470ac0f0a}{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+ME}~0 /$\ast$ set to 1 if a custom section name (config\+H\+E\+A\+P\+\_\+\+S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+S\+T\+R\+I\+NG) shall be used, 0 otherwise $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ae1a85802d42764830d47abe43a3d9a5e}{config\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+A\+L\+L\+O\+C\+A\+T\+E\+D\+\_\+\+H\+E\+AP}~0 /$\ast$ set to one if application is defining heap uc\+Heap\mbox{[}$\,$\mbox{]} variable, 0 otherwise $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_afa3f8d6510699d972c9af08fa41f66dc}{config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON}~1 /$\ast$ 1\+: make dynamic allocation functions for R\+T\+OS available. 0\+: only static functions are allowed $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a1d6797a53b62d501b095f964036a7ac4}{config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON}~0 /$\ast$ 1\+: make static allocation functions for R\+T\+OS available. 0\+: only dynamic functions are allowed $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_acf3616a8cbe15687f6000cefcca84bbd}{config\+U\+S\+E\+\_\+\+N\+E\+W\+L\+I\+B\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT}~(\hyperlink{_free_r_t_o_s_config_8h_a5901e13ffdf02f250b3b3d18de9278b1}{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME}==6) /$\ast$ 1\+: a newlib reent structure will be allocated for each task; 0\+: no such reentr structure used $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ac388dc4041aab6997348828eb27fc1a8}{config\+M\+A\+X\+\_\+\+T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}~12 /$\ast$ task name length in bytes $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a27f5ee137dc9f125681a31f0b0a4b3be}{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY}~0 /$\ast$ 1\+: include additional structure members and functions to assist with execution visualization and tracing, 0\+: no runtime stats/trace $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a4c480fd4bdce2f3c33ae3ea4ca3ca64d}{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+H\+O\+O\+KS}~0 /$\ast$ 1\+: Percepio Trace hooks, 0\+: not using Percepio Trace hooks $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a9d828b685802f2d643e3ffd589b463a3}{config\+U\+S\+E\+\_\+\+S\+E\+G\+G\+E\+R\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+V\+I\+E\+W\+E\+R\+\_\+\+H\+O\+O\+KS}~0 /$\ast$ 1\+: Segger System Viewer hooks, 0\+: not using Segger System Viewer hooks $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a5b7fae1e2f6d4fe42104ed8d28a0569d}{config\+U\+S\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+F\+O\+R\+M\+A\+T\+T\+I\+N\+G\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}~(\hyperlink{_free_r_t_o_s_config_8h_a27f5ee137dc9f125681a31f0b0a4b3be}{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY} $\vert$$\vert$ \hyperlink{_free_r_t_o_s_config_8h_ad8081822f3ebc7c917b63bd7bdd7bc58}{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS})
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aac311ed9b9e5ae4d2d9648b33a24acce}{config\+U\+S\+E\+\_\+16\+\_\+\+B\+I\+T\+\_\+\+T\+I\+C\+KS}~0 /$\ast$ 1\+: use 16bit tick counter type, 0\+: use 32bit tick counter type $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ad6a5061a742fee450ac455e4ad0f4b6c}{config\+I\+D\+L\+E\+\_\+\+S\+H\+O\+U\+L\+D\+\_\+\+Y\+I\+E\+LD}~1 /$\ast$ 1\+: the I\+D\+EL task will yield as soon as possible. 0\+: The I\+D\+LE task waits until preemption. $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aebb8c3a87d591f60f974772be0ee798d}{config\+U\+S\+E\+\_\+\+P\+O\+R\+T\+\_\+\+O\+P\+T\+I\+M\+I\+S\+E\+D\+\_\+\+T\+A\+S\+K\+\_\+\+S\+E\+L\+E\+C\+T\+I\+ON}~(1 \&\& \hyperlink{_f_r_t_o_s1config_8h_adb8e9d47ab7ec381c8bd6c18d3a7d84a}{config\+C\+P\+U\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+I\+S\+\_\+\+A\+R\+M\+\_\+\+M4\+\_\+\+M7}(\hyperlink{_f_r_t_o_s1config_8h_a0c9064c9cb4817d1747151ceb8c81098}{config\+C\+P\+U\+\_\+\+F\+A\+M\+I\+LY})) /$\ast$ 1\+: the scheduler uses an optimized task selection as defined by the port (if available). 0\+: normal task selection is used $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a57990715eb06402474b8b47e1d562616}{config\+U\+S\+E\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+ES}~0
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a543bf3c79008974cc1d36bab51d94fbf}{config\+U\+S\+E\+\_\+\+M\+U\+T\+E\+X\+ES}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a847511ee433494b1e32c90602c967ae7}{config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+OW}~1 /$\ast$ 0 is disabling stack overflow. Set it to 1 for Method1 or 2 for Method2 $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a4d50ff6d68039ff4b26479d32902cd33}{config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W\+\_\+\+N\+A\+ME}~\hyperlink{group___events__module_ga1e81c467b899cd40c827a5243d259dee}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook}
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a9fe02d866cb1c4fbaa0c3de79f53d42d}{config\+U\+S\+E\+\_\+\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+\+M\+U\+T\+E\+X\+ES}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aa4b5138c4e42a180f0abd4f2455f90fb}{config\+Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+S\+I\+ZE}~5
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a7bfbcca89aaa971f59fe9233772cc33d}{config\+U\+S\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+S\+E\+TS}~0
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a55778995203c57369d2fbfb10224943d}{config\+U\+S\+E\+\_\+\+C\+O\+U\+N\+T\+I\+N\+G\+\_\+\+S\+E\+M\+A\+P\+H\+O\+R\+ES}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a2eb2a0baf886a7adab15b5735029434b}{config\+U\+S\+E\+\_\+\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+T\+AG}~0
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aa19d69387b32a94d79ea52bb2c6f2649}{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+LE}~0 /$\ast$ set to 1 for tickless idle mode, 0 otherwise $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aff3d7f6e5b38283f5214880d8086bb57}{config\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+I\+D\+L\+E\+\_\+\+T\+I\+M\+E\+\_\+\+B\+E\+F\+O\+R\+E\+\_\+\+S\+L\+E\+EP}~2 /$\ast$ number of ticks must be larger than this to enter tickless idle mode $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a4d1687c2aedae733064d886ac553dca8}{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+OK}~0 /$\ast$ set to 1 to enable application hook, zero otherwise $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a58d0c05bbca208011730f0cb3b237031}{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}~x\+Enter\+Tickless\+Idle /$\ast$ function name of decision hook $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a8d32b5f74e55dfd12c5aa3415e16d75e}{config\+N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+C\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+P\+O\+I\+N\+T\+E\+RS}~0 /$\ast$ number of tread local storage pointers, 0 to disable functionality $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a9a78f5ac61e6cb172dadf2a51f11db38}{config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}~6 /$\ast$ task priorities can be from 0 up to this value-\/1 $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ae8f3fd645e6e78dfeb8a6e874af6195a}{config\+M\+A\+X\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+E\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}~2 /$\ast$ co-\/routine priorities can be from 0 up to this value-\/1 $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a605356c2be7be7455f7fdd35368c41b5}{config\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS}~0 /$\ast$ return address of task is zero $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a8299719d9fd640db65e6e59a4e5b0204}{config\+R\+E\+C\+O\+R\+D\+\_\+\+S\+T\+A\+C\+K\+\_\+\+H\+I\+G\+H\+\_\+\+A\+D\+D\+R\+E\+SS}~1  /$\ast$ 1\+: record stack high address for the debugger, 0\+: do not record stack high address $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ac342ae309b0c53828d2ecad3e6de355b}{config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+RS}~0 /$\ast$ set to 1 to enable software timers $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a05c75ff9029ba3f0ab5bde9196f1e873}{config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~(\hyperlink{_free_r_t_o_s_config_8h_a9a78f5ac61e6cb172dadf2a51f11db38}{config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}-\/1\+U)
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_abb9aa0f31c1f3b14a15083a3c6120918}{config\+T\+I\+M\+E\+R\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+L\+E\+N\+G\+TH}~10\+U /$\ast$ size of queue for the timer task $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aed7c7ebcdee603583a55e8ce04e55841}{config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+TH}~(\hyperlink{_free_r_t_o_s_config_8h_a6c534a6cf8a00528fe0be42083484f9a}{config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE})
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_af93b5ef191e3e4bbf050119dacbd148b}{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Event\+Group\+Set\+Bit\+From\+I\+SR}~0 /$\ast$ 1\+: function is included; 0\+: do not include function $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a4b4336acd61a8e513ca2376be84326b5}{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Timer\+Pend\+Function\+Call}~0 /$\ast$ 1\+: function is included; 0\+: do not include function $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a0415288d8efe664e0b05a7b53fbfaa33}{config\+U\+S\+E\+\_\+\+D\+A\+E\+M\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+H\+O\+OK}~0 /$\ast$ 1\+: use application specific v\+Application\+Daemon\+Task\+Startup\+Hook(), 0\+: do not use hook $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aec0ba4af7bdd0e0acba26902a496de6c}{config\+U\+S\+E\+\_\+\+T\+A\+S\+K\+\_\+\+F\+P\+U\+\_\+\+S\+U\+P\+P\+O\+RT}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ae98fa41b29fd55a961461d59b06aa371}{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+End\+Scheduler}~0
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ad6858ac8aaf726007fd19752956ef1bd}{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Priority\+Set}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a1279eb797355460aeeec06aa524e91df}{I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Priority\+Get}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a5ae1434fdf995108dc749ff9329f53bd}{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delete}~0
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a7ee138825e57f243c8ee5fd4207b9e26}{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Clean\+Up\+Resources}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_aef8fbb97819ad3d962f334ac298206d1}{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Suspend}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ae8459bfd5b428319bb10de9f504a53aa}{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay\+Until}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a24361a6eb816a965f1ee4e2e08e364f8}{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a23c7b4b41fe9b575cf2329c7cbe78b86}{I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a9ed60ede556830584e6bfd4a3ab4f9de}{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Scheduler\+State}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a4e2902143b6abf777065c15940321911}{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Queue\+Get\+Mutex\+Holder}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a33733d2bbe005751ec3a417e5ac373bf}{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Handle}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ac54efb28edcc1d3b9d0844005ea20674}{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Abort\+Delay}~0
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ac96b6a6e70667f266db4278be71cbd78}{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Current\+Task\+Handle}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ae8811def4dd6983011fed9ef8686f18f}{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Idle\+Task\+Handle}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a85e3dae9f3daa26f24e679cb6793811e}{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Resume\+From\+I\+SR}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a4fd1d67d54044ac86e8ffc890180f9f6}{I\+N\+C\+L\+U\+D\+E\+\_\+e\+Task\+Get\+State}~0
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a4a5ddd1e32d2945d509a19e4a14dccc7}{I\+N\+C\+L\+U\+D\+E\+\_\+pc\+Task\+Get\+Task\+Name}~1
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a9775cbd6219f5bc6b4221210f6a926c7}{I\+N\+C\+L\+U\+D\+E\+\_\+px\+Task\+Get\+Stack\+Start}~(1 \&\& \hyperlink{_free_r_t_o_s_config_8h_a9d828b685802f2d643e3ffd589b463a3}{config\+U\+S\+E\+\_\+\+S\+E\+G\+G\+E\+R\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+V\+I\+E\+W\+E\+R\+\_\+\+H\+O\+O\+KS})
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a5796db11ec6f9aa38d017d2ac393c5ba}{config\+P\+R\+I\+O\+\_\+\+B\+I\+TS}~2 /$\ast$ 2 bits/4 priority levels on A\+RM Cortex M0+ (Kinetis L Family) $\ast$/
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a10da20f180ec9bd131b0052a802dbc39}{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+L\+O\+W\+E\+S\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~15
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a2254bd235d882be3061bcad0b1e8be98}{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~5
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~(\hyperlink{_free_r_t_o_s_config_8h_a10da20f180ec9bd131b0052a802dbc39}{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+L\+O\+W\+E\+S\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}$<$$<$(8-\/\hyperlink{_free_r_t_o_s_config_8h_a5796db11ec6f9aa38d017d2ac393c5ba}{config\+P\+R\+I\+O\+\_\+\+B\+I\+TS}))
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a54bfc31c410ee452577a25a4552c3704}{config\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~(\hyperlink{_free_r_t_o_s_config_8h_a2254bd235d882be3061bcad0b1e8be98}{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}$<$$<$(8-\/\hyperlink{_free_r_t_o_s_config_8h_a5796db11ec6f9aa38d017d2ac393c5ba}{config\+P\+R\+I\+O\+\_\+\+B\+I\+TS}))
+\item 
+\#define \hyperlink{_free_r_t_o_s_config_8h_a228c70cd48927d6ab730ed1a6dfbe35f}{config\+A\+S\+S\+E\+RT}(x)~if((x)==0) \{ \hyperlink{task_8h_aa455a648c2224964ee57758b8794198e}{task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}(); for( ;; ); \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ae1a85802d42764830d47abe43a3d9a5e}\label{_free_r_t_o_s_config_8h_ae1a85802d42764830d47abe43a3d9a5e}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+A\+L\+L\+O\+C\+A\+T\+E\+D\+\_\+\+H\+E\+AP@{config\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+A\+L\+L\+O\+C\+A\+T\+E\+D\+\_\+\+H\+E\+AP}}
+\index{config\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+A\+L\+L\+O\+C\+A\+T\+E\+D\+\_\+\+H\+E\+AP@{config\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+A\+L\+L\+O\+C\+A\+T\+E\+D\+\_\+\+H\+E\+AP}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+A\+L\+L\+O\+C\+A\+T\+E\+D\+\_\+\+H\+E\+AP}{configAPPLICATION\_ALLOCATED\_HEAP}}
+{\footnotesize\ttfamily \#define config\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+A\+L\+L\+O\+C\+A\+T\+E\+D\+\_\+\+H\+E\+AP~0 /$\ast$ set to one if application is defining heap uc\+Heap\mbox{[}$\,$\mbox{]} variable, 0 otherwise $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a228c70cd48927d6ab730ed1a6dfbe35f}\label{_free_r_t_o_s_config_8h_a228c70cd48927d6ab730ed1a6dfbe35f}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+A\+S\+S\+E\+RT@{config\+A\+S\+S\+E\+RT}}
+\index{config\+A\+S\+S\+E\+RT@{config\+A\+S\+S\+E\+RT}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+A\+S\+S\+E\+RT}{configASSERT}}
+{\footnotesize\ttfamily \#define config\+A\+S\+S\+E\+RT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~if((x)==0) \{ \hyperlink{task_8h_aa455a648c2224964ee57758b8794198e}{task\+D\+I\+S\+A\+B\+L\+E\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+TS}(); for( ;; ); \}}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a1d7d375bba7ee8d8dfd93a5ece734259}\label{_free_r_t_o_s_config_8h_a1d7d375bba7ee8d8dfd93a5ece734259}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+B\+U\+S\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{config\+B\+U\+S\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}}
+\index{config\+B\+U\+S\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{config\+B\+U\+S\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+B\+U\+S\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}{configBUS\_CLOCK\_HZ}}
+{\footnotesize\ttfamily \#define config\+B\+U\+S\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ~\hyperlink{group___cpu__module_ga532954dc988486bfe48200c796380120}{C\+P\+U\+\_\+\+B\+U\+S\+\_\+\+C\+L\+K\+\_\+\+HZ} /$\ast$ C\+PU bus clock defined in Cpu.\+h $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a847511ee433494b1e32c90602c967ae7}\label{_free_r_t_o_s_config_8h_a847511ee433494b1e32c90602c967ae7}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+OW@{config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+OW}}
+\index{config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+OW@{config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+OW}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+OW}{configCHECK\_FOR\_STACK\_OVERFLOW}}
+{\footnotesize\ttfamily \#define config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+OW~1 /$\ast$ 0 is disabling stack overflow. Set it to 1 for Method1 or 2 for Method2 $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a4d50ff6d68039ff4b26479d32902cd33}\label{_free_r_t_o_s_config_8h_a4d50ff6d68039ff4b26479d32902cd33}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W\+\_\+\+N\+A\+ME@{config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W\+\_\+\+N\+A\+ME}}
+\index{config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W\+\_\+\+N\+A\+ME@{config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W\+\_\+\+N\+A\+ME}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W\+\_\+\+N\+A\+ME}{configCHECK\_FOR\_STACK\_OVERFLOW\_NAME}}
+{\footnotesize\ttfamily \#define config\+C\+H\+E\+C\+K\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+O\+V\+E\+R\+F\+L\+O\+W\+\_\+\+N\+A\+ME~\hyperlink{group___events__module_ga1e81c467b899cd40c827a5243d259dee}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook}}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aa68082df879e6fc96bcb9b26513639e7}\label{_free_r_t_o_s_config_8h_aa68082df879e6fc96bcb9b26513639e7}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}}
+\index{config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}{configCPU\_CLOCK\_HZ}}
+{\footnotesize\ttfamily \#define config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ~\hyperlink{group___cpu__module_ga9dee0abd722c849e54c662ab11a1d2cf}{C\+P\+U\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+K\+\_\+\+HZ} /$\ast$ C\+PU core clock defined in Cpu.\+h $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aff3d7f6e5b38283f5214880d8086bb57}\label{_free_r_t_o_s_config_8h_aff3d7f6e5b38283f5214880d8086bb57}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+I\+D\+L\+E\+\_\+\+T\+I\+M\+E\+\_\+\+B\+E\+F\+O\+R\+E\+\_\+\+S\+L\+E\+EP@{config\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+I\+D\+L\+E\+\_\+\+T\+I\+M\+E\+\_\+\+B\+E\+F\+O\+R\+E\+\_\+\+S\+L\+E\+EP}}
+\index{config\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+I\+D\+L\+E\+\_\+\+T\+I\+M\+E\+\_\+\+B\+E\+F\+O\+R\+E\+\_\+\+S\+L\+E\+EP@{config\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+I\+D\+L\+E\+\_\+\+T\+I\+M\+E\+\_\+\+B\+E\+F\+O\+R\+E\+\_\+\+S\+L\+E\+EP}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+I\+D\+L\+E\+\_\+\+T\+I\+M\+E\+\_\+\+B\+E\+F\+O\+R\+E\+\_\+\+S\+L\+E\+EP}{configEXPECTED\_IDLE\_TIME\_BEFORE\_SLEEP}}
+{\footnotesize\ttfamily \#define config\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+I\+D\+L\+E\+\_\+\+T\+I\+M\+E\+\_\+\+B\+E\+F\+O\+R\+E\+\_\+\+S\+L\+E\+EP~2 /$\ast$ number of ticks must be larger than this to enter tickless idle mode $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aaa51b39e4b94bc2a55f8ec381803a0d6}\label{_free_r_t_o_s_config_8h_aaa51b39e4b94bc2a55f8ec381803a0d6}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+F\+R\+T\+O\+S\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+S\+C\+H\+E\+ME@{config\+F\+R\+T\+O\+S\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+S\+C\+H\+E\+ME}}
+\index{config\+F\+R\+T\+O\+S\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+S\+C\+H\+E\+ME@{config\+F\+R\+T\+O\+S\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+S\+C\+H\+E\+ME}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+F\+R\+T\+O\+S\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+S\+C\+H\+E\+ME}{configFRTOS\_MEMORY\_SCHEME}}
+{\footnotesize\ttfamily \#define config\+F\+R\+T\+O\+S\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+S\+C\+H\+E\+ME~\hyperlink{_free_r_t_o_s_config_8h_a5901e13ffdf02f250b3b3d18de9278b1}{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME} /$\ast$ for backwards compatible only with legacy name $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ad8081822f3ebc7c917b63bd7bdd7bc58}\label{_free_r_t_o_s_config_8h_ad8081822f3ebc7c917b63bd7bdd7bc58}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS@{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS}}
+\index{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS@{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS}{configGENERATE\_RUN\_TIME\_STATS}}
+{\footnotesize\ttfamily \#define config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS~0 /$\ast$ 1\+: generate runtime statistics; 0\+: no runtime statistics $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a29cb668a772027ec38824e7f0116fe55}\label{_free_r_t_o_s_config_8h_a29cb668a772027ec38824e7f0116fe55}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+U\+S\+E\+\_\+\+T\+I\+C\+KS@{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+U\+S\+E\+\_\+\+T\+I\+C\+KS}}
+\index{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+U\+S\+E\+\_\+\+T\+I\+C\+KS@{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+U\+S\+E\+\_\+\+T\+I\+C\+KS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+U\+S\+E\+\_\+\+T\+I\+C\+KS}{configGENERATE\_RUN\_TIME\_STATS\_USE\_TICKS}}
+{\footnotesize\ttfamily \#define config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+U\+S\+E\+\_\+\+T\+I\+C\+KS~0 /$\ast$ 1\+: Use the R\+T\+OS tick counter as runtime counter. 0\+: use extra timer $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ad6a5061a742fee450ac455e4ad0f4b6c}\label{_free_r_t_o_s_config_8h_ad6a5061a742fee450ac455e4ad0f4b6c}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+I\+D\+L\+E\+\_\+\+S\+H\+O\+U\+L\+D\+\_\+\+Y\+I\+E\+LD@{config\+I\+D\+L\+E\+\_\+\+S\+H\+O\+U\+L\+D\+\_\+\+Y\+I\+E\+LD}}
+\index{config\+I\+D\+L\+E\+\_\+\+S\+H\+O\+U\+L\+D\+\_\+\+Y\+I\+E\+LD@{config\+I\+D\+L\+E\+\_\+\+S\+H\+O\+U\+L\+D\+\_\+\+Y\+I\+E\+LD}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+I\+D\+L\+E\+\_\+\+S\+H\+O\+U\+L\+D\+\_\+\+Y\+I\+E\+LD}{configIDLE\_SHOULD\_YIELD}}
+{\footnotesize\ttfamily \#define config\+I\+D\+L\+E\+\_\+\+S\+H\+O\+U\+L\+D\+\_\+\+Y\+I\+E\+LD~1 /$\ast$ 1\+: the I\+D\+EL task will yield as soon as possible. 0\+: The I\+D\+LE task waits until preemption. $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a90fad7fe3febe486b110f10635404469}\label{_free_r_t_o_s_config_8h_a90fad7fe3febe486b110f10635404469}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+T\+A\+S\+K\+\_\+\+C\+\_\+\+A\+D\+D\+I\+T\+I\+O\+N\+S\+\_\+H@{config\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+T\+A\+S\+K\+\_\+\+C\+\_\+\+A\+D\+D\+I\+T\+I\+O\+N\+S\+\_\+H}}
+\index{config\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+T\+A\+S\+K\+\_\+\+C\+\_\+\+A\+D\+D\+I\+T\+I\+O\+N\+S\+\_\+H@{config\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+T\+A\+S\+K\+\_\+\+C\+\_\+\+A\+D\+D\+I\+T\+I\+O\+N\+S\+\_\+H}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+T\+A\+S\+K\+\_\+\+C\+\_\+\+A\+D\+D\+I\+T\+I\+O\+N\+S\+\_\+H}{configINCLUDE\_FREERTOS\_TASK\_C\_ADDITIONS\_H}}
+{\footnotesize\ttfamily \#define config\+I\+N\+C\+L\+U\+D\+E\+\_\+\+F\+R\+E\+E\+R\+T\+O\+S\+\_\+\+T\+A\+S\+K\+\_\+\+C\+\_\+\+A\+D\+D\+I\+T\+I\+O\+N\+S\+\_\+H~0 /$\ast$ 1\+: include additional header file at the end of task.\+c to help with debugging in G\+DB in combination with \hyperlink{_free_r_t_o_s_config_8h_a27f5ee137dc9f125681a31f0b0a4b3be}{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY}; 0\+: no extra file included. $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}\label{_free_r_t_o_s_config_8h_ac42cff506ad61d4174fa23e952e3225e}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{configKERNEL\_INTERRUPT\_PRIORITY}}
+{\footnotesize\ttfamily \#define config\+K\+E\+R\+N\+E\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY~(\hyperlink{_free_r_t_o_s_config_8h_a10da20f180ec9bd131b0052a802dbc39}{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+L\+O\+W\+E\+S\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}$<$$<$(8-\/\hyperlink{_free_r_t_o_s_config_8h_a5796db11ec6f9aa38d017d2ac393c5ba}{config\+P\+R\+I\+O\+\_\+\+B\+I\+TS}))}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a10da20f180ec9bd131b0052a802dbc39}\label{_free_r_t_o_s_config_8h_a10da20f180ec9bd131b0052a802dbc39}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+L\+O\+W\+E\+S\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+L\+O\+W\+E\+S\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+L\+O\+W\+E\+S\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+L\+O\+W\+E\+S\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+L\+O\+W\+E\+S\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{configLIBRARY\_LOWEST\_INTERRUPT\_PRIORITY}}
+{\footnotesize\ttfamily \#define config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+L\+O\+W\+E\+S\+T\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY~15}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a2254bd235d882be3061bcad0b1e8be98}\label{_free_r_t_o_s_config_8h_a2254bd235d882be3061bcad0b1e8be98}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{configLIBRARY\_MAX\_SYSCALL\_INTERRUPT\_PRIORITY}}
+{\footnotesize\ttfamily \#define config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY~5}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ae8f3fd645e6e78dfeb8a6e874af6195a}\label{_free_r_t_o_s_config_8h_ae8f3fd645e6e78dfeb8a6e874af6195a}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+M\+A\+X\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+E\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES@{config\+M\+A\+X\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+E\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}}
+\index{config\+M\+A\+X\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+E\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES@{config\+M\+A\+X\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+E\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+M\+A\+X\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+E\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}{configMAX\_CO\_ROUTINE\_PRIORITIES}}
+{\footnotesize\ttfamily \#define config\+M\+A\+X\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+E\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES~2 /$\ast$ co-\/routine priorities can be from 0 up to this value-\/1 $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a9a78f5ac61e6cb172dadf2a51f11db38}\label{_free_r_t_o_s_config_8h_a9a78f5ac61e6cb172dadf2a51f11db38}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES@{config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}}
+\index{config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES@{config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}{configMAX\_PRIORITIES}}
+{\footnotesize\ttfamily \#define config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES~6 /$\ast$ task priorities can be from 0 up to this value-\/1 $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a54bfc31c410ee452577a25a4552c3704}\label{_free_r_t_o_s_config_8h_a54bfc31c410ee452577a25a4552c3704}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{config\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{config\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{config\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{configMAX\_SYSCALL\_INTERRUPT\_PRIORITY}}
+{\footnotesize\ttfamily \#define config\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY~(\hyperlink{_free_r_t_o_s_config_8h_a2254bd235d882be3061bcad0b1e8be98}{config\+L\+I\+B\+R\+A\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+Y\+S\+C\+A\+L\+L\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}$<$$<$(8-\/\hyperlink{_free_r_t_o_s_config_8h_a5796db11ec6f9aa38d017d2ac393c5ba}{config\+P\+R\+I\+O\+\_\+\+B\+I\+TS}))}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ac388dc4041aab6997348828eb27fc1a8}\label{_free_r_t_o_s_config_8h_ac388dc4041aab6997348828eb27fc1a8}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+M\+A\+X\+\_\+\+T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN@{config\+M\+A\+X\+\_\+\+T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}}
+\index{config\+M\+A\+X\+\_\+\+T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN@{config\+M\+A\+X\+\_\+\+T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+M\+A\+X\+\_\+\+T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN}{configMAX\_TASK\_NAME\_LEN}}
+{\footnotesize\ttfamily \#define config\+M\+A\+X\+\_\+\+T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+L\+EN~12 /$\ast$ task name length in bytes $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a6c534a6cf8a00528fe0be42083484f9a}\label{_free_r_t_o_s_config_8h_a6c534a6cf8a00528fe0be42083484f9a}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}}
+\index{config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}{configMINIMAL\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE~(200) /$\ast$ stack size in addressable stack units $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a8d32b5f74e55dfd12c5aa3415e16d75e}\label{_free_r_t_o_s_config_8h_a8d32b5f74e55dfd12c5aa3415e16d75e}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+C\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+P\+O\+I\+N\+T\+E\+RS@{config\+N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+C\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+P\+O\+I\+N\+T\+E\+RS}}
+\index{config\+N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+C\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+P\+O\+I\+N\+T\+E\+RS@{config\+N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+C\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+P\+O\+I\+N\+T\+E\+RS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+C\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+P\+O\+I\+N\+T\+E\+RS}{configNUM\_THREAD\_LOCAL\_STORAGE\_POINTERS}}
+{\footnotesize\ttfamily \#define config\+N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+C\+A\+L\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+P\+O\+I\+N\+T\+E\+RS~0 /$\ast$ number of tread local storage pointers, 0 to disable functionality $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a5796db11ec6f9aa38d017d2ac393c5ba}\label{_free_r_t_o_s_config_8h_a5796db11ec6f9aa38d017d2ac393c5ba}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+P\+R\+I\+O\+\_\+\+B\+I\+TS@{config\+P\+R\+I\+O\+\_\+\+B\+I\+TS}}
+\index{config\+P\+R\+I\+O\+\_\+\+B\+I\+TS@{config\+P\+R\+I\+O\+\_\+\+B\+I\+TS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+P\+R\+I\+O\+\_\+\+B\+I\+TS}{configPRIO\_BITS}}
+{\footnotesize\ttfamily \#define config\+P\+R\+I\+O\+\_\+\+B\+I\+TS~2 /$\ast$ 2 bits/4 priority levels on A\+RM Cortex M0+ (Kinetis L Family) $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aa4b5138c4e42a180f0abd4f2455f90fb}\label{_free_r_t_o_s_config_8h_aa4b5138c4e42a180f0abd4f2455f90fb}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+S\+I\+ZE@{config\+Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+S\+I\+ZE}}
+\index{config\+Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+S\+I\+ZE@{config\+Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+S\+I\+ZE}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+S\+I\+ZE}{configQUEUE\_REGISTRY\_SIZE}}
+{\footnotesize\ttfamily \#define config\+Q\+U\+E\+U\+E\+\_\+\+R\+E\+G\+I\+S\+T\+R\+Y\+\_\+\+S\+I\+ZE~5}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a8299719d9fd640db65e6e59a4e5b0204}\label{_free_r_t_o_s_config_8h_a8299719d9fd640db65e6e59a4e5b0204}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+R\+E\+C\+O\+R\+D\+\_\+\+S\+T\+A\+C\+K\+\_\+\+H\+I\+G\+H\+\_\+\+A\+D\+D\+R\+E\+SS@{config\+R\+E\+C\+O\+R\+D\+\_\+\+S\+T\+A\+C\+K\+\_\+\+H\+I\+G\+H\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{config\+R\+E\+C\+O\+R\+D\+\_\+\+S\+T\+A\+C\+K\+\_\+\+H\+I\+G\+H\+\_\+\+A\+D\+D\+R\+E\+SS@{config\+R\+E\+C\+O\+R\+D\+\_\+\+S\+T\+A\+C\+K\+\_\+\+H\+I\+G\+H\+\_\+\+A\+D\+D\+R\+E\+SS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+R\+E\+C\+O\+R\+D\+\_\+\+S\+T\+A\+C\+K\+\_\+\+H\+I\+G\+H\+\_\+\+A\+D\+D\+R\+E\+SS}{configRECORD\_STACK\_HIGH\_ADDRESS}}
+{\footnotesize\ttfamily \#define config\+R\+E\+C\+O\+R\+D\+\_\+\+S\+T\+A\+C\+K\+\_\+\+H\+I\+G\+H\+\_\+\+A\+D\+D\+R\+E\+SS~1  /$\ast$ 1\+: record stack high address for the debugger, 0\+: do not record stack high address $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_afa3f8d6510699d972c9af08fa41f66dc}\label{_free_r_t_o_s_config_8h_afa3f8d6510699d972c9af08fa41f66dc}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON@{config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON}}
+\index{config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON@{config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON}{configSUPPORT\_DYNAMIC\_ALLOCATION}}
+{\footnotesize\ttfamily \#define config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+D\+Y\+N\+A\+M\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON~1 /$\ast$ 1\+: make dynamic allocation functions for R\+T\+OS available. 0\+: only static functions are allowed $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a1d6797a53b62d501b095f964036a7ac4}\label{_free_r_t_o_s_config_8h_a1d6797a53b62d501b095f964036a7ac4}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON@{config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON}}
+\index{config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON@{config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON}{configSUPPORT\_STATIC\_ALLOCATION}}
+{\footnotesize\ttfamily \#define config\+S\+U\+P\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+ON~0 /$\ast$ 1\+: make static allocation functions for R\+T\+OS available. 0\+: only dynamic functions are allowed $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_abb54167443b4edc9f15ee215947807dd}\label{_free_r_t_o_s_config_8h_abb54167443b4edc9f15ee215947807dd}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+V\+I\+D\+ER@{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+V\+I\+D\+ER}}
+\index{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+V\+I\+D\+ER@{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+V\+I\+D\+ER}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+V\+I\+D\+ER}{configSYSTICK\_CLOCK\_DIVIDER}}
+{\footnotesize\ttfamily \#define config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+V\+I\+D\+ER~1 /$\ast$ no divider $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aa6c52b1b434ca2a708c56fdee02e7946}\label{_free_r_t_o_s_config_8h_aa6c52b1b434ca2a708c56fdee02e7946}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}}
+\index{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}{configSYSTICK\_CLOCK\_HZ}}
+{\footnotesize\ttfamily \#define config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ~((\hyperlink{_free_r_t_o_s_config_8h_aa68082df879e6fc96bcb9b26513639e7}{config\+C\+P\+U\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ})/\hyperlink{_free_r_t_o_s_config_8h_abb54167443b4edc9f15ee215947807dd}{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+C\+L\+O\+C\+K\+\_\+\+D\+I\+V\+I\+D\+ER}) /$\ast$ frequency of system tick counter $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aec17f61cdf26a7d91b0918dba973d759}\label{_free_r_t_o_s_config_8h_aec17f61cdf26a7d91b0918dba973d759}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}}
+\index{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}{configSYSTICK\_LOW\_POWER\_TIMER\_CLOCK\_HZ}}
+{\footnotesize\ttfamily \#define config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+E\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ~1 /$\ast$ 1 k\+Hz L\+PO timer. Set to 1 if not used $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a7b085c8df461943cb3450c9d9ae47039}\label{_free_r_t_o_s_config_8h_a7b085c8df461943cb3450c9d9ae47039}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK@{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK}}
+\index{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK@{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK}{configSYSTICK\_USE\_CORE\_CLOCK}}
+{\footnotesize\ttfamily \#define config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+O\+CK~1 /$\ast$ System Tick is using core clock  $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a744a9b006dc27fe53584ec8e7baa2b33}\label{_free_r_t_o_s_config_8h_a744a9b006dc27fe53584ec8e7baa2b33}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+ER@{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+ER}}
+\index{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+ER@{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+ER}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+ER}{configSYSTICK\_USE\_LOW\_POWER\_TIMER}}
+{\footnotesize\ttfamily \#define config\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+\_\+\+P\+O\+W\+E\+R\+\_\+\+T\+I\+M\+ER~0 /$\ast$ If using Kinetis Low Power Timer (L\+P\+T\+MR) instead of Sys\+Tick timer $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a605356c2be7be7455f7fdd35368c41b5}\label{_free_r_t_o_s_config_8h_a605356c2be7be7455f7fdd35368c41b5}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS@{config\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{config\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS@{config\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS}{configTASK\_RETURN\_ADDRESS}}
+{\footnotesize\ttfamily \#define config\+T\+A\+S\+K\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+A\+D\+D\+R\+E\+SS~0 /$\ast$ return address of task is zero $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a2f0258dd1e3b877e5bc013be54c2db6a}\label{_free_r_t_o_s_config_8h_a2f0258dd1e3b877e5bc013be54c2db6a}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ@{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}}
+\index{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ@{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ}{configTICK\_RATE\_HZ}}
+{\footnotesize\ttfamily \#define config\+T\+I\+C\+K\+\_\+\+R\+A\+T\+E\+\_\+\+HZ~(100) /$\ast$ frequency of tick interrupt $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_abb9aa0f31c1f3b14a15083a3c6120918}\label{_free_r_t_o_s_config_8h_abb9aa0f31c1f3b14a15083a3c6120918}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+T\+I\+M\+E\+R\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+L\+E\+N\+G\+TH@{config\+T\+I\+M\+E\+R\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+L\+E\+N\+G\+TH}}
+\index{config\+T\+I\+M\+E\+R\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+L\+E\+N\+G\+TH@{config\+T\+I\+M\+E\+R\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+L\+E\+N\+G\+TH}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+T\+I\+M\+E\+R\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+L\+E\+N\+G\+TH}{configTIMER\_QUEUE\_LENGTH}}
+{\footnotesize\ttfamily \#define config\+T\+I\+M\+E\+R\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+L\+E\+N\+G\+TH~10\+U /$\ast$ size of queue for the timer task $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a05c75ff9029ba3f0ab5bde9196f1e873}\label{_free_r_t_o_s_config_8h_a05c75ff9029ba3f0ab5bde9196f1e873}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{configTIMER\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY~(\hyperlink{_free_r_t_o_s_config_8h_a9a78f5ac61e6cb172dadf2a51f11db38}{config\+M\+A\+X\+\_\+\+P\+R\+I\+O\+R\+I\+T\+I\+ES}-\/1\+U)}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aed7c7ebcdee603583a55e8ce04e55841}\label{_free_r_t_o_s_config_8h_aed7c7ebcdee603583a55e8ce04e55841}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+TH@{config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+TH}}
+\index{config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+TH@{config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+TH}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+TH}{configTIMER\_TASK\_STACK\_DEPTH}}
+{\footnotesize\ttfamily \#define config\+T\+I\+M\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+TH~(\hyperlink{_free_r_t_o_s_config_8h_a6c534a6cf8a00528fe0be42083484f9a}{config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE})}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a9f213227674effff0122a75d94d87938}\label{_free_r_t_o_s_config_8h_a9f213227674effff0122a75d94d87938}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+T\+O\+T\+A\+L\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+ZE@{config\+T\+O\+T\+A\+L\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+ZE}}
+\index{config\+T\+O\+T\+A\+L\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+ZE@{config\+T\+O\+T\+A\+L\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+ZE}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+T\+O\+T\+A\+L\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+ZE}{configTOTAL\_HEAP\_SIZE}}
+{\footnotesize\ttfamily \#define config\+T\+O\+T\+A\+L\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+ZE~(12200) /$\ast$ size of heap in bytes $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aac311ed9b9e5ae4d2d9648b33a24acce}\label{_free_r_t_o_s_config_8h_aac311ed9b9e5ae4d2d9648b33a24acce}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+16\+\_\+\+B\+I\+T\+\_\+\+T\+I\+C\+KS@{config\+U\+S\+E\+\_\+16\+\_\+\+B\+I\+T\+\_\+\+T\+I\+C\+KS}}
+\index{config\+U\+S\+E\+\_\+16\+\_\+\+B\+I\+T\+\_\+\+T\+I\+C\+KS@{config\+U\+S\+E\+\_\+16\+\_\+\+B\+I\+T\+\_\+\+T\+I\+C\+KS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+16\+\_\+\+B\+I\+T\+\_\+\+T\+I\+C\+KS}{configUSE\_16\_BIT\_TICKS}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+16\+\_\+\+B\+I\+T\+\_\+\+T\+I\+C\+KS~0 /$\ast$ 1\+: use 16bit tick counter type, 0\+: use 32bit tick counter type $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a2eb2a0baf886a7adab15b5735029434b}\label{_free_r_t_o_s_config_8h_a2eb2a0baf886a7adab15b5735029434b}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+T\+AG@{config\+U\+S\+E\+\_\+\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+T\+AG}}
+\index{config\+U\+S\+E\+\_\+\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+T\+AG@{config\+U\+S\+E\+\_\+\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+T\+AG}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+T\+AG}{configUSE\_APPLICATION\_TASK\_TAG}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+A\+P\+P\+L\+I\+C\+A\+T\+I\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+T\+AG~0}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a57990715eb06402474b8b47e1d562616}\label{_free_r_t_o_s_config_8h_a57990715eb06402474b8b47e1d562616}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+ES@{config\+U\+S\+E\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+ES}}
+\index{config\+U\+S\+E\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+ES@{config\+U\+S\+E\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+ES}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+ES}{configUSE\_CO\_ROUTINES}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+C\+O\+\_\+\+R\+O\+U\+T\+I\+N\+ES~0}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a55778995203c57369d2fbfb10224943d}\label{_free_r_t_o_s_config_8h_a55778995203c57369d2fbfb10224943d}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+C\+O\+U\+N\+T\+I\+N\+G\+\_\+\+S\+E\+M\+A\+P\+H\+O\+R\+ES@{config\+U\+S\+E\+\_\+\+C\+O\+U\+N\+T\+I\+N\+G\+\_\+\+S\+E\+M\+A\+P\+H\+O\+R\+ES}}
+\index{config\+U\+S\+E\+\_\+\+C\+O\+U\+N\+T\+I\+N\+G\+\_\+\+S\+E\+M\+A\+P\+H\+O\+R\+ES@{config\+U\+S\+E\+\_\+\+C\+O\+U\+N\+T\+I\+N\+G\+\_\+\+S\+E\+M\+A\+P\+H\+O\+R\+ES}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+C\+O\+U\+N\+T\+I\+N\+G\+\_\+\+S\+E\+M\+A\+P\+H\+O\+R\+ES}{configUSE\_COUNTING\_SEMAPHORES}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+C\+O\+U\+N\+T\+I\+N\+G\+\_\+\+S\+E\+M\+A\+P\+H\+O\+R\+ES~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a0415288d8efe664e0b05a7b53fbfaa33}\label{_free_r_t_o_s_config_8h_a0415288d8efe664e0b05a7b53fbfaa33}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+D\+A\+E\+M\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+H\+O\+OK@{config\+U\+S\+E\+\_\+\+D\+A\+E\+M\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+H\+O\+OK}}
+\index{config\+U\+S\+E\+\_\+\+D\+A\+E\+M\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+H\+O\+OK@{config\+U\+S\+E\+\_\+\+D\+A\+E\+M\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+H\+O\+OK}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+D\+A\+E\+M\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+H\+O\+OK}{configUSE\_DAEMON\_TASK\_STARTUP\_HOOK}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+D\+A\+E\+M\+O\+N\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+H\+O\+OK~0 /$\ast$ 1\+: use application specific v\+Application\+Daemon\+Task\+Startup\+Hook(), 0\+: do not use hook $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a5901e13ffdf02f250b3b3d18de9278b1}\label{_free_r_t_o_s_config_8h_a5901e13ffdf02f250b3b3d18de9278b1}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME@{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME}}
+\index{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME@{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME}{configUSE\_HEAP\_SCHEME}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME~4 /$\ast$ either 1 (only alloc), 2 (alloc/free), 3 (malloc), 4 (coalesc blocks), 5 (multiple blocks), 6 (newlib) $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ad9bc3a2a132cbffd6e35eea470ac0f0a}\label{_free_r_t_o_s_config_8h_ad9bc3a2a132cbffd6e35eea470ac0f0a}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+ME@{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+ME}}
+\index{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+ME@{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+ME}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+ME}{configUSE\_HEAP\_SECTION\_NAME}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+ME~0 /$\ast$ set to 1 if a custom section name (config\+H\+E\+A\+P\+\_\+\+S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+S\+T\+R\+I\+NG) shall be used, 0 otherwise $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ac637ae45863c19fa2e919db0ed49301f}\label{_free_r_t_o_s_config_8h_ac637ae45863c19fa2e919db0ed49301f}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+OK@{config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+OK}}
+\index{config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+OK@{config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+OK}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+OK}{configUSE\_IDLE\_HOOK}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+OK~1 /$\ast$ 1\+: use Idle hook; 0\+: no Idle hook $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a7b1a36b1ce1e12ecd3ca8cecee79f145}\label{_free_r_t_o_s_config_8h_a7b1a36b1ce1e12ecd3ca8cecee79f145}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME@{config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}}
+\index{config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME@{config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}{configUSE\_IDLE\_HOOK\_NAME}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+I\+D\+L\+E\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME~\hyperlink{group___events__module_ga47ee4f5ef904e733b7690af3ef89a1b0}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Idle\+Hook}}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_abdf48e7c9cf513f083aa9cbed0dd7cd7}\label{_free_r_t_o_s_config_8h_abdf48e7c9cf513f083aa9cbed0dd7cd7}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+OK@{config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+OK}}
+\index{config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+OK@{config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+OK}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+OK}{configUSE\_MALLOC\_FAILED\_HOOK}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+OK~1 /$\ast$ 1\+: use Malloc\+Failed hook; 0\+: no Malloc\+Failed hook $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_adfc33dbfbdbf17719368f28c4b3d4660}\label{_free_r_t_o_s_config_8h_adfc33dbfbdbf17719368f28c4b3d4660}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME@{config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}}
+\index{config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME@{config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}{configUSE\_MALLOC\_FAILED\_HOOK\_NAME}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+F\+A\+I\+L\+E\+D\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME~\hyperlink{group___events__module_ga83b87d2e8c6b269bbdc03cf06d1164a2}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Malloc\+Failed\+Hook}}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a543bf3c79008974cc1d36bab51d94fbf}\label{_free_r_t_o_s_config_8h_a543bf3c79008974cc1d36bab51d94fbf}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+M\+U\+T\+E\+X\+ES@{config\+U\+S\+E\+\_\+\+M\+U\+T\+E\+X\+ES}}
+\index{config\+U\+S\+E\+\_\+\+M\+U\+T\+E\+X\+ES@{config\+U\+S\+E\+\_\+\+M\+U\+T\+E\+X\+ES}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+M\+U\+T\+E\+X\+ES}{configUSE\_MUTEXES}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+M\+U\+T\+E\+X\+ES~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_acf3616a8cbe15687f6000cefcca84bbd}\label{_free_r_t_o_s_config_8h_acf3616a8cbe15687f6000cefcca84bbd}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+N\+E\+W\+L\+I\+B\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT@{config\+U\+S\+E\+\_\+\+N\+E\+W\+L\+I\+B\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT}}
+\index{config\+U\+S\+E\+\_\+\+N\+E\+W\+L\+I\+B\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT@{config\+U\+S\+E\+\_\+\+N\+E\+W\+L\+I\+B\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+N\+E\+W\+L\+I\+B\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT}{configUSE\_NEWLIB\_REENTRANT}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+N\+E\+W\+L\+I\+B\+\_\+\+R\+E\+E\+N\+T\+R\+A\+NT~(\hyperlink{_free_r_t_o_s_config_8h_a5901e13ffdf02f250b3b3d18de9278b1}{config\+U\+S\+E\+\_\+\+H\+E\+A\+P\+\_\+\+S\+C\+H\+E\+ME}==6) /$\ast$ 1\+: a newlib reent structure will be allocated for each task; 0\+: no such reentr structure used $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aebb8c3a87d591f60f974772be0ee798d}\label{_free_r_t_o_s_config_8h_aebb8c3a87d591f60f974772be0ee798d}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+P\+O\+R\+T\+\_\+\+O\+P\+T\+I\+M\+I\+S\+E\+D\+\_\+\+T\+A\+S\+K\+\_\+\+S\+E\+L\+E\+C\+T\+I\+ON@{config\+U\+S\+E\+\_\+\+P\+O\+R\+T\+\_\+\+O\+P\+T\+I\+M\+I\+S\+E\+D\+\_\+\+T\+A\+S\+K\+\_\+\+S\+E\+L\+E\+C\+T\+I\+ON}}
+\index{config\+U\+S\+E\+\_\+\+P\+O\+R\+T\+\_\+\+O\+P\+T\+I\+M\+I\+S\+E\+D\+\_\+\+T\+A\+S\+K\+\_\+\+S\+E\+L\+E\+C\+T\+I\+ON@{config\+U\+S\+E\+\_\+\+P\+O\+R\+T\+\_\+\+O\+P\+T\+I\+M\+I\+S\+E\+D\+\_\+\+T\+A\+S\+K\+\_\+\+S\+E\+L\+E\+C\+T\+I\+ON}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+P\+O\+R\+T\+\_\+\+O\+P\+T\+I\+M\+I\+S\+E\+D\+\_\+\+T\+A\+S\+K\+\_\+\+S\+E\+L\+E\+C\+T\+I\+ON}{configUSE\_PORT\_OPTIMISED\_TASK\_SELECTION}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+P\+O\+R\+T\+\_\+\+O\+P\+T\+I\+M\+I\+S\+E\+D\+\_\+\+T\+A\+S\+K\+\_\+\+S\+E\+L\+E\+C\+T\+I\+ON~(1 \&\& \hyperlink{_f_r_t_o_s1config_8h_adb8e9d47ab7ec381c8bd6c18d3a7d84a}{config\+C\+P\+U\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+I\+S\+\_\+\+A\+R\+M\+\_\+\+M4\+\_\+\+M7}(\hyperlink{_f_r_t_o_s1config_8h_a0c9064c9cb4817d1747151ceb8c81098}{config\+C\+P\+U\+\_\+\+F\+A\+M\+I\+LY})) /$\ast$ 1\+: the scheduler uses an optimized task selection as defined by the port (if available). 0\+: normal task selection is used $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_adde83486022745409c40605922b0bdd6}\label{_free_r_t_o_s_config_8h_adde83486022745409c40605922b0bdd6}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON@{config\+U\+S\+E\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON}}
+\index{config\+U\+S\+E\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON@{config\+U\+S\+E\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON}{configUSE\_PREEMPTION}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+P\+R\+E\+E\+M\+P\+T\+I\+ON~1 /$\ast$ 1\+: pre-\/emptive mode; 0\+: cooperative mode $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a7bfbcca89aaa971f59fe9233772cc33d}\label{_free_r_t_o_s_config_8h_a7bfbcca89aaa971f59fe9233772cc33d}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+S\+E\+TS@{config\+U\+S\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+S\+E\+TS}}
+\index{config\+U\+S\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+S\+E\+TS@{config\+U\+S\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+S\+E\+TS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+S\+E\+TS}{configUSE\_QUEUE\_SETS}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+S\+E\+TS~0}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a9fe02d866cb1c4fbaa0c3de79f53d42d}\label{_free_r_t_o_s_config_8h_a9fe02d866cb1c4fbaa0c3de79f53d42d}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+\+M\+U\+T\+E\+X\+ES@{config\+U\+S\+E\+\_\+\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+\+M\+U\+T\+E\+X\+ES}}
+\index{config\+U\+S\+E\+\_\+\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+\+M\+U\+T\+E\+X\+ES@{config\+U\+S\+E\+\_\+\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+\+M\+U\+T\+E\+X\+ES}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+\+M\+U\+T\+E\+X\+ES}{configUSE\_RECURSIVE\_MUTEXES}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+\+M\+U\+T\+E\+X\+ES~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a9d828b685802f2d643e3ffd589b463a3}\label{_free_r_t_o_s_config_8h_a9d828b685802f2d643e3ffd589b463a3}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+S\+E\+G\+G\+E\+R\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+V\+I\+E\+W\+E\+R\+\_\+\+H\+O\+O\+KS@{config\+U\+S\+E\+\_\+\+S\+E\+G\+G\+E\+R\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+V\+I\+E\+W\+E\+R\+\_\+\+H\+O\+O\+KS}}
+\index{config\+U\+S\+E\+\_\+\+S\+E\+G\+G\+E\+R\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+V\+I\+E\+W\+E\+R\+\_\+\+H\+O\+O\+KS@{config\+U\+S\+E\+\_\+\+S\+E\+G\+G\+E\+R\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+V\+I\+E\+W\+E\+R\+\_\+\+H\+O\+O\+KS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+S\+E\+G\+G\+E\+R\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+V\+I\+E\+W\+E\+R\+\_\+\+H\+O\+O\+KS}{configUSE\_SEGGER\_SYSTEM\_VIEWER\_HOOKS}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+S\+E\+G\+G\+E\+R\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+V\+I\+E\+W\+E\+R\+\_\+\+H\+O\+O\+KS~0 /$\ast$ 1\+: Segger System Viewer hooks, 0\+: not using Segger System Viewer hooks $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a5b7fae1e2f6d4fe42104ed8d28a0569d}\label{_free_r_t_o_s_config_8h_a5b7fae1e2f6d4fe42104ed8d28a0569d}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+F\+O\+R\+M\+A\+T\+T\+I\+N\+G\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS@{config\+U\+S\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+F\+O\+R\+M\+A\+T\+T\+I\+N\+G\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}}
+\index{config\+U\+S\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+F\+O\+R\+M\+A\+T\+T\+I\+N\+G\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS@{config\+U\+S\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+F\+O\+R\+M\+A\+T\+T\+I\+N\+G\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+F\+O\+R\+M\+A\+T\+T\+I\+N\+G\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}{configUSE\_STATS\_FORMATTING\_FUNCTIONS}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+S\+T\+A\+T\+S\+\_\+\+F\+O\+R\+M\+A\+T\+T\+I\+N\+G\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS~(\hyperlink{_free_r_t_o_s_config_8h_a27f5ee137dc9f125681a31f0b0a4b3be}{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY} $\vert$$\vert$ \hyperlink{_free_r_t_o_s_config_8h_ad8081822f3ebc7c917b63bd7bdd7bc58}{config\+G\+E\+N\+E\+R\+A\+T\+E\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS})}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aec0ba4af7bdd0e0acba26902a496de6c}\label{_free_r_t_o_s_config_8h_aec0ba4af7bdd0e0acba26902a496de6c}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+T\+A\+S\+K\+\_\+\+F\+P\+U\+\_\+\+S\+U\+P\+P\+O\+RT@{config\+U\+S\+E\+\_\+\+T\+A\+S\+K\+\_\+\+F\+P\+U\+\_\+\+S\+U\+P\+P\+O\+RT}}
+\index{config\+U\+S\+E\+\_\+\+T\+A\+S\+K\+\_\+\+F\+P\+U\+\_\+\+S\+U\+P\+P\+O\+RT@{config\+U\+S\+E\+\_\+\+T\+A\+S\+K\+\_\+\+F\+P\+U\+\_\+\+S\+U\+P\+P\+O\+RT}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+T\+A\+S\+K\+\_\+\+F\+P\+U\+\_\+\+S\+U\+P\+P\+O\+RT}{configUSE\_TASK\_FPU\_SUPPORT}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+T\+A\+S\+K\+\_\+\+F\+P\+U\+\_\+\+S\+U\+P\+P\+O\+RT~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a23c5922c077106fad3f70b54d9071466}\label{_free_r_t_o_s_config_8h_a23c5922c077106fad3f70b54d9071466}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+OK@{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+OK}}
+\index{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+OK@{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+OK}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+OK}{configUSE\_TICK\_HOOK}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+OK~1 /$\ast$ 1\+: use Tick hook; 0\+: no Tick hook $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ab8a1710d0aa36b36ef4747995975c855}\label{_free_r_t_o_s_config_8h_ab8a1710d0aa36b36ef4747995975c855}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME@{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}}
+\index{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME@{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}{configUSE\_TICK\_HOOK\_NAME}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME~\hyperlink{group___events__module_gaf8fe6769cea9aeb943962871b26b203b}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Tick\+Hook}}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aa19d69387b32a94d79ea52bb2c6f2649}\label{_free_r_t_o_s_config_8h_aa19d69387b32a94d79ea52bb2c6f2649}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+LE@{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+LE}}
+\index{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+LE@{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+LE}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+LE}{configUSE\_TICKLESS\_IDLE}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+LE~0 /$\ast$ set to 1 for tickless idle mode, 0 otherwise $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a4d1687c2aedae733064d886ac553dca8}\label{_free_r_t_o_s_config_8h_a4d1687c2aedae733064d886ac553dca8}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+OK@{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+OK}}
+\index{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+OK@{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+OK}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+OK}{configUSE\_TICKLESS\_IDLE\_DECISION\_HOOK}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+OK~0 /$\ast$ set to 1 to enable application hook, zero otherwise $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a58d0c05bbca208011730f0cb3b237031}\label{_free_r_t_o_s_config_8h_a58d0c05bbca208011730f0cb3b237031}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME@{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}}
+\index{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME@{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME}{configUSE\_TICKLESS\_IDLE\_DECISION\_HOOK\_NAME}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+T\+I\+C\+K\+L\+E\+S\+S\+\_\+\+I\+D\+L\+E\+\_\+\+D\+E\+C\+I\+S\+I\+O\+N\+\_\+\+H\+O\+O\+K\+\_\+\+N\+A\+ME~x\+Enter\+Tickless\+Idle /$\ast$ function name of decision hook $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a493c5763eb7a39bd80779a1c58de0d82}\label{_free_r_t_o_s_config_8h_a493c5763eb7a39bd80779a1c58de0d82}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+\_\+\+S\+L\+I\+C\+I\+NG@{config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+\_\+\+S\+L\+I\+C\+I\+NG}}
+\index{config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+\_\+\+S\+L\+I\+C\+I\+NG@{config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+\_\+\+S\+L\+I\+C\+I\+NG}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+\_\+\+S\+L\+I\+C\+I\+NG}{configUSE\_TIME\_SLICING}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+\_\+\+S\+L\+I\+C\+I\+NG~1 /$\ast$ 1\+: use time slicing; 0\+: don\textquotesingle{}t time slice at tick interrupt time $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ac342ae309b0c53828d2ecad3e6de355b}\label{_free_r_t_o_s_config_8h_ac342ae309b0c53828d2ecad3e6de355b}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+RS@{config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+RS}}
+\index{config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+RS@{config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+RS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+RS}{configUSE\_TIMERS}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+T\+I\+M\+E\+RS~0 /$\ast$ set to 1 to enable software timers $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a27f5ee137dc9f125681a31f0b0a4b3be}\label{_free_r_t_o_s_config_8h_a27f5ee137dc9f125681a31f0b0a4b3be}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY@{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY}}
+\index{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY@{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY}{configUSE\_TRACE\_FACILITY}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+F\+A\+C\+I\+L\+I\+TY~0 /$\ast$ 1\+: include additional structure members and functions to assist with execution visualization and tracing, 0\+: no runtime stats/trace $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a4c480fd4bdce2f3c33ae3ea4ca3ca64d}\label{_free_r_t_o_s_config_8h_a4c480fd4bdce2f3c33ae3ea4ca3ca64d}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+H\+O\+O\+KS@{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+H\+O\+O\+KS}}
+\index{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+H\+O\+O\+KS@{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+H\+O\+O\+KS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+H\+O\+O\+KS}{configUSE\_TRACE\_HOOKS}}
+{\footnotesize\ttfamily \#define config\+U\+S\+E\+\_\+\+T\+R\+A\+C\+E\+\_\+\+H\+O\+O\+KS~0 /$\ast$ 1\+: Percepio Trace hooks, 0\+: not using Percepio Trace hooks $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a4fd1d67d54044ac86e8ffc890180f9f6}\label{_free_r_t_o_s_config_8h_a4fd1d67d54044ac86e8ffc890180f9f6}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+e\+Task\+Get\+State@{I\+N\+C\+L\+U\+D\+E\+\_\+e\+Task\+Get\+State}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+e\+Task\+Get\+State@{I\+N\+C\+L\+U\+D\+E\+\_\+e\+Task\+Get\+State}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+e\+Task\+Get\+State}{INCLUDE\_eTaskGetState}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+e\+Task\+Get\+State~0}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a4a5ddd1e32d2945d509a19e4a14dccc7}\label{_free_r_t_o_s_config_8h_a4a5ddd1e32d2945d509a19e4a14dccc7}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+pc\+Task\+Get\+Task\+Name@{I\+N\+C\+L\+U\+D\+E\+\_\+pc\+Task\+Get\+Task\+Name}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+pc\+Task\+Get\+Task\+Name@{I\+N\+C\+L\+U\+D\+E\+\_\+pc\+Task\+Get\+Task\+Name}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+pc\+Task\+Get\+Task\+Name}{INCLUDE\_pcTaskGetTaskName}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+pc\+Task\+Get\+Task\+Name~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a9775cbd6219f5bc6b4221210f6a926c7}\label{_free_r_t_o_s_config_8h_a9775cbd6219f5bc6b4221210f6a926c7}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+px\+Task\+Get\+Stack\+Start@{I\+N\+C\+L\+U\+D\+E\+\_\+px\+Task\+Get\+Stack\+Start}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+px\+Task\+Get\+Stack\+Start@{I\+N\+C\+L\+U\+D\+E\+\_\+px\+Task\+Get\+Stack\+Start}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+px\+Task\+Get\+Stack\+Start}{INCLUDE\_pxTaskGetStackStart}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+px\+Task\+Get\+Stack\+Start~(1 \&\& \hyperlink{_free_r_t_o_s_config_8h_a9d828b685802f2d643e3ffd589b463a3}{config\+U\+S\+E\+\_\+\+S\+E\+G\+G\+E\+R\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+V\+I\+E\+W\+E\+R\+\_\+\+H\+O\+O\+KS})}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a23c7b4b41fe9b575cf2329c7cbe78b86}\label{_free_r_t_o_s_config_8h_a23c7b4b41fe9b575cf2329c7cbe78b86}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark@{I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark@{I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark}{INCLUDE\_uxTaskGetStackHighWaterMark}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Get\+Stack\+High\+Water\+Mark~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a1279eb797355460aeeec06aa524e91df}\label{_free_r_t_o_s_config_8h_a1279eb797355460aeeec06aa524e91df}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Priority\+Get@{I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Priority\+Get}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Priority\+Get@{I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Priority\+Get}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Priority\+Get}{INCLUDE\_uxTaskPriorityGet}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+ux\+Task\+Priority\+Get~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a7ee138825e57f243c8ee5fd4207b9e26}\label{_free_r_t_o_s_config_8h_a7ee138825e57f243c8ee5fd4207b9e26}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Clean\+Up\+Resources@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Clean\+Up\+Resources}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Clean\+Up\+Resources@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Clean\+Up\+Resources}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Clean\+Up\+Resources}{INCLUDE\_vTaskCleanUpResources}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Clean\+Up\+Resources~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a24361a6eb816a965f1ee4e2e08e364f8}\label{_free_r_t_o_s_config_8h_a24361a6eb816a965f1ee4e2e08e364f8}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay}{INCLUDE\_vTaskDelay}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ae8459bfd5b428319bb10de9f504a53aa}\label{_free_r_t_o_s_config_8h_ae8459bfd5b428319bb10de9f504a53aa}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay\+Until@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay\+Until}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay\+Until@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay\+Until}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay\+Until}{INCLUDE\_vTaskDelayUntil}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delay\+Until~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a5ae1434fdf995108dc749ff9329f53bd}\label{_free_r_t_o_s_config_8h_a5ae1434fdf995108dc749ff9329f53bd}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delete@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delete}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delete@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delete}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delete}{INCLUDE\_vTaskDelete}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Delete~0}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ae98fa41b29fd55a961461d59b06aa371}\label{_free_r_t_o_s_config_8h_ae98fa41b29fd55a961461d59b06aa371}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+End\+Scheduler@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+End\+Scheduler}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+End\+Scheduler@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+End\+Scheduler}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+End\+Scheduler}{INCLUDE\_vTaskEndScheduler}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+End\+Scheduler~0}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ad6858ac8aaf726007fd19752956ef1bd}\label{_free_r_t_o_s_config_8h_ad6858ac8aaf726007fd19752956ef1bd}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Priority\+Set@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Priority\+Set}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Priority\+Set@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Priority\+Set}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Priority\+Set}{INCLUDE\_vTaskPrioritySet}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Priority\+Set~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aef8fbb97819ad3d962f334ac298206d1}\label{_free_r_t_o_s_config_8h_aef8fbb97819ad3d962f334ac298206d1}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Suspend@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Suspend}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Suspend@{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Suspend}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Suspend}{INCLUDE\_vTaskSuspend}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+v\+Task\+Suspend~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_af93b5ef191e3e4bbf050119dacbd148b}\label{_free_r_t_o_s_config_8h_af93b5ef191e3e4bbf050119dacbd148b}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+x\+Event\+Group\+Set\+Bit\+From\+I\+SR@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Event\+Group\+Set\+Bit\+From\+I\+SR}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Event\+Group\+Set\+Bit\+From\+I\+SR@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Event\+Group\+Set\+Bit\+From\+I\+SR}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Event\+Group\+Set\+Bit\+From\+I\+SR}{INCLUDE\_xEventGroupSetBitFromISR}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+x\+Event\+Group\+Set\+Bit\+From\+I\+SR~0 /$\ast$ 1\+: function is included; 0\+: do not include function $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a4e2902143b6abf777065c15940321911}\label{_free_r_t_o_s_config_8h_a4e2902143b6abf777065c15940321911}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+x\+Queue\+Get\+Mutex\+Holder@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Queue\+Get\+Mutex\+Holder}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Queue\+Get\+Mutex\+Holder@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Queue\+Get\+Mutex\+Holder}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Queue\+Get\+Mutex\+Holder}{INCLUDE\_xQueueGetMutexHolder}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+x\+Queue\+Get\+Mutex\+Holder~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ac54efb28edcc1d3b9d0844005ea20674}\label{_free_r_t_o_s_config_8h_ac54efb28edcc1d3b9d0844005ea20674}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Abort\+Delay@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Abort\+Delay}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Abort\+Delay@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Abort\+Delay}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Abort\+Delay}{INCLUDE\_xTaskAbortDelay}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Abort\+Delay~0}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ac96b6a6e70667f266db4278be71cbd78}\label{_free_r_t_o_s_config_8h_ac96b6a6e70667f266db4278be71cbd78}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Current\+Task\+Handle@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Current\+Task\+Handle}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Current\+Task\+Handle@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Current\+Task\+Handle}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Current\+Task\+Handle}{INCLUDE\_xTaskGetCurrentTaskHandle}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Current\+Task\+Handle~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a33733d2bbe005751ec3a417e5ac373bf}\label{_free_r_t_o_s_config_8h_a33733d2bbe005751ec3a417e5ac373bf}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Handle@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Handle}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Handle@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Handle}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Handle}{INCLUDE\_xTaskGetHandle}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Handle~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_ae8811def4dd6983011fed9ef8686f18f}\label{_free_r_t_o_s_config_8h_ae8811def4dd6983011fed9ef8686f18f}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Idle\+Task\+Handle@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Idle\+Task\+Handle}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Idle\+Task\+Handle@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Idle\+Task\+Handle}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Idle\+Task\+Handle}{INCLUDE\_xTaskGetIdleTaskHandle}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Idle\+Task\+Handle~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a9ed60ede556830584e6bfd4a3ab4f9de}\label{_free_r_t_o_s_config_8h_a9ed60ede556830584e6bfd4a3ab4f9de}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Scheduler\+State@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Scheduler\+State}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Scheduler\+State@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Scheduler\+State}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Scheduler\+State}{INCLUDE\_xTaskGetSchedulerState}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Get\+Scheduler\+State~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a85e3dae9f3daa26f24e679cb6793811e}\label{_free_r_t_o_s_config_8h_a85e3dae9f3daa26f24e679cb6793811e}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Resume\+From\+I\+SR@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Resume\+From\+I\+SR}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Resume\+From\+I\+SR@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Resume\+From\+I\+SR}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Resume\+From\+I\+SR}{INCLUDE\_xTaskResumeFromISR}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+x\+Task\+Resume\+From\+I\+SR~1}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a4b4336acd61a8e513ca2376be84326b5}\label{_free_r_t_o_s_config_8h_a4b4336acd61a8e513ca2376be84326b5}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!I\+N\+C\+L\+U\+D\+E\+\_\+x\+Timer\+Pend\+Function\+Call@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Timer\+Pend\+Function\+Call}}
+\index{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Timer\+Pend\+Function\+Call@{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Timer\+Pend\+Function\+Call}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+C\+L\+U\+D\+E\+\_\+x\+Timer\+Pend\+Function\+Call}{INCLUDE\_xTimerPendFunctionCall}}
+{\footnotesize\ttfamily \#define I\+N\+C\+L\+U\+D\+E\+\_\+x\+Timer\+Pend\+Function\+Call~0 /$\ast$ 1\+: function is included; 0\+: do not include function $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_a727939bcdb98501e0eba0ec8a1841e1b}\label{_free_r_t_o_s_config_8h_a727939bcdb98501e0eba0ec8a1841e1b}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!port\+C\+O\+N\+F\+I\+G\+U\+R\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+F\+O\+R\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS@{port\+C\+O\+N\+F\+I\+G\+U\+R\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+F\+O\+R\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS}}
+\index{port\+C\+O\+N\+F\+I\+G\+U\+R\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+F\+O\+R\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS@{port\+C\+O\+N\+F\+I\+G\+U\+R\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+F\+O\+R\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{port\+C\+O\+N\+F\+I\+G\+U\+R\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+F\+O\+R\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS}{portCONFIGURE\_TIMER\_FOR\_RUN\_TIME\_STATS}}
+{\footnotesize\ttfamily \#define port\+C\+O\+N\+F\+I\+G\+U\+R\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+F\+O\+R\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+S\+T\+A\+TS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~/$\ast$ nothing $\ast$/}
+
+\mbox{\Hypertarget{_free_r_t_o_s_config_8h_aa7cb8c79fb40bf2d4caccf5ba9ae6737}\label{_free_r_t_o_s_config_8h_aa7cb8c79fb40bf2d4caccf5ba9ae6737}} 
+\index{Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}!port\+G\+E\+T\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+A\+L\+UE@{port\+G\+E\+T\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+A\+L\+UE}}
+\index{port\+G\+E\+T\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+A\+L\+UE@{port\+G\+E\+T\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+A\+L\+UE}!Free\+R\+T\+O\+S\+Config.\+h@{Free\+R\+T\+O\+S\+Config.\+h}}
+\subsubsection{\texorpdfstring{port\+G\+E\+T\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+A\+L\+UE}{portGET\_RUN\_TIME\_COUNTER\_VALUE}}
+{\footnotesize\ttfamily \#define port\+G\+E\+T\+\_\+\+R\+U\+N\+\_\+\+T\+I\+M\+E\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+V\+A\+L\+UE(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~/$\ast$ nothing $\ast$/}
+

@@ -7,7 +7,7 @@
 **     Version     : Component 01.165, Driver 01.08, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-08-28, 13:58, # CodeGen: 114
+**     Date/Time   : 2017-09-25, 16:46, # CodeGen: 169
 **     Abstract    :
 **         This component implements a real time clock (RTC). Actual date may also be
 **         obtained and an alarm function is included.

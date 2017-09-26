@@ -1,0 +1,92 @@
+\hypertarget{struct_a_serial_ldd2___t_device_data}{}\section{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data Struct Reference}
+\label{struct_a_serial_ldd2___t_device_data}\index{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}}
+
+
+{\ttfamily \#include $<$A\+Serial\+Ldd2.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \hyperlink{struct_a_serial_ldd2___t_device_data_afd48e3955f613be6122b2c347bdeb3b5}{Ser\+Flag}
+\item 
+\hyperlink{group___p_e___types__module_ga3bd5d57e02458ce220540d0ad0462e06}{L\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+\_\+\+T\+Error} \hyperlink{struct_a_serial_ldd2___t_device_data_a51d7343df0fbb146a7a96d3046dfdf5b}{Err\+Flag}
+\item 
+uint16\+\_\+t \hyperlink{struct_a_serial_ldd2___t_device_data_ae10417285abffdbbe751e07757c1d054}{Inp\+Recv\+Data\+Num}
+\item 
+uint8\+\_\+t $\ast$ \hyperlink{struct_a_serial_ldd2___t_device_data_a6069e1c7a0839abc552a2d7bead0a380}{Inp\+Data\+Ptr}
+\item 
+uint16\+\_\+t \hyperlink{struct_a_serial_ldd2___t_device_data_a4957d503e1424587b8147be7f4b32f82}{Inp\+Data\+Num\+Req}
+\item 
+uint16\+\_\+t \hyperlink{struct_a_serial_ldd2___t_device_data_aaec34f70eb2398302180ce4c52ed4fad}{Out\+Sent\+Data\+Num}
+\item 
+uint8\+\_\+t $\ast$ \hyperlink{struct_a_serial_ldd2___t_device_data_a9dc8846e18053ac742a73b80f1619083}{Out\+Data\+Ptr}
+\item 
+uint16\+\_\+t \hyperlink{struct_a_serial_ldd2___t_device_data_ac1f71c26f2de1b9f56290052e94e0776}{Out\+Data\+Num\+Req}
+\item 
+\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$ \hyperlink{struct_a_serial_ldd2___t_device_data_a8e77b9d030b00c231823350a904e0f83}{User\+Data\+Ptr}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Device data structure type 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_a_serial_ldd2___t_device_data_a51d7343df0fbb146a7a96d3046dfdf5b}\label{struct_a_serial_ldd2___t_device_data_a51d7343df0fbb146a7a96d3046dfdf5b}} 
+\index{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}!Err\+Flag@{Err\+Flag}}
+\index{Err\+Flag@{Err\+Flag}!A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}}
+\subsubsection{\texorpdfstring{Err\+Flag}{ErrFlag}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga3bd5d57e02458ce220540d0ad0462e06}{L\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+\_\+\+T\+Error} Err\+Flag}
+
+Error flags mirror of Ser\+Flag \mbox{\Hypertarget{struct_a_serial_ldd2___t_device_data_a4957d503e1424587b8147be7f4b32f82}\label{struct_a_serial_ldd2___t_device_data_a4957d503e1424587b8147be7f4b32f82}} 
+\index{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}!Inp\+Data\+Num\+Req@{Inp\+Data\+Num\+Req}}
+\index{Inp\+Data\+Num\+Req@{Inp\+Data\+Num\+Req}!A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}}
+\subsubsection{\texorpdfstring{Inp\+Data\+Num\+Req}{InpDataNumReq}}
+{\footnotesize\ttfamily uint16\+\_\+t Inp\+Data\+Num\+Req}
+
+The counter of characters to receive by Receive\+Block() \mbox{\Hypertarget{struct_a_serial_ldd2___t_device_data_a6069e1c7a0839abc552a2d7bead0a380}\label{struct_a_serial_ldd2___t_device_data_a6069e1c7a0839abc552a2d7bead0a380}} 
+\index{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}!Inp\+Data\+Ptr@{Inp\+Data\+Ptr}}
+\index{Inp\+Data\+Ptr@{Inp\+Data\+Ptr}!A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}}
+\subsubsection{\texorpdfstring{Inp\+Data\+Ptr}{InpDataPtr}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ Inp\+Data\+Ptr}
+
+The buffer pointer for received characters \mbox{\Hypertarget{struct_a_serial_ldd2___t_device_data_ae10417285abffdbbe751e07757c1d054}\label{struct_a_serial_ldd2___t_device_data_ae10417285abffdbbe751e07757c1d054}} 
+\index{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}!Inp\+Recv\+Data\+Num@{Inp\+Recv\+Data\+Num}}
+\index{Inp\+Recv\+Data\+Num@{Inp\+Recv\+Data\+Num}!A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}}
+\subsubsection{\texorpdfstring{Inp\+Recv\+Data\+Num}{InpRecvDataNum}}
+{\footnotesize\ttfamily uint16\+\_\+t Inp\+Recv\+Data\+Num}
+
+The counter of received characters \mbox{\Hypertarget{struct_a_serial_ldd2___t_device_data_ac1f71c26f2de1b9f56290052e94e0776}\label{struct_a_serial_ldd2___t_device_data_ac1f71c26f2de1b9f56290052e94e0776}} 
+\index{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}!Out\+Data\+Num\+Req@{Out\+Data\+Num\+Req}}
+\index{Out\+Data\+Num\+Req@{Out\+Data\+Num\+Req}!A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}}
+\subsubsection{\texorpdfstring{Out\+Data\+Num\+Req}{OutDataNumReq}}
+{\footnotesize\ttfamily uint16\+\_\+t Out\+Data\+Num\+Req}
+
+The counter of characters to be send by Send\+Block() \mbox{\Hypertarget{struct_a_serial_ldd2___t_device_data_a9dc8846e18053ac742a73b80f1619083}\label{struct_a_serial_ldd2___t_device_data_a9dc8846e18053ac742a73b80f1619083}} 
+\index{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}!Out\+Data\+Ptr@{Out\+Data\+Ptr}}
+\index{Out\+Data\+Ptr@{Out\+Data\+Ptr}!A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}}
+\subsubsection{\texorpdfstring{Out\+Data\+Ptr}{OutDataPtr}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ Out\+Data\+Ptr}
+
+The buffer pointer for data to be transmitted \mbox{\Hypertarget{struct_a_serial_ldd2___t_device_data_aaec34f70eb2398302180ce4c52ed4fad}\label{struct_a_serial_ldd2___t_device_data_aaec34f70eb2398302180ce4c52ed4fad}} 
+\index{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}!Out\+Sent\+Data\+Num@{Out\+Sent\+Data\+Num}}
+\index{Out\+Sent\+Data\+Num@{Out\+Sent\+Data\+Num}!A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}}
+\subsubsection{\texorpdfstring{Out\+Sent\+Data\+Num}{OutSentDataNum}}
+{\footnotesize\ttfamily uint16\+\_\+t Out\+Sent\+Data\+Num}
+
+The counter of sent characters \mbox{\Hypertarget{struct_a_serial_ldd2___t_device_data_afd48e3955f613be6122b2c347bdeb3b5}\label{struct_a_serial_ldd2___t_device_data_afd48e3955f613be6122b2c347bdeb3b5}} 
+\index{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}!Ser\+Flag@{Ser\+Flag}}
+\index{Ser\+Flag@{Ser\+Flag}!A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}}
+\subsubsection{\texorpdfstring{Ser\+Flag}{SerFlag}}
+{\footnotesize\ttfamily uint16\+\_\+t Ser\+Flag}
+
+Flags for serial communication \mbox{\Hypertarget{struct_a_serial_ldd2___t_device_data_a8e77b9d030b00c231823350a904e0f83}\label{struct_a_serial_ldd2___t_device_data_a8e77b9d030b00c231823350a904e0f83}} 
+\index{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}!User\+Data\+Ptr@{User\+Data\+Ptr}}
+\index{User\+Data\+Ptr@{User\+Data\+Ptr}!A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data@{A\+Serial\+Ldd2\+\_\+\+T\+Device\+Data}}
+\subsubsection{\texorpdfstring{User\+Data\+Ptr}{UserDataPtr}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data}$\ast$ User\+Data\+Ptr}
+
+Pointer to user data 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\hyperlink{_a_serial_ldd2_8h}{A\+Serial\+Ldd2.\+h}\end{DoxyCompactItemize}

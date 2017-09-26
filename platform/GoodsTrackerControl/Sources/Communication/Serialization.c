@@ -6,25 +6,23 @@
 #include "clock.h"
 #include "Serialization.h"
 
-void tlm2String(Telemetria* info,PayLoad* ans){
+void tlm2String(Telemetria* tlm,PayLoad* ans){
 
-	if(info!=NULL && ans!= NULL){
-
-		clearArrayPayLoad(ans);
+	if(tlm!=NULL && ans!= NULL){
 
 		XF1_xsprintf(ans->Data,"%.8f%c%.8f%c%d%c%d%c%d%c%.3f%c%.3f%c%.2f%c%d%c%d%c%d%c%d",
-				info->GPS.Lat, 				CHAR_SEPARATOR,
-				info->GPS.Lng, 				CHAR_SEPARATOR,
-				info->Accelerometer.x, 		CHAR_SEPARATOR,
-				info->Accelerometer.y, 		CHAR_SEPARATOR,
-				info->Accelerometer.z, 		CHAR_SEPARATOR,
-				info->Accelerometer.x_g,	CHAR_SEPARATOR,
-				info->Accelerometer.y_g,	CHAR_SEPARATOR,
-				info->Accelerometer.z_g,	CHAR_SEPARATOR,
-				info->GPS.Speed, 			CHAR_SEPARATOR,
-				info->Tank.Level, 			CHAR_SEPARATOR,
-				info->Tank.Lock, 			CHAR_SEPARATOR,
-				strToTimeStamp(info->GPS.Date,info->GPS.Time_UTC));
+				tlm->GPS.Lat, 				CHAR_SEPARATOR,
+				tlm->GPS.Lng, 				CHAR_SEPARATOR,
+				tlm->Accelerometer.x, 		CHAR_SEPARATOR,
+				tlm->Accelerometer.y, 		CHAR_SEPARATOR,
+				tlm->Accelerometer.z, 		CHAR_SEPARATOR,
+				tlm->Accelerometer.x_g,		CHAR_SEPARATOR,
+				tlm->Accelerometer.y_g,		CHAR_SEPARATOR,
+				tlm->Accelerometer.z_g,		CHAR_SEPARATOR,
+				tlm->GPS.Speed, 			CHAR_SEPARATOR,
+				tlm->Tank.Level, 			CHAR_SEPARATOR,
+				tlm->Tank.Lock, 			CHAR_SEPARATOR,
+				strToTimeStamp(tlm->GPS.Date,tlm->GPS.Time_UTC));
 
 		ans->Length = strlen(ans->Data);
 	}

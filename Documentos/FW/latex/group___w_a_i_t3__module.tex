@@ -1,0 +1,199 @@
+\hypertarget{group___w_a_i_t3__module}{}\section{W\+A\+I\+T3 module documentation}
+\label{group___w_a_i_t3__module}\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___w_a_i_t3__module_ga704e840528cb3515b38c088da7dcf5e7}{W\+A\+I\+T3\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}~\hyperlink{group___cpu__module_ga9dee0abd722c849e54c662ab11a1d2cf}{C\+P\+U\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+K\+\_\+\+HZ} /$\ast$ for Kinetis, use core clock as base for instruction execution $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t3__module_ga0161409e4b16cae22dad9e1a5c579d4f}{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ms}(ms,  hz)~((ms)$\ast$((hz)/1000)) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t3__module_ga59aa53bfa203bca55c6cc0fee91ab3f3}{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Us}(us,  hz)~((us)$\ast$(((hz)/1000)/1000)) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t3__module_ga493da4e9ba3ac2a580caaaed67b772ba}{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ns}(ns,  hz)~(((ns)$\ast$(((hz)/1000)/1000))/1000) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t3__module_ga7d40470fbdbc8b74536612340b0b2909}{W\+A\+I\+T3\+\_\+\+W\+A\+I\+T\+\_\+C}(cycles)
+\item 
+\#define \hyperlink{group___w_a_i_t3__module_ga3dbe29b13d5de3927ca05983aaa03d86}{W\+A\+I\+T3\+\_\+\+Waitus}(us)
+\item 
+\#define \hyperlink{group___w_a_i_t3__module_gac037988ca338a86fac9a40a96987d968}{W\+A\+I\+T3\+\_\+\+Waitns}(ns)
+\item 
+\#define \hyperlink{group___w_a_i_t3__module_ga0077724d419418a4cc3a53210bae6bf2}{W\+A\+I\+T3\+\_\+\+Wait\+O\+Sms}(ms)~\hyperlink{group___w_a_i_t3__module_ga19ada606148b3ddfb0bce574e8932ae8}{W\+A\+I\+T3\+\_\+\+Waitms}(ms) /$\ast$ use normal wait $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___w_a_i_t3__module_ga0d401ca6ca297b5b7a450deed0c42b78}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((naked, no\+\_\+instrument\+\_\+function))
+\item 
+void \hyperlink{group___w_a_i_t3__module_gafe55719ed56a2c5bfe22f44d9825e7e3}{W\+A\+I\+T3\+\_\+\+Wait\+Cycles} (uint16\+\_\+t cycles)
+\item 
+void \hyperlink{group___w_a_i_t3__module_gadb969068f60f32c403871592e09be7e8}{W\+A\+I\+T3\+\_\+\+Wait\+Long\+Cycles} (uint32\+\_\+t cycles)
+\item 
+void \hyperlink{group___w_a_i_t3__module_ga19ada606148b3ddfb0bce574e8932ae8}{W\+A\+I\+T3\+\_\+\+Waitms} (uint16\+\_\+t ms)
+\item 
+void \hyperlink{group___w_a_i_t3__module_ga353edcbbc79c1cbb12d36df1a9c1cb16}{W\+A\+I\+T3\+\_\+\+Init} (void)
+\item 
+void \hyperlink{group___w_a_i_t3__module_ga000a29faa624093830f42e27bde927df}{W\+A\+I\+T3\+\_\+\+De\+Init} (void)
+\item 
+void \hyperlink{group___w_a_i_t3__module_ga37d600b93a863c8097cf3950901093e8}{W\+A\+I\+T3\+\_\+\+Wait10\+Cycles} (void)
+\item 
+void \hyperlink{group___w_a_i_t3__module_gad8a558a0bb022ce7e66fee0b7d53c088}{W\+A\+I\+T3\+\_\+\+Wait100\+Cycles} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga704e840528cb3515b38c088da7dcf5e7}\label{group___w_a_i_t3__module_ga704e840528cb3515b38c088da7dcf5e7}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{W\+A\+I\+T3\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}}
+\index{W\+A\+I\+T3\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{W\+A\+I\+T3\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}{WAIT3\_INSTR\_CLOCK\_HZ}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T3\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ~\hyperlink{group___cpu__module_ga9dee0abd722c849e54c662ab11a1d2cf}{C\+P\+U\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+K\+\_\+\+HZ} /$\ast$ for Kinetis, use core clock as base for instruction execution $\ast$/}
+
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga0161409e4b16cae22dad9e1a5c579d4f}\label{group___w_a_i_t3__module_ga0161409e4b16cae22dad9e1a5c579d4f}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ms@{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ms}}
+\index{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ms@{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ms}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ms}{WAIT3\_NofCyclesMs}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ms(\begin{DoxyParamCaption}\item[{}]{ms,  }\item[{}]{hz }\end{DoxyParamCaption})~((ms)$\ast$((hz)/1000)) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/}
+
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga493da4e9ba3ac2a580caaaed67b772ba}\label{group___w_a_i_t3__module_ga493da4e9ba3ac2a580caaaed67b772ba}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ns@{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ns}}
+\index{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ns@{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ns}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ns}{WAIT3\_NofCyclesNs}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Ns(\begin{DoxyParamCaption}\item[{}]{ns,  }\item[{}]{hz }\end{DoxyParamCaption})~(((ns)$\ast$(((hz)/1000)/1000))/1000) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/}
+
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga59aa53bfa203bca55c6cc0fee91ab3f3}\label{group___w_a_i_t3__module_ga59aa53bfa203bca55c6cc0fee91ab3f3}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Us@{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Us}}
+\index{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Us@{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Us}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Us}{WAIT3\_NofCyclesUs}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T3\+\_\+\+Nof\+Cycles\+Us(\begin{DoxyParamCaption}\item[{}]{us,  }\item[{}]{hz }\end{DoxyParamCaption})~((us)$\ast$(((hz)/1000)/1000)) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/}
+
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga7d40470fbdbc8b74536612340b0b2909}\label{group___w_a_i_t3__module_ga7d40470fbdbc8b74536612340b0b2909}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+W\+A\+I\+T\+\_\+C@{W\+A\+I\+T3\+\_\+\+W\+A\+I\+T\+\_\+C}}
+\index{W\+A\+I\+T3\+\_\+\+W\+A\+I\+T\+\_\+C@{W\+A\+I\+T3\+\_\+\+W\+A\+I\+T\+\_\+C}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+W\+A\+I\+T\+\_\+C}{WAIT3\_WAIT\_C}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T3\+\_\+\+W\+A\+I\+T\+\_\+C(\begin{DoxyParamCaption}\item[{}]{cycles }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( (cycles)<=10 ? \(\backslash\)
+          \hyperlink{group___w_a_i_t3__module_ga37d600b93a863c8097cf3950901093e8}{WAIT3\_Wait10Cycles}() \(\backslash\)
+        : \hyperlink{group___w_a_i_t3__module_gafe55719ed56a2c5bfe22f44d9825e7e3}{WAIT3\_WaitCycles}((uint16\_t)cycles) \(\backslash\)
+      )
+\end{DoxyCode}
+wait for some cycles \mbox{\Hypertarget{group___w_a_i_t3__module_gac037988ca338a86fac9a40a96987d968}\label{group___w_a_i_t3__module_gac037988ca338a86fac9a40a96987d968}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Waitns@{W\+A\+I\+T3\+\_\+\+Waitns}}
+\index{W\+A\+I\+T3\+\_\+\+Waitns@{W\+A\+I\+T3\+\_\+\+Waitns}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Waitns}{WAIT3\_Waitns}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T3\+\_\+\+Waitns(\begin{DoxyParamCaption}\item[{}]{ns }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{comment}{/*lint -save -e(505,506,522) Constant value Boolean, Redundant left argument to comma. */}\(\backslash\)
+       (  ((\hyperlink{group___w_a_i_t3__module_ga493da4e9ba3ac2a580caaaed67b772ba}{WAIT3\_NofCyclesNs}((ns), \hyperlink{group___w_a_i_t3__module_ga704e840528cb3515b38c088da7dcf5e7}{WAIT3\_INSTR\_CLOCK\_HZ})==0)||(ns)==0
+      ) ? \(\backslash\)
+          (\textcolor{keywordtype}{void})0 : \(\backslash\)
+          WAIT3\_Waitus((ns)/1000) \(\backslash\)
+          , (\hyperlink{group___w_a_i_t3__module_ga493da4e9ba3ac2a580caaaed67b772ba}{WAIT3\_NofCyclesNs}((ns)%1000, \hyperlink{group___w_a_i_t3__module_ga704e840528cb3515b38c088da7dcf5e7}{WAIT3\_INSTR\_CLOCK\_HZ})==0) ? 
+      \(\backslash\)
+              (\textcolor{keywordtype}{void})0 : \(\backslash\)
+              WAIT3\_WAIT\_C(\hyperlink{group___w_a_i_t3__module_ga493da4e9ba3ac2a580caaaed67b772ba}{WAIT3\_NofCyclesNs}(((ns)%1000), 
+      \hyperlink{group___w_a_i_t3__module_ga704e840528cb3515b38c088da7dcf5e7}{WAIT3\_INSTR\_CLOCK\_HZ})) \(\backslash\)
+       \textcolor{comment}{/*lint -restore */}\(\backslash\)
+       )
+\end{DoxyCode}
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga0077724d419418a4cc3a53210bae6bf2}\label{group___w_a_i_t3__module_ga0077724d419418a4cc3a53210bae6bf2}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Wait\+O\+Sms@{W\+A\+I\+T3\+\_\+\+Wait\+O\+Sms}}
+\index{W\+A\+I\+T3\+\_\+\+Wait\+O\+Sms@{W\+A\+I\+T3\+\_\+\+Wait\+O\+Sms}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Wait\+O\+Sms}{WAIT3\_WaitOSms}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T3\+\_\+\+Wait\+O\+Sms(\begin{DoxyParamCaption}\item[{}]{ms }\end{DoxyParamCaption})~\hyperlink{group___w_a_i_t3__module_ga19ada606148b3ddfb0bce574e8932ae8}{W\+A\+I\+T3\+\_\+\+Waitms}(ms) /$\ast$ use normal wait $\ast$/}
+
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga3dbe29b13d5de3927ca05983aaa03d86}\label{group___w_a_i_t3__module_ga3dbe29b13d5de3927ca05983aaa03d86}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Waitus@{W\+A\+I\+T3\+\_\+\+Waitus}}
+\index{W\+A\+I\+T3\+\_\+\+Waitus@{W\+A\+I\+T3\+\_\+\+Waitus}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Waitus}{WAIT3\_Waitus}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T3\+\_\+\+Waitus(\begin{DoxyParamCaption}\item[{}]{us }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{comment}{/*lint -save -e(505,506,522) Constant value Boolean, Redundant left argument to comma. */}\(\backslash\)
+       (  ((\hyperlink{group___w_a_i_t3__module_ga59aa53bfa203bca55c6cc0fee91ab3f3}{WAIT3\_NofCyclesUs}((us),\hyperlink{group___w_a_i_t3__module_ga704e840528cb3515b38c088da7dcf5e7}{WAIT3\_INSTR\_CLOCK\_HZ})==0)||(us)==0)
+       ? \(\backslash\)
+          (\textcolor{keywordtype}{void})0 : \(\backslash\)
+          ( ((us)/1000)==0 ? (void)0 : \hyperlink{group___w_a_i_t3__module_ga19ada606148b3ddfb0bce574e8932ae8}{WAIT3\_Waitms}((uint16\_t)((us)/1000))) \(\backslash\)
+          , (\hyperlink{group___w_a_i_t3__module_ga59aa53bfa203bca55c6cc0fee91ab3f3}{WAIT3\_NofCyclesUs}(((us)%1000), 
+      \hyperlink{group___w_a_i_t3__module_ga704e840528cb3515b38c088da7dcf5e7}{WAIT3\_INSTR\_CLOCK\_HZ})==0) ? (\textcolor{keywordtype}{void})0 : \(\backslash\)
+            WAIT3\_WAIT\_C(\hyperlink{group___w_a_i_t3__module_ga59aa53bfa203bca55c6cc0fee91ab3f3}{WAIT3\_NofCyclesUs}(((us)%1000), 
+      \hyperlink{group___w_a_i_t3__module_ga704e840528cb3515b38c088da7dcf5e7}{WAIT3\_INSTR\_CLOCK\_HZ})) \(\backslash\)
+       \textcolor{comment}{/*lint -restore */}\(\backslash\)
+       )
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga0d401ca6ca297b5b7a450deed0c42b78}\label{group___w_a_i_t3__module_ga0d401ca6ca297b5b7a450deed0c42b78}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(naked, no\+\_\+instrument\+\_\+function)}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga000a29faa624093830f42e27bde927df}\label{group___w_a_i_t3__module_ga000a29faa624093830f42e27bde927df}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+De\+Init@{W\+A\+I\+T3\+\_\+\+De\+Init}}
+\index{W\+A\+I\+T3\+\_\+\+De\+Init@{W\+A\+I\+T3\+\_\+\+De\+Init}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+De\+Init()}{WAIT3\_DeInit()}}
+{\footnotesize\ttfamily void W\+A\+I\+T3\+\_\+\+De\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga353edcbbc79c1cbb12d36df1a9c1cb16}\label{group___w_a_i_t3__module_ga353edcbbc79c1cbb12d36df1a9c1cb16}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Init@{W\+A\+I\+T3\+\_\+\+Init}}
+\index{W\+A\+I\+T3\+\_\+\+Init@{W\+A\+I\+T3\+\_\+\+Init}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Init()}{WAIT3\_Init()}}
+{\footnotesize\ttfamily void W\+A\+I\+T3\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{group___w_a_i_t3__module_gad8a558a0bb022ce7e66fee0b7d53c088}\label{group___w_a_i_t3__module_gad8a558a0bb022ce7e66fee0b7d53c088}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Wait100\+Cycles@{W\+A\+I\+T3\+\_\+\+Wait100\+Cycles}}
+\index{W\+A\+I\+T3\+\_\+\+Wait100\+Cycles@{W\+A\+I\+T3\+\_\+\+Wait100\+Cycles}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Wait100\+Cycles()}{WAIT3\_Wait100Cycles()}}
+{\footnotesize\ttfamily void W\+A\+I\+T3\+\_\+\+Wait100\+Cycles (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga37d600b93a863c8097cf3950901093e8}\label{group___w_a_i_t3__module_ga37d600b93a863c8097cf3950901093e8}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Wait10\+Cycles@{W\+A\+I\+T3\+\_\+\+Wait10\+Cycles}}
+\index{W\+A\+I\+T3\+\_\+\+Wait10\+Cycles@{W\+A\+I\+T3\+\_\+\+Wait10\+Cycles}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Wait10\+Cycles()}{WAIT3\_Wait10Cycles()}}
+{\footnotesize\ttfamily void W\+A\+I\+T3\+\_\+\+Wait10\+Cycles (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{group___w_a_i_t3__module_gafe55719ed56a2c5bfe22f44d9825e7e3}\label{group___w_a_i_t3__module_gafe55719ed56a2c5bfe22f44d9825e7e3}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Wait\+Cycles@{W\+A\+I\+T3\+\_\+\+Wait\+Cycles}}
+\index{W\+A\+I\+T3\+\_\+\+Wait\+Cycles@{W\+A\+I\+T3\+\_\+\+Wait\+Cycles}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Wait\+Cycles()}{WAIT3\_WaitCycles()}}
+{\footnotesize\ttfamily void W\+A\+I\+T3\+\_\+\+Wait\+Cycles (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{cycles }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{group___w_a_i_t3__module_gadb969068f60f32c403871592e09be7e8}\label{group___w_a_i_t3__module_gadb969068f60f32c403871592e09be7e8}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Wait\+Long\+Cycles@{W\+A\+I\+T3\+\_\+\+Wait\+Long\+Cycles}}
+\index{W\+A\+I\+T3\+\_\+\+Wait\+Long\+Cycles@{W\+A\+I\+T3\+\_\+\+Wait\+Long\+Cycles}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Wait\+Long\+Cycles()}{WAIT3\_WaitLongCycles()}}
+{\footnotesize\ttfamily void W\+A\+I\+T3\+\_\+\+Wait\+Long\+Cycles (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{cycles }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{group___w_a_i_t3__module_ga19ada606148b3ddfb0bce574e8932ae8}\label{group___w_a_i_t3__module_ga19ada606148b3ddfb0bce574e8932ae8}} 
+\index{W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}!W\+A\+I\+T3\+\_\+\+Waitms@{W\+A\+I\+T3\+\_\+\+Waitms}}
+\index{W\+A\+I\+T3\+\_\+\+Waitms@{W\+A\+I\+T3\+\_\+\+Waitms}!W\+A\+I\+T3 module documentation@{W\+A\+I\+T3 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T3\+\_\+\+Waitms()}{WAIT3\_Waitms()}}
+{\footnotesize\ttfamily void W\+A\+I\+T3\+\_\+\+Waitms (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{ms }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8

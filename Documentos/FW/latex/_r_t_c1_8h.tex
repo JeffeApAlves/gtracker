@@ -1,0 +1,48 @@
+\hypertarget{_r_t_c1_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+R\+T\+C1.h File Reference}
+\label{_r_t_c1_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+R\+T\+C1.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+R\+T\+C1.\+h}}
+
+
+This component implements a real time clock (R\+TC). Actual date may also be obtained and an alarm function is included.  
+
+
+{\ttfamily \#include \char`\"{}Cpu.\+h\char`\"{}}\newline
+Include dependency graph for R\+T\+C1.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___r_t_c1__module_ga9c7b6d1f2ca6e519921030d7157d1c4e}{R\+T\+C1\+\_\+\+I\+N\+T\+E\+R\+R\+U\+P\+T\+\_\+\+M\+O\+DE}
+\item 
+\#define \hyperlink{group___r_t_c1__module_gae43d8732a649441401c7d94c679f324b}{R\+T\+C1\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}~0x4003\+D000U
+\item 
+\#define \hyperlink{group___r_t_c1__module_gae9f49e013757febe26a91d3d403ac89f}{R\+T\+C1\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___r_t_c1__module_ga68cfd5878ced2231279a5ec9cec48d05}{R\+T\+C1\+\_\+\+Get\+Time\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___r_t_c1__module_ga734e8dc20145b950b4556deab3a14218}{R\+T\+C1\+\_\+\+Set\+Time\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___r_t_c1__module_ga0a843082919e5a384e4f7b91de31f823}{R\+T\+C1\+\_\+\+On\+Second\+\_\+\+E\+V\+E\+N\+T\+\_\+\+E\+N\+A\+B\+L\+ED}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___r_t_c1__module_ga844f34d73a2540c6cd99df66b247dd49}{R\+T\+C1\+\_\+\+Init} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr, \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Soft\+Init)
+\begin{DoxyCompactList}\small\item\em Initializes the device. There are two modes of initialization. 1) R\+TC device is N\+OT battery backed up. (Soft\+Init = F\+A\+L\+SE) All registers (interrupts, counters, clock routing …) that influence R\+TC behavior are initialized. Note\+: This initialization mode doesn\textquotesingle{}t preserve time and date settings. 2) R\+TC device IS battery backed up. (Soft\+Init = T\+R\+UE). Only registers that are not backed up are initialized (Interrupt priority …). R\+TC device is running, time and date a preserved, R\+TC interrupts (events) are preserved too. Allocates memory for the device data structure. This method can be called only once. Before the second call of Init() the Deinit() must be called first. \end{DoxyCompactList}\item 
+void \hyperlink{group___r_t_c1__module_gaeed73f4c93bfd44f15170c28028c81fb}{R\+T\+C1\+\_\+\+Get\+Time} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr, \hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$Time\+Ptr)
+\begin{DoxyCompactList}\small\item\em Returns actual time and date. Note\+: Fields not supported by HW are calculated in software. \end{DoxyCompactList}\item 
+\hyperlink{group___p_e___types__module_ga24c2b045fd04e79e85f261ce4df35588}{L\+D\+D\+\_\+\+T\+Error} \hyperlink{group___r_t_c1__module_ga91540e2cd845981f45f915884360d1fa}{R\+T\+C1\+\_\+\+Set\+Time} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr, \hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} $\ast$Time\+Ptr)
+\begin{DoxyCompactList}\small\item\em Sets new time and date. Note\+: All \hyperlink{struct_l_d_d___r_t_c___t_time}{L\+D\+D\+\_\+\+R\+T\+C\+\_\+\+T\+Time} structure members must be correctly filled in. \end{DoxyCompactList}\item 
+\hyperlink{group___r_t_c1__module_gad10e63c95cadae5f5b9bd1db4f857477}{P\+E\+\_\+\+I\+SR} (R\+T\+C1\+\_\+\+Interrupt)
+\item 
+\hyperlink{group___r_t_c1__module_ga15e68e29f9659063d40fb03dbf1f8f25}{P\+E\+\_\+\+I\+SR} (R\+T\+C1\+\_\+\+Seconds\+Interrupt)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This component implements a real time clock (R\+TC). Actual date may also be obtained and an alarm function is included. 
+
+\begin{DoxyVersion}{Version}
+01.\+08 
+\end{DoxyVersion}

@@ -1,0 +1,161 @@
+\hypertarget{group___bit_io_ldd7__module}{}\section{Bit\+Io\+Ldd7 module documentation}
+\label{group___bit_io_ldd7__module}\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_bit_io_ldd7___t_device_data}{Bit\+Io\+Ldd7\+\_\+\+T\+Device\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___bit_io_ldd7__module_gaecb0933dfdc4408d4e82af57b1458b41}{Bit\+Io\+Ldd7\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}~0x400\+F\+F000U
+\item 
+\#define \hyperlink{group___bit_io_ldd7__module_ga28a1c938c911f765d2dc333694f9505f}{Bit\+Io\+Ldd7\+\_\+\+Device\+Data}~((\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$)\hyperlink{group___p_e___types__module_gaa1c23d559daef5bcd3327ca83fb56f5a}{P\+E\+\_\+\+L\+D\+D\+\_\+\+Get\+Device\+Structure}(\hyperlink{group___p_e___types__module_gaec9d06a6e78676f5d01ee4903a9960d3}{P\+E\+\_\+\+L\+D\+D\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+Bit\+Io\+Ldd7\+\_\+\+ID}))
+\item 
+\#define \hyperlink{group___bit_io_ldd7__module_ga0cd7de05139351a8d7223583734bc161}{Bit\+Io\+Ldd7\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd7__module_gaea56f115a6bef18bb9f57ff9d981ccbd}{Bit\+Io\+Ldd7\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd7__module_gacb3f57b0defc7e929b43ddd858acfb15}{Bit\+Io\+Ldd7\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd7__module_gad8a699f629559c876160d573a75c2914}{Bit\+Io\+Ldd7\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}~\hyperlink{group___backward___compatibility___symbols_ga4b0d89f517528ab7c1d2fdefe4c863d8}{F\+P\+T\+A\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR}
+\item 
+\#define \hyperlink{group___bit_io_ldd7__module_gac518d50a533da6d2db8b9027e57fc04f}{Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}~\hyperlink{group___p_o_r_t___peripheral_gaa18ec7594fe603225220ec6eda4a19ce}{P\+O\+R\+T\+A\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR}
+\item 
+\#define \hyperlink{group___bit_io_ldd7__module_gab9e4e814ee4d363a367ae7b2836543fc}{Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK}~0x2000U
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{struct_bit_io_ldd7___t_device_data}{Bit\+Io\+Ldd7\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___bit_io_ldd7__module_ga42ed289439d061d65af4bf7a476285a8}{Bit\+Io\+Ldd7\+\_\+\+T\+Device\+Data\+Ptr}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___bit_io_ldd7__module_gaa210933c93b15395117454a2a398c7fc}{Bit\+Io\+Ldd7\+\_\+\+Init} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the \char`\"{}\+Enable
+    in init. code\char`\"{} is set to \char`\"{}yes\char`\"{} value then the device is also enabled(see the description of the Enable() method). In this case the Enable() method is not necessary and needn\textquotesingle{}t to be generated. \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd7__module_ga6eafafb0a2c30b4347462e6ff00d6f45}{Bit\+Io\+Ldd7\+\_\+\+Clr\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Clears (set to zero) the output value. It is equivalent to the \mbox{[}Put\+Val(\+F\+A\+L\+S\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd7__module_gaae11392cdaf0061ec255e1de58e509f5}{Bit\+Io\+Ldd7\+\_\+\+Set\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Sets (to one) the output value. It is equivalent to the \mbox{[}Put\+Val(\+T\+R\+U\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___bit_io_ldd7__module_gaea56f115a6bef18bb9f57ff9d981ccbd}\label{group___bit_io_ldd7__module_gaea56f115a6bef18bb9f57ff9d981ccbd}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd7\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd7\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd7\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd7\_ClrVal\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd7\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Clr\+Val method of the component Bit\+Io\+Ldd7 is enabled (generated) \mbox{\Hypertarget{group___bit_io_ldd7__module_ga28a1c938c911f765d2dc333694f9505f}\label{group___bit_io_ldd7__module_ga28a1c938c911f765d2dc333694f9505f}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+Device\+Data@{Bit\+Io\+Ldd7\+\_\+\+Device\+Data}}
+\index{Bit\+Io\+Ldd7\+\_\+\+Device\+Data@{Bit\+Io\+Ldd7\+\_\+\+Device\+Data}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+Device\+Data}{BitIoLdd7\_DeviceData}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd7\+\_\+\+Device\+Data~((\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$)\hyperlink{group___p_e___types__module_gaa1c23d559daef5bcd3327ca83fb56f5a}{P\+E\+\_\+\+L\+D\+D\+\_\+\+Get\+Device\+Structure}(\hyperlink{group___p_e___types__module_gaec9d06a6e78676f5d01ee4903a9960d3}{P\+E\+\_\+\+L\+D\+D\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+Bit\+Io\+Ldd7\+\_\+\+ID}))}
+
+Device data structure pointer used when auto initialization property is enabled. This constant can be passed as a first parameter to all component\textquotesingle{}s methods. \mbox{\Hypertarget{group___bit_io_ldd7__module_ga0cd7de05139351a8d7223583734bc161}\label{group___bit_io_ldd7__module_ga0cd7de05139351a8d7223583734bc161}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd7\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd7\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd7\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd7\_Init\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd7\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Init method of the component Bit\+Io\+Ldd7 is enabled (generated) \mbox{\Hypertarget{group___bit_io_ldd7__module_gad8a699f629559c876160d573a75c2914}\label{group___bit_io_ldd7__module_gad8a699f629559c876160d573a75c2914}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd7\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{Bit\+Io\+Ldd7\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd7\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}{BitIoLdd7\_MODULE\_BASE\_ADDRESS}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd7\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS~\hyperlink{group___backward___compatibility___symbols_ga4b0d89f517528ab7c1d2fdefe4c863d8}{F\+P\+T\+A\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR}}
+
+Name of macro used as the base address \mbox{\Hypertarget{group___bit_io_ldd7__module_gab9e4e814ee4d363a367ae7b2836543fc}\label{group___bit_io_ldd7__module_gab9e4e814ee4d363a367ae7b2836543fc}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK@{Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK}}
+\index{Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK@{Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK}{BitIoLdd7\_PORT\_MASK}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK~0x2000U}
+
+Mask of the allocated pin from the port \mbox{\Hypertarget{group___bit_io_ldd7__module_gac518d50a533da6d2db8b9027e57fc04f}\label{group___bit_io_ldd7__module_gac518d50a533da6d2db8b9027e57fc04f}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}{BitIoLdd7\_PORTCONTROL\_BASE\_ADDRESS}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd7\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS~\hyperlink{group___p_o_r_t___peripheral_gaa18ec7594fe603225220ec6eda4a19ce}{P\+O\+R\+T\+A\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR}}
+
+Name of macro used as the base address \mbox{\Hypertarget{group___bit_io_ldd7__module_gaecb0933dfdc4408d4e82af57b1458b41}\label{group___bit_io_ldd7__module_gaecb0933dfdc4408d4e82af57b1458b41}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd7\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{Bit\+Io\+Ldd7\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd7\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}{BitIoLdd7\_PRPH\_BASE\_ADDRESS}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd7\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS~0x400\+F\+F000U}
+
+Peripheral base address of a device allocated by the component. This constant can be used directly in P\+DD macros. \mbox{\Hypertarget{group___bit_io_ldd7__module_gacb3f57b0defc7e929b43ddd858acfb15}\label{group___bit_io_ldd7__module_gacb3f57b0defc7e929b43ddd858acfb15}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd7\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd7\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd7\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd7\_SetVal\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd7\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Set\+Val method of the component Bit\+Io\+Ldd7 is enabled (generated) 
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{group___bit_io_ldd7__module_ga42ed289439d061d65af4bf7a476285a8}\label{group___bit_io_ldd7__module_ga42ed289439d061d65af4bf7a476285a8}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+T\+Device\+Data\+Ptr@{Bit\+Io\+Ldd7\+\_\+\+T\+Device\+Data\+Ptr}}
+\index{Bit\+Io\+Ldd7\+\_\+\+T\+Device\+Data\+Ptr@{Bit\+Io\+Ldd7\+\_\+\+T\+Device\+Data\+Ptr}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+T\+Device\+Data\+Ptr}{BitIoLdd7\_TDeviceDataPtr}}
+{\footnotesize\ttfamily typedef \hyperlink{struct_bit_io_ldd7___t_device_data}{Bit\+Io\+Ldd7\+\_\+\+T\+Device\+Data}$\ast$ \hyperlink{group___bit_io_ldd7__module_ga42ed289439d061d65af4bf7a476285a8}{Bit\+Io\+Ldd7\+\_\+\+T\+Device\+Data\+Ptr}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___bit_io_ldd7__module_ga6eafafb0a2c30b4347462e6ff00d6f45}\label{group___bit_io_ldd7__module_ga6eafafb0a2c30b4347462e6ff00d6f45}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+Clr\+Val@{Bit\+Io\+Ldd7\+\_\+\+Clr\+Val}}
+\index{Bit\+Io\+Ldd7\+\_\+\+Clr\+Val@{Bit\+Io\+Ldd7\+\_\+\+Clr\+Val}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+Clr\+Val()}{BitIoLdd7\_ClrVal()}}
+{\footnotesize\ttfamily void Bit\+Io\+Ldd7\+\_\+\+Clr\+Val (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$}]{Device\+Data\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Clears (set to zero) the output value. It is equivalent to the \mbox{[}Put\+Val(\+F\+A\+L\+S\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Device\+Data\+Ptr} & -\/ Pointer to device data structure returned by $<$\+Init$>$ method. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group___bit_io_ldd7__module_gaa210933c93b15395117454a2a398c7fc}\label{group___bit_io_ldd7__module_gaa210933c93b15395117454a2a398c7fc}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+Init@{Bit\+Io\+Ldd7\+\_\+\+Init}}
+\index{Bit\+Io\+Ldd7\+\_\+\+Init@{Bit\+Io\+Ldd7\+\_\+\+Init}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+Init()}{BitIoLdd7\_Init()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ Bit\+Io\+Ldd7\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the \char`\"{}\+Enable
+    in init. code\char`\"{} is set to \char`\"{}yes\char`\"{} value then the device is also enabled(see the description of the Enable() method). In this case the Enable() method is not necessary and needn\textquotesingle{}t to be generated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em User\+Data\+Ptr} & -\/ Pointer to the user or R\+T\+OS specific data. This pointer will be passed as an event or callback parameter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Pointer to the dynamically allocated private structure or N\+U\+LL if there was an error. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{group___bit_io_ldd7__module_gaae11392cdaf0061ec255e1de58e509f5}\label{group___bit_io_ldd7__module_gaae11392cdaf0061ec255e1de58e509f5}} 
+\index{Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}!Bit\+Io\+Ldd7\+\_\+\+Set\+Val@{Bit\+Io\+Ldd7\+\_\+\+Set\+Val}}
+\index{Bit\+Io\+Ldd7\+\_\+\+Set\+Val@{Bit\+Io\+Ldd7\+\_\+\+Set\+Val}!Bit\+Io\+Ldd7 module documentation@{Bit\+Io\+Ldd7 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd7\+\_\+\+Set\+Val()}{BitIoLdd7\_SetVal()}}
+{\footnotesize\ttfamily void Bit\+Io\+Ldd7\+\_\+\+Set\+Val (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$}]{Device\+Data\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Sets (to one) the output value. It is equivalent to the \mbox{[}Put\+Val(\+T\+R\+U\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Device\+Data\+Ptr} & -\/ Pointer to device data structure returned by $<$\+Init$>$ method. \\
+\hline
+\end{DoxyParams}

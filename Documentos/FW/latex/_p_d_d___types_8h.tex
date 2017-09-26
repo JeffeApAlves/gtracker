@@ -1,0 +1,208 @@
+\hypertarget{_p_d_d___types_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+P\+D\+D\+\_\+\+Types.h File Reference}
+\label{_p_d_d___types_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+P\+D\+D\+\_\+\+Types.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Static\+\_\+\+Code/\+P\+D\+D/\+P\+D\+D\+\_\+\+Types.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}{P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE}~0u
+\item 
+\#define \hyperlink{_p_d_d___types_8h_accb3a19a48072a198e95e411154dd0b4}{P\+D\+D\+\_\+\+E\+N\+A\+B\+LE}~1u
+\item 
+\#define \hyperlink{_p_d_d___types_8h_a38d7be4971d2e1d4e172d65a536c8f6f}{set\+Reg8}(Reg,  val)~((Reg) = (uint8\+\_\+t)(val))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_a10803cfe8edfa878788d259c39f1f435}{get\+Reg8}(Reg)~(Reg)
+\item 
+\#define \hyperlink{_p_d_d___types_8h_a239803527380366cf1c7f78d9e310238}{test\+Reg8\+Bits}(Reg,  Get\+Mask)~((Reg) \& (uint8\+\_\+t)(Get\+Mask))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_a6086f5979f15e40f34654626e777d7aa}{clr\+Reg8\+Bits}(Reg,  Clr\+Mask)~((Reg) \&= (uint8\+\_\+t)((uint8\+\_\+t)($\sim$(uint8\+\_\+t)(Clr\+Mask))))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_ac32caa80491b903c5bb8897fd1409264}{set\+Reg8\+Bits}(Reg,  Set\+Mask)~((Reg) $\vert$= (uint8\+\_\+t)(Set\+Mask))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_a4ed5643b88d270e48eeb8b90662f9296}{invert\+Reg8\+Bits}(Reg,  Inv\+Mask)~((Reg) $^\wedge$= (uint8\+\_\+t)(Inv\+Mask))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_adde33d23ca57a95f7bb87542d1fbd80e}{clr\+Set\+Reg8\+Bits}(Reg,  Clr\+Mask,  Set\+Mask)~((Reg) = (uint8\+\_\+t)(((Reg) \& (uint8\+\_\+t)($\sim$(uint8\+\_\+t)(Clr\+Mask))) $\vert$ (uint8\+\_\+t)(Set\+Mask)))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_abce99440f2f964ba23bc457d9fe5f1dd}{set\+Reg16}(Reg,  val)~((Reg) = (uint16\+\_\+t)(val))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_aa6bfb75a77777054d2622c92ddd22595}{get\+Reg16}(Reg)~(Reg)
+\item 
+\#define \hyperlink{_p_d_d___types_8h_a627609fd98a22102a22bd342470ba432}{test\+Reg16\+Bits}(Reg,  Get\+Mask)~((Reg) \& (uint16\+\_\+t)(Get\+Mask))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_a96661579d8d219a7659bde70bef98832}{clr\+Reg16\+Bits}(Reg,  Clr\+Mask)~((Reg) \&= (uint16\+\_\+t)($\sim$(uint16\+\_\+t)(Clr\+Mask)))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_aac701b316f5cf6b175d2d780293bb402}{set\+Reg16\+Bits}(Reg,  Set\+Mask)~((Reg) $\vert$= (uint16\+\_\+t)(Set\+Mask))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_ada7c20c382a4e9372ef3f4c362740aa5}{invert\+Reg16\+Bits}(Reg,  Inv\+Mask)~((Reg) $^\wedge$= (uint16\+\_\+t)(Inv\+Mask))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_a21a15e0664d6ee41d482ec62e714947f}{clr\+Set\+Reg16\+Bits}(Reg,  Clr\+Mask,  Set\+Mask)~((Reg) = (uint16\+\_\+t)(((Reg) \& (uint16\+\_\+t)($\sim$(uint16\+\_\+t)(Clr\+Mask))) $\vert$ (uint16\+\_\+t)(Set\+Mask)))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_abd50ab7e57005b77b56b98e2c489a67d}{set\+Reg32}(Reg,  val)~((Reg) = (uint32\+\_\+t)(val))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_ab3f6e890f6e3ee57df61ad8115b624b0}{get\+Reg32}(Reg)~(Reg)
+\item 
+\#define \hyperlink{_p_d_d___types_8h_ace3e045afaa0bf1fd8bba4d3f4d83dd3}{test\+Reg32\+Bits}(Reg,  Get\+Mask)~((Reg) \& (uint32\+\_\+t)(Get\+Mask))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_a593bf1d424e67a1d0adf2424c7c2fb87}{clr\+Reg32\+Bits}(Reg,  Clr\+Mask)~((Reg) \&= (uint32\+\_\+t)($\sim$(uint32\+\_\+t)(Clr\+Mask)))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_ab350097e7f7e59dbddd70f42480037ee}{set\+Reg32\+Bits}(Reg,  Set\+Mask)~((Reg) $\vert$= (uint32\+\_\+t)(Set\+Mask))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_aadea81cf8618940e6ffddc4bc46aa905}{invert\+Reg32\+Bits}(Reg,  Inv\+Mask)~((Reg) $^\wedge$= (uint32\+\_\+t)(Inv\+Mask))
+\item 
+\#define \hyperlink{_p_d_d___types_8h_ab7f666fef6dbc0e3855fff838ba22805}{clr\+Set\+Reg32\+Bits}(Reg,  Clr\+Mask,  Set\+Mask)~((Reg) = (uint32\+\_\+t)(((Reg) \& (uint32\+\_\+t)($\sim$(uint32\+\_\+t)(Clr\+Mask))) $\vert$ (uint32\+\_\+t)(Set\+Mask)))
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint16\+\_\+t \hyperlink{_p_d_d___types_8h_a2dab217029fc6c5ad583b992ee47c351}{P\+D\+D\+\_\+\+T\+Bool}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_p_d_d___types_8h_a96661579d8d219a7659bde70bef98832}\label{_p_d_d___types_8h_a96661579d8d219a7659bde70bef98832}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!clr\+Reg16\+Bits@{clr\+Reg16\+Bits}}
+\index{clr\+Reg16\+Bits@{clr\+Reg16\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{clr\+Reg16\+Bits}{clrReg16Bits}}
+{\footnotesize\ttfamily \#define clr\+Reg16\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Clr\+Mask }\end{DoxyParamCaption})~((Reg) \&= (uint16\+\_\+t)($\sim$(uint16\+\_\+t)(Clr\+Mask)))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_a593bf1d424e67a1d0adf2424c7c2fb87}\label{_p_d_d___types_8h_a593bf1d424e67a1d0adf2424c7c2fb87}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!clr\+Reg32\+Bits@{clr\+Reg32\+Bits}}
+\index{clr\+Reg32\+Bits@{clr\+Reg32\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{clr\+Reg32\+Bits}{clrReg32Bits}}
+{\footnotesize\ttfamily \#define clr\+Reg32\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Clr\+Mask }\end{DoxyParamCaption})~((Reg) \&= (uint32\+\_\+t)($\sim$(uint32\+\_\+t)(Clr\+Mask)))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_a6086f5979f15e40f34654626e777d7aa}\label{_p_d_d___types_8h_a6086f5979f15e40f34654626e777d7aa}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!clr\+Reg8\+Bits@{clr\+Reg8\+Bits}}
+\index{clr\+Reg8\+Bits@{clr\+Reg8\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{clr\+Reg8\+Bits}{clrReg8Bits}}
+{\footnotesize\ttfamily \#define clr\+Reg8\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Clr\+Mask }\end{DoxyParamCaption})~((Reg) \&= (uint8\+\_\+t)((uint8\+\_\+t)($\sim$(uint8\+\_\+t)(Clr\+Mask))))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_a21a15e0664d6ee41d482ec62e714947f}\label{_p_d_d___types_8h_a21a15e0664d6ee41d482ec62e714947f}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!clr\+Set\+Reg16\+Bits@{clr\+Set\+Reg16\+Bits}}
+\index{clr\+Set\+Reg16\+Bits@{clr\+Set\+Reg16\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{clr\+Set\+Reg16\+Bits}{clrSetReg16Bits}}
+{\footnotesize\ttfamily \#define clr\+Set\+Reg16\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Clr\+Mask,  }\item[{}]{Set\+Mask }\end{DoxyParamCaption})~((Reg) = (uint16\+\_\+t)(((Reg) \& (uint16\+\_\+t)($\sim$(uint16\+\_\+t)(Clr\+Mask))) $\vert$ (uint16\+\_\+t)(Set\+Mask)))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_ab7f666fef6dbc0e3855fff838ba22805}\label{_p_d_d___types_8h_ab7f666fef6dbc0e3855fff838ba22805}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!clr\+Set\+Reg32\+Bits@{clr\+Set\+Reg32\+Bits}}
+\index{clr\+Set\+Reg32\+Bits@{clr\+Set\+Reg32\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{clr\+Set\+Reg32\+Bits}{clrSetReg32Bits}}
+{\footnotesize\ttfamily \#define clr\+Set\+Reg32\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Clr\+Mask,  }\item[{}]{Set\+Mask }\end{DoxyParamCaption})~((Reg) = (uint32\+\_\+t)(((Reg) \& (uint32\+\_\+t)($\sim$(uint32\+\_\+t)(Clr\+Mask))) $\vert$ (uint32\+\_\+t)(Set\+Mask)))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_adde33d23ca57a95f7bb87542d1fbd80e}\label{_p_d_d___types_8h_adde33d23ca57a95f7bb87542d1fbd80e}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!clr\+Set\+Reg8\+Bits@{clr\+Set\+Reg8\+Bits}}
+\index{clr\+Set\+Reg8\+Bits@{clr\+Set\+Reg8\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{clr\+Set\+Reg8\+Bits}{clrSetReg8Bits}}
+{\footnotesize\ttfamily \#define clr\+Set\+Reg8\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Clr\+Mask,  }\item[{}]{Set\+Mask }\end{DoxyParamCaption})~((Reg) = (uint8\+\_\+t)(((Reg) \& (uint8\+\_\+t)($\sim$(uint8\+\_\+t)(Clr\+Mask))) $\vert$ (uint8\+\_\+t)(Set\+Mask)))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_aa6bfb75a77777054d2622c92ddd22595}\label{_p_d_d___types_8h_aa6bfb75a77777054d2622c92ddd22595}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!get\+Reg16@{get\+Reg16}}
+\index{get\+Reg16@{get\+Reg16}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{get\+Reg16}{getReg16}}
+{\footnotesize\ttfamily \#define get\+Reg16(\begin{DoxyParamCaption}\item[{}]{Reg }\end{DoxyParamCaption})~(Reg)}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_ab3f6e890f6e3ee57df61ad8115b624b0}\label{_p_d_d___types_8h_ab3f6e890f6e3ee57df61ad8115b624b0}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!get\+Reg32@{get\+Reg32}}
+\index{get\+Reg32@{get\+Reg32}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{get\+Reg32}{getReg32}}
+{\footnotesize\ttfamily \#define get\+Reg32(\begin{DoxyParamCaption}\item[{}]{Reg }\end{DoxyParamCaption})~(Reg)}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_a10803cfe8edfa878788d259c39f1f435}\label{_p_d_d___types_8h_a10803cfe8edfa878788d259c39f1f435}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!get\+Reg8@{get\+Reg8}}
+\index{get\+Reg8@{get\+Reg8}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{get\+Reg8}{getReg8}}
+{\footnotesize\ttfamily \#define get\+Reg8(\begin{DoxyParamCaption}\item[{}]{Reg }\end{DoxyParamCaption})~(Reg)}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_ada7c20c382a4e9372ef3f4c362740aa5}\label{_p_d_d___types_8h_ada7c20c382a4e9372ef3f4c362740aa5}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!invert\+Reg16\+Bits@{invert\+Reg16\+Bits}}
+\index{invert\+Reg16\+Bits@{invert\+Reg16\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{invert\+Reg16\+Bits}{invertReg16Bits}}
+{\footnotesize\ttfamily \#define invert\+Reg16\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Inv\+Mask }\end{DoxyParamCaption})~((Reg) $^\wedge$= (uint16\+\_\+t)(Inv\+Mask))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_aadea81cf8618940e6ffddc4bc46aa905}\label{_p_d_d___types_8h_aadea81cf8618940e6ffddc4bc46aa905}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!invert\+Reg32\+Bits@{invert\+Reg32\+Bits}}
+\index{invert\+Reg32\+Bits@{invert\+Reg32\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{invert\+Reg32\+Bits}{invertReg32Bits}}
+{\footnotesize\ttfamily \#define invert\+Reg32\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Inv\+Mask }\end{DoxyParamCaption})~((Reg) $^\wedge$= (uint32\+\_\+t)(Inv\+Mask))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_a4ed5643b88d270e48eeb8b90662f9296}\label{_p_d_d___types_8h_a4ed5643b88d270e48eeb8b90662f9296}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!invert\+Reg8\+Bits@{invert\+Reg8\+Bits}}
+\index{invert\+Reg8\+Bits@{invert\+Reg8\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{invert\+Reg8\+Bits}{invertReg8Bits}}
+{\footnotesize\ttfamily \#define invert\+Reg8\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Inv\+Mask }\end{DoxyParamCaption})~((Reg) $^\wedge$= (uint8\+\_\+t)(Inv\+Mask))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}\label{_p_d_d___types_8h_ab3f067bf9b5f1a0bee256df53023a37f}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE@{P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE}}
+\index{P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE@{P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE}{PDD\_DISABLE}}
+{\footnotesize\ttfamily \#define P\+D\+D\+\_\+\+D\+I\+S\+A\+B\+LE~0u}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_accb3a19a48072a198e95e411154dd0b4}\label{_p_d_d___types_8h_accb3a19a48072a198e95e411154dd0b4}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!P\+D\+D\+\_\+\+E\+N\+A\+B\+LE@{P\+D\+D\+\_\+\+E\+N\+A\+B\+LE}}
+\index{P\+D\+D\+\_\+\+E\+N\+A\+B\+LE@{P\+D\+D\+\_\+\+E\+N\+A\+B\+LE}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{P\+D\+D\+\_\+\+E\+N\+A\+B\+LE}{PDD\_ENABLE}}
+{\footnotesize\ttfamily \#define P\+D\+D\+\_\+\+E\+N\+A\+B\+LE~1u}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_abce99440f2f964ba23bc457d9fe5f1dd}\label{_p_d_d___types_8h_abce99440f2f964ba23bc457d9fe5f1dd}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!set\+Reg16@{set\+Reg16}}
+\index{set\+Reg16@{set\+Reg16}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{set\+Reg16}{setReg16}}
+{\footnotesize\ttfamily \#define set\+Reg16(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{val }\end{DoxyParamCaption})~((Reg) = (uint16\+\_\+t)(val))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_aac701b316f5cf6b175d2d780293bb402}\label{_p_d_d___types_8h_aac701b316f5cf6b175d2d780293bb402}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!set\+Reg16\+Bits@{set\+Reg16\+Bits}}
+\index{set\+Reg16\+Bits@{set\+Reg16\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{set\+Reg16\+Bits}{setReg16Bits}}
+{\footnotesize\ttfamily \#define set\+Reg16\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Set\+Mask }\end{DoxyParamCaption})~((Reg) $\vert$= (uint16\+\_\+t)(Set\+Mask))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_abd50ab7e57005b77b56b98e2c489a67d}\label{_p_d_d___types_8h_abd50ab7e57005b77b56b98e2c489a67d}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!set\+Reg32@{set\+Reg32}}
+\index{set\+Reg32@{set\+Reg32}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{set\+Reg32}{setReg32}}
+{\footnotesize\ttfamily \#define set\+Reg32(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{val }\end{DoxyParamCaption})~((Reg) = (uint32\+\_\+t)(val))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_ab350097e7f7e59dbddd70f42480037ee}\label{_p_d_d___types_8h_ab350097e7f7e59dbddd70f42480037ee}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!set\+Reg32\+Bits@{set\+Reg32\+Bits}}
+\index{set\+Reg32\+Bits@{set\+Reg32\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{set\+Reg32\+Bits}{setReg32Bits}}
+{\footnotesize\ttfamily \#define set\+Reg32\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Set\+Mask }\end{DoxyParamCaption})~((Reg) $\vert$= (uint32\+\_\+t)(Set\+Mask))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_a38d7be4971d2e1d4e172d65a536c8f6f}\label{_p_d_d___types_8h_a38d7be4971d2e1d4e172d65a536c8f6f}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!set\+Reg8@{set\+Reg8}}
+\index{set\+Reg8@{set\+Reg8}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{set\+Reg8}{setReg8}}
+{\footnotesize\ttfamily \#define set\+Reg8(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{val }\end{DoxyParamCaption})~((Reg) = (uint8\+\_\+t)(val))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_ac32caa80491b903c5bb8897fd1409264}\label{_p_d_d___types_8h_ac32caa80491b903c5bb8897fd1409264}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!set\+Reg8\+Bits@{set\+Reg8\+Bits}}
+\index{set\+Reg8\+Bits@{set\+Reg8\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{set\+Reg8\+Bits}{setReg8Bits}}
+{\footnotesize\ttfamily \#define set\+Reg8\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Set\+Mask }\end{DoxyParamCaption})~((Reg) $\vert$= (uint8\+\_\+t)(Set\+Mask))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_a627609fd98a22102a22bd342470ba432}\label{_p_d_d___types_8h_a627609fd98a22102a22bd342470ba432}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!test\+Reg16\+Bits@{test\+Reg16\+Bits}}
+\index{test\+Reg16\+Bits@{test\+Reg16\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{test\+Reg16\+Bits}{testReg16Bits}}
+{\footnotesize\ttfamily \#define test\+Reg16\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Get\+Mask }\end{DoxyParamCaption})~((Reg) \& (uint16\+\_\+t)(Get\+Mask))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_ace3e045afaa0bf1fd8bba4d3f4d83dd3}\label{_p_d_d___types_8h_ace3e045afaa0bf1fd8bba4d3f4d83dd3}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!test\+Reg32\+Bits@{test\+Reg32\+Bits}}
+\index{test\+Reg32\+Bits@{test\+Reg32\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{test\+Reg32\+Bits}{testReg32Bits}}
+{\footnotesize\ttfamily \#define test\+Reg32\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Get\+Mask }\end{DoxyParamCaption})~((Reg) \& (uint32\+\_\+t)(Get\+Mask))}
+
+\mbox{\Hypertarget{_p_d_d___types_8h_a239803527380366cf1c7f78d9e310238}\label{_p_d_d___types_8h_a239803527380366cf1c7f78d9e310238}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!test\+Reg8\+Bits@{test\+Reg8\+Bits}}
+\index{test\+Reg8\+Bits@{test\+Reg8\+Bits}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{test\+Reg8\+Bits}{testReg8Bits}}
+{\footnotesize\ttfamily \#define test\+Reg8\+Bits(\begin{DoxyParamCaption}\item[{}]{Reg,  }\item[{}]{Get\+Mask }\end{DoxyParamCaption})~((Reg) \& (uint8\+\_\+t)(Get\+Mask))}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{_p_d_d___types_8h_a2dab217029fc6c5ad583b992ee47c351}\label{_p_d_d___types_8h_a2dab217029fc6c5ad583b992ee47c351}} 
+\index{P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}!P\+D\+D\+\_\+\+T\+Bool@{P\+D\+D\+\_\+\+T\+Bool}}
+\index{P\+D\+D\+\_\+\+T\+Bool@{P\+D\+D\+\_\+\+T\+Bool}!P\+D\+D\+\_\+\+Types.\+h@{P\+D\+D\+\_\+\+Types.\+h}}
+\subsubsection{\texorpdfstring{P\+D\+D\+\_\+\+T\+Bool}{PDD\_TBool}}
+{\footnotesize\ttfamily typedef uint16\+\_\+t \hyperlink{_p_d_d___types_8h_a2dab217029fc6c5ad583b992ee47c351}{P\+D\+D\+\_\+\+T\+Bool}}
+

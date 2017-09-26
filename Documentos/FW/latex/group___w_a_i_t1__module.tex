@@ -1,0 +1,199 @@
+\hypertarget{group___w_a_i_t1__module}{}\section{W\+A\+I\+T1 module documentation}
+\label{group___w_a_i_t1__module}\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___w_a_i_t1__module_gad719b8589ad1bf92a03ec94ce95c4804}{W\+A\+I\+T1\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}~\hyperlink{group___cpu__module_ga9dee0abd722c849e54c662ab11a1d2cf}{C\+P\+U\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+K\+\_\+\+HZ} /$\ast$ for Kinetis, use core clock as base for instruction execution $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t1__module_ga7e74874c42a8979fb279fc86d373b60a}{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ms}(ms,  hz)~((ms)$\ast$((hz)/1000)) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t1__module_ga7dabbdd9744304c62df945607fa13dcf}{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Us}(us,  hz)~((us)$\ast$(((hz)/1000)/1000)) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t1__module_gaca73593e1131b4845062bd9ec4ee5cac}{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ns}(ns,  hz)~(((ns)$\ast$(((hz)/1000)/1000))/1000) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/
+\item 
+\#define \hyperlink{group___w_a_i_t1__module_ga9824395bc44b736ec5b29dd219ef8418}{W\+A\+I\+T1\+\_\+\+W\+A\+I\+T\+\_\+C}(cycles)
+\item 
+\#define \hyperlink{group___w_a_i_t1__module_ga3bad7338e555cbbbaa870ee3fe2db0f6}{W\+A\+I\+T1\+\_\+\+Waitus}(us)
+\item 
+\#define \hyperlink{group___w_a_i_t1__module_ga69b0cc93f0910d7f8f238d3e7d43c2c3}{W\+A\+I\+T1\+\_\+\+Waitns}(ns)
+\item 
+\#define \hyperlink{group___w_a_i_t1__module_ga2691150b572fe622d361fb48539af70e}{W\+A\+I\+T1\+\_\+\+Wait\+O\+Sms}(ms)~\hyperlink{group___w_a_i_t1__module_ga04b03075f856862ff2bc4ff69825aeb6}{W\+A\+I\+T1\+\_\+\+Waitms}(ms) /$\ast$ use normal wait $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___w_a_i_t1__module_ga0d401ca6ca297b5b7a450deed0c42b78}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((naked, no\+\_\+instrument\+\_\+function))
+\item 
+void \hyperlink{group___w_a_i_t1__module_ga2ef0c866b014b3f8bba49508c79a4c21}{W\+A\+I\+T1\+\_\+\+Wait\+Cycles} (uint16\+\_\+t cycles)
+\item 
+void \hyperlink{group___w_a_i_t1__module_gad800b2446f397d9524bf1780d2646a57}{W\+A\+I\+T1\+\_\+\+Wait\+Long\+Cycles} (uint32\+\_\+t cycles)
+\item 
+void \hyperlink{group___w_a_i_t1__module_ga04b03075f856862ff2bc4ff69825aeb6}{W\+A\+I\+T1\+\_\+\+Waitms} (uint16\+\_\+t ms)
+\item 
+void \hyperlink{group___w_a_i_t1__module_ga3bb855c4f83a70665404289e66b8f2a7}{W\+A\+I\+T1\+\_\+\+Init} (void)
+\item 
+void \hyperlink{group___w_a_i_t1__module_ga8024b107f0d8d25c88974c6a709b1f88}{W\+A\+I\+T1\+\_\+\+De\+Init} (void)
+\item 
+void \hyperlink{group___w_a_i_t1__module_gaff67df7b318b8d5cf4555a24fe7c7f93}{W\+A\+I\+T1\+\_\+\+Wait10\+Cycles} (void)
+\item 
+void \hyperlink{group___w_a_i_t1__module_gaa9a9a87e96edf43071b5f322cfa72333}{W\+A\+I\+T1\+\_\+\+Wait100\+Cycles} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___w_a_i_t1__module_gad719b8589ad1bf92a03ec94ce95c4804}\label{group___w_a_i_t1__module_gad719b8589ad1bf92a03ec94ce95c4804}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{W\+A\+I\+T1\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}}
+\index{W\+A\+I\+T1\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ@{W\+A\+I\+T1\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ}{WAIT1\_INSTR\_CLOCK\_HZ}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T1\+\_\+\+I\+N\+S\+T\+R\+\_\+\+C\+L\+O\+C\+K\+\_\+\+HZ~\hyperlink{group___cpu__module_ga9dee0abd722c849e54c662ab11a1d2cf}{C\+P\+U\+\_\+\+C\+O\+R\+E\+\_\+\+C\+L\+K\+\_\+\+HZ} /$\ast$ for Kinetis, use core clock as base for instruction execution $\ast$/}
+
+\mbox{\Hypertarget{group___w_a_i_t1__module_ga7e74874c42a8979fb279fc86d373b60a}\label{group___w_a_i_t1__module_ga7e74874c42a8979fb279fc86d373b60a}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ms@{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ms}}
+\index{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ms@{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ms}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ms}{WAIT1\_NofCyclesMs}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ms(\begin{DoxyParamCaption}\item[{}]{ms,  }\item[{}]{hz }\end{DoxyParamCaption})~((ms)$\ast$((hz)/1000)) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/}
+
+\mbox{\Hypertarget{group___w_a_i_t1__module_gaca73593e1131b4845062bd9ec4ee5cac}\label{group___w_a_i_t1__module_gaca73593e1131b4845062bd9ec4ee5cac}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ns@{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ns}}
+\index{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ns@{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ns}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ns}{WAIT1\_NofCyclesNs}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Ns(\begin{DoxyParamCaption}\item[{}]{ns,  }\item[{}]{hz }\end{DoxyParamCaption})~(((ns)$\ast$(((hz)/1000)/1000))/1000) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/}
+
+\mbox{\Hypertarget{group___w_a_i_t1__module_ga7dabbdd9744304c62df945607fa13dcf}\label{group___w_a_i_t1__module_ga7dabbdd9744304c62df945607fa13dcf}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Us@{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Us}}
+\index{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Us@{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Us}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Us}{WAIT1\_NofCyclesUs}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T1\+\_\+\+Nof\+Cycles\+Us(\begin{DoxyParamCaption}\item[{}]{us,  }\item[{}]{hz }\end{DoxyParamCaption})~((us)$\ast$(((hz)/1000)/1000)) /$\ast$ calculates the needed cycles based on bus clock frequency $\ast$/}
+
+\mbox{\Hypertarget{group___w_a_i_t1__module_ga9824395bc44b736ec5b29dd219ef8418}\label{group___w_a_i_t1__module_ga9824395bc44b736ec5b29dd219ef8418}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+W\+A\+I\+T\+\_\+C@{W\+A\+I\+T1\+\_\+\+W\+A\+I\+T\+\_\+C}}
+\index{W\+A\+I\+T1\+\_\+\+W\+A\+I\+T\+\_\+C@{W\+A\+I\+T1\+\_\+\+W\+A\+I\+T\+\_\+C}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+W\+A\+I\+T\+\_\+C}{WAIT1\_WAIT\_C}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T1\+\_\+\+W\+A\+I\+T\+\_\+C(\begin{DoxyParamCaption}\item[{}]{cycles }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( (cycles)<=10 ? \(\backslash\)
+          \hyperlink{group___w_a_i_t1__module_gaff67df7b318b8d5cf4555a24fe7c7f93}{WAIT1\_Wait10Cycles}() \(\backslash\)
+        : \hyperlink{group___w_a_i_t1__module_ga2ef0c866b014b3f8bba49508c79a4c21}{WAIT1\_WaitCycles}((uint16\_t)cycles) \(\backslash\)
+      )
+\end{DoxyCode}
+wait for some cycles \mbox{\Hypertarget{group___w_a_i_t1__module_ga69b0cc93f0910d7f8f238d3e7d43c2c3}\label{group___w_a_i_t1__module_ga69b0cc93f0910d7f8f238d3e7d43c2c3}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Waitns@{W\+A\+I\+T1\+\_\+\+Waitns}}
+\index{W\+A\+I\+T1\+\_\+\+Waitns@{W\+A\+I\+T1\+\_\+\+Waitns}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Waitns}{WAIT1\_Waitns}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T1\+\_\+\+Waitns(\begin{DoxyParamCaption}\item[{}]{ns }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{comment}{/*lint -save -e(505,506,522) Constant value Boolean, Redundant left argument to comma. */}\(\backslash\)
+       (  ((\hyperlink{group___w_a_i_t1__module_gaca73593e1131b4845062bd9ec4ee5cac}{WAIT1\_NofCyclesNs}((ns), \hyperlink{group___w_a_i_t1__module_gad719b8589ad1bf92a03ec94ce95c4804}{WAIT1\_INSTR\_CLOCK\_HZ})==0)||(ns)==0
+      ) ? \(\backslash\)
+          (\textcolor{keywordtype}{void})0 : \(\backslash\)
+          WAIT1\_Waitus((ns)/1000) \(\backslash\)
+          , (\hyperlink{group___w_a_i_t1__module_gaca73593e1131b4845062bd9ec4ee5cac}{WAIT1\_NofCyclesNs}((ns)%1000, \hyperlink{group___w_a_i_t1__module_gad719b8589ad1bf92a03ec94ce95c4804}{WAIT1\_INSTR\_CLOCK\_HZ})==0) ? 
+      \(\backslash\)
+              (\textcolor{keywordtype}{void})0 : \(\backslash\)
+              WAIT1\_WAIT\_C(\hyperlink{group___w_a_i_t1__module_gaca73593e1131b4845062bd9ec4ee5cac}{WAIT1\_NofCyclesNs}(((ns)%1000), 
+      \hyperlink{group___w_a_i_t1__module_gad719b8589ad1bf92a03ec94ce95c4804}{WAIT1\_INSTR\_CLOCK\_HZ})) \(\backslash\)
+       \textcolor{comment}{/*lint -restore */}\(\backslash\)
+       )
+\end{DoxyCode}
+\mbox{\Hypertarget{group___w_a_i_t1__module_ga2691150b572fe622d361fb48539af70e}\label{group___w_a_i_t1__module_ga2691150b572fe622d361fb48539af70e}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Wait\+O\+Sms@{W\+A\+I\+T1\+\_\+\+Wait\+O\+Sms}}
+\index{W\+A\+I\+T1\+\_\+\+Wait\+O\+Sms@{W\+A\+I\+T1\+\_\+\+Wait\+O\+Sms}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Wait\+O\+Sms}{WAIT1\_WaitOSms}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T1\+\_\+\+Wait\+O\+Sms(\begin{DoxyParamCaption}\item[{}]{ms }\end{DoxyParamCaption})~\hyperlink{group___w_a_i_t1__module_ga04b03075f856862ff2bc4ff69825aeb6}{W\+A\+I\+T1\+\_\+\+Waitms}(ms) /$\ast$ use normal wait $\ast$/}
+
+\mbox{\Hypertarget{group___w_a_i_t1__module_ga3bad7338e555cbbbaa870ee3fe2db0f6}\label{group___w_a_i_t1__module_ga3bad7338e555cbbbaa870ee3fe2db0f6}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Waitus@{W\+A\+I\+T1\+\_\+\+Waitus}}
+\index{W\+A\+I\+T1\+\_\+\+Waitus@{W\+A\+I\+T1\+\_\+\+Waitus}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Waitus}{WAIT1\_Waitus}}
+{\footnotesize\ttfamily \#define W\+A\+I\+T1\+\_\+\+Waitus(\begin{DoxyParamCaption}\item[{}]{us }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{comment}{/*lint -save -e(505,506,522) Constant value Boolean, Redundant left argument to comma. */}\(\backslash\)
+       (  ((\hyperlink{group___w_a_i_t1__module_ga7dabbdd9744304c62df945607fa13dcf}{WAIT1\_NofCyclesUs}((us),\hyperlink{group___w_a_i_t1__module_gad719b8589ad1bf92a03ec94ce95c4804}{WAIT1\_INSTR\_CLOCK\_HZ})==0)||(us)==0)
+       ? \(\backslash\)
+          (\textcolor{keywordtype}{void})0 : \(\backslash\)
+          ( ((us)/1000)==0 ? (void)0 : \hyperlink{group___w_a_i_t1__module_ga04b03075f856862ff2bc4ff69825aeb6}{WAIT1\_Waitms}((uint16\_t)((us)/1000))) \(\backslash\)
+          , (\hyperlink{group___w_a_i_t1__module_ga7dabbdd9744304c62df945607fa13dcf}{WAIT1\_NofCyclesUs}(((us)%1000), 
+      \hyperlink{group___w_a_i_t1__module_gad719b8589ad1bf92a03ec94ce95c4804}{WAIT1\_INSTR\_CLOCK\_HZ})==0) ? (\textcolor{keywordtype}{void})0 : \(\backslash\)
+            WAIT1\_WAIT\_C(\hyperlink{group___w_a_i_t1__module_ga7dabbdd9744304c62df945607fa13dcf}{WAIT1\_NofCyclesUs}(((us)%1000), 
+      \hyperlink{group___w_a_i_t1__module_gad719b8589ad1bf92a03ec94ce95c4804}{WAIT1\_INSTR\_CLOCK\_HZ})) \(\backslash\)
+       \textcolor{comment}{/*lint -restore */}\(\backslash\)
+       )
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___w_a_i_t1__module_ga0d401ca6ca297b5b7a450deed0c42b78}\label{group___w_a_i_t1__module_ga0d401ca6ca297b5b7a450deed0c42b78}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(naked, no\+\_\+instrument\+\_\+function)}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{group___w_a_i_t1__module_ga8024b107f0d8d25c88974c6a709b1f88}\label{group___w_a_i_t1__module_ga8024b107f0d8d25c88974c6a709b1f88}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+De\+Init@{W\+A\+I\+T1\+\_\+\+De\+Init}}
+\index{W\+A\+I\+T1\+\_\+\+De\+Init@{W\+A\+I\+T1\+\_\+\+De\+Init}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+De\+Init()}{WAIT1\_DeInit()}}
+{\footnotesize\ttfamily void W\+A\+I\+T1\+\_\+\+De\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{group___w_a_i_t1__module_ga3bb855c4f83a70665404289e66b8f2a7}\label{group___w_a_i_t1__module_ga3bb855c4f83a70665404289e66b8f2a7}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Init@{W\+A\+I\+T1\+\_\+\+Init}}
+\index{W\+A\+I\+T1\+\_\+\+Init@{W\+A\+I\+T1\+\_\+\+Init}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Init()}{WAIT1\_Init()}}
+{\footnotesize\ttfamily void W\+A\+I\+T1\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{group___w_a_i_t1__module_gaa9a9a87e96edf43071b5f322cfa72333}\label{group___w_a_i_t1__module_gaa9a9a87e96edf43071b5f322cfa72333}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Wait100\+Cycles@{W\+A\+I\+T1\+\_\+\+Wait100\+Cycles}}
+\index{W\+A\+I\+T1\+\_\+\+Wait100\+Cycles@{W\+A\+I\+T1\+\_\+\+Wait100\+Cycles}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Wait100\+Cycles()}{WAIT1\_Wait100Cycles()}}
+{\footnotesize\ttfamily void W\+A\+I\+T1\+\_\+\+Wait100\+Cycles (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{group___w_a_i_t1__module_gaff67df7b318b8d5cf4555a24fe7c7f93}\label{group___w_a_i_t1__module_gaff67df7b318b8d5cf4555a24fe7c7f93}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Wait10\+Cycles@{W\+A\+I\+T1\+\_\+\+Wait10\+Cycles}}
+\index{W\+A\+I\+T1\+\_\+\+Wait10\+Cycles@{W\+A\+I\+T1\+\_\+\+Wait10\+Cycles}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Wait10\+Cycles()}{WAIT1\_Wait10Cycles()}}
+{\footnotesize\ttfamily void W\+A\+I\+T1\+\_\+\+Wait10\+Cycles (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{group___w_a_i_t1__module_ga2ef0c866b014b3f8bba49508c79a4c21}\label{group___w_a_i_t1__module_ga2ef0c866b014b3f8bba49508c79a4c21}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Wait\+Cycles@{W\+A\+I\+T1\+\_\+\+Wait\+Cycles}}
+\index{W\+A\+I\+T1\+\_\+\+Wait\+Cycles@{W\+A\+I\+T1\+\_\+\+Wait\+Cycles}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Wait\+Cycles()}{WAIT1\_WaitCycles()}}
+{\footnotesize\ttfamily void W\+A\+I\+T1\+\_\+\+Wait\+Cycles (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{cycles }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{group___w_a_i_t1__module_gad800b2446f397d9524bf1780d2646a57}\label{group___w_a_i_t1__module_gad800b2446f397d9524bf1780d2646a57}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Wait\+Long\+Cycles@{W\+A\+I\+T1\+\_\+\+Wait\+Long\+Cycles}}
+\index{W\+A\+I\+T1\+\_\+\+Wait\+Long\+Cycles@{W\+A\+I\+T1\+\_\+\+Wait\+Long\+Cycles}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Wait\+Long\+Cycles()}{WAIT1\_WaitLongCycles()}}
+{\footnotesize\ttfamily void W\+A\+I\+T1\+\_\+\+Wait\+Long\+Cycles (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{cycles }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{group___w_a_i_t1__module_ga04b03075f856862ff2bc4ff69825aeb6}\label{group___w_a_i_t1__module_ga04b03075f856862ff2bc4ff69825aeb6}} 
+\index{W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}!W\+A\+I\+T1\+\_\+\+Waitms@{W\+A\+I\+T1\+\_\+\+Waitms}}
+\index{W\+A\+I\+T1\+\_\+\+Waitms@{W\+A\+I\+T1\+\_\+\+Waitms}!W\+A\+I\+T1 module documentation@{W\+A\+I\+T1 module documentation}}
+\subsubsection{\texorpdfstring{W\+A\+I\+T1\+\_\+\+Waitms()}{WAIT1\_Waitms()}}
+{\footnotesize\ttfamily void W\+A\+I\+T1\+\_\+\+Waitms (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{ms }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 8

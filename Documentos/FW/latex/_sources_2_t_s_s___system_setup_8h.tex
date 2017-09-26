@@ -1,0 +1,298 @@
+\hypertarget{_sources_2_t_s_s___system_setup_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+T\+S\+S\+\_\+\+System\+Setup.h File Reference}
+\label{_sources_2_t_s_s___system_setup_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a1bd0cbd877c1d9712244d9e8dbe9c325}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+P\+E\+\_\+\+C\+O\+M\+P\+O\+N\+E\+NT}~1      /$\ast$ Macro indicates T\+SS Component usage $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a354b609273eec15491c0d2c7bfbf1a77}{T\+S\+S\+\_\+\+K\+I\+N\+E\+T\+I\+S\+\_\+\+M\+CU}~1      /$\ast$ Macro defines M\+CU platform $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a67a96842f7d9607d3419f439cec145f3}{T\+S\+S\+\_\+\+M\+C\+U\+\_\+\+S\+U\+B\+F\+A\+M\+I\+L\+Y\+\_\+\+K\+L25}~1      /$\ast$ Macro defines M\+CU subfamily $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_ae789811a7ab1e2d88a28a87cc5690def}{T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+V\+E\+R\+S\+I\+ON}~0      /$\ast$ Macro defines T\+SI version $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a43436cb660b98ac552b852c227f4809c}{T\+S\+S\+\_\+\+T\+S\+I\+L\+\_\+\+V\+E\+R\+S\+I\+ON}~2      /$\ast$ Macro defines T\+S\+IL version $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a7eca5e75656980e04bd9f82fde14b502}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+L\+O\+W\+\_\+\+L\+E\+V\+EL}~0      /$\ast$ Simple Low Level support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_ad321781cb278f887041ec94ae3b4e662}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+E\+L\+T\+A\+\_\+\+L\+OG}~1      /$\ast$ Delta Log array support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a4823ce25bfc54ac7a557dc88145e50e9}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+L\+OG}~1      /$\ast$ Signal Log array support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_ac7a2ae626b978efc9c489e52f252d730}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+F\+R\+E\+E\+M\+A\+S\+T\+E\+R\+\_\+\+G\+UI}~0      /$\ast$ Free\+M\+A\+S\+T\+ER G\+UI support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a5a5057e9ea121f947f14f3a5ca07a925}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+D\+A\+TA}~0      /$\ast$ Control Private Data support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a1d1b26fcdab737e2f291c68c664189b9}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON}~1      /$\ast$ Automatic Sensitivity Calibration support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a6ce55c80f098bef38bc4b6ee7eaca43f}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON}~200    /$\ast$ Automatic Sensitivity Calibration initialization duration $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a4ff1ba6acdf7565aca1c0deeb3741333}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON}~15     /$\ast$ Baseline initialization duration $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a6190ca6bccf7fb269b296351afb43d47}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+I\+I\+R\+\_\+\+F\+I\+L\+T\+ER}~1      /$\ast$ I\+IR Filter support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_aca10320206da0e4872c4868ff5e34550}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+S\+H\+I\+E\+L\+D\+I\+NG}~0      /$\ast$ Signal Shielding support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_ad422288e96ee3f15fcfdae30baad41d0}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+I\+V\+I\+D\+ER}~0      /$\ast$ Signal Divider support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_adfc376e86eb3ba76b59347c2e9d55d79}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+ER}~0      /$\ast$ Signal Multiplier support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a8263b17e3e25062f33d4544e32a61eef}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+CE}~U\+N\+U\+S\+ED /$\ast$ Identifier of the Auto Trigger source device $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a35bb656fd5b0ada29639dfb03cf4ffcc}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+O\+U\+R\+CE}~U\+N\+U\+S\+ED /$\ast$ Identifier of the Low Power control source device $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a5ad430cc6b9875ec93bb0d9b1e7a18c6}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+A\+T\+A\+\_\+\+C\+O\+R\+R\+U\+P\+T\+I\+O\+N\+\_\+\+C\+H\+E\+CK}~1      /$\ast$ Data Corruption of T\+SS registers support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a9ac35b59c3707d18c6c7a7dd9209468b}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}~1      /$\ast$ Trigger Function support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a0910a40877300f4b8e3b9f7d8fb33550}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+T\+U\+C\+K\+\_\+\+K\+EY}~1      /$\ast$ Stuck-\/key function support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a117b3d5dc136ebb1303082a4f878018b}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+N\+E\+G\+A\+T\+I\+V\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+D\+R\+OP}~1      /$\ast$ Negative Baseline Drop support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a92eb4c66f7c50fe61a5f7be8eac96a0f}{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+H\+W\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON}~1      /$\ast$ Automatic HW recalibration $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a1b6be8e33e9c6e09c90c3b3b70f60255}{T\+S\+S\+\_\+\+O\+N\+F\+A\+U\+L\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK}~\hyperlink{group___events__module_gaaade020d27159f2102fb3b994d1224ae}{T\+S\+Sin\+\_\+f\+On\+Fault} /$\ast$ Identifier of the user\textquotesingle{}s On\+Fault callback $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a6944f32040eeee346f677375ede4c904}{T\+S\+S\+\_\+\+O\+N\+I\+N\+I\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK}~\hyperlink{group___events__module_ga67e29a27a74c8a25e4edddb84351a138}{T\+S\+Sin\+\_\+f\+On\+Init} /$\ast$ Identifier of the user\textquotesingle{}s On\+Init callback $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a6a4f3e12f8d1726a052a3270d3aaecb9}{T\+S\+S\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+I\+A\+G\+N\+O\+S\+T\+I\+C\+\_\+\+M\+E\+S\+S\+A\+G\+ES}~1      /$\ast$ Diagnostic Messages support $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}~2                 /$\ast$ Number of electrodes present in the system $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a94e4870e0ebf0c51f7e683e1d9520473}{T\+S\+S\+\_\+\+E0\+\_\+\+T\+Y\+PE}~T\+S\+I0\+\_\+\+C\+H9          /$\ast$ Electrode measurement method specification $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a9916548d0909970b4e712c33a8554a50}{T\+S\+S\+\_\+\+E1\+\_\+\+T\+Y\+PE}~T\+S\+I0\+\_\+\+C\+H10         /$\ast$ Electrode measurement method specification $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_aa5c2b2893f6efdcd22257dd7e34af2ee}{T\+S\+S\+\_\+\+N\+\_\+\+C\+O\+N\+T\+R\+O\+LS}~1
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a14ff883302b1739b0a6a3a40c7008cf9}{T\+S\+S\+\_\+\+C0\+\_\+\+T\+Y\+PE}~\hyperlink{_t_s_s___a_p_i_8h_ab039fee566ae5251e0c17e226024348d}{T\+S\+S\+\_\+\+C\+T\+\_\+\+A\+S\+L\+I\+D\+ER}    /$\ast$ Control type $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a8f4c435c2bdee2c55b6a5c8d88848f92}{T\+S\+S\+\_\+\+C0\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}~2                 /$\ast$ Number of electrodes in the control $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_af8e4b9020981450d97bbd4af01f29310}{T\+S\+S\+\_\+\+C0\+\_\+\+S\+T\+R\+U\+C\+T\+U\+RE}~T\+S\+Sin\+\_\+c\+Key0       /$\ast$ Name of the C\&S struct to create $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_aa4a36b327286746f12240a4e9343bb0f}{T\+S\+S\+\_\+\+C0\+\_\+\+C\+A\+L\+L\+B\+A\+CK}~\hyperlink{group___events__module_ga5969b4c9b3e47d79941c612897503fe4}{T\+S\+Sin\+\_\+f\+Call\+Back0}  /$\ast$ Identifier of the user\textquotesingle{}s callback $\ast$/
+\item 
+\#define \hyperlink{_sources_2_t_s_s___system_setup_8h_a8ed53c5c4baf9efcfa82b0f43925d969}{T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}~11           /$\ast$ Required Bit resolution of the T\+SI $\ast$/
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_aa4a36b327286746f12240a4e9343bb0f}\label{_sources_2_t_s_s___system_setup_8h_aa4a36b327286746f12240a4e9343bb0f}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+C0\+\_\+\+C\+A\+L\+L\+B\+A\+CK@{T\+S\+S\+\_\+\+C0\+\_\+\+C\+A\+L\+L\+B\+A\+CK}}
+\index{T\+S\+S\+\_\+\+C0\+\_\+\+C\+A\+L\+L\+B\+A\+CK@{T\+S\+S\+\_\+\+C0\+\_\+\+C\+A\+L\+L\+B\+A\+CK}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+C0\+\_\+\+C\+A\+L\+L\+B\+A\+CK}{TSS\_C0\_CALLBACK}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+C0\+\_\+\+C\+A\+L\+L\+B\+A\+CK~\hyperlink{group___events__module_ga5969b4c9b3e47d79941c612897503fe4}{T\+S\+Sin\+\_\+f\+Call\+Back0}  /$\ast$ Identifier of the user\textquotesingle{}s callback $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a8f4c435c2bdee2c55b6a5c8d88848f92}\label{_sources_2_t_s_s___system_setup_8h_a8f4c435c2bdee2c55b6a5c8d88848f92}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+C0\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES@{T\+S\+S\+\_\+\+C0\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}}
+\index{T\+S\+S\+\_\+\+C0\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES@{T\+S\+S\+\_\+\+C0\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+C0\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}{TSS\_C0\_ELECTRODES}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+C0\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES~2                 /$\ast$ Number of electrodes in the control $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_af8e4b9020981450d97bbd4af01f29310}\label{_sources_2_t_s_s___system_setup_8h_af8e4b9020981450d97bbd4af01f29310}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+C0\+\_\+\+S\+T\+R\+U\+C\+T\+U\+RE@{T\+S\+S\+\_\+\+C0\+\_\+\+S\+T\+R\+U\+C\+T\+U\+RE}}
+\index{T\+S\+S\+\_\+\+C0\+\_\+\+S\+T\+R\+U\+C\+T\+U\+RE@{T\+S\+S\+\_\+\+C0\+\_\+\+S\+T\+R\+U\+C\+T\+U\+RE}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+C0\+\_\+\+S\+T\+R\+U\+C\+T\+U\+RE}{TSS\_C0\_STRUCTURE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+C0\+\_\+\+S\+T\+R\+U\+C\+T\+U\+RE~T\+S\+Sin\+\_\+c\+Key0       /$\ast$ Name of the C\&S struct to create $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a14ff883302b1739b0a6a3a40c7008cf9}\label{_sources_2_t_s_s___system_setup_8h_a14ff883302b1739b0a6a3a40c7008cf9}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+C0\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+C0\+\_\+\+T\+Y\+PE}}
+\index{T\+S\+S\+\_\+\+C0\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+C0\+\_\+\+T\+Y\+PE}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+C0\+\_\+\+T\+Y\+PE}{TSS\_C0\_TYPE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+C0\+\_\+\+T\+Y\+PE~\hyperlink{_t_s_s___a_p_i_8h_ab039fee566ae5251e0c17e226024348d}{T\+S\+S\+\_\+\+C\+T\+\_\+\+A\+S\+L\+I\+D\+ER}    /$\ast$ Control type $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a94e4870e0ebf0c51f7e683e1d9520473}\label{_sources_2_t_s_s___system_setup_8h_a94e4870e0ebf0c51f7e683e1d9520473}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+E0\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E0\+\_\+\+T\+Y\+PE}}
+\index{T\+S\+S\+\_\+\+E0\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E0\+\_\+\+T\+Y\+PE}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E0\+\_\+\+T\+Y\+PE}{TSS\_E0\_TYPE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E0\+\_\+\+T\+Y\+PE~T\+S\+I0\+\_\+\+C\+H9          /$\ast$ Electrode measurement method specification $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a9916548d0909970b4e712c33a8554a50}\label{_sources_2_t_s_s___system_setup_8h_a9916548d0909970b4e712c33a8554a50}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+E1\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E1\+\_\+\+T\+Y\+PE}}
+\index{T\+S\+S\+\_\+\+E1\+\_\+\+T\+Y\+PE@{T\+S\+S\+\_\+\+E1\+\_\+\+T\+Y\+PE}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E1\+\_\+\+T\+Y\+PE}{TSS\_E1\_TYPE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E1\+\_\+\+T\+Y\+PE~T\+S\+I0\+\_\+\+C\+H10         /$\ast$ Electrode measurement method specification $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a6a4f3e12f8d1726a052a3270d3aaecb9}\label{_sources_2_t_s_s___system_setup_8h_a6a4f3e12f8d1726a052a3270d3aaecb9}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+I\+A\+G\+N\+O\+S\+T\+I\+C\+\_\+\+M\+E\+S\+S\+A\+G\+ES@{T\+S\+S\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+I\+A\+G\+N\+O\+S\+T\+I\+C\+\_\+\+M\+E\+S\+S\+A\+G\+ES}}
+\index{T\+S\+S\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+I\+A\+G\+N\+O\+S\+T\+I\+C\+\_\+\+M\+E\+S\+S\+A\+G\+ES@{T\+S\+S\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+I\+A\+G\+N\+O\+S\+T\+I\+C\+\_\+\+M\+E\+S\+S\+A\+G\+ES}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+I\+A\+G\+N\+O\+S\+T\+I\+C\+\_\+\+M\+E\+S\+S\+A\+G\+ES}{TSS\_ENABLE\_DIAGNOSTIC\_MESSAGES}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+I\+A\+G\+N\+O\+S\+T\+I\+C\+\_\+\+M\+E\+S\+S\+A\+G\+ES~1      /$\ast$ Diagnostic Messages support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a354b609273eec15491c0d2c7bfbf1a77}\label{_sources_2_t_s_s___system_setup_8h_a354b609273eec15491c0d2c7bfbf1a77}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+K\+I\+N\+E\+T\+I\+S\+\_\+\+M\+CU@{T\+S\+S\+\_\+\+K\+I\+N\+E\+T\+I\+S\+\_\+\+M\+CU}}
+\index{T\+S\+S\+\_\+\+K\+I\+N\+E\+T\+I\+S\+\_\+\+M\+CU@{T\+S\+S\+\_\+\+K\+I\+N\+E\+T\+I\+S\+\_\+\+M\+CU}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+K\+I\+N\+E\+T\+I\+S\+\_\+\+M\+CU}{TSS\_KINETIS\_MCU}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+K\+I\+N\+E\+T\+I\+S\+\_\+\+M\+CU~1      /$\ast$ Macro defines M\+CU platform $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a67a96842f7d9607d3419f439cec145f3}\label{_sources_2_t_s_s___system_setup_8h_a67a96842f7d9607d3419f439cec145f3}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+M\+C\+U\+\_\+\+S\+U\+B\+F\+A\+M\+I\+L\+Y\+\_\+\+K\+L25@{T\+S\+S\+\_\+\+M\+C\+U\+\_\+\+S\+U\+B\+F\+A\+M\+I\+L\+Y\+\_\+\+K\+L25}}
+\index{T\+S\+S\+\_\+\+M\+C\+U\+\_\+\+S\+U\+B\+F\+A\+M\+I\+L\+Y\+\_\+\+K\+L25@{T\+S\+S\+\_\+\+M\+C\+U\+\_\+\+S\+U\+B\+F\+A\+M\+I\+L\+Y\+\_\+\+K\+L25}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+M\+C\+U\+\_\+\+S\+U\+B\+F\+A\+M\+I\+L\+Y\+\_\+\+K\+L25}{TSS\_MCU\_SUBFAMILY\_KL25}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+M\+C\+U\+\_\+\+S\+U\+B\+F\+A\+M\+I\+L\+Y\+\_\+\+K\+L25~1      /$\ast$ Macro defines M\+CU subfamily $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_aa5c2b2893f6efdcd22257dd7e34af2ee}\label{_sources_2_t_s_s___system_setup_8h_aa5c2b2893f6efdcd22257dd7e34af2ee}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+N\+\_\+\+C\+O\+N\+T\+R\+O\+LS@{T\+S\+S\+\_\+\+N\+\_\+\+C\+O\+N\+T\+R\+O\+LS}}
+\index{T\+S\+S\+\_\+\+N\+\_\+\+C\+O\+N\+T\+R\+O\+LS@{T\+S\+S\+\_\+\+N\+\_\+\+C\+O\+N\+T\+R\+O\+LS}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+N\+\_\+\+C\+O\+N\+T\+R\+O\+LS}{TSS\_N\_CONTROLS}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+N\+\_\+\+C\+O\+N\+T\+R\+O\+LS~1}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}\label{_sources_2_t_s_s___system_setup_8h_a1e958e1d260126bf20c78596993200fa}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES@{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}}
+\index{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES@{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES}{TSS\_N\_ELECTRODES}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+N\+\_\+\+E\+L\+E\+C\+T\+R\+O\+D\+ES~2                 /$\ast$ Number of electrodes present in the system $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a1b6be8e33e9c6e09c90c3b3b70f60255}\label{_sources_2_t_s_s___system_setup_8h_a1b6be8e33e9c6e09c90c3b3b70f60255}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+O\+N\+F\+A\+U\+L\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK@{T\+S\+S\+\_\+\+O\+N\+F\+A\+U\+L\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK}}
+\index{T\+S\+S\+\_\+\+O\+N\+F\+A\+U\+L\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK@{T\+S\+S\+\_\+\+O\+N\+F\+A\+U\+L\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+O\+N\+F\+A\+U\+L\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK}{TSS\_ONFAULT\_CALLBACK}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+O\+N\+F\+A\+U\+L\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK~\hyperlink{group___events__module_gaaade020d27159f2102fb3b994d1224ae}{T\+S\+Sin\+\_\+f\+On\+Fault} /$\ast$ Identifier of the user\textquotesingle{}s On\+Fault callback $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a6944f32040eeee346f677375ede4c904}\label{_sources_2_t_s_s___system_setup_8h_a6944f32040eeee346f677375ede4c904}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+O\+N\+I\+N\+I\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK@{T\+S\+S\+\_\+\+O\+N\+I\+N\+I\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK}}
+\index{T\+S\+S\+\_\+\+O\+N\+I\+N\+I\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK@{T\+S\+S\+\_\+\+O\+N\+I\+N\+I\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+O\+N\+I\+N\+I\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK}{TSS\_ONINIT\_CALLBACK}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+O\+N\+I\+N\+I\+T\+\_\+\+C\+A\+L\+L\+B\+A\+CK~\hyperlink{group___events__module_ga67e29a27a74c8a25e4edddb84351a138}{T\+S\+Sin\+\_\+f\+On\+Init} /$\ast$ Identifier of the user\textquotesingle{}s On\+Init callback $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a8ed53c5c4baf9efcfa82b0f43925d969}\label{_sources_2_t_s_s___system_setup_8h_a8ed53c5c4baf9efcfa82b0f43925d969}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON@{T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}}
+\index{T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON@{T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}{TSS\_TSI\_RESOLUTION}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON~11           /$\ast$ Required Bit resolution of the T\+SI $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_ae789811a7ab1e2d88a28a87cc5690def}\label{_sources_2_t_s_s___system_setup_8h_ae789811a7ab1e2d88a28a87cc5690def}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+V\+E\+R\+S\+I\+ON@{T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+V\+E\+R\+S\+I\+ON@{T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+V\+E\+R\+S\+I\+ON}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+V\+E\+R\+S\+I\+ON}{TSS\_TSI\_VERSION}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+T\+S\+I\+\_\+\+V\+E\+R\+S\+I\+ON~0      /$\ast$ Macro defines T\+SI version $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a43436cb660b98ac552b852c227f4809c}\label{_sources_2_t_s_s___system_setup_8h_a43436cb660b98ac552b852c227f4809c}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+T\+S\+I\+L\+\_\+\+V\+E\+R\+S\+I\+ON@{T\+S\+S\+\_\+\+T\+S\+I\+L\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{T\+S\+S\+\_\+\+T\+S\+I\+L\+\_\+\+V\+E\+R\+S\+I\+ON@{T\+S\+S\+\_\+\+T\+S\+I\+L\+\_\+\+V\+E\+R\+S\+I\+ON}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+T\+S\+I\+L\+\_\+\+V\+E\+R\+S\+I\+ON}{TSS\_TSIL\_VERSION}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+T\+S\+I\+L\+\_\+\+V\+E\+R\+S\+I\+ON~2      /$\ast$ Macro defines T\+S\+IL version $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a92eb4c66f7c50fe61a5f7be8eac96a0f}\label{_sources_2_t_s_s___system_setup_8h_a92eb4c66f7c50fe61a5f7be8eac96a0f}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+H\+W\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+H\+W\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+H\+W\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+H\+W\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+H\+W\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON}{TSS\_USE\_AUTO\_HW\_RECALIBRATION}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+H\+W\+\_\+\+R\+E\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON~1      /$\ast$ Automatic HW recalibration $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a6ce55c80f098bef38bc4b6ee7eaca43f}\label{_sources_2_t_s_s___system_setup_8h_a6ce55c80f098bef38bc4b6ee7eaca43f}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON}{TSS\_USE\_AUTO\_SENS\_CALIB\_INIT\_DURATION}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON~200    /$\ast$ Automatic Sensitivity Calibration initialization duration $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a1d1b26fcdab737e2f291c68c664189b9}\label{_sources_2_t_s_s___system_setup_8h_a1d1b26fcdab737e2f291c68c664189b9}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON}{TSS\_USE\_AUTO\_SENS\_CALIBRATION}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+\_\+\+S\+E\+N\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+ON~1      /$\ast$ Automatic Sensitivity Calibration support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a8263b17e3e25062f33d4544e32a61eef}\label{_sources_2_t_s_s___system_setup_8h_a8263b17e3e25062f33d4544e32a61eef}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+CE@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+CE}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+CE@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+CE}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+CE}{TSS\_USE\_AUTOTRIGGER\_SOURCE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+A\+U\+T\+O\+T\+R\+I\+G\+G\+E\+R\+\_\+\+S\+O\+U\+R\+CE~U\+N\+U\+S\+ED /$\ast$ Identifier of the Auto Trigger source device $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a4ff1ba6acdf7565aca1c0deeb3741333}\label{_sources_2_t_s_s___system_setup_8h_a4ff1ba6acdf7565aca1c0deeb3741333}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON}{TSS\_USE\_BASELINE\_INIT\_DURATION}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+I\+N\+I\+T\+\_\+\+D\+U\+R\+A\+T\+I\+ON~15     /$\ast$ Baseline initialization duration $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a5a5057e9ea121f947f14f3a5ca07a925}\label{_sources_2_t_s_s___system_setup_8h_a5a5057e9ea121f947f14f3a5ca07a925}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+D\+A\+TA@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+D\+A\+TA}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+D\+A\+TA@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+D\+A\+TA}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+D\+A\+TA}{TSS\_USE\_CONTROL\_PRIVATE\_DATA}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+P\+R\+I\+V\+A\+T\+E\+\_\+\+D\+A\+TA~0      /$\ast$ Control Private Data support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a5ad430cc6b9875ec93bb0d9b1e7a18c6}\label{_sources_2_t_s_s___system_setup_8h_a5ad430cc6b9875ec93bb0d9b1e7a18c6}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+A\+T\+A\+\_\+\+C\+O\+R\+R\+U\+P\+T\+I\+O\+N\+\_\+\+C\+H\+E\+CK@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+A\+T\+A\+\_\+\+C\+O\+R\+R\+U\+P\+T\+I\+O\+N\+\_\+\+C\+H\+E\+CK}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+A\+T\+A\+\_\+\+C\+O\+R\+R\+U\+P\+T\+I\+O\+N\+\_\+\+C\+H\+E\+CK@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+A\+T\+A\+\_\+\+C\+O\+R\+R\+U\+P\+T\+I\+O\+N\+\_\+\+C\+H\+E\+CK}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+A\+T\+A\+\_\+\+C\+O\+R\+R\+U\+P\+T\+I\+O\+N\+\_\+\+C\+H\+E\+CK}{TSS\_USE\_DATA\_CORRUPTION\_CHECK}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+A\+T\+A\+\_\+\+C\+O\+R\+R\+U\+P\+T\+I\+O\+N\+\_\+\+C\+H\+E\+CK~1      /$\ast$ Data Corruption of T\+SS registers support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_ad321781cb278f887041ec94ae3b4e662}\label{_sources_2_t_s_s___system_setup_8h_ad321781cb278f887041ec94ae3b4e662}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+E\+L\+T\+A\+\_\+\+L\+OG@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+E\+L\+T\+A\+\_\+\+L\+OG}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+E\+L\+T\+A\+\_\+\+L\+OG@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+E\+L\+T\+A\+\_\+\+L\+OG}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+E\+L\+T\+A\+\_\+\+L\+OG}{TSS\_USE\_DELTA\_LOG}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+D\+E\+L\+T\+A\+\_\+\+L\+OG~1      /$\ast$ Delta Log array support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_ac7a2ae626b978efc9c489e52f252d730}\label{_sources_2_t_s_s___system_setup_8h_ac7a2ae626b978efc9c489e52f252d730}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+F\+R\+E\+E\+M\+A\+S\+T\+E\+R\+\_\+\+G\+UI@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+F\+R\+E\+E\+M\+A\+S\+T\+E\+R\+\_\+\+G\+UI}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+F\+R\+E\+E\+M\+A\+S\+T\+E\+R\+\_\+\+G\+UI@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+F\+R\+E\+E\+M\+A\+S\+T\+E\+R\+\_\+\+G\+UI}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+F\+R\+E\+E\+M\+A\+S\+T\+E\+R\+\_\+\+G\+UI}{TSS\_USE\_FREEMASTER\_GUI}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+F\+R\+E\+E\+M\+A\+S\+T\+E\+R\+\_\+\+G\+UI~0      /$\ast$ Free\+M\+A\+S\+T\+ER G\+UI support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a6190ca6bccf7fb269b296351afb43d47}\label{_sources_2_t_s_s___system_setup_8h_a6190ca6bccf7fb269b296351afb43d47}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+I\+I\+R\+\_\+\+F\+I\+L\+T\+ER@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+I\+I\+R\+\_\+\+F\+I\+L\+T\+ER}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+I\+I\+R\+\_\+\+F\+I\+L\+T\+ER@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+I\+I\+R\+\_\+\+F\+I\+L\+T\+ER}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+I\+I\+R\+\_\+\+F\+I\+L\+T\+ER}{TSS\_USE\_IIR\_FILTER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+I\+I\+R\+\_\+\+F\+I\+L\+T\+ER~1      /$\ast$ I\+IR Filter support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a35bb656fd5b0ada29639dfb03cf4ffcc}\label{_sources_2_t_s_s___system_setup_8h_a35bb656fd5b0ada29639dfb03cf4ffcc}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+O\+U\+R\+CE@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+O\+U\+R\+CE}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+O\+U\+R\+CE@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+O\+U\+R\+CE}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+O\+U\+R\+CE}{TSS\_USE\_LOWPOWER\_CONTROL\_SOURCE}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+L\+O\+W\+P\+O\+W\+E\+R\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+O\+U\+R\+CE~U\+N\+U\+S\+ED /$\ast$ Identifier of the Low Power control source device $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a117b3d5dc136ebb1303082a4f878018b}\label{_sources_2_t_s_s___system_setup_8h_a117b3d5dc136ebb1303082a4f878018b}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+N\+E\+G\+A\+T\+I\+V\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+D\+R\+OP@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+N\+E\+G\+A\+T\+I\+V\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+D\+R\+OP}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+N\+E\+G\+A\+T\+I\+V\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+D\+R\+OP@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+N\+E\+G\+A\+T\+I\+V\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+D\+R\+OP}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+N\+E\+G\+A\+T\+I\+V\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+D\+R\+OP}{TSS\_USE\_NEGATIVE\_BASELINE\_DROP}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+N\+E\+G\+A\+T\+I\+V\+E\+\_\+\+B\+A\+S\+E\+L\+I\+N\+E\+\_\+\+D\+R\+OP~1      /$\ast$ Negative Baseline Drop support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a1bd0cbd877c1d9712244d9e8dbe9c325}\label{_sources_2_t_s_s___system_setup_8h_a1bd0cbd877c1d9712244d9e8dbe9c325}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+P\+E\+\_\+\+C\+O\+M\+P\+O\+N\+E\+NT@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+P\+E\+\_\+\+C\+O\+M\+P\+O\+N\+E\+NT}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+P\+E\+\_\+\+C\+O\+M\+P\+O\+N\+E\+NT@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+P\+E\+\_\+\+C\+O\+M\+P\+O\+N\+E\+NT}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+P\+E\+\_\+\+C\+O\+M\+P\+O\+N\+E\+NT}{TSS\_USE\_PE\_COMPONENT}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+P\+E\+\_\+\+C\+O\+M\+P\+O\+N\+E\+NT~1      /$\ast$ Macro indicates T\+SS Component usage $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_ad422288e96ee3f15fcfdae30baad41d0}\label{_sources_2_t_s_s___system_setup_8h_ad422288e96ee3f15fcfdae30baad41d0}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+I\+V\+I\+D\+ER@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+I\+V\+I\+D\+ER}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+I\+V\+I\+D\+ER@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+I\+V\+I\+D\+ER}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+I\+V\+I\+D\+ER}{TSS\_USE\_SIGNAL\_DIVIDER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+I\+V\+I\+D\+ER~0      /$\ast$ Signal Divider support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a4823ce25bfc54ac7a557dc88145e50e9}\label{_sources_2_t_s_s___system_setup_8h_a4823ce25bfc54ac7a557dc88145e50e9}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+L\+OG@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+L\+OG}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+L\+OG@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+L\+OG}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+L\+OG}{TSS\_USE\_SIGNAL\_LOG}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+L\+OG~1      /$\ast$ Signal Log array support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_adfc376e86eb3ba76b59347c2e9d55d79}\label{_sources_2_t_s_s___system_setup_8h_adfc376e86eb3ba76b59347c2e9d55d79}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+ER@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+ER}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+ER@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+ER}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+ER}{TSS\_USE\_SIGNAL\_MULTIPLIER}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+M\+U\+L\+T\+I\+P\+L\+I\+ER~0      /$\ast$ Signal Multiplier support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_aca10320206da0e4872c4868ff5e34550}\label{_sources_2_t_s_s___system_setup_8h_aca10320206da0e4872c4868ff5e34550}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+S\+H\+I\+E\+L\+D\+I\+NG@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+S\+H\+I\+E\+L\+D\+I\+NG}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+S\+H\+I\+E\+L\+D\+I\+NG@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+S\+H\+I\+E\+L\+D\+I\+NG}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+S\+H\+I\+E\+L\+D\+I\+NG}{TSS\_USE\_SIGNAL\_SHIELDING}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+S\+H\+I\+E\+L\+D\+I\+NG~0      /$\ast$ Signal Shielding support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a7eca5e75656980e04bd9f82fde14b502}\label{_sources_2_t_s_s___system_setup_8h_a7eca5e75656980e04bd9f82fde14b502}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+L\+O\+W\+\_\+\+L\+E\+V\+EL@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+L\+O\+W\+\_\+\+L\+E\+V\+EL}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+L\+O\+W\+\_\+\+L\+E\+V\+EL@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+L\+O\+W\+\_\+\+L\+E\+V\+EL}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+L\+O\+W\+\_\+\+L\+E\+V\+EL}{TSS\_USE\_SIMPLE\_LOW\_LEVEL}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+L\+O\+W\+\_\+\+L\+E\+V\+EL~0      /$\ast$ Simple Low Level support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a0910a40877300f4b8e3b9f7d8fb33550}\label{_sources_2_t_s_s___system_setup_8h_a0910a40877300f4b8e3b9f7d8fb33550}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+T\+U\+C\+K\+\_\+\+K\+EY@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+T\+U\+C\+K\+\_\+\+K\+EY}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+T\+U\+C\+K\+\_\+\+K\+EY@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+T\+U\+C\+K\+\_\+\+K\+EY}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+T\+U\+C\+K\+\_\+\+K\+EY}{TSS\_USE\_STUCK\_KEY}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+S\+T\+U\+C\+K\+\_\+\+K\+EY~1      /$\ast$ Stuck-\/key function support $\ast$/}
+
+\mbox{\Hypertarget{_sources_2_t_s_s___system_setup_8h_a9ac35b59c3707d18c6c7a7dd9209468b}\label{_sources_2_t_s_s___system_setup_8h_a9ac35b59c3707d18c6c7a7dd9209468b}} 
+\index{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}!T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}}
+\index{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}!Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h@{Sources/\+T\+S\+S\+\_\+\+System\+Setup.\+h}}
+\subsubsection{\texorpdfstring{T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}{TSS\_USE\_TRIGGER\_FUNCTION}}
+{\footnotesize\ttfamily \#define T\+S\+S\+\_\+\+U\+S\+E\+\_\+\+T\+R\+I\+G\+G\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON~1      /$\ast$ Trigger Function support $\ast$/}
+

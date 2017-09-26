@@ -17,7 +17,7 @@ const char* OPERATION_RD = "RD";
 const char* OPERATION_WR = "WR";
 
 static StatusRx				statusRx = CMD_INIT;
-static RingBuffer			bufferRx,bufferTx;
+RingBuffer					bufferRx,bufferTx;
 static Frame				frameRx;
 
 bool processRx(void){
@@ -402,24 +402,6 @@ static void copyCheckSumToFrame(Frame* frame) {
 	AppendFrame(frame,SEPARATOR);
 	XF1_xsprintf(frame->checksum, "%02X", calcChecksum (frame->Data,frame->Length));
 	AppendFrame(frame,frame->checksum);
-}
-//------------------------------------------------------------------------
-
-/**
- *
- * Executada quando se recebe uma menssagem na fila de repsotas de comandos
- *
- */
-void doAnswer(CommunicationPackage* package) {
-
-	if (package) {
-
-		sendPackage(package);
-	}
-	else {
-
-		//TODO O QUE RESPONDE EM CASO DE MENSAGEM NULA ???
-	}
 }
 //------------------------------------------------------------------------
 

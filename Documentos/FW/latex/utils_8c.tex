@@ -1,0 +1,112 @@
+\hypertarget{utils_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/utils.c File Reference}
+\label{utils_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/utils.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/utils.\+c}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+Include dependency graph for utils.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{utils_8c_aff8e889d69b7aecc57dfc4326e76f537}{str\+\_\+split} (\hyperlink{struct_list}{List} $\ast$result, char $\ast$str, const char a\+\_\+delim)
+\item 
+\hyperlink{structbuffer__t}{buffer\+\_\+t} \hyperlink{utils_8c_ac25a7a185d5bbf3af3783cb4b5f6681b}{memtok} (const void $\ast$s, size\+\_\+t length, const char $\ast$delim, \hyperlink{structbuffer__t}{buffer\+\_\+t} $\ast$save\+\_\+ptr)
+\item 
+void \hyperlink{utils_8c_ae595f51afa4b8d2094c67c712f58672c}{str\+\_\+append} (char subject\mbox{[}$\,$\mbox{]}, char insert\mbox{[}$\,$\mbox{]}, int pos)
+\item 
+void \hyperlink{utils_8c_a7534210b51411827455e99a64c4a38c4}{remove\+List} (\hyperlink{struct_list}{List} $\ast$list)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8c_ad72fd4e8e76d00112d891c80e093c5b2}{As\+Integer} (int $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8c_a5dfc2c81b7a50603a3e5e28a2e2833a0}{As\+String} (char $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8c_a055affa58ad782554797910db50b8d6d}{As\+Hex} (uint16\+\_\+t $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8c_a6976c2856f66fc78309038d7c6c3cc56}{As\+Float} (float $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8c_ac3ef2c7a4ce78b2f6fd1f339283442d7}{As\+Char} (char $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{utils_8c_afc53dea59857d91538b40420069fea6d}{As\+Resource} (\hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource} $\ast$out, char $\ast$str, uint16\+\_\+t index, const char a\+\_\+delim)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{utils_8c_ac3ef2c7a4ce78b2f6fd1f339283442d7}\label{utils_8c_ac3ef2c7a4ce78b2f6fd1f339283442d7}} 
+\index{utils.\+c@{utils.\+c}!As\+Char@{As\+Char}}
+\index{As\+Char@{As\+Char}!utils.\+c@{utils.\+c}}
+\subsubsection{\texorpdfstring{As\+Char()}{AsChar()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+Char (\begin{DoxyParamCaption}\item[{char $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{utils_8c_a6976c2856f66fc78309038d7c6c3cc56}\label{utils_8c_a6976c2856f66fc78309038d7c6c3cc56}} 
+\index{utils.\+c@{utils.\+c}!As\+Float@{As\+Float}}
+\index{As\+Float@{As\+Float}!utils.\+c@{utils.\+c}}
+\subsubsection{\texorpdfstring{As\+Float()}{AsFloat()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+Float (\begin{DoxyParamCaption}\item[{float $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{utils_8c_a055affa58ad782554797910db50b8d6d}\label{utils_8c_a055affa58ad782554797910db50b8d6d}} 
+\index{utils.\+c@{utils.\+c}!As\+Hex@{As\+Hex}}
+\index{As\+Hex@{As\+Hex}!utils.\+c@{utils.\+c}}
+\subsubsection{\texorpdfstring{As\+Hex()}{AsHex()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+Hex (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{utils_8c_ad72fd4e8e76d00112d891c80e093c5b2}\label{utils_8c_ad72fd4e8e76d00112d891c80e093c5b2}} 
+\index{utils.\+c@{utils.\+c}!As\+Integer@{As\+Integer}}
+\index{As\+Integer@{As\+Integer}!utils.\+c@{utils.\+c}}
+\subsubsection{\texorpdfstring{As\+Integer()}{AsInteger()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+Integer (\begin{DoxyParamCaption}\item[{int $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{utils_8c_afc53dea59857d91538b40420069fea6d}\label{utils_8c_afc53dea59857d91538b40420069fea6d}} 
+\index{utils.\+c@{utils.\+c}!As\+Resource@{As\+Resource}}
+\index{As\+Resource@{As\+Resource}!utils.\+c@{utils.\+c}}
+\subsubsection{\texorpdfstring{As\+Resource()}{AsResource()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+Resource (\begin{DoxyParamCaption}\item[{\hyperlink{_cmd_8h_acf246a87e41f47012fc7628989d3fe95}{Resource} $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{utils_8c_a5dfc2c81b7a50603a3e5e28a2e2833a0}\label{utils_8c_a5dfc2c81b7a50603a3e5e28a2e2833a0}} 
+\index{utils.\+c@{utils.\+c}!As\+String@{As\+String}}
+\index{As\+String@{As\+String}!utils.\+c@{utils.\+c}}
+\subsubsection{\texorpdfstring{As\+String()}{AsString()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} As\+String (\begin{DoxyParamCaption}\item[{char $\ast$}]{out,  }\item[{char $\ast$}]{str,  }\item[{uint16\+\_\+t}]{index,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{utils_8c_ac25a7a185d5bbf3af3783cb4b5f6681b}\label{utils_8c_ac25a7a185d5bbf3af3783cb4b5f6681b}} 
+\index{utils.\+c@{utils.\+c}!memtok@{memtok}}
+\index{memtok@{memtok}!utils.\+c@{utils.\+c}}
+\subsubsection{\texorpdfstring{memtok()}{memtok()}}
+{\footnotesize\ttfamily \hyperlink{structbuffer__t}{buffer\+\_\+t} memtok (\begin{DoxyParamCaption}\item[{const void $\ast$}]{s,  }\item[{size\+\_\+t}]{length,  }\item[{const char $\ast$}]{delim,  }\item[{\hyperlink{structbuffer__t}{buffer\+\_\+t} $\ast$}]{save\+\_\+ptr }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{utils_8c_a7534210b51411827455e99a64c4a38c4}\label{utils_8c_a7534210b51411827455e99a64c4a38c4}} 
+\index{utils.\+c@{utils.\+c}!remove\+List@{remove\+List}}
+\index{remove\+List@{remove\+List}!utils.\+c@{utils.\+c}}
+\subsubsection{\texorpdfstring{remove\+List()}{removeList()}}
+{\footnotesize\ttfamily void remove\+List (\begin{DoxyParamCaption}\item[{\hyperlink{struct_list}{List} $\ast$}]{list }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utils_8c_ae595f51afa4b8d2094c67c712f58672c}\label{utils_8c_ae595f51afa4b8d2094c67c712f58672c}} 
+\index{utils.\+c@{utils.\+c}!str\+\_\+append@{str\+\_\+append}}
+\index{str\+\_\+append@{str\+\_\+append}!utils.\+c@{utils.\+c}}
+\subsubsection{\texorpdfstring{str\+\_\+append()}{str\_append()}}
+{\footnotesize\ttfamily void str\+\_\+append (\begin{DoxyParamCaption}\item[{char}]{subject\mbox{[}$\,$\mbox{]},  }\item[{char}]{insert\mbox{[}$\,$\mbox{]},  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utils_8c_aff8e889d69b7aecc57dfc4326e76f537}\label{utils_8c_aff8e889d69b7aecc57dfc4326e76f537}} 
+\index{utils.\+c@{utils.\+c}!str\+\_\+split@{str\+\_\+split}}
+\index{str\+\_\+split@{str\+\_\+split}!utils.\+c@{utils.\+c}}
+\subsubsection{\texorpdfstring{str\+\_\+split()}{str\_split()}}
+{\footnotesize\ttfamily void str\+\_\+split (\begin{DoxyParamCaption}\item[{\hyperlink{struct_list}{List} $\ast$}]{result,  }\item[{char $\ast$}]{str,  }\item[{const char}]{a\+\_\+delim }\end{DoxyParamCaption})}
+
+Cria um array de string Here is the call graph for this function\+:
+% FIG 9

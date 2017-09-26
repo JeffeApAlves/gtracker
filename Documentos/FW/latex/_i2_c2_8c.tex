@@ -1,0 +1,64 @@
+\hypertarget{_i2_c2_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+I2\+C2.c File Reference}
+\label{_i2_c2_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+I2\+C2.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/\+I2\+C2.\+c}}
+
+
+This component encapsulates the internal I2C communication interface. The implementation of the interface is based on the Philips I2\+C-\/bus specification version 2.\+0. Interface features\+: M\+A\+S\+T\+ER mode.  
+
+
+{\ttfamily \#include \char`\"{}Events.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I2\+C2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}P\+O\+R\+T\+\_\+\+P\+D\+D.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I2\+C\+\_\+\+P\+D\+D.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I\+O\+\_\+\+Map.\+h\char`\"{}}\newline
+Include dependency graph for I2\+C2.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_i2_c2___t_device_data}{I2\+C2\+\_\+\+T\+Device\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___i2_c2__module_ga75b75f2a24a05753b06756bdef0e704e}{M\+A\+S\+T\+E\+R\+\_\+\+I\+N\+\_\+\+P\+R\+O\+G\+R\+ES}~0x01\+U  /$\ast$ Communication is in progress (\+Master) $\ast$/
+\item 
+\#define \hyperlink{group___i2_c2__module_ga5f04a8830cd52a3ffa1678d113f31aee}{A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+E\+V\+E\+N\+T\+S\+\_\+\+M\+A\+SK}~(\hyperlink{group___p_e___types__module_ga187d9ac85a01b75a8f871d72b9cd5fe3}{L\+D\+D\+\_\+\+I2\+C\+\_\+\+O\+N\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+E\+NT} $\vert$ \hyperlink{group___p_e___types__module_gac4694457514889498da89fa1afe27412}{L\+D\+D\+\_\+\+I2\+C\+\_\+\+O\+N\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+B\+L\+O\+C\+K\+\_\+\+R\+E\+C\+E\+I\+V\+ED})
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{struct_i2_c2___t_device_data}{I2\+C2\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___i2_c2__module_ga8699213d2cea6eac9e378ccb8a2b1ec7}{I2\+C2\+\_\+\+T\+Device\+Data\+Ptr}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___i2_c2__module_gacfc85cd0808af72048c90bf9b64850bb}{P\+E\+\_\+\+I\+SR} (I2\+C2\+\_\+\+Interrupt)
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___i2_c2__module_gaedf92a853b529ab46925ac39933f5033}{I2\+C2\+\_\+\+Init} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the \char`\"{}\+Enable in init. code\char`\"{} is set to \char`\"{}yes\char`\"{} value then the device is also enabled(see the description of the Enable() method). In this case the Enable() method is not necessary and needn\textquotesingle{}t to be generated. This method can be called only once. Before the second call of Init() the Deinit() must be called first. \end{DoxyCompactList}\item 
+void \hyperlink{group___i2_c2__module_gae001dbec802cf15fd903e13dad2bd54d}{I2\+C2\+\_\+\+Deinit} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Deinitializes the device. Switches off the device, frees the device data structure memory, interrupts vectors, etc. \end{DoxyCompactList}\item 
+\hyperlink{group___p_e___types__module_ga24c2b045fd04e79e85f261ce4df35588}{L\+D\+D\+\_\+\+T\+Error} \hyperlink{group___i2_c2__module_ga1e8de45614939de2c1cb5a8b8fb849b9}{I2\+C2\+\_\+\+Master\+Send\+Block} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr, \hyperlink{group___p_e___types__module_gade8ef9401405bd941b6da738b807f980}{L\+D\+D\+\_\+\+T\+Data} $\ast$Buffer\+Ptr, \hyperlink{group___p_e___types__module_gaa7fd2bc3f1f93e051058f9e70349c2b9}{L\+D\+D\+\_\+\+I2\+C\+\_\+\+T\+Size} Size, \hyperlink{group___p_e___types__module_gacac4ade6fbcd28c9ddcd864242063ec8}{L\+D\+D\+\_\+\+I2\+C\+\_\+\+T\+Send\+Stop} Send\+Stop)
+\begin{DoxyCompactList}\small\item\em This method writes one (7-\/bit addressing) or two (10-\/bit addressing) slave address bytes inclusive of R/W bit = 0 to the I2C bus and then writes the block of characters to the bus. The slave address must be specified before, by the \char`\"{}\+Select\+Slave\+Device\char`\"{} method or in component initialization section, \char`\"{}\+Target slave address init\char`\"{} property. If the method returns E\+R\+R\+\_\+\+OK, it doesn\textquotesingle{}t mean that transmission was successful. The state of transmission is detectable by means of events (On\+Master\+Send\+Complete or On\+Error). Data to be sent are not copied to an internal buffer and remains in the original location. Therefore the content of the buffer should not be changed until the transmission is complete. Event \char`\"{}\+On\+Master\+Block\+Sent\char`\"{}can be used to detect the end of the transmission. This method is available only for the M\+A\+S\+T\+ER or M\+A\+S\+T\+ER -\/ S\+L\+A\+VE mode. \end{DoxyCompactList}\item 
+\hyperlink{group___p_e___types__module_ga24c2b045fd04e79e85f261ce4df35588}{L\+D\+D\+\_\+\+T\+Error} \hyperlink{group___i2_c2__module_ga782ad56e307e99306dfcbb7359a712af}{I2\+C2\+\_\+\+Master\+Receive\+Block} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr, \hyperlink{group___p_e___types__module_gade8ef9401405bd941b6da738b807f980}{L\+D\+D\+\_\+\+T\+Data} $\ast$Buffer\+Ptr, \hyperlink{group___p_e___types__module_gaa7fd2bc3f1f93e051058f9e70349c2b9}{L\+D\+D\+\_\+\+I2\+C\+\_\+\+T\+Size} Size, \hyperlink{group___p_e___types__module_gacac4ade6fbcd28c9ddcd864242063ec8}{L\+D\+D\+\_\+\+I2\+C\+\_\+\+T\+Send\+Stop} Send\+Stop)
+\begin{DoxyCompactList}\small\item\em This method writes one (7-\/bit addressing) or two (10-\/bit addressing) slave address bytes inclusive of R/W bit = 1 to the I2C bus and then receives the block of characters from the bus. The slave address must be specified before, by the \char`\"{}\+Select\+Slave\+Device\char`\"{} method or in component initialization section, \char`\"{}\+Target slave address init\char`\"{} property. If the method returns E\+R\+R\+\_\+\+OK, it doesn\textquotesingle{}t mean that reception was successful. The state of reception is detectable by means of events (On\+Master\+Send\+Complete or On\+Error). Data to be received are not copied to an internal buffer and remains in the original location. Therefore the content of the buffer should not be changed until the transmission is complete. Event \char`\"{}\+On\+Master\+Block\+Received\char`\"{}can be used to detect the end of the reception. This method is available only for the M\+A\+S\+T\+ER or M\+A\+S\+T\+ER -\/ S\+L\+A\+VE mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This component encapsulates the internal I2C communication interface. The implementation of the interface is based on the Philips I2\+C-\/bus specification version 2.\+0. Interface features\+: M\+A\+S\+T\+ER mode. 
+
+\begin{DoxyVersion}{Version}
+01.\+07
+\begin{DoxyItemize}
+\item Multi master communication
+\item The combined format of communication possible (see Send\+Stop parameter in Master\+Send/\+Receive\+Block method)
+\item 7-\/bit slave addressing (10-\/bit addressing can be made as well)
+\item Acknowledge polling provided
+\item No wait state initiated when a slave device holds the S\+CL line low
+\item Holding of the S\+CL line low by slave device recognized as \textquotesingle{}not available bus\textquotesingle{}
+\item Invalid start/stop condition detection provided S\+L\+A\+VE mode
+\item 7-\/bit slave addressing
+\item General call address detection provided 
+\end{DoxyItemize}
+\end{DoxyVersion}

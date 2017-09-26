@@ -1,0 +1,111 @@
+\hypertarget{group___timer_int_ldd1__module}{}\section{Timer\+Int\+Ldd1 module documentation}
+\label{group___timer_int_ldd1__module}\index{Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_timer_int_ldd1___t_device_data}{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___timer_int_ldd1__module_ga5f04a8830cd52a3ffa1678d113f31aee}{A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+E\+V\+E\+N\+T\+S\+\_\+\+M\+A\+SK}~(\hyperlink{group___p_e___types__module_gafbe7f4d4e51560399c3bdd0218584533}{L\+D\+D\+\_\+\+T\+Event\+Mask})(\hyperlink{group___p_e___types__module_gad4a95a8e3f3036e88f99c792431b4d72}{L\+D\+D\+\_\+\+T\+I\+M\+E\+R\+I\+N\+T\+\_\+\+O\+N\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT})
+\item 
+\#define \hyperlink{group___timer_int_ldd1__module_gafb6b69926d7c31c7571ad3d945251067}{Timer\+Int\+Ldd1\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}~0x40038000U
+\item 
+\#define \hyperlink{group___timer_int_ldd1__module_ga5029b1a3ee62b1e77252cb5ee432e572}{Timer\+Int\+Ldd1\+\_\+\+Device\+Data}~((\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$)\hyperlink{group___p_e___types__module_gaa1c23d559daef5bcd3327ca83fb56f5a}{P\+E\+\_\+\+L\+D\+D\+\_\+\+Get\+Device\+Structure}(\hyperlink{group___p_e___types__module_ga6a162a05f04f8054d79a9f9dac397d44}{P\+E\+\_\+\+L\+D\+D\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+Timer\+Int\+Ldd1\+\_\+\+ID}))
+\item 
+\#define \hyperlink{group___timer_int_ldd1__module_ga99f1a84b931818260bb4dfad5d071136}{Timer\+Int\+Ldd1\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___timer_int_ldd1__module_ga97ee83f24ca8c5f570d5be8bdc0c6dde}{Timer\+Int\+Ldd1\+\_\+\+On\+Interrupt\+\_\+\+E\+V\+E\+N\+T\+\_\+\+E\+N\+A\+B\+L\+ED}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{struct_timer_int_ldd1___t_device_data}{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___timer_int_ldd1__module_ga24d5bad052ceefb0ed97378c80c8dc03}{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data\+Ptr}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___timer_int_ldd1__module_ga069f7459fc74e21fb9bcceadbe7cb9cb}{Timer\+Int\+Ldd1\+\_\+\+Init} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the property \mbox{[}\char`\"{}\+Enable in init. code\char`\"{}\mbox{]} is set to \char`\"{}yes\char`\"{} value then the device is also enabled (see the description of the \mbox{[}Enable\mbox{]} method). In this case the \mbox{[}Enable\mbox{]} method is not necessary and needn\textquotesingle{}t to be generated. This method can be called only once. Before the second call of Init the \mbox{[}Deinit\mbox{]} must be called first. \end{DoxyCompactList}\item 
+void \hyperlink{group___timer_int_ldd1__module_ga915c714e97fd2a66385fddc37d45352a}{T\+U1\+\_\+\+On\+Counter\+Restart} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___timer_int_ldd1__module_ga5f04a8830cd52a3ffa1678d113f31aee}\label{group___timer_int_ldd1__module_ga5f04a8830cd52a3ffa1678d113f31aee}} 
+\index{Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}!A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+E\+V\+E\+N\+T\+S\+\_\+\+M\+A\+SK@{A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+E\+V\+E\+N\+T\+S\+\_\+\+M\+A\+SK}}
+\index{A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+E\+V\+E\+N\+T\+S\+\_\+\+M\+A\+SK@{A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+E\+V\+E\+N\+T\+S\+\_\+\+M\+A\+SK}!Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}}
+\subsubsection{\texorpdfstring{A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+E\+V\+E\+N\+T\+S\+\_\+\+M\+A\+SK}{AVAILABLE\_EVENTS\_MASK}}
+{\footnotesize\ttfamily \#define A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+E\+V\+E\+N\+T\+S\+\_\+\+M\+A\+SK~(\hyperlink{group___p_e___types__module_gafbe7f4d4e51560399c3bdd0218584533}{L\+D\+D\+\_\+\+T\+Event\+Mask})(\hyperlink{group___p_e___types__module_gad4a95a8e3f3036e88f99c792431b4d72}{L\+D\+D\+\_\+\+T\+I\+M\+E\+R\+I\+N\+T\+\_\+\+O\+N\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT})}
+
+\mbox{\Hypertarget{group___timer_int_ldd1__module_ga5029b1a3ee62b1e77252cb5ee432e572}\label{group___timer_int_ldd1__module_ga5029b1a3ee62b1e77252cb5ee432e572}} 
+\index{Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}!Timer\+Int\+Ldd1\+\_\+\+Device\+Data@{Timer\+Int\+Ldd1\+\_\+\+Device\+Data}}
+\index{Timer\+Int\+Ldd1\+\_\+\+Device\+Data@{Timer\+Int\+Ldd1\+\_\+\+Device\+Data}!Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}}
+\subsubsection{\texorpdfstring{Timer\+Int\+Ldd1\+\_\+\+Device\+Data}{TimerIntLdd1\_DeviceData}}
+{\footnotesize\ttfamily \#define Timer\+Int\+Ldd1\+\_\+\+Device\+Data~((\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$)\hyperlink{group___p_e___types__module_gaa1c23d559daef5bcd3327ca83fb56f5a}{P\+E\+\_\+\+L\+D\+D\+\_\+\+Get\+Device\+Structure}(\hyperlink{group___p_e___types__module_ga6a162a05f04f8054d79a9f9dac397d44}{P\+E\+\_\+\+L\+D\+D\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+Timer\+Int\+Ldd1\+\_\+\+ID}))}
+
+Device data structure pointer used when auto initialization property is enabled. This constant can be passed as a first parameter to all component\textquotesingle{}s methods. \mbox{\Hypertarget{group___timer_int_ldd1__module_ga99f1a84b931818260bb4dfad5d071136}\label{group___timer_int_ldd1__module_ga99f1a84b931818260bb4dfad5d071136}} 
+\index{Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}!Timer\+Int\+Ldd1\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Timer\+Int\+Ldd1\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Timer\+Int\+Ldd1\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Timer\+Int\+Ldd1\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}}
+\subsubsection{\texorpdfstring{Timer\+Int\+Ldd1\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{TimerIntLdd1\_Init\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Timer\+Int\+Ldd1\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Init method of the component Timer\+Int\+Ldd1 is enabled (generated) \mbox{\Hypertarget{group___timer_int_ldd1__module_ga97ee83f24ca8c5f570d5be8bdc0c6dde}\label{group___timer_int_ldd1__module_ga97ee83f24ca8c5f570d5be8bdc0c6dde}} 
+\index{Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}!Timer\+Int\+Ldd1\+\_\+\+On\+Interrupt\+\_\+\+E\+V\+E\+N\+T\+\_\+\+E\+N\+A\+B\+L\+ED@{Timer\+Int\+Ldd1\+\_\+\+On\+Interrupt\+\_\+\+E\+V\+E\+N\+T\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Timer\+Int\+Ldd1\+\_\+\+On\+Interrupt\+\_\+\+E\+V\+E\+N\+T\+\_\+\+E\+N\+A\+B\+L\+ED@{Timer\+Int\+Ldd1\+\_\+\+On\+Interrupt\+\_\+\+E\+V\+E\+N\+T\+\_\+\+E\+N\+A\+B\+L\+ED}!Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}}
+\subsubsection{\texorpdfstring{Timer\+Int\+Ldd1\+\_\+\+On\+Interrupt\+\_\+\+E\+V\+E\+N\+T\+\_\+\+E\+N\+A\+B\+L\+ED}{TimerIntLdd1\_OnInterrupt\_EVENT\_ENABLED}}
+{\footnotesize\ttfamily \#define Timer\+Int\+Ldd1\+\_\+\+On\+Interrupt\+\_\+\+E\+V\+E\+N\+T\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+On\+Interrupt event of the component Timer\+Int\+Ldd1 is enabled (generated) \mbox{\Hypertarget{group___timer_int_ldd1__module_gafb6b69926d7c31c7571ad3d945251067}\label{group___timer_int_ldd1__module_gafb6b69926d7c31c7571ad3d945251067}} 
+\index{Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}!Timer\+Int\+Ldd1\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Timer\+Int\+Ldd1\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{Timer\+Int\+Ldd1\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Timer\+Int\+Ldd1\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}!Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}}
+\subsubsection{\texorpdfstring{Timer\+Int\+Ldd1\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}{TimerIntLdd1\_PRPH\_BASE\_ADDRESS}}
+{\footnotesize\ttfamily \#define Timer\+Int\+Ldd1\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS~0x40038000U}
+
+Peripheral base address of a device allocated by the component. This constant can be used directly in P\+DD macros. 
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{group___timer_int_ldd1__module_ga24d5bad052ceefb0ed97378c80c8dc03}\label{group___timer_int_ldd1__module_ga24d5bad052ceefb0ed97378c80c8dc03}} 
+\index{Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}!Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data\+Ptr@{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data\+Ptr}}
+\index{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data\+Ptr@{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data\+Ptr}!Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}}
+\subsubsection{\texorpdfstring{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data\+Ptr}{TimerIntLdd1\_TDeviceDataPtr}}
+{\footnotesize\ttfamily typedef \hyperlink{struct_timer_int_ldd1___t_device_data}{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data}$\ast$ \hyperlink{group___timer_int_ldd1__module_ga24d5bad052ceefb0ed97378c80c8dc03}{Timer\+Int\+Ldd1\+\_\+\+T\+Device\+Data\+Ptr}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___timer_int_ldd1__module_ga069f7459fc74e21fb9bcceadbe7cb9cb}\label{group___timer_int_ldd1__module_ga069f7459fc74e21fb9bcceadbe7cb9cb}} 
+\index{Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}!Timer\+Int\+Ldd1\+\_\+\+Init@{Timer\+Int\+Ldd1\+\_\+\+Init}}
+\index{Timer\+Int\+Ldd1\+\_\+\+Init@{Timer\+Int\+Ldd1\+\_\+\+Init}!Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}}
+\subsubsection{\texorpdfstring{Timer\+Int\+Ldd1\+\_\+\+Init()}{TimerIntLdd1\_Init()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ Timer\+Int\+Ldd1\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the property \mbox{[}\char`\"{}\+Enable in init. code\char`\"{}\mbox{]} is set to \char`\"{}yes\char`\"{} value then the device is also enabled (see the description of the \mbox{[}Enable\mbox{]} method). In this case the \mbox{[}Enable\mbox{]} method is not necessary and needn\textquotesingle{}t to be generated. This method can be called only once. Before the second call of Init the \mbox{[}Deinit\mbox{]} must be called first. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em User\+Data\+Ptr} & -\/ Pointer to the user or R\+T\+OS specific data. This pointer will be passed as an event or callback parameter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Pointer to the dynamically allocated private structure or N\+U\+LL if there was an error. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{group___timer_int_ldd1__module_ga915c714e97fd2a66385fddc37d45352a}\label{group___timer_int_ldd1__module_ga915c714e97fd2a66385fddc37d45352a}} 
+\index{Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}!T\+U1\+\_\+\+On\+Counter\+Restart@{T\+U1\+\_\+\+On\+Counter\+Restart}}
+\index{T\+U1\+\_\+\+On\+Counter\+Restart@{T\+U1\+\_\+\+On\+Counter\+Restart}!Timer\+Int\+Ldd1 module documentation@{Timer\+Int\+Ldd1 module documentation}}
+\subsubsection{\texorpdfstring{T\+U1\+\_\+\+On\+Counter\+Restart()}{TU1\_OnCounterRestart()}}
+{\footnotesize\ttfamily void T\+U1\+\_\+\+On\+Counter\+Restart (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1

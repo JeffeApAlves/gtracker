@@ -1,0 +1,109 @@
+\hypertarget{heap__4_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/heap\+\_\+4.c File Reference}
+\label{heap__4_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/heap\+\_\+4.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Generated\+\_\+\+Code/heap\+\_\+4.\+c}}
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S\+Config.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+Include dependency graph for heap\+\_\+4.\+c\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_a___b_l_o_c_k___l_i_n_k}{A\+\_\+\+B\+L\+O\+C\+K\+\_\+\+L\+I\+NK}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{heap__4_8c_ab622d8c674f2a417a666a7ed89109e79}{M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE}
+\item 
+\#define \hyperlink{heap__4_8c_ab71bae5a95671265c828339d44c44b25}{heap\+M\+I\+N\+I\+M\+U\+M\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE}~( ( size\+\_\+t ) ( x\+Heap\+Struct\+Size $<$$<$ 1 ) )
+\item 
+\#define \hyperlink{heap__4_8c_adcef0c4245ebe20ca2b08a574c1caac9}{heap\+B\+I\+T\+S\+\_\+\+P\+E\+R\+\_\+\+B\+Y\+TE}~( ( size\+\_\+t ) 8 )
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_a___b_l_o_c_k___l_i_n_k}{A\+\_\+\+B\+L\+O\+C\+K\+\_\+\+L\+I\+NK} \hyperlink{heap__4_8c_ad9a44f586d03fc020ee6f5939defb314}{Block\+Link\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{heap__4_8c_a0379669d07d76cc81e3028123113b271}{pv\+Port\+Malloc} (size\+\_\+t x\+Wanted\+Size)
+\item 
+void \hyperlink{heap__4_8c_a1e7cea2fd1bc894ea3b5f5e8179d259b}{v\+Port\+Free} (void $\ast$pv)
+\item 
+size\+\_\+t \hyperlink{heap__4_8c_a0c28a12b313bc248be0cb7a37ed81bb7}{x\+Port\+Get\+Free\+Heap\+Size} (void)
+\item 
+size\+\_\+t \hyperlink{heap__4_8c_ab222e4545b8ff12b62fd000fea6b34eb}{x\+Port\+Get\+Minimum\+Ever\+Free\+Heap\+Size} (void)
+\item 
+void \hyperlink{heap__4_8c_a8bf103ce32ce8473574e9920af8b4eec}{v\+Port\+Initialise\+Blocks} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{heap__4_8c_adcef0c4245ebe20ca2b08a574c1caac9}\label{heap__4_8c_adcef0c4245ebe20ca2b08a574c1caac9}} 
+\index{heap\+\_\+4.\+c@{heap\+\_\+4.\+c}!heap\+B\+I\+T\+S\+\_\+\+P\+E\+R\+\_\+\+B\+Y\+TE@{heap\+B\+I\+T\+S\+\_\+\+P\+E\+R\+\_\+\+B\+Y\+TE}}
+\index{heap\+B\+I\+T\+S\+\_\+\+P\+E\+R\+\_\+\+B\+Y\+TE@{heap\+B\+I\+T\+S\+\_\+\+P\+E\+R\+\_\+\+B\+Y\+TE}!heap\+\_\+4.\+c@{heap\+\_\+4.\+c}}
+\subsubsection{\texorpdfstring{heap\+B\+I\+T\+S\+\_\+\+P\+E\+R\+\_\+\+B\+Y\+TE}{heapBITS\_PER\_BYTE}}
+{\footnotesize\ttfamily \#define heap\+B\+I\+T\+S\+\_\+\+P\+E\+R\+\_\+\+B\+Y\+TE~( ( size\+\_\+t ) 8 )}
+
+\mbox{\Hypertarget{heap__4_8c_ab71bae5a95671265c828339d44c44b25}\label{heap__4_8c_ab71bae5a95671265c828339d44c44b25}} 
+\index{heap\+\_\+4.\+c@{heap\+\_\+4.\+c}!heap\+M\+I\+N\+I\+M\+U\+M\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE@{heap\+M\+I\+N\+I\+M\+U\+M\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE}}
+\index{heap\+M\+I\+N\+I\+M\+U\+M\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE@{heap\+M\+I\+N\+I\+M\+U\+M\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE}!heap\+\_\+4.\+c@{heap\+\_\+4.\+c}}
+\subsubsection{\texorpdfstring{heap\+M\+I\+N\+I\+M\+U\+M\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE}{heapMINIMUM\_BLOCK\_SIZE}}
+{\footnotesize\ttfamily \#define heap\+M\+I\+N\+I\+M\+U\+M\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE~( ( size\+\_\+t ) ( x\+Heap\+Struct\+Size $<$$<$ 1 ) )}
+
+\mbox{\Hypertarget{heap__4_8c_ab622d8c674f2a417a666a7ed89109e79}\label{heap__4_8c_ab622d8c674f2a417a666a7ed89109e79}} 
+\index{heap\+\_\+4.\+c@{heap\+\_\+4.\+c}!M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE@{M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE}}
+\index{M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE@{M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE}!heap\+\_\+4.\+c@{heap\+\_\+4.\+c}}
+\subsubsection{\texorpdfstring{M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE}{MPU\_WRAPPERS\_INCLUDED\_FROM\_API\_FILE}}
+{\footnotesize\ttfamily \#define M\+P\+U\+\_\+\+W\+R\+A\+P\+P\+E\+R\+S\+\_\+\+I\+N\+C\+L\+U\+D\+E\+D\+\_\+\+F\+R\+O\+M\+\_\+\+A\+P\+I\+\_\+\+F\+I\+LE}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{heap__4_8c_ad9a44f586d03fc020ee6f5939defb314}\label{heap__4_8c_ad9a44f586d03fc020ee6f5939defb314}} 
+\index{heap\+\_\+4.\+c@{heap\+\_\+4.\+c}!Block\+Link\+\_\+t@{Block\+Link\+\_\+t}}
+\index{Block\+Link\+\_\+t@{Block\+Link\+\_\+t}!heap\+\_\+4.\+c@{heap\+\_\+4.\+c}}
+\subsubsection{\texorpdfstring{Block\+Link\+\_\+t}{BlockLink\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{struct_a___b_l_o_c_k___l_i_n_k}{A\+\_\+\+B\+L\+O\+C\+K\+\_\+\+L\+I\+NK}  \hyperlink{heap__4_8c_ad9a44f586d03fc020ee6f5939defb314}{Block\+Link\+\_\+t}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{heap__4_8c_a0379669d07d76cc81e3028123113b271}\label{heap__4_8c_a0379669d07d76cc81e3028123113b271}} 
+\index{heap\+\_\+4.\+c@{heap\+\_\+4.\+c}!pv\+Port\+Malloc@{pv\+Port\+Malloc}}
+\index{pv\+Port\+Malloc@{pv\+Port\+Malloc}!heap\+\_\+4.\+c@{heap\+\_\+4.\+c}}
+\subsubsection{\texorpdfstring{pv\+Port\+Malloc()}{pvPortMalloc()}}
+{\footnotesize\ttfamily void$\ast$ pv\+Port\+Malloc (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{x\+Wanted\+Size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{heap__4_8c_a1e7cea2fd1bc894ea3b5f5e8179d259b}\label{heap__4_8c_a1e7cea2fd1bc894ea3b5f5e8179d259b}} 
+\index{heap\+\_\+4.\+c@{heap\+\_\+4.\+c}!v\+Port\+Free@{v\+Port\+Free}}
+\index{v\+Port\+Free@{v\+Port\+Free}!heap\+\_\+4.\+c@{heap\+\_\+4.\+c}}
+\subsubsection{\texorpdfstring{v\+Port\+Free()}{vPortFree()}}
+{\footnotesize\ttfamily void v\+Port\+Free (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{heap__4_8c_a8bf103ce32ce8473574e9920af8b4eec}\label{heap__4_8c_a8bf103ce32ce8473574e9920af8b4eec}} 
+\index{heap\+\_\+4.\+c@{heap\+\_\+4.\+c}!v\+Port\+Initialise\+Blocks@{v\+Port\+Initialise\+Blocks}}
+\index{v\+Port\+Initialise\+Blocks@{v\+Port\+Initialise\+Blocks}!heap\+\_\+4.\+c@{heap\+\_\+4.\+c}}
+\subsubsection{\texorpdfstring{v\+Port\+Initialise\+Blocks()}{vPortInitialiseBlocks()}}
+{\footnotesize\ttfamily void v\+Port\+Initialise\+Blocks (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{heap__4_8c_a0c28a12b313bc248be0cb7a37ed81bb7}\label{heap__4_8c_a0c28a12b313bc248be0cb7a37ed81bb7}} 
+\index{heap\+\_\+4.\+c@{heap\+\_\+4.\+c}!x\+Port\+Get\+Free\+Heap\+Size@{x\+Port\+Get\+Free\+Heap\+Size}}
+\index{x\+Port\+Get\+Free\+Heap\+Size@{x\+Port\+Get\+Free\+Heap\+Size}!heap\+\_\+4.\+c@{heap\+\_\+4.\+c}}
+\subsubsection{\texorpdfstring{x\+Port\+Get\+Free\+Heap\+Size()}{xPortGetFreeHeapSize()}}
+{\footnotesize\ttfamily size\+\_\+t x\+Port\+Get\+Free\+Heap\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{heap__4_8c_ab222e4545b8ff12b62fd000fea6b34eb}\label{heap__4_8c_ab222e4545b8ff12b62fd000fea6b34eb}} 
+\index{heap\+\_\+4.\+c@{heap\+\_\+4.\+c}!x\+Port\+Get\+Minimum\+Ever\+Free\+Heap\+Size@{x\+Port\+Get\+Minimum\+Ever\+Free\+Heap\+Size}}
+\index{x\+Port\+Get\+Minimum\+Ever\+Free\+Heap\+Size@{x\+Port\+Get\+Minimum\+Ever\+Free\+Heap\+Size}!heap\+\_\+4.\+c@{heap\+\_\+4.\+c}}
+\subsubsection{\texorpdfstring{x\+Port\+Get\+Minimum\+Ever\+Free\+Heap\+Size()}{xPortGetMinimumEverFreeHeapSize()}}
+{\footnotesize\ttfamily size\+\_\+t x\+Port\+Get\+Minimum\+Ever\+Free\+Heap\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+

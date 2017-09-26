@@ -1,0 +1,123 @@
+\hypertarget{group___l_e_d___r__module}{}\section{L\+E\+D\+\_\+R module documentation}
+\label{group___l_e_d___r__module}\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___l_e_d___r__module_ga7209f37f1b2eaf2d8d8cdfda04bbc013}{L\+E\+D\+\_\+\+R\+\_\+\+Clr\+Val}()~\hyperlink{group___l_e_dpin1__module_gaa8cd76132679a45d7b46009191d7c936}{L\+E\+Dpin1\+\_\+\+Clr\+Val}() /$\ast$ put the pin on low level $\ast$/
+\item 
+\#define \hyperlink{group___l_e_d___r__module_ga5d736fd16acb71977dbb09bf1cffda89}{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Val}()~\hyperlink{group___l_e_dpin1__module_ga9e387f81ae9dde5b8736c35d6d5002a9}{L\+E\+Dpin1\+\_\+\+Set\+Val}() /$\ast$ put the pin on high level $\ast$/
+\item 
+\#define \hyperlink{group___l_e_d___r__module_ga6c945513732284ab17cb3c9c68d27522}{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Input}()~L\+E\+Dpin1\+\_\+\+Set\+Input() /$\ast$ use the pin as input pin $\ast$/
+\item 
+\#define \hyperlink{group___l_e_d___r__module_gacbada495348b46093229970284a9e050}{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Output}()~L\+E\+Dpin1\+\_\+\+Set\+Output() /$\ast$ use the pin as output pin $\ast$/
+\item 
+\#define \hyperlink{group___l_e_d___r__module_ga4b9ac09901367c58a01a97193b9a1fe4}{L\+E\+D\+\_\+\+R\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED}~0 /$\ast$ set to 1 if method Parse\+Command() is present, 0 otherwise $\ast$/
+\item 
+\#define \hyperlink{group___l_e_d___r__module_gae4d0b3ab736a2cc7cb11ae20c5a77193}{L\+E\+D\+\_\+\+R\+\_\+\+On}()~\hyperlink{group___l_e_dpin1__module_gaa8cd76132679a45d7b46009191d7c936}{L\+E\+Dpin1\+\_\+\+Clr\+Val}()
+\item 
+\#define \hyperlink{group___l_e_d___r__module_gaaa72e85cdb5b4b9f9b25782ede21da2a}{L\+E\+D\+\_\+\+R\+\_\+\+Off}()~\hyperlink{group___l_e_dpin1__module_ga9e387f81ae9dde5b8736c35d6d5002a9}{L\+E\+Dpin1\+\_\+\+Set\+Val}()
+\item 
+\#define \hyperlink{group___l_e_d___r__module_ga9f7488efa1881e0eedc701bf26287bf1}{L\+E\+D\+\_\+\+R\+\_\+\+Neg}()~\hyperlink{group___l_e_dpin1__module_ga3efa3c36897f65f865e2b08cf6e205c4}{L\+E\+Dpin1\+\_\+\+Neg\+Val}()
+\item 
+\#define \hyperlink{group___l_e_d___r__module_ga29f013a52f94806041915e77616a1431}{L\+E\+D\+\_\+\+R\+\_\+\+Get}()~(!(\hyperlink{group___l_e_dpin1__module_ga452621fabd51a8ab50951b9d318dff24}{L\+E\+Dpin1\+\_\+\+Get\+Val}()))
+\item 
+\#define \hyperlink{group___l_e_d___r__module_gae74edd27f1c938ad9f0bebca4110d2ff}{L\+E\+D\+\_\+\+R\+\_\+\+Put}(val)~((val) ? \hyperlink{group___l_e_d___r__module_gae4d0b3ab736a2cc7cb11ae20c5a77193}{L\+E\+D\+\_\+\+R\+\_\+\+On}() \+: \hyperlink{group___l_e_d___r__module_gaaa72e85cdb5b4b9f9b25782ede21da2a}{L\+E\+D\+\_\+\+R\+\_\+\+Off}())
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___l_e_d___r__module_ga751542b52d0a6cbb752670e59242c52d}{L\+E\+D\+\_\+\+R\+\_\+\+Init} (void)
+\item 
+void \hyperlink{group___l_e_d___r__module_gaf1fe3bd171759bfe9d6c571819e43027}{L\+E\+D\+\_\+\+R\+\_\+\+Deinit} (void)
+\item 
+void \hyperlink{group___l_e_d___r__module_ga7dd4cf455d1968e98a43a05abf7e4b10}{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Ratio16} (uint16\+\_\+t ratio)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___l_e_d___r__module_ga7209f37f1b2eaf2d8d8cdfda04bbc013}\label{group___l_e_d___r__module_ga7209f37f1b2eaf2d8d8cdfda04bbc013}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Clr\+Val@{L\+E\+D\+\_\+\+R\+\_\+\+Clr\+Val}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Clr\+Val@{L\+E\+D\+\_\+\+R\+\_\+\+Clr\+Val}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Clr\+Val}{LED\_R\_ClrVal}}
+{\footnotesize\ttfamily \#define L\+E\+D\+\_\+\+R\+\_\+\+Clr\+Val(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{group___l_e_dpin1__module_gaa8cd76132679a45d7b46009191d7c936}{L\+E\+Dpin1\+\_\+\+Clr\+Val}() /$\ast$ put the pin on low level $\ast$/}
+
+\mbox{\Hypertarget{group___l_e_d___r__module_ga29f013a52f94806041915e77616a1431}\label{group___l_e_d___r__module_ga29f013a52f94806041915e77616a1431}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Get@{L\+E\+D\+\_\+\+R\+\_\+\+Get}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Get@{L\+E\+D\+\_\+\+R\+\_\+\+Get}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Get}{LED\_R\_Get}}
+{\footnotesize\ttfamily \#define L\+E\+D\+\_\+\+R\+\_\+\+Get(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~(!(\hyperlink{group___l_e_dpin1__module_ga452621fabd51a8ab50951b9d318dff24}{L\+E\+Dpin1\+\_\+\+Get\+Val}()))}
+
+\mbox{\Hypertarget{group___l_e_d___r__module_ga9f7488efa1881e0eedc701bf26287bf1}\label{group___l_e_d___r__module_ga9f7488efa1881e0eedc701bf26287bf1}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Neg@{L\+E\+D\+\_\+\+R\+\_\+\+Neg}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Neg@{L\+E\+D\+\_\+\+R\+\_\+\+Neg}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Neg}{LED\_R\_Neg}}
+{\footnotesize\ttfamily \#define L\+E\+D\+\_\+\+R\+\_\+\+Neg(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{group___l_e_dpin1__module_ga3efa3c36897f65f865e2b08cf6e205c4}{L\+E\+Dpin1\+\_\+\+Neg\+Val}()}
+
+\mbox{\Hypertarget{group___l_e_d___r__module_gaaa72e85cdb5b4b9f9b25782ede21da2a}\label{group___l_e_d___r__module_gaaa72e85cdb5b4b9f9b25782ede21da2a}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Off@{L\+E\+D\+\_\+\+R\+\_\+\+Off}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Off@{L\+E\+D\+\_\+\+R\+\_\+\+Off}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Off}{LED\_R\_Off}}
+{\footnotesize\ttfamily \#define L\+E\+D\+\_\+\+R\+\_\+\+Off(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{group___l_e_dpin1__module_ga9e387f81ae9dde5b8736c35d6d5002a9}{L\+E\+Dpin1\+\_\+\+Set\+Val}()}
+
+\mbox{\Hypertarget{group___l_e_d___r__module_gae4d0b3ab736a2cc7cb11ae20c5a77193}\label{group___l_e_d___r__module_gae4d0b3ab736a2cc7cb11ae20c5a77193}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+On@{L\+E\+D\+\_\+\+R\+\_\+\+On}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+On@{L\+E\+D\+\_\+\+R\+\_\+\+On}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+On}{LED\_R\_On}}
+{\footnotesize\ttfamily \#define L\+E\+D\+\_\+\+R\+\_\+\+On(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{group___l_e_dpin1__module_gaa8cd76132679a45d7b46009191d7c936}{L\+E\+Dpin1\+\_\+\+Clr\+Val}()}
+
+\mbox{\Hypertarget{group___l_e_d___r__module_ga4b9ac09901367c58a01a97193b9a1fe4}\label{group___l_e_d___r__module_ga4b9ac09901367c58a01a97193b9a1fe4}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{L\+E\+D\+\_\+\+R\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{L\+E\+D\+\_\+\+R\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{LED\_R\_PARSE\_COMMAND\_ENABLED}}
+{\footnotesize\ttfamily \#define L\+E\+D\+\_\+\+R\+\_\+\+P\+A\+R\+S\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+E\+N\+A\+B\+L\+ED~0 /$\ast$ set to 1 if method Parse\+Command() is present, 0 otherwise $\ast$/}
+
+\mbox{\Hypertarget{group___l_e_d___r__module_gae74edd27f1c938ad9f0bebca4110d2ff}\label{group___l_e_d___r__module_gae74edd27f1c938ad9f0bebca4110d2ff}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Put@{L\+E\+D\+\_\+\+R\+\_\+\+Put}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Put@{L\+E\+D\+\_\+\+R\+\_\+\+Put}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Put}{LED\_R\_Put}}
+{\footnotesize\ttfamily \#define L\+E\+D\+\_\+\+R\+\_\+\+Put(\begin{DoxyParamCaption}\item[{}]{val }\end{DoxyParamCaption})~((val) ? \hyperlink{group___l_e_d___r__module_gae4d0b3ab736a2cc7cb11ae20c5a77193}{L\+E\+D\+\_\+\+R\+\_\+\+On}() \+: \hyperlink{group___l_e_d___r__module_gaaa72e85cdb5b4b9f9b25782ede21da2a}{L\+E\+D\+\_\+\+R\+\_\+\+Off}())}
+
+\mbox{\Hypertarget{group___l_e_d___r__module_ga6c945513732284ab17cb3c9c68d27522}\label{group___l_e_d___r__module_ga6c945513732284ab17cb3c9c68d27522}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Set\+Input@{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Input}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Input@{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Input}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Input}{LED\_R\_SetInput}}
+{\footnotesize\ttfamily \#define L\+E\+D\+\_\+\+R\+\_\+\+Set\+Input(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~L\+E\+Dpin1\+\_\+\+Set\+Input() /$\ast$ use the pin as input pin $\ast$/}
+
+\mbox{\Hypertarget{group___l_e_d___r__module_gacbada495348b46093229970284a9e050}\label{group___l_e_d___r__module_gacbada495348b46093229970284a9e050}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Set\+Output@{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Output}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Output@{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Output}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Output}{LED\_R\_SetOutput}}
+{\footnotesize\ttfamily \#define L\+E\+D\+\_\+\+R\+\_\+\+Set\+Output(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~L\+E\+Dpin1\+\_\+\+Set\+Output() /$\ast$ use the pin as output pin $\ast$/}
+
+\mbox{\Hypertarget{group___l_e_d___r__module_ga5d736fd16acb71977dbb09bf1cffda89}\label{group___l_e_d___r__module_ga5d736fd16acb71977dbb09bf1cffda89}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Set\+Val@{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Val}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Val@{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Val}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Val}{LED\_R\_SetVal}}
+{\footnotesize\ttfamily \#define L\+E\+D\+\_\+\+R\+\_\+\+Set\+Val(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\hyperlink{group___l_e_dpin1__module_ga9e387f81ae9dde5b8736c35d6d5002a9}{L\+E\+Dpin1\+\_\+\+Set\+Val}() /$\ast$ put the pin on high level $\ast$/}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___l_e_d___r__module_gaf1fe3bd171759bfe9d6c571819e43027}\label{group___l_e_d___r__module_gaf1fe3bd171759bfe9d6c571819e43027}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Deinit@{L\+E\+D\+\_\+\+R\+\_\+\+Deinit}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Deinit@{L\+E\+D\+\_\+\+R\+\_\+\+Deinit}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Deinit()}{LED\_R\_Deinit()}}
+{\footnotesize\ttfamily void L\+E\+D\+\_\+\+R\+\_\+\+Deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{group___l_e_d___r__module_ga751542b52d0a6cbb752670e59242c52d}\label{group___l_e_d___r__module_ga751542b52d0a6cbb752670e59242c52d}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Init@{L\+E\+D\+\_\+\+R\+\_\+\+Init}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Init@{L\+E\+D\+\_\+\+R\+\_\+\+Init}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Init()}{LED\_R\_Init()}}
+{\footnotesize\ttfamily void L\+E\+D\+\_\+\+R\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{group___l_e_d___r__module_ga7dd4cf455d1968e98a43a05abf7e4b10}\label{group___l_e_d___r__module_ga7dd4cf455d1968e98a43a05abf7e4b10}} 
+\index{L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}!L\+E\+D\+\_\+\+R\+\_\+\+Set\+Ratio16@{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Ratio16}}
+\index{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Ratio16@{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Ratio16}!L\+E\+D\+\_\+\+R module documentation@{L\+E\+D\+\_\+\+R module documentation}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+R\+\_\+\+Set\+Ratio16()}{LED\_R\_SetRatio16()}}
+{\footnotesize\ttfamily void L\+E\+D\+\_\+\+R\+\_\+\+Set\+Ratio16 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{ratio }\end{DoxyParamCaption})}
+

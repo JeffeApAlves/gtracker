@@ -1,0 +1,12 @@
+var searchData=
+[
+  ['_5f_5fattribute_5f_5f',['__attribute__',['../group___cpu__module.html#ga2d9b5b981f451cdf47bf43b4f9cc9e03',1,'__attribute__((section(&quot;.cfmconfig&quot;))) const:&#160;Cpu.c'],['../port_8c.html#ad62826e478a753740ffb406eeb04f274',1,'__attribute__((noinline)):&#160;port.c'],['../port_8c.html#a2804a023941a956288c32ad08b2cf59e',1,'__attribute__((naked)):&#160;port.c'],['../group___vectors__module.html#ga0032ad18571ad670d92872faa8879886',1,'__attribute__((section(&quot;.vectortable&quot;))) const:&#160;Vectors.c'],['../group___w_a_i_t1__module.html#ga0d401ca6ca297b5b7a450deed0c42b78',1,'__attribute__((naked, no_instrument_function)):&#160;WAIT1.c'],['../group___w_a_i_t2__module.html#ga0d401ca6ca297b5b7a450deed0c42b78',1,'__attribute__((naked, no_instrument_function)):&#160;WAIT2.c'],['../group___w_a_i_t3__module.html#ga0d401ca6ca297b5b7a450deed0c42b78',1,'__attribute__((naked, no_instrument_function)):&#160;WAIT3.c'],['../group___w_a_i_t4__module.html#ga0d401ca6ca297b5b7a450deed0c42b78',1,'__attribute__((naked, no_instrument_function)):&#160;WAIT4.c'],['../startup_8c.html#a201468129b483039afc5a619e2d31097',1,'__attribute__((weak)):&#160;startup.c'],['../startup_8c.html#a2804a023941a956288c32ad08b2cf59e',1,'__attribute__((naked)):&#160;startup.c']]],
+  ['_5f_5fcopy_5from_5fsection',['__copy_rom_section',['../startup_8c.html#a20116053dd02c0128d685fcd5078c3a7',1,'startup.c']]],
+  ['_5f_5fcopy_5from_5fsections_5fto_5fram',['__copy_rom_sections_to_ram',['../startup_8c.html#ae5ea2704fd7338a3858d5b46e8ebc3f8',1,'startup.c']]],
+  ['_5f_5fiar_5fprogram_5fstart',['__iar_program_start',['../startup_8c.html#ab4ccc436ed44ffac8d3ab82bba93476d',1,'startup.c']]],
+  ['_5f_5finit_5fhardware',['__init_hardware',['../group___cpu__module.html#ga32a8d86789a3326b3120bf1e1c1d4252',1,'__init_hardware(void):&#160;Cpu.c'],['../group___cpu__module.html#ga32a8d86789a3326b3120bf1e1c1d4252',1,'__init_hardware():&#160;Cpu.c']]],
+  ['_5f_5finit_5fregisters',['__init_registers',['../startup_8c.html#a85078be29214e670653250f605ff797e',1,'startup.c']]],
+  ['_5f_5finit_5fuser',['__init_user',['../startup_8c.html#abdb8586df61436f61fae8a1aa8ab4306',1,'startup.c']]],
+  ['_5f_5fthumb_5fstartup',['__thumb_startup',['../group___vectors__module.html#ga1291096ffdfeb4d928a6020b5e9a8ccc',1,'__thumb_startup(void):&#160;Vectors.c'],['../startup_8c.html#a1291096ffdfeb4d928a6020b5e9a8ccc',1,'__thumb_startup(void):&#160;startup.c']]],
+  ['_5fstart',['_start',['../startup_8c.html#a8b67a6ff3f33fae9b3f1b142005c0bc2',1,'startup.c']]]
+];

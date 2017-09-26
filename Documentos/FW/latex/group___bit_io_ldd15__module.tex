@@ -1,0 +1,296 @@
+\hypertarget{group___bit_io_ldd15__module}{}\section{Bit\+Io\+Ldd15 module documentation}
+\label{group___bit_io_ldd15__module}\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_bit_io_ldd15___t_device_data}{Bit\+Io\+Ldd15\+\_\+\+T\+Device\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_ga2d00d02e3f5d2623adc748062013543c}{Bit\+Io\+Ldd15\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}~0x400\+F\+F080U
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_ga7e053a3640af5a7522d2864dea4be75f}{Bit\+Io\+Ldd15\+\_\+\+Device\+Data}~((\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$)\hyperlink{group___p_e___types__module_gaa1c23d559daef5bcd3327ca83fb56f5a}{P\+E\+\_\+\+L\+D\+D\+\_\+\+Get\+Device\+Structure}(\hyperlink{group___p_e___types__module_ga4874ae66ec5915ca7e18b58a8177ab6c}{P\+E\+\_\+\+L\+D\+D\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+Bit\+Io\+Ldd15\+\_\+\+ID}))
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_ga5009de5631bf4920c9945cb9f43bc967}{Bit\+Io\+Ldd15\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_ga1a0f2e5c56a097b1f32085ec144739e4}{Bit\+Io\+Ldd15\+\_\+\+Set\+Dir\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_ga3d70d62d095acc7ac1de2661be126bac}{Bit\+Io\+Ldd15\+\_\+\+Set\+Input\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_gaf74cbe4412ba50ca5531fbad826b4c97}{Bit\+Io\+Ldd15\+\_\+\+Set\+Output\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_gada412e03041e18e145b88bc93c5c0916}{Bit\+Io\+Ldd15\+\_\+\+Get\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_ga92b5e7982380a58d9ac4438940582776}{Bit\+Io\+Ldd15\+\_\+\+Put\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_gaf5a424269d06c7e7afb305d5346467bf}{Bit\+Io\+Ldd15\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_ga565ca8d7140d8ff7da084e70f7ff0f08}{Bit\+Io\+Ldd15\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_ga4d75a3ea9185102ecf4d68793c4b0a6f}{Bit\+Io\+Ldd15\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}~\hyperlink{group___backward___compatibility___symbols_gaed3b8398ebed63795f9ce57eb9a59097}{F\+P\+T\+C\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_ga38c690112da6266a607c0056ca3a88a2}{Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}~\hyperlink{group___p_o_r_t___peripheral_ga03c740cdda17711afafc932723871474}{P\+O\+R\+T\+C\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR}
+\item 
+\#define \hyperlink{group___bit_io_ldd15__module_ga3d9bce4012d1ef9969702f592cb6f5e7}{Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK}~0x0200U
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{struct_bit_io_ldd15___t_device_data}{Bit\+Io\+Ldd15\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___bit_io_ldd15__module_gab121a1bc3c07e68d2b0beb9e835ab51f}{Bit\+Io\+Ldd15\+\_\+\+T\+Device\+Data\+Ptr}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ \hyperlink{group___bit_io_ldd15__module_gae933572e69dc3cc23725af8444104156}{Bit\+Io\+Ldd15\+\_\+\+Init} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the \char`\"{}\+Enable
+    in init. code\char`\"{} is set to \char`\"{}yes\char`\"{} value then the device is also enabled(see the description of the Enable() method). In this case the Enable() method is not necessary and needn\textquotesingle{}t to be generated. \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd15__module_gaa625d107e194a1e065b8a51f20545860}{Bit\+Io\+Ldd15\+\_\+\+Set\+Dir} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr, \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Dir)
+\begin{DoxyCompactList}\small\item\em Sets a pin direction (available only if the direction = {\itshape \mbox{[}input/output\mbox{]}}). \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd15__module_gada439e248c981dbaf15efd269de4d4d2}{Bit\+Io\+Ldd15\+\_\+\+Set\+Input} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Sets a pin direction to input (available only if the direction = {\itshape \mbox{[}input/output\mbox{]}}). \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd15__module_ga507454e3c3f8d84768c97902fad489a1}{Bit\+Io\+Ldd15\+\_\+\+Set\+Output} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Sets a pin direction to output (available only if the direction = {\itshape \mbox{[}input/output\mbox{]}}). \end{DoxyCompactList}\item 
+\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{group___bit_io_ldd15__module_ga6b6e379b6e145395c401f29e07e51e6f}{Bit\+Io\+Ldd15\+\_\+\+Get\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Returns the input/output value. If the direction is \mbox{[}input\mbox{]} then the input value of the pin is read and returned. If the direction is \mbox{[}output\mbox{]} then the last written value is read and returned (see $<$\+Safe mode$>$=\char`\"{}\char`\"{}$>$ property for limitations). This method cannot be disabled if direction is \mbox{[}input\mbox{]}. \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd15__module_ga875a36906d376856264c546b784ae909}{Bit\+Io\+Ldd15\+\_\+\+Put\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr, \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Val)
+\begin{DoxyCompactList}\small\item\em The specified output value is set. If the direction is {\bfseries  input}, the component saves the value to a memory or a register and this value will be written to the pin after switching to the output mode (using {\ttfamily Set\+Dir(\+T\+R\+U\+E)}; see \href{BitIOProperties.html#SafeMode}{\tt Safe mode} property for limitations). If the direction is {\bfseries output}, it writes the value to the pin. (Method is available only if the direction = $<$u$>${\ttfamily output}$<$/u$>$ or $<$u$>${\ttfamily  input/output}$<$/u$>$). \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd15__module_ga4d39e4bded6e2f7edd0f350a6d72d2f6}{Bit\+Io\+Ldd15\+\_\+\+Clr\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Clears (set to zero) the output value. It is equivalent to the \mbox{[}Put\+Val(\+F\+A\+L\+S\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. \end{DoxyCompactList}\item 
+void \hyperlink{group___bit_io_ldd15__module_ga49339ddbfe8f0278ee4f854d61235f4d}{Bit\+Io\+Ldd15\+\_\+\+Set\+Val} (\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$Device\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Sets (to one) the output value. It is equivalent to the \mbox{[}Put\+Val(\+T\+R\+U\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group___bit_io_ldd15__module_gaf5a424269d06c7e7afb305d5346467bf}\label{group___bit_io_ldd15__module_gaf5a424269d06c7e7afb305d5346467bf}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd15\_ClrVal\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+Clr\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Clr\+Val method of the component Bit\+Io\+Ldd15 is enabled (generated) \mbox{\Hypertarget{group___bit_io_ldd15__module_ga7e053a3640af5a7522d2864dea4be75f}\label{group___bit_io_ldd15__module_ga7e053a3640af5a7522d2864dea4be75f}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Device\+Data@{Bit\+Io\+Ldd15\+\_\+\+Device\+Data}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Device\+Data@{Bit\+Io\+Ldd15\+\_\+\+Device\+Data}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Device\+Data}{BitIoLdd15\_DeviceData}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+Device\+Data~((\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$)\hyperlink{group___p_e___types__module_gaa1c23d559daef5bcd3327ca83fb56f5a}{P\+E\+\_\+\+L\+D\+D\+\_\+\+Get\+Device\+Structure}(\hyperlink{group___p_e___types__module_ga4874ae66ec5915ca7e18b58a8177ab6c}{P\+E\+\_\+\+L\+D\+D\+\_\+\+C\+O\+M\+P\+O\+N\+E\+N\+T\+\_\+\+Bit\+Io\+Ldd15\+\_\+\+ID}))}
+
+Device data structure pointer used when auto initialization property is enabled. This constant can be passed as a first parameter to all component\textquotesingle{}s methods. \mbox{\Hypertarget{group___bit_io_ldd15__module_gada412e03041e18e145b88bc93c5c0916}\label{group___bit_io_ldd15__module_gada412e03041e18e145b88bc93c5c0916}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Get\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Get\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Get\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Get\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Get\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd15\_GetVal\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+Get\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Get\+Val method of the component Bit\+Io\+Ldd15 is enabled (generated) \mbox{\Hypertarget{group___bit_io_ldd15__module_ga5009de5631bf4920c9945cb9f43bc967}\label{group___bit_io_ldd15__module_ga5009de5631bf4920c9945cb9f43bc967}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd15\_Init\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+Init\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Init method of the component Bit\+Io\+Ldd15 is enabled (generated) \mbox{\Hypertarget{group___bit_io_ldd15__module_ga4d75a3ea9185102ecf4d68793c4b0a6f}\label{group___bit_io_ldd15__module_ga4d75a3ea9185102ecf4d68793c4b0a6f}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd15\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{Bit\+Io\+Ldd15\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd15\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}{BitIoLdd15\_MODULE\_BASE\_ADDRESS}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS~\hyperlink{group___backward___compatibility___symbols_gaed3b8398ebed63795f9ce57eb9a59097}{F\+P\+T\+C\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR}}
+
+Name of macro used as the base address \mbox{\Hypertarget{group___bit_io_ldd15__module_ga3d9bce4012d1ef9969702f592cb6f5e7}\label{group___bit_io_ldd15__module_ga3d9bce4012d1ef9969702f592cb6f5e7}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK@{Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK}}
+\index{Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK@{Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK}{BitIoLdd15\_PORT\_MASK}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+\_\+\+M\+A\+SK~0x0200U}
+
+Mask of the allocated pin from the port \mbox{\Hypertarget{group___bit_io_ldd15__module_ga38c690112da6266a607c0056ca3a88a2}\label{group___bit_io_ldd15__module_ga38c690112da6266a607c0056ca3a88a2}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}{BitIoLdd15\_PORTCONTROL\_BASE\_ADDRESS}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+P\+O\+R\+T\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS~\hyperlink{group___p_o_r_t___peripheral_ga03c740cdda17711afafc932723871474}{P\+O\+R\+T\+C\+\_\+\+B\+A\+S\+E\+\_\+\+P\+TR}}
+
+Name of macro used as the base address \mbox{\Hypertarget{group___bit_io_ldd15__module_ga2d00d02e3f5d2623adc748062013543c}\label{group___bit_io_ldd15__module_ga2d00d02e3f5d2623adc748062013543c}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd15\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{Bit\+Io\+Ldd15\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS@{Bit\+Io\+Ldd15\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS}{BitIoLdd15\_PRPH\_BASE\_ADDRESS}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+P\+R\+P\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS~0x400\+F\+F080U}
+
+Peripheral base address of a device allocated by the component. This constant can be used directly in P\+DD macros. \mbox{\Hypertarget{group___bit_io_ldd15__module_ga92b5e7982380a58d9ac4438940582776}\label{group___bit_io_ldd15__module_ga92b5e7982380a58d9ac4438940582776}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Put\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Put\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Put\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Put\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Put\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd15\_PutVal\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+Put\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Put\+Val method of the component Bit\+Io\+Ldd15 is enabled (generated) \mbox{\Hypertarget{group___bit_io_ldd15__module_ga1a0f2e5c56a097b1f32085ec144739e4}\label{group___bit_io_ldd15__module_ga1a0f2e5c56a097b1f32085ec144739e4}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Set\+Dir\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Set\+Dir\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Set\+Dir\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Set\+Dir\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Set\+Dir\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd15\_SetDir\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+Set\+Dir\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Set\+Dir method of the component Bit\+Io\+Ldd15 is enabled (generated) \mbox{\Hypertarget{group___bit_io_ldd15__module_ga3d70d62d095acc7ac1de2661be126bac}\label{group___bit_io_ldd15__module_ga3d70d62d095acc7ac1de2661be126bac}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Set\+Input\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Set\+Input\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Set\+Input\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Set\+Input\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Set\+Input\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd15\_SetInput\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+Set\+Input\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Set\+Input method of the component Bit\+Io\+Ldd15 is enabled (generated) \mbox{\Hypertarget{group___bit_io_ldd15__module_gaf74cbe4412ba50ca5531fbad826b4c97}\label{group___bit_io_ldd15__module_gaf74cbe4412ba50ca5531fbad826b4c97}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Set\+Output\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Set\+Output\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Set\+Output\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Set\+Output\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Set\+Output\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd15\_SetOutput\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+Set\+Output\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Set\+Output method of the component Bit\+Io\+Ldd15 is enabled (generated) \mbox{\Hypertarget{group___bit_io_ldd15__module_ga565ca8d7140d8ff7da084e70f7ff0f08}\label{group___bit_io_ldd15__module_ga565ca8d7140d8ff7da084e70f7ff0f08}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED@{Bit\+Io\+Ldd15\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}{BitIoLdd15\_SetVal\_METHOD\_ENABLED}}
+{\footnotesize\ttfamily \#define Bit\+Io\+Ldd15\+\_\+\+Set\+Val\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+E\+N\+A\+B\+L\+ED}
+
+Set\+Val method of the component Bit\+Io\+Ldd15 is enabled (generated) 
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{group___bit_io_ldd15__module_gab121a1bc3c07e68d2b0beb9e835ab51f}\label{group___bit_io_ldd15__module_gab121a1bc3c07e68d2b0beb9e835ab51f}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+T\+Device\+Data\+Ptr@{Bit\+Io\+Ldd15\+\_\+\+T\+Device\+Data\+Ptr}}
+\index{Bit\+Io\+Ldd15\+\_\+\+T\+Device\+Data\+Ptr@{Bit\+Io\+Ldd15\+\_\+\+T\+Device\+Data\+Ptr}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+T\+Device\+Data\+Ptr}{BitIoLdd15\_TDeviceDataPtr}}
+{\footnotesize\ttfamily typedef \hyperlink{struct_bit_io_ldd15___t_device_data}{Bit\+Io\+Ldd15\+\_\+\+T\+Device\+Data}$\ast$ \hyperlink{group___bit_io_ldd15__module_gab121a1bc3c07e68d2b0beb9e835ab51f}{Bit\+Io\+Ldd15\+\_\+\+T\+Device\+Data\+Ptr}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group___bit_io_ldd15__module_ga4d39e4bded6e2f7edd0f350a6d72d2f6}\label{group___bit_io_ldd15__module_ga4d39e4bded6e2f7edd0f350a6d72d2f6}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Clr\+Val@{Bit\+Io\+Ldd15\+\_\+\+Clr\+Val}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Clr\+Val@{Bit\+Io\+Ldd15\+\_\+\+Clr\+Val}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Clr\+Val()}{BitIoLdd15\_ClrVal()}}
+{\footnotesize\ttfamily void Bit\+Io\+Ldd15\+\_\+\+Clr\+Val (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$}]{Device\+Data\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Clears (set to zero) the output value. It is equivalent to the \mbox{[}Put\+Val(\+F\+A\+L\+S\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Device\+Data\+Ptr} & -\/ Pointer to device data structure returned by $<$\+Init$>$ method. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group___bit_io_ldd15__module_ga6b6e379b6e145395c401f29e07e51e6f}\label{group___bit_io_ldd15__module_ga6b6e379b6e145395c401f29e07e51e6f}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Get\+Val@{Bit\+Io\+Ldd15\+\_\+\+Get\+Val}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Get\+Val@{Bit\+Io\+Ldd15\+\_\+\+Get\+Val}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Get\+Val()}{BitIoLdd15\_GetVal()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} Bit\+Io\+Ldd15\+\_\+\+Get\+Val (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$}]{Device\+Data\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Returns the input/output value. If the direction is \mbox{[}input\mbox{]} then the input value of the pin is read and returned. If the direction is \mbox{[}output\mbox{]} then the last written value is read and returned (see $<$\+Safe mode$>$=\char`\"{}\char`\"{}$>$ property for limitations). This method cannot be disabled if direction is \mbox{[}input\mbox{]}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Device\+Data\+Ptr} & -\/ Device data structure pointer returned by $<$\+Init$>$ method. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Input or output value. Possible values\+: $<$false$>$ -\/ logical \char`\"{}0\char`\"{} (Low level) $<$true$>$ -\/ logical \char`\"{}1\char`\"{} (High level) 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{group___bit_io_ldd15__module_gae933572e69dc3cc23725af8444104156}\label{group___bit_io_ldd15__module_gae933572e69dc3cc23725af8444104156}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Init@{Bit\+Io\+Ldd15\+\_\+\+Init}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Init@{Bit\+Io\+Ldd15\+\_\+\+Init}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Init()}{BitIoLdd15\_Init()}}
+{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$ Bit\+Io\+Ldd15\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets interrupt priority, sets pin routing, sets timing, etc. If the \char`\"{}\+Enable
+    in init. code\char`\"{} is set to \char`\"{}yes\char`\"{} value then the device is also enabled(see the description of the Enable() method). In this case the Enable() method is not necessary and needn\textquotesingle{}t to be generated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em User\+Data\+Ptr} & -\/ Pointer to the user or R\+T\+OS specific data. This pointer will be passed as an event or callback parameter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Pointer to the dynamically allocated private structure or N\+U\+LL if there was an error. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{group___bit_io_ldd15__module_ga875a36906d376856264c546b784ae909}\label{group___bit_io_ldd15__module_ga875a36906d376856264c546b784ae909}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Put\+Val@{Bit\+Io\+Ldd15\+\_\+\+Put\+Val}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Put\+Val@{Bit\+Io\+Ldd15\+\_\+\+Put\+Val}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Put\+Val()}{BitIoLdd15\_PutVal()}}
+{\footnotesize\ttfamily void Bit\+Io\+Ldd15\+\_\+\+Put\+Val (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$}]{Device\+Data\+Ptr,  }\item[{\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool}}]{Val }\end{DoxyParamCaption})}
+
+
+
+The specified output value is set. If the direction is {\bfseries  input}, the component saves the value to a memory or a register and this value will be written to the pin after switching to the output mode (using {\ttfamily Set\+Dir(\+T\+R\+U\+E)}; see \href{BitIOProperties.html#SafeMode}{\tt Safe mode} property for limitations). If the direction is {\bfseries output}, it writes the value to the pin. (Method is available only if the direction = $<$u$>${\ttfamily output}$<$/u$>$ or $<$u$>${\ttfamily  input/output}$<$/u$>$). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Device\+Data\+Ptr} & -\/ Device data structure pointer returned by $<$\+Init$>$ method. \\
+\hline
+{\em Val} & -\/ Output value. Possible values\+: $<$false$>$ -\/ logical \char`\"{}0\char`\"{} (Low level) $<$true$>$ -\/ logical \char`\"{}1\char`\"{} (High level) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group___bit_io_ldd15__module_gaa625d107e194a1e065b8a51f20545860}\label{group___bit_io_ldd15__module_gaa625d107e194a1e065b8a51f20545860}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Set\+Dir@{Bit\+Io\+Ldd15\+\_\+\+Set\+Dir}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Set\+Dir@{Bit\+Io\+Ldd15\+\_\+\+Set\+Dir}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Set\+Dir()}{BitIoLdd15\_SetDir()}}
+{\footnotesize\ttfamily void Bit\+Io\+Ldd15\+\_\+\+Set\+Dir (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$}]{Device\+Data\+Ptr,  }\item[{\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool}}]{Dir }\end{DoxyParamCaption})}
+
+
+
+Sets a pin direction (available only if the direction = {\itshape \mbox{[}input/output\mbox{]}}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Device\+Data\+Ptr} & -\/ Device data structure pointer returned by $<$\+Init$>$ method. \\
+\hline
+{\em Dir} & -\/ Direction to set. Possible values\+: $<$false$>$ -\/ Input $<$true$>$ -\/ Output \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group___bit_io_ldd15__module_gada439e248c981dbaf15efd269de4d4d2}\label{group___bit_io_ldd15__module_gada439e248c981dbaf15efd269de4d4d2}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Set\+Input@{Bit\+Io\+Ldd15\+\_\+\+Set\+Input}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Set\+Input@{Bit\+Io\+Ldd15\+\_\+\+Set\+Input}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Set\+Input()}{BitIoLdd15\_SetInput()}}
+{\footnotesize\ttfamily void Bit\+Io\+Ldd15\+\_\+\+Set\+Input (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$}]{Device\+Data\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Sets a pin direction to input (available only if the direction = {\itshape \mbox{[}input/output\mbox{]}}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Device\+Data\+Ptr} & -\/ Device data structure pointer returned by $<$\+Init$>$ method. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group___bit_io_ldd15__module_ga507454e3c3f8d84768c97902fad489a1}\label{group___bit_io_ldd15__module_ga507454e3c3f8d84768c97902fad489a1}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Set\+Output@{Bit\+Io\+Ldd15\+\_\+\+Set\+Output}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Set\+Output@{Bit\+Io\+Ldd15\+\_\+\+Set\+Output}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Set\+Output()}{BitIoLdd15\_SetOutput()}}
+{\footnotesize\ttfamily void Bit\+Io\+Ldd15\+\_\+\+Set\+Output (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$}]{Device\+Data\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Sets a pin direction to output (available only if the direction = {\itshape \mbox{[}input/output\mbox{]}}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Device\+Data\+Ptr} & -\/ Device data structure pointer returned by $<$\+Init$>$ method. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group___bit_io_ldd15__module_ga49339ddbfe8f0278ee4f854d61235f4d}\label{group___bit_io_ldd15__module_ga49339ddbfe8f0278ee4f854d61235f4d}} 
+\index{Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}!Bit\+Io\+Ldd15\+\_\+\+Set\+Val@{Bit\+Io\+Ldd15\+\_\+\+Set\+Val}}
+\index{Bit\+Io\+Ldd15\+\_\+\+Set\+Val@{Bit\+Io\+Ldd15\+\_\+\+Set\+Val}!Bit\+Io\+Ldd15 module documentation@{Bit\+Io\+Ldd15 module documentation}}
+\subsubsection{\texorpdfstring{Bit\+Io\+Ldd15\+\_\+\+Set\+Val()}{BitIoLdd15\_SetVal()}}
+{\footnotesize\ttfamily void Bit\+Io\+Ldd15\+\_\+\+Set\+Val (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_gac5cf1362f1f0e3a2ce71b1bf2276d091}{L\+D\+D\+\_\+\+T\+Device\+Data} $\ast$}]{Device\+Data\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Sets (to one) the output value. It is equivalent to the \mbox{[}Put\+Val(\+T\+R\+U\+E)\mbox{]}. This method is available only if the direction = {\itshape \mbox{[}output\mbox{]}} or {\itshape \mbox{[}input/output\mbox{]}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Device\+Data\+Ptr} & -\/ Pointer to device data structure returned by $<$\+Init$>$ method. \\
+\hline
+\end{DoxyParams}
