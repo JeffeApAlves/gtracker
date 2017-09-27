@@ -266,7 +266,7 @@ void ihm_handle_update(void){
 		// Detecta o momento da transição para o zero
 		if(--time_splash<=0){
 
-			ihm_set_active_screen(SCREEN_ACCE);
+			ihm_set_active_screen(SCREEN_CLOCK);
 		}
 
 	}else{
@@ -319,7 +319,7 @@ void readKey(void){
 
 		}else{
 
-			ihm_set_active_screen(SCREEN_ACCE);
+			ihm_set_active_screen(SCREEN_CLOCK);
 		}
 	}
 }

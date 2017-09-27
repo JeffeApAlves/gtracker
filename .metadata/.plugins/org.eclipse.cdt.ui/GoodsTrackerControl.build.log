@@ -1,11 +1,201 @@
-18:58:57 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
+17:56:57 **** Incremental Build of configuration Debug for project GoodsTrackerControl ****
 make all 
+Building file: ../Sources/Utils/RingBuffer.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/Utils/RingBuffer.d" -MT"Sources/Utils/RingBuffer.o" -c -o "Sources/Utils/RingBuffer.o" "../Sources/Utils/RingBuffer.c"
+../Sources/Utils/RingBuffer.c: In function 'putData':
+../Sources/Utils/RingBuffer.c:19:3: warning: implicit declaration of function 'vPortEnterCritical' [-Wimplicit-function-declaration]
+   vPortEnterCritical();
+   ^~~~~~~~~~~~~~~~~~
+../Sources/Utils/RingBuffer.c:37:3: warning: implicit declaration of function 'vPortExitCritical' [-Wimplicit-function-declaration]
+   vPortExitCritical();
+   ^~~~~~~~~~~~~~~~~
+Finished building: ../Sources/Utils/RingBuffer.c
+ 
+Building file: ../Sources/Tank/Tank.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/Tank/Tank.d" -MT"Sources/Tank/Tank.o" -c -o "Sources/Tank/Tank.o" "../Sources/Tank/Tank.c"
+Finished building: ../Sources/Tank/Tank.c
+ 
+Building file: ../Sources/IHM/ihm.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/IHM/ihm.d" -MT"Sources/IHM/ihm.o" -c -o "Sources/IHM/ihm.o" "../Sources/IHM/ihm.c"
+Finished building: ../Sources/IHM/ihm.c
+ 
+Building file: ../Sources/GPS/gps.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/GPS/gps.d" -MT"Sources/GPS/gps.o" -c -o "Sources/GPS/gps.o" "../Sources/GPS/gps.c"
+../Sources/GPS/gps.c: In function 'decoderGGA':
+../Sources/GPS/gps.c:249:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Identifier,   frame,0, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:18:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:12,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/application.h:17,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:54:6: note: expected 'char *' but argument is of type 'char (*)[6]'
+ bool AsString(char* out,char *str,uint16_t index,const char a_delim);
+      ^~~~~~~~
+../Sources/GPS/gps.c:250:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Time_UTC,   frame,1, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:18:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:12,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/application.h:17,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:54:6: note: expected 'char *' but argument is of type 'char (*)[11]'
+ bool AsString(char* out,char *str,uint16_t index,const char a_delim);
+      ^~~~~~~~
+../Sources/GPS/gps.c: In function 'decoderRMC':
+../Sources/GPS/gps.c:291:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Identifier,  frame,0, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:18:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:12,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/application.h:17,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:54:6: note: expected 'char *' but argument is of type 'char (*)[6]'
+ bool AsString(char* out,char *str,uint16_t index,const char a_delim);
+      ^~~~~~~~
+../Sources/GPS/gps.c:292:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Time_UTC,  frame,1, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:18:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:12,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/application.h:17,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:54:6: note: expected 'char *' but argument is of type 'char (*)[11]'
+ bool AsString(char* out,char *str,uint16_t index,const char a_delim);
+      ^~~~~~~~
+../Sources/GPS/gps.c:299:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Date,   frame,9, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:18:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:12,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/application.h:17,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:54:6: note: expected 'char *' but argument is of type 'char (*)[7]'
+ bool AsString(char* out,char *str,uint16_t index,const char a_delim);
+      ^~~~~~~~
+../Sources/GPS/gps.c: In function 'decoderGSA':
+../Sources/GPS/gps.c:332:11: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+  AsString(&data->Identifier,  frame,0, NMEA_CHAR_SEPARATOR);
+           ^
+In file included from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/GPS.h:18:0,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/Telemetria.h:12,
+                 from F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/application.h:17,
+                 from ../Sources/GPS/gps.c:7:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:54:6: note: expected 'char *' but argument is of type 'char (*)[6]'
+ bool AsString(char* out,char *str,uint16_t index,const char a_delim);
+      ^~~~~~~~
+Finished building: ../Sources/GPS/gps.c
+ 
+Building file: ../Sources/Communication/Communication.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/Communication/Communication.d" -MT"Sources/Communication/Communication.o" -c -o "Sources/Communication/Communication.o" "../Sources/Communication/Communication.c"
+Finished building: ../Sources/Communication/Communication.c
+ 
+Building file: ../Sources/Communication/Serialization.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/Communication/Serialization.d" -MT"Sources/Communication/Serialization.o" -c -o "Sources/Communication/Serialization.o" "../Sources/Communication/Serialization.c"
+Finished building: ../Sources/Communication/Serialization.c
+ 
+Building file: ../Sources/Communication/protocol.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/Communication/protocol.d" -MT"Sources/Communication/protocol.o" -c -o "Sources/Communication/protocol.o" "../Sources/Communication/protocol.c"
+../Sources/Communication/protocol.c: In function 'decoderFrame':
+../Sources/Communication/protocol.c:168:15: warning: passing argument 1 of 'AsInteger' from incompatible pointer type [-Wincompatible-pointer-types]
+     AsInteger(&package_rx->Header.time_stamp, frameRx.Data,2,CHAR_SEPARATOR) &&
+               ^
+In file included from ../Sources/Communication/protocol.c:5:0:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:53:6: note: expected 'int *' but argument is of type 'int32_t * {aka long int *}'
+ bool AsInteger(int* out,char *str,uint16_t index,const char a_delim);
+      ^~~~~~~~~
+../Sources/Communication/protocol.c:169:14: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+     AsString(&package_rx->Header.operacao,  frameRx.Data,3,CHAR_SEPARATOR) &&
+              ^
+In file included from ../Sources/Communication/protocol.c:5:0:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:54:6: note: expected 'char *' but argument is of type 'char (*)[3]'
+ bool AsString(char* out,char *str,uint16_t index,const char a_delim);
+      ^~~~~~~~
+../Sources/Communication/protocol.c:172:14: warning: passing argument 1 of 'AsString' from incompatible pointer type [-Wincompatible-pointer-types]
+     AsString(&package_rx->PayLoad.Data,   frameRx.Data,6,CHAR_SEPARATOR)
+              ^
+In file included from ../Sources/Communication/protocol.c:5:0:
+F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes/utils.h:54:6: note: expected 'char *' but argument is of type 'char (*)[256]'
+ bool AsString(char* out,char *str,uint16_t index,const char a_delim);
+      ^~~~~~~~
+Finished building: ../Sources/Communication/protocol.c
+ 
+Building file: ../Sources/Communication/serial.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/Communication/serial.d" -MT"Sources/Communication/serial.o" -c -o "Sources/Communication/serial.o" "../Sources/Communication/serial.c"
+Finished building: ../Sources/Communication/serial.c
+ 
+Building file: ../Sources/App/application.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/App/application.d" -MT"Sources/App/application.o" -c -o "Sources/App/application.o" "../Sources/App/application.c"
+Finished building: ../Sources/App/application.c
+ 
+Building file: ../Sources/App/consumer.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/App/consumer.d" -MT"Sources/App/consumer.o" -c -o "Sources/App/consumer.o" "../Sources/App/consumer.c"
+Finished building: ../Sources/App/consumer.c
+ 
+Building file: ../Sources/Accelerometer/Accelerometer.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/Accelerometer/Accelerometer.d" -MT"Sources/Accelerometer/Accelerometer.o" -c -o "Sources/Accelerometer/Accelerometer.o" "../Sources/Accelerometer/Accelerometer.c"
+Finished building: ../Sources/Accelerometer/Accelerometer.c
+ 
+Building file: ../Sources/Accelerometer/MMA8451.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/Accelerometer/MMA8451.d" -MT"Sources/Accelerometer/MMA8451.o" -c -o "Sources/Accelerometer/MMA8451.o" "../Sources/Accelerometer/MMA8451.c"
+Finished building: ../Sources/Accelerometer/MMA8451.c
+ 
+Building file: ../Sources/Events.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/Events.d" -MT"Sources/Events.o" -c -o "Sources/Events.o" "../Sources/Events.c"
+../Sources/Events.c: In function 'AS1_OnRxChar':
+../Sources/Events.c:232:3: warning: implicit declaration of function 'putRxData' [-Wimplicit-function-declaration]
+   putRxData(byte);
+   ^~~~~~~~~
+../Sources/Events.c: In function 'AS1_OnTxChar':
+../Sources/Events.c:254:6: warning: implicit declaration of function 'getTxData' [-Wimplicit-function-declaration]
+   if(getTxData(&byte)){
+      ^~~~~~~~~
+Finished building: ../Sources/Events.c
+ 
+Building file: ../Sources/frtos_tasks.c
+Invoking: Cross ARM GNU C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/PDD" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Includes" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Static_Code/IO_Map" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources" -I"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Generated_Code" -MMD -MP -MF"Sources/frtos_tasks.d" -MT"Sources/frtos_tasks.o" -c -o "Sources/frtos_tasks.o" "../Sources/frtos_tasks.c"
+../Sources/frtos_tasks.c: In function 'run_main':
+../Sources/frtos_tasks.c:55:2: warning: implicit declaration of function 'uart_init' [-Wimplicit-function-declaration]
+  uart_init();
+  ^~~~~~~~~
+../Sources/frtos_tasks.c:65:3: warning: implicit declaration of function 'readKey' [-Wimplicit-function-declaration]
+   readKey();
+   ^~~~~~~
+../Sources/frtos_tasks.c: In function 'run_ihm':
+../Sources/frtos_tasks.c:102:2: warning: implicit declaration of function 'deInitIHM' [-Wimplicit-function-declaration]
+  deInitIHM();
+  ^~~~~~~~~
+Finished building: ../Sources/frtos_tasks.c
+ 
+Building target: GoodsTrackerControl.elf
+Invoking: Cross ARM GNU C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Project_Settings/Linker_Files" -Wl,-Map,"GoodsTrackerControl.map" -specs=nano.specs -specs=nosys.specs -o "GoodsTrackerControl.elf"  ./Sources/clock/clock.o  ./Sources/Utils/Frame.o ./Sources/Utils/RingBuffer.o ./Sources/Utils/utils.o  ./Sources/Tank/Tank.o  ./Sources/IHM/ihm.o ./Sources/IHM/lcd.o  ./Sources/GPS/gps.o  ./Sources/Communication/Communication.o ./Sources/Communication/CommunicationFrame.o ./Sources/Communication/Serialization.o ./Sources/Communication/protocol.o ./Sources/Communication/serial.o  ./Sources/App/application.o ./Sources/App/consumer.o  ./Sources/Accelerometer/Accelerometer.o ./Sources/Accelerometer/MMA8451.o  ./Sources/Events.o ./Sources/frtos_tasks.o ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o  ./Generated_Code/AD1.o ./Generated_Code/AS1.o ./Generated_Code/AS2.o ./Generated_Code/ASerialLdd1.o ./Generated_Code/ASerialLdd2.o ./Generated_Code/AdcLdd1.o ./Generated_Code/BitIoLdd1.o ./Generated_Code/BitIoLdd12.o ./Generated_Code/BitIoLdd13.o ./Generated_Code/BitIoLdd14.o ./Generated_Code/BitIoLdd15.o ./Generated_Code/BitIoLdd2.o ./Generated_Code/BitIoLdd3.o ./Generated_Code/BitIoLdd6.o ./Generated_Code/BitIoLdd7.o ./Generated_Code/Cpu.o ./Generated_Code/DB41.o ./Generated_Code/DB51.o ./Generated_Code/DB61.o ./Generated_Code/DB71.o ./Generated_Code/EN1.o ./Generated_Code/FRTOS1.o ./Generated_Code/I2C2.o ./Generated_Code/LCDout.o ./Generated_Code/LED_B.o ./Generated_Code/LED_G.o ./Generated_Code/LED_R.o ./Generated_Code/LEDpin1.o ./Generated_Code/LEDpin2.o ./Generated_Code/LEDpin3.o ./Generated_Code/MCUC1.o ./Generated_Code/PE_LDD.o ./Generated_Code/RS1.o ./Generated_Code/RTC1.o ./Generated_Code/TI1.o ./Generated_Code/TSK1.o ./Generated_Code/TU1.o ./Generated_Code/TimerIntLdd1.o ./Generated_Code/UTIL1.o ./Generated_Code/Vectors.o ./Generated_Code/WAIT1.o ./Generated_Code/WAIT2.o ./Generated_Code/WAIT3.o ./Generated_Code/WAIT4.o ./Generated_Code/XF1.o ./Generated_Code/croutine.o ./Generated_Code/event_groups.o ./Generated_Code/heap_1.o ./Generated_Code/heap_2.o ./Generated_Code/heap_3.o ./Generated_Code/heap_4.o ./Generated_Code/heap_5.o ./Generated_Code/heap_useNewlib.o ./Generated_Code/list.o ./Generated_Code/mpu_wrappers.o ./Generated_Code/port.o ./Generated_Code/queue.o ./Generated_Code/tasks.o ./Generated_Code/timers.o   
+Finished building target: GoodsTrackerControl.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O srec "GoodsTrackerControl.elf"  "GoodsTrackerControl.srec"
+Finished building: GoodsTrackerControl.srec
+ 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "GoodsTrackerControl.elf"
    text	   data	    bss	    dec	    hex	filename
-  62204	    600	  15340	  78144	  13140	GoodsTrackerControl.elf
+  62284	    600	  15724	  78608	  13310	GoodsTrackerControl.elf
 Finished building: GoodsTrackerControl.siz
  
 
-18:58:58 Build Finished (took 858ms)
+17:57:05 Build Finished (took 7s.535ms)
 

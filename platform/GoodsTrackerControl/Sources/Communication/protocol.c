@@ -146,8 +146,6 @@ static bool decoderFrame(CommunicationPackage* package_rx) {
 
 	bool ret = false;
 
-	clearPackage(package_rx);
-
 	uint16_t count = getNumField(frameRx.Data,CHAR_SEPARATOR);
 
 	// O minimo são 8  itens (7 + checksun)
@@ -178,6 +176,8 @@ static bool decoderFrame(CommunicationPackage* package_rx) {
 			}else{
 				clearPackage(&package_rx);
 			}
+		}else{
+			clearPackage(package_rx);
 		}
 	}
 

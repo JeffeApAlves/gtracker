@@ -8,9 +8,10 @@
 #ifndef SOURCES_RINGBUFFER_H_
 #define SOURCES_RINGBUFFER_H_
 
+#include <string.h>
 #include <stdbool.h>
 
-#define BUFFER_SIZE		128
+#define BUFFER_SIZE		256
 
 typedef struct{
 

@@ -19,7 +19,6 @@ bool hasTxData(void);
 bool isAnyRxData();
 bool getRxData(char* ch);
 void putTxString(char* str);
-
 void startTX(void);
 
 extern RingBuffer	bufferRx,bufferTx;
