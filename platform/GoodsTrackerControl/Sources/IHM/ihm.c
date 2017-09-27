@@ -9,13 +9,13 @@
 #include <string.h>
 #include <time.h>
 
-#include "TSSin.h"
 #include "lcd.h"
 #include "XF1.h"
 
+#include "lcd.h"
 #include "gps.h"
 #include "application.h"
-#include "protocol.h"
+#include "serial.h"
 #include "clock.h"
 #include "ihm.h"
 
@@ -97,12 +97,12 @@ void printTank(void){
 
 void printAccelerometer(void){
 
-	XF1_xsprintf(line_lcd,"X:%c%4.2f Y:%c%4.2f%  ",	telemetria.Accelerometer.x_g>=0?'+':'-',fabs(telemetria.Accelerometer.x_g),
-													telemetria.Accelerometer.y_g>=0?'+':'-',fabs(telemetria.Accelerometer.y_g)
+	XF1_xsprintf(line_lcd,"X:%c%4.2f Y:%c%4.2f   ",	telemetria.Accelerometer.x_g>=0?'+':'-',fabs(telemetria.Accelerometer.x_g),
+														telemetria.Accelerometer.y_g>=0?'+':'-',fabs(telemetria.Accelerometer.y_g)
 													);
 	printLCD(1,1,line_lcd);
 
-	XF1_xsprintf(line_lcd,"Z:%c%4.2f         ",	telemetria.Accelerometer.z_g>=0?'+':'-',fabs(telemetria.Accelerometer.z_g)
+	XF1_xsprintf(line_lcd,"Z:%c%4.2f         	  ",	telemetria.Accelerometer.z_g>=0?'+':'-',fabs(telemetria.Accelerometer.z_g)
 													);
 	printLCD(2,1,line_lcd);
 }
@@ -120,7 +120,7 @@ void printStatCom(void){
 
 void printStatGPS(void){
 
-	XF1_xsprintf(line_lcd,"RX: %03d         ",bufferRxNMEA.max_count);
+	XF1_xsprintf(line_lcd,"RX: M:%03d        ",bufferRxNMEA.max_count);
 	printLCD(1,1,line_lcd);
 
 	XF1_xsprintf(line_lcd,"RX: C:%03d P:%03d ",bufferRxNMEA.index_consumer,bufferRxNMEA.index_producer);
@@ -291,8 +291,6 @@ inline void ihm_set_active_screen(screen s){
 void ihm_init(void) {
 
 	ihm_events	= xEventGroupCreate();
-
-	TSSin_Configure();
 
 	LCDInit();
 

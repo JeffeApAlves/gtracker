@@ -2,12 +2,16 @@
  * lcd.h
  *
  *  Created on: 19/06/2017
- *      Author: Flávio Soares
+ *      Author: Flï¿½vio Soares
  */
 
 #ifndef LCD_H_
 #define LCD_H_
 
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "PE_Types.h"
 /*
  *
  */

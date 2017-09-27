@@ -414,13 +414,13 @@ PE_DEBUGHALT();
     <Enabled v="Y" />
     <Properties>
       <Component_name v="AS1" />
-      <Channel v="UART0" />
+      <Channel v="UART1" />
       <boolgroup name="Interrupt service/event" v="Enabled">
-        <Interrupt_RxD v="INT_UART0" />
+        <Interrupt_RxD v="INT_UART1" />
         <Interrupt_RxD_priority v="medium priority" />
-        <Interrupt_TxD v="INT_UART0" />
+        <Interrupt_TxD v="INT_UART1" />
         <Interrupt_TxD_priority v="medium priority" />
-        <Interrupt_Error v="INT_UART0" />
+        <Interrupt_Error v="INT_UART1" />
         <Interrupt_Error_priority v="medium priority" />
         <Input_buffer_size v="0" />
         <Output_buffer_size v="0" />
@@ -434,10 +434,10 @@ PE_DEBUGHALT();
         <Width v="8 bits" />
         <Stop_bit v="1" />
         <boolgroup name="Receiver" v="Enabled">
-          <RxD v="TSI0_CH2/PTA1/UART0_RX/TPM2_CH0" />
+          <RxD v="PTE1/SPI1_MOSI/UART1_RX/SPI1_MISO/I2C1_SCL" />
         </boolgroup>
         <boolgroup name="Transmitter" v="Enabled">
-          <TxD v="TSI0_CH3/PTA2/UART0_TX/TPM2_CH1" />
+          <TxD v="PTE0/UART1_TX/RTC_CLKOUT/CMP0_OUT/I2C1_SDA" />
         </boolgroup>
         <Baud_rate v="57600 baud" />
         <Break_signal v="Disabled" />
@@ -462,13 +462,13 @@ PE_DEBUGHALT();
           <Enabled v="Y" />
           <Properties>
             <Component_name v="ASerialLdd1" />
-            <Device v="UART0" />
+            <Device v="UART1" />
             <boolgroup name="Interrupt service/event" v="Enabled">
-              <Interrupt_RxD v="INT_UART0" />
+              <Interrupt_RxD v="INT_UART1" />
               <Interrupt_RxD_priority v="medium priority" />
-              <Interrupt_TxD v="INT_UART0" />
+              <Interrupt_TxD v="INT_UART1" />
               <Interrupt_TxD_priority v="medium priority" />
-              <Interrupt_Error v="INT_UART0" />
+              <Interrupt_Error v="INT_UART1" />
               <Interrupt_Error_priority v="medium priority" />
             </boolgroup>
             <group name="Settings">
@@ -484,10 +484,10 @@ PE_DEBUGHALT();
               <Receiver_input v="Not inverted" />
               <Break_generation_length v="10/11 bits" />
               <boolgroup name="Receiver" v="Enabled">
-                <RxD v="TSI0_CH2/PTA1/UART0_RX/TPM2_CH0" />
+                <RxD v="PTE1/SPI1_MOSI/UART1_RX/SPI1_MISO/I2C1_SCL" />
               </boolgroup>
               <boolgroup name="Transmitter" v="Enabled">
-                <TxD v="TSI0_CH3/PTA2/UART0_TX/TPM2_CH1" />
+                <TxD v="PTE0/UART1_TX/RTC_CLKOUT/CMP0_OUT/I2C1_SDA" />
               </boolgroup>
               <enumgroup name="Flow control" v="None">
                 <EmptySection_DummyValue />
@@ -1427,186 +1427,6 @@ PE_DEBUGHALT();
     </Methods>
     <Events>
       <EmptySection_DummyValue />
-    </Events>
-  </Bean>
-  <Bean name="TSSin" type="TSS_Library">
-    <Enabled v="Y" />
-    <Properties>
-      <Component_Name v="TSSin" />
-      <TSS_Version v="TSS_3_0" />
-      <enumgroup name="KeyDetector Version" v="Basic">
-        <Delta_Log v="yes" />
-        <Signal_Log v="yes" />
-      </enumgroup>
-      <boolgroup name="Noise Mode" v="Disabled" />
-      <boolgroup name="FreeMASTER GUI" v="no" />
-      <Simple_Low_Level v="no" />
-      <Control_Private_Data v="no" />
-      <Diagnostic_Messages v="yes" />
-      <group name="Signal Control Options">
-        <boolgroup name="GPIO Method Relevant" v="Disabled" />
-        <IIR_Filter v="yes" />
-        <Signal_Shielding v="no" />
-        <Signal_Divider v="no" />
-        <Signal_Multiplier v="no" />
-      </group>
-      <boolgroup name="Automatic Sensitivity Calibration" v="Enabled">
-        <Initialization_Duration v="200" />
-        <Manual_Initial_Sensitivity v="no" />
-        <Low_Limit v="no" />
-      </boolgroup>
-      <boolgroup name="Baseline Initialization" v="Enabled">
-        <Duration v="15" />
-      </boolgroup>
-      <boolgroup name="System Trigger" v="Enabled">
-        <enumgroup name="Auto Trigger" v="UNUSED">
-          <EmptySection_DummyValue />
-        </enumgroup>
-        <boolgroup name=" Config Registers Init" v="Enabled">
-          <enumgroup name="System Trigger Mode" v="ALWAYS">
-            <EmptySection_DummyValue />
-          </enumgroup>
-        </boolgroup>
-      </boolgroup>
-      <group name="Low Power &amp;amp; Proximity">
-        <boolgroup name="Low Power" v="Disabled" />
-        <boolgroup name="Config Registers Init" v="Disabled" />
-      </group>
-      <group name="Code Size Reduction">
-        <Data_Corruption_Check v="Enabled" />
-        <Stuck_key_Function v="Enabled" />
-        <Negative_Baseline_Drop v="Enabled" />
-        <Automatic_HW_Recalibration v="Enabled" />
-      </group>
-      <list name="Number of Electrodes" v="2">
-        <group name="Electrode0">
-          <enumgroup name="Sensing Method" v="TSI Module">
-            <TSI_Channel v="TSI0_CH9/PTB16/SPI1_MOSI/UART0_RX/TPM_CLKIN0/SPI1_MISO" />
-            <TSI_Device v="TSI0" />
-            <TSI_Interrupt v="INT_TSI0" />
-          </enumgroup>
-          <boolgroup name="Signal Shielding" v="Disabled" />
-          <boolgroup name="Signal Divider" v="Disabled" />
-          <boolgroup name="Signal Multiplier" v="Disabled" />
-          <boolgroup name="Config Registers Init" v="Enabled">
-            <Electrode_Enabled v="yes" />
-            <Electrode_Sensitivity v="63" />
-            <DC_Tracker_Enabled v="yes" />
-            <boolgroup name="Define Electrode Baseline" v="Disabled" />
-          </boolgroup>
-        </group>
-        <group name="Electrode1">
-          <enumgroup name="Sensing Method" v="TSI Module">
-            <TSI_Channel v="TSI0_CH10/PTB17/SPI1_MISO/UART0_TX/TPM_CLKIN1/SPI1_MOSI" />
-            <TSI_Device v="TSI0" />
-            <TSI_Interrupt v="INT_TSI0" />
-          </enumgroup>
-          <boolgroup name="Signal Shielding" v="Disabled" />
-          <boolgroup name="Signal Divider" v="Disabled" />
-          <boolgroup name="Signal Multiplier" v="Disabled" />
-          <boolgroup name="Config Registers Init" v="Enabled">
-            <Electrode_Enabled v="yes" />
-            <Electrode_Sensitivity v="63" />
-            <DC_Tracker_Enabled v="yes" />
-            <boolgroup name="Define Electrode Baseline" v="Disabled" />
-          </boolgroup>
-        </group>
-      </list>
-      <list name="Number of Controls" v="1">
-        <group name="Control0">
-          <enumgroup name="Control Type" v="ASLIDER">
-            <list name="Inputs" v="0">
-              <EmptySection_DummyValue />
-            </list>
-            <Number_of_Electrodes v="2" />
-            <boolgroup name="Config Registers Init" v="Enabled">
-              <group name="Control Configuration Register">
-                <Control_Enabled v="yes" />
-                <Callback_Enabled v="yes" />
-                <Idle_Enabled v="no" />
-                <Idle_Scan_Rate v="0" />
-              </group>
-              <group name="Event Control and Status Register">
-                <Release_Event_Enabled v="no" />
-                <Hold_Auto_repeat_Enabled v="no" />
-                <Hold_Event_Enabled v="no" />
-                <Movement_Event_Enabled v="yes" />
-                <Initial_Touch_Event_Enabled v="yes" />
-              </group>
-              <Auto_Repeat_Rate v="0" />
-              <Movement_Timeout v="32" />
-              <Range v="64" />
-            </boolgroup>
-          </enumgroup>
-          <Structure_Name v="TSSin_cKey0" />
-        </group>
-      </list>
-      <group name="Sensor Settings">
-        <boolgroup name="Timers" v="Disabled" />
-        <boolgroup name="TSI Module" v="Enabled">
-          <group name="Auto Calibration">
-            <Resolution v="11" />
-            <boolgroup name="Calibration Limits" v="Disabled" />
-          </group>
-          <boolgroup name="Proximity Auto Calibration" v="Disabled" />
-          <boolgroup name="Clock Settings" v="Disabled" />
-          <boolgroup name="Scan Settings" v="Disabled" />
-        </boolgroup>
-      </group>
-      <boolgroup name="TSS Config Registers Init" v="Enabled">
-        <group name="System Configuration Register">
-          <System_Enabled v="yes" />
-          <SWI_Enabled v="no" />
-          <DC_Tracker_Enabled v="yes" />
-          <Stuck_key_Enabled v="no" />
-          <Water_Tolerance_Enabled v="no" />
-          <Proximity_Enabled v="no" />
-          <LowPower_Enabled v="no" />
-        </group>
-        <Number_of_Samples v="8" />
-        <DC_Tracker_Rate v="100" />
-        <Slow_DC_Tracker_Factor v="100" />
-        <Response_Time v="4" />
-        <Stuck_keyTimeout v="0" />
-      </boolgroup>
-      <group name="Install Files">
-        <TSS_Library v="yes" />
-      </group>
-      <group name="Initialization">
-        <Call_Configure_Method v="no" />
-        <Init_Callbacks v="yes" />
-      </group>
-    </Properties>
-    <Methods>
-      <Configure v="generate code" />
-    </Methods>
-    <Events>
-      <Event_module_name v="Events" />
-      <event name="fOnFault" v="generate code">
-        <Event_procedure_name v="TSSin_fOnFault" />
-      </event>
-      <event name="fOnInit" v="generate code">
-        <Event_procedure_name v="TSSin_fOnInit" />
-      </event>
-      <event name="fOnProximity" v="don&amp;apos;t generate code" />
-      <event name="fCallBack0" v="generate code">
-        <Event_procedure_name v="TSSin_fCallBack0" />
-      </event>
-      <event name="fCallBack1" v="don&amp;apos;t generate code" />
-      <event name="fCallBack2" v="don&amp;apos;t generate code" />
-      <event name="fCallBack3" v="don&amp;apos;t generate code" />
-      <event name="fCallBack4" v="don&amp;apos;t generate code" />
-      <event name="fCallBack5" v="don&amp;apos;t generate code" />
-      <event name="fCallBack6" v="don&amp;apos;t generate code" />
-      <event name="fCallBack7" v="don&amp;apos;t generate code" />
-      <event name="fCallBack8" v="don&amp;apos;t generate code" />
-      <event name="fCallBack9" v="don&amp;apos;t generate code" />
-      <event name="fCallBack10" v="don&amp;apos;t generate code" />
-      <event name="fCallBack11" v="don&amp;apos;t generate code" />
-      <event name="fCallBack12" v="don&amp;apos;t generate code" />
-      <event name="fCallBack13" v="don&amp;apos;t generate code" />
-      <event name="fCallBack14" v="don&amp;apos;t generate code" />
-      <event name="fCallBack15" v="don&amp;apos;t generate code" />
     </Events>
   </Bean>
   <Bean name="XF1" type="XFormat">

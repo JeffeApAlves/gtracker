@@ -1,0 +1,13 @@
+/*
+ * serial.c
+ *
+ *  Created on: Sep 27, 2017
+ *      Author: Jefferson
+ */
+#include <stdio.h>
+
+
+RingBuffer					bufferRx,bufferTx;
+
+
+

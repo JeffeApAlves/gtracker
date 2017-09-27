@@ -10,10 +10,8 @@
 
 #include <stdbool.h>
 
-#include "RingBuffer.h"
 #include "Frame.h"
 #include "CommunicationFrame.h"
-#include "utils.h"
 #include "Cmd.h"
 
 //Endereco desse Rastreador
@@ -45,24 +43,11 @@ static void setStatusRx(StatusRx sts);
 static void errorRxFrame(void);
 static bool decoderFrame(CommunicationPackage* package_rx);
 static bool verifyFrame(void);
-static void startTX(void);
-static void setPayLoad(PayLoad* ans);
-static void copyHeaderToFrame(CommunicationPackage* package,Frame* frame);
-static void copyPayLoadToFrame(CommunicationPackage* package,Frame* frame);
-static void buildFrame(CommunicationPackage* package,Frame* frame);
-static void copyCheckSumToFrame(Frame* frame);
 
 
 /*interface*/
-bool getRxData(char* ch);
-bool putTxData(char data);
-bool putRxData(char ch);
-bool getTxData(char* ch);
-bool hasTxData(void);
 void protocol_init(void);
-bool isAnyRxData();
 Resource getResource(char* name);
-void getResourceName(char* name,Resource resource);
 void sendFrame(char* frame);
 void sendPackage(CommunicationPackage* package);
 bool receivePackage(void);
@@ -70,7 +55,5 @@ bool receivePackage(void);
 extern const char* OPERATION_AN;
 extern const char* OPERATION_RD;
 extern const char* OPERATION_WR;
-
-extern RingBuffer	bufferRx,bufferTx;
 
 #endif /* SOURCES_PROTOCOL_H_ */

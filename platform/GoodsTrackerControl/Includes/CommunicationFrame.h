@@ -73,7 +73,7 @@ typedef struct{
 } PayLoad;
 
 /*
- * Estrutura de dados do frame
+ * Estrutura do pacote de comunicação
  *
  */
 typedef struct{
@@ -83,9 +83,11 @@ typedef struct{
 
 } CommunicationPackage;
 
-#define clearArrayPayLoad(f)	memset((void*)f,0,sizeof(PayLoad));
+#define clearArrayPayLoad(f)memset((void*)f,0,sizeof(PayLoad));
+#define clearPackage(f) 	memset((void*)f,0,sizeof(CommunicationPackage));
+#define clearHeader(f)		memset((void*)f,0,sizeof(Header));
+
 void AppendPayLoad(PayLoad* payload,const char* data);
-#define clearData(f) memset((void*)f,0,sizeof(CommunicationPackage));
 
 
 #endif /* SOURCES_DATAFRAME_H_ */

@@ -1,0 +1,51 @@
+/*
+ * serial.c
+ *
+ *  Created on: Sep 27, 2017
+ *      Author: Jefferson
+ */
+#include <stdio.h>
+
+#include "serial.h"
+
+RingBuffer			bufferRx,bufferTx;
+
+
+inline bool putTxData(char data) {
+
+#ifdef SERIAL_DRIVER_ESP32
+	return uart_wr_data(data);
+#else
+	return putData(&bufferTx,data);
+#endif
+}
+//------------------------------------------------------------------------
+
+inline bool putTxString(const char* str) {
+
+#ifdef SERIAL_DRIVER_ESP32
+	return uart_wr_string(str);
+#else
+	return putData(&bufferTx,str);
+#endif
+}
+//------------------------------------------------------------------------
+
+inline bool putRxData(char data) {
+
+	return putData(&bufferRx,data);
+}
+//------------------------------------------------------------------------
+
+/*
+ *
+ * Pega um char do buffer circular da transmissao
+ *
+ */
+inline bool getTxData(char* ch){
+
+	return getData(&bufferTx,ch);
+}
+//------------------------------------------------------------------------
+
+

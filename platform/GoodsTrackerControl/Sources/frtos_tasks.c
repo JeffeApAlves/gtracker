@@ -21,6 +21,7 @@
 #include "application.h"
 #include "ihm.h"
 #include "clock.h"
+#include "serial.h"
 #include "communication.h"
 #include "accelerometer.h"
 #include "gps.h"
@@ -50,6 +51,8 @@ static portTASK_FUNCTION(run_main, pvParameters) {
 	accelerometer_init();
 
 	clock_init();
+
+	uart_init();
 
 	communication_init();
 

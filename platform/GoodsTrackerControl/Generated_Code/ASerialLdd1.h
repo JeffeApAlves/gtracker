@@ -7,7 +7,7 @@
 **     Version     : Component 01.188, Driver 01.12, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-09-25, 16:46, # CodeGen: 169
+**     Date/Time   : 2017-09-27, 09:43, # CodeGen: 183
 **     Abstract    :
 **         This component "Serial_LDD" implements an asynchronous serial
 **         communication. The component supports different settings of
@@ -17,13 +17,13 @@
 **         The component requires one on-chip asynchronous serial communication channel.
 **     Settings    :
 **          Component name                                 : ASerialLdd1
-**          Device                                         : UART0
+**          Device                                         : UART1
 **          Interrupt service/event                        : Enabled
-**            Interrupt RxD                                : INT_UART0
+**            Interrupt RxD                                : INT_UART1
 **            Interrupt RxD priority                       : medium priority
-**            Interrupt TxD                                : INT_UART0
+**            Interrupt TxD                                : INT_UART1
 **            Interrupt TxD priority                       : medium priority
-**            Interrupt Error                              : INT_UART0
+**            Interrupt Error                              : INT_UART1
 **            Interrupt Error priority                     : medium priority
 **          Settings                                       : 
 **            Data width                                   : 8 bits
@@ -38,10 +38,10 @@
 **            Receiver input                               : Not inverted
 **            Break generation length                      : 10/11 bits
 **            Receiver                                     : Enabled
-**              RxD                                        : TSI0_CH2/PTA1/UART0_RX/TPM2_CH0
+**              RxD                                        : PTE1/SPI1_MOSI/UART1_RX/SPI1_MISO/I2C1_SCL
 **              RxD pin signal                             : 
 **            Transmitter                                  : Enabled
-**              TxD                                        : TSI0_CH3/PTA2/UART0_TX/TPM2_CH1
+**              TxD                                        : PTE0/UART1_TX/RTC_CLKOUT/CMP0_OUT/I2C1_SDA
 **              TxD pin signal                             : 
 **            Flow control                                 : None
 **          Initialization                                 : 
@@ -129,7 +129,7 @@ extern "C" {
 
 
 /*! Peripheral base address of a device allocated by the component. This constant can be used directly in PDD macros. */
-#define ASerialLdd1_PRPH_BASE_ADDRESS  0x4006A000U
+#define ASerialLdd1_PRPH_BASE_ADDRESS  0x4006B000U
   
 /* Methods configuration constants - generated for all enabled component's methods */
 #define ASerialLdd1_Init_METHOD_ENABLED /*!< Init method of the component ASerialLdd1 is enabled (generated) */

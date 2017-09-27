@@ -72,7 +72,6 @@
 #include "BitIoLdd14.h"
 #include "DB71.h"
 #include "BitIoLdd15.h"
-#include "TSSin.h"
 #include "XF1.h"
 #include "AS2.h"
 #include "ASerialLdd2.h"
@@ -265,77 +264,6 @@ void AD1_OnEnd(void);
 ** ===================================================================
 */
 void TI1_OnInterrupt(void);
-
-void TSSin_fOnFault(byte u8FaultElecNum);
-/*
-** ===================================================================
-**     Event       :  TSSin_fOnFault (module Events)
-**
-**     Component   :  TSSin [TSS_Library]
-**     Description :
-**         This callback function is called by TSS after Fault
-**         occurence. This event is enabled always and depends on
-**         selection 'generate code' if the callback is used.
-**         The default CallBack Name is automatically generated with
-**         automatic prefix update by current Component Name. User can
-**         define own name, but then the automatic name update is not
-**         functional.
-**         Option is available from TSS3.0 version.
-**     Parameters  :
-**         NAME            - DESCRIPTION
-**         u8FaultElecNum  - The value defines
-**                           electrode number on which measurement fault
-**                           occured.
-**     Returns     : Nothing
-** ===================================================================
-*/
-
-void TSSin_fOnInit(void);
-/*
-** ===================================================================
-**     Event       :  TSSin_fOnInit (module Events)
-**
-**     Component   :  TSSin [TSS_Library]
-**     Description :
-**         This callback function is automatically called during the
-**         TSS Init function execution. The function is intended for
-**         implementation of peripherals initialization. TSS Component
-**         automatically enables clock for all used TSS peripherals in
-**         the internal function TSS_InitDevices which is called by
-**         this callback.
-**         This event is enabled always and depends on selection
-**         'generate code' if the callback is used.
-**         The default CallBack Name is automatically generated with
-**         automatic prefix update by current Component Name. User can
-**         define own name, but then the automatic name update is not
-**         functional.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-
-void TSSin_fCallBack0(TSS_CONTROL_ID u8ControlId);
-/*
-** ===================================================================
-**     Event       :  TSSin_fCallBack0 (module Events)
-**
-**     Component   :  TSSin [TSS_Library]
-**     Description :
-**         Callback definition for Control 0. This event is enabled
-**         only if Control 0 is enabled.
-**         The default CallBack Name is automatically generated with
-**         automatic prefix update by current Component Name. User can
-**         define own name, but then the automatic name update is not
-**         functional.
-**     Parameters  :
-**         NAME            - DESCRIPTION
-**         u8ControlId     - Valid unique Identifier of
-**                           the Control which generated the CallBack
-**                           function. This Id can be used for finding
-**                           of Callback's source Control.
-**     Returns     : Nothing
-** ===================================================================
-*/
 
 /*
 ** ===================================================================

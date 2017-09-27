@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-09-25, 16:46, # CodeGen: 169
+**     Date/Time   : 2017-09-27, 08:35, # CodeGen: 178
 **     Abstract    :
 **
 **     Settings    :
@@ -291,7 +291,6 @@
 #include "BitIoLdd14.h"
 #include "DB71.h"
 #include "BitIoLdd15.h"
-#include "TSSin.h"
 #include "XF1.h"
 #include "AS2.h"
 #include "ASerialLdd2.h"
@@ -584,10 +583,6 @@ void PE_low_level_init(void)
   (void)BitIoLdd15_Init(NULL);
   /* ### LCDHTA "LCDout" init code ... */
   LCDout_Init(); /* initializes the display driver */
-  /* ### TSS_Library "TSSin" init code ... */
-
-  /* Write code here ... */
-
   /* ### XFormat "XF1" init code ... */
   /* ### Asynchro serial "AS2" init code ... */
   AS2_Init();

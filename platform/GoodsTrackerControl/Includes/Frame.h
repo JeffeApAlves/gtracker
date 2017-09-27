@@ -28,8 +28,9 @@ typedef struct{
 
 } Frame;
 
+#define clearFrame(f)	memset((void*)f,0,sizeof(Frame));
+
 unsigned int calcChecksum(const char *buff, size_t sz);
-#define clearArrayFrame(f)	memset((void*)f,0,sizeof(Frame));
 unsigned int putDataArray(Frame *frame, char data);
 void AppendFrame(Frame* frame,const char* data);
 

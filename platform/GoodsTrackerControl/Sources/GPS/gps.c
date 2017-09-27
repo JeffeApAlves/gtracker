@@ -52,7 +52,7 @@ static void NMEA_rxStart(void)
 
 		if(ch==NMEA_CHAR_START){
 
-			clearArrayFrame(&frameNMEA);
+			clearFrame(&frameNMEA);
 
 			setGPSStatus(NMEA_RX_START);
 		}
@@ -375,7 +375,7 @@ void gps_init(void)
 
 	clearBuffer(&bufferRxNMEA);
 	clearGPS(&gps);
-	clearArrayFrame(&frameNMEA);
+	clearFrame(&frameNMEA);
 	setGPSStatus(NMEA_INIT_OK);
 }
 //------------------------------------------------------------------------
