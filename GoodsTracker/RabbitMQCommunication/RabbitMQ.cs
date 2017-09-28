@@ -8,10 +8,10 @@ namespace GoodsTracker
 {
     struct RABBITMQ{
 
-        public const string HOSTNAME        = "localhost";
+        public const string HOSTNAME        = "192.168.42.1";
         public const int PORT               = 5672;
-        public const string PW              = "senai";
-        public const string USER            = "senai";
+        public const string PW              = "senai_pc";
+        public const string USER            = "senai_pc";
         public const string VHOST           = "/";
 
         public const string LOG_EXCHANGE    = "log";
@@ -20,11 +20,11 @@ namespace GoodsTracker
         public const string ERROR_EXCHANGE  = "erro";
         public const string CMD_EXCHANGE    = "cmd";
 
-        public const string CMD_QUEUE       = "cmd";
-        public const string ANS_QUEUE       = "ans";
-        public const string LOG_QUEUE       = "log";
-        public const string INFO_QUEUE      = "info";
-        public const string ERROR_QUEUE     = "erro";
+        public const string CMD_QUEUE       = "CMD";
+        public const string TLM_QUEUE       = "TLM";
+        public const string LOG_QUEUE       = "LOG";
+        public const string INFO_QUEUE      = "INFO";
+        public const string ERROR_QUEUE     = "ERRO";
     }
 
     class RabbitMQ
@@ -200,27 +200,27 @@ namespace GoodsTracker
          */
         public void register(DeviceBase c)
         {
-            channel.QueueDeclare(    queue:      RABBITMQ.ANS_QUEUE + "." + c.Address.ToString("D5"),
-                                     durable:    false,
+            channel.QueueDeclare(    queue:      RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
+                                     durable:    true,
                                      exclusive:  false,
                                      autoDelete: false,
                                      arguments:  null);
 
-            channel.QueueDeclare(   queue:      RABBITMQ.CMD_QUEUE + "." + c.Address.ToString("D5"),
-                                    durable:    false,
+            channel.QueueDeclare(   queue:      RABBITMQ.CMD_QUEUE + c.Address.ToString("D5"),
+                                    durable:    true,
                                     exclusive:  false,
                                     autoDelete: false,
                                     arguments:  null);
 
-            channel.QueueBind(  queue:      RABBITMQ.CMD_QUEUE + "." + c.Address.ToString("D5"),
+            channel.QueueBind(  queue:      RABBITMQ.CMD_QUEUE + c.Address.ToString("D5"),
                                 exchange:   RABBITMQ.CMD_EXCHANGE,
                                 routingKey: "cmd." + c.Address.ToString("D5"));
 
-            channel.QueueBind(  queue:      RABBITMQ.ANS_QUEUE + "." + c.Address.ToString("D5"),
+            channel.QueueBind(  queue:      RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
                                 exchange:   RABBITMQ.ANS_EXCHANGE,
                                 routingKey: "ans." + c.Address.ToString("D5"));
 
-            channel.BasicConsume(queue: RABBITMQ.ANS_QUEUE + "." + c.Address.ToString("D5"),
+            channel.BasicConsume(queue: RABBITMQ.TLM_QUEUE + c.Address.ToString("D5"),
                       autoAck: true,
                       consumer: consumer);
         }

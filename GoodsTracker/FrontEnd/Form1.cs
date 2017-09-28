@@ -258,7 +258,7 @@ namespace GoodsTracker
          */
         void initAllEntities()
         {
-            GTracker.createCommunication(TYPE_COMMUNICATION.SERIAL);
+            GTracker.createCommunication(TYPE_COMMUNICATION.AMQP);
 
             trackerController = TrackerController.TrackerCtrl;
             trackerController.Init();
