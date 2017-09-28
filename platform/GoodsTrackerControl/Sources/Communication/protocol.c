@@ -166,12 +166,13 @@ static bool decoderFrame(CommunicationPackage* package_rx) {
 				AsInteger(&package_rx->Header.address,		frameRx.Data,0,CHAR_SEPARATOR) &&
 				AsInteger(&package_rx->Header.dest,			frameRx.Data,1,CHAR_SEPARATOR) &&
 				AsInteger(&package_rx->Header.time_stamp,	frameRx.Data,2,CHAR_SEPARATOR) &&
-				AsString(&package_rx->Header.operacao,		frameRx.Data,3,CHAR_SEPARATOR) &&
+				AsString(package_rx->Header.operacao,		frameRx.Data,3,CHAR_SEPARATOR) &&
 				AsResource(&package_rx->Header.resource,	frameRx.Data,4,CHAR_SEPARATOR) &&
-				AsInteger(&package_rx->Header.lengthPayLoad,frameRx.Data,5,CHAR_SEPARATOR) &&
-				AsString(&package_rx->PayLoad.Data,			frameRx.Data,6,CHAR_SEPARATOR)
+				AsInteger(&package_rx->Header.lengthPayLoad,frameRx.Data,5,CHAR_SEPARATOR)
 			){
+				subString(package_rx->PayLoad.Data,frameRx.Data,6,count-1,CHAR_SEPARATOR);
 				package_rx->PayLoad.Length = package_rx->Header.lengthPayLoad;
+
 				ret = true;
 			}else{
 				clearPackage(&package_rx);

@@ -33,8 +33,8 @@ typedef struct{
 unsigned int calcChecksum(const char *buff, size_t sz);
 unsigned int putDataArray(Frame *frame, char data);
 void AppendFrame(Frame* frame,const char* data);
-
-void getField(char* str, char* out,uint16_t num,const char a_delim);
+void subString(char* out,char* str, uint16_t start_field,uint16_t end_field,const char a_delim);
+void getField(char* out,char* str, uint16_t num,const char a_delim);
 uint16_t getNumField(char* str,const char a_delim);
 
 #endif /* SOURCES_ARRAY_H_ */

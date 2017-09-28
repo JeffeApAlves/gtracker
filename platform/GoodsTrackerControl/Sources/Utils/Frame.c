@@ -5,7 +5,8 @@
  *      Author: Jefferson
  */
 
-#include "string.h"
+#include <string.h>
+
 #include "Frame.h"
 
 inline unsigned int putDataArray(Frame *frame, char data) {
@@ -14,6 +15,8 @@ inline unsigned int putDataArray(Frame *frame, char data) {
 		frame->Data[frame->Length++] = data;
 		frame->Length%=LEN_FRAME;
 	}
+
+	return 0;
 }
 //----------------------------------------------------------------------------------
 
@@ -64,7 +67,13 @@ uint16_t getNumField(char* str,const char a_delim) {
 }
 //------------------------------------------------------------------------
 
-void getField(char* str, char* out,uint16_t num_field,const char a_delim) {
+void getField(char* out,char* str, uint16_t num_field,const char a_delim) {
+
+	subString(out,str,num_field,num_field+1,a_delim);
+}
+//------------------------------------------------------------------------
+
+void subString(char* out,char* str,uint16_t start_field,uint16_t end_field,const char a_delim) {
 
 	uint16_t i,start,end,index_field;
 
@@ -86,12 +95,12 @@ void getField(char* str, char* out,uint16_t num_field,const char a_delim) {
 			// Proximo campo
 			index_field++;
 
-			if(index_field==num_field){
+			if(index_field==start_field){
 
 				start = i+1;
 			}
 
-			if(index_field==(num_field+1)){
+			if(index_field==(end_field)){
 
 				end = i;
 				break;

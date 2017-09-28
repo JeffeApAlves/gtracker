@@ -8,7 +8,8 @@
 #include <string.h>
 #include <assert.h>
 #include <stdlib.h>
-
+#include "Frame.h"
+#include "protocol.h"
 #include "utils.h"
 
 /**
@@ -69,7 +70,7 @@ void str_split(List* result, char* str, const char a_delim) {
  **/
 buffer_t memtok(const void *s, size_t length, const char *delim, buffer_t *save_ptr){
 
-    const unsigned char *stream,
+    const char *stream,
                         *token;
     size_t len = 0;
 
@@ -145,7 +146,7 @@ bool AsInteger(int* out,char *str,uint16_t index,const char a_delim){
 
 	char field[10];
 
-	getField(str,field,index,a_delim);
+	getField(field,str,index,a_delim);
 
 	if(strlen(str)>0){
 
@@ -160,7 +161,7 @@ bool AsInteger(int* out,char *str,uint16_t index,const char a_delim){
 
 bool AsString(char* out,char *str,uint16_t index,const char a_delim){
 
-	getField(str,out,index,a_delim);
+	getField(out,str,index,a_delim);
 
 	return true;
 }
@@ -172,7 +173,7 @@ bool AsHex(uint16_t* out,char *str,uint16_t index,const char a_delim){
 
 	char field[5];
 
-	getField(str,field,index,a_delim);
+	getField(field,str,index,a_delim);
 
 	if(strlen(str)>0){
 
@@ -189,7 +190,7 @@ bool AsFloat(float* out,char *str,uint16_t index,const char a_delim){
 
 	char field[20];
 
-	getField(str,field,index,a_delim);
+	getField(field,str,index,a_delim);
 
 	if(strlen(str)>0){
 
@@ -207,7 +208,7 @@ bool AsChar(char* out,char *str,uint16_t index,const char a_delim){
 
 	char field[2];
 
-	getField(str,field,index,a_delim);
+	getField(field,str,index,a_delim);
 
 	if(strlen(str)>0){
 
@@ -225,7 +226,7 @@ bool AsResource(Resource* out,char *str,uint16_t index,const char a_delim){
 
 	char field[4];
 
-	getField(str,field,index,a_delim);
+	getField(field,str,index,a_delim);
 
 	if(strlen(str)>0){
 

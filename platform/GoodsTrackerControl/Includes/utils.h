@@ -8,6 +8,7 @@
 #ifndef SOURCES_UTILS_H_
 #define SOURCES_UTILS_H_
 
+#include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
 
