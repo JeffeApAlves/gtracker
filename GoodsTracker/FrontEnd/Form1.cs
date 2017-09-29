@@ -5,6 +5,7 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms.Markers;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace GoodsTracker
 {
@@ -629,16 +630,21 @@ namespace GoodsTracker
          */
         internal void add(Route r)
         {
-            route.createRoute();
-            trackerController.addRoute(route);
-            layerRoute.add(route);
+            try
+            {
+                route.createRoute();
+                trackerController.addRoute(route);
+                layerRoute.add(route);
 
-            startAddress.Text   = route.StartAddress();
-            endAddress.Text     = route.EndAddress();
-
+                startAddress.Text = route.StartAddress();
+                endAddress.Text = route.EndAddress();
+            }catch(Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
             //Debug - Dados para testes
-            demoData = new TestData(2000);
-            demoData.start();
+            //demoData = new TestData(2000);
+            //demoData.start();
         }
 
         /*

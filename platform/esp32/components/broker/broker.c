@@ -29,8 +29,8 @@ mqtt_settings settings = {
     .port = 1883, // unencrypted
 #endif
     .client_id = "tracker_default",
-    .username = "senai1",
-    .password = "senai1",
+    .username = "senai_device_01",
+    .password = "senai_device_01",
     .clean_session = 0,
     .keepalive = 120,
     .lwt_topic = "/lwt",
