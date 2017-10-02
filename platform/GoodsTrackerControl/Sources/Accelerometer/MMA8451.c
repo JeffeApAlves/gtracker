@@ -140,7 +140,7 @@ void MMA845x_init(void){
 	ctrlReg1 |= (MMA8451_DATARATE_50_HZ << 3);
 
 	// Range
-	I2C_Write(MMA8451_XYZ_DATA_CFG,  MMA8451_RANGE_2_G);
+	I2C_Write(MMA8451_XYZ_DATA_CFG,  MMA8451_RANGE_4_G);
 
 	// Atualiza registradores
 	I2C_Write(MMA8451_CTRL_REG2,ctrlReg2);
@@ -165,7 +165,7 @@ mma8451_range_t MMA845x_getRange(void){
 		return 0;
 	}
 
-	return (mma8451_range_t)(data_cfg  & 0x02);
+	return (mma8451_range_t)(data_cfg  & MMA8451_RANGE_MASK);
 }
 //--------------------------------------------------------------------------------------------
 

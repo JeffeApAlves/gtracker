@@ -65,6 +65,7 @@ typedef enum{
   MMA8451_RANGE_4_G           = 0b01,   // +/- 4g
   MMA8451_RANGE_2_G           = 0b00    // +/- 2g (default value)
 } mma8451_range_t;
+#define MMA8451_RANGE_MASK	  0b11
 
 
 /* Used with register 0x2A (MMA8451_CTRL_REG1) to set bandwidth */
