@@ -9,6 +9,7 @@
 #define SOURCES_GPS_H_
 
 #include <stdbool.h>
+#include <stdint.h>
 
 #include "FreeRTOS.h"
 #include "task.h"
@@ -78,34 +79,16 @@ typedef struct{
 
 } GPS;
 
-static void NMEA_rxStart(void);
-static void NMEA_receiveFrame(void);
-static void NMEA_receiveCheckSum(void);
-static void NMEA_rxCR(void);
-static void NMEA_rxLF(void);
-static void NMEA_verifyFrame(void);
-static void NMEA_acceptRxFrame(void);
-static void NMEA_errorRxFrame(void);
-
-static void setGPSStatus(StatusNMEA sts);
-static bool NMEA_decoderFrame(void);
-static void decoderGGA(char* frame,GPS* data);
-static void decoderRMC(char* frame,GPS* data);
-static void decoderGSA(char* frame,GPS* data);
-
 //API
 bool getGPSData(char* ch);
 bool putGPSData(char data);
-void gps_task(void);
 void gps_init(void);
 bool isAnyGPSData();
 
 #define clearGPS(f) memset((void*)f,0,sizeof(GPS));
 
 extern QueueHandle_t	xQueueGPS;
-
-extern	TaskHandle_t	xHandleGPSTask;
-
-extern	RingBuffer		bufferRxNMEA;
+extern TaskHandle_t		xHandleGPSTask;
+extern RingBuffer		bufferRxNMEA;
 
 #endif /* SOURCES_GPS_H_ */

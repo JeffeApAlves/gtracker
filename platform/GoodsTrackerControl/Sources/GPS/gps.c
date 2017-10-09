@@ -4,48 +4,59 @@
  *      Author: Jefferson
  */
 
+#include "FRTOS1.h"
+
 #include "application.h"
 #include "RingBuffer.h"
 #include "gps.h"
 
-const char* GGA	= "GGA";
-const char* RMC	= "RMC";
-const char* GSA	= "GSA";
+const char* GGA	=	"GGA";
+const char* RMC	=	"RMC";
+const char* GSA	=	"GSA";
 
 #define		SOUTH	'S'
 #define		WEST	'W'
 
 RingBuffer			bufferRxNMEA;
 static Frame		frameNMEA;
-static StatusNMEA	statusNMEA = NMEA_INIT;
+static StatusNMEA	statusNMEA	= NMEA_INIT;
 static GPS			gps;
+static const char*	name_task	= "task_gps";
 
-QueueHandle_t	xQueueGPS;
+QueueHandle_t		xQueueGPS;
+TaskHandle_t		xHandleGPSTask;
 
-TaskHandle_t	xHandleGPSTask;
+static const TickType_t xGPSDelay 		= (200 / portTICK_PERIOD_MS);
 
-void gps_task(void) {
 
-	while(isAnyGPSData()){
+static inline void setGPSStatus(StatusNMEA sts) {
 
-		switch(statusNMEA){
-			default:
-			case NMEA_INIT:			gps_init();				break;
-			case NMEA_INIT_OK:		NMEA_rxStart();			break;
-			case NMEA_RX_START:		NMEA_receiveFrame();	break;
-			case NMEA_RX_FRAME:		NMEA_receiveFrame();	break;
-			case NMEA_RX_END:		NMEA_receiveCheckSum();	break;
-			case NMEA_RX_CHECKSUM:	NMEA_rxCR();			break;
-			case NMEA_RX_CR:		NMEA_rxLF();			break;
-			case NMEA_RX_LF:		NMEA_verifyFrame();		break;
-			case NMEA_FRAME_NOK:	NMEA_errorRxFrame();	break;
-		}
-	}
+	statusNMEA = sts;
 }
 //------------------------------------------------------------------------
 
-static void NMEA_rxStart(void)
-{
+
+static void NMEA_acceptRxFrame(void){
+
+    if(xQueueSendToBack( xQueueGPS ,(void*) &gps, ( TickType_t ) 1 ) ){
+
+    	xTaskNotify( xHandleAppTask , BIT_UPDATE_GPS , eSetBits );
+    }
+
+    setGPSStatus(NMEA_INIT_OK);
+}
+//------------------------------------------------------------------------
+
+static void NMEA_errorRxFrame(void){
+
+	setGPSStatus(NMEA_FRAME_NOK);
+	//TODO
+	setGPSStatus(NMEA_INIT_OK);
+}
+//------------------------------------------------------------------------
+
+static void NMEA_rxStart(void){
+
 	char ch;
 
 	if(getGPSData(&ch)){
@@ -60,8 +71,8 @@ static void NMEA_rxStart(void)
 }
 //------------------------------------------------------------------------
 
-static void NMEA_receiveFrame(void)
-{
+static void NMEA_receiveFrame(void){
+
 	char ch;
 
 	if(getGPSData(&ch)) {
@@ -109,8 +120,8 @@ static void NMEA_receiveCheckSum(){
 }
 //------------------------------------------------------------------------
 
-static void NMEA_rxCR(void)
-{
+static void NMEA_rxCR(void){
+
 	char ch;
 
 	if(getGPSData(&ch)){
@@ -127,8 +138,8 @@ static void NMEA_rxCR(void)
 }
 //------------------------------------------------------------------------
 
-static void NMEA_rxLF(void)
-{
+static void NMEA_rxLF(void){
+
 	char ch;
 
 	if(getGPSData(&ch)){
@@ -142,79 +153,6 @@ static void NMEA_rxLF(void)
 			NMEA_errorRxFrame();
 		}
 	}
-}
-//------------------------------------------------------------------------
-
-static void NMEA_verifyFrame(void)
-{
-	if(NMEA_decoderFrame()){
-
-		NMEA_acceptRxFrame();
-
-	}else{
-
-		NMEA_errorRxFrame();
-	}
-}
-//------------------------------------------------------------------------
-
-static void NMEA_acceptRxFrame(void)
-{
-    if(xQueueSendToBack( xQueueGPS ,(void*) &gps, ( TickType_t ) 1 ) ){
-
-    	xTaskNotify( xHandleCallBackTask , BIT_UPDATE_GPS , eSetBits );
-    }
-
-    setGPSStatus(NMEA_INIT_OK);
-}
-//------------------------------------------------------------------------
-
-static void NMEA_errorRxFrame(void)
-{
-	setGPSStatus(NMEA_FRAME_NOK);
-	//TODO
-	setGPSStatus(NMEA_INIT_OK);
-}
-//------------------------------------------------------------------------
-
-static bool NMEA_decoderFrame(void){
-
-	bool ret = FALSE;
-	uint16 count = getNumField(frameNMEA.Data,NMEA_CHAR_SEPARATOR);
-
-	if(count >= 5){
-
-		uint16 checksum_rx,checksum_calc;
-
-		// Checksum
-		checksum_calc = calcChecksum(frameNMEA.Data, frameNMEA.Length);
-		// garante que estao diferentes antes de ler.
-		checksum_rx = ~checksum_calc;
-		// Converte de string para numero o checksum recebido
-		checksum_rx = strtol(frameNMEA.checksum, NULL, 16);
-
-		if(checksum_rx==checksum_calc) {
-
-			ret = TRUE;
-
-			char id[NMEA_LEN_ID];
-
-			AsString(id,frameNMEA.Data,0,NMEA_CHAR_SEPARATOR);
-
-			if(strcmp(GGA,id+2)==0){		decoderGGA(frameNMEA.Data,&gps);
-
-			}else if(strcmp(RMC,id+2)==0){	decoderRMC(frameNMEA.Data,&gps);
-
-			}else if(strcmp(GSA,id+2)==0){	decoderGSA(frameNMEA.Data,&gps);
-
-			}else{
-
-				ret = FALSE;
-			}
-		}
-	}
-
-	return ret;
 }
 //------------------------------------------------------------------------
 
@@ -246,8 +184,8 @@ type 1 or 9 update, null field when DGPS is not used
 */
 static void decoderGGA(char* frame,GPS* data){
 
-	AsString(&data->Identifier,			frame,0, NMEA_CHAR_SEPARATOR);
-	AsString(&data->Time_UTC,			frame,1, NMEA_CHAR_SEPARATOR);
+	AsString(data->Identifier,			frame,0, NMEA_CHAR_SEPARATOR);
+	AsString(data->Time_UTC,			frame,1, NMEA_CHAR_SEPARATOR);
 	AsFloat(&data->Lat,					frame,2, NMEA_CHAR_SEPARATOR);
 	AsChar(&data->LatDirection,			frame,3, NMEA_CHAR_SEPARATOR);
 	AsFloat(&data->Lng,					frame,4, NMEA_CHAR_SEPARATOR);
@@ -269,6 +207,7 @@ static void decoderGGA(char* frame,GPS* data){
 	}
 }
 //------------------------------------------------------------------------
+
 /*
        1         2 3       4 5        6 7   8   9    10  11 12
        |         | |       | |        | |   |   |    |   |  |
@@ -288,15 +227,15 @@ $--RMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,xxxx,x.x,a*hh
 */
 static void decoderRMC(char* frame,GPS* data){
 
-	AsString(&data->Identifier,		frame,0, NMEA_CHAR_SEPARATOR);
-	AsString(&data->Time_UTC,		frame,1, NMEA_CHAR_SEPARATOR);
+	AsString(data->Identifier,		frame,0, NMEA_CHAR_SEPARATOR);
+	AsString(data->Time_UTC,		frame,1, NMEA_CHAR_SEPARATOR);
 	AsChar(&data->Status,			frame,2, NMEA_CHAR_SEPARATOR);
 	AsFloat(&data->Lat,				frame,3, NMEA_CHAR_SEPARATOR);
 	AsChar(&data->LatDirection,		frame,4, NMEA_CHAR_SEPARATOR);
 	AsFloat(&data->Lng,				frame,5, NMEA_CHAR_SEPARATOR);
 	AsChar(&data->LngDirection,		frame,6, NMEA_CHAR_SEPARATOR);
 	AsInteger(&data->Speed,			frame,7, NMEA_CHAR_SEPARATOR);
-	AsString(&data->Date,			frame,9, NMEA_CHAR_SEPARATOR);
+	AsString(data->Date,			frame,9, NMEA_CHAR_SEPARATOR);
 	AsFloat(&data->MagVariation,	frame,10,NMEA_CHAR_SEPARATOR);
 
 	if(data->LatDirection==SOUTH){
@@ -329,7 +268,7 @@ $--GSA,a,a,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x.x,x.x,x.x*hh
 */
 static void decoderGSA(char* frame,GPS* data){
 
-	AsString(&data->Identifier,		frame,0, NMEA_CHAR_SEPARATOR);
+	AsString(data->Identifier,		frame,0, NMEA_CHAR_SEPARATOR);
 	AsChar(&data->SelectionMode,	frame,1, NMEA_CHAR_SEPARATOR);
 	AsChar(&data->Mode,				frame,2, NMEA_CHAR_SEPARATOR);
 
@@ -345,9 +284,78 @@ static void decoderGSA(char* frame,GPS* data){
 }
 //------------------------------------------------------------------------
 
-static inline void setGPSStatus(StatusNMEA sts) {
+static bool NMEA_decoderFrame(void){
 
-	statusNMEA = sts;
+	bool ret = false;
+	uint16_t count = getNumField(frameNMEA.Data,NMEA_CHAR_SEPARATOR);
+
+	if(count >= 5){
+
+		uint16_t checksum_rx,checksum_calc;
+
+		// Checksum
+		checksum_calc = calcChecksum(frameNMEA.Data, frameNMEA.Length);
+		// garante que estao diferentes antes de ler.
+		checksum_rx = ~checksum_calc;
+		// Converte de string para numero o checksum recebido
+		checksum_rx = strtol(frameNMEA.checksum, NULL, 16);
+
+		if(checksum_rx==checksum_calc) {
+
+			ret = true;
+
+			char id[NMEA_LEN_ID];
+
+			AsString(id,frameNMEA.Data,0,NMEA_CHAR_SEPARATOR);
+
+			if(strcmp(GGA,id+2)==0){		decoderGGA(frameNMEA.Data,&gps);
+
+			}else if(strcmp(RMC,id+2)==0){	decoderRMC(frameNMEA.Data,&gps);
+
+			}else if(strcmp(GSA,id+2)==0){	decoderGSA(frameNMEA.Data,&gps);
+
+			}else{
+
+				ret = false;
+			}
+		}
+	}
+
+	return ret;
+}
+//------------------------------------------------------------------------
+
+
+static void NMEA_verifyFrame(void){
+
+	if(NMEA_decoderFrame()){
+
+		NMEA_acceptRxFrame();
+
+	}else{
+
+		NMEA_errorRxFrame();
+	}
+}
+//------------------------------------------------------------------------
+
+static void receiveNMEA(void) {
+
+	while(isAnyGPSData()){
+
+		switch(statusNMEA){
+			default:
+			case NMEA_INIT:			gps_init();				break;
+			case NMEA_INIT_OK:		NMEA_rxStart();			break;
+			case NMEA_RX_START:		NMEA_receiveFrame();	break;
+			case NMEA_RX_FRAME:		NMEA_receiveFrame();	break;
+			case NMEA_RX_END:		NMEA_receiveCheckSum();	break;
+			case NMEA_RX_CHECKSUM:	NMEA_rxCR();			break;
+			case NMEA_RX_CR:		NMEA_rxLF();			break;
+			case NMEA_RX_LF:		NMEA_verifyFrame();		break;
+			case NMEA_FRAME_NOK:	NMEA_errorRxFrame();	break;
+		}
+	}
 }
 //------------------------------------------------------------------------
 
@@ -369,8 +377,42 @@ inline bool isAnyGPSData(){
 }
 //------------------------------------------------------------------------
 
-void gps_init(void)
-{
+/**
+ * Task de gerenciamento do GPS
+ */
+static portTASK_FUNCTION(task_gps, pvParameters) {
+
+	while(1) {
+
+		receiveNMEA();
+
+		vTaskDelay(xGPSDelay);
+	}
+
+	vTaskDelete(xHandleGPSTask);
+}
+//--------------------------------------------------------------------------------------
+
+static void createTask(void){
+
+	if (FRTOS1_xTaskCreate(
+		task_gps,
+		name_task,
+		configMINIMAL_STACK_SIZE + 0,
+		(void*)NULL,
+		tskIDLE_PRIORITY + 2,
+		&xHandleGPSTask
+	) != pdPASS) {
+
+		for (;;) {};
+	}
+}
+//------------------------------------------------------------------------
+
+void gps_init(void){
+
+	createTask();
+
 	xQueueGPS		= xQueueCreate( 1, sizeof( GPS ));
 
 	clearBuffer(&bufferRxNMEA);

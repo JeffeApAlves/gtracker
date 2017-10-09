@@ -9,7 +9,7 @@
 #include <string.h>
 #include <time.h>
 
-#include "lcd.h"
+#include "FRTOS1.h"
 #include "XF1.h"
 
 #include "lcd.h"
@@ -19,17 +19,40 @@
 #include "clock.h"
 #include "ihm.h"
 
-#define KEY        	(1<<7)
-#define KEY_INPUT	(~KEY)
-
 static screen active_screen;
 static char line_lcd[20];
-
 static int time_splash	= 3;		//3 segundos
+static EventGroupHandle_t	ihm_events;
+static const char* name_task = "task_ihm";
 
 TaskHandle_t	xHandleIHMTask;
 
-static EventGroupHandle_t	ihm_events;
+static portTASK_FUNCTION(run_ihm, pvParameters) {
+
+	while(1) {
+
+		ihm_task();
+	}
+
+	vTaskDelete(xHandleIHMTask);
+}
+//-------------------------------------------------------------------------
+
+static void createTask(void){
+
+	if (FRTOS1_xTaskCreate(
+		run_ihm,
+		name_task,
+		configMINIMAL_STACK_SIZE + 50,
+		(void*)NULL,
+		tskIDLE_PRIORITY + 3,
+		&xHandleIHMTask
+	) != pdPASS) {
+
+		for (;;) {};
+	}
+}
+//--------------------------------------------------------------------------------
 
 void ihm_task(void) {
 
@@ -289,6 +312,8 @@ inline void ihm_set_active_screen(screen s){
  *
  */
 void ihm_init(void) {
+
+	createTask();
 
 	ihm_events	= xEventGroupCreate();
 

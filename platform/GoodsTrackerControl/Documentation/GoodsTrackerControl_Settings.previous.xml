@@ -128,9 +128,9 @@ PE_DEBUGHALT();
       <configASSERT v="yes" />
       <Application_Task_Tags v="no" />
       <Thread_Local_Storage_Pointers v="0" />
-      <Use_Trace_Facility v="no" />
+      <Use_Trace_Facility v="yes" />
       <group name="Debug Helpers">
-        <Enable_GDB_Debug_Helper v="no" />
+        <Enable_GDB_Debug_Helper v="yes" />
         <uxTopUsedPriority v="no" />
         <Heap_Indication_Constant v="no" />
         <Task_C_Additions v="no" />
@@ -138,7 +138,11 @@ PE_DEBUGHALT();
       </group>
       <boolgroup name="Segger System Viewer Trace" v="Disabled" />
       <boolgroup name="Percepio Trace" v="Disabled" />
-      <boolgroup name="Generate Runtime Statistics" v="Disabled" />
+      <boolgroup name="Generate Runtime Statistics" v="Enabled">
+        <Use_Tick_Counter v="yes" />
+        <boolgroup name="LDD" v="Disabled" />
+        <boolgroup name="non-LDD" v="Disabled" />
+      </boolgroup>
       <group name="Scheduler">
         <boolgroup name="ColdFire V1" v="Disabled" />
         <boolgroup name="ColdFire V2" v="Disabled" />
@@ -212,7 +216,7 @@ PE_DEBUGHALT();
     <Methods>
       <xTaskCreate v="generate code" />
       <xTaskCreateStatic v="generate code" />
-      <vTaskDelete v="don&amp;apos;t generate code" />
+      <vTaskDelete v="generate code" />
       <vTaskStartScheduler v="generate code" />
       <vTaskEndScheduler v="don&amp;apos;t generate code" />
       <vTaskSuspend v="generate code" />
@@ -262,10 +266,10 @@ PE_DEBUGHALT();
       <pcTaskGetTaskName v="generate code" />
       <eTaskGetState v="don&amp;apos;t generate code" />
       <xTaskGetSchedulerState v="generate code" />
-      <vTaskList v="don&amp;apos;t generate code" />
+      <vTaskList v="generate code" />
       <uxTaskGetStackHighWaterMark v="generate code" />
       <uxTaskGetNumberOfTasks v="generate code" />
-      <vTaskGetRunTimeStats v="don&amp;apos;t generate code" />
+      <vTaskGetRunTimeStats v="generate code" />
       <uxQueueMessagesWaiting v="generate code" />
       <uxQueueMessagesWaitingfromISR v="generate code" />
       <xQueueCreate v="generate code" />
@@ -360,7 +364,7 @@ PE_DEBUGHALT();
     <Properties>
       <Component_Name v="TSK1" />
       <FreeRTOS v="FRTOS1" />
-      <list name="Number of tasks" v="8">
+      <list name="Number of tasks" v="9">
         <group name="FreeRTOS task">
           <Task_name v="app_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
@@ -401,6 +405,11 @@ PE_DEBUGHALT();
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>
+        <group name="FreeRTOS task">
+          <Task_name v="task_callback" />
+          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
+          <Initial_Priority v="0" />
+        </group>
       </list>
     </Properties>
     <Methods>
@@ -414,13 +423,13 @@ PE_DEBUGHALT();
     <Enabled v="Y" />
     <Properties>
       <Component_name v="AS1" />
-      <Channel v="UART0" />
+      <Channel v="UART1" />
       <boolgroup name="Interrupt service/event" v="Enabled">
-        <Interrupt_RxD v="INT_UART0" />
+        <Interrupt_RxD v="INT_UART1" />
         <Interrupt_RxD_priority v="medium priority" />
-        <Interrupt_TxD v="INT_UART0" />
+        <Interrupt_TxD v="INT_UART1" />
         <Interrupt_TxD_priority v="medium priority" />
-        <Interrupt_Error v="INT_UART0" />
+        <Interrupt_Error v="INT_UART1" />
         <Interrupt_Error_priority v="medium priority" />
         <Input_buffer_size v="0" />
         <Output_buffer_size v="0" />
@@ -434,10 +443,10 @@ PE_DEBUGHALT();
         <Width v="8 bits" />
         <Stop_bit v="1" />
         <boolgroup name="Receiver" v="Enabled">
-          <RxD v="TSI0_CH2/PTA1/UART0_RX/TPM2_CH0" />
+          <RxD v="PTE1/SPI1_MOSI/UART1_RX/SPI1_MISO/I2C1_SCL" />
         </boolgroup>
         <boolgroup name="Transmitter" v="Enabled">
-          <TxD v="TSI0_CH3/PTA2/UART0_TX/TPM2_CH1" />
+          <TxD v="PTE0/UART1_TX/RTC_CLKOUT/CMP0_OUT/I2C1_SDA" />
         </boolgroup>
         <Baud_rate v="57600 baud" />
         <Break_signal v="Disabled" />
@@ -462,13 +471,13 @@ PE_DEBUGHALT();
           <Enabled v="Y" />
           <Properties>
             <Component_name v="ASerialLdd1" />
-            <Device v="UART0" />
+            <Device v="UART1" />
             <boolgroup name="Interrupt service/event" v="Enabled">
-              <Interrupt_RxD v="INT_UART0" />
+              <Interrupt_RxD v="INT_UART1" />
               <Interrupt_RxD_priority v="medium priority" />
-              <Interrupt_TxD v="INT_UART0" />
+              <Interrupt_TxD v="INT_UART1" />
               <Interrupt_TxD_priority v="medium priority" />
-              <Interrupt_Error v="INT_UART0" />
+              <Interrupt_Error v="INT_UART1" />
               <Interrupt_Error_priority v="medium priority" />
             </boolgroup>
             <group name="Settings">
@@ -484,10 +493,10 @@ PE_DEBUGHALT();
               <Receiver_input v="Not inverted" />
               <Break_generation_length v="10/11 bits" />
               <boolgroup name="Receiver" v="Enabled">
-                <RxD v="TSI0_CH2/PTA1/UART0_RX/TPM2_CH0" />
+                <RxD v="PTE1/SPI1_MOSI/UART1_RX/SPI1_MISO/I2C1_SCL" />
               </boolgroup>
               <boolgroup name="Transmitter" v="Enabled">
-                <TxD v="TSI0_CH3/PTA2/UART0_TX/TPM2_CH1" />
+                <TxD v="PTE0/UART1_TX/RTC_CLKOUT/CMP0_OUT/I2C1_SDA" />
               </boolgroup>
               <enumgroup name="Flow control" v="None">
                 <EmptySection_DummyValue />

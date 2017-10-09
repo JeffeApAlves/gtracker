@@ -128,9 +128,9 @@ PE_DEBUGHALT();
       <configASSERT v="yes" />
       <Application_Task_Tags v="no" />
       <Thread_Local_Storage_Pointers v="0" />
-      <Use_Trace_Facility v="no" />
+      <Use_Trace_Facility v="yes" />
       <group name="Debug Helpers">
-        <Enable_GDB_Debug_Helper v="no" />
+        <Enable_GDB_Debug_Helper v="yes" />
         <uxTopUsedPriority v="no" />
         <Heap_Indication_Constant v="no" />
         <Task_C_Additions v="no" />
@@ -138,7 +138,11 @@ PE_DEBUGHALT();
       </group>
       <boolgroup name="Segger System Viewer Trace" v="Disabled" />
       <boolgroup name="Percepio Trace" v="Disabled" />
-      <boolgroup name="Generate Runtime Statistics" v="Disabled" />
+      <boolgroup name="Generate Runtime Statistics" v="Enabled">
+        <Use_Tick_Counter v="yes" />
+        <boolgroup name="LDD" v="Disabled" />
+        <boolgroup name="non-LDD" v="Disabled" />
+      </boolgroup>
       <group name="Scheduler">
         <boolgroup name="ColdFire V1" v="Disabled" />
         <boolgroup name="ColdFire V2" v="Disabled" />
@@ -187,7 +191,7 @@ PE_DEBUGHALT();
       <group name="Memory">
         <boolgroup name="Dynamic Allocation" v="Enabled">
           <Application_allocated_Heap v="no" />
-          <Heap_Size v="12200" />
+          <Heap_Size v="12190" />
           <Linker_Heap_Base_Symbol v="__HeapBase" />
           <Linker_Heap_Limit_Symbol v="__HeapLimit" />
           <Linker_Heap_Size_Symbol v="__heap_size" />
@@ -212,7 +216,7 @@ PE_DEBUGHALT();
     <Methods>
       <xTaskCreate v="generate code" />
       <xTaskCreateStatic v="generate code" />
-      <vTaskDelete v="don&amp;apos;t generate code" />
+      <vTaskDelete v="generate code" />
       <vTaskStartScheduler v="generate code" />
       <vTaskEndScheduler v="don&amp;apos;t generate code" />
       <vTaskSuspend v="generate code" />
@@ -262,10 +266,10 @@ PE_DEBUGHALT();
       <pcTaskGetTaskName v="generate code" />
       <eTaskGetState v="don&amp;apos;t generate code" />
       <xTaskGetSchedulerState v="generate code" />
-      <vTaskList v="don&amp;apos;t generate code" />
+      <vTaskList v="generate code" />
       <uxTaskGetStackHighWaterMark v="generate code" />
       <uxTaskGetNumberOfTasks v="generate code" />
-      <vTaskGetRunTimeStats v="don&amp;apos;t generate code" />
+      <vTaskGetRunTimeStats v="generate code" />
       <uxQueueMessagesWaiting v="generate code" />
       <uxQueueMessagesWaitingfromISR v="generate code" />
       <xQueueCreate v="generate code" />
@@ -360,7 +364,7 @@ PE_DEBUGHALT();
     <Properties>
       <Component_Name v="TSK1" />
       <FreeRTOS v="FRTOS1" />
-      <list name="Number of tasks" v="8">
+      <list name="Number of tasks" v="9">
         <group name="FreeRTOS task">
           <Task_name v="app_task" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
@@ -398,6 +402,11 @@ PE_DEBUGHALT();
         </group>
         <group name="FreeRTOS task">
           <Task_name v="runTx_task" />
+          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
+          <Initial_Priority v="0" />
+        </group>
+        <group name="FreeRTOS task">
+          <Task_name v="task_callback" />
           <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
           <Initial_Priority v="0" />
         </group>

@@ -42,6 +42,4 @@ typedef enum {
 #define SIZE_LIST_CMD	9
 
 
-
-
 #endif /* INCLUDES_CMD_H_ */

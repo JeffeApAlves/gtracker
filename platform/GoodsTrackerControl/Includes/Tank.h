@@ -28,7 +28,7 @@ void lock(void);
 void unLock(void);
 void tank_init(void);
 
-extern volatile bool AD_finished;
+extern bool AD_finished;
 
 extern QueueHandle_t	xQueueTank;
 

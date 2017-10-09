@@ -6,6 +6,7 @@
 #ifndef MMA8451_H_
 #define MMA8451_H_
 
+#include <stdbool.h>
 #include <stdint.h>
 
 #include "PE_LDD.h"

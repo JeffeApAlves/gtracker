@@ -22,7 +22,7 @@ uint8_t I2C_ReadBuffer(uint8_t addr, uint8_t *data, short dataSize) {
 
 	while (!deviceData.dataTransmittedFlg) {} /* Wait until data is sent */
 
-	deviceData.dataTransmittedFlg = FALSE;
+	deviceData.dataTransmittedFlg = false;
 
 	/* Receive InpData (1 byte) from the I2C bus and generates a stop condition to end transmission */
 	res = I2C2_MasterReceiveBlock(deviceData.handle, data, dataSize, LDD_I2C_SEND_STOP);
@@ -32,7 +32,7 @@ uint8_t I2C_ReadBuffer(uint8_t addr, uint8_t *data, short dataSize) {
 	}
 	while (!deviceData.dataReceivedFlg) {} /* Wait until data is received received */
 
-	deviceData.dataReceivedFlg = FALSE;
+	deviceData.dataReceivedFlg = false;
 
 	return ERR_OK;
 }
@@ -53,7 +53,7 @@ uint8_t I2C_Write(uint8_t addr, uint8_t val) {
 
 	while (!deviceData.dataTransmittedFlg) {}  /* Wait until date is sent */
 
-	deviceData.dataTransmittedFlg = FALSE;
+	deviceData.dataTransmittedFlg = false;
 
 	return ERR_OK;
 }

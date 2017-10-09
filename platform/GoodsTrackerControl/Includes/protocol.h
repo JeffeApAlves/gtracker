@@ -34,17 +34,6 @@ typedef enum {
 	CMD_FRAME_NOK,
 } StatusRx;
 
-static void rxStartCMD (void);
-static void receiveFrame (void);
-static void rxLF(void);
-static void rxCR(void);
-static void acceptRxFrame(CommunicationPackage* package_rx);
-static void setStatusRx(StatusRx sts);
-static void errorRxFrame(void);
-static bool decoderFrame(CommunicationPackage* package_rx);
-static bool verifyFrame(void);
-
-
 /*interface*/
 void protocol_init(void);
 Resource getResource(char* name);

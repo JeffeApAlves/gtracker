@@ -15,6 +15,9 @@
 #include "queue.h"
 #include "event_groups.h"
 
+#define KEY       		 		(1<<7)
+#define KEY_INPUT				(~KEY)
+
 //Eventos do clock
 #define	BIT_UPDATE_LCD_CLOCK	0x01
 #define	BIT_UPDATE_LCD_STAT_COM	0x02
@@ -64,6 +67,7 @@ void ihm_event_notify(EventBits_t uxBitsToSet);
 void ihm_notify_screen_stat(void);
 void ihm_notify_screen_tlm(void);
 void ihm_set_active_screen(screen s);
+void readKey(void);
 
 extern TaskHandle_t	xHandleIHMTask;
 

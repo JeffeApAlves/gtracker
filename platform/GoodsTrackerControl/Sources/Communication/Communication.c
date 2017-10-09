@@ -5,56 +5,106 @@
  *      Author: Jefferson
  */
 
+#include "FRTOS1.h"
+
 #include "ihm.h"
 #include "protocol.h"
 #include "application.h"
 #include "communication.h"
 
+static const TickType_t xRxComDelay		= (200 / portTICK_PERIOD_MS);
+static const char* name_task_rx 		= "task_rx";
+static const char* name_task_tx 		= "task_tx";
+
 // Handle das tasks para processamento das pilha de TX e RX
 TaskHandle_t 	xHandleRxTask,xHandleTxTask;
 
 // Handles das Queues
-QueueHandle_t	xQueueRx, xQueueTx;
+QueueHandle_t	xQueuePackageRx, xQueuePackageTx;
 
-/*
- * Pacotes recebidos
- *
- */
-void rxPackage_task(){
-
-	if(receivePackage()){
-
-		// pacote recebido com sucesso e esta na fila
-	}
-}
-//------------------------------------------------------------------------------------
 
 /**
- *  Pacotes a serem enviados
+ * Gerencia a fila de pacotes de recepção
  *
  */
-void txPackage_task(){
+static portTASK_FUNCTION(rxPackage_task, pvParameters) {
 
-	uint32_t ulNotifiedValue;
+	while(1) {
 
-	xTaskNotifyWait( 0x0, BIT_TX,  &ulNotifiedValue, portMAX_DELAY );
+		if(receivePackage()){
 
-	if(ulNotifiedValue & BIT_TX){
+			// pacote recebido com sucesso e esta na fila
+		}
 
-		CommunicationPackage	package_tx;
+		vTaskDelay(xRxComDelay);
+	}
 
-		while (xQueueReceive(xQueueTx, &package_tx, (TickType_t ) 1)) {
+	vTaskDelete(xHandleRxTask);
+}
+//---------------------------------------------------------------------------------------------
 
-			sendPackage(&package_tx);
+/**
+ * Gerencia a fila de pacotes de transmissão
+ *
+ */
+static portTASK_FUNCTION(txPackage_task, pvParameters) {
+
+	while(1) {
+
+		uint32_t ulNotifiedValue;
+
+		xTaskNotifyWait( 0x0, BIT_TX,  &ulNotifiedValue, portMAX_DELAY );
+
+		if(ulNotifiedValue & BIT_TX){
+
+			CommunicationPackage	package_tx;
+
+			while (xQueueReceive(xQueuePackageTx, &package_tx, (TickType_t ) 1)) {
+
+				sendPackage(&package_tx);
+			}
 		}
 	}
+
+	vTaskDelete(xHandleTxTask);
 }
-//------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
+
+static void createTasks(void){
+
+	if (FRTOS1_xTaskCreate(
+			rxPackage_task,
+			name_task_rx,
+			configMINIMAL_STACK_SIZE+50,
+			(void*)NULL,
+			tskIDLE_PRIORITY + 1,
+			&xHandleRxTask
+	) != pdPASS) {
+
+		for (;;) {};
+	}
+
+	if (FRTOS1_xTaskCreate(
+			txPackage_task,
+			name_task_tx,
+			configMINIMAL_STACK_SIZE+50,
+			(void*)NULL,
+			tskIDLE_PRIORITY + 1,
+			&xHandleTxTask
+	) != pdPASS) {
+
+		for (;;) {};
+	}
+
+}
+//--------------------------------------------------------------------------------------
 
 void communication_init(void){
 
-	xQueueRx	= xQueueCreate( 1, sizeof( CommunicationPackage ));
-	xQueueTx	= xQueueCreate( 1, sizeof( CommunicationPackage ));
+	createTasks();
+
+	xQueuePackageRx	= xQueueCreate( 1, sizeof( CommunicationPackage ));
+	xQueuePackageTx	= xQueueCreate( 1, sizeof( CommunicationPackage ));
 
 	protocol_init();
 }
@@ -66,9 +116,9 @@ void communication_init(void){
  */
 void putPackageRx(CommunicationPackage* package_rx){
 
-	if(xQueueSendToBack( xQueueRx ,package_rx, ( TickType_t ) 1 ) ){
+	if(xQueueSendToBack( xQueuePackageRx ,package_rx, ( TickType_t ) 1 ) ){
 
-		xTaskNotify( xHandleCallBackTask , BIT_RX_FRAME , eSetBits );
+		xTaskNotify( xHandleAppTask , BIT_RX_FRAME , eSetBits );
 	}
 }
 //------------------------------------------------------------------------------------
@@ -82,7 +132,7 @@ void putPackageRx(CommunicationPackage* package_rx){
 void putPackageTx(CommunicationPackage* package_tx){
 
 	// Publica resposta na fila
-	if(xQueueSendToBack( xQueueTx , package_tx, ( TickType_t ) 1 ) ){
+	if(xQueueSendToBack( xQueuePackageTx , package_tx, ( TickType_t ) 1 ) ){
 
 		xTaskNotify( xHandleTxTask , BIT_TX , eSetBits );
 

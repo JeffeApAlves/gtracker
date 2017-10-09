@@ -15,27 +15,31 @@ const char* OPERATION_WR = "WR";
 static StatusRx	statusRx = CMD_INIT;
 static Frame	frameRx;
 
-bool receivePackage(void){
+static inline void setStatusRx(StatusRx sts) {
 
-	bool rx_ok = false;
+	statusRx = sts;
+}
+//------------------------------------------------------------------------
 
-	while(isAnyRxData()){
+/**
+ * Recepcao do frame OK
+ *
+ */
+static void acceptRxFrame(CommunicationPackage* package_rx) {
 
-		switch(statusRx){
+	putPackageRx(package_rx);
+	setStatusRx(CMD_INIT_OK);
+}
+//------------------------------------------------------------------------
 
-			default:
-			case CMD_INIT:			protocol_init();		break;
-			case CMD_INIT_OK:		rxStartCMD();			break;
-			case CMD_RX_START:		receiveFrame();			break;
-			case CMD_RX_FRAME:		receiveFrame();			break;
-			case CMD_RX_END:		rxCR();					break;
-			case CMD_RX_CR:			rxLF();					break;
-			case CMD_RX_LF:			rx_ok = verifyFrame();	break;
-			case CMD_FRAME_NOK:		errorRxFrame();			break;
-		}
-	}
+/**
+ * Erro na recepcao do frame
+ *
+ */
+static void errorRxFrame(void){
 
-	return rx_ok;
+	setStatusRx(CMD_FRAME_NOK);
+	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
 
@@ -121,27 +125,6 @@ static void rxCR(void) {
 }
 //------------------------------------------------------------------------
 
-static bool verifyFrame(void) {
-
-	bool rx_ok = false;
-
-	CommunicationPackage	package_rx;
-
-	if(decoderFrame(&package_rx)){
-
-		acceptRxFrame(&package_rx);
-
-		rx_ok = true;
-
-	}else{
-
-		errorRxFrame();
-	}
-
-	return rx_ok;
-}
-//------------------------------------------------------------------------
-
 static bool decoderFrame(CommunicationPackage* package_rx) {
 
 	bool ret = false;
@@ -186,6 +169,51 @@ static bool decoderFrame(CommunicationPackage* package_rx) {
 }
 //------------------------------------------------------------------------
 
+static bool verifyFrame(void) {
+
+	bool rx_ok = false;
+
+	CommunicationPackage	package_rx;
+
+	if(decoderFrame(&package_rx)){
+
+		acceptRxFrame(&package_rx);
+
+		rx_ok = true;
+
+	}else{
+
+		errorRxFrame();
+	}
+
+	return rx_ok;
+}
+//------------------------------------------------------------------------
+
+bool receivePackage(void){
+
+	bool rx_ok = false;
+
+	while(isAnyRxData()){
+
+		switch(statusRx){
+
+			default:
+			case CMD_INIT:			protocol_init();		break;
+			case CMD_INIT_OK:		rxStartCMD();			break;
+			case CMD_RX_START:		receiveFrame();			break;
+			case CMD_RX_FRAME:		receiveFrame();			break;
+			case CMD_RX_END:		rxCR();					break;
+			case CMD_RX_CR:			rxLF();					break;
+			case CMD_RX_LF:			rx_ok = verifyFrame();	break;
+			case CMD_FRAME_NOK:		errorRxFrame();			break;
+		}
+	}
+
+	return rx_ok;
+}
+//------------------------------------------------------------------------
+
 Resource getResource(char* name) {
 
 	Resource r;
@@ -205,28 +233,6 @@ Resource getResource(char* name) {
 //------------------------------------------------------------------------
 
 /**
- * Recepcao do frame OK
- *
- */
-static void acceptRxFrame(CommunicationPackage* package_rx) {
-
-	putPackageRx(package_rx);
-	setStatusRx(CMD_INIT_OK);
-}
-//------------------------------------------------------------------------
-
-/**
- * Erro na recepcao do frame
- *
- */
-static void errorRxFrame(void){
-
-	setStatusRx(CMD_FRAME_NOK);
-	setStatusRx(CMD_INIT_OK);
-}
-//------------------------------------------------------------------------
-
-/**
  *
  * Envia o frame
  *
@@ -234,15 +240,12 @@ static void errorRxFrame(void){
 void sendFrame(char* frame){
 
 	putTxData(CHAR_START);					// Envia caracter de inicio
-
-	putTxString(frame);				// Envia o frame
-
+	putTxString(frame);						// Envia o frame
 	putTxData(CHAR_END);					// Envia o caracter de fim
-
 	putTxData(CHAR_CR);						// Envia caracteres de controle
 	putTxData(CHAR_LF);
 
-	startTX();								// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
+	startTX();								// Envia 1 byte para iniciar a transmissao. Os demais serao via interrupcao TX
 }
 //------------------------------------------------------------------------
 
@@ -269,22 +272,14 @@ void sendPackage(CommunicationPackage* package){
 	checkSum2String(checksum,checksum_str);
 
 	putTxData(CHAR_START);						// Envia caracter de inicio
-
-	putTxString(header_str);			// Envia header
-	putTxString(package->PayLoad.Data);	// Envia payload
-	putTxString(checksum_str);			// Envia checksum
-
+	putTxString(header_str);					// Envia header
+	putTxString(package->PayLoad.Data);			// Envia payload
+	putTxString(checksum_str);					// Envia checksum
 	putTxData(CHAR_END);						// Envia o caracter de fim
 	putTxData(CHAR_CR);							// Envia caracteres de controle
 	putTxData(CHAR_LF);
 
-	startTX();									// Envia 1 byte para iniciar a transmissao os demais serao via interrupcao TX
-}
-//------------------------------------------------------------------------
-
-static inline void setStatusRx(StatusRx sts) {
-
-	statusRx = sts;
+	startTX();									// Envia 1 byte para iniciar a transmissao. Os demais serao via interrupcao TX
 }
 //------------------------------------------------------------------------
 

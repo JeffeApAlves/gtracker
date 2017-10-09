@@ -19,7 +19,6 @@ typedef struct{
 
 } Accelerometer;
 
-void accelerometer_task(void);
 void accelerometer_init(void);
 void deInitAccelerometer(void);
 

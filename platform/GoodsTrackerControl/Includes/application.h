@@ -32,8 +32,9 @@ typedef enum
 /**
  * Ponteiro para as call backs
  */
-typedef ResultExec(*pCallBack)(CommunicationPackage*);
-
+//typedef ResultExec(*pCallBack)(CommunicationPackage*);
+typedef	TaskFunction_t	pCallBack;
+/*
 ResultExec onAnalog(CommunicationPackage* package);
 ResultExec onLED(CommunicationPackage* package);
 ResultExec onPWM(CommunicationPackage* package);
@@ -41,18 +42,16 @@ ResultExec onTouch(CommunicationPackage* package);
 ResultExec onAccel(CommunicationPackage* package);
 ResultExec onTelemetry(CommunicationPackage* package);
 ResultExec onLock(CommunicationPackage* package);
-
+*/
 void execError(CommunicationPackage* package);
 
 void app_init(void);
 void decoderLockPayLoad(PayLoad* payload);
-void execCMD(uint32_t ulNotifiedValue);
 static void initPackageAnswer(CommunicationPackage* package);
 
-void callback_task(void);
 pCallBack getCallBack(Resource r);
 
-extern TaskHandle_t	xHandleCallBackTask;
+extern TaskHandle_t	xHandleAppTask;
 
 extern Telemetria	telemetria;
 

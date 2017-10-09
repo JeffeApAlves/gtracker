@@ -7,6 +7,8 @@
 
 #include <stdio.h>
 
+#include "FRTOS1.h"
+
 #include "Tank.h"
 #include "Telemetria.h"
 #include "clock.h"
@@ -17,153 +19,188 @@
 #include "consumer.h"
 #include "application.h"
 
+static const char* name_task 	= "task_app";
+static const char* name_task_cb = "task_callback";
+
 static 	int		_lock;
 Telemetria		telemetria;
-TaskHandle_t	xHandleCallBackTask;
+TaskHandle_t	xHandleAppTask,xHandleCBTask;
 
-void callback_task(void){
+static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* package){
 
-	uint32_t ulNotifiedValue;
-
-	xTaskNotifyWait( 0x0, BIT_RX_FRAME | BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY);
-
-	updateTLM(&telemetria,ulNotifiedValue);
-
-	execCMD(ulNotifiedValue);
+	if (FRTOS1_xTaskCreate(
+		pxTaskCode,	name_task_cb,
+		configMINIMAL_STACK_SIZE + 50,
+		(void*) package,
+		tskIDLE_PRIORITY + 10,
+		&xHandleCBTask
+	) != pdPASS) {
+		for (;;) {};
+	}
 }
-//-------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------
 
-void execCMD(uint32_t ulNotifiedValue){
+static void execCMD(uint32_t ulNotifiedValue){
 
 	if(ulNotifiedValue & BIT_RX_FRAME){
 
 		CommunicationPackage	package;
 
-		while (xQueueReceive(xQueueRx, &package, (TickType_t ) 1)) {
+		while (xQueueReceive(xQueuePackageRx, &package, (TickType_t ) 1)) {
 
 			pCallBack cb = getCallBack(package.Header.resource);
 
 			if(cb!=NULL){
 
-				if(cb(&package) == CMD_RESULT_EXEC_SUCCESS) {
-
-					 putPackageTx(&package);
-				}
-				else {
-
-					execError(&package);
-				}
+				createTaskCallBack(cb,&package);
 			}
 		}
 	}
 }
 //-------------------------------------------------------------------------
 
-ResultExec onLED(CommunicationPackage* package){
+/**
+ *  Task para execucao da call back dos cmds recebidos e consume as informações de telemetria
+ *  O comando de telemetria espera as notificacoes para atualizacoes das informacoes via fila de mensagens
+ *
+ */
+static portTASK_FUNCTION(task_app, pvParameters) {
 
-	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+	while(1) {
+
+		uint32_t ulNotifiedValue;
+
+		xTaskNotifyWait( 0x0, BIT_RX_FRAME | BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY);
+
+		updateTLM(&telemetria,ulNotifiedValue);
+
+		execCMD(ulNotifiedValue);
+	}
+
+	vTaskDelete(xHandleAppTask);
+}
+//--------------------------------------------------------------------------------------------------------
+
+//ResultExec onLED(CommunicationPackage* package){
+static portTASK_FUNCTION(onLED, pvParameters){
+
+	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
-
-	res = CMD_RESULT_EXEC_SUCCESS;
 
 	initPackageAnswer(package);
 
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");
 
-	return res;
+	// Resultado da callback
+	putPackageTx(package);
+
+	vTaskDelete(xHandleCBTask);
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAnalog(CommunicationPackage* package){
+//ResultExec onAnalog(CommunicationPackage* package){
+static portTASK_FUNCTION(onAnalog, pvParameters){
 
-	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
 
-	res = CMD_RESULT_EXEC_SUCCESS;
 
 	initPackageAnswer(package);
 
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");;
 
-	return res;
+	// Resultado da callback
+	putPackageTx(package);
+
+	vTaskDelete(xHandleCBTask);
 }
 //-------------------------------------------------------------------------
 
-ResultExec onAccel(CommunicationPackage* package){
+//ResultExec onAccel(CommunicationPackage* package){
+static portTASK_FUNCTION(onAccel, pvParameters){
 
-	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
 
-	res = CMD_RESULT_EXEC_SUCCESS;
+	initPackageAnswer(package);
+
+	// Preenche payload com resultado
+	AppendPayLoad(&package->PayLoad,"1569695954");
+
+	// Resultado da callback
+	putPackageTx(package);
+
+	vTaskDelete(xHandleCBTask);
+}
+//-------------------------------------------------------------------------
+
+//ResultExec onTouch(CommunicationPackage* package){
+static portTASK_FUNCTION(onTouch, pvParameters){
+
+	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
+
+	// ... Implementação da execução do cmd ...
 
 	initPackageAnswer(package);
 
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");;
 
-	return res;
+	// Resultado da callback
+	putPackageTx(package);
+
+	vTaskDelete(xHandleCBTask);
 }
 //-------------------------------------------------------------------------
 
-ResultExec onTouch(CommunicationPackage* package){
+//ResultExec onPWM(CommunicationPackage* package){
+static portTASK_FUNCTION(onPWM, pvParameters){
 
-	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
-
-	res = CMD_RESULT_EXEC_SUCCESS;
 
 	initPackageAnswer(package);
 
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");;
 
-	return res;
-}
-//-------------------------------------------------------------------------
+	// Resultado da callback
+	putPackageTx(package);
 
-ResultExec onPWM(CommunicationPackage* package){
-
-	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
-
-	// ... Implementação da execução do cmd ...
-
-	res = CMD_RESULT_EXEC_SUCCESS;
-
-	initPackageAnswer(package);
-
-	// Preenche payload com resultado
-	AppendPayLoad(&package->PayLoad,"1569695954");;
-
-	return res;
+	vTaskDelete(xHandleCBTask);
 }
 //------------------------------------------------------------------------
 
-ResultExec onTelemetry(CommunicationPackage* package){
+//ResultExec onTelemetry(CommunicationPackage* package){
 
-	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+static portTASK_FUNCTION(onTelemetry, pvParameters){
+
+	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
-
-	res = CMD_RESULT_EXEC_SUCCESS;
 
 	initPackageAnswer(package);
 
 	// Preenche payload com resultado
 	tlm2String(&telemetria,&package->PayLoad);
 
-	return res;
+	// Resultado da callback
+	putPackageTx(package);
+
+	vTaskDelete(xHandleCBTask);
 }
 //------------------------------------------------------------------------
 
-ResultExec onLock(CommunicationPackage* package){
+//ResultExec onLock(CommunicationPackage* package){
+static portTASK_FUNCTION(onLock, pvParameters){
 
-	ResultExec res = CMD_RESULT_EXEC_UNSUCCESS;
+	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	decoderLockPayLoad(&package->PayLoad);
 
@@ -176,14 +213,15 @@ ResultExec onLock(CommunicationPackage* package){
 		unLock();
 	}
 
-	res = CMD_RESULT_EXEC_SUCCESS;
-
 	initPackageAnswer(package);
 
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");;
 
-	return res;
+	// Resultado da callback
+	putPackageTx(package);
+
+	vTaskDelete(xHandleCBTask);
 }
 //------------------------------------------------------------------------
 
@@ -210,7 +248,7 @@ static void initPackageAnswer(CommunicationPackage* package){
 
 	if(package){
 
-		// Payload do cmd apagado
+		// Clear payload
 		clearArrayPayLoad(&package->PayLoad);
 
 		strcpy(package->Header.operacao,OPERATION_AN);
@@ -227,22 +265,34 @@ pCallBack getCallBack(Resource r) {
 
 	switch(r){
 
-		case CMD_LED:		cb = onLED;			break;
-		case CMD_ANALOG:	cb = onAnalog;		break;
-		case CMD_PWM:		cb = onPWM;			break;
-		case CMD_ACC:		cb = onAccel;		break;
-		case CMD_TOUCH:		cb = onTouch;		break;
-		case CMD_TLM:		cb = onTelemetry;	break;
-		case CMD_LOCK:		cb = onLock;		break;
-		case CMD_LCD:		cb = NULL;			break;
+		case CMD_LED:	cb = onLED;			break;
+		case CMD_ANALOG:cb = onAnalog;		break;
+		case CMD_PWM:	cb = onPWM;			break;
+		case CMD_ACC:	cb = onAccel;		break;
+		case CMD_TOUCH:	cb = onTouch;		break;
+		case CMD_TLM:	cb = onTelemetry;	break;
+		case CMD_LOCK:	cb = onLock;		break;
+		case CMD_LCD:	cb = NULL;			break;
 	}
 
 	return cb;
 }
 //------------------------------------------------------------------------
 
+static void createTask(void){
+
+	if (FRTOS1_xTaskCreate(
+		task_app,	name_task,configMINIMAL_STACK_SIZE + 50,
+		(void*)NULL,	tskIDLE_PRIORITY + 4,	&xHandleAppTask
+	) != pdPASS) {
+		for (;;) {};
+	}
+}
+//------------------------------------------------------------------------
+
 void app_init(void){
 
+	createTask();
 	clearTelemetria(&telemetria);
 }
 //------------------------------------------------------------------------

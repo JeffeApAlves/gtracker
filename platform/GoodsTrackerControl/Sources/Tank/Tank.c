@@ -9,13 +9,16 @@
 #include "LED_G.h"
 #include "LED_R.h"
 
+#include "FRTOS1.h"
 #include "application.h"
 #include "Tank.h"
 
+static const char* task_name = "task_tank";
+static const TickType_t xTankDelay = (200 / portTICK_PERIOD_MS);
 static uint16_t	ADValues[AD1_CHANNEL_COUNT];
 static Tank		tank;
 
-volatile	bool AD_finished;
+bool AD_finished;
 
 // Handles das Queue
 QueueHandle_t	xQueueTank;
@@ -23,6 +26,27 @@ QueueHandle_t	xQueueTank;
 // Handles das Task
 TaskHandle_t	xHandleDataTask;
 
+/**
+ * Task de gerenciamento do tank
+ *
+ */
+static portTASK_FUNCTION(run_data, pvParameters) {
+
+	while(1) {
+
+		tank_task();
+
+		vTaskDelay(xTankDelay);
+	}
+
+	vTaskDelete(xHandleDataTask);
+}
+//---------------------------------------------------------------------------
+
+/**
+ *
+ *
+ */
 void tank_task(void){
 
 	AD_finished = false;
@@ -37,7 +61,7 @@ void tank_task(void){
 
 		    if(xQueueSendToBack( xQueueTank ,  &tank, ( TickType_t ) 1 ) ){
 
-		    	xTaskNotify( xHandleCallBackTask, BIT_UPDATE_AD , eSetBits );
+		    	xTaskNotify( xHandleAppTask, BIT_UPDATE_AD , eSetBits );
 		    }
 		}
 	}
@@ -58,10 +82,27 @@ void unLock(void){
 }
 //------------------------------------------------------------------------
 
+static void createTask(void){
+
+	if (FRTOS1_xTaskCreate(
+		run_data, task_name,
+		configMINIMAL_STACK_SIZE + 0,
+		(void*)NULL,
+		tskIDLE_PRIORITY + 0,
+		&xHandleDataTask
+	) != pdPASS) {
+
+		for (;;) {};
+	}
+}
+//------------------------------------------------------------------------
+
 void tank_init(void){
 
+	createTask();
+
 	xQueueTank		= xQueueCreate( 1, sizeof( Tank ));
+
 	AD_finished		= false;
 }
 //-----------------------------------------------------------------------------
-

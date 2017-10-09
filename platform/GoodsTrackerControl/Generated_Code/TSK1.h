@@ -8,13 +8,13 @@
 **     Version     : Component 01.008, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-09-25, 16:46, # CodeGen: 169
+**     Date/Time   : 2017-10-09, 15:59, # CodeGen: 218
 **     Abstract    :
 **
 **     Settings    :
 **          Component Name                                 : TSK1
 **          FreeRTOS                                       : FRTOS1
-**          Number of tasks                                : 8
+**          Number of tasks                                : 9
 **            FreeRTOS task                                : app_taskTask
 **              Task name                                  : app_task
 **              Stack size (plus configMINIMAL_STACK_SIZE) : 0
@@ -45,6 +45,10 @@
 **              Initial Priority                           : 0
 **            FreeRTOS task                                : runTx_taskTask
 **              Task name                                  : runTx_task
+**              Stack size (plus configMINIMAL_STACK_SIZE) : 0
+**              Initial Priority                           : 0
+**            FreeRTOS task                                : task_callbackTask
+**              Task name                                  : task_callback
 **              Stack size (plus configMINIMAL_STACK_SIZE) : 0
 **              Initial Priority                           : 0
 **     Contents    :

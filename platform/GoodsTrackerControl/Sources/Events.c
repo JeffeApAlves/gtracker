@@ -37,9 +37,9 @@ extern "C" {
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
 #include "gps.h"
+#include "serial.h"
 #include "MMA8451.h"
-#include "protocol.h"
-#include <Tank.h>
+#include "Tank.h"
 #include "clock.h"
 #include "ihm.h"
 
@@ -553,6 +553,29 @@ void AD1_OnCalibrationEnd(void)
 void RTC1_OnSecond(LDD_TUserData *UserDataPtr)
 {
 	updateEntityClock();
+}
+
+/*
+** ===================================================================
+**     Event       :  PTRC1_OnTraceWrap (module Events)
+**
+**     Component   :  PTRC1 [PercepioTrace]
+**     Description :
+**         Called for trace ring buffer wrap around. This gives the
+**         application a chance to dump the trace buffer.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void PTRC1_OnTraceWrap(void)
+{
+#if 0 /* default implementation for gdb below ... */
+  /* Write your code here ... */
+  uint8_t buf[64];
+
+  /* GDB: dump binary memory <file> <hexStartAddr> <hexEndAddr> */
+  PTRC1_vGetGDBDumpCommand(buf, sizeof(buf), "c:\\tmp\\trc.dump");
+#endif
 }
 
 /* END Events */
