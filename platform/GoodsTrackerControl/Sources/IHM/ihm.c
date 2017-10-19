@@ -22,10 +22,13 @@
 static screen active_screen;
 static char line_lcd[20];
 static int time_splash	= 3;		//3 segundos
-static EventGroupHandle_t	ihm_events;
-static const char* name_task = "task_ihm";
 
-TaskHandle_t	xHandleIHMTask;
+/* Task GPS*/
+static const char*			IHM_TASK_NAME =			"task_ihm";
+#define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+3)
+#define						IHM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
+static EventGroupHandle_t	ihm_events;
+TaskHandle_t				xHandleIHMTask;
 
 static portTASK_FUNCTION(run_ihm, pvParameters) {
 
@@ -42,10 +45,10 @@ static void createTask(void){
 
 	if (FRTOS1_xTaskCreate(
 		run_ihm,
-		name_task,
-		configMINIMAL_STACK_SIZE + 50,
+		IHM_TASK_NAME,
+		IHM_TASK_STACK_SIZE,
 		(void*)NULL,
-		tskIDLE_PRIORITY + 3,
+		IHM_TASK_PRIORITY,
 		&xHandleIHMTask
 	) != pdPASS) {
 

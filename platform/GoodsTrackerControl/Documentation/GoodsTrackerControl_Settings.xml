@@ -165,7 +165,7 @@ PE_DEBUGHALT();
         <Use_Co_Routines v="no" />
         <Idle_should_yield v="yes" />
         <Task_Name_Length v="12" />
-        <Minimal_Stack_Size v="200" />
+        <Minimal_Stack_Size v="150" />
         <Maximum_Priorities v="6" />
         <Maximum_Coroutine_Priorities v="2" />
         <Stackoverflow_checking_method v="Method 1" />

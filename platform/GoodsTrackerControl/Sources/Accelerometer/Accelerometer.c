@@ -5,41 +5,42 @@
  *      Author: Jefferson
  */
 
+#include <stdio.h>
 #include "MMA8451.h"
 
 #include "application.h"
 #include "Accelerometer.h"
 
-static const char* name_task = "task_accelerometer";
 
-static const TickType_t xAcceDelay		= (200 / portTICK_PERIOD_MS);
+/* Task */
+static const char*		ACCE_TASK_NAME =		"task_accelerometer";
+#define 				ACCE_TASK_PRIORITY		(tskIDLE_PRIORITY)
+#define					ACCE_TASK_STACK_SIZE	(configMINIMAL_STACK_SIZE)
+static const TickType_t ACCE_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
+QueueHandle_t			xQueueAcc;
+TaskHandle_t			xHandleAccelTask;
 
 Accelerometer	acceInfo;
 
-QueueHandle_t	xQueueAcc;
-
-TaskHandle_t xHandleAccelTask;
-
-static void accelerometer_task(void) {
-
-	if(MMA845x_getXYZ(&acceInfo)){
-
-		if(xQueueSendToBack( xQueueAcc ,  &acceInfo, ( TickType_t ) 1 ) ){
-
-			xTaskNotify(xHandleAppTask, BIT_UPDATE_ACCE , eSetBits );
-		}
-	}
-}
-//------------------------------------------------------------------------
 
 static portTASK_FUNCTION(run_accel, pvParameters) {
 
+	MMA845x_init();
+
 	while(1) {
 
-		accelerometer_task();
+		if(MMA845x_getXYZ(&acceInfo)){
 
-		vTaskDelay(xAcceDelay);
+			if(xQueueSendToBack( xQueueAcc ,  &acceInfo, ( TickType_t ) 1 ) ){
+
+				xTaskNotify(xHandleAppTask, BIT_UPDATE_ACCE , eSetBits );
+			}
+		}
+
+		vTaskDelay(ACCE_TASK_DELAY);
 	}
+
+	MMA845x_deInit();
 
 	vTaskDelete(xHandleAccelTask);
 }
@@ -49,26 +50,25 @@ static void createTask(void){
 
 	if (FRTOS1_xTaskCreate(
 			run_accel,
-			name_task,
-			configMINIMAL_STACK_SIZE + 0,
+			ACCE_TASK_NAME,
+			ACCE_TASK_STACK_SIZE,
 			(void*)NULL,
-			tskIDLE_PRIORITY + 0,
+			ACCE_TASK_PRIORITY,
 			&xHandleAccelTask
 	) != pdPASS) {
 
-		for (;;) {};
+		while (1) {};
 	}
 }
 //------------------------------------------------------------------------
 
 void accelerometer_init(void){
 
-	createTask();
-
-	xQueueAcc		= xQueueCreate( 1, sizeof( Accelerometer ));
-
 	clearAccelerometer(&acceInfo);
-	MMA845x_init();
+
+	xQueueAcc	= xQueueCreate( 1, sizeof( Accelerometer ));
+
+	createTask();
 }
 //------------------------------------------------------------------------
 

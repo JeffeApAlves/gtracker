@@ -61,7 +61,7 @@ uint8_t I2C_Write(uint8_t addr, uint8_t val) {
 
 bool MMA845x_getXYZ(Accelerometer* acc){
 
-	int8_t xyz[LEN_XYZ];
+	uint8_t xyz[LEN_XYZ];
 
 	uint8_t res = ERR_FAILED;
 	uint8_t status;
@@ -70,7 +70,7 @@ bool MMA845x_getXYZ(Accelerometer* acc){
 
 	if ((res==ERR_OK) && (status & MMA8451_ZYXDR_BIT)){
 
-		res = I2C_ReadBuffer(MMA8451_OUT_X_MSB, (uint8_t*)&xyz,LEN_XYZ);
+		res = I2C_ReadBuffer(MMA8451_OUT_X_MSB,xyz,LEN_XYZ);
 
 		if(res==ERR_OK){
 
@@ -89,6 +89,9 @@ bool MMA845x_getXYZ(Accelerometer* acc){
 			acc->y_g = (float)acc->y / divider;
 			acc->z_g = (float)acc->z / divider;
 		}
+	} else{
+
+		res = ERR_FAILED;
 	}
 
 	return res == ERR_OK;
@@ -251,7 +254,7 @@ void MMA845x_setRange(mma8451_range_t range){
   MMA845x_Active();
 }
 //--------------------------------------------------------------------------------------------
-
+/*
 short toDecimal (int8_t* hi_lo){
 
 	short word = ((hi_lo[0]<<8) | hi_lo[1])>>2;
@@ -263,5 +266,11 @@ short toDecimal (int8_t* hi_lo){
 	}
 
 	return word;
+}
+//--------------------------------------------------------------------------------------------
+*/
+inline int16_t toDecimal (uint8_t* hi_lo){
+
+	return ((int16_t)((hi_lo[0]<<8) | hi_lo[1]))>>2;
 }
 //--------------------------------------------------------------------------------------------

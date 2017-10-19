@@ -15,6 +15,8 @@ const char* OPERATION_WR = "WR";
 static StatusRx	statusRx = CMD_INIT;
 static Frame	frameRx;
 
+static void protocol_clear_all(void);
+
 static inline void setStatusRx(StatusRx sts) {
 
 	statusRx = sts;
@@ -38,7 +40,8 @@ static void acceptRxFrame(CommunicationPackage* package_rx) {
  */
 static void errorRxFrame(void){
 
-	setStatusRx(CMD_FRAME_NOK);
+	protocol_clear_all();
+
 	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
@@ -158,7 +161,7 @@ static bool decoderFrame(CommunicationPackage* package_rx) {
 
 				ret = true;
 			}else{
-				clearPackage(&package_rx);
+				clearPackage(package_rx);
 			}
 		}else{
 			clearPackage(package_rx);
@@ -199,14 +202,13 @@ bool receivePackage(void){
 		switch(statusRx){
 
 			default:
-			case CMD_INIT:			protocol_init();		break;
+			case CMD_INIT:			protocol_clear_all();	break;
 			case CMD_INIT_OK:		rxStartCMD();			break;
 			case CMD_RX_START:		receiveFrame();			break;
 			case CMD_RX_FRAME:		receiveFrame();			break;
 			case CMD_RX_END:		rxCR();					break;
 			case CMD_RX_CR:			rxLF();					break;
 			case CMD_RX_LF:			rx_ok = verifyFrame();	break;
-			case CMD_FRAME_NOK:		errorRxFrame();			break;
 		}
 	}
 
@@ -288,9 +290,16 @@ void sendPackage(CommunicationPackage* package){
  * Inicializa p protocolo de comunicação
  *
  */
-void protocol_init(void) {
+static void protocol_clear_all(void) {
 
 	clearFrame(&frameRx);
 	setStatusRx(CMD_INIT_OK);
 }
 //------------------------------------------------------------------------
+
+void protocol_init(void){
+
+	uart_init();
+}
+//------------------------------------------------------------------------
+

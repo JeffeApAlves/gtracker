@@ -30,8 +30,6 @@ typedef enum {
 	CMD_RX_END,
 	CMD_RX_CR,
 	CMD_RX_LF,
-	CMD_FRAME_OK,
-	CMD_FRAME_NOK,
 } StatusRx;
 
 /*interface*/
@@ -40,6 +38,7 @@ Resource getResource(char* name);
 void sendFrame(char* frame);
 void sendPackage(CommunicationPackage* package);
 bool receivePackage(void);
+void protocol_init(void);
 
 extern const char* OPERATION_AN;
 extern const char* OPERATION_RD;

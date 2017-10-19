@@ -8,6 +8,7 @@
 #ifndef SOURCES_GPS_H_
 #define SOURCES_GPS_H_
 
+#include <NMEA.h>
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -15,37 +16,8 @@
 #include "task.h"
 #include "queue.h"
 
-#include "RingBuffer.h"
 #include "utils.h"
-#include "NMEAFrame.h"
 
-#define NMEA_CHAR_START		'$'
-#define NMEA_CHAR_END		'*'
-#define NMEA_CHAR_SEPARATOR	','
-#define NMEA_CHAR_CR		'\r'
-#define NMEA_CHAR_LF		'\n'
-#define NMEA_CHAR_STR_END	'\0'
-
-/**
- *
- * Maquina de estado para recebimento do frame
- */
-typedef enum {
-
-	NMEA_INIT,
-	NMEA_INIT_OK,
-	NMEA_RX_START,
-	NMEA_RX_FRAME,
-	NMEA_RX_END,
-	NMEA_RX_CHECKSUM,
-	NMEA_RX_LF,
-	NMEA_RX_CR,
-	NMEA_FRAME_NOK,
-	NMEA_FRAME_OK,
-	NMEA_EXEC,
-	NMEA_EXEC_ERROR,
-
-} StatusNMEA;
 
 /*
  * Estrutura de dados do frame NMEA
@@ -79,16 +51,13 @@ typedef struct{
 
 } GPS;
 
-//API
-bool getGPSData(char* ch);
-bool putGPSData(char data);
-void gps_init(void);
-bool isAnyGPSData();
+
+void gps_publish(void);
 
 #define clearGPS(f) memset((void*)f,0,sizeof(GPS));
 
 extern QueueHandle_t	xQueueGPS;
 extern TaskHandle_t		xHandleGPSTask;
-extern RingBuffer		bufferRxNMEA;
+extern GPS	gps;
 
 #endif /* SOURCES_GPS_H_ */

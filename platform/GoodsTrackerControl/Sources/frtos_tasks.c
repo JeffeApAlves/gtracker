@@ -1,22 +1,6 @@
-/*!
- ** @}
- */
-/*
- ** ###################################################################
- **
- **     This file was created by Processor Expert 10.5 [05.21]
- **     for the Freescale Kinetis series of microcontrollers.
- **
- ** ###################################################################
- */
-
-/* Begin of <includes> initialization, DO NOT MODIFY LINES BELOW */
-
 #include "TSK1.h"
 #include "FRTOS1.h"
 #include "frtos_tasks.h"
-
-/* End <includes> initialization, DO NOT MODIFY LINES ABOVE */
 
 #include "application.h"
 #include "ihm.h"
@@ -27,8 +11,8 @@
 #include "gps.h"
 
 TaskHandle_t xHandleMainTask;
-static const char* name_task			= "task_startup";
-static const TickType_t xMainDelay		= (200 / portTICK_PERIOD_MS);
+static const char* name_task =			"task_startup";
+static const TickType_t xMainDelay =	(200 / portTICK_PERIOD_MS);
 
 /**
  * Task responsável por fazer o startup ddo sistema e monitora o teclado.
@@ -45,8 +29,6 @@ static portTASK_FUNCTION(run_main, pvParameters) {
 	accelerometer_init();
 
 	clock_init();
-
-	uart_init();
 
 	communication_init();
 
@@ -68,22 +50,19 @@ static portTASK_FUNCTION(run_main, pvParameters) {
 /**
  * Cria a task de inicialização
  *
- *
  */
 void CreateTasks(void) {
 
 	if (FRTOS1_xTaskCreate(
-			run_main, /* pointer to the task */
-			name_task, /* task name for kernel awareness debugging */
-			configMINIMAL_STACK_SIZE, /* task stack size */
-			(void*)NULL, /* optional task startup argument */
-			tskIDLE_PRIORITY + 10, /* initial priority */
-			&xHandleMainTask /* optional task handle to create */
+			run_main,
+			name_task,
+			configMINIMAL_STACK_SIZE,
+			(void*)NULL,
+			tskIDLE_PRIORITY + 10,
+			&xHandleMainTask
 	) != pdPASS) {
-		/*lint -e527 */
-		for (;;) {
-		}; /* error! probably out of memory */
-		/*lint +e527 */
+
+		while(1) {};
 	}
 }
 //-----------------------------------------------------------------------------------------------

@@ -5,6 +5,7 @@
  *      Author: Jefferson
  */
 
+#include <NMEA.h>
 #include <stdio.h>
 
 #include "FRTOS1.h"
@@ -12,33 +13,29 @@
 #include "Tank.h"
 #include "Telemetria.h"
 #include "clock.h"
-#include "NMEAFrame.h"
 #include "Accelerometer.h"
 #include "Serialization.h"
 #include "communication.h"
 #include "consumer.h"
 #include "application.h"
 
-static const char* name_task 	= "task_app";
-static const char* name_task_cb = "task_callback";
+/* Task APP */
+static const char*	APP_TASK_NAME =			"task_app";
+#define 			APP_TASK_PRIORITY		(tskIDLE_PRIORITY+4)
+#define				APP_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 50)
+TaskHandle_t		xHandleAppTask;
+
+/* Task CB (cmd) */
+static const char*	CB_TASK_NAME =			"task_callback";
+#define 			CB_TASK_PRIORITY		(tskIDLE_PRIORITY+10)
+#define				CB_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 50)
+TaskHandle_t		xHandleCBTask;
 
 static 	int		_lock;
 Telemetria		telemetria;
-TaskHandle_t	xHandleAppTask,xHandleCBTask;
 
-static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* package){
 
-	if (FRTOS1_xTaskCreate(
-		pxTaskCode,	name_task_cb,
-		configMINIMAL_STACK_SIZE + 50,
-		(void*) package,
-		tskIDLE_PRIORITY + 10,
-		&xHandleCBTask
-	) != pdPASS) {
-		for (;;) {};
-	}
-}
-//--------------------------------------------------------------------------------------------------------
+static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* package);
 
 static void execCMD(uint32_t ulNotifiedValue){
 
@@ -279,20 +276,39 @@ pCallBack getCallBack(Resource r) {
 }
 //------------------------------------------------------------------------
 
+static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* package){
+
+	if (FRTOS1_xTaskCreate(
+		pxTaskCode,
+		CB_TASK_NAME,
+		CB_TASK_STACK_SIZE,
+		(void*) package,
+		CB_TASK_PRIORITY,
+		&xHandleCBTask
+	) != pdPASS) {
+		while (1) {};
+	}
+}
+//--------------------------------------------------------------------------------------------------------
+
 static void createTask(void){
 
 	if (FRTOS1_xTaskCreate(
-		task_app,	name_task,configMINIMAL_STACK_SIZE + 50,
-		(void*)NULL,	tskIDLE_PRIORITY + 4,	&xHandleAppTask
+		task_app,
+		APP_TASK_NAME,
+		APP_TASK_STACK_SIZE,
+		(void*)NULL,
+		APP_TASK_PRIORITY,
+		&xHandleAppTask
 	) != pdPASS) {
-		for (;;) {};
+		while(1){};
 	}
 }
 //------------------------------------------------------------------------
 
 void app_init(void){
 
-	createTask();
 	clearTelemetria(&telemetria);
+	createTask();
 }
 //------------------------------------------------------------------------

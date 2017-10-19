@@ -115,6 +115,6 @@ void MMA845x_setRange(mma8451_range_t range);
 
 mma8451_range_t MMA845x_getRange(void);
 
-short toDecimal (int8_t* hi_lo);
+int16_t toDecimal (uint8_t* hi_lo);
 
 #endif /* MMA8451_H_ */

@@ -12,16 +12,21 @@
 #include "application.h"
 #include "communication.h"
 
-static const TickType_t xRxComDelay		= (200 / portTICK_PERIOD_MS);
-static const char* name_task_rx 		= "task_rx";
-static const char* name_task_tx 		= "task_tx";
 
-// Handle das tasks para processamento das pilha de TX e RX
-TaskHandle_t 	xHandleRxTask,xHandleTxTask;
+/* Task RX*/
+static const char*		RX_TASK_NAME =			"task_rx";
+#define 				RX_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
+#define					RX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 50)
+static const TickType_t RX_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
+QueueHandle_t			xQueuePackageRx;
+TaskHandle_t 			xHandleRxTask;
 
-// Handles das Queues
-QueueHandle_t	xQueuePackageRx, xQueuePackageTx;
-
+/* Task TX*/
+static const char*		TX_TASK_NAME =			"task_tx";
+#define 				TX_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
+#define					TX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
+TaskHandle_t 			xHandleTxTask;
+QueueHandle_t			xQueuePackageTx;
 
 /**
  * Gerencia a fila de pacotes de recepção
@@ -36,7 +41,7 @@ static portTASK_FUNCTION(rxPackage_task, pvParameters) {
 			// pacote recebido com sucesso e esta na fila
 		}
 
-		vTaskDelay(xRxComDelay);
+		vTaskDelay(RX_TASK_DELAY);
 	}
 
 	vTaskDelete(xHandleRxTask);
@@ -74,39 +79,38 @@ static void createTasks(void){
 
 	if (FRTOS1_xTaskCreate(
 			rxPackage_task,
-			name_task_rx,
-			configMINIMAL_STACK_SIZE+50,
+			RX_TASK_NAME,
+			RX_TASK_STACK_SIZE,
 			(void*)NULL,
-			tskIDLE_PRIORITY + 1,
+			RX_TASK_PRIORITY,
 			&xHandleRxTask
 	) != pdPASS) {
 
-		for (;;) {};
+		while (1) {};
 	}
 
 	if (FRTOS1_xTaskCreate(
 			txPackage_task,
-			name_task_tx,
-			configMINIMAL_STACK_SIZE+50,
+			TX_TASK_NAME,
+			TX_TASK_STACK_SIZE,
 			(void*)NULL,
-			tskIDLE_PRIORITY + 1,
+			TX_TASK_PRIORITY,
 			&xHandleTxTask
 	) != pdPASS) {
 
-		for (;;) {};
+		while (1) {};
 	}
-
 }
 //--------------------------------------------------------------------------------------
 
 void communication_init(void){
 
-	createTasks();
+	protocol_init();
 
 	xQueuePackageRx	= xQueueCreate( 1, sizeof( CommunicationPackage ));
 	xQueuePackageTx	= xQueueCreate( 1, sizeof( CommunicationPackage ));
 
-	protocol_init();
+	createTasks();
 }
 //------------------------------------------------------------------------------------
 
