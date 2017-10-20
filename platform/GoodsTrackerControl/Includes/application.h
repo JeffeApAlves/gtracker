@@ -34,25 +34,13 @@ typedef enum
  */
 //typedef ResultExec(*pCallBack)(CommunicationPackage*);
 typedef	TaskFunction_t	pCallBack;
-/*
-ResultExec onAnalog(CommunicationPackage* package);
-ResultExec onLED(CommunicationPackage* package);
-ResultExec onPWM(CommunicationPackage* package);
-ResultExec onTouch(CommunicationPackage* package);
-ResultExec onAccel(CommunicationPackage* package);
-ResultExec onTelemetry(CommunicationPackage* package);
-ResultExec onLock(CommunicationPackage* package);
-*/
-void execError(CommunicationPackage* package);
 
 void app_init(void);
 void decoderLockPayLoad(PayLoad* payload);
-static void initPackageAnswer(CommunicationPackage* package);
 
 pCallBack getCallBack(Resource r);
 
 extern TaskHandle_t	xHandleAppTask;
-
 extern Telemetria	telemetria;
 
 #endif /* SOURCES_APPLICATION_H_ */

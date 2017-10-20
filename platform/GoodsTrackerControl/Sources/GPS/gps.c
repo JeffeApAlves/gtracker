@@ -15,7 +15,7 @@
 /* Task GPS*/
 static const char*		GPS_TASK_NAME =			"task_gps";
 #define 				GPS_TASK_PRIORITY		(tskIDLE_PRIORITY)
-#define					GPS_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 50)
+#define					GPS_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 100)
 static const TickType_t GPS_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 QueueHandle_t			xQueueGPS;
 TaskHandle_t			xHandleGPSTask;

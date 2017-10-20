@@ -10,19 +10,15 @@
 #include "accelerometer.h"
 #include "gps.h"
 
-TaskHandle_t xHandleMainTask;
-static const char* name_task =			"task_startup";
-static const TickType_t xMainDelay =	(200 / portTICK_PERIOD_MS);
-
 /**
- * Task responsável por fazer o startup ddo sistema e monitora o teclado.
+ * Cria a task de inicialização
  *
  */
-static portTASK_FUNCTION(run_main, pvParameters) {
-
-	tank_init();
+void CreateTasks(void) {
 
 	ihm_init();
+
+	tank_init();
 
 	gps_init();
 
@@ -33,36 +29,5 @@ static portTASK_FUNCTION(run_main, pvParameters) {
 	communication_init();
 
 	app_init();
-
-	while(1) {
-
-		ihm_notify_screen_stat();
-
-		readKey();
-
-		vTaskDelay(xMainDelay);
-	}
-
-	vTaskDelete(xHandleMainTask);
-}
-//-----------------------------------------------------------------------------------------------
-
-/**
- * Cria a task de inicialização
- *
- */
-void CreateTasks(void) {
-
-	if (FRTOS1_xTaskCreate(
-			run_main,
-			name_task,
-			configMINIMAL_STACK_SIZE,
-			(void*)NULL,
-			tskIDLE_PRIORITY + 10,
-			&xHandleMainTask
-	) != pdPASS) {
-
-		while(1) {};
-	}
 }
 //-----------------------------------------------------------------------------------------------

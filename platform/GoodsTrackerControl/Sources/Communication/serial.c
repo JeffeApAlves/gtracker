@@ -8,19 +8,13 @@
 
 #include "Events.h"
 #include "AS1.h"
-
 #include "serial.h"
 
-RingBuffer			bufferRx,bufferTx;
-
+RingBuffer	bufferRx,bufferTx;
 
 inline bool putTxData(char data) {
 
-#ifdef SERIAL_DRIVER_ESP32
-	return uart_wr_data(data);
-#else
 	return putData(&bufferTx,data);
-#endif
 }
 //------------------------------------------------------------------------
 
@@ -80,7 +74,6 @@ inline bool isAnyRxData(){
 	return getCount(&bufferRx)>0;
 }
 //------------------------------------------------------------------------
-
 
 /*
  *

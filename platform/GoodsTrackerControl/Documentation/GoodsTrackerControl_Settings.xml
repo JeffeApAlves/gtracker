@@ -165,7 +165,7 @@ PE_DEBUGHALT();
         <Use_Co_Routines v="no" />
         <Idle_should_yield v="yes" />
         <Task_Name_Length v="12" />
-        <Minimal_Stack_Size v="150" />
+        <Minimal_Stack_Size v="100" />
         <Maximum_Priorities v="6" />
         <Maximum_Coroutine_Priorities v="2" />
         <Stackoverflow_checking_method v="Method 1" />
@@ -191,7 +191,7 @@ PE_DEBUGHALT();
       <group name="Memory">
         <boolgroup name="Dynamic Allocation" v="Enabled">
           <Application_allocated_Heap v="no" />
-          <Heap_Size v="12190" />
+          <Heap_Size v="12186" />
           <Linker_Heap_Base_Symbol v="__HeapBase" />
           <Linker_Heap_Limit_Symbol v="__HeapLimit" />
           <Linker_Heap_Size_Symbol v="__heap_size" />

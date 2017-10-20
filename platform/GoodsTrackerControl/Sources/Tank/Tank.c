@@ -15,7 +15,7 @@
 
 
 /* Task Tank */
-static const char*			TANK_TASK_NAME =			"task_ihm";
+static const char*			TANK_TASK_NAME =			"task_tank";
 #define 					TANK_TASK_PRIORITY			(tskIDLE_PRIORITY+3)
 #define						TANK_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
 static EventGroupHandle_t	TANK_events;

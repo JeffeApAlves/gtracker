@@ -27,7 +27,7 @@ void updateDataGPS(Telemetria* tlm) {
 
 void updateDataAcce(Telemetria* tlm) {
 
-	if (xQueueReceive(xQueueAcc, &tlm->Accelerometer, (TickType_t ) 1)) {
+	if (xQueueReceive(xQueueAcce, &tlm->Accelerometer, (TickType_t ) 1)) {
 
 	}
 }

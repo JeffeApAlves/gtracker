@@ -24,7 +24,7 @@ void deInitAccelerometer(void);
 
 #define clearAccelerometer(f) memset((void*)f,0,sizeof(Accelerometer));
 
-extern QueueHandle_t	xQueueAcc;
+extern QueueHandle_t	xQueueAcce;
 
 extern TaskHandle_t xHandleAccelTask;
 

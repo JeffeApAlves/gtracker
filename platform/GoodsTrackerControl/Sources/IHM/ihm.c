@@ -20,13 +20,20 @@
 #include "ihm.h"
 
 static screen active_screen;
-static char line_lcd[20];
+static char line_lcd[25];
 static int time_splash	= 3;		//3 segundos
 
-/* Task GPS*/
+
+/* Task Key*/
+static const char* 			KEY_TASK_NAME =			"task_key";
+static const TickType_t 	KEY_TASK_DELAY =		(200 / portTICK_PERIOD_MS);
+#define 					KEY_TASK_PRIORITY		(tskIDLE_PRIORITY + 10)
+#define						KEY_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
+
+/* Task IHM*/
 static const char*			IHM_TASK_NAME =			"task_ihm";
 #define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+3)
-#define						IHM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
+#define						IHM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE+100)
 static EventGroupHandle_t	ihm_events;
 TaskHandle_t				xHandleIHMTask;
 
@@ -41,6 +48,24 @@ static portTASK_FUNCTION(run_ihm, pvParameters) {
 }
 //-------------------------------------------------------------------------
 
+
+/**
+ * Task responsável por fazer o startup ddo sistema e monitora o teclado.
+ *
+ */
+static portTASK_FUNCTION(run_key, pvParameters) {
+
+	while(1) {
+
+		ihm_notify_screen_stat();
+
+		readKey();
+
+		vTaskDelay(KEY_TASK_DELAY);
+	}
+}
+//-----------------------------------------------------------------------------------------------
+
 static void createTask(void){
 
 	if (FRTOS1_xTaskCreate(
@@ -52,7 +77,19 @@ static void createTask(void){
 		&xHandleIHMTask
 	) != pdPASS) {
 
-		for (;;) {};
+		while(1) {};
+	}
+
+	if (FRTOS1_xTaskCreate(
+			run_key,
+			KEY_TASK_NAME,
+			KEY_TASK_STACK_SIZE,
+			(void*)NULL,
+			KEY_TASK_PRIORITY,
+			NULL
+	) != pdPASS) {
+
+		while(1) {};
 	}
 }
 //--------------------------------------------------------------------------------
@@ -316,8 +353,6 @@ inline void ihm_set_active_screen(screen s){
  */
 void ihm_init(void) {
 
-	createTask();
-
 	ihm_events	= xEventGroupCreate();
 
 	LCDInit();
@@ -334,6 +369,8 @@ void ihm_init(void) {
 	GPIOD_PDDR &= KEY_INPUT;
 
 	printSplash();
+
+	createTask();
 }
 //-----------------------------------------------------------------------------------------
 

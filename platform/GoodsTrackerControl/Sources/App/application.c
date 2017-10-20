@@ -22,34 +22,41 @@
 /* Task APP */
 static const char*	APP_TASK_NAME =			"task_app";
 #define 			APP_TASK_PRIORITY		(tskIDLE_PRIORITY+4)
-#define				APP_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 50)
+#define				APP_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
 TaskHandle_t		xHandleAppTask;
 
 /* Task CB (cmd) */
 static const char*	CB_TASK_NAME =			"task_callback";
 #define 			CB_TASK_PRIORITY		(tskIDLE_PRIORITY+10)
-#define				CB_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 50)
+#define				CB_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
 TaskHandle_t		xHandleCBTask;
 
 static 	int		_lock;
 Telemetria		telemetria;
 
-
 static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* package);
+static void execError(CommunicationPackage* package);
 
 static void execCMD(uint32_t ulNotifiedValue){
 
 	if(ulNotifiedValue & BIT_RX_FRAME){
 
-		CommunicationPackage	package;
+		CommunicationPackage*	package = pvPortMalloc(sizeof(CommunicationPackage));
 
-		while (xQueueReceive(xQueuePackageRx, &package, (TickType_t ) 1)) {
+		if(package!=NULL){
 
-			pCallBack cb = getCallBack(package.Header.resource);
+			while (xQueueReceive(xQueuePackageRx, package, (TickType_t ) 1)) {
 
-			if(cb!=NULL){
+				pCallBack cb = getCallBack(package->Header.resource);
 
-				createTaskCallBack(cb,&package);
+				if(cb!=NULL){
+
+					createTaskCallBack(cb,package);
+
+				} else{
+
+					execError(package);
+				}
 			}
 		}
 	}
@@ -78,123 +85,107 @@ static portTASK_FUNCTION(task_app, pvParameters) {
 }
 //--------------------------------------------------------------------------------------------------------
 
-//ResultExec onLED(CommunicationPackage* package){
 static portTASK_FUNCTION(onLED, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
 
-	initPackageAnswer(package);
-
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");
 
 	// Resultado da callback
-	putPackageTx(package);
+	sendAnswer(package);
 
+	vPortFree(package);
 	vTaskDelete(xHandleCBTask);
 }
 //-------------------------------------------------------------------------
 
-//ResultExec onAnalog(CommunicationPackage* package){
 static portTASK_FUNCTION(onAnalog, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
 
-
-	initPackageAnswer(package);
-
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");;
 
 	// Resultado da callback
-	putPackageTx(package);
+	sendAnswer(package);
 
+	vPortFree(package);
 	vTaskDelete(xHandleCBTask);
 }
 //-------------------------------------------------------------------------
 
-//ResultExec onAccel(CommunicationPackage* package){
 static portTASK_FUNCTION(onAccel, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
 
-	initPackageAnswer(package);
-
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");
 
 	// Resultado da callback
-	putPackageTx(package);
+	sendAnswer(package);
 
+	vPortFree(package);
 	vTaskDelete(xHandleCBTask);
 }
 //-------------------------------------------------------------------------
 
-//ResultExec onTouch(CommunicationPackage* package){
 static portTASK_FUNCTION(onTouch, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
 
-	initPackageAnswer(package);
-
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");;
 
 	// Resultado da callback
-	putPackageTx(package);
+	sendAnswer(package);
 
+	vPortFree(package);
 	vTaskDelete(xHandleCBTask);
 }
 //-------------------------------------------------------------------------
 
-//ResultExec onPWM(CommunicationPackage* package){
 static portTASK_FUNCTION(onPWM, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
 
-	initPackageAnswer(package);
-
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");;
 
 	// Resultado da callback
-	putPackageTx(package);
+	sendAnswer(package);
 
+	vPortFree(package);
 	vTaskDelete(xHandleCBTask);
 }
 //------------------------------------------------------------------------
-
-//ResultExec onTelemetry(CommunicationPackage* package){
 
 static portTASK_FUNCTION(onTelemetry, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
 	// ... Implementação da execução do cmd ...
-
-	initPackageAnswer(package);
-
 	// Preenche payload com resultado
 	tlm2String(&telemetria,&package->PayLoad);
 
 	// Resultado da callback
-	putPackageTx(package);
+	sendAnswer(package);
 
+	vPortFree(package);
 	vTaskDelete(xHandleCBTask);
 }
 //------------------------------------------------------------------------
 
-//ResultExec onLock(CommunicationPackage* package){
 static portTASK_FUNCTION(onLock, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
@@ -210,23 +201,24 @@ static portTASK_FUNCTION(onLock, pvParameters){
 		unLock();
 	}
 
-	initPackageAnswer(package);
-
 	// Preenche payload com resultado
 	AppendPayLoad(&package->PayLoad,"1569695954");;
 
 	// Resultado da callback
-	putPackageTx(package);
+	sendAnswer(package);
 
+	vPortFree(package);
 	vTaskDelete(xHandleCBTask);
 }
 //------------------------------------------------------------------------
 
-void execError(CommunicationPackage* package){
+static void execError(CommunicationPackage* package){
 
-	initPackageAnswer(package);
+	AppendPayLoad(&package->PayLoad,"EXEC ERROR");
 
-	AppendPayLoad(&package->PayLoad,"EXEC ERROR");;
+	sendAnswer(package);
+
+	vPortFree(package);
 }
 //------------------------------------------------------------------------
 
@@ -244,9 +236,6 @@ void decoderLockPayLoad(PayLoad* payload){
 static void initPackageAnswer(CommunicationPackage* package){
 
 	if(package){
-
-		// Clear payload
-		clearArrayPayLoad(&package->PayLoad);
 
 		strcpy(package->Header.operacao,OPERATION_AN);
 		package->Header.dest			= package->Header.address;

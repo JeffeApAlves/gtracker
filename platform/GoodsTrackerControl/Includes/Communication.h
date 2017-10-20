@@ -19,6 +19,7 @@
 
 void putPackageRx(CommunicationPackage* package_rx);
 void putPackageTx(CommunicationPackage* package_tx);
+void sendAnswer(CommunicationPackage* package);
 
 void communication_init(void);
 
@@ -27,5 +28,6 @@ extern QueueHandle_t	xQueuePackageRx, xQueuePackageTx;
 
 // Handles das tasks
 extern TaskHandle_t 	xHandleRxTask,xHandleTxTask;
+
 
 #endif /* INCLUDES_COMMUNICATION_H_ */

@@ -12,11 +12,10 @@
 #include "application.h"
 #include "communication.h"
 
-
 /* Task RX*/
 static const char*		RX_TASK_NAME =			"task_rx";
 #define 				RX_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
-#define					RX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 50)
+#define					RX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
 static const TickType_t RX_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 QueueHandle_t			xQueuePackageRx;
 TaskHandle_t 			xHandleRxTask;
@@ -62,11 +61,15 @@ static portTASK_FUNCTION(txPackage_task, pvParameters) {
 
 		if(ulNotifiedValue & BIT_TX){
 
-			CommunicationPackage	package_tx;
+			CommunicationPackage*	package_tx = pvPortMalloc(sizeof(CommunicationPackage));
 
-			while (xQueueReceive(xQueuePackageTx, &package_tx, (TickType_t ) 1)) {
+			if(package_tx!=NULL){
+				while (xQueueReceive(xQueuePackageTx, package_tx, (TickType_t ) 1)) {
 
-				sendPackage(&package_tx);
+					sendPackage(package_tx);
+				}
+
+				vPortFree(package_tx);
 			}
 		}
 	}
@@ -146,3 +149,22 @@ void putPackageTx(CommunicationPackage* package_tx){
 	}
 }
 //------------------------------------------------------------------------------------
+
+/*
+ *
+ * Envia resposta
+ *
+ */
+void sendAnswer(CommunicationPackage* package){
+
+	if(package){
+
+		strcpy(package->Header.operacao,OPERATION_AN);
+		package->Header.dest			= package->Header.address;
+		package->Header.address			= ADDRESS;
+		package->Header.time_stamp		= getCurrentTimeStamp();
+
+		putPackageTx(package);
+	}
+}
+//------------------------------------------------------------------------

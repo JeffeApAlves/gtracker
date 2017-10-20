@@ -20,7 +20,9 @@ bool isAnyRxData();
 bool getRxData(char* ch);
 void putTxString(char* str);
 void startTX(void);
+void uart_init(void);
 
+//Para debug apenas
 extern RingBuffer	bufferRx,bufferTx;
 
 #endif /* INCLUDES_SERIAL_H_ */

@@ -176,17 +176,24 @@ static bool verifyFrame(void) {
 
 	bool rx_ok = false;
 
-	CommunicationPackage	package_rx;
+	//CommunicationPackage	package_rx;
 
-	if(decoderFrame(&package_rx)){
+	CommunicationPackage*	package_rx = pvPortMalloc(sizeof(CommunicationPackage));
 
-		acceptRxFrame(&package_rx);
+	if(package_rx!=NULL){
 
-		rx_ok = true;
+		if(decoderFrame(package_rx)){
 
-	}else{
+			acceptRxFrame(package_rx);
 
-		errorRxFrame();
+			rx_ok = true;
+
+		}else{
+
+			errorRxFrame();
+		}
+
+		vPortFree(package_rx);
 	}
 
 	return rx_ok;
@@ -253,7 +260,7 @@ void sendFrame(char* frame){
 
 /*
  *
- * Faz a serialização reaproveitando o payload da camada aplicação e transmite via serial
+ * Faz a serialização do header e o payload serelizado pela aplicação e transmite via serial
  *
  */
 void sendPackage(CommunicationPackage* package){

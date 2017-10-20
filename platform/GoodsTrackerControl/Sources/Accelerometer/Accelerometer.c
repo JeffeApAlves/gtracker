@@ -17,7 +17,7 @@ static const char*		ACCE_TASK_NAME =		"task_accelerometer";
 #define 				ACCE_TASK_PRIORITY		(tskIDLE_PRIORITY)
 #define					ACCE_TASK_STACK_SIZE	(configMINIMAL_STACK_SIZE)
 static const TickType_t ACCE_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
-QueueHandle_t			xQueueAcc;
+QueueHandle_t			xQueueAcce;
 TaskHandle_t			xHandleAccelTask;
 
 Accelerometer	acceInfo;
@@ -31,7 +31,7 @@ static portTASK_FUNCTION(run_accel, pvParameters) {
 
 		if(MMA845x_getXYZ(&acceInfo)){
 
-			if(xQueueSendToBack( xQueueAcc ,  &acceInfo, ( TickType_t ) 1 ) ){
+			if(xQueueSendToBack( xQueueAcce ,  &acceInfo, ( TickType_t ) 1 ) ){
 
 				xTaskNotify(xHandleAppTask, BIT_UPDATE_ACCE , eSetBits );
 			}
@@ -66,7 +66,7 @@ void accelerometer_init(void){
 
 	clearAccelerometer(&acceInfo);
 
-	xQueueAcc	= xQueueCreate( 1, sizeof( Accelerometer ));
+	xQueueAcce	= xQueueCreate( 1, sizeof( Accelerometer ));
 
 	createTask();
 }
