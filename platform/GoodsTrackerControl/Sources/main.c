@@ -39,6 +39,8 @@
 #include "AD1.h"
 #include "AdcLdd1.h"
 #include "RTC1.h"
+#include "EInt1.h"
+#include "ExtIntLdd1.h"
 #include "MCUC1.h"
 #include "TSK1.h"
 #include "LED_R.h"
@@ -52,9 +54,6 @@
 #include "LED_B.h"
 #include "LEDpin3.h"
 #include "BitIoLdd3.h"
-#include "TU1.h"
-#include "TI1.h"
-#include "TimerIntLdd1.h"
 #include "WAIT1.h"
 #include "LCDout.h"
 #include "EN1.h"
@@ -79,6 +78,31 @@
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
+#include "application.h"
+#include "ihm.h"
+#include "clock.h"
+#include "communication.h"
+#include "accelerometer.h"
+#include "gps.h"
+
+void sys_init(void){
+
+	ihm_init();
+
+	tank_init();
+
+	gps_init();
+
+	accelerometer_init();
+
+	clock_init();
+
+	communication_init();
+
+	app_init();
+}
+//-----------------------------------------------------------------------------------------------
+
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
 /*lint -restore Enable MISRA rule (6.3) checking. */
@@ -90,8 +114,7 @@ int main(void)
 	PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
 
-  /* Write your code here */
-  /* For example: for(;;) { } */
+	sys_init();
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
@@ -103,6 +126,7 @@ int main(void)
   for(;;){}
   /*** Processor Expert end of main routine. DON'T WRITE CODE BELOW!!! ***/
 } /*** End of main routine. DO NOT MODIFY THIS TEXT!!! ***/
+//----------------------------------------------------------------------------------
 
 /* END main */
 /*!

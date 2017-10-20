@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-10-18, 10:21, # CodeGen: 233
+**     Date/Time   : 2017-10-20, 19:24, # CodeGen: 263
 **     Abstract    :
 **
 **     Settings    :
@@ -276,8 +276,6 @@
 #include "LED_B.h"
 #include "LEDpin3.h"
 #include "BitIoLdd3.h"
-#include "TI1.h"
-#include "TimerIntLdd1.h"
 #include "LCDout.h"
 #include "EN1.h"
 #include "BitIoLdd6.h"
@@ -295,7 +293,6 @@
 #include "AS2.h"
 #include "ASerialLdd2.h"
 #include "WAIT1.h"
-#include "TU1.h"
 #include "MCUC1.h"
 #include "UTIL1.h"
 #include "WAIT2.h"
@@ -305,6 +302,8 @@
 #include "AD1.h"
 #include "AdcLdd1.h"
 #include "RTC1.h"
+#include "EInt1.h"
+#include "ExtIntLdd1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -527,6 +526,8 @@ void PE_low_level_init(void)
   /* SMC_PMPROT: ??=0,??=0,AVLP=0,??=0,ALLS=0,??=0,AVLLS=0,??=0 */
   SMC_PMPROT = 0x00U;                  /* Setup Power mode protection register */
   /* Common initialization of the CPU registers */
+  /* GPIOD_PDDR: PDD&=~0x80 */
+  GPIOD_PDDR &= (uint32_t)~(uint32_t)(GPIO_PDDR_PDD(0x80));
   /* PORTC_PCR3: ISF=0,MUX=5 */
   PORTC_PCR3 = (uint32_t)((PORTC_PCR3 & (uint32_t)~(uint32_t)(
                 PORT_PCR_ISF_MASK |
@@ -565,9 +566,6 @@ void PE_low_level_init(void)
   (void)BitIoLdd3_Init(NULL);
   /* ### LED "LED_B" init code ... */
   LED_B_Init(); /* initialize LED driver */
-  /* ### TimerInt_LDD "TimerIntLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
-  (void)TimerIntLdd1_Init(NULL);
-  /* ### TimerInt "TI1" init code ... */
   WAIT1_Init();
   /* ### BitIO_LDD "BitIoLdd6" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)BitIoLdd6_Init(NULL);
@@ -591,6 +589,8 @@ void PE_low_level_init(void)
   WAIT4_Init();
   /* ### ADC "AD1" init code ... */
   AD1_Init();
+  /* ### ExtInt_LDD "ExtIntLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)ExtIntLdd1_Init(NULL);
 }
   /* Flash configuration field */
   __attribute__ ((section (".cfmconfig"))) const uint8_t _cfm[0x10] = {

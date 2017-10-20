@@ -13,7 +13,7 @@
 #include "communication.h"
 
 /* Task RX*/
-static const char*		RX_TASK_NAME =			"task_rx";
+static const char*		RX_TASK_NAME =			"tk_rx";
 #define 				RX_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
 #define					RX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
 static const TickType_t RX_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
@@ -21,7 +21,7 @@ QueueHandle_t			xQueuePackageRx;
 TaskHandle_t 			xHandleRxTask;
 
 /* Task TX*/
-static const char*		TX_TASK_NAME =			"task_tx";
+static const char*		TX_TASK_NAME =			"tk_tx";
 #define 				TX_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
 #define					TX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
 TaskHandle_t 			xHandleTxTask;
@@ -80,7 +80,7 @@ static portTASK_FUNCTION(txPackage_task, pvParameters) {
 
 static void createTasks(void){
 
-	if (FRTOS1_xTaskCreate(
+	if (xTaskCreate(
 			rxPackage_task,
 			RX_TASK_NAME,
 			RX_TASK_STACK_SIZE,
@@ -92,7 +92,7 @@ static void createTasks(void){
 		while (1) {};
 	}
 
-	if (FRTOS1_xTaskCreate(
+	if (xTaskCreate(
 			txPackage_task,
 			TX_TASK_NAME,
 			TX_TASK_STACK_SIZE,

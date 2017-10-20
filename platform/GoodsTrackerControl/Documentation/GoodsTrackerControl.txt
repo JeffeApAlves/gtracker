@@ -559,8 +559,6 @@ Module "LED_B"     (component LED)
    - LED_B_Deinit -Deinitializes the driver
    - LED_B_Init -Performs the LED driver initialization.
 
-Module "TI1"       (component TimerInt)
-
 Module "LCDout"    (component LCDHTA)
    - LCDout_WriteLCDCommand -Writes a command to the display
    - LCDout_Write -Write a single character to the display
@@ -612,13 +610,6 @@ Module "WAIT1"     (component Wait)
                 busy/blocking wait.
    - WAIT1_Init -Driver initialization routine.
    - WAIT1_DeInit -Driver de-initialization routine
-
-Module "TU1"       (component TimerUnit_LDD)
-   - TU1_Init -Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets 
-                interrupt priority, sets pin routing, sets timing, etc. If the property <"Enable in init. code"> is set to 
-                "yes" value then the device is also enabled (see the description of the <Enable> method). In this case the 
-                <Enable> method is not necessary and needn't to be generated. This method can be called only once. Before the 
-                second call of Init the <Deinit> must be called first.
 
 Module "MCUC1"     (component McuLibConfig)
 
@@ -782,6 +773,9 @@ Module "RTC1"      (component RTC_LDD)
                 of Init() the Deinit() must be called first.
    - RTC1_GetTime -Returns actual time and date.    Note: Fields not supported by HW are calculated in software.
    - RTC1_SetTime -Sets new time and date.   Note: All LDD_RTC_TTime structure members must be correctly filled in.
+
+Module "EInt1"     (component ExtInt)
+   - EInt1_GetVal -Returns the actual value of the input pin of the component.
 
 Module "Cpu"       (component MKL25Z128LK4)
 

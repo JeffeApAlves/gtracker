@@ -7,7 +7,7 @@
 **     Version     : Component 01.546, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-10-20, 12:37, # CodeGen: 242
+**     Date/Time   : 2017-10-20, 19:41, # CodeGen: 265
 **     Abstract    :
 **          This component implements the FreeRTOS Realtime Operating System
 **     Settings    :
@@ -56,7 +56,7 @@
 **            Time Slicing                                 : yes
 **            Use Co-Routines                              : no
 **            Idle should yield                            : yes
-**            Task Name Length                             : 12
+**            Task Name Length                             : 10
 **            Minimal Stack Size                           : 100
 **            Maximum Priorities                           : 6
 **            Maximum Coroutine Priorities                 : 2
@@ -65,7 +65,7 @@
 **            TaskExitError Handler                        : no
 **          Ticks                                          : Settings for the periodic tick timer
 **            Tickless Idle Mode                           : Disabled
-**            Tick Rate (Hz)                               : 100
+**            Tick Rate (Hz)                               : 200
 **            Use 16bit ticks                              : no
 **            non-LDD Tick                                 : Disabled
 **            LDD Tick                                     : Disabled
@@ -75,11 +75,15 @@
 **          Semaphores and Mutexes                         : Settings for Mutex and Semaphore
 **            Use Mutexes                                  : yes
 **            Use Recursive Mutexes                        : yes
-**          Timers                                         : Disabled
+**          Timers                                         : Enabled
+**            Priority                                     : 2
+**            Queue Length                                 : 5
+**            Stack Depth                                  : 90
+**            Use Daemon Task Startup Hook                 : no
 **          Memory                                         : Settings for the memory and heap allocation
 **            Dynamic Allocation                           : Enabled
 **              Application allocated Heap                 : no
-**              Heap Size                                  : 12186
+**              Heap Size                                  : 12112
 **              Linker Heap Base Symbol                    : __HeapBase
 **              Linker Heap Limit Symbol                   : __HeapLimit
 **              Linker Heap Size Symbol                    : __heap_size

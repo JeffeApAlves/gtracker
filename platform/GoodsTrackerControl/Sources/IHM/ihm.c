@@ -21,21 +21,22 @@
 
 static screen active_screen;
 static char line_lcd[25];
-static int time_splash	= 3;		//3 segundos
+static int time_splash	= 1;		//1 segundos
 
-
-/* Task Key*/
-static const char* 			KEY_TASK_NAME =			"task_key";
-static const TickType_t 	KEY_TASK_DELAY =		(200 / portTICK_PERIOD_MS);
-#define 					KEY_TASK_PRIORITY		(tskIDLE_PRIORITY + 10)
-#define						KEY_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
 
 /* Task IHM*/
-static const char*			IHM_TASK_NAME =			"task_ihm";
+static const char*			IHM_TASK_NAME =			"tk_ihm";
 #define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+3)
 #define						IHM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE+100)
 static EventGroupHandle_t	ihm_events;
 TaskHandle_t				xHandleIHMTask;
+
+/* Timer */
+TimerHandle_t			 	xTimerUpdateStat;
+static const char*			UPDATE_TIME_NAME =		"tm_stat";
+#define						UPDATE_TIME_STAT		pdMS_TO_TICKS( 200 )
+
+static void ihm_notify_screen_clock(void);
 
 static portTASK_FUNCTION(run_ihm, pvParameters) {
 
@@ -48,27 +49,15 @@ static portTASK_FUNCTION(run_ihm, pvParameters) {
 }
 //-------------------------------------------------------------------------
 
+void updateTimer_Stat( TimerHandle_t xTimer ){
 
-/**
- * Task responsável por fazer o startup ddo sistema e monitora o teclado.
- *
- */
-static portTASK_FUNCTION(run_key, pvParameters) {
-
-	while(1) {
-
-		ihm_notify_screen_stat();
-
-		readKey();
-
-		vTaskDelay(KEY_TASK_DELAY);
-	}
+	ihm_notify_screen_stat();
 }
-//-----------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------
 
 static void createTask(void){
 
-	if (FRTOS1_xTaskCreate(
+	if (xTaskCreate(
 		run_ihm,
 		IHM_TASK_NAME,
 		IHM_TASK_STACK_SIZE,
@@ -80,17 +69,17 @@ static void createTask(void){
 		while(1) {};
 	}
 
-	if (FRTOS1_xTaskCreate(
-			run_key,
-			KEY_TASK_NAME,
-			KEY_TASK_STACK_SIZE,
-			(void*)NULL,
-			KEY_TASK_PRIORITY,
-			NULL
-	) != pdPASS) {
+	xTimerUpdateStat = xTimerCreate (
+			UPDATE_TIME_NAME,
+			UPDATE_TIME_STAT,
+			pdTRUE,
+			( void * ) 0,
+			updateTimer_Stat
+    );
 
-		while(1) {};
-	}
+    if( xTimerStart( xTimerUpdateStat, 0 ) != pdPASS ){
+    	//Problema no start do timer
+    }
 }
 //--------------------------------------------------------------------------------
 
@@ -242,62 +231,34 @@ void printLCD(int linha,int col,char* str){
 }
 //-----------------------------------------------------------------------------------------
 
-void ihm_event_notify(EventBits_t uxBitsToSet){
+static void ihm_notify_screen_clock(void){
 
-	bool flag = false;
+	BaseType_t xHigherPriorityTaskWoken, xResult;
 
-	if((active_screen ==SCREEN_CLOCK) && (uxBitsToSet & BIT_UPDATE_LCD_CLOCK)){
+    xHigherPriorityTaskWoken	= pdFALSE;
+    xResult						= pdFAIL;
 
-		flag = true;
+	if(active_screen == SCREEN_CLOCK){
+
+		xResult = xEventGroupSetBitsFromISR(ihm_events, BIT_UPDATE_LCD_CLOCK , &xHigherPriorityTaskWoken);
 	}
 
-	if((active_screen ==SCREEN_ACCE) && (uxBitsToSet & BIT_UPDATE_LCD_XYZ)){
+	if (xResult != pdFAIL){
 
-		flag = true;
-	}
-
-	if((active_screen ==SCREEN_STAT_COM) && (uxBitsToSet & BIT_UPDATE_LCD_STAT_COM)){
-
-		flag = true;
-	}
-
-	if((active_screen ==SCREEN_STAT_GPS) && (uxBitsToSet & BIT_UPDATE_LCD_STAT_GPS)){
-
-		flag = true;
-	}
-
-	if((active_screen ==SCREEN_GPS) && (uxBitsToSet & BIT_UPDATE_LCD_GPS)){
-
-		flag = true;
-	}
-
-
-	if((active_screen ==SCREEN_TANK) && (uxBitsToSet & BIT_UPDATE_LCD_TANK)){
-
-		flag = true;
-	}
-
-	if(flag){
-
-		xEventGroupSetBits(ihm_events, uxBitsToSet);
-	}
+		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+    }
 }
 //-----------------------------------------------------------------------------------------
 
 void ihm_notify_screen_stat(void){
 
-	EventBits_t uxBitsToSet = 0;
-
 	if(active_screen == SCREEN_STAT_COM){
 
-		uxBitsToSet = BIT_UPDATE_LCD_STAT_COM;
-
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_STAT_COM);
 	}else if(active_screen == SCREEN_STAT_GPS){
 
-		uxBitsToSet = BIT_UPDATE_LCD_STAT_GPS;
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_STAT_GPS);
 	}
-
-	ihm_event_notify(uxBitsToSet);
 }
 //-----------------------------------------------------------------------------------------
 
@@ -307,21 +268,22 @@ void ihm_notify_screen_tlm(void){
 
 	if(active_screen == SCREEN_ACCE){
 
-		uxBitsToSet = BIT_UPDATE_LCD_XYZ;
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_XYZ);
 
 	} else if(active_screen == SCREEN_TANK){
 
-		uxBitsToSet = BIT_UPDATE_LCD_TANK;
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_TANK);
 
 	} else if(active_screen == SCREEN_GPS){
 
-		uxBitsToSet = BIT_UPDATE_LCD_GPS;
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_GPS);
 	}
-
-	ihm_event_notify(uxBitsToSet);
 }
 //-----------------------------------------------------------------------------------------
 
+/*
+ * Gera o evento para atualizacao periodica do relogio
+ */
 void ihm_handle_update(void){
 
 	if(time_splash>0){
@@ -334,8 +296,7 @@ void ihm_handle_update(void){
 
 	}else{
 
-		//TODO verificar a função correta quando chamado dentro de uma interrupção
-		ihm_event_notify(BIT_UPDATE_LCD_CLOCK);
+		ihm_notify_screen_clock();
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -360,13 +321,13 @@ void ihm_init(void) {
 	active_screen = SCREEN_SPLASH;
 
 	// Habilitar o clock dos ports que serão utilizados (PORTD).
-	SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK;
+	//SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK;
 
 	// Seleciona a função de GPIO
-	PORTD_PCR7 = PORT_PCR_MUX(1);
+	//PORTD_PCR7 = PORT_PCR_MUX(1);
 
 	// Configura como entrada
-	GPIOD_PDDR &= KEY_INPUT;
+	//GPIOD_PDDR &= KEY_INPUT;
 
 	printSplash();
 
@@ -376,16 +337,13 @@ void ihm_init(void) {
 
 void readKey(void){
 
-	if(!(GPIOD_PDIR & KEY)){
+	if(active_screen< (NUM_OF_SCREEN-1)){
 
-		if(active_screen< (NUM_OF_SCREEN-1)){
+		active_screen++;
 
-			active_screen++;
+	}else{
 
-		}else{
-
-			ihm_set_active_screen(SCREEN_CLOCK);
-		}
+		ihm_set_active_screen(SCREEN_CLOCK);
 	}
 }
 //-----------------------------------------------------------------------------------------

@@ -20,13 +20,13 @@
 #include "application.h"
 
 /* Task APP */
-static const char*	APP_TASK_NAME =			"task_app";
+static const char*	APP_TASK_NAME =			"tk_app";
 #define 			APP_TASK_PRIORITY		(tskIDLE_PRIORITY+4)
 #define				APP_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
 TaskHandle_t		xHandleAppTask;
 
 /* Task CB (cmd) */
-static const char*	CB_TASK_NAME =			"task_callback";
+static const char*	CB_TASK_NAME =			"tk_callback";
 #define 			CB_TASK_PRIORITY		(tskIDLE_PRIORITY+10)
 #define				CB_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
 TaskHandle_t		xHandleCBTask;
@@ -267,7 +267,7 @@ pCallBack getCallBack(Resource r) {
 
 static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* package){
 
-	if (FRTOS1_xTaskCreate(
+	if (xTaskCreate(
 		pxTaskCode,
 		CB_TASK_NAME,
 		CB_TASK_STACK_SIZE,
@@ -282,7 +282,7 @@ static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* packag
 
 static void createTask(void){
 
-	if (FRTOS1_xTaskCreate(
+	if (xTaskCreate(
 		task_app,
 		APP_TASK_NAME,
 		APP_TASK_STACK_SIZE,

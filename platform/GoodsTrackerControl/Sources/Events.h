@@ -42,6 +42,8 @@
 #include "AD1.h"
 #include "AdcLdd1.h"
 #include "RTC1.h"
+#include "EInt1.h"
+#include "ExtIntLdd1.h"
 #include "MCUC1.h"
 #include "TSK1.h"
 #include "LED_R.h"
@@ -55,9 +57,6 @@
 #include "LED_B.h"
 #include "LEDpin3.h"
 #include "BitIoLdd3.h"
-#include "TU1.h"
-#include "TI1.h"
-#include "TimerIntLdd1.h"
 #include "WAIT1.h"
 #include "LCDout.h"
 #include "EN1.h"
@@ -437,6 +436,20 @@ void PTRC1_OnTraceWrap(void);
 **     Description :
 **         Called for trace ring buffer wrap around. This gives the
 **         application a chance to dump the trace buffer.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+void EInt1_OnInterrupt(void);
+/*
+** ===================================================================
+**     Event       :  EInt1_OnInterrupt (module Events)
+**
+**     Component   :  EInt1 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
 **     Parameters  : None
 **     Returns     : Nothing
 ** ===================================================================

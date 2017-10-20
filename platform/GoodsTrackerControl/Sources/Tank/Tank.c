@@ -15,7 +15,7 @@
 
 
 /* Task Tank */
-static const char*			TANK_TASK_NAME =			"task_tank";
+static const char*			TANK_TASK_NAME =			"tk_tank";
 #define 					TANK_TASK_PRIORITY			(tskIDLE_PRIORITY+3)
 #define						TANK_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
 static EventGroupHandle_t	TANK_events;
@@ -86,7 +86,7 @@ void unLock(void){
 
 static void createTask(void){
 
-	if (FRTOS1_xTaskCreate(
+	if (xTaskCreate(
 		run_data,
 		TANK_TASK_NAME ,
 		TANK_TASK_STACK_SIZE,

@@ -13,7 +13,7 @@
 
 
 /* Task */
-static const char*		ACCE_TASK_NAME =		"task_accelerometer";
+static const char*		ACCE_TASK_NAME =		"tk_accelerometer";
 #define 				ACCE_TASK_PRIORITY		(tskIDLE_PRIORITY)
 #define					ACCE_TASK_STACK_SIZE	(configMINIMAL_STACK_SIZE)
 static const TickType_t ACCE_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
@@ -48,7 +48,7 @@ static portTASK_FUNCTION(run_accel, pvParameters) {
 
 static void createTask(void){
 
-	if (FRTOS1_xTaskCreate(
+	if (xTaskCreate(
 			run_accel,
 			ACCE_TASK_NAME,
 			ACCE_TASK_STACK_SIZE,

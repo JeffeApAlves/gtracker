@@ -14,6 +14,7 @@
 #include "task.h"
 #include "queue.h"
 #include "event_groups.h"
+#include "timers.h"
 
 #define KEY       		 		(1<<7)
 #define KEY_INPUT				(~KEY)
@@ -63,7 +64,6 @@ void printGPS(void);
 
 void ihm_task(void);
 void ihm_handle_update(void);
-void ihm_event_notify(EventBits_t uxBitsToSet);
 void ihm_notify_screen_stat(void);
 void ihm_notify_screen_tlm(void);
 void ihm_set_active_screen(screen s);

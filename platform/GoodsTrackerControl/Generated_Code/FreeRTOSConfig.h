@@ -108,7 +108,7 @@
 #define configUSE_TICK_HOOK_NAME                  FRTOS1_vApplicationTickHook
 #define configUSE_MALLOC_FAILED_HOOK              1 /* 1: use MallocFailed hook; 0: no MallocFailed hook */
 #define configUSE_MALLOC_FAILED_HOOK_NAME         FRTOS1_vApplicationMallocFailedHook
-#define configTICK_RATE_HZ                        (100) /* frequency of tick interrupt */
+#define configTICK_RATE_HZ                        (200) /* frequency of tick interrupt */
 #define configSYSTICK_USE_LOW_POWER_TIMER         0 /* If using Kinetis Low Power Timer (LPTMR) instead of SysTick timer */
 #define configSYSTICK_LOW_POWER_TIMER_CLOCK_HZ    1 /* 1 kHz LPO timer. Set to 1 if not used */
 #if MCUC1_CONFIG_NXP_SDK_USED
@@ -132,7 +132,7 @@
 /* Heap Memory */
 #define configUSE_HEAP_SCHEME                     4 /* either 1 (only alloc), 2 (alloc/free), 3 (malloc), 4 (coalesc blocks), 5 (multiple blocks), 6 (newlib) */
 #define configFRTOS_MEMORY_SCHEME                 configUSE_HEAP_SCHEME /* for backwards compatible only with legacy name */
-#define configTOTAL_HEAP_SIZE                     (12186) /* size of heap in bytes */
+#define configTOTAL_HEAP_SIZE                     (12112) /* size of heap in bytes */
 #define configUSE_HEAP_SECTION_NAME               0 /* set to 1 if a custom section name (configHEAP_SECTION_NAME_STRING) shall be used, 0 otherwise */
 #if configUSE_HEAP_SECTION_NAME
 #define configHEAP_SECTION_NAME_STRING            ".m_data_20000000" /* heap section name (use e.g. ".m_data_20000000" for gcc and "m_data_20000000" for IAR). Check your linker file for the name used. */
@@ -142,7 +142,7 @@
 #define configSUPPORT_STATIC_ALLOCATION           0 /* 1: make static allocation functions for RTOS available. 0: only dynamic functions are allowed */
 #define configUSE_NEWLIB_REENTRANT                (configUSE_HEAP_SCHEME==6) /* 1: a newlib reent structure will be allocated for each task; 0: no such reentr structure used */
 /*----------------------------------------------------------*/
-#define configMAX_TASK_NAME_LEN                   12 /* task name length in bytes */
+#define configMAX_TASK_NAME_LEN                   10 /* task name length in bytes */
 #define configUSE_TRACE_FACILITY                  1 /* 1: include additional structure members and functions to assist with execution visualization and tracing, 0: no runtime stats/trace */
 #define configUSE_TRACE_HOOKS                     0 /* 1: Percepio Trace hooks, 0: not using Percepio Trace hooks */
 #define configUSE_SEGGER_SYSTEM_VIEWER_HOOKS      0 /* 1: Segger System Viewer hooks, 0: not using Segger System Viewer hooks */
@@ -174,12 +174,12 @@
 #define configRECORD_STACK_HIGH_ADDRESS           1  /* 1: record stack high address for the debugger, 0: do not record stack high address */
 
 /* Software timer definitions. */
-#define configUSE_TIMERS                          0 /* set to 1 to enable software timers */
-#define configTIMER_TASK_PRIORITY                 (configMAX_PRIORITIES-1U)
-#define configTIMER_QUEUE_LENGTH                  10U /* size of queue for the timer task */
-#define configTIMER_TASK_STACK_DEPTH              (configMINIMAL_STACK_SIZE)
-#define INCLUDE_xEventGroupSetBitFromISR          0 /* 1: function is included; 0: do not include function */
-#define INCLUDE_xTimerPendFunctionCall            0 /* 1: function is included; 0: do not include function */
+#define configUSE_TIMERS                          1 /* 1: enable software timers; 0: software timers disabled */
+#define configTIMER_TASK_PRIORITY                 2 /* e.g. (configMAX_PRIORITIES-1U) */
+#define configTIMER_QUEUE_LENGTH                  5 /* size of queue for the timer task */
+#define configTIMER_TASK_STACK_DEPTH              90 /* e.g. (configMINIMAL_STACK_SIZE) */
+#define INCLUDE_xEventGroupSetBitFromISR          1 /* 1: function is included; 0: do not include function */
+#define INCLUDE_xTimerPendFunctionCall            1 /* 1: function is included; 0: do not include function */
 #define configUSE_DAEMON_TASK_STARTUP_HOOK        0 /* 1: use application specific vApplicationDaemonTaskStartupHook(), 0: do not use hook */
 
 /* Set configUSE_TASK_FPU_SUPPORT to 0 to omit floating point support even

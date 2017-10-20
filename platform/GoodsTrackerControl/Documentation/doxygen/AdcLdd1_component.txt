@@ -18,13 +18,13 @@ by the component.
 <td class="regNotResetVal">0x00000049</td>
  <td>ADC0_SC1A register, peripheral AdcLdd1.</td></tr>
 <tr><td>0x4004803C</td><td>SIM_SCGC6</td>
-<td class="regNotResetVal">0x09000001</td>
+<td class="regNotResetVal">0x08000001</td>
  <td>SIM_SCGC6 register, peripheral AdcLdd1.</td></tr>
 <tr><td>0xE000E40C</td><td>NVIC_IPR3</td>
 <td class="regNotResetVal">0x80808000</td>
  <td>NVIC_IPR3 register, peripheral AdcLdd1.</td></tr>
 <tr><td>0xE000E100</td><td>NVIC_ISER</td>
-<td class="regNotResetVal">0x0002E100</td>
+<td class="regNotResetVal">0x0000E100</td>
  <td>NVIC_ISER register, peripheral AdcLdd1.</td></tr>
 <tr><td>0x4004A000</td><td>PORTB_PCR0</td>
 <td class="regResetVal">0x00000000</td>
@@ -152,7 +152,7 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0x4004803C</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x09000001</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x08000001</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000001</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
 <tr><td>31</td><td>DAC0</td><td>0x00</td><td>DAC0 Clock Gate Control</td>
@@ -160,7 +160,7 @@ registers of the peripheral(s) configured by the component.
 <tr><td>27</td><td>ADC0</td><td>0x01</td><td>ADC0 Clock Gate Control</td>
 <tr><td>26</td><td>TPM2</td><td>0x00</td><td>TPM2 Clock Gate Control</td>
 <tr><td>25</td><td>TPM1</td><td>0x00</td><td>TPM1 Clock Gate Control</td>
-<tr><td>24</td><td>TPM0</td><td>0x01</td><td>TPM0 Clock Gate Control</td>
+<tr><td>24</td><td>TPM0</td><td>0x00</td><td>TPM0 Clock Gate Control</td>
 <tr><td>23</td><td>PIT</td><td>0x00</td><td>PIT Clock Gate Control</td>
 <tr><td>1</td><td>DMAMUX</td><td>0x00</td><td>DMA Mux Clock Gate Control</td>
 <tr><td>0</td><td>FTF</td><td>0x01</td><td>Flash Memory Clock Gate Control</td>
@@ -247,7 +247,7 @@ registers of the peripheral(s) configured by the component.
         
 </div>
 <table class="regtbl2"><tr><td class="trowtit" colspan="2">Address</td><td colspan="2">0xE000E100</td></tr>
-<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x0002E100</td></tr>
+<tr class="trowtit"><td  class="trowtit" colspan="2">Initial value</td><td colspan="2">0x0000E100</td></tr>
 <tr class="trowtit"><td  class="trowtit" colspan="2">After-reset value</td><td colspan="2">0x00000000</td></tr>
 <tr><td class="ttitle2">Bit</td><td class="ttitle2">Field</td><td class="ttitle2">Value</td><td class="ttitle2">Description</td></tr>
 <tr><td>0 - 31</td><td>SETENA</td><td>0x00</td><td>Interrupt set enable bits</td>

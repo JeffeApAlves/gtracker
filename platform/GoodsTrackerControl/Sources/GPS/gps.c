@@ -13,7 +13,7 @@
 
 
 /* Task GPS*/
-static const char*		GPS_TASK_NAME =			"task_gps";
+static const char*		GPS_TASK_NAME =			"tk_gps";
 #define 				GPS_TASK_PRIORITY		(tskIDLE_PRIORITY)
 #define					GPS_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 100)
 static const TickType_t GPS_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
@@ -40,7 +40,7 @@ static portTASK_FUNCTION(task_gps, pvParameters) {
 
 static void createTask(void){
 
-	if (FRTOS1_xTaskCreate(
+	if (xTaskCreate(
 		task_gps,
 		GPS_TASK_NAME,
 		GPS_TASK_STACK_SIZE,
