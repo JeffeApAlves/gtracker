@@ -16,6 +16,7 @@
 #include "event_groups.h"
 #include "timers.h"
 
+#define	TIME_SPLASH				1
 #define KEY       		 		(1<<7)
 #define KEY_INPUT				(~KEY)
 

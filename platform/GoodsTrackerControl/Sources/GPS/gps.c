@@ -4,17 +4,14 @@
  *      Author: Jefferson
  */
 
-#include "FRTOS1.h"
-
 #include "application.h"
 #include "NMEA.h"
 #include "gps.h"
 
-
-
 /* Task GPS*/
 static const char*		GPS_TASK_NAME =			"tk_gps";
-#define 				GPS_TASK_PRIORITY		(tskIDLE_PRIORITY)
+#define					GPS_NUM_MSG				1
+#define 				GPS_TASK_PRIORITY		(tskIDLE_PRIORITY+2)
 #define					GPS_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 100)
 static const TickType_t GPS_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 QueueHandle_t			xQueueGPS;
@@ -67,7 +64,7 @@ void gps_init(void){
 
 	clearGPS(&gps);
 
-	xQueueGPS		= xQueueCreate( 1, sizeof( GPS ));
+	xQueueGPS		= xQueueCreate( GPS_NUM_MSG, sizeof( GPS ));
 
 	createTask();
 }

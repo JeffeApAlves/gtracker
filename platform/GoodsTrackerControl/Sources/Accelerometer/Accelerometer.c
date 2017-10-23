@@ -14,7 +14,8 @@
 
 /* Task */
 static const char*		ACCE_TASK_NAME =		"tk_accelerometer";
-#define 				ACCE_TASK_PRIORITY		(tskIDLE_PRIORITY)
+#define					ACCE_NUM_MSG			1
+#define 				ACCE_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
 #define					ACCE_TASK_STACK_SIZE	(configMINIMAL_STACK_SIZE)
 static const TickType_t ACCE_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 QueueHandle_t			xQueueAcce;
@@ -66,7 +67,7 @@ void accelerometer_init(void){
 
 	clearAccelerometer(&acceInfo);
 
-	xQueueAcce	= xQueueCreate( 1, sizeof( Accelerometer ));
+	xQueueAcce	= xQueueCreate( ACCE_NUM_MSG , sizeof( Accelerometer ));
 
 	createTask();
 }

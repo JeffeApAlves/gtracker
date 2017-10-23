@@ -9,7 +9,6 @@
 #include <string.h>
 #include <time.h>
 
-#include "FRTOS1.h"
 #include "XF1.h"
 
 #include "lcd.h"
@@ -21,12 +20,14 @@
 
 static screen active_screen;
 static char line_lcd[25];
-static int time_splash	= 1;		//1 segundos
+
+/* Tempo do splash em segundos */
+static int time_splash;
 
 
 /* Task IHM*/
 static const char*			IHM_TASK_NAME =			"tk_ihm";
-#define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+3)
+#define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+4)
 #define						IHM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE+100)
 static EventGroupHandle_t	ihm_events;
 TaskHandle_t				xHandleIHMTask;
@@ -318,7 +319,8 @@ void ihm_init(void) {
 
 	LCDInit();
 
-	active_screen = SCREEN_SPLASH;
+	time_splash		= TIME_SPLASH;
+	active_screen	= SCREEN_SPLASH;
 
 	// Habilitar o clock dos ports que serão utilizados (PORTD).
 	//SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK;

@@ -9,14 +9,14 @@
 #include "LED_G.h"
 #include "LED_R.h"
 
-#include "FRTOS1.h"
 #include "application.h"
 #include "Tank.h"
 
 
 /* Task Tank */
 static const char*			TANK_TASK_NAME =			"tk_tank";
-#define 					TANK_TASK_PRIORITY			(tskIDLE_PRIORITY+3)
+#define						TANK_NUM_MSG				1
+#define 					TANK_TASK_PRIORITY			(tskIDLE_PRIORITY+4)
 #define						TANK_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
 static EventGroupHandle_t	TANK_events;
 static const TickType_t		TANK_TASK_DELAY	= 			(200 / portTICK_PERIOD_MS);
@@ -104,7 +104,7 @@ void tank_init(void){
 
 	AD_finished		= false;
 
-	xQueueTank		= xQueueCreate( 1, sizeof( Tank ));
+	xQueueTank		= xQueueCreate( TANK_NUM_MSG, sizeof( Tank ));
 
 	createTask();
 }

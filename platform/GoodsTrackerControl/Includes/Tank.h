@@ -9,10 +9,13 @@
 #define SOURCES_TANK_H_
 
 #include <stdbool.h>
+#include <stdint.h>
+
 
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
+#include "event_groups.h"
 
 #include "AD1.h"
 

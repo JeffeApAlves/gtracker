@@ -5,10 +5,7 @@
  *      Author: Jefferson
  */
 
-#include <NMEA.h>
 #include <stdio.h>
-
-#include "FRTOS1.h"
 
 #include "Tank.h"
 #include "Telemetria.h"
@@ -21,13 +18,13 @@
 
 /* Task APP */
 static const char*	APP_TASK_NAME =			"tk_app";
-#define 			APP_TASK_PRIORITY		(tskIDLE_PRIORITY+4)
+#define 			APP_TASK_PRIORITY		(tskIDLE_PRIORITY+5)
 #define				APP_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
 TaskHandle_t		xHandleAppTask;
 
 /* Task CB (cmd) */
 static const char*	CB_TASK_NAME =			"tk_callback";
-#define 			CB_TASK_PRIORITY		(tskIDLE_PRIORITY+10)
+#define 			CB_TASK_PRIORITY		(configMAX_PRIORITIES)
 #define				CB_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
 TaskHandle_t		xHandleCBTask;
 

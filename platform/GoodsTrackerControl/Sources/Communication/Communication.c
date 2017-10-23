@@ -5,8 +5,6 @@
  *      Author: Jefferson
  */
 
-#include "FRTOS1.h"
-
 #include "ihm.h"
 #include "protocol.h"
 #include "application.h"
@@ -14,7 +12,8 @@
 
 /* Task RX*/
 static const char*		RX_TASK_NAME =			"tk_rx";
-#define 				RX_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
+#define					RX_NUM_MSG				1
+#define 				RX_TASK_PRIORITY		(tskIDLE_PRIORITY+2)
 #define					RX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
 static const TickType_t RX_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 QueueHandle_t			xQueuePackageRx;
@@ -22,7 +21,8 @@ TaskHandle_t 			xHandleRxTask;
 
 /* Task TX*/
 static const char*		TX_TASK_NAME =			"tk_tx";
-#define 				TX_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
+#define 				TX_TASK_PRIORITY		(tskIDLE_PRIORITY+2)
+#define					TX_NUM_MSG				1
 #define					TX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
 TaskHandle_t 			xHandleTxTask;
 QueueHandle_t			xQueuePackageTx;
@@ -110,8 +110,8 @@ void communication_init(void){
 
 	protocol_init();
 
-	xQueuePackageRx	= xQueueCreate( 1, sizeof( CommunicationPackage ));
-	xQueuePackageTx	= xQueueCreate( 1, sizeof( CommunicationPackage ));
+	xQueuePackageRx	= xQueueCreate( RX_NUM_MSG, sizeof( CommunicationPackage ));
+	xQueuePackageTx	= xQueueCreate( TX_NUM_MSG, sizeof( CommunicationPackage ));
 
 	createTasks();
 }
@@ -159,6 +159,7 @@ void sendAnswer(CommunicationPackage* package){
 
 	if(package){
 
+		/* Preenche o cabeçalho */
 		strcpy(package->Header.operacao,OPERATION_AN);
 		package->Header.dest			= package->Header.address;
 		package->Header.address			= ADDRESS;
