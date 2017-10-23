@@ -10,12 +10,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "event_groups.h"
-#include "timers.h"
-
 #define	TIME_SPLASH				1
 #define KEY       		 		(1<<7)
 #define KEY_INPUT				(~KEY)
@@ -69,8 +63,6 @@ void ihm_notify_screen_stat(void);
 void ihm_notify_screen_tlm(void);
 void ihm_set_active_screen(screen s);
 void readKey(void);
-
-extern TaskHandle_t	xHandleIHMTask;
 
 #define	TO_STRING	XF1_xsprintf
 

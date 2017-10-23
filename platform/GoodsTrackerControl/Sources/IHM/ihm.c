@@ -9,6 +9,11 @@
 #include <string.h>
 #include <time.h>
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "event_groups.h"
+
 #include "XF1.h"
 
 #include "lcd.h"
@@ -29,8 +34,8 @@ static int time_splash;
 static const char*			IHM_TASK_NAME =			"tk_ihm";
 #define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+4)
 #define						IHM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE+100)
-static EventGroupHandle_t	ihm_events;
 TaskHandle_t				xHandleIHMTask;
+static EventGroupHandle_t	ihm_events;
 
 /* Timer */
 TimerHandle_t			 	xTimerUpdateStat;

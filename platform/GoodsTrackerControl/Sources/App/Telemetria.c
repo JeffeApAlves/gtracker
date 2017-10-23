@@ -14,14 +14,15 @@
 
 #include "Telemetria.h"
 
-/* Task APP */
-static const char*	APP_TASK_NAME =			"tk_app";
-#define 			APP_TASK_PRIORITY		(tskIDLE_PRIORITY+4)
-#define				APP_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
-TaskHandle_t		xHandleAppTask;
+/* Task TLM */
+static const char*			TLM_TASK_NAME =			"tk_tlm";
+#define 					TLM_TASK_PRIORITY		(tskIDLE_PRIORITY+4)
+#define						TLM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
+TaskHandle_t				xHandleTLMTask;
+static EventGroupHandle_t	tlm_events;
 
 Telemetria					telemetria;
-static EventGroupHandle_t	tlm_events;
+
 
 static void updateTLM(Telemetria* tlm,EventBits_t ulNotifiedValue);
 
@@ -31,7 +32,7 @@ static void updateTLM(Telemetria* tlm,EventBits_t ulNotifiedValue);
  *  O comando de telemetria espera as notificacoes para atualizacoes das informacoes via fila de mensagens
  *
  */
-static portTASK_FUNCTION(task_app, pvParameters) {
+static portTASK_FUNCTION(task_tlm, pvParameters) {
 
 	while(1) {
 
@@ -40,7 +41,7 @@ static portTASK_FUNCTION(task_app, pvParameters) {
 		updateTLM(&telemetria,uxBits);
 	}
 
-	vTaskDelete(xHandleAppTask);
+	vTaskDelete(xHandleTLMTask);
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -62,9 +63,11 @@ void tlm_notify_gps(void){
 }
 //-----------------------------------------------------------------------------------
 
-static void updateDataGPS(Telemetria* tlm) {
+static void updateGPS(Telemetria* tlm) {
 
 	if (xQueueReceive(xQueueGPS, &tlm->GPS, (TickType_t ) 1)) {
+
+		ihm_notify_screen_tlm();
 
 		// Configura o relógio através do GPS somente após indicar dados OK
 		if(tlm->GPS.FixQuality>0){
@@ -74,18 +77,20 @@ static void updateDataGPS(Telemetria* tlm) {
 }
 //-------------------------------------------------------------------------
 
-static void updateDataAcce(Telemetria* tlm) {
+static void updateAccelerometer(Telemetria* tlm) {
 
 	if (xQueueReceive(xQueueAcce, &tlm->Accelerometer, (TickType_t ) 1)) {
 
+		ihm_notify_screen_tlm();
 	}
 }
 //-------------------------------------------------------------------------
 
-static void updateDataLevel(Telemetria* tlm) {
+static void updateTankLevel(Telemetria* tlm) {
 
 	if (xQueueReceive(xQueueTank, &tlm->Tank, (TickType_t ) 1)) {
 
+		ihm_notify_screen_tlm();
 	}
 }
 //-------------------------------------------------------------------------
@@ -99,37 +104,30 @@ static void updateTLM(Telemetria* tlm,EventBits_t ulNotifiedValue){
 
 	if(ulNotifiedValue & BIT_UPDATE_GPS){
 
-		updateDataGPS(tlm);
-
-		ihm_notify_screen_tlm();
+		updateGPS(tlm);
 	}
 
 	if(ulNotifiedValue & BIT_UPDATE_ACCELEROMETER){
 
-		updateDataAcce(tlm);
-
-		ihm_notify_screen_tlm();
+		updateAccelerometer(tlm);
 	}
 
 	if(ulNotifiedValue & BIT_UPDATE_TANK){
 
-		updateDataLevel(tlm);
-
-		ihm_notify_screen_tlm();
+		updateTankLevel(tlm);
 	}
-
 }
 //-----------------------------------------------------------------------------------
 
 static void createTask(void){
 
 	if (xTaskCreate(
-		task_app,
-		APP_TASK_NAME,
-		APP_TASK_STACK_SIZE,
+		task_tlm,
+		TLM_TASK_NAME,
+		TLM_TASK_STACK_SIZE,
 		(void*)NULL,
-		APP_TASK_PRIORITY,
-		&xHandleAppTask
+		TLM_TASK_PRIORITY,
+		&xHandleTLMTask
 	) != pdPASS) {
 		while(1){};
 	}

@@ -24,12 +24,7 @@ void sendAnswer(CommunicationPackage* package);
 
 void communication_init(void);
 
-// Handles das Queues
 extern QueueHandle_t		xQueuePackageRx, xQueuePackageTx;
-
-// Handles das tasks
-extern TaskHandle_t 		xHandleRxTask,xHandleTxTask;
-
 extern EventGroupHandle_t	communication_events;
 
 #endif /* INCLUDES_COMMUNICATION_H_ */
