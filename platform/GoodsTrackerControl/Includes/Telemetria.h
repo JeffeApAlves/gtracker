@@ -8,10 +8,6 @@
 #ifndef SOURCES_TELEMETRIA_H_
 #define SOURCES_TELEMETRIA_H_
 
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "event_groups.h"
 
 #include "Tank.h"
 #include "GPS.h"
@@ -34,10 +30,8 @@ void tlm_notify_accelerometer(void);
 void tlm_notify_tank(void);
 void tlm_notify_gps(void);
 void tlm_init(void);
-void updateTLM(Telemetria* tlm,EventBits_t ulNotifiedValue);
 
 extern	Telemetria			telemetria;
-extern EventGroupHandle_t	tlm_events;
 
 
 #endif /* SOURCES_DATATLM_H_ */
