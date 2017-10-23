@@ -19,4 +19,7 @@ void header2String(Header* header,char* out);
 void package2Frame(CommunicationPackage* package,Frame* frame,bool with_checksum);
 void checkSum2String(unsigned int checksum,char* out);
 
+
+#define	TO_STRING	XF1_xsprintf
+
 #endif /* SOURCES_SERIALIZATION_H_ */

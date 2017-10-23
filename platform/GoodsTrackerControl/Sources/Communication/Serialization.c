@@ -13,7 +13,7 @@ void tlm2String(Telemetria* tlm,PayLoad* ans){
 
 	if(tlm!=NULL && ans!= NULL){
 
-		XF1_xsprintf(ans->Data,"%.8f%c%.8f%c%d%c%d%c%d%c%.3f%c%.3f%c%.2f%c%d%c%d%c%d%c%d",
+		TO_STRING(ans->Data,"%.8f%c%.8f%c%d%c%d%c%d%c%.3f%c%.3f%c%.2f%c%d%c%d%c%d%c%d",
 				tlm->GPS.Lat, 				CHAR_SEPARATOR,
 				tlm->GPS.Lng, 				CHAR_SEPARATOR,
 				tlm->Accelerometer.x, 		CHAR_SEPARATOR,
@@ -38,7 +38,7 @@ void header2String(Header* header,char* out){
 
 	getResourceName(resource,header->resource);
 
-	XF1_xsprintf(out,"%05d%c%05d%c%010d%c%s%c%s%c%03d%c",
+	TO_STRING(out,"%05d%c%05d%c%010d%c%s%c%s%c%03d%c",
 			header->address, 		CHAR_SEPARATOR,
 			header->dest, 			CHAR_SEPARATOR,
 			header->time_stamp,		CHAR_SEPARATOR,
@@ -69,7 +69,7 @@ void getResourceName(char* out,Resource resource) {
 
 inline void checkSum2String(unsigned int checksum,char* out) {
 
-	XF1_xsprintf(out, "%c%02X", CHAR_SEPARATOR , checksum);
+	TO_STRING(out, "%c%02X", CHAR_SEPARATOR , checksum);
 }
 //------------------------------------------------------------------------
 
@@ -92,7 +92,7 @@ void package2Frame(CommunicationPackage* package,Frame* frame,bool with_checksum
 	if(with_checksum){
 
 		AppendFrame(frame,SEPARATOR);
-		XF1_xsprintf(frame->checksum, "%02X", calcChecksum (frame->Data,frame->Length));
+		TO_STRING(frame->checksum, "%02X", calcChecksum (frame->Data,frame->Length));
 		AppendFrame(frame,frame->checksum);
 	}
 }

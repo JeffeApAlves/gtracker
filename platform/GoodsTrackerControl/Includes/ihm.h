@@ -72,4 +72,6 @@ void readKey(void);
 
 extern TaskHandle_t	xHandleIHMTask;
 
+#define	TO_STRING	XF1_xsprintf
+
 #endif /* SOURCES_IHM_H_ */

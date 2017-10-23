@@ -132,7 +132,7 @@
 /* Heap Memory */
 #define configUSE_HEAP_SCHEME                     4 /* either 1 (only alloc), 2 (alloc/free), 3 (malloc), 4 (coalesc blocks), 5 (multiple blocks), 6 (newlib) */
 #define configFRTOS_MEMORY_SCHEME                 configUSE_HEAP_SCHEME /* for backwards compatible only with legacy name */
-#define configTOTAL_HEAP_SIZE                     (12112) /* size of heap in bytes */
+#define configTOTAL_HEAP_SIZE                     (12103) /* size of heap in bytes */
 #define configUSE_HEAP_SECTION_NAME               0 /* set to 1 if a custom section name (configHEAP_SECTION_NAME_STRING) shall be used, 0 otherwise */
 #if configUSE_HEAP_SECTION_NAME
 #define configHEAP_SECTION_NAME_STRING            ".m_data_20000000" /* heap section name (use e.g. ".m_data_20000000" for gcc and "m_data_20000000" for IAR). Check your linker file for the name used. */
@@ -181,6 +181,7 @@
 #define INCLUDE_xEventGroupSetBitFromISR          1 /* 1: function is included; 0: do not include function */
 #define INCLUDE_xTimerPendFunctionCall            1 /* 1: function is included; 0: do not include function */
 #define configUSE_DAEMON_TASK_STARTUP_HOOK        0 /* 1: use application specific vApplicationDaemonTaskStartupHook(), 0: do not use hook */
+#define configUSE_TASK_NOTIFICATIONS			  0
 
 /* Set configUSE_TASK_FPU_SUPPORT to 0 to omit floating point support even
 if floating point hardware is otherwise supported by the FreeRTOS port in use.

@@ -4,10 +4,11 @@
  *  Created on: Sep 24, 2017
  *      Author: Jefferson
  */
+#include <string.h>
 
+#include "clock.h"
 #include "ihm.h"
 #include "protocol.h"
-#include "application.h"
 #include "communication.h"
 
 /* Task RX*/
@@ -26,6 +27,8 @@ static const char*		TX_TASK_NAME =			"tk_tx";
 #define					TX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
 TaskHandle_t 			xHandleTxTask;
 QueueHandle_t			xQueuePackageTx;
+
+EventGroupHandle_t		communication_events;
 
 /**
  * Gerencia a fila de pacotes de recepção
@@ -55,11 +58,9 @@ static portTASK_FUNCTION(txPackage_task, pvParameters) {
 
 	while(1) {
 
-		uint32_t ulNotifiedValue;
+		EventBits_t uxBits	= xEventGroupWaitBits(communication_events,	BIT_TX,pdTRUE,pdFALSE, portMAX_DELAY);
 
-		xTaskNotifyWait( 0x0, BIT_TX,  &ulNotifiedValue, portMAX_DELAY );
-
-		if(ulNotifiedValue & BIT_TX){
+		if(uxBits & BIT_TX){
 
 			CommunicationPackage*	package_tx = pvPortMalloc(sizeof(CommunicationPackage));
 
@@ -113,7 +114,21 @@ void communication_init(void){
 	xQueuePackageRx	= xQueueCreate( RX_NUM_MSG, sizeof( CommunicationPackage ));
 	xQueuePackageTx	= xQueueCreate( TX_NUM_MSG, sizeof( CommunicationPackage ));
 
+	communication_events	= xEventGroupCreate();
+
 	createTasks();
+}
+//------------------------------------------------------------------------------------
+
+void communication_notify_rx(void){
+
+	xEventGroupSetBits(communication_events, BIT_RX);
+}
+//------------------------------------------------------------------------------------
+
+void communication_notify_tx(void){
+
+	xEventGroupSetBits(communication_events, BIT_TX);
 }
 //------------------------------------------------------------------------------------
 
@@ -125,7 +140,7 @@ void putPackageRx(CommunicationPackage* package_rx){
 
 	if(xQueueSendToBack( xQueuePackageRx ,package_rx, ( TickType_t ) 1 ) ){
 
-		xTaskNotify( xHandleAppTask , BIT_RX_FRAME , eSetBits );
+		communication_notify_rx();
 	}
 }
 //------------------------------------------------------------------------------------
@@ -141,7 +156,7 @@ void putPackageTx(CommunicationPackage* package_tx){
 	// Publica resposta na fila
 	if(xQueueSendToBack( xQueuePackageTx , package_tx, ( TickType_t ) 1 ) ){
 
-		xTaskNotify( xHandleTxTask , BIT_TX , eSetBits );
+		communication_notify_tx();
 
 	}else{
 

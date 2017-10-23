@@ -78,6 +78,7 @@
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
+#include "Telemetria.h"
 #include "application.h"
 #include "ihm.h"
 #include "clock.h"
@@ -94,6 +95,8 @@ void sys_init(void){
 	gps_init();
 
 	accelerometer_init();
+
+	tlm_init();
 
 	clock_init();
 

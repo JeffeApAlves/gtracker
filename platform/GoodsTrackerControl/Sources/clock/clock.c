@@ -72,7 +72,7 @@ void clock_init(){
  */
 bool setClockByString(char* date,char* time){
 
-	LDD_RTC_TTime date_time;
+	rtc_clock date_time;
 
 	strToData(&date_time,date,time);
 
@@ -80,7 +80,7 @@ bool setClockByString(char* date,char* time){
 }
 //-------------------------------------------------------------------------------------------------------------------
 
-bool setClock(LDD_RTC_TTime* time){
+bool setClock(rtc_clock* time){
 
 	LDD_TError	Error;
 
@@ -105,13 +105,13 @@ bool setClock(LDD_RTC_TTime* time){
 }
 //-------------------------------------------------------------------------------------------------------------------
 
-inline void getClock(LDD_RTC_TTime* time){
+inline void getClock(rtc_clock* time){
 
 	RTC1_GetTime(MyRTCPtr, time);
 }
 //-------------------------------------------------------------------------------------------------------------------
 
-bool getLocalClock(LDD_RTC_TTime* time){
+bool getLocalClock(rtc_clock* time){
 
 	struct tm		tim,*mt;
 	time_t			mtt;
@@ -174,7 +174,7 @@ void updateEntityClock(){
 
 uint32_t getCurrentTimeStamp(){
 
-	LDD_RTC_TTime	time;
+	rtc_clock	time;
 	getClock(&time);
 
 	return unix_time_in_seconds((uint8_t)time.Second, (uint8_t)time.Minute, (uint8_t)time.Hour,
@@ -194,7 +194,7 @@ void adjusteClock(char* date,char* time){
 }
 //-------------------------------------------------------------------------------------------------------------------
 
-void strToData(	LDD_RTC_TTime* date_time,char* date,char* time){
+void strToData(rtc_clock* date_time,char* date,char* time){
 
 	char year[3];	year[2]		= '\0';
 	char month[3];	month[2]	= '\0';
@@ -203,7 +203,7 @@ void strToData(	LDD_RTC_TTime* date_time,char* date,char* time){
 	char min[3];	min[2] 		= '\0';
 	char sec[3];	sec[2] 		= '\0';
 
-	memset(date_time,0,sizeof(LDD_RTC_TTime));
+	memset(date_time,0,sizeof(rtc_clock));
 
 	if(strlen(time)>=6){
 		strncpy(hrs, 	time,2);

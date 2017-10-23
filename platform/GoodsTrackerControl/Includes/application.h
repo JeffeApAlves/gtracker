@@ -18,12 +18,6 @@
 #include "protocol.h"
 
 //bits de sinalização das notificações
-
-#define		BIT_UPDATE_GPS	0x01
-#define		BIT_UPDATE_AD	0x02
-#define		BIT_UPDATE_ACCE	0x04
-#define		BIT_RX_FRAME	0x08
-
 typedef enum
 	{LED_GREEN	=0,
 	LED_RED		=1,
@@ -32,15 +26,14 @@ typedef enum
 /**
  * Ponteiro para as call backs
  */
-//typedef ResultExec(*pCallBack)(CommunicationPackage*);
-typedef	TaskFunction_t	pCallBack;
+typedef bool(*pCallBack)(CommunicationPackage*);
+//typedef	TaskFunction_t	pCallBack;
 
 void app_init(void);
 void decoderLockPayLoad(PayLoad* payload);
 
-pCallBack getCallBack(Resource r);
+#define HOOK_CMD(vFunction, parameters)	bool vFunction(CommunicationPackage* parameters)
 
-extern TaskHandle_t	xHandleAppTask;
-extern Telemetria	telemetria;
+pCallBack getCallBack(Resource r);
 
 #endif /* SOURCES_APPLICATION_H_ */

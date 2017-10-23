@@ -9,7 +9,7 @@
 #include "LED_G.h"
 #include "LED_R.h"
 
-#include "application.h"
+#include "Telemetria.h"
 #include "Tank.h"
 
 
@@ -24,9 +24,9 @@ QueueHandle_t				xQueueTank;
 TaskHandle_t				xHandleDataTask;
 
 
-static uint16_t	ADValues[AD1_CHANNEL_COUNT];
-static Tank		tank;
-bool AD_finished;
+static	uint16_t	ADValues[AD1_CHANNEL_COUNT];
+static	Tank		tank;
+bool	AD_finished;
 
 /**
  * Task de gerenciamento do tank
@@ -63,7 +63,7 @@ void tank_task(void){
 
 		    if(xQueueSendToBack( xQueueTank ,  &tank, ( TickType_t ) 1 ) ){
 
-		    	xTaskNotify( xHandleAppTask, BIT_UPDATE_AD , eSetBits );
+		    	tlm_notify_tank();
 		    }
 		}
 	}

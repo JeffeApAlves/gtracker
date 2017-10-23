@@ -6,9 +6,9 @@
  */
 
 #include <stdio.h>
-#include "MMA8451.h"
 
-#include "application.h"
+#include "MMA8451.h"
+#include "Telemetria.h"
 #include "Accelerometer.h"
 
 
@@ -21,8 +21,7 @@ static const TickType_t ACCE_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 QueueHandle_t			xQueueAcce;
 TaskHandle_t			xHandleAccelTask;
 
-Accelerometer	acceInfo;
-
+static Accelerometer	accelerometer;
 
 static portTASK_FUNCTION(run_accel, pvParameters) {
 
@@ -30,11 +29,11 @@ static portTASK_FUNCTION(run_accel, pvParameters) {
 
 	while(1) {
 
-		if(MMA845x_getXYZ(&acceInfo)){
+		if(MMA845x_getXYZ(&accelerometer)){
 
-			if(xQueueSendToBack( xQueueAcce ,  &acceInfo, ( TickType_t ) 1 ) ){
+			if(xQueueSendToBack( xQueueAcce ,  &accelerometer, ( TickType_t ) 1 ) ){
 
-				xTaskNotify(xHandleAppTask, BIT_UPDATE_ACCE , eSetBits );
+				tlm_notify_accelerometer();
 			}
 		}
 
@@ -65,7 +64,7 @@ static void createTask(void){
 
 void accelerometer_init(void){
 
-	clearAccelerometer(&acceInfo);
+	clearAccelerometer(&accelerometer);
 
 	xQueueAcce	= xQueueCreate( ACCE_NUM_MSG , sizeof( Accelerometer ));
 

@@ -13,7 +13,7 @@
 
 #include "lcd.h"
 #include "gps.h"
-#include "application.h"
+#include "telemetria.h"
 #include "serial.h"
 #include "clock.h"
 #include "ihm.h"
@@ -130,32 +130,32 @@ void ihm_task(void) {
 
 void printGPS(void){
 
-	XF1_xsprintf(line_lcd,"Lat:%12.7f",	telemetria.GPS.Lat);
+	TO_STRING(line_lcd,"Lat:%12.7f",	telemetria.GPS.Lat);
 	printLCD(1,1,line_lcd);
 
-	XF1_xsprintf(line_lcd,"Lng:%12.7f",	telemetria.GPS.Lng);
+	TO_STRING(line_lcd,"Lng:%12.7f",	telemetria.GPS.Lng);
 	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
 
 void printTank(void){
 
-	XF1_xsprintf(line_lcd,"Level: %05d    ",	telemetria.Tank.Level);
+	TO_STRING(line_lcd,"Level: %05d    ",	telemetria.Tank.Level);
 	printLCD(1,1,line_lcd);
 
-	XF1_xsprintf(line_lcd,"Lock:  %d         ",	telemetria.Tank.Lock);
+	TO_STRING(line_lcd,"Lock:  %d         ",	telemetria.Tank.Lock);
 	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
 
 void printAccelerometer(void){
 
-	XF1_xsprintf(line_lcd,"X:%c%4.2f Y:%c%4.2f   ",	telemetria.Accelerometer.x_g>=0?'+':'-',fabs(telemetria.Accelerometer.x_g),
+	TO_STRING(line_lcd,"X:%c%4.2f Y:%c%4.2f   ",	telemetria.Accelerometer.x_g>=0?'+':'-',fabs(telemetria.Accelerometer.x_g),
 														telemetria.Accelerometer.y_g>=0?'+':'-',fabs(telemetria.Accelerometer.y_g)
 													);
 	printLCD(1,1,line_lcd);
 
-	XF1_xsprintf(line_lcd,"Z:%c%4.2f         	  ",	telemetria.Accelerometer.z_g>=0?'+':'-',fabs(telemetria.Accelerometer.z_g)
+	TO_STRING(line_lcd,"Z:%c%4.2f         	  ",	telemetria.Accelerometer.z_g>=0?'+':'-',fabs(telemetria.Accelerometer.z_g)
 													);
 	printLCD(2,1,line_lcd);
 }
@@ -163,20 +163,20 @@ void printAccelerometer(void){
 
 void printStatCom(void){
 
-	XF1_xsprintf(line_lcd,"RM:%03dP:%03dC:%03d",bufferRx.max_count,bufferRx.index_producer,bufferRx.index_consumer);
+	TO_STRING(line_lcd,"RM:%03dP:%03dC:%03d",bufferRx.max_count,bufferRx.index_producer,bufferRx.index_consumer);
 	printLCD(1,1,line_lcd);
 
-	XF1_xsprintf(line_lcd,"TM:%03dP:%03dC:%03d",bufferTx.max_count,bufferTx.index_producer,bufferTx.index_consumer);
+	TO_STRING(line_lcd,"TM:%03dP:%03dC:%03d",bufferTx.max_count,bufferTx.index_producer,bufferTx.index_consumer);
 	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
 
 void printStatGPS(void){
 
-	XF1_xsprintf(line_lcd,"RX: M:%03d        ",bufferRxNMEA.max_count);
+	TO_STRING(line_lcd,"RX: M:%03d        ",bufferRxNMEA.max_count);
 	printLCD(1,1,line_lcd);
 
-	XF1_xsprintf(line_lcd,"RX: C:%03d P:%03d ",bufferRxNMEA.index_consumer,bufferRxNMEA.index_producer);
+	TO_STRING(line_lcd,"RX: C:%03d P:%03d ",bufferRxNMEA.index_consumer,bufferRxNMEA.index_producer);
 	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
@@ -195,18 +195,18 @@ void printClock(void){
 	switch(statuc_clock){
 
 		case CLOCK_INIT:
-			XF1_xsprintf(line_lcd,"    CLKINIT    ");
+			TO_STRING(line_lcd,"    CLKINIT    ");
 
 			break;
 		case CLOCK_STARTED:
-			XF1_xsprintf(line_lcd,"    CLKSTART    ");
+			TO_STRING(line_lcd,"    CLKSTART    ");
 			break;
 		case CLOCK_UPDATE:
-			XF1_xsprintf(line_lcd,"     CLKUPD     ");
+			TO_STRING(line_lcd,"     CLKUPD     ");
 			break;
 		case CLOCK_ADJUSTED:
 			if(getLocalClock(&time)){
-				XF1_xsprintf(line_lcd," %02d.%02d %02d:%02d:%02d \n",time.Day,time.Month,time.Hour, time.Minute, time.Second);
+				TO_STRING(line_lcd," %02d.%02d %02d:%02d:%02d \n",time.Day,time.Month,time.Hour, time.Minute, time.Second);
 
 			}else{
 				statuc_clock = CLOCK_ERROR;
@@ -215,7 +215,7 @@ void printClock(void){
 			break;
 
 		case CLOCK_ERROR:
-			XF1_xsprintf(line_lcd,"     ERROR     ");
+			TO_STRING(line_lcd,"     ERROR     ");
 			break;
 
 	}

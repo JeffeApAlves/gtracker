@@ -4,7 +4,7 @@
  *      Author: Jefferson
  */
 
-#include "application.h"
+#include "Telemetria.h"
 #include "NMEA.h"
 #include "gps.h"
 
@@ -55,7 +55,7 @@ void gps_publish(void){
 
     if(xQueueSendToBack( xQueueGPS ,(void*) &gps, ( TickType_t ) 1 ) ){
 
-    	xTaskNotify( xHandleAppTask , BIT_UPDATE_GPS , eSetBits );
+    	tlm_notify_gps();
     }
 }
 //------------------------------------------------------------------------

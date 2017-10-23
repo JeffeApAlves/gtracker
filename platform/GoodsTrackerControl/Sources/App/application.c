@@ -13,14 +13,7 @@
 #include "Accelerometer.h"
 #include "Serialization.h"
 #include "communication.h"
-#include "consumer.h"
 #include "application.h"
-
-/* Task APP */
-static const char*	APP_TASK_NAME =			"tk_app";
-#define 			APP_TASK_PRIORITY		(tskIDLE_PRIORITY+5)
-#define				APP_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
-TaskHandle_t		xHandleAppTask;
 
 /* Task CB (cmd) */
 static const char*	CB_TASK_NAME =			"tk_callback";
@@ -29,60 +22,49 @@ static const char*	CB_TASK_NAME =			"tk_callback";
 TaskHandle_t		xHandleCBTask;
 
 static 	int		_lock;
-Telemetria		telemetria;
 
 static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* package);
 static void execError(CommunicationPackage* package);
+static void execCMD(EventBits_t ulNotifiedValue);
 
-static void execCMD(uint32_t ulNotifiedValue){
+static portTASK_FUNCTION(task_cb, pvParameters) {
 
-	if(ulNotifiedValue & BIT_RX_FRAME){
+	while(1) {
 
-		CommunicationPackage*	package = pvPortMalloc(sizeof(CommunicationPackage));
+		EventBits_t uxBits	= xEventGroupWaitBits(communication_events,BIT_RX,pdTRUE,pdFALSE, portMAX_DELAY);
 
-		if(package!=NULL){
+		if(uxBits & BIT_RX){
 
-			while (xQueueReceive(xQueuePackageRx, package, (TickType_t ) 1)) {
+			execCMD(uxBits);
+		}
+	}
 
-				pCallBack cb = getCallBack(package->Header.resource);
+	vTaskDelete(xHandleCBTask);
+}
+//--------------------------------------------------------------------------------------------------------
 
-				if(cb!=NULL){
+static void execCMD(EventBits_t ulNotifiedValue){
 
-					createTaskCallBack(cb,package);
+	CommunicationPackage*	package = pvPortMalloc(sizeof(CommunicationPackage));
 
-				} else{
+	if(package!=NULL){
 
-					execError(package);
-				}
+		while (xQueueReceive(xQueuePackageRx, package, (TickType_t ) 1)) {
+
+			pCallBack cb = getCallBack(package->Header.resource);
+
+			if(cb==NULL || (!cb(package))){
+
+				execError(package);
 			}
+
+			vPortFree(package);
 		}
 	}
 }
 //-------------------------------------------------------------------------
 
-/**
- *  Task para execucao da call back dos cmds recebidos e consume as informações de telemetria
- *  O comando de telemetria espera as notificacoes para atualizacoes das informacoes via fila de mensagens
- *
- */
-static portTASK_FUNCTION(task_app, pvParameters) {
-
-	while(1) {
-
-		uint32_t ulNotifiedValue;
-
-		xTaskNotifyWait( 0x0, BIT_RX_FRAME | BIT_UPDATE_GPS | BIT_UPDATE_ACCE | BIT_UPDATE_AD,  &ulNotifiedValue, portMAX_DELAY);
-
-		updateTLM(&telemetria,ulNotifiedValue);
-
-		execCMD(ulNotifiedValue);
-	}
-
-	vTaskDelete(xHandleAppTask);
-}
-//--------------------------------------------------------------------------------------------------------
-
-static portTASK_FUNCTION(onLED, pvParameters){
+static HOOK_CMD(onLED, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
@@ -94,12 +76,13 @@ static portTASK_FUNCTION(onLED, pvParameters){
 	// Resultado da callback
 	sendAnswer(package);
 
-	vPortFree(package);
-	vTaskDelete(xHandleCBTask);
+	//vPortFree(package);
+	//vTaskDelete(NULL);
+	return true;
 }
 //-------------------------------------------------------------------------
 
-static portTASK_FUNCTION(onAnalog, pvParameters){
+static HOOK_CMD(onAnalog, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
@@ -111,12 +94,13 @@ static portTASK_FUNCTION(onAnalog, pvParameters){
 	// Resultado da callback
 	sendAnswer(package);
 
-	vPortFree(package);
-	vTaskDelete(xHandleCBTask);
+	//vPortFree(package);
+	//vTaskDelete(NULL);
+	return true;
 }
 //-------------------------------------------------------------------------
 
-static portTASK_FUNCTION(onAccel, pvParameters){
+static HOOK_CMD(onAccel, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
@@ -128,12 +112,13 @@ static portTASK_FUNCTION(onAccel, pvParameters){
 	// Resultado da callback
 	sendAnswer(package);
 
-	vPortFree(package);
-	vTaskDelete(xHandleCBTask);
+	//vPortFree(package);
+	//vTaskDelete(NULL);
+	return true;
 }
 //-------------------------------------------------------------------------
 
-static portTASK_FUNCTION(onTouch, pvParameters){
+static HOOK_CMD(onTouch, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
@@ -145,12 +130,13 @@ static portTASK_FUNCTION(onTouch, pvParameters){
 	// Resultado da callback
 	sendAnswer(package);
 
-	vPortFree(package);
-	vTaskDelete(xHandleCBTask);
+	//vPortFree(package);
+	//vTaskDelete(NULL);
+	return true;
 }
 //-------------------------------------------------------------------------
 
-static portTASK_FUNCTION(onPWM, pvParameters){
+static HOOK_CMD(onPWM, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
@@ -162,12 +148,13 @@ static portTASK_FUNCTION(onPWM, pvParameters){
 	// Resultado da callback
 	sendAnswer(package);
 
-	vPortFree(package);
-	vTaskDelete(xHandleCBTask);
+	//vPortFree(package);
+	//vTaskDelete(NULL);
+	return true;
 }
 //------------------------------------------------------------------------
 
-static portTASK_FUNCTION(onTelemetry, pvParameters){
+static HOOK_CMD(onTelemetry, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
@@ -178,12 +165,13 @@ static portTASK_FUNCTION(onTelemetry, pvParameters){
 	// Resultado da callback
 	sendAnswer(package);
 
-	vPortFree(package);
-	vTaskDelete(xHandleCBTask);
+	//vPortFree(package);
+	//vTaskDelete(NULL);
+	return true;
 }
 //------------------------------------------------------------------------
 
-static portTASK_FUNCTION(onLock, pvParameters){
+static HOOK_CMD(onLock, pvParameters){
 
 	CommunicationPackage* package = (CommunicationPackage*)pvParameters;
 
@@ -204,8 +192,10 @@ static portTASK_FUNCTION(onLock, pvParameters){
 	// Resultado da callback
 	sendAnswer(package);
 
-	vPortFree(package);
-	vTaskDelete(xHandleCBTask);
+	//vPortFree(package);
+	//vTaskDelete(NULL);
+
+	return true;
 }
 //------------------------------------------------------------------------
 
@@ -215,7 +205,7 @@ static void execError(CommunicationPackage* package){
 
 	sendAnswer(package);
 
-	vPortFree(package);
+	//vPortFree(package);
 }
 //------------------------------------------------------------------------
 
@@ -262,39 +252,23 @@ pCallBack getCallBack(Resource r) {
 }
 //------------------------------------------------------------------------
 
-static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* package){
+static void createTask(void){
 
 	if (xTaskCreate(
-		pxTaskCode,
+		task_cb,
 		CB_TASK_NAME,
 		CB_TASK_STACK_SIZE,
-		(void*) package,
+		(void*) NULL,
 		CB_TASK_PRIORITY,
 		&xHandleCBTask
 	) != pdPASS) {
 		while (1) {};
 	}
 }
-//--------------------------------------------------------------------------------------------------------
-
-static void createTask(void){
-
-	if (xTaskCreate(
-		task_app,
-		APP_TASK_NAME,
-		APP_TASK_STACK_SIZE,
-		(void*)NULL,
-		APP_TASK_PRIORITY,
-		&xHandleAppTask
-	) != pdPASS) {
-		while(1){};
-	}
-}
 //------------------------------------------------------------------------
 
 void app_init(void){
 
-	clearTelemetria(&telemetria);
 	createTask();
 }
 //------------------------------------------------------------------------
