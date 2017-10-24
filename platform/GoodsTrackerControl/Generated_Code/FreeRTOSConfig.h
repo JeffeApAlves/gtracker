@@ -181,7 +181,6 @@
 #define INCLUDE_xEventGroupSetBitFromISR          1 /* 1: function is included; 0: do not include function */
 #define INCLUDE_xTimerPendFunctionCall            1 /* 1: function is included; 0: do not include function */
 #define configUSE_DAEMON_TASK_STARTUP_HOOK        0 /* 1: use application specific vApplicationDaemonTaskStartupHook(), 0: do not use hook */
-#define configUSE_TASK_NOTIFICATIONS			  0
 
 /* Set configUSE_TASK_FPU_SUPPORT to 0 to omit floating point support even
 if floating point hardware is otherwise supported by the FreeRTOS port in use.

@@ -364,66 +364,6 @@ PE_DEBUGHALT();
       <event name="vOnPostSleepProcessing" v="don&amp;apos;t generate code" />
     </Events>
   </Bean>
-  <Bean name="TSK1" type="FreeRTOS_Tasks">
-    <Enabled v="Y" />
-    <Properties>
-      <Component_Name v="TSK1" />
-      <FreeRTOS v="FRTOS1" />
-      <list name="Number of tasks" v="9">
-        <group name="FreeRTOS task">
-          <Task_name v="app_task" />
-          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
-          <Initial_Priority v="0" />
-        </group>
-        <group name="FreeRTOS task">
-          <Task_name v="communication_task" />
-          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
-          <Initial_Priority v="0" />
-        </group>
-        <group name="FreeRTOS task">
-          <Task_name v="data_task" />
-          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
-          <Initial_Priority v="0" />
-        </group>
-        <group name="FreeRTOS task">
-          <Task_name v="ihm_task" />
-          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
-          <Initial_Priority v="0" />
-        </group>
-        <group name="FreeRTOS task">
-          <Task_name v="gps_task" />
-          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
-          <Initial_Priority v="0" />
-        </group>
-        <group name="FreeRTOS task">
-          <Task_name v="accel_task" />
-          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
-          <Initial_Priority v="0" />
-        </group>
-        <group name="FreeRTOS task">
-          <Task_name v="callback_task" />
-          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
-          <Initial_Priority v="0" />
-        </group>
-        <group name="FreeRTOS task">
-          <Task_name v="runTx_task" />
-          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
-          <Initial_Priority v="0" />
-        </group>
-        <group name="FreeRTOS task">
-          <Task_name v="task_callback" />
-          <Stack_size__plus_configMINIMAL_STACK_SIZE_ v="0" />
-          <Initial_Priority v="0" />
-        </group>
-      </list>
-    </Properties>
-    <Methods>
-      <CreateTasks v="generate code" />
-    </Methods>
-    <Events>
-      <EmptySection_DummyValue />
-    </Events>
-  </Bean>
   <Bean name="AS1" type="AsynchroSerial">
     <Enabled v="Y" />
     <Properties>

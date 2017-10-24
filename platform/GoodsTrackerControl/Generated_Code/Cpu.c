@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-10-20, 19:24, # CodeGen: 263
+**     Date/Time   : 2017-10-24, 13:10, # CodeGen: 277
 **     Abstract    :
 **
 **     Settings    :
@@ -264,7 +264,6 @@
 
 #include "FreeRTOS.h" /* FreeRTOS interface */
 #include "FRTOS1.h"
-#include "TSK1.h"
 #include "AS1.h"
 #include "ASerialLdd1.h"
 #include "LED_G.h"
@@ -550,8 +549,6 @@ void PE_low_level_init(void)
   /* ### McuLibConfig "MCUC1" init code ... */
   /* ### FreeRTOS "FRTOS1" init code ... */
   /* PEX_RTOS_INIT() should have been called at this time already with the most critical setup */
-  /* ### FreeRTOS_Tasks "TSK1" init code ... */
-  TSK1_CreateTasks();
   /* ### Asynchro serial "AS1" init code ... */
   AS1_Init();
   /* ### BitIO_LDD "BitIoLdd2" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */

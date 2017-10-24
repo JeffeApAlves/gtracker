@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 
+#include "portmacro.h"
 #include "RingBuffer.h"
 
 bool putData(RingBuffer* buffer,char ch){

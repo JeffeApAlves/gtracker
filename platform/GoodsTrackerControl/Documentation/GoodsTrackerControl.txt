@@ -508,9 +508,6 @@ Module "FRTOS1"    (component FreeRTOS)
                 enabled.
    - FRTOS1_Deinit -Module deinitialization method
 
-Module "TSK1"      (component FreeRTOS_Tasks)
-   - TSK1_CreateTasks -Creates the tasks.
-
 Module "AS1"       (component AsynchroSerial)
    - AS1_RecvChar -If any data is received, this method returns one character, otherwise it returns an error code (it does not 
                 wait for data). This method is enabled only if the receiver property is enabled.  [Note:] Because the preferred 
