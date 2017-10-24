@@ -5,12 +5,13 @@
  *      Author: Jefferson
  */
 #include <stdio.h>
+#include <uart_host.h>
 
+#include "RingBuffer.h"
 #include "Events.h"
 #include "AS1.h"
-#include "serial.h"
 
-RingBuffer	bufferRx,bufferTx;
+static RingBuffer	bufferRx,bufferTx;
 
 inline bool putTxData(char data) {
 
@@ -96,5 +97,41 @@ void uart_init(void){
 
 	clearBuffer(&bufferRx);
 	clearBuffer(&bufferTx);
+}
+//------------------------------------------------------------------------
+
+inline uint16_t uart_host_rx_head(void){
+
+	return bufferRx.index_producer;
+}
+//------------------------------------------------------------------------
+
+inline uint16_t uart_host_rx_tail(void){
+
+	return bufferRx.index_consumer;
+}
+//------------------------------------------------------------------------
+
+inline uint16_t uart_host_rx_max(void){
+
+	return bufferRx.max_count;
+}
+//------------------------------------------------------------------------
+
+inline uint16_t uart_host_tx_head(void){
+
+	return bufferRx.index_producer;
+}
+//------------------------------------------------------------------------
+
+inline uint16_t uart_host_tx_tail(void){
+
+	return bufferRx.index_consumer;
+}
+//------------------------------------------------------------------------
+
+inline uint16_t uart_host_tx_max(void){
+
+	return bufferRx.max_count;
 }
 //------------------------------------------------------------------------

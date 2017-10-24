@@ -10,6 +10,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+
+#include "XF1.h"
+
 #define	TIME_SPLASH				1
 #define KEY       		 		(1<<7)
 #define KEY_INPUT				(~KEY)

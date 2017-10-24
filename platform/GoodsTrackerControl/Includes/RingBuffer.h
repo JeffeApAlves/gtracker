@@ -9,6 +9,7 @@
 #define SOURCES_RINGBUFFER_H_
 
 #include <string.h>
+#include <stdint.h>
 #include <stdbool.h>
 
 #define BUFFER_SIZE		256

@@ -5,7 +5,7 @@
  *      Author: Jefferson
  */
 
-#include "gps_serial.h"
+#include <uart_gps.h>
 #include "gps.h"
 #include "NMEA.h"
 

@@ -124,19 +124,19 @@
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\CommunicationFrame.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\Serialization.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\protocol.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\serial.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Communication\uart_host.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Events.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\GPS\NMEA.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\GPS\gps.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\GPS\gps_serial.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\GPS\uart_gps.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\IHM\ihm.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\IHM\lcd.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Tank\Tank.c</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Tank\level_sensor.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\Frame.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\RingBuffer.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Utils\utils.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\clock\clock.c</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\frtos_tasks.c</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\main.c</PathName>
     </GeneratedCs>
     <GeneratedHs>
@@ -229,14 +229,14 @@
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\application.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\clock.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\gps.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\gps_serial.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\ihm.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\lcd.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\level_sensor.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\protocol.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\serial.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\uart_gps.h</PathName>
+      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\uart_host.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Includes\utils.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\Events.h</PathName>
-      <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Sources\frtos_tasks.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Static_Code\IO_Map\MKL25Z4.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Static_Code\PDD\ADC_PDD.h</PathName>
       <PathName>F:\workspace\GoodsTracker\platform\GoodsTrackerControl\Static_Code\PDD\CMP_PDD.h</PathName>

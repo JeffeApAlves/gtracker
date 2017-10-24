@@ -90,7 +90,6 @@ static void createTasks(void){
 			&xHandleRxTask
 	) != pdPASS) {
 
-		while (1) {};
 	}
 
 	if (xTaskCreate(
@@ -101,8 +100,6 @@ static void createTasks(void){
 			TX_TASK_PRIORITY,
 			&xHandleTxTask
 	) != pdPASS) {
-
-		while (1) {};
 	}
 }
 //--------------------------------------------------------------------------------------

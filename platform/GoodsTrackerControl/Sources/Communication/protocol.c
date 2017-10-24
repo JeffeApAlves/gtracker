@@ -1,11 +1,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <uart_host.h>
 
 #include "utils.h"
 #include "communication.h"
 #include "serialization.h"
-#include "serial.h"
 #include "protocol.h"
 
 const char* OPERATION_AN = "AN";

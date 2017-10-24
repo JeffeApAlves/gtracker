@@ -8,18 +8,17 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
+#include <uart_host.h>
 
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
 #include "event_groups.h"
 
-#include "XF1.h"
-
 #include "lcd.h"
 #include "gps.h"
 #include "telemetria.h"
-#include "serial.h"
+#include "uart_gps.h"
 #include "clock.h"
 #include "ihm.h"
 
@@ -72,7 +71,6 @@ static void createTask(void){
 		&xHandleIHMTask
 	) != pdPASS) {
 
-		while(1) {};
 	}
 
 	xTimerUpdateStat = xTimerCreate (
@@ -168,20 +166,20 @@ void printAccelerometer(void){
 
 void printStatCom(void){
 
-	TO_STRING(line_lcd,"RM:%03dP:%03dC:%03d",bufferRx.max_count,bufferRx.index_producer,bufferRx.index_consumer);
+	TO_STRING(line_lcd,"RM:%03dP:%03dC:%03d",uart_host_rx_max(),uart_host_rx_head(),uart_host_rx_tail());
 	printLCD(1,1,line_lcd);
 
-	TO_STRING(line_lcd,"TM:%03dP:%03dC:%03d",bufferTx.max_count,bufferTx.index_producer,bufferTx.index_consumer);
+	TO_STRING(line_lcd,"TM:%03dP:%03dC:%03d",uart_host_tx_max(),uart_host_tx_head(),uart_host_tx_tail());
 	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
 
 void printStatGPS(void){
 
-	TO_STRING(line_lcd,"RX: M:%03d        ",bufferRxNMEA.max_count);
+	TO_STRING(line_lcd,"RX: M:%03d        ",uart_gps_rx_max());
 	printLCD(1,1,line_lcd);
 
-	TO_STRING(line_lcd,"RX: C:%03d P:%03d ",bufferRxNMEA.index_consumer,bufferRxNMEA.index_producer);
+	TO_STRING(line_lcd,"RX: C:%03d P:%03d ",uart_gps_rx_tail(),uart_gps_rx_head());
 	printLCD(2,1,line_lcd);
 }
 //-----------------------------------------------------------------------------------------
@@ -195,7 +193,7 @@ void printSplash(void){
 
 void printClock(void){
 
-	LDD_RTC_TTime	time;
+	rtc_clock	time;
 
 	switch(statuc_clock){
 
@@ -269,8 +267,6 @@ void ihm_notify_screen_stat(void){
 //-----------------------------------------------------------------------------------------
 
 void ihm_notify_screen_tlm(void){
-
-	EventBits_t uxBitsToSet = 0;
 
 	if(active_screen == SCREEN_ACCE){
 

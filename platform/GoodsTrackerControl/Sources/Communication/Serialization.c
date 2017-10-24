@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "XF1.h"
-
 #include "clock.h"
 #include "Frame.h"
 #include "Serialization.h"

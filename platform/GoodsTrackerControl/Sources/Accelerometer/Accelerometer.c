@@ -57,7 +57,6 @@ static void createTask(void){
 			&xHandleAccelTask
 	) != pdPASS) {
 
-		while (1) {};
 	}
 }
 //------------------------------------------------------------------------

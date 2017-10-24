@@ -129,7 +129,7 @@ static void createTask(void){
 		TLM_TASK_PRIORITY,
 		&xHandleTLMTask
 	) != pdPASS) {
-		while(1){};
+
 	}
 }
 //------------------------------------------------------------------------

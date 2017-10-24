@@ -5,8 +5,6 @@
  *      Author: Jefferson
  */
 
-#include <stdlib.h>
-
 #include "portmacro.h"
 #include "RingBuffer.h"
 

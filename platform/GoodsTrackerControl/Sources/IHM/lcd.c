@@ -2,10 +2,9 @@
  * lcd.c
  *
  *  Created on: 19/06/2017
- *      Author: Flávio Soares
+ *      Author: Flï¿½vio Soares
  */
 
-#include "LCDout.h"
 #include "lcd.h"
 
 

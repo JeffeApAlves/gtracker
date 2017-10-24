@@ -10,6 +10,8 @@
 
 #include <stdbool.h>
 
+#include "XF1.h"
+
 #include "CommunicationFrame.h"
 #include "Telemetria.h"
 

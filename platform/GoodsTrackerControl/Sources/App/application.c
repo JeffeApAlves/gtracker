@@ -246,6 +246,7 @@ pCallBack getCallBack(Resource r) {
 		case CMD_TLM:	cb = onTelemetry;	break;
 		case CMD_LOCK:	cb = onLock;		break;
 		case CMD_LCD:	cb = NULL;			break;
+		default:		cb = NULL;			break;
 	}
 
 	return cb;
@@ -262,7 +263,7 @@ static void createTask(void){
 		CB_TASK_PRIORITY,
 		&xHandleCBTask
 	) != pdPASS) {
-		while (1) {};
+
 	}
 }
 //------------------------------------------------------------------------

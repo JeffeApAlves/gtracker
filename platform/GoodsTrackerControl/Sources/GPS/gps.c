@@ -5,8 +5,8 @@
  */
 
 
+#include <uart_gps.h>
 #include "Telemetria.h"
-#include "gps_serial.h"
 #include "gps.h"
 
 /* Task GPS*/
@@ -47,7 +47,6 @@ static void createTask(void){
 		&xHandleGPSTask
 	) != pdPASS) {
 
-		while(1) {};
 	}
 }
 //------------------------------------------------------------------------
@@ -63,7 +62,7 @@ void gps_publish(void){
 
 void gps_init(void){
 
-	gps_serial_init();
+	uart_gps_init();
 
 	clearGPS(&gps);
 

@@ -5,10 +5,7 @@
  *      Author: Jefferson
  */
 
-#include "LED_B.h"
-#include "LED_G.h"
-#include "LED_R.h"
-
+#include "level_sensor.h"
 #include "Telemetria.h"
 #include "Tank.h"
 
@@ -18,15 +15,12 @@ static const char*			TANK_TASK_NAME =			"tk_tank";
 #define						TANK_NUM_MSG				1
 #define 					TANK_TASK_PRIORITY			(tskIDLE_PRIORITY+4)
 #define						TANK_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE-20)
-static EventGroupHandle_t	TANK_events;
 static const TickType_t		TANK_TASK_DELAY	= 			(200 / portTICK_PERIOD_MS);
 QueueHandle_t				xQueueTank;
 TaskHandle_t				xHandleDataTask;
 
-
-static	uint16_t	ADValues[AD1_CHANNEL_COUNT];
 static	Tank		tank;
-bool	AD_finished;
+
 
 /**
  * Task de gerenciamento do tank
@@ -36,7 +30,13 @@ static portTASK_FUNCTION(run_data, pvParameters) {
 
 	while(1) {
 
-		tank_task();
+		if(readValues(&tank.Level)){
+
+			if(xQueueSendToBack( xQueueTank ,  &tank, ( TickType_t ) 1 ) ){
+
+		    	tlm_notify_tank();
+		    }
+		}
 
 		vTaskDelay(TANK_TASK_DELAY);
 	}
@@ -44,31 +44,6 @@ static portTASK_FUNCTION(run_data, pvParameters) {
 	vTaskDelete(xHandleDataTask);
 }
 //---------------------------------------------------------------------------
-
-/**
- * Leitura do tanque
- *
- */
-void tank_task(void){
-
-	AD_finished = false;
-
-	if(AD1_Measure(true)==ERR_OK){
-
-		while (!AD_finished) {}
-
-		if(AD1_GetValue16(&ADValues[0])==ERR_OK){
-
-			tank.Level = ADValues[0];
-
-		    if(xQueueSendToBack( xQueueTank ,  &tank, ( TickType_t ) 1 ) ){
-
-		    	tlm_notify_tank();
-		    }
-		}
-	}
-}
-//------------------------------------------------------------------------
 
 void lock(void){
 
@@ -95,14 +70,13 @@ static void createTask(void){
 		&xHandleDataTask
 	) != pdPASS) {
 
-		while(1) {};
 	}
 }
 //------------------------------------------------------------------------
 
 void tank_init(void){
 
-	AD_finished		= false;
+	level_sensor_init();
 
 	xQueueTank		= xQueueCreate( TANK_NUM_MSG, sizeof( Tank ));
 
