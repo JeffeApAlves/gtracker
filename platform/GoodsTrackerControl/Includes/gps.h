@@ -8,7 +8,6 @@
 #ifndef SOURCES_GPS_H_
 #define SOURCES_GPS_H_
 
-#include <NMEA.h>
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -16,6 +15,7 @@
 #include "task.h"
 #include "queue.h"
 
+#include "NMEA.h"
 #include "utils.h"
 
 
@@ -53,11 +53,11 @@ typedef struct{
 
 
 void gps_publish(void);
+void gps_init(void);
 
 #define clearGPS(f) memset((void*)f,0,sizeof(GPS));
 
 extern QueueHandle_t	xQueueGPS;
-extern TaskHandle_t		xHandleGPSTask;
 extern GPS	gps;
 
 #endif /* SOURCES_GPS_H_ */

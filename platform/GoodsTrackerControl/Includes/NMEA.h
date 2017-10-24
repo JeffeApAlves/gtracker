@@ -42,10 +42,6 @@ typedef enum {
 } StatusNMEA;
 
 //API
-bool getGPSData(char* ch);
-bool putGPSData(char data);
-bool isAnyGPSData();
-void gps_init(void);
 void receiveNMEA(void);
 
 extern RingBuffer		bufferRxNMEA;

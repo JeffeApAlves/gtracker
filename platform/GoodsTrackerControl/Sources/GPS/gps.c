@@ -4,8 +4,9 @@
  *      Author: Jefferson
  */
 
+
 #include "Telemetria.h"
-#include "NMEA.h"
+#include "gps_serial.h"
 #include "gps.h"
 
 /* Task GPS*/
@@ -15,7 +16,7 @@ static const char*		GPS_TASK_NAME =			"tk_gps";
 #define					GPS_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 100)
 static const TickType_t GPS_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 QueueHandle_t			xQueueGPS;
-TaskHandle_t			xHandleGPSTask;
+static TaskHandle_t		xHandleGPSTask;
 
 GPS	gps;
 
@@ -61,6 +62,8 @@ void gps_publish(void){
 //------------------------------------------------------------------------
 
 void gps_init(void){
+
+	gps_serial_init();
 
 	clearGPS(&gps);
 

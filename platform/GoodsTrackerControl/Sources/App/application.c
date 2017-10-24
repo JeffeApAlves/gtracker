@@ -16,12 +16,12 @@
 #include "application.h"
 
 /* Task CB (cmd) */
-static const char*	CB_TASK_NAME =			"tk_callback";
+static const char*	CB_TASK_NAME =			"tk_cb";
 #define 			CB_TASK_PRIORITY		(configMAX_PRIORITIES)
 #define				CB_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
 TaskHandle_t		xHandleCBTask;
 
-static 	int		_lock;
+static 	int			_lock;
 
 static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* package);
 static void execError(CommunicationPackage* package);

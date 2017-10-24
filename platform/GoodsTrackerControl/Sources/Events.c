@@ -36,7 +36,7 @@ extern "C" {
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
 
-#include "gps.h"
+#include "gps_serial.h"
 #include "serial.h"
 #include "MMA8451.h"
 #include "Tank.h"

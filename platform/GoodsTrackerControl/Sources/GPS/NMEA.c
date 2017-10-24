@@ -5,6 +5,7 @@
  *      Author: Jefferson
  */
 
+#include "gps_serial.h"
 #include "gps.h"
 #include "NMEA.h"
 
@@ -16,8 +17,6 @@ const char* GSA	=	"GSA";
 #define		WEST	'W'
 
 static StatusNMEA	statusNMEA	= NMEA_INIT;
-
-RingBuffer			bufferRxNMEA;
 static Frame		frameNMEA;
 
 
@@ -346,27 +345,8 @@ void receiveNMEA(void) {
 }
 //------------------------------------------------------------------------
 
-inline bool getGPSData(char* ch){
-
-	return getData(&bufferRxNMEA,ch);
-}
-//------------------------------------------------------------------------
-
-inline bool putGPSData(char data) {
-
-	return putData(&bufferRxNMEA,data);
-}
-//------------------------------------------------------------------------
-
-inline bool isAnyGPSData(){
-
-	return getCount(&bufferRxNMEA)>0;
-}
-//------------------------------------------------------------------------
-
 static void NMEA_clear_all(void){
 
-	clearBuffer(&bufferRxNMEA);
 	clearFrame(&frameNMEA);
 	setGPSStatus(NMEA_INIT_OK);
 }

@@ -15,7 +15,7 @@
 static const char*		RX_TASK_NAME =			"tk_rx";
 #define					RX_NUM_MSG				1
 #define 				RX_TASK_PRIORITY		(tskIDLE_PRIORITY+2)
-#define					RX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
+#define					RX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 10)
 static const TickType_t RX_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 static TaskHandle_t 	xHandleRxTask;
 QueueHandle_t			xQueuePackageRx;
@@ -24,9 +24,9 @@ QueueHandle_t			xQueuePackageRx;
 static const char*		TX_TASK_NAME =			"tk_tx";
 #define 				TX_TASK_PRIORITY		(tskIDLE_PRIORITY+2)
 #define					TX_NUM_MSG				1
-#define					TX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 150)
+#define					TX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 140)
 static TaskHandle_t 	xHandleTxTask;
-QueueHandle_t	xQueuePackageTx;
+QueueHandle_t			xQueuePackageTx;
 
 EventGroupHandle_t		communication_events;
 

@@ -26,6 +26,4 @@ void deInitAccelerometer(void);
 
 extern QueueHandle_t	xQueueAcce;
 
-extern TaskHandle_t xHandleAccelTask;
-
 #endif /* SOURCES_ACCELEROMETER_H_ */

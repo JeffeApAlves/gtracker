@@ -17,7 +17,7 @@
 static const char*			TANK_TASK_NAME =			"tk_tank";
 #define						TANK_NUM_MSG				1
 #define 					TANK_TASK_PRIORITY			(tskIDLE_PRIORITY+4)
-#define						TANK_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE)
+#define						TANK_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE-20)
 static EventGroupHandle_t	TANK_events;
 static const TickType_t		TANK_TASK_DELAY	= 			(200 / portTICK_PERIOD_MS);
 QueueHandle_t				xQueueTank;
