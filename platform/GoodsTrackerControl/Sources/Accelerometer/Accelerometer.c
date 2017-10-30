@@ -25,24 +25,26 @@ static Accelerometer	accelerometer;
 
 static portTASK_FUNCTION(run_accel, pvParameters) {
 
-	MMA845x_init();
+	if(MMA845x_init()){
 
-	while(1) {
+		while(1) {
 
-		if(MMA845x_getXYZ(&accelerometer)){
+			if(MMA845x_getXYZ(&accelerometer)){
 
-			if(xQueueSendToBack( xQueueAcce ,  &accelerometer, ( TickType_t ) 1 ) ){
+				if(xQueueSendToBack( xQueueAcce ,  &accelerometer, ( TickType_t ) 1 ) ){
 
-				tlm_notify_accelerometer();
+					tlm_notify_accelerometer();
+				}
 			}
+
+			vTaskDelay(ACCE_TASK_DELAY);
 		}
 
-		vTaskDelay(ACCE_TASK_DELAY);
+		MMA845x_deInit();
 	}
 
 	vTaskDelete(xHandleAccelTask);
 
-	MMA845x_deInit();
 }
 //------------------------------------------------------------------------
 

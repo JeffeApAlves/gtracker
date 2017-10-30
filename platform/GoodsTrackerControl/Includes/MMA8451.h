@@ -9,36 +9,40 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "PE_LDD.h"
+#include "i2c.h"
 
 #include "Telemetria.h"
 
 #define LEN_XYZ		6
 
-#define MMA8451_STATUS                               0x00 //
-#define MMA8451_OUT_X_MSB                            0x01 //
-#define MMA8451_SYSMOD                               0x0B //
-#define MMA8451_INT_SOURCE                           0x0C //
-#define MMA8451_ID                                   0x0D //
-#define MMA8451_XYZ_DATA_CFG						 0x0E
-#define MMA8451_PL_STATUS                            0x10 //
-#define MMA8451_PL_CFG                               0x11 //
-#define MMA8451_PL_COUNT                             0x12 // Orientation debounce
-#define MMA8451_PL_BF_ZCOMP                          0x13 //
-#define MMA8451_PL_THS_REG                           0x14 //
-#define MMA8451_FF_MT_SRC                            0x16 //
-#define MMA8451_TRANSIENT_CFG                        0x1D // Transient enable
-#define MMA8451_TRANSIENT_SRC                        0x1E // Transient read/clear interrupt
-#define MMA8451_TRANSIENT_THS                        0x1F // Transient threshold
-#define MMA8451_TRANSIENT_COUNT                      0x20 // Transient debounce
-#define MMA8451_PULSE_SRC                            0x22 //
-#define MMA8451_CTRL_REG1                            0x2A //
-#define MMA8451_CTRL_REG2                            0x2B //
-#define MMA8451_CTRL_REG3                            0x2C // Interrupt control
-#define MMA8451_CTRL_REG4                            0x2D // Interrupt enable
-#define MMA8451_CTRL_REG5                            0x2E // Interrupt pin selection
-
-
+// Endereço dos registradores do MMA8451
+#define MMA8451_STATUS                              0x00U
+#define MMA8451_OUT_X_MSB							0x01U
+#define MMA8451_OUT_X_LSB							0x02U
+#define MMA8451_OUT_Y_MSB							0x03U
+#define MMA8451_OUT_Y_LSB							0x04U
+#define MMA8451_OUT_Z_MSB							0x05U
+#define MMA8451_OUT_Z_LSB							0x06U
+#define MMA8451_SYSMOD                              0x0BU
+#define MMA8451_INT_SOURCE                          0x0CU
+#define MMA8451_WHOAMI                              0x0DU
+#define MMA8451_XYZ_DATA_CFG						0x0EU
+#define MMA8451_PL_STATUS                           0x10U
+#define MMA8451_PL_CFG                              0x11U
+#define MMA8451_PL_COUNT                            0x12U // Orientation debounce
+#define MMA8451_PL_BF_ZCOMP                         0x13U
+#define MMA8451_PL_THS_REG                          0x14U
+#define MMA8451_FF_MT_SRC                           0x16U
+#define MMA8451_TRANSIENT_CFG                       0x1DU // Transient enable
+#define MMA8451_TRANSIENT_SRC                       0x1EU // Transient read/clear interrupt
+#define MMA8451_TRANSIENT_THS                       0x1FU // Transient threshold
+#define MMA8451_TRANSIENT_COUNT                     0x20U // Transient debounce
+#define MMA8451_PULSE_SRC                           0x22U
+#define MMA8451_CTRL_REG1                           0x2AU
+#define MMA8451_CTRL_REG2                           0x2BU
+#define MMA8451_CTRL_REG3                           0x2CU // Interrupt control
+#define MMA8451_CTRL_REG4                           0x2DU // Interrupt enable
+#define MMA8451_CTRL_REG5                           0x2EU // Interrupt pin selection
 
 /* MMA8451 3-axis accelerometer control register bit masks */
 #define MMA8451_ACTIVE_BIT 		0x01
@@ -84,37 +88,37 @@ typedef enum{
   MMA8451_DATARATE_MASK       = 0b111
 } mma8451_dataRate_t;
 
-
-/* External 3-axis accelerometer data register addresses */
-#define MMA8451_OUT_X_MSB 0x01
-#define MMA8451_OUT_X_LSB 0x02
-#define MMA8451_OUT_Y_MSB 0x03
-#define MMA8451_OUT_Y_LSB 0x04
-#define MMA8451_OUT_Z_MSB 0x05
-#define MMA8451_OUT_Z_LSB 0x06
-
-typedef struct {
-  volatile bool dataReceivedFlg; /* set to TRUE by the interrupt if we have received data */
-  volatile bool dataTransmittedFlg; /* set to TRUE by the interrupt if we have set data */
-  LDD_TDeviceData *handle; /* pointer to the device handle */
-} MMA8451_TDataState;
-
-uint8_t I2C_ReadBuffer(uint8_t addr, uint8_t *data, short dataSize);
-uint8_t I2C_Read(uint8_t addr, uint8_t *data);
-uint8_t I2C_Write(uint8_t addr, uint8_t val);
-
 bool MMA845x_getXYZ(Accelerometer* acc);
 void MMA845x_deInit(void);
-void MMA845x_init(void);
+bool MMA845x_init(void);
+
+/* Configura o acelerometro */
+bool MMA845x_Config(void);
+
+/* Ativa o acelerometro */
+void MMA845x_Active(void);
+
+/* Desativa o acelerometro */
 void MMA845x_Standby(void);
-void MMA845x_Active (void);
-uint8_t MMA845x_Reset(void);
+
+/*REseta o acelerometro*/
+bool MMA845x_Reset(void);
+
+/* Le o vaalor de orientacao*/
 uint8_t MMA845x_getOrientation( void );
+
+/* COnfigura a faixa do acelerometro*/
 void MMA845x_setRange(mma8451_range_t range);
 
+/* Le a faixa do acelerometro*/
+bool MMA845x_getRange(mma8451_range_t* range);
 
-mma8451_range_t MMA845x_getRange(void);
+#define i2c_write(addr,val)				I2C_Write(&MMA8451_device,addr,val)
+#define i2c_read(addr,val)				I2C_Read(&MMA8451_device,addr,val)
+#define i2c_read_buffer(addr,data,size)	I2C_ReadBuffer(&MMA8451_device, addr, data,size)
+#define i2c_init()						I2C_Init(&MMA8451_device)
+#define i2c_whoAmI()					I2C_WhoAmI(&MMA8451_device,MMA8451_WHOAMI)
+#define i2c_deinit()					I2C_Deinit(&MMA8451_device)
 
-int16_t toDecimal (uint8_t* hi_lo);
 
 #endif /* MMA8451_H_ */

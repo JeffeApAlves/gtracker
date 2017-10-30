@@ -8,6 +8,7 @@
 
 #include "clock.h"
 #include "ihm.h"
+#include "uart_host.h"
 #include "protocol.h"
 #include "communication.h"
 
@@ -15,7 +16,7 @@
 static const char*		RX_TASK_NAME =			"tk_rx";
 #define					RX_NUM_MSG				1
 #define 				RX_TASK_PRIORITY		(tskIDLE_PRIORITY+2)
-#define					RX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 10)
+#define					RX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 20)
 static const TickType_t RX_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 static TaskHandle_t 	xHandleRxTask;
 QueueHandle_t			xQueuePackageRx;
@@ -106,7 +107,7 @@ static void createTasks(void){
 
 void communication_init(void){
 
-	protocol_init();
+	uart_host_init();
 
 	xQueuePackageRx	= xQueueCreate( RX_NUM_MSG, sizeof( CommunicationPackage ));
 	xQueuePackageTx	= xQueueCreate( TX_NUM_MSG, sizeof( CommunicationPackage ));

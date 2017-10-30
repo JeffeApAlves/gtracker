@@ -26,6 +26,8 @@
 */         
 /* MODULE Events */
 
+#include <stdbool.h>
+
 #include "Cpu.h"
 #include "Events.h"
 
@@ -38,7 +40,7 @@ extern "C" {
 
 #include "uart_gps.h"
 #include "uart_host.h"
-#include "MMA8451.h"
+#include "i2c.h"
 #include "level_sensor.h"
 #include "clock.h"
 #include "ihm.h"
@@ -465,8 +467,8 @@ void AS2_OnTxChar(void)
 /* ===================================================================*/
 void I2C2_OnMasterBlockSent(LDD_TUserData *UserDataPtr)
 {
-	MMA8451_TDataState *ptr = (MMA8451_TDataState*)UserDataPtr;
-	ptr->dataTransmittedFlg = TRUE;
+	i2c_state_t *ptr = (i2c_state_t*)UserDataPtr;
+	ptr->dataTransmittedFlg = true;
 }
 
 /*
@@ -489,8 +491,8 @@ void I2C2_OnMasterBlockSent(LDD_TUserData *UserDataPtr)
 /* ===================================================================*/
 void I2C2_OnMasterBlockReceived(LDD_TUserData *UserDataPtr)
 {
-	MMA8451_TDataState *ptr	= (MMA8451_TDataState*)UserDataPtr;
-	ptr->dataReceivedFlg	= TRUE;
+	i2c_state_t *ptr	= (i2c_state_t*)UserDataPtr;
+	ptr->dataReceivedFlg	= true;
 }
 
 /*

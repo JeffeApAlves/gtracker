@@ -5,46 +5,25 @@
  *      Author: Jefferson
  */
 #include <stdio.h>
-#include <uart_host.h>
 
-#include "RingBuffer.h"
-#include "Events.h"
-#include "AS1.h"
+#include "uart_host.h"
 
-static RingBuffer	bufferRx,bufferTx;
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
 
-inline bool putTxData(char data) {
+static host_uart_t	device;
 
-	return putData(&bufferTx,data);
-}
-//------------------------------------------------------------------------
+static uart_rtos_config_t uart_config = {
 
-inline bool putRxData(char data) {
+	.baudrate = UART_HOST_BAUD,
+    .parity = kUART_ParityDisabled,
+    .stopbits = kUART_OneStopBit,
+    .buffer = device.buffer,
+    .buffer_size = sizeof(device.buffer),
+};
 
-	return putData(&bufferRx,data);
-}
-//------------------------------------------------------------------------
-
-/*
- *
- * Pega um char do buffer circular da transmissao
- *
- */
-inline bool getTxData(char* ch){
-
-	return getData(&bufferTx,ch);
-}
-//------------------------------------------------------------------------
-
-
-/**
- * Verifica se existe dados no buffer circular de transmiassa
- */
-inline bool hasTxData(void){
-
-	return hasData(&bufferTx);
-}
-//------------------------------------------------------------------------
+#else
+RingBuffer			bufferRx,bufferTx;
+#endif
 
 
 /**
@@ -54,84 +33,200 @@ inline bool hasTxData(void){
  */
 void startTX(void){
 
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED==0
+
 	vPortEnterCritical();
 
-	if(hasTxData() && AS1_GetCharsInTxBuf()==0){
+	if(isAnyTxData() && AS1_GetCharsInTxBuf()==0){
 
 		AS1_OnTxChar();
 	}
 
 	vPortExitCritical();
+#endif
+
 }
 //------------------------------------------------------------------------
 
-/*
- *
- * Verifica se exsite algum dado no buffer circular de recebimento
- *
- */
-inline bool isAnyRxData(){
+inline bool putTxString(char* str){
 
-	return getCount(&bufferRx)>0;
-}
-//------------------------------------------------------------------------
-
-/*
- *
- * Pega um char do buffer circular da recepcao
- *
- */
-inline bool getRxData(char* ch){
-
-	return getData(&bufferRx,ch);
-}
-//------------------------------------------------------------------------
-
-inline void putTxString(char* str){
-
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	return UART_RTOS_Send(&device.handle, (uint8_t*)&str,strlen(str))==kStatus_Success;
+#else
 	putString(&bufferTx,str);
+	//TODO implementar retorno do buffer
+	return true;
+#endif
 }
 //------------------------------------------------------------------------
 
-void uart_init(void){
+bool uart_host_init(void){
 
+	bool ret =false;
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+
+	uart_config.srcclk	= UART_HOST_CLK_FREQ;
+    uart_config.base	= UART_HOST;
+
+    if (UART_RTOS_Init(&device.handle, &device.t_handle, &uart_config) == 0){
+
+    	ret = true;
+    }
+
+#else
 	clearBuffer(&bufferRx);
 	clearBuffer(&bufferTx);
+
+#endif
+
+    return ret;
+}
+//---------------------------------------------------------------------------------------------
+
+void uart_host_Deinit(void){
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+
+    UART_RTOS_Deinit(&device.handle);
+#else
+
+#endif
+}
+//---------------------------------------------------------------------------------------------
+
+inline bool getTxData(char* ch){
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	//TODO verifica a necessidade
+	return 0;
+#else
+	return getData(&bufferTx,ch);
+#endif
 }
 //------------------------------------------------------------------------
+
+inline bool putTxData(char data) {
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	return UART_RTOS_Send(&device.handle, (uint8_t*)&data, 1)==kStatus_Success;
+#else
+	return putData(&bufferTx,data);
+#endif
+}
+//------------------------------------------------------------------------
+
+inline bool isAnyTxData(){
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	//TODO como verifica se existe algum byte disponivel ?
+	return true;
+#else
+	return getCount(&bufferTx)>0;
+#endif
+}
+//------------------------------------------------------------------------
+
+inline bool getRxData(char* ch){
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	size_t n=0;
+	return UART_RTOS_Receive(&device.handle,(uint8_t*)ch, 1, &n)==kStatus_Success;
+#else
+	return getData(&bufferRx,ch);
+#endif
+}
+//------------------------------------------------------------------------
+
+inline bool putRxData(char data) {
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	//Verificar a necessidade
+	return true;
+#else
+	return putData(&bufferRx,data);
+#endif
+}
+//------------------------------------------------------------------------
+
+inline bool isAnyRxData(){
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	//TODO como verifica se existe algum byte disponivel ?
+	return true;
+#else
+	return getCount(&bufferRx)>0;
+#endif
+}
+//------------------------------------------------------------------------
+
 
 inline uint16_t uart_host_rx_head(void){
 
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	return device.t_handle.rxRingBufferHead;
+#else
 	return bufferRx.index_producer;
+#endif
 }
 //------------------------------------------------------------------------
 
 inline uint16_t uart_host_rx_tail(void){
 
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	return device.t_handle.rxRingBufferTail;
+#else
 	return bufferRx.index_consumer;
+#endif
 }
 //------------------------------------------------------------------------
 
 inline uint16_t uart_host_rx_max(void){
 
-	return bufferRx.max_count;
+	static uint16_t max = 0;
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+
+	if(device.t_handle.rxDataSize>max){
+
+		max = device.t_handle.rxDataSize;
+	}
+
+#else
+	max = bufferRx.max_count;
+#endif
+
+	return max;
 }
 //------------------------------------------------------------------------
 
 inline uint16_t uart_host_tx_head(void){
 
-	return bufferRx.index_producer;
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	return 0;
+#else
+	return bufferTx.index_producer;
+#endif
 }
 //------------------------------------------------------------------------
 
 inline uint16_t uart_host_tx_tail(void){
 
-	return bufferRx.index_consumer;
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	return 0;
+#else
+	return bufferTx.index_consumer;
+#endif
 }
 //------------------------------------------------------------------------
 
 inline uint16_t uart_host_tx_max(void){
 
-	return bufferRx.max_count;
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	return 0;
+#else
+	return bufferTx.max_count;
+#endif
 }
 //------------------------------------------------------------------------

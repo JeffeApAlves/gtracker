@@ -28,6 +28,12 @@ static char line_lcd[25];
 /* Tempo do splash em segundos */
 static int time_splash;
 
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+/* Define a estrutura de inicilização para a entrada do botão*/
+const gpio_pin_config_t botao_config = {
+    kGPIO_DigitalInput, 0,
+};
+#endif
 
 /* Task IHM*/
 static const char*			IHM_TASK_NAME =			"tk_ihm";
@@ -209,8 +215,11 @@ void printClock(void){
 			break;
 		case CLOCK_ADJUSTED:
 			if(getLocalClock(&time)){
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+				TO_STRING(line_lcd," %02d.%02d %02d:%02d:%02d \n",time.day,time.month,time.hour, time.minute, time.second);
+#else
 				TO_STRING(line_lcd," %02d.%02d %02d:%02d:%02d \n",time.Day,time.Month,time.Hour, time.Minute, time.Second);
-
+#endif
 			}else{
 				statuc_clock = CLOCK_ERROR;
 			}
@@ -332,6 +341,13 @@ void ihm_init(void) {
 	// Configura como entrada
 	//GPIOD_PDDR &= KEY_INPUT;
 
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	PORT_SetPinInterruptConfig(KEY_PORT, KEY_GPIO_PIN, kPORT_InterruptRisingEdge);
+
+	NVIC_EnableIRQ(SW_IRQ);
+
+    GPIO_PinInit(KEY_GPIO, KEY_GPIO_PIN, &botao_config);
+#endif
 	printSplash();
 
 	createTask();
@@ -355,3 +371,23 @@ void ihm_deInit(void) {
 
 }
 //-----------------------------------------------------------------------------------------
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+/**
+ *
+ */
+void SW_IRQ_HANDLER (void){
+
+	GPIO_ClearPinsInterruptFlags(KEY_GPIO,KEY_GPIO_MASK);
+
+	if(active_screen< (NUM_OF_SCREEN-1)){
+
+		active_screen++;
+
+	}else{
+
+		ihm_set_active_screen(SCREEN_CLOCK);
+	}
+}
+//-----------------------------------------------------------------------------------------
+#endif

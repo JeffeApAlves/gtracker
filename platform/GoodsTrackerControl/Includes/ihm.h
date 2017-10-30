@@ -10,12 +10,26 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-
+#include "MCUC1.h"
 #include "XF1.h"
 
-#define	TIME_SPLASH				1
-#define KEY       		 		(1<<7)
-#define KEY_INPUT				(~KEY)
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+#include "fsl_port.h"
+#include "fsl_gpio.h"
+
+#define KEY_GPIO			GPIOD
+#define KEY_PORT 			PORTD
+#define SW_IRQ 				PORTD_IRQn
+#define SW_IRQ_HANDLER 		PORTD_IRQHandler
+#define SW_NAME "SW"
+#endif
+
+#define KEY_GPIO_PIN		7U
+#define KEY_GPIO_MASK		(1 << KEY_GPIO_PIN)
+#define KEY_INPUT			(~KEY)
+
+// Tempo splah inicial
+#define	TIME_SPLASH			1
 
 //Eventos do clock
 #define	BIT_UPDATE_LCD_CLOCK	0x01
@@ -68,5 +82,6 @@ void ihm_set_active_screen(screen s);
 void readKey(void);
 
 #define	TO_STRING	XF1_xsprintf
+//#define	TO_STRING	sprintf
 
 #endif /* SOURCES_IHM_H_ */

@@ -1,84 +1,35 @@
-#include "I2C2.h"
+
 #include "MMA8451.h"
 
-static MMA8451_TDataState deviceData;
+/* converte o valor para decimal com sinal*/
+static int16_t toDecimal (uint8_t* hi_lo);
 
-uint8_t I2C_Read(uint8_t addr, uint8_t *data) {
+static i2c_state_t MMA8451_device;
 
-	I2C_ReadBuffer(addr,data,1);
-}
-//--------------------------------------------------------------------------------------------
 
-uint8_t I2C_ReadBuffer(uint8_t addr, uint8_t *data, short dataSize) {
-
-	uint8_t res;
-
-	/* Send I2C address plus register address to the I2C bus *without* a stop condition */
-	res = I2C2_MasterSendBlock(deviceData.handle, &addr, 1U, LDD_I2C_NO_SEND_STOP);
-
-	if (res!=ERR_OK) {
-		return ERR_FAILED;
-	}
-
-	while (!deviceData.dataTransmittedFlg) {} /* Wait until data is sent */
-
-	deviceData.dataTransmittedFlg = false;
-
-	/* Receive InpData (1 byte) from the I2C bus and generates a stop condition to end transmission */
-	res = I2C2_MasterReceiveBlock(deviceData.handle, data, dataSize, LDD_I2C_SEND_STOP);
-
-	if (res!=ERR_OK) {
-		return ERR_FAILED;
-	}
-	while (!deviceData.dataReceivedFlg) {} /* Wait until data is received received */
-
-	deviceData.dataReceivedFlg = false;
-
-	return ERR_OK;
-}
-//--------------------------------------------------------------------------------------------
-
-uint8_t I2C_Write(uint8_t addr, uint8_t val) {
-
-	uint8_t buf[2], res;
-
-	buf[0] = addr;
-	buf[1] = val;
-
-	res = I2C2_MasterSendBlock(deviceData.handle, &buf, 2U, LDD_I2C_SEND_STOP); /* Send OutData (3 bytes with address) on the I2C bus and generates not a stop condition to end transmission */
-
-	if (res!=ERR_OK) {
-		return ERR_FAILED;
-	}
-
-	while (!deviceData.dataTransmittedFlg) {}  /* Wait until date is sent */
-
-	deviceData.dataTransmittedFlg = false;
-
-	return ERR_OK;
-}
-//--------------------------------------------------------------------------------------------
-
+/**
+ *
+ * Realiza a leitura de todos os eixos
+ */
 bool MMA845x_getXYZ(Accelerometer* acc){
 
-	uint8_t xyz[LEN_XYZ];
+	uint8_t		xyz[LEN_XYZ+1];
+	bool		res		= false;
+	uint8_t		status	= 0;
 
-	uint8_t res = ERR_FAILED;
-	uint8_t status;
+	mma8451_range_t range =  MMA8451_RANGE_4_G;
 
-	res = I2C_Read(MMA8451_STATUS,&status);
+	if(i2c_read(MMA8451_STATUS,&status) && (status & MMA8451_ZYXDR_BIT)){
 
-	if ((res==ERR_OK) && (status & MMA8451_ZYXDR_BIT)){
+		if(i2c_read_buffer(MMA8451_STATUS,xyz,LEN_XYZ+1)){
 
-		res = I2C_ReadBuffer(MMA8451_OUT_X_MSB,xyz,LEN_XYZ);
+			MMA845x_getRange(&range);
 
-		if(res==ERR_OK){
+			//status = xyz[0];
 
-			mma8451_range_t range = MMA845x_getRange();
-
-			acc->x = toDecimal(xyz);
-			acc->y = toDecimal(xyz+2);
-			acc->z = toDecimal(xyz+4);
+			acc->x = toDecimal(xyz+1);
+			acc->y = toDecimal(xyz+3);
+			acc->z = toDecimal(xyz+5);
 
 			float divider = 1.0;
 			if (range == MMA8451_RANGE_8_G) divider = 1024.0;
@@ -88,148 +39,174 @@ bool MMA845x_getXYZ(Accelerometer* acc){
 			acc->x_g = (float)acc->x / divider;
 			acc->y_g = (float)acc->y / divider;
 			acc->z_g = (float)acc->z / divider;
+
+			//PRINTF("status_reg = 0x%x , x = %f , y = %f , z = %f \r\n", status, acc->x_g, acc->y_g, acc->z_g);
+
+			res = true;
 		}
-	} else{
-
-		res = ERR_FAILED;
-	}
-
-	return res == ERR_OK;
-}
-//--------------------------------------------------------------------------------------------
-
-void MMA845x_Standby (void)
-{
-	uint8_t ctrl;
-
-	I2C_Read(MMA8451_CTRL_REG1, &ctrl);
-	I2C_Write(MMA8451_CTRL_REG1, ctrl & (~MMA8451_ACTIVE_BIT));
-}
-//--------------------------------------------------------------------------------------------
-
-void MMA845x_Active(void)
-{
-	uint8_t ctrl;
-
-	I2C_Read(MMA8451_CTRL_REG1, &ctrl);
-	I2C_Write(MMA8451_CTRL_REG1, ctrl | MMA8451_ACTIVE_BIT);
-}
-//--------------------------------------------------------------------------------------------
-
-void MMA845x_init(void){
-
-	uint8_t ctrlReg1,ctrlReg2;
-
-	deviceData.handle = I2C2_Init(&deviceData);
-
-	MMA845x_Standby();
-
-	// Espelha registradores
-	I2C_Read(MMA8451_CTRL_REG1,&ctrlReg1);
-	I2C_Read(MMA8451_CTRL_REG2,&ctrlReg2);
-
-	// High Resolution
-	ctrlReg2 &= ~MMA8451_MODS_MASK;
-	ctrlReg2 |= MMA8451_MODS1_BIT;
-
-	// Hi e Lo indexados
-	ctrlReg1 &= (~MMA8451_F_READ_BIT);
-
-	//Low noise
-	ctrlReg1 |= MMA8451_L_NOISE_BIT;
-
-	// Date rate = 50Hz (20 ms)
-	ctrlReg1 &= ~(MMA8451_DATARATE_MASK << 3);
-	ctrlReg1 |= (MMA8451_DATARATE_50_HZ << 3);
-
-	// Range
-	I2C_Write(MMA8451_XYZ_DATA_CFG,  MMA8451_RANGE_4_G);
-
-	// Atualiza registradores
-	I2C_Write(MMA8451_CTRL_REG2,ctrlReg2);
-	I2C_Write(MMA8451_CTRL_REG1,ctrlReg1);
-
-	MMA845x_Active();
-}
-//--------------------------------------------------------------------------------------------
-
-void MMA845x_deInit(void){
-
-	I2C2_Deinit(deviceData.handle);
-}
-//--------------------------------------------------------------------------------------------
-
-mma8451_range_t MMA845x_getRange(void){
-
-	uint8_t data_cfg;
-
-	if(I2C_Read(MMA8451_XYZ_DATA_CFG, &data_cfg)!=ERR_OK){
-
-		return 0;
-	}
-
-	return (mma8451_range_t)(data_cfg  & MMA8451_RANGE_MASK);
-}
-//--------------------------------------------------------------------------------------------
-
-uint8_t MMA845x_Reset(void)
-{
-	uint8_t res;
-	uint8_t ctrlReg2;
-
-	res = I2C_Write(MMA8451_CTRL_REG2, 0x40 );
-
-	if(res ==ERR_OK){
-
-		do{
-			I2C_Read(MMA8451_CTRL_REG2,&ctrlReg2);
-		}while (ctrlReg2 & 0x40);
 	}
 
 	return res;
 }
 //--------------------------------------------------------------------------------------------
 
-uint8_t MMA845x_getOrientation( void )
+bool MMA845x_init(void){
+
+	i2c_init();
+
+    if(i2c_whoAmI()){
+
+    	if(MMA8451_device.identification == MMA8451_ID){
+
+    		if(MMA845x_Reset()){
+
+				if(MMA845x_Config()){
+
+					//PRINTF("[INFO]:Acelerometro MMA8451 configurado com sucesso\r\n");
+
+					return true;
+				}
+    		}else{
+
+    			//PRINTF("[ERROR]:Nao foi possivel reiniciar o acelerometro\r\n");
+    		}
+    	}
+    }
+
+    return false;
+}
+//--------------------------------------------------------------------------------------------
+
+void inline MMA845x_deInit(void){
+}
+//--------------------------------------------------------------------------------------------
+
+void MMA845x_Standby (void){
+
+	uint8_t ctrl;
+
+	i2c_read(MMA8451_CTRL_REG1, &ctrl);
+	i2c_write(MMA8451_CTRL_REG1, ctrl & (~MMA8451_ACTIVE_BIT));
+}
+//--------------------------------------------------------------------------------------------
+
+void MMA845x_Active(void){
+
+	uint8_t ctrl;
+
+	i2c_read(MMA8451_CTRL_REG1, &ctrl);
+	i2c_write(MMA8451_CTRL_REG1, ctrl | MMA8451_ACTIVE_BIT);
+}
+//--------------------------------------------------------------------------------------------
+
+bool MMA845x_Config(void){
+
+	bool ok_config = false;
+
+	uint8_t ctrl_reg1=0,ctrl_reg2=0;
+
+	MMA845x_Standby();
+
+	// Espelha registradores
+	if(i2c_read(MMA8451_CTRL_REG1,&ctrl_reg1) && i2c_read(MMA8451_CTRL_REG2,&ctrl_reg2)){
+
+		// High Resolution
+		ctrl_reg2 &= ~MMA8451_MODS_MASK;
+		ctrl_reg2 |= MMA8451_MODS1_BIT;
+
+		// Hi e Lo indexados
+		ctrl_reg1 &= (~MMA8451_F_READ_BIT);
+
+		//Low noise
+		ctrl_reg1 |= MMA8451_L_NOISE_BIT;
+
+		// Date rate = 50Hz (20 ms)
+		ctrl_reg1 &= ~(MMA8451_DATARATE_MASK << 3);
+		ctrl_reg1 |= (MMA8451_DATARATE_50_HZ << 3);
+
+				// Atualiza reg 1
+		if(		i2c_write(MMA8451_CTRL_REG1,ctrl_reg1) &&
+				// Atualiza reg 2
+				i2c_write(MMA8451_CTRL_REG2,ctrl_reg2) &&
+				// Range
+				i2c_write(MMA8451_XYZ_DATA_CFG,  MMA8451_RANGE_4_G)){
+
+			ok_config = true;
+		}
+	}
+
+	MMA845x_Active();
+
+	return ok_config;
+}
+//--------------------------------------------------------------------------------------------
+
+bool MMA845x_getRange(mma8451_range_t* range){
+
+	uint8_t data_cfg;
+
+	if(i2c_read(MMA8451_XYZ_DATA_CFG, &data_cfg)){
+
+		*range =  (mma8451_range_t)(data_cfg  & MMA8451_RANGE_MASK);
+
+		return true;
+	}
+
+	return false;
+}
+//--------------------------------------------------------------------------------------------
+
+bool MMA845x_Reset(void)
 {
+	uint8_t ctrl_reg2 = 0;
+
+	if(i2c_write(MMA8451_CTRL_REG2, 0x40 )){
+
+//
+//		do{
+//			i2c_read(MMA8451_CTRL_REG2,&ctrl_reg2);
+//		}while (ctrl_reg2 & 0x40);
+
+		return true;
+	}
+
+	return false;
+}
+//--------------------------------------------------------------------------------------------
+
+uint8_t MMA845x_getOrientation( void ){
+
     uint8_t orientation = 0;
 
-    I2C_Read(MMA8451_PL_STATUS, &orientation);
+    i2c_read(MMA8451_PL_STATUS, &orientation);
 
     return orientation;
 }
 //--------------------------------------------------------------------------------------------
 
-void MMA845x_setDataRate(mma8451_dataRate_t dataRate)
-{
-	uint8_t res;
+void MMA845x_setDataRate(mma8451_dataRate_t dataRate){
+
 	uint8_t ctrlReg1;
 
-	res = I2C_Read(MMA8451_CTRL_REG1,&ctrlReg1);
-
-	if(res==ERR_OK){
+	if(i2c_read(MMA8451_CTRL_REG1,&ctrlReg1)){
 
 		MMA845x_Standby();
 
 		ctrlReg1 &= ~(MMA8451_DATARATE_MASK << 3);
 		ctrlReg1 |= (dataRate << 3);
 
-		res = I2C_Write(MMA8451_CTRL_REG1,ctrlReg1);
+		i2c_write(MMA8451_CTRL_REG1,ctrlReg1);
 
 		MMA845x_Active();
-
 	}
 }
 //--------------------------------------------------------------------------------------------
 
-void MMA845x_setNoise(bool flag)
-{
-	uint8_t res;
+void MMA845x_setNoise(bool flag){
+
 	uint8_t ctrlReg1;
 
-	res = I2C_Read(MMA8451_CTRL_REG1,&ctrlReg1);
-
-	if(res==ERR_OK){
+	if(i2c_read(MMA8451_CTRL_REG1,&ctrlReg1)){
 
 		MMA845x_Standby();
 
@@ -240,7 +217,7 @@ void MMA845x_setNoise(bool flag)
 			ctrlReg1 |= MMA8451_L_NOISE_BIT;
 		}
 
-		res = I2C_Write(MMA8451_CTRL_REG1,ctrlReg1);
+		i2c_write(MMA8451_CTRL_REG1,ctrlReg1);
 
 		MMA845x_Active();
 	}
@@ -249,27 +226,21 @@ void MMA845x_setNoise(bool flag)
 
 void MMA845x_setRange(mma8451_range_t range){
 
-  MMA845x_Standby();
-  I2C_Write(MMA8451_XYZ_DATA_CFG, range & 0x2);
-  MMA845x_Active();
+	uint8_t cfg;
+
+	MMA845x_Standby();
+
+	i2c_read(MMA8451_XYZ_DATA_CFG, &cfg);
+
+	cfg &= (~MMA8451_RANGE_MASK);
+
+	i2c_write(MMA8451_XYZ_DATA_CFG, cfg | (range &  MMA8451_RANGE_MASK));
+
+	MMA845x_Active();
 }
 //--------------------------------------------------------------------------------------------
-/*
-short toDecimal (int8_t* hi_lo){
 
-	short word = ((hi_lo[0]<<8) | hi_lo[1])>>2;
-
-	if (hi_lo[0] > 0x7F){
-
-		word = ((~word) + 1);
-		word *= -1;
-	}
-
-	return word;
-}
-//--------------------------------------------------------------------------------------------
-*/
-inline int16_t toDecimal (uint8_t* hi_lo){
+static inline int16_t toDecimal (uint8_t* hi_lo){
 
 	return ((int16_t)((hi_lo[0]<<8) | hi_lo[1]))>>2;
 }

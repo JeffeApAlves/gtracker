@@ -33,7 +33,6 @@ typedef enum {
 } StatusRx;
 
 /*interface*/
-void protocol_init(void);
 Resource getResource(char* name);
 void sendFrame(char* frame);
 void sendPackage(CommunicationPackage* package);

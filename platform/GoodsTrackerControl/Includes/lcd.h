@@ -11,12 +11,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "LCDout.h"
+typedef uint8_t byte;
 
 /*
  *
  */
-int LCDInit();
+void LCDInit();
 
 /*
  *
