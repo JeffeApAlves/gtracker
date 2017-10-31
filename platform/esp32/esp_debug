@@ -1,0 +1,4 @@
+#! /bin/bash
+
+xtensa-esp32-elf-gdb -x gdbinit build/esp32-mqtt.elf 
+

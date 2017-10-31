@@ -1,0 +1,48 @@
+{
+        "version": "0.2.0",
+        "configurations": [
+
+            {
+                "name": "OpenOCD",
+                "type": "cppdbg",
+                "request": "launch",
+                "miDebuggerPath": "/home/jefferson/esp/xtensa-esp32-elf/bin/xtensa-esp32-elf-gdb",
+                "externalConsole": true,
+                "cwd": "/media/jefferson/Dados/workspace/GoodsTracker/platform/esp32/build/",
+                "program": "/media/jefferson/Dados/workspace/GoodsTracker/platform/esp32/build/esp32-mqtt.elf",
+                //"args": [],
+                //"stopAtEntry": false,
+                //"environment": [],
+
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    },
+                    {
+                        "text": "file '/media/jefferson/Dados/workspace/GoodsTracker/platform/esp32/build/esp32-mqtt.elf'"
+                    },
+                    {
+                        "text": "target remote 192.168.0.104:3333"
+                    },
+                    {
+                        "text": "monitor reset halt"
+                    }
+                    // ,
+                    // {
+                    //     "text": "thb app_main"
+                    // },
+                    // {
+                    //     "text": "x $a1=0"
+                    // }
+                ],
+
+                "logging": {
+                    "trace": true,
+                    "traceResponse": true,
+                    "engineLogging": true
+                }
+            }
+        ]
+    }

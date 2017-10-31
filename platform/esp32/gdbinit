@@ -1,0 +1,6 @@
+target remote 192.168.0.104:3333
+mon reset halt
+#mon program_esp32 /media/jefferson/Dados/workspace/blink/build/esp32-mqtt.bin 0x10000 verify
+thb app_main
+x $a1=0
+c

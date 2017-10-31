@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export PATH=$PATH:$HOME/esp/xtensa-esp32-elf/bin
+#export IDF_PATH=~/esp/esp-idf
+
+sudo chmod 777 /dev/ttyUSB0
+
+#cd  /media/jefferson/Dados/workspace/GoodsTracker/platform/esp32
+make monitor 
