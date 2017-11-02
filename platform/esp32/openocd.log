@@ -1,0 +1,30 @@
+Open On-Chip Debugger 0.10.0-dev-g7aeadf8e (2017-10-27-11:14)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+User : 13 2 command.c:544 command_print(): debug_level: 3
+Debug: 14 2 options.c:96 add_default_dirs(): bindir=/usr/local/bin
+Debug: 15 2 options.c:97 add_default_dirs(): pkgdatadir=/usr/local/share/openocd
+Debug: 16 2 options.c:98 add_default_dirs(): run_prefix=
+Debug: 17 2 configuration.c:42 add_script_search_dir(): adding /home/jefferson/.openocd
+Debug: 18 2 configuration.c:42 add_script_search_dir(): adding /usr/local/share/openocd/site
+Debug: 19 2 configuration.c:42 add_script_search_dir(): adding /usr/local/share/openocd/scripts
+Debug: 20 2 configuration.c:82 find_file(): found /usr/local/share/openocd/scripts/interface/raspberrypi-native.cfg
+Debug: 21 2 command.c:143 script_debug(): command - ocd_command ocd_command type ocd_interface bcm2835gpio
+Debug: 22 3 command.c:143 script_debug(): command - interface ocd_interface bcm2835gpio
+Error: 24 3 adapter.c:181 handle_interface_command(): The specified debug interface was not found (bcm2835gpio)
+User : 25 3 command.c:544 command_print(): The following debug interfaces are available:
+User : 26 3 command.c:544 command_print(): 1: ftdi
+User : 27 3 command.c:544 command_print(): 2: usb_blaster
+User : 28 3 command.c:544 command_print(): 3: usbprog
+User : 29 3 command.c:544 command_print(): 4: jlink
+User : 30 3 command.c:544 command_print(): 5: vsllink
+User : 31 3 command.c:544 command_print(): 6: rlink
+User : 32 3 command.c:544 command_print(): 7: ulink
+User : 33 3 command.c:544 command_print(): 8: arm-jtag-ew
+User : 34 3 command.c:544 command_print(): 9: hla
+User : 35 3 command.c:544 command_print(): 10: osbdm
+User : 36 3 command.c:544 command_print(): 11: opendous
+User : 37 3 command.c:544 command_print(): 12: aice
+Debug: 38 3 command.c:626 run_command(): Command failed with error code -101
+User : 39 3 command.c:687 command_run_line(): 

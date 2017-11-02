@@ -7,7 +7,7 @@
                 "type": "cppdbg",
                 "request": "launch",
                 "miDebuggerPath": "/home/jefferson/esp/xtensa-esp32-elf/bin/xtensa-esp32-elf-gdb",
-                "externalConsole": true,
+                "externalConsole": false,
                 "cwd": "/media/jefferson/Dados/workspace/GoodsTracker/platform/esp32/build/",
                 "program": "/media/jefferson/Dados/workspace/GoodsTracker/platform/esp32/build/esp32-mqtt.elf",
                 //"args": [],
