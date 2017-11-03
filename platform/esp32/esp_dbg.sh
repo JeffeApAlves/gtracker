@@ -1,31 +1,31 @@
 #! /bin/bash
 #
 #  Menu para configuração de Projeto com ESP32 e IDF
+#  As paths do git e comandos estão baseados nesse documento http://esp-idf.readthedocs.io/en/latest/get-started/
 #
-
-project_dir=$(pwd)
-interface_dir=/usr/local/share/openocd/scripts/interface/
-target_dir=/usr/local/share/openocd/scripts/target/
-gdb_init=$project_dir/gdbinit
+project_path=$(pwd)
+idf_path_dest="$HOME/esp-idf"
+idf_path_orin="https://github.com/espressif/esp-idf.git"
+toolchain_path="$HOME/esp"
+toolchain_path_dest="$HOME/esp"
+interface_path="/usr/local/share/openocd/scripts/interface"
+target_path="/usr/local/share/openocd/scripts/target"
+url_espressif_toolchain64="https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-61-gab8375a-5.2.0.tar.gz"
 makefile="Makefile"
-prj_name=$(grep -m 1 PROJECT_NAME $project_dir/$makefile | sed 's/^.*= //g')
-file_program=$project_dir/build/$prj_name.elf
-file_interface=""
-file_target=""
-host_gdb=$(grep -m 1 target $gdb_init | sed 's/^.*remote \|:.*/''/g')
-process_name="openocd"
-openocd_sh=$project_dir/openocd.sh
-
+gdbinitfile="$project_path/gdbinit"
 menutitle_program="Seleção do executavel"
 menutitle_interface="Seleção da interface"
 menutitle_target="Seleção do target"
-
+project_name=$(grep -m 1 PROJECT_NAME $project_path/$makefile | sed 's/^.*= //g')
+programfile="$project_path/build/$project_name.elf"
+interfacefile=""
+targetfile=""
+host_gdb=$(grep -m 1 target $gdbinitfile | sed 's/^.*remote \|:.*/''/g')
+build_path="$project_path/build"
+openocd_sh="$project_path/openocd.sh"
 ext_program='elf'
 ext_interface='cfg'
 ext_target='cfg'
-
-export PATH=$PATH:$HOME/esp/xtensa-esp32-elf/bin
-export IDF_PATH=/media/$USER/Dados/workspace/esp-idf
 
 function Filebrowser()
 {
@@ -79,7 +79,18 @@ function Filebrowser()
     fi
 }
 
-function show_msg_file()
+
+function show_info()
+{
+    whiptail --title "Informação " --msgbox "$selection\n$1" 0 0
+}
+
+function show_atencao()
+{
+    whiptail --title "Atenção " --msgbox "$selection\n$1" 0 0
+}
+
+function show_description_file()
 {
     whiptail --title "Informações do arquivo" --msgbox " \
     Arquivo selecionado
@@ -89,17 +100,46 @@ function show_msg_file()
     " 0 0 0
 }
 
+function show_description_sbc()
+{
+    whiptail --title "Informações do SBC" --msgbox " \
+    SBC encontrada
+    IP     : $1
+    \
+    " 0 0 0
+}
+
+function select_path_dest()
+{
+    p=$(whiptail --inputbox "Insira o diretorio de destino" 8 78 $1 --title "Seleção diretório" 3>&1 1>&2 2>&3)
+    exitstatus=$?
+
+    if [ $exitstatus = 0 ]; then
+
+        if [ -z $p ]; then
+
+            select_path_dest $1
+    
+        else
+
+            filepath=$p
+        fi    
+    fi
+
+    return $exitstatus
+}
+
 function select_program()
 {
-    Filebrowser "$menutitle" "$project_dir/build" "$ext_program"
+    Filebrowser "$menutitle" "$build_path" "$ext_program"
     exitstatus=$?
 
     if [ $exitstatus -eq 0 ]; then
         if [ "$selection" == "" ]; then
             echo "Arquivo não selecionado"
         else
-            #show_msg_file "$filename" "$filepath"
-            file_program=$filepath/$filename
+            #show_description_file "$filename" "$filepath"
+            programfile=$filepath/$filename
         fi
     else
         exit
@@ -108,30 +148,30 @@ function select_program()
 
 function select_interface()
 {
-    Filebrowser "$menutitle_interface" "$interface_dir" "$ext_interface"
+    Filebrowser "$menutitle_interface" "$interface_path" "$ext_interface"
     exitstatus=$?
 
     if [ $exitstatus -eq 0 ]; then
         if [ "$selection" == "" ]; then
             echo "Arquivo não selecionado"
         else
-            #show_msg_file "$filename" "$filepath"
-            file_interface=$filepath/$filename
+            #show_description_file "$filename" "$filepath"
+            interfacefile=$filepath/$filename
         fi
     fi
 }
 
 function select_target()
 {
-    Filebrowser "$menutitle_interface" "$target_dir" "$ext_target"
+    Filebrowser "$menutitle_interface" "$target_path" "$ext_target"
     exitstatus=$?
 
     if [ $exitstatus -eq 0 ]; then
         if [ "$selection" == "" ]; then
             echo "Arquivo não selecionado"
         else
-            #show_msg_file "$filename" "$filepath"
-            file_target=$filepath/$filename
+            #show_description_file "$filename" "$filepath"
+            targetfile=$filepath/$filename
         fi
     fi
 }
@@ -139,7 +179,7 @@ function select_target()
 function start_gdb()
 {
     if [ -f $1 ] ; then
-        xtensa-esp32-elf-gdb -x $gdb_init $program_name
+        xtensa-esp32-elf-gdb -x $gdbinitfile $program_name
     else
         echo "Não foi possivel localizar o arquivo de debug:$1"
     fi
@@ -167,67 +207,342 @@ function setup_target()
     select_target
 }
 
-function compilar()
+function build_all()
 {
-    cd $IDF_PATH
-    git  pull
-    cd $project_dir
+    cd $project_path
     make clean
     make all
 }
 
-function flash()
+function build_app()
 {
-    sudo chmod 777 /dev/ttyUSB0
+    cd $project_path
+    make app
+}
 
+function create_project()
+{
+    #TODO
+    ls
+}
+
+function esp32_flash()
+{
+    cd $project_path
+    
+    sudo chmod 777 /dev/ttyUSB0
     make flash 
 }
 
-function monitor()
+function esp32_monitor()
 {
+    cd $project_path
+    
     sudo chmod 777 /dev/ttyUSB0
-
     make monitor
 }
 
-function esp32_config()
+function esp32_config_screen()
 {
+    cd $project_path
+
     make menuconfig
 }
 
-function main_menu()
+function scan_host()
 {
-    clear
+    host_gdb=$(sudo nmap -sn 192.168.0.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}') > /dev/null
+    pid_scan=$?
+    show_description_sbc "$host_gdb"
+}
 
-    while [ 1 ]
-    do
-        CHOICE=$(
-        whiptail --title "Menu principal" --menu "Selecione uma das opções abaixo" 0 0 0 \
-            "1)" "Iniciar servidor de debug (openocd)"   \
-            "2)" "Iniciar debugguer (gdb)"  \
-            "3)" "Interface de debug" \
-            "4)" "Target para debug" \
-            "5)" "Monitor (uart)" \
-            "6)" "Gravaçao FW (uart)" \
-            "7)" "Compilar projeto" \
-            "8)" "Configuração ESP32" \
-            "9)" "Sair"  3>&2 2>&1 1>&3	
-        )
+function manage_openocd()
+{
+    #TODO
+    make ./boostrap
+    make build
+    make install
+}
 
-        case $CHOICE in
+function manage_toolchain()
+{
+    select_path_dest "$toolchain_path_dest"
+    exitstatus=$?
+                
+    if [ $exitstatus -eq 0 ]; then
 
-            "1)") start_debug_server ;;
-            "2)") start_section ;;
-            "3)") setup_interface ;;
-            "4)") setup_target ;;
-            "5)") monitor ;;
-            "6)") flash ;;
-            "7)") compilar ;;
-            "8)") esp32_config ;;
-            "9)") exit ;;
-        esac
+        toolchain_path_dest=$filepath
+
+        wget "$url_espressif_toolchain64" -O "$HOME/Downloads/tc"
+        
+        mkdir -p $toolchain_path_dest
+        
+        cd $toolchain_path_dest
+
+        tar -xzf "$HOME/Downloads/tc"
+
+        toolchain_path=$(find $toolchain_path_dest -name 'xtensa*gcc' | sed 's|/[^/]*$||' )
+
+
+        #TODO atualizacao profile
+
+        teste=$(grep -m 1 PATH "$HOME/.bash_profile")
+
+        echo $teste
+
+        if [ -z $teste ]; then
+
+            # Atualizar profile 
+
+            export PATH="$PATH:$toolchain_path"
+
+            # TODO add/update no ~/.profile
+
+            echo "OK"
+        fi
+
+        echo $PATH
+
+        whiptail --title "Atenção " \
+                --msgbox "$selection\nFazer logoff do usuario para atualizar as variáveis de ambiente" 0 0
+    fi
+}
+
+function update_idf_repositorio()
+{
+    cd $idf_path_dest
+
+    teste=$(ls | wc -l) > /dev/null
+    
+    if [ $teste = 0 ]; then
+
+        show_info "Realizando clonagem do repositorio"
+        #git clone --recursive $idf_path_orin
+        msg="Realizado o clone"
+
+    else
+
+        UPSTREAM=${1:-'@{u}'}
+        LOCAL=$(git rev-parse @)
+        REMOTE=$(git rev-parse "$UPSTREAM")
+        BASE=$(git merge-base @ "$UPSTREAM")
+
+        if [ $LOCAL = $REMOTE ]; then
+            msg="Ja se encontrava atualizado\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+
+        elif [ $LOCAL = $BASE ]; then
+            git pull
+            msg="Realizado o pull\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+
+        elif [ $REMOTE = $BASE ]; then
+            git pull
+            msg="Realizado o pull\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+
+        else
+            msg="Diverge\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+        fi
+    fi
+
+    # TODO add/update no ~/.profile
+    export IDF_PATH=$idf_path_dest
+
+    show_atencao "Fazer logoff do usuario para atualizar das variáveis de ambiente\n\nRepositorio:$msg"
+}
+
+function manage_idf()
+{
+    if [ ${#IDF_PATH} -ne 0 ]; then
+            
+        idf_path_dest=$IDF_PATH
+    fi
+
+    while : ; do
+
+        select_path_dest "$idf_path_dest"
+
+        exitstatus=$?
+            
+        if [ $exitstatus = 0 ]; then
+
+            idf_path_dest=$filepath
+
+            if [ ! -d "$idf_path_dest" ]; then
+                
+                if mkdir $idf_path_dest ; then
+
+                    update_idf_repositorio
+                    break
+                fi
+
+            else
+          
+                update_idf_repositorio
+                break
+            fi
+        else
+            break
+        fi
     done
 }
 
-main_menu
+function install_dependencias()
+{
+    sudo apt-get install git wget make libncurses-dev flex bison gperf python python-serial
+    sudo apt-get install git
+}
 
+debug_screen()
+{
+    clear
+
+    while : ; do
+
+        CHOICE=$(
+                whiptail --title "Projeto" --menu "Selecione uma das opções abaixo" 0 0 0 \
+                    "[1]" "Executar server(openocd)"  \
+                    "[2]" "Executar debug (prompt)"   \
+                    "[3]" "Interface (adaptador)"  \
+                    "[3]" "Target (device)"  \
+                    "[5]" "Monitor"  \
+                    "[6]" "Scan server"   3>&2 2>&1 1>&3
+                )
+
+        exitstatus=$?
+
+        if [ $exitstatus = 0 ]; then
+
+            case $CHOICE in
+
+                "[1]") start_debug_server ;;
+                "[2]") start_section ;;
+                "[3]") setup_interface ;;
+                "[4]") setup_target ;;
+                "[5]") esp32_monitor ;;
+                "[6]") scan_host ;;
+            esac
+        else
+            break
+        fi
+    done
+}
+
+project_screen()
+{
+    clear
+
+    while : ; do
+
+        CHOICE=$(
+                whiptail --title "Projeto" --menu "Selecione uma das opções abaixo" 0 0 0 \
+                    "[1]" "Compilar todo o projeto"   \
+                    "[2]" "Compilar app"  \
+                    "[3]" "Criar projeto" 3>&2 2>&1 1>&3
+                )
+
+        exitstatus=$?
+
+        if [ $exitstatus = 0 ]; then
+
+            case $CHOICE in
+
+                "[1]") build_all ;;
+                "[2]") build_app ;;
+                "[3]") create_project ;;
+            esac
+        else
+            break
+        fi
+    done
+}
+
+enviroment_screen()
+{
+    clear
+
+    while : ; do
+
+        CHOICE=$(
+                whiptail --title "Ambiente de desenvolvimento" --menu "Selecione uma das opções abaixo" 0 0 0 \
+                    "[1]" "Instalar/atualizar ESP-IDF"   \
+                    "[2]" "Instalar/atualizar openocd"  \
+                    "[3]" "Instalar/atualizar toolchain" 3>&2 2>&1 1>&3
+                )
+
+        exitstatus=$?
+
+        if [ $exitstatus = 0 ]; then
+
+            case $CHOICE in
+
+                "[1]") manage_idf ;;
+                "[2]") manage_openocd ;;
+                "[3]") manage_toolchain ;;
+            esac
+        else
+            break
+        fi
+    done
+}
+
+esp32_screen()
+{
+    clear
+
+    while : ; do
+
+        CHOICE=$(
+                whiptail --title "Ambiente de desenvolvimento" --menu "Selecione uma das opções abaixo" 0 0 0 \
+                    "[1]" "Gravar (uart)"   \
+                    "[2]" "Monitor (uart)"  \
+                    "[3]" "Configuração"  3>&2 2>&1 1>&3
+                )
+        exitstatus=$?
+
+        if [ $exitstatus = 0 ]; then
+
+            case $CHOICE in
+
+                "[1]") esp32_flash ;;
+                "[2]") esp32_monitor ;;
+                "[3]") esp32_config_screen ;;
+            esac
+        else
+            break
+        fi
+    done
+}
+
+function main_screen()
+{
+    clear
+
+    while : ; do
+
+        CHOICE=$(
+                whiptail --title "Principal" --menu "Selecione uma das opções abaixo" 0 0 0 \
+                    "[1]" "Debug"   \
+                    "[2]" "Projeto" \
+                    "[3]" "ESP32" \
+                    "[4]" "Ambiente de desenvolvimento" 3>&2 2>&1 1>&3
+                )
+
+        exitstatus=$?
+
+        if [ $exitstatus = 0 ]; then
+
+            case $CHOICE in
+
+                "[1]") debug_screen ;;
+                "[2]") project_screen ;;
+                "[3]") esp32_screen ;;
+                "[4]") enviroment_screen ;;
+            esac
+        else
+            break
+        fi
+    done
+
+    exit
+}
+
+main_screen

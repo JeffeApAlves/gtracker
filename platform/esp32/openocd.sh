@@ -48,10 +48,10 @@ function reset_target()
   gpio -g write 8 1
 }
 
-function find_host()
+function install_dependencias()
 {
-    host_gdb=$(sudo nmap -sP 192.168.1.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}')
-    echo "IP rasberry:$host_gdb"
+    sudo apt-get install git wget make libncurses-dev flex bison gperf python python-serial
+    sudo apt-get install git
 }
 
 #reset_target
