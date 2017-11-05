@@ -8,9 +8,11 @@ process_name="openocd"
 target="target/esp32.cfg" 
 interface="interface/raspberrypi-native.cfg"
 transport="transport select jtag"
+url_openocd="git://git.code.sf.net/p/openocd/code openocd-code"
+openocd_path="$HOME/openocd-code"
 
-function close_openocd()
-{
+function close_openocd(){
+  
   openocd_pid=$(ps -ef | grep openocd | grep -v 'grep' | awk '{ printf $2 }')
 
   if [ $openocd_pid ]; then
@@ -24,8 +26,8 @@ function close_openocd()
   fi
 }
 
-function start_openocd()
-{
+function start_openocd(){
+
   openocd_pid=$(ps -ef | grep openocd | grep -v 'grep' | awk '{ printf $2 }')
 
   echo "Interface: $interface Targer: $target"
@@ -38,8 +40,8 @@ function start_openocd()
   fi
 }
 
-function reset_target()
-{
+function reset_target() {
+
   gpio -g mode 8 out
   gpio -g write 8 1
   sleep 5
@@ -48,14 +50,39 @@ function reset_target()
   gpio -g write 8 1
 }
 
-function install_dependencias()
-{
-    sudo apt-get install git wget make libncurses-dev flex bison gperf python python-serial
-    sudo apt-get install git
+function install_dependencias() {
+
+    sudo apt-get -y install git wget make libncurses-dev flex bison gperf python python-serial  minicom autoconf libtool make pkg-config libusb-1.0-0 libusb-1.0-0-dev
 }
 
-#reset_target
-close_openocd
-reset_target &
-start_openocd "$interface" "$target"
-echo "Target reiniciado"
+function get_source_code() {
+
+  mkdir $openocd_path
+  cd $openocd_path
+  git clone --recursive  $url_openocd
+}
+
+function install_openocd() {
+
+  install_dependencias
+
+  git clone --recursive  $url_openocd
+
+  ./bootstrap
+
+  ./configure --enable-sysfsgpio --enable-bcm2835gpio
+
+  make
+  
+  sudo make install
+}
+
+function start_server() {
+  #reset_target
+  close_openocd
+  reset_target &
+  start_openocd "$interface" "$target"
+  echo "Target reiniciado"
+}
+
+start_server
