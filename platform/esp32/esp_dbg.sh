@@ -16,12 +16,13 @@ url_espressif_toolchain32="https://dl.espressif.com/dl/xtensa-esp32-elf-linux32-
 makefile="$project_path/Makefile"
 gdbinitfile="$project_path/gdbinit"
 project_name=$(grep -m 1 PROJECT_NAME $makefile | sed 's/^.*= //g')
-programfile="$project_path/build/$project_name.elf"
 interfacefile=""
 targetfile=""
+programfile="$project_path/build/$project_name.elf"
 host_gdb=$(grep -m 1 target $gdbinitfile | sed 's/^.*remote \|:.*/''/g')
 build_path="$project_path/build"
 openocdfile="$project_path/openocd.sh"
+espfile="$project_path/esp_dbg.sh"
 ext_program='elf'
 ext_config='cfg'
 activate_screen=0
@@ -29,55 +30,58 @@ template_project="$IDF_PATH/examples/get-started/blink ."
 
 function select_file() {
 
+    local title=$1
+    local path=$2
+    local ext_file=$3
+
     if [ ! -z $2 ] ; then
-        cd "$2"
+        cd "$path"
     fi
 
-    # lista diretorio e arquivos filtrados pela extensão
-    dir_list=$(ls -lhd */  *.$3 | awk -F ' ' ' { print $9 " " $5 } ')
-
+    # conteudo do diretorio
+    dir_content=$(ls -lhd */  *.$ext_file | awk -F ' ' ' { print $9 " " $5 } ')
     curdir=$(pwd)
 
     if [ "$curdir" != "/" ] ; then
-        dir_list="../ Voltar $dir_list" 
+        dir_content="../ Voltar $dir_content" 
     fi
 
-    selection=$(
-        whiptail --fb --title "Seleção arquivo" \
-            --menu "$1\n$curdir" 45 100 30 \
-            --cancel-button Cancelar \
-            --ok-button Selecionar $dir_list 3>&1 1>&2 2>&3
-        )
+    selection=$(dialog --stdout \
+                    --title "Seleção de arquivo" \
+                    --scrollbar \
+                    --menu "Selecione um arquivo com do tipo '$ext_file'.\n$curdir" 30 100 20 \
+                    $dir_content
+                )
     RET=$?
 
     if [ $RET -eq 0 ]; then
 
         if [[ -d "$selection" ]]; then 
             
-            select_file "$1" "$selection" "$3"
+            select_file "$title" "$selection" "$ext_file"
         
         elif [[ -f "$selection" ]]; then 
  
-            if [[ $selection == *$3 ]]; then # verifica a exxtensão 
+            if [[ $selection == *$ext_file ]]; then # verifica a exxtensão 
                 
-                if (whiptail --fb --title "Confirmação da seleção" --yesno "Diretorio: $curdir\nArquivo  : $selection" 10 100 \
-                            --yes-button "Confirmar" \
+                if (dialog --title "Confirmação da seleção" --yesno "Diretório: $curdir\nArquivo  : $selection" 10 100 \
+                            --yes-button "OK" \
                             --no-button "Voltar"); then
                     
                     filename="$selection"
                     filepath="$curdir"
-
+                    RET=0
                 else
-                    select_file "$1" "$curdir" "$3"
+                    select_file "$title" "$curdir" "$ext_file"
                 fi
             else
-                show_erro "Arquivo incompativel" "$selection\nVoce deve selecionar um arquivo do tipo $3"
-                select_file "$1" "$curdir" "$3"
+                show_erro "Arquivo incompativel" "$selection\nVoce deve selecionar um arquivo do tipo $ext_file"
+                select_file "$title" "$curdir" "$ext_file"
             fi
  
         else # Não foi possivel ler o arquivo
             show_erro "Caminho ou arquivo invalido" "Não foi possivel acessa-lo:$selection"
-            select_file "$1" "$curdir" "$3"
+            select_file "$title" "$curdir" "$ext_file"
         fi
     fi
 
@@ -86,42 +90,37 @@ function select_file() {
 
 function select_path() {
 
+    local title=$1
+    local path=$2
+
     if [ ! -z $2 ] ; then
-        cd "$2"
+        cd "$path"
     fi
 
-    dir_list=$(ls -lhd */ | awk -F ' ' ' { print $9 " " $5 } ')
+    content_dir=$(ls -lhd */ | awk -F ' ' ' { print $9 " " $5 } ')
+    cur_dir=$(pwd)
 
-    curdir=$(pwd)
-
-    if [ "$curdir" != "/" ] ; then
-        dir_list="../ Voltar $dir_list" 
+    if [ "$cur_dir" != "/" ] ; then
+        content_dir="../ Voltar $content_dir" 
     fi
 
-    selection=$(
-        whiptail --fb --title "Seleção pasta" \
-            --menu "$1\n$curdir" 45 100 30 \
-            --cancel-button "Confirmar" \
-            --ok-button "Selecionar" $dir_list 3>&1 1>&2 2>&3
-        )
+    selection=$(dialog --stdout \
+                    --title "Seleção de diretório" \
+                    --extra-button --scrollbar \
+                    --extra-label "Selecionar" \
+                    --menu "Selecione o diretório de destino\n$cur_dir" 30 100 20 \
+                    $content_dir
+                )
     RET=$?
-
+ 
     if [ $RET -eq 0 ]; then
 
-        select_path "$1" "$selection"
+        select_path "$title" "$selection"
 
-    elif [ $RET -eq 1 ]; then #O botao cancel foi transforma em OK  durante a seleção de uma path
+    elif [ $RET -eq 3 ]; then #extra button
  
-        if (whiptail --fb --title "Confirmação da seleção" --yesno "Diretório:$curdir" 10 100 \
-                    --yes-button "Confirmar" \
-                    --no-button "Voltar"); then
-            
-            filepath="$curdir"
-            return 0
-
-        else
-            select_path "$1" "$curdir"
-        fi
+        filepath="$cur_dir"
+        RET=0
     fi
 
     return $RET
@@ -129,105 +128,111 @@ function select_path() {
 
 function show_erro() {
 
-    whiptail --fb --title "ERROR:$1 " --msgbox "$2" 0 0
+    dialog --title "ERROR:$1 " --msgbox "$2" 0 0
 }
 
 function show_info() {
 
-    echo "$1"
-    #TDODO usar whiptail
-    whiptail --title "Informações" --infobox "$1" 0 0
-    sleep 1
-    #clear
+    dialog --title "Informações" --infobox "$1" 0 0
+    sleep 3
+    clear
 }
 
 function show_atencao() {
 
-    whiptail --fb --title "ATENÇÂO" --msgbox "$1" 0 0
+    dialog \ 
+        --title "ATENÇÂO" \
+        --msgbox "$1" \
+        0 0
 }
 
 function show_description_file() {
 
-    whiptail --fb --title "Informações do arquivo" --msgbox " \
-    Arquivo selecionado
-    Nome     : $1
-    Diretorio: $2
-    \
-    " 0 0 0
+    dialog \ 
+        --title "Informações do arquivo" \
+        --msgbox "Arquivo selecionado\nNome     : $1\nDiretorio: $2" \
+        0 0 
 }
 
 function show_description_sbc() {
 
-    whiptail --fb --title "Informações do SBC" --msgbox \
-    "SBC encontrada\nIP: $1 " \
-    0 0 0
+    dialog \
+        --title "Informações do SBC" \
+        --msgbox "SBC encontrada\nIP: $1 " \
+        0 0
 }
 
 function select_program() {
 
     select_file "Selecione o programa" "$build_path" "$ext_program"
-    exitstatus=$?
+    RET=$?
 
-    if [ $exitstatus = 0 ]; then
+    if [ $RET -eq 0 ]; then
 
         programfile=$filepath/$filename
     fi
 
-    return $exitstatus
+    return $RET
 }
 
 function select_interface(){
 
     select_file "Selecione o adaptador (interface)" "$interface_path" "$ext_config"
-    exitstatus=$?
+    RET=$?
 
-    if [ $exitstatus = 0 ]; then
+    if [ $RET -eq 0 ]; then
 
         interfacefile=$filepath/$filename
     fi
 
-    return $exitstatus
+    return $RET
 }
 
 function select_target() {
 
     select_file "Selecione o target" "$target_path" "$ext_config"
-    exitstatus=$?
+    RET=$?
 
-    if [ $exitstatus = 0 ]; then
+    if [ $RET = 0 ]; then
 
         targetfile=$filepath/$filename
     fi
 
-    return $exitstatus
+    return $RET
 }
 
 function start_gdb() {
+    local init=$1
+    local program=$2
 
-    cd $project_path
-
-    if [ -f $1 ] ; then
-        xtensa-esp32-elf-gdb -x $gdbinitfile $1
+    if [ -f $init ] ; then
+        if [ -f $init ] ; then
+            xtensa-esp32-elf-gdb -x $init $program
+        else
+            show_atencao "Não foi possivel localizar o arquivo de debug.\n$program"
+        fi
     else
-        show_atencao "Não foi possivel localizar o arquivo de debug:$1"
+        show_atencao "Não foi possivel localizar o arquivo de inicializacao.\n$init"
     fi
 }
 
 function start_debug_server() {
 
     user=$(whoami)
-    echo "$user iniciando debug no host IP:$host_gdb"
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' < $openocdfile
+
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' < $openocdfile &> /tmp/ssh.log &
+
+    dialog --title "$user iniciando debug no host IP:$host_gdb" --tailbox /tmp/ssh.log 30 100
 }
 
 function start_section_debug() {
 
     select_program
-    exitstatus=$?
+    RET=$?
 
-    if [ $exitstatus = 0 ]; then
+    if [ $RET -eq 0 ]; then
 
-        start_gdb "$programfile"
+        start_gdb "$gdbinitfile" "$programfile"
     fi
 }
 
@@ -241,180 +246,205 @@ function setup_target() {
     select_target
 }
 
-function build_all() {
-
-    cd $project_path
-    make clean
-    make all
-}
-
-function build_app() {
-
-    cd $project_path
-    make app
-}
-
 function create_project() {
 
-    new_project_name=$(
-            whiptail --title "Nome do projeto" \
-                --fb \
-                --inputbox "Informe o nome do projeto" 10 100 project_name 3>&2 2>&1 1>&3
-            )
-
-    exitstatus=$?
+    new_project_name=$(dialog 
+                         --title "Nome do projeto" \
+                         --inputbox "Informe o nome do projeto" 10 100 project_name
+                       )
+    RET=$?
                 
-    if [ $exitstatus -eq 0 ]; then
+    if [ $RET -eq 0 ]; then
 
         select_path "Seleção destino projeto" "$HOME"
-        exitstatus=$?
+        RET=$?
                     
-        if [ $exitstatus -eq 0 ]; then
+        if [ $RET -eq 0 ]; then
 
             cd $filepath
             cp -r $template_project
             mv "blink" $new_project_name
 
-            cp "$project_path/esp_dbg.sh" "$filepath/$new_project_name"
-            cp "$project_path/openocd.sh" "$filepath/$new_project_name"
+            cp "$espfile" "$filepath/$new_project_name"
+            cp "$openocdfile" "$filepath/$new_project_name"
 
             #TODO renomear propriedade arquivo
         fi
     fi
 }
 
+function build_all() {
+
+    cd $project_path
+
+    make clean &> /dev/null  
+    make all &> /tmp/build.log &
+
+    dialog --title "Compilando projeto" --tailbox /tmp/build.log 30 100
+}
+
+function build_app() {
+
+    cd $project_path
+
+    make app &> /tmp/appbuild.log &
+
+    dialog --title "Compilando app" --tailbox /tmp/appbuild.log 30 100
+}
+
 function esp32_flash() {
 
     cd $project_path
 
-    whiptail --fb --textbox /dev/stdin 40 80 <<<"$(make flash)" 
+    make flash &> /tmp/flash.log &
+
+    dialog --title "Gravando ESP32" --tailbox /tmp/flash.log 30 100
 }
 
 function esp32_monitor() {
 
     cd $project_path
-
     make monitor
 }
 
 function esp32_config_screen() {
 
     cd $project_path
-
     make menuconfig
 }   
 
 function scan_host() {
 
     host_gdb=$(sudo nmap -sn 192.168.0.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}')
-    #pid=$?
 
-    #wait $pid
     show_description_sbc "$host_gdb"
 }
 
 function manage_openocd() {
 
-    #TODO
-    ls
+    echo "TODO"
 }
 
 function download_file() {
+    local origem=$1
+    local destino=$2
 
-    wget "$1" -O "$2"  2>&1 | \
+    wget "$origem" -O "$destino" 2>&1 | \
     stdbuf -o0 awk '/[.] +[0-9][0-9]?[0-9]?%/ { print substr($0,63,3) }' | \
-    whiptail --title "Download" --gauge --cancel-button "Cancelar"  "Por favor espere download em andamento\nDe  :$1\nPara:$2" 0 0 0
+    dialog --title "Download" --gauge "Por favor espere. Download em andamento.\n\nDe  :$origem\nPara:$destino" 0 0 0
 }
 
-function manage_toolchain() {
+function install_toolchain() {
 
-    CHOICE=$(
-        whiptail --title "Radio list example" --radiolist  \
-            --fb --notags \
-            "Escolha a versão do toolchain conforme o OS instalado" 0 0 0 \
-            "64" "Versão 64 bits" ON \
-            "32" "Versão 32 bits" OFF  3>&2 2>&1 1>&3
+    CHOICE=$(dialog  --stdout\
+                --title "Versão do Toolchain" \
+                --radiolist "Escolha a versão do toolchain conforme o OS instalado" 0 0 0 \
+                "64" "Versão 64 bits" ON \
+                "32" "Versão 32 bits" OFF  
+            )
+    RET=$?
 
-        )
-    exitstatus=$?
+    if [ $RET -eq 0 ]; then
 
-    if [ $exitstatus -eq 0 ]; then
-
-        if  [ $CHOICE -eq 32 ]; then
+        if  [ $CHOICE == "32" ]; then
             url_file=$url_espressif_toolchain32
         else
             url_file=$url_espressif_toolchain64
         fi
 
         select_path "Seleção destino toolchain" "$toolchain_path_dest"
-        exitstatus=$?
+        RET=$?
                 
-        if [ $exitstatus -eq 0 ]; then
+        if [ $RET -eq 0 ]; then
 
             toolchain_path_dest=$filepath
 
-            download_file "$url_file" "$HOME/Downloads/tc"
+            download_file "$url_file" "$HOME/Downloads/tc" &&
 
             #cria diretorio onde que foi escolhido como destino do toolchian
-            mkdir -p $toolchain_path_dest
+            mkdir -p $toolchain_path_dest &&
         
             #descompacta
-            cd $toolchain_path_dest
-            tar -xzf "$HOME/Downloads/tc"
+            cd $toolchain_path_dest &&
+            
+            tar -xzf "$HOME/Downloads/tc" &&
 
             # procura onde estão os binarios 
-            toolchain_path=$(find $toolchain_path_dest -name 'xtensa*gcc' | sed 's|/[^/]*$||' )
+            toolchain_path=$(find $toolchain_path_dest -name 'xtensa*gcc' | sed 's|/[^/]*$||' ) &&
 
             #TODO atualizacao profile
-            teste=$(grep -m 1 PATH "$HOME/.bash_profile")
-            echo $teste
-            if [ -z $teste ]; then
+            #teste=$(grep -m 1 PATH "$HOME/.bash_profile")
+            #echo $teste
+            #if [ -z $teste ]; then
 
                 # Atualizar profile 
                 export PATH="$PATH:$toolchain_path"
                 # TODO add/update no ~/.profile
-                echo "OK"
-            fi
-            echo $PATH
+                #echo "OK"
+            #fi
 
-            show_atencao "Instalação concluida.\nFazer logoff do usuario para atualizar as variáveis de ambiente"
+            RET=0
         fi
+    fi
+
+    return $RET
+}
+
+function manage_toolchain() {
+
+    install_toolchain
+    RET=$?
+
+    if [ $RET -eq 0 ]; then
+
+        show_atencao "Instalação concluida.\nFazer logoff do usuario para atualizar as variáveis de ambiente"
     fi
 }
 
-function update_idf_repositorio() {
+function clone_repositorio() {
 
-    cd $idf_path_dest
+    local origem=$1
+    local destino=$2
 
-    is_full=$(ls | wc -l) > /dev/null
+    cd $destino &&
 
-    if [ $is_full = 0 ]; then
+    git clone --recursive --progress $origem 2>&1 | \
+    stdbuf -o0 awk 'BEGIN{RS="\r|\n|\r\n|\n\r";ORS="\n"}/Receiving/{print substr($3, 1, length($3)-1)}' | \
+    dialog --title "Download" --gauge "Por favor espere. Clonagem em andamento.\n\nDe  :$origem\nPara:$destino" 0 0 0
+}
 
-        show_info "Clonagem iniciada"
-        git clone --recursive --progress $idf_path_orin
+function update_repositorio() {
+    #Opcional passar o branch em $2" ex:release/v2.1"
 
+    local destino=$1
+
+    cd $destino &&
+
+    git remote update> /dev/null &&
+    git status -uno > /dev/null &&
+
+    UPSTREAM=${2:-'@{u}'} &&
+    LOCAL=$(git rev-parse @) && 
+    REMOTE=$(git rev-parse "$UPSTREAM") &&
+    BASE=$(git merge-base @ "$UPSTREAM") &&
+
+    if [ $LOCAL = $REMOTE ]; then
+        show_info "Repositorio:\nAtualizado !\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+    elif [ $LOCAL = $BASE ]; then
+        show_info "Repositorio:\nAtaulização iniciada\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+        git pull
+        git submodule update
+        #pid=$?
+    elif [ $REMOTE = $BASE ]; then
+        #ait $pid
+
+        show_info "Repositorio:\nAtaulização iniciada\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+        git pull
+        git submodule update
+        #pid=$?
+        #wait $pid
     else
-        UPSTREAM=${1:-'@{u}'}
-        LOCAL=$(git rev-parse @)
-        REMOTE=$(git rev-parse "$UPSTREAM")
-        BASE=$(git merge-base @ "$UPSTREAM")
-
-        if [ $LOCAL = $REMOTE ]; then
-            show_info "Repositorio:\nAtualizado !\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
-        elif [ $LOCAL = $BASE ]; then
-            show_info "Repositorio:\nAtaulização iniciada\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
-            git pull &
-            pid=$?
-            wait $pid
-
-        elif [ $REMOTE = $BASE ]; then
-            show_info "Repositorio:\nAtaulização iniciada\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
-            git pull &
-            pid=$?
-            wait $pid
-        else
-            show_info "Repositorio:\nDiverge\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
-        fi
+        show_info "Repositorio:\nDiverge\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
     fi
 }
 
@@ -425,203 +455,213 @@ function manage_idf() {
         idf_path_dest="$IDF_PATH"
     fi
 
-    while : ; do
+    select_path "Repositório IDF" "$idf_path_dest"
+    RET=$?
+        
+    if [ $RET -eq 0 ]; then
 
-        select_path "Repositório IDF" "$idf_path_dest"
-        exitstatus=$?
-            
-        if [ $exitstatus = 0 ]; then
+        idf_path_dest=$filepath
 
-            idf_path_dest=$filepath
+        if [[ -d "$idf_path_dest" || $(mkdir $idf_path_dest) = 0 ]]; then
 
-            if [[ -d "$idf_path_dest" || $(mkdir $idf_path_dest) = 0 ]]; then
+            { 
+                update_repositorio "$idf_path_dest"
+            } || { 
+                
+                clone_repositorio "$idf_path_orin" "$idf_path_dest" 
+            } || {
 
-                update_idf_repositorio
-                break
-            fi
-
-            # TODO add/update no ~/.profile
-            export IDF_PATH=$idf_path_dest
-
-            show_info "Fazer logoff para atualizar as variáveis do ambiente."
-        else
-            break
+                show_info "Não foi possivel clonar/atualizar o SDK"
+            }
         fi
-    done
+
+        # TODO add/update no ~/.profile
+        export IDF_PATH=$idf_path_dest
+
+        show_info "Fazer logoff para atualizar as variáveis do ambiente."
+    fi
 }
 
 function install_dependencias() {
 
-    sudo apt-get -y install git wget make libncurses-dev flex bison gperf python python-serial minicom
+    sudo apt-get -y install git wget make libncurses-dev flex bison gperf python python-serial minicom  &> /tmp/install.log &
+
+    dialog --title "Instalação dos pacotes" --tailbox  /tmp/install.log 30 100
 }
 
 debug_screen() {
 
-    CHOICE=$(
-            whiptail --title "Debug" \
+    CHOICE=$(dialog --stdout\
+                --title "Debug" \
+                --no-tags \
                 --menu "Selecione uma das opções abaixo" 30 100 20 \
-                --fb --notags\
                 1 "Executar debug (prompt)"   \
                 2 "Executar server(openocd)"  \
                 3 "Interface (adaptador)"  \
                 3 "Target (device)"  \
                 5 "Monitor"  \
-                6 "Scan server"   3>&2 2>&1 1>&3
+                6 "Scan server"
             )
-    exitstatus=$?
+    RET=$?
 
-    if [ $exitstatus = 0 ]; then
+    if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                1) start_section_debug ;;
-                2) start_debug_server ;;
-                3) setup_interface ;;
-                4) setup_target ;;
-                5) esp32_monitor ;;
-                6) scan_host ;;
+                '1') start_section_debug ;;
+                '2') start_debug_server ;;
+                '3') setup_interface ;;
+                '4') setup_target ;;
+                '5') esp32_monitor ;;
+                '6') scan_host ;;
         esac
     fi
 
-    return $exitstatus
+    return $RET
 }
 
 project_screen() {
 
-    CHOICE=$(
-            whiptail --title "Projeto" \
+    CHOICE=$(dialog --stdout \
+                --title "Projeto" \
+                --no-tags \
                 --menu "Selecione uma das opções abaixo" 30 100 20 \
-                --fb --notags\
                 1 "Compilar todo o projeto"   \
                 2 "Compilar app"  \
-                3 "Criar projeto" 3>&2 2>&1 1>&3
+                3 "Criar projeto"
             )
-    exitstatus=$?
+    RET=$?
 
-    if [ $exitstatus = 0 ]; then
+    if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                1) build_all ;;
-                2) build_app ;;
-                3) create_project ;;
+                '1') build_all ;;
+                '2') build_app ;;
+                '3') create_project ;;
         esac
     fi
 
-    return $exitstatus
+    return $RET
 }
 
 enviroment_screen() {
 
-    CHOICE=$(
-            whiptail --title "Ambiente de desenvolvimento" \
+    CHOICE=$(dialog --stdout \
+                --title "Ambiente de desenvolvimento" \
+                --no-tags \
                 --menu "Selecione uma das opções abaixo" 30 100 20 \
-                --fb --notags\
                 1 "Instalar/atualizar ESP-IDF"   \
                 2 "Instalar/atualizar openocd"  \
                 3 "Instalar/atualizar toolchain" \
-                4 "Instala dependencias (pacotes)"  3>&2 2>&1 1>&3
+                4 "Instalar dependencias (pacotes)"
             )
-    exitstatus=$?
+    RET=$?
 
-    if [ $exitstatus = 0 ]; then
+    if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                1) manage_idf ;;
-                2) manage_openocd ;;
-                3) manage_toolchain ;;
-                4) install_dependencias ;;
+                '1') manage_idf ;;
+                '2') manage_openocd ;;
+                '3') manage_toolchain ;;
+                '4') install_dependencias ;;
         esac
     fi
 
-   return $exitstatus
+    return $RET
 }
 
 esp32_screen() {
 
-    CHOICE=$(
-            whiptail --title "ESP32" \
+    CHOICE=$(dialog --stdout \
+                --title "ESP32" \
+                --no-tags \
                 --menu "Selecione uma das opções abaixo" 30 100 20 \
-                --fb  --notags\
                 1 "Gravar (uart)"   \
                 2 "Monitor (uart)"  \
-                3 "Configuração"  3>&2 2>&1 1>&3
+                3 "Configuração"
             )
-    exitstatus=$?
+    RET=$?
 
-    if [ $exitstatus = 0 ]; then
+    if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                1) esp32_flash ;;
-                2) esp32_monitor ;;
-                3) esp32_config_screen ;;
+                '1') esp32_flash ;;
+                '2') esp32_monitor ;;
+                '3') esp32_config_screen ;;
         esac
     fi
    
-   return $exitstatus
+    return $RET
 }
 
 function main_screen() {
 
-    CHOICE=$(
-            whiptail --title "Principal" \
+    CHOICE=$(dialog --stdout \
+                --title "Principal"\
+                --no-tags --scrollbar \
                 --menu "Selecione uma das opções abaixo" 30 100 20 \
-                --fb --notags\
-                1 "Debug"   \
+                1 "Debug" \
                 2 "Projeto" \
                 3 "ESP32" \
-                4 "Ambiente de desenvolvimento" 3>&2 2>&1 1>&3
-            )
-    exitstatus=$?
+                4 "Ambiente de desenvolvimento" 
+             )
+    RET=$?
 
-    if [ $exitstatus = 0 ]; then
+    if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                1) show debug_screen ;;
-                2) show project_screen ;;
-                3) show esp32_screen ;;
-                4) show enviroment_screen ;;
+                1) show_screen debug_screen ;;
+                2) show_screen project_screen ;;
+                3) show_screen esp32_screen ;;
+                4) show_screen enviroment_screen ;;
         esac
     else
+        clear
         exit
     fi
 
-    return $exitstatus
+    return $RET
 }
 
-function show() {
-    # mostra uma tela
-
+function show_screen() {
+    # selecioan um menu para ser mostrado na tela
+   
     activate_screen=$1
 }
 
 function init_script() {
     # startup do script
 
+    sudo apt-get install -y  dialog -qq
+
+    #limpa a tela
     clear
 
     #permite acesso na porta serial
     sudo chmod 777 /dev/ttyUSB0 > /dev/null 
+
+    #inicializa com o menu principal
+    show_screen main_screen
 }
 
-function main() {
-    #Entrada do script
-
-    init_script
-
-    show main_screen
-
+function event_process() {
     # super loop no menu ativo
+
     while : ; do 
 
         $activate_screen; 
-        exitstatus=$?
+        RET=$?
 
         # processa eventos com hanldes comunus
-        if [ $exitstatus -ne 0 ]; then
-            show main_screen
+        if [ $RET -ne 0 ]; then
+            show_screen main_screen
         fi
     done
-
-    exit
 }
 
-main
+#Entrada do script
+
+init_script
+
+event_process
+
+clear
