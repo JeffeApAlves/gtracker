@@ -4,11 +4,11 @@
 #  As paths do git e comandos estão baseados nesse documento http://esp-idf.readthedocs.io/en/latest/get-started/
 #
 
+user=$(whoami)
 project_path=$(pwd)
-idf_path_dest="$HOME/esp-idf"
 idf_path_orin="https://github.com/espressif/esp-idf.git"
 toolchain_path="$HOME/esp"
-toolchain_path_dest="$HOME/esp"
+idf_path="$HOME/esp-idf"
 interface_path="/usr/local/share/openocd/scripts/interface"
 target_path="/usr/local/share/openocd/scripts/target"
 url_espressif_toolchain64="https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-61-gab8375a-5.2.0.tar.gz"
@@ -25,8 +25,9 @@ openocdfile="$project_path/openocd.sh"
 espfile="$project_path/esp_dbg.sh"
 ext_program='elf'
 ext_config='cfg'
-activate_screen=0
-template_project="$IDF_PATH/examples/get-started/blink ."
+before_screen=null
+activate_screen=null
+template_project="$idf_path/examples/get-started/blink ."
 
 function select_file() {
 
@@ -34,7 +35,7 @@ function select_file() {
     local path=$2
     local ext_file=$3
 
-    if [ ! -z $2 ] ; then
+    if [ ! -z $path ] ; then
         cd "$path"
     fi
 
@@ -48,11 +49,12 @@ function select_file() {
 
     selection=$(dialog --stdout \
                     --title "Seleção de arquivo" \
+                    --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                     --scrollbar \
                     --menu "Selecione um arquivo com do tipo '$ext_file'.\n$curdir" 30 100 20 \
                     $dir_content
                 )
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
 
@@ -64,7 +66,7 @@ function select_file() {
  
             if [[ $selection == *$ext_file ]]; then # verifica a exxtensão 
                 
-                if (dialog --title "Confirmação da seleção" --yesno "Diretório: $curdir\nArquivo  : $selection" 10 100 \
+                if (! dialog --title "Confirmação da seleção" --yesno "Diretório: $curdir\nArquivo  : $selection" 10 100 \
                             --yes-button "OK" \
                             --no-button "Voltar"); then
                     
@@ -75,12 +77,12 @@ function select_file() {
                     select_file "$title" "$curdir" "$ext_file"
                 fi
             else
-                show_erro "Arquivo incompativel" "$selection\nVoce deve selecionar um arquivo do tipo $ext_file"
+                show_msgbox "ERRO!" "Arquivo incompativel.\n$selection\nVoce deve selecionar um arquivo do tipo $ext_file"
                 select_file "$title" "$curdir" "$ext_file"
             fi
  
         else # Não foi possivel ler o arquivo
-            show_erro "Caminho ou arquivo invalido" "Não foi possivel acessa-lo:$selection"
+            show_msgbox "ERRO!" "ERRO!" "Caminho ou arquivo invalido.\nNão foi possivel acessa-lo:$selection"
             select_file "$title" "$curdir" "$ext_file"
         fi
     fi
@@ -93,7 +95,7 @@ function select_path() {
     local title=$1
     local path=$2
 
-    if [ ! -z $2 ] ; then
+    if [ ! -z $path ] ; then
         cd "$path"
     fi
 
@@ -106,12 +108,13 @@ function select_path() {
 
     selection=$(dialog --stdout \
                     --title "Seleção de diretório" \
+                    --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                     --extra-button --scrollbar \
                     --extra-label "Selecionar" \
                     --menu "Selecione o diretório de destino\n$cur_dir" 30 100 20 \
                     $content_dir
                 )
-    RET=$?
+    local RET=$?
  
     if [ $RET -eq 0 ]; then
 
@@ -126,23 +129,22 @@ function select_path() {
     return $RET
 }
 
-function show_erro() {
+function show_msgbox() {
 
-    dialog --title "ERROR:$1 " --msgbox "$2" 0 0
+    dialog \
+        --title "$1" \
+        --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+        --msgbox "$2" \
+        0 0
 }
 
 function show_info() {
 
-    dialog --title "Informações" --infobox "$1" 0 0
-    sleep 3
-    clear
-}
-
-function show_atencao() {
-
-    dialog \ 
-        --title "ATENÇÂO" \
-        --msgbox "$1" \
+    dialog \
+        --title "Informações !" \
+        --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+        --sleep 3 \
+        --infobox "$1" \
         0 0
 }
 
@@ -150,6 +152,7 @@ function show_description_file() {
 
     dialog \ 
         --title "Informações do arquivo" \
+        --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
         --msgbox "Arquivo selecionado\nNome     : $1\nDiretorio: $2" \
         0 0 
 }
@@ -158,6 +161,7 @@ function show_description_sbc() {
 
     dialog \
         --title "Informações do SBC" \
+        --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
         --msgbox "SBC encontrada\nIP: $1 " \
         0 0
 }
@@ -165,11 +169,12 @@ function show_description_sbc() {
 function select_program() {
 
     select_file "Selecione o programa" "$build_path" "$ext_program"
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
 
-        programfile=$filepath/$filename
+        programfile="$filepath/$filename"
+        RET=0
     fi
 
     return $RET
@@ -178,11 +183,12 @@ function select_program() {
 function select_interface(){
 
     select_file "Selecione o adaptador (interface)" "$interface_path" "$ext_config"
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
 
-        interfacefile=$filepath/$filename
+        interfacefile="$filepath/$filename"
+        RET=0
     fi
 
     return $RET
@@ -191,11 +197,12 @@ function select_interface(){
 function select_target() {
 
     select_file "Selecione o target" "$target_path" "$ext_config"
-    RET=$?
+    local RET=$?
 
-    if [ $RET = 0 ]; then
+    if [ $RET -eq 0 ]; then
 
-        targetfile=$filepath/$filename
+        targetfile="$filepath/$filename"
+        RET=0
     fi
 
     return $RET
@@ -206,29 +213,31 @@ function start_gdb() {
     local program=$2
 
     if [ -f $init ] ; then
-        if [ -f $init ] ; then
+        if [ -f $program ] ; then
+            clear 
             xtensa-esp32-elf-gdb -x $init $program
         else
-            show_atencao "Não foi possivel localizar o arquivo de debug.\n$program"
+            show_msgbox "ERRO!" "Não foi possivel localizar o arquivo:\n$program"
         fi
     else
-        show_atencao "Não foi possivel localizar o arquivo de inicializacao.\n$init"
+        show_msgbox "ERRO!" "Não foi possivel localizar o arquivo:\n$init"
     fi
 }
 
 function start_debug_server() {
 
-    user=$(whoami)
-
     ssh $user@$host_gdb 'sudo -Sv && bash -s' < $openocdfile &> /tmp/ssh.log &
 
-    dialog --title "$user iniciando debug no host IP:$host_gdb" --tailbox /tmp/ssh.log 30 100
+    dialog \
+        --no-shadow \
+        --title "$user iniciando debug no host IP:$host_gdb" \
+        --tailbox /tmp/ssh.log 40 100
 }
 
 function start_section_debug() {
 
     select_program
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
 
@@ -249,10 +258,10 @@ function setup_target() {
 function create_project() {
 
     new_project_name=$(dialog 
-                         --title "Nome do projeto" \
                          --inputbox "Informe o nome do projeto" 10 100 project_name
+                         --title "Nome do projeto" \
                        )
-    RET=$?
+    local RET=$?
                 
     if [ $RET -eq 0 ]; then
 
@@ -268,7 +277,7 @@ function create_project() {
             cp "$espfile" "$filepath/$new_project_name"
             cp "$openocdfile" "$filepath/$new_project_name"
 
-            #TODO renomear propriedade arquivo
+            #TODO renomear propriedade arquivo para alterar o nome do projeto
         fi
     fi
 }
@@ -296,6 +305,8 @@ function esp32_flash() {
 
     cd $project_path
 
+    sudo chmod 777 /dev/ttyUSB0 > /dev/null
+
     make flash &> /tmp/flash.log &
 
     dialog --title "Gravando ESP32" --tailbox /tmp/flash.log 30 100
@@ -304,6 +315,9 @@ function esp32_flash() {
 function esp32_monitor() {
 
     cd $project_path
+
+    sudo chmod 777 /dev/ttyUSB0 > /dev/null
+
     make monitor
 }
 
@@ -322,7 +336,7 @@ function scan_host() {
 
 function manage_openocd() {
 
-    echo "TODO"
+    echo "TODO instalar openocd"
 }
 
 function download_file() {
@@ -334,6 +348,14 @@ function download_file() {
     dialog --title "Download" --gauge "Por favor espere. Download em andamento.\n\nDe  :$origem\nPara:$destino" 0 0 0
 }
 
+function update_paths() {
+
+    #TODO atualizacao profile
+
+    export PATH="$PATH:$toolchain_path"
+    export IDF_PATH=$idf_path
+}
+
 function install_toolchain() {
 
     CHOICE=$(dialog  --stdout\
@@ -342,9 +364,10 @@ function install_toolchain() {
                 "64" "Versão 64 bits" ON \
                 "32" "Versão 32 bits" OFF  
             )
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
+
 
         if  [ $CHOICE == "32" ]; then
             url_file=$url_espressif_toolchain32
@@ -352,6 +375,7 @@ function install_toolchain() {
             url_file=$url_espressif_toolchain64
         fi
 
+        toolchain_path_dest="$HOME/esp" #default
         select_path "Seleção destino toolchain" "$toolchain_path_dest"
         RET=$?
                 
@@ -372,16 +396,7 @@ function install_toolchain() {
             # procura onde estão os binarios 
             toolchain_path=$(find $toolchain_path_dest -name 'xtensa*gcc' | sed 's|/[^/]*$||' ) &&
 
-            #TODO atualizacao profile
-            #teste=$(grep -m 1 PATH "$HOME/.bash_profile")
-            #echo $teste
-            #if [ -z $teste ]; then
-
-                # Atualizar profile 
-                export PATH="$PATH:$toolchain_path"
-                # TODO add/update no ~/.profile
-                #echo "OK"
-            #fi
+            update_paths
 
             RET=0
         fi
@@ -393,11 +408,11 @@ function install_toolchain() {
 function manage_toolchain() {
 
     install_toolchain
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
 
-        show_atencao "Instalação concluida.\nFazer logoff do usuario para atualizar as variáveis de ambiente"
+        show_msgbox "Atenção" "Instalação concluida.\nFazer logoff do usuario para atualizar as variáveis de ambiente"
     fi
 }
 
@@ -414,14 +429,13 @@ function clone_repositorio() {
 }
 
 function update_repositorio() {
-    #Opcional passar o branch em $2" ex:release/v2.1"
+    #$2: [opcional] passar o branch  ex:release/v2.1"
 
     local destino=$1
 
     cd $destino &&
-
-    git remote update> /dev/null &&
-    git status -uno > /dev/null &&
+    git remote update > /dev/null &&
+    git status -uno  > /dev/null &&
 
     UPSTREAM=${2:-'@{u}'} &&
     LOCAL=$(git rev-parse @) && 
@@ -429,22 +443,25 @@ function update_repositorio() {
     BASE=$(git merge-base @ "$UPSTREAM") &&
 
     if [ $LOCAL = $REMOTE ]; then
-        show_info "Repositorio:\nAtualizado !\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+        show_info "Atualizado !\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
     elif [ $LOCAL = $BASE ]; then
-        show_info "Repositorio:\nAtaulização iniciada\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
-        git pull
-        git submodule update
-        #pid=$?
-    elif [ $REMOTE = $BASE ]; then
-        #ait $pid
 
-        show_info "Repositorio:\nAtaulização iniciada\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
-        git pull
         git submodule update
-        #pid=$?
-        #wait $pid
-    else
-        show_info "Repositorio:\nDiverge\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+        git pull &> /tmp/git.log &> /tmp/git.log 30 100 &
+        dialog \ 
+            --title "Atualização respositório-Local :$LOCAL\nRemote:$REMOTE\nBase  :$BASE" \
+            --tailbox /tmp/git.log 30 100
+
+    elif [ $REMOTE = $BASE ]; then
+
+        git submodule update
+        git pull &> /tmp/git.log &> /tmp/git.log 30 100 &
+        dialog 
+            --title "Atualização respositório-Local :$LOCAL\nRemote:$REMOTE\nBase  :$BASE" \
+            --tailbox /tmp/git.log 30 100
+      else
+
+        show_info "Divergencias\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
     fi
 }
 
@@ -452,33 +469,30 @@ function manage_idf() {
 
     if [ -n $IDF_PATH ]; then
 
-        idf_path_dest="$IDF_PATH"
+        idf_path="$IDF_PATH"
     fi
 
-    select_path "Repositório IDF" "$idf_path_dest"
-    RET=$?
+    select_path "Repositório IDF" "$idf_path"
+    local RET=$?
         
     if [ $RET -eq 0 ]; then
 
-        idf_path_dest=$filepath
+        idf_path=$filepath
 
-        if [[ -d "$idf_path_dest" || $(mkdir $idf_path_dest) = 0 ]]; then
+        if [[ -d "$idf_path" || $(mkdir $idf_path) = 0 ]]; then
 
             { 
-                update_repositorio "$idf_path_dest"
+                update_repositorio "$idf_path"
             } || { 
                 
-                clone_repositorio "$idf_path_orin" "$idf_path_dest" 
+                clone_repositorio "$idf_path_orin" "$idf_path" 
             } || {
 
-                show_info "Não foi possivel clonar/atualizar o SDK"
+                show_msgbox "ERRO!" "Não foi possivel clonar/atualizar o SDK"
             }
         fi
 
-        # TODO add/update no ~/.profile
-        export IDF_PATH=$idf_path_dest
-
-        show_info "Fazer logoff para atualizar as variáveis do ambiente."
+        update_paths
     fi
 }
 
@@ -493,8 +507,9 @@ debug_screen() {
 
     CHOICE=$(dialog --stdout\
                 --title "Debug" \
+                --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                 --no-tags \
-                --menu "Selecione uma das opções abaixo" 30 100 20 \
+                --menu "Selecione uma das opções abaixo" 20 50 20 \
                 1 "Executar debug (prompt)"   \
                 2 "Executar server(openocd)"  \
                 3 "Interface (adaptador)"  \
@@ -502,17 +517,17 @@ debug_screen() {
                 5 "Monitor"  \
                 6 "Scan server"
             )
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                '1') start_section_debug ;;
-                '2') start_debug_server ;;
-                '3') setup_interface ;;
-                '4') setup_target ;;
-                '5') esp32_monitor ;;
-                '6') scan_host ;;
+                1) start_section_debug ;;
+                2) start_debug_server ;;
+                3) setup_interface ;;
+                4) setup_target ;;
+                5) esp32_monitor ;;
+                6) scan_host ;;
         esac
     fi
 
@@ -523,20 +538,21 @@ project_screen() {
 
     CHOICE=$(dialog --stdout \
                 --title "Projeto" \
+                --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                 --no-tags \
-                --menu "Selecione uma das opções abaixo" 30 100 20 \
+                --menu "Selecione uma das opções abaixo" 20 50 20 \
                 1 "Compilar todo o projeto"   \
                 2 "Compilar app"  \
                 3 "Criar projeto"
             )
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                '1') build_all ;;
-                '2') build_app ;;
-                '3') create_project ;;
+                1) build_all ;;
+                2) build_app ;;
+                3) create_project ;;
         esac
     fi
 
@@ -547,22 +563,23 @@ enviroment_screen() {
 
     CHOICE=$(dialog --stdout \
                 --title "Ambiente de desenvolvimento" \
+                --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                 --no-tags \
-                --menu "Selecione uma das opções abaixo" 30 100 20 \
+                --menu "Selecione uma das opções abaixo" 20 50 20 \
                 1 "Instalar/atualizar ESP-IDF"   \
                 2 "Instalar/atualizar openocd"  \
                 3 "Instalar/atualizar toolchain" \
                 4 "Instalar dependencias (pacotes)"
             )
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                '1') manage_idf ;;
-                '2') manage_openocd ;;
-                '3') manage_toolchain ;;
-                '4') install_dependencias ;;
+                1) manage_idf ;;
+                2) manage_openocd ;;
+                3) manage_toolchain ;;
+                4) install_dependencias ;;
         esac
     fi
 
@@ -573,20 +590,21 @@ esp32_screen() {
 
     CHOICE=$(dialog --stdout \
                 --title "ESP32" \
+                --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                 --no-tags \
-                --menu "Selecione uma das opções abaixo" 30 100 20 \
+                --menu "Selecione uma das opções abaixo" 20 50 20 \
                 1 "Gravar (uart)"   \
                 2 "Monitor (uart)"  \
                 3 "Configuração"
             )
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                '1') esp32_flash ;;
-                '2') esp32_monitor ;;
-                '3') esp32_config_screen ;;
+                1) esp32_flash ;;
+                2) esp32_monitor ;;
+                3) esp32_config_screen ;;
         esac
     fi
    
@@ -597,14 +615,15 @@ function main_screen() {
 
     CHOICE=$(dialog --stdout \
                 --title "Principal"\
+                --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                 --no-tags --scrollbar \
-                --menu "Selecione uma das opções abaixo" 30 100 20 \
+                --menu "Selecione uma das opções abaixo" 20 50 20 \
                 1 "Debug" \
                 2 "Projeto" \
                 3 "ESP32" \
                 4 "Ambiente de desenvolvimento" 
              )
-    RET=$?
+    local RET=$?
 
     if [ $RET -eq 0 ]; then
 
@@ -614,9 +633,6 @@ function main_screen() {
                 3) show_screen esp32_screen ;;
                 4) show_screen enviroment_screen ;;
         esac
-    else
-        clear
-        exit
     fi
 
     return $RET
@@ -625,16 +641,29 @@ function main_screen() {
 function show_screen() {
     # selecioan um menu para ser mostrado na tela
    
+    before_screen=$activate_screen
+
     activate_screen=$1
+}
+
+function install_dialog() {
+
+    pacote=$(dpkg --get-selections | grep "dialog" )
+
+    if [ ! -n "$pacote" ] ; then 
+    
+        echo "Por favor espere..."
+        sudo apt-get install -y  dialog -qq > /dev/null
+    fi
 }
 
 function init_script() {
     # startup do script
 
-    sudo apt-get install -y  dialog -qq
-
     #limpa a tela
     clear
+
+    install_dialog
 
     #permite acesso na porta serial
     sudo chmod 777 /dev/ttyUSB0 > /dev/null 
@@ -653,7 +682,13 @@ function event_process() {
 
         # processa eventos com hanldes comunus
         if [ $RET -ne 0 ]; then
-            show_screen main_screen
+
+            if [ $activate_screen = main_screen ]; then
+                # ESC na tela principal entao sai do script
+                break
+            else
+                show_screen $before_screen
+            fi
         fi
     done
 }
