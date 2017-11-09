@@ -1,11 +1,31 @@
 #! /bin/bash
 #
-#  Menu para configuração de Projeto com ESP32 e IDF
-#  As paths do git e comandos estão baseados nesse documento http://esp-idf.readthedocs.io/en/latest/get-started/
+#  Menu para configuração de Projeto com ESP32 utilizando o SDK IDF e OpenOCD para debug
 #
+#   1. Conectar ambos (rasp+computador) na mesma rede com acersso a internet
+#   2. Criar o mesmo usuario em ambos equipamento (rasp+computador)
+#    2.1 adduser
+#   3. Providenciar, para o usuarop criado,  bypass de senha para sudo atraves
+#    3.1 visudo
+#   4. Providenciar RSA do seu usario
+#    4.1 ssh-keygen -t rsa
+#    4.2 ssh-copy-id user@ip_machine
+#   5. Configurar a interface
+#    5.1 O arquivo de configuração da interface se enontra na rasp em /usr/local/share/openocd/scripts/interface/raspberrypi-native.cfg
+#        Configurar:
+#           bcm2835gpio_trst_num 7
+#           adapter_khz 20000
+#   Referencias:
+#       A) Configuração openocd: 
+#          http://esp-idf.readthedocs.io/en/latest/api-guides/jtag-debugging/tips-and-quirks.html#jtag-debugging-tip-openocd-configure-target
+#       B) Paths do git e toolchains e comandos estão baseados nesse documento: 
+#          http://esp-idf.readthedocs.io/en/latest/get-started/
+#       C) RSA:
+#          https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
 
 user=$(whoami)
 project_path=$(pwd)
+url_openocd="https://github.com/espressif/openocd-esp32.git"
 idf_path_orin="https://github.com/espressif/esp-idf.git"
 toolchain_path="$HOME/esp"
 idf_path="$HOME/esp-idf"
@@ -14,12 +34,12 @@ target_path="/usr/local/share/openocd/scripts/target"
 url_espressif_toolchain64="https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-61-gab8375a-5.2.0.tar.gz"
 url_espressif_toolchain32="https://dl.espressif.com/dl/xtensa-esp32-elf-linux32-1.22.0-61-gab8375a-5.2.0.tar.gz"
 makefile="$project_path/Makefile"
-gdbinitfile="$project_path/gdbinit"
+gdbinit="$project_path/gdbinit"
 project_name=$(grep -m 1 PROJECT_NAME $makefile | sed 's/^.*= //g')
-interfacefile=""
-targetfile=""
-programfile="$project_path/build/$project_name.elf"
-host_gdb=$(grep -m 1 target $gdbinitfile | sed 's/^.*remote \|:.*/''/g')
+target="target/esp32.cfg" 
+interface="interface/raspberrypi-native.cfg"
+program="$project_path/build/$project_name.elf"
+host_gdb=$(grep -m 1 target $gdbinit | sed 's/^.*remote \|:.*/''/g')
 build_path="$project_path/build"
 openocdfile="$project_path/openocd.sh"
 espfile="$project_path/esp_dbg.sh"
@@ -34,14 +54,22 @@ function select_file() {
     local title=$1
     local path=$2
     local ext_file=$3
+    local source=${4:-"LOCAL"}  
 
-    if [ ! -z $path ] ; then
-        cd "$path"
+    if [ $source = "REMOTE" ]; then
+
+        dir_content=$(ssh $user@$host_gdb "if [ ! -z $path ] ;then  cd $path ; fi ; ls -lhd */  *.$ext_file" 2>&1 | awk -F ' ' ' { print $9 " " $5 } ')
+        curdir=$(ssh $user@$host_gdb "pwd" 2>&1)
+
+    else
+
+        if [ ! -z $path ] ; then
+            cd "$path"
+        fi
+
+        dir_content=$(ls -lhd */  *.$ext_file | awk -F ' ' ' { print $9 " " $5 } ')
+        curdir=$(pwd)
     fi
-
-    # conteudo do diretorio
-    dir_content=$(ls -lhd */  *.$ext_file | awk -F ' ' ' { print $9 " " $5 } ')
-    curdir=$(pwd)
 
     if [ "$curdir" != "/" ] ; then
         dir_content="../ Voltar $dir_content" 
@@ -60,7 +88,7 @@ function select_file() {
 
         if [[ -d "$selection" ]]; then 
             
-            select_file "$title" "$selection" "$ext_file"
+            select_file "$title" "$selection" "$ext_file" "$source"
         
         elif [[ -f "$selection" ]]; then 
  
@@ -74,16 +102,16 @@ function select_file() {
                     filepath="$curdir"
                     RET=0
                 else
-                    select_file "$title" "$curdir" "$ext_file"
+                    select_file "$title" "$curdir" "$ext_file" "$source"
                 fi
             else
                 show_msgbox "ERRO!" "Arquivo incompativel.\n$selection\nVoce deve selecionar um arquivo do tipo $ext_file"
-                select_file "$title" "$curdir" "$ext_file"
+                select_file "$title" "$curdir" "$ext_file" "$source"
             fi
  
         else # Não foi possivel ler o arquivo
             show_msgbox "ERRO!" "ERRO!" "Caminho ou arquivo invalido.\nNão foi possivel acessa-lo:$selection"
-            select_file "$title" "$curdir" "$ext_file"
+            select_file "$title" "$curdir" "$ext_file" "$source"
         fi
     fi
 
@@ -91,16 +119,24 @@ function select_file() {
 }
 
 function select_path() {
-
     local title=$1
     local path=$2
+    local source=${3:-"LOCAL"}  
 
-    if [ ! -z $path ] ; then
-        cd "$path"
-    fi
+    if [ $source = "REMOTE" ]; then
 
-    content_dir=$(ls -lhd */ | awk -F ' ' ' { print $9 " " $5 } ')
-    cur_dir=$(pwd)
+        content_dir=$(ssh $user@$host_gdb "if [ ! -z $path ] ;then  cd $path ; fi ; ls -lhd */" 2>&1 | awk -F ' ' ' { print $9 " " $5 } ')
+        cur_dir=$(ssh $user@$host_gdb "pwd" 2>&1)
+
+    else
+
+        if [ ! -z $path ] ; then
+            cd "$path"
+        fi
+
+        content_dir=$(ls -lhd */ | awk -F ' ' ' { print $9 " " $5 } ')
+        cur_dir=$(pwd)
+        fi
 
     if [ "$cur_dir" != "/" ] ; then
         content_dir="../ Voltar $content_dir" 
@@ -173,7 +209,7 @@ function select_program() {
 
     if [ $RET -eq 0 ]; then
 
-        programfile="$filepath/$filename"
+        program="$filepath/$filename"
         RET=0
     fi
 
@@ -182,12 +218,12 @@ function select_program() {
 
 function select_interface(){
 
-    select_file "Selecione o adaptador (interface)" "$interface_path" "$ext_config"
+    select_file "Selecione o adaptador (interface)" "$interface_path" "$ext_config" "REMOTE"
     local RET=$?
 
     if [ $RET -eq 0 ]; then
 
-        interfacefile="$filepath/$filename"
+        interface="$filepath/$filename"
         RET=0
     fi
 
@@ -196,12 +232,12 @@ function select_interface(){
 
 function select_target() {
 
-    select_file "Selecione o target" "$target_path" "$ext_config"
+    select_file "Selecione o target" "$target_path" "$ext_config" "REMOTE"
     local RET=$?
 
     if [ $RET -eq 0 ]; then
 
-        targetfile="$filepath/$filename"
+        target="$filepath/$filename"
         RET=0
     fi
 
@@ -226,7 +262,20 @@ function start_gdb() {
 
 function start_debug_server() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' < $openocdfile &> /tmp/ssh.log &
+    #cmd=$(printf 'sudo -Sv && bash -s %s %s' "$interface" "$target")
+
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "start"  -i "$interface" -t "$target" &> /tmp/ssh.log &
+
+    dialog \
+        --no-shadow \
+        --title "$user iniciando debug no host IP:$host_gdb" \
+        --tailbox /tmp/ssh.log 40 100
+}
+
+
+function stop_debug_server() {
+
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "stop"  &> /tmp/ssh.log &
 
     dialog \
         --no-shadow \
@@ -241,7 +290,7 @@ function start_section_debug() {
 
     if [ $RET -eq 0 ]; then
 
-        start_gdb "$gdbinitfile" "$programfile"
+        start_gdb "$gdbinit" "$program"
     fi
 }
 
@@ -318,7 +367,12 @@ function esp32_monitor() {
 
     sudo chmod 777 /dev/ttyUSB0 > /dev/null
 
-    make monitor
+    make monitor &> /tmp/monitor.log &
+
+    dialog \
+        --no-shadow \
+        --title "Monitor (UART)" \
+        --tailbox /tmp/monitor.log 40 100
 }
 
 function esp32_config_screen() {
@@ -334,12 +388,38 @@ function scan_host() {
     show_description_sbc "$host_gdb"
 }
 
-function manage_openocd() {
+function install_openocd() {
 
-    echo "TODO instalar openocd"
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "install" -u $url_openocd &> /tmp/ssh.log &
+
+    dialog \
+        --no-shadow \
+        --title "$user iniciando debug no host IP:$host_gdb" \
+        --tailbox /tmp/ssh.log 40 100
+}
+
+function shutdown_interface() {
+
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "shutdown" &> /tmp/ssh.log  &
+
+    dialog \
+        --no-shadow \
+        --title "$user iniciando debug no host IP:$host_gdb" \
+        --tailbox /tmp/ssh.log 40 100
+}
+
+function reset_target() {
+
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "reset" &> /tmp/ssh.log  &
+
+    dialog \
+        --no-shadow \
+        --title "$user iniciando debug no host IP:$host_gdb" \
+        --tailbox /tmp/ssh.log 40 100
 }
 
 function download_file() {
+
     local origem=$1
     local destino=$2
 
@@ -479,7 +559,7 @@ function manage_idf() {
 
         idf_path=$filepath
 
-        if [[ -d "$idf_path" || $(mkdir $idf_path) = 0 ]]; then
+        if [[ -d "$idf_path" || $(mkdir $idf_path) -eq 0 ]]; then
 
             { 
                 update_repositorio "$idf_path"
@@ -509,13 +589,16 @@ debug_screen() {
                 --title "Debug" \
                 --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                 --no-tags \
-                --menu "Selecione uma das opções abaixo" 20 50 20 \
-                1 "Executar debug (prompt)"   \
-                2 "Executar server(openocd)"  \
-                3 "Interface (adaptador)"  \
-                3 "Target (device)"  \
-                5 "Monitor"  \
-                6 "Scan server"
+                --menu "Selecione uma das opções abaixo\n\nInterface:$interface\nTarget   :$target" 20 100 20 \
+                1 "Iniciar debug (prompt)"   \
+                2 "Iniciar server(openocd)"  \
+                3 "Parar server(openocd)"  \
+                4 "Interface (adaptador)"  \
+                5 "Target (device)"  \
+                6 "Monitor"  \
+                7 "Scan server" \
+                8 "Reset target" \
+                9 "Desligar interface"
             )
     local RET=$?
 
@@ -524,10 +607,13 @@ debug_screen() {
         case $CHOICE in
                 1) start_section_debug ;;
                 2) start_debug_server ;;
-                3) setup_interface ;;
-                4) setup_target ;;
-                5) esp32_monitor ;;
-                6) scan_host ;;
+                3) stop_debug_server ;;
+                4) setup_interface ;;
+                5) setup_target ;;
+                6) esp32_monitor ;;
+                7) scan_host ;;
+                8) reset_target ;;
+                9) shutdown_interface ;;
         esac
     fi
 
@@ -540,7 +626,7 @@ project_screen() {
                 --title "Projeto" \
                 --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                 --no-tags \
-                --menu "Selecione uma das opções abaixo" 20 50 20 \
+                --menu "Selecione uma das opções abaixo" 20 100 20 \
                 1 "Compilar todo o projeto"   \
                 2 "Compilar app"  \
                 3 "Criar projeto"
@@ -565,7 +651,7 @@ enviroment_screen() {
                 --title "Ambiente de desenvolvimento" \
                 --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                 --no-tags \
-                --menu "Selecione uma das opções abaixo" 20 50 20 \
+                --menu "Selecione uma das opções abaixo" 20 100 20 \
                 1 "Instalar/atualizar ESP-IDF"   \
                 2 "Instalar/atualizar openocd"  \
                 3 "Instalar/atualizar toolchain" \
@@ -577,7 +663,7 @@ enviroment_screen() {
 
         case $CHOICE in
                 1) manage_idf ;;
-                2) manage_openocd ;;
+                2) install_openocd ;;
                 3) manage_toolchain ;;
                 4) install_dependencias ;;
         esac
@@ -592,7 +678,7 @@ esp32_screen() {
                 --title "ESP32" \
                 --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                 --no-tags \
-                --menu "Selecione uma das opções abaixo" 20 50 20 \
+                --menu "Selecione uma das opções abaixo" 20 100 20 \
                 1 "Gravar (uart)"   \
                 2 "Monitor (uart)"  \
                 3 "Configuração"
@@ -617,7 +703,7 @@ function main_screen() {
                 --title "Principal"\
                 --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                 --no-tags --scrollbar \
-                --menu "Selecione uma das opções abaixo" 20 50 20 \
+                --menu "Selecione uma das opções abaixo" 20 100 20 \
                 1 "Debug" \
                 2 "Projeto" \
                 3 "ESP32" \
@@ -640,7 +726,7 @@ function main_screen() {
 
 function show_screen() {
     # selecioan um menu para ser mostrado na tela
-   
+
     before_screen=$activate_screen
 
     activate_screen=$1
@@ -693,7 +779,7 @@ function event_process() {
     done
 }
 
-#Entrada do script
+##### Main - Entrada do script
 
 init_script
 

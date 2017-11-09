@@ -1,63 +1,83 @@
 #! /bin/bash
 #
 # Inicia o servidor de debug na RBPI zero reseta o device atrave da manipulacao de GPIO
-# Arquivo de configuração da interface usr/local/share/openocd/scripts/interface/raspberrypi-native.cfg
-#
+# 
+# Observação: O arquivo de configuração da interface usr/local/share/openocd/scripts/interface/raspberrypi-native.cfg
+# Nao esquecer de configurar no aqrquivo target o clock e o rst
+# http://esp-idf.readthedocs.io/en/latest/api-guides/jtag-debugging/tips-and-quirks.html#jtag-debugging-tip-openocd-configure-target
 
-project_path=$(pwd)
 process_name="openocd"
-target="target/esp32.cfg" 
-interface="interface/raspberrypi-native.cfg"
-transport="transport select jtag"
-url_openocd="git://git.code.sf.net/p/openocd/code openocd-code"
+interface=${1:-"interface/raspberrypi-native.cfg"}
+target=${2:-"target/esp32.cfg"}  
+transport="jtag"
+url_openocd="https://github.com/espressif/openocd-esp32.git"
 openocd_path="$HOME/openocd-code"
+cmd=""
 
-function close_openocd(){
+function stop_server(){
+  # Finaliza o processo correspondente ao openocd
 
   sudo pkill $process_name
 }
 
 function start_openocd(){
+  # Inicia o openocd utilizando os parametro recebidos
 
-  #openocd_pid=$(ps -ef | grep openocd | grep -v 'grep' | awk '{ printf $2 }')
-
-  #echo "Interface: $interface Targer: $target"
-  #if [ $openocd_pid ]; then
-  #  echo "$process_name ja estava em execução PID: $openocd_pid"
- # else
-    sudo openocd -f $1 -c "transport select jtag" -f $2 -d 3 2>&1 | tee openocd.log  
-    #openocd_pid=$(ps -ef | grep $process_name | grep -v 'grep' | awk '{ printf $2 }')
-    #echo "$process_name em execução PID: $openocd_pid"
-  #fi
+  sudo openocd -f $1 -c "transport select $transport" -f $2 -d 3
 }
 
 function reset_target() {
+  #Manuipula o GPIO que esta ligado ao pino de resete do ESP32
 
   gpio -g mode 8 out
   gpio -g write 8 1
-  sleep 1
+  sleep 2             # tempo para inicializar o modo jtag
   gpio -g write 8 0
   sleep 0.3
   gpio -g write 8 1
+  sleep 1             # Tempo para startup
+}
+
+function start_server(){
+  # incia o servidor de debug
+
+  reset_target &
+
+  start_openocd "$interface" "$target"
 }
 
 function install_dependencias() {
+    # Instala os pacotes necessarios para execução do server debug OpenOCD
 
-    sudo apt-get -y install git wget make libncurses-dev flex bison gperf python python-serial  minicom autoconf libtool make pkg-config libusb-1.0-0 libusb-1.0-0-dev
+    sudo apt-get -y install \
+      git \
+      wget \
+      make \
+      libncurses-dev \
+      flex \
+      bison \
+      gperf \
+      python \
+      python-serial \
+      minicom \
+      autoconf \
+      libtool \
+      pkg-config \
+      libusb-1.0-0 \
+      libusb-1.0-0-dev
 }
 
 function clone_repositorio() {
+    # realiza de um repositorio no git
 
     local origem=$1
     local destino=$2
 
-    cd $destino &&
-
-    git clone --recursive --progress $origem 2>&1 | \
-    stdbuf -o0 awk 'BEGIN{RS="\r|\n|\r\n|\n\r";ORS="\n"}/Receiving/{print substr($3, 1, length($3)-1)}'
+    git clone --recursive $origem $destino
 }
 
 function update_repositorio() {
+    # atualiza o repositorio local
     #$2: [opcional] passar o branch  ex:release/v2.1"
 
     local destino=$1
@@ -78,8 +98,8 @@ function update_repositorio() {
         git submodule update
         git pull
 
-    elif [ $REMOTE = $BASE ]; then
 
+    elif [ $REMOTE = $BASE ]; then
         git submodule update
         git pull
 
@@ -90,48 +110,85 @@ function update_repositorio() {
 }
 
 function get_source_code() {
+  # Faz a copia ou atualiza o codigo fonte do openocd para compilação
 
-  if [[ -d "$openocd_path" || $(mkdir $openocd_path) = 0 ]]; then
+  if [[ -d "$openocd_path" || $(mkdir $openocd_path) -eq 0 ]]; then
 
       { 
+        echo "Atualizando source-code"
         update_repositorio "$openocd_path" 
       } || { 
-          
-        clone_repositorio "$url_openocd" "$openocd_path" 
+
+        echo "Clonando source-code"  
+        clone_repositorio "$url_openocd" "$openocd_path"
       } || {
 
-        echo "Não foi possivel clonar/atualizar o OPENOCD"
+        echo "Não foi possivel clonar/atualizar o OpenOCD"
       }
+  else
+    echo "Duretorio Não foi possivel clonar/atualizar o OpenOCD"
   fi
 }
 
 function install_openocd() {
+  # Instala o OpenOCD
 
-  install_dependencias
+  install_dependencias &&
 
-  get_source_code
+  get_source_code &&
 
-  ./bootstrap
+  cd $openocd_path
 
-  ./configure --enable-sysfsgpio --enable-bcm2835gpio
+  ./bootstrap &&
 
-  make
+  ./configure --enable-sysfsgpio --enable-bcm2835gpio &&
+
+  make &&
   
   sudo make install
+
+  echo "Fim do script de instalação"
 }
 
 
-function init_script() {
-    # startup do script
+##### Main - Entrada do script
 
-    #limpa a tela
-    clear
-}
+clear
 
-init_script
+while getopts "c:i:t:u:" opt; do
 
-close_openocd
+  case $opt in
+    "u")  url_openocd=$OPTARG ;;
+    "c")  cmd=$OPTARG         ;;
+    "i")  interface=$OPTARG   ;;
+    "t")  target=$OPTARG      ;;
+    "?")  exit -2             ;;
+  esac
 
-start_openocd "$interface" "$target"
+done
 
-reset_target
+if [ $cmd = "install" ]; then
+
+  install_openocd
+
+elif  [ $cmd = "shutdow" ]; then
+
+  sudo shutdown now
+
+elif  [ $cmd = "start" ]; then
+
+  stop_server
+
+  start_server
+
+elif  [ $cmd = "stop" ]; then
+
+  stop_server
+
+elif  [ $cmd = "reset" ]; then
+
+  reset_target
+
+else
+  exit -2
+fi 
