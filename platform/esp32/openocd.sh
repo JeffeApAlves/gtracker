@@ -1,7 +1,7 @@
 #! /bin/bash
 #
 # Inicia o servidor de debug na RBPI zero reseta o device atrave da manipulacao de GPIO
-# 
+#
 # Observação: O arquivo de configuração da interface usr/local/share/openocd/scripts/interface/raspberrypi-native.cfg
 # Nao esquecer de configurar no aqrquivo target o clock e o rst
 # http://esp-idf.readthedocs.io/en/latest/api-guides/jtag-debugging/tips-and-quirks.html#jtag-debugging-tip-openocd-configure-target
@@ -41,6 +41,7 @@ function reset_target() {
 function start_server(){
   # incia o servidor de debug
 
+  # reseta o target atrabves de um GPIO ligado ao reset
   reset_target &
 
   start_openocd "$interface" "$target"

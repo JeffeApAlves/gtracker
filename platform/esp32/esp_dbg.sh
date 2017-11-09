@@ -1,27 +1,51 @@
 #! /bin/bash
 #
-#  Menu para configuração de Projeto com ESP32 utilizando o SDK IDF e OpenOCD para debug
+#  Menu para configuração de projetos com ESP32 utilizando o SDK IDF e OpenOCD para debug
 #
+#  Existe um segundo script "openocd.sh" que será rodado na raspberry
+#  Opções   -c <comando>    run: inicia o servidor
+#                           stop: para o servidor
+#                           install: instala/atualiza o openocd
+#                           reset: reinicia o target
+#                           shutdown: desliga o target
+#           -i <interface> Nome do arquivo correpsonente que sera usado no debug
+#           -t <target> Nome do arquivo correpsonde ao target que sera debugado
+#           -u <url> Url do repositorio do openocd
+#  Steps:
 #   1. Conectar ambos (rasp+computador) na mesma rede com acersso a internet
+#
 #   2. Criar o mesmo usuario em ambos equipamento (rasp+computador)
 #    2.1 adduser
+#
 #   3. Providenciar, para o usuarop criado,  bypass de senha para sudo atraves
 #    3.1 visudo
+#
 #   4. Providenciar RSA do seu usario
 #    4.1 ssh-keygen -t rsa
 #    4.2 ssh-copy-id user@ip_machine
+#
 #   5. Configurar a interface
 #    5.1 O arquivo de configuração da interface se enontra na rasp em /usr/local/share/openocd/scripts/interface/raspberrypi-native.cfg
 #        Configurar:
 #           bcm2835gpio_trst_num 7
 #           adapter_khz 20000
-#   Referencias:
+#
+#   6. As variaveis de ambinete serao colocadas no arquivo ~/.profile
+#       export PATH=$PATH:$HOME/esp/xtensa-esp32-elf/bin
+#       export IDF_PATH=~/esp/esp-idf
+#
+#   7.Selecionar python 2.7 
+#    7.1sudo update-alternatives --config python
+#
+#   8.Referencias:
 #       A) Configuração openocd: 
 #          http://esp-idf.readthedocs.io/en/latest/api-guides/jtag-debugging/tips-and-quirks.html#jtag-debugging-tip-openocd-configure-target
 #       B) Paths do git e toolchains e comandos estão baseados nesse documento: 
 #          http://esp-idf.readthedocs.io/en/latest/get-started/
 #       C) RSA:
 #          https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
+#       D) Configuração toolchain
+#          https://esp-idf.readthedocs.io/en/v2.0/linux-setup.html
 
 user=$(whoami)
 project_path=$(pwd)
@@ -43,6 +67,7 @@ host_gdb=$(grep -m 1 target $gdbinit | sed 's/^.*remote \|:.*/''/g')
 build_path="$project_path/build"
 openocdfile="$project_path/openocd.sh"
 espfile="$project_path/esp_dbg.sh"
+profile="$HOME/.profile"
 ext_program='elf'
 ext_config='cfg'
 before_screen=null
@@ -55,6 +80,8 @@ function select_file() {
     local path=$2
     local ext_file=$3
     local source=${4:-"LOCAL"}  
+    local dir_content=""
+    local curdir=""
 
     if [ $source = "REMOTE" ]; then
 
@@ -119,9 +146,12 @@ function select_file() {
 }
 
 function select_path() {
+    
     local title=$1
     local path=$2
     local source=${3:-"LOCAL"}  
+    local content_dir=""
+    local cur_dir=""  
 
     if [ $source = "REMOTE" ]; then
 
@@ -136,11 +166,12 @@ function select_path() {
 
         content_dir=$(ls -lhd */ | awk -F ' ' ' { print $9 " " $5 } ')
         cur_dir=$(pwd)
-        fi
+    fi
 
     if [ "$cur_dir" != "/" ] ; then
         content_dir="../ Voltar $content_dir" 
     fi
+
 
     selection=$(dialog --stdout \
                     --title "Seleção de diretório" \
@@ -150,13 +181,14 @@ function select_path() {
                     --menu "Selecione o diretório de destino\n$cur_dir" 30 100 20 \
                     $content_dir
                 )
+
     local RET=$?
  
     if [ $RET -eq 0 ]; then
 
         select_path "$title" "$selection"
 
-    elif [ $RET -eq 3 ]; then #extra button
+    elif [ $RET -eq 3 ]; then #extra button=seleciona
  
         filepath="$cur_dir"
         RET=0
@@ -245,6 +277,7 @@ function select_target() {
 }
 
 function start_gdb() {
+
     local init=$1
     local program=$2
 
@@ -261,8 +294,6 @@ function start_gdb() {
 }
 
 function start_debug_server() {
-
-    #cmd=$(printf 'sudo -Sv && bash -s %s %s' "$interface" "$target")
 
     ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "start"  -i "$interface" -t "$target" &> /tmp/ssh.log &
 
@@ -306,13 +337,15 @@ function setup_target() {
 
 function create_project() {
 
-    new_project_name=$(dialog 
-                         --inputbox "Informe o nome do projeto" 10 100 project_name
-                         --title "Nome do projeto" \
-                       )
+    local new_project_name=""
+
+    new_project_name=$(dialog --stdout\
+                        --inputbox "Informe o nome do projeto" 10 100 project_name \
+                        --title "Nome do projeto"
+                      )
     local RET=$?
-                
-    if [ $RET -eq 0 ]; then
+
+    if [ $RET -ne 1 ]; then
 
         select_path "Seleção destino projeto" "$HOME"
         RET=$?
@@ -326,7 +359,10 @@ function create_project() {
             cp "$espfile" "$filepath/$new_project_name"
             cp "$openocdfile" "$filepath/$new_project_name"
 
-            #TODO renomear propriedade arquivo para alterar o nome do projeto
+
+            sed -e '/PROJECT_NAME/D' "$filepath/$new_project_name/Makefile" > "/tmp/Makefile"
+            echo  'PROJECT_NAME := '$new_project_name >> "/tmp/Makefile"
+            cp "/tmp/Makefile" "$filepath/$new_project_name"
         fi
     fi
 }
@@ -366,7 +402,6 @@ function esp32_monitor() {
     cd $project_path
 
     sudo chmod 777 /dev/ttyUSB0 > /dev/null
-
     make monitor &> /tmp/monitor.log &
 
     dialog \
@@ -378,6 +413,7 @@ function esp32_monitor() {
 function esp32_config_screen() {
 
     cd $project_path
+
     make menuconfig
 }   
 
@@ -430,10 +466,17 @@ function download_file() {
 
 function update_paths() {
 
-    #TODO atualizacao profile
+    file_temp=/tmp/profile
+
+    sed -e '/IDF_PATH/D' $profile | sed -e '/xtensa-esp32-elf/D' | cat > "$file_temp"
+
+    echo  'export PATH=$PATH:'$toolchain_path >> "$file_temp"
+    echo  'export IDF_PATH='$idf_path >> "$file_temp"
 
     export PATH="$PATH:$toolchain_path"
     export IDF_PATH=$idf_path
+
+    cp "$file_temp" "$profile"
 }
 
 function install_toolchain() {
@@ -509,15 +552,14 @@ function clone_repositorio() {
 }
 
 function update_repositorio() {
-    #$2: [opcional] passar o branch  ex:release/v2.1"
-
+    
     local destino=$1
+    local UPSTREAM=${2:-'@{u}'}   #[opcional] passar o branch  ex:release/v2.1"
 
     cd $destino &&
     git remote update > /dev/null &&
     git status -uno  > /dev/null &&
 
-    UPSTREAM=${2:-'@{u}'} &&
     LOCAL=$(git rev-parse @) && 
     REMOTE=$(git rev-parse "$UPSTREAM") &&
     BASE=$(git merge-base @ "$UPSTREAM") &&
@@ -546,6 +588,7 @@ function update_repositorio() {
 }
 
 function manage_idf() {
+    # Atualiza ou clona o repositorio IDF
 
     if [ -n $IDF_PATH ]; then
 
@@ -577,13 +620,26 @@ function manage_idf() {
 }
 
 function install_dependencias() {
+    # Instala pacotes necessários
 
-    sudo apt-get -y install git wget make libncurses-dev flex bison gperf python python-serial minicom  &> /tmp/install.log &
+    sudo apt-get -y install \
+        git \
+        wget \
+        make \
+        dialog \
+        libncurses5-dev \
+        flex \
+        bison \
+        gperf \
+        python \
+        python-serial \
+        minicom  &> /tmp/install.log &
 
     dialog --title "Instalação dos pacotes" --tailbox  /tmp/install.log 30 100
 }
 
 debug_screen() {
+    # Tela de debug
 
     CHOICE=$(dialog --stdout\
                 --title "Debug" \
@@ -621,6 +677,7 @@ debug_screen() {
 }
 
 project_screen() {
+    # Tela gerenciamento do projeto
 
     CHOICE=$(dialog --stdout \
                 --title "Projeto" \
@@ -646,6 +703,7 @@ project_screen() {
 }
 
 enviroment_screen() {
+    # Tela para configuração do ambiente de desenvolvimento
 
     CHOICE=$(dialog --stdout \
                 --title "Ambiente de desenvolvimento" \
@@ -655,7 +713,7 @@ enviroment_screen() {
                 1 "Instalar/atualizar ESP-IDF"   \
                 2 "Instalar/atualizar openocd"  \
                 3 "Instalar/atualizar toolchain" \
-                4 "Instalar dependencias (pacotes)"
+                4 "Instalar/atualizar dependencias (pacotes)"
             )
     local RET=$?
 
@@ -673,6 +731,7 @@ enviroment_screen() {
 }
 
 esp32_screen() {
+    # Tela de configuração do ESP32
 
     CHOICE=$(dialog --stdout \
                 --title "ESP32" \
@@ -698,6 +757,7 @@ esp32_screen() {
 }
 
 function main_screen() {
+    # Tela principal
 
     CHOICE=$(dialog --stdout \
                 --title "Principal"\
@@ -734,12 +794,20 @@ function show_screen() {
 
 function install_dialog() {
 
-    pacote=$(dpkg --get-selections | grep "dialog" )
+    local pacote=$(dpkg --get-selections | grep "dialog" )
 
     if [ ! -n "$pacote" ] ; then 
     
         echo "Por favor espere..."
         sudo apt-get install -y  dialog -qq > /dev/null
+    fi
+
+    pacote=$(dpkg --get-selections | grep "libncurses5-dev" )
+
+    if [ ! -n "$pacote" ] ; then 
+    
+        echo "Por favor espere..."
+        sudo apt-get libncurses5-dev -y  dialog -qq > /dev/null
     fi
 }
 
