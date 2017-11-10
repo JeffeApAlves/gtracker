@@ -6,13 +6,16 @@
 # Nao esquecer de configurar no aqrquivo target o clock e o rst
 # http://esp-idf.readthedocs.io/en/latest/api-guides/jtag-debugging/tips-and-quirks.html#jtag-debugging-tip-openocd-configure-target
 
+interface_path="/usr/local/share/openocd/scripts/interface"
+target_path="/usr/local/share/openocd/scripts/target"
 process_name="openocd"
-interface=${1:-"interface/raspberrypi-native.cfg"}
-target=${2:-"target/esp32.cfg"}  
+interface="raspberrypi-native.cfg"
+target="esp32.cfg"  
 transport="jtag"
 url_openocd="https://github.com/espressif/openocd-esp32.git"
 openocd_path="$HOME/openocd-code"
 cmd=""
+freq_jtag=400
 
 function stop_server(){
   # Finaliza o processo correspondente ao openocd
@@ -151,18 +154,25 @@ function install_openocd() {
   echo "Fim do script de instalação"
 }
 
+function config_jtag() {
+
+  sed -e '/adapter_khz/D' "$interface" > "/tmp/interface"
+  echo  'adapter_khz '$freq_jtag >> "/tmp/interface"
+  sudo  cp "/tmp/interface" "$interface"
+}
 
 ##### Main - Entrada do script
 
 clear
 
-while getopts "c:i:t:u:" opt; do
+while getopts "c:i:t:u:f:" opt; do
 
   case $opt in
     "u")  url_openocd=$OPTARG ;;
     "c")  cmd=$OPTARG         ;;
     "i")  interface=$OPTARG   ;;
     "t")  target=$OPTARG      ;;
+    "f")  freq_jtag=$OPTARG   ;; 
     "?")  exit -2             ;;
   esac
 
@@ -189,6 +199,10 @@ elif  [ $cmd = "stop" ]; then
 elif  [ $cmd = "reset" ]; then
 
   reset_target
+
+elif  [ $cmd = "config" ]; then
+
+  config_jtag
 
 else
   exit -2

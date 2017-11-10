@@ -24,18 +24,18 @@
                         "text": "file '/media/jefferson/Dados/workspace/GoodsTracker/platform/esp32/build/esp32-mqtt.elf'"
                     },
                     {
-                        "text": "target remote 192.168.0.104:3333"
+                        "text": "target remote 192.168.0.105:3333"
                     },
                     {
                         "text": "monitor reset halt"
                     }
-                    // ,
-                    // {
-                    //     "text": "thb app_main"
-                    // },
-                    // {
-                    //     "text": "x $a1=0"
-                    // }
+                     ,
+                    {
+                         "text": "thb app_main"
+                    },
+                    {
+                         "text": "x $a1=0"
+                    }
                 ],
 
                 "logging": {

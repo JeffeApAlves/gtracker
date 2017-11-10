@@ -49,6 +49,7 @@
 #       C) Configuração toolchain
 #          https://esp-idf.readthedocs.io/en/v2.0/linux-setup.html
 
+
 user=$(whoami)
 project_path=$(pwd)
 url_openocd="https://github.com/espressif/openocd-esp32.git"
@@ -62,8 +63,8 @@ url_espressif_toolchain32="https://dl.espressif.com/dl/xtensa-esp32-elf-linux32-
 makefile="$project_path/Makefile"
 gdbinit="$project_path/gdbinit"
 project_name=$(grep -m 1 PROJECT_NAME $makefile | sed 's/^.*= //g')
-target="target/esp32.cfg" 
-interface="interface/raspberrypi-native.cfg"
+target="$target_path/esp32.cfg" 
+interface="$interface_path/raspberrypi-native.cfg"
 program="$project_path/build/$project_name.elf"
 host_gdb=$(grep -m 1 target $gdbinit | sed 's/^.*remote \|:.*/''/g')
 build_path="$project_path/build"
@@ -75,6 +76,8 @@ ext_config='cfg'
 before_screen=null
 activate_screen=null
 template_project="$idf_path/examples/get-started/blink ."
+app_title="Gerenciador de projetos ESP32-Projeto:$project_name em $project_path"
+freq_jtag=10000
 
 function select_file() {
 
@@ -106,7 +109,7 @@ function select_file() {
 
     selection=$(dialog --stdout \
                     --title "Seleção de arquivo" \
-                    --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+                    --backtitle "$app_title" \
                     --scrollbar \
                     --menu "$title\nSelecione um arquivo do tipo '$ext_file'.\n$curdir" 30 100 20 \
                     $dir_content
@@ -177,7 +180,7 @@ function select_path() {
 
     selection=$(dialog --stdout \
                     --title "Seleção de diretório" \
-                    --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+                    --backtitle "$app_title" \
                     --extra-button --scrollbar \
                     --extra-label "Selecionar" \
                     --menu "Selecione o diretório de destino\n$cur_dir" 30 100 20 \
@@ -203,7 +206,7 @@ function show_msgbox() {
 
     dialog \
         --title "$1" \
-        --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+        --backtitle "$app_title" \
         --msgbox "$2" \
         0 0
 }
@@ -212,7 +215,7 @@ function show_info() {
 
     dialog \
         --title "Informações !" \
-        --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+        --backtitle "$app_title" \
         --sleep 3 \
         --infobox "$1" \
         0 0
@@ -222,7 +225,7 @@ function show_description_file() {
 
     dialog \ 
         --title "Informações do arquivo" \
-        --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+        --backtitle "$app_title" \
         --msgbox "Arquivo selecionado\nNome     : $1\nDiretorio: $2" \
         0 0 
 }
@@ -231,7 +234,7 @@ function show_description_sbc() {
 
     dialog \
         --title "Informações do SBC" \
-        --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+        --backtitle "$app_title" \
         --msgbox "SBC encontrada\nIP: $1 " \
         0 0
 }
@@ -341,9 +344,10 @@ function create_project() {
 
     local new_project_name=""
 
-    new_project_name=$(dialog --stdout\
-                        --inputbox "Informe o nome do projeto" 10 100 project_name \
-                        --title "Nome do projeto"
+    new_project_name=$(dialog --stdout \
+                        --title "Nome do projeto" \
+                        --backtitle "$app_title" \
+                        --inputbox "Informe o nome do projeto" 10 100 project_name
                       )
     local RET=$?
 
@@ -366,6 +370,28 @@ function create_project() {
             echo  'PROJECT_NAME := '$new_project_name >> "/tmp/Makefile"
             cp "/tmp/Makefile" "$filepath/$new_project_name"
         fi
+    fi
+}
+
+function config_jtag() {
+
+    freq_jtag=$(dialog --stdout \
+                --title "Nome do projeto" \
+                --backtitle "$app_title" \
+                --inputbox "Informe a frequencia do jtag em [KHz]" 10 100 $freq_jtag \
+            )
+
+    local RET=$?
+
+    if [ $RET -ne 1 ]; then
+
+        ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "config" -i "$interface" -f "$freq_jtag" &> /dev/null
+    
+#        dialog \
+#            --no-shadow \
+#            --title "$user iniciando debug no host IP:$host_gdb" \
+#            --tailbox /tmp/ssh.log 40 100
+    
     fi
 }
 
@@ -648,7 +674,7 @@ debug_screen() {
 
     CHOICE=$(dialog --stdout\
                 --title "Debug" \
-                --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+                --backtitle "$app_title" \
                 --no-tags \
                 --menu "Selecione uma das opções abaixo\n\nInterface:$interface\nTarget   :$target" 20 100 20 \
                 1 "Iniciar debug (prompt)"   \
@@ -656,9 +682,9 @@ debug_screen() {
                 3 "Parar server(openocd)"  \
                 4 "Interface (adaptador)"  \
                 5 "Target (device)"  \
-                6 "Monitor"  \
-                7 "Scan server" \
-                8 "Reset target" \
+                6 "JTAG"  \
+                7 "Reset target" \
+                8 "Scan server" \
                 9 "Desligar interface"
             )
     local RET=$?
@@ -671,9 +697,9 @@ debug_screen() {
                 3) stop_debug_server ;;
                 4) setup_interface ;;
                 5) setup_target ;;
-                6) esp32_monitor ;;
-                7) scan_host ;;
-                8) reset_target ;;
+                6) config_jtag ;;
+                7) reset_target ;;
+                8) scan_host ;;
                 9) shutdown_interface ;;
         esac
     fi
@@ -686,7 +712,7 @@ project_screen() {
 
     CHOICE=$(dialog --stdout \
                 --title "Projeto" \
-                --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+                --backtitle "$app_title" \
                 --no-tags \
                 --menu "Selecione uma das opções abaixo" 20 100 20 \
                 1 "Compilar todo o projeto"   \
@@ -712,7 +738,7 @@ enviroment_screen() {
 
     CHOICE=$(dialog --stdout \
                 --title "Ambiente de desenvolvimento" \
-                --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+                --backtitle "$app_title" \
                 --no-tags \
                 --menu "Selecione uma das opções abaixo" 20 100 20 \
                 1 "Instalar/atualizar ESP-IDF"   \
@@ -740,7 +766,7 @@ esp32_screen() {
 
     CHOICE=$(dialog --stdout \
                 --title "ESP32" \
-                --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+                --backtitle "$app_title" \
                 --no-tags \
                 --menu "Selecione uma das opções abaixo" 20 100 20 \
                 1 "Gravar (uart)"   \
@@ -766,7 +792,7 @@ function main_screen() {
 
     CHOICE=$(dialog --stdout \
                 --title "Principal"\
-                --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
+                --backtitle "$app_title" \
                 --no-tags --scrollbar \
                 --menu "Selecione uma das opções abaixo" 20 100 20 \
                 1 "Debug" \
