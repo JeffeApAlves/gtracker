@@ -15,14 +15,18 @@
 #   1. Conectar ambos (rasp+computador) na mesma rede com acersso a internet
 #
 #   2. Criar o mesmo usuario em ambos equipamento (rasp+computador)
-#    2.1 adduser
+#    2.1 adduser -m nome_usuario
 #
-#   3. Providenciar, para o usuarop criado,  bypass de senha para sudo atraves
+#   3. Providenciar, para o usuaro criado sudo e bypass de senha para sudo atraves
 #    3.1 visudo
+#    3.2 alex ALL=NOPASSWD: ALL
 #
 #   4. Providenciar RSA do seu usario
 #    4.1 ssh-keygen -t rsa
 #    4.2 ssh-copy-id user@ip_machine
+#    4.3 Referencias
+#       https://www.ssh.com/ssh/copy-id
+#       https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
 #
 #   5. Configurar a interface
 #    5.1 O arquivo de configuração da interface se enontra na rasp em /usr/local/share/openocd/scripts/interface/raspberrypi-native.cfg
@@ -34,17 +38,15 @@
 #       export PATH=$PATH:$HOME/esp/xtensa-esp32-elf/bin
 #       export IDF_PATH=~/esp/esp-idf
 #
-#   7.Selecionar python 2.7 
-#    7.1sudo update-alternatives --config python
+#   7.Python 2.7 
+#    7.1 Selecionar atraves do sudo update-alternatives --config python
 #
 #   8.Referencias:
 #       A) Configuração openocd: 
 #          http://esp-idf.readthedocs.io/en/latest/api-guides/jtag-debugging/tips-and-quirks.html#jtag-debugging-tip-openocd-configure-target
 #       B) Paths do git e toolchains e comandos estão baseados nesse documento: 
 #          http://esp-idf.readthedocs.io/en/latest/get-started/
-#       C) RSA:
-#          https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
-#       D) Configuração toolchain
+#       C) Configuração toolchain
 #          https://esp-idf.readthedocs.io/en/v2.0/linux-setup.html
 
 user=$(whoami)
@@ -106,7 +108,7 @@ function select_file() {
                     --title "Seleção de arquivo" \
                     --backtitle "Gerenciador de projetos ESP32-Projeto:$project_name em $project_path" \
                     --scrollbar \
-                    --menu "Selecione um arquivo com do tipo '$ext_file'.\n$curdir" 30 100 20 \
+                    --menu "$title\nSelecione um arquivo do tipo '$ext_file'.\n$curdir" 30 100 20 \
                     $dir_content
                 )
     local RET=$?
@@ -558,7 +560,7 @@ function update_repositorio() {
 
     cd $destino &&
     git remote update > /dev/null &&
-    git status -uno  > /dev/null &&
+    #git status -uno  > /dev/null &&
 
     LOCAL=$(git rev-parse @) && 
     REMOTE=$(git rev-parse "$UPSTREAM") &&
@@ -570,7 +572,7 @@ function update_repositorio() {
 
         git submodule update
         git pull &> /tmp/git.log &> /tmp/git.log 30 100 &
-        dialog \ 
+        dialog \
             --title "Atualização respositório-Local :$LOCAL\nRemote:$REMOTE\nBase  :$BASE" \
             --tailbox /tmp/git.log 30 100
 
@@ -606,9 +608,11 @@ function manage_idf() {
 
             { 
                 update_repositorio "$idf_path"
-            } || { 
                 
+            } || {
+
                 clone_repositorio "$idf_path_orin" "$idf_path" 
+
             } || {
 
                 show_msgbox "ERRO!" "Não foi possivel clonar/atualizar o SDK"
@@ -623,6 +627,7 @@ function install_dependencias() {
     # Instala pacotes necessários
 
     sudo apt-get -y install \
+        nmap \
         git \
         wget \
         make \
@@ -796,9 +801,10 @@ function install_dialog() {
 
     local pacote=$(dpkg --get-selections | grep "dialog" )
 
+    echo "Por favor espere..."
+
     if [ ! -n "$pacote" ] ; then 
     
-        echo "Por favor espere..."
         sudo apt-get install -y  dialog -qq > /dev/null
     fi
 
@@ -806,7 +812,6 @@ function install_dialog() {
 
     if [ ! -n "$pacote" ] ; then 
     
-        echo "Por favor espere..."
         sudo apt-get libncurses5-dev -y  dialog -qq > /dev/null
     fi
 }
