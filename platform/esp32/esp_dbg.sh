@@ -432,10 +432,7 @@ function esp32_monitor() {
     sudo chmod 777 /dev/ttyUSB0 > /dev/null
     make monitor &> /tmp/monitor.log &
 
-    dialog \
-        --no-shadow \
-        --title "Monitor (UART)" \
-        --tailbox /tmp/monitor.log 40 100
+    dialog --title "Monitor (UART)" --tailbox /tmp/monitor.log 40 100
 }
 
 function esp32_config_screen() {

@@ -16,7 +16,7 @@
 
 /* Task TLM */
 static const char*			TLM_TASK_NAME =			"tk_tlm";
-#define 					TLM_TASK_PRIORITY		(tskIDLE_PRIORITY+4)
+#define 					TLM_TASK_PRIORITY		(tskIDLE_PRIORITY+3)
 #define						TLM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE+20)
 static TaskHandle_t			xHandleTLMTask;
 static EventGroupHandle_t	tlm_events;

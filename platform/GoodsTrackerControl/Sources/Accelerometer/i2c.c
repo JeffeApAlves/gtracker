@@ -101,7 +101,7 @@ bool I2C_Write(i2c_state_t* i2c_status,uint8_t addr, uint8_t val) {
 
 static inline void I2C_wait_tx(i2c_state_t* i2c_status){
 
-	i2c_status->dataTransmittedFlg = false;
+//	i2c_status->dataTransmittedFlg = false;
 
 	while (!i2c_status->dataTransmittedFlg) {}  /* Wait until date is sent */
 
@@ -111,7 +111,7 @@ static inline void I2C_wait_tx(i2c_state_t* i2c_status){
 
 static inline void I2C_wait_rx(i2c_state_t* i2c_status){
 
-	i2c_status->dataReceivedFlg = false;
+//	i2c_status->dataReceivedFlg = false;
 
 	while (!i2c_status->dataReceivedFlg) {}  /* Wait until date is sent */
 

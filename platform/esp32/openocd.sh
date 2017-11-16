@@ -182,7 +182,7 @@ if [ $cmd = "install" ]; then
 
   install_openocd
 
-elif  [ $cmd = "shutdow" ]; then
+elif  [ $cmd = "shutdown" ]; then
 
   sudo shutdown now
 

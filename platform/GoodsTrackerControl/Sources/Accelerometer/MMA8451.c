@@ -158,9 +158,9 @@ bool MMA845x_getRange(mma8451_range_t* range){
 
 bool MMA845x_Reset(void)
 {
-	uint8_t ctrl_reg2 = 0;
+//	uint8_t ctrl_reg2 = 0;
 
-	if(i2c_write(MMA8451_CTRL_REG2, 0x40 )){
+//	if(i2c_write(MMA8451_CTRL_REG2, 0x40 )){
 
 //
 //		do{
@@ -168,9 +168,9 @@ bool MMA845x_Reset(void)
 //		}while (ctrl_reg2 & 0x40);
 
 		return true;
-	}
+//	}
 
-	return false;
+//	return false;
 }
 //--------------------------------------------------------------------------------------------
 

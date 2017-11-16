@@ -15,7 +15,7 @@
 /* Task */
 static const char*		ACCE_TASK_NAME =		"tk_acce";
 #define					ACCE_NUM_MSG			1
-#define 				ACCE_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
+#define 				ACCE_TASK_PRIORITY		(tskIDLE_PRIORITY+2)
 #define					ACCE_TASK_STACK_SIZE	(configMINIMAL_STACK_SIZE-10)
 static const TickType_t ACCE_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 QueueHandle_t			xQueueAcce;

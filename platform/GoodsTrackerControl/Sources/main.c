@@ -19,6 +19,11 @@
 ** @brief
 **         Main module.
 **         This module contains user's application code.
+** Ferramentas de debug
+**			https://www.nxp.com/docs/en/quick-reference-guide/MCUXpresso_IDE_FreeRTOS_Debug_Guide.pdf
+**			https://percepio.com/docs/FreeRTOS/manual/Recorder.html#Trace_Recorder_Library_Snapshot_Mode
+**			https://mcuoneclipse.com/2017/03/18/better-freertos-debugging-in-eclipse/
+**			https://mcuoneclipse.com/2016/04/09/freertos-thread-debugging-with-eclipse-and-openocd/
 */         
 /*!
 **  @addtogroup main_module main module documentation
@@ -26,34 +31,21 @@
 */         
 /* MODULE main */
 
-
-/* Including needed modules to compile this module/procedure */
+///* Including needed modules to compile this module/procedure */
 #include "Cpu.h"
 #include "Events.h"
 #include "FRTOS1.h"
-#include "UTIL1.h"
-#include "WAIT2.h"
-#include "WAIT3.h"
-#include "WAIT4.h"
-#include "I2C2.h"
-#include "AD1.h"
-#include "AdcLdd1.h"
-#include "RTC1.h"
-#include "EInt1.h"
-#include "ExtIntLdd1.h"
-#include "MCUC1.h"
-#include "LED_R.h"
-#include "LEDpin1.h"
-#include "BitIoLdd1.h"
 #include "AS1.h"
 #include "ASerialLdd1.h"
 #include "LED_G.h"
 #include "LEDpin2.h"
 #include "BitIoLdd2.h"
+#include "LED_R.h"
+#include "LEDpin1.h"
+#include "BitIoLdd1.h"
 #include "LED_B.h"
 #include "LEDpin3.h"
 #include "BitIoLdd3.h"
-#include "WAIT1.h"
 #include "LCDout.h"
 #include "EN1.h"
 #include "BitIoLdd6.h"
@@ -70,7 +62,18 @@
 #include "XF1.h"
 #include "AS2.h"
 #include "ASerialLdd2.h"
-/* Including shared modules, which are used for whole project */
+#include "WAIT1.h"
+#include "MCUC1.h"
+#include "UTIL1.h"
+#include "WAIT2.h"
+#include "WAIT3.h"
+#include "WAIT4.h"
+#include "I2C2.h"
+#include "AD1.h"
+#include "AdcLdd1.h"
+#include "RTC1.h"
+#include "EInt1.h"
+#include "ExtIntLdd1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
