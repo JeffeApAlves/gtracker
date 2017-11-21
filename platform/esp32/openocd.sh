@@ -6,6 +6,26 @@
 # Nao esquecer de configurar no aqrquivo target o clock e o rst
 # http://esp-idf.readthedocs.io/en/latest/api-guides/jtag-debugging/tips-and-quirks.html#jtag-debugging-tip-openocd-configure-target
 
+#Ambiente
+export IP=$(ifconfig | grep 'inet ' | awk '/192.168.42/{print $2}')
+PYTHON_VERSION=python3.5
+
+#Servidor WEB
+IP_HOST=192.168.42.1
+PORT_HOST=8000
+WEB_HOST="$IP_HOST:$PORT_HOST"
+
+#Projeto Goodstrackers
+BASE_WEB_PATH=$HOME
+export GTRACKER_PATH=$BASE_WEB_PATH/GoodsTracker
+
+#arquivo  temporario com a lista  dos pacotes python 
+ENV_PACKAGES=/tmp/env_packages.txt
+
+# PostgreSQL
+PG_ADMIN=$WORKON_HOME/gTracker/lib/$PYTHON_VERSION/site-packages/pgadmin4/pgAdmin4.py
+
+#Referente ao openocd
 interface_path="/usr/local/share/openocd/scripts/interface"
 target_path="/usr/local/share/openocd/scripts/target"
 process_name="openocd"
@@ -14,8 +34,10 @@ target="esp32.cfg"
 transport="jtag"
 url_openocd="https://github.com/espressif/openocd-esp32.git"
 openocd_path="$HOME/openocd-code"
-cmd=""
 freq_jtag=400
+
+#Parametros de entrada
+cmd=$1
 
 function stop_server(){
   # Finaliza o processo correspondente ao openocd
@@ -161,15 +183,19 @@ function config_jtag() {
   sudo  cp "/tmp/interface" "$interface"
 }
 
+function restart() {
+  stop_server
+  start_server
+}
+
 ##### Main - Entrada do script
 
 clear
 
-while getopts "c:i:t:u:f:" opt; do
+while getopts "i:t:u:f:" opt; do
 
   case $opt in
     "u")  url_openocd=$OPTARG ;;
-    "c")  cmd=$OPTARG         ;;
     "i")  interface=$OPTARG   ;;
     "t")  target=$OPTARG      ;;
     "f")  freq_jtag=$OPTARG   ;; 
@@ -188,9 +214,12 @@ elif  [ $cmd = "shutdown" ]; then
 
 elif  [ $cmd = "start" ]; then
 
-  stop_server
+  start_server || 
+  restart
 
-  start_server
+elif  [ $cmd = "restart" ]; then
+
+  restart
 
 elif  [ $cmd = "stop" ]; then
 
@@ -204,6 +233,21 @@ elif  [ $cmd = "config" ]; then
 
   config_jtag
 
+elif  [ $1 = "gTracker" ]; then
+
+  gTracker
+
+elif  [ $1 = "pgAdmin" ]; then
+
+  pgAdmin
+
+elif  [ $1 = "ntop" ]; then
+
+  sudo ntopng
+
 else
+
+  echo "comandos disponivies: install | shutdown | start | restart | stop | reset | config | gTracker | pgAdmin | ntopng"
   exit -2
+
 fi 

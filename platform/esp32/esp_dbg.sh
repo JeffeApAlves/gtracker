@@ -3,7 +3,7 @@
 #  Menu para configuração de projetos com ESP32 utilizando o SDK IDF e OpenOCD para debug
 #
 #  Existe um segundo script "openocd.sh" que será rodado na raspberry
-#  Opções   -c <comando>    run: inicia o servidor
+#  Opções   <comando>       run: inicia o servidor
 #                           stop: para o servidor
 #                           install: instala/atualiza o openocd
 #                           reset: reinicia o target
@@ -49,8 +49,18 @@
 #       C) Configuração toolchain
 #          https://esp-idf.readthedocs.io/en/v2.0/linux-setup.html
 
+#Ambiente
+export IP=$(ifconfig | grep 'inet ' | awk '/192.168.42/{print $2}')
+PYTHON_VERSION=python3.6
 
+#usuario
 user=$(whoami)
+
+#Projeto Goodstrackers
+BASE_WEB_PATH=/media/jefferson/Dados/workspace/WebAPP
+export GTRACKER_PATH=$BASE_WEB_PATH/GoodsTracker
+GTRACKER_PATH_HOST=$HOME
+
 project_path=$(pwd)
 url_openocd="https://github.com/espressif/openocd-esp32.git"
 idf_path_orin="https://github.com/espressif/esp-idf.git"
@@ -70,7 +80,7 @@ host_gdb=$(grep -m 1 target $gdbinit | sed 's/^.*remote \|:.*/''/g')
 build_path="$project_path/build"
 openocdfile="$project_path/openocd.sh"
 espfile="$project_path/esp_dbg.sh"
-profile="$HOME/.profile"
+profile="$HOME/.bash_profile"
 ext_program='elf'
 ext_config='cfg'
 before_screen=null
@@ -300,7 +310,7 @@ function start_gdb() {
 
 function start_debug_server() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "start"  -i "$interface" -t "$target" &> /tmp/ssh.log &
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "start"  -i "$interface" -t "$target" &> /tmp/ssh.log &
 
     dialog \
         --no-shadow \
@@ -308,10 +318,9 @@ function start_debug_server() {
         --tailbox /tmp/ssh.log 40 100
 }
 
-
 function stop_debug_server() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "stop"  &> /tmp/ssh.log &
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "stop"  &> /tmp/ssh.log &
 
     dialog \
         --no-shadow \
@@ -385,7 +394,7 @@ function config_jtag() {
 
     if [ $RET -ne 1 ]; then
 
-        ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "config" -i "$interface" -f "$freq_jtag" &> /dev/null
+        ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "config" -i "$interface" -f "$freq_jtag" &> /dev/null
     
 #        dialog \
 #            --no-shadow \
@@ -451,7 +460,7 @@ function scan_host() {
 
 function install_openocd() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "install" -u $url_openocd &> /tmp/ssh.log &
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "install" -u $url_openocd &> /tmp/ssh.log &
 
     dialog \
         --no-shadow \
@@ -461,7 +470,7 @@ function install_openocd() {
 
 function shutdown_interface() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "shutdown" &> /tmp/ssh.log  &
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "shutdown" &> /tmp/ssh.log  &
 
     dialog \
         --no-shadow \
@@ -471,7 +480,7 @@ function shutdown_interface() {
 
 function reset_target() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile -c "reset" &> /tmp/ssh.log  &
+    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "reset" &> /tmp/ssh.log  &
 
     dialog \
         --no-shadow \
@@ -878,7 +887,6 @@ function event_process() {
 ##### Main - Entrada do script
 
 init_script
-
 event_process
-
 clear
+
