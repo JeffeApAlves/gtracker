@@ -14,10 +14,12 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
+#include "event_groups.h"
 
 #include "NMEA.h"
 #include "utils.h"
 
+#define	GPS_BIT_RX_CHAR		0x01
 
 /*
  * Estrutura de dados do frame NMEA
@@ -56,6 +58,9 @@ void gps_publish(void);
 void gps_init(void);
 
 #define clearGPS(f) memset((void*)f,0,sizeof(GPS));
+
+
+BaseType_t gps_notify_rx_char(BaseType_t *xHigherPriorityTaskWoken);
 
 extern QueueHandle_t	xQueueGPS;
 extern GPS	gps;

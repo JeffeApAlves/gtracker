@@ -17,7 +17,6 @@ static const char*		RX_TASK_NAME =			"tk_rx";
 #define					RX_NUM_MSG				1
 #define 				RX_TASK_PRIORITY		(tskIDLE_PRIORITY+4)
 #define					RX_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 20)
-static const TickType_t RX_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 static TaskHandle_t 	xHandleRxTask;
 QueueHandle_t			xQueuePackageRx;
 
@@ -39,12 +38,15 @@ static portTASK_FUNCTION(rxPackage_task, pvParameters) {
 
 	while(1) {
 
-		if(receivePackage()){
+		EventBits_t uxBits	= xEventGroupWaitBits(communication_events,	BIT_RX_CHAR,pdTRUE,pdFALSE, portMAX_DELAY);
 
-			// pacote recebido com sucesso e esta na fila
+		if(uxBits & BIT_RX_CHAR){
+
+			if(receivePackage()){
+
+				// pacote recebido com sucesso e esta na fila
+			}
 		}
-
-		vTaskDelay(RX_TASK_DELAY);
 	}
 
 	vTaskDelete(xHandleRxTask);
@@ -118,13 +120,19 @@ void communication_init(void){
 }
 //------------------------------------------------------------------------------------
 
-void communication_notify_rx(void){
+inline BaseType_t communication_notify_rx_char(BaseType_t *pxHigherPriorityTaskWoken){
+
+	return xEventGroupSetBitsFromISR(communication_events, BIT_RX_CHAR,pxHigherPriorityTaskWoken);
+}
+//------------------------------------------------------------------------------------
+
+inline void communication_notify_rx(void){
 
 	xEventGroupSetBits(communication_events, BIT_RX);
 }
 //------------------------------------------------------------------------------------
 
-void communication_notify_tx(void){
+inline void communication_notify_tx(void){
 
 	xEventGroupSetBits(communication_events, BIT_TX);
 }

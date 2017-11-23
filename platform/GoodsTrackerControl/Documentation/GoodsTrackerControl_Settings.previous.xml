@@ -188,7 +188,7 @@ PE_DEBUGHALT();
         <Use_Recursive_Mutexes v="yes" />
       </group>
       <boolgroup name="Timers" v="Enabled">
-        <Priority v="2" />
+        <Priority v="1" />
         <Queue_Length v="5" />
         <Stack_Depth v="90" />
         <Use_Daemon_Task_Startup_Hook v="no" />

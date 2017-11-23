@@ -40,6 +40,8 @@ extern "C" {
 
 #include "uart_gps.h"
 #include "uart_host.h"
+#include "Communication.h"
+#include "gps.h"
 #include "i2c.h"
 #include "level_sensor.h"
 #include "clock.h"
@@ -231,7 +233,16 @@ void AS1_OnRxChar(void)
 
 	if(AS1_RecvChar(&byte)==ERR_OK){
 
+		BaseType_t	xResult,xHigherPriorityTaskWoken = pdFALSE;
+
 		putRxData(byte);
+
+		xResult = communication_notify_rx_char(&xHigherPriorityTaskWoken);
+
+		if( xResult != pdFAIL ){
+
+			portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
+		}
 	}
 }
 
@@ -426,7 +437,16 @@ void AS2_OnRxChar(void)
 
 	if(AS2_RecvChar(&byte)==ERR_OK){
 
+		BaseType_t	xResult,xHigherPriorityTaskWoken = pdFALSE;
+
 		putGPSData(byte);
+
+		xResult = gps_notify_rx_char(&xHigherPriorityTaskWoken);
+
+		if( xResult != pdFAIL ){
+
+			portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
+		}
 	}
 }
 

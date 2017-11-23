@@ -5,7 +5,7 @@
  */
 
 
-#include <uart_gps.h>
+#include "uart_gps.h"
 #include "Telemetria.h"
 #include "gps.h"
 
@@ -14,9 +14,10 @@ static const char*		GPS_TASK_NAME =			"tk_gps";
 #define					GPS_NUM_MSG				1
 #define 				GPS_TASK_PRIORITY		(tskIDLE_PRIORITY+2)
 #define					GPS_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE + 100)
-static const TickType_t GPS_TASK_DELAY	= 		(200 / portTICK_PERIOD_MS);
 QueueHandle_t			xQueueGPS;
 static TaskHandle_t		xHandleGPSTask;
+
+EventGroupHandle_t		gps_events;
 
 GPS	gps;
 
@@ -27,9 +28,12 @@ static portTASK_FUNCTION(task_gps, pvParameters) {
 
 	while(1) {
 
-		receiveNMEA();
+		EventBits_t uxBits	= xEventGroupWaitBits(gps_events, GPS_BIT_RX_CHAR,pdTRUE,pdFALSE, portMAX_DELAY);
 
-		vTaskDelay(GPS_TASK_DELAY);
+		if(uxBits & GPS_BIT_RX_CHAR){
+
+			receiveNMEA();
+		}
 	}
 
 	vTaskDelete(xHandleGPSTask);
@@ -60,13 +64,22 @@ void gps_publish(void){
 }
 //------------------------------------------------------------------------
 
+inline BaseType_t gps_notify_rx_char(BaseType_t *xHigherPriorityTaskWoken){
+
+	return xEventGroupSetBitsFromISR(gps_events, GPS_BIT_RX_CHAR,xHigherPriorityTaskWoken);
+}
+//------------------------------------------------------------------------------------
+
+
 void gps_init(void){
 
 	uart_gps_init();
 
 	clearGPS(&gps);
 
-	xQueueGPS		= xQueueCreate( GPS_NUM_MSG, sizeof( GPS ));
+	xQueueGPS	= xQueueCreate( GPS_NUM_MSG, sizeof( GPS ));
+
+	gps_events	= xEventGroupCreate();
 
 	createTask();
 }

@@ -17,12 +17,16 @@
 
 #define	BIT_TX			0x01
 #define	BIT_RX			0x02
+#define	BIT_RX_CHAR		0x04
 
 void putPackageRx(CommunicationPackage* package_rx);
 void putPackageTx(CommunicationPackage* package_tx);
 void sendAnswer(CommunicationPackage* package);
 
 void communication_init(void);
+BaseType_t communication_notify_rx_char(BaseType_t *pxHigherPriorityTaskWoken);
+void communication_notify_rx(void);
+void communication_notify_tx(void);
 
 extern QueueHandle_t		xQueuePackageRx, xQueuePackageTx;
 extern EventGroupHandle_t	communication_events;
