@@ -23,8 +23,6 @@ static uint32_t	g_adc16SampleDataArray[DEMO_ADC16_SAMPLE_COUNT];// ADC value arr
 #else
 static	uint16_t	ADValues[AD1_CHANNEL_COUNT];
 
-volatile bool	AD_finished;
-
 #endif
 
 
@@ -71,23 +69,26 @@ bool readValues(uint32_t* val){
 
 #else
 
-	AD_finished = false;
+	if(AD1_GetValue16(&ADValues[0])==ERR_OK){
 
-	if(AD1_Measure(true)==ERR_OK){
+		*val = ADValues[0];
 
-		while (!AD_finished) {}
-
-		if(AD1_GetValue16(&ADValues[0])==ERR_OK){
-
-			*val = ADValues[0];
-
-			return true;
-		}
+		return true;
 	}
 
 	return false;
 
 #endif
+}
+//------------------------------------------------------------------------
+
+bool start_measure(void){
+
+#if MCUC1_CONFIG_NXP_SDK_2_0_USED
+	return true;
+#endif
+
+	return	AD1_Measure(true)==ERR_OK;
 }
 //------------------------------------------------------------------------
 
@@ -114,8 +115,6 @@ void level_sensor_init(void){
     /* Inicializa SIM para ADC hw trigger source selection */
     BOARD_ConfigTriggerSource();
 
-#else
-	AD_finished		= false;
 #endif
 
 }

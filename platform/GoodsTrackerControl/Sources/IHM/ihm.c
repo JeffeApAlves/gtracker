@@ -37,7 +37,7 @@ const gpio_pin_config_t botao_config = {
 
 /* Task IHM*/
 static const char*			IHM_TASK_NAME =			"tk_ihm";
-#define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+3)
+#define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
 #define						IHM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE+100)
 static TaskHandle_t			xHandleIHMTask;
 static EventGroupHandle_t	ihm_events;

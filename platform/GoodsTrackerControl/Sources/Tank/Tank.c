@@ -5,21 +5,26 @@
  *      Author: Jefferson
  */
 
+
 #include "level_sensor.h"
 #include "Telemetria.h"
 #include "Tank.h"
-
 
 /* Task Tank */
 static const char*			TANK_TASK_NAME =			"tk_tank";
 #define						TANK_NUM_MSG				1
 #define 					TANK_TASK_PRIORITY			(tskIDLE_PRIORITY+2)
 #define						TANK_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE-20)
-static const TickType_t		TANK_TASK_DELAY	= 			(200 / portTICK_PERIOD_MS);
 QueueHandle_t				xQueueTank;
 TaskHandle_t				xHandleDataTask;
+static EventGroupHandle_t	tank_events;
 
-static	Tank		tank;
+/* Timer */
+TimerHandle_t			 	xTimerTank;
+static const char*			UPDATE_TIME_NAME =		"tm_tank";
+#define						UPDATE_TIME_TANK		pdMS_TO_TICKS( 200 )
+
+static	Tank				tank;
 
 
 /**
@@ -30,18 +35,27 @@ static portTASK_FUNCTION(run_data, pvParameters) {
 
 	while(1) {
 
-		if(readValues(&tank.Level)){
+		EventBits_t uxBits	= xEventGroupWaitBits(tank_events, BIT_AD_VALUE,pdTRUE,pdFALSE, portMAX_DELAY);
 
-			if(xQueueSendToBack( xQueueTank ,  &tank, ( TickType_t ) 1 ) ){
+		if(uxBits & BIT_AD_VALUE){
 
-		    	tlm_notify_tank();
-		    }
+			if(readValues(&tank.Level)){
+
+				if(xQueueSendToBack( xQueueTank ,  &tank, ( TickType_t ) 1 ) ){
+
+					tlm_notify_tank();
+				}
+			}
 		}
-
-		vTaskDelay(TANK_TASK_DELAY);
 	}
 
 	vTaskDelete(xHandleDataTask);
+}
+//---------------------------------------------------------------------------
+
+inline BaseType_t tank_notify_value(BaseType_t *xHigherPriorityTaskWoken){
+
+	return xEventGroupSetBitsFromISR(tank_events,BIT_AD_VALUE,xHigherPriorityTaskWoken);
 }
 //---------------------------------------------------------------------------
 
@@ -59,6 +73,12 @@ void unLock(void){
 }
 //------------------------------------------------------------------------
 
+static void time_tank( TimerHandle_t xTimer ){
+
+	start_measure();
+}
+//------------------------------------------------------------------------
+
 static void createTask(void){
 
 	if (xTaskCreate(
@@ -71,6 +91,18 @@ static void createTask(void){
 	) != pdPASS) {
 
 	}
+
+	xTimerTank = xTimerCreate (
+			UPDATE_TIME_NAME,
+			UPDATE_TIME_TANK,
+			pdTRUE,
+			( void * ) 0,
+			time_tank
+    );
+
+    if( xTimerStart( xTimerTank, 0 ) != pdPASS ){
+    	//Problema no start do timer
+    }
 }
 //------------------------------------------------------------------------
 
@@ -79,6 +111,8 @@ void tank_init(void){
 	level_sensor_init();
 
 	xQueueTank		= xQueueCreate( TANK_NUM_MSG, sizeof( Tank ));
+
+	tank_events		= xEventGroupCreate();
 
 	createTask();
 }

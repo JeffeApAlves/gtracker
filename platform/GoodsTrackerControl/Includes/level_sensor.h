@@ -64,7 +64,7 @@ bool readValues(uint32_t* valor);
 
 #if MCUC1_CONFIG_NXP_SDK_2_0_USED==0
 
-extern volatile bool	AD_finished;
+bool start_measure(void);
 
 #endif
 

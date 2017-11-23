@@ -42,6 +42,7 @@ extern "C" {
 #include "uart_host.h"
 #include "Communication.h"
 #include "gps.h"
+#include "tank.h"
 #include "i2c.h"
 #include "level_sensor.h"
 #include "clock.h"
@@ -291,7 +292,14 @@ void AS1_OnTxChar(void)
 */
 void AD1_OnEnd(void)
 {
-	AD_finished = TRUE;
+	BaseType_t	xResult,xHigherPriorityTaskWoken = pdFALSE;
+
+	xResult		= tank_notify_value(&xHigherPriorityTaskWoken);
+
+	if( xResult != pdFAIL ){
+
+		portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
+	}
 }
 
 /*

@@ -15,7 +15,10 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
+#include "event_groups.h"
 #include "timers.h"
+
+#define BIT_AD_VALUE	0x01
 
 typedef struct{
 
@@ -29,5 +32,7 @@ void unLock(void);
 void tank_init(void);
 
 extern QueueHandle_t	xQueueTank;
+
+BaseType_t tank_notify_value(BaseType_t *xHigherPriorityTaskWoken);
 
 #endif /* SOURCES_LEVEL_H_ */
