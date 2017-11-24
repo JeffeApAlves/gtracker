@@ -37,7 +37,7 @@ const gpio_pin_config_t botao_config = {
 
 /* Task IHM*/
 static const char*			IHM_TASK_NAME =			"tk_ihm";
-#define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+1)
+#define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+6)
 #define						IHM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE+100)
 static TaskHandle_t			xHandleIHMTask;
 static EventGroupHandle_t	ihm_events;
@@ -45,7 +45,7 @@ static EventGroupHandle_t	ihm_events;
 /* Timer */
 TimerHandle_t			 	xTimerUpdateStat;
 static const char*			UPDATE_TIME_NAME =		"tm_stat";
-#define						UPDATE_TIME_STAT		pdMS_TO_TICKS( 200 )
+
 
 static void ihm_notify_screen_clock(void);
 
@@ -53,7 +53,17 @@ static portTASK_FUNCTION(run_ihm, pvParameters) {
 
 	while(1) {
 
-		ihm_task();
+		EventBits_t uxBits	= xEventGroupWaitBits(
+										ihm_events,
+										BIT_UPDATE_LCD,
+										pdTRUE,
+										pdFALSE,
+										portMAX_DELAY );
+
+		if(uxBits & BIT_UPDATE_LCD){
+
+			ihm_update();
+		}
 	}
 
 	vTaskDelete(xHandleIHMTask);
@@ -62,7 +72,18 @@ static portTASK_FUNCTION(run_ihm, pvParameters) {
 
 void updateTimer_Stat( TimerHandle_t xTimer ){
 
-	ihm_notify_screen_stat();
+	if(time_splash>0){
+
+		// Detecta o momento da transição para o zero
+		if(--time_splash<=0){
+
+			ihm_set_active_screen(SCREEN_CLOCK);
+		}
+
+	}else{
+
+		ihm_notify_screen_stat();
+	}
 }
 //-------------------------------------------------------------------------
 
@@ -93,46 +114,18 @@ static void createTask(void){
 }
 //--------------------------------------------------------------------------------
 
-void ihm_task(void) {
-
-	EventBits_t uxBits	= xEventGroupWaitBits(
-									ihm_events,
-									BIT_UPDATE_LCD_CLOCK	|
-									BIT_UPDATE_LCD_XYZ		|
-									BIT_UPDATE_LCD_STAT_COM |
-									BIT_UPDATE_LCD_STAT_GPS |
-									BIT_UPDATE_LCD_GPS		|
-									BIT_UPDATE_LCD_TANK,
-									pdTRUE,
-									pdFALSE,
-									portMAX_DELAY );
-
+void ihm_update(void) {
 
 	//Hook de processamento dos eventos
+	switch(active_screen){
 
-	if(uxBits & BIT_UPDATE_LCD_CLOCK){
-
-		printClock();
-	}
-
-	if(uxBits & BIT_UPDATE_LCD_XYZ){
-		printAccelerometer();
-	}
-
-	if(uxBits & BIT_UPDATE_LCD_STAT_COM){
-		printStatCom();
-	}
-
-	if(uxBits & BIT_UPDATE_LCD_STAT_GPS){
-		printStatGPS();
-	}
-
-	if(uxBits & BIT_UPDATE_LCD_TANK){
-		printTank();
-	}
-
-	if(uxBits & BIT_UPDATE_LCD_GPS){
-		printGPS();
+		case 	SCREEN_SPLASH:		printSplash();			break;
+		case 	SCREEN_CLOCK:		printClock();			break;
+		case 	SCREEN_ACCE:		printAccelerometer();	break;
+		case 	SCREEN_TANK:		printTank();			break;
+		case 	SCREEN_GPS:			printGPS();				break;
+		case 	SCREEN_STAT_COM:	printStatCom();			break;
+		case 	SCREEN_STAT_GPS:	printStatGPS();			break;
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -246,20 +239,19 @@ void printLCD(int linha,int col,char* str){
 
 static void ihm_notify_screen_clock(void){
 
-	BaseType_t xHigherPriorityTaskWoken, xResult;
-
-    xHigherPriorityTaskWoken	= pdFALSE;
-    xResult						= pdFAIL;
-
 	if(active_screen == SCREEN_CLOCK){
 
-		xResult = xEventGroupSetBitsFromISR(ihm_events, BIT_UPDATE_LCD_CLOCK , &xHigherPriorityTaskWoken);
+		BaseType_t xHigherPriorityTaskWoken, xResult;
+	    xHigherPriorityTaskWoken	= pdFALSE;
+	    xResult						= pdFAIL;
+
+		xResult = xEventGroupSetBitsFromISR(ihm_events, BIT_UPDATE_LCD, &xHigherPriorityTaskWoken);
+
+		if (xResult != pdFAIL){
+
+			portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+	    }
 	}
-
-	if (xResult != pdFAIL){
-
-		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-    }
 }
 //-----------------------------------------------------------------------------------------
 
@@ -267,10 +259,11 @@ void ihm_notify_screen_stat(void){
 
 	if(active_screen == SCREEN_STAT_COM){
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_STAT_COM);
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
+
 	}else if(active_screen == SCREEN_STAT_GPS){
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_STAT_GPS);
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -279,15 +272,15 @@ void ihm_notify_screen_tlm(void){
 
 	if(active_screen == SCREEN_ACCE){
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_XYZ);
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
 
 	} else if(active_screen == SCREEN_TANK){
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_TANK);
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
 
 	} else if(active_screen == SCREEN_GPS){
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD_GPS);
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -297,24 +290,18 @@ void ihm_notify_screen_tlm(void){
  */
 void ihm_handle_update(void){
 
-	if(time_splash>0){
-
-		// Detecta o momento da transição para o zero
-		if(--time_splash<=0){
-
-			ihm_set_active_screen(SCREEN_CLOCK);
-		}
-
-	}else{
-
-		ihm_notify_screen_clock();
-	}
+	ihm_notify_screen_clock();
 }
 //-----------------------------------------------------------------------------------------
 
 inline void ihm_set_active_screen(screen s){
 
-	active_screen = s;
+	if(active_screen != s){
+
+		active_screen = s;
+
+		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
+	}
 }
 //-----------------------------------------------------------------------------------------
 
@@ -325,12 +312,13 @@ inline void ihm_set_active_screen(screen s){
  */
 void ihm_init(void) {
 
-	ihm_events	= xEventGroupCreate();
+	active_screen	= -1;		// para grarantir a atualização
+
+	ihm_events		= xEventGroupCreate();
 
 	LCDInit();
 
 	time_splash		= TIME_SPLASH;
-	active_screen	= SCREEN_SPLASH;
 
 	// Habilitar o clock dos ports que serão utilizados (PORTD).
 	//SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK;
@@ -348,9 +336,10 @@ void ihm_init(void) {
 
     GPIO_PinInit(KEY_GPIO, KEY_GPIO_PIN, &botao_config);
 #endif
-	printSplash();
 
 	createTask();
+
+	ihm_set_active_screen(SCREEN_SPLASH);
 }
 //-----------------------------------------------------------------------------------------
 
@@ -369,6 +358,7 @@ void readKey(void){
 
 void ihm_deInit(void) {
 
+	//TODO
 }
 //-----------------------------------------------------------------------------------------
 

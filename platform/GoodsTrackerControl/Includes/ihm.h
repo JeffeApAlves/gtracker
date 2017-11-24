@@ -28,16 +28,14 @@
 #define KEY_GPIO_MASK		(1 << KEY_GPIO_PIN)
 #define KEY_INPUT			(~KEY)
 
+#define	BASE_TIME			200
+#define						UPDATE_TIME_STAT		pdMS_TO_TICKS( BASE_TIME )
 // Tempo splah inicial
-#define	TIME_SPLASH			1
+#define	TIME_SPLASH			(2 * (1000/BASE_TIME))	// 3 segundos
 
 //Eventos do clock
-#define	BIT_UPDATE_LCD_CLOCK	0x01
-#define	BIT_UPDATE_LCD_STAT_COM	0x02
-#define	BIT_UPDATE_LCD_STAT_GPS	0x04
-#define	BIT_UPDATE_LCD_TANK		0x10
-#define	BIT_UPDATE_LCD_GPS		0x20
-#define	BIT_UPDATE_LCD_XYZ		0x40
+#define	BIT_UPDATE_LCD	0x01
+
 typedef enum{
 
 	SCREEN_SPLASH,
@@ -74,7 +72,7 @@ void printStatGPS(void);
 void printTank(void);
 void printGPS(void);
 
-void ihm_task(void);
+void ihm_update(void);
 void ihm_handle_update(void);
 void ihm_notify_screen_stat(void);
 void ihm_notify_screen_tlm(void);

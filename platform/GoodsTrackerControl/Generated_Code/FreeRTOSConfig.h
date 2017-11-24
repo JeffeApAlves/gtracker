@@ -175,7 +175,7 @@
 
 /* Software timer definitions. */
 #define configUSE_TIMERS                          1 /* 1: enable software timers; 0: software timers disabled */
-#define configTIMER_TASK_PRIORITY                 3 /* e.g. (configMAX_PRIORITIES-1U) */
+#define configTIMER_TASK_PRIORITY                 1 /* e.g. (configMAX_PRIORITIES-1U) */
 #define configTIMER_QUEUE_LENGTH                  5 /* size of queue for the timer task */
 #define configTIMER_TASK_STACK_DEPTH              90 /* e.g. (configMINIMAL_STACK_SIZE) */
 #define INCLUDE_xEventGroupSetBitFromISR          1 /* 1: function is included; 0: do not include function */

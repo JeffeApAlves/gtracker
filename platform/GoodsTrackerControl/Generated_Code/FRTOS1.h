@@ -7,7 +7,7 @@
 **     Version     : Component 01.546, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-11-23, 16:16, # CodeGen: 303
+**     Date/Time   : 2017-11-24, 17:52, # CodeGen: 307
 **     Abstract    :
 **          This component implements the FreeRTOS Realtime Operating System
 **     Settings    :
@@ -76,7 +76,7 @@
 **            Use Mutexes                                  : yes
 **            Use Recursive Mutexes                        : yes
 **          Timers                                         : Enabled
-**            Priority                                     : 3
+**            Priority                                     : 1
 **            Queue Length                                 : 5
 **            Stack Depth                                  : 90
 **            Use Daemon Task Startup Hook                 : no
