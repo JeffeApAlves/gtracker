@@ -33,9 +33,6 @@
 // Tempo splah inicial
 #define	TIME_SPLASH			(2 * (1000/BASE_TIME))	// 3 segundos
 
-//Eventos do clock
-#define	BIT_UPDATE_LCD	0x01
-
 typedef enum{
 
 	SCREEN_SPLASH,
@@ -73,10 +70,10 @@ void printTank(void);
 void printGPS(void);
 
 void ihm_update(void);
-void ihm_handle_update(void);
 void ihm_notify_screen_stat(void);
 void ihm_notify_screen_tlm(void);
 void ihm_set_active_screen(screen s);
+void ihm_notify_screen_clock(void);
 void readKey(void);
 
 #define	TO_STRING	XF1_xsprintf

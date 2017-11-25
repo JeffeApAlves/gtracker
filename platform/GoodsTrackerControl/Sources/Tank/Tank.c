@@ -17,7 +17,6 @@ static const char*			TANK_TASK_NAME =			"tk_tank";
 #define						TANK_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE-20)
 QueueHandle_t				xQueueTank;
 TaskHandle_t				xHandleDataTask;
-static EventGroupHandle_t	tank_events;
 
 /* Timer */
 TimerHandle_t			 	xTimerTank;
@@ -35,13 +34,13 @@ static portTASK_FUNCTION(run_data, pvParameters) {
 
 	while(1) {
 
-		EventBits_t uxBits	= xEventGroupWaitBits(tank_events, BIT_AD_VALUE,pdTRUE,pdFALSE, portMAX_DELAY);
+		EventBits_t uxBits	= xEventGroupWaitBits(tlm_events, BIT_AD_VALUE,pdTRUE,pdFALSE, portMAX_DELAY);
 
 		if(uxBits & BIT_AD_VALUE){
 
 			if(readValues(&tank.Level)){
 
-				if(xQueueSendToBack( xQueueTank ,  &tank, ( TickType_t ) 1 ) ){
+				if(xQueueSendToBack( xQueueTank ,  &tank, ( TickType_t ) 1 ) == pdPASS){
 
 					tlm_notify_tank();
 				}
@@ -50,12 +49,6 @@ static portTASK_FUNCTION(run_data, pvParameters) {
 	}
 
 	vTaskDelete(xHandleDataTask);
-}
-//---------------------------------------------------------------------------
-
-inline BaseType_t tank_notify_value(BaseType_t *xHigherPriorityTaskWoken){
-
-	return xEventGroupSetBitsFromISR(tank_events,BIT_AD_VALUE,xHigherPriorityTaskWoken);
 }
 //---------------------------------------------------------------------------
 
@@ -111,8 +104,6 @@ void tank_init(void){
 	level_sensor_init();
 
 	xQueueTank		= xQueueCreate( TANK_NUM_MSG, sizeof( Tank ));
-
-	tank_events		= xEventGroupCreate();
 
 	createTask();
 }

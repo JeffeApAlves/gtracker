@@ -19,7 +19,7 @@ static const char*			TLM_TASK_NAME =			"tk_tlm";
 #define 					TLM_TASK_PRIORITY		(tskIDLE_PRIORITY+3)
 #define						TLM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE+20)
 static TaskHandle_t			xHandleTLMTask;
-static EventGroupHandle_t	tlm_events;
+EventGroupHandle_t			tlm_events;
 
 Telemetria					telemetria;
 
@@ -45,23 +45,29 @@ static portTASK_FUNCTION(task_tlm, pvParameters) {
 }
 //--------------------------------------------------------------------------------------------------------
 
-void tlm_notify_accelerometer(void){
+inline void tlm_notify_accelerometer(void){
 
 	xEventGroupSetBits(tlm_events, BIT_UPDATE_ACCELEROMETER);
 }
 //-----------------------------------------------------------------------------------
 
-void tlm_notify_tank(void){
+inline void tlm_notify_tank(void){
 
 	xEventGroupSetBits(tlm_events, BIT_UPDATE_TANK);
 }
 //-----------------------------------------------------------------------------------
 
-void tlm_notify_gps(void){
+inline void tlm_notify_gps(void){
 
 	xEventGroupSetBits(tlm_events, BIT_UPDATE_GPS);
 }
 //-----------------------------------------------------------------------------------
+
+inline BaseType_t tank_notify_value(BaseType_t *xHigherPriorityTaskWoken){
+
+	return xEventGroupSetBitsFromISR(tlm_events,BIT_AD_VALUE,xHigherPriorityTaskWoken);
+}
+//---------------------------------------------------------------------------
 
 static void updateGPS(Telemetria* tlm) {
 

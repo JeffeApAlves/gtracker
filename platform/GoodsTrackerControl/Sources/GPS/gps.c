@@ -57,7 +57,7 @@ static void createTask(void){
 
 void gps_publish(void){
 
-    if(xQueueSendToBack( xQueueGPS ,(void*) &gps, ( TickType_t ) 1 ) ){
+    if(xQueueSendToBack( xQueueGPS ,(void*) &gps, ( TickType_t ) 1 ) == pdPASS){
 
     	tlm_notify_gps();
     }

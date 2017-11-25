@@ -17,12 +17,12 @@
 
 #include "lcd.h"
 #include "gps.h"
-#include "telemetria.h"
+#include "Telemetria.h"
 #include "uart_gps.h"
 #include "clock.h"
 #include "ihm.h"
 
-static screen active_screen;
+volatile static screen active_screen;
 static char line_lcd[25];
 
 /* Tempo do splash em segundos */
@@ -40,21 +40,20 @@ static const char*			IHM_TASK_NAME =			"tk_ihm";
 #define 					IHM_TASK_PRIORITY		(tskIDLE_PRIORITY+6)
 #define						IHM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE+100)
 static TaskHandle_t			xHandleIHMTask;
-static EventGroupHandle_t	ihm_events;
+static const TickType_t		IHM_TASK_DELAY	= 		(100 / portTICK_PERIOD_MS);
 
 /* Timer */
 TimerHandle_t			 	xTimerUpdateStat;
 static const char*			UPDATE_TIME_NAME =		"tm_stat";
 
-
-static void ihm_notify_screen_clock(void);
+static void ihm_notify_screen(void);
 
 static portTASK_FUNCTION(run_ihm, pvParameters) {
 
 	while(1) {
 
 		EventBits_t uxBits	= xEventGroupWaitBits(
-										ihm_events,
+										tlm_events,
 										BIT_UPDATE_LCD,
 										pdTRUE,
 										pdFALSE,
@@ -64,6 +63,8 @@ static portTASK_FUNCTION(run_ihm, pvParameters) {
 
 			ihm_update();
 		}
+
+		vTaskDelay(IHM_TASK_DELAY);
 	}
 
 	vTaskDelete(xHandleIHMTask);
@@ -237,20 +238,26 @@ void printLCD(int linha,int col,char* str){
 }
 //-----------------------------------------------------------------------------------------
 
-static void ihm_notify_screen_clock(void){
+static void ihm_notify_screen(void){
+
+	BaseType_t xHigherPriorityTaskWoken, xResult;
+    xHigherPriorityTaskWoken	= pdFALSE;
+    xResult						= pdFAIL;
+
+	xResult = xEventGroupSetBitsFromISR(tlm_events, BIT_UPDATE_LCD, &xHigherPriorityTaskWoken);
+
+	if (xResult != pdFAIL){
+
+		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+    }
+}
+//-----------------------------------------------------------------------------------------
+
+void ihm_notify_screen_clock(void){
 
 	if(active_screen == SCREEN_CLOCK){
 
-		BaseType_t xHigherPriorityTaskWoken, xResult;
-	    xHigherPriorityTaskWoken	= pdFALSE;
-	    xResult						= pdFAIL;
-
-		xResult = xEventGroupSetBitsFromISR(ihm_events, BIT_UPDATE_LCD, &xHigherPriorityTaskWoken);
-
-		if (xResult != pdFAIL){
-
-			portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-	    }
+		ihm_notify_screen();
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -259,11 +266,11 @@ void ihm_notify_screen_stat(void){
 
 	if(active_screen == SCREEN_STAT_COM){
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
+		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
 
 	}else if(active_screen == SCREEN_STAT_GPS){
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
+		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -272,25 +279,16 @@ void ihm_notify_screen_tlm(void){
 
 	if(active_screen == SCREEN_ACCE){
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
+		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
 
 	} else if(active_screen == SCREEN_TANK){
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
+		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
 
 	} else if(active_screen == SCREEN_GPS){
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
+		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
 	}
-}
-//-----------------------------------------------------------------------------------------
-
-/*
- * Gera o evento para atualizacao periodica do relogio
- */
-void ihm_handle_update(void){
-
-	ihm_notify_screen_clock();
 }
 //-----------------------------------------------------------------------------------------
 
@@ -300,7 +298,7 @@ inline void ihm_set_active_screen(screen s){
 
 		active_screen = s;
 
-		xEventGroupSetBits(ihm_events, BIT_UPDATE_LCD);
+		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -313,8 +311,6 @@ inline void ihm_set_active_screen(screen s){
 void ihm_init(void) {
 
 	active_screen	= -1;		// para grarantir a atualização
-
-	ihm_events		= xEventGroupCreate();
 
 	LCDInit();
 
@@ -345,14 +341,20 @@ void ihm_init(void) {
 
 void readKey(void){
 
-	if(active_screen< (NUM_OF_SCREEN-1)){
+	screen s = active_screen;
 
-		active_screen++;
+	if(s < (NUM_OF_SCREEN-1)){
+
+		s++;
 
 	}else{
 
-		ihm_set_active_screen(SCREEN_CLOCK);
+		s = SCREEN_CLOCK;
 	}
+
+	active_screen = s;
+
+	ihm_notify_screen();
 }
 //-----------------------------------------------------------------------------------------
 

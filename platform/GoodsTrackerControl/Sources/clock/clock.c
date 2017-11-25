@@ -156,19 +156,7 @@ void updateEntityClock(){
 		timestamp++;
 	}
 
-	ihm_handle_update();
-
-/*
-	BaseType_t xHigherPriorityTaskWoken, xResult;
-
-	xHigherPriorityTaskWoken = pdFALSE;
-
-	xEventGroupSetBitsFromISR(ihm_events, UPDATE_CLOCK,&xHigherPriorityTaskWoken);
-
-	if( xResult != pdFAIL ){
-
-		portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
-	}*/
+	ihm_notify_screen_clock();
 }
 //-------------------------------------------------------------------------------------------------------------------
 

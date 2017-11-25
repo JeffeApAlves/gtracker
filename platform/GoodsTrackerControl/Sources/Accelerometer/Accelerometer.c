@@ -31,7 +31,7 @@ static portTASK_FUNCTION(run_accel, pvParameters) {
 
 			if(MMA845x_getXYZ(&accelerometer)){
 
-				if(xQueueSendToBack( xQueueAcce ,  &accelerometer, ( TickType_t ) 1 ) ){
+				if(xQueueSendToBack( xQueueAcce ,  &accelerometer, ( TickType_t ) 1 ) == pdPASS ){
 
 					tlm_notify_accelerometer();
 				}

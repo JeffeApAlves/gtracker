@@ -144,7 +144,7 @@ inline void communication_notify_tx(void){
  */
 void putPackageRx(CommunicationPackage* package_rx){
 
-	if(xQueueSendToBack( xQueuePackageRx ,package_rx, ( TickType_t ) 1 ) ){
+	if(xQueueSendToBack( xQueuePackageRx ,package_rx, ( TickType_t ) 1 ) == pdPASS ){
 
 		communication_notify_rx();
 	}
@@ -160,7 +160,7 @@ void putPackageRx(CommunicationPackage* package_rx){
 void putPackageTx(CommunicationPackage* package_tx){
 
 	// Publica resposta na fila
-	if(xQueueSendToBack( xQueuePackageTx , package_tx, ( TickType_t ) 1 ) ){
+	if(xQueueSendToBack( xQueuePackageTx , package_tx, ( TickType_t ) 1 ) == pdPASS){
 
 		communication_notify_tx();
 

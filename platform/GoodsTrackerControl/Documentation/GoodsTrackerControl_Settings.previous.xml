@@ -188,15 +188,15 @@ PE_DEBUGHALT();
         <Use_Recursive_Mutexes v="yes" />
       </group>
       <boolgroup name="Timers" v="Enabled">
-        <Priority v="3" />
+        <Priority v="1" />
         <Queue_Length v="5" />
-        <Stack_Depth v="90" />
+        <Stack_Depth v="100" />
         <Use_Daemon_Task_Startup_Hook v="no" />
       </boolgroup>
       <group name="Memory">
         <boolgroup name="Dynamic Allocation" v="Enabled">
           <Application_allocated_Heap v="no" />
-          <Heap_Size v="12084" />
+          <Heap_Size v="12086" />
           <Linker_Heap_Base_Symbol v="__HeapBase" />
           <Linker_Heap_Limit_Symbol v="__HeapLimit" />
           <Linker_Heap_Size_Symbol v="__heap_size" />

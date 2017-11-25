@@ -90,6 +90,8 @@
 
 void sys_init(void){
 
+	tlm_init();
+
 	ihm_init();
 
 	tank_init();
@@ -97,8 +99,6 @@ void sys_init(void){
 	gps_init();
 
 	accelerometer_init();
-
-	tlm_init();
 
 	clock_init();
 
