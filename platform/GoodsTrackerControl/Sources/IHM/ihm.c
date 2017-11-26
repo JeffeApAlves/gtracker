@@ -46,7 +46,7 @@ static const TickType_t		IHM_TASK_DELAY	= 		(100 / portTICK_PERIOD_MS);
 TimerHandle_t			 	xTimerUpdateStat;
 static const char*			UPDATE_TIME_NAME =		"tm_stat";
 
-static void ihm_notify_screen(void);
+static void ihm_handle_timer ( TimerHandle_t xTimer );
 
 static portTASK_FUNCTION(run_ihm, pvParameters) {
 
@@ -71,7 +71,7 @@ static portTASK_FUNCTION(run_ihm, pvParameters) {
 }
 //-------------------------------------------------------------------------
 
-void updateTimer_Stat( TimerHandle_t xTimer ){
+void ihm_handle_timer ( TimerHandle_t xTimer ){
 
 	if(time_splash>0){
 
@@ -106,7 +106,7 @@ static void createTask(void){
 			UPDATE_TIME_STAT,
 			pdTRUE,
 			( void * ) 0,
-			updateTimer_Stat
+			ihm_handle_timer
     );
 
     if( xTimerStart( xTimerUpdateStat, 0 ) != pdPASS ){
