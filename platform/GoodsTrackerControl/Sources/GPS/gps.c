@@ -4,7 +4,6 @@
  *      Author: Jefferson
  */
 
-
 #include "uart_gps.h"
 #include "Telemetria.h"
 #include "gps.h"
@@ -17,7 +16,7 @@ static const char*		GPS_TASK_NAME =			"tk_gps";
 QueueHandle_t			xQueueGPS;
 static TaskHandle_t		xHandleGPSTask;
 
-EventGroupHandle_t		gps_events;
+//EventGroupHandle_t		gps_events;
 
 GPS	gps;
 
@@ -28,7 +27,11 @@ static portTASK_FUNCTION(task_gps, pvParameters) {
 
 	while(1) {
 
-		EventBits_t uxBits	= xEventGroupWaitBits(gps_events, GPS_BIT_RX_CHAR,pdTRUE,pdFALSE, portMAX_DELAY);
+		uint32_t uxBits;
+
+		xTaskNotifyWait( 0x0, 0xffffffff , &uxBits, portMAX_DELAY );
+
+		//EventBits_t uxBits	= xEventGroupWaitBits(gps_events, GPS_BIT_RX_CHAR,pdTRUE,pdFALSE, portMAX_DELAY);
 
 		if(uxBits & GPS_BIT_RX_CHAR){
 
@@ -66,7 +69,9 @@ void gps_publish(void){
 
 inline BaseType_t gps_notify_rx_char(BaseType_t *xHigherPriorityTaskWoken){
 
-	return xEventGroupSetBitsFromISR(gps_events, GPS_BIT_RX_CHAR,xHigherPriorityTaskWoken);
+	return xTaskNotifyFromISR(xHandleGPSTask, GPS_BIT_RX_CHAR , eSetBits, xHigherPriorityTaskWoken );
+
+	//return xEventGroupSetBitsFromISR(gps_events, GPS_BIT_RX_CHAR,xHigherPriorityTaskWoken);
 }
 //------------------------------------------------------------------------------------
 
@@ -79,8 +84,8 @@ void gps_init(void){
 
 	xQueueGPS	= xQueueCreate( GPS_NUM_MSG, sizeof( GPS ));
 
-	gps_events	= xEventGroupCreate();
+	//gps_events	= xEventGroupCreate();
 
 	createTask();
 }
-//-----------------------------------------------------------------------
+//------------	-----------------------------------------------------------

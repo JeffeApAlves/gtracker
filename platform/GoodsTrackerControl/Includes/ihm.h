@@ -24,6 +24,9 @@
 #define SW_NAME "SW"
 #endif
 
+//Eventos do clock
+#define		BIT_UPDATE_LCD				0x01
+
 #define KEY_GPIO_PIN		7U
 #define KEY_GPIO_MASK		(1 << KEY_GPIO_PIN)
 #define KEY_INPUT			(~KEY)

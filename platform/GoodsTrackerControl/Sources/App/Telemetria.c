@@ -19,12 +19,12 @@ static const char*			TLM_TASK_NAME =			"tk_tlm";
 #define 					TLM_TASK_PRIORITY		(tskIDLE_PRIORITY+3)
 #define						TLM_TASK_STACK_SIZE		(configMINIMAL_STACK_SIZE+20)
 static TaskHandle_t			xHandleTLMTask;
-EventGroupHandle_t			tlm_events;
+//EventGroupHandle_t			tlm_events;
 
 Telemetria					telemetria;
 
 
-static void updateTLM(Telemetria* tlm,EventBits_t ulNotifiedValue);
+static void updateTLM(Telemetria* tlm,uint32_t ulNotifiedValue);
 
 
 /**
@@ -36,7 +36,11 @@ static portTASK_FUNCTION(task_tlm, pvParameters) {
 
 	while(1) {
 
-		EventBits_t uxBits	= xEventGroupWaitBits(tlm_events,BIT_UPDATE_GPS | BIT_UPDATE_ACCELEROMETER | BIT_UPDATE_TANK,pdTRUE,pdFALSE, portMAX_DELAY);
+		uint32_t uxBits;
+
+		xTaskNotifyWait( 0x0, 0xffffffff , &uxBits, portMAX_DELAY );
+
+		//EventBits_t uxBits	= xEventGroupWaitBits(tlm_events,BIT_UPDATE_GPS | BIT_UPDATE_ACCELEROMETER | BIT_UPDATE_TANK,pdTRUE,pdFALSE, portMAX_DELAY);
 
 		updateTLM(&telemetria,uxBits);
 	}
@@ -47,27 +51,27 @@ static portTASK_FUNCTION(task_tlm, pvParameters) {
 
 inline void tlm_notify_accelerometer(void){
 
-	xEventGroupSetBits(tlm_events, BIT_UPDATE_ACCELEROMETER);
+	xTaskNotify(xHandleTLMTask, BIT_UPDATE_ACCELEROMETER , eSetBits);
+
+	//xEventGroupSetBits(tlm_events, BIT_UPDATE_ACCELEROMETER);
 }
 //-----------------------------------------------------------------------------------
 
 inline void tlm_notify_tank(void){
 
-	xEventGroupSetBits(tlm_events, BIT_UPDATE_TANK);
+	xTaskNotify(xHandleTLMTask, BIT_UPDATE_TANK , eSetBits);
+
+//	xEventGroupSetBits(tlm_events, BIT_UPDATE_TANK);
 }
 //-----------------------------------------------------------------------------------
 
 inline void tlm_notify_gps(void){
 
-	xEventGroupSetBits(tlm_events, BIT_UPDATE_GPS);
+	xTaskNotify(xHandleTLMTask, BIT_UPDATE_GPS , eSetBits);
+
+//	xEventGroupSetBits(tlm_events, BIT_UPDATE_GPS);
 }
 //-----------------------------------------------------------------------------------
-
-inline BaseType_t tank_notify_value(BaseType_t *xHigherPriorityTaskWoken){
-
-	return xEventGroupSetBitsFromISR(tlm_events,BIT_AD_VALUE,xHigherPriorityTaskWoken);
-}
-//---------------------------------------------------------------------------
 
 static void updateGPS(Telemetria* tlm) {
 
@@ -106,7 +110,7 @@ static void updateTankLevel(Telemetria* tlm) {
  * Atualiza as informções de telemetria que estão na lista de menssagens
  *
  */
-static void updateTLM(Telemetria* tlm,EventBits_t ulNotifiedValue){
+static void updateTLM(Telemetria* tlm,uint32_t ulNotifiedValue){
 
 	if(ulNotifiedValue & BIT_UPDATE_GPS){
 
@@ -144,7 +148,7 @@ void tlm_init(void){
 
 	clearTelemetria(&telemetria);
 
-	tlm_events	= xEventGroupCreate();
+//	tlm_events	= xEventGroupCreate();
 
 	createTask();
 }

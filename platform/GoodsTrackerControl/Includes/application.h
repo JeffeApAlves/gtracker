@@ -17,6 +17,9 @@
 #include "Telemetria.h"
 #include "protocol.h"
 
+
+#define	BIT_CMD		0x01
+
 //bits de sinalização das notificações
 typedef enum
 	{LED_GREEN	=0,
@@ -35,5 +38,7 @@ void decoderLockPayLoad(PayLoad* payload);
 #define HOOK_CMD(vFunction, parameters)	bool vFunction(CommunicationPackage* parameters)
 
 pCallBack getCallBack(Resource r);
+
+void app_notify_cmd(void);
 
 #endif /* SOURCES_APPLICATION_H_ */

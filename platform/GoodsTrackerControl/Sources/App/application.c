@@ -25,15 +25,19 @@ static 	int			_lock;
 
 static void createTaskCallBack(pCallBack pxTaskCode,CommunicationPackage* package);
 static void execError(CommunicationPackage* package);
-static void execCMD(EventBits_t ulNotifiedValue);
+static void execCMD(uint32_t ulNotifiedValue);
 
 static portTASK_FUNCTION(task_cb, pvParameters) {
 
 	while(1) {
 
-		EventBits_t uxBits	= xEventGroupWaitBits(communication_events,BIT_RX,pdTRUE,pdFALSE, portMAX_DELAY);
+		//EventBits_t uxBits	= xEventGroupWaitBits(communication_events,BIT_RX,pdTRUE,pdFALSE, portMAX_DELAY);
 
-		if(uxBits & BIT_RX){
+		uint32_t uxBits;
+
+		xTaskNotifyWait( 0x0, BIT_CMD , &uxBits, portMAX_DELAY );
+
+		if(uxBits & BIT_CMD){
 
 			execCMD(uxBits);
 		}
@@ -43,7 +47,7 @@ static portTASK_FUNCTION(task_cb, pvParameters) {
 }
 //--------------------------------------------------------------------------------------------------------
 
-static void execCMD(EventBits_t ulNotifiedValue){
+static void execCMD(uint32_t ulNotifiedValue){
 
 	CommunicationPackage*	package = pvPortMalloc(sizeof(CommunicationPackage));
 
@@ -267,6 +271,12 @@ static void createTask(void){
 	}
 }
 //------------------------------------------------------------------------
+
+inline void app_notify_cmd(void){
+
+	xTaskNotify(xHandleCBTask, BIT_CMD , eSetBits);
+}
+//------------------------------------------------------------------------------------
 
 void app_init(void){
 

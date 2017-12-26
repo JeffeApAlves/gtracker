@@ -25,9 +25,13 @@ typedef struct{
 
 } Tank;
 
+#define		BIT_AD_VALUE				0x08
+
 void lock(void);
 void unLock(void);
 void tank_init(void);
+
+BaseType_t tank_notify_value(BaseType_t *xHigherPriorityTaskWoken);
 
 extern QueueHandle_t	xQueueTank;
 

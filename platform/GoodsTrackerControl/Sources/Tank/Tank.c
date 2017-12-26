@@ -34,7 +34,12 @@ static portTASK_FUNCTION(run_data, pvParameters) {
 
 	while(1) {
 
-		EventBits_t uxBits	= xEventGroupWaitBits(tlm_events, BIT_AD_VALUE,pdTRUE,pdFALSE, portMAX_DELAY);
+		uint32_t uxBits;
+
+		xTaskNotifyWait( 0x0, 0xffffffff , &uxBits, portMAX_DELAY );
+
+
+//		EventBits_t uxBits	= xEventGroupWaitBits(tlm_events, BIT_AD_VALUE,pdTRUE,pdFALSE, portMAX_DELAY);
 
 		if(uxBits & BIT_AD_VALUE){
 
@@ -98,6 +103,12 @@ static void createTask(void){
     }
 }
 //------------------------------------------------------------------------
+
+inline BaseType_t tank_notify_value(BaseType_t *xHigherPriorityTaskWoken){
+
+	return xTaskNotifyFromISR(xHandleDataTask, BIT_AD_VALUE , eSetBits, xHigherPriorityTaskWoken );
+}
+//---------------------------------------------------------------------------
 
 void tank_init(void){
 

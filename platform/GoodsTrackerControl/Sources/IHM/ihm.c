@@ -13,7 +13,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
-#include "event_groups.h"
 
 #include "lcd.h"
 #include "gps.h"
@@ -52,12 +51,16 @@ static portTASK_FUNCTION(run_ihm, pvParameters) {
 
 	while(1) {
 
-		EventBits_t uxBits	= xEventGroupWaitBits(
-										tlm_events,
-										BIT_UPDATE_LCD,
-										pdTRUE,
-										pdFALSE,
-										portMAX_DELAY );
+		uint32_t uxBits;
+
+		xTaskNotifyWait( 0x0, 0xffffffff , &uxBits, portMAX_DELAY );
+
+//		EventBits_t uxBits	= xEventGroupWaitBits(
+//										tlm_events,
+//										BIT_UPDATE_LCD,
+//										pdTRUE,
+//										pdFALSE,
+//										portMAX_DELAY );
 
 		if(uxBits & BIT_UPDATE_LCD){
 
@@ -244,7 +247,7 @@ static void ihm_notify_screen(void){
     xHigherPriorityTaskWoken	= pdFALSE;
     xResult						= pdFAIL;
 
-	xResult = xEventGroupSetBitsFromISR(tlm_events, BIT_UPDATE_LCD, &xHigherPriorityTaskWoken);
+	xResult = xTaskNotifyFromISR(xHandleIHMTask, BIT_UPDATE_LCD , eSetBits, &xHigherPriorityTaskWoken );
 
 	if (xResult != pdFAIL){
 
@@ -266,11 +269,11 @@ void ihm_notify_screen_stat(void){
 
 	if(active_screen == SCREEN_STAT_COM){
 
-		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
+		xTaskNotify(xHandleIHMTask, BIT_UPDATE_LCD , eSetBits);
 
 	}else if(active_screen == SCREEN_STAT_GPS){
 
-		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
+		xTaskNotify(xHandleIHMTask, BIT_UPDATE_LCD , eSetBits);
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -279,15 +282,15 @@ void ihm_notify_screen_tlm(void){
 
 	if(active_screen == SCREEN_ACCE){
 
-		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
+		xTaskNotify(xHandleIHMTask, BIT_UPDATE_LCD , eSetBits);
 
 	} else if(active_screen == SCREEN_TANK){
 
-		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
+		xTaskNotify(xHandleIHMTask, BIT_UPDATE_LCD , eSetBits);
 
 	} else if(active_screen == SCREEN_GPS){
 
-		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
+		xTaskNotify(xHandleIHMTask, BIT_UPDATE_LCD , eSetBits);
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -298,7 +301,7 @@ inline void ihm_set_active_screen(screen s){
 
 		active_screen = s;
 
-		xEventGroupSetBits(tlm_events, BIT_UPDATE_LCD);
+		xTaskNotify(xHandleIHMTask, BIT_UPDATE_LCD , eSetBits);
 	}
 }
 //-----------------------------------------------------------------------------------------

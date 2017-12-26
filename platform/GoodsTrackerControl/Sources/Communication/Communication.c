@@ -10,6 +10,7 @@
 #include "ihm.h"
 #include "uart_host.h"
 #include "protocol.h"
+#include "application.h"
 #include "communication.h"
 
 /* Task RX*/
@@ -28,7 +29,7 @@ static const char*		TX_TASK_NAME =			"tk_tx";
 static TaskHandle_t 	xHandleTxTask;
 QueueHandle_t			xQueuePackageTx;
 
-EventGroupHandle_t		communication_events;
+//EventGroupHandle_t		communication_events;
 
 /**
  * Gerencia a fila de pacotes de recepção
@@ -38,9 +39,13 @@ static portTASK_FUNCTION(rxPackage_task, pvParameters) {
 
 	while(1) {
 
-		EventBits_t uxBits	= xEventGroupWaitBits(communication_events,	BIT_RX_CHAR,pdTRUE,pdFALSE, portMAX_DELAY);
+		//EventBits_t uxBits	= xEventGroupWaitBits(communication_events,	BIT_RX,pdTRUE,pdFALSE, portMAX_DELAY);
 
-		if(uxBits & BIT_RX_CHAR){
+		uint32_t uxBits;
+
+		xTaskNotifyWait( 0x0, BIT_RX , &uxBits, portMAX_DELAY );
+
+		if(uxBits & BIT_RX){
 
 			if(receivePackage()){
 
@@ -61,7 +66,11 @@ static portTASK_FUNCTION(txPackage_task, pvParameters) {
 
 	while(1) {
 
-		EventBits_t uxBits	= xEventGroupWaitBits(communication_events,	BIT_TX,pdTRUE,pdFALSE, portMAX_DELAY);
+//		EventBits_t uxBits	= xEventGroupWaitBits(communication_events,	BIT_TX,pdTRUE,pdFALSE, portMAX_DELAY);
+
+		uint32_t uxBits;
+
+		xTaskNotifyWait( 0x0, BIT_TX , &uxBits, portMAX_DELAY );
 
 		if(uxBits & BIT_TX){
 
@@ -114,27 +123,32 @@ void communication_init(void){
 	xQueuePackageRx	= xQueueCreate( RX_NUM_MSG, sizeof( CommunicationPackage ));
 	xQueuePackageTx	= xQueueCreate( TX_NUM_MSG, sizeof( CommunicationPackage ));
 
-	communication_events	= xEventGroupCreate();
+	//communication_events	= xEventGroupCreate();
 
 	createTasks();
 }
 //------------------------------------------------------------------------------------
 
-inline BaseType_t communication_notify_rx_char(BaseType_t *pxHigherPriorityTaskWoken){
+inline BaseType_t communication_notify_rx_char(BaseType_t *xHigherPriorityTaskWoken){
 
-	return xEventGroupSetBitsFromISR(communication_events, BIT_RX_CHAR,pxHigherPriorityTaskWoken);
+	return xTaskNotifyFromISR(xHandleRxTask, BIT_RX , eSetBits, xHigherPriorityTaskWoken );
+
+	//return xEventGroupSetBitsFromISR(communication_events, BIT_RX,pxHigherPriorityTaskWoken);
 }
 //------------------------------------------------------------------------------------
 
-inline void communication_notify_rx(void){
-
-	xEventGroupSetBits(communication_events, BIT_RX);
-}
-//------------------------------------------------------------------------------------
+//
+//inline void communication_notify_rx(void){
+//
+//	xEventGroupSetBits(communication_events, BIT_RX);
+//}
+////------------------------------------------------------------------------------------
 
 inline void communication_notify_tx(void){
 
-	xEventGroupSetBits(communication_events, BIT_TX);
+	//xEventGroupSetBits(communication_events, BIT_TX);
+
+	xTaskNotify(xHandleTxTask, BIT_TX , eSetBits);
 }
 //------------------------------------------------------------------------------------
 
@@ -146,7 +160,8 @@ void putPackageRx(CommunicationPackage* package_rx){
 
 	if(xQueueSendToBack( xQueuePackageRx ,package_rx, ( TickType_t ) 1 ) == pdPASS ){
 
-		communication_notify_rx();
+		//communication_notify_rx();
+		app_notify_cmd();
 	}
 }
 //------------------------------------------------------------------------------------
