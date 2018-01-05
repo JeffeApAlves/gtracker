@@ -1,9 +1,8 @@
-# GoodsTracker
+# GTracker
 
-Versão nativa do software WebAPP
+O objetivo desse projeto é desenvolver uma plataforma web que irá relacionar através de acelerômetros,GPS, a eficiência enérgica  de um veículo com o modo de condução (acelerações e frenagens bruscas) e o tráfico das vias por onde circula. 
 
-## Comunição 
+## Objetivos adicionais
+Comparar diferentes tipos de serialização de payload (JSON,BJSON e CBOR) e seus impactos no consumo de banda e latência  
 
-Foram implementadas 2 tipos de comunicação serial (RS 232) e via broker de mensagens (rabbitmq). Para a camada dominio a comunicação é
-realizada por meio de gerenciador de dispositivos e uma interface, sendo assim, é totalmente transparente a forma de comunicação para 
-o layer de negócio.  
+### Detalhes olhar o Wiki do repositório
