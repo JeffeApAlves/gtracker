@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- debug config -->
+<launch>
+   <copy file="sp.net.xml" />
+   <copy file="sp.bus.rou.xml" />
+   <copy file="sp.passenger.rou.xml" />
+   <copy file="sp.truck.rou.xml" />
+   <copy file="sp.pedestrian.rou.xml" />
+   <copy file="sp.motorcycle.rou.xml" />
+   <copy file="sp.poly.xml" />
+   <copy file="sp.view.xml" />
+   <copy file="sp.sumocfg" type="config" />
+</launch>

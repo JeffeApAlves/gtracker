@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <type-files value="/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmNetconvert.typ.xml,/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmNetconvertUrbanDe.typ.xml,/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmNetconvertPedestrians.typ.xml,/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmNetconvertBicycle.typ.xml"/>
+        <osm-files value="map.osm"/>
+    </input>
+
+    <output>
+        <output-file value="osm.net.xml"/>
+        <output.street-names value="true"/>
+        <output.original-names value="true"/>
+    </output>
+
+    <tls_building>
+        <tls.discard-simple value="true"/>
+        <tls.join value="true"/>
+        <tls.guess-signals value="true"/>
+    </tls_building>
+
+    <ramp_guessing>
+        <ramps.guess value="true"/>
+    </ramp_guessing>
+
+    <processing>
+        <geometry.remove value="true"/>
+        <roundabouts.guess value="true"/>
+        <junctions.join value="true"/>
+        <junctions.corner-detail value="5"/>
+        <crossings.guess value="true"/>
+    </processing>
+
+    <report>
+        <verbose value="true"/>
+    </report>
+
+</configuration>

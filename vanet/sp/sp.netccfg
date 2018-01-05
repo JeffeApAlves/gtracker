@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <osm-files value="sp_bbox.osm.xml"/>
+        <type-files value="/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmNetconvert.typ.xml,/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmNetconvertUrbanBrSP.typ.xml,/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmNetconvertPedestrians.typ.xml"/>
+		<edge-files value="/media/jefferson/Dados/workspace/GoodsTracker/vanet/sp/sp.edg.xml"/>
+
+    </input>
+
+    <output>
+        <output-file value="sp.net.xml"/>
+        <output.street-names value="true"/>
+        <output.original-names value="true"/>
+
+    </output>
+
+    <tls_building>
+		<tls.discard-loaded value="false"/>
+        <tls.discard-simple value="false"/>
+        <tls.join value="true"/>
+		<tls.join-dist value="40"/>
+        <tls.guess-signals value="false"/>
+    </tls_building>
+
+    <ramp_guessing>
+        <ramps.guess value="true"/>
+    </ramp_guessing>
+
+    <processing>
+        <geometry.remove value="true"/>
+        <roundabouts.guess value="false"/>
+        <junctions.join value="true"/>
+		<junctions.join-dist value="5"/>
+        <junctions.corner-detail value="5"/>
+        <crossings.guess value="true"/>
+		<sidewalks.guess value="false"/>
+     </processing>
+
+     <building>
+        <default.junctions.radius value="1" />
+     </building>
+
+    <report>
+        <verbose value="true"/>
+    </report>
+
+</configuration>
