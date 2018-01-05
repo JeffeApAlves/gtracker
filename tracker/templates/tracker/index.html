@@ -1,0 +1,124 @@
+{% extends '_base.html' %}
+{% load staticfiles %}
+{% block header_text %} Rastreador {% endblock header_text %}
+
+{% block extra_head %}
+    <link href="{% static 'tracker/tracker.css' %}" rel = 'stylesheet'/>
+{% endblock extra_head %}
+
+{% block content %}
+
+<div class="card mb-3">
+
+    <div class="card-header">
+        <i class="fa fa-table"></i>
+        Informações do Rastreador
+    </div>
+    <div class="card-body">
+
+        <div class="col-lg-3">
+            <div class="input-group">
+                <input id = "txt_nr_tracker" type="number" class="form-control" placeholder="Nr. rastreador" min="1" max="65535">
+                <span class="input-group-btn">
+                    <button id = "bt_connection" class="btn btn-default" type="button">Conectar</button>
+                </span>
+            </div>
+        </div>
+        <br>
+        <div class="table-responsive">
+            <table class="table" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="1%">#</th>
+                        <th width="15%">Descrição</th>
+                        <th width="9%">Unidade</th>
+                        <th width="25%">Valor</th>
+                        <th width="25%"></th>
+                        <th width="25%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Tempo de latência (M)</td>
+                        <td>[ms]</td>
+                        <td colspan="3" id="ping-pong"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Nr. mensagens</td>
+                        <td>[]</td>
+                        <td colspan="3" id="count"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Latitude</td>
+                        <td>[0,00°]</td>
+                        <td colspan="3" id="lat"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Longitude</td>
+                        <td>[0,00°]</td>
+                        <td colspan="3" id="lng"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Acelerometro</td>
+                        <td>[]</td>
+                        <td id="acce_X"></td>
+                        <td id="acce_Y"></td>
+                        <td id="acce_Z"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Acelerometro</td>
+                        <td>[G]</td>
+                        <td id="acce_XG"></td>
+                        <td id="acce_YG"></td>
+                        <td id="acce_ZG"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>Trava</td>
+                        <td>[I/O]</td>
+                        <td colspan="3" id="lock"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>Timestamp</td>
+                        <td>[s]</td>
+                        <td colspan="3" id="timestamp"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>Tanque</td>
+                        <td>[]</td>
+                        <td colspan="3" id="tanque"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header"><i class="fa fa-binoculars"></i>
+        Log de mensagens
+    </div>
+
+    <div class="list-group list-group-flush small" id="log"></div>
+    
+    <div id = update_date class="card-footer small text-muted">
+        Última atualização: 00:00
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
+    <script src="{% static 'tracker/tracker.js' %}"></script>
+
+{% endblock %}

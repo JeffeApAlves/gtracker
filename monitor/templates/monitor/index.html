@@ -1,0 +1,180 @@
+{% extends '_base.html' %}
+{% load staticfiles %}
+{% block header_text %} Telemetria RB3{% endblock header_text %}
+
+{% block extra_head %}
+    <link href="{% static 'monitor/monitor.css' %}" rel = 'stylesheet'/>
+{% endblock extra_head %}
+
+{% block content %}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i>
+        Dados Raspbery
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="1%" >#</th>
+                        <th width="20%" >Descrição</th>
+                        <th width="19%">Unid</th>
+                        <th width="20%">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Tempo de latencia (M)</td>
+                        <td>[ms]</td>
+                        <td id="ping-pong"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Nr. de mensagens</td>
+                        <td>[]</td>
+                        <td id="count"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Tempearatura da CPU</td>
+                        <td>[°C]</td>
+                        <td id="temperatura"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>CPU</td>
+                        <td>[%]</td>
+                        <td id="cpu"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Memória</td>
+                        <td>[MB]</td>
+                        <td id="memoria"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Disco</td>
+                        <td>[GB]</td>
+                        <td id="disco"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>Humidade</td>
+                        <td>[%]</td>
+                        <td id="humidade"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>Pressão</td>
+                        <td>[mbar]</td>
+                        <td id="pressao"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-binoculars"></i>
+        Log de mensagens
+    </div>
+
+    <div class="list-group list-group-flush small" id="log"></div>
+
+    <div class="card-footer small text-muted">
+        Atualizado em: 00:00
+    </div>
+</div>
+
+<!--
+<div class="container-box">
+    <div class ="box rb3-panel">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Descrição</th>
+                    <th>Unidade</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Tempo de latencia (M)</td>
+                    <td>[ms]</td>
+                    <td><b><span id="ping-pong"></span></b></td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Contador</td>
+                    <td>[]</td>
+                    <td><b><span id="count"></span></b></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Tempearatura da CPU</td>
+                    <td>[°C]</td>
+                    <td><b><span id="temperatura"></span></b></td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>CPU</td>
+                    <td>[%]</td>
+                    <td><b><span id="cpu"></span></b></td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Memória</td>
+                    <td>[MB]</td>
+                    <td><b><span id="memoria"></span></b></td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>Disco</td>
+                    <td>[GB]</td>
+                    <td><b><span id="disco"></span></b></td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>Humidade</td>
+                    <td>[%]</td>
+                    <td><b><span id="humidade"></span></b></td>
+                </tr>
+                <tr>
+                    <th scope="row">8</th>
+                    <td>Pressão</td>
+                    <td>[mbar]</td>
+                    <td><b><span id="pressao"></span></b></td>
+                </tr>
+           </tbody>
+        </table>
+    </div>
+    <div class="box msg-panel">
+        <div class="card mb-3 ">
+            <div class="card-header">
+                <i class="fa fa-binoculars"></i>
+                Recepção (mensagens)
+            </div>
+            <div id=log class="list-group"></div>
+            <div class="card-footer small text-muted">
+                Atualizado em: 00:00
+            </div>
+        </div>
+    </div>
+</div>
+-->
+{% endblock %}
+
+{% block script %}
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
+    <script src="{% static 'monitor/monitor.js' %}"></script>
+
+{% endblock %}

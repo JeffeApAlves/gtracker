@@ -1,0 +1,61 @@
+{% extends '_base.html' %}
+{% load staticfiles %}
+{% block header_text %} Way {% endblock header_text %}
+
+{% block extra_head %}
+
+    <link rel='stylesheet' type="text/css" href="{% static 'waypoints/way.css' %}" />
+ 
+    <script>
+
+        var map, marker, waypointByID = {};
+        var currentObject;
+        var map;
+        var geocoder;
+
+        {% for waypoint in waypoints %}
+        waypointByID[{{waypoint.id}}] = {
+            name: "{{waypoint.name}}",
+            lat: {{waypoint.geometry.y}},
+            lng: {{waypoint.geometry.x}}
+        };
+        {% endfor %}
+       
+        
+    </script>
+            
+{% endblock %}
+
+
+{% block extra_body %}
+    <!--onload = "initialize()"-->
+{% endblock %}
+
+{% block content %}
+    <form enctype="multipart/form-data" method="post" action="{% url 'waypoints:waypoints-upload' %}">
+        {% csrf_token %}
+        <input type=file name=gpx>
+        <input type=submit value='Upload GPX'>
+    </form>
+    <br>
+    <div id=map></div>
+    <div id=waypoints>
+        {{content}}
+    </div>
+    <input id=saveWaypoints type=button value=Save disabled=disabled>
+    <br>
+    <br>
+    <br>
+    <input id=address value='Chicago, IL'>
+    <input id=searchWaypoints type=button value='Rank waypoints by distance from address'>
+
+{% endblock %}
+
+{% block script %}
+
+    <script src="{% static 'waypoints/way.js' %}"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn1WH3o6v8rDP5kF9kYYeEXHDBtStoqwg&callback=initMap">
+    </script>
+
+{% endblock %}

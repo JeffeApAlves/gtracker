@@ -1,0 +1,44 @@
+{% extends '_base.html' %}
+{% load staticfiles %}
+{% block header_text %} Chat {% endblock %}
+
+{% block content %}
+
+    <div style="margin-bottom:1%">
+        <p class="h2">Envios:</p>
+        <form class="form-inline" id="join" method="POST" action='#'>
+            {% csrf_token %}
+            <input type="text"    class="form-control mr-1" name="join_room" id="room_name" placeholder="Sala">
+            <button type="submmit" class="btn btn-secondary btn-md mr-1" value="join-room"  id="bt_join_room">Entrar</button>
+            <button type="submmit" class="btn btn-secondary btn-md mr-1" value="leave-room" id="bt_leave-room">Sair</button>
+            <button type="submmit" class="btn btn-secondary btn-md mr-1" value="close-room" id="bt_close-room">Fechar</button>
+        </form>
+    </div>
+    <div style="margin-bottom:1%">
+        <form class="form-inline" id="send" method="POST" action='#'>
+            {% csrf_token %}
+            <input type="text" class="form-control mr-1" name="room_name" id="room_name" placeholder="Sala">
+            <input type="text" class="form-control mr-1" name="chat_msg" id="chat_msg" placeholder="Menssagem">
+            <button type="submmit" class="btn btn-secondary btn-md mr-1" value="echo" id="bt_echo">Echo</button>
+            <button type="submmit" class="btn btn-secondary btn-md mr-1" value="to-room" id="bt_send_to_room">Enviar para a sala</button>
+            <button type="submmit" class="btn btn-secondary btn-md mr-1" value="to-all" id="bt_send_to_all">Enviar para todos</button>
+        </form>
+    </div>
+    <div style="margin-bottom:1%">
+        <form class="form-inline" id="disconnect" method="POST" action="#">
+                <button type="submit" class="btn btn-primary">Desconectar</button>
+        </form>    
+    </div>
+    <div>
+        <h2>Mensagens:</h2>
+        <ul  id="log" class="list-group" style="height: 250px; overflow: auto;"></ul>
+    </div>
+ 
+{% endblock %}
+
+{% block script %}
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
+    <script src="{% static 'chat/chat.js' %}"></script>
+
+{% endblock %}
