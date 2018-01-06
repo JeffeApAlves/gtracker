@@ -39,6 +39,7 @@ export DEPLOY_GTRACKER=gtracker.com:/var/www/gtracker
 #arquivo  temporario com a lista  dos pacotes python 
 ENV_PACKAGES=/tmp/env_packages.txt
 
+port_host=8010
 project_path=$(pwd)
 url_openocd="https://github.com/espressif/openocd-esp32.git"
 idf_path_orin="https://github.com/espressif/esp-idf.git"
@@ -58,7 +59,7 @@ host_gdb=$(grep -m 1 target $gdbinit | sed 's/^.*remote \|:.*/''/g')
 build_path="$project_path/build"
 openocdfile="$project_path/openocd.sh"
 espfile="$project_path/esp_dbg.sh"
-profile="$HOME/.bash_profile"
+profile="$HOME/.bashrc"
 ext_program='elf'
 ext_config='cfg'
 before_screen=null
@@ -166,7 +167,7 @@ function select_path() {
     fi
 
     if [ "$cur_dir" != "/" ] ; then
-        content_dir="../ Voltar $content_dir" 
+        content_dir="../ Voltar $content_dir"
     fi
 
 
@@ -180,13 +181,13 @@ function select_path() {
                 )
 
     local RET=$?
- 
+
     if [ $RET -eq 0 ]; then
 
         select_path "$title" "$selection"
 
     elif [ $RET -eq 3 ]; then #extra button=seleciona
- 
+
         filepath="$cur_dir"
         RET=0
     fi
@@ -899,7 +900,12 @@ function gtracker_deploy(){
 
 function run_app(){
 
-    manage.py runserver localhost
+    python $GTRACKER_HOME/web/manage.py runserver  $IP:$port_host
+}
+
+function runworker_app(){
+
+    python $GTRACKER_HOME/web/manage.py runworker
 }
 
 ##### Main - Entrada do script
@@ -927,8 +933,12 @@ elif [ $cmd = "run" ]; then
 
 	run_app
 
+elif [ $cmd = "runworker" ]; then
+
+	runworker_app
+
 else
 
-    echo "Opção $cmd invalida. Comandos disponivies: config | update | install | deploy | run"
+    echo "Opção $cmd invalida. Comandos disponivies: config | update | install | deploy | run | runworker"
     exit -2
 fi
