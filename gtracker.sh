@@ -14,7 +14,7 @@
 #  Menu para configuração de projetos com ESP32 utilizando o SDK IDF e OpenOCD para debug
 #
 #  Steps:
-#
+#   1  Adiconar a variavel de ambiente no .bashrc GTRACKER_HOME=<path da solução>
 #   1. Conectar ambos (raspibarry+computador) em uma mesma rede com acesso a internet
 #
 #   2. Criar o mesmo usuario em ambos(raspiberry+computador)
@@ -33,11 +33,7 @@
 #Ambiente
 export IP=$(ifconfig | grep 'inet ' | awk '/192.168.42/{print $2}')
 
-#usuario
-user=$(whoami)
-
 #Projeto Goodstrackers
-BASE_PATH=/media/jefferson/Dados/workspace/WebAPP
 export DEPLOY_GTRACKER=gtracker.com:/var/www/gtracker
 
 #arquivo  temporario com a lista  dos pacotes python 
@@ -50,8 +46,8 @@ toolchain_path="$HOME/esp"
 idf_path="$HOME/esp-idf"
 interface_path="/usr/local/share/openocd/scripts/interface"
 target_path="/usr/local/share/openocd/scripts/target"
-url_espressif_toolchain64="https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-61-gab8375a-5.2.0.tar.gz"
-url_espressif_toolchain32="https://dl.espressif.com/dl/xtensa-esp32-elf-linux32-1.22.0-61-gab8375a-5.2.0.tar.gz"
+url_espressif_toolchain64="https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-75-gbaf03c2-5.2.0.tar.gz"
+url_espressif_toolchain32="https://dl.espressif.com/dl/xtensa-esp32-elf-linux32-1.22.0-75-gbaf03c2-5.2.0.tar.gz"
 makefile="$project_path/Makefile"
 gdbinit="$project_path/gdbinit"
 project_name=$(grep -m 1 PROJECT_NAME $makefile | sed 's/^.*= //g')
@@ -86,8 +82,8 @@ function select_file() {
 
     if [ $source = "REMOTE" ]; then
 
-        dir_content=$(ssh $user@$host_gdb "if [ ! -z $path ] ;then  cd $path ; fi ; ls -lhd */  *.$ext_file" 2>&1 | awk -F ' ' ' { print $9 " " $5 } ')
-        curdir=$(ssh $user@$host_gdb "pwd" 2>&1)
+        dir_content=$(ssh $USER@$host_gdb "if [ ! -z $path ] ;then  cd $path ; fi ; ls -lhd */  *.$ext_file" 2>&1 | awk -F ' ' ' { print $9 " " $5 } ')
+        curdir=$(ssh $USER@$host_gdb "pwd" 2>&1)
 
     else
 
@@ -156,8 +152,8 @@ function select_path() {
 
     if [ $source = "REMOTE" ]; then
 
-        content_dir=$(ssh $user@$host_gdb "if [ ! -z $path ] ;then  cd $path ; fi ; ls -lhd */" 2>&1 | awk -F ' ' ' { print $9 " " $5 } ')
-        cur_dir=$(ssh $user@$host_gdb "pwd" 2>&1)
+        content_dir=$(ssh $USER@$host_gdb "if [ ! -z $path ] ;then  cd $path ; fi ; ls -lhd */" 2>&1 | awk -F ' ' ' { print $9 " " $5 } ')
+        cur_dir=$(ssh $USER@$host_gdb "pwd" 2>&1)
 
     else
 
@@ -296,21 +292,21 @@ function start_gdb() {
 
 function start_debug_server() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "start"  -i "$interface" -t "$target" &> /tmp/ssh.log &
+    ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "start"  -i "$interface" -t "$target" &> /tmp/ssh.log &
 
     dialog \
         --no-shadow \
-        --title "$user iniciando debug no host IP:$host_gdb" \
+        --title "$USER iniciando debug no host IP:$host_gdb" \
         --tailbox /tmp/ssh.log 40 100
 }
 
 function stop_debug_server() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "stop"  &> /tmp/ssh.log &
+    ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "stop"  &> /tmp/ssh.log &
 
     dialog \
         --no-shadow \
-        --title "$user iniciando debug no host IP:$host_gdb" \
+        --title "$USER iniciando debug no host IP:$host_gdb" \
         --tailbox /tmp/ssh.log 40 100
 }
 
@@ -380,13 +376,12 @@ function config_jtag() {
 
     if [ $RET -ne 1 ]; then
 
-        ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "config" -i "$interface" -f "$freq_jtag" &> /dev/null
-    
+        ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "config" -i "$interface" -f "$freq_jtag" &> /dev/null
+
 #        dialog \
 #            --no-shadow \
-#            --title "$user iniciando debug no host IP:$host_gdb" \
+#            --title "$USER iniciando debug no host IP:$host_gdb" \
 #            --tailbox /tmp/ssh.log 40 100
-    
     fi
 }
 
@@ -453,31 +448,31 @@ function scan_host() {
 
 function install_openocd() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "install" -u $url_openocd &> /tmp/ssh.log &
+    ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "install" -u $url_openocd &> /tmp/ssh.log &
 
     dialog \
         --no-shadow \
-        --title "$user iniciando debug no host IP:$host_gdb" \
+        --title "$USER iniciando debug no host IP:$host_gdb" \
         --tailbox /tmp/ssh.log 40 100
 }
 
 function shutdown_interface() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "shutdown" &> /tmp/ssh.log  &
+    ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "shutdown" &> /tmp/ssh.log  &
 
     dialog \
         --no-shadow \
-        --title "$user iniciando debug no host IP:$host_gdb" \
+        --title "$USER iniciando debug no host IP:$host_gdb" \
         --tailbox /tmp/ssh.log 40 100
 }
 
 function reset_target() {
 
-    ssh $user@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "reset" &> /tmp/ssh.log  &
+    ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "reset" &> /tmp/ssh.log  &
 
     dialog \
         --no-shadow \
-        --title "$user iniciando debug no host IP:$host_gdb" \
+        --title "$USER iniciando debug no host IP:$host_gdb" \
         --tailbox /tmp/ssh.log 40 100
 }
 
@@ -893,10 +888,11 @@ if [ $cmd = "config" ]; then
 elif  [ $cmd = "update" ]; then
 
     pip freeze --local > $ENV_PACKAGES && pip install -U -r $ENV_PACKAGES
+    pip freeze --local > "$GTRACKER_HOME/web/requirements.txt"
 
 elif  [ $cmd = "deploy" ]; then
 
-    rsync -avz $GTRACKER_HOME $user@$DEPLOY_GTRACKER
+    rsync -avz $GTRACKER_HOME\web $USER@$DEPLOY_GTRACKER
 
 else
   echo "Opção $cmd invalida. Comandos disponivies: config | update | deploy"

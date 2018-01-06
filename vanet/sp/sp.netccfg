@@ -5,8 +5,6 @@
     <input>
         <osm-files value="sp_bbox.osm.xml"/>
         <type-files value="/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmNetconvert.typ.xml,/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmNetconvertUrbanBrSP.typ.xml,/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmNetconvertPedestrians.typ.xml"/>
-		<edge-files value="/media/jefferson/Dados/workspace/GoodsTracker/vanet/sp/sp.edg.xml"/>
-
     </input>
 
     <output>
