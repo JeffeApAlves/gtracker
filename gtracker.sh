@@ -854,7 +854,7 @@ function init_script() {
     show_screen main_screen
 }
 
-function event_process() {
+function config() {
     # super loop no menu ativo
 
     while : ; do
@@ -873,6 +873,33 @@ function event_process() {
             fi
         fi
     done
+
+    clear
+}
+
+function update_enviroment(){
+    # Atualiza os pacotes do ambiente Python
+
+    pip freeze --local > $ENV_PACKAGES && pip install -U -r $ENV_PACKAGES
+    pip freeze --local > "$GTRACKER_HOME/web/requirements.txt"    
+}
+
+
+function install_enviroment(){
+    # Instal os pacotes do ambiente Python
+
+    pip install -r "$GTRACKER_HOME/web/requirements.txt"    
+}
+
+function gtracker_deploy(){
+    # Copia os arquivos para o servidor
+
+    rsync -avz $GTRACKER_HOME/web $USER@$DEPLOY_GTRACKER
+}
+
+function run_app(){
+
+    manage.py runserver localhost
 }
 
 ##### Main - Entrada do script
@@ -882,19 +909,26 @@ init_script
 
 if [ $cmd = "config" ]; then
 
-    event_process
+	config
 
-    clear
 elif  [ $cmd = "update" ]; then
 
-    pip freeze --local > $ENV_PACKAGES && pip install -U -r $ENV_PACKAGES
-    pip freeze --local > "$GTRACKER_HOME/web/requirements.txt"
+	update_enviroment
 
 elif  [ $cmd = "deploy" ]; then
 
-    rsync -avz $GTRACKER_HOME\web $USER@$DEPLOY_GTRACKER
+	gtracker_deploy
+
+elif [ $cmd = "install" ]; then
+
+	install_enviroment
+
+elif [ $cmd = "run" ]; then
+
+	run_app
 
 else
-  echo "Opção $cmd invalida. Comandos disponivies: config | update | deploy"
-  exit -2
+
+    echo "Opção $cmd invalida. Comandos disponivies: config | update | install | deploy | run"
+    exit -2
 fi
