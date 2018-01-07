@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# Inicia o servidor de debug na RBPI zero reseta o device atrave da manipulacao de GPIO
+# Inicia o servidor de debug na RBPI zero reseta o device atravś da manipulacao de GPIO
 #
 # Observação: O arquivo de configuração da interface usr/local/share/openocd/scripts/interface/raspberrypi-native.cfg
 # Nao esquecer de configurar no aqrquivo target o clock e o rst
@@ -233,7 +233,7 @@ elif  [ $cmd = "config" ]; then
 
   config_jtag
 
-elif  [ $1 = "gTracker" ]; then
+elif  [ $1 = "gtracker" ]; then
 
   gTracker
 
@@ -247,7 +247,7 @@ elif  [ $1 = "ntop" ]; then
 
 else
 
-  echo "comandos disponivies: install | shutdown | start | restart | stop | reset | config | gTracker | pgAdmin | ntopng"
+  echo "comandos disponivies: install | shutdown | start | restart | stop | reset | config | gtracker | pgAdmin | ntopng"
   exit -2
 
 fi 
