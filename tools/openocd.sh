@@ -1,31 +1,16 @@
 #! /bin/bash
 #
+# Auxiliar no gerencimanto remoto do openocd 
 # Inicia o servidor de debug na RBPI zero reseta o device atravś da manipulacao de GPIO
 #
 # Observação: O arquivo de configuração da interface usr/local/share/openocd/scripts/interface/raspberrypi-native.cfg
 # Nao esquecer de configurar no aqrquivo target o clock e o rst
 # http://esp-idf.readthedocs.io/en/latest/api-guides/jtag-debugging/tips-and-quirks.html#jtag-debugging-tip-openocd-configure-target
 
-#Ambiente
-export IP=$(ifconfig | grep 'inet ' | awk '/192.168.42/{print $2}')
-PYTHON_VERSION=python3.5
+# Diretorio onde se encontra o script
+BASEDIR="${0%/*}"
 
-#Servidor WEB
-IP_HOST=192.168.42.1
-PORT_HOST=8000
-WEB_HOST="$IP_HOST:$PORT_HOST"
-
-#Projeto Goodstrackers
-BASE_WEB_PATH=$HOME
-export GTRACKER_PATH=$BASE_WEB_PATH/GoodsTracker
-
-#arquivo  temporario com a lista  dos pacotes python 
-ENV_PACKAGES=/tmp/env_packages.txt
-
-# PostgreSQL
-PG_ADMIN=$WORKON_HOME/gTracker/lib/$PYTHON_VERSION/site-packages/pgadmin4/pgAdmin4.py
-
-#Referente ao openocd
+# Referente ao openocd
 interface_path="/usr/local/share/openocd/scripts/interface"
 target_path="/usr/local/share/openocd/scripts/target"
 process_name="openocd"
@@ -39,19 +24,25 @@ freq_jtag=400
 #Parametros de entrada
 cmd=$1
 
+# Pula o primeiro argumento (nome do projeto)
+shift
+
 function stop_server(){
+
   # Finaliza o processo correspondente ao openocd
 
   sudo pkill $process_name
 }
 
 function start_openocd(){
+
   # Inicia o openocd utilizando os parametro recebidos
 
   sudo openocd -f $1 -c "transport select $transport" -f $2 -d 3
 }
 
 function reset_target() {
+
   #Manuipula o GPIO que esta ligado ao pino de resete do ESP32
 
   gpio -g mode 8 out
@@ -64,6 +55,7 @@ function reset_target() {
 }
 
 function start_server(){
+
   # incia o servidor de debug
 
   # reseta o target atrabves de um GPIO ligado ao reset
@@ -94,6 +86,7 @@ function install_dependencias() {
 }
 
 function clone_repositorio() {
+
     # realiza de um repositorio no git
 
     local origem=$1
@@ -136,6 +129,7 @@ function update_repositorio() {
 }
 
 function get_source_code() {
+
   # Faz a copia ou atualiza o codigo fonte do openocd para compilação
 
   if [[ -d "$openocd_path" || $(mkdir $openocd_path) -eq 0 ]]; then
@@ -157,6 +151,7 @@ function get_source_code() {
 }
 
 function install_openocd() {
+
   # Instala o OpenOCD
 
   install_dependencias &&
@@ -233,21 +228,9 @@ elif  [ $cmd = "config" ]; then
 
   config_jtag
 
-elif  [ $1 = "gtracker" ]; then
-
-  gTracker
-
-elif  [ $1 = "pgAdmin" ]; then
-
-  pgAdmin
-
-elif  [ $1 = "ntop" ]; then
-
-  sudo ntopng
-
 else
 
-  echo "comandos disponivies: install | shutdown | start | restart | stop | reset | config | gtracker | pgAdmin | ntopng"
+  echo "comandos disponivies: install | shutdown | start | restart | stop | reset | config"
   exit -2
 
 fi 

@@ -15,11 +15,27 @@
 # -s seed
 #
 
+#DIR_RELATIVO="${0%/*}"
+#DIR_CHAMADA="${PWD}"
+#SCRIPT_PATH=$DIR_CHAMADA/$DIR_RELATIVO
+#echo "Desde a posição de chamada:"
+#echo "--> $DIR_RELATIVO"
+#echo "Posição de chamada:"
+#echo "-->$DIR_CHAMADA"
+#echo "Junção das duas:"
+#echo "--> $SCRIPT_PATH"
+#echo " Exemplo de aplicação"
+#echo "Listar o conteúdo do diretório onde está o script"
+#ls $SCRIPT_PATH
+
+# Diretorio onde se encontra o script
+BASEDIR="${0%/*}"
+
 # nome do projeto
 PROJECT_NAME=osm
 
 # Diretorio de saida
-OUTPUT_DIR=$HOME
+OUTPUT_DIR=$BASEDIR
 
 #diretorio de trabalho
 WORK_DIR=$OUTPUT_DIR/$PROJECT_NAME
@@ -136,19 +152,19 @@ function create_sumocfg(){
 	local route_files=""
 
 	# Cria lista dos tipos
-        for i in ${TYPES[@]}; do
+	for i in ${TYPES[@]}; do
 
-                local file=${PREFIX_FILE}.${i}.rou.xml
+		local file=${PREFIX_FILE}.${i}.rou.xml
 
-                if [[ -f "$WORK_DIR/$file" ]]; then
+		if [[ -f "$WORK_DIR/$file" ]]; then
 
- 			if [ -n "$route_files" ]; then
-                              route_files=$file","$route_files
-                        else
-                              route_files=$file
-                        fi
+			if [ -n "$route_files" ]; then
+				route_files=$file","$route_files
+			else
+				route_files=$file
+			fi
 		else
- 			echo "ERROR: Arquivo $file não encontrado durante a criação do cfg"
+			echo "ERROR: Arquivo $file não encontrado durante a criação do cfg"
 			exit -1
 		fi
 	done
@@ -493,7 +509,29 @@ function update_simulation(){
 		create_all_trips 
 }
 
-##### Main - Entrada do script
+
+function install_dependencias() {
+    # Instala pacotes necessários
+
+    sudo apt-get -y install \
+        git \
+        make \
+        wget \
+        dialog \
+        libncurses5-dev \
+        flex \
+        bison \
+        gperf \
+        sumo=0.30* \
+        sumo-doc=0.30* \
+        sumo-tool=0.30* \
+        python \
+        python-serial &> /tmp/install.log &
+
+    dialog --title "Instalação dos pacotes" --tailbox  /tmp/install.log 30 100
+}
+
+##### Entrada do script
 
 # Nome do projeto
 PROJECT_NAME=$1
@@ -501,7 +539,7 @@ PROJECT_NAME=$1
 # Pula o primeiro argumento (nome do projeto)
 shift
 
-while getopts "b:o:t:d:s:" opt; do
+while getopts "b:o:t:d:s:i" opt; do
 
   case $opt in
 
@@ -518,9 +556,11 @@ while getopts "b:o:t:d:s:" opt; do
 
     s)  SEED=$OPTARG
 	;;
+    i)  install_dependencias
+	;;
 
     b)	BBOX=$OPTARG
-	SOURCE_OSM=1
+		SOURCE_OSM=1
         CMD=create
 	;;
 

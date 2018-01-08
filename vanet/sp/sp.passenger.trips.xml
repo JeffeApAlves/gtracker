@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- generated on 2018-01-06 14:52:38.104231 by $Id: randomTrips.py 23999 2017-04-21 09:04:47Z behrisch $
+<!-- generated on 2018-01-08 10:18:16.750140 by $Id: randomTrips.py 23999 2017-04-21 09:04:47Z behrisch $
   options: <doubleminus>seed 42 <doubleminus>min-distance 1000 <doubleminus>fringe-factor 5 <doubleminus>prefix pas <doubleminus>vehicle-class passenger -n /media/jefferson/Dados/workspace/gtracker/vanet/sp/sp.net.xml -r /media/jefferson/Dados/workspace/gtracker/vanet/sp/sp.passenger.rou.xml -p 3 -e 3600 -o /media/jefferson/Dados/workspace/gtracker/vanet/sp/sp.passenger.trips.xml
 -->
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
