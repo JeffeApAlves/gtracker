@@ -8,7 +8,7 @@
 @version 0.1
 
 
-Gerenciador do projeto gtracker
+Gerenciador do projeto
 
 """
 
@@ -28,7 +28,7 @@ class PROJECT:
     # Estrutura de diretorios da solucao
 
     # diretrio raiz da solução
-    HOMEDIR = os.environ.get('GTRACKER_HOME',os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
+    HOMEDIR = os.environ.get('PROJECT_HOME',os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
     
     # ferramnetas
     TOOLDIR=HOMEDIR + '/tools'
@@ -61,8 +61,6 @@ class SUMO:
 
     # diretorio de trabalho
     OUTPUTDIR = os.getenv('SUMO_OUTPUT', PROJECT.VANETDIR+ '/' + NAME)
-    
-    click.echo(OUTPUTDIR)
     
     # Prefixo dos arquivos do projeto
     PREFIX_FILE=NAME
@@ -142,13 +140,13 @@ def install():
 @click.command(help='Copia os arquivos para o servidor')
 def deploy():
 
-    os.system('rsync -avz {1} {0}@{2}'.format(USER,PROJECT.TOOLDIR,DEPLOY_PATH))
-    os.system('rsync -avz {1} {0}@{2}'.format(USER,WEBDIR,DEPLOY_PATH))
+    os.system('rsync -avz {1} {0}@{2}'.format(USER,PROJECT.TOOLDIR,PROJECT.DEPLOYDIR))
+    os.system('rsync -avz {1} {0}@{2}'.format(USER,PROJECT.WEBDIR,PROJECT.DEPLOYDIR))
 
 
 @click.command(help='Executa a aplicação django')
 def run():
-    os.system('python {0}/manage.py runserver  {1}:{2}'.format(WEBDIR,IP_WEBSERVER,PORT_WEBSERVER))  
+    os.system('python {0}/manage.py runserver  {1}:{2}'.format(PROJECT.WEBDIR,WEBSERVER.IP,WEBSERVER.PORT))  
 
 @click.command(help='Executa a aplicação django em modo produção')
 def runworker():

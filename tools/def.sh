@@ -3,8 +3,8 @@
 #
 # Projeto
 #
-PROJECT_NAME=GTRACKER
-PROJECT_HOME=$GTRACKER_HOME
+export PROJECT_NAME=GTRACKER
+export PROJECT_HOME=$WORK_SPACE/gtracker
 
 #
 # System
@@ -33,9 +33,9 @@ export IP_WEBSERVER=192.168.42.1
 export SUMO_NAME=sp
 
 # Coordenadas que define a região do mapa para simulação
-SUMO_BBOX='-23.6469,-46.7429,-23.6371,-46.7260'
+export SUMO_BBOX='-23.6469,-46.7429,-23.6371,-46.7260'
 
-SUMO_OUTPUT=$PROJECT_HOME/vanet
+export SUMO_OUTPUT=$PROJECT_HOME/vanet
 export SUMO_TYPES='bus passenger truck pedestrian motorcycle'
 export SUMO_SIMULATION=$SUMO_OUTPUT/$SUMO_NAME/$SUMO_NAME.sumocfg
 
