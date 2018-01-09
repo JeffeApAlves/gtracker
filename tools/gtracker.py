@@ -82,7 +82,6 @@ class SUMO:
     # Coordenadas que define a região do mapa para simulação
     BBOX = os.getenv('SUMO_BBOX','-23.6469,-46.7429,-23.6371,-46.7260')
 
-
     ## Informações para geração da frota/tráfico da simulação
 
     # Classes/tipos que serão criadas

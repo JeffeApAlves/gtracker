@@ -2,28 +2,25 @@
 #
 #  Gerenciador do projeto
 #
-#  <comando>    config: menu de configuração
-#               update: atualiza
-#
-#
 #  Steps:
 #
-#   1  Configurar a variavel de ambiente no  PROJECT_HOME=<path da solução> em gtracker.sh
+#   1  Configurar a variavel de ambiente no  PROJECT_NAME e PROJECT_HOME para o respectivo projeto
 #   
-#   2. Incluir no .bashrc o script principal <gtracker.sh>
+#   2. Incluir no .bashrc esse script.
+#       source $WORK_SPACE/gtracker/tools/gtracker.sh
 #
-#   1. Conectar ambos (raspibarry+computador) em uma mesma rede com acesso a internet
+#   3. Conectar o webserver e o computador utilizado para o desenvolvimento em uma mesma rede com acesso a internet
 #
-#   3. Criar o mesmo usuario em ambos(raspiberry+computador)
-#    3.1 adduser -m nome_usuario
+#   4. Criar o mesmo usuario em ambos
+#    4.1 adduser -m nome_usuario
 #
-#   4. Providenciar, para o usuaro criado sudo e bypass de senha para sudo atraves
-#    4.1 visudo
-#    4.2 <usuario> ALL=NOPASSWD: ALL
+#   5. Providenciar, para o usuaro criado sudo e bypass de senha para sudo atraves
+#    5.1 visudo
+#    5.2 <usuario> ALL=NOPASSWD: ALL
 #
-#   5. Providenciar RSA do seu usario
-#    5.1 ssh-keygen -t rsa
-#    5.2 ssh-copy-id user@ip_machine
+#   6. Providenciar RSA do seu usario
+#    6.1 ssh-keygen -t rsa
+#    6.2 ssh-copy-id user@ip_machine
 #
 
 #### Definições e parametros do projeto
