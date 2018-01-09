@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- generated on 2018-01-08 10:18:17.496940 by $Id: randomTrips.py 23999 2017-04-21 09:04:47Z behrisch $
+<!-- generated on 2018-01-09 17:34:37.137195 by $Id: randomTrips.py 23999 2017-04-21 09:04:47Z behrisch $
   options: <doubleminus>seed 42 <doubleminus>fringe-factor 5 <doubleminus>prefix tru <doubleminus>vehicle-class truck -n /media/jefferson/Dados/workspace/gtracker/vanet/sp/sp.net.xml -r /media/jefferson/Dados/workspace/gtracker/vanet/sp/sp.truck.rou.xml -p 7 -e 3600 -o /media/jefferson/Dados/workspace/gtracker/vanet/sp/sp.truck.trips.xml
 -->
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">

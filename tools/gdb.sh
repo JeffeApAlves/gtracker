@@ -12,17 +12,22 @@
 # Diretorio onde se encontra o script
 BASEDIR="${0%/*}"
 
+source $BASEDIR/def.sh
+source $BASEDIR/misc.sh
+
 url_openocd="https://github.com/espressif/openocd-esp32.git"
 interface_path="/usr/local/share/openocd/scripts/interface"
 target_path="/usr/local/share/openocd/scripts/target"
-openocdfile="$project_path/openocd.sh"
+openocdfile="$PROJECT_HOME/tools/openocd.sh"
 gdbinit="$project_path/gdbinit"
 target="$target_path/esp32.cfg" 
 interface="$interface_path/raspberrypi-native.cfg"
 program="$project_path/build/$project_name.elf"
 host_gdb=$(grep -m 1 target $gdbinit | sed 's/^.*remote \|:.*/''/g')
+ext_program='elf'
+ext_config='cfg'
+freq_jtag=10000
 
-source $BASEDIR/misc.sh
 
 function select_program() {
 
@@ -166,67 +171,6 @@ function reset_target() {
         --no-shadow \
         --title "$USER iniciando debug no host IP:$host_gdb" \
         --tailbox /tmp/ssh.log 40 100
-}
-
-function install_toolchain() {
-
-    CHOICE=$(dialog  --stdout\
-                --title "Versão do Toolchain" \
-                --radiolist "Escolha a versão do toolchain conforme o OS instalado" 0 0 0 \
-                "64" "Versão 64 bits" ON \
-                "32" "Versão 32 bits" OFF
-            )
-    local RET=$?
-
-    if [ $RET -eq 0 ]; then
-
-
-        if  [ $CHOICE == "32" ]; then
-            url_file=$url_espressif_toolchain32
-        else
-            url_file=$url_espressif_toolchain64
-        fi
-
-        toolchain_path_dest="$HOME/esp" #default
-        select_path "Seleção destino toolchain" "$toolchain_path_dest"
-        RET=$?
-
-        if [ $RET -eq 0 ]; then
-
-            toolchain_path_dest=$filepath
-
-            download_file "$url_file" "$HOME/Downloads/tc" &&
-
-            #cria diretorio onde que foi escolhido como destino do toolchian
-            mkdir -p $toolchain_path_dest &&
-
-            #descompacta
-            cd $toolchain_path_dest &&
-
-            tar -xzf "$HOME/Downloads/tc" &&
-
-            # procura onde estão os binarios 
-            toolchain_path=$(find $toolchain_path_dest -name 'xtensa*gcc' | sed 's|/[^/]*$||' ) &&
-
-            update_paths
-
-            RET=0
-        fi
-    fi
-
-    return $RET
-}
-
-function manage_toolchain() {
-
-    install_toolchain
-
-    local RET=$?
-
-    if [ $RET -eq 0 ]; then
-
-        show_msgbox "Atenção" "Instalação concluida.\nFazer logoff do usuario para atualizar as variáveis de ambiente"
-    fi
 }
 
 function scan_gdbserver() {

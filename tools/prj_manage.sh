@@ -102,6 +102,6 @@ elif [ $cmd = "runworker" ]; then
 
 else
 
-    echo "Opção $cmd invalida. Comandos disponivies: update | install | deploy | run | runworker"
+    echo "Comando $cmd invalida. Comandos disponivies: update | install | deploy | run | runworker"
     exit -2
 fi

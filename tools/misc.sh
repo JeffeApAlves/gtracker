@@ -10,7 +10,6 @@ source $BASEDIR/def.sh
 
 back_title="Projeto $PROJECT_NAME"
 
-
 function select_file() {
 
     local title=$1
@@ -146,10 +145,10 @@ function show_msgbox() {
 function show_info() {
 
     dialog \
-        --title $1 \
+        --title "Informação" \
         --backtitle "$back_title" \
         --sleep 3 \
-        --infobox "$3" \
+        --infobox "$1" \
         0 0
 }
 
@@ -182,27 +181,6 @@ function download_file() {
     dialog --title "Download" --gauge "Por favor espere. Download em andamento.\n\nDe  :$origem\nPara:$destino" 0 0 0
 }
 
-#function clone_repositorio() {
-#
-#    # realiza de um repositorio no git
-#
-#    local origem=$1
-#    local destino=$2
-#
-#    git clone --recursive $origem $destino
-#}
-
-function clone_repositorio() {
-
-    local origem=$1
-    local destino=$2
-
-    git clone --recursive --progress $origem 2>&1 | \
-
-    stdbuf -o0 awk 'BEGIN{RS="\r|\n|\r\n|\n\r";ORS="\n"}/Receiving/{print substr($3, 1, length($3)-1)}' | \
-    dialog --title "Download" --gauge "Por favor espere. Clonagem em andamento.\n\nDe  :$origem\nPara:$destino" 0 0 0
-}
-
 function install_dependencias() {
     # Instala pacotes necessários
 
@@ -221,34 +199,53 @@ function install_dependencias() {
     dialog --title "Instalação dos pacotes" --tailbox  /tmp/install.log 30 100
 }
 
-#function install_dialog() {
-#
-#    echo "Por favor espere..."
-#
-#	for i in ${TYPES[@]}; do
-#
-#        local pacote=$(dpkg --get-selections | grep "${i}" )
-#
-#
-#        if [ ! -n "$pacote" ] ; then
-#
-#            sudo apt-get install -y  dialog -qq > /dev/null
-#        fi		
-#
-#	done
-#
-#
-#    local pacote=$(dpkg --get-selections | grep "dialog" )
-#
-#    if [ ! -n "$pacote" ] ; then
-#
-#        sudo apt-get install -y  dialog -qq > /dev/null
-#    fi
-#
-#    pacote=$(dpkg --get-selections | grep "libncurses5-dev" )
-#
-#    if [ ! -n "$pacote" ] ; then
-#
-#        sudo apt-get libncurses5-dev -y  dialog -qq > /dev/null
-#    fi
-#}
+function clone_repositorio() {
+
+    local origem=$1
+    local destino=$2
+
+    git clone --recursive --progress $origem $destino 2>&1 | \
+
+    stdbuf -o0 awk 'BEGIN{RS="\r|\n|\r\n|\n\r";ORS="\n"}/Receiving/{print substr($3, 1, length($3)-1)}' | \
+    dialog --title "Download" --gauge "Por favor espere. Clonagem em andamento.\n\nDe  :$origem\nPara:$destino" 0 0 0
+}
+
+function update_repositorio() {
+
+    local destino=$1
+    local UPSTREAM=${2:-'@{u}'}   #[opcional] passar o branch  ex:release/v2.1"
+
+    cd $destino &&
+    git remote update > /dev/null &&
+
+    LOCAL=$(git rev-parse @) && 
+    REMOTE=$(git rev-parse "$UPSTREAM") &&
+    BASE=$(git merge-base @ "$UPSTREAM") &&
+
+    if [ $LOCAL = $REMOTE ]; then
+
+        show_info "Atualizado !\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+
+    elif [ $LOCAL = $BASE ]; then
+
+        git submodule update
+
+        git pull --recurse-submodules &> /tmp/git.log &> /tmp/git.log 30 100 &
+        dialog \
+            --title "Atualização respositório-Local :$LOCAL\nRemote:$REMOTE\nBase  :$BASE" \
+            --tailbox /tmp/git.log 30 100
+
+    elif [ $REMOTE = $BASE ]; then
+
+        git submodule update
+
+        git pull --recurse-submodules &> /tmp/git.log &> /tmp/git.log 30 100 &
+        dialog
+            --title "Atualização respositório-Local :$LOCAL\nRemote:$REMOTE\nBase  :$BASE" \
+            --tailbox /tmp/git.log 30 100
+    else
+
+        show_info "Divergencias\n\nLocal :$LOCAL\nRemote:$REMOTE\nBase  :$BASE"
+
+    fi
+}

@@ -3,22 +3,26 @@
 #  Menus para configuração do projeto ESP32 / SDK IDF / OpenOCD 
 #
 
+# Diretorio onde se encontra o script
 BASEDIR="${0%/*}"
 
 source $BASEDIR/def.sh
 source $BASEDIR/misc.sh
-source $BASEDIR/esp32.sh $PROJECT_HOME/platform/esp32
 source $BASEDIR/gdb.sh
 
+# Home do projeto ESP32
+ESP32_PROJECT_HOME=$PROJECT_HOME/platform/esp32
+
 # Tela anterior
-before_screen=null
+BEFORE_SCREEN=null
+
 # Tela atual 
-activate_screen=null
+ACTIVATE_SCREEN=null
 
 declare -a  PACKAGES_TO_INSTALL
 
 # Pacotes para instalação
-PACKAGES_TO_INSTALL=(git make wget nmap flex bison gperf python python-serial minicom pyrenamer)
+PACKAGES_TO_INSTALL=(git make wget nmap flex bison gperf python python-serial minicom)
 
 function debug_screen() {
 
@@ -68,7 +72,7 @@ function project_screen() {
                 --backtitle "$app_title" \
                 --no-tags \
                 --menu "Selecione uma das opções abaixo" 20 100 20 \
-                1 "Compilar todo o projeto"   \
+                1 "Compilar all"   \
                 2 "Compilar app"  \
                 3 "Criar projeto"
             )
@@ -77,9 +81,9 @@ function project_screen() {
     if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                1) build_all ;;
-                2) build_app ;;
-                3) create_project ;;
+                1) $BASEDIR/esp32.sh build -d $ESP32_PROJECT_HOME -s all ;;
+                2) $BASEDIR/esp32.sh build -d $ESP32_PROJECT_HOME -s app ;;
+                3) $BASEDIR/esp32.sh create -d $ESP32_PROJECT_HOME ;;
         esac
     fi
 
@@ -97,18 +101,16 @@ function enviroment_screen() {
                 --menu "Selecione uma das opções abaixo" 20 100 20 \
                 1 "Instalar/atualizar ESP-IDF"   \
                 2 "Instalar/atualizar openocd"  \
-                3 "Instalar/atualizar toolchain" \
-                4 "Instalar/atualizar dependencias (pacotes)"
+                3 "Instalar/atualizar toolchain"
             )
     local RET=$?
 
     if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                1) manage_idf ;;
+                1) $BASEDIR/esp32.sh install -d $ESP32_PROJECT_HOME -s sdk ;;
                 2) install_openocd ;;
-                3) manage_toolchain ;;
-                4) install_dependencias ;;
+                3) $BASEDIR/esp32.sh install -d $ESP32_PROJECT_HOME -s toolchain ;;
         esac
     fi
 
@@ -133,9 +135,9 @@ function esp32_screen() {
     if [ $RET -eq 0 ]; then
 
         case $CHOICE in
-                1) esp32_flash ;;
-                2) esp32_monitor ;;
-                3) esp32_config_screen ;;
+                1) $BASEDIR/esp32.sh esp -d $ESP32_PROJECT_HOME -s flash ;;
+                2) $BASEDIR/esp32.sh esp -d $ESP32_PROJECT_HOME -s monitor ;;
+                3) $BASEDIR/esp32.sh esp -d $ESP32_PROJECT_HOME -s config ;;
         esac
     fi
 
@@ -174,9 +176,9 @@ function main_screen() {
 function show_screen() {
     # selecioan um menu para ser mostrado na tela
 
-    before_screen=$activate_screen
+    BEFORE_SCREEN=$ACTIVATE_SCREEN
 
-    activate_screen=$1
+    ACTIVATE_SCREEN=$1
 }
 
 function install_packages() {
@@ -185,64 +187,53 @@ function install_packages() {
 
     local installed=$(dpkg --get-selections)
 
-	for i in ${PACKAGES_TO_INSTALL[@]}; do
+	for pkg in ${PACKAGES_TO_INSTALL[*]}; do
 
-        local pacote=$(echo "$installed"| grep "${i}")
+        
+        status=$(dpkg -s "$pkg" | grep "install ok installed") > /dev/null
+        
+        if [ ! -n "$status" ] ; then
 
-        if [ ! -n "$pacote" ] ; then
+            sudo apt-get install -qq $pkg 
 
-            sudo apt-get install -y  dialog -qq > /dev/null
-
-#            sudo apt-get -y install "${i}"  &> /tmp/install.log &
-#            dialog --title "Instalação do pacote" --tailbox  /tmp/install.log 30 100
+            #sudo apt-get -y install "$pkg"  &> /tmp/install.log &
+            #dialog --title "Instalação do pacote" --tailbox  /tmp/install.log 30 100
         fi		
 
 	done
 }
 
-function serial_permission(){
+function main_loop(){
 
-    # permite acesso na porta serial
-    
-    if [[ -f "$serial" ]] ;then
+    while : ; do
 
-        sudo chmod 777 $serial > /dev/null
-    fi
+        $ACTIVATE_SCREEN;
+        RET=$?
+
+        # processa eventos com hanldes comunus
+        if [ $RET -ne 0 ]; then
+
+            if [ $ACTIVATE_SCREEN = main_screen ]; then
+                # ESC na tela principal entao sai do script
+                break
+            else
+                show_screen $BEFORE_SCREEN
+            fi
+        fi
+    done
 }
 
 ### Entrada do script
 
 # startup do script
 
-# limpa a tela
-clear
-
 # instala os pacote que ainda não estão instalados
 install_packages
-
-# permissão na porta serial
-serial_permission
 
 #inicializa com o menu principal
 show_screen main_screen
 
-# main loop
-
-while : ; do
-
-    $activate_screen;
-    RET=$?
-
-    # processa eventos com hanldes comunus
-    if [ $RET -ne 0 ]; then
-
-        if [ $activate_screen = main_screen ]; then
-            # ESC na tela principal entao sai do script
-            break
-        else
-            show_screen $before_screen
-        fi
-    fi
-done
+# loop infinito 
+main_loop
 
 clear

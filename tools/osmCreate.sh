@@ -15,30 +15,14 @@
 # -s seed
 #
 
-#DIR_RELATIVO="${0%/*}"
-#DIR_CHAMADA="${PWD}"
-#SCRIPT_PATH=$DIR_CHAMADA/$DIR_RELATIVO
-#echo "Desde a posição de chamada:"
-#echo "--> $DIR_RELATIVO"
-#echo "Posição de chamada:"
-#echo "-->$DIR_CHAMADA"
-#echo "Junção das duas:"
-#echo "--> $SCRIPT_PATH"
-#echo " Exemplo de aplicação"
-#echo "Listar o conteúdo do diretório onde está o script"
-#ls $SCRIPT_PATH
-
-# Diretorio onde se encontra o script
+# Diretorio base inicia com o local onde se encontra o script
 BASEDIR="${0%/*}"
 
 # nome do projeto
 PROJECT_NAME=osm
 
-# Diretorio de saida
-OUTPUT_DIR=$BASEDIR
-
 #diretorio de trabalho
-WORK_DIR=$OUTPUT_DIR/$PROJECT_NAME
+OUTPUTDIR=$BASEDIR/$PROJECT_NAME
 
 # Prefixo dos arquivos do projeto
 PREFIX_FILE=$PROJECT_NAME
@@ -82,15 +66,16 @@ FRINGE_FACTOR=( [passenger]=5 [bus]=5 [truck]=5 [pedestrian]=1 [bicycle]=2 [moto
 # Seed para referencia da simulação
 SEED=42
 
-CMD="update"
+# Pacotes para instalação
+PACKAGES_TO_INSTALL=(git make wget nmap flex bison gperf python python-serial minicom figlet sumo=0.30* sumo-doc=0.30* sumo-tool=0.30)
 
 function create_trips(){
 
 	local type=$1
 	local pre_fix=${type:0:3}
-	local route_file=$WORK_DIR/${PREFIX_FILE}.$type.rou.xml
-	local trip_file=$WORK_DIR/${PREFIX_FILE}.$type.trips.xml
-	local net_file=$WORK_DIR/$NET_FILE
+	local route_file=$OUTPUTDIR/${PREFIX_FILE}.$type.rou.xml
+	local trip_file=$OUTPUTDIR/${PREFIX_FILE}.$type.trips.xml
+	local net_file=$OUTPUTDIR/$NET_FILE
 	local fringe_factor=${FRINGE_FACTOR[$type]}
 	local end_time=${END_TIME[$type]}
 	local period=${PERIOD[$type]}
@@ -137,12 +122,12 @@ function add_file(){
         local type=${2:-""}
         local file=$(filename $1)
 
-	echo '   <copy file="'$file'"' $type '/>' >> $WORK_DIR/$LAUNCH_FILE
+	echo '   <copy file="'$file'"' $type '/>' >> $OUTPUTDIR/$LAUNCH_FILE
 }
 
 function add_line(){
 
-	echo $1 >> $WORK_DIR/$LAUNCH_FILE
+	echo $1 >> $OUTPUTDIR/$LAUNCH_FILE
 }
 
 function create_sumocfg(){
@@ -156,7 +141,7 @@ function create_sumocfg(){
 
 		local file=${PREFIX_FILE}.${i}.rou.xml
 
-		if [[ -f "$WORK_DIR/$file" ]]; then
+		if [[ -f "$OUTPUTDIR/$file" ]]; then
 
 			if [ -n "$route_files" ]; then
 				route_files=$file","$route_files
@@ -169,7 +154,7 @@ function create_sumocfg(){
 		fi
 	done
 
-cat >$WORK_DIR/$SUMO_CONFIG <<EOL
+cat >$OUTPUTDIR/$SUMO_CONFIG <<EOL
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
@@ -206,7 +191,7 @@ function create_launch(){
 
 	# Cria o arquivo xml que omnet utilizara para iniciar o sumo-gui
 
-	> $WORK_DIR/$LAUNCH_FILE		&&
+	> $OUTPUTDIR/$LAUNCH_FILE		&&
 	add_line '<?xml version="1.0"?>'	&&
 	add_line '<!-- debug config -->'	&&
 	add_line '<launch>'			&&
@@ -251,7 +236,7 @@ function create_net(){
 
 	if [ $SOURCE_OSM -eq 1 ]; then
 
-		RET=$(python $SUMO_HOME/tools/osmGet.py --bbox "$BBOX" --prefix ${PREFIX_FILE} --output-dir $WORK_DIR 2>&1)
+		RET=$(python $SUMO_HOME/tools/osmGet.py --bbox "$BBOX" --prefix ${PREFIX_FILE} --output-dir $OUTPUTDIR 2>&1)
 
                # verifica via retorno no console
                 echo $RET | grep '200 OK' &> /dev/null
@@ -268,7 +253,7 @@ function create_net(){
 		if [[ -f "$INPUT_OSM_FILE" ]]; then
 
 			# Copia o mapa para o diretorio de trabalho
-			cp $INPUT_OSM_FILE $WORK_DIR/$OSM_FILE
+			cp $INPUT_OSM_FILE $OUTPUTDIR/$OSM_FILE
 
 			if [ $? != 0 ]; then
 				echo "ERROR: Não foi possível copiar o arquivo $INPUT_OSM_FILE"
@@ -281,11 +266,11 @@ function create_net(){
 
 	# Cria o arquivo net baseado nas configurações que estão no arquivo xml e+ o map osm.xml
 
-	if [[ -f "$WORK_DIR/$OSM_FILE" ]]; then
+	if [[ -f "$OUTPUTDIR/$OSM_FILE" ]]; then
 
-		netconvert  --configuration-file $WORK_DIR/$NET_CONFIG
+		netconvert  --configuration-file $OUTPUTDIR/$NET_CONFIG
 	else
-		echo "ERROR: O mapa $WORK_DIR/$OSM_FILE não foi localizado"
+		echo "ERROR: O mapa $OUTPUTDIR/$OSM_FILE não foi localizado"
 		exit -2
 	fi
 }
@@ -294,12 +279,12 @@ function create_poly(){
 
 	# Cria o arquivo de poligonos adicionais baseado nas configurações que estão no arquivo xml
 
-        if [[ -f "$WORK_DIR/$POLY_CONFIG" ]]; then
+        if [[ -f "$OUTPUTDIR/$POLY_CONFIG" ]]; then
 
-		polyconvert --configuration-file $WORK_DIR/$POLY_CONFIG
+		polyconvert --configuration-file $OUTPUTDIR/$POLY_CONFIG
 	else
 
-                echo "ERROR: Não localizado o arquivo de configuração $WORK_DIR/$POLY_CONFIG"
+                echo "ERROR: Não localizado o arquivo de configuração $OUTPUTDIR/$POLY_CONFIG"
                 exit -2
 	fi
 }
@@ -313,11 +298,11 @@ function create_netcfg(){
 	#<plain-output-prefix value ="$PREFIX_FILE"/>
 	
 
-	#<node-files value="$WORK_DIR/$PREFIX_FILE.nod.xml"/>
-	#<edge-files value="$WORK_DIR/$PREFIX_FILE.edg.xml"/>
-	#<connection-files value="$WORK_DIR/$PREFIX_FILE.con.xml"/>
+	#<node-files value="$OUTPUTDIR/$PREFIX_FILE.nod.xml"/>
+	#<edge-files value="$OUTPUTDIR/$PREFIX_FILE.edg.xml"/>
+	#<connection-files value="$OUTPUTDIR/$PREFIX_FILE.con.xml"/>
 
-cat >$WORK_DIR/$NET_CONFIG <<EOL
+cat >$OUTPUTDIR/$NET_CONFIG <<EOL
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
@@ -373,7 +358,7 @@ function create_polycfg(){
 
 	# Cria o arquivo xml de configuração dos poligonos
 
-cat >$WORK_DIR/$POLY_CONFIG <<EOL
+cat >$OUTPUTDIR/$POLY_CONFIG <<EOL
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/polyconvertConfiguration.xsd">
@@ -402,7 +387,7 @@ function create_guicfg(){
 
 	#cria o arquivo xml com as configurações para o GUI 
 
-cat >$WORK_DIR/$GUI_FILE <<EOL
+cat >$OUTPUTDIR/$GUI_FILE <<EOL
 <viewsettings>
     <scheme name="real world"/>
     <delay value="50"/>
@@ -416,7 +401,7 @@ function create_addfile(){
 
 #TODO
 
-cat >$WORK_DIR/$ADD_FILE <<EOL
+cat >$OUTPUTDIR/$ADD_FILE <<EOL
 
 <additional>
 
@@ -434,23 +419,23 @@ EOL
 }
 function update_all_paths(){
 
-        # Atualiza nome de todos os arquivos conforme o nome do projeto
-        PREFIX_FILE=$PROJECT_NAME
+	# Atualiza nome de todos os arquivos conforme o nome do projeto
+    PREFIX_FILE=$PROJECT_NAME
 
 	# Atualiza o nome do arquivo de entrada do mapa
-        OSM_FILE=${PREFIX_FILE}_bbox.osm.xml
+	OSM_FILE=${PREFIX_FILE}_bbox.osm.xml
 
-        POLY_CONFIG=${PREFIX_FILE}.polycfg
-        NET_CONFIG=${PREFIX_FILE}.netccfg
-        SUMO_CONFIG=${PREFIX_FILE}.sumocfg
-        NET_FILE=${PREFIX_FILE}.net.xml
-        POLY_FILE=${PREFIX_FILE}.poly.xml
-        GUI_FILE=${PREFIX_FILE}.view.xml
+    POLY_CONFIG=${PREFIX_FILE}.polycfg
+    NET_CONFIG=${PREFIX_FILE}.netccfg
+    SUMO_CONFIG=${PREFIX_FILE}.sumocfg
+    NET_FILE=${PREFIX_FILE}.net.xml
+    POLY_FILE=${PREFIX_FILE}.poly.xml
+    GUI_FILE=${PREFIX_FILE}.view.xml
 	LAUNCH_FILE=${PREFIX_FILE}.launch.xml
 	ADD_FILE=${PREFIX_FILE}.type.add.xml
 
-        # Atualiza diretorio de trabalho
-	WORK_DIR=$OUTPUT_DIR/$PROJECT_NAME 
+    # Atualiza diretorio de trabalho
+	OUTPUTDIR=$BASEDIR/$PROJECT_NAME 
 }
 
 function create_project(){
@@ -459,8 +444,8 @@ function create_project(){
 
 	# cria diretorio do projeto e seus respectivos arquivos
 
-	if [[ ! -d "$WORK_DIR" ]]; then
-		mkdir "$WORK_DIR"
+	if [[ ! -d "$OUTPUTDIR" ]]; then
+		mkdir "$OUTPUTDIR"
 
 		if [ $? != 0 ]; then
 			exit 1
@@ -493,7 +478,7 @@ function update_simulation(){
 
         update_all_paths
 
-	route_files=$(xmllint --xpath "string(//configuration/input/route-files/@value)" $WORK_DIR/$SUMO_CONFIG)
+	route_files=$(xmllint --xpath "string(//configuration/input/route-files/@value)" $OUTPUTDIR/$SUMO_CONFIG)
 
 	IFS=',' read -r -a array <<< "$route_files"
 
@@ -509,29 +494,31 @@ function update_simulation(){
 		create_all_trips 
 }
 
+function install_packages() {
 
-function install_dependencias() {
-    # Instala pacotes necessários
+    echo "Por favor espere..."
 
-    sudo apt-get -y install \
-        git \
-        make \
-        wget \
-        dialog \
-        libncurses5-dev \
-        flex \
-        bison \
-        gperf \
-        sumo=0.30* \
-        sumo-doc=0.30* \
-        sumo-tool=0.30* \
-        python \
-        python-serial &> /tmp/install.log &
+    local installed=$(dpkg --get-selections)
 
-    dialog --title "Instalação dos pacotes" --tailbox  /tmp/install.log 30 100
+	for pkg in ${PACKAGES_TO_INSTALL[*]}; do
+
+        
+        status=$(dpkg -s "$pkg" | grep "install ok installed") > /dev/null
+        
+        if [ ! -n "$status" ] ; then
+
+            sudo apt-get install -qq $pkg 
+
+            #sudo apt-get -y install "$pkg"  &> /tmp/install.log &
+            #dialog --title "Instalação do pacote" --tailbox  /tmp/install.log 30 100
+        fi		
+
+	done
 }
 
 ##### Entrada do script
+
+CMD="update"
 
 # Nome do projeto
 PROJECT_NAME=$1
@@ -551,7 +538,7 @@ while getopts "b:o:t:d:s:i" opt; do
     t)	set_types $OPTARG
 	;;
 
-    d)  OUTPUT_DIR=$OPTARG
+    d)  BASEDIR=$OPTARG
 	;;
 
     s)  SEED=$OPTARG
