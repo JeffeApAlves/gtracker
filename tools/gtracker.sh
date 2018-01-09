@@ -4,10 +4,10 @@
 #
 #  Steps:
 #
-#   1  Configurar a variavel de ambiente no  PROJECT_NAME e PROJECT_HOME para o respectivo projeto
+#   1  Configurar a variavel de ambiente PROJECT_NAME e PROJECT_HOME para o respectivo projeto
 #   
 #   2. Incluir no .bashrc esse script.
-#       source $WORK_SPACE/gtracker/tools/gtracker.sh
+#       source <path_tools>/script_manage.sh
 #
 #   3. Conectar o webserver e o computador utilizado para o desenvolvimento em uma mesma rede com acesso a internet
 #
@@ -20,7 +20,7 @@
 #
 #   6. Providenciar RSA do seu usario
 #    6.1 ssh-keygen -t rsa
-#    6.2 ssh-copy-id user@ip_machine
+#    6.2 ssh-copy-id <use>r@<ip-machine>
 #
 
 #### Definições e parametros do projeto
@@ -83,35 +83,24 @@ ESP32_NAME=""
 
 #### Alias para os comandos dos scripts
 
+
+# comandos para a aplicação
 #
-# comandos gtracker
-#
-alias gtracker='$PROJECT_HOME/tools/gtracker.py'
-alias gtracker-env='workon gtracker'
-alias gtracker-home='cd $PROJECT_HOME'
-alias gtracker-deploy='gtracker deploy'
-alias gtracker-update='gtracker update'
-alias gtracker-install='gtracker install'
-alias gtracker-run='gtracker run'
-alias gtracker-worker='gtracker runworker'
+prj_name_lower=$(echo ${PROJECT_NAME,,})
+alias script_manage='$PROJECT_HOME/tools/script_manage.py'
+alias $prj_name_lower-env='workon script_manage'
+alias $prj_name_lower-home='cd $PROJECT_HOME'
+alias $prj_name_lower-deploy='script_manage deploy'
+alias $prj_name_lower-update='script_manage update'
+alias $prj_name_lower-install='script_manage install'
+alias $prj_name_lower-run='script_manage run'
+alias $prj_name_lower-worker='script_manage runworker'
 
 # comandos sumo
 #
-alias sumo-run='gtracker sumo --cfg $SUMO_SIMULATION'
-alias sumo-create='gtracker sumo --name "$SUMO_NAME" --seed "$SEED" --bbox "$SUMO_BBOX" --types "$SUMO_TYPES" --out "$SUMO_OUTPUT"'
+alias sumo-run='script_manage sumo --cfg $SUMO_SIMULATION'
+alias sumo-create='script_manage sumo --name "$SUMO_NAME" --seed "$SEED" --bbox "$SUMO_BBOX" --types "$SUMO_TYPES" --out "$SUMO_OUTPUT"'
 
-#
 # Configuração do ambiente de desenvolvimento para esp32
 #
-alias esp32-create='gtracker esp32'
-
-#
-# comandos Daphne
-#
-#alias daphne-r='daphne -b 127.0.0.1 -p 8020 --ws-protocol "graphql-ws" --proxy-headers GoodsTracker.asgi:channel_layer'
-alias daphne-r='daphne -b 127.0.0.1 -p 8020 GoodsTracker.asgi:channel_layer --access-log=/var/www/gtracker/logs/daphne.log'
-
-#
-# comandos postgresql
-#
-alias pg-adm='python $WORKON_HOME/gtracker/lib/$PYTHON_VERSION/site-packages/pgadmin4/pgAdmin4.py'
+alias esp32-create='script_manage esp32'
