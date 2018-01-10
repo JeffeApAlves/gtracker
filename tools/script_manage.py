@@ -14,10 +14,9 @@ Gerenciador do projeto
 
 import os
 import sys
-import argparse
 import ast
 import getpass
-#import subprocess
+import subprocess
 import click
 
 class PROJECT:
@@ -35,6 +34,9 @@ class PROJECT:
     
     # site
     WEBDIR = HOMEDIR + '/web' 
+
+    # embarcado
+    PLATFORMDIR = HOMEDIR + '/platform
 
     # Diretorio da simulação
     VANETDIR=HOMEDIR + '/vanet' 
@@ -106,11 +108,87 @@ class SUMO:
     LAUNCH_FILE = PREFIX_FILE+'.launch.xml'
     ADD_FILE = PREFIX_FILE+'.type.add.xml'
     
+class USER:
+    NAME = getpass.getuser()
+
+
+class ESP32:
+
+    PROJECT_NAME = os.getenv('ESP32_PROJECT_NAME','esp32-mqtt')
+
+    HOMEDIR = PLATFORMDIR + '/' + PROJECT_NAME
+
+
+class GDB:
+    
+    HOMEDIR = ESP32.HOMEDIR
+
+    openocdfile = PROJECT.TOOLDIR + "/openocd.sh"
+
+    gdbinit = HOMEDIR + '/gdbinit'
+
+    url_openocd ="https://github.com/espressif/openocd-esp32.git"
+
+    interface_path ="/usr/local/share/openocd/scripts/interface"
+
+    target_path = "/usr/local/share/openocd/scripts/target"
+
+    target = target_path + '/' + os.getenv('GDB_TARGET','esp32.cfg')
+ 
+    interface = interface_path + '/' + os.getenv('GDB_INTERFACE','raspberrypi-native.cfg')
+    
+    program = HOMEDIR + "/build/"+os.getenv('GDB_PROGRAM_ELF','program.elf')
+    
+    host_gdb = os.getenv('GDB_HOST','192.168.42.1') 
+    
+    ext_program = 'elf'
+ 
+    ext_config  = 'cfg'
+ 
+    freq_jtag = os.getenv('ESP32_FREQ_JTAG',4000)
+
+    def __init__(self):
+        pass
+
+    def select_program(self):
+
+        bashCommand = ""
+        process = subprocess.Popen(bashCommand.split(),stdout=subprocess.PIPE)
+        stdout=process.communicate()
+
+        pass
+
+    def select_interface(self):
+        pass
+
+    def select_target(self):
+        pass
+
+    def start_gdb(self):
+        pass
+
+    def start_debug_server(self):
+        pass
+
+    def stop_debug_server(self):
+        pass
+
+    def start_debug_section(self):
+        pass
+
+    def config_jtag(self):
+        pass
+
+    def shutdown_interface(self):
+        pass
+
+    def reset_target(self):
+        pass
+
+    def scan_gdbserver(self):
+        pass
 
 sys.path.append(os.path.join(PROJECT.HOMEDIR, 'tools'))
-
-USER=getpass.getuser()
-
 
 @click.group()
 @click.option('--debug/--no-debug', default=False)
@@ -118,9 +196,11 @@ USER=getpass.getuser()
 def cli(ctx, debug):
     ctx.obj['DEBUG'] = debug
 
-@click.command(help='Atualiza os pacotes do ambiente Python')
+@cli.command()
 @click.pass_context
 def update(ctx):
+
+    '''Atualiza os pacotes do ambiente Python'''
 
     # arquivo  temporario com a lista  dos pacotes python 
     
@@ -130,30 +210,39 @@ def update(ctx):
     os.system('pip freeze --local > {0}'.format(PROJECT.REQUERIMENTS_FILE))    
 
 
-@click.command(help='Instala os pacotes do ambiente Python')
+@cli.command()
 def install():
+
+    '''Instala os pacotes do ambiente Python'''
 
     os.system('pip install -r {0}'.format(PROJECT.REQUERIMENTS_FILE))   
 
 
-@click.command(help='Copia os arquivos para o servidor')
+@cli.command()
 def deploy():
 
-    os.system('rsync -avz {1} {0}@{2}'.format(USER,PROJECT.TOOLDIR,PROJECT.DEPLOYDIR))
-    os.system('rsync -avz {1} {0}@{2}'.format(USER,PROJECT.WEBDIR,PROJECT.DEPLOYDIR))
+    '''Copia os arquivos para o servidor'''
+
+    os.system('rsync -avz {1} {0}@{2}'.format(USER.NAME,PROJECT.TOOLDIR,PROJECT.DEPLOYDIR))
+    os.system('rsync -avz {1} {0}@{2}'.format(USER.NAME,PROJECT.WEBDIR,PROJECT.DEPLOYDIR))
 
 
-@click.command(help='Executa a aplicação django')
+@cli.command()
 def run():
+
+    ''''Executa a aplicação django'''
+
     os.system('python {0}/manage.py runserver  {1}:{2}'.format(PROJECT.WEBDIR,WEBSERVER.IP,WEBSERVER.PORT))  
 
-@click.command(help='Executa a aplicação django em modo produção')
+@cli.command()
 def runworker():
+
+    '''Executa a aplicação django em modo produção'''
 
     os.system('python {0}/manage.py runworker'.format(WEBDIR))  
 
 
-@click.command(help='Gerencia as simulaçoes de transito')
+@click.command()
 @click.option('--cfg', default=None)
 @click.option('--bbox', default=SUMO.BBOX)
 @click.option('--seed', default=SUMO.SEED)
@@ -163,6 +252,7 @@ def runworker():
 @click.pass_context
 def sumo(ctx,cfg,bbox,seed,name,types,out):
 
+    '''Gerencia as simulaçoes de transito'''
 
     if cfg != None :
         
@@ -195,18 +285,13 @@ def sumo(ctx,cfg,bbox,seed,name,types,out):
         click.echo(cmd)
         os.system(cmd)
 
-@click.command(help='Gerencia p projeto do ESP32')
+@cli.command()
 @click.pass_context
 def esp32(ctx):
-    os.system(PROJECT.TOOLDIR + '/config.sh')
 
-cli.add_command(install)
-cli.add_command(update)
-cli.add_command(deploy)
-cli.add_command(run)
-cli.add_command(runworker)
-cli.add_command(sumo)
-cli.add_command(esp32)
+    '''Gerencia p projeto do ESP32'''
+
+    os.system(PROJECT.TOOLDIR + '/config.sh')
 
 if __name__ == '__main__':
     cli(obj={})
