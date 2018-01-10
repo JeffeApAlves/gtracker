@@ -12,7 +12,6 @@
 # Diretorio onde se encontra o script
 BASEDIR="${0%/*}"
 
-source $BASEDIR/def.sh
 source $BASEDIR/misc.sh
 
 url_openocd="https://github.com/espressif/openocd-esp32.git"

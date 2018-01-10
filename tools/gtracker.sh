@@ -46,9 +46,8 @@ export SUMO_NAME=sp
 
 # Coordenadas que define a região do mapa para simulação
 export SUMO_BBOX='-23.6469,-46.7429,-23.6371,-46.7260'
-export SUMO_OUTPUT=$PROJECT_HOME/vanet
 export SUMO_TYPES='bus passenger truck pedestrian motorcycle'
-export SUMO_SIMULATION=$SUMO_OUTPUT/$SUMO_NAME/$SUMO_NAME.sumocfg
+export SUMO_SIMULATION=$SUMO_NAME.sumocfg
 
 # Classes/tipos que serão criadas
 export SUMO_TYPES='bus passenger truck pedestrian motorcycle'
@@ -62,7 +61,7 @@ export SUMO_ENDTIME='{"passenger" : "3600", "bus" : "3600", "truck" : "3600", "p
 export SUMO_PERIOD='{"passenger" : "3", "bus" : "10", "truck" : "7", "pedestrian" : "1", "bicycle" : "100", "motorcycle" : "4"}'
 
 # Influencia na estatistica onde será iniciado as viagens
-export vSUMO_FRINGEFACTOR='{"passenger" : "5", "bus" : "5", "truck" : "5", "pedestrian" : "1", "bicycle" : "2", "motorcycle" : "3"}'
+export SUMO_FRINGEFACTOR='{"passenger" : "5", "bus" : "5", "truck" : "5", "pedestrian" : "1", "bicycle" : "2", "motorcycle" : "3"}'
 
 # Seed referencia da simulação
 export SUMO_SEED=42
@@ -105,7 +104,7 @@ alias $prj_name_lower-runworker='script_manage runworker'
 # executa a simulação com o modo gui habilitado
 alias sumo-run='script_manage sumo --cfg $SUMO_SIMULATION'
 # cria a simulação
-alias sumo-create='script_manage sumo --name "$SUMO_NAME" --seed "$SEED" --bbox "$SUMO_BBOX" --types "$SUMO_TYPES" --out "$SUMO_OUTPUT"'
+alias sumo-create='script_manage sumo --name "$SUMO_NAME" --seed "$SUMO_SEED" --bbox "$SUMO_BBOX" --types "$SUMO_TYPES"'
 
 # ESP32 #
 
