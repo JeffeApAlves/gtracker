@@ -6,8 +6,7 @@
 # Diretorio onde se encontra o script
 BASEDIR="${0%/*}"
 
-source $BASEDIR/def.sh
-source $BASEDIR/misc.sh
+ource $BASEDIR/misc.sh
 source $BASEDIR/gdb.sh
 
 # Home do projeto ESP32

@@ -6,6 +6,9 @@ setup(
     py_modules=['gtracker'],
     install_requires=[
         'Click',
+        'pythondialog',
+        'python-nmap',
+        'wget'
     ],
     entry_points='''
         [console_scripts]

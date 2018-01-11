@@ -76,7 +76,7 @@ export GDB_TARGET=esp32.cfg
 export GDB_INTERFACE=raspberrypi-native.cfg
 export GDB_FREQ_JTAG=4000
 export GDB_HOST='192.168.42.21'
-export GDB_PROGRAM_ELF='$ESP32_PROJECT_NAME'.elf
+export GDB_PROGRAM_ELF=$ESP32_PROJECT_NAME.elf
 
 # System #
 
@@ -88,7 +88,7 @@ PYTHON_VERSION=python3.6
 # aplicação #
 
 prj_name_lower=$(echo ${PROJECT_NAME,,})
-alias script_manage='$PROJECT_HOME/tools/script_manage.py'
+alias script_manage=$PROJECT_HOME/tools/script_manage.py
 
 alias $prj_name_lower='script_manage'
 alias $prj_name_lower-home='cd $PROJECT_HOME'
@@ -110,3 +110,5 @@ alias sumo-create='script_manage sumo --name "$SUMO_NAME" --seed "$SUMO_SEED" --
 
 # Configuração do ambiente de desenvolvimento para esp32
 alias esp32-create='script_manage esp32'
+# porta serial 
+ESP32_SERIAL_PORT='/dev/ttyUSB0'

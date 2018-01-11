@@ -14,21 +14,26 @@ Gerenciador do projeto
 
 import os
 import os.path
+import locale
+import tarfile
 import sys
 import ast
 import getpass
 import subprocess
 import click
 import shlex
+import nmap
+import wget
+import distutils
 import xml.etree.ElementTree as ET
-import importlib.util
-
+from distutils import *
+from dialog import Dialog
 
 SUMO_HOME = os.environ.get('SUMO_HOME',
                            os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
 sys.path.append(os.path.join(SUMO_HOME, 'tools'))
 
-#import randomTrips
+locale.setlocale(locale.LC_ALL, '')
 
 
 @click.group()
@@ -76,7 +81,8 @@ class SUMO:
 
     # local onde esta instalado o SUMO
     HOME=os.getenv('SUMO_HOME','/home/%s/sumo'%USER.NAME)
-
+    # diretorio das ferramentas do SUMO
+    TOOLDIR = HOME + '/tools'
     # nome da simulação
     NAME = os.getenv('SUMO_NAME','osm')
     # diretorio de trabalho
@@ -127,7 +133,7 @@ class SUMO:
         SUMO.create_guicfg()
         SUMO.create_polycfg()
         SUMO.create_netcfg()  
-        #SUMO.download_map()
+        SUMO.download_map()
         SUMO.create_net()      
         SUMO.create_poly()     
         SUMO.create_all_trips()
@@ -144,7 +150,6 @@ class SUMO:
         TYPES = os.getenv('SUMO_TYPES','enger').split(' ')
 
         create_all_trips()
-
         
 
     @staticmethod
@@ -171,7 +176,6 @@ class SUMO:
  
         # diretorio de trabalho
         SUMO.OUTPUTDIR = PROJECT.VANETDIR + '/' + SUMO.NAME
-
         
 
     @staticmethod
@@ -188,7 +192,6 @@ class SUMO:
         tree = ET.ElementTree(viewsettings)
         tree.write(filename,xml_declaration='<?xml version="1.0"?>',encoding='utf8')
         
-
 
     @staticmethod
     def create_polycfg():
@@ -263,6 +266,7 @@ class SUMO:
         tree = ET.ElementTree(config)
         tree.write(filename,xml_declaration='<?xml version="1.0"?>',encoding='utf8')
 
+
     @staticmethod
     def create_poly():
 
@@ -274,7 +278,7 @@ class SUMO:
     @staticmethod
     def download_map():
 
-        bashh_cmd = 'python %s/tools/osmGet.py --bbox "%s" --prefix "%s" --output-dir "%s" 2>&1' % (SUMO.HOME,SUMO.BBOX,SUMO.PREFIX_FILE,SUMO.OUTPUTDIR)
+        bashh_cmd = 'python %s/osmGet.py --bbox "%s" --prefix "%s" --output-dir "%s" 2>&1' % (SUMO.TOOLDIR,SUMO.BBOX,SUMO.PREFIX_FILE,SUMO.OUTPUTDIR)
         args = shlex.split(bash_cmd)
         subprocess.call(args)
         
@@ -285,7 +289,6 @@ class SUMO:
         bash_cmd = 'netconvert  --configuration-file %s/%s' % (SUMO.OUTPUTDIR,SUMO.NET_CONFIG)
         args = shlex.split(bash_cmd)
         subprocess.call(args)
-        
 
 
     @staticmethod
@@ -310,11 +313,11 @@ class SUMO:
 
             if type_class ==  "pedestrian" :
 
-                bash_cmd = '%s/tools/randomTrips.py --seed %d  --pedestrians --max-distance 3000 --fringe-factor %d  --prefix %s -n %s -r %s -p %d -e %d -o %s' % (SUMO.HOME,SUMO.SEED,fringe_factor,pre_fix,net_file,route_file,period,end_time,trip_file)
+                bash_cmd = '%s/randomTrips.py --seed %d  --pedestrians --max-distance 3000 --fringe-factor %d  --prefix %s -n %s -r %s -p %d -e %d -o %s' % (SUMO.TOOLDIR,SUMO.SEED,fringe_factor,pre_fix,net_file,route_file,period,end_time,trip_file)
 
             else :
 
-                bash_cmd = '%s/tools/randomTrips.py --seed %d  --vehicle-class %s --min-distance 1000 --fringe-factor %d  --prefix %s -n %s -r %s -p %d -e %d -o %s'  % (SUMO.HOME,SUMO.SEED,type_class,fringe_factor,pre_fix,net_file,route_file,period,end_time,trip_file)
+                bash_cmd = '%s/randomTrips.py --seed %d  --vehicle-class %s --min-distance 1000 --fringe-factor %d  --prefix %s -n %s -r %s -p %d -e %d -o %s'  % (SUMO.TOOLDIR,SUMO.SEED,type_class,fringe_factor,pre_fix,net_file,route_file,period,end_time,trip_file)
             
             args = shlex.split(bash_cmd)
 
@@ -330,7 +333,6 @@ class SUMO:
 
         else:
             click.echo("ERROR: Não encontrado o arquivo $NET_FILE para criação das rotas")
-
         
        
     @staticmethod
@@ -353,8 +355,6 @@ class SUMO:
 
         tree = ET.ElementTree(launch)
         tree.write(filename,xml_declaration='<?xml version="1.0"?>',encoding='utf8')
-
-        
 
 
     @staticmethod
@@ -393,7 +393,16 @@ class SUMO:
         tree = ET.ElementTree(config)
         tree.write(filename,xml_declaration='<?xml version="1.0"?>',encoding='utf8')
 
-        
+
+# Dummy context manager to make sure the debug file is closed on exit, be it
+# normal or abnormal, and to avoid having two code paths, one for normal mode
+# and one for debug mode.
+class DummyContextManager:
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
 
 
 class ESP32:
@@ -402,7 +411,150 @@ class ESP32:
     PROJECT_NAME = os.getenv('ESP32_PROJECT_NAME','esp32-mqtt')
     # diretorio do projeto
     HOMEDIR = PROJECT.PLATFORMDIR + '/' + PROJECT_NAME
+    # porta seral
+    SERIAL_PORT = os.getenv('ESP32_SERIAL_PORT','/dev/ttyUSB0')
+    # local do toolchain para o ESP
+    IDF_PATH = os.getenv("IDF_PATH","/home/%s/esp-idf" % USER.NAME)
 
+
+    @staticmethod
+    def compile_all():
+
+        os.chdir(ESP32.HOMEDIR)
+        subprocess.call(shlex.split("make clean"),stdout = subprocess.DEVNULL , stderr=subprocess.STDOUT)
+        bash.execute("make all","Compilando all")
+
+    @staticmethod
+    def compile_app():
+        
+        os.chdir(ESP32.HOMEDIR)
+        bash.execute("make app","Compilando app")
+
+    @staticmethod
+    def create_project():
+
+        '''Cria um projeto para ESP32 baseado no codigo demo blink''' 
+
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
+
+        code, value = d.inputbox(text = "Informe a frequencia do jtag em [KHz]")
+     
+        if code == d.OK:
+
+            PROJECT.NAME = value
+
+            code,path = d.dselect("./",title="Seleção do local do projeto",height=30,width=100)
+
+            if code == d.OK:
+
+                PROJECT.HOMEDIR = path
+
+                copy_tree(ESP32.PROJECT_TEMPLATE,PROJECT.HOMEDIR)
+                
+                # renomeia o direotiro blink para o nome do projeto
+                move_tree(PROJECT.HOMEDIR+'/blinck',PROJECT.HOMEDIR+PROJECT.NAME)
+
+                subprocess.call("sed -e '/PROJECT_NAME/D' '$filepath/$new_project_name/Makefile' > '/tmp/Makefile'")
+                subprocess.call("echo  'PROJECT_NAME := '$new_project_name >> '/tmp/Makefile'")
+  
+                copy_file("/tmp/Makefile","%s/%s" % (PROJECT.HOMEDIR,PROJECT.NAME))
+
+
+    def serial_permission():
+
+        try:
+            subprocess.call(shlex.split("sudo chmod 777 %s" % ESP32.SERIAL_PORT),stdout = subprocess.DEVNULL , stderr=subprocess.STDOUT)
+        except:
+            click.echo("Serial não disponivel")
+
+
+    def flash():
+
+        ESP32.serial_permission()
+        os.chdir(ESP32.HOMEDIR)
+        bash.execute("make flash","Compilando flash")
+
+
+    def monitor():
+
+        ESP32.serial_permission()
+        os.chdir(ESP32.HOMEDIR)
+        bash.execute("make monitor","Monitor uart")
+
+
+    def config():
+        
+        os.chdir(ESP32.HOMEDIR)
+        subprocess.call(shlex.split("make menuconfig"))
+
+
+    def manage_sdk():
+
+        '''Atualiza ou clona o repositorio IDF'''
+
+        '''
+        if [ -n $IDF_PATH ]; then
+
+            idf_path="$IDF_PATH"
+        fi
+
+        select_path "Repositório IDF" "$idf_path"
+        local RET=$?
+
+        if [ $RET -eq 0 ]; then
+
+            idf_path=$filepath
+
+            if [[ -d "$idf_path" || $(mkdir $idf_path) -eq 0 ]]; then
+
+                {
+                    update_repositorio "$idf_path"
+
+                } || {
+
+                    clone_repositorio "$idf_path_orin" "$idf_path"
+
+                } || {
+
+                    show_msgbox "ERRO!" "Não foi possivel clonar/atualizar o SDK"
+                }
+            fi
+
+            update_paths
+        fi
+        '''
+
+    def manage_toolchain():
+
+        choices = [ ("Versão 64 bits","",True)
+                    ("Versão 32 bits","",False)
+        ]
+
+        code, tag = d.radiolist("Selecione o IP do Host GDB",choices=choices)
+
+        if code ==d.OK:
+
+            code,path = d.dselect("./",title="Seleção do local do toolchain",height=30,width=100)
+
+            if code == d.OK:
+                
+                ESP32.IDF_PATH = path
+                 
+                file_name = ""
+
+                if tag == "Versão 64 bits":
+                    file_name = wget.download(ESP32.url_espressif_toolchain64,bar=bar_thermometer)
+                else:
+                    file_name = wget.download(ESP32.url_espressif_toolchain32,bar=bar_thermometer)
+
+
+                tar = tarfile.open(file_name)
+                tar.extractall(ESP32.IDF_PATH)
+                tar.close()
+
+    def manage_openocd():
+        pass
 
 class GDB:
 
@@ -441,32 +593,58 @@ class GDB:
     @staticmethod
     def select_program():
 
-        ret = TUI.select_file('Selecione o programa',program_path,ext_config,remote=False) 
-        if ret != None :
-            program = ret 
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
 
-        
+        file = "%s/*%s" %(GDB.program_path,GDB.ext_program)
+
+        code,path = d.fselect(file,title="Seleção do programa",
+                                height=30,width=100)
+
+        if code == d.OK :
+            GDB.program = path
+
+        return code 
+      
 
     @staticmethod
     def select_interface() :
 
-        ret = TUI.select_file('Selecione a insterface',interface_path,ext_config,remote=True) 
-        if ret != None :
-            interface = ret 
-        
-        
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
+
+        file = "%s/*%s" %(GDB.interface_path,GDB.ext_config)
+
+        code,path = d.fselect(file,title="Seleção da interface",
+                                height=30,width=100)
+
+        if code == d.OK:
+            GDB.interface = path 
+
+        return code 
 
     @staticmethod
-    def select_target(self):
+    def select_target():
 
-        ret = TUI.select_file('Selecione o target',target_path,ext_config,remote=True) 
-        if ret != None :
-            target = ret 
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
+
+        file = "%s/*%s" %(GDB.target_path,GDB.ext_config)
+
+        code,path = d.fselect(file,title="Seleção do target",
+                                height=30,width=100)
+
+        if code == d.OK :
+            GDB.target = path 
         
-        
+        return code     
 
     @staticmethod
-    def start_gdb(file_init,program):
+    def start_gdb(file_init = gdbinit, program = program):
+
+        click.echo(file_init)
+        click.echo(program)
+        sys.exit(0)
 
         if os.path.isfile(file_init):
 
@@ -474,157 +652,306 @@ class GDB:
 
                 bash_cmd = 'xtensa-esp32-elf-gdb -x %s %s' % (file_init,program)
 
-                process = subprocess.Popen(bash_cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+                args = shlex.split(bash_cmd)
+
+                process = subprocess.Popen(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 
                 stdout, erro = process.communicate()
 
             else:
-                TUI.show_msgbox('EERO','Não foi possivel abrir o arquivo %s'  % program)
+                d = Dialog(dialog="dialog")
+                d.set_background_title(Menu.background_title)
+                d.msgbox('Não foi possivel abrir o arquivo %s' % program,title="ERRO")
         else:
-            TUI.show_msgbox('EERO','Não foi possivel abrir o arquivo %s'  % file_init)
+            d = Dialog(dialog="dialog")
+            d.set_background_title(Menu.background_title)
+            d.msgbox('Não foi possivel abrir o arquivo %s' % file_init,title="ERRO")
 
-
-        
 
     @staticmethod
     def start_debug_server():
 
-        '''
-            ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "start"  -i "$interface" -t "$target" &> /tmp/ssh.log &
+        bash_cmd = "'sudo -Sv && bash -s' -- < $openocdfile start -i %s -t %s" % (GDB.interface,GDB.target)
+        bash.execute_remote(bash_cmd,USER.NAME,GDB.host_gdb)
 
-            dialog \
-                --no-shadow \
-                --title "$USER iniciando debug no host IP:$host_gdb" \
-                --tailbox /tmp/ssh.log 40 100
-        '''
-
-        
 
     @staticmethod
     def stop_debug_server():
 
-        '''
-            ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "stop"  &> /tmp/ssh.log &
-
-            dialog \
-                --no-shadow \
-                --title "$USER iniciando debug no host IP:$host_gdb" \
-                --tailbox /tmp/ssh.log 40 100
-        '''
-        
+        bash_cmd = "'sudo -Sv && bash -s' -- < $openocdfile stop"
+        bash.execute_remote(bash_cmd,USER.NAME,GDB.host_gdb)
+      
 
     @staticmethod
     def start_debug_section():
 
-        ret = GDB.select_program()
+        code = GDB.select_program()
 
-        if ret :
+        if code == Dialog.OK :
 
-            start_gdb(gdbinit,program)
+            GDB.start_gdb()
     
         
-
     @staticmethod
     def config_jtag():
-        '''
-                freq_jtag=$(dialog --stdout \
-                            --title "Nome do projeto" \
-                            --backtitle "$app_title" \
-                            --inputbox "Informe a frequencia do jtag em [KHz]" 10 100 $freq_jtag \
-                        )
 
-                local RET=$?
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
 
-                if [ $RET -ne 1 ]; then
+        code, value = d.inputbox(text = "Informe a frequencia do jtag em [KHz]")
+     
+        if code == d.OK :
+            GDB.freq_jtag = value
+            bash_cmd = "'sudo -Sv && bash -s' -- < $openocdfile start -f %s" % (GDB.freq_jtag)
+            bash.execute_remote(bash_cmd,USER.NAME,GDB.host_gdb)
 
-                    ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "config" -i "$interface" -f "$freq_jtag" &> /dev/null
-
-            #        dialog \
-            #            --no-shadow \
-            #            --title "$USER iniciando debug no host IP:$host_gdb" \
-            #            --tailbox /tmp/ssh.log 40 100
-                fi
-        '''
-        
 
     @staticmethod
     def shutdown_interface():
-        '''
-                ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "shutdown" &> /tmp/ssh.log  &
 
-                dialog \
-                    --no-shadow \
-                    --title "$USER iniciando debug no host IP:$host_gdb" \
-                    --tailbox /tmp/ssh.log 40 100
-        '''
-        
+        bash_cmd = "'sudo -Sv && bash -s' -- < $openocdfile shutdown"
+        bash.execute_remote(bash_cmd,USER.NAME,GDB.host_gdb)
+
 
     @staticmethod
     def reset_target():
-        '''
-                ssh $USER@$host_gdb 'sudo -Sv && bash -s' -- < $openocdfile "reset" &> /tmp/ssh.log  &
 
-                dialog \
-                    --no-shadow \
-                    --title "$USER iniciando debug no host IP:$host_gdb" \
-                    --tailbox /tmp/ssh.log 40 100
-        '''
-        
+        bash_cmd = "'sudo -Sv && bash -s' -- < $openocdfile reset"
+        bash.execute_remote(bash_cmd,USER.NAME,GDB.host_gdb)
+       
 
     @staticmethod
     def scan_gdbserver():
-        '''
-        host_gdb=$(sudo nmap -sn 192.168.0.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}')
 
-        '''
+        #stdout, erro = subprocess.Popen(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
+        #bash_cmd = "nmap -n -sn 192.168.42.0/24 -oG - | awk '/Up$/{print $2}'"
+        #args = shlex.split(bash_cmd)
 
-        TUI.show_description(host_gdb)
-        
+        nm = nmap.PortScanner() 
+        nm.scan('192.168.42.0/24', '22-443')      # scan host 127.0.0.1, ports from 22 to 443
 
-class TUI:
+        choices = []
 
-    @staticmethod
+        for l in nm.all_hosts():
+            choices.append((l,"",False))
 
-    def show_description(text):
-        clic.echo(text)
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
+        code, tag = d.radiolist("Selecione o IP do Host GDB",choices=choices)
 
-        
+        if code == d.OK:
+            GDB.host_gdb = tag
 
-    @staticmethod
-    def show_msgbox(title,text):
-        clic.echo(title + ':' + text)
 
-        
-
-    @staticmethod
-    def show_info(text):
-
-        #splash 3 segundos
-        clic.echo(Informações + ':' + text)
-
-        
+class bash:
 
     @staticmethod
-    def select_file(title , path , ext , remote=False):
+    def execute_remote(command_line,user,machine):
 
-        bashCommand = ['bash','c','source %s/misc.sh' % PROJECT.TOOLDIR]
-        process = subprocess.Popen(bashCommand,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-
-        if remote :
-            r = 'remote'
-        else :
-            r = ''
-
-        bashCommand = 'select_file "Selecione a interface(adaptador)" %s %s %s' % (path,ext,r)
-        process = subprocess.Popen(bashCommand,stdout=subprocess.PIPE)
-
-        stdout = process.communicate()
+        bash_cmd = "ssh %s@%s %s" % (user,machine,command_line)
+        execute(bash_cmd)
 
         
+    @staticmethod
+    def execute(command_line,text=""):
+
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
+
+        try:
+            devnull = subprocess.DEVNULL
+        except AttributeError: # Python < 3.3
+            devnull_context = devnull = open(os.devnull, "wb")
+        else:
+            devnull_context = DummyContextManager()
+
+        args = shlex.split(command_line)
+
+        with devnull_context:
+            p = subprocess.Popen(args, stdout=subprocess.PIPE,
+                                    stderr=devnull, close_fds=True)
+            # One could use title=... instead of text=... to put the text
+            # in the title bar.
+            d.programbox(fd=p.stdout.fileno(),text=text,height=30,width=150)
+            retcode = p.wait()
+
+        # Context manager support for subprocess.Popen objects requires
+        # Python 3.2 or later.
+        p.stdout.close()
+
+class Menu:
+
+    background_title = "Gerenciador do %s" % PROJECT.NAME
+
+    active_scrren = None
+    before_scrren = None
 
     @staticmethod
-    def select_path():
-        pass
+    def debug_screen():
+
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
+
+        choices = [ ("1","Iniciar debug (prompt)"),
+                    ("2","Iniciar server(openocd)"),
+                    ("3","Parar server(openocd)"),
+                    ("4","Interface (adaptador)"),
+                    ("5","Target (device)"),
+                    ("6","JTAG"),
+                    ("7","Reset target"),
+                    ("8","Scan server"),
+                    ("9","Desligar interface")
+        ]
+
+        options = { "1": GDB.start_debug_section,
+                    "2": GDB.start_debug_server,
+                    "3": GDB.stop_debug_server,
+                    "4": GDB.select_interface,
+                    "5": GDB.select_target,
+                    "6": GDB.config_jtag,
+                    "7": GDB.reset_target,
+                    "8": GDB.scan_gdbserver,
+                    "9": GDB.shutdown_interface,
+        }
+
+        code, tag = d.menu("Selecione uma das opções abaixo\n\nInterface:%s\nTarget:%s" % (GDB.interface,GDB.target),
+                height=30,width=100,
+                choices=choices)
+
+        if code == d.OK:
+            options[tag]()
+
+
+        return code
+
+    @staticmethod
+    def project_screen():
+
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
+
+        choices = [ ("1","Compilar all"),
+                    ("2","Compilar app"),
+                    ("3","Criar projeto"),
+        ]
+
+        options = { "1": ESP32.compile_all,
+                    "2": ESP32.compile_app,
+                    "3": ESP32.create_project,
+        }
+
+        code, tag = d.menu("Selecione uma das opções abaixo",
+                height=30,width=100,
+                choices=choices)
+
+        if code == d.OK:
+            options[tag]()
+            pass
+
+        return code
+
+    @staticmethod
+    def enviroment_screen():
+
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
+
+        choices = [ ("1","Instalar/atualizar ESP-IDF"),
+                    ("2","Instalar/atualizar openocd"),
+                    ("3","Instalar/atualizar toolchain"),
+        ]
+
+        options = { "1": ESP32.manage_sdk,
+                    "2": ESP32.manage_openocd,
+                    "3": ESP32.manage_toolchain,
+        }
+
+        code, tag = d.menu("Ambiente de desenvolvimento",
+                height=30,width=100,
+                choices=choices)
+
+        if code == d.OK:
+            options[tag]()
+
+        return code
+
+    @staticmethod
+    def esp32_screen():
+
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
+
+        choices = [ ("1","Gravar"),
+                    ("2","Monitor"),
+                    ("3","Configuração"),
+        ]
+
+        options = { "1": ESP32.flash,
+                    "2": ESP32.monitor,
+                    "3": ESP32.config,
+        }
+
+        code, tag = d.menu("Ambiente de desenvolvimento",
+                height=30,width=100,
+                choices=choices)
+
+        if code == d.OK:
+            options[tag]()
+
+        return code
+
+    @staticmethod
+    def main_screen():
+
+        d = Dialog(dialog="dialog")
+        d.set_background_title(Menu.background_title)
+
+        choices = [ ("1","Debug"),
+                    ("2","Projeto"),
+                    ("3","ESP32"),
+                    ("4","Configuração"),
+        ]
+
+        options = { "1": Menu.debug_screen,
+                    "2": Menu.project_screen,
+                    "3": Menu.esp32_screen,
+                    "4": Menu.esp32_screen,
+        }
+
+        code, tag = d.menu("Selecione uma das opções abaixo\n\nInterface:%s\nTarget:%s" % (GDB.interface,GDB.target),
+                height=30,width=100,
+                choices=choices)
+
+        if code == d.OK:
+            Menu.show(options[tag])
+
+        return code
+
+    @staticmethod
+    def show(screen):
+        Menu.before_screen = Menu.active_scrren
+        Menu.active_scrren = screen
+
+ 
+    def loop():
+
+        Menu.show(Menu.main_screen)
+
+        while True :
+
+            code = Menu.active_scrren()
+
+            # ESC na tela principal entao sai do script
+            # processa eventos com hanldes comunus
+            if code in (Dialog.CANCEL,Dialog.ESC):
+
+                if Menu.active_scrren == Menu.main_screen:
+
+                    subprocess.call('clear')
+                    sys.exit(0)
+                    break
+                else:
+                    Menu.show(Menu.before_screen)
 
 
 sys.path.append(os.path.join(PROJECT.HOMEDIR, 'tools'))
@@ -644,10 +971,9 @@ def update(ctx):
     args = shlex.split(bash_cmd)
     subprocess.call(args)
 
-    bash_cmd = 'pip freeze --local > {0}'.format(PROJECT.REQUERIMENTS_FILE)    
+    bash_cmd = 'pip freeze --local > %s' % (PROJECT.REQUERIMENTS_FILE)    
     args = shlex.split(bash_cmd)
     subprocess.call(args)
-
 
 
 @cli.command()
@@ -666,14 +992,13 @@ def deploy():
 
     '''Copia os arquivos para o servidor'''
 
-    bash_cmd = 'rsync -avz {1} {0}@{2}' % (USER.NAME,PROJECT.TOOLDIR,PROJECT.DEPLOYDIR)
+    bash_cmd = 'rsync -avz %s %s@%s' % (PROJECT.TOOLDIR,USER.NAME,PROJECT.DEPLOYDIR)
     args = shlex.split(bash_cmd)
     subprocess.call(args)
     
-    bash_cmd = 'rsync -avz {1} {0}@{2}' % (USER.NAME,PROJECT.WEBDIR,PROJECT.DEPLOYDIR)
+    bash_cmd = 'rsync -avz %s %s@%s' % (PROJECT.WEBDIR,USER.NAME,PROJECT.DEPLOYDIR)
     args = shlex.split(bash_cmd)
     subprocess.call(args)
-    
 
 
 @cli.command()
@@ -694,9 +1019,8 @@ def runworker():
     bash_cmd = 'python %s/manage.py runworker' % PROJECT.WEBDIR  
     args = shlex.split(bash_cmd)
     subprocess.call(args)
-    
 
-
+  
 @cli.command()
 @click.option('--cfg', default=None)
 @click.option('--bbox', default=SUMO.BBOX)
@@ -722,18 +1046,23 @@ def sumo(ctx,cfg,bbox,seed,name,types,out):
 
 @cli.command()
 @click.pass_context
-@click.option('--interface', default=GDB.program)
+@click.option('--interface', default = None)
 def esp32(ctx,interface):
 
-    '''Gerencia p projeto do ESP32'''
+    '''Gerencia o projeto do ESP32'''
 
     if interface != None :
         GDB.select_interface()
 
-    bash_cmd =  '%s/config.sh' % PROJECT.TOOLDIR
-    args = shlex.split(bash_cmd)
-    subprocess.call(args)
-    
+
+@cli.command()
+@click.pass_context
+def menu(ctx):
+    '''Inicia o modo menu de configuração'''
+
+    Menu.loop()
+
+
 
 if __name__ == '__main__':
     cli(obj={})
