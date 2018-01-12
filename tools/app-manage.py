@@ -85,7 +85,7 @@ def deploy():
 @cli.command()
 def config():
    
-   '''Configurações referente a parte web para serem salvas na configuração do projeto'''
+    '''Configurações referente a parte web que serão salvas na configuração do projeto'''
     pass
 
 @cli.command()

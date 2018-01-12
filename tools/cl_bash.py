@@ -13,14 +13,9 @@ Gerenciador do projeto
 """
 
 import os
-import os.path
 import locale
-import tarfile
 import sys
-import ast
-import getpass
 import subprocess
-import xml.etree.ElementTree as ET
 from distutils import *
 from dialog import Dialog
 from project import *

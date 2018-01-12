@@ -279,9 +279,9 @@ class GDB:
 
             if os.path.isfile(program) is True:
 
-                bash_cmd = 'xtensa-esp32-elf-gdb -x %s %s' % (file_init,program)
+                cl = 'xtensa-esp32-elf-gdb -x %s %s' % (file_init,program)
 
-                args = shlex.split(bash_cmd)
+                args = shlex.split(cl)
 
                 process = subprocess.Popen(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 
@@ -349,8 +349,8 @@ class GDB:
 
     @staticmethod
     def restart():
-        stop_debug_server()
-        start_debug_server()
+        GDB.stop_debug_server()
+        GDB.start_debug_server()
 
     @staticmethod
     def shutdown_interface():
@@ -372,8 +372,8 @@ class GDB:
     def scan_gdbserver():
 
         #stdout, erro = subprocess.Popen(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
-        #bash_cmd = "nmap -n -sn 192.168.42.0/24 -oG - | awk '/Up$/{print $2}'"
-        #args = shlex.split(bash_cmd)
+        #cl = "nmap -n -sn 192.168.42.0/24 -oG - | awk '/Up$/{print $2}'"
+        #args = shlex.split(cl)
 
         nm = nmap.PortScanner() 
         nm.scan('192.168.42.0/24', '22-443')      # scan host 127.0.0.1, ports from 22 to 443
@@ -572,22 +572,28 @@ def stop():
     stop_debug_server()
 
 @cli.command()
+@click.option('--name',default=None)
+def create(name):
+
+    '''Cria um projeto'''
+
+    ESP32.PROJECT_NAME = name
+    GDB.create_project()
+
+
+@cli.command()
 def start():
     '''Inicia o servidor de debug'''
     start_debug_server()
 
 
 @cli.command()
-def config():
-    '''Configurações referente a parte embarcada para serem salvas na configuração do projeto'''
-    pass
-
-
-@cli.command()
 @click.pass_context
-@click.option('--menu/--no-menu',default=False)
+@click.option('--menu/--no-menu',default=False,
+                help="Inicia o modo menu de configuração da plataform")
 def config(ctx,menu):
-    '''Inicia o modo menu de configuração da plataform'''
+
+    '''Configurações referente a parte embarcada que serão salvas na configuração do projeto'''
 
     if menu:
         Menu.loop()

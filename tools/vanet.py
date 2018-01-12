@@ -403,7 +403,7 @@ def create(ctx,cfg,bbox,seed,name,types,out):
 @click.option('--out', default=PROJECT.VANETDIR)
 def config(ctx,cfg,bbox,seed,name,types,out):
     
-    '''Configurações referente a simulação de tráfego para serem salvas na configuração do projeto'''
+    '''Configurações referente a simulação de tráfego que serão salvas na configuração do projeto'''
     pass
 
 if __name__ == '__main__':
