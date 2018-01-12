@@ -2,7 +2,7 @@
 
 """
 
-@file    gtracker.py
+@file    vanet.py
 @author  Jefferson Alves
 @date    2018-01-09
 @version 0.1
@@ -367,7 +367,7 @@ class SUMO:
 
     @staticmethod
     def run():
-        cl = 'sumo-gui -c %s/%s' % (SUMO.OUTPUTDIR,cfg)
+        cl = 'sumo-gui -c %s/%s' % (SUMO.OUTPUTDIR,SUMO.SUMO_CONFIG)
         args = shlex.split(cl)
         subprocess.call(args)
 
@@ -396,7 +396,7 @@ def run(ctx,cfg,bbox,seed,name,types,out):
 @click.option('--types', default=SUMO.TYPES)
 @click.option('--out', default=PROJECT.VANETDIR)
 @click.pass_context
-def sumo(ctx,cfg,bbox,seed,name,types,out):
+def create(ctx,cfg,bbox,seed,name,types,out):
 
     '''Gerencia as simulaçoes de transito'''
     

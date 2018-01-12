@@ -2,7 +2,7 @@
 
 """
 
-@file    gtracker.py
+@file    cl_bash.py
 @author  Jefferson Alves
 @date    2018-01-09
 @version 0.1

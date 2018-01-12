@@ -2,7 +2,7 @@
 
 """
 
-@file    gtracker.py
+@file    platform.py
 @author  Jefferson Alves
 @date    2018-01-09
 @version 0.1
@@ -30,6 +30,7 @@ from distutils import *
 from dialog import Dialog
 from project import *
 from cl_bash import *
+from time import sleep
 
 @click.group()
 @click.option('--debug/--no-debug', default=False)
@@ -48,7 +49,6 @@ class ESP32:
     SERIAL_PORT = PROJECT.configuration["platform"]["esp32"]["serial_port"]
     # local do toolchain para o ESP
     IDF_PATH = os.getenv("IDF_PATH","/home/%s/esp-idf" % getpass.getuser())
-
 
     @staticmethod
     def compile_all():
@@ -124,39 +124,14 @@ class ESP32:
 
     def manage_sdk():
 
-        '''Atualiza ou clona o repositorio IDF'''
+        try:
+            GDB.update_repositorio(GDB.url_sdk,GDB.idf_path)
+        except:
+            try:
+                GDB.clone_repositorio(GDB.url_sdk,GDB.idf_path)
+            except:
+                click.echo("Não foi possivel clonar/atualizar o sdk")
 
-        '''
-        if [ -n $IDF_PATH ]; then
-
-            idf_path="$IDF_PATH"
-        fi
-
-        select_path "Repositório IDF" "$idf_path"
-        local RET=$?
-
-        if [ $RET -eq 0 ]; then
-
-            idf_path=$filepath
-
-            if [[ -d "$idf_path" || $(mkdir $idf_path) -eq 0 ]]; then
-
-                {
-                    update_repositorio "$idf_path"
-
-                } || {
-
-                    clone_repositorio "$idf_path_orin" "$idf_path"
-
-                } || {
-
-                    show_msgbox "ERRO!" "Não foi possivel clonar/atualizar o SDK"
-                }
-            fi
-
-            update_paths
-        fi
-        '''
 
     def manage_toolchain():
 
@@ -187,38 +162,60 @@ class ESP32:
                 tar.close()
 
     def manage_openocd():
-        pass
+
+        try:
+            GDB.update_repositorio(GDB.openocd_url,GDB.openocd_path,GDB.host_gdb)
+        except:
+            try:
+                GDB.clone_repositorio(GDB.openocd_url,GDB.openocd_path,GDB.host_gdb)
+            except:
+                click.echo("Não foi possivel clonar/atualizar o OpenOCD")
+
 
 class GDB:
 
     # diretŕorio de trabalho     
     HOMEDIR = ESP32.HOMEDIR
-    # script para execução remota no adaptador
-    openocdfile = PROJECT.TOOLDIR + "/openocd.sh"
+
     # arquivo de inicialização
     gdbinit = HOMEDIR + '/gdbinit'
+    
     # repositório do openocd
-    url_openocd ="https://github.com/espressif/openocd-esp32.git"
+    openocd_url = PROJECT.configuration["platform"]["esp32"]["gdb"]["openocd_url"]
+    
     # diretorório com os arquivos de cfg das interfaces
     interface_path ="/usr/local/share/openocd/scripts/interface"
+    
     # diretorório com os arquivos de cfg dos tragets
     target_path = "/usr/local/share/openocd/scripts/target"
+    
     # diretorório onde está o executavel para debug
     program_path = HOMEDIR + '/build'
+    
     # target selecionando
     target = "%s/%s"  % (target_path,PROJECT.configuration["platform"]["esp32"]["gdb"]["target"])
+    
     # interface selecionada
     interface = "%s/%s" % (interface_path, PROJECT.configuration["platform"]["esp32"]["gdb"]["interface"])
+    
     # programa para debug
-    program = "%s/build/%s" % (HOMEDIR, PROJECT.configuration["platform"]["esp32"]["gdb"]["program"])
+    program = "%s/%s" % (program_path, PROJECT.configuration["platform"]["esp32"]["gdb"]["program"])
+    
     # ip do hohst gdb
     host_gdb = "%s/%s" % (HOMEDIR, PROJECT.configuration["platform"]["esp32"]["gdb"]["host"])
+    
     # extensão do arquivo de programa
     ext_program = 'elf'
+    
     # extensão dos arquivos de configuração
     ext_config  = 'cfg'
+    
     # frequencia de debug
     freq_jtag = PROJECT.configuration["platform"]["esp32"]["gdb"]["freq_jtag"]
+    
+    # local de instalação do openocd
+    openocd_path = PROJECT.configuration["platform"]["esp32"]["gdb"]["openocd_path"]
+
 
     def __init__(self):
         pass
@@ -259,9 +256,9 @@ class GDB:
     @staticmethod
     def select_target():
 
+
         d = Dialog(dialog="dialog")
         d.set_background_title(Menu.background_title)
-
         file = "%s/*%s" %(GDB.target_path,GDB.ext_config)
 
         code,path = d.fselect(file,title="Seleção do target",
@@ -304,15 +301,25 @@ class GDB:
     @staticmethod
     def start_debug_server():
 
-        bash_cmd = "'sudo -Sv && bash -s' -- < $openocdfile start -i %s -t %s" % (GDB.interface,GDB.target)
-        bash.execute_remote(bash_cmd,getpass.getuser(),GDB.host_gdb)
+        '''Inicia o openocd utilizando os parametro recebidos'''
+
+        GDB.reset_target()
+
+        cl = "sudo openocd -f %s -c 'transport select $transport' -f %s -d 3" % (GDB.interface,GDB.target)
+
+        bash.execute_remote(cl,getpass.getuser(),GDB.host_gdb)
 
 
     @staticmethod
     def stop_debug_server():
 
-        bash_cmd = "'sudo -Sv && bash -s' -- < $openocdfile stop"
-        bash.execute_remote(bash_cmd,getpass.getuser(),GDB.host_gdb)
+        '''Finaliza o processo correspondente ao openocd'''
+
+        cl = "sudo pkill openocd"
+ 
+        bash.execute_remote(cl,getpass.getuser(),GDB.host_gdb)
+
+
       
 
     @staticmethod
@@ -335,23 +342,32 @@ class GDB:
      
         if code == d.OK :
             GDB.freq_jtag = value
-            bash_cmd = "'sudo -Sv && bash -s' -- < $openocdfile start -f %s" % (GDB.freq_jtag)
-            bash.execute_remote(bash_cmd,getpass.getuser(),GDB.host_gdb)
+            
+            bash.execute_remote("sed -e '/adapter_khz/D' %s > '/tmp/interface'" % GDB.interface)
+            bash.execute_remote("echo  'adapter_khz '%s >> '/tmp/interface'" % GDB.freq_jtag)
+            bash.execute_remote("sudo  cp '/tmp/interface' %s" % GDB.interface)
 
+
+    @staticmethod
+    def restart():
+        stop_debug_server()
+        start_debug_server()
 
     @staticmethod
     def shutdown_interface():
 
-        bash_cmd = "'sudo -Sv && bash -s' -- < $openocdfile shutdown"
-        bash.execute_remote(bash_cmd,getpass.getuser(),GDB.host_gdb)
-
+        bash.execute_remote("sudo shutdown now",getpass.getuser(),GDB.host_gdb)
 
     @staticmethod
     def reset_target():
 
-        bash_cmd = "'sudo -Sv && bash -s' -- < $openocdfile reset"
-        bash.execute_remote(bash_cmd,getpass.getuser(),GDB.host_gdb)
-       
+        bash.execute_remote("gpio -g mode 8 out",getpass.getuser(),GDB.host_gdb)
+        bash.execute_remote("gpio -g write 8 1",getpass.getuser(),GDB.host_gdb)
+        sleep(2.0) 
+        bash.execute_remote("gpio -g write 8 0",getpass.getuser(),GDB.host_gdb)
+        sleep(0.3)
+        bash.execute_remote("gpio -g write 8 1",getpass.getuser(),GDB.host_gdb)
+        sleep(1.0)     
 
     @staticmethod
     def scan_gdbserver():
@@ -529,7 +545,7 @@ class Menu:
         Menu.before_screen = Menu.active_scrren
         Menu.active_scrren = screen
 
- 
+    @staticmethod
     def loop():
 
         Menu.show(Menu.main_screen)
@@ -552,15 +568,14 @@ class Menu:
 
 
 @cli.command()
-@click.pass_context
-@click.option('--interface', default = None)
-def esp32(ctx,interface):
+def stop():
+    '''Para o servidor de debug'''
+    stop_debug_server()
 
-    '''Gerencia o projeto do ESP32'''
-
-    if interface != None :
-        GDB.select_interface()
-
+@cli.command()
+def start():
+    '''Inicia o servidor de debug'''
+    start_debug_server()
 
 @cli.command()
 @click.pass_context

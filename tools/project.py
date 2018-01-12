@@ -2,7 +2,7 @@
 
 """
 
-@file    gtracker.py
+@file    project.py
 @author  Jefferson Alves
 @date    2018-01-09
 @version 0.1
@@ -29,12 +29,6 @@ import distutils
 import xml.etree.ElementTree as ET
 from distutils import *
 from dialog import Dialog
-
-#PROJECT_HOME = os.environ.get('PROJECT_HOME',
-#                            os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
-
-
-#sys.path.append(os.path.join(PROJECT_HOME, 'tools'))
 
 locale.setlocale(locale.LC_ALL, '')
 

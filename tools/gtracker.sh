@@ -58,9 +58,9 @@ alias $prj_name_lower-runworker='app-manage run --worker'
 # sumo #
 
 # executa a simulação com o modo gui habilitado
-alias sumo-run='vanet sumo --cfg $SUMO_SIMULATION'
+alias sumo-run='vanet run'
 # cria a simulação
-alias sumo-create='vanet sumo --name "$SUMO_NAME"'
+alias sumo-create='vanet create'
 
 # platform (ESP32) #
 

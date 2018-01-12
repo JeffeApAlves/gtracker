@@ -2,7 +2,7 @@
 
 """
 
-@file    gtracker.py
+@file    app-gtracker.py
 @author  Jefferson Alves
 @date    2018-01-09
 @version 0.1
@@ -20,7 +20,6 @@ import subprocess
 import click
 import distutils
 from distutils import *
-from dialog import Dialog
 from project import *
 from cl_bash import *
 
@@ -77,6 +76,13 @@ def deploy():
     args = shlex.split(cl)
     subprocess.call(args)
 
+    
+    cl = 'rsync -avz %s %s@%s' % ("%s/%s.conf" % (PROJECT.HOMEDIR,PROJECT.NAME),getpass.getuser(),PROJECT.DEPLOYDIR)
+    
+    click.echo(cl)
+    args = shlex.split(cl)
+    subprocess.call(args)
+
 
 @cli.command()
 @click.option('--worker',default=None)
@@ -89,9 +95,8 @@ def run(worker):
     else:
         cl = 'python %s/manage.py runworker' % PROJECT.WEBDIR  
 
-    #args = shlex.split(cl)
-    #subprocess.call(args)
-
+    args = shlex.split(cl)
+    subprocess.call(args)
 
 if __name__ == '__main__':
     cli(obj={})
