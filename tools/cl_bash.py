@@ -20,11 +20,6 @@ import sys
 import ast
 import getpass
 import subprocess
-import click
-import shlex
-import nmap
-import wget
-import distutils
 import xml.etree.ElementTree as ET
 from distutils import *
 from dialog import Dialog

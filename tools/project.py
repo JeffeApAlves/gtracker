@@ -16,29 +16,11 @@ import os
 import json
 import os.path
 import locale
-import tarfile
 import sys
-import ast
-import getpass
-import subprocess
-import click
-import shlex
-import nmap
-import wget
-import distutils
-import xml.etree.ElementTree as ET
 from distutils import *
 from dialog import Dialog
 
 locale.setlocale(locale.LC_ALL, '')
-
-
-@click.group()
-@click.option('--debug/--no-debug', default=False)
-@click.pass_context
-def cli(ctx, debug):
-    ctx.obj['DEBUG'] = debug
-
 
 class PROJECT:
 
@@ -54,7 +36,6 @@ class PROJECT:
 
     # diretrio raiz da solução
     HOMEDIR = configuration['project']['home']
-    #HOMEDIR = os.environ.get('PROJECT_HOME',os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
     # ferramnetas
     TOOLDIR=HOMEDIR + '/tools'
     # site

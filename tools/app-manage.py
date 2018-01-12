@@ -18,7 +18,6 @@ import sys
 import getpass
 import subprocess
 import click
-import distutils
 from distutils import *
 from project import *
 from cl_bash import *
@@ -83,18 +82,23 @@ def deploy():
     args = shlex.split(cl)
     subprocess.call(args)
 
+@cli.command()
+def config():
+   
+   '''Configurações referente a parte web para serem salvas na configuração do projeto'''
+    pass
 
 @cli.command()
-@click.option('--worker',default=None)
+@click.option('--worker/--no-worker',default=False)
 def run(worker):
 
     '''Executa a aplicação django'''
-    
-    if worker == None:
-        cl = 'python %s/manage.py runserver  %s:%s' % (PROJECT.WEBDIR,WEBSERVER.IP,WEBSERVER.PORT)  
-    else:
-        cl = 'python %s/manage.py runworker' % PROJECT.WEBDIR  
 
+    if worker :
+        cl = "python %s/manage.py runworker" % PROJECT.WEBDIR   
+    else:
+        cl = "python %s/manage.py runserver  %s:%s" % (PROJECT.WEBDIR,WEBSERVER.IP,WEBSERVER.PORT)
+         
     args = shlex.split(cl)
     subprocess.call(args)
 

@@ -24,7 +24,6 @@ import click
 import shlex
 import nmap
 import wget
-import distutils
 import xml.etree.ElementTree as ET
 from distutils import *
 from dialog import Dialog
@@ -577,12 +576,21 @@ def start():
     '''Inicia o servidor de debug'''
     start_debug_server()
 
+
+@cli.command()
+def config():
+    '''Configurações referente a parte embarcada para serem salvas na configuração do projeto'''
+    pass
+
+
 @cli.command()
 @click.pass_context
-def menu(ctx):
+@click.option('--menu/--no-menu',default=False)
+def config(ctx,menu):
     '''Inicia o modo menu de configuração da plataform'''
 
-    Menu.loop()
+    if menu:
+        Menu.loop()
 
 
 if __name__ == '__main__':

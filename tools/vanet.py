@@ -24,7 +24,6 @@ import click
 import shlex
 import nmap
 import wget
-import distutils
 import xml.etree.ElementTree as ET
 from distutils import *
 from dialog import Dialog
@@ -374,16 +373,9 @@ class SUMO:
 
   
 @cli.command()
-@click.option('--cfg', default=None)
-@click.option('--bbox', default=SUMO.BBOX)
-@click.option('--seed', default=SUMO.SEED)
-@click.option('--name', default=SUMO.NAME)
-@click.option('--types', default=SUMO.TYPES)
-@click.option('--out', default=PROJECT.VANETDIR)
-@click.pass_context
-def run(ctx,cfg,bbox,seed,name,types,out):
+def run():
 
-    '''Executa a simulação'''
+    '''Executa a simulação com a configuração previamente feita'''
     
     SUMO.run()
 
@@ -401,7 +393,18 @@ def create(ctx,cfg,bbox,seed,name,types,out):
     '''Gerencia as simulaçoes de transito'''
     
     SUMO.create_simulation()
+
+@cli.command()
+@click.option('--cfg', default=None)
+@click.option('--bbox', default=SUMO.BBOX)
+@click.option('--seed', default=SUMO.SEED)
+@click.option('--name', default=SUMO.NAME)
+@click.option('--types', default=SUMO.TYPES)
+@click.option('--out', default=PROJECT.VANETDIR)
+def config(ctx,cfg,bbox,seed,name,types,out):
     
+    '''Configurações referente a simulação de tráfego para serem salvas na configuração do projeto'''
+    pass
 
 if __name__ == '__main__':
     cli(obj={})

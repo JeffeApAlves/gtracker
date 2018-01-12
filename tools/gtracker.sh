@@ -65,4 +65,4 @@ alias sumo-create='vanet create'
 # platform (ESP32) #
 
 # Configuração do ambiente de desenvolvimento para esp32
-alias esp32-create='platform esp32'
+alias esp32-create='platform'
