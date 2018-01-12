@@ -8,10 +8,13 @@ setup(
         'Click',
         'pythondialog',
         'python-nmap',
-        'wget'
+        'wget',
+        'json'
     ],
     entry_points='''
         [console_scripts]
-        gtracker=gtracker:cli
+        app-manage=app-manage:cli
+        vanet=vanet:cli
+        platform=platform:cli
     ''',
 )
