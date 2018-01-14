@@ -7,7 +7,6 @@
 @date    2018-01-09
 @version 0.1
 
-
 Gerenciador do projeto
 
 """
@@ -16,6 +15,8 @@ import os
 import locale
 import sys
 import subprocess
+import shlex
+import click
 from distutils import *
 from dialog import Dialog
 from project import *
@@ -39,8 +40,11 @@ class bash:
     @staticmethod
     def execute_remote(command_line,user,machine):
 
-        bash_cmd = "ssh %s@%s %s" % (user,machine,command_line)
-        execute(bash_cmd)
+        cl = "ssh %s@%s %s" % (user,machine,command_line)
+
+        args = shlex.split(cl)
+
+        subprocess.call(args)
 
         
     @staticmethod

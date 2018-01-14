@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 import getpass
 from cl_bash import *
@@ -14,7 +16,7 @@ Gerenciador do projeto
 
 """
 
-class repository:
+class repository(object):
 
     def clone(src,dest,host=None):
 

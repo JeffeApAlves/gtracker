@@ -15,18 +15,12 @@ Gerenciador do projeto
 import os
 import os.path
 import locale
-import tarfile
 import sys
-import ast
-import getpass
 import subprocess
 import click
 import shlex
-import nmap
-import wget
 import xml.etree.ElementTree as ET
 from distutils import *
-from dialog import Dialog
 from project import *
 
 SUMO_HOME = os.environ.get('SUMO_HOME',
@@ -38,21 +32,14 @@ sys.path.append(os.path.join(SUMO_HOME, 'tools'))
 locale.setlocale(locale.LC_ALL, '')
 
 
-@click.group()
-@click.option('--debug/--no-debug', default=False)
-@click.pass_context
-def cli(ctx, debug):
-    ctx.obj['DEBUG'] = debug
-
-
-class SUMO:
+class SUMO(object):
 
     # local onde esta instalado o SUMO
     HOME = SUMO_HOME
     # diretorio das ferramentas do SUMO
     TOOLDIR = HOME + '/tools'
     # nome da simulação
-    NAME = PROJECT.configuration["sumo"]["name"]
+    NAME = PROJECT.configuration["vanet"]["name"]
     # diretorio de trabalho
     OUTPUTDIR = PROJECT.VANETDIR + '/' + NAME
     # Prefixo dos arquivos do projeto
@@ -68,23 +55,23 @@ class SUMO:
     # arquivo do mapa de entrada
     INPUT_OSM_FILE='./' + OSM_FILE
     # Coordenadas que define a região do mapa para simulação
-    BBOX = "%d,%d,%d,%d" %( PROJECT.configuration["sumo"]["bbox"]["left"],
-                            PROJECT.configuration["sumo"]["bbox"]["bottom"],
-                            PROJECT.configuration["sumo"]["bbox"]["right"],
-                            PROJECT.configuration["sumo"]["bbox"]["top"])
+    BBOX = "%d,%d,%d,%d" %( PROJECT.configuration["vanet"]["bbox"]["left"],
+                            PROJECT.configuration["vanet"]["bbox"]["bottom"],
+                            PROJECT.configuration["vanet"]["bbox"]["right"],
+                            PROJECT.configuration["vanet"]["bbox"]["top"])
                             
     ## Informações para geração da frota/tráfico da simulação
 
     # Classes/tipos que serão criadas
-    TYPES = PROJECT.configuration["sumo"]["types"]
+    TYPES = PROJECT.configuration["vanet"]["types"]
     # Fim do periodo de criação de trips
-    ENDTIME = PROJECT.configuration["sumo"]["endtime"]
+    ENDTIME = PROJECT.configuration["vanet"]["endtime"]
     # Periodo do ciclo de criação das trips (ex: a cada x criar n trips)
-    PERIOD = PROJECT.configuration["sumo"]["period"]
+    PERIOD = PROJECT.configuration["vanet"]["period"]
     # Influencia na estatistica onde será iniciado a trips
-    FRINGE_FACTOR  = PROJECT.configuration["sumo"]["fringe_factor"]
+    FRINGE_FACTOR  = PROJECT.configuration["vanet"]["fringe_factor"]
     # Seed para referencia na geração randomica da simulação
-    SEED = PROJECT.configuration["sumo"]["seed"]
+    SEED = PROJECT.configuration["vanet"]["seed"]
 
     ## Arquivos de saida
     NET_FILE = PREFIX_FILE+'.net.xml'
@@ -118,7 +105,7 @@ class SUMO:
         update_all_paths()
 
         # Classes/tipos que serão criadas
-        # TYPES = PROJECT.configuration["sumo"]["types"]
+        # TYPES = PROJECT.configuration["vanet"]["types"]
 
         create_all_trips()
         
@@ -370,41 +357,3 @@ class SUMO:
         args = shlex.split(cl)
         subprocess.call(args)
 
-
-  
-@cli.command()
-def run():
-
-    '''Executa a simulação com a configuração previamente feita'''
-    
-    SUMO.run()
-
-  
-@cli.command()
-@click.option('--cfg', default=None)
-@click.option('--bbox', default=SUMO.BBOX)
-@click.option('--seed', default=SUMO.SEED)
-@click.option('--name', default=SUMO.NAME)
-@click.option('--types', default=SUMO.TYPES)
-@click.option('--out', default=PROJECT.VANETDIR)
-@click.pass_context
-def create(ctx,cfg,bbox,seed,name,types,out):
-
-    '''Gerencia as simulaçoes de transito'''
-    
-    SUMO.create_simulation()
-
-@cli.command()
-@click.option('--cfg', default=None)
-@click.option('--bbox', default=SUMO.BBOX)
-@click.option('--seed', default=SUMO.SEED)
-@click.option('--name', default=SUMO.NAME)
-@click.option('--types', default=SUMO.TYPES)
-@click.option('--out', default=PROJECT.VANETDIR)
-def config(ctx,cfg,bbox,seed,name,types,out):
-    
-    '''Configurações referente a simulação de tráfego que serão salvas na configuração do projeto'''
-    pass
-
-if __name__ == '__main__':
-    cli(obj={})

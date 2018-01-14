@@ -18,11 +18,10 @@ import os.path
 import locale
 import sys
 from distutils import *
-from dialog import Dialog
 
 locale.setlocale(locale.LC_ALL, '')
 
-class PROJECT:
+class PROJECT(object):
 
     PROJECT_CONF = os.getenv('PROJECT_CONF','./project.conf')
 
@@ -38,15 +37,13 @@ class PROJECT:
     HOMEDIR = configuration['project']['home']
     # ferramnetas
     TOOLDIR=HOMEDIR + '/tools'
-    # site
+    # diretorio do site
     WEBDIR = HOMEDIR + '/web' 
     # embarcado
     PLATFORMDIR = HOMEDIR + '/platform'
     # Diretorio da simulação
     VANETDIR=HOMEDIR + '/vanet' 
     # local para deploy da solução
-    #DEPLOYDIR=os.getenv('DEPLOYDIR','/var/wwww/' + NAME)
-    DEPLOYDIR= "%s/%s" % (configuration['project']['deploy'],NAME)
     # Arquivos
     REQUERIMENTS_FILE= WEBDIR + "/requirements.txt"
 
@@ -54,11 +51,13 @@ class PROJECT:
     sys.path.append(os.path.join(HOMEDIR, 'tools'))
 
 
-class WEBSERVER:
+class WEBSERVER(object):
 
     # IP do webserver da solução
-    IP = PROJECT.configuration['webserver']['host']
-    #IP = os.getenv('IP_WEBSERVER','localhost')
+    HOST = PROJECT.configuration['webserver']['host']
     # porta do webserver da solução
-    #PORT = os.getenv('PORT_WEBSERVER','8000')
     PORT = PROJECT.configuration['webserver']['port']
+    # diretrio raiz da solução
+    HOMEDIR = PROJECT.configuration['webserver']['home']
+    # diretorio do site
+    WEBDIR = HOMEDIR + '/web' 

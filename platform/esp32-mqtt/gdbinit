@@ -1,5 +1,6 @@
-target remote 192.168.42.23:3333
-mon reset halt
+target remote 192.168.0.102:3333
+monitor reset
+monitor halt
+monitor sleep 500
 thb app_main
-x $a1=0
 c

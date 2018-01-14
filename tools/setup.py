@@ -15,13 +15,12 @@ setup(
         'pythondialog',
         'python-nmap',
         'wget',
-        'nmap',
         'json'
     ],
     entry_points='''
         [console_scripts]
         app-manage=app-manage:cli
-        vanet=vanet:cli
-        platform=platform:cli
+        vanet=vanet-manage:cli
+        platform=platform-manage:cli
     ''',
 )

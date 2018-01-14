@@ -41,8 +41,8 @@ export PROJECT_CONF=$PROJECT_HOME/${PROJECT_NAME,,}.conf
 
 prj_name_lower=$(echo ${PROJECT_NAME,,})
 alias app-manage=$PROJECT_HOME/tools/app-manage.py
-alias vanet=$PROJECT_HOME/tools/vanet.py
-alias platform=$PROJECT_HOME/tools/platform.py
+alias vanet=$PROJECT_HOME/tools/vanet-manage.py
+alias platform=$PROJECT_HOME/tools/platform-manage.py
 
 # aplicação #
 
@@ -65,4 +65,8 @@ alias sumo-create='vanet create'
 # platform (ESP32) #
 
 # Configuração do ambiente de desenvolvimento para esp32
-alias esp32-create='platform'
+alias platform-create='platform create'
+
+
+# Configuração do ambiente de desenvolvimento para esp32
+alias platform-menu='platform config --menu'
