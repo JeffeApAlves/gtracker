@@ -2,7 +2,7 @@
 
 """
 
-@file    platform.py
+@file    platform-manage.py
 @author  Jefferson Alves
 @date    2018-01-09
 @version 0.1

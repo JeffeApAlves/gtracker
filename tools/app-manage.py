@@ -141,7 +141,7 @@ def run(ctx,worker,host,port):
         workdir = PROJECT.WEBDIR
  
     if worker :
-        cl = "python %s/manage.py runworker" % (workdir)   
+        cl = "python %s/manage.py runworker --threads 4" % (workdir)   
     else:
         cl = "python %s/manage.py runserver  %s:%s" % (workdir,host,port)
          

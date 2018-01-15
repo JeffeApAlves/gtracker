@@ -1,6 +1,6 @@
 """
 
-@file    cl_bash.py
+@file    tui_menus.py
 @author  Jefferson Alves
 @date    2018-01-09
 @version 0.1
