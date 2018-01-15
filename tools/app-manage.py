@@ -86,6 +86,10 @@ def deploy():
     args = shlex.split(cl)
     subprocess.call(args)
  
+    cl = 'rsync -avz %s %s@%s:%s' % (PROJECT.STARTUPDIR,getpass.getuser(),WEBSERVER.HOST,WEBSERVER.HOMEDIR)
+    args = shlex.split(cl)
+    subprocess.call(args)
+
 
     cl = 'rsync -rv  --include="*.conf" --exclude="*" --prune-empty-dirs %s/ %s@%s:%s' % (PROJECT.HOMEDIR,getpass.getuser(),WEBSERVER.HOST,WEBSERVER.HOMEDIR)
     click.echo(cl)

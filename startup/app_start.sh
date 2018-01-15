@@ -49,7 +49,7 @@ uwsgi --chdir=$DJANGODIR \
     --uid=$USER_ID --gid=$GROUP_ID \
     --harakiri=20 \
     --max-requests=5000 \
-    --logger file:/tmp/uwsgi.log \
+    --logger file:/var/www/gtracker/logs/uwsgi.log \
     --vacuum \
     --http-websockets \
     --home=$ENVIROMENT

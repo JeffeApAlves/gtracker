@@ -43,7 +43,8 @@ class PROJECT(object):
     PLATFORMDIR = HOMEDIR + '/platform'
     # Diretorio da simulação
     VANETDIR=HOMEDIR + '/vanet' 
-    # local para deploy da solução
+    # scripts e configurações de inicialização
+    STARTUPDIR =  HOMEDIR + '/startup'
     # Arquivos
     REQUERIMENTS_FILE= WEBDIR + "/requirements.txt"
 
