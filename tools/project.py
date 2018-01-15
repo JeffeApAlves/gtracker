@@ -34,7 +34,7 @@ class PROJECT(object):
     # Estrutura de diretorios da solucao
 
     # diretrio raiz da solução
-    HOMEDIR = configuration['project']['home']
+    HOMEDIR = "%s/%s" % (configuration['project']['workdir'],NAME)
     # ferramnetas
     TOOLDIR=HOMEDIR + '/tools'
     # diretorio do site

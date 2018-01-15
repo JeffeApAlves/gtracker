@@ -38,7 +38,7 @@ class ESP32(object):
     # nome do proojeto
     PROJECT_NAME = PROJECT.configuration["platform"]["esp32"]["name"]
     # diretorio do projeto
-    HOMEDIR = PROJECT.PLATFORMDIR + '/' + PROJECT_NAME
+    HOMEDIR = "%s/%s" % (PROJECT.PLATFORMDIR ,PROJECT_NAME)
     # porta seral
     SERIAL_PORT = PROJECT.configuration["platform"]["esp32"]["serial_port"]
     # local do toolchain para o ESP

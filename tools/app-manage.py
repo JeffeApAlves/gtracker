@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#!-*- conding: utf8 -*-
 
 """
 
@@ -27,9 +28,12 @@ locale.setlocale(locale.LC_ALL, '')
 
 @click.group()
 @click.option('--debug/--no-debug', default=False)
+@click.option('--production/--no-production',default=False)
 @click.pass_context
-def cli(ctx, debug):
+def cli(ctx, debug, production):
     ctx.obj['DEBUG'] = debug
+    ctx.obj['PRODUCTION'] = production
+
 
 @cli.command()
 def update():
@@ -37,16 +41,26 @@ def update():
     '''Atualiza os pacotes do ambiente Python'''
 
     # arquivo  temporario com a lista  dos pacotes python 
-    
     packges='/tmp/env_packages.txt'
 
-    cl = 'pip freeze --local > {0} && pip install -U -r {0}'.format(packges)
-    args = shlex.split(cl)
-    subprocess.call(args)
+    with open(packges,'w') as f:
 
-    cl = 'pip freeze --local > %s' % (PROJECT.REQUERIMENTS_FILE)    
-    args = shlex.split(cl)
-    subprocess.call(args)
+        # mapeia todos o pacotes utilizados
+        cl = "pip freeze --local"    
+        args = shlex.split(cl)
+        subprocess.call(args,stdout = f)
+
+        # atualiza conforme mapeamento
+        cl = "pip install -U -r %s" % (packges)
+        args = shlex.split(cl)
+        subprocess.call(args)
+
+    with open(PROJECT.REQUERIMENTS_FILE,'w') as req:
+
+        # Atualiza o arquivo do projeto 
+        cl = "pip freeze --local"    
+        args = shlex.split(cl)
+        subprocess.call(args,stdout = req)
 
 
 @cli.command()
@@ -71,38 +85,65 @@ def deploy():
     cl = 'rsync -avz %s %s@%s:%s' % (PROJECT.WEBDIR,getpass.getuser(),WEBSERVER.HOST,WEBSERVER.HOMEDIR)
     args = shlex.split(cl)
     subprocess.call(args)
-    
-    cl = 'rsync -avz %s/%s.conf %s@%s:%s' % (PROJECT.HOMEDIR,PROJECT.NAME,getpass.getuser(),PROJECT.DEPLOYDIR)
+ 
+
+    cl = 'rsync -rv  --include="*.conf" --exclude="*" --prune-empty-dirs %s/ %s@%s:%s' % (PROJECT.HOMEDIR,getpass.getuser(),WEBSERVER.HOST,WEBSERVER.HOMEDIR)
+    click.echo(cl)
     args = shlex.split(cl)
     subprocess.call(args)
+
+    cl = 'rsync -rv  --include="*.sh" --exclude="*" --prune-empty-dirs %s/ %s@%s:%s' % (PROJECT.HOMEDIR,getpass.getuser(),WEBSERVER.HOST,WEBSERVER.HOMEDIR)
+    click.echo(cl)
+    args = shlex.split(cl)
+    subprocess.call(args)
+
 
 @cli.command()
 def config():
-   
+
     '''Configurações referente a parte web que serão salvas na configuração do projeto'''
     pass
 
+
 @cli.command()
-@click.option('--develop/--no-develop',default=True)
+@click.pass_context
+def static_files(ctx):
+    
+    '''Coleta os arquivos estaticos do projeto para o nginx servi-los'''
+    
+    if ctx.obj['PRODUCTION']:
+        workdir = WEBSERVER.WEBDIR
+    else:
+        workdir = PROJECT.WEBDIR
+
+    cl = "python %s/manage.py collectstatic" % (workdir)   
+      
+    args = shlex.split(cl)
+    subprocess.call(args)
+
+
+@cli.command()
 @click.option('--worker/--no-worker',default=False)
 @click.option('--host',default=WEBSERVER.HOST)
 @click.option('--port',default=WEBSERVER.PORT)
-def run(worker,host,port,develop):
+@click.pass_context
+def run(ctx,worker,host,port):
 
     '''Executa a aplicação django'''
 
-    if develop:
-        dir = PROJECT.WEBDIR
+    if ctx.obj['PRODUCTION']:
+        workdir = WEBSERVER.WEBDIR
     else:
-        dir = WEBSERVER.WEBDIR
-
+        workdir = PROJECT.WEBDIR
+ 
     if worker :
-        cl = "python %s/manage.py runworker" % (dir)   
+        cl = "python %s/manage.py runworker" % (workdir)   
     else:
-        cl = "python %s/manage.py runserver  %s:%s" % (dir,host,port)
+        cl = "python %s/manage.py runserver  %s:%s" % (workdir,host,port)
          
     args = shlex.split(cl)
     subprocess.call(args)
+
 
 if __name__ == '__main__':
     cli(obj={})

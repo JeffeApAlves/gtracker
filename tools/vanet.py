@@ -41,7 +41,7 @@ class SUMO(object):
     # nome da simulação
     NAME = PROJECT.configuration["vanet"]["name"]
     # diretorio de trabalho
-    OUTPUTDIR = PROJECT.VANETDIR + '/' + NAME
+    OUTPUTDIR = "%s/%s" % (PROJECT.VANETDIR , NAME)
     # Prefixo dos arquivos do projeto
     PREFIX_FILE=NAME
     # Arquivo de configuração  usado na criação dos poligonos adicionais
