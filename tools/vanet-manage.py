@@ -34,22 +34,6 @@ def run():
     '''Executa a simulação com a configuração previamente feita'''
     
     SUMO.run()
-  
-@cli.command()
-@click.option('--cfg', default=None)
-@click.option('--bbox', default=SUMO.BBOX)
-@click.option('--seed', default=SUMO.SEED)
-@click.option('--name', default=SUMO.NAME)
-@click.option('--types', default=SUMO.TYPES)
-@click.option('--out', default=PROJECT.VANETDIR)
-@click.pass_context
-def create(cfg,bbox,seed,name,types,out):
-
-    '''Gerencia as simulaçoes de transito'''
-    
-    config(cfg,bbox,seed,name,types,out)
-    
-    SUMO.create_simulation()
 
 @cli.command()
 @click.option('--cfg', default=None)
@@ -63,7 +47,19 @@ def config(cfg,bbox,seed,name,types,out):
     '''Configurações referente a simulação de tráfego que serão salvas na configuração do projeto'''
     pass
 
+ 
+@cli.command()
+@click.option('--cfg', default=None)
+@click.option('--bbox', default=SUMO.BBOX)
+@click.option('--seed', default=SUMO.SEED)
+@click.option('--name', default=SUMO.NAME)
+@click.option('--types', default=SUMO.TYPES)
+@click.option('--out', default=PROJECT.VANETDIR)
+def create(cfg,bbox,seed,name,types,out):
+
+    '''Gerencia as simulaçoes de transito'''
+    SUMO.create_simulation()
+
 if __name__ == '__main__':
     cli(obj={})
-
 

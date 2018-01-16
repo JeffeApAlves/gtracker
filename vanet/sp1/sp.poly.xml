@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on Mon Jan 15 20:03:28 2018 by SUMO polyconvert Version 0.30.0
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/polyconvertConfiguration.xsd">
+
+    <input>
+        <net-file value="/media/jefferson/Dados/workspace/gtracker/vanet/sp/sp.net.xml"/>
+        <osm-files value="/media/jefferson/Dados/workspace/gtracker/vanet/sp/sp_bbox.osm.xml"/>
+        <osm.keep-full-type value="true"/>
+        <type-file value="/media/jefferson/Dados/workspace/sumo-0.30.0/data/typemap/osmPolyconvert.typ.xml"/>
+    </input>
+
+    <output>
+        <output-file value="/media/jefferson/Dados/workspace/gtracker/vanet/sp/sp.poly.xml"/>
+    </output>
+
+    <processing>
+        <poi-layer-offset value="5"/>
+    </processing>
+
+    <report>
+        <verbose value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <location netOffset="-320521.10,2621997.52" convBoundary="0.00,0.00,7678.80,17011.02" origBoundary="-46.759682,-23.699719,-46.685046,-23.545569" projParameter="+proj=utm +zone=23 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"/>
+
+</additional>

@@ -12,6 +12,9 @@ Gerenciador do projeto
 
 """
 
+from __future__ import absolute_import
+from __future__ import print_function
+
 import os
 import os.path
 import locale
@@ -23,11 +26,27 @@ import xml.etree.ElementTree as ET
 from distutils import *
 from project import *
 
-SUMO_HOME = os.environ.get('SUMO_HOME',
-                           os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
+SUMO_HOME = os.environ.get("SUMO_HOME", os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), ".."))
 
+typemapdir = os.path.join(SUMO_HOME, "data", "typemap")
 
 sys.path.append(os.path.join(SUMO_HOME, 'tools'))
+
+import osmGet
+import randomTrips
+
+
+typemaps = {
+    "net": os.path.join(typemapdir, "osmNetconvert.typ.xml"),
+    "poly": os.path.join(typemapdir, "osmPolyconvert.typ.xml"),
+    "urban": os.path.join(typemapdir, "osmNetconvertUrbanDe.typ.xml"),
+    "urbanBrSP": os.path.join(typemapdir, "osmNetconvertUrbanBrSP.typ.xml"),
+    "pedestrians": os.path.join(typemapdir, "osmNetconvertPedestrians.typ.xml"),
+    "ships": os.path.join(typemapdir, "osmNetconvertShips.typ.xml"),
+    "bicycles": os.path.join(typemapdir, "osmNetconvertBicycle.typ.xml"),
+}
+
 
 locale.setlocale(locale.LC_ALL, '')
 
@@ -55,10 +74,10 @@ class SUMO(object):
     # arquivo do mapa de entrada
     INPUT_OSM_FILE='./' + OSM_FILE
     # Coordenadas que define a região do mapa para simulação
-    BBOX = "%d,%d,%d,%d" %( PROJECT.configuration["vanet"]["bbox"]["left"],
-                            PROJECT.configuration["vanet"]["bbox"]["bottom"],
-                            PROJECT.configuration["vanet"]["bbox"]["right"],
-                            PROJECT.configuration["vanet"]["bbox"]["top"])
+    BBOX = "%.4f,%.4f,%.4f,%.4f" %( PROJECT.configuration["vanet"]["bbox"]["bottom"],
+                                    PROJECT.configuration["vanet"]["bbox"]["left"],
+                                    PROJECT.configuration["vanet"]["bbox"]["top"],
+                                    PROJECT.configuration["vanet"]["bbox"]["right"])
                             
     ## Informações para geração da frota/tráfico da simulação
 
@@ -189,7 +208,7 @@ class SUMO(object):
 
         input = ET.SubElement(config, "input")
         ET.SubElement(input, "osm-files" , value = SUMO.OSM_FILE)
-        ET.SubElement(input, "type-files" , value = "{0}/osmNetconvert.typ.xml,{0}/osmNetconvertUrbanBrSP.typ.xml,{0}/osmNetconvertPedestrians.typ.xml".format(dir_typemap))
+        ET.SubElement(input, "type-files" , value = "%s,%s,%s" % (typemaps['net'],typemaps['urbanBrSP'],typemaps['pedestrians']))
 
         output = ET.SubElement(config, "output")
         ET.SubElement(output, "output-file" , value = SUMO.NET_FILE)
@@ -236,16 +255,23 @@ class SUMO(object):
     @staticmethod
     def download_map():
 
-        cl = 'python %s/osmGet.py --bbox "%s" --prefix "%s" --output-dir "%s" 2>&1' % (SUMO.TOOLDIR,SUMO.BBOX,SUMO.PREFIX_FILE,SUMO.OUTPUTDIR)
-        args = shlex.split(cl)
-        subprocess.call(args)
-        
+        # ['-b', '-23.650530497027194,-46.760725116729915,-23.636393920054857,-46.72111425399774', '-p', 'osm']
+
+        # ['--bbox','-46.7600,-23.6500,-46.7000,-23.6350', '--prefix', 'sp', '--output-dir', '/media/jefferson/Dados/workspace/gtracker/vanet/sp']
+
+        args = ["--bbox",SUMO.BBOX,"--prefix",SUMO.PREFIX_FILE,"--output-dir",SUMO.OUTPUTDIR]
+
+        click.echo(args)
+
+        osmGet.get(args)
+
 
     @staticmethod
     def create_net():
 
         cl = 'netconvert  --configuration-file %s/%s' % (SUMO.OUTPUTDIR,SUMO.NET_CONFIG)
         args = shlex.split(cl)
+        click.echo(args)
         subprocess.call(args)
 
 
@@ -271,6 +297,20 @@ class SUMO(object):
 
             if type_class ==  "pedestrian" :
 
+                cl = '--seed %d  --pedestrians --max-distance 3000 --fringe-factor %d  --prefix %s -n %s -r %s -p %d -e %d -o %s' % (SUMO.SEED,fringe_factor,pre_fix,net_file,route_file,period,end_time,trip_file)
+
+            else :
+
+                cl = '--seed %d  --vehicle-class %s --min-distance 1000 --fringe-factor %d  --prefix %s -n %s -r %s -p %d -e %d -o %s'  % (SUMO.SEED,type_class,fringe_factor,pre_fix,net_file,route_file,period,end_time,trip_file)
+            
+            args = shlex.split(cl)
+
+            randomTrips.main(randomTrips.get_options(args))
+
+
+            '''
+            if type_class ==  "pedestrian" :
+
                 cl = '%s/randomTrips.py --seed %d  --pedestrians --max-distance 3000 --fringe-factor %d  --prefix %s -n %s -r %s -p %d -e %d -o %s' % (SUMO.TOOLDIR,SUMO.SEED,fringe_factor,pre_fix,net_file,route_file,period,end_time,trip_file)
 
             else :
@@ -284,13 +324,16 @@ class SUMO(object):
             stdout, erro = process.communicate()
 
             if stdout :
+                click.echo(stdout)
                 click.echo("Rotas[%s]: %s %s) - done" % (type_class,route_file,trip_file))
 
             if erro :
+                click.echo(erro)
                 click.echo("ERROR: Falha na criação das rotas para %s / arquivo  %s " % (type_class,route_file))
 
+            '''
         else:
-            click.echo("ERROR: Não encontrado o arquivo $NET_FILE para criação das rotas")
+            click.echo("ERROR: Não encontrado o arquivo %s para criação das rotas" % net_file)
         
        
     @staticmethod
