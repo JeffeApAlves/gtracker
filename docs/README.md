@@ -55,4 +55,3 @@ trafic - Ntopng
 |5432  |gtracker-data    |              |                |
 |      |ldap adm         |              | /phpldapadmin/ |
  
- {% include links.html %}
