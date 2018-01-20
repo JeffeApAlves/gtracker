@@ -15,7 +15,6 @@ O RTC é ajustado automaticamente através de informações do GPS (Protocolo NM
 A recepção e envio ,de bytes nas postas seriais, são feitas utilizando interrupção e buffer circulare *ringbuffer*.
 Como transceptor Wifi\BT\BLE está sendo utilizando o ESP32 que também possui um RTOS(FreeRTOS). Futuro será colocar um módulo GPRS para redes móveis e processar a pilha de conexão também no ESP32.
 Apesar do ESP32 ser mais que um transceiver o custo permite utiliza-lo apenas para essa finalidade
-
 ## SW Web
 Backend: Django com utilização de Channel , abstração de websocket , para atualizações, em tempo real do frontend (Bootstrap+JS+CSS+Chart.js).
 Message Broker: RabbitMQ com o protocolo AMQP e MQTT
@@ -54,4 +53,3 @@ trafic - Ntopng
 |8010  |uwsgi            | gtracker.sock|                |
 |5432  |gtracker-data    |              |                |
 |      |ldap adm         |              | /phpldapadmin/ |
- 
