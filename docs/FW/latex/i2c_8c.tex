@@ -1,0 +1,129 @@
+\hypertarget{i2c_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/i2c.c File Reference}
+\label{i2c_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/i2c.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/i2c.\+c}}
+{\ttfamily \#include \char`\"{}I2\+C.\+h\char`\"{}}\newline
+Include dependency graph for i2c.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{i2c_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{i2c_8c_a6338109848bb741ad800a2141a33e3ce}{B\+O\+A\+R\+D\+\_\+i2c\+\_\+\+Release\+Bus} (void)
+\item 
+bool \hyperlink{i2c_8c_a3b8d6451e5e6097e54b26d5373e1fc60}{I2\+C\+\_\+\+Read} (i2c\+\_\+state\+\_\+t $\ast$i2c\+\_\+status, uint8\+\_\+t addr, uint8\+\_\+t $\ast$data)
+\item 
+bool \hyperlink{i2c_8c_a42d138fe35fc0fba2fe655a67ad586a2}{I2\+C\+\_\+\+Read\+Buffer} (i2c\+\_\+state\+\_\+t $\ast$i2c\+\_\+status, uint8\+\_\+t addr, uint8\+\_\+t $\ast$data, short data\+Size)
+\item 
+bool \hyperlink{i2c_8c_ad2e6991442f446ec50c3a1d6f805553a}{I2\+C\+\_\+\+Write} (i2c\+\_\+state\+\_\+t $\ast$i2c\+\_\+status, uint8\+\_\+t addr, uint8\+\_\+t val)
+\item 
+bool \hyperlink{i2c_8c_a8caab6221e5fd0661adda1f2c3177d84}{I2\+C\+\_\+\+Init} (i2c\+\_\+state\+\_\+t $\ast$i2c\+\_\+status)
+\item 
+void \hyperlink{i2c_8c_a85d52e9476ee50c62ec1d815420f2968}{I2\+C\+\_\+\+Deinit} (i2c\+\_\+state\+\_\+t $\ast$i2c\+\_\+status)
+\item 
+bool \hyperlink{i2c_8c_a021ca2c48254b796967f02f0bf6c5a7c}{I2\+C\+\_\+\+Who\+AmI} (i2c\+\_\+state\+\_\+t $\ast$i2c\+\_\+status, uint8\+\_\+t who\+\_\+am\+\_\+i\+\_\+reg)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{i2c_8c_a6338109848bb741ad800a2141a33e3ce}\label{i2c_8c_a6338109848bb741ad800a2141a33e3ce}} 
+\index{i2c.\+c@{i2c.\+c}!B\+O\+A\+R\+D\+\_\+i2c\+\_\+\+Release\+Bus@{B\+O\+A\+R\+D\+\_\+i2c\+\_\+\+Release\+Bus}}
+\index{B\+O\+A\+R\+D\+\_\+i2c\+\_\+\+Release\+Bus@{B\+O\+A\+R\+D\+\_\+i2c\+\_\+\+Release\+Bus}!i2c.\+c@{i2c.\+c}}
+\subsubsection{\texorpdfstring{B\+O\+A\+R\+D\+\_\+i2c\+\_\+\+Release\+Bus()}{BOARD\_i2c\_ReleaseBus()}}
+{\footnotesize\ttfamily void B\+O\+A\+R\+D\+\_\+i2c\+\_\+\+Release\+Bus (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{i2c_8c_a6338109848bb741ad800a2141a33e3ce_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{i2c_8c_a85d52e9476ee50c62ec1d815420f2968}\label{i2c_8c_a85d52e9476ee50c62ec1d815420f2968}} 
+\index{i2c.\+c@{i2c.\+c}!I2\+C\+\_\+\+Deinit@{I2\+C\+\_\+\+Deinit}}
+\index{I2\+C\+\_\+\+Deinit@{I2\+C\+\_\+\+Deinit}!i2c.\+c@{i2c.\+c}}
+\subsubsection{\texorpdfstring{I2\+C\+\_\+\+Deinit()}{I2C\_Deinit()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Deinit (\begin{DoxyParamCaption}\item[{i2c\+\_\+state\+\_\+t $\ast$}]{i2c\+\_\+status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 177 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8c_a8caab6221e5fd0661adda1f2c3177d84}\label{i2c_8c_a8caab6221e5fd0661adda1f2c3177d84}} 
+\index{i2c.\+c@{i2c.\+c}!I2\+C\+\_\+\+Init@{I2\+C\+\_\+\+Init}}
+\index{I2\+C\+\_\+\+Init@{I2\+C\+\_\+\+Init}!i2c.\+c@{i2c.\+c}}
+\subsubsection{\texorpdfstring{I2\+C\+\_\+\+Init()}{I2C\_Init()}}
+{\footnotesize\ttfamily bool I2\+C\+\_\+\+Init (\begin{DoxyParamCaption}\item[{i2c\+\_\+state\+\_\+t $\ast$}]{i2c\+\_\+status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 144 of file i2c.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{i2c_8c_a8caab6221e5fd0661adda1f2c3177d84_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{i2c_8c_a3b8d6451e5e6097e54b26d5373e1fc60}\label{i2c_8c_a3b8d6451e5e6097e54b26d5373e1fc60}} 
+\index{i2c.\+c@{i2c.\+c}!I2\+C\+\_\+\+Read@{I2\+C\+\_\+\+Read}}
+\index{I2\+C\+\_\+\+Read@{I2\+C\+\_\+\+Read}!i2c.\+c@{i2c.\+c}}
+\subsubsection{\texorpdfstring{I2\+C\+\_\+\+Read()}{I2C\_Read()}}
+{\footnotesize\ttfamily bool I2\+C\+\_\+\+Read (\begin{DoxyParamCaption}\item[{i2c\+\_\+state\+\_\+t $\ast$}]{i2c\+\_\+status,  }\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t $\ast$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 30 of file i2c.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{i2c_8c_a3b8d6451e5e6097e54b26d5373e1fc60_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{i2c_8c_a42d138fe35fc0fba2fe655a67ad586a2}\label{i2c_8c_a42d138fe35fc0fba2fe655a67ad586a2}} 
+\index{i2c.\+c@{i2c.\+c}!I2\+C\+\_\+\+Read\+Buffer@{I2\+C\+\_\+\+Read\+Buffer}}
+\index{I2\+C\+\_\+\+Read\+Buffer@{I2\+C\+\_\+\+Read\+Buffer}!i2c.\+c@{i2c.\+c}}
+\subsubsection{\texorpdfstring{I2\+C\+\_\+\+Read\+Buffer()}{I2C\_ReadBuffer()}}
+{\footnotesize\ttfamily bool I2\+C\+\_\+\+Read\+Buffer (\begin{DoxyParamCaption}\item[{i2c\+\_\+state\+\_\+t $\ast$}]{i2c\+\_\+status,  }\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{short}]{data\+Size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 36 of file i2c.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{i2c_8c_a42d138fe35fc0fba2fe655a67ad586a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{i2c_8c_a021ca2c48254b796967f02f0bf6c5a7c}\label{i2c_8c_a021ca2c48254b796967f02f0bf6c5a7c}} 
+\index{i2c.\+c@{i2c.\+c}!I2\+C\+\_\+\+Who\+AmI@{I2\+C\+\_\+\+Who\+AmI}}
+\index{I2\+C\+\_\+\+Who\+AmI@{I2\+C\+\_\+\+Who\+AmI}!i2c.\+c@{i2c.\+c}}
+\subsubsection{\texorpdfstring{I2\+C\+\_\+\+Who\+Am\+I()}{I2C\_WhoAmI()}}
+{\footnotesize\ttfamily bool I2\+C\+\_\+\+Who\+AmI (\begin{DoxyParamCaption}\item[{i2c\+\_\+state\+\_\+t $\ast$}]{i2c\+\_\+status,  }\item[{uint8\+\_\+t}]{who\+\_\+am\+\_\+i\+\_\+reg }\end{DoxyParamCaption})}
+
+Identifica o dispositivo 
+
+Definition at line 225 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8c_ad2e6991442f446ec50c3a1d6f805553a}\label{i2c_8c_ad2e6991442f446ec50c3a1d6f805553a}} 
+\index{i2c.\+c@{i2c.\+c}!I2\+C\+\_\+\+Write@{I2\+C\+\_\+\+Write}}
+\index{I2\+C\+\_\+\+Write@{I2\+C\+\_\+\+Write}!i2c.\+c@{i2c.\+c}}
+\subsubsection{\texorpdfstring{I2\+C\+\_\+\+Write()}{I2C\_Write()}}
+{\footnotesize\ttfamily bool I2\+C\+\_\+\+Write (\begin{DoxyParamCaption}\item[{i2c\+\_\+state\+\_\+t $\ast$}]{i2c\+\_\+status,  }\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 77 of file i2c.\+c.
+

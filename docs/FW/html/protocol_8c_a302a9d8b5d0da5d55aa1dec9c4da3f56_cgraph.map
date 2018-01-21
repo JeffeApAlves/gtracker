@@ -1,8 +1,12 @@
 <map id="sendFrame" name="sendFrame">
-<area shape="rect" id="node2" href="$protocol_8c.html#a67f18f909de210cc4208454854658231" title="putTxData" alt="" coords="140,5,221,32"/>
-<area shape="rect" id="node6" href="$_ring_buffer_8h.html#a9c3374a6c654c18f3b7e81e8e771451b" title="putString" alt="" coords="143,56,218,83"/>
-<area shape="rect" id="node3" href="$_ring_buffer_8h.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="269,5,336,32"/>
-<area shape="rect" id="node4" href="$port_8c.html#a2ed3554a3de09a3bd09d396ee081ab69" title="vPortEnterCritical" alt="" coords="384,5,507,32"/>
-<area shape="rect" id="node5" href="$port_8c.html#aed20ada05b957181a0de042802a82a5b" title="vPortExitCritical" alt="" coords="388,56,503,83"/>
-<area shape="rect" id="node7" href="$_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="269,56,336,83"/>
+<area shape="rect" id="node2" href="$uart__host_8c.html#a67f18f909de210cc4208454854658231" title="putTxData" alt="" coords="143,5,225,32"/>
+<area shape="rect" id="node4" href="$uart__host_8c.html#a3ba4cb369523209026ad84bfb76e490f" title="putTxString" alt="" coords="140,56,228,83"/>
+<area shape="rect" id="node6" href="$uart__host_8c.html#a7bfab1eda834687cfc0055d0816bb572" title="startTX" alt="" coords="153,107,215,133"/>
+<area shape="rect" id="node3" href="$_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="443,31,510,57"/>
+<area shape="rect" id="node5" href="$_ring_buffer_8c.html#a9c3374a6c654c18f3b7e81e8e771451b" title="putString" alt="" coords="295,56,369,83"/>
+<area shape="rect" id="node7" href="$uart__host_8c.html#ae23bfcc8731e28e48ed09368901d9073" title="isAnyTxData" alt="" coords="284,107,380,133"/>
+<area shape="rect" id="node9" href="$group___events__module.html#gad4ca2c06cb7fdb57a52811247371565c" title="AS1_OnTxChar" alt="" coords="276,157,388,184"/>
+<area shape="rect" id="node8" href="$_ring_buffer_8c.html#a2e19e42bd781463e59dddc3687efce33" title="getCount" alt="" coords="439,107,514,133"/>
+<area shape="rect" id="node10" href="$uart__host_8c.html#a75107164823272beb9f467666391c752" title="getTxData" alt="" coords="436,157,517,184"/>
+<area shape="rect" id="node11" href="$_ring_buffer_8c.html#afc58de5fd336eea8b648561cc107e47d" title="getData" alt="" coords="565,157,632,184"/>
 </map>

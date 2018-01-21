@@ -1,0 +1,67 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Accelerometer/i2c.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Accelerometer/i2c.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'I2C\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBBOARD_i2c_ReleaseBus\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBI2C_Read\fP (i2c_state_t *i2c_status, uint8_t addr, uint8_t *data)"
+.br
+.ti -1c
+.RI "bool \fBI2C_ReadBuffer\fP (i2c_state_t *i2c_status, uint8_t addr, uint8_t *data, short dataSize)"
+.br
+.ti -1c
+.RI "bool \fBI2C_Write\fP (i2c_state_t *i2c_status, uint8_t addr, uint8_t val)"
+.br
+.ti -1c
+.RI "bool \fBI2C_Init\fP (i2c_state_t *i2c_status)"
+.br
+.ti -1c
+.RI "void \fBI2C_Deinit\fP (i2c_state_t *i2c_status)"
+.br
+.ti -1c
+.RI "bool \fBI2C_WhoAmI\fP (i2c_state_t *i2c_status, uint8_t who_am_i_reg)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void BOARD_i2c_ReleaseBus (void)"
+
+.SS "void I2C_Deinit (i2c_state_t * i2c_status)"
+
+.PP
+Definition at line 177 of file i2c\&.c\&.
+.SS "bool I2C_Init (i2c_state_t * i2c_status)"
+
+.PP
+Definition at line 144 of file i2c\&.c\&.
+.SS "bool I2C_Read (i2c_state_t * i2c_status, uint8_t addr, uint8_t * data)\fC [inline]\fP"
+
+.PP
+Definition at line 30 of file i2c\&.c\&.
+.SS "bool I2C_ReadBuffer (i2c_state_t * i2c_status, uint8_t addr, uint8_t * data, short dataSize)"
+
+.PP
+Definition at line 36 of file i2c\&.c\&.
+.SS "bool I2C_WhoAmI (i2c_state_t * i2c_status, uint8_t who_am_i_reg)"
+Identifica o dispositivo 
+.PP
+Definition at line 225 of file i2c\&.c\&.
+.SS "bool I2C_Write (i2c_state_t * i2c_status, uint8_t addr, uint8_t val)"
+
+.PP
+Definition at line 77 of file i2c\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

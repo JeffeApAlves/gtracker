@@ -1,0 +1,161 @@
+\hypertarget{uart__gps_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+G\+P\+S/uart\+\_\+gps.c File Reference}
+\label{uart__gps_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+G\+P\+S/uart\+\_\+gps.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+G\+P\+S/uart\+\_\+gps.\+c}}
+{\ttfamily \#include \char`\"{}uart\+\_\+gps.\+h\char`\"{}}\newline
+Include dependency graph for uart\+\_\+gps.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{uart__gps_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{uart__gps_8c_a5f3833472b1d5a63f27d1d2886fb9998}{uart\+\_\+gps\+\_\+init} (void)
+\item 
+void \hyperlink{uart__gps_8c_a2b686472b3f50aa2fc9bffcb61158f46}{uart\+\_\+gps\+\_\+\+Deinit} (void)
+\item 
+bool \hyperlink{uart__gps_8c_a90fab271d7ff61d91f3b5f33bc99c847}{get\+G\+P\+S\+Data} (char $\ast$ch)
+\item 
+bool \hyperlink{uart__gps_8c_aa36479de7472a7ae297778b1fdad8c2f}{put\+G\+P\+S\+Data} (char data)
+\item 
+bool \hyperlink{uart__gps_8c_a3ef262eee381efe7e0b9c71d71d7c673}{is\+Any\+G\+P\+S\+Data} ()
+\item 
+uint16\+\_\+t \hyperlink{uart__gps_8c_a519e967c42e4f26bc33f3cbd6a1f5f7c}{uart\+\_\+gps\+\_\+rx\+\_\+head} (void)
+\item 
+uint16\+\_\+t \hyperlink{uart__gps_8c_a7cae609403ebe8ae6dca44da82938e80}{uart\+\_\+gps\+\_\+rx\+\_\+tail} (void)
+\item 
+uint16\+\_\+t \hyperlink{uart__gps_8c_a14157d4ac0c8f1c9cd89c3f24b6cef33}{uart\+\_\+gps\+\_\+rx\+\_\+max} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{uart__gps_8c_a90fab271d7ff61d91f3b5f33bc99c847}\label{uart__gps_8c_a90fab271d7ff61d91f3b5f33bc99c847}} 
+\index{uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}!get\+G\+P\+S\+Data@{get\+G\+P\+S\+Data}}
+\index{get\+G\+P\+S\+Data@{get\+G\+P\+S\+Data}!uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}}
+\subsubsection{\texorpdfstring{get\+G\+P\+S\+Data()}{getGPSData()}}
+{\footnotesize\ttfamily bool get\+G\+P\+S\+Data (\begin{DoxyParamCaption}\item[{char $\ast$}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 60 of file uart\+\_\+gps.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{uart__gps_8c_a90fab271d7ff61d91f3b5f33bc99c847_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__gps_8c_a3ef262eee381efe7e0b9c71d71d7c673}\label{uart__gps_8c_a3ef262eee381efe7e0b9c71d71d7c673}} 
+\index{uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}!is\+Any\+G\+P\+S\+Data@{is\+Any\+G\+P\+S\+Data}}
+\index{is\+Any\+G\+P\+S\+Data@{is\+Any\+G\+P\+S\+Data}!uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}}
+\subsubsection{\texorpdfstring{is\+Any\+G\+P\+S\+Data()}{isAnyGPSData()}}
+{\footnotesize\ttfamily bool is\+Any\+G\+P\+S\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 82 of file uart\+\_\+gps.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{uart__gps_8c_a3ef262eee381efe7e0b9c71d71d7c673_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{uart__gps_8c_a3ef262eee381efe7e0b9c71d71d7c673_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__gps_8c_aa36479de7472a7ae297778b1fdad8c2f}\label{uart__gps_8c_aa36479de7472a7ae297778b1fdad8c2f}} 
+\index{uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}!put\+G\+P\+S\+Data@{put\+G\+P\+S\+Data}}
+\index{put\+G\+P\+S\+Data@{put\+G\+P\+S\+Data}!uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}}
+\subsubsection{\texorpdfstring{put\+G\+P\+S\+Data()}{putGPSData()}}
+{\footnotesize\ttfamily bool put\+G\+P\+S\+Data (\begin{DoxyParamCaption}\item[{char}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 72 of file uart\+\_\+gps.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{uart__gps_8c_aa36479de7472a7ae297778b1fdad8c2f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{uart__gps_8c_aa36479de7472a7ae297778b1fdad8c2f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__gps_8c_a2b686472b3f50aa2fc9bffcb61158f46}\label{uart__gps_8c_a2b686472b3f50aa2fc9bffcb61158f46}} 
+\index{uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}!uart\+\_\+gps\+\_\+\+Deinit@{uart\+\_\+gps\+\_\+\+Deinit}}
+\index{uart\+\_\+gps\+\_\+\+Deinit@{uart\+\_\+gps\+\_\+\+Deinit}!uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+gps\+\_\+\+Deinit()}{uart\_gps\_Deinit()}}
+{\footnotesize\ttfamily void uart\+\_\+gps\+\_\+\+Deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 49 of file uart\+\_\+gps.\+c.
+
+\mbox{\Hypertarget{uart__gps_8c_a5f3833472b1d5a63f27d1d2886fb9998}\label{uart__gps_8c_a5f3833472b1d5a63f27d1d2886fb9998}} 
+\index{uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}!uart\+\_\+gps\+\_\+init@{uart\+\_\+gps\+\_\+init}}
+\index{uart\+\_\+gps\+\_\+init@{uart\+\_\+gps\+\_\+init}!uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+gps\+\_\+init()}{uart\_gps\_init()}}
+{\footnotesize\ttfamily bool uart\+\_\+gps\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file uart\+\_\+gps.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart__gps_8c_a5f3833472b1d5a63f27d1d2886fb9998_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__gps_8c_a519e967c42e4f26bc33f3cbd6a1f5f7c}\label{uart__gps_8c_a519e967c42e4f26bc33f3cbd6a1f5f7c}} 
+\index{uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}!uart\+\_\+gps\+\_\+rx\+\_\+head@{uart\+\_\+gps\+\_\+rx\+\_\+head}}
+\index{uart\+\_\+gps\+\_\+rx\+\_\+head@{uart\+\_\+gps\+\_\+rx\+\_\+head}!uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+gps\+\_\+rx\+\_\+head()}{uart\_gps\_rx\_head()}}
+{\footnotesize\ttfamily uint16\+\_\+t uart\+\_\+gps\+\_\+rx\+\_\+head (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 94 of file uart\+\_\+gps.\+c.
+
+\mbox{\Hypertarget{uart__gps_8c_a14157d4ac0c8f1c9cd89c3f24b6cef33}\label{uart__gps_8c_a14157d4ac0c8f1c9cd89c3f24b6cef33}} 
+\index{uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}!uart\+\_\+gps\+\_\+rx\+\_\+max@{uart\+\_\+gps\+\_\+rx\+\_\+max}}
+\index{uart\+\_\+gps\+\_\+rx\+\_\+max@{uart\+\_\+gps\+\_\+rx\+\_\+max}!uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+gps\+\_\+rx\+\_\+max()}{uart\_gps\_rx\_max()}}
+{\footnotesize\ttfamily uint16\+\_\+t uart\+\_\+gps\+\_\+rx\+\_\+max (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 114 of file uart\+\_\+gps.\+c.
+
+\mbox{\Hypertarget{uart__gps_8c_a7cae609403ebe8ae6dca44da82938e80}\label{uart__gps_8c_a7cae609403ebe8ae6dca44da82938e80}} 
+\index{uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}!uart\+\_\+gps\+\_\+rx\+\_\+tail@{uart\+\_\+gps\+\_\+rx\+\_\+tail}}
+\index{uart\+\_\+gps\+\_\+rx\+\_\+tail@{uart\+\_\+gps\+\_\+rx\+\_\+tail}!uart\+\_\+gps.\+c@{uart\+\_\+gps.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+gps\+\_\+rx\+\_\+tail()}{uart\_gps\_rx\_tail()}}
+{\footnotesize\ttfamily uint16\+\_\+t uart\+\_\+gps\+\_\+rx\+\_\+tail (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 104 of file uart\+\_\+gps.\+c.
+

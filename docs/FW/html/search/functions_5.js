@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['etaskconfirmsleepmodestatus',['eTaskConfirmSleepModeStatus',['../task_8h.html#ad185d5a451380c4040888620d9a92ec6',1,'task.h']]],
-  ['etaskgetstate',['eTaskGetState',['../task_8h.html#a954df77397d616484edb7c58c7760b10',1,'task.h']]],
-  ['execcmd',['execCMD',['../application_8h.html#a7dc5bd6d3a807b672e2e28d4115aa17d',1,'execCMD(uint32_t ulNotifiedValue):&#160;application.c'],['../application_8c.html#a7dc5bd6d3a807b672e2e28d4115aa17d',1,'execCMD(uint32_t ulNotifiedValue):&#160;application.c']]],
-  ['execerror',['execError',['../application_8h.html#a4e7244df7e2772f5d59bac3466d65cba',1,'execError(CommunicationPackage *package):&#160;application.c'],['../application_8c.html#a4e7244df7e2772f5d59bac3466d65cba',1,'execError(CommunicationPackage *package):&#160;application.c']]]
+  ['frtos1_5fvapplicationidlehook',['FRTOS1_vApplicationIdleHook',['../group___events__module.html#ga47ee4f5ef904e733b7690af3ef89a1b0',1,'Events.c']]],
+  ['frtos1_5fvapplicationmallocfailedhook',['FRTOS1_vApplicationMallocFailedHook',['../group___events__module.html#ga83b87d2e8c6b269bbdc03cf06d1164a2',1,'Events.c']]],
+  ['frtos1_5fvapplicationstackoverflowhook',['FRTOS1_vApplicationStackOverflowHook',['../group___events__module.html#ga1e81c467b899cd40c827a5243d259dee',1,'Events.c']]],
+  ['frtos1_5fvapplicationtickhook',['FRTOS1_vApplicationTickHook',['../group___events__module.html#gaf8fe6769cea9aeb943962871b26b203b',1,'Events.c']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GoodsTracker: F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/Utils/utils.c File Reference</title>
+<title>GoodsTracker: F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Utils/utils.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,35 +71,40 @@ $(function() {
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+<code>#include &quot;Frame.h&quot;</code><br />
+<code>#include &quot;protocol.h&quot;</code><br />
+<code>#include &quot;utils.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for utils.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="utils_8c__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_utils_2utils_8c" alt=""/></div>
-<!-- MAP 0 -->
+<div class="center"><img src="utils_8c__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_utils_2utils_8c" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_utils_2utils_8c" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_utils_2utils_8c">
+</map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="utils_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aff8e889d69b7aecc57dfc4326e76f537"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#aff8e889d69b7aecc57dfc4326e76f537">str_split</a> (<a class="el" href="struct_list.html">List</a> *result, char *str, const char a_delim)</td></tr>
+<tr class="memitem:aff8e889d69b7aecc57dfc4326e76f537"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#aff8e889d69b7aecc57dfc4326e76f537">str_split</a> (List *result, char *str, const char a_delim)</td></tr>
 <tr class="separator:aff8e889d69b7aecc57dfc4326e76f537"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac25a7a185d5bbf3af3783cb4b5f6681b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbuffer__t.html">buffer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#ac25a7a185d5bbf3af3783cb4b5f6681b">memtok</a> (const void *s, size_t length, const char *delim, <a class="el" href="structbuffer__t.html">buffer_t</a> *save_ptr)</td></tr>
+<tr class="memitem:ac25a7a185d5bbf3af3783cb4b5f6681b"><td class="memItemLeft" align="right" valign="top">buffer_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#ac25a7a185d5bbf3af3783cb4b5f6681b">memtok</a> (const void *s, size_t length, const char *delim, buffer_t *save_ptr)</td></tr>
 <tr class="separator:ac25a7a185d5bbf3af3783cb4b5f6681b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae595f51afa4b8d2094c67c712f58672c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#ae595f51afa4b8d2094c67c712f58672c">str_append</a> (char subject[], char insert[], int pos)</td></tr>
 <tr class="separator:ae595f51afa4b8d2094c67c712f58672c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7534210b51411827455e99a64c4a38c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a7534210b51411827455e99a64c4a38c4">removeList</a> (<a class="el" href="struct_list.html">List</a> *list)</td></tr>
+<tr class="memitem:a7534210b51411827455e99a64c4a38c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a7534210b51411827455e99a64c4a38c4">removeList</a> (List *list)</td></tr>
 <tr class="separator:a7534210b51411827455e99a64c4a38c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad72fd4e8e76d00112d891c80e093c5b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#ad72fd4e8e76d00112d891c80e093c5b2">AsInteger</a> (int *out, char *str, uint16_t index, const char a_delim)</td></tr>
+<tr class="memitem:ad72fd4e8e76d00112d891c80e093c5b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#ad72fd4e8e76d00112d891c80e093c5b2">AsInteger</a> (int *out, char *str, uint16_t index, const char a_delim)</td></tr>
 <tr class="separator:ad72fd4e8e76d00112d891c80e093c5b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dfc2c81b7a50603a3e5e28a2e2833a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a5dfc2c81b7a50603a3e5e28a2e2833a0">AsString</a> (char *out, char *str, uint16_t index, const char a_delim)</td></tr>
+<tr class="memitem:a5dfc2c81b7a50603a3e5e28a2e2833a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a5dfc2c81b7a50603a3e5e28a2e2833a0">AsString</a> (char *out, char *str, uint16_t index, const char a_delim)</td></tr>
 <tr class="separator:a5dfc2c81b7a50603a3e5e28a2e2833a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a055affa58ad782554797910db50b8d6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a055affa58ad782554797910db50b8d6d">AsHex</a> (uint16_t *out, char *str, uint16_t index, const char a_delim)</td></tr>
+<tr class="memitem:a055affa58ad782554797910db50b8d6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a055affa58ad782554797910db50b8d6d">AsHex</a> (uint16_t *out, char *str, uint16_t index, const char a_delim)</td></tr>
 <tr class="separator:a055affa58ad782554797910db50b8d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6976c2856f66fc78309038d7c6c3cc56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a6976c2856f66fc78309038d7c6c3cc56">AsFloat</a> (float *out, char *str, uint16_t index, const char a_delim)</td></tr>
+<tr class="memitem:a6976c2856f66fc78309038d7c6c3cc56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#a6976c2856f66fc78309038d7c6c3cc56">AsFloat</a> (float *out, char *str, uint16_t index, const char a_delim)</td></tr>
 <tr class="separator:a6976c2856f66fc78309038d7c6c3cc56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3ef2c7a4ce78b2f6fd1f339283442d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#ac3ef2c7a4ce78b2f6fd1f339283442d7">AsChar</a> (char *out, char *str, uint16_t index, const char a_delim)</td></tr>
+<tr class="memitem:ac3ef2c7a4ce78b2f6fd1f339283442d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#ac3ef2c7a4ce78b2f6fd1f339283442d7">AsChar</a> (char *out, char *str, uint16_t index, const char a_delim)</td></tr>
 <tr class="separator:ac3ef2c7a4ce78b2f6fd1f339283442d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc53dea59857d91538b40420069fea6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#afc53dea59857d91538b40420069fea6d">AsResource</a> (<a class="el" href="_cmd_8h.html#acf246a87e41f47012fc7628989d3fe95">Resource</a> *out, char *str, uint16_t index, const char a_delim)</td></tr>
+<tr class="memitem:afc53dea59857d91538b40420069fea6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8c.html#afc53dea59857d91538b40420069fea6d">AsResource</a> (Resource *out, char *str, uint16_t index, const char a_delim)</td></tr>
 <tr class="separator:afc53dea59857d91538b40420069fea6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -110,7 +115,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> AsChar </td>
+          <td class="memname">bool AsChar </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>out</em>, </td>
@@ -140,11 +145,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utils_8c_source.html#l00205">205</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c_ac3ef2c7a4ce78b2f6fd1f339283442d7_cgraph.png" border="0" usemap="#utils_8c_ac3ef2c7a4ce78b2f6fd1f339283442d7_cgraph" alt=""/></div>
-<!-- MAP 1 -->
+<map name="utils_8c_ac3ef2c7a4ce78b2f6fd1f339283442d7_cgraph" id="utils_8c_ac3ef2c7a4ce78b2f6fd1f339283442d7_cgraph">
+<area shape="rect" id="node2" href="_frame_8c.html#af12bea8a6b6dee4e09c7114566ce4583" title="getField" alt="" coords="119,5,187,32"/>
+<area shape="rect" id="node3" href="_frame_8c.html#ae6acd6073556ae89c136fdfa0a3dcbf5" title="subString" alt="" coords="235,5,312,32"/>
+</map>
 </div>
 
 </div>
@@ -156,7 +166,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> AsFloat </td>
+          <td class="memname">bool AsFloat </td>
           <td>(</td>
           <td class="paramtype">float *&#160;</td>
           <td class="paramname"><em>out</em>, </td>
@@ -186,11 +196,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utils_8c_source.html#l00187">187</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c_a6976c2856f66fc78309038d7c6c3cc56_cgraph.png" border="0" usemap="#utils_8c_a6976c2856f66fc78309038d7c6c3cc56_cgraph" alt=""/></div>
-<!-- MAP 2 -->
+<map name="utils_8c_a6976c2856f66fc78309038d7c6c3cc56_cgraph" id="utils_8c_a6976c2856f66fc78309038d7c6c3cc56_cgraph">
+<area shape="rect" id="node2" href="_frame_8c.html#af12bea8a6b6dee4e09c7114566ce4583" title="getField" alt="" coords="120,5,188,32"/>
+<area shape="rect" id="node3" href="_frame_8c.html#ae6acd6073556ae89c136fdfa0a3dcbf5" title="subString" alt="" coords="236,5,313,32"/>
+</map>
 </div>
 
 </div>
@@ -202,7 +217,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> AsHex </td>
+          <td class="memname">bool AsHex </td>
           <td>(</td>
           <td class="paramtype">uint16_t *&#160;</td>
           <td class="paramname"><em>out</em>, </td>
@@ -232,11 +247,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utils_8c_source.html#l00170">170</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c_a055affa58ad782554797910db50b8d6d_cgraph.png" border="0" usemap="#utils_8c_a055affa58ad782554797910db50b8d6d_cgraph" alt=""/></div>
-<!-- MAP 3 -->
+<map name="utils_8c_a055affa58ad782554797910db50b8d6d_cgraph" id="utils_8c_a055affa58ad782554797910db50b8d6d_cgraph">
+<area shape="rect" id="node2" href="_frame_8c.html#af12bea8a6b6dee4e09c7114566ce4583" title="getField" alt="" coords="115,5,183,32"/>
+<area shape="rect" id="node3" href="_frame_8c.html#ae6acd6073556ae89c136fdfa0a3dcbf5" title="subString" alt="" coords="231,5,308,32"/>
+</map>
 </div>
 
 </div>
@@ -248,7 +268,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> AsInteger </td>
+          <td class="memname">bool AsInteger </td>
           <td>(</td>
           <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>out</em>, </td>
@@ -278,17 +298,24 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utils_8c_source.html#l00143">143</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c_ad72fd4e8e76d00112d891c80e093c5b2_cgraph.png" border="0" usemap="#utils_8c_ad72fd4e8e76d00112d891c80e093c5b2_cgraph" alt=""/></div>
-<!-- MAP 4 -->
+<map name="utils_8c_ad72fd4e8e76d00112d891c80e093c5b2_cgraph" id="utils_8c_ad72fd4e8e76d00112d891c80e093c5b2_cgraph">
+<area shape="rect" id="node2" href="_frame_8c.html#af12bea8a6b6dee4e09c7114566ce4583" title="getField" alt="" coords="131,5,199,32"/>
+<area shape="rect" id="node3" href="_frame_8c.html#ae6acd6073556ae89c136fdfa0a3dcbf5" title="subString" alt="" coords="247,5,324,32"/>
+</map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c_ad72fd4e8e76d00112d891c80e093c5b2_icgraph.png" border="0" usemap="#utils_8c_ad72fd4e8e76d00112d891c80e093c5b2_icgraph" alt=""/></div>
-<!-- MAP 5 -->
+<map name="utils_8c_ad72fd4e8e76d00112d891c80e093c5b2_icgraph" id="utils_8c_ad72fd4e8e76d00112d891c80e093c5b2_icgraph">
+<area shape="rect" id="node2" href="application_8c.html#a41062f6bcdd666c901673c4a6d60f64d" title="decoderLockPayLoad" alt="" coords="131,5,277,32"/>
+</map>
 </div>
 
 </div>
@@ -300,9 +327,9 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> AsResource </td>
+          <td class="memname">bool AsResource </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_cmd_8h.html#acf246a87e41f47012fc7628989d3fe95">Resource</a> *&#160;</td>
+          <td class="paramtype">Resource *&#160;</td>
           <td class="paramname"><em>out</em>, </td>
         </tr>
         <tr>
@@ -330,11 +357,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utils_8c_source.html#l00223">223</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c_afc53dea59857d91538b40420069fea6d_cgraph.png" border="0" usemap="#utils_8c_afc53dea59857d91538b40420069fea6d_cgraph" alt=""/></div>
-<!-- MAP 6 -->
+<map name="utils_8c_afc53dea59857d91538b40420069fea6d_cgraph" id="utils_8c_afc53dea59857d91538b40420069fea6d_cgraph">
+<area shape="rect" id="node2" href="_frame_8c.html#af12bea8a6b6dee4e09c7114566ce4583" title="getField" alt="" coords="160,5,228,32"/>
+<area shape="rect" id="node4" href="protocol_8c.html#a415580096e7729144bcd26b365c0b48d" title="getResource" alt="" coords="147,56,241,83"/>
+<area shape="rect" id="node3" href="_frame_8c.html#ae6acd6073556ae89c136fdfa0a3dcbf5" title="subString" alt="" coords="289,5,367,32"/>
+</map>
 </div>
 
 </div>
@@ -346,7 +379,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> AsString </td>
+          <td class="memname">bool AsString </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>out</em>, </td>
@@ -376,11 +409,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utils_8c_source.html#l00162">162</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c_a5dfc2c81b7a50603a3e5e28a2e2833a0_cgraph.png" border="0" usemap="#utils_8c_a5dfc2c81b7a50603a3e5e28a2e2833a0_cgraph" alt=""/></div>
-<!-- MAP 7 -->
+<map name="utils_8c_a5dfc2c81b7a50603a3e5e28a2e2833a0_cgraph" id="utils_8c_a5dfc2c81b7a50603a3e5e28a2e2833a0_cgraph">
+<area shape="rect" id="node2" href="_frame_8c.html#af12bea8a6b6dee4e09c7114566ce4583" title="getField" alt="" coords="125,5,193,32"/>
+<area shape="rect" id="node3" href="_frame_8c.html#ae6acd6073556ae89c136fdfa0a3dcbf5" title="subString" alt="" coords="241,5,319,32"/>
+</map>
 </div>
 
 </div>
@@ -392,7 +430,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structbuffer__t.html">buffer_t</a> memtok </td>
+          <td class="memname">buffer_t memtok </td>
           <td>(</td>
           <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>s</em>, </td>
@@ -412,7 +450,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structbuffer__t.html">buffer_t</a> *&#160;</td>
+          <td class="paramtype">buffer_t *&#160;</td>
           <td class="paramname"><em>save_ptr</em>&#160;</td>
         </tr>
         <tr>
@@ -422,11 +460,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utils_8c_source.html#l00071">71</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c_ac25a7a185d5bbf3af3783cb4b5f6681b_icgraph.png" border="0" usemap="#utils_8c_ac25a7a185d5bbf3af3783cb4b5f6681b_icgraph" alt=""/></div>
-<!-- MAP 8 -->
+<map name="utils_8c_ac25a7a185d5bbf3af3783cb4b5f6681b_icgraph" id="utils_8c_ac25a7a185d5bbf3af3783cb4b5f6681b_icgraph">
+<area shape="rect" id="node2" href="utils_8c.html#aff8e889d69b7aecc57dfc4326e76f537" title="str_split" alt="" coords="123,5,191,32"/>
+</map>
 </div>
 
 </div>
@@ -440,12 +482,14 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void removeList </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_list.html">List</a> *&#160;</td>
+          <td class="paramtype">List *&#160;</td>
           <td class="paramname"><em>list</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utils_8c_source.html#l00128">128</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 
 </div>
 </div>
@@ -481,6 +525,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="utils_8c_source.html#l00106">106</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
+
 </div>
 </div>
 <a id="aff8e889d69b7aecc57dfc4326e76f537"></a>
@@ -492,7 +538,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void str_split </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_list.html">List</a> *&#160;</td>
+          <td class="paramtype">List *&#160;</td>
           <td class="paramname"><em>result</em>, </td>
         </tr>
         <tr>
@@ -515,11 +561,15 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p>Cria um array de string </p>
+
+<p class="definition">Definition at line <a class="el" href="utils_8c_source.html#l00020">20</a> of file <a class="el" href="utils_8c_source.html">utils.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8c_aff8e889d69b7aecc57dfc4326e76f537_cgraph.png" border="0" usemap="#utils_8c_aff8e889d69b7aecc57dfc4326e76f537_cgraph" alt=""/></div>
-<!-- MAP 9 -->
+<map name="utils_8c_aff8e889d69b7aecc57dfc4326e76f537_cgraph" id="utils_8c_aff8e889d69b7aecc57dfc4326e76f537_cgraph">
+<area shape="rect" id="node2" href="utils_8c.html#ac25a7a185d5bbf3af3783cb4b5f6681b" title="memtok" alt="" coords="121,5,191,32"/>
+</map>
 </div>
 
 </div>

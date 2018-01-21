@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GoodsTracker: F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/Utils/RingBuffer.c File Reference</title>
+<title>GoodsTracker: F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Utils/RingBuffer.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,24 +68,27 @@ $(function() {
 <div class="title">RingBuffer.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="_ring_buffer_8h_source.html">RingBuffer.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;portmacro.h&quot;</code><br />
+<code>#include &quot;RingBuffer.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for RingBuffer.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="_ring_buffer_8c__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_utils_2_ring_buffer_8c" alt=""/></div>
-<!-- MAP 0 -->
+<div class="center"><img src="_ring_buffer_8c__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_utils_2_ring_buffer_8c" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_utils_2_ring_buffer_8c" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_utils_2_ring_buffer_8c">
+</map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="_ring_buffer_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6ee0cb22cb73101504e06239d37e64de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de">putData</a> (<a class="el" href="struct_ring_buffer.html">RingBuffer</a> *buffer, char ch)</td></tr>
+<tr class="memitem:a6ee0cb22cb73101504e06239d37e64de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de">putData</a> (RingBuffer *buffer, char ch)</td></tr>
 <tr class="separator:a6ee0cb22cb73101504e06239d37e64de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc58de5fd336eea8b648561cc107e47d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_buffer_8c.html#afc58de5fd336eea8b648561cc107e47d">getData</a> (<a class="el" href="struct_ring_buffer.html">RingBuffer</a> *buffer, char *ch)</td></tr>
+<tr class="memitem:afc58de5fd336eea8b648561cc107e47d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_buffer_8c.html#afc58de5fd336eea8b648561cc107e47d">getData</a> (RingBuffer *buffer, char *ch)</td></tr>
 <tr class="separator:afc58de5fd336eea8b648561cc107e47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e19e42bd781463e59dddc3687efce33"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_buffer_8c.html#a2e19e42bd781463e59dddc3687efce33">getCount</a> (<a class="el" href="struct_ring_buffer.html">RingBuffer</a> *buffer)</td></tr>
+<tr class="memitem:a2e19e42bd781463e59dddc3687efce33"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_buffer_8c.html#a2e19e42bd781463e59dddc3687efce33">getCount</a> (RingBuffer *buffer)</td></tr>
 <tr class="separator:a2e19e42bd781463e59dddc3687efce33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c3374a6c654c18f3b7e81e8e771451b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_buffer_8c.html#a9c3374a6c654c18f3b7e81e8e771451b">putString</a> (<a class="el" href="struct_ring_buffer.html">RingBuffer</a> *buffer, char *str)</td></tr>
+<tr class="memitem:a9c3374a6c654c18f3b7e81e8e771451b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_buffer_8c.html#a9c3374a6c654c18f3b7e81e8e771451b">putString</a> (RingBuffer *buffer, char *str)</td></tr>
 <tr class="separator:a9c3374a6c654c18f3b7e81e8e771451b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -101,7 +104,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">short getCount </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_ring_buffer.html">RingBuffer</a> *&#160;</td>
+          <td class="paramtype">RingBuffer *&#160;</td>
           <td class="paramname"><em>buffer</em></td><td>)</td>
           <td></td>
         </tr>
@@ -112,11 +115,22 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_ring_buffer_8c_source.html#l00071">71</a> of file <a class="el" href="_ring_buffer_8c_source.html">RingBuffer.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33_icgraph.png" border="0" usemap="#_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33_icgraph" alt=""/></div>
-<!-- MAP 1 -->
+<map name="_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33_icgraph" id="_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33_icgraph">
+<area shape="rect" id="node2" href="uart__host_8c.html#ae23bfcc8731e28e48ed09368901d9073" title="isAnyTxData" alt="" coords="135,31,231,57"/>
+<area shape="rect" id="node6" href="uart__host_8c.html#a042cfac8bcf4c6fb8698d09c16fe5d0a" title="isAnyRxData" alt="" coords="134,81,233,108"/>
+<area shape="rect" id="node8" href="uart__gps_8c.html#a3ef262eee381efe7e0b9c71d71d7c673" title="isAnyGPSData" alt="" coords="128,132,239,159"/>
+<area shape="rect" id="node3" href="uart__host_8c.html#a7bfab1eda834687cfc0055d0816bb572" title="startTX" alt="" coords="312,31,375,57"/>
+<area shape="rect" id="node4" href="protocol_8c.html#a302a9d8b5d0da5d55aa1dec9c4da3f56" title="sendFrame" alt="" coords="455,5,542,32"/>
+<area shape="rect" id="node5" href="protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="448,56,549,83"/>
+<area shape="rect" id="node7" href="protocol_8c.html#a2cddbd557b6005eba4292581d9615a5c" title="receivePackage" alt="" coords="287,81,400,108"/>
+<area shape="rect" id="node9" href="_n_m_e_a_8c.html#a4ba9d833d2ef29549418913614876eed" title="receiveNMEA" alt="" coords="293,132,393,159"/>
+</map>
 </div>
 
 </div>
@@ -128,9 +142,9 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> getData </td>
+          <td class="memname">bool getData </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_ring_buffer.html">RingBuffer</a> *&#160;</td>
+          <td class="paramtype">RingBuffer *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
         </tr>
         <tr>
@@ -146,17 +160,21 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d_cgraph.png" border="0" usemap="#_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d_cgraph" alt=""/></div>
-<!-- MAP 2 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="_ring_buffer_8c_source.html#l00043">43</a> of file <a class="el" href="_ring_buffer_8c_source.html">RingBuffer.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d_icgraph.png" border="0" usemap="#_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d_icgraph" alt=""/></div>
-<!-- MAP 3 -->
+<map name="_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d_icgraph" id="_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d_icgraph">
+<area shape="rect" id="node2" href="uart__host_8c.html#a75107164823272beb9f467666391c752" title="getTxData" alt="" coords="127,31,208,57"/>
+<area shape="rect" id="node7" href="uart__host_8c.html#a95b387870ebff076b64b5bbfbf43f13f" title="getRxData" alt="" coords="126,81,209,108"/>
+<area shape="rect" id="node8" href="uart__gps_8c.html#a90fab271d7ff61d91f3b5f33bc99c847" title="getGPSData" alt="" coords="120,132,215,159"/>
+<area shape="rect" id="node3" href="group___events__module.html#gad4ca2c06cb7fdb57a52811247371565c" title="AS1_OnTxChar" alt="" coords="263,31,375,57"/>
+<area shape="rect" id="node4" href="uart__host_8c.html#a7bfab1eda834687cfc0055d0816bb572" title="startTX" alt="" coords="423,31,485,57"/>
+<area shape="rect" id="node5" href="protocol_8c.html#a302a9d8b5d0da5d55aa1dec9c4da3f56" title="sendFrame" alt="" coords="541,5,627,32"/>
+<area shape="rect" id="node6" href="protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="533,56,635,83"/>
+</map>
 </div>
 
 </div>
@@ -168,9 +186,9 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> putData </td>
+          <td class="memname">bool putData </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_ring_buffer.html">RingBuffer</a> *&#160;</td>
+          <td class="paramtype">RingBuffer *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
         </tr>
         <tr>
@@ -186,17 +204,23 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de_cgraph.png" border="0" usemap="#_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de_cgraph" alt=""/></div>
-<!-- MAP 4 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="_ring_buffer_8c_source.html#l00011">11</a> of file <a class="el" href="_ring_buffer_8c_source.html">RingBuffer.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de_icgraph.png" border="0" usemap="#_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de_icgraph" alt=""/></div>
-<!-- MAP 5 -->
+<map name="_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de_icgraph" id="_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de_icgraph">
+<area shape="rect" id="node2" href="uart__host_8c.html#a67f18f909de210cc4208454854658231" title="putTxData" alt="" coords="279,5,361,32"/>
+<area shape="rect" id="node5" href="uart__host_8c.html#ac16b96f951e608c644a64b16712a595f" title="putRxData" alt="" coords="126,107,209,133"/>
+<area shape="rect" id="node7" href="uart__gps_8c.html#aa36479de7472a7ae297778b1fdad8c2f" title="putGPSData" alt="" coords="120,157,215,184"/>
+<area shape="rect" id="node9" href="_ring_buffer_8c.html#a9c3374a6c654c18f3b7e81e8e771451b" title="putString" alt="" coords="130,56,205,83"/>
+<area shape="rect" id="node3" href="protocol_8c.html#a302a9d8b5d0da5d55aa1dec9c4da3f56" title="sendFrame" alt="" coords="433,5,519,32"/>
+<area shape="rect" id="node4" href="protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="425,56,527,83"/>
+<area shape="rect" id="node6" href="group___events__module.html#gac72aa34766c66a614f29b1267cadfccc" title="AS1_OnRxChar" alt="" coords="263,107,377,133"/>
+<area shape="rect" id="node8" href="group___events__module.html#gadc4e66d9db0a63b063b37ad5a70a10be" title="AS2_OnRxChar" alt="" coords="263,157,377,184"/>
+<area shape="rect" id="node10" href="uart__host_8c.html#a3ba4cb369523209026ad84bfb76e490f" title="putTxString" alt="" coords="276,56,364,83"/>
+</map>
 </div>
 
 </div>
@@ -210,7 +234,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void putString </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_ring_buffer.html">RingBuffer</a> *&#160;</td>
+          <td class="paramtype">RingBuffer *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
         </tr>
         <tr>
@@ -226,17 +250,25 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_ring_buffer_8c_source.html#l00077">77</a> of file <a class="el" href="_ring_buffer_8c_source.html">RingBuffer.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b_cgraph.png" border="0" usemap="#_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b_cgraph" alt=""/></div>
-<!-- MAP 6 -->
+<map name="_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b_cgraph" id="_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b_cgraph">
+<area shape="rect" id="node2" href="_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="128,5,195,32"/>
+</map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b_icgraph.png" border="0" usemap="#_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b_icgraph" alt=""/></div>
-<!-- MAP 7 -->
+<map name="_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b_icgraph" id="_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b_icgraph">
+<area shape="rect" id="node2" href="uart__host_8c.html#a3ba4cb369523209026ad84bfb76e490f" title="putTxString" alt="" coords="128,31,216,57"/>
+<area shape="rect" id="node3" href="protocol_8c.html#a302a9d8b5d0da5d55aa1dec9c4da3f56" title="sendFrame" alt="" coords="271,5,358,32"/>
+<area shape="rect" id="node4" href="protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="264,56,365,83"/>
+</map>
 </div>
 
 </div>

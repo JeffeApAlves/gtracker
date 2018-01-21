@@ -1,0 +1,248 @@
+.TH "Events_module" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Events_module
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCpu_OnNMIINT\fP (void)"
+.br
+.RI "This event is called when the Non maskable interrupt had occurred\&. This event is automatically enabled when the [NMI interrupt] property is set to 'Enabled'\&. "
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationStackOverflowHook\fP (TaskHandle_t pxTask, char *pcTaskName)"
+.br
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationTickHook\fP (void)"
+.br
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationIdleHook\fP (void)"
+.br
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationMallocFailedHook\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCpu_OnSupervisorCall\fP (void)"
+.br
+.RI "This event is called when the Supervisor Call exception had occurred\&. This event is automatically enabled when the [Supervisor Call] property is set to 'Enabled'\&. "
+.ti -1c
+.RI "void \fBCpu_OnPendableService\fP (void)"
+.br
+.RI "This event is called when the Pendable Service exception had occurred\&. This event is automatically enabled when the [Pendable Service] property is set to 'Enabled'\&. "
+.ti -1c
+.RI "void \fBAS1_OnError\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS1_OnRxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS1_OnTxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAD1_OnEnd\fP (void)"
+.br
+.ti -1c
+.RI "void \fBTSSin_fOnFault\fP (byte u8FaultElecNum)"
+.br
+.ti -1c
+.RI "void \fBTSSin_fOnInit\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS2_OnError\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS2_OnRxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS2_OnTxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBI2C2_OnMasterBlockSent\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "This event is called when I2C in master mode finishes the transmission of the data successfully\&. This event is not available for the SLAVE mode and if MasterSendBlock is disabled\&. "
+.ti -1c
+.RI "void \fBI2C2_OnMasterBlockReceived\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "This event is called when I2C is in master mode and finishes the reception of the data successfully\&. This event is not available for the SLAVE mode and if MasterReceiveBlock is disabled\&. "
+.ti -1c
+.RI "void \fBAD1_OnCalibrationEnd\fP (void)"
+.br
+.ti -1c
+.RI "void \fBRTC1_OnSecond\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "Called each second if OnSecond event is enabled (see [SetEventMask] and [GetEventMask] methods) and RTC device is enabled\&. This event is available only if [Interrupt service/event] is enabled\&. "
+.ti -1c
+.RI "void \fBPTRC1_OnTraceWrap\fP (void)"
+.br
+.ti -1c
+.RI "void \fBEInt1_OnInterrupt\fP (void)"
+.br
+.ti -1c
+.RI "void \fBTI1_OnInterrupt\fP (void)"
+.br
+.ti -1c
+.RI "void \fBI2C1_OnMasterBlockSent\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "This event is called when I2C in master mode finishes the transmission of the data successfully\&. This event is not available for the SLAVE mode and if MasterSendBlock is disabled\&. "
+.ti -1c
+.RI "void \fBI2C1_OnMasterBlockReceived\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "This event is called when I2C is in master mode and finishes the reception of the data successfully\&. This event is not available for the SLAVE mode and if MasterReceiveBlock is disabled\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SH "Function Documentation"
+.PP 
+.SS "void AD1_OnCalibrationEnd (void)"
+
+.PP
+Definition at line 540 of file Events\&.c\&.
+.SS "void AD1_OnEnd (void)"
+
+.PP
+Definition at line 293 of file Events\&.c\&.
+.SS "void AS1_OnError (void)"
+
+.PP
+Definition at line 211 of file Events\&.c\&.
+.SS "void AS1_OnRxChar (void)"
+
+.PP
+Definition at line 231 of file Events\&.c\&.
+.SS "void AS1_OnTxChar (void)"
+
+.PP
+Definition at line 261 of file Events\&.c\&.
+.SS "void AS2_OnError (void)"
+
+.PP
+Definition at line 422 of file Events\&.c\&.
+.SS "void AS2_OnRxChar (void)"
+
+.PP
+Definition at line 442 of file Events\&.c\&.
+.SS "void AS2_OnTxChar (void)"
+
+.PP
+Definition at line 472 of file Events\&.c\&.
+.SS "void Cpu_OnNMIINT (void)"
+
+.PP
+This event is called when the Non maskable interrupt had occurred\&. This event is automatically enabled when the [NMI interrupt] property is set to 'Enabled'\&. 
+.PP
+Definition at line 66 of file Events\&.c\&.
+.SS "void Cpu_OnPendableService (void)"
+
+.PP
+This event is called when the Pendable Service exception had occurred\&. This event is automatically enabled when the [Pendable Service] property is set to 'Enabled'\&. 
+.PP
+Definition at line 191 of file Events\&.c\&.
+.SS "void Cpu_OnSupervisorCall (void)"
+
+.PP
+This event is called when the Supervisor Call exception had occurred\&. This event is automatically enabled when the [Supervisor Call] property is set to 'Enabled'\&. 
+.PP
+Definition at line 173 of file Events\&.c\&.
+.SS "void EInt1_OnInterrupt (void)"
+
+.PP
+Definition at line 603 of file Events\&.c\&.
+.SS "void FRTOS1_vApplicationIdleHook (void)"
+
+.PP
+Definition at line 129 of file Events\&.c\&.
+.SS "void FRTOS1_vApplicationMallocFailedHook (void)"
+
+.PP
+Definition at line 148 of file Events\&.c\&.
+.SS "void FRTOS1_vApplicationStackOverflowHook (TaskHandle_t pxTask, char * pcTaskName)"
+
+.PP
+Definition at line 86 of file Events\&.c\&.
+.SS "void FRTOS1_vApplicationTickHook (void)"
+
+.PP
+Definition at line 111 of file Events\&.c\&.
+.SS "void I2C1_OnMasterBlockReceived (LDD_TUserData * UserDataPtr)"
+
+.PP
+This event is called when I2C is in master mode and finishes the reception of the data successfully\&. This event is not available for the SLAVE mode and if MasterReceiveBlock is disabled\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUserDataPtr\fP - Pointer to the user or RTOS specific data\&. This pointer is passed as the parameter of Init method\&. 
+.RE
+.PP
+
+.SS "void I2C1_OnMasterBlockSent (LDD_TUserData * UserDataPtr)"
+
+.PP
+This event is called when I2C in master mode finishes the transmission of the data successfully\&. This event is not available for the SLAVE mode and if MasterSendBlock is disabled\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUserDataPtr\fP - Pointer to the user or RTOS specific data\&. This pointer is passed as the parameter of Init method\&. 
+.RE
+.PP
+
+.SS "void I2C2_OnMasterBlockReceived (LDD_TUserData * UserDataPtr)"
+
+.PP
+This event is called when I2C is in master mode and finishes the reception of the data successfully\&. This event is not available for the SLAVE mode and if MasterReceiveBlock is disabled\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUserDataPtr\fP - Pointer to the user or RTOS specific data\&. This pointer is passed as the parameter of Init method\&. 
+.RE
+.PP
+
+.PP
+Definition at line 520 of file Events\&.c\&.
+.SS "void I2C2_OnMasterBlockSent (LDD_TUserData * UserDataPtr)"
+
+.PP
+This event is called when I2C in master mode finishes the transmission of the data successfully\&. This event is not available for the SLAVE mode and if MasterSendBlock is disabled\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUserDataPtr\fP - Pointer to the user or RTOS specific data\&. This pointer is passed as the parameter of Init method\&. 
+.RE
+.PP
+
+.PP
+Definition at line 496 of file Events\&.c\&.
+.SS "void PTRC1_OnTraceWrap (void)"
+
+.PP
+Definition at line 580 of file Events\&.c\&.
+.SS "void RTC1_OnSecond (LDD_TUserData * UserDataPtr)"
+
+.PP
+Called each second if OnSecond event is enabled (see [SetEventMask] and [GetEventMask] methods) and RTC device is enabled\&. This event is available only if [Interrupt service/event] is enabled\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUserDataPtr\fP - Pointer to the user or RTOS specific data\&. This pointer is passed as the parameter of Init method\&. 
+.RE
+.PP
+
+.PP
+Definition at line 563 of file Events\&.c\&.
+.SS "void TI1_OnInterrupt (void)"
+
+.SS "void TSSin_fOnFault (byte u8FaultElecNum)"
+
+.PP
+Definition at line 327 of file Events\&.c\&.
+.SS "void TSSin_fOnInit (void)"
+
+.PP
+Definition at line 375 of file Events\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

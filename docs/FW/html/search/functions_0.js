@@ -1,12 +1,23 @@
 var searchData=
 [
-  ['_5f_5fattribute_5f_5f',['__attribute__',['../group___cpu__module.html#ga2d9b5b981f451cdf47bf43b4f9cc9e03',1,'__attribute__((section(&quot;.cfmconfig&quot;))) const:&#160;Cpu.c'],['../port_8c.html#ad62826e478a753740ffb406eeb04f274',1,'__attribute__((noinline)):&#160;port.c'],['../port_8c.html#a2804a023941a956288c32ad08b2cf59e',1,'__attribute__((naked)):&#160;port.c'],['../group___vectors__module.html#ga0032ad18571ad670d92872faa8879886',1,'__attribute__((section(&quot;.vectortable&quot;))) const:&#160;Vectors.c'],['../group___w_a_i_t1__module.html#ga0d401ca6ca297b5b7a450deed0c42b78',1,'__attribute__((naked, no_instrument_function)):&#160;WAIT1.c'],['../group___w_a_i_t2__module.html#ga0d401ca6ca297b5b7a450deed0c42b78',1,'__attribute__((naked, no_instrument_function)):&#160;WAIT2.c'],['../group___w_a_i_t3__module.html#ga0d401ca6ca297b5b7a450deed0c42b78',1,'__attribute__((naked, no_instrument_function)):&#160;WAIT3.c'],['../group___w_a_i_t4__module.html#ga0d401ca6ca297b5b7a450deed0c42b78',1,'__attribute__((naked, no_instrument_function)):&#160;WAIT4.c'],['../startup_8c.html#a201468129b483039afc5a619e2d31097',1,'__attribute__((weak)):&#160;startup.c'],['../startup_8c.html#a2804a023941a956288c32ad08b2cf59e',1,'__attribute__((naked)):&#160;startup.c']]],
-  ['_5f_5fcopy_5from_5fsection',['__copy_rom_section',['../startup_8c.html#a20116053dd02c0128d685fcd5078c3a7',1,'startup.c']]],
-  ['_5f_5fcopy_5from_5fsections_5fto_5fram',['__copy_rom_sections_to_ram',['../startup_8c.html#ae5ea2704fd7338a3858d5b46e8ebc3f8',1,'startup.c']]],
-  ['_5f_5fiar_5fprogram_5fstart',['__iar_program_start',['../startup_8c.html#ab4ccc436ed44ffac8d3ab82bba93476d',1,'startup.c']]],
-  ['_5f_5finit_5fhardware',['__init_hardware',['../group___cpu__module.html#ga32a8d86789a3326b3120bf1e1c1d4252',1,'__init_hardware(void):&#160;Cpu.c'],['../group___cpu__module.html#ga32a8d86789a3326b3120bf1e1c1d4252',1,'__init_hardware():&#160;Cpu.c']]],
-  ['_5f_5finit_5fregisters',['__init_registers',['../startup_8c.html#a85078be29214e670653250f605ff797e',1,'startup.c']]],
-  ['_5f_5finit_5fuser',['__init_user',['../startup_8c.html#abdb8586df61436f61fae8a1aa8ab4306',1,'startup.c']]],
-  ['_5f_5fthumb_5fstartup',['__thumb_startup',['../group___vectors__module.html#ga1291096ffdfeb4d928a6020b5e9a8ccc',1,'__thumb_startup(void):&#160;Vectors.c'],['../startup_8c.html#a1291096ffdfeb4d928a6020b5e9a8ccc',1,'__thumb_startup(void):&#160;startup.c']]],
-  ['_5fstart',['_start',['../startup_8c.html#a8b67a6ff3f33fae9b3f1b142005c0bc2',1,'startup.c']]]
+  ['accelerometer_5finit',['accelerometer_init',['../_accelerometer_8c.html#a4987d8d30a75237baf8a7a13c03dffe8',1,'Accelerometer.c']]],
+  ['ad1_5foncalibrationend',['AD1_OnCalibrationEnd',['../group___events__module.html#ga8be719cad9ac48a9cdfd2281de15ec59',1,'Events.c']]],
+  ['ad1_5fonend',['AD1_OnEnd',['../group___events__module.html#gac0b0e33c722d75df2e7b6eb1d50f15a7',1,'Events.c']]],
+  ['adjusteclock',['adjusteClock',['../clock_8c.html#a1ad38ec8207624d23826d5c5b41c3aab',1,'clock.c']]],
+  ['app_5finit',['app_init',['../application_8c.html#add3190cf715f513666f4be42874d91e2',1,'application.c']]],
+  ['app_5fnotify_5fcmd',['app_notify_cmd',['../application_8c.html#aa8194d5b332c9ef15644824f264d8262',1,'application.c']]],
+  ['appendframe',['AppendFrame',['../_frame_8c.html#aa590f0ed30fbb41a2577c65c80c1dffd',1,'Frame.c']]],
+  ['appendpayload',['AppendPayLoad',['../_communication_frame_8c.html#a1d2f0beaa728db57b1e359f8a1659ba4',1,'CommunicationFrame.c']]],
+  ['as1_5fonerror',['AS1_OnError',['../group___events__module.html#ga29fa5834e7c66a52898789186851847d',1,'Events.c']]],
+  ['as1_5fonrxchar',['AS1_OnRxChar',['../group___events__module.html#gac72aa34766c66a614f29b1267cadfccc',1,'Events.c']]],
+  ['as1_5fontxchar',['AS1_OnTxChar',['../group___events__module.html#gad4ca2c06cb7fdb57a52811247371565c',1,'Events.c']]],
+  ['as2_5fonerror',['AS2_OnError',['../group___events__module.html#ga0137853d241c656b6bf6653ebfc64cac',1,'Events.c']]],
+  ['as2_5fonrxchar',['AS2_OnRxChar',['../group___events__module.html#gadc4e66d9db0a63b063b37ad5a70a10be',1,'Events.c']]],
+  ['as2_5fontxchar',['AS2_OnTxChar',['../group___events__module.html#ga745f5ad3a73381f935cc2ee2fec5c34f',1,'Events.c']]],
+  ['aschar',['AsChar',['../utils_8c.html#ac3ef2c7a4ce78b2f6fd1f339283442d7',1,'utils.c']]],
+  ['asfloat',['AsFloat',['../utils_8c.html#a6976c2856f66fc78309038d7c6c3cc56',1,'utils.c']]],
+  ['ashex',['AsHex',['../utils_8c.html#a055affa58ad782554797910db50b8d6d',1,'utils.c']]],
+  ['asinteger',['AsInteger',['../utils_8c.html#ad72fd4e8e76d00112d891c80e093c5b2',1,'utils.c']]],
+  ['asresource',['AsResource',['../utils_8c.html#afc53dea59857d91538b40420069fea6d',1,'utils.c']]],
+  ['asstring',['AsString',['../utils_8c.html#a5dfc2c81b7a50603a3e5e28a2e2833a0',1,'utils.c']]]
 ];

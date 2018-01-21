@@ -1,0 +1,127 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Events.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Events.c \- This is user's event module\&. Put your event handler code here\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdbool\&.h>\fP
+.br
+\fC#include 'Cpu\&.h'\fP
+.br
+\fC#include 'Events\&.h'\fP
+.br
+\fC#include 'uart_gps\&.h'\fP
+.br
+\fC#include 'uart_host\&.h'\fP
+.br
+\fC#include 'Communication\&.h'\fP
+.br
+\fC#include 'gps\&.h'\fP
+.br
+\fC#include 'Telemetria\&.h'\fP
+.br
+\fC#include 'i2c\&.h'\fP
+.br
+\fC#include 'level_sensor\&.h'\fP
+.br
+\fC#include 'clock\&.h'\fP
+.br
+\fC#include 'ihm\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCpu_OnNMIINT\fP (void)"
+.br
+.RI "This event is called when the Non maskable interrupt had occurred\&. This event is automatically enabled when the [NMI interrupt] property is set to 'Enabled'\&. "
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationStackOverflowHook\fP (TaskHandle_t pxTask, char *pcTaskName)"
+.br
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationTickHook\fP (void)"
+.br
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationIdleHook\fP (void)"
+.br
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationMallocFailedHook\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCpu_OnSupervisorCall\fP (void)"
+.br
+.RI "This event is called when the Supervisor Call exception had occurred\&. This event is automatically enabled when the [Supervisor Call] property is set to 'Enabled'\&. "
+.ti -1c
+.RI "void \fBCpu_OnPendableService\fP (void)"
+.br
+.RI "This event is called when the Pendable Service exception had occurred\&. This event is automatically enabled when the [Pendable Service] property is set to 'Enabled'\&. "
+.ti -1c
+.RI "void \fBAS1_OnError\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS1_OnRxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS1_OnTxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAD1_OnEnd\fP (void)"
+.br
+.ti -1c
+.RI "void \fBTSSin_fOnFault\fP (byte u8FaultElecNum)"
+.br
+.ti -1c
+.RI "void \fBTSSin_fOnInit\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS2_OnError\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS2_OnRxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS2_OnTxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBI2C2_OnMasterBlockSent\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "This event is called when I2C in master mode finishes the transmission of the data successfully\&. This event is not available for the SLAVE mode and if MasterSendBlock is disabled\&. "
+.ti -1c
+.RI "void \fBI2C2_OnMasterBlockReceived\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "This event is called when I2C is in master mode and finishes the reception of the data successfully\&. This event is not available for the SLAVE mode and if MasterReceiveBlock is disabled\&. "
+.ti -1c
+.RI "void \fBAD1_OnCalibrationEnd\fP (void)"
+.br
+.ti -1c
+.RI "void \fBRTC1_OnSecond\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "Called each second if OnSecond event is enabled (see [SetEventMask] and [GetEventMask] methods) and RTC device is enabled\&. This event is available only if [Interrupt service/event] is enabled\&. "
+.ti -1c
+.RI "void \fBPTRC1_OnTraceWrap\fP (void)"
+.br
+.ti -1c
+.RI "void \fBEInt1_OnInterrupt\fP (void)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is user's event module\&. Put your event handler code here\&. 
+
+
+.PP
+\fBVersion:\fP
+.RS 4
+01\&.00 
+.RE
+.PP
+
+.PP
+Definition in file \fBEvents\&.c\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

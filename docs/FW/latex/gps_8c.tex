@@ -1,141 +1,159 @@
-\hypertarget{gps_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+G\+P\+S/gps.c File Reference}
-\label{gps_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+G\+P\+S/gps.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+G\+P\+S/gps.\+c}}
-{\ttfamily \#include \char`\"{}application.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Ring\+Buffer.\+h\char`\"{}}\newline
+\hypertarget{gps_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+G\+P\+S/gps.c File Reference}
+\label{gps_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+G\+P\+S/gps.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+G\+P\+S/gps.\+c}}
+{\ttfamily \#include \char`\"{}uart\+\_\+gps.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Telemetria.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gps.\+h\char`\"{}}\newline
 Include dependency graph for gps.\+c\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{gps_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{gps_8c_af3830320fe6287f717dca9669f417950}{S\+O\+U\+TH}~\textquotesingle{}S\textquotesingle{}
+\#define \hyperlink{gps_8c_a5e74150746a794e6426be98f7bcbbd7d}{G\+P\+S\+\_\+\+N\+U\+M\+\_\+\+M\+SG}~1
 \item 
-\#define \hyperlink{gps_8c_a755da365a2f771fdb9e15af22fee7d74}{W\+E\+ST}~\textquotesingle{}W\textquotesingle{}
+\#define \hyperlink{gps_8c_abd05ff600778b2b40f545d3a917661a2}{G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+2)
+\item 
+\#define \hyperlink{gps_8c_a536e93c1cf44766a0b450a3b95914727}{G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE + 100)
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{gps_8c_a3dab1ad105b945b39a02d1a02557d5de}{gps\+\_\+task} (void)
+void \hyperlink{gps_8c_ab00cee16acfffac77f9a4eea47246648}{gps\+\_\+publish} (void)
 \item 
-\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{gps_8c_a90fab271d7ff61d91f3b5f33bc99c847}{get\+G\+P\+S\+Data} (char $\ast$ch)
-\item 
-\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{gps_8c_aa36479de7472a7ae297778b1fdad8c2f}{put\+G\+P\+S\+Data} (char data)
-\item 
-\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{gps_8c_a3ef262eee381efe7e0b9c71d71d7c673}{is\+Any\+G\+P\+S\+Data} ()
+Base\+Type\+\_\+t \hyperlink{gps_8c_adc6c4f916ee238544e55039a3b8c2035}{gps\+\_\+notify\+\_\+rx\+\_\+char} (Base\+Type\+\_\+t $\ast$x\+Higher\+Priority\+Task\+Woken)
 \item 
 void \hyperlink{gps_8c_ab37f7040b9efd19fdd3f92b1df77e771}{gps\+\_\+init} (void)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-const char $\ast$ \hyperlink{gps_8c_a15145cd564c5d4d03eb0ce0072cb3793}{G\+GA} = \char`\"{}G\+GA\char`\"{}
+Queue\+Handle\+\_\+t \hyperlink{gps_8c_a69b924ea4c63dda6c8a182c4a61255d9}{x\+Queue\+G\+PS}
 \item 
-const char $\ast$ \hyperlink{gps_8c_a6ad4b408311bcca8a354b0427adcae3c}{R\+MC} = \char`\"{}R\+MC\char`\"{}
-\item 
-const char $\ast$ \hyperlink{gps_8c_a3755e08832a1d91771aa9e625b5ec525}{G\+SA} = \char`\"{}G\+SA\char`\"{}
-\item 
-\hyperlink{struct_ring_buffer}{Ring\+Buffer} \hyperlink{gps_8c_a2163703e8ace25c7c499a14b8dc32d88}{buffer\+Rx\+N\+M\+EA}
-\item 
-\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} \hyperlink{gps_8c_a69b924ea4c63dda6c8a182c4a61255d9}{x\+Queue\+G\+PS}
-\item 
-\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} \hyperlink{gps_8c_a322edb23d96e8190221bb3cd0a629aac}{x\+Handle\+G\+P\+S\+Task}
+G\+PS \hyperlink{gps_8c_abe2f3233916c628362cbefbc704d6be1}{gps}
 \end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
-\mbox{\Hypertarget{gps_8c_af3830320fe6287f717dca9669f417950}\label{gps_8c_af3830320fe6287f717dca9669f417950}} 
-\index{gps.\+c@{gps.\+c}!S\+O\+U\+TH@{S\+O\+U\+TH}}
-\index{S\+O\+U\+TH@{S\+O\+U\+TH}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{S\+O\+U\+TH}{SOUTH}}
-{\footnotesize\ttfamily \#define S\+O\+U\+TH~\textquotesingle{}S\textquotesingle{}}
+\mbox{\Hypertarget{gps_8c_a5e74150746a794e6426be98f7bcbbd7d}\label{gps_8c_a5e74150746a794e6426be98f7bcbbd7d}} 
+\index{gps.\+c@{gps.\+c}!G\+P\+S\+\_\+\+N\+U\+M\+\_\+\+M\+SG@{G\+P\+S\+\_\+\+N\+U\+M\+\_\+\+M\+SG}}
+\index{G\+P\+S\+\_\+\+N\+U\+M\+\_\+\+M\+SG@{G\+P\+S\+\_\+\+N\+U\+M\+\_\+\+M\+SG}!gps.\+c@{gps.\+c}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+N\+U\+M\+\_\+\+M\+SG}{GPS\_NUM\_MSG}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+N\+U\+M\+\_\+\+M\+SG~1}
 
-\mbox{\Hypertarget{gps_8c_a755da365a2f771fdb9e15af22fee7d74}\label{gps_8c_a755da365a2f771fdb9e15af22fee7d74}} 
-\index{gps.\+c@{gps.\+c}!W\+E\+ST@{W\+E\+ST}}
-\index{W\+E\+ST@{W\+E\+ST}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{W\+E\+ST}{WEST}}
-{\footnotesize\ttfamily \#define W\+E\+ST~\textquotesingle{}W\textquotesingle{}}
+
+
+Definition at line 13 of file gps.\+c.
+
+\mbox{\Hypertarget{gps_8c_abd05ff600778b2b40f545d3a917661a2}\label{gps_8c_abd05ff600778b2b40f545d3a917661a2}} 
+\index{gps.\+c@{gps.\+c}!G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!gps.\+c@{gps.\+c}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{GPS\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+2)}
+
+
+
+Definition at line 14 of file gps.\+c.
+
+\mbox{\Hypertarget{gps_8c_a536e93c1cf44766a0b450a3b95914727}\label{gps_8c_a536e93c1cf44766a0b450a3b95914727}} 
+\index{gps.\+c@{gps.\+c}!G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}}
+\index{G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}!gps.\+c@{gps.\+c}}
+\subsubsection{\texorpdfstring{G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}{GPS\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define G\+P\+S\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE + 100)}
+
+
+
+Definition at line 15 of file gps.\+c.
 
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{gps_8c_a90fab271d7ff61d91f3b5f33bc99c847}\label{gps_8c_a90fab271d7ff61d91f3b5f33bc99c847}} 
-\index{gps.\+c@{gps.\+c}!get\+G\+P\+S\+Data@{get\+G\+P\+S\+Data}}
-\index{get\+G\+P\+S\+Data@{get\+G\+P\+S\+Data}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{get\+G\+P\+S\+Data()}{getGPSData()}}
-{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} get\+G\+P\+S\+Data (\begin{DoxyParamCaption}\item[{char $\ast$}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Here is the call graph for this function\+:
-% FIG 1
 \mbox{\Hypertarget{gps_8c_ab37f7040b9efd19fdd3f92b1df77e771}\label{gps_8c_ab37f7040b9efd19fdd3f92b1df77e771}} 
 \index{gps.\+c@{gps.\+c}!gps\+\_\+init@{gps\+\_\+init}}
 \index{gps\+\_\+init@{gps\+\_\+init}!gps.\+c@{gps.\+c}}
 \subsubsection{\texorpdfstring{gps\+\_\+init()}{gps\_init()}}
 {\footnotesize\ttfamily void gps\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gps_8c_a3dab1ad105b945b39a02d1a02557d5de}\label{gps_8c_a3dab1ad105b945b39a02d1a02557d5de}} 
-\index{gps.\+c@{gps.\+c}!gps\+\_\+task@{gps\+\_\+task}}
-\index{gps\+\_\+task@{gps\+\_\+task}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{gps\+\_\+task()}{gps\_task()}}
-{\footnotesize\ttfamily void gps\+\_\+task (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+Definition at line 79 of file gps.\+c.
 
 Here is the call graph for this function\+:
-% FIG 2
-\mbox{\Hypertarget{gps_8c_a3ef262eee381efe7e0b9c71d71d7c673}\label{gps_8c_a3ef262eee381efe7e0b9c71d71d7c673}} 
-\index{gps.\+c@{gps.\+c}!is\+Any\+G\+P\+S\+Data@{is\+Any\+G\+P\+S\+Data}}
-\index{is\+Any\+G\+P\+S\+Data@{is\+Any\+G\+P\+S\+Data}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{is\+Any\+G\+P\+S\+Data()}{isAnyGPSData()}}
-{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} is\+Any\+G\+P\+S\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Here is the call graph for this function\+:
-% FIG 3
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{gps_8c_ab37f7040b9efd19fdd3f92b1df77e771_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:
-% FIG 4
-\mbox{\Hypertarget{gps_8c_aa36479de7472a7ae297778b1fdad8c2f}\label{gps_8c_aa36479de7472a7ae297778b1fdad8c2f}} 
-\index{gps.\+c@{gps.\+c}!put\+G\+P\+S\+Data@{put\+G\+P\+S\+Data}}
-\index{put\+G\+P\+S\+Data@{put\+G\+P\+S\+Data}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{put\+G\+P\+S\+Data()}{putGPSData()}}
-{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} put\+G\+P\+S\+Data (\begin{DoxyParamCaption}\item[{char}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{gps_8c_ab37f7040b9efd19fdd3f92b1df77e771_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gps_8c_adc6c4f916ee238544e55039a3b8c2035}\label{gps_8c_adc6c4f916ee238544e55039a3b8c2035}} 
+\index{gps.\+c@{gps.\+c}!gps\+\_\+notify\+\_\+rx\+\_\+char@{gps\+\_\+notify\+\_\+rx\+\_\+char}}
+\index{gps\+\_\+notify\+\_\+rx\+\_\+char@{gps\+\_\+notify\+\_\+rx\+\_\+char}!gps.\+c@{gps.\+c}}
+\subsubsection{\texorpdfstring{gps\+\_\+notify\+\_\+rx\+\_\+char()}{gps\_notify\_rx\_char()}}
+{\footnotesize\ttfamily Base\+Type\+\_\+t gps\+\_\+notify\+\_\+rx\+\_\+char (\begin{DoxyParamCaption}\item[{Base\+Type\+\_\+t $\ast$}]{x\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 70 of file gps.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{gps_8c_adc6c4f916ee238544e55039a3b8c2035_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gps_8c_ab00cee16acfffac77f9a4eea47246648}\label{gps_8c_ab00cee16acfffac77f9a4eea47246648}} 
+\index{gps.\+c@{gps.\+c}!gps\+\_\+publish@{gps\+\_\+publish}}
+\index{gps\+\_\+publish@{gps\+\_\+publish}!gps.\+c@{gps.\+c}}
+\subsubsection{\texorpdfstring{gps\+\_\+publish()}{gps\_publish()}}
+{\footnotesize\ttfamily void gps\+\_\+publish (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file gps.\+c.
 
 Here is the call graph for this function\+:
-% FIG 5
-Here is the caller graph for this function\+:
-% FIG 6
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{gps_8c_ab00cee16acfffac77f9a4eea47246648_cgraph}
+\end{center}
+\end{figure}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{gps_8c_a2163703e8ace25c7c499a14b8dc32d88}\label{gps_8c_a2163703e8ace25c7c499a14b8dc32d88}} 
-\index{gps.\+c@{gps.\+c}!buffer\+Rx\+N\+M\+EA@{buffer\+Rx\+N\+M\+EA}}
-\index{buffer\+Rx\+N\+M\+EA@{buffer\+Rx\+N\+M\+EA}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{buffer\+Rx\+N\+M\+EA}{bufferRxNMEA}}
-{\footnotesize\ttfamily \hyperlink{struct_ring_buffer}{Ring\+Buffer} buffer\+Rx\+N\+M\+EA}
+\mbox{\Hypertarget{gps_8c_abe2f3233916c628362cbefbc704d6be1}\label{gps_8c_abe2f3233916c628362cbefbc704d6be1}} 
+\index{gps.\+c@{gps.\+c}!gps@{gps}}
+\index{gps@{gps}!gps.\+c@{gps.\+c}}
+\subsubsection{\texorpdfstring{gps}{gps}}
+{\footnotesize\ttfamily G\+PS gps}
 
-\mbox{\Hypertarget{gps_8c_a15145cd564c5d4d03eb0ce0072cb3793}\label{gps_8c_a15145cd564c5d4d03eb0ce0072cb3793}} 
-\index{gps.\+c@{gps.\+c}!G\+GA@{G\+GA}}
-\index{G\+GA@{G\+GA}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{G\+GA}{GGA}}
-{\footnotesize\ttfamily const char$\ast$ G\+GA = \char`\"{}G\+GA\char`\"{}}
 
-\mbox{\Hypertarget{gps_8c_a3755e08832a1d91771aa9e625b5ec525}\label{gps_8c_a3755e08832a1d91771aa9e625b5ec525}} 
-\index{gps.\+c@{gps.\+c}!G\+SA@{G\+SA}}
-\index{G\+SA@{G\+SA}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{G\+SA}{GSA}}
-{\footnotesize\ttfamily const char$\ast$ G\+SA = \char`\"{}G\+SA\char`\"{}}
 
-\mbox{\Hypertarget{gps_8c_a6ad4b408311bcca8a354b0427adcae3c}\label{gps_8c_a6ad4b408311bcca8a354b0427adcae3c}} 
-\index{gps.\+c@{gps.\+c}!R\+MC@{R\+MC}}
-\index{R\+MC@{R\+MC}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{R\+MC}{RMC}}
-{\footnotesize\ttfamily const char$\ast$ R\+MC = \char`\"{}R\+MC\char`\"{}}
-
-\mbox{\Hypertarget{gps_8c_a322edb23d96e8190221bb3cd0a629aac}\label{gps_8c_a322edb23d96e8190221bb3cd0a629aac}} 
-\index{gps.\+c@{gps.\+c}!x\+Handle\+G\+P\+S\+Task@{x\+Handle\+G\+P\+S\+Task}}
-\index{x\+Handle\+G\+P\+S\+Task@{x\+Handle\+G\+P\+S\+Task}!gps.\+c@{gps.\+c}}
-\subsubsection{\texorpdfstring{x\+Handle\+G\+P\+S\+Task}{xHandleGPSTask}}
-{\footnotesize\ttfamily \hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} x\+Handle\+G\+P\+S\+Task}
+Definition at line 21 of file gps.\+c.
 
 \mbox{\Hypertarget{gps_8c_a69b924ea4c63dda6c8a182c4a61255d9}\label{gps_8c_a69b924ea4c63dda6c8a182c4a61255d9}} 
 \index{gps.\+c@{gps.\+c}!x\+Queue\+G\+PS@{x\+Queue\+G\+PS}}
 \index{x\+Queue\+G\+PS@{x\+Queue\+G\+PS}!gps.\+c@{gps.\+c}}
 \subsubsection{\texorpdfstring{x\+Queue\+G\+PS}{xQueueGPS}}
-{\footnotesize\ttfamily \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue\+G\+PS}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+G\+PS}
+
+
+
+Definition at line 16 of file gps.\+c.
 

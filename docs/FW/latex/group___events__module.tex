@@ -5,7 +5,7 @@
 \item 
 void \hyperlink{group___events__module_ga960d094664356278ac5472d45a6ea2f3}{Cpu\+\_\+\+On\+N\+M\+I\+I\+NT} (void)
 \begin{DoxyCompactList}\small\item\em This event is called when the Non maskable interrupt had occurred. This event is automatically enabled when the \mbox{[}N\+MI interrupt\mbox{]} property is set to \textquotesingle{}Enabled\textquotesingle{}. \end{DoxyCompactList}\item 
-void \hyperlink{group___events__module_ga1e81c467b899cd40c827a5243d259dee}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook} (\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} px\+Task, char $\ast$pc\+Task\+Name)
+void \hyperlink{group___events__module_ga1e81c467b899cd40c827a5243d259dee}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook} (Task\+Handle\+\_\+t px\+Task, char $\ast$pc\+Task\+Name)
 \item 
 void \hyperlink{group___events__module_gaf8fe6769cea9aeb943962871b26b203b}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Tick\+Hook} (void)
 \item 
@@ -25,13 +25,9 @@ void \hyperlink{group___events__module_gad4ca2c06cb7fdb57a52811247371565c}{A\+S1
 \item 
 void \hyperlink{group___events__module_gac0b0e33c722d75df2e7b6eb1d50f15a7}{A\+D1\+\_\+\+On\+End} (void)
 \item 
-void \hyperlink{group___events__module_ga01b566cf25a21b34152513dcb1321a11}{T\+I1\+\_\+\+On\+Interrupt} (void)
-\item 
-void \hyperlink{group___events__module_gaaade020d27159f2102fb3b994d1224ae}{T\+S\+Sin\+\_\+f\+On\+Fault} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} u8\+Fault\+Elec\+Num)
+void \hyperlink{group___events__module_gaaade020d27159f2102fb3b994d1224ae}{T\+S\+Sin\+\_\+f\+On\+Fault} (byte u8\+Fault\+Elec\+Num)
 \item 
 void \hyperlink{group___events__module_ga67e29a27a74c8a25e4edddb84351a138}{T\+S\+Sin\+\_\+f\+On\+Init} (void)
-\item 
-void \hyperlink{group___events__module_ga5969b4c9b3e47d79941c612897503fe4}{T\+S\+Sin\+\_\+f\+Call\+Back0} (\hyperlink{struct_t_s_s___c_o_n_t_r_o_l___i_d}{T\+S\+S\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+ID} u8\+Control\+Id)
 \item 
 void \hyperlink{group___events__module_ga0137853d241c656b6bf6653ebfc64cac}{A\+S2\+\_\+\+On\+Error} (void)
 \item 
@@ -39,17 +35,23 @@ void \hyperlink{group___events__module_gadc4e66d9db0a63b063b37ad5a70a10be}{A\+S2
 \item 
 void \hyperlink{group___events__module_ga745f5ad3a73381f935cc2ee2fec5c34f}{A\+S2\+\_\+\+On\+Tx\+Char} (void)
 \item 
-void \hyperlink{group___events__module_ga23f378d5253016b341bf971cb5c35ee7}{I2\+C2\+\_\+\+On\+Master\+Block\+Sent} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+void \hyperlink{group___events__module_ga23f378d5253016b341bf971cb5c35ee7}{I2\+C2\+\_\+\+On\+Master\+Block\+Sent} (L\+D\+D\+\_\+\+T\+User\+Data $\ast$User\+Data\+Ptr)
 \begin{DoxyCompactList}\small\item\em This event is called when I2C in master mode finishes the transmission of the data successfully. This event is not available for the S\+L\+A\+VE mode and if Master\+Send\+Block is disabled. \end{DoxyCompactList}\item 
-void \hyperlink{group___events__module_ga5b2fe0871600de8d73184570a42e5b66}{I2\+C2\+\_\+\+On\+Master\+Block\+Received} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+void \hyperlink{group___events__module_ga5b2fe0871600de8d73184570a42e5b66}{I2\+C2\+\_\+\+On\+Master\+Block\+Received} (L\+D\+D\+\_\+\+T\+User\+Data $\ast$User\+Data\+Ptr)
 \begin{DoxyCompactList}\small\item\em This event is called when I2C is in master mode and finishes the reception of the data successfully. This event is not available for the S\+L\+A\+VE mode and if Master\+Receive\+Block is disabled. \end{DoxyCompactList}\item 
 void \hyperlink{group___events__module_ga8be719cad9ac48a9cdfd2281de15ec59}{A\+D1\+\_\+\+On\+Calibration\+End} (void)
 \item 
-void \hyperlink{group___events__module_ga2f94110e651cb30cba928647e91e92d4}{R\+T\+C1\+\_\+\+On\+Second} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+void \hyperlink{group___events__module_ga2f94110e651cb30cba928647e91e92d4}{R\+T\+C1\+\_\+\+On\+Second} (L\+D\+D\+\_\+\+T\+User\+Data $\ast$User\+Data\+Ptr)
 \begin{DoxyCompactList}\small\item\em Called each second if On\+Second event is enabled (see \mbox{[}Set\+Event\+Mask\mbox{]} and \mbox{[}Get\+Event\+Mask\mbox{]} methods) and R\+TC device is enabled. This event is available only if \mbox{[}Interrupt service/event\mbox{]} is enabled. \end{DoxyCompactList}\item 
-void \hyperlink{group___events__module_gad394d39c6e6d080b1ae8cd26178003f2}{I2\+C1\+\_\+\+On\+Master\+Block\+Sent} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+void \hyperlink{group___events__module_gab34bedda0461474d770bfe84c3bc881f}{P\+T\+R\+C1\+\_\+\+On\+Trace\+Wrap} (void)
+\item 
+void \hyperlink{group___events__module_gabdbc35f3567d6a158efe42b38f2ee47a}{E\+Int1\+\_\+\+On\+Interrupt} (void)
+\item 
+void \hyperlink{group___events__module_ga01b566cf25a21b34152513dcb1321a11}{T\+I1\+\_\+\+On\+Interrupt} (void)
+\item 
+void \hyperlink{group___events__module_gad394d39c6e6d080b1ae8cd26178003f2}{I2\+C1\+\_\+\+On\+Master\+Block\+Sent} (L\+D\+D\+\_\+\+T\+User\+Data $\ast$User\+Data\+Ptr)
 \begin{DoxyCompactList}\small\item\em This event is called when I2C in master mode finishes the transmission of the data successfully. This event is not available for the S\+L\+A\+VE mode and if Master\+Send\+Block is disabled. \end{DoxyCompactList}\item 
-void \hyperlink{group___events__module_gad0eaee8bf9e6df0596ba2542bb3e1c32}{I2\+C1\+\_\+\+On\+Master\+Block\+Received} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+void \hyperlink{group___events__module_gad0eaee8bf9e6df0596ba2542bb3e1c32}{I2\+C1\+\_\+\+On\+Master\+Block\+Received} (L\+D\+D\+\_\+\+T\+User\+Data $\ast$User\+Data\+Ptr)
 \begin{DoxyCompactList}\small\item\em This event is called when I2C is in master mode and finishes the reception of the data successfully. This event is not available for the S\+L\+A\+VE mode and if Master\+Receive\+Block is disabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -63,70 +65,120 @@ void \hyperlink{group___events__module_gad0eaee8bf9e6df0596ba2542bb3e1c32}{I2\+C
 \subsubsection{\texorpdfstring{A\+D1\+\_\+\+On\+Calibration\+End()}{AD1\_OnCalibrationEnd()}}
 {\footnotesize\ttfamily void A\+D1\+\_\+\+On\+Calibration\+End (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-% FIG 0
+
+
+Definition at line 540 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_gac0b0e33c722d75df2e7b6eb1d50f15a7}\label{group___events__module_gac0b0e33c722d75df2e7b6eb1d50f15a7}} 
 \index{Events module documentation@{Events module documentation}!A\+D1\+\_\+\+On\+End@{A\+D1\+\_\+\+On\+End}}
 \index{A\+D1\+\_\+\+On\+End@{A\+D1\+\_\+\+On\+End}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{A\+D1\+\_\+\+On\+End()}{AD1\_OnEnd()}}
 {\footnotesize\ttfamily void A\+D1\+\_\+\+On\+End (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-% FIG 1
+
+
+Definition at line 293 of file Events.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{group___events__module_gac0b0e33c722d75df2e7b6eb1d50f15a7_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{group___events__module_ga29fa5834e7c66a52898789186851847d}\label{group___events__module_ga29fa5834e7c66a52898789186851847d}} 
 \index{Events module documentation@{Events module documentation}!A\+S1\+\_\+\+On\+Error@{A\+S1\+\_\+\+On\+Error}}
 \index{A\+S1\+\_\+\+On\+Error@{A\+S1\+\_\+\+On\+Error}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{A\+S1\+\_\+\+On\+Error()}{AS1\_OnError()}}
 {\footnotesize\ttfamily void A\+S1\+\_\+\+On\+Error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-% FIG 2
+
+
+Definition at line 211 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_gac72aa34766c66a614f29b1267cadfccc}\label{group___events__module_gac72aa34766c66a614f29b1267cadfccc}} 
 \index{Events module documentation@{Events module documentation}!A\+S1\+\_\+\+On\+Rx\+Char@{A\+S1\+\_\+\+On\+Rx\+Char}}
 \index{A\+S1\+\_\+\+On\+Rx\+Char@{A\+S1\+\_\+\+On\+Rx\+Char}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{A\+S1\+\_\+\+On\+Rx\+Char()}{AS1\_OnRxChar()}}
 {\footnotesize\ttfamily void A\+S1\+\_\+\+On\+Rx\+Char (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 231 of file Events.\+c.
+
 Here is the call graph for this function\+:
-% FIG 3
-Here is the caller graph for this function\+:
-% FIG 4
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___events__module_gac72aa34766c66a614f29b1267cadfccc_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{group___events__module_gad4ca2c06cb7fdb57a52811247371565c}\label{group___events__module_gad4ca2c06cb7fdb57a52811247371565c}} 
 \index{Events module documentation@{Events module documentation}!A\+S1\+\_\+\+On\+Tx\+Char@{A\+S1\+\_\+\+On\+Tx\+Char}}
 \index{A\+S1\+\_\+\+On\+Tx\+Char@{A\+S1\+\_\+\+On\+Tx\+Char}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{A\+S1\+\_\+\+On\+Tx\+Char()}{AS1\_OnTxChar()}}
 {\footnotesize\ttfamily void A\+S1\+\_\+\+On\+Tx\+Char (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 261 of file Events.\+c.
+
 Here is the call graph for this function\+:
-% FIG 5
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{group___events__module_gad4ca2c06cb7fdb57a52811247371565c_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:
-% FIG 6
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___events__module_gad4ca2c06cb7fdb57a52811247371565c_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{group___events__module_ga0137853d241c656b6bf6653ebfc64cac}\label{group___events__module_ga0137853d241c656b6bf6653ebfc64cac}} 
 \index{Events module documentation@{Events module documentation}!A\+S2\+\_\+\+On\+Error@{A\+S2\+\_\+\+On\+Error}}
 \index{A\+S2\+\_\+\+On\+Error@{A\+S2\+\_\+\+On\+Error}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{A\+S2\+\_\+\+On\+Error()}{AS2\_OnError()}}
 {\footnotesize\ttfamily void A\+S2\+\_\+\+On\+Error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-% FIG 7
+
+
+Definition at line 422 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_gadc4e66d9db0a63b063b37ad5a70a10be}\label{group___events__module_gadc4e66d9db0a63b063b37ad5a70a10be}} 
 \index{Events module documentation@{Events module documentation}!A\+S2\+\_\+\+On\+Rx\+Char@{A\+S2\+\_\+\+On\+Rx\+Char}}
 \index{A\+S2\+\_\+\+On\+Rx\+Char@{A\+S2\+\_\+\+On\+Rx\+Char}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{A\+S2\+\_\+\+On\+Rx\+Char()}{AS2\_OnRxChar()}}
 {\footnotesize\ttfamily void A\+S2\+\_\+\+On\+Rx\+Char (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 442 of file Events.\+c.
+
 Here is the call graph for this function\+:
-% FIG 8
-Here is the caller graph for this function\+:
-% FIG 9
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___events__module_gadc4e66d9db0a63b063b37ad5a70a10be_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{group___events__module_ga745f5ad3a73381f935cc2ee2fec5c34f}\label{group___events__module_ga745f5ad3a73381f935cc2ee2fec5c34f}} 
 \index{Events module documentation@{Events module documentation}!A\+S2\+\_\+\+On\+Tx\+Char@{A\+S2\+\_\+\+On\+Tx\+Char}}
 \index{A\+S2\+\_\+\+On\+Tx\+Char@{A\+S2\+\_\+\+On\+Tx\+Char}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{A\+S2\+\_\+\+On\+Tx\+Char()}{AS2\_OnTxChar()}}
 {\footnotesize\ttfamily void A\+S2\+\_\+\+On\+Tx\+Char (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-% FIG 10
+
+
+Definition at line 472 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_ga960d094664356278ac5472d45a6ea2f3}\label{group___events__module_ga960d094664356278ac5472d45a6ea2f3}} 
 \index{Events module documentation@{Events module documentation}!Cpu\+\_\+\+On\+N\+M\+I\+I\+NT@{Cpu\+\_\+\+On\+N\+M\+I\+I\+NT}}
 \index{Cpu\+\_\+\+On\+N\+M\+I\+I\+NT@{Cpu\+\_\+\+On\+N\+M\+I\+I\+NT}!Events module documentation@{Events module documentation}}
@@ -137,8 +189,10 @@ Here is the caller graph for this function\+:
 
 This event is called when the Non maskable interrupt had occurred. This event is automatically enabled when the \mbox{[}N\+MI interrupt\mbox{]} property is set to \textquotesingle{}Enabled\textquotesingle{}. 
 
-Here is the caller graph for this function\+:
-% FIG 11
+
+
+Definition at line 66 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_ga8ae22afd184f10ce1e5d0870ef5d602e}\label{group___events__module_ga8ae22afd184f10ce1e5d0870ef5d602e}} 
 \index{Events module documentation@{Events module documentation}!Cpu\+\_\+\+On\+Pendable\+Service@{Cpu\+\_\+\+On\+Pendable\+Service}}
 \index{Cpu\+\_\+\+On\+Pendable\+Service@{Cpu\+\_\+\+On\+Pendable\+Service}!Events module documentation@{Events module documentation}}
@@ -149,10 +203,10 @@ Here is the caller graph for this function\+:
 
 This event is called when the Pendable Service exception had occurred. This event is automatically enabled when the \mbox{[}Pendable Service\mbox{]} property is set to \textquotesingle{}Enabled\textquotesingle{}. 
 
-Here is the call graph for this function\+:
-% FIG 12
-Here is the caller graph for this function\+:
-% FIG 13
+
+
+Definition at line 191 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_ga428b28484a15546393b77d621e3f074d}\label{group___events__module_ga428b28484a15546393b77d621e3f074d}} 
 \index{Events module documentation@{Events module documentation}!Cpu\+\_\+\+On\+Supervisor\+Call@{Cpu\+\_\+\+On\+Supervisor\+Call}}
 \index{Cpu\+\_\+\+On\+Supervisor\+Call@{Cpu\+\_\+\+On\+Supervisor\+Call}!Events module documentation@{Events module documentation}}
@@ -163,15 +217,37 @@ Here is the caller graph for this function\+:
 
 This event is called when the Supervisor Call exception had occurred. This event is automatically enabled when the \mbox{[}Supervisor Call\mbox{]} property is set to \textquotesingle{}Enabled\textquotesingle{}. 
 
+
+
+Definition at line 173 of file Events.\+c.
+
+\mbox{\Hypertarget{group___events__module_gabdbc35f3567d6a158efe42b38f2ee47a}\label{group___events__module_gabdbc35f3567d6a158efe42b38f2ee47a}} 
+\index{Events module documentation@{Events module documentation}!E\+Int1\+\_\+\+On\+Interrupt@{E\+Int1\+\_\+\+On\+Interrupt}}
+\index{E\+Int1\+\_\+\+On\+Interrupt@{E\+Int1\+\_\+\+On\+Interrupt}!Events module documentation@{Events module documentation}}
+\subsubsection{\texorpdfstring{E\+Int1\+\_\+\+On\+Interrupt()}{EInt1\_OnInterrupt()}}
+{\footnotesize\ttfamily void E\+Int1\+\_\+\+On\+Interrupt (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 603 of file Events.\+c.
+
 Here is the call graph for this function\+:
-% FIG 14
-Here is the caller graph for this function\+:
-% FIG 15
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{group___events__module_gabdbc35f3567d6a158efe42b38f2ee47a_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{group___events__module_ga47ee4f5ef904e733b7690af3ef89a1b0}\label{group___events__module_ga47ee4f5ef904e733b7690af3ef89a1b0}} 
 \index{Events module documentation@{Events module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Application\+Idle\+Hook@{F\+R\+T\+O\+S1\+\_\+v\+Application\+Idle\+Hook}}
 \index{F\+R\+T\+O\+S1\+\_\+v\+Application\+Idle\+Hook@{F\+R\+T\+O\+S1\+\_\+v\+Application\+Idle\+Hook}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Application\+Idle\+Hook()}{FRTOS1\_vApplicationIdleHook()}}
 {\footnotesize\ttfamily void F\+R\+T\+O\+S1\+\_\+v\+Application\+Idle\+Hook (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 129 of file Events.\+c.
 
 \mbox{\Hypertarget{group___events__module_ga83b87d2e8c6b269bbdc03cf06d1164a2}\label{group___events__module_ga83b87d2e8c6b269bbdc03cf06d1164a2}} 
 \index{Events module documentation@{Events module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Application\+Malloc\+Failed\+Hook@{F\+R\+T\+O\+S1\+\_\+v\+Application\+Malloc\+Failed\+Hook}}
@@ -179,11 +255,19 @@ Here is the caller graph for this function\+:
 \subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Application\+Malloc\+Failed\+Hook()}{FRTOS1\_vApplicationMallocFailedHook()}}
 {\footnotesize\ttfamily void F\+R\+T\+O\+S1\+\_\+v\+Application\+Malloc\+Failed\+Hook (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 148 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_ga1e81c467b899cd40c827a5243d259dee}\label{group___events__module_ga1e81c467b899cd40c827a5243d259dee}} 
 \index{Events module documentation@{Events module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook@{F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook}}
 \index{F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook@{F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook()}{FRTOS1\_vApplicationStackOverflowHook()}}
-{\footnotesize\ttfamily void F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook (\begin{DoxyParamCaption}\item[{\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t}}]{px\+Task,  }\item[{char $\ast$}]{pc\+Task\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook (\begin{DoxyParamCaption}\item[{Task\+Handle\+\_\+t}]{px\+Task,  }\item[{char $\ast$}]{pc\+Task\+Name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file Events.\+c.
 
 \mbox{\Hypertarget{group___events__module_gaf8fe6769cea9aeb943962871b26b203b}\label{group___events__module_gaf8fe6769cea9aeb943962871b26b203b}} 
 \index{Events module documentation@{Events module documentation}!F\+R\+T\+O\+S1\+\_\+v\+Application\+Tick\+Hook@{F\+R\+T\+O\+S1\+\_\+v\+Application\+Tick\+Hook}}
@@ -191,11 +275,15 @@ Here is the caller graph for this function\+:
 \subsubsection{\texorpdfstring{F\+R\+T\+O\+S1\+\_\+v\+Application\+Tick\+Hook()}{FRTOS1\_vApplicationTickHook()}}
 {\footnotesize\ttfamily void F\+R\+T\+O\+S1\+\_\+v\+Application\+Tick\+Hook (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 111 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_gad0eaee8bf9e6df0596ba2542bb3e1c32}\label{group___events__module_gad0eaee8bf9e6df0596ba2542bb3e1c32}} 
 \index{Events module documentation@{Events module documentation}!I2\+C1\+\_\+\+On\+Master\+Block\+Received@{I2\+C1\+\_\+\+On\+Master\+Block\+Received}}
 \index{I2\+C1\+\_\+\+On\+Master\+Block\+Received@{I2\+C1\+\_\+\+On\+Master\+Block\+Received}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{I2\+C1\+\_\+\+On\+Master\+Block\+Received()}{I2C1\_OnMasterBlockReceived()}}
-{\footnotesize\ttfamily void I2\+C1\+\_\+\+On\+Master\+Block\+Received (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void I2\+C1\+\_\+\+On\+Master\+Block\+Received (\begin{DoxyParamCaption}\item[{L\+D\+D\+\_\+\+T\+User\+Data $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
 
 
 
@@ -210,7 +298,7 @@ This event is called when I2C is in master mode and finishes the reception of th
 \index{Events module documentation@{Events module documentation}!I2\+C1\+\_\+\+On\+Master\+Block\+Sent@{I2\+C1\+\_\+\+On\+Master\+Block\+Sent}}
 \index{I2\+C1\+\_\+\+On\+Master\+Block\+Sent@{I2\+C1\+\_\+\+On\+Master\+Block\+Sent}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{I2\+C1\+\_\+\+On\+Master\+Block\+Sent()}{I2C1\_OnMasterBlockSent()}}
-{\footnotesize\ttfamily void I2\+C1\+\_\+\+On\+Master\+Block\+Sent (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void I2\+C1\+\_\+\+On\+Master\+Block\+Sent (\begin{DoxyParamCaption}\item[{L\+D\+D\+\_\+\+T\+User\+Data $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
 
 
 
@@ -225,7 +313,7 @@ This event is called when I2C in master mode finishes the transmission of the da
 \index{Events module documentation@{Events module documentation}!I2\+C2\+\_\+\+On\+Master\+Block\+Received@{I2\+C2\+\_\+\+On\+Master\+Block\+Received}}
 \index{I2\+C2\+\_\+\+On\+Master\+Block\+Received@{I2\+C2\+\_\+\+On\+Master\+Block\+Received}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{I2\+C2\+\_\+\+On\+Master\+Block\+Received()}{I2C2\_OnMasterBlockReceived()}}
-{\footnotesize\ttfamily void I2\+C2\+\_\+\+On\+Master\+Block\+Received (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void I2\+C2\+\_\+\+On\+Master\+Block\+Received (\begin{DoxyParamCaption}\item[{L\+D\+D\+\_\+\+T\+User\+Data $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
 
 
 
@@ -236,11 +324,15 @@ This event is called when I2C is in master mode and finishes the reception of th
 {\em User\+Data\+Ptr} & -\/ Pointer to the user or R\+T\+OS specific data. This pointer is passed as the parameter of Init method. \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 520 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_ga23f378d5253016b341bf971cb5c35ee7}\label{group___events__module_ga23f378d5253016b341bf971cb5c35ee7}} 
 \index{Events module documentation@{Events module documentation}!I2\+C2\+\_\+\+On\+Master\+Block\+Sent@{I2\+C2\+\_\+\+On\+Master\+Block\+Sent}}
 \index{I2\+C2\+\_\+\+On\+Master\+Block\+Sent@{I2\+C2\+\_\+\+On\+Master\+Block\+Sent}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{I2\+C2\+\_\+\+On\+Master\+Block\+Sent()}{I2C2\_OnMasterBlockSent()}}
-{\footnotesize\ttfamily void I2\+C2\+\_\+\+On\+Master\+Block\+Sent (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void I2\+C2\+\_\+\+On\+Master\+Block\+Sent (\begin{DoxyParamCaption}\item[{L\+D\+D\+\_\+\+T\+User\+Data $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
 
 
 
@@ -251,11 +343,25 @@ This event is called when I2C in master mode finishes the transmission of the da
 {\em User\+Data\+Ptr} & -\/ Pointer to the user or R\+T\+OS specific data. This pointer is passed as the parameter of Init method. \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 496 of file Events.\+c.
+
+\mbox{\Hypertarget{group___events__module_gab34bedda0461474d770bfe84c3bc881f}\label{group___events__module_gab34bedda0461474d770bfe84c3bc881f}} 
+\index{Events module documentation@{Events module documentation}!P\+T\+R\+C1\+\_\+\+On\+Trace\+Wrap@{P\+T\+R\+C1\+\_\+\+On\+Trace\+Wrap}}
+\index{P\+T\+R\+C1\+\_\+\+On\+Trace\+Wrap@{P\+T\+R\+C1\+\_\+\+On\+Trace\+Wrap}!Events module documentation@{Events module documentation}}
+\subsubsection{\texorpdfstring{P\+T\+R\+C1\+\_\+\+On\+Trace\+Wrap()}{PTRC1\_OnTraceWrap()}}
+{\footnotesize\ttfamily void P\+T\+R\+C1\+\_\+\+On\+Trace\+Wrap (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 580 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_ga2f94110e651cb30cba928647e91e92d4}\label{group___events__module_ga2f94110e651cb30cba928647e91e92d4}} 
 \index{Events module documentation@{Events module documentation}!R\+T\+C1\+\_\+\+On\+Second@{R\+T\+C1\+\_\+\+On\+Second}}
 \index{R\+T\+C1\+\_\+\+On\+Second@{R\+T\+C1\+\_\+\+On\+Second}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{R\+T\+C1\+\_\+\+On\+Second()}{RTC1\_OnSecond()}}
-{\footnotesize\ttfamily void R\+T\+C1\+\_\+\+On\+Second (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void R\+T\+C1\+\_\+\+On\+Second (\begin{DoxyParamCaption}\item[{L\+D\+D\+\_\+\+T\+User\+Data $\ast$}]{User\+Data\+Ptr }\end{DoxyParamCaption})}
 
 
 
@@ -266,35 +372,41 @@ Called each second if On\+Second event is enabled (see \mbox{[}Set\+Event\+Mask\
 {\em User\+Data\+Ptr} & -\/ Pointer to the user or R\+T\+OS specific data. This pointer is passed as the parameter of Init method. \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 563 of file Events.\+c.
+
 Here is the call graph for this function\+:
-% FIG 16
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{group___events__module_ga2f94110e651cb30cba928647e91e92d4_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{group___events__module_ga01b566cf25a21b34152513dcb1321a11}\label{group___events__module_ga01b566cf25a21b34152513dcb1321a11}} 
 \index{Events module documentation@{Events module documentation}!T\+I1\+\_\+\+On\+Interrupt@{T\+I1\+\_\+\+On\+Interrupt}}
 \index{T\+I1\+\_\+\+On\+Interrupt@{T\+I1\+\_\+\+On\+Interrupt}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{T\+I1\+\_\+\+On\+Interrupt()}{TI1\_OnInterrupt()}}
 {\footnotesize\ttfamily void T\+I1\+\_\+\+On\+Interrupt (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-% FIG 17
-\mbox{\Hypertarget{group___events__module_ga5969b4c9b3e47d79941c612897503fe4}\label{group___events__module_ga5969b4c9b3e47d79941c612897503fe4}} 
-\index{Events module documentation@{Events module documentation}!T\+S\+Sin\+\_\+f\+Call\+Back0@{T\+S\+Sin\+\_\+f\+Call\+Back0}}
-\index{T\+S\+Sin\+\_\+f\+Call\+Back0@{T\+S\+Sin\+\_\+f\+Call\+Back0}!Events module documentation@{Events module documentation}}
-\subsubsection{\texorpdfstring{T\+S\+Sin\+\_\+f\+Call\+Back0()}{TSSin\_fCallBack0()}}
-{\footnotesize\ttfamily void T\+S\+Sin\+\_\+f\+Call\+Back0 (\begin{DoxyParamCaption}\item[{\hyperlink{struct_t_s_s___c_o_n_t_r_o_l___i_d}{T\+S\+S\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+ID}}]{u8\+Control\+Id }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{group___events__module_gaaade020d27159f2102fb3b994d1224ae}\label{group___events__module_gaaade020d27159f2102fb3b994d1224ae}} 
 \index{Events module documentation@{Events module documentation}!T\+S\+Sin\+\_\+f\+On\+Fault@{T\+S\+Sin\+\_\+f\+On\+Fault}}
 \index{T\+S\+Sin\+\_\+f\+On\+Fault@{T\+S\+Sin\+\_\+f\+On\+Fault}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{T\+S\+Sin\+\_\+f\+On\+Fault()}{TSSin\_fOnFault()}}
-{\footnotesize\ttfamily void T\+S\+Sin\+\_\+f\+On\+Fault (\begin{DoxyParamCaption}\item[{\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte}}]{u8\+Fault\+Elec\+Num }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void T\+S\+Sin\+\_\+f\+On\+Fault (\begin{DoxyParamCaption}\item[{byte}]{u8\+Fault\+Elec\+Num }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:
-% FIG 18
+
+
+Definition at line 327 of file Events.\+c.
+
 \mbox{\Hypertarget{group___events__module_ga67e29a27a74c8a25e4edddb84351a138}\label{group___events__module_ga67e29a27a74c8a25e4edddb84351a138}} 
 \index{Events module documentation@{Events module documentation}!T\+S\+Sin\+\_\+f\+On\+Init@{T\+S\+Sin\+\_\+f\+On\+Init}}
 \index{T\+S\+Sin\+\_\+f\+On\+Init@{T\+S\+Sin\+\_\+f\+On\+Init}!Events module documentation@{Events module documentation}}
 \subsubsection{\texorpdfstring{T\+S\+Sin\+\_\+f\+On\+Init()}{TSSin\_fOnInit()}}
 {\footnotesize\ttfamily void T\+S\+Sin\+\_\+f\+On\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:
-% FIG 19
+
+
+Definition at line 375 of file Events.\+c.
+

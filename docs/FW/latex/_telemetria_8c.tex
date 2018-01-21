@@ -1,0 +1,135 @@
+\hypertarget{_telemetria_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+App/\+Telemetria.c File Reference}
+\label{_telemetria_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+App/\+Telemetria.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+App/\+Telemetria.\+c}}
+{\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ihm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}event\+\_\+groups.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Telemetria.\+h\char`\"{}}\newline
+Include dependency graph for Telemetria.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_telemetria_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_telemetria_8c_a514fcff01c4460ec847cd4bbf4c16b1e}{T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+3)
+\item 
+\#define \hyperlink{_telemetria_8c_adb5f07cdeaa6d7104126dac7b4b17b5d}{T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE+20)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_telemetria_8c_a4b3a810c7bb5e3b8d76b02f14f150bd9}{tlm\+\_\+notify\+\_\+accelerometer} (void)
+\item 
+void \hyperlink{_telemetria_8c_ad2628cad36a40d1fb4e2cd3a0b09d20e}{tlm\+\_\+notify\+\_\+tank} (void)
+\item 
+void \hyperlink{_telemetria_8c_a97457f384c4eac59444d62e85aa1ab0c}{tlm\+\_\+notify\+\_\+gps} (void)
+\item 
+void \hyperlink{_telemetria_8c_ab90f47497da46381ad91c74f10b7b6dc}{tlm\+\_\+init} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Telemetria \hyperlink{_telemetria_8c_abdc819d236ba910833b4c7885fe29766}{telemetria}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_telemetria_8c_a514fcff01c4460ec847cd4bbf4c16b1e}\label{_telemetria_8c_a514fcff01c4460ec847cd4bbf4c16b1e}} 
+\index{Telemetria.\+c@{Telemetria.\+c}!T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!Telemetria.\+c@{Telemetria.\+c}}
+\subsubsection{\texorpdfstring{T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{TLM\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+3)}
+
+
+
+Definition at line 19 of file Telemetria.\+c.
+
+\mbox{\Hypertarget{_telemetria_8c_adb5f07cdeaa6d7104126dac7b4b17b5d}\label{_telemetria_8c_adb5f07cdeaa6d7104126dac7b4b17b5d}} 
+\index{Telemetria.\+c@{Telemetria.\+c}!T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}}
+\index{T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}!Telemetria.\+c@{Telemetria.\+c}}
+\subsubsection{\texorpdfstring{T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}{TLM\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define T\+L\+M\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE+20)}
+
+
+
+Definition at line 20 of file Telemetria.\+c.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_telemetria_8c_ab90f47497da46381ad91c74f10b7b6dc}\label{_telemetria_8c_ab90f47497da46381ad91c74f10b7b6dc}} 
+\index{Telemetria.\+c@{Telemetria.\+c}!tlm\+\_\+init@{tlm\+\_\+init}}
+\index{tlm\+\_\+init@{tlm\+\_\+init}!Telemetria.\+c@{Telemetria.\+c}}
+\subsubsection{\texorpdfstring{tlm\+\_\+init()}{tlm\_init()}}
+{\footnotesize\ttfamily void tlm\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 147 of file Telemetria.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{_telemetria_8c_ab90f47497da46381ad91c74f10b7b6dc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_telemetria_8c_a4b3a810c7bb5e3b8d76b02f14f150bd9}\label{_telemetria_8c_a4b3a810c7bb5e3b8d76b02f14f150bd9}} 
+\index{Telemetria.\+c@{Telemetria.\+c}!tlm\+\_\+notify\+\_\+accelerometer@{tlm\+\_\+notify\+\_\+accelerometer}}
+\index{tlm\+\_\+notify\+\_\+accelerometer@{tlm\+\_\+notify\+\_\+accelerometer}!Telemetria.\+c@{Telemetria.\+c}}
+\subsubsection{\texorpdfstring{tlm\+\_\+notify\+\_\+accelerometer()}{tlm\_notify\_accelerometer()}}
+{\footnotesize\ttfamily void tlm\+\_\+notify\+\_\+accelerometer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 52 of file Telemetria.\+c.
+
+\mbox{\Hypertarget{_telemetria_8c_a97457f384c4eac59444d62e85aa1ab0c}\label{_telemetria_8c_a97457f384c4eac59444d62e85aa1ab0c}} 
+\index{Telemetria.\+c@{Telemetria.\+c}!tlm\+\_\+notify\+\_\+gps@{tlm\+\_\+notify\+\_\+gps}}
+\index{tlm\+\_\+notify\+\_\+gps@{tlm\+\_\+notify\+\_\+gps}!Telemetria.\+c@{Telemetria.\+c}}
+\subsubsection{\texorpdfstring{tlm\+\_\+notify\+\_\+gps()}{tlm\_notify\_gps()}}
+{\footnotesize\ttfamily void tlm\+\_\+notify\+\_\+gps (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 68 of file Telemetria.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{_telemetria_8c_a97457f384c4eac59444d62e85aa1ab0c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_telemetria_8c_ad2628cad36a40d1fb4e2cd3a0b09d20e}\label{_telemetria_8c_ad2628cad36a40d1fb4e2cd3a0b09d20e}} 
+\index{Telemetria.\+c@{Telemetria.\+c}!tlm\+\_\+notify\+\_\+tank@{tlm\+\_\+notify\+\_\+tank}}
+\index{tlm\+\_\+notify\+\_\+tank@{tlm\+\_\+notify\+\_\+tank}!Telemetria.\+c@{Telemetria.\+c}}
+\subsubsection{\texorpdfstring{tlm\+\_\+notify\+\_\+tank()}{tlm\_notify\_tank()}}
+{\footnotesize\ttfamily void tlm\+\_\+notify\+\_\+tank (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 60 of file Telemetria.\+c.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_telemetria_8c_abdc819d236ba910833b4c7885fe29766}\label{_telemetria_8c_abdc819d236ba910833b4c7885fe29766}} 
+\index{Telemetria.\+c@{Telemetria.\+c}!telemetria@{telemetria}}
+\index{telemetria@{telemetria}!Telemetria.\+c@{Telemetria.\+c}}
+\subsubsection{\texorpdfstring{telemetria}{telemetria}}
+{\footnotesize\ttfamily Telemetria telemetria}
+
+
+
+Definition at line 24 of file Telemetria.\+c.
+

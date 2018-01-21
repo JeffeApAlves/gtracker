@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GoodsTracker: F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/IHM/ihm.c File Reference</title>
+<title>GoodsTracker: F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/IHM/ihm.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,6 +63,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -73,25 +74,41 @@ $(function() {
 <code>#include &lt;math.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="_t_s_sin_8h_source.html">TSSin.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="lcd_8h_source.html">lcd.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_x_f1_8h_source.html">XF1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="gps_8h_source.html">gps.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="application_8h_source.html">application.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="protocol_8h_source.html">protocol.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="clock_8h_source.html">clock.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ihm_8h_source.html">ihm.h</a>&quot;</code><br />
+<code>#include &lt;uart_host.h&gt;</code><br />
+<code>#include &quot;FreeRTOS.h&quot;</code><br />
+<code>#include &quot;task.h&quot;</code><br />
+<code>#include &quot;queue.h&quot;</code><br />
+<code>#include &quot;lcd.h&quot;</code><br />
+<code>#include &quot;gps.h&quot;</code><br />
+<code>#include &quot;Telemetria.h&quot;</code><br />
+<code>#include &quot;uart_gps.h&quot;</code><br />
+<code>#include &quot;clock.h&quot;</code><br />
+<code>#include &quot;ihm.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ihm.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="ihm_8c__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_i_h_m_2ihm_8c" alt=""/></div>
-<!-- MAP 0 -->
+<div class="center"><img src="ihm_8c__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_i_h_m_2ihm_8c" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_i_h_m_2ihm_8c" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_i_h_m_2ihm_8c">
+</map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="ihm_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a154ef791702e5fa52177e049bae99a99"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a154ef791702e5fa52177e049bae99a99">IHM_TASK_PRIORITY</a>&#160;&#160;&#160;(tskIDLE_PRIORITY+6)</td></tr>
+<tr class="separator:a154ef791702e5fa52177e049bae99a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a301f9ae15c59d97a58f740facd74a340"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a301f9ae15c59d97a58f740facd74a340">IHM_TASK_STACK_SIZE</a>&#160;&#160;&#160;(configMINIMAL_STACK_SIZE+100)</td></tr>
+<tr class="separator:a301f9ae15c59d97a58f740facd74a340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac0d0f6666ddf438052d064944f013a66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#ac0d0f6666ddf438052d064944f013a66">ihm_task</a> (void)</td></tr>
-<tr class="separator:ac0d0f6666ddf438052d064944f013a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a025937bbc1a7a20976cbacb123eee04a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a025937bbc1a7a20976cbacb123eee04a">ihm_update</a> (void)</td></tr>
+<tr class="separator:a025937bbc1a7a20976cbacb123eee04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d0b671bd415bd0344f7627fcd1cca46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a4d0b671bd415bd0344f7627fcd1cca46">printGPS</a> (void)</td></tr>
+<tr class="separator:a4d0b671bd415bd0344f7627fcd1cca46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8c3bc36da30a1a5a5a5647793776071"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#ae8c3bc36da30a1a5a5a5647793776071">printTank</a> (void)</td></tr>
+<tr class="separator:ae8c3bc36da30a1a5a5a5647793776071"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9befc3c004d018e2c3797510b8edd626"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a9befc3c004d018e2c3797510b8edd626">printAccelerometer</a> (void)</td></tr>
 <tr class="separator:a9befc3c004d018e2c3797510b8edd626"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf351523f863052651b11a58c77dcef7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#aaf351523f863052651b11a58c77dcef7">printStatCom</a> (void)</td></tr>
@@ -104,20 +121,59 @@ Functions</h2></td></tr>
 <tr class="separator:a1738496bf95622a87ffff6a884d79b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c48e43ac9749fb2afa58e06269ded7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a6c48e43ac9749fb2afa58e06269ded7a">printLCD</a> (int linha, int col, char *str)</td></tr>
 <tr class="separator:a6c48e43ac9749fb2afa58e06269ded7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae71b0cc97b53ec475e8ac3a3b225c7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#aae71b0cc97b53ec475e8ac3a3b225c7c">ihm_event_notify</a> (const <a class="el" href="event__groups_8h.html#ab2f21b93db0b2a0ab64d7a81ff32ac2e">EventBits_t</a> uxBitsToSet)</td></tr>
-<tr class="separator:aae71b0cc97b53ec475e8ac3a3b225c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5b9d955132087ac121d2ce9666d3135"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#ab5b9d955132087ac121d2ce9666d3135">ihm_handle_update</a> (void)</td></tr>
-<tr class="separator:ab5b9d955132087ac121d2ce9666d3135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c89e41e8e4692f65288cc291cd8be89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a0c89e41e8e4692f65288cc291cd8be89">ihm_notify_screen_clock</a> (void)</td></tr>
+<tr class="separator:a0c89e41e8e4692f65288cc291cd8be89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8836887cfa0b68fba0916869cb8e5cde"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a8836887cfa0b68fba0916869cb8e5cde">ihm_notify_screen_stat</a> (void)</td></tr>
+<tr class="separator:a8836887cfa0b68fba0916869cb8e5cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89bb10f6e4c760bedf41b1be319331c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a89bb10f6e4c760bedf41b1be319331c7">ihm_notify_screen_tlm</a> (void)</td></tr>
+<tr class="separator:a89bb10f6e4c760bedf41b1be319331c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ad5cb0806e22c726b074a8dc7a74564"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a0ad5cb0806e22c726b074a8dc7a74564">ihm_set_active_screen</a> (screen s)</td></tr>
+<tr class="separator:a0ad5cb0806e22c726b074a8dc7a74564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7525a17874344457aed52055ffa7a0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#ab7525a17874344457aed52055ffa7a0e">ihm_init</a> (void)</td></tr>
 <tr class="separator:ab7525a17874344457aed52055ffa7a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5412fcd0cbee6566b1edc96b8eae69fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a5412fcd0cbee6566b1edc96b8eae69fc">readKey</a> (void)</td></tr>
+<tr class="separator:a5412fcd0cbee6566b1edc96b8eae69fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83a6ff6445a0ad9d23957ec3c1491709"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a83a6ff6445a0ad9d23957ec3c1491709">ihm_deInit</a> (void)</td></tr>
 <tr class="separator:a83a6ff6445a0ad9d23957ec3c1491709"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ad58fa417ce33baeb6bc5ca8763918ec4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="task_8h.html#ae95f44d4cfeb4a599c6cc258d241cb6b">TaskHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#ad58fa417ce33baeb6bc5ca8763918ec4">xHandleIHMTask</a></td></tr>
-<tr class="separator:ad58fa417ce33baeb6bc5ca8763918ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18a7675811e2b811aaab28ca90030a49"><td class="memItemLeft" align="right" valign="top">TimerHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ihm_8c.html#a18a7675811e2b811aaab28ca90030a49">xTimerUpdateStat</a></td></tr>
+<tr class="separator:a18a7675811e2b811aaab28ca90030a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a154ef791702e5fa52177e049bae99a99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a154ef791702e5fa52177e049bae99a99">&#9670;&nbsp;</a></span>IHM_TASK_PRIORITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IHM_TASK_PRIORITY&#160;&#160;&#160;(tskIDLE_PRIORITY+6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00039">39</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
+
+</div>
+</div>
+<a id="a301f9ae15c59d97a58f740facd74a340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a301f9ae15c59d97a58f740facd74a340">&#9670;&nbsp;</a></span>IHM_TASK_STACK_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IHM_TASK_STACK_SIZE&#160;&#160;&#160;(configMINIMAL_STACK_SIZE+100)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00040">40</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a83a6ff6445a0ad9d23957ec3c1491709"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a83a6ff6445a0ad9d23957ec3c1491709">&#9670;&nbsp;</a></span>ihm_deInit()</h2>
@@ -135,47 +191,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="aae71b0cc97b53ec475e8ac3a3b225c7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae71b0cc97b53ec475e8ac3a3b225c7c">&#9670;&nbsp;</a></span>ihm_event_notify()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ihm_event_notify </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="event__groups_8h.html#ab2f21b93db0b2a0ab64d7a81ff32ac2e">EventBits_t</a>&#160;</td>
-          <td class="paramname"><em>uxBitsToSet</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ihm_8c_aae71b0cc97b53ec475e8ac3a3b225c7c_icgraph.png" border="0" usemap="#ihm_8c_aae71b0cc97b53ec475e8ac3a3b225c7c_icgraph" alt=""/></div>
-<!-- MAP 1 -->
-</div>
-
-</div>
-</div>
-<a id="ab5b9d955132087ac121d2ce9666d3135"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5b9d955132087ac121d2ce9666d3135">&#9670;&nbsp;</a></span>ihm_handle_update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ihm_handle_update </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00364">364</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
 
 </div>
 </div>
@@ -194,18 +210,28 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>CHAMANDO ESTA ESTRUTURA DE IHM (INTERFACE HOMEM-M�QUINA) EM VEZ DE MMI (MEN-MACHINE INTERFACE) POR PURO GOSTO PESSOAL... :) Inicializa interface homem máquina </p>
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00314">314</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ihm_8c_ab7525a17874344457aed52055ffa7a0e_icgraph.png" border="0" usemap="#ihm_8c_ab7525a17874344457aed52055ffa7a0e_icgraph" alt=""/></div>
+<map name="ihm_8c_ab7525a17874344457aed52055ffa7a0e_icgraph" id="ihm_8c_ab7525a17874344457aed52055ffa7a0e_icgraph">
+<area shape="rect" id="node2" href="group__main__module.html#gaf411a8bc6b7ed4b0af9114e10c959448" title="sys_init" alt="" coords="120,5,187,32"/>
+<area shape="rect" id="node3" href="group__main__module.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="235,5,285,32"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="ac0d0f6666ddf438052d064944f013a66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0d0f6666ddf438052d064944f013a66">&#9670;&nbsp;</a></span>ihm_task()</h2>
+<a id="a0c89e41e8e4692f65288cc291cd8be89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c89e41e8e4692f65288cc291cd8be89">&#9670;&nbsp;</a></span>ihm_notify_screen_clock()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ihm_task </td>
+          <td class="memname">void ihm_notify_screen_clock </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -213,13 +239,96 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Task paara gerenciamento do ihm </p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ihm_8c_ac0d0f6666ddf438052d064944f013a66_cgraph.png" border="0" usemap="#ihm_8c_ac0d0f6666ddf438052d064944f013a66_cgraph" alt=""/></div>
-<!-- MAP 2 -->
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00259">259</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
+
 </div>
+</div>
+<a id="a8836887cfa0b68fba0916869cb8e5cde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8836887cfa0b68fba0916869cb8e5cde">&#9670;&nbsp;</a></span>ihm_notify_screen_stat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ihm_notify_screen_stat </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00268">268</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
+
+</div>
+</div>
+<a id="a89bb10f6e4c760bedf41b1be319331c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89bb10f6e4c760bedf41b1be319331c7">&#9670;&nbsp;</a></span>ihm_notify_screen_tlm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ihm_notify_screen_tlm </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00281">281</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
+
+</div>
+</div>
+<a id="a0ad5cb0806e22c726b074a8dc7a74564"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ad5cb0806e22c726b074a8dc7a74564">&#9670;&nbsp;</a></span>ihm_set_active_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ihm_set_active_screen </td>
+          <td>(</td>
+          <td class="paramtype">screen&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00298">298</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
+
+</div>
+</div>
+<a id="a025937bbc1a7a20976cbacb123eee04a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a025937bbc1a7a20976cbacb123eee04a">&#9670;&nbsp;</a></span>ihm_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ihm_update </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00121">121</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
 
 </div>
 </div>
@@ -238,12 +347,8 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ihm_8c_a9befc3c004d018e2c3797510b8edd626_cgraph.png" border="0" usemap="#ihm_8c_a9befc3c004d018e2c3797510b8edd626_cgraph" alt=""/></div>
-<!-- MAP 3 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00157">157</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
 
 </div>
 </div>
@@ -262,12 +367,28 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ihm_8c_a1738496bf95622a87ffff6a884d79b93_cgraph.png" border="0" usemap="#ihm_8c_a1738496bf95622a87ffff6a884d79b93_cgraph" alt=""/></div>
-<!-- MAP 4 -->
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00197">197</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
+
 </div>
+</div>
+<a id="a4d0b671bd415bd0344f7627fcd1cca46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d0b671bd415bd0344f7627fcd1cca46">&#9670;&nbsp;</a></span>printGPS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printGPS </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00137">137</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
 
 </div>
 </div>
@@ -302,17 +423,24 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00237">237</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a_cgraph.png" border="0" usemap="#ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a_cgraph" alt=""/></div>
-<!-- MAP 5 -->
+<map name="ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a_cgraph" id="ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a_cgraph">
+<area shape="rect" id="node2" href="lcd_8c.html#a1f3d66657d093194aaa77bf6a8022e14" title="LCDGotoXY" alt="" coords="136,5,227,32"/>
+<area shape="rect" id="node3" href="lcd_8c.html#a4205352061362232a8130293f8e20ef0" title="LCDWriteString" alt="" coords="125,56,237,83"/>
+</map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a_icgraph.png" border="0" usemap="#ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a_icgraph" alt=""/></div>
-<!-- MAP 6 -->
+<map name="ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a_icgraph" id="ihm_8c_a6c48e43ac9749fb2afa58e06269ded7a_icgraph">
+<area shape="rect" id="node2" href="ihm_8c.html#a64aa0a8973357ff0206a6cff9c0a1177" title="printSplash" alt="" coords="125,5,212,32"/>
+</map>
 </div>
 
 </div>
@@ -332,11 +460,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00190">190</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="ihm_8c_a64aa0a8973357ff0206a6cff9c0a1177_cgraph.png" border="0" usemap="#ihm_8c_a64aa0a8973357ff0206a6cff9c0a1177_cgraph" alt=""/></div>
-<!-- MAP 7 -->
+<map name="ihm_8c_a64aa0a8973357ff0206a6cff9c0a1177_cgraph" id="ihm_8c_a64aa0a8973357ff0206a6cff9c0a1177_cgraph">
+<area shape="rect" id="node2" href="ihm_8c.html#a6c48e43ac9749fb2afa58e06269ded7a" title="printLCD" alt="" coords="140,31,212,57"/>
+<area shape="rect" id="node3" href="lcd_8c.html#a1f3d66657d093194aaa77bf6a8022e14" title="LCDGotoXY" alt="" coords="271,5,361,32"/>
+<area shape="rect" id="node4" href="lcd_8c.html#a4205352061362232a8130293f8e20ef0" title="LCDWriteString" alt="" coords="260,56,372,83"/>
+</map>
 </div>
 
 </div>
@@ -356,12 +490,8 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ihm_8c_aaf351523f863052651b11a58c77dcef7_cgraph.png" border="0" usemap="#ihm_8c_aaf351523f863052651b11a58c77dcef7_cgraph" alt=""/></div>
-<!-- MAP 8 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00170">170</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
 
 </div>
 </div>
@@ -380,27 +510,73 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="ihm_8c_a27fc124c43c9544a1b0afc58e9a535d1_cgraph.png" border="0" usemap="#ihm_8c_a27fc124c43c9544a1b0afc58e9a535d1_cgraph" alt=""/></div>
-<!-- MAP 9 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00180">180</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="ad58fa417ce33baeb6bc5ca8763918ec4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad58fa417ce33baeb6bc5ca8763918ec4">&#9670;&nbsp;</a></span>xHandleIHMTask</h2>
+<a id="ae8c3bc36da30a1a5a5a5647793776071"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8c3bc36da30a1a5a5a5647793776071">&#9670;&nbsp;</a></span>printTank()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="task_8h.html#ae95f44d4cfeb4a599c6cc258d241cb6b">TaskHandle_t</a> xHandleIHMTask</td>
+          <td class="memname">void printTank </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00147">147</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
+
+</div>
+</div>
+<a id="a5412fcd0cbee6566b1edc96b8eae69fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5412fcd0cbee6566b1edc96b8eae69fc">&#9670;&nbsp;</a></span>readKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void readKey </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00345">345</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="ihm_8c_a5412fcd0cbee6566b1edc96b8eae69fc_icgraph.png" border="0" usemap="#ihm_8c_a5412fcd0cbee6566b1edc96b8eae69fc_icgraph" alt=""/></div>
+<map name="ihm_8c_a5412fcd0cbee6566b1edc96b8eae69fc_icgraph" id="ihm_8c_a5412fcd0cbee6566b1edc96b8eae69fc_icgraph">
+<area shape="rect" id="node2" href="group___events__module.html#gabdbc35f3567d6a158efe42b38f2ee47a" title="EInt1_OnInterrupt" alt="" coords="124,5,247,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a18a7675811e2b811aaab28ca90030a49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18a7675811e2b811aaab28ca90030a49">&#9670;&nbsp;</a></span>xTimerUpdateStat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TimerHandle_t xTimerUpdateStat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ihm_8c_source.html#l00045">45</a> of file <a class="el" href="ihm_8c_source.html">ihm.c</a>.</p>
 
 </div>
 </div>

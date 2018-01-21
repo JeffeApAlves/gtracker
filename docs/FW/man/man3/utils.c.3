@@ -1,0 +1,100 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Utils/utils.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Utils/utils.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string\&.h>\fP
+.br
+\fC#include <assert\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include 'Frame\&.h'\fP
+.br
+\fC#include 'protocol\&.h'\fP
+.br
+\fC#include 'utils\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBstr_split\fP (List *result, char *str, const char a_delim)"
+.br
+.ti -1c
+.RI "buffer_t \fBmemtok\fP (const void *s, size_t length, const char *delim, buffer_t *save_ptr)"
+.br
+.ti -1c
+.RI "void \fBstr_append\fP (char subject[], char insert[], int pos)"
+.br
+.ti -1c
+.RI "void \fBremoveList\fP (List *list)"
+.br
+.ti -1c
+.RI "bool \fBAsInteger\fP (int *out, char *str, uint16_t index, const char a_delim)"
+.br
+.ti -1c
+.RI "bool \fBAsString\fP (char *out, char *str, uint16_t index, const char a_delim)"
+.br
+.ti -1c
+.RI "bool \fBAsHex\fP (uint16_t *out, char *str, uint16_t index, const char a_delim)"
+.br
+.ti -1c
+.RI "bool \fBAsFloat\fP (float *out, char *str, uint16_t index, const char a_delim)"
+.br
+.ti -1c
+.RI "bool \fBAsChar\fP (char *out, char *str, uint16_t index, const char a_delim)"
+.br
+.ti -1c
+.RI "bool \fBAsResource\fP (Resource *out, char *str, uint16_t index, const char a_delim)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "bool AsChar (char * out, char * str, uint16_t index, const char a_delim)"
+
+.PP
+Definition at line 205 of file utils\&.c\&.
+.SS "bool AsFloat (float * out, char * str, uint16_t index, const char a_delim)"
+
+.PP
+Definition at line 187 of file utils\&.c\&.
+.SS "bool AsHex (uint16_t * out, char * str, uint16_t index, const char a_delim)"
+
+.PP
+Definition at line 170 of file utils\&.c\&.
+.SS "bool AsInteger (int * out, char * str, uint16_t index, const char a_delim)"
+
+.PP
+Definition at line 143 of file utils\&.c\&.
+.SS "bool AsResource (Resource * out, char * str, uint16_t index, const char a_delim)"
+
+.PP
+Definition at line 223 of file utils\&.c\&.
+.SS "bool AsString (char * out, char * str, uint16_t index, const char a_delim)"
+
+.PP
+Definition at line 162 of file utils\&.c\&.
+.SS "buffer_t memtok (const void * s, size_t length, const char * delim, buffer_t * save_ptr)"
+
+.PP
+Definition at line 71 of file utils\&.c\&.
+.SS "void removeList (List * list)"
+
+.PP
+Definition at line 128 of file utils\&.c\&.
+.SS "void str_append (char subject[], char insert[], int pos)"
+
+.PP
+Definition at line 106 of file utils\&.c\&.
+.SS "void str_split (List * result, char * str, const char a_delim)"
+Cria um array de string 
+.PP
+Definition at line 20 of file utils\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

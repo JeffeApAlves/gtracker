@@ -1,5 +1,5 @@
-\hypertarget{_events_8h}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Events.h File Reference}
-\label{_events_8h}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Events.\+h@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Events.\+h}}
+\hypertarget{_events_8h}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Events.h File Reference}
+\label{_events_8h}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Events.\+h@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Events.\+h}}
 
 
 This is user\textquotesingle{}s event module. Put your event handler code here.  
@@ -18,8 +18,9 @@ This is user\textquotesingle{}s event module. Put your event handler code here.
 {\ttfamily \#include \char`\"{}A\+D1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Adc\+Ldd1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}R\+T\+C1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}E\+Int1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Ext\+Int\+Ldd1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}M\+C\+U\+C1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}T\+S\+K1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}L\+E\+D\+\_\+\+R.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}L\+E\+Dpin1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Bit\+Io\+Ldd1.\+h\char`\"{}}\newline
@@ -31,9 +32,6 @@ This is user\textquotesingle{}s event module. Put your event handler code here.
 {\ttfamily \#include \char`\"{}L\+E\+D\+\_\+\+B.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}L\+E\+Dpin3.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Bit\+Io\+Ldd3.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}T\+U1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}T\+I1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Timer\+Int\+Ldd1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}W\+A\+I\+T1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}L\+C\+Dout.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}E\+N1.\+h\char`\"{}}\newline
@@ -48,20 +46,31 @@ This is user\textquotesingle{}s event module. Put your event handler code here.
 {\ttfamily \#include \char`\"{}Bit\+Io\+Ldd14.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}D\+B71.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Bit\+Io\+Ldd15.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}T\+S\+Sin.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}X\+F1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}A\+S2.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}A\+Serial\+Ldd2.\+h\char`\"{}}\newline
 Include dependency graph for Events.\+h\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_events_8h__incl}
+\end{center}
+\end{figure}
 This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_events_8h__dep__incl}
+\end{center}
+\end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{group___events__module_ga960d094664356278ac5472d45a6ea2f3}{Cpu\+\_\+\+On\+N\+M\+I\+I\+NT} (void)
 \begin{DoxyCompactList}\small\item\em This event is called when the Non maskable interrupt had occurred. This event is automatically enabled when the \mbox{[}N\+MI interrupt\mbox{]} property is set to \textquotesingle{}Enabled\textquotesingle{}. \end{DoxyCompactList}\item 
-void \hyperlink{group___events__module_ga1e81c467b899cd40c827a5243d259dee}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook} (\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} px\+Task, char $\ast$pc\+Task\+Name)
+void \hyperlink{group___events__module_ga1e81c467b899cd40c827a5243d259dee}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Stack\+Overflow\+Hook} (Task\+Handle\+\_\+t px\+Task, char $\ast$pc\+Task\+Name)
 \item 
 void \hyperlink{group___events__module_gaf8fe6769cea9aeb943962871b26b203b}{F\+R\+T\+O\+S1\+\_\+v\+Application\+Tick\+Hook} (void)
 \item 
@@ -83,30 +92,28 @@ void \hyperlink{group___events__module_gac0b0e33c722d75df2e7b6eb1d50f15a7}{A\+D1
 \item 
 void \hyperlink{group___events__module_ga01b566cf25a21b34152513dcb1321a11}{T\+I1\+\_\+\+On\+Interrupt} (void)
 \item 
-void \hyperlink{group___events__module_gaaade020d27159f2102fb3b994d1224ae}{T\+S\+Sin\+\_\+f\+On\+Fault} (\hyperlink{group___p_e___types__module_ga0c8186d9b9b7880309c27230bbb5e69d}{byte} u8\+Fault\+Elec\+Num)
-\item 
-void \hyperlink{group___events__module_ga67e29a27a74c8a25e4edddb84351a138}{T\+S\+Sin\+\_\+f\+On\+Init} (void)
-\item 
-void \hyperlink{group___events__module_ga5969b4c9b3e47d79941c612897503fe4}{T\+S\+Sin\+\_\+f\+Call\+Back0} (\hyperlink{struct_t_s_s___c_o_n_t_r_o_l___i_d}{T\+S\+S\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+ID} u8\+Control\+Id)
-\item 
 void \hyperlink{group___events__module_ga0137853d241c656b6bf6653ebfc64cac}{A\+S2\+\_\+\+On\+Error} (void)
 \item 
 void \hyperlink{group___events__module_gadc4e66d9db0a63b063b37ad5a70a10be}{A\+S2\+\_\+\+On\+Rx\+Char} (void)
 \item 
 void \hyperlink{group___events__module_ga745f5ad3a73381f935cc2ee2fec5c34f}{A\+S2\+\_\+\+On\+Tx\+Char} (void)
 \item 
-void \hyperlink{group___events__module_ga23f378d5253016b341bf971cb5c35ee7}{I2\+C2\+\_\+\+On\+Master\+Block\+Sent} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+void \hyperlink{group___events__module_ga23f378d5253016b341bf971cb5c35ee7}{I2\+C2\+\_\+\+On\+Master\+Block\+Sent} (L\+D\+D\+\_\+\+T\+User\+Data $\ast$User\+Data\+Ptr)
 \begin{DoxyCompactList}\small\item\em This event is called when I2C in master mode finishes the transmission of the data successfully. This event is not available for the S\+L\+A\+VE mode and if Master\+Send\+Block is disabled. \end{DoxyCompactList}\item 
-void \hyperlink{group___events__module_ga5b2fe0871600de8d73184570a42e5b66}{I2\+C2\+\_\+\+On\+Master\+Block\+Received} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+void \hyperlink{group___events__module_ga5b2fe0871600de8d73184570a42e5b66}{I2\+C2\+\_\+\+On\+Master\+Block\+Received} (L\+D\+D\+\_\+\+T\+User\+Data $\ast$User\+Data\+Ptr)
 \begin{DoxyCompactList}\small\item\em This event is called when I2C is in master mode and finishes the reception of the data successfully. This event is not available for the S\+L\+A\+VE mode and if Master\+Receive\+Block is disabled. \end{DoxyCompactList}\item 
-void \hyperlink{group___events__module_gad394d39c6e6d080b1ae8cd26178003f2}{I2\+C1\+\_\+\+On\+Master\+Block\+Sent} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+void \hyperlink{group___events__module_gad394d39c6e6d080b1ae8cd26178003f2}{I2\+C1\+\_\+\+On\+Master\+Block\+Sent} (L\+D\+D\+\_\+\+T\+User\+Data $\ast$User\+Data\+Ptr)
 \begin{DoxyCompactList}\small\item\em This event is called when I2C in master mode finishes the transmission of the data successfully. This event is not available for the S\+L\+A\+VE mode and if Master\+Send\+Block is disabled. \end{DoxyCompactList}\item 
-void \hyperlink{group___events__module_gad0eaee8bf9e6df0596ba2542bb3e1c32}{I2\+C1\+\_\+\+On\+Master\+Block\+Received} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
+void \hyperlink{group___events__module_gad0eaee8bf9e6df0596ba2542bb3e1c32}{I2\+C1\+\_\+\+On\+Master\+Block\+Received} (L\+D\+D\+\_\+\+T\+User\+Data $\ast$User\+Data\+Ptr)
 \begin{DoxyCompactList}\small\item\em This event is called when I2C is in master mode and finishes the reception of the data successfully. This event is not available for the S\+L\+A\+VE mode and if Master\+Receive\+Block is disabled. \end{DoxyCompactList}\item 
 void \hyperlink{group___events__module_ga8be719cad9ac48a9cdfd2281de15ec59}{A\+D1\+\_\+\+On\+Calibration\+End} (void)
 \item 
-void \hyperlink{group___events__module_ga2f94110e651cb30cba928647e91e92d4}{R\+T\+C1\+\_\+\+On\+Second} (\hyperlink{group___p_e___types__module_ga0b66a73f87238a782318aa0be7578e35}{L\+D\+D\+\_\+\+T\+User\+Data} $\ast$User\+Data\+Ptr)
-\begin{DoxyCompactList}\small\item\em Called each second if On\+Second event is enabled (see \mbox{[}Set\+Event\+Mask\mbox{]} and \mbox{[}Get\+Event\+Mask\mbox{]} methods) and R\+TC device is enabled. This event is available only if \mbox{[}Interrupt service/event\mbox{]} is enabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{group___events__module_ga2f94110e651cb30cba928647e91e92d4}{R\+T\+C1\+\_\+\+On\+Second} (L\+D\+D\+\_\+\+T\+User\+Data $\ast$User\+Data\+Ptr)
+\begin{DoxyCompactList}\small\item\em Called each second if On\+Second event is enabled (see \mbox{[}Set\+Event\+Mask\mbox{]} and \mbox{[}Get\+Event\+Mask\mbox{]} methods) and R\+TC device is enabled. This event is available only if \mbox{[}Interrupt service/event\mbox{]} is enabled. \end{DoxyCompactList}\item 
+void \hyperlink{group___events__module_gab34bedda0461474d770bfe84c3bc881f}{P\+T\+R\+C1\+\_\+\+On\+Trace\+Wrap} (void)
+\item 
+void \hyperlink{group___events__module_gabdbc35f3567d6a158efe42b38f2ee47a}{E\+Int1\+\_\+\+On\+Interrupt} (void)
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}

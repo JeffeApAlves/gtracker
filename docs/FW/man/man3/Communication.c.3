@@ -1,0 +1,142 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Communication/Communication.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Communication/Communication.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'clock\&.h'\fP
+.br
+\fC#include 'ihm\&.h'\fP
+.br
+\fC#include 'uart_host\&.h'\fP
+.br
+\fC#include 'protocol\&.h'\fP
+.br
+\fC#include 'application\&.h'\fP
+.br
+\fC#include 'communication\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBRX_NUM_MSG\fP   1"
+.br
+.ti -1c
+.RI "#define \fBRX_TASK_PRIORITY\fP   (tskIDLE_PRIORITY+4)"
+.br
+.ti -1c
+.RI "#define \fBRX_TASK_STACK_SIZE\fP   (configMINIMAL_STACK_SIZE + 20)"
+.br
+.ti -1c
+.RI "#define \fBTX_TASK_PRIORITY\fP   (tskIDLE_PRIORITY+4)"
+.br
+.ti -1c
+.RI "#define \fBTX_NUM_MSG\fP   1"
+.br
+.ti -1c
+.RI "#define \fBTX_TASK_STACK_SIZE\fP   (configMINIMAL_STACK_SIZE + 140)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBcommunication_init\fP (void)"
+.br
+.ti -1c
+.RI "BaseType_t \fBcommunication_notify_rx_char\fP (BaseType_t *xHigherPriorityTaskWoken)"
+.br
+.ti -1c
+.RI "void \fBcommunication_notify_tx\fP (void)"
+.br
+.ti -1c
+.RI "void \fBputPackageRx\fP (CommunicationPackage *package_rx)"
+.br
+.ti -1c
+.RI "void \fBputPackageTx\fP (CommunicationPackage *package_tx)"
+.br
+.ti -1c
+.RI "void \fBsendAnswer\fP (CommunicationPackage *package)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "QueueHandle_t \fBxQueuePackageRx\fP"
+.br
+.ti -1c
+.RI "QueueHandle_t \fBxQueuePackageTx\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define RX_NUM_MSG   1"
+
+.PP
+Definition at line 18 of file Communication\&.c\&.
+.SS "#define RX_TASK_PRIORITY   (tskIDLE_PRIORITY+4)"
+
+.PP
+Definition at line 19 of file Communication\&.c\&.
+.SS "#define RX_TASK_STACK_SIZE   (configMINIMAL_STACK_SIZE + 20)"
+
+.PP
+Definition at line 20 of file Communication\&.c\&.
+.SS "#define TX_NUM_MSG   1"
+
+.PP
+Definition at line 27 of file Communication\&.c\&.
+.SS "#define TX_TASK_PRIORITY   (tskIDLE_PRIORITY+4)"
+
+.PP
+Definition at line 26 of file Communication\&.c\&.
+.SS "#define TX_TASK_STACK_SIZE   (configMINIMAL_STACK_SIZE + 140)"
+
+.PP
+Definition at line 28 of file Communication\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void communication_init (void)"
+
+.PP
+Definition at line 119 of file Communication\&.c\&.
+.SS "BaseType_t communication_notify_rx_char (BaseType_t * xHigherPriorityTaskWoken)\fC [inline]\fP"
+
+.PP
+Definition at line 132 of file Communication\&.c\&.
+.SS "void communication_notify_tx (void)\fC [inline]\fP"
+
+.PP
+Definition at line 147 of file Communication\&.c\&.
+.SS "void putPackageRx (CommunicationPackage * package_rx)"
+Coloca pacote(cmd) recebido na fila e notifica a thread que executa callback 
+.PP
+Definition at line 159 of file Communication\&.c\&.
+.SS "void putPackageTx (CommunicationPackage * package_tx)"
+Coloca pacote(resposta) na fila e avisa a thread responsável pelo envio\&. 
+.PP
+Definition at line 175 of file Communication\&.c\&.
+.SS "void sendAnswer (CommunicationPackage * package)"
+
+.PP
+Definition at line 194 of file Communication\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "QueueHandle_t xQueuePackageRx"
+
+.PP
+Definition at line 22 of file Communication\&.c\&.
+.SS "QueueHandle_t xQueuePackageTx"
+
+.PP
+Definition at line 30 of file Communication\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

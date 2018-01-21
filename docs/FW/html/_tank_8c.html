@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GoodsTracker: F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/Tank/Tank.c File Reference</title>
+<title>GoodsTracker: F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Tank/Tank.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,38 +63,143 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Tank.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="application_8h_source.html">application.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_tank_8h_source.html">Tank.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;level_sensor.h&quot;</code><br />
+<code>#include &quot;Telemetria.h&quot;</code><br />
+<code>#include &quot;Tank.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Tank.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="_tank_8c__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_tank_2_tank_8c" alt=""/></div>
-<!-- MAP 0 -->
+<div class="center"><img src="_tank_8c__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_tank_2_tank_8c" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_tank_2_tank_8c" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_tank_2_tank_8c">
+</map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="_tank_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a224c17b6dc513e4af677e69c0ca41994"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#a224c17b6dc513e4af677e69c0ca41994">TANK_NUM_MSG</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a224c17b6dc513e4af677e69c0ca41994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89813969c3962d856cd428d8b0823276"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#a89813969c3962d856cd428d8b0823276">TANK_TASK_PRIORITY</a>&#160;&#160;&#160;(tskIDLE_PRIORITY+2)</td></tr>
+<tr class="separator:a89813969c3962d856cd428d8b0823276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c9c6f25ecdbc5c50df403031d043a3b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#a8c9c6f25ecdbc5c50df403031d043a3b">TANK_TASK_STACK_SIZE</a>&#160;&#160;&#160;(configMINIMAL_STACK_SIZE-20)</td></tr>
+<tr class="separator:a8c9c6f25ecdbc5c50df403031d043a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac109d43e7da1946ad7f25a532809efa8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#ac109d43e7da1946ad7f25a532809efa8">UPDATE_TIME_TANK</a>&#160;&#160;&#160;pdMS_TO_TICKS( 200 )</td></tr>
+<tr class="separator:ac109d43e7da1946ad7f25a532809efa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acb37d871de4e6af32944af79945eede8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#acb37d871de4e6af32944af79945eede8">tank_task</a> (void)</td></tr>
-<tr class="separator:acb37d871de4e6af32944af79945eede8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb99ff49b4a6d5157416f9b5bd0d9c2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#aeb99ff49b4a6d5157416f9b5bd0d9c2c">lock</a> (void)</td></tr>
+<tr class="separator:aeb99ff49b4a6d5157416f9b5bd0d9c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ebbc1a55f211bcdd4042733abcca8e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#a8ebbc1a55f211bcdd4042733abcca8e6">unLock</a> (void)</td></tr>
+<tr class="separator:a8ebbc1a55f211bcdd4042733abcca8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd02a9c779ed57bd02a25492ec1bcbef"><td class="memItemLeft" align="right" valign="top">BaseType_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#afd02a9c779ed57bd02a25492ec1bcbef">tank_notify_value</a> (BaseType_t *xHigherPriorityTaskWoken)</td></tr>
+<tr class="separator:afd02a9c779ed57bd02a25492ec1bcbef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a32849d6b60af2c4107db1dc201f9de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#a5a32849d6b60af2c4107db1dc201f9de">tank_init</a> (void)</td></tr>
 <tr class="separator:a5a32849d6b60af2c4107db1dc201f9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a4222d468de4f6bf6dfab9a161cfc068c"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#a4222d468de4f6bf6dfab9a161cfc068c">AD_finished</a></td></tr>
-<tr class="separator:a4222d468de4f6bf6dfab9a161cfc068c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8777d00a96cf8949a75e798200a563e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="queue_8h.html#aaf19d499892a4ce1409326ece00f5264">QueueHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#ac8777d00a96cf8949a75e798200a563e">xQueueTank</a></td></tr>
+<tr class="memitem:ac8777d00a96cf8949a75e798200a563e"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#ac8777d00a96cf8949a75e798200a563e">xQueueTank</a></td></tr>
 <tr class="separator:ac8777d00a96cf8949a75e798200a563e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c6254d98e0bb698b75b8dbf508ff507"><td class="memItemLeft" align="right" valign="top"><a class="el" href="task_8h.html#ae95f44d4cfeb4a599c6cc258d241cb6b">TaskHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#a6c6254d98e0bb698b75b8dbf508ff507">xHandleDataTask</a></td></tr>
+<tr class="memitem:a6c6254d98e0bb698b75b8dbf508ff507"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#a6c6254d98e0bb698b75b8dbf508ff507">xHandleDataTask</a></td></tr>
 <tr class="separator:a6c6254d98e0bb698b75b8dbf508ff507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad894de400202cb480e7d44cb37bb2cb1"><td class="memItemLeft" align="right" valign="top">TimerHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tank_8c.html#ad894de400202cb480e7d44cb37bb2cb1">xTimerTank</a></td></tr>
+<tr class="separator:ad894de400202cb480e7d44cb37bb2cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a224c17b6dc513e4af677e69c0ca41994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a224c17b6dc513e4af677e69c0ca41994">&#9670;&nbsp;</a></span>TANK_NUM_MSG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TANK_NUM_MSG&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00015">15</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
+
+</div>
+</div>
+<a id="a89813969c3962d856cd428d8b0823276"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89813969c3962d856cd428d8b0823276">&#9670;&nbsp;</a></span>TANK_TASK_PRIORITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TANK_TASK_PRIORITY&#160;&#160;&#160;(tskIDLE_PRIORITY+2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00016">16</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
+
+</div>
+</div>
+<a id="a8c9c6f25ecdbc5c50df403031d043a3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c9c6f25ecdbc5c50df403031d043a3b">&#9670;&nbsp;</a></span>TANK_TASK_STACK_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TANK_TASK_STACK_SIZE&#160;&#160;&#160;(configMINIMAL_STACK_SIZE-20)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00017">17</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
+
+</div>
+</div>
+<a id="ac109d43e7da1946ad7f25a532809efa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac109d43e7da1946ad7f25a532809efa8">&#9670;&nbsp;</a></span>UPDATE_TIME_TANK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UPDATE_TIME_TANK&#160;&#160;&#160;pdMS_TO_TICKS( 200 )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00024">24</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aeb99ff49b4a6d5157416f9b5bd0d9c2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb99ff49b4a6d5157416f9b5bd0d9c2c">&#9670;&nbsp;</a></span>lock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lock </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00060">60</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
+
+</div>
+</div>
 <a id="a5a32849d6b60af2c4107db1dc201f9de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a32849d6b60af2c4107db1dc201f9de">&#9670;&nbsp;</a></span>tank_init()</h2>
 
@@ -111,16 +216,71 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00113">113</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="_tank_8c_a5a32849d6b60af2c4107db1dc201f9de_cgraph.png" border="0" usemap="#_tank_8c_a5a32849d6b60af2c4107db1dc201f9de_cgraph" alt=""/></div>
+<map name="_tank_8c_a5a32849d6b60af2c4107db1dc201f9de_cgraph" id="_tank_8c_a5a32849d6b60af2c4107db1dc201f9de_cgraph">
+<area shape="rect" id="node2" href="level__sensor_8c.html#a06f7c0f1cbe5b6460602df1580e95c10" title="level_sensor_init" alt="" coords="124,5,241,32"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="_tank_8c_a5a32849d6b60af2c4107db1dc201f9de_icgraph.png" border="0" usemap="#_tank_8c_a5a32849d6b60af2c4107db1dc201f9de_icgraph" alt=""/></div>
+<map name="_tank_8c_a5a32849d6b60af2c4107db1dc201f9de_icgraph" id="_tank_8c_a5a32849d6b60af2c4107db1dc201f9de_icgraph">
+<area shape="rect" id="node2" href="group__main__module.html#gaf411a8bc6b7ed4b0af9114e10c959448" title="sys_init" alt="" coords="124,5,191,32"/>
+<area shape="rect" id="node3" href="group__main__module.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="239,5,289,32"/>
+</map>
+</div>
+
 </div>
 </div>
-<a id="acb37d871de4e6af32944af79945eede8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb37d871de4e6af32944af79945eede8">&#9670;&nbsp;</a></span>tank_task()</h2>
+<a id="afd02a9c779ed57bd02a25492ec1bcbef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd02a9c779ed57bd02a25492ec1bcbef">&#9670;&nbsp;</a></span>tank_notify_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BaseType_t tank_notify_value </td>
+          <td>(</td>
+          <td class="paramtype">BaseType_t *&#160;</td>
+          <td class="paramname"><em>xHigherPriorityTaskWoken</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00107">107</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="_tank_8c_afd02a9c779ed57bd02a25492ec1bcbef_icgraph.png" border="0" usemap="#_tank_8c_afd02a9c779ed57bd02a25492ec1bcbef_icgraph" alt=""/></div>
+<map name="_tank_8c_afd02a9c779ed57bd02a25492ec1bcbef_icgraph" id="_tank_8c_afd02a9c779ed57bd02a25492ec1bcbef_icgraph">
+<area shape="rect" id="node2" href="group___events__module.html#gac0b0e33c722d75df2e7b6eb1d50f15a7" title="AD1_OnEnd" alt="" coords="175,5,269,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8ebbc1a55f211bcdd4042733abcca8e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ebbc1a55f211bcdd4042733abcca8e6">&#9670;&nbsp;</a></span>unLock()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void tank_task </td>
+          <td class="memname">void unLock </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -128,30 +288,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_tank_8c_acb37d871de4e6af32944af79945eede8_cgraph.png" border="0" usemap="#_tank_8c_acb37d871de4e6af32944af79945eede8_cgraph" alt=""/></div>
-<!-- MAP 1 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00067">67</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a4222d468de4f6bf6dfab9a161cfc068c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4222d468de4f6bf6dfab9a161cfc068c">&#9670;&nbsp;</a></span>AD_finished</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">volatile <a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> AD_finished</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a6c6254d98e0bb698b75b8dbf508ff507"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c6254d98e0bb698b75b8dbf508ff507">&#9670;&nbsp;</a></span>xHandleDataTask</h2>
 
@@ -159,10 +301,12 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="task_8h.html#ae95f44d4cfeb4a599c6cc258d241cb6b">TaskHandle_t</a> xHandleDataTask</td>
+          <td class="memname">TaskHandle_t xHandleDataTask</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00019">19</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
 
 </div>
 </div>
@@ -173,10 +317,28 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="queue_8h.html#aaf19d499892a4ce1409326ece00f5264">QueueHandle_t</a> xQueueTank</td>
+          <td class="memname">QueueHandle_t xQueueTank</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00018">18</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
+
+</div>
+</div>
+<a id="ad894de400202cb480e7d44cb37bb2cb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad894de400202cb480e7d44cb37bb2cb1">&#9670;&nbsp;</a></span>xTimerTank</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TimerHandle_t xTimerTank</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tank_8c_source.html#l00022">22</a> of file <a class="el" href="_tank_8c_source.html">Tank.c</a>.</p>
 
 </div>
 </div>

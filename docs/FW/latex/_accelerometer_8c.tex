@@ -1,14 +1,28 @@
-\hypertarget{_accelerometer_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/\+Accelerometer.c File Reference}
-\label{_accelerometer_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/\+Accelerometer.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/\+Accelerometer.\+c}}
+\hypertarget{_accelerometer_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/\+Accelerometer.c File Reference}
+\label{_accelerometer_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/\+Accelerometer.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Accelerometer/\+Accelerometer.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}M\+M\+A8451.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}application.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Telemetria.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Accelerometer.\+h\char`\"{}}\newline
 Include dependency graph for Accelerometer.\+c\+:
-% FIG 0
-\subsection*{Functions}
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_accelerometer_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_accelerometer_8c_aa8d10264b0c25e48ba361369df15318c}{accelerometer\+\_\+task} (void)
+\#define \hyperlink{_accelerometer_8c_ade1d28ae4a1c9bdd98d3fd353d6544db}{A\+C\+C\+E\+\_\+\+N\+U\+M\+\_\+\+M\+SG}~1
+\item 
+\#define \hyperlink{_accelerometer_8c_ae3a349889d2e4cf8a9708dd557eb28d3}{A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+2)
+\item 
+\#define \hyperlink{_accelerometer_8c_a8a80af8df1ee19444e9472e785cadde5}{A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE-\/10)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
 \item 
 void \hyperlink{_accelerometer_8c_a4987d8d30a75237baf8a7a13c03dffe8}{accelerometer\+\_\+init} (void)
 \item 
@@ -17,12 +31,41 @@ void \hyperlink{_accelerometer_8c_acaea9d3d0f1adb90c3477d60905dec5f}{de\+Init\+A
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_accelerometer}{Accelerometer} \hyperlink{_accelerometer_8c_afceaa992dee7c9e4056b571f58baa31f}{acce\+Info}
-\item 
-\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} \hyperlink{_accelerometer_8c_ae9f8c7b430e3d03444007e04a12f016e}{x\+Queue\+Acc}
-\item 
-\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} \hyperlink{_accelerometer_8c_a8395c78848c3e056b337f8d172f33ca2}{x\+Handle\+Accel\+Task}
+Queue\+Handle\+\_\+t \hyperlink{_accelerometer_8c_aa21500b286e567ad81965b63436a3d03}{x\+Queue\+Acce}
 \end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_accelerometer_8c_ade1d28ae4a1c9bdd98d3fd353d6544db}\label{_accelerometer_8c_ade1d28ae4a1c9bdd98d3fd353d6544db}} 
+\index{Accelerometer.\+c@{Accelerometer.\+c}!A\+C\+C\+E\+\_\+\+N\+U\+M\+\_\+\+M\+SG@{A\+C\+C\+E\+\_\+\+N\+U\+M\+\_\+\+M\+SG}}
+\index{A\+C\+C\+E\+\_\+\+N\+U\+M\+\_\+\+M\+SG@{A\+C\+C\+E\+\_\+\+N\+U\+M\+\_\+\+M\+SG}!Accelerometer.\+c@{Accelerometer.\+c}}
+\subsubsection{\texorpdfstring{A\+C\+C\+E\+\_\+\+N\+U\+M\+\_\+\+M\+SG}{ACCE\_NUM\_MSG}}
+{\footnotesize\ttfamily \#define A\+C\+C\+E\+\_\+\+N\+U\+M\+\_\+\+M\+SG~1}
+
+
+
+Definition at line 17 of file Accelerometer.\+c.
+
+\mbox{\Hypertarget{_accelerometer_8c_ae3a349889d2e4cf8a9708dd557eb28d3}\label{_accelerometer_8c_ae3a349889d2e4cf8a9708dd557eb28d3}} 
+\index{Accelerometer.\+c@{Accelerometer.\+c}!A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!Accelerometer.\+c@{Accelerometer.\+c}}
+\subsubsection{\texorpdfstring{A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{ACCE\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+2)}
+
+
+
+Definition at line 18 of file Accelerometer.\+c.
+
+\mbox{\Hypertarget{_accelerometer_8c_a8a80af8df1ee19444e9472e785cadde5}\label{_accelerometer_8c_a8a80af8df1ee19444e9472e785cadde5}} 
+\index{Accelerometer.\+c@{Accelerometer.\+c}!A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}}
+\index{A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}!Accelerometer.\+c@{Accelerometer.\+c}}
+\subsubsection{\texorpdfstring{A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}{ACCE\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define A\+C\+C\+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE-\/10)}
+
+
+
+Definition at line 19 of file Accelerometer.\+c.
+
 
 
 \subsection{Function Documentation}
@@ -32,42 +75,46 @@ void \hyperlink{_accelerometer_8c_acaea9d3d0f1adb90c3477d60905dec5f}{de\+Init\+A
 \subsubsection{\texorpdfstring{accelerometer\+\_\+init()}{accelerometer\_init()}}
 {\footnotesize\ttfamily void accelerometer\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:
-% FIG 1
-\mbox{\Hypertarget{_accelerometer_8c_aa8d10264b0c25e48ba361369df15318c}\label{_accelerometer_8c_aa8d10264b0c25e48ba361369df15318c}} 
-\index{Accelerometer.\+c@{Accelerometer.\+c}!accelerometer\+\_\+task@{accelerometer\+\_\+task}}
-\index{accelerometer\+\_\+task@{accelerometer\+\_\+task}!Accelerometer.\+c@{Accelerometer.\+c}}
-\subsubsection{\texorpdfstring{accelerometer\+\_\+task()}{accelerometer\_task()}}
-{\footnotesize\ttfamily void accelerometer\+\_\+task (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:
-% FIG 2
+
+Definition at line 66 of file Accelerometer.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{_accelerometer_8c_a4987d8d30a75237baf8a7a13c03dffe8_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{_accelerometer_8c_acaea9d3d0f1adb90c3477d60905dec5f}\label{_accelerometer_8c_acaea9d3d0f1adb90c3477d60905dec5f}} 
 \index{Accelerometer.\+c@{Accelerometer.\+c}!de\+Init\+Accelerometer@{de\+Init\+Accelerometer}}
 \index{de\+Init\+Accelerometer@{de\+Init\+Accelerometer}!Accelerometer.\+c@{Accelerometer.\+c}}
 \subsubsection{\texorpdfstring{de\+Init\+Accelerometer()}{deInitAccelerometer()}}
 {\footnotesize\ttfamily void de\+Init\+Accelerometer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 76 of file Accelerometer.\+c.
+
 Here is the call graph for this function\+:
-% FIG 3
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{_accelerometer_8c_acaea9d3d0f1adb90c3477d60905dec5f_cgraph}
+\end{center}
+\end{figure}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{_accelerometer_8c_afceaa992dee7c9e4056b571f58baa31f}\label{_accelerometer_8c_afceaa992dee7c9e4056b571f58baa31f}} 
-\index{Accelerometer.\+c@{Accelerometer.\+c}!acce\+Info@{acce\+Info}}
-\index{acce\+Info@{acce\+Info}!Accelerometer.\+c@{Accelerometer.\+c}}
-\subsubsection{\texorpdfstring{acce\+Info}{acceInfo}}
-{\footnotesize\ttfamily \hyperlink{struct_accelerometer}{Accelerometer} acce\+Info}
+\mbox{\Hypertarget{_accelerometer_8c_aa21500b286e567ad81965b63436a3d03}\label{_accelerometer_8c_aa21500b286e567ad81965b63436a3d03}} 
+\index{Accelerometer.\+c@{Accelerometer.\+c}!x\+Queue\+Acce@{x\+Queue\+Acce}}
+\index{x\+Queue\+Acce@{x\+Queue\+Acce}!Accelerometer.\+c@{Accelerometer.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Acce}{xQueueAcce}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+Acce}
 
-\mbox{\Hypertarget{_accelerometer_8c_a8395c78848c3e056b337f8d172f33ca2}\label{_accelerometer_8c_a8395c78848c3e056b337f8d172f33ca2}} 
-\index{Accelerometer.\+c@{Accelerometer.\+c}!x\+Handle\+Accel\+Task@{x\+Handle\+Accel\+Task}}
-\index{x\+Handle\+Accel\+Task@{x\+Handle\+Accel\+Task}!Accelerometer.\+c@{Accelerometer.\+c}}
-\subsubsection{\texorpdfstring{x\+Handle\+Accel\+Task}{xHandleAccelTask}}
-{\footnotesize\ttfamily \hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} x\+Handle\+Accel\+Task}
 
-\mbox{\Hypertarget{_accelerometer_8c_ae9f8c7b430e3d03444007e04a12f016e}\label{_accelerometer_8c_ae9f8c7b430e3d03444007e04a12f016e}} 
-\index{Accelerometer.\+c@{Accelerometer.\+c}!x\+Queue\+Acc@{x\+Queue\+Acc}}
-\index{x\+Queue\+Acc@{x\+Queue\+Acc}!Accelerometer.\+c@{Accelerometer.\+c}}
-\subsubsection{\texorpdfstring{x\+Queue\+Acc}{xQueueAcc}}
-{\footnotesize\ttfamily \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue\+Acc}
+
+Definition at line 21 of file Accelerometer.\+c.
 

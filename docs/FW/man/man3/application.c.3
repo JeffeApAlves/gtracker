@@ -1,0 +1,95 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/App/application.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/App/application.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include 'Tank\&.h'\fP
+.br
+\fC#include 'Telemetria\&.h'\fP
+.br
+\fC#include 'clock\&.h'\fP
+.br
+\fC#include 'Accelerometer\&.h'\fP
+.br
+\fC#include 'Serialization\&.h'\fP
+.br
+\fC#include 'communication\&.h'\fP
+.br
+\fC#include 'application\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCB_TASK_PRIORITY\fP   (configMAX_PRIORITIES)"
+.br
+.ti -1c
+.RI "#define \fBCB_TASK_STACK_SIZE\fP   (configMINIMAL_STACK_SIZE + 150)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBdecoderLockPayLoad\fP (PayLoad *payload)"
+.br
+.ti -1c
+.RI "pCallBack \fBgetCallBack\fP (Resource r)"
+.br
+.ti -1c
+.RI "void \fBapp_notify_cmd\fP (void)"
+.br
+.ti -1c
+.RI "void \fBapp_init\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "TaskHandle_t \fBxHandleCBTask\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define CB_TASK_PRIORITY   (configMAX_PRIORITIES)"
+
+.PP
+Definition at line 20 of file application\&.c\&.
+.SS "#define CB_TASK_STACK_SIZE   (configMINIMAL_STACK_SIZE + 150)"
+
+.PP
+Definition at line 21 of file application\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void app_init (void)"
+
+.PP
+Definition at line 281 of file application\&.c\&.
+.SS "void app_notify_cmd (void)\fC [inline]\fP"
+
+.PP
+Definition at line 275 of file application\&.c\&.
+.SS "void decoderLockPayLoad (PayLoad * payload)"
+
+.PP
+Definition at line 216 of file application\&.c\&.
+.SS "pCallBack getCallBack (Resource r)"
+
+.PP
+Definition at line 239 of file application\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "TaskHandle_t xHandleCBTask"
+
+.PP
+Definition at line 22 of file application\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GoodsTracker: F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/Events.h File Reference</title>
+<title>GoodsTracker: F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Events.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,64 +71,65 @@ $(function() {
 
 <p>This is user's event module. Put your event handler code here.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_p_e___types_8h_source.html">PE_Types.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_p_e___error_8h_source.html">PE_Error.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_p_e___const_8h_source.html">PE_Const.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_i_o___map_8h_source.html">IO_Map.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_f_r_t_o_s1_8h_source.html">FRTOS1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_u_t_i_l1_8h_source.html">UTIL1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_w_a_i_t2_8h_source.html">WAIT2.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_w_a_i_t3_8h_source.html">WAIT3.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_w_a_i_t4_8h_source.html">WAIT4.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_i2_c2_8h_source.html">I2C2.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_a_d1_8h_source.html">AD1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_adc_ldd1_8h_source.html">AdcLdd1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_r_t_c1_8h_source.html">RTC1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_m_c_u_c1_8h_source.html">MCUC1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_t_s_k1_8h_source.html">TSK1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_l_e_d___r_8h_source.html">LED_R.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_l_e_dpin1_8h_source.html">LEDpin1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_bit_io_ldd1_8h_source.html">BitIoLdd1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_a_s1_8h_source.html">AS1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_a_serial_ldd1_8h_source.html">ASerialLdd1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_l_e_d___g_8h_source.html">LED_G.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_l_e_dpin2_8h_source.html">LEDpin2.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_bit_io_ldd2_8h_source.html">BitIoLdd2.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_l_e_d___b_8h_source.html">LED_B.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_l_e_dpin3_8h_source.html">LEDpin3.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_bit_io_ldd3_8h_source.html">BitIoLdd3.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_t_u1_8h_source.html">TU1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_t_i1_8h_source.html">TI1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_timer_int_ldd1_8h_source.html">TimerIntLdd1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_w_a_i_t1_8h_source.html">WAIT1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_l_c_dout_8h_source.html">LCDout.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_e_n1_8h_source.html">EN1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_bit_io_ldd6_8h_source.html">BitIoLdd6.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_r_s1_8h_source.html">RS1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_bit_io_ldd7_8h_source.html">BitIoLdd7.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_d_b41_8h_source.html">DB41.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_bit_io_ldd12_8h_source.html">BitIoLdd12.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_d_b51_8h_source.html">DB51.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_bit_io_ldd13_8h_source.html">BitIoLdd13.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_d_b61_8h_source.html">DB61.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_bit_io_ldd14_8h_source.html">BitIoLdd14.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_d_b71_8h_source.html">DB71.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_bit_io_ldd15_8h_source.html">BitIoLdd15.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_t_s_sin_8h_source.html">TSSin.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_x_f1_8h_source.html">XF1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_a_s2_8h_source.html">AS2.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_a_serial_ldd2_8h_source.html">ASerialLdd2.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;PE_Types.h&quot;</code><br />
+<code>#include &quot;PE_Error.h&quot;</code><br />
+<code>#include &quot;PE_Const.h&quot;</code><br />
+<code>#include &quot;IO_Map.h&quot;</code><br />
+<code>#include &quot;FRTOS1.h&quot;</code><br />
+<code>#include &quot;UTIL1.h&quot;</code><br />
+<code>#include &quot;WAIT2.h&quot;</code><br />
+<code>#include &quot;WAIT3.h&quot;</code><br />
+<code>#include &quot;WAIT4.h&quot;</code><br />
+<code>#include &quot;I2C2.h&quot;</code><br />
+<code>#include &quot;AD1.h&quot;</code><br />
+<code>#include &quot;AdcLdd1.h&quot;</code><br />
+<code>#include &quot;RTC1.h&quot;</code><br />
+<code>#include &quot;EInt1.h&quot;</code><br />
+<code>#include &quot;ExtIntLdd1.h&quot;</code><br />
+<code>#include &quot;MCUC1.h&quot;</code><br />
+<code>#include &quot;LED_R.h&quot;</code><br />
+<code>#include &quot;LEDpin1.h&quot;</code><br />
+<code>#include &quot;BitIoLdd1.h&quot;</code><br />
+<code>#include &quot;AS1.h&quot;</code><br />
+<code>#include &quot;ASerialLdd1.h&quot;</code><br />
+<code>#include &quot;LED_G.h&quot;</code><br />
+<code>#include &quot;LEDpin2.h&quot;</code><br />
+<code>#include &quot;BitIoLdd2.h&quot;</code><br />
+<code>#include &quot;LED_B.h&quot;</code><br />
+<code>#include &quot;LEDpin3.h&quot;</code><br />
+<code>#include &quot;BitIoLdd3.h&quot;</code><br />
+<code>#include &quot;WAIT1.h&quot;</code><br />
+<code>#include &quot;LCDout.h&quot;</code><br />
+<code>#include &quot;EN1.h&quot;</code><br />
+<code>#include &quot;BitIoLdd6.h&quot;</code><br />
+<code>#include &quot;RS1.h&quot;</code><br />
+<code>#include &quot;BitIoLdd7.h&quot;</code><br />
+<code>#include &quot;DB41.h&quot;</code><br />
+<code>#include &quot;BitIoLdd12.h&quot;</code><br />
+<code>#include &quot;DB51.h&quot;</code><br />
+<code>#include &quot;BitIoLdd13.h&quot;</code><br />
+<code>#include &quot;DB61.h&quot;</code><br />
+<code>#include &quot;BitIoLdd14.h&quot;</code><br />
+<code>#include &quot;DB71.h&quot;</code><br />
+<code>#include &quot;BitIoLdd15.h&quot;</code><br />
+<code>#include &quot;XF1.h&quot;</code><br />
+<code>#include &quot;AS2.h&quot;</code><br />
+<code>#include &quot;ASerialLdd2.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Events.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="_events_8h__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_events_8h" alt=""/></div>
-<!-- MAP 0 -->
+<div class="center"><img src="_events_8h__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_events_8h" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_events_8h" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_events_8h">
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="_events_8h__dep__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_events_8hdep" alt=""/></div>
-<!-- MAP 1 -->
+<div class="center"><img src="_events_8h__dep__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_events_8hdep" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_events_8hdep" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_events_8hdep">
+<area shape="rect" id="node2" href="_events_8c.html" title="This is user&#39;s event module. Put your event handler code here. " alt="" coords="5,109,204,165"/>
+<area shape="rect" id="node3" href="main_8c.html" title=" &#160;&#160;&#160;Main module. &#160;&#160;&#160;&#160;This module contains user&#39;s application code. &#160;Ferramentas de debug https://www..." alt="" coords="228,109,427,165"/>
+</map>
 </div>
 </div>
 <p><a href="_events_8h_source.html">Go to the source code of this file.</a></p>
@@ -138,7 +139,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ga960d094664356278ac5472d45a6ea2f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga960d094664356278ac5472d45a6ea2f3">Cpu_OnNMIINT</a> (void)</td></tr>
 <tr class="memdesc:ga960d094664356278ac5472d45a6ea2f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This event is called when the Non maskable interrupt had occurred. This event is automatically enabled when the [NMI interrupt] property is set to 'Enabled'.  <a href="group___events__module.html#ga960d094664356278ac5472d45a6ea2f3">More...</a><br /></td></tr>
 <tr class="separator:ga960d094664356278ac5472d45a6ea2f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1e81c467b899cd40c827a5243d259dee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga1e81c467b899cd40c827a5243d259dee">FRTOS1_vApplicationStackOverflowHook</a> (<a class="el" href="task_8h.html#ae95f44d4cfeb4a599c6cc258d241cb6b">TaskHandle_t</a> pxTask, char *pcTaskName)</td></tr>
+<tr class="memitem:ga1e81c467b899cd40c827a5243d259dee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga1e81c467b899cd40c827a5243d259dee">FRTOS1_vApplicationStackOverflowHook</a> (TaskHandle_t pxTask, char *pcTaskName)</td></tr>
 <tr class="separator:ga1e81c467b899cd40c827a5243d259dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf8fe6769cea9aeb943962871b26b203b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gaf8fe6769cea9aeb943962871b26b203b">FRTOS1_vApplicationTickHook</a> (void)</td></tr>
 <tr class="separator:gaf8fe6769cea9aeb943962871b26b203b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,39 +163,39 @@ Functions</h2></td></tr>
 <tr class="separator:gac0b0e33c722d75df2e7b6eb1d50f15a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga01b566cf25a21b34152513dcb1321a11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga01b566cf25a21b34152513dcb1321a11">TI1_OnInterrupt</a> (void)</td></tr>
 <tr class="separator:ga01b566cf25a21b34152513dcb1321a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaade020d27159f2102fb3b994d1224ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gaaade020d27159f2102fb3b994d1224ae">TSSin_fOnFault</a> (<a class="el" href="group___p_e___types__module.html#ga0c8186d9b9b7880309c27230bbb5e69d">byte</a> u8FaultElecNum)</td></tr>
-<tr class="separator:gaaade020d27159f2102fb3b994d1224ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga67e29a27a74c8a25e4edddb84351a138"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga67e29a27a74c8a25e4edddb84351a138">TSSin_fOnInit</a> (void)</td></tr>
-<tr class="separator:ga67e29a27a74c8a25e4edddb84351a138"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5969b4c9b3e47d79941c612897503fe4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga5969b4c9b3e47d79941c612897503fe4">TSSin_fCallBack0</a> (<a class="el" href="struct_t_s_s___c_o_n_t_r_o_l___i_d.html">TSS_CONTROL_ID</a> u8ControlId)</td></tr>
-<tr class="separator:ga5969b4c9b3e47d79941c612897503fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0137853d241c656b6bf6653ebfc64cac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga0137853d241c656b6bf6653ebfc64cac">AS2_OnError</a> (void)</td></tr>
 <tr class="separator:ga0137853d241c656b6bf6653ebfc64cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadc4e66d9db0a63b063b37ad5a70a10be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gadc4e66d9db0a63b063b37ad5a70a10be">AS2_OnRxChar</a> (void)</td></tr>
 <tr class="separator:gadc4e66d9db0a63b063b37ad5a70a10be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga745f5ad3a73381f935cc2ee2fec5c34f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga745f5ad3a73381f935cc2ee2fec5c34f">AS2_OnTxChar</a> (void)</td></tr>
 <tr class="separator:ga745f5ad3a73381f935cc2ee2fec5c34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga23f378d5253016b341bf971cb5c35ee7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga23f378d5253016b341bf971cb5c35ee7">I2C2_OnMasterBlockSent</a> (<a class="el" href="group___p_e___types__module.html#ga0b66a73f87238a782318aa0be7578e35">LDD_TUserData</a> *UserDataPtr)</td></tr>
+<tr class="memitem:ga23f378d5253016b341bf971cb5c35ee7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga23f378d5253016b341bf971cb5c35ee7">I2C2_OnMasterBlockSent</a> (LDD_TUserData *UserDataPtr)</td></tr>
 <tr class="memdesc:ga23f378d5253016b341bf971cb5c35ee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This event is called when I2C in master mode finishes the transmission of the data successfully. This event is not available for the SLAVE mode and if MasterSendBlock is disabled.  <a href="group___events__module.html#ga23f378d5253016b341bf971cb5c35ee7">More...</a><br /></td></tr>
 <tr class="separator:ga23f378d5253016b341bf971cb5c35ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5b2fe0871600de8d73184570a42e5b66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga5b2fe0871600de8d73184570a42e5b66">I2C2_OnMasterBlockReceived</a> (<a class="el" href="group___p_e___types__module.html#ga0b66a73f87238a782318aa0be7578e35">LDD_TUserData</a> *UserDataPtr)</td></tr>
+<tr class="memitem:ga5b2fe0871600de8d73184570a42e5b66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga5b2fe0871600de8d73184570a42e5b66">I2C2_OnMasterBlockReceived</a> (LDD_TUserData *UserDataPtr)</td></tr>
 <tr class="memdesc:ga5b2fe0871600de8d73184570a42e5b66"><td class="mdescLeft">&#160;</td><td class="mdescRight">This event is called when I2C is in master mode and finishes the reception of the data successfully. This event is not available for the SLAVE mode and if MasterReceiveBlock is disabled.  <a href="group___events__module.html#ga5b2fe0871600de8d73184570a42e5b66">More...</a><br /></td></tr>
 <tr class="separator:ga5b2fe0871600de8d73184570a42e5b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad394d39c6e6d080b1ae8cd26178003f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gad394d39c6e6d080b1ae8cd26178003f2">I2C1_OnMasterBlockSent</a> (<a class="el" href="group___p_e___types__module.html#ga0b66a73f87238a782318aa0be7578e35">LDD_TUserData</a> *UserDataPtr)</td></tr>
+<tr class="memitem:gad394d39c6e6d080b1ae8cd26178003f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gad394d39c6e6d080b1ae8cd26178003f2">I2C1_OnMasterBlockSent</a> (LDD_TUserData *UserDataPtr)</td></tr>
 <tr class="memdesc:gad394d39c6e6d080b1ae8cd26178003f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This event is called when I2C in master mode finishes the transmission of the data successfully. This event is not available for the SLAVE mode and if MasterSendBlock is disabled.  <a href="group___events__module.html#gad394d39c6e6d080b1ae8cd26178003f2">More...</a><br /></td></tr>
 <tr class="separator:gad394d39c6e6d080b1ae8cd26178003f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad0eaee8bf9e6df0596ba2542bb3e1c32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gad0eaee8bf9e6df0596ba2542bb3e1c32">I2C1_OnMasterBlockReceived</a> (<a class="el" href="group___p_e___types__module.html#ga0b66a73f87238a782318aa0be7578e35">LDD_TUserData</a> *UserDataPtr)</td></tr>
+<tr class="memitem:gad0eaee8bf9e6df0596ba2542bb3e1c32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gad0eaee8bf9e6df0596ba2542bb3e1c32">I2C1_OnMasterBlockReceived</a> (LDD_TUserData *UserDataPtr)</td></tr>
 <tr class="memdesc:gad0eaee8bf9e6df0596ba2542bb3e1c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">This event is called when I2C is in master mode and finishes the reception of the data successfully. This event is not available for the SLAVE mode and if MasterReceiveBlock is disabled.  <a href="group___events__module.html#gad0eaee8bf9e6df0596ba2542bb3e1c32">More...</a><br /></td></tr>
 <tr class="separator:gad0eaee8bf9e6df0596ba2542bb3e1c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8be719cad9ac48a9cdfd2281de15ec59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga8be719cad9ac48a9cdfd2281de15ec59">AD1_OnCalibrationEnd</a> (void)</td></tr>
 <tr class="separator:ga8be719cad9ac48a9cdfd2281de15ec59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2f94110e651cb30cba928647e91e92d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga2f94110e651cb30cba928647e91e92d4">RTC1_OnSecond</a> (<a class="el" href="group___p_e___types__module.html#ga0b66a73f87238a782318aa0be7578e35">LDD_TUserData</a> *UserDataPtr)</td></tr>
+<tr class="memitem:ga2f94110e651cb30cba928647e91e92d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga2f94110e651cb30cba928647e91e92d4">RTC1_OnSecond</a> (LDD_TUserData *UserDataPtr)</td></tr>
 <tr class="memdesc:ga2f94110e651cb30cba928647e91e92d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called each second if OnSecond event is enabled (see [SetEventMask] and [GetEventMask] methods) and RTC device is enabled. This event is available only if [Interrupt service/event] is enabled.  <a href="group___events__module.html#ga2f94110e651cb30cba928647e91e92d4">More...</a><br /></td></tr>
 <tr class="separator:ga2f94110e651cb30cba928647e91e92d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab34bedda0461474d770bfe84c3bc881f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gab34bedda0461474d770bfe84c3bc881f">PTRC1_OnTraceWrap</a> (void)</td></tr>
+<tr class="separator:gab34bedda0461474d770bfe84c3bc881f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabdbc35f3567d6a158efe42b38f2ee47a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gabdbc35f3567d6a158efe42b38f2ee47a">EInt1_OnInterrupt</a> (void)</td></tr>
+<tr class="separator:gabdbc35f3567d6a158efe42b38f2ee47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is user's event module. Put your event handler code here. </p>
 <dl class="section version"><dt>Version</dt><dd>01.00 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_events_8h_source.html">Events.h</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

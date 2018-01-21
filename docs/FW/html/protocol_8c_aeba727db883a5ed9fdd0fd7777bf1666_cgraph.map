@@ -1,12 +1,16 @@
 <map id="sendPackage" name="sendPackage">
-<area shape="rect" id="node2" href="$_serialization_8h.html#afc0837dca2222d7442b817029905a317" title="header2String" alt="" coords="157,5,260,32"/>
-<area shape="rect" id="node4" href="$group___x_f1__module.html#ga0395629bfb289c7da253651b5033253a" title="XF1_xsprintf" alt="" coords="329,56,422,83"/>
-<area shape="rect" id="node5" href="$_frame_8h.html#ad495fac4de1a27ddfbadf1dbe5c6af0f" title="calcChecksum" alt="" coords="155,107,263,133"/>
-<area shape="rect" id="node6" href="$protocol_8c.html#a67f18f909de210cc4208454854658231" title="putTxData" alt="" coords="168,157,249,184"/>
-<area shape="rect" id="node10" href="$_ring_buffer_8h.html#a9c3374a6c654c18f3b7e81e8e771451b" title="putString" alt="" coords="171,208,246,235"/>
-<area shape="rect" id="node3" href="$protocol_8h.html#ac3abc0b48475facbd7cdebd60eeb01b4" title="getResourceName" alt="" coords="311,5,440,32"/>
-<area shape="rect" id="node7" href="$_ring_buffer_8h.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="342,157,409,184"/>
-<area shape="rect" id="node8" href="$port_8c.html#a2ed3554a3de09a3bd09d396ee081ab69" title="vPortEnterCritical" alt="" coords="488,157,611,184"/>
-<area shape="rect" id="node9" href="$port_8c.html#aed20ada05b957181a0de042802a82a5b" title="vPortExitCritical" alt="" coords="492,208,607,235"/>
-<area shape="rect" id="node11" href="$_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="342,208,409,235"/>
+<area shape="rect" id="node2" href="$_serialization_8c.html#afc0837dca2222d7442b817029905a317" title="header2String" alt="" coords="166,5,269,32"/>
+<area shape="rect" id="node4" href="$_frame_8c.html#ad495fac4de1a27ddfbadf1dbe5c6af0f" title="calcChecksum" alt="" coords="163,56,271,83"/>
+<area shape="rect" id="node5" href="$_serialization_8c.html#adfe71660e265e2d87e94545bda3cc81d" title="checkSum2String" alt="" coords="155,107,280,133"/>
+<area shape="rect" id="node6" href="$uart__host_8c.html#a67f18f909de210cc4208454854658231" title="putTxData" alt="" coords="352,157,433,184"/>
+<area shape="rect" id="node8" href="$uart__host_8c.html#a3ba4cb369523209026ad84bfb76e490f" title="putTxString" alt="" coords="173,208,261,235"/>
+<area shape="rect" id="node10" href="$uart__host_8c.html#a7bfab1eda834687cfc0055d0816bb572" title="startTX" alt="" coords="186,259,249,285"/>
+<area shape="rect" id="node3" href="$_serialization_8c.html#ad34e045d5bf9a12559d00cc39093f063" title="getResourceName" alt="" coords="328,5,457,32"/>
+<area shape="rect" id="node7" href="$_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="513,183,579,209"/>
+<area shape="rect" id="node9" href="$_ring_buffer_8c.html#a9c3374a6c654c18f3b7e81e8e771451b" title="putString" alt="" coords="355,208,430,235"/>
+<area shape="rect" id="node11" href="$uart__host_8c.html#ae23bfcc8731e28e48ed09368901d9073" title="isAnyTxData" alt="" coords="345,259,441,285"/>
+<area shape="rect" id="node13" href="$group___events__module.html#gad4ca2c06cb7fdb57a52811247371565c" title="AS1_OnTxChar" alt="" coords="337,309,449,336"/>
+<area shape="rect" id="node12" href="$_ring_buffer_8c.html#a2e19e42bd781463e59dddc3687efce33" title="getCount" alt="" coords="509,259,583,285"/>
+<area shape="rect" id="node14" href="$uart__host_8c.html#a75107164823272beb9f467666391c752" title="getTxData" alt="" coords="505,309,587,336"/>
+<area shape="rect" id="node15" href="$_ring_buffer_8c.html#afc58de5fd336eea8b648561cc107e47d" title="getData" alt="" coords="635,309,701,336"/>
 </map>

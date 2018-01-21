@@ -1,0 +1,113 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Tank/Tank.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Tank/Tank.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'level_sensor\&.h'\fP
+.br
+\fC#include 'Telemetria\&.h'\fP
+.br
+\fC#include 'Tank\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTANK_NUM_MSG\fP   1"
+.br
+.ti -1c
+.RI "#define \fBTANK_TASK_PRIORITY\fP   (tskIDLE_PRIORITY+2)"
+.br
+.ti -1c
+.RI "#define \fBTANK_TASK_STACK_SIZE\fP   (configMINIMAL_STACK_SIZE\-20)"
+.br
+.ti -1c
+.RI "#define \fBUPDATE_TIME_TANK\fP   pdMS_TO_TICKS( 200 )"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlock\fP (void)"
+.br
+.ti -1c
+.RI "void \fBunLock\fP (void)"
+.br
+.ti -1c
+.RI "BaseType_t \fBtank_notify_value\fP (BaseType_t *xHigherPriorityTaskWoken)"
+.br
+.ti -1c
+.RI "void \fBtank_init\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "QueueHandle_t \fBxQueueTank\fP"
+.br
+.ti -1c
+.RI "TaskHandle_t \fBxHandleDataTask\fP"
+.br
+.ti -1c
+.RI "TimerHandle_t \fBxTimerTank\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define TANK_NUM_MSG   1"
+
+.PP
+Definition at line 15 of file Tank\&.c\&.
+.SS "#define TANK_TASK_PRIORITY   (tskIDLE_PRIORITY+2)"
+
+.PP
+Definition at line 16 of file Tank\&.c\&.
+.SS "#define TANK_TASK_STACK_SIZE   (configMINIMAL_STACK_SIZE\-20)"
+
+.PP
+Definition at line 17 of file Tank\&.c\&.
+.SS "#define UPDATE_TIME_TANK   pdMS_TO_TICKS( 200 )"
+
+.PP
+Definition at line 24 of file Tank\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void lock (void)"
+
+.PP
+Definition at line 60 of file Tank\&.c\&.
+.SS "void tank_init (void)"
+
+.PP
+Definition at line 113 of file Tank\&.c\&.
+.SS "BaseType_t tank_notify_value (BaseType_t * xHigherPriorityTaskWoken)\fC [inline]\fP"
+
+.PP
+Definition at line 107 of file Tank\&.c\&.
+.SS "void unLock (void)"
+
+.PP
+Definition at line 67 of file Tank\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "TaskHandle_t xHandleDataTask"
+
+.PP
+Definition at line 19 of file Tank\&.c\&.
+.SS "QueueHandle_t xQueueTank"
+
+.PP
+Definition at line 18 of file Tank\&.c\&.
+.SS "TimerHandle_t xTimerTank"
+
+.PP
+Definition at line 22 of file Tank\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

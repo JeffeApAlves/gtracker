@@ -1,60 +1,187 @@
-\hypertarget{_tank_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Tank/\+Tank.c File Reference}
-\label{_tank_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Tank/\+Tank.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Tank/\+Tank.\+c}}
-{\ttfamily \#include \char`\"{}application.\+h\char`\"{}}\newline
+\hypertarget{_tank_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Tank/\+Tank.c File Reference}
+\label{_tank_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Tank/\+Tank.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Tank/\+Tank.\+c}}
+{\ttfamily \#include \char`\"{}level\+\_\+sensor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Telemetria.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Tank.\+h\char`\"{}}\newline
 Include dependency graph for Tank.\+c\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{_tank_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_tank_8c_a224c17b6dc513e4af677e69c0ca41994}{T\+A\+N\+K\+\_\+\+N\+U\+M\+\_\+\+M\+SG}~1
+\item 
+\#define \hyperlink{_tank_8c_a89813969c3962d856cd428d8b0823276}{T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+2)
+\item 
+\#define \hyperlink{_tank_8c_a8c9c6f25ecdbc5c50df403031d043a3b}{T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE-\/20)
+\item 
+\#define \hyperlink{_tank_8c_ac109d43e7da1946ad7f25a532809efa8}{U\+P\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E\+\_\+\+T\+A\+NK}~pd\+M\+S\+\_\+\+T\+O\+\_\+\+T\+I\+C\+KS( 200 )
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_tank_8c_acb37d871de4e6af32944af79945eede8}{tank\+\_\+task} (void)
+void \hyperlink{_tank_8c_aeb99ff49b4a6d5157416f9b5bd0d9c2c}{lock} (void)
+\item 
+void \hyperlink{_tank_8c_a8ebbc1a55f211bcdd4042733abcca8e6}{un\+Lock} (void)
+\item 
+Base\+Type\+\_\+t \hyperlink{_tank_8c_afd02a9c779ed57bd02a25492ec1bcbef}{tank\+\_\+notify\+\_\+value} (Base\+Type\+\_\+t $\ast$x\+Higher\+Priority\+Task\+Woken)
 \item 
 void \hyperlink{_tank_8c_a5a32849d6b60af2c4107db1dc201f9de}{tank\+\_\+init} (void)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-volatile \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{_tank_8c_a4222d468de4f6bf6dfab9a161cfc068c}{A\+D\+\_\+finished}
+Queue\+Handle\+\_\+t \hyperlink{_tank_8c_ac8777d00a96cf8949a75e798200a563e}{x\+Queue\+Tank}
 \item 
-\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} \hyperlink{_tank_8c_ac8777d00a96cf8949a75e798200a563e}{x\+Queue\+Tank}
+Task\+Handle\+\_\+t \hyperlink{_tank_8c_a6c6254d98e0bb698b75b8dbf508ff507}{x\+Handle\+Data\+Task}
 \item 
-\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} \hyperlink{_tank_8c_a6c6254d98e0bb698b75b8dbf508ff507}{x\+Handle\+Data\+Task}
+Timer\+Handle\+\_\+t \hyperlink{_tank_8c_ad894de400202cb480e7d44cb37bb2cb1}{x\+Timer\+Tank}
 \end{DoxyCompactItemize}
 
 
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_tank_8c_a224c17b6dc513e4af677e69c0ca41994}\label{_tank_8c_a224c17b6dc513e4af677e69c0ca41994}} 
+\index{Tank.\+c@{Tank.\+c}!T\+A\+N\+K\+\_\+\+N\+U\+M\+\_\+\+M\+SG@{T\+A\+N\+K\+\_\+\+N\+U\+M\+\_\+\+M\+SG}}
+\index{T\+A\+N\+K\+\_\+\+N\+U\+M\+\_\+\+M\+SG@{T\+A\+N\+K\+\_\+\+N\+U\+M\+\_\+\+M\+SG}!Tank.\+c@{Tank.\+c}}
+\subsubsection{\texorpdfstring{T\+A\+N\+K\+\_\+\+N\+U\+M\+\_\+\+M\+SG}{TANK\_NUM\_MSG}}
+{\footnotesize\ttfamily \#define T\+A\+N\+K\+\_\+\+N\+U\+M\+\_\+\+M\+SG~1}
+
+
+
+Definition at line 15 of file Tank.\+c.
+
+\mbox{\Hypertarget{_tank_8c_a89813969c3962d856cd428d8b0823276}\label{_tank_8c_a89813969c3962d856cd428d8b0823276}} 
+\index{Tank.\+c@{Tank.\+c}!T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!Tank.\+c@{Tank.\+c}}
+\subsubsection{\texorpdfstring{T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{TANK\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+2)}
+
+
+
+Definition at line 16 of file Tank.\+c.
+
+\mbox{\Hypertarget{_tank_8c_a8c9c6f25ecdbc5c50df403031d043a3b}\label{_tank_8c_a8c9c6f25ecdbc5c50df403031d043a3b}} 
+\index{Tank.\+c@{Tank.\+c}!T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}}
+\index{T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}!Tank.\+c@{Tank.\+c}}
+\subsubsection{\texorpdfstring{T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}{TANK\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define T\+A\+N\+K\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE-\/20)}
+
+
+
+Definition at line 17 of file Tank.\+c.
+
+\mbox{\Hypertarget{_tank_8c_ac109d43e7da1946ad7f25a532809efa8}\label{_tank_8c_ac109d43e7da1946ad7f25a532809efa8}} 
+\index{Tank.\+c@{Tank.\+c}!U\+P\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E\+\_\+\+T\+A\+NK@{U\+P\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E\+\_\+\+T\+A\+NK}}
+\index{U\+P\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E\+\_\+\+T\+A\+NK@{U\+P\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E\+\_\+\+T\+A\+NK}!Tank.\+c@{Tank.\+c}}
+\subsubsection{\texorpdfstring{U\+P\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E\+\_\+\+T\+A\+NK}{UPDATE\_TIME\_TANK}}
+{\footnotesize\ttfamily \#define U\+P\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E\+\_\+\+T\+A\+NK~pd\+M\+S\+\_\+\+T\+O\+\_\+\+T\+I\+C\+KS( 200 )}
+
+
+
+Definition at line 24 of file Tank.\+c.
+
+
+
 \subsection{Function Documentation}
+\mbox{\Hypertarget{_tank_8c_aeb99ff49b4a6d5157416f9b5bd0d9c2c}\label{_tank_8c_aeb99ff49b4a6d5157416f9b5bd0d9c2c}} 
+\index{Tank.\+c@{Tank.\+c}!lock@{lock}}
+\index{lock@{lock}!Tank.\+c@{Tank.\+c}}
+\subsubsection{\texorpdfstring{lock()}{lock()}}
+{\footnotesize\ttfamily void lock (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 60 of file Tank.\+c.
+
 \mbox{\Hypertarget{_tank_8c_a5a32849d6b60af2c4107db1dc201f9de}\label{_tank_8c_a5a32849d6b60af2c4107db1dc201f9de}} 
 \index{Tank.\+c@{Tank.\+c}!tank\+\_\+init@{tank\+\_\+init}}
 \index{tank\+\_\+init@{tank\+\_\+init}!Tank.\+c@{Tank.\+c}}
 \subsubsection{\texorpdfstring{tank\+\_\+init()}{tank\_init()}}
 {\footnotesize\ttfamily void tank\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{_tank_8c_acb37d871de4e6af32944af79945eede8}\label{_tank_8c_acb37d871de4e6af32944af79945eede8}} 
-\index{Tank.\+c@{Tank.\+c}!tank\+\_\+task@{tank\+\_\+task}}
-\index{tank\+\_\+task@{tank\+\_\+task}!Tank.\+c@{Tank.\+c}}
-\subsubsection{\texorpdfstring{tank\+\_\+task()}{tank\_task()}}
-{\footnotesize\ttfamily void tank\+\_\+task (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+Definition at line 113 of file Tank.\+c.
 
 Here is the call graph for this function\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{_tank_8c_a5a32849d6b60af2c4107db1dc201f9de_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{_tank_8c_a5a32849d6b60af2c4107db1dc201f9de_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_tank_8c_afd02a9c779ed57bd02a25492ec1bcbef}\label{_tank_8c_afd02a9c779ed57bd02a25492ec1bcbef}} 
+\index{Tank.\+c@{Tank.\+c}!tank\+\_\+notify\+\_\+value@{tank\+\_\+notify\+\_\+value}}
+\index{tank\+\_\+notify\+\_\+value@{tank\+\_\+notify\+\_\+value}!Tank.\+c@{Tank.\+c}}
+\subsubsection{\texorpdfstring{tank\+\_\+notify\+\_\+value()}{tank\_notify\_value()}}
+{\footnotesize\ttfamily Base\+Type\+\_\+t tank\+\_\+notify\+\_\+value (\begin{DoxyParamCaption}\item[{Base\+Type\+\_\+t $\ast$}]{x\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 107 of file Tank.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{_tank_8c_afd02a9c779ed57bd02a25492ec1bcbef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_tank_8c_a8ebbc1a55f211bcdd4042733abcca8e6}\label{_tank_8c_a8ebbc1a55f211bcdd4042733abcca8e6}} 
+\index{Tank.\+c@{Tank.\+c}!un\+Lock@{un\+Lock}}
+\index{un\+Lock@{un\+Lock}!Tank.\+c@{Tank.\+c}}
+\subsubsection{\texorpdfstring{un\+Lock()}{unLock()}}
+{\footnotesize\ttfamily void un\+Lock (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 67 of file Tank.\+c.
+
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{_tank_8c_a4222d468de4f6bf6dfab9a161cfc068c}\label{_tank_8c_a4222d468de4f6bf6dfab9a161cfc068c}} 
-\index{Tank.\+c@{Tank.\+c}!A\+D\+\_\+finished@{A\+D\+\_\+finished}}
-\index{A\+D\+\_\+finished@{A\+D\+\_\+finished}!Tank.\+c@{Tank.\+c}}
-\subsubsection{\texorpdfstring{A\+D\+\_\+finished}{AD\_finished}}
-{\footnotesize\ttfamily volatile \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} A\+D\+\_\+finished}
-
 \mbox{\Hypertarget{_tank_8c_a6c6254d98e0bb698b75b8dbf508ff507}\label{_tank_8c_a6c6254d98e0bb698b75b8dbf508ff507}} 
 \index{Tank.\+c@{Tank.\+c}!x\+Handle\+Data\+Task@{x\+Handle\+Data\+Task}}
 \index{x\+Handle\+Data\+Task@{x\+Handle\+Data\+Task}!Tank.\+c@{Tank.\+c}}
 \subsubsection{\texorpdfstring{x\+Handle\+Data\+Task}{xHandleDataTask}}
-{\footnotesize\ttfamily \hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} x\+Handle\+Data\+Task}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t x\+Handle\+Data\+Task}
+
+
+
+Definition at line 19 of file Tank.\+c.
 
 \mbox{\Hypertarget{_tank_8c_ac8777d00a96cf8949a75e798200a563e}\label{_tank_8c_ac8777d00a96cf8949a75e798200a563e}} 
 \index{Tank.\+c@{Tank.\+c}!x\+Queue\+Tank@{x\+Queue\+Tank}}
 \index{x\+Queue\+Tank@{x\+Queue\+Tank}!Tank.\+c@{Tank.\+c}}
 \subsubsection{\texorpdfstring{x\+Queue\+Tank}{xQueueTank}}
-{\footnotesize\ttfamily \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue\+Tank}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+Tank}
+
+
+
+Definition at line 18 of file Tank.\+c.
+
+\mbox{\Hypertarget{_tank_8c_ad894de400202cb480e7d44cb37bb2cb1}\label{_tank_8c_ad894de400202cb480e7d44cb37bb2cb1}} 
+\index{Tank.\+c@{Tank.\+c}!x\+Timer\+Tank@{x\+Timer\+Tank}}
+\index{x\+Timer\+Tank@{x\+Timer\+Tank}!Tank.\+c@{Tank.\+c}}
+\subsubsection{\texorpdfstring{x\+Timer\+Tank}{xTimerTank}}
+{\footnotesize\ttfamily Timer\+Handle\+\_\+t x\+Timer\+Tank}
+
+
+
+Definition at line 22 of file Tank.\+c.
 

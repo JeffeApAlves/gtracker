@@ -1,21 +1,6 @@
 var searchData=
 [
-  ['pdd_5ftypes_2eh',['PDD_Types.h',['../_p_d_d___types_8h.html',1,'']]],
-  ['pe_5fconst_2eh',['PE_Const.h',['../_p_e___const_8h.html',1,'']]],
-  ['pe_5ferror_2eh',['PE_Error.h',['../_p_e___error_8h.html',1,'']]],
-  ['pe_5fldd_2ec',['PE_LDD.c',['../_p_e___l_d_d_8c.html',1,'']]],
-  ['pe_5fldd_2ed',['PE_LDD.d',['../_p_e___l_d_d_8d.html',1,'']]],
-  ['pe_5fldd_2eh',['PE_LDD.h',['../_p_e___l_d_d_8h.html',1,'']]],
-  ['pe_5ftypes_2eh',['PE_Types.h',['../_p_e___types_8h.html',1,'']]],
-  ['pit_5fpdd_2eh',['PIT_PDD.h',['../_p_i_t___p_d_d_8h.html',1,'']]],
-  ['port_2ec',['port.c',['../port_8c.html',1,'']]],
-  ['port_2ed',['port.d',['../port_8d.html',1,'']]],
-  ['port_5fpdd_2eh',['PORT_PDD.h',['../_p_o_r_t___p_d_d_8h.html',1,'']]],
-  ['portable_2eh',['portable.h',['../portable_8h.html',1,'']]],
-  ['portmacro_2eh',['portmacro.h',['../portmacro_8h.html',1,'']]],
-  ['portticks_2eh',['portTicks.h',['../port_ticks_8h.html',1,'']]],
-  ['projdefs_2eh',['projdefs.h',['../projdefs_8h.html',1,'']]],
-  ['protocol_2ec',['protocol.c',['../protocol_8c.html',1,'']]],
-  ['protocol_2ed',['protocol.d',['../protocol_8d.html',1,'']]],
-  ['protocol_2eh',['protocol.h',['../protocol_8h.html',1,'']]]
+  ['uart_5fgps_2ec',['uart_gps.c',['../uart__gps_8c.html',1,'']]],
+  ['uart_5fhost_2ec',['uart_host.c',['../uart__host_8c.html',1,'']]],
+  ['utils_2ec',['utils.c',['../utils_8c.html',1,'']]]
 ];

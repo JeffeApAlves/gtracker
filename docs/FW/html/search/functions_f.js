@@ -1,11 +1,19 @@
 var searchData=
 [
-  ['sendframe',['sendFrame',['../protocol_8h.html#a302a9d8b5d0da5d55aa1dec9c4da3f56',1,'sendFrame(char *frame):&#160;protocol.c'],['../protocol_8c.html#a302a9d8b5d0da5d55aa1dec9c4da3f56',1,'sendFrame(char *frame):&#160;protocol.c']]],
-  ['sendpackage',['sendPackage',['../protocol_8h.html#aeba727db883a5ed9fdd0fd7777bf1666',1,'sendPackage(CommunicationPackage *package):&#160;protocol.c'],['../protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666',1,'sendPackage(CommunicationPackage *package):&#160;protocol.c']]],
-  ['setclock',['setClock',['../clock_8h.html#a3b0047dd15eb5bd8108d439e5c29e72f',1,'setClock(LDD_RTC_TTime *time):&#160;clock.c'],['../clock_8c.html#a3b0047dd15eb5bd8108d439e5c29e72f',1,'setClock(LDD_RTC_TTime *time):&#160;clock.c']]],
-  ['setclockbystring',['setClockByString',['../clock_8h.html#aab33aa252100dcd4b97413fdc9ad4dbc',1,'setClockByString(char *date, char *time):&#160;clock.c'],['../clock_8c.html#aab33aa252100dcd4b97413fdc9ad4dbc',1,'setClockByString(char *date, char *time):&#160;clock.c']]],
-  ['str_5fappend',['str_append',['../utils_8h.html#ae595f51afa4b8d2094c67c712f58672c',1,'str_append(char subject[], char insert[], int pos):&#160;utils.c'],['../utils_8c.html#ae595f51afa4b8d2094c67c712f58672c',1,'str_append(char subject[], char insert[], int pos):&#160;utils.c']]],
-  ['str_5fsplit',['str_split',['../utils_8h.html#ab2c54b12f65bfbb0724c494bf53d6422',1,'str_split(List *result, char *a_str, const char a_delim):&#160;utils.c'],['../utils_8c.html#aff8e889d69b7aecc57dfc4326e76f537',1,'str_split(List *result, char *str, const char a_delim):&#160;utils.c']]],
-  ['strtodata',['strToData',['../clock_8h.html#a0b7cca781d24b1849f21b6a57410356d',1,'strToData(LDD_RTC_TTime *date_time, char *date, char *time):&#160;clock.c'],['../clock_8c.html#a0b7cca781d24b1849f21b6a57410356d',1,'strToData(LDD_RTC_TTime *date_time, char *date, char *time):&#160;clock.c']]],
-  ['strtotimestamp',['strToTimeStamp',['../clock_8h.html#ae11b9efceb4bc7f2aa38c00fe8ac3bb0',1,'strToTimeStamp(char *date, char *time):&#160;clock.c'],['../clock_8c.html#ae11b9efceb4bc7f2aa38c00fe8ac3bb0',1,'strToTimeStamp(char *date, char *time):&#160;clock.c']]]
+  ['uart_5fgps_5fdeinit',['uart_gps_Deinit',['../uart__gps_8c.html#a2b686472b3f50aa2fc9bffcb61158f46',1,'uart_gps.c']]],
+  ['uart_5fgps_5finit',['uart_gps_init',['../uart__gps_8c.html#a5f3833472b1d5a63f27d1d2886fb9998',1,'uart_gps.c']]],
+  ['uart_5fgps_5frx_5fhead',['uart_gps_rx_head',['../uart__gps_8c.html#a519e967c42e4f26bc33f3cbd6a1f5f7c',1,'uart_gps.c']]],
+  ['uart_5fgps_5frx_5fmax',['uart_gps_rx_max',['../uart__gps_8c.html#a14157d4ac0c8f1c9cd89c3f24b6cef33',1,'uart_gps.c']]],
+  ['uart_5fgps_5frx_5ftail',['uart_gps_rx_tail',['../uart__gps_8c.html#a7cae609403ebe8ae6dca44da82938e80',1,'uart_gps.c']]],
+  ['uart_5fhost_5fdeinit',['uart_host_Deinit',['../uart__host_8c.html#a3ee66ef273e251ee4a07e6e9a14e7b8b',1,'uart_host.c']]],
+  ['uart_5fhost_5finit',['uart_host_init',['../uart__host_8c.html#ace09ad3f10025460b1942a4100f4b782',1,'uart_host.c']]],
+  ['uart_5fhost_5frx_5fhead',['uart_host_rx_head',['../uart__host_8c.html#a8ce1ec172f1dc93b6c70802e66c44cde',1,'uart_host.c']]],
+  ['uart_5fhost_5frx_5fmax',['uart_host_rx_max',['../uart__host_8c.html#a8d05660952880e8145f558ae483a1924',1,'uart_host.c']]],
+  ['uart_5fhost_5frx_5ftail',['uart_host_rx_tail',['../uart__host_8c.html#a0f47012cf6124e98b53e57c915db1edf',1,'uart_host.c']]],
+  ['uart_5fhost_5ftx_5fhead',['uart_host_tx_head',['../uart__host_8c.html#a6811369001881534fbcdf8e2090bb448',1,'uart_host.c']]],
+  ['uart_5fhost_5ftx_5fmax',['uart_host_tx_max',['../uart__host_8c.html#ab8f55750ccb8b860cab6695855c97e62',1,'uart_host.c']]],
+  ['uart_5fhost_5ftx_5ftail',['uart_host_tx_tail',['../uart__host_8c.html#a5f5e561e0bfa292524f57df593fba433',1,'uart_host.c']]],
+  ['unix_5ftime_5fin_5fseconds',['unix_time_in_seconds',['../clock_8c.html#a90ddb7c444f1d03ebd65306812e0fa5d',1,'clock.c']]],
+  ['unlock',['unLock',['../_tank_8c.html#a8ebbc1a55f211bcdd4042733abcca8e6',1,'Tank.c']]],
+  ['updateentityclock',['updateEntityClock',['../clock_8c.html#a70ec69864aa7e10f84728c91849abb66',1,'clock.c']]]
 ];

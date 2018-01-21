@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GoodsTracker: F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/Accelerometer/MMA8451.c File Reference</title>
+<title>GoodsTracker: F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Accelerometer/MMA8451.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,175 +68,45 @@ $(function() {
 <div class="title">MMA8451.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="_i2_c2_8h_source.html">I2C2.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_m_m_a8451_8h_source.html">MMA8451.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;MMA8451.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for MMA8451.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_accelerometer_2_m_m_a8451_8c" alt=""/></div>
-<!-- MAP 0 -->
+<div class="center"><img src="_m_m_a8451_8c__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_accelerometer_2_m_m_a8451_8c" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_accelerometer_2_m_m_a8451_8c" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_accelerometer_2_m_m_a8451_8c">
+</map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="_m_m_a8451_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a80d820ba78d081f0c2e04af03801726f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a80d820ba78d081f0c2e04af03801726f">I2C_Read</a> (uint8_t addr, uint8_t *data)</td></tr>
-<tr class="separator:a80d820ba78d081f0c2e04af03801726f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac77754b79167a1caf098c606513dc6ac"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#ac77754b79167a1caf098c606513dc6ac">I2C_ReadBuffer</a> (uint8_t addr, uint8_t *data, short dataSize)</td></tr>
-<tr class="separator:ac77754b79167a1caf098c606513dc6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e8629ad586c9518afa0db28d5dcb4a2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a0e8629ad586c9518afa0db28d5dcb4a2">I2C_Write</a> (uint8_t addr, uint8_t val)</td></tr>
-<tr class="separator:a0e8629ad586c9518afa0db28d5dcb4a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2abdfa0f6df1f55e7ab9337a127aaa0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#af2abdfa0f6df1f55e7ab9337a127aaa0">MMA845x_getXYZ</a> (<a class="el" href="struct_accelerometer.html">Accelerometer</a> *acc)</td></tr>
+<tr class="memitem:af2abdfa0f6df1f55e7ab9337a127aaa0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#af2abdfa0f6df1f55e7ab9337a127aaa0">MMA845x_getXYZ</a> (Accelerometer *acc)</td></tr>
 <tr class="separator:af2abdfa0f6df1f55e7ab9337a127aaa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa596cfe6af07f9cc0bf276670b525747"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#aa596cfe6af07f9cc0bf276670b525747">MMA845x_init</a> (void)</td></tr>
+<tr class="separator:aa596cfe6af07f9cc0bf276670b525747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a008d93080f6e4e3f833b57b289d181b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a008d93080f6e4e3f833b57b289d181b4">MMA845x_deInit</a> (void)</td></tr>
+<tr class="separator:a008d93080f6e4e3f833b57b289d181b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91842bf3851e273e2929e320fb68635e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a91842bf3851e273e2929e320fb68635e">MMA845x_Standby</a> (void)</td></tr>
 <tr class="separator:a91842bf3851e273e2929e320fb68635e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc545c7b801b54f51a08d947ecf4ef80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#adc545c7b801b54f51a08d947ecf4ef80">MMA845x_Active</a> (void)</td></tr>
 <tr class="separator:adc545c7b801b54f51a08d947ecf4ef80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a525869d3f463eab57cf9240a452eb612"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a525869d3f463eab57cf9240a452eb612">MMA845x_init</a> (void)</td></tr>
-<tr class="separator:a525869d3f463eab57cf9240a452eb612"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a008d93080f6e4e3f833b57b289d181b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a008d93080f6e4e3f833b57b289d181b4">MMA845x_deInit</a> (void)</td></tr>
-<tr class="separator:a008d93080f6e4e3f833b57b289d181b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada546ad7c1ca2dd415d341ad8eafa182"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_m_a8451_8h.html#a0e13c29d618e6adff405b7125b6fb042">mma8451_range_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#ada546ad7c1ca2dd415d341ad8eafa182">MMA845x_getRange</a> (void)</td></tr>
-<tr class="separator:ada546ad7c1ca2dd415d341ad8eafa182"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae637055d69d5c9360316cd6ecc3861f9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#ae637055d69d5c9360316cd6ecc3861f9">MMA845x_Reset</a> (void)</td></tr>
-<tr class="separator:ae637055d69d5c9360316cd6ecc3861f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fd0c1ca81fa039488ef59b91ce10548"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a6fd0c1ca81fa039488ef59b91ce10548">MMA845x_Config</a> (void)</td></tr>
+<tr class="separator:a6fd0c1ca81fa039488ef59b91ce10548"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b0d8975a93e8b74b334f18b87e05e65"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a7b0d8975a93e8b74b334f18b87e05e65">MMA845x_getRange</a> (mma8451_range_t *range)</td></tr>
+<tr class="separator:a7b0d8975a93e8b74b334f18b87e05e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a092d7cad7a4eac6c358f1e164091eb33"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a092d7cad7a4eac6c358f1e164091eb33">MMA845x_Reset</a> (void)</td></tr>
+<tr class="separator:a092d7cad7a4eac6c358f1e164091eb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa47ac9bcc80b7c31e4295e425183bd6c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#aa47ac9bcc80b7c31e4295e425183bd6c">MMA845x_getOrientation</a> (void)</td></tr>
 <tr class="separator:aa47ac9bcc80b7c31e4295e425183bd6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b98eab84f4cdce02e412ff4fcd20803"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a4b98eab84f4cdce02e412ff4fcd20803">MMA845x_setDataRate</a> (<a class="el" href="_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555">mma8451_dataRate_t</a> dataRate)</td></tr>
+<tr class="memitem:a4b98eab84f4cdce02e412ff4fcd20803"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#a4b98eab84f4cdce02e412ff4fcd20803">MMA845x_setDataRate</a> (mma8451_dataRate_t dataRate)</td></tr>
 <tr class="separator:a4b98eab84f4cdce02e412ff4fcd20803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaeb95ff6febc988863cd4d5b15d3cd7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#aaeb95ff6febc988863cd4d5b15d3cd7b">MMA845x_setNoise</a> (<a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> flag)</td></tr>
+<tr class="memitem:aaeb95ff6febc988863cd4d5b15d3cd7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#aaeb95ff6febc988863cd4d5b15d3cd7b">MMA845x_setNoise</a> (bool flag)</td></tr>
 <tr class="separator:aaeb95ff6febc988863cd4d5b15d3cd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec369c1c39df77e524df365b636253dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#aec369c1c39df77e524df365b636253dc">MMA845x_setRange</a> (<a class="el" href="_m_m_a8451_8h.html#a0e13c29d618e6adff405b7125b6fb042">mma8451_range_t</a> range)</td></tr>
+<tr class="memitem:aec369c1c39df77e524df365b636253dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#aec369c1c39df77e524df365b636253dc">MMA845x_setRange</a> (mma8451_range_t range)</td></tr>
 <tr class="separator:aec369c1c39df77e524df365b636253dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7938c3d33b88321d9cf68b0de4df633"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_m_a8451_8c.html#aa7938c3d33b88321d9cf68b0de4df633">toDecimal</a> (int8_t *hi_lo)</td></tr>
-<tr class="separator:aa7938c3d33b88321d9cf68b0de4df633"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a80d820ba78d081f0c2e04af03801726f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80d820ba78d081f0c2e04af03801726f">&#9670;&nbsp;</a></span>I2C_Read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t I2C_Read </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>addr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_a80d820ba78d081f0c2e04af03801726f_cgraph.png" border="0" usemap="#_m_m_a8451_8c_a80d820ba78d081f0c2e04af03801726f_cgraph" alt=""/></div>
-<!-- MAP 1 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_a80d820ba78d081f0c2e04af03801726f_icgraph.png" border="0" usemap="#_m_m_a8451_8c_a80d820ba78d081f0c2e04af03801726f_icgraph" alt=""/></div>
-<!-- MAP 2 -->
-</div>
-
-</div>
-</div>
-<a id="ac77754b79167a1caf098c606513dc6ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac77754b79167a1caf098c606513dc6ac">&#9670;&nbsp;</a></span>I2C_ReadBuffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t I2C_ReadBuffer </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>addr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">short&#160;</td>
-          <td class="paramname"><em>dataSize</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_ac77754b79167a1caf098c606513dc6ac_cgraph.png" border="0" usemap="#_m_m_a8451_8c_ac77754b79167a1caf098c606513dc6ac_cgraph" alt=""/></div>
-<!-- MAP 3 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_ac77754b79167a1caf098c606513dc6ac_icgraph.png" border="0" usemap="#_m_m_a8451_8c_ac77754b79167a1caf098c606513dc6ac_icgraph" alt=""/></div>
-<!-- MAP 4 -->
-</div>
-
-</div>
-</div>
-<a id="a0e8629ad586c9518afa0db28d5dcb4a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e8629ad586c9518afa0db28d5dcb4a2">&#9670;&nbsp;</a></span>I2C_Write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t I2C_Write </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>addr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>val</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_a0e8629ad586c9518afa0db28d5dcb4a2_cgraph.png" border="0" usemap="#_m_m_a8451_8c_a0e8629ad586c9518afa0db28d5dcb4a2_cgraph" alt=""/></div>
-<!-- MAP 5 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_a0e8629ad586c9518afa0db28d5dcb4a2_icgraph.png" border="0" usemap="#_m_m_a8451_8c_a0e8629ad586c9518afa0db28d5dcb4a2_icgraph" alt=""/></div>
-<!-- MAP 6 -->
-</div>
-
-</div>
-</div>
 <a id="adc545c7b801b54f51a08d947ecf4ef80"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc545c7b801b54f51a08d947ecf4ef80">&#9670;&nbsp;</a></span>MMA845x_Active()</h2>
 
@@ -252,17 +122,47 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_adc545c7b801b54f51a08d947ecf4ef80_cgraph.png" border="0" usemap="#_m_m_a8451_8c_adc545c7b801b54f51a08d947ecf4ef80_cgraph" alt=""/></div>
-<!-- MAP 7 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00093">93</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_m_m_a8451_8c_adc545c7b801b54f51a08d947ecf4ef80_icgraph.png" border="0" usemap="#_m_m_a8451_8c_adc545c7b801b54f51a08d947ecf4ef80_icgraph" alt=""/></div>
-<!-- MAP 8 -->
+<map name="_m_m_a8451_8c_adc545c7b801b54f51a08d947ecf4ef80_icgraph" id="_m_m_a8451_8c_adc545c7b801b54f51a08d947ecf4ef80_icgraph">
+<area shape="rect" id="node2" href="_m_m_a8451_8c.html#a6fd0c1ca81fa039488ef59b91ce10548" title="MMA845x_Config" alt="" coords="194,5,318,32"/>
+<area shape="rect" id="node3" href="_m_m_a8451_8c.html#a4b98eab84f4cdce02e412ff4fcd20803" title="MMA845x_setDataRate" alt="" coords="176,56,336,83"/>
+<area shape="rect" id="node4" href="_m_m_a8451_8c.html#aaeb95ff6febc988863cd4d5b15d3cd7b" title="MMA845x_setNoise" alt="" coords="187,107,325,133"/>
+<area shape="rect" id="node5" href="_m_m_a8451_8c.html#aec369c1c39df77e524df365b636253dc" title="MMA845x_setRange" alt="" coords="185,157,327,184"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6fd0c1ca81fa039488ef59b91ce10548"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fd0c1ca81fa039488ef59b91ce10548">&#9670;&nbsp;</a></span>MMA845x_Config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MMA845x_Config </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00102">102</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="_m_m_a8451_8c_a6fd0c1ca81fa039488ef59b91ce10548_cgraph.png" border="0" usemap="#_m_m_a8451_8c_a6fd0c1ca81fa039488ef59b91ce10548_cgraph" alt=""/></div>
+<map name="_m_m_a8451_8c_a6fd0c1ca81fa039488ef59b91ce10548_cgraph" id="_m_m_a8451_8c_a6fd0c1ca81fa039488ef59b91ce10548_cgraph">
+<area shape="rect" id="node2" href="_m_m_a8451_8c.html#a91842bf3851e273e2929e320fb68635e" title="MMA845x_Standby" alt="" coords="177,5,313,32"/>
+<area shape="rect" id="node3" href="_m_m_a8451_8c.html#adc545c7b801b54f51a08d947ecf4ef80" title="MMA845x_Active" alt="" coords="184,56,307,83"/>
+</map>
 </div>
 
 </div>
@@ -272,6 +172,9 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void MMA845x_deInit </td>
@@ -281,18 +184,21 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_a008d93080f6e4e3f833b57b289d181b4_cgraph.png" border="0" usemap="#_m_m_a8451_8c_a008d93080f6e4e3f833b57b289d181b4_cgraph" alt=""/></div>
-<!-- MAP 9 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00080">80</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_m_m_a8451_8c_a008d93080f6e4e3f833b57b289d181b4_icgraph.png" border="0" usemap="#_m_m_a8451_8c_a008d93080f6e4e3f833b57b289d181b4_icgraph" alt=""/></div>
-<!-- MAP 10 -->
+<map name="_m_m_a8451_8c_a008d93080f6e4e3f833b57b289d181b4_icgraph" id="_m_m_a8451_8c_a008d93080f6e4e3f833b57b289d181b4_icgraph">
+<area shape="rect" id="node2" href="_accelerometer_8c.html#acaea9d3d0f1adb90c3477d60905dec5f" title="deInitAccelerometer" alt="" coords="172,5,309,32"/>
+</map>
 </div>
 
 </div>
@@ -312,41 +218,35 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_aa47ac9bcc80b7c31e4295e425183bd6c_cgraph.png" border="0" usemap="#_m_m_a8451_8c_aa47ac9bcc80b7c31e4295e425183bd6c_cgraph" alt=""/></div>
-<!-- MAP 11 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00177">177</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 
 </div>
 </div>
-<a id="ada546ad7c1ca2dd415d341ad8eafa182"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada546ad7c1ca2dd415d341ad8eafa182">&#9670;&nbsp;</a></span>MMA845x_getRange()</h2>
+<a id="a7b0d8975a93e8b74b334f18b87e05e65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b0d8975a93e8b74b334f18b87e05e65">&#9670;&nbsp;</a></span>MMA845x_getRange()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_m_m_a8451_8h.html#a0e13c29d618e6adff405b7125b6fb042">mma8451_range_t</a> MMA845x_getRange </td>
+          <td class="memname">bool MMA845x_getRange </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">mma8451_range_t *&#160;</td>
+          <td class="paramname"><em>range</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_ada546ad7c1ca2dd415d341ad8eafa182_cgraph.png" border="0" usemap="#_m_m_a8451_8c_ada546ad7c1ca2dd415d341ad8eafa182_cgraph" alt=""/></div>
-<!-- MAP 12 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00144">144</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_ada546ad7c1ca2dd415d341ad8eafa182_icgraph.png" border="0" usemap="#_m_m_a8451_8c_ada546ad7c1ca2dd415d341ad8eafa182_icgraph" alt=""/></div>
-<!-- MAP 13 -->
+<div class="center"><img src="_m_m_a8451_8c_a7b0d8975a93e8b74b334f18b87e05e65_icgraph.png" border="0" usemap="#_m_m_a8451_8c_a7b0d8975a93e8b74b334f18b87e05e65_icgraph" alt=""/></div>
+<map name="_m_m_a8451_8c_a7b0d8975a93e8b74b334f18b87e05e65_icgraph" id="_m_m_a8451_8c_a7b0d8975a93e8b74b334f18b87e05e65_icgraph">
+<area shape="rect" id="node2" href="_m_m_a8451_8c.html#af2abdfa0f6df1f55e7ab9337a127aaa0" title="MMA845x_getXYZ" alt="" coords="196,5,325,32"/>
+</map>
 </div>
 
 </div>
@@ -358,37 +258,36 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> MMA845x_getXYZ </td>
+          <td class="memname">bool MMA845x_getXYZ </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_accelerometer.html">Accelerometer</a> *&#160;</td>
+          <td class="paramtype">Accelerometer *&#160;</td>
           <td class="paramname"><em>acc</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Realiza a leitura de todos os eixos </p>
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00014">14</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_m_m_a8451_8c_af2abdfa0f6df1f55e7ab9337a127aaa0_cgraph.png" border="0" usemap="#_m_m_a8451_8c_af2abdfa0f6df1f55e7ab9337a127aaa0_cgraph" alt=""/></div>
-<!-- MAP 14 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_af2abdfa0f6df1f55e7ab9337a127aaa0_icgraph.png" border="0" usemap="#_m_m_a8451_8c_af2abdfa0f6df1f55e7ab9337a127aaa0_icgraph" alt=""/></div>
-<!-- MAP 15 -->
+<map name="_m_m_a8451_8c_af2abdfa0f6df1f55e7ab9337a127aaa0_cgraph" id="_m_m_a8451_8c_af2abdfa0f6df1f55e7ab9337a127aaa0_cgraph">
+<area shape="rect" id="node2" href="_m_m_a8451_8c.html#a7b0d8975a93e8b74b334f18b87e05e65" title="MMA845x_getRange" alt="" coords="183,5,325,32"/>
+</map>
 </div>
 
 </div>
 </div>
-<a id="a525869d3f463eab57cf9240a452eb612"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a525869d3f463eab57cf9240a452eb612">&#9670;&nbsp;</a></span>MMA845x_init()</h2>
+<a id="aa596cfe6af07f9cc0bf276670b525747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa596cfe6af07f9cc0bf276670b525747">&#9670;&nbsp;</a></span>MMA845x_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void MMA845x_init </td>
+          <td class="memname">bool MMA845x_init </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -396,29 +295,19 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_a525869d3f463eab57cf9240a452eb612_cgraph.png" border="0" usemap="#_m_m_a8451_8c_a525869d3f463eab57cf9240a452eb612_cgraph" alt=""/></div>
-<!-- MAP 16 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_a525869d3f463eab57cf9240a452eb612_icgraph.png" border="0" usemap="#_m_m_a8451_8c_a525869d3f463eab57cf9240a452eb612_icgraph" alt=""/></div>
-<!-- MAP 17 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00053">53</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 
 </div>
 </div>
-<a id="ae637055d69d5c9360316cd6ecc3861f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae637055d69d5c9360316cd6ecc3861f9">&#9670;&nbsp;</a></span>MMA845x_Reset()</h2>
+<a id="a092d7cad7a4eac6c358f1e164091eb33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a092d7cad7a4eac6c358f1e164091eb33">&#9670;&nbsp;</a></span>MMA845x_Reset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t MMA845x_Reset </td>
+          <td class="memname">bool MMA845x_Reset </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -426,12 +315,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_ae637055d69d5c9360316cd6ecc3861f9_cgraph.png" border="0" usemap="#_m_m_a8451_8c_ae637055d69d5c9360316cd6ecc3861f9_cgraph" alt=""/></div>
-<!-- MAP 18 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00159">159</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 
 </div>
 </div>
@@ -444,17 +329,22 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void MMA845x_setDataRate </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_m_a8451_8h.html#a313dbf4a24e2b7d215d4553ee753b555">mma8451_dataRate_t</a>&#160;</td>
+          <td class="paramtype">mma8451_dataRate_t&#160;</td>
           <td class="paramname"><em>dataRate</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00187">187</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_m_m_a8451_8c_a4b98eab84f4cdce02e412ff4fcd20803_cgraph.png" border="0" usemap="#_m_m_a8451_8c_a4b98eab84f4cdce02e412ff4fcd20803_cgraph" alt=""/></div>
-<!-- MAP 19 -->
+<map name="_m_m_a8451_8c_a4b98eab84f4cdce02e412ff4fcd20803_cgraph" id="_m_m_a8451_8c_a4b98eab84f4cdce02e412ff4fcd20803_cgraph">
+<area shape="rect" id="node2" href="_m_m_a8451_8c.html#a91842bf3851e273e2929e320fb68635e" title="MMA845x_Standby" alt="" coords="213,5,349,32"/>
+<area shape="rect" id="node3" href="_m_m_a8451_8c.html#adc545c7b801b54f51a08d947ecf4ef80" title="MMA845x_Active" alt="" coords="220,56,343,83"/>
+</map>
 </div>
 
 </div>
@@ -468,17 +358,22 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void MMA845x_setNoise </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>flag</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00205">205</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_m_m_a8451_8c_aaeb95ff6febc988863cd4d5b15d3cd7b_cgraph.png" border="0" usemap="#_m_m_a8451_8c_aaeb95ff6febc988863cd4d5b15d3cd7b_cgraph" alt=""/></div>
-<!-- MAP 20 -->
+<map name="_m_m_a8451_8c_aaeb95ff6febc988863cd4d5b15d3cd7b_cgraph" id="_m_m_a8451_8c_aaeb95ff6febc988863cd4d5b15d3cd7b_cgraph">
+<area shape="rect" id="node2" href="_m_m_a8451_8c.html#a91842bf3851e273e2929e320fb68635e" title="MMA845x_Standby" alt="" coords="192,5,328,32"/>
+<area shape="rect" id="node3" href="_m_m_a8451_8c.html#adc545c7b801b54f51a08d947ecf4ef80" title="MMA845x_Active" alt="" coords="199,56,321,83"/>
+</map>
 </div>
 
 </div>
@@ -492,17 +387,22 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void MMA845x_setRange </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_m_a8451_8h.html#a0e13c29d618e6adff405b7125b6fb042">mma8451_range_t</a>&#160;</td>
+          <td class="paramtype">mma8451_range_t&#160;</td>
           <td class="paramname"><em>range</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00227">227</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_m_m_a8451_8c_aec369c1c39df77e524df365b636253dc_cgraph.png" border="0" usemap="#_m_m_a8451_8c_aec369c1c39df77e524df365b636253dc_cgraph" alt=""/></div>
-<!-- MAP 21 -->
+<map name="_m_m_a8451_8c_aec369c1c39df77e524df365b636253dc_cgraph" id="_m_m_a8451_8c_aec369c1c39df77e524df365b636253dc_cgraph">
+<area shape="rect" id="node2" href="_m_m_a8451_8c.html#a91842bf3851e273e2929e320fb68635e" title="MMA845x_Standby" alt="" coords="196,5,332,32"/>
+<area shape="rect" id="node3" href="_m_m_a8451_8c.html#adc545c7b801b54f51a08d947ecf4ef80" title="MMA845x_Active" alt="" coords="203,56,325,83"/>
+</map>
 </div>
 
 </div>
@@ -522,41 +422,18 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_a91842bf3851e273e2929e320fb68635e_cgraph.png" border="0" usemap="#_m_m_a8451_8c_a91842bf3851e273e2929e320fb68635e_cgraph" alt=""/></div>
-<!-- MAP 22 -->
-</div>
+
+<p class="definition">Definition at line <a class="el" href="_m_m_a8451_8c_source.html#l00084">84</a> of file <a class="el" href="_m_m_a8451_8c_source.html">MMA8451.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_m_m_a8451_8c_a91842bf3851e273e2929e320fb68635e_icgraph.png" border="0" usemap="#_m_m_a8451_8c_a91842bf3851e273e2929e320fb68635e_icgraph" alt=""/></div>
-<!-- MAP 23 -->
-</div>
-
-</div>
-</div>
-<a id="aa7938c3d33b88321d9cf68b0de4df633"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7938c3d33b88321d9cf68b0de4df633">&#9670;&nbsp;</a></span>toDecimal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">short toDecimal </td>
-          <td>(</td>
-          <td class="paramtype">int8_t *&#160;</td>
-          <td class="paramname"><em>hi_lo</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_m_m_a8451_8c_aa7938c3d33b88321d9cf68b0de4df633_icgraph.png" border="0" usemap="#_m_m_a8451_8c_aa7938c3d33b88321d9cf68b0de4df633_icgraph" alt=""/></div>
-<!-- MAP 24 -->
+<map name="_m_m_a8451_8c_a91842bf3851e273e2929e320fb68635e_icgraph" id="_m_m_a8451_8c_a91842bf3851e273e2929e320fb68635e_icgraph">
+<area shape="rect" id="node2" href="_m_m_a8451_8c.html#a6fd0c1ca81fa039488ef59b91ce10548" title="MMA845x_Config" alt="" coords="207,5,331,32"/>
+<area shape="rect" id="node3" href="_m_m_a8451_8c.html#a4b98eab84f4cdce02e412ff4fcd20803" title="MMA845x_setDataRate" alt="" coords="189,56,349,83"/>
+<area shape="rect" id="node4" href="_m_m_a8451_8c.html#aaeb95ff6febc988863cd4d5b15d3cd7b" title="MMA845x_setNoise" alt="" coords="200,107,339,133"/>
+<area shape="rect" id="node5" href="_m_m_a8451_8c.html#aec369c1c39df77e524df365b636253dc" title="MMA845x_setRange" alt="" coords="198,157,341,184"/>
+</map>
 </div>
 
 </div>

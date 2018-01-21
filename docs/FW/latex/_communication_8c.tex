@@ -1,35 +1,120 @@
-\hypertarget{_communication_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Communication.c File Reference}
-\label{_communication_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Communication.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Communication.\+c}}
+\hypertarget{_communication_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Communication.c File Reference}
+\label{_communication_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Communication.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Communication.\+c}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}ihm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}uart\+\_\+host.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}protocol.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}application.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}communication.\+h\char`\"{}}\newline
 Include dependency graph for Communication.\+c\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_communication_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_communication_8c_a1312fc86c3f83f8609ef1ef83ba6e68b}{R\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG}~1
+\item 
+\#define \hyperlink{_communication_8c_ad61fdfb913711d9ac5bf708e47d24147}{R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+4)
+\item 
+\#define \hyperlink{_communication_8c_ad7194d989cbcba1df366a9837598584b}{R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE + 20)
+\item 
+\#define \hyperlink{_communication_8c_a17f9a9e6cd03e855b858a37a27ff2f9b}{T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+4)
+\item 
+\#define \hyperlink{_communication_8c_a7e2e304fdf47c9811f7efea8506ebd68}{T\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG}~1
+\item 
+\#define \hyperlink{_communication_8c_aabfe0a2916052568381e63b6478797e0}{T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE + 140)
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_communication_8c_a58866765673e9e11a4dd44a01f1926dd}{rx\+Package\+\_\+task} ()
-\item 
-void \hyperlink{_communication_8c_aff899dab1f89ad1053aed4cf3dd37602}{tx\+Package\+\_\+task} ()
-\item 
 void \hyperlink{_communication_8c_a9d1c122bc3538d94d6fd8328cd6c6a2d}{communication\+\_\+init} (void)
 \item 
-void \hyperlink{_communication_8c_ac31ce2706aaee3da949591ac4292a18f}{put\+Package\+Rx} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package\+\_\+rx)
+Base\+Type\+\_\+t \hyperlink{_communication_8c_af71d54ec927a67be5bc38ad6eb3c4165}{communication\+\_\+notify\+\_\+rx\+\_\+char} (Base\+Type\+\_\+t $\ast$x\+Higher\+Priority\+Task\+Woken)
 \item 
-void \hyperlink{_communication_8c_abe44090b263baaab26e44a41c6864837}{put\+Package\+Tx} (\hyperlink{struct_communication_package}{Communication\+Package} $\ast$package\+\_\+tx)
+void \hyperlink{_communication_8c_ab8a85cfd7f286cb2117882fe974ebb40}{communication\+\_\+notify\+\_\+tx} (void)
+\item 
+void \hyperlink{_communication_8c_ac31ce2706aaee3da949591ac4292a18f}{put\+Package\+Rx} (Communication\+Package $\ast$package\+\_\+rx)
+\item 
+void \hyperlink{_communication_8c_abe44090b263baaab26e44a41c6864837}{put\+Package\+Tx} (Communication\+Package $\ast$package\+\_\+tx)
+\item 
+void \hyperlink{_communication_8c_af74030deafd82d23f382f7fd8213cdd0}{send\+Answer} (Communication\+Package $\ast$package)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} \hyperlink{_communication_8c_af247019b6980e385285ba06a95b7c34a}{x\+Handle\+Rx\+Task}
+Queue\+Handle\+\_\+t \hyperlink{_communication_8c_af9f72dcffc16a30d728e4d5b628808da}{x\+Queue\+Package\+Rx}
 \item 
-\hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} \hyperlink{_communication_8c_ab9292c77ff8b4ab31eb23dee60a8da3f}{x\+Handle\+Tx\+Task}
-\item 
-\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} \hyperlink{_communication_8c_a02edb8e75395166cef3282717e90c4d8}{x\+Queue\+Rx}
-\item 
-\hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} \hyperlink{_communication_8c_abc0a58f6b6fedcdeabdacea8823a971a}{x\+Queue\+Tx}
+Queue\+Handle\+\_\+t \hyperlink{_communication_8c_a63d1e3ac9098c1dfc3f6ac734919bdc5}{x\+Queue\+Package\+Tx}
 \end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_communication_8c_a1312fc86c3f83f8609ef1ef83ba6e68b}\label{_communication_8c_a1312fc86c3f83f8609ef1ef83ba6e68b}} 
+\index{Communication.\+c@{Communication.\+c}!R\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG@{R\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG}}
+\index{R\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG@{R\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG}{RX\_NUM\_MSG}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG~1}
+
+
+
+Definition at line 18 of file Communication.\+c.
+
+\mbox{\Hypertarget{_communication_8c_ad61fdfb913711d9ac5bf708e47d24147}\label{_communication_8c_ad61fdfb913711d9ac5bf708e47d24147}} 
+\index{Communication.\+c@{Communication.\+c}!R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{RX\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+4)}
+
+
+
+Definition at line 19 of file Communication.\+c.
+
+\mbox{\Hypertarget{_communication_8c_ad7194d989cbcba1df366a9837598584b}\label{_communication_8c_ad7194d989cbcba1df366a9837598584b}} 
+\index{Communication.\+c@{Communication.\+c}!R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}}
+\index{R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}{RX\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE + 20)}
+
+
+
+Definition at line 20 of file Communication.\+c.
+
+\mbox{\Hypertarget{_communication_8c_a7e2e304fdf47c9811f7efea8506ebd68}\label{_communication_8c_a7e2e304fdf47c9811f7efea8506ebd68}} 
+\index{Communication.\+c@{Communication.\+c}!T\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG@{T\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG}}
+\index{T\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG@{T\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{T\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG}{TX\_NUM\_MSG}}
+{\footnotesize\ttfamily \#define T\+X\+\_\+\+N\+U\+M\+\_\+\+M\+SG~1}
+
+
+
+Definition at line 27 of file Communication.\+c.
+
+\mbox{\Hypertarget{_communication_8c_a17f9a9e6cd03e855b858a37a27ff2f9b}\label{_communication_8c_a17f9a9e6cd03e855b858a37a27ff2f9b}} 
+\index{Communication.\+c@{Communication.\+c}!T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}}
+\index{T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY@{T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY}{TX\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+TY~(tsk\+I\+D\+L\+E\+\_\+\+P\+R\+I\+O\+R\+I\+TY+4)}
+
+
+
+Definition at line 26 of file Communication.\+c.
+
+\mbox{\Hypertarget{_communication_8c_aabfe0a2916052568381e63b6478797e0}\label{_communication_8c_aabfe0a2916052568381e63b6478797e0}} 
+\index{Communication.\+c@{Communication.\+c}!T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}}
+\index{T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}{TX\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define T\+X\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE~(config\+M\+I\+N\+I\+M\+A\+L\+\_\+\+S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE + 140)}
+
+
+
+Definition at line 28 of file Communication.\+c.
+
 
 
 \subsection{Function Documentation}
@@ -39,62 +124,144 @@ void \hyperlink{_communication_8c_abe44090b263baaab26e44a41c6864837}{put\+Packag
 \subsubsection{\texorpdfstring{communication\+\_\+init()}{communication\_init()}}
 {\footnotesize\ttfamily void communication\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+
+
+Definition at line 119 of file Communication.\+c.
+
 Here is the call graph for this function\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{_communication_8c_a9d1c122bc3538d94d6fd8328cd6c6a2d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{_communication_8c_a9d1c122bc3538d94d6fd8328cd6c6a2d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_communication_8c_af71d54ec927a67be5bc38ad6eb3c4165}\label{_communication_8c_af71d54ec927a67be5bc38ad6eb3c4165}} 
+\index{Communication.\+c@{Communication.\+c}!communication\+\_\+notify\+\_\+rx\+\_\+char@{communication\+\_\+notify\+\_\+rx\+\_\+char}}
+\index{communication\+\_\+notify\+\_\+rx\+\_\+char@{communication\+\_\+notify\+\_\+rx\+\_\+char}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{communication\+\_\+notify\+\_\+rx\+\_\+char()}{communication\_notify\_rx\_char()}}
+{\footnotesize\ttfamily Base\+Type\+\_\+t communication\+\_\+notify\+\_\+rx\+\_\+char (\begin{DoxyParamCaption}\item[{Base\+Type\+\_\+t $\ast$}]{x\+Higher\+Priority\+Task\+Woken }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 132 of file Communication.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{_communication_8c_af71d54ec927a67be5bc38ad6eb3c4165_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_communication_8c_ab8a85cfd7f286cb2117882fe974ebb40}\label{_communication_8c_ab8a85cfd7f286cb2117882fe974ebb40}} 
+\index{Communication.\+c@{Communication.\+c}!communication\+\_\+notify\+\_\+tx@{communication\+\_\+notify\+\_\+tx}}
+\index{communication\+\_\+notify\+\_\+tx@{communication\+\_\+notify\+\_\+tx}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{communication\+\_\+notify\+\_\+tx()}{communication\_notify\_tx()}}
+{\footnotesize\ttfamily void communication\+\_\+notify\+\_\+tx (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 147 of file Communication.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_communication_8c_ab8a85cfd7f286cb2117882fe974ebb40_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{_communication_8c_ac31ce2706aaee3da949591ac4292a18f}\label{_communication_8c_ac31ce2706aaee3da949591ac4292a18f}} 
 \index{Communication.\+c@{Communication.\+c}!put\+Package\+Rx@{put\+Package\+Rx}}
 \index{put\+Package\+Rx@{put\+Package\+Rx}!Communication.\+c@{Communication.\+c}}
 \subsubsection{\texorpdfstring{put\+Package\+Rx()}{putPackageRx()}}
-{\footnotesize\ttfamily void put\+Package\+Rx (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package\+\_\+rx }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void put\+Package\+Rx (\begin{DoxyParamCaption}\item[{Communication\+Package $\ast$}]{package\+\_\+rx }\end{DoxyParamCaption})}
 
-Coloca pacote(cmd) recebido na fila e notifica a thread que executa callback \mbox{\Hypertarget{_communication_8c_abe44090b263baaab26e44a41c6864837}\label{_communication_8c_abe44090b263baaab26e44a41c6864837}} 
+Coloca pacote(cmd) recebido na fila e notifica a thread que executa callback 
+
+Definition at line 159 of file Communication.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{_communication_8c_ac31ce2706aaee3da949591ac4292a18f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_communication_8c_abe44090b263baaab26e44a41c6864837}\label{_communication_8c_abe44090b263baaab26e44a41c6864837}} 
 \index{Communication.\+c@{Communication.\+c}!put\+Package\+Tx@{put\+Package\+Tx}}
 \index{put\+Package\+Tx@{put\+Package\+Tx}!Communication.\+c@{Communication.\+c}}
 \subsubsection{\texorpdfstring{put\+Package\+Tx()}{putPackageTx()}}
-{\footnotesize\ttfamily void put\+Package\+Tx (\begin{DoxyParamCaption}\item[{\hyperlink{struct_communication_package}{Communication\+Package} $\ast$}]{package\+\_\+tx }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void put\+Package\+Tx (\begin{DoxyParamCaption}\item[{Communication\+Package $\ast$}]{package\+\_\+tx }\end{DoxyParamCaption})}
 
-Coloca pacote(resposta) na fila e avisa a thread responsável pelo envio. Here is the caller graph for this function\+:
-% FIG 2
-\mbox{\Hypertarget{_communication_8c_a58866765673e9e11a4dd44a01f1926dd}\label{_communication_8c_a58866765673e9e11a4dd44a01f1926dd}} 
-\index{Communication.\+c@{Communication.\+c}!rx\+Package\+\_\+task@{rx\+Package\+\_\+task}}
-\index{rx\+Package\+\_\+task@{rx\+Package\+\_\+task}!Communication.\+c@{Communication.\+c}}
-\subsubsection{\texorpdfstring{rx\+Package\+\_\+task()}{rxPackage\_task()}}
-{\footnotesize\ttfamily void rx\+Package\+\_\+task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+Coloca pacote(resposta) na fila e avisa a thread responsável pelo envio. 
+
+Definition at line 175 of file Communication.\+c.
 
 Here is the call graph for this function\+:
-% FIG 3
-\mbox{\Hypertarget{_communication_8c_aff899dab1f89ad1053aed4cf3dd37602}\label{_communication_8c_aff899dab1f89ad1053aed4cf3dd37602}} 
-\index{Communication.\+c@{Communication.\+c}!tx\+Package\+\_\+task@{tx\+Package\+\_\+task}}
-\index{tx\+Package\+\_\+task@{tx\+Package\+\_\+task}!Communication.\+c@{Communication.\+c}}
-\subsubsection{\texorpdfstring{tx\+Package\+\_\+task()}{txPackage\_task()}}
-{\footnotesize\ttfamily void tx\+Package\+\_\+task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{_communication_8c_abe44090b263baaab26e44a41c6864837_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{_communication_8c_abe44090b263baaab26e44a41c6864837_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_communication_8c_af74030deafd82d23f382f7fd8213cdd0}\label{_communication_8c_af74030deafd82d23f382f7fd8213cdd0}} 
+\index{Communication.\+c@{Communication.\+c}!send\+Answer@{send\+Answer}}
+\index{send\+Answer@{send\+Answer}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{send\+Answer()}{sendAnswer()}}
+{\footnotesize\ttfamily void send\+Answer (\begin{DoxyParamCaption}\item[{Communication\+Package $\ast$}]{package }\end{DoxyParamCaption})}
 
-Pacotes a serem enviados Here is the call graph for this function\+:
-% FIG 4
+
+
+Definition at line 194 of file Communication.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_communication_8c_af74030deafd82d23f382f7fd8213cdd0_cgraph}
+\end{center}
+\end{figure}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{_communication_8c_af247019b6980e385285ba06a95b7c34a}\label{_communication_8c_af247019b6980e385285ba06a95b7c34a}} 
-\index{Communication.\+c@{Communication.\+c}!x\+Handle\+Rx\+Task@{x\+Handle\+Rx\+Task}}
-\index{x\+Handle\+Rx\+Task@{x\+Handle\+Rx\+Task}!Communication.\+c@{Communication.\+c}}
-\subsubsection{\texorpdfstring{x\+Handle\+Rx\+Task}{xHandleRxTask}}
-{\footnotesize\ttfamily \hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} x\+Handle\+Rx\+Task}
+\mbox{\Hypertarget{_communication_8c_af9f72dcffc16a30d728e4d5b628808da}\label{_communication_8c_af9f72dcffc16a30d728e4d5b628808da}} 
+\index{Communication.\+c@{Communication.\+c}!x\+Queue\+Package\+Rx@{x\+Queue\+Package\+Rx}}
+\index{x\+Queue\+Package\+Rx@{x\+Queue\+Package\+Rx}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Package\+Rx}{xQueuePackageRx}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+Package\+Rx}
 
-\mbox{\Hypertarget{_communication_8c_ab9292c77ff8b4ab31eb23dee60a8da3f}\label{_communication_8c_ab9292c77ff8b4ab31eb23dee60a8da3f}} 
-\index{Communication.\+c@{Communication.\+c}!x\+Handle\+Tx\+Task@{x\+Handle\+Tx\+Task}}
-\index{x\+Handle\+Tx\+Task@{x\+Handle\+Tx\+Task}!Communication.\+c@{Communication.\+c}}
-\subsubsection{\texorpdfstring{x\+Handle\+Tx\+Task}{xHandleTxTask}}
-{\footnotesize\ttfamily \hyperlink{task_8h_ae95f44d4cfeb4a599c6cc258d241cb6b}{Task\+Handle\+\_\+t} x\+Handle\+Tx\+Task}
 
-\mbox{\Hypertarget{_communication_8c_a02edb8e75395166cef3282717e90c4d8}\label{_communication_8c_a02edb8e75395166cef3282717e90c4d8}} 
-\index{Communication.\+c@{Communication.\+c}!x\+Queue\+Rx@{x\+Queue\+Rx}}
-\index{x\+Queue\+Rx@{x\+Queue\+Rx}!Communication.\+c@{Communication.\+c}}
-\subsubsection{\texorpdfstring{x\+Queue\+Rx}{xQueueRx}}
-{\footnotesize\ttfamily \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue\+Rx}
 
-\mbox{\Hypertarget{_communication_8c_abc0a58f6b6fedcdeabdacea8823a971a}\label{_communication_8c_abc0a58f6b6fedcdeabdacea8823a971a}} 
-\index{Communication.\+c@{Communication.\+c}!x\+Queue\+Tx@{x\+Queue\+Tx}}
-\index{x\+Queue\+Tx@{x\+Queue\+Tx}!Communication.\+c@{Communication.\+c}}
-\subsubsection{\texorpdfstring{x\+Queue\+Tx}{xQueueTx}}
-{\footnotesize\ttfamily \hyperlink{queue_8h_aaf19d499892a4ce1409326ece00f5264}{Queue\+Handle\+\_\+t} x\+Queue\+Tx}
+Definition at line 22 of file Communication.\+c.
+
+\mbox{\Hypertarget{_communication_8c_a63d1e3ac9098c1dfc3f6ac734919bdc5}\label{_communication_8c_a63d1e3ac9098c1dfc3f6ac734919bdc5}} 
+\index{Communication.\+c@{Communication.\+c}!x\+Queue\+Package\+Tx@{x\+Queue\+Package\+Tx}}
+\index{x\+Queue\+Package\+Tx@{x\+Queue\+Package\+Tx}!Communication.\+c@{Communication.\+c}}
+\subsubsection{\texorpdfstring{x\+Queue\+Package\+Tx}{xQueuePackageTx}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t x\+Queue\+Package\+Tx}
+
+
+
+Definition at line 30 of file Communication.\+c.
 

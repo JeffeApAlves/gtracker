@@ -1,0 +1,63 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Communication/Serialization.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Communication/Serialization.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'clock\&.h'\fP
+.br
+\fC#include 'Frame\&.h'\fP
+.br
+\fC#include 'Serialization\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBtlm2String\fP (Telemetria *tlm, PayLoad *ans)"
+.br
+.ti -1c
+.RI "void \fBheader2String\fP (Header *header, char *out)"
+.br
+.ti -1c
+.RI "void \fBgetResourceName\fP (char *out, Resource resource)"
+.br
+.ti -1c
+.RI "void \fBcheckSum2String\fP (unsigned int checksum, char *out)"
+.br
+.ti -1c
+.RI "void \fBpackage2Frame\fP (CommunicationPackage *package, Frame *frame, bool with_checksum)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void checkSum2String (unsigned int checksum, char * out)\fC [inline]\fP"
+
+.PP
+Definition at line 68 of file Serialization\&.c\&.
+.SS "void getResourceName (char * out, Resource resource)"
+
+.PP
+Definition at line 50 of file Serialization\&.c\&.
+.SS "void header2String (Header * header, char * out)"
+
+.PP
+Definition at line 33 of file Serialization\&.c\&.
+.SS "void package2Frame (CommunicationPackage * package, Frame * frame, bool with_checksum)"
+Faz a serialização de um pacote 
+.PP
+Definition at line 79 of file Serialization\&.c\&.
+.SS "void tlm2String (Telemetria * tlm, PayLoad * ans)"
+
+.PP
+Definition at line 10 of file Serialization\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

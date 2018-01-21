@@ -1,0 +1,76 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/GPS/uart_gps.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/GPS/uart_gps.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'uart_gps\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBuart_gps_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBuart_gps_Deinit\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBgetGPSData\fP (char *ch)"
+.br
+.ti -1c
+.RI "bool \fBputGPSData\fP (char data)"
+.br
+.ti -1c
+.RI "bool \fBisAnyGPSData\fP ()"
+.br
+.ti -1c
+.RI "uint16_t \fBuart_gps_rx_head\fP (void)"
+.br
+.ti -1c
+.RI "uint16_t \fBuart_gps_rx_tail\fP (void)"
+.br
+.ti -1c
+.RI "uint16_t \fBuart_gps_rx_max\fP (void)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "bool getGPSData (char * ch)\fC [inline]\fP"
+
+.PP
+Definition at line 60 of file uart_gps\&.c\&.
+.SS "bool isAnyGPSData ()\fC [inline]\fP"
+
+.PP
+Definition at line 82 of file uart_gps\&.c\&.
+.SS "bool putGPSData (char data)\fC [inline]\fP"
+
+.PP
+Definition at line 72 of file uart_gps\&.c\&.
+.SS "void uart_gps_Deinit (void)"
+
+.PP
+Definition at line 49 of file uart_gps\&.c\&.
+.SS "bool uart_gps_init (void)"
+
+.PP
+Definition at line 27 of file uart_gps\&.c\&.
+.SS "uint16_t uart_gps_rx_head (void)\fC [inline]\fP"
+
+.PP
+Definition at line 94 of file uart_gps\&.c\&.
+.SS "uint16_t uart_gps_rx_max (void)\fC [inline]\fP"
+
+.PP
+Definition at line 114 of file uart_gps\&.c\&.
+.SS "uint16_t uart_gps_rx_tail (void)\fC [inline]\fP"
+
+.PP
+Definition at line 104 of file uart_gps\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

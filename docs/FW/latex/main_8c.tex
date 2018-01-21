@@ -1,38 +1,27 @@
-\hypertarget{main_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/main.c File Reference}
-\label{main_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/main.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/main.\+c}}
+\hypertarget{main_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/main.c File Reference}
+\label{main_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/main.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/main.\+c}}
 
 
-Main module. This module contains user\textquotesingle{}s application code.  
+\begin{DoxyVerb}    Main module.
+    This module contains user's application code.
+\end{DoxyVerb}
+ Ferramentas de debug \href{https://www.nxp.com/docs/en/quick-reference-guide/MCUXpresso_IDE_FreeRTOS_Debug_Guide.pdf}{\tt https\+://www.\+nxp.\+com/docs/en/quick-\/reference-\/guide/\+M\+C\+U\+Xpresso\+\_\+\+I\+D\+E\+\_\+\+Free\+R\+T\+O\+S\+\_\+\+Debug\+\_\+\+Guide.\+pdf} \href{https://percepio.com/docs/FreeRTOS/manual/Recorder.html#Trace_Recorder_Library_Snapshot_Mode}{\tt https\+://percepio.\+com/docs/\+Free\+R\+T\+O\+S/manual/\+Recorder.\+html\#\+Trace\+\_\+\+Recorder\+\_\+\+Library\+\_\+\+Snapshot\+\_\+\+Mode} \href{https://mcuoneclipse.com/2017/03/18/better-freertos-debugging-in-eclipse/}{\tt https\+://mcuoneclipse.\+com/2017/03/18/better-\/freertos-\/debugging-\/in-\/eclipse/} \href{https://mcuoneclipse.com/2016/04/09/freertos-thread-debugging-with-eclipse-and-openocd/}{\tt https\+://mcuoneclipse.\+com/2016/04/09/freertos-\/thread-\/debugging-\/with-\/eclipse-\/and-\/openocd/}  
 
 
 {\ttfamily \#include \char`\"{}Cpu.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Events.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}F\+R\+T\+O\+S1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}U\+T\+I\+L1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}W\+A\+I\+T2.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}W\+A\+I\+T3.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}W\+A\+I\+T4.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}I2\+C2.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}A\+D1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Adc\+Ldd1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}R\+T\+C1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}M\+C\+U\+C1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}T\+S\+K1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}L\+E\+D\+\_\+\+R.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}L\+E\+Dpin1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Bit\+Io\+Ldd1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}A\+S1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}A\+Serial\+Ldd1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}L\+E\+D\+\_\+\+G.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}L\+E\+Dpin2.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Bit\+Io\+Ldd2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}L\+E\+D\+\_\+\+R.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}L\+E\+Dpin1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Bit\+Io\+Ldd1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}L\+E\+D\+\_\+\+B.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}L\+E\+Dpin3.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Bit\+Io\+Ldd3.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}T\+U1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}T\+I1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Timer\+Int\+Ldd1.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}W\+A\+I\+T1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}L\+C\+Dout.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}E\+N1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Bit\+Io\+Ldd6.\+h\char`\"{}}\newline
@@ -46,25 +35,46 @@ Main module. This module contains user\textquotesingle{}s application code.
 {\ttfamily \#include \char`\"{}Bit\+Io\+Ldd14.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}D\+B71.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Bit\+Io\+Ldd15.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}T\+S\+Sin.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}X\+F1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}A\+S2.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}A\+Serial\+Ldd2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}W\+A\+I\+T1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}M\+C\+U\+C1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}U\+T\+I\+L1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}W\+A\+I\+T2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}W\+A\+I\+T3.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}W\+A\+I\+T4.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I2\+C2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}A\+D1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Adc\+Ldd1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}R\+T\+C1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}E\+Int1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Ext\+Int\+Ldd1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}P\+E\+\_\+\+Types.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}P\+E\+\_\+\+Error.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}P\+E\+\_\+\+Const.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}I\+O\+\_\+\+Map.\+h\char`\"{}}\newline
-Include dependency graph for main.\+c\+:
-% FIG 0
+{\ttfamily \#include \char`\"{}Telemetria.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}application.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ihm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}communication.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}accelerometer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gps.\+h\char`\"{}}\newline
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__main__module_gaf411a8bc6b7ed4b0af9114e10c959448}{sys\+\_\+init} (void)
 \item 
 int \hyperlink{group__main__module_ga840291bc02cba5474a4cb46a9b9566fe}{main} (void)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Main module. This module contains user\textquotesingle{}s application code. 
+\begin{DoxyVerb}    Main module.
+    This module contains user's application code.
+\end{DoxyVerb}
+ Ferramentas de debug \href{https://www.nxp.com/docs/en/quick-reference-guide/MCUXpresso_IDE_FreeRTOS_Debug_Guide.pdf}{\tt https\+://www.\+nxp.\+com/docs/en/quick-\/reference-\/guide/\+M\+C\+U\+Xpresso\+\_\+\+I\+D\+E\+\_\+\+Free\+R\+T\+O\+S\+\_\+\+Debug\+\_\+\+Guide.\+pdf} \href{https://percepio.com/docs/FreeRTOS/manual/Recorder.html#Trace_Recorder_Library_Snapshot_Mode}{\tt https\+://percepio.\+com/docs/\+Free\+R\+T\+O\+S/manual/\+Recorder.\+html\#\+Trace\+\_\+\+Recorder\+\_\+\+Library\+\_\+\+Snapshot\+\_\+\+Mode} \href{https://mcuoneclipse.com/2017/03/18/better-freertos-debugging-in-eclipse/}{\tt https\+://mcuoneclipse.\+com/2017/03/18/better-\/freertos-\/debugging-\/in-\/eclipse/} \href{https://mcuoneclipse.com/2016/04/09/freertos-thread-debugging-with-eclipse-and-openocd/}{\tt https\+://mcuoneclipse.\+com/2016/04/09/freertos-\/thread-\/debugging-\/with-\/eclipse-\/and-\/openocd/} 
 
 \begin{DoxyVersion}{Version}
 01.\+01 

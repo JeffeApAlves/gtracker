@@ -1,37 +1,129 @@
-\hypertarget{_serialization_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Serialization.c File Reference}
-\label{_serialization_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Serialization.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Serialization.\+c}}
+\hypertarget{_serialization_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Serialization.c File Reference}
+\label{_serialization_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Serialization.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/\+Serialization.\+c}}
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}X\+F1.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Frame.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Serialization.\+h\char`\"{}}\newline
 Include dependency graph for Serialization.\+c\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_serialization_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_serialization_8c_a2318f548e4203daec2d18ade642cb1ce}{tlm2\+String} (\hyperlink{struct_telemetria}{Telemetria} $\ast$tlm, \hyperlink{struct_pay_load}{Pay\+Load} $\ast$ans)
+void \hyperlink{_serialization_8c_a2318f548e4203daec2d18ade642cb1ce}{tlm2\+String} (Telemetria $\ast$tlm, Pay\+Load $\ast$ans)
 \item 
-void \hyperlink{_serialization_8c_afc0837dca2222d7442b817029905a317}{header2\+String} (\hyperlink{struct_header}{Header} $\ast$header, char $\ast$out)
+void \hyperlink{_serialization_8c_afc0837dca2222d7442b817029905a317}{header2\+String} (Header $\ast$header, char $\ast$out)
+\item 
+void \hyperlink{_serialization_8c_ad34e045d5bf9a12559d00cc39093f063}{get\+Resource\+Name} (char $\ast$out, Resource resource)
+\item 
+void \hyperlink{_serialization_8c_adfe71660e265e2d87e94545bda3cc81d}{check\+Sum2\+String} (unsigned int checksum, char $\ast$out)
+\item 
+void \hyperlink{_serialization_8c_a21e5efe87297880bb5198fab1b493088}{package2\+Frame} (Communication\+Package $\ast$package, Frame $\ast$frame, bool with\+\_\+checksum)
 \end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{_serialization_8c_adfe71660e265e2d87e94545bda3cc81d}\label{_serialization_8c_adfe71660e265e2d87e94545bda3cc81d}} 
+\index{Serialization.\+c@{Serialization.\+c}!check\+Sum2\+String@{check\+Sum2\+String}}
+\index{check\+Sum2\+String@{check\+Sum2\+String}!Serialization.\+c@{Serialization.\+c}}
+\subsubsection{\texorpdfstring{check\+Sum2\+String()}{checkSum2String()}}
+{\footnotesize\ttfamily void check\+Sum2\+String (\begin{DoxyParamCaption}\item[{unsigned int}]{checksum,  }\item[{char $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 68 of file Serialization.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{_serialization_8c_adfe71660e265e2d87e94545bda3cc81d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_serialization_8c_ad34e045d5bf9a12559d00cc39093f063}\label{_serialization_8c_ad34e045d5bf9a12559d00cc39093f063}} 
+\index{Serialization.\+c@{Serialization.\+c}!get\+Resource\+Name@{get\+Resource\+Name}}
+\index{get\+Resource\+Name@{get\+Resource\+Name}!Serialization.\+c@{Serialization.\+c}}
+\subsubsection{\texorpdfstring{get\+Resource\+Name()}{getResourceName()}}
+{\footnotesize\ttfamily void get\+Resource\+Name (\begin{DoxyParamCaption}\item[{char $\ast$}]{out,  }\item[{Resource}]{resource }\end{DoxyParamCaption})}
+
+
+
+Definition at line 50 of file Serialization.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_serialization_8c_ad34e045d5bf9a12559d00cc39093f063_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{_serialization_8c_afc0837dca2222d7442b817029905a317}\label{_serialization_8c_afc0837dca2222d7442b817029905a317}} 
 \index{Serialization.\+c@{Serialization.\+c}!header2\+String@{header2\+String}}
 \index{header2\+String@{header2\+String}!Serialization.\+c@{Serialization.\+c}}
 \subsubsection{\texorpdfstring{header2\+String()}{header2String()}}
-{\footnotesize\ttfamily void header2\+String (\begin{DoxyParamCaption}\item[{\hyperlink{struct_header}{Header} $\ast$}]{header,  }\item[{char $\ast$}]{out }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void header2\+String (\begin{DoxyParamCaption}\item[{Header $\ast$}]{header,  }\item[{char $\ast$}]{out }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file Serialization.\+c.
 
 Here is the call graph for this function\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{_serialization_8c_afc0837dca2222d7442b817029905a317_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:
-% FIG 2
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{_serialization_8c_afc0837dca2222d7442b817029905a317_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_serialization_8c_a21e5efe87297880bb5198fab1b493088}\label{_serialization_8c_a21e5efe87297880bb5198fab1b493088}} 
+\index{Serialization.\+c@{Serialization.\+c}!package2\+Frame@{package2\+Frame}}
+\index{package2\+Frame@{package2\+Frame}!Serialization.\+c@{Serialization.\+c}}
+\subsubsection{\texorpdfstring{package2\+Frame()}{package2Frame()}}
+{\footnotesize\ttfamily void package2\+Frame (\begin{DoxyParamCaption}\item[{Communication\+Package $\ast$}]{package,  }\item[{Frame $\ast$}]{frame,  }\item[{bool}]{with\+\_\+checksum }\end{DoxyParamCaption})}
+
+Faz a serialização de um pacote 
+
+Definition at line 79 of file Serialization.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_serialization_8c_a21e5efe87297880bb5198fab1b493088_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{_serialization_8c_a2318f548e4203daec2d18ade642cb1ce}\label{_serialization_8c_a2318f548e4203daec2d18ade642cb1ce}} 
 \index{Serialization.\+c@{Serialization.\+c}!tlm2\+String@{tlm2\+String}}
 \index{tlm2\+String@{tlm2\+String}!Serialization.\+c@{Serialization.\+c}}
 \subsubsection{\texorpdfstring{tlm2\+String()}{tlm2String()}}
-{\footnotesize\ttfamily void tlm2\+String (\begin{DoxyParamCaption}\item[{\hyperlink{struct_telemetria}{Telemetria} $\ast$}]{tlm,  }\item[{\hyperlink{struct_pay_load}{Pay\+Load} $\ast$}]{ans }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void tlm2\+String (\begin{DoxyParamCaption}\item[{Telemetria $\ast$}]{tlm,  }\item[{Pay\+Load $\ast$}]{ans }\end{DoxyParamCaption})}
+
+
+
+Definition at line 10 of file Serialization.\+c.
 
 Here is the call graph for this function\+:
-% FIG 3
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_serialization_8c_a2318f548e4203daec2d18ade642cb1ce_cgraph}
+\end{center}
+\end{figure}

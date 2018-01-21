@@ -1,7 +1,10 @@
 <map id="getCount" name="getCount">
-<area shape="rect" id="node2" href="$protocol_8c.html#a042cfac8bcf4c6fb8698d09c16fe5d0a" title="isAnyRxData" alt="" coords="134,5,233,32"/>
-<area shape="rect" id="node5" href="$gps_8c.html#a3ef262eee381efe7e0b9c71d71d7c673" title="isAnyGPSData" alt="" coords="128,56,239,83"/>
-<area shape="rect" id="node3" href="$protocol_8c.html#a5a763e43d6e4f1fdf520075476f11d2d" title="processRx" alt="" coords="287,5,371,32"/>
-<area shape="rect" id="node4" href="$_communication_8c.html#a58866765673e9e11a4dd44a01f1926dd" title="rxPackage_task" alt="" coords="419,5,535,32"/>
-<area shape="rect" id="node6" href="$gps_8c.html#a3dab1ad105b945b39a02d1a02557d5de" title="gps_task" alt="" coords="291,56,366,83"/>
+<area shape="rect" id="node2" href="$uart__host_8c.html#ae23bfcc8731e28e48ed09368901d9073" title="isAnyTxData" alt="" coords="135,31,231,57"/>
+<area shape="rect" id="node6" href="$uart__host_8c.html#a042cfac8bcf4c6fb8698d09c16fe5d0a" title="isAnyRxData" alt="" coords="134,81,233,108"/>
+<area shape="rect" id="node8" href="$uart__gps_8c.html#a3ef262eee381efe7e0b9c71d71d7c673" title="isAnyGPSData" alt="" coords="128,132,239,159"/>
+<area shape="rect" id="node3" href="$uart__host_8c.html#a7bfab1eda834687cfc0055d0816bb572" title="startTX" alt="" coords="312,31,375,57"/>
+<area shape="rect" id="node4" href="$protocol_8c.html#a302a9d8b5d0da5d55aa1dec9c4da3f56" title="sendFrame" alt="" coords="455,5,542,32"/>
+<area shape="rect" id="node5" href="$protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="448,56,549,83"/>
+<area shape="rect" id="node7" href="$protocol_8c.html#a2cddbd557b6005eba4292581d9615a5c" title="receivePackage" alt="" coords="287,81,400,108"/>
+<area shape="rect" id="node9" href="$_n_m_e_a_8c.html#a4ba9d833d2ef29549418913614876eed" title="receiveNMEA" alt="" coords="293,132,393,159"/>
 </map>

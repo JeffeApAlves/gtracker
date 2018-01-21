@@ -1,0 +1,64 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Utils/Frame.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Utils/Frame.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'Frame\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBputDataArray\fP (Frame *frame, char data)"
+.br
+.ti -1c
+.RI "unsigned int \fBcalcChecksum\fP (const char *buff, size_t sz)"
+.br
+.ti -1c
+.RI "void \fBAppendFrame\fP (Frame *frame, const char *data)"
+.br
+.ti -1c
+.RI "uint16_t \fBgetNumField\fP (char *str, const char a_delim)"
+.br
+.ti -1c
+.RI "void \fBgetField\fP (char *out, char *str, uint16_t num_field, const char a_delim)"
+.br
+.ti -1c
+.RI "void \fBsubString\fP (char *out, char *str, uint16_t start_field, uint16_t end_field, const char a_delim)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void AppendFrame (Frame * frame, const char * data)"
+
+.PP
+Definition at line 44 of file Frame\&.c\&.
+.SS "unsigned int calcChecksum (const char * buff, size_t sz)"
+Calcula o checkSum da string buff 
+.PP
+Definition at line 28 of file Frame\&.c\&.
+.SS "void getField (char * out, char * str, uint16_t num_field, const char a_delim)"
+
+.PP
+Definition at line 70 of file Frame\&.c\&.
+.SS "uint16_t getNumField (char * str, const char a_delim)"
+
+.PP
+Definition at line 51 of file Frame\&.c\&.
+.SS "unsigned int putDataArray (Frame * frame, char data)\fC [inline]\fP"
+
+.PP
+Definition at line 12 of file Frame\&.c\&.
+.SS "void subString (char * out, char * str, uint16_t start_field, uint16_t end_field, const char a_delim)"
+
+.PP
+Definition at line 76 of file Frame\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

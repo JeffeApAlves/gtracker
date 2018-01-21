@@ -1,5 +1,23 @@
 var searchData=
 [
-  ['hastxdata',['hasTxData',['../protocol_8h.html#a253ec485742da753e8b5e5c568646eba',1,'hasTxData(void):&#160;protocol.c'],['../protocol_8c.html#a253ec485742da753e8b5e5c568646eba',1,'hasTxData(void):&#160;protocol.c']]],
-  ['header2string',['header2String',['../_serialization_8h.html#afc0837dca2222d7442b817029905a317',1,'header2String(Header *header, char *out):&#160;Serialization.c'],['../_serialization_8c.html#afc0837dca2222d7442b817029905a317',1,'header2String(Header *header, char *out):&#160;Serialization.c']]]
+  ['i2c1_5fonmasterblockreceived',['I2C1_OnMasterBlockReceived',['../group___events__module.html#gad0eaee8bf9e6df0596ba2542bb3e1c32',1,'Events.h']]],
+  ['i2c1_5fonmasterblocksent',['I2C1_OnMasterBlockSent',['../group___events__module.html#gad394d39c6e6d080b1ae8cd26178003f2',1,'Events.h']]],
+  ['i2c2_5fonmasterblockreceived',['I2C2_OnMasterBlockReceived',['../group___events__module.html#ga5b2fe0871600de8d73184570a42e5b66',1,'Events.c']]],
+  ['i2c2_5fonmasterblocksent',['I2C2_OnMasterBlockSent',['../group___events__module.html#ga23f378d5253016b341bf971cb5c35ee7',1,'Events.c']]],
+  ['i2c_5fdeinit',['I2C_Deinit',['../i2c_8c.html#a85d52e9476ee50c62ec1d815420f2968',1,'i2c.c']]],
+  ['i2c_5finit',['I2C_Init',['../i2c_8c.html#a8caab6221e5fd0661adda1f2c3177d84',1,'i2c.c']]],
+  ['i2c_5fread',['I2C_Read',['../i2c_8c.html#a3b8d6451e5e6097e54b26d5373e1fc60',1,'i2c.c']]],
+  ['i2c_5freadbuffer',['I2C_ReadBuffer',['../i2c_8c.html#a42d138fe35fc0fba2fe655a67ad586a2',1,'i2c.c']]],
+  ['i2c_5fwhoami',['I2C_WhoAmI',['../i2c_8c.html#a021ca2c48254b796967f02f0bf6c5a7c',1,'i2c.c']]],
+  ['i2c_5fwrite',['I2C_Write',['../i2c_8c.html#ad2e6991442f446ec50c3a1d6f805553a',1,'i2c.c']]],
+  ['ihm_5fdeinit',['ihm_deInit',['../ihm_8c.html#a83a6ff6445a0ad9d23957ec3c1491709',1,'ihm.c']]],
+  ['ihm_5finit',['ihm_init',['../ihm_8c.html#ab7525a17874344457aed52055ffa7a0e',1,'ihm.c']]],
+  ['ihm_5fnotify_5fscreen_5fclock',['ihm_notify_screen_clock',['../ihm_8c.html#a0c89e41e8e4692f65288cc291cd8be89',1,'ihm.c']]],
+  ['ihm_5fnotify_5fscreen_5fstat',['ihm_notify_screen_stat',['../ihm_8c.html#a8836887cfa0b68fba0916869cb8e5cde',1,'ihm.c']]],
+  ['ihm_5fnotify_5fscreen_5ftlm',['ihm_notify_screen_tlm',['../ihm_8c.html#a89bb10f6e4c760bedf41b1be319331c7',1,'ihm.c']]],
+  ['ihm_5fset_5factive_5fscreen',['ihm_set_active_screen',['../ihm_8c.html#a0ad5cb0806e22c726b074a8dc7a74564',1,'ihm.c']]],
+  ['ihm_5fupdate',['ihm_update',['../ihm_8c.html#a025937bbc1a7a20976cbacb123eee04a',1,'ihm.c']]],
+  ['isanygpsdata',['isAnyGPSData',['../uart__gps_8c.html#a3ef262eee381efe7e0b9c71d71d7c673',1,'uart_gps.c']]],
+  ['isanyrxdata',['isAnyRxData',['../uart__host_8c.html#a042cfac8bcf4c6fb8698d09c16fe5d0a',1,'uart_host.c']]],
+  ['isanytxdata',['isAnyTxData',['../uart__host_8c.html#ae23bfcc8731e28e48ed09368901d9073',1,'uart_host.c']]]
 ];

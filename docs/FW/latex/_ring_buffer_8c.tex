@@ -1,19 +1,25 @@
-\hypertarget{_ring_buffer_8c}{}\section{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Ring\+Buffer.c File Reference}
-\label{_ring_buffer_8c}\index{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Ring\+Buffer.\+c@{F\+:/workspace/\+Goods\+Tracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Ring\+Buffer.\+c}}
-{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\hypertarget{_ring_buffer_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Ring\+Buffer.c File Reference}
+\label{_ring_buffer_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Ring\+Buffer.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Utils/\+Ring\+Buffer.\+c}}
+{\ttfamily \#include \char`\"{}portmacro.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Ring\+Buffer.\+h\char`\"{}}\newline
 Include dependency graph for Ring\+Buffer.\+c\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{_ring_buffer_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de}{put\+Data} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer, char ch)
+bool \hyperlink{_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de}{put\+Data} (Ring\+Buffer $\ast$buffer, char ch)
 \item 
-\hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} \hyperlink{_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d}{get\+Data} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer, char $\ast$ch)
+bool \hyperlink{_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d}{get\+Data} (Ring\+Buffer $\ast$buffer, char $\ast$ch)
 \item 
-short \hyperlink{_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33}{get\+Count} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer)
+short \hyperlink{_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33}{get\+Count} (Ring\+Buffer $\ast$buffer)
 \item 
-void \hyperlink{_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b}{put\+String} (\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$buffer, char $\ast$str)
+void \hyperlink{_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b}{put\+String} (Ring\+Buffer $\ast$buffer, char $\ast$str)
 \end{DoxyCompactItemize}
 
 
@@ -22,37 +28,79 @@ void \hyperlink{_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b}{put\+String} 
 \index{Ring\+Buffer.\+c@{Ring\+Buffer.\+c}!get\+Count@{get\+Count}}
 \index{get\+Count@{get\+Count}!Ring\+Buffer.\+c@{Ring\+Buffer.\+c}}
 \subsubsection{\texorpdfstring{get\+Count()}{getCount()}}
-{\footnotesize\ttfamily short get\+Count (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily short get\+Count (\begin{DoxyParamCaption}\item[{Ring\+Buffer $\ast$}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 71 of file Ring\+Buffer.\+c.
 
 Here is the caller graph for this function\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ring_buffer_8c_a2e19e42bd781463e59dddc3687efce33_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d}\label{_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d}} 
 \index{Ring\+Buffer.\+c@{Ring\+Buffer.\+c}!get\+Data@{get\+Data}}
 \index{get\+Data@{get\+Data}!Ring\+Buffer.\+c@{Ring\+Buffer.\+c}}
 \subsubsection{\texorpdfstring{get\+Data()}{getData()}}
-{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} get\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer,  }\item[{char $\ast$}]{ch }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool get\+Data (\begin{DoxyParamCaption}\item[{Ring\+Buffer $\ast$}]{buffer,  }\item[{char $\ast$}]{ch }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:
-% FIG 2
+
+
+Definition at line 43 of file Ring\+Buffer.\+c.
+
 Here is the caller graph for this function\+:
-% FIG 3
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ring_buffer_8c_afc58de5fd336eea8b648561cc107e47d_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de}\label{_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de}} 
 \index{Ring\+Buffer.\+c@{Ring\+Buffer.\+c}!put\+Data@{put\+Data}}
 \index{put\+Data@{put\+Data}!Ring\+Buffer.\+c@{Ring\+Buffer.\+c}}
 \subsubsection{\texorpdfstring{put\+Data()}{putData()}}
-{\footnotesize\ttfamily \hyperlink{group___p_e___types__module_ga97a80ca1602ebf2303258971a2c938e2}{bool} put\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer,  }\item[{char}]{ch }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool put\+Data (\begin{DoxyParamCaption}\item[{Ring\+Buffer $\ast$}]{buffer,  }\item[{char}]{ch }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:
-% FIG 4
+
+
+Definition at line 11 of file Ring\+Buffer.\+c.
+
 Here is the caller graph for this function\+:
-% FIG 5
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ring_buffer_8c_a6ee0cb22cb73101504e06239d37e64de_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b}\label{_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b}} 
 \index{Ring\+Buffer.\+c@{Ring\+Buffer.\+c}!put\+String@{put\+String}}
 \index{put\+String@{put\+String}!Ring\+Buffer.\+c@{Ring\+Buffer.\+c}}
 \subsubsection{\texorpdfstring{put\+String()}{putString()}}
-{\footnotesize\ttfamily void put\+String (\begin{DoxyParamCaption}\item[{\hyperlink{struct_ring_buffer}{Ring\+Buffer} $\ast$}]{buffer,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void put\+String (\begin{DoxyParamCaption}\item[{Ring\+Buffer $\ast$}]{buffer,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Definition at line 77 of file Ring\+Buffer.\+c.
 
 Here is the call graph for this function\+:
-% FIG 6
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:
-% FIG 7
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ring_buffer_8c_a9c3374a6c654c18f3b7e81e8e771451b_icgraph}
+\end{center}
+\end{figure}

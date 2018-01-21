@@ -1,0 +1,196 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Events.h" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Events.h \- This is user's event module\&. Put your event handler code here\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'PE_Types\&.h'\fP
+.br
+\fC#include 'PE_Error\&.h'\fP
+.br
+\fC#include 'PE_Const\&.h'\fP
+.br
+\fC#include 'IO_Map\&.h'\fP
+.br
+\fC#include 'FRTOS1\&.h'\fP
+.br
+\fC#include 'UTIL1\&.h'\fP
+.br
+\fC#include 'WAIT2\&.h'\fP
+.br
+\fC#include 'WAIT3\&.h'\fP
+.br
+\fC#include 'WAIT4\&.h'\fP
+.br
+\fC#include 'I2C2\&.h'\fP
+.br
+\fC#include 'AD1\&.h'\fP
+.br
+\fC#include 'AdcLdd1\&.h'\fP
+.br
+\fC#include 'RTC1\&.h'\fP
+.br
+\fC#include 'EInt1\&.h'\fP
+.br
+\fC#include 'ExtIntLdd1\&.h'\fP
+.br
+\fC#include 'MCUC1\&.h'\fP
+.br
+\fC#include 'LED_R\&.h'\fP
+.br
+\fC#include 'LEDpin1\&.h'\fP
+.br
+\fC#include 'BitIoLdd1\&.h'\fP
+.br
+\fC#include 'AS1\&.h'\fP
+.br
+\fC#include 'ASerialLdd1\&.h'\fP
+.br
+\fC#include 'LED_G\&.h'\fP
+.br
+\fC#include 'LEDpin2\&.h'\fP
+.br
+\fC#include 'BitIoLdd2\&.h'\fP
+.br
+\fC#include 'LED_B\&.h'\fP
+.br
+\fC#include 'LEDpin3\&.h'\fP
+.br
+\fC#include 'BitIoLdd3\&.h'\fP
+.br
+\fC#include 'WAIT1\&.h'\fP
+.br
+\fC#include 'LCDout\&.h'\fP
+.br
+\fC#include 'EN1\&.h'\fP
+.br
+\fC#include 'BitIoLdd6\&.h'\fP
+.br
+\fC#include 'RS1\&.h'\fP
+.br
+\fC#include 'BitIoLdd7\&.h'\fP
+.br
+\fC#include 'DB41\&.h'\fP
+.br
+\fC#include 'BitIoLdd12\&.h'\fP
+.br
+\fC#include 'DB51\&.h'\fP
+.br
+\fC#include 'BitIoLdd13\&.h'\fP
+.br
+\fC#include 'DB61\&.h'\fP
+.br
+\fC#include 'BitIoLdd14\&.h'\fP
+.br
+\fC#include 'DB71\&.h'\fP
+.br
+\fC#include 'BitIoLdd15\&.h'\fP
+.br
+\fC#include 'XF1\&.h'\fP
+.br
+\fC#include 'AS2\&.h'\fP
+.br
+\fC#include 'ASerialLdd2\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCpu_OnNMIINT\fP (void)"
+.br
+.RI "This event is called when the Non maskable interrupt had occurred\&. This event is automatically enabled when the [NMI interrupt] property is set to 'Enabled'\&. "
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationStackOverflowHook\fP (TaskHandle_t pxTask, char *pcTaskName)"
+.br
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationTickHook\fP (void)"
+.br
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationIdleHook\fP (void)"
+.br
+.ti -1c
+.RI "void \fBFRTOS1_vApplicationMallocFailedHook\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCpu_OnSupervisorCall\fP (void)"
+.br
+.RI "This event is called when the Supervisor Call exception had occurred\&. This event is automatically enabled when the [Supervisor Call] property is set to 'Enabled'\&. "
+.ti -1c
+.RI "void \fBCpu_OnPendableService\fP (void)"
+.br
+.RI "This event is called when the Pendable Service exception had occurred\&. This event is automatically enabled when the [Pendable Service] property is set to 'Enabled'\&. "
+.ti -1c
+.RI "void \fBAS1_OnError\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS1_OnRxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS1_OnTxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAD1_OnEnd\fP (void)"
+.br
+.ti -1c
+.RI "void \fBTI1_OnInterrupt\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS2_OnError\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS2_OnRxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAS2_OnTxChar\fP (void)"
+.br
+.ti -1c
+.RI "void \fBI2C2_OnMasterBlockSent\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "This event is called when I2C in master mode finishes the transmission of the data successfully\&. This event is not available for the SLAVE mode and if MasterSendBlock is disabled\&. "
+.ti -1c
+.RI "void \fBI2C2_OnMasterBlockReceived\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "This event is called when I2C is in master mode and finishes the reception of the data successfully\&. This event is not available for the SLAVE mode and if MasterReceiveBlock is disabled\&. "
+.ti -1c
+.RI "void \fBI2C1_OnMasterBlockSent\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "This event is called when I2C in master mode finishes the transmission of the data successfully\&. This event is not available for the SLAVE mode and if MasterSendBlock is disabled\&. "
+.ti -1c
+.RI "void \fBI2C1_OnMasterBlockReceived\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "This event is called when I2C is in master mode and finishes the reception of the data successfully\&. This event is not available for the SLAVE mode and if MasterReceiveBlock is disabled\&. "
+.ti -1c
+.RI "void \fBAD1_OnCalibrationEnd\fP (void)"
+.br
+.ti -1c
+.RI "void \fBRTC1_OnSecond\fP (LDD_TUserData *UserDataPtr)"
+.br
+.RI "Called each second if OnSecond event is enabled (see [SetEventMask] and [GetEventMask] methods) and RTC device is enabled\&. This event is available only if [Interrupt service/event] is enabled\&. "
+.ti -1c
+.RI "void \fBPTRC1_OnTraceWrap\fP (void)"
+.br
+.ti -1c
+.RI "void \fBEInt1_OnInterrupt\fP (void)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is user's event module\&. Put your event handler code here\&. 
+
+
+.PP
+\fBVersion:\fP
+.RS 4
+01\&.00 
+.RE
+.PP
+
+.PP
+Definition in file \fBEvents\&.h\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

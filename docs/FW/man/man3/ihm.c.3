@@ -1,0 +1,191 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/IHM/ihm.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/IHM/ihm.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <time\&.h>\fP
+.br
+\fC#include <uart_host\&.h>\fP
+.br
+\fC#include 'FreeRTOS\&.h'\fP
+.br
+\fC#include 'task\&.h'\fP
+.br
+\fC#include 'queue\&.h'\fP
+.br
+\fC#include 'lcd\&.h'\fP
+.br
+\fC#include 'gps\&.h'\fP
+.br
+\fC#include 'Telemetria\&.h'\fP
+.br
+\fC#include 'uart_gps\&.h'\fP
+.br
+\fC#include 'clock\&.h'\fP
+.br
+\fC#include 'ihm\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBIHM_TASK_PRIORITY\fP   (tskIDLE_PRIORITY+6)"
+.br
+.ti -1c
+.RI "#define \fBIHM_TASK_STACK_SIZE\fP   (configMINIMAL_STACK_SIZE+100)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBihm_update\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprintGPS\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprintTank\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprintAccelerometer\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprintStatCom\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprintStatGPS\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprintSplash\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprintClock\fP (void)"
+.br
+.ti -1c
+.RI "void \fBprintLCD\fP (int linha, int col, char *str)"
+.br
+.ti -1c
+.RI "void \fBihm_notify_screen_clock\fP (void)"
+.br
+.ti -1c
+.RI "void \fBihm_notify_screen_stat\fP (void)"
+.br
+.ti -1c
+.RI "void \fBihm_notify_screen_tlm\fP (void)"
+.br
+.ti -1c
+.RI "void \fBihm_set_active_screen\fP (screen s)"
+.br
+.ti -1c
+.RI "void \fBihm_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBreadKey\fP (void)"
+.br
+.ti -1c
+.RI "void \fBihm_deInit\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "TimerHandle_t \fBxTimerUpdateStat\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define IHM_TASK_PRIORITY   (tskIDLE_PRIORITY+6)"
+
+.PP
+Definition at line 39 of file ihm\&.c\&.
+.SS "#define IHM_TASK_STACK_SIZE   (configMINIMAL_STACK_SIZE+100)"
+
+.PP
+Definition at line 40 of file ihm\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void ihm_deInit (void)"
+
+.PP
+Definition at line 364 of file ihm\&.c\&.
+.SS "void ihm_init (void)"
+
+.PP
+Definition at line 314 of file ihm\&.c\&.
+.SS "void ihm_notify_screen_clock (void)"
+
+.PP
+Definition at line 259 of file ihm\&.c\&.
+.SS "void ihm_notify_screen_stat (void)"
+
+.PP
+Definition at line 268 of file ihm\&.c\&.
+.SS "void ihm_notify_screen_tlm (void)"
+
+.PP
+Definition at line 281 of file ihm\&.c\&.
+.SS "void ihm_set_active_screen (screen s)\fC [inline]\fP"
+
+.PP
+Definition at line 298 of file ihm\&.c\&.
+.SS "void ihm_update (void)"
+
+.PP
+Definition at line 121 of file ihm\&.c\&.
+.SS "void printAccelerometer (void)"
+
+.PP
+Definition at line 157 of file ihm\&.c\&.
+.SS "void printClock (void)"
+
+.PP
+Definition at line 197 of file ihm\&.c\&.
+.SS "void printGPS (void)"
+
+.PP
+Definition at line 137 of file ihm\&.c\&.
+.SS "void printLCD (int linha, int col, char * str)"
+
+.PP
+Definition at line 237 of file ihm\&.c\&.
+.SS "void printSplash (void)"
+
+.PP
+Definition at line 190 of file ihm\&.c\&.
+.SS "void printStatCom (void)"
+
+.PP
+Definition at line 170 of file ihm\&.c\&.
+.SS "void printStatGPS (void)"
+
+.PP
+Definition at line 180 of file ihm\&.c\&.
+.SS "void printTank (void)"
+
+.PP
+Definition at line 147 of file ihm\&.c\&.
+.SS "void readKey (void)"
+
+.PP
+Definition at line 345 of file ihm\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "TimerHandle_t xTimerUpdateStat"
+
+.PP
+Definition at line 45 of file ihm\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

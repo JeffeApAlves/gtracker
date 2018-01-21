@@ -1,0 +1,80 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Accelerometer/Accelerometer.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Accelerometer/Accelerometer.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include 'MMA8451\&.h'\fP
+.br
+\fC#include 'Telemetria\&.h'\fP
+.br
+\fC#include 'Accelerometer\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBACCE_NUM_MSG\fP   1"
+.br
+.ti -1c
+.RI "#define \fBACCE_TASK_PRIORITY\fP   (tskIDLE_PRIORITY+2)"
+.br
+.ti -1c
+.RI "#define \fBACCE_TASK_STACK_SIZE\fP   (configMINIMAL_STACK_SIZE\-10)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBaccelerometer_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBdeInitAccelerometer\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "QueueHandle_t \fBxQueueAcce\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ACCE_NUM_MSG   1"
+
+.PP
+Definition at line 17 of file Accelerometer\&.c\&.
+.SS "#define ACCE_TASK_PRIORITY   (tskIDLE_PRIORITY+2)"
+
+.PP
+Definition at line 18 of file Accelerometer\&.c\&.
+.SS "#define ACCE_TASK_STACK_SIZE   (configMINIMAL_STACK_SIZE\-10)"
+
+.PP
+Definition at line 19 of file Accelerometer\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void accelerometer_init (void)"
+
+.PP
+Definition at line 66 of file Accelerometer\&.c\&.
+.SS "void deInitAccelerometer (void)"
+
+.PP
+Definition at line 76 of file Accelerometer\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "QueueHandle_t xQueueAcce"
+
+.PP
+Definition at line 21 of file Accelerometer\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GoodsTracker: F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/Communication/Serialization.c File Reference</title>
+<title>GoodsTracker: F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Communication/Serialization.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,24 +70,119 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="_x_f1_8h_source.html">XF1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="clock_8h_source.html">clock.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_serialization_8h_source.html">Serialization.h</a>&quot;</code><br />
+<code>#include &quot;clock.h&quot;</code><br />
+<code>#include &quot;Frame.h&quot;</code><br />
+<code>#include &quot;Serialization.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Serialization.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="_serialization_8c__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_communication_2_serialization_8c" alt=""/></div>
-<!-- MAP 0 -->
+<div class="center"><img src="_serialization_8c__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_communication_2_serialization_8c" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_communication_2_serialization_8c" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_communication_2_serialization_8c">
+</map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="_serialization_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2318f548e4203daec2d18ade642cb1ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_serialization_8c.html#a2318f548e4203daec2d18ade642cb1ce">tlm2String</a> (<a class="el" href="struct_telemetria.html">Telemetria</a> *tlm, <a class="el" href="struct_pay_load.html">PayLoad</a> *ans)</td></tr>
+<tr class="memitem:a2318f548e4203daec2d18ade642cb1ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_serialization_8c.html#a2318f548e4203daec2d18ade642cb1ce">tlm2String</a> (Telemetria *tlm, PayLoad *ans)</td></tr>
 <tr class="separator:a2318f548e4203daec2d18ade642cb1ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc0837dca2222d7442b817029905a317"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_serialization_8c.html#afc0837dca2222d7442b817029905a317">header2String</a> (<a class="el" href="struct_header.html">Header</a> *header, char *out)</td></tr>
+<tr class="memitem:afc0837dca2222d7442b817029905a317"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_serialization_8c.html#afc0837dca2222d7442b817029905a317">header2String</a> (Header *header, char *out)</td></tr>
 <tr class="separator:afc0837dca2222d7442b817029905a317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad34e045d5bf9a12559d00cc39093f063"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_serialization_8c.html#ad34e045d5bf9a12559d00cc39093f063">getResourceName</a> (char *out, Resource resource)</td></tr>
+<tr class="separator:ad34e045d5bf9a12559d00cc39093f063"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfe71660e265e2d87e94545bda3cc81d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_serialization_8c.html#adfe71660e265e2d87e94545bda3cc81d">checkSum2String</a> (unsigned int checksum, char *out)</td></tr>
+<tr class="separator:adfe71660e265e2d87e94545bda3cc81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e5efe87297880bb5198fab1b493088"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_serialization_8c.html#a21e5efe87297880bb5198fab1b493088">package2Frame</a> (CommunicationPackage *package, Frame *frame, bool with_checksum)</td></tr>
+<tr class="separator:a21e5efe87297880bb5198fab1b493088"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="adfe71660e265e2d87e94545bda3cc81d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfe71660e265e2d87e94545bda3cc81d">&#9670;&nbsp;</a></span>checkSum2String()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void checkSum2String </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>checksum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_serialization_8c_source.html#l00068">68</a> of file <a class="el" href="_serialization_8c_source.html">Serialization.c</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="_serialization_8c_adfe71660e265e2d87e94545bda3cc81d_icgraph.png" border="0" usemap="#_serialization_8c_adfe71660e265e2d87e94545bda3cc81d_icgraph" alt=""/></div>
+<map name="_serialization_8c_adfe71660e265e2d87e94545bda3cc81d_icgraph" id="_serialization_8c_adfe71660e265e2d87e94545bda3cc81d_icgraph">
+<area shape="rect" id="node2" href="protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="179,5,280,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad34e045d5bf9a12559d00cc39093f063"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad34e045d5bf9a12559d00cc39093f063">&#9670;&nbsp;</a></span>getResourceName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getResourceName </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Resource&#160;</td>
+          <td class="paramname"><em>resource</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_serialization_8c_source.html#l00050">50</a> of file <a class="el" href="_serialization_8c_source.html">Serialization.c</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="_serialization_8c_ad34e045d5bf9a12559d00cc39093f063_icgraph.png" border="0" usemap="#_serialization_8c_ad34e045d5bf9a12559d00cc39093f063_icgraph" alt=""/></div>
+<map name="_serialization_8c_ad34e045d5bf9a12559d00cc39093f063_icgraph" id="_serialization_8c_ad34e045d5bf9a12559d00cc39093f063_icgraph">
+<area shape="rect" id="node2" href="_serialization_8c.html#afc0837dca2222d7442b817029905a317" title="header2String" alt="" coords="183,31,285,57"/>
+<area shape="rect" id="node3" href="protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="340,5,441,32"/>
+<area shape="rect" id="node4" href="_serialization_8c.html#a21e5efe87297880bb5198fab1b493088" title="package2Frame" alt="" coords="333,56,448,83"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="afc0837dca2222d7442b817029905a317"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afc0837dca2222d7442b817029905a317">&#9670;&nbsp;</a></span>header2String()</h2>
 
@@ -97,7 +192,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void header2String </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_header.html">Header</a> *&#160;</td>
+          <td class="paramtype">Header *&#160;</td>
           <td class="paramname"><em>header</em>, </td>
         </tr>
         <tr>
@@ -113,17 +208,71 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_serialization_8c_source.html#l00033">33</a> of file <a class="el" href="_serialization_8c_source.html">Serialization.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_serialization_8c_afc0837dca2222d7442b817029905a317_cgraph.png" border="0" usemap="#_serialization_8c_afc0837dca2222d7442b817029905a317_cgraph" alt=""/></div>
-<!-- MAP 1 -->
+<map name="_serialization_8c_afc0837dca2222d7442b817029905a317_cgraph" id="_serialization_8c_afc0837dca2222d7442b817029905a317_cgraph">
+<area shape="rect" id="node2" href="_serialization_8c.html#ad34e045d5bf9a12559d00cc39093f063" title="getResourceName" alt="" coords="156,5,285,32"/>
+</map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_serialization_8c_afc0837dca2222d7442b817029905a317_icgraph.png" border="0" usemap="#_serialization_8c_afc0837dca2222d7442b817029905a317_icgraph" alt=""/></div>
-<!-- MAP 2 -->
+<map name="_serialization_8c_afc0837dca2222d7442b817029905a317_icgraph" id="_serialization_8c_afc0837dca2222d7442b817029905a317_icgraph">
+<area shape="rect" id="node2" href="protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="163,5,264,32"/>
+<area shape="rect" id="node3" href="_serialization_8c.html#a21e5efe87297880bb5198fab1b493088" title="package2Frame" alt="" coords="156,56,271,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a21e5efe87297880bb5198fab1b493088"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21e5efe87297880bb5198fab1b493088">&#9670;&nbsp;</a></span>package2Frame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void package2Frame </td>
+          <td>(</td>
+          <td class="paramtype">CommunicationPackage *&#160;</td>
+          <td class="paramname"><em>package</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Frame *&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>with_checksum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Faz a serialização de um pacote </p>
+
+<p class="definition">Definition at line <a class="el" href="_serialization_8c_source.html#l00079">79</a> of file <a class="el" href="_serialization_8c_source.html">Serialization.c</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="_serialization_8c_a21e5efe87297880bb5198fab1b493088_cgraph.png" border="0" usemap="#_serialization_8c_a21e5efe87297880bb5198fab1b493088_cgraph" alt=""/></div>
+<map name="_serialization_8c_a21e5efe87297880bb5198fab1b493088_cgraph" id="_serialization_8c_a21e5efe87297880bb5198fab1b493088_cgraph">
+<area shape="rect" id="node2" href="_serialization_8c.html#afc0837dca2222d7442b817029905a317" title="header2String" alt="" coords="168,5,271,32"/>
+<area shape="rect" id="node4" href="_frame_8c.html#aa590f0ed30fbb41a2577c65c80c1dffd" title="AppendFrame" alt="" coords="168,56,271,83"/>
+<area shape="rect" id="node3" href="_serialization_8c.html#ad34e045d5bf9a12559d00cc39093f063" title="getResourceName" alt="" coords="319,5,448,32"/>
+</map>
 </div>
 
 </div>
@@ -137,13 +286,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void tlm2String </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_telemetria.html">Telemetria</a> *&#160;</td>
+          <td class="paramtype">Telemetria *&#160;</td>
           <td class="paramname"><em>tlm</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_pay_load.html">PayLoad</a> *&#160;</td>
+          <td class="paramtype">PayLoad *&#160;</td>
           <td class="paramname"><em>ans</em>&#160;</td>
         </tr>
         <tr>
@@ -153,11 +302,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_serialization_8c_source.html#l00010">10</a> of file <a class="el" href="_serialization_8c_source.html">Serialization.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_serialization_8c_a2318f548e4203daec2d18ade642cb1ce_cgraph.png" border="0" usemap="#_serialization_8c_a2318f548e4203daec2d18ade642cb1ce_cgraph" alt=""/></div>
-<!-- MAP 3 -->
+<map name="_serialization_8c_a2318f548e4203daec2d18ade642cb1ce_cgraph" id="_serialization_8c_a2318f548e4203daec2d18ade642cb1ce_cgraph">
+<area shape="rect" id="node2" href="clock_8c.html#ae11b9efceb4bc7f2aa38c00fe8ac3bb0" title="strToTimeStamp" alt="" coords="135,5,252,32"/>
+<area shape="rect" id="node3" href="clock_8c.html#a90ddb7c444f1d03ebd65306812e0fa5d" title="unix_time_in_seconds" alt="" coords="300,5,451,32"/>
+</map>
 </div>
 
 </div>

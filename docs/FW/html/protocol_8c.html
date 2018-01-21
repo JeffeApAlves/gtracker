@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GoodsTracker: F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/Communication/protocol.c File Reference</title>
+<title>GoodsTracker: F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Communication/protocol.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,62 +71,41 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="_x_f1_8h_source.html">XF1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_a_s1_8h_source.html">AS1.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_events_8h_source.html">Events.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_frame_8h_source.html">Frame.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_ring_buffer_8h_source.html">RingBuffer.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_communication_8h_source.html">communication.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_serialization_8h_source.html">Serialization.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="protocol_8h_source.html">protocol.h</a>&quot;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;uart_host.h&gt;</code><br />
+<code>#include &quot;utils.h&quot;</code><br />
+<code>#include &quot;communication.h&quot;</code><br />
+<code>#include &quot;serialization.h&quot;</code><br />
+<code>#include &quot;protocol.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for protocol.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="protocol_8c__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_communication_2protocol_8c" alt=""/></div>
-<!-- MAP 0 -->
+<div class="center"><img src="protocol_8c__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_communication_2protocol_8c" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_communication_2protocol_8c" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_communication_2protocol_8c">
+</map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="protocol_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5a763e43d6e4f1fdf520075476f11d2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a5a763e43d6e4f1fdf520075476f11d2d">processRx</a> (void)</td></tr>
-<tr class="separator:a5a763e43d6e4f1fdf520075476f11d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a415580096e7729144bcd26b365c0b48d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_cmd_8h.html#acf246a87e41f47012fc7628989d3fe95">Resource</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a415580096e7729144bcd26b365c0b48d">getResource</a> (char *name)</td></tr>
+<tr class="memitem:a2cddbd557b6005eba4292581d9615a5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a2cddbd557b6005eba4292581d9615a5c">receivePackage</a> (void)</td></tr>
+<tr class="separator:a2cddbd557b6005eba4292581d9615a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a415580096e7729144bcd26b365c0b48d"><td class="memItemLeft" align="right" valign="top">Resource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a415580096e7729144bcd26b365c0b48d">getResource</a> (char *name)</td></tr>
 <tr class="separator:a415580096e7729144bcd26b365c0b48d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad34e045d5bf9a12559d00cc39093f063"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#ad34e045d5bf9a12559d00cc39093f063">getResourceName</a> (char *out, <a class="el" href="_cmd_8h.html#acf246a87e41f47012fc7628989d3fe95">Resource</a> resource)</td></tr>
-<tr class="separator:ad34e045d5bf9a12559d00cc39093f063"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67f18f909de210cc4208454854658231"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a67f18f909de210cc4208454854658231">putTxData</a> (char data)</td></tr>
-<tr class="separator:a67f18f909de210cc4208454854658231"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac16b96f951e608c644a64b16712a595f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#ac16b96f951e608c644a64b16712a595f">putRxData</a> (char data)</td></tr>
-<tr class="separator:ac16b96f951e608c644a64b16712a595f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75107164823272beb9f467666391c752"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a75107164823272beb9f467666391c752">getTxData</a> (char *ch)</td></tr>
-<tr class="separator:a75107164823272beb9f467666391c752"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95b387870ebff076b64b5bbfbf43f13f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a95b387870ebff076b64b5bbfbf43f13f">getRxData</a> (char *ch)</td></tr>
-<tr class="separator:a95b387870ebff076b64b5bbfbf43f13f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a253ec485742da753e8b5e5c568646eba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a253ec485742da753e8b5e5c568646eba">hasTxData</a> (void)</td></tr>
-<tr class="separator:a253ec485742da753e8b5e5c568646eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a302a9d8b5d0da5d55aa1dec9c4da3f56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a302a9d8b5d0da5d55aa1dec9c4da3f56">sendFrame</a> (char *frame)</td></tr>
 <tr class="separator:a302a9d8b5d0da5d55aa1dec9c4da3f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeba727db883a5ed9fdd0fd7777bf1666"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666">sendPackage</a> (<a class="el" href="struct_communication_package.html">CommunicationPackage</a> *package)</td></tr>
+<tr class="memitem:aeba727db883a5ed9fdd0fd7777bf1666"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666">sendPackage</a> (CommunicationPackage *package)</td></tr>
 <tr class="separator:aeba727db883a5ed9fdd0fd7777bf1666"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a042cfac8bcf4c6fb8698d09c16fe5d0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a042cfac8bcf4c6fb8698d09c16fe5d0a">isAnyRxData</a> ()</td></tr>
-<tr class="separator:a042cfac8bcf4c6fb8698d09c16fe5d0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76ce041fe8cb759070d0472abfa2fcaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a76ce041fe8cb759070d0472abfa2fcaa">protocol_init</a> (void)</td></tr>
-<tr class="separator:a76ce041fe8cb759070d0472abfa2fcaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aaaf7d01c4eb3eca0747f8a82bd51e82a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#aaaf7d01c4eb3eca0747f8a82bd51e82a">SEPARATOR</a> [] = {<a class="el" href="_communication_frame_8h.html#ab5bbc755386730bc28733532b848661f">CHAR_SEPARATOR</a>,<a class="el" href="_communication_frame_8h.html#abe0d4fed622e22bf428d3860df9b9f2f">CHAR_STR_END</a>}</td></tr>
-<tr class="separator:aaaf7d01c4eb3eca0747f8a82bd51e82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7223d760429da396f2ea5e0f630718f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#aa7223d760429da396f2ea5e0f630718f">OPERATION_AN</a> = &quot;AN&quot;</td></tr>
 <tr class="separator:aa7223d760429da396f2ea5e0f630718f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa79373273b4874ef0cd12a1adc808477"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#aa79373273b4874ef0cd12a1adc808477">OPERATION_RD</a> = &quot;RD&quot;</td></tr>
 <tr class="separator:aa79373273b4874ef0cd12a1adc808477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6f8b9ee27ca0aff065a8e80c1994253"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#ab6f8b9ee27ca0aff065a8e80c1994253">OPERATION_WR</a> = &quot;WR&quot;</td></tr>
 <tr class="separator:ab6f8b9ee27ca0aff065a8e80c1994253"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdc2c7324a6e65beb2d6a296acb841bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_ring_buffer.html">RingBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#abdc2c7324a6e65beb2d6a296acb841bc">bufferRx</a></td></tr>
-<tr class="separator:abdc2c7324a6e65beb2d6a296acb841bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fc9b5feb297bb921f3b3a5b92ed5bd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_ring_buffer.html">RingBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_8c.html#a0fc9b5feb297bb921f3b3a5b92ed5bd8">bufferTx</a></td></tr>
-<tr class="separator:a0fc9b5feb297bb921f3b3a5b92ed5bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a415580096e7729144bcd26b365c0b48d"></a>
@@ -136,7 +115,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_cmd_8h.html#acf246a87e41f47012fc7628989d3fe95">Resource</a> getResource </td>
+          <td class="memname">Resource getResource </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
@@ -144,191 +123,27 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="protocol_8c_source.html#l00226">226</a> of file <a class="el" href="protocol_8c_source.html">protocol.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="protocol_8c_a415580096e7729144bcd26b365c0b48d_icgraph.png" border="0" usemap="#protocol_8c_a415580096e7729144bcd26b365c0b48d_icgraph" alt=""/></div>
-<!-- MAP 1 -->
+<map name="protocol_8c_a415580096e7729144bcd26b365c0b48d_icgraph" id="protocol_8c_a415580096e7729144bcd26b365c0b48d_icgraph">
+<area shape="rect" id="node2" href="utils_8c.html#afc53dea59857d91538b40420069fea6d" title="AsResource" alt="" coords="148,5,241,32"/>
+</map>
 </div>
 
 </div>
 </div>
-<a id="ad34e045d5bf9a12559d00cc39093f063"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad34e045d5bf9a12559d00cc39093f063">&#9670;&nbsp;</a></span>getResourceName()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void getResourceName </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="_cmd_8h.html#acf246a87e41f47012fc7628989d3fe95">Resource</a>&#160;</td>
-          <td class="paramname"><em>resource</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_ad34e045d5bf9a12559d00cc39093f063_icgraph.png" border="0" usemap="#protocol_8c_ad34e045d5bf9a12559d00cc39093f063_icgraph" alt=""/></div>
-<!-- MAP 2 -->
-</div>
-
-</div>
-</div>
-<a id="a95b387870ebff076b64b5bbfbf43f13f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95b387870ebff076b64b5bbfbf43f13f">&#9670;&nbsp;</a></span>getRxData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> getRxData </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>ch</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_a95b387870ebff076b64b5bbfbf43f13f_cgraph.png" border="0" usemap="#protocol_8c_a95b387870ebff076b64b5bbfbf43f13f_cgraph" alt=""/></div>
-<!-- MAP 3 -->
-</div>
-
-</div>
-</div>
-<a id="a75107164823272beb9f467666391c752"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75107164823272beb9f467666391c752">&#9670;&nbsp;</a></span>getTxData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> getTxData </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>ch</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_a75107164823272beb9f467666391c752_cgraph.png" border="0" usemap="#protocol_8c_a75107164823272beb9f467666391c752_cgraph" alt=""/></div>
-<!-- MAP 4 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_a75107164823272beb9f467666391c752_icgraph.png" border="0" usemap="#protocol_8c_a75107164823272beb9f467666391c752_icgraph" alt=""/></div>
-<!-- MAP 5 -->
-</div>
-
-</div>
-</div>
-<a id="a253ec485742da753e8b5e5c568646eba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a253ec485742da753e8b5e5c568646eba">&#9670;&nbsp;</a></span>hasTxData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> hasTxData </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Verifica se existe dados no buffer circular de transmiassa </p>
-
-</div>
-</div>
-<a id="a042cfac8bcf4c6fb8698d09c16fe5d0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a042cfac8bcf4c6fb8698d09c16fe5d0a">&#9670;&nbsp;</a></span>isAnyRxData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> isAnyRxData </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a_cgraph.png" border="0" usemap="#protocol_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a_cgraph" alt=""/></div>
-<!-- MAP 6 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a_icgraph.png" border="0" usemap="#protocol_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a_icgraph" alt=""/></div>
-<!-- MAP 7 -->
-</div>
-
-</div>
-</div>
-<a id="a5a763e43d6e4f1fdf520075476f11d2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a763e43d6e4f1fdf520075476f11d2d">&#9670;&nbsp;</a></span>processRx()</h2>
+<a id="a2cddbd557b6005eba4292581d9615a5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cddbd557b6005eba4292581d9615a5c">&#9670;&nbsp;</a></span>receivePackage()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> processRx </td>
+          <td class="memname">bool receivePackage </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -336,118 +151,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="protocol_8c_source.html#l00203">203</a> of file <a class="el" href="protocol_8c_source.html">protocol.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="protocol_8c_a5a763e43d6e4f1fdf520075476f11d2d_cgraph.png" border="0" usemap="#protocol_8c_a5a763e43d6e4f1fdf520075476f11d2d_cgraph" alt=""/></div>
-<!-- MAP 8 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_a5a763e43d6e4f1fdf520075476f11d2d_icgraph.png" border="0" usemap="#protocol_8c_a5a763e43d6e4f1fdf520075476f11d2d_icgraph" alt=""/></div>
-<!-- MAP 9 -->
-</div>
-
-</div>
-</div>
-<a id="a76ce041fe8cb759070d0472abfa2fcaa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76ce041fe8cb759070d0472abfa2fcaa">&#9670;&nbsp;</a></span>protocol_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void protocol_init </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Inicializa a comunicação com o Host via porta serial </p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_a76ce041fe8cb759070d0472abfa2fcaa_icgraph.png" border="0" usemap="#protocol_8c_a76ce041fe8cb759070d0472abfa2fcaa_icgraph" alt=""/></div>
-<!-- MAP 10 -->
-</div>
-
-</div>
-</div>
-<a id="ac16b96f951e608c644a64b16712a595f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac16b96f951e608c644a64b16712a595f">&#9670;&nbsp;</a></span>putRxData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> putRxData </td>
-          <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_ac16b96f951e608c644a64b16712a595f_cgraph.png" border="0" usemap="#protocol_8c_ac16b96f951e608c644a64b16712a595f_cgraph" alt=""/></div>
-<!-- MAP 11 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_ac16b96f951e608c644a64b16712a595f_icgraph.png" border="0" usemap="#protocol_8c_ac16b96f951e608c644a64b16712a595f_icgraph" alt=""/></div>
-<!-- MAP 12 -->
-</div>
-
-</div>
-</div>
-<a id="a67f18f909de210cc4208454854658231"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67f18f909de210cc4208454854658231">&#9670;&nbsp;</a></span>putTxData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group___p_e___types__module.html#ga97a80ca1602ebf2303258971a2c938e2">bool</a> putTxData </td>
-          <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_a67f18f909de210cc4208454854658231_cgraph.png" border="0" usemap="#protocol_8c_a67f18f909de210cc4208454854658231_cgraph" alt=""/></div>
-<!-- MAP 13 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_a67f18f909de210cc4208454854658231_icgraph.png" border="0" usemap="#protocol_8c_a67f18f909de210cc4208454854658231_icgraph" alt=""/></div>
-<!-- MAP 14 -->
+<div class="center"><img src="protocol_8c_a2cddbd557b6005eba4292581d9615a5c_cgraph.png" border="0" usemap="#protocol_8c_a2cddbd557b6005eba4292581d9615a5c_cgraph" alt=""/></div>
+<map name="protocol_8c_a2cddbd557b6005eba4292581d9615a5c_cgraph" id="protocol_8c_a2cddbd557b6005eba4292581d9615a5c_cgraph">
+<area shape="rect" id="node2" href="uart__host_8c.html#a042cfac8bcf4c6fb8698d09c16fe5d0a" title="isAnyRxData" alt="" coords="167,5,265,32"/>
+<area shape="rect" id="node3" href="_ring_buffer_8c.html#a2e19e42bd781463e59dddc3687efce33" title="getCount" alt="" coords="313,5,388,32"/>
+</map>
 </div>
 
 </div>
@@ -468,11 +181,24 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p>Envia o frame </p>
+
+<p class="definition">Definition at line <a class="el" href="protocol_8c_source.html#l00249">249</a> of file <a class="el" href="protocol_8c_source.html">protocol.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="protocol_8c_a302a9d8b5d0da5d55aa1dec9c4da3f56_cgraph.png" border="0" usemap="#protocol_8c_a302a9d8b5d0da5d55aa1dec9c4da3f56_cgraph" alt=""/></div>
-<!-- MAP 15 -->
+<map name="protocol_8c_a302a9d8b5d0da5d55aa1dec9c4da3f56_cgraph" id="protocol_8c_a302a9d8b5d0da5d55aa1dec9c4da3f56_cgraph">
+<area shape="rect" id="node2" href="uart__host_8c.html#a67f18f909de210cc4208454854658231" title="putTxData" alt="" coords="143,5,225,32"/>
+<area shape="rect" id="node4" href="uart__host_8c.html#a3ba4cb369523209026ad84bfb76e490f" title="putTxString" alt="" coords="140,56,228,83"/>
+<area shape="rect" id="node6" href="uart__host_8c.html#a7bfab1eda834687cfc0055d0816bb572" title="startTX" alt="" coords="153,107,215,133"/>
+<area shape="rect" id="node3" href="_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="443,31,510,57"/>
+<area shape="rect" id="node5" href="_ring_buffer_8c.html#a9c3374a6c654c18f3b7e81e8e771451b" title="putString" alt="" coords="295,56,369,83"/>
+<area shape="rect" id="node7" href="uart__host_8c.html#ae23bfcc8731e28e48ed09368901d9073" title="isAnyTxData" alt="" coords="284,107,380,133"/>
+<area shape="rect" id="node9" href="group___events__module.html#gad4ca2c06cb7fdb57a52811247371565c" title="AS1_OnTxChar" alt="" coords="276,157,388,184"/>
+<area shape="rect" id="node8" href="_ring_buffer_8c.html#a2e19e42bd781463e59dddc3687efce33" title="getCount" alt="" coords="439,107,514,133"/>
+<area shape="rect" id="node10" href="uart__host_8c.html#a75107164823272beb9f467666391c752" title="getTxData" alt="" coords="436,157,517,184"/>
+<area shape="rect" id="node11" href="_ring_buffer_8c.html#afc58de5fd336eea8b648561cc107e47d" title="getData" alt="" coords="565,157,632,184"/>
+</map>
 </div>
 
 </div>
@@ -486,56 +212,39 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void sendPackage </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_communication_package.html">CommunicationPackage</a> *&#160;</td>
+          <td class="paramtype">CommunicationPackage *&#160;</td>
           <td class="paramname"><em>package</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="protocol_8c_source.html#l00266">266</a> of file <a class="el" href="protocol_8c_source.html">protocol.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="protocol_8c_aeba727db883a5ed9fdd0fd7777bf1666_cgraph.png" border="0" usemap="#protocol_8c_aeba727db883a5ed9fdd0fd7777bf1666_cgraph" alt=""/></div>
-<!-- MAP 16 -->
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="protocol_8c_aeba727db883a5ed9fdd0fd7777bf1666_icgraph.png" border="0" usemap="#protocol_8c_aeba727db883a5ed9fdd0fd7777bf1666_icgraph" alt=""/></div>
-<!-- MAP 17 -->
+<map name="protocol_8c_aeba727db883a5ed9fdd0fd7777bf1666_cgraph" id="protocol_8c_aeba727db883a5ed9fdd0fd7777bf1666_cgraph">
+<area shape="rect" id="node2" href="_serialization_8c.html#afc0837dca2222d7442b817029905a317" title="header2String" alt="" coords="166,5,269,32"/>
+<area shape="rect" id="node4" href="_frame_8c.html#ad495fac4de1a27ddfbadf1dbe5c6af0f" title="calcChecksum" alt="" coords="163,56,271,83"/>
+<area shape="rect" id="node5" href="_serialization_8c.html#adfe71660e265e2d87e94545bda3cc81d" title="checkSum2String" alt="" coords="155,107,280,133"/>
+<area shape="rect" id="node6" href="uart__host_8c.html#a67f18f909de210cc4208454854658231" title="putTxData" alt="" coords="352,157,433,184"/>
+<area shape="rect" id="node8" href="uart__host_8c.html#a3ba4cb369523209026ad84bfb76e490f" title="putTxString" alt="" coords="173,208,261,235"/>
+<area shape="rect" id="node10" href="uart__host_8c.html#a7bfab1eda834687cfc0055d0816bb572" title="startTX" alt="" coords="186,259,249,285"/>
+<area shape="rect" id="node3" href="_serialization_8c.html#ad34e045d5bf9a12559d00cc39093f063" title="getResourceName" alt="" coords="328,5,457,32"/>
+<area shape="rect" id="node7" href="_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="513,183,579,209"/>
+<area shape="rect" id="node9" href="_ring_buffer_8c.html#a9c3374a6c654c18f3b7e81e8e771451b" title="putString" alt="" coords="355,208,430,235"/>
+<area shape="rect" id="node11" href="uart__host_8c.html#ae23bfcc8731e28e48ed09368901d9073" title="isAnyTxData" alt="" coords="345,259,441,285"/>
+<area shape="rect" id="node13" href="group___events__module.html#gad4ca2c06cb7fdb57a52811247371565c" title="AS1_OnTxChar" alt="" coords="337,309,449,336"/>
+<area shape="rect" id="node12" href="_ring_buffer_8c.html#a2e19e42bd781463e59dddc3687efce33" title="getCount" alt="" coords="509,259,583,285"/>
+<area shape="rect" id="node14" href="uart__host_8c.html#a75107164823272beb9f467666391c752" title="getTxData" alt="" coords="505,309,587,336"/>
+<area shape="rect" id="node15" href="_ring_buffer_8c.html#afc58de5fd336eea8b648561cc107e47d" title="getData" alt="" coords="635,309,701,336"/>
+</map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="abdc2c7324a6e65beb2d6a296acb841bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abdc2c7324a6e65beb2d6a296acb841bc">&#9670;&nbsp;</a></span>bufferRx</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_ring_buffer.html">RingBuffer</a> bufferRx</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0fc9b5feb297bb921f3b3a5b92ed5bd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0fc9b5feb297bb921f3b3a5b92ed5bd8">&#9670;&nbsp;</a></span>bufferTx</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_ring_buffer.html">RingBuffer</a> bufferTx</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="aa7223d760429da396f2ea5e0f630718f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa7223d760429da396f2ea5e0f630718f">&#9670;&nbsp;</a></span>OPERATION_AN</h2>
 
@@ -547,6 +256,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="protocol_8c_source.html#l00011">11</a> of file <a class="el" href="protocol_8c_source.html">protocol.c</a>.</p>
 
 </div>
 </div>
@@ -562,6 +273,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="protocol_8c_source.html#l00012">12</a> of file <a class="el" href="protocol_8c_source.html">protocol.c</a>.</p>
+
 </div>
 </div>
 <a id="ab6f8b9ee27ca0aff065a8e80c1994253"></a>
@@ -576,19 +289,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="aaaf7d01c4eb3eca0747f8a82bd51e82a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaaf7d01c4eb3eca0747f8a82bd51e82a">&#9670;&nbsp;</a></span>SEPARATOR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char SEPARATOR[] = {<a class="el" href="_communication_frame_8h.html#ab5bbc755386730bc28733532b848661f">CHAR_SEPARATOR</a>,<a class="el" href="_communication_frame_8h.html#abe0d4fed622e22bf428d3860df9b9f2f">CHAR_STR_END</a>}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p class="definition">Definition at line <a class="el" href="protocol_8c_source.html#l00013">13</a> of file <a class="el" href="protocol_8c_source.html">protocol.c</a>.</p>
 
 </div>
 </div>

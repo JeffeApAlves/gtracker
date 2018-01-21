@@ -1,13 +1,11 @@
 <map id="putData" name="putData">
-<area shape="rect" id="node2" href="$protocol_8c.html#a67f18f909de210cc4208454854658231" title="putTxData" alt="" coords="127,5,208,32"/>
-<area shape="rect" id="node6" href="$protocol_8c.html#ac16b96f951e608c644a64b16712a595f" title="putRxData" alt="" coords="126,107,209,133"/>
-<area shape="rect" id="node9" href="$gps_8c.html#aa36479de7472a7ae297778b1fdad8c2f" title="putGPSData" alt="" coords="120,157,215,184"/>
-<area shape="rect" id="node12" href="$_ring_buffer_8c.html#a9c3374a6c654c18f3b7e81e8e771451b" title="putString" alt="" coords="130,56,205,83"/>
-<area shape="rect" id="node3" href="$protocol_8c.html#a302a9d8b5d0da5d55aa1dec9c4da3f56" title="sendFrame" alt="" coords="277,5,363,32"/>
-<area shape="rect" id="node4" href="$protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="269,56,371,83"/>
-<area shape="rect" id="node5" href="$_communication_8c.html#aff899dab1f89ad1053aed4cf3dd37602" title="txPackage_task" alt="" coords="468,56,584,83"/>
-<area shape="rect" id="node7" href="$group___events__module.html#gac72aa34766c66a614f29b1267cadfccc" title="AS1_OnRxChar" alt="" coords="263,107,377,133"/>
-<area shape="rect" id="node8" href="$group___a_s1__module.html#ga617597f21766b4f72d7f2883c21e6dd8" title="ASerialLdd1_OnBlockReceived" alt="" coords="425,107,627,133"/>
-<area shape="rect" id="node10" href="$group___events__module.html#gadc4e66d9db0a63b063b37ad5a70a10be" title="AS2_OnRxChar" alt="" coords="263,157,377,184"/>
-<area shape="rect" id="node11" href="$group___a_s2__module.html#ga7a02cc6280b30d13707952d78f8e6c73" title="ASerialLdd2_OnBlockReceived" alt="" coords="425,157,627,184"/>
+<area shape="rect" id="node2" href="$uart__host_8c.html#a67f18f909de210cc4208454854658231" title="putTxData" alt="" coords="279,5,361,32"/>
+<area shape="rect" id="node5" href="$uart__host_8c.html#ac16b96f951e608c644a64b16712a595f" title="putRxData" alt="" coords="126,107,209,133"/>
+<area shape="rect" id="node7" href="$uart__gps_8c.html#aa36479de7472a7ae297778b1fdad8c2f" title="putGPSData" alt="" coords="120,157,215,184"/>
+<area shape="rect" id="node9" href="$_ring_buffer_8c.html#a9c3374a6c654c18f3b7e81e8e771451b" title="putString" alt="" coords="130,56,205,83"/>
+<area shape="rect" id="node3" href="$protocol_8c.html#a302a9d8b5d0da5d55aa1dec9c4da3f56" title="sendFrame" alt="" coords="433,5,519,32"/>
+<area shape="rect" id="node4" href="$protocol_8c.html#aeba727db883a5ed9fdd0fd7777bf1666" title="sendPackage" alt="" coords="425,56,527,83"/>
+<area shape="rect" id="node6" href="$group___events__module.html#gac72aa34766c66a614f29b1267cadfccc" title="AS1_OnRxChar" alt="" coords="263,107,377,133"/>
+<area shape="rect" id="node8" href="$group___events__module.html#gadc4e66d9db0a63b063b37ad5a70a10be" title="AS2_OnRxChar" alt="" coords="263,157,377,184"/>
+<area shape="rect" id="node10" href="$uart__host_8c.html#a3ba4cb369523209026ad84bfb76e490f" title="putTxString" alt="" coords="276,56,364,83"/>
 </map>

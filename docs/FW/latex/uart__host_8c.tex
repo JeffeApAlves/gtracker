@@ -1,0 +1,368 @@
+\hypertarget{uart__host_8c}{}\section{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/uart\+\_\+host.c File Reference}
+\label{uart__host_8c}\index{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/uart\+\_\+host.\+c@{F\+:/workspace/gtracker/platform/\+Goods\+Tracker\+Control/\+Sources/\+Communication/uart\+\_\+host.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}uart\+\_\+host.\+h\char`\"{}}\newline
+Include dependency graph for uart\+\_\+host.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{uart__host_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{uart__host_8c_a7bfab1eda834687cfc0055d0816bb572}{start\+TX} (void)
+\item 
+bool \hyperlink{uart__host_8c_a3ba4cb369523209026ad84bfb76e490f}{put\+Tx\+String} (char $\ast$str)
+\item 
+bool \hyperlink{uart__host_8c_ace09ad3f10025460b1942a4100f4b782}{uart\+\_\+host\+\_\+init} (void)
+\item 
+void \hyperlink{uart__host_8c_a3ee66ef273e251ee4a07e6e9a14e7b8b}{uart\+\_\+host\+\_\+\+Deinit} (void)
+\item 
+bool \hyperlink{uart__host_8c_a75107164823272beb9f467666391c752}{get\+Tx\+Data} (char $\ast$ch)
+\item 
+bool \hyperlink{uart__host_8c_a67f18f909de210cc4208454854658231}{put\+Tx\+Data} (char data)
+\item 
+bool \hyperlink{uart__host_8c_ae23bfcc8731e28e48ed09368901d9073}{is\+Any\+Tx\+Data} ()
+\item 
+bool \hyperlink{uart__host_8c_a95b387870ebff076b64b5bbfbf43f13f}{get\+Rx\+Data} (char $\ast$ch)
+\item 
+bool \hyperlink{uart__host_8c_ac16b96f951e608c644a64b16712a595f}{put\+Rx\+Data} (char data)
+\item 
+bool \hyperlink{uart__host_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a}{is\+Any\+Rx\+Data} ()
+\item 
+uint16\+\_\+t \hyperlink{uart__host_8c_a8ce1ec172f1dc93b6c70802e66c44cde}{uart\+\_\+host\+\_\+rx\+\_\+head} (void)
+\item 
+uint16\+\_\+t \hyperlink{uart__host_8c_a0f47012cf6124e98b53e57c915db1edf}{uart\+\_\+host\+\_\+rx\+\_\+tail} (void)
+\item 
+uint16\+\_\+t \hyperlink{uart__host_8c_a8d05660952880e8145f558ae483a1924}{uart\+\_\+host\+\_\+rx\+\_\+max} (void)
+\item 
+uint16\+\_\+t \hyperlink{uart__host_8c_a6811369001881534fbcdf8e2090bb448}{uart\+\_\+host\+\_\+tx\+\_\+head} (void)
+\item 
+uint16\+\_\+t \hyperlink{uart__host_8c_a5f5e561e0bfa292524f57df593fba433}{uart\+\_\+host\+\_\+tx\+\_\+tail} (void)
+\item 
+uint16\+\_\+t \hyperlink{uart__host_8c_ab8f55750ccb8b860cab6695855c97e62}{uart\+\_\+host\+\_\+tx\+\_\+max} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Ring\+Buffer \hyperlink{uart__host_8c_abdc2c7324a6e65beb2d6a296acb841bc}{buffer\+Rx}
+\item 
+Ring\+Buffer \hyperlink{uart__host_8c_a0fc9b5feb297bb921f3b3a5b92ed5bd8}{buffer\+Tx}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{uart__host_8c_a95b387870ebff076b64b5bbfbf43f13f}\label{uart__host_8c_a95b387870ebff076b64b5bbfbf43f13f}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!get\+Rx\+Data@{get\+Rx\+Data}}
+\index{get\+Rx\+Data@{get\+Rx\+Data}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{get\+Rx\+Data()}{getRxData()}}
+{\footnotesize\ttfamily bool get\+Rx\+Data (\begin{DoxyParamCaption}\item[{char $\ast$}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 130 of file uart\+\_\+host.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{uart__host_8c_a95b387870ebff076b64b5bbfbf43f13f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__host_8c_a75107164823272beb9f467666391c752}\label{uart__host_8c_a75107164823272beb9f467666391c752}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!get\+Tx\+Data@{get\+Tx\+Data}}
+\index{get\+Tx\+Data@{get\+Tx\+Data}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{get\+Tx\+Data()}{getTxData()}}
+{\footnotesize\ttfamily bool get\+Tx\+Data (\begin{DoxyParamCaption}\item[{char $\ast$}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 98 of file uart\+\_\+host.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{uart__host_8c_a75107164823272beb9f467666391c752_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart__host_8c_a75107164823272beb9f467666391c752_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__host_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a}\label{uart__host_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!is\+Any\+Rx\+Data@{is\+Any\+Rx\+Data}}
+\index{is\+Any\+Rx\+Data@{is\+Any\+Rx\+Data}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{is\+Any\+Rx\+Data()}{isAnyRxData()}}
+{\footnotesize\ttfamily bool is\+Any\+Rx\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 152 of file uart\+\_\+host.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{uart__host_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{uart__host_8c_a042cfac8bcf4c6fb8698d09c16fe5d0a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__host_8c_ae23bfcc8731e28e48ed09368901d9073}\label{uart__host_8c_ae23bfcc8731e28e48ed09368901d9073}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!is\+Any\+Tx\+Data@{is\+Any\+Tx\+Data}}
+\index{is\+Any\+Tx\+Data@{is\+Any\+Tx\+Data}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{is\+Any\+Tx\+Data()}{isAnyTxData()}}
+{\footnotesize\ttfamily bool is\+Any\+Tx\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 119 of file uart\+\_\+host.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{uart__host_8c_ae23bfcc8731e28e48ed09368901d9073_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{uart__host_8c_ae23bfcc8731e28e48ed09368901d9073_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__host_8c_ac16b96f951e608c644a64b16712a595f}\label{uart__host_8c_ac16b96f951e608c644a64b16712a595f}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!put\+Rx\+Data@{put\+Rx\+Data}}
+\index{put\+Rx\+Data@{put\+Rx\+Data}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{put\+Rx\+Data()}{putRxData()}}
+{\footnotesize\ttfamily bool put\+Rx\+Data (\begin{DoxyParamCaption}\item[{char}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 141 of file uart\+\_\+host.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{uart__host_8c_ac16b96f951e608c644a64b16712a595f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{uart__host_8c_ac16b96f951e608c644a64b16712a595f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__host_8c_a67f18f909de210cc4208454854658231}\label{uart__host_8c_a67f18f909de210cc4208454854658231}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!put\+Tx\+Data@{put\+Tx\+Data}}
+\index{put\+Tx\+Data@{put\+Tx\+Data}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{put\+Tx\+Data()}{putTxData()}}
+{\footnotesize\ttfamily bool put\+Tx\+Data (\begin{DoxyParamCaption}\item[{char}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 109 of file uart\+\_\+host.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{uart__host_8c_a67f18f909de210cc4208454854658231_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{uart__host_8c_a67f18f909de210cc4208454854658231_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__host_8c_a3ba4cb369523209026ad84bfb76e490f}\label{uart__host_8c_a3ba4cb369523209026ad84bfb76e490f}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!put\+Tx\+String@{put\+Tx\+String}}
+\index{put\+Tx\+String@{put\+Tx\+String}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{put\+Tx\+String()}{putTxString()}}
+{\footnotesize\ttfamily bool put\+Tx\+String (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 51 of file uart\+\_\+host.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{uart__host_8c_a3ba4cb369523209026ad84bfb76e490f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{uart__host_8c_a3ba4cb369523209026ad84bfb76e490f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__host_8c_a7bfab1eda834687cfc0055d0816bb572}\label{uart__host_8c_a7bfab1eda834687cfc0055d0816bb572}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!start\+TX@{start\+TX}}
+\index{start\+TX@{start\+TX}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{start\+T\+X()}{startTX()}}
+{\footnotesize\ttfamily void start\+TX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Verifica se o buffer de TX esta vazio. Se sim, chama a call back da transmissao de caracter para iniciar a transmissao do buffer 
+
+Definition at line 34 of file uart\+\_\+host.\+c.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart__host_8c_a7bfab1eda834687cfc0055d0816bb572_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{uart__host_8c_a7bfab1eda834687cfc0055d0816bb572_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__host_8c_a3ee66ef273e251ee4a07e6e9a14e7b8b}\label{uart__host_8c_a3ee66ef273e251ee4a07e6e9a14e7b8b}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!uart\+\_\+host\+\_\+\+Deinit@{uart\+\_\+host\+\_\+\+Deinit}}
+\index{uart\+\_\+host\+\_\+\+Deinit@{uart\+\_\+host\+\_\+\+Deinit}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+host\+\_\+\+Deinit()}{uart\_host\_Deinit()}}
+{\footnotesize\ttfamily void uart\+\_\+host\+\_\+\+Deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 87 of file uart\+\_\+host.\+c.
+
+\mbox{\Hypertarget{uart__host_8c_ace09ad3f10025460b1942a4100f4b782}\label{uart__host_8c_ace09ad3f10025460b1942a4100f4b782}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!uart\+\_\+host\+\_\+init@{uart\+\_\+host\+\_\+init}}
+\index{uart\+\_\+host\+\_\+init@{uart\+\_\+host\+\_\+init}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+host\+\_\+init()}{uart\_host\_init()}}
+{\footnotesize\ttfamily bool uart\+\_\+host\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 63 of file uart\+\_\+host.\+c.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart__host_8c_ace09ad3f10025460b1942a4100f4b782_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart__host_8c_a8ce1ec172f1dc93b6c70802e66c44cde}\label{uart__host_8c_a8ce1ec172f1dc93b6c70802e66c44cde}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!uart\+\_\+host\+\_\+rx\+\_\+head@{uart\+\_\+host\+\_\+rx\+\_\+head}}
+\index{uart\+\_\+host\+\_\+rx\+\_\+head@{uart\+\_\+host\+\_\+rx\+\_\+head}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+host\+\_\+rx\+\_\+head()}{uart\_host\_rx\_head()}}
+{\footnotesize\ttfamily uint16\+\_\+t uart\+\_\+host\+\_\+rx\+\_\+head (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 164 of file uart\+\_\+host.\+c.
+
+\mbox{\Hypertarget{uart__host_8c_a8d05660952880e8145f558ae483a1924}\label{uart__host_8c_a8d05660952880e8145f558ae483a1924}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!uart\+\_\+host\+\_\+rx\+\_\+max@{uart\+\_\+host\+\_\+rx\+\_\+max}}
+\index{uart\+\_\+host\+\_\+rx\+\_\+max@{uart\+\_\+host\+\_\+rx\+\_\+max}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+host\+\_\+rx\+\_\+max()}{uart\_host\_rx\_max()}}
+{\footnotesize\ttfamily uint16\+\_\+t uart\+\_\+host\+\_\+rx\+\_\+max (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 184 of file uart\+\_\+host.\+c.
+
+\mbox{\Hypertarget{uart__host_8c_a0f47012cf6124e98b53e57c915db1edf}\label{uart__host_8c_a0f47012cf6124e98b53e57c915db1edf}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!uart\+\_\+host\+\_\+rx\+\_\+tail@{uart\+\_\+host\+\_\+rx\+\_\+tail}}
+\index{uart\+\_\+host\+\_\+rx\+\_\+tail@{uart\+\_\+host\+\_\+rx\+\_\+tail}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+host\+\_\+rx\+\_\+tail()}{uart\_host\_rx\_tail()}}
+{\footnotesize\ttfamily uint16\+\_\+t uart\+\_\+host\+\_\+rx\+\_\+tail (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 174 of file uart\+\_\+host.\+c.
+
+\mbox{\Hypertarget{uart__host_8c_a6811369001881534fbcdf8e2090bb448}\label{uart__host_8c_a6811369001881534fbcdf8e2090bb448}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!uart\+\_\+host\+\_\+tx\+\_\+head@{uart\+\_\+host\+\_\+tx\+\_\+head}}
+\index{uart\+\_\+host\+\_\+tx\+\_\+head@{uart\+\_\+host\+\_\+tx\+\_\+head}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+host\+\_\+tx\+\_\+head()}{uart\_host\_tx\_head()}}
+{\footnotesize\ttfamily uint16\+\_\+t uart\+\_\+host\+\_\+tx\+\_\+head (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 203 of file uart\+\_\+host.\+c.
+
+\mbox{\Hypertarget{uart__host_8c_ab8f55750ccb8b860cab6695855c97e62}\label{uart__host_8c_ab8f55750ccb8b860cab6695855c97e62}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!uart\+\_\+host\+\_\+tx\+\_\+max@{uart\+\_\+host\+\_\+tx\+\_\+max}}
+\index{uart\+\_\+host\+\_\+tx\+\_\+max@{uart\+\_\+host\+\_\+tx\+\_\+max}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+host\+\_\+tx\+\_\+max()}{uart\_host\_tx\_max()}}
+{\footnotesize\ttfamily uint16\+\_\+t uart\+\_\+host\+\_\+tx\+\_\+max (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 224 of file uart\+\_\+host.\+c.
+
+\mbox{\Hypertarget{uart__host_8c_a5f5e561e0bfa292524f57df593fba433}\label{uart__host_8c_a5f5e561e0bfa292524f57df593fba433}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!uart\+\_\+host\+\_\+tx\+\_\+tail@{uart\+\_\+host\+\_\+tx\+\_\+tail}}
+\index{uart\+\_\+host\+\_\+tx\+\_\+tail@{uart\+\_\+host\+\_\+tx\+\_\+tail}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+host\+\_\+tx\+\_\+tail()}{uart\_host\_tx\_tail()}}
+{\footnotesize\ttfamily uint16\+\_\+t uart\+\_\+host\+\_\+tx\+\_\+tail (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 213 of file uart\+\_\+host.\+c.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{uart__host_8c_abdc2c7324a6e65beb2d6a296acb841bc}\label{uart__host_8c_abdc2c7324a6e65beb2d6a296acb841bc}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!buffer\+Rx@{buffer\+Rx}}
+\index{buffer\+Rx@{buffer\+Rx}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{buffer\+Rx}{bufferRx}}
+{\footnotesize\ttfamily Ring\+Buffer buffer\+Rx}
+
+
+
+Definition at line 25 of file uart\+\_\+host.\+c.
+
+\mbox{\Hypertarget{uart__host_8c_a0fc9b5feb297bb921f3b3a5b92ed5bd8}\label{uart__host_8c_a0fc9b5feb297bb921f3b3a5b92ed5bd8}} 
+\index{uart\+\_\+host.\+c@{uart\+\_\+host.\+c}!buffer\+Tx@{buffer\+Tx}}
+\index{buffer\+Tx@{buffer\+Tx}!uart\+\_\+host.\+c@{uart\+\_\+host.\+c}}
+\subsubsection{\texorpdfstring{buffer\+Tx}{bufferTx}}
+{\footnotesize\ttfamily Ring\+Buffer buffer\+Tx}
+
+
+
+Definition at line 25 of file uart\+\_\+host.\+c.
+

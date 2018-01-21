@@ -1,11 +1,20 @@
 var searchData=
 [
-  ['frtos1_5fappconfiguretimerforruntimestats',['FRTOS1_AppConfigureTimerForRuntimeStats',['../group___f_r_t_o_s1__module.html#gaec4d75a40722a373e88bd57c4e899940',1,'FRTOS1_AppConfigureTimerForRuntimeStats(void):&#160;FRTOS1.h'],['../portmacro_8h.html#aec4d75a40722a373e88bd57c4e899940',1,'FRTOS1_AppConfigureTimerForRuntimeStats(void):&#160;portmacro.h']]],
-  ['frtos1_5fappgetruntimecountervaluefromisr',['FRTOS1_AppGetRuntimeCounterValueFromISR',['../group___f_r_t_o_s1__module.html#gab1438703d0c195f86363fd284f256948',1,'FRTOS1_AppGetRuntimeCounterValueFromISR(void):&#160;FRTOS1.c'],['../group___f_r_t_o_s1__module.html#gab1438703d0c195f86363fd284f256948',1,'FRTOS1_AppGetRuntimeCounterValueFromISR(void):&#160;FRTOS1.c']]],
-  ['frtos1_5fdeinit',['FRTOS1_Deinit',['../group___f_r_t_o_s1__module.html#gae59cd6cf4cfc95ca846900a4c8341760',1,'FRTOS1.c']]],
-  ['frtos1_5finit',['FRTOS1_Init',['../group___f_r_t_o_s1__module.html#gaa6736fa261f845b8f407ca839b14c340',1,'FRTOS1.c']]],
-  ['frtos1_5fvapplicationidlehook',['FRTOS1_vApplicationIdleHook',['../group___events__module.html#ga47ee4f5ef904e733b7690af3ef89a1b0',1,'Events.c']]],
-  ['frtos1_5fvapplicationmallocfailedhook',['FRTOS1_vApplicationMallocFailedHook',['../group___events__module.html#ga83b87d2e8c6b269bbdc03cf06d1164a2',1,'Events.c']]],
-  ['frtos1_5fvapplicationstackoverflowhook',['FRTOS1_vApplicationStackOverflowHook',['../group___events__module.html#ga1e81c467b899cd40c827a5243d259dee',1,'Events.c']]],
-  ['frtos1_5fvapplicationtickhook',['FRTOS1_vApplicationTickHook',['../group___events__module.html#gaf8fe6769cea9aeb943962871b26b203b',1,'Events.c']]]
+  ['getcallback',['getCallBack',['../application_8c.html#a0d546d65b742e65f538ab67edb9bf000',1,'application.c']]],
+  ['getclock',['getClock',['../clock_8c.html#a9f55d7b47e0f7bef37ce959dce77893d',1,'clock.c']]],
+  ['getcount',['getCount',['../_ring_buffer_8c.html#a2e19e42bd781463e59dddc3687efce33',1,'RingBuffer.c']]],
+  ['getcurrenttimestamp',['getCurrentTimeStamp',['../clock_8c.html#ab80b0181c2433b5033be3d6f4346187d',1,'clock.c']]],
+  ['getdata',['getData',['../_ring_buffer_8c.html#afc58de5fd336eea8b648561cc107e47d',1,'RingBuffer.c']]],
+  ['getfield',['getField',['../_frame_8c.html#af12bea8a6b6dee4e09c7114566ce4583',1,'Frame.c']]],
+  ['getgpsdata',['getGPSData',['../uart__gps_8c.html#a90fab271d7ff61d91f3b5f33bc99c847',1,'uart_gps.c']]],
+  ['getlocalclock',['getLocalClock',['../clock_8c.html#a2a18bdd28149c57a17122b3c372cedf1',1,'clock.c']]],
+  ['getnumfield',['getNumField',['../_frame_8c.html#a547bd8b6653fcf9f85fe84993e69fe78',1,'Frame.c']]],
+  ['getresource',['getResource',['../protocol_8c.html#a415580096e7729144bcd26b365c0b48d',1,'protocol.c']]],
+  ['getresourcename',['getResourceName',['../_serialization_8c.html#ad34e045d5bf9a12559d00cc39093f063',1,'Serialization.c']]],
+  ['getrxdata',['getRxData',['../uart__host_8c.html#a95b387870ebff076b64b5bbfbf43f13f',1,'uart_host.c']]],
+  ['gettimestamp',['getTimeStamp',['../clock_8c.html#aedc3416c01f1577e16320985582ceaf4',1,'clock.c']]],
+  ['gettxdata',['getTxData',['../uart__host_8c.html#a75107164823272beb9f467666391c752',1,'uart_host.c']]],
+  ['gps_5finit',['gps_init',['../gps_8c.html#ab37f7040b9efd19fdd3f92b1df77e771',1,'gps.c']]],
+  ['gps_5fnotify_5frx_5fchar',['gps_notify_rx_char',['../gps_8c.html#adc6c4f916ee238544e55039a3b8c2035',1,'gps.c']]],
+  ['gps_5fpublish',['gps_publish',['../gps_8c.html#ab00cee16acfffac77f9a4eea47246648',1,'gps.c']]]
 ];

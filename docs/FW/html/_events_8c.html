@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GoodsTracker: F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/Events.c File Reference</title>
+<title>GoodsTracker: F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Events.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,27 +71,35 @@ $(function() {
 
 <p>This is user's event module. Put your event handler code here.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_cpu_8h_source.html">Cpu.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &quot;Cpu.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="_events_8h_source.html">Events.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="gps_8h_source.html">gps.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_m_m_a8451_8h_source.html">MMA8451.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="protocol_8h_source.html">protocol.h</a>&quot;</code><br />
-<code>#include &lt;<a class="el" href="_tank_8h_source.html">Tank.h</a>&gt;</code><br />
-<code>#include &quot;<a class="el" href="clock_8h_source.html">clock.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ihm_8h_source.html">ihm.h</a>&quot;</code><br />
+<code>#include &quot;uart_gps.h&quot;</code><br />
+<code>#include &quot;uart_host.h&quot;</code><br />
+<code>#include &quot;Communication.h&quot;</code><br />
+<code>#include &quot;gps.h&quot;</code><br />
+<code>#include &quot;Telemetria.h&quot;</code><br />
+<code>#include &quot;i2c.h&quot;</code><br />
+<code>#include &quot;level_sensor.h&quot;</code><br />
+<code>#include &quot;clock.h&quot;</code><br />
+<code>#include &quot;ihm.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Events.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="_events_8c__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_events_8c" alt=""/></div>
-<!-- MAP 0 -->
+<div class="center"><img src="_events_8c__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_events_8c" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_events_8c" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_events_8c">
+<area shape="rect" id="node4" href="_events_8h.html" title="This is user&#39;s event module. Put your event handler code here. " alt="" coords="1824,109,1896,136"/>
+</map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="_events_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga960d094664356278ac5472d45a6ea2f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga960d094664356278ac5472d45a6ea2f3">Cpu_OnNMIINT</a> (void)</td></tr>
 <tr class="memdesc:ga960d094664356278ac5472d45a6ea2f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This event is called when the Non maskable interrupt had occurred. This event is automatically enabled when the [NMI interrupt] property is set to 'Enabled'.  <a href="group___events__module.html#ga960d094664356278ac5472d45a6ea2f3">More...</a><br /></td></tr>
 <tr class="separator:ga960d094664356278ac5472d45a6ea2f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1e81c467b899cd40c827a5243d259dee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga1e81c467b899cd40c827a5243d259dee">FRTOS1_vApplicationStackOverflowHook</a> (<a class="el" href="task_8h.html#ae95f44d4cfeb4a599c6cc258d241cb6b">TaskHandle_t</a> pxTask, char *pcTaskName)</td></tr>
+<tr class="memitem:ga1e81c467b899cd40c827a5243d259dee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga1e81c467b899cd40c827a5243d259dee">FRTOS1_vApplicationStackOverflowHook</a> (TaskHandle_t pxTask, char *pcTaskName)</td></tr>
 <tr class="separator:ga1e81c467b899cd40c827a5243d259dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf8fe6769cea9aeb943962871b26b203b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gaf8fe6769cea9aeb943962871b26b203b">FRTOS1_vApplicationTickHook</a> (void)</td></tr>
 <tr class="separator:gaf8fe6769cea9aeb943962871b26b203b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,35 +121,37 @@ Functions</h2></td></tr>
 <tr class="separator:gad4ca2c06cb7fdb57a52811247371565c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac0b0e33c722d75df2e7b6eb1d50f15a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gac0b0e33c722d75df2e7b6eb1d50f15a7">AD1_OnEnd</a> (void)</td></tr>
 <tr class="separator:gac0b0e33c722d75df2e7b6eb1d50f15a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga01b566cf25a21b34152513dcb1321a11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga01b566cf25a21b34152513dcb1321a11">TI1_OnInterrupt</a> (void)</td></tr>
-<tr class="separator:ga01b566cf25a21b34152513dcb1321a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaade020d27159f2102fb3b994d1224ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gaaade020d27159f2102fb3b994d1224ae">TSSin_fOnFault</a> (<a class="el" href="group___p_e___types__module.html#ga0c8186d9b9b7880309c27230bbb5e69d">byte</a> u8FaultElecNum)</td></tr>
+<tr class="memitem:gaaade020d27159f2102fb3b994d1224ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gaaade020d27159f2102fb3b994d1224ae">TSSin_fOnFault</a> (byte u8FaultElecNum)</td></tr>
 <tr class="separator:gaaade020d27159f2102fb3b994d1224ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga67e29a27a74c8a25e4edddb84351a138"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga67e29a27a74c8a25e4edddb84351a138">TSSin_fOnInit</a> (void)</td></tr>
 <tr class="separator:ga67e29a27a74c8a25e4edddb84351a138"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5969b4c9b3e47d79941c612897503fe4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga5969b4c9b3e47d79941c612897503fe4">TSSin_fCallBack0</a> (<a class="el" href="struct_t_s_s___c_o_n_t_r_o_l___i_d.html">TSS_CONTROL_ID</a> u8ControlId)</td></tr>
-<tr class="separator:ga5969b4c9b3e47d79941c612897503fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0137853d241c656b6bf6653ebfc64cac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga0137853d241c656b6bf6653ebfc64cac">AS2_OnError</a> (void)</td></tr>
 <tr class="separator:ga0137853d241c656b6bf6653ebfc64cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadc4e66d9db0a63b063b37ad5a70a10be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gadc4e66d9db0a63b063b37ad5a70a10be">AS2_OnRxChar</a> (void)</td></tr>
 <tr class="separator:gadc4e66d9db0a63b063b37ad5a70a10be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga745f5ad3a73381f935cc2ee2fec5c34f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga745f5ad3a73381f935cc2ee2fec5c34f">AS2_OnTxChar</a> (void)</td></tr>
 <tr class="separator:ga745f5ad3a73381f935cc2ee2fec5c34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga23f378d5253016b341bf971cb5c35ee7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga23f378d5253016b341bf971cb5c35ee7">I2C2_OnMasterBlockSent</a> (<a class="el" href="group___p_e___types__module.html#ga0b66a73f87238a782318aa0be7578e35">LDD_TUserData</a> *UserDataPtr)</td></tr>
+<tr class="memitem:ga23f378d5253016b341bf971cb5c35ee7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga23f378d5253016b341bf971cb5c35ee7">I2C2_OnMasterBlockSent</a> (LDD_TUserData *UserDataPtr)</td></tr>
 <tr class="memdesc:ga23f378d5253016b341bf971cb5c35ee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This event is called when I2C in master mode finishes the transmission of the data successfully. This event is not available for the SLAVE mode and if MasterSendBlock is disabled.  <a href="group___events__module.html#ga23f378d5253016b341bf971cb5c35ee7">More...</a><br /></td></tr>
 <tr class="separator:ga23f378d5253016b341bf971cb5c35ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5b2fe0871600de8d73184570a42e5b66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga5b2fe0871600de8d73184570a42e5b66">I2C2_OnMasterBlockReceived</a> (<a class="el" href="group___p_e___types__module.html#ga0b66a73f87238a782318aa0be7578e35">LDD_TUserData</a> *UserDataPtr)</td></tr>
+<tr class="memitem:ga5b2fe0871600de8d73184570a42e5b66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga5b2fe0871600de8d73184570a42e5b66">I2C2_OnMasterBlockReceived</a> (LDD_TUserData *UserDataPtr)</td></tr>
 <tr class="memdesc:ga5b2fe0871600de8d73184570a42e5b66"><td class="mdescLeft">&#160;</td><td class="mdescRight">This event is called when I2C is in master mode and finishes the reception of the data successfully. This event is not available for the SLAVE mode and if MasterReceiveBlock is disabled.  <a href="group___events__module.html#ga5b2fe0871600de8d73184570a42e5b66">More...</a><br /></td></tr>
 <tr class="separator:ga5b2fe0871600de8d73184570a42e5b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8be719cad9ac48a9cdfd2281de15ec59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga8be719cad9ac48a9cdfd2281de15ec59">AD1_OnCalibrationEnd</a> (void)</td></tr>
 <tr class="separator:ga8be719cad9ac48a9cdfd2281de15ec59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2f94110e651cb30cba928647e91e92d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga2f94110e651cb30cba928647e91e92d4">RTC1_OnSecond</a> (<a class="el" href="group___p_e___types__module.html#ga0b66a73f87238a782318aa0be7578e35">LDD_TUserData</a> *UserDataPtr)</td></tr>
+<tr class="memitem:ga2f94110e651cb30cba928647e91e92d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#ga2f94110e651cb30cba928647e91e92d4">RTC1_OnSecond</a> (LDD_TUserData *UserDataPtr)</td></tr>
 <tr class="memdesc:ga2f94110e651cb30cba928647e91e92d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called each second if OnSecond event is enabled (see [SetEventMask] and [GetEventMask] methods) and RTC device is enabled. This event is available only if [Interrupt service/event] is enabled.  <a href="group___events__module.html#ga2f94110e651cb30cba928647e91e92d4">More...</a><br /></td></tr>
 <tr class="separator:ga2f94110e651cb30cba928647e91e92d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab34bedda0461474d770bfe84c3bc881f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gab34bedda0461474d770bfe84c3bc881f">PTRC1_OnTraceWrap</a> (void)</td></tr>
+<tr class="separator:gab34bedda0461474d770bfe84c3bc881f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabdbc35f3567d6a158efe42b38f2ee47a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___events__module.html#gabdbc35f3567d6a158efe42b38f2ee47a">EInt1_OnInterrupt</a> (void)</td></tr>
+<tr class="separator:gabdbc35f3567d6a158efe42b38f2ee47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is user's event module. Put your event handler code here. </p>
 <dl class="section version"><dt>Version</dt><dd>01.00 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_events_8c_source.html">Events.c</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

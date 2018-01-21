@@ -1,7 +1,5 @@
 <map id="AS2_OnRxChar" name="AS2_OnRxChar">
-<area shape="rect" id="node2" href="$group___a_s2__module.html#ga74c0ea40957a6853dd4b3c7228a4cc8b" title="AS2_RecvChar" alt="" coords="168,5,277,32"/>
-<area shape="rect" id="node3" href="$gps_8h.html#aa36479de7472a7ae297778b1fdad8c2f" title="putGPSData" alt="" coords="175,56,270,83"/>
-<area shape="rect" id="node4" href="$_ring_buffer_8h.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="325,56,392,83"/>
-<area shape="rect" id="node5" href="$port_8c.html#a2ed3554a3de09a3bd09d396ee081ab69" title="vPortEnterCritical" alt="" coords="440,31,563,57"/>
-<area shape="rect" id="node6" href="$port_8c.html#aed20ada05b957181a0de042802a82a5b" title="vPortExitCritical" alt="" coords="444,81,559,108"/>
+<area shape="rect" id="node2" href="$uart__gps_8c.html#aa36479de7472a7ae297778b1fdad8c2f" title="putGPSData" alt="" coords="186,5,281,32"/>
+<area shape="rect" id="node4" href="$gps_8c.html#adc6c4f916ee238544e55039a3b8c2035" title="gps_notify_rx_char" alt="" coords="168,56,299,83"/>
+<area shape="rect" id="node3" href="$_ring_buffer_8c.html#a6ee0cb22cb73101504e06239d37e64de" title="putData" alt="" coords="347,5,413,32"/>
 </map>

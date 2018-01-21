@@ -1,0 +1,136 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/clock/clock.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/clock/clock.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <time\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'ihm\&.h'\fP
+.br
+\fC#include 'Cpu\&.h'\fP
+.br
+\fC#include 'XF1\&.h'\fP
+.br
+\fC#include 'clock\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBclock_init\fP ()"
+.br
+.ti -1c
+.RI "bool \fBsetClockByString\fP (char *date, char *time)"
+.br
+.ti -1c
+.RI "bool \fBsetClock\fP (rtc_clock *time)"
+.br
+.ti -1c
+.RI "void \fBgetClock\fP (rtc_clock *time)"
+.br
+.ti -1c
+.RI "bool \fBgetLocalClock\fP (rtc_clock *time)"
+.br
+.ti -1c
+.RI "uint32_t \fBgetTimeStamp\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateEntityClock\fP ()"
+.br
+.ti -1c
+.RI "uint32_t \fBgetCurrentTimeStamp\fP ()"
+.br
+.ti -1c
+.RI "void \fBadjusteClock\fP (char *date, char *time)"
+.br
+.ti -1c
+.RI "void \fBstrToData\fP (rtc_clock *date_time, char *date, char *time)"
+.br
+.ti -1c
+.RI "uint32_t \fBstrToTimeStamp\fP (char *date, char *time)"
+.br
+.ti -1c
+.RI "uint32_t \fBunix_time_in_seconds\fP (uint8_t sec, uint8_t min, uint8_t hrs, uint8_t day, uint8_t mon, uint16_t year)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "LDD_TDeviceData * \fBMyRTCPtr\fP"
+.br
+.ti -1c
+.RI "volatile STATUS_CLOCK \fBstatuc_clock\fP = CLOCK_INIT"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void adjusteClock (char * date, char * time)"
+
+.PP
+Definition at line 173 of file clock\&.c\&.
+.SS "void clock_init ()"
+
+.PP
+Definition at line 39 of file clock\&.c\&.
+.SS "void getClock (rtc_clock * time)\fC [inline]\fP"
+
+.PP
+Definition at line 108 of file clock\&.c\&.
+.SS "uint32_t getCurrentTimeStamp ()"
+
+.PP
+Definition at line 163 of file clock\&.c\&.
+.SS "bool getLocalClock (rtc_clock * time)"
+
+.PP
+Definition at line 114 of file clock\&.c\&.
+.SS "uint32_t getTimeStamp ()\fC [inline]\fP"
+
+.PP
+Definition at line 146 of file clock\&.c\&.
+.SS "bool setClock (rtc_clock * time)"
+
+.PP
+Definition at line 83 of file clock\&.c\&.
+.SS "bool setClockByString (char * date, char * time)"
+
+.PP
+Definition at line 73 of file clock\&.c\&.
+.SS "void strToData (rtc_clock * date_time, char * date, char * time)"
+
+.PP
+Definition at line 185 of file clock\&.c\&.
+.SS "uint32_t strToTimeStamp (char * date, char * time)"
+
+.PP
+Definition at line 224 of file clock\&.c\&.
+.SS "uint32_t unix_time_in_seconds (uint8_t sec, uint8_t min, uint8_t hrs, uint8_t day, uint8_t mon, uint16_t year)"
+
+.PP
+Definition at line 266 of file clock\&.c\&.
+.SS "void updateEntityClock ()"
+
+.PP
+Definition at line 152 of file clock\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "LDD_TDeviceData* MyRTCPtr"
+
+.PP
+Definition at line 32 of file clock\&.c\&.
+.SS "volatile STATUS_CLOCK statuc_clock = CLOCK_INIT"
+
+.PP
+Definition at line 36 of file clock\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

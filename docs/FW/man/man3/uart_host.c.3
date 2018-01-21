@@ -1,0 +1,154 @@
+.TH "F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Communication/uart_host.c" 3 "Sun Jan 21 2018" "GoodsTracker" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Communication/uart_host.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include 'uart_host\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBstartTX\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBputTxString\fP (char *str)"
+.br
+.ti -1c
+.RI "bool \fBuart_host_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBuart_host_Deinit\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBgetTxData\fP (char *ch)"
+.br
+.ti -1c
+.RI "bool \fBputTxData\fP (char data)"
+.br
+.ti -1c
+.RI "bool \fBisAnyTxData\fP ()"
+.br
+.ti -1c
+.RI "bool \fBgetRxData\fP (char *ch)"
+.br
+.ti -1c
+.RI "bool \fBputRxData\fP (char data)"
+.br
+.ti -1c
+.RI "bool \fBisAnyRxData\fP ()"
+.br
+.ti -1c
+.RI "uint16_t \fBuart_host_rx_head\fP (void)"
+.br
+.ti -1c
+.RI "uint16_t \fBuart_host_rx_tail\fP (void)"
+.br
+.ti -1c
+.RI "uint16_t \fBuart_host_rx_max\fP (void)"
+.br
+.ti -1c
+.RI "uint16_t \fBuart_host_tx_head\fP (void)"
+.br
+.ti -1c
+.RI "uint16_t \fBuart_host_tx_tail\fP (void)"
+.br
+.ti -1c
+.RI "uint16_t \fBuart_host_tx_max\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "RingBuffer \fBbufferRx\fP"
+.br
+.ti -1c
+.RI "RingBuffer \fBbufferTx\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "bool getRxData (char * ch)\fC [inline]\fP"
+
+.PP
+Definition at line 130 of file uart_host\&.c\&.
+.SS "bool getTxData (char * ch)\fC [inline]\fP"
+
+.PP
+Definition at line 98 of file uart_host\&.c\&.
+.SS "bool isAnyRxData ()\fC [inline]\fP"
+
+.PP
+Definition at line 152 of file uart_host\&.c\&.
+.SS "bool isAnyTxData ()\fC [inline]\fP"
+
+.PP
+Definition at line 119 of file uart_host\&.c\&.
+.SS "bool putRxData (char data)\fC [inline]\fP"
+
+.PP
+Definition at line 141 of file uart_host\&.c\&.
+.SS "bool putTxData (char data)\fC [inline]\fP"
+
+.PP
+Definition at line 109 of file uart_host\&.c\&.
+.SS "bool putTxString (char * str)\fC [inline]\fP"
+
+.PP
+Definition at line 51 of file uart_host\&.c\&.
+.SS "void startTX (void)"
+Verifica se o buffer de TX esta vazio\&. Se sim, chama a call back da transmissao de caracter para iniciar a transmissao do buffer 
+.PP
+Definition at line 34 of file uart_host\&.c\&.
+.SS "void uart_host_Deinit (void)"
+
+.PP
+Definition at line 87 of file uart_host\&.c\&.
+.SS "bool uart_host_init (void)"
+
+.PP
+Definition at line 63 of file uart_host\&.c\&.
+.SS "uint16_t uart_host_rx_head (void)\fC [inline]\fP"
+
+.PP
+Definition at line 164 of file uart_host\&.c\&.
+.SS "uint16_t uart_host_rx_max (void)\fC [inline]\fP"
+
+.PP
+Definition at line 184 of file uart_host\&.c\&.
+.SS "uint16_t uart_host_rx_tail (void)\fC [inline]\fP"
+
+.PP
+Definition at line 174 of file uart_host\&.c\&.
+.SS "uint16_t uart_host_tx_head (void)\fC [inline]\fP"
+
+.PP
+Definition at line 203 of file uart_host\&.c\&.
+.SS "uint16_t uart_host_tx_max (void)\fC [inline]\fP"
+
+.PP
+Definition at line 224 of file uart_host\&.c\&.
+.SS "uint16_t uart_host_tx_tail (void)\fC [inline]\fP"
+
+.PP
+Definition at line 213 of file uart_host\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "RingBuffer bufferRx"
+
+.PP
+Definition at line 25 of file uart_host\&.c\&.
+.SS "RingBuffer bufferTx"
+
+.PP
+Definition at line 25 of file uart_host\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GoodsTracker from the source code\&.

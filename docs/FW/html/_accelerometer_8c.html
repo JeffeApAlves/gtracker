@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GoodsTracker: F:/workspace/GoodsTracker/platform/GoodsTrackerControl/Sources/Accelerometer/Accelerometer.c File Reference</title>
+<title>GoodsTracker: F:/workspace/gtracker/platform/GoodsTrackerControl/Sources/Accelerometer/Accelerometer.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,26 +63,38 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Accelerometer.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="_m_m_a8451_8h_source.html">MMA8451.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="application_8h_source.html">application.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="accelerometer_8h_source.html">Accelerometer.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;MMA8451.h&quot;</code><br />
+<code>#include &quot;Telemetria.h&quot;</code><br />
+<code>#include &quot;Accelerometer.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Accelerometer.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="_accelerometer_8c__incl.png" border="0" usemap="#_f_1_2workspace_2_goods_tracker_2platform_2_goods_tracker_control_2_sources_2_accelerometer_2_accelerometer_8c" alt=""/></div>
-<!-- MAP 0 -->
+<div class="center"><img src="_accelerometer_8c__incl.png" border="0" usemap="#_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_accelerometer_2_accelerometer_8c" alt=""/></div>
+<map name="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_accelerometer_2_accelerometer_8c" id="_f_1_2workspace_2gtracker_2platform_2_goods_tracker_control_2_sources_2_accelerometer_2_accelerometer_8c">
+</map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="_accelerometer_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ade1d28ae4a1c9bdd98d3fd353d6544db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_accelerometer_8c.html#ade1d28ae4a1c9bdd98d3fd353d6544db">ACCE_NUM_MSG</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ade1d28ae4a1c9bdd98d3fd353d6544db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3a349889d2e4cf8a9708dd557eb28d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_accelerometer_8c.html#ae3a349889d2e4cf8a9708dd557eb28d3">ACCE_TASK_PRIORITY</a>&#160;&#160;&#160;(tskIDLE_PRIORITY+2)</td></tr>
+<tr class="separator:ae3a349889d2e4cf8a9708dd557eb28d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a80af8df1ee19444e9472e785cadde5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_accelerometer_8c.html#a8a80af8df1ee19444e9472e785cadde5">ACCE_TASK_STACK_SIZE</a>&#160;&#160;&#160;(configMINIMAL_STACK_SIZE-10)</td></tr>
+<tr class="separator:a8a80af8df1ee19444e9472e785cadde5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa8d10264b0c25e48ba361369df15318c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_accelerometer_8c.html#aa8d10264b0c25e48ba361369df15318c">accelerometer_task</a> (void)</td></tr>
-<tr class="separator:aa8d10264b0c25e48ba361369df15318c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4987d8d30a75237baf8a7a13c03dffe8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_accelerometer_8c.html#a4987d8d30a75237baf8a7a13c03dffe8">accelerometer_init</a> (void)</td></tr>
 <tr class="separator:a4987d8d30a75237baf8a7a13c03dffe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaea9d3d0f1adb90c3477d60905dec5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_accelerometer_8c.html#acaea9d3d0f1adb90c3477d60905dec5f">deInitAccelerometer</a> (void)</td></tr>
@@ -90,13 +102,58 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:afceaa992dee7c9e4056b571f58baa31f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_accelerometer.html">Accelerometer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_accelerometer_8c.html#afceaa992dee7c9e4056b571f58baa31f">acceInfo</a></td></tr>
-<tr class="separator:afceaa992dee7c9e4056b571f58baa31f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9f8c7b430e3d03444007e04a12f016e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="queue_8h.html#aaf19d499892a4ce1409326ece00f5264">QueueHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_accelerometer_8c.html#ae9f8c7b430e3d03444007e04a12f016e">xQueueAcc</a></td></tr>
-<tr class="separator:ae9f8c7b430e3d03444007e04a12f016e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8395c78848c3e056b337f8d172f33ca2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="task_8h.html#ae95f44d4cfeb4a599c6cc258d241cb6b">TaskHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_accelerometer_8c.html#a8395c78848c3e056b337f8d172f33ca2">xHandleAccelTask</a></td></tr>
-<tr class="separator:a8395c78848c3e056b337f8d172f33ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa21500b286e567ad81965b63436a3d03"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_accelerometer_8c.html#aa21500b286e567ad81965b63436a3d03">xQueueAcce</a></td></tr>
+<tr class="separator:aa21500b286e567ad81965b63436a3d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ade1d28ae4a1c9bdd98d3fd353d6544db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade1d28ae4a1c9bdd98d3fd353d6544db">&#9670;&nbsp;</a></span>ACCE_NUM_MSG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ACCE_NUM_MSG&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_accelerometer_8c_source.html#l00017">17</a> of file <a class="el" href="_accelerometer_8c_source.html">Accelerometer.c</a>.</p>
+
+</div>
+</div>
+<a id="ae3a349889d2e4cf8a9708dd557eb28d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3a349889d2e4cf8a9708dd557eb28d3">&#9670;&nbsp;</a></span>ACCE_TASK_PRIORITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ACCE_TASK_PRIORITY&#160;&#160;&#160;(tskIDLE_PRIORITY+2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_accelerometer_8c_source.html#l00018">18</a> of file <a class="el" href="_accelerometer_8c_source.html">Accelerometer.c</a>.</p>
+
+</div>
+</div>
+<a id="a8a80af8df1ee19444e9472e785cadde5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a80af8df1ee19444e9472e785cadde5">&#9670;&nbsp;</a></span>ACCE_TASK_STACK_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ACCE_TASK_STACK_SIZE&#160;&#160;&#160;(configMINIMAL_STACK_SIZE-10)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_accelerometer_8c_source.html#l00019">19</a> of file <a class="el" href="_accelerometer_8c_source.html">Accelerometer.c</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a4987d8d30a75237baf8a7a13c03dffe8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4987d8d30a75237baf8a7a13c03dffe8">&#9670;&nbsp;</a></span>accelerometer_init()</h2>
@@ -113,35 +170,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="_accelerometer_8c_a4987d8d30a75237baf8a7a13c03dffe8_cgraph.png" border="0" usemap="#_accelerometer_8c_a4987d8d30a75237baf8a7a13c03dffe8_cgraph" alt=""/></div>
-<!-- MAP 1 -->
-</div>
 
-</div>
-</div>
-<a id="aa8d10264b0c25e48ba361369df15318c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8d10264b0c25e48ba361369df15318c">&#9670;&nbsp;</a></span>accelerometer_task()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void accelerometer_task </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p class="definition">Definition at line <a class="el" href="_accelerometer_8c_source.html#l00066">66</a> of file <a class="el" href="_accelerometer_8c_source.html">Accelerometer.c</a>.</p>
 <div class="dynheader">
-Here is the call graph for this function:</div>
+Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="_accelerometer_8c_aa8d10264b0c25e48ba361369df15318c_cgraph.png" border="0" usemap="#_accelerometer_8c_aa8d10264b0c25e48ba361369df15318c_cgraph" alt=""/></div>
-<!-- MAP 2 -->
+<div class="center"><img src="_accelerometer_8c_a4987d8d30a75237baf8a7a13c03dffe8_icgraph.png" border="0" usemap="#_accelerometer_8c_a4987d8d30a75237baf8a7a13c03dffe8_icgraph" alt=""/></div>
+<map name="_accelerometer_8c_a4987d8d30a75237baf8a7a13c03dffe8_icgraph" id="_accelerometer_8c_a4987d8d30a75237baf8a7a13c03dffe8_icgraph">
+<area shape="rect" id="node2" href="group__main__module.html#gaf411a8bc6b7ed4b0af9114e10c959448" title="sys_init" alt="" coords="181,5,248,32"/>
+<area shape="rect" id="node3" href="group__main__module.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="296,5,347,32"/>
+</map>
 </div>
 
 </div>
@@ -161,55 +199,33 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_accelerometer_8c_source.html#l00076">76</a> of file <a class="el" href="_accelerometer_8c_source.html">Accelerometer.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_accelerometer_8c_acaea9d3d0f1adb90c3477d60905dec5f_cgraph.png" border="0" usemap="#_accelerometer_8c_acaea9d3d0f1adb90c3477d60905dec5f_cgraph" alt=""/></div>
-<!-- MAP 3 -->
+<map name="_accelerometer_8c_acaea9d3d0f1adb90c3477d60905dec5f_cgraph" id="_accelerometer_8c_acaea9d3d0f1adb90c3477d60905dec5f_cgraph">
+<area shape="rect" id="node2" href="_m_m_a8451_8c.html#a008d93080f6e4e3f833b57b289d181b4" title="MMA845x_deInit" alt="" coords="191,5,309,32"/>
+</map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="afceaa992dee7c9e4056b571f58baa31f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afceaa992dee7c9e4056b571f58baa31f">&#9670;&nbsp;</a></span>acceInfo</h2>
+<a id="aa21500b286e567ad81965b63436a3d03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa21500b286e567ad81965b63436a3d03">&#9670;&nbsp;</a></span>xQueueAcce</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_accelerometer.html">Accelerometer</a> acceInfo</td>
+          <td class="memname">QueueHandle_t xQueueAcce</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a8395c78848c3e056b337f8d172f33ca2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8395c78848c3e056b337f8d172f33ca2">&#9670;&nbsp;</a></span>xHandleAccelTask</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="task_8h.html#ae95f44d4cfeb4a599c6cc258d241cb6b">TaskHandle_t</a> xHandleAccelTask</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae9f8c7b430e3d03444007e04a12f016e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9f8c7b430e3d03444007e04a12f016e">&#9670;&nbsp;</a></span>xQueueAcc</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="queue_8h.html#aaf19d499892a4ce1409326ece00f5264">QueueHandle_t</a> xQueueAcc</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p class="definition">Definition at line <a class="el" href="_accelerometer_8c_source.html#l00021">21</a> of file <a class="el" href="_accelerometer_8c_source.html">Accelerometer.c</a>.</p>
 
 </div>
 </div>
