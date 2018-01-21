@@ -41,14 +41,21 @@ Apesar do ESP32 ser mais que um transceiver o custo permite utiliza-lo apenas pa
 Basicamente o firmware do ESP32 é aprnas um bdrige UART<>WiFI. Não possui nenhuma logica de negócio.
 
 ## SW Web
-*Backend:* Nginx+Django com utilização de **Channel** , abstração de websocket , para atualizações, em tempo real do rontend.
+*Backend:* Nginx+Django com utilização de **Channel** , abstração de websocket , para atualizações, em tempo real do frontend.
+
 *frontend:* Responsivo Bootstrap+JS+CSS+Chart.js.
+
 *Message Broker:* RabbitMQ com o protocolo AMQP e MQTT
+
 *Google maps API:* para renderização do mapas e traçcador de rotas
 
-Tela login
+### Login
+
+Acesso controlado ao sistema
 
 ![Tela login][desktop_login]
+
+### Ataulização frontend
 
 Recepção do payload da telemetria via channels(sockets) - visualização desktop
 
@@ -58,6 +65,8 @@ Recepção do payload da telemetria via channels(sockets) - visualização mobil
 
 ![Mobile Debug][mobile_debug1]{:height="50%" width="50%"}![Mobile Debug][mobile_debug2]{:height="50%" width="50%"}
 
+### Acelerometros
+
 Gráficos do acelerometro utilizado para registros da telemetria -visualização desktop
 
 ![Desktop Acelerometros][desktop_accelerometer]
@@ -66,10 +75,11 @@ Gráficos do acelerometro utilizado para registros da telemetria -visualização
 
 ![Mobile Acelerometros][mobile_accelerometer]{:height="50%" width="50%"}
 
+### Posição
+
 Leitura da posição do GPS
 
 ![Desktop posição][desktop_position]
-
 
 ## SW Desktop
 
