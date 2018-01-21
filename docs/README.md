@@ -48,7 +48,7 @@ Recepção do payload da telemetria via channels(sockets)
  
 ![Desktop Debug](images/web/desktop_debug.png)
 
-![Mobile Debug](images/web/mobile_debug1.png){:class="img-responsive"}
+![Mobile Debug](images/web/mobile_debug1.png){:height="50%" width="50%"}
 
 ![Mobile Debug](images/web/mobile_debug2.png){:height="50%" width="50%"}
 
@@ -56,7 +56,7 @@ Gráficos do acelerometro utilizado para registros da telemetria
 
 ![Desktop Acelerometros](images/web/desktop_accelerometer.png)
 
-![Mobile Acelerometros](images/web/mobile_accelerometer.png)
+![Mobile Acelerometros][mobile_accelerometer]{:height="50%" width="50%"}
 
 Leitura da posição do GPS
 
@@ -111,3 +111,6 @@ trafic - Ntopng
 |8010  |uwsgi            | gtracker.sock|                |
 |5432  |gtracker-data    |              |                |
 |      |ldap adm         |              | /phpldapadmin/ |
+
+
+[mobile_accelerometer]:images/web/mobile_accelerometer.png
