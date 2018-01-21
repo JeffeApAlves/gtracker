@@ -12,7 +12,17 @@ realizada por meio de um gerenciador de dispositivos que abstrai a uma mesma int
 ## Embarcado firmware ARM M0+:
 Utilização do FreeRTOS com filas de mensagens para troca de informações entre as tasks e sinalizado através de TaskNotification. 
 A comunicação via UART com o Host é totalmente assíncrona. O device possui tasks independentes para recepção e transmissão. Após recepção e validação do frame o payload é postado em uma fila de entrada e sinalizado para a task da camada de aplicação que fará o consumo e o processamento respectivo. Se algum processamento da camada de aplicação gerar alguma resposta que deve ser transmitida para o host. Essa resposta será colocada em uma fila de saída para a camada de comunicação fazer o empacotamento e envio. 
-Por ser tratar de eventos assíncronos os frames possuem um timestamp para controle de sequência. Todo o firmware está orientado a eventos
+Por ser tratar de eventos assíncronos os frames possuem um timestamp para controle de sequência. Todo o firmware está orientado a eventos.
+
+Abaixo podemos verificar como está o uso de memória e fazer uma comparação do impacto do uso do **TaskNotification**.
+
+![Stack **sem** TaskNotification](images/fw/tasks_w_eventbit.png)
+
+![Stack **com** TaskNotification](images/fw/tasks_w_tn.png)
+
+![Heap **com** TaskNotification](images/fw/tasks_w_tn.png)
+
+
 
 ## Embarcado firmware ESP32:
 Basicamente o firmware do ESP32 é aprnas um bdrige UART<>WiFI. Não possui nenhuma logica de negócio.
