@@ -15,15 +15,11 @@ A comunicação via UART com o Host é totalmente assíncrona. O device possui t
 Por ser tratar de eventos assíncronos os frames possuem um timestamp para controle de sequência. Todo o firmware está orientado a eventos.
 Abaixo podemos verificar como está o uso de memória e fazer uma comparação do impacto do uso do **TaskNotification**.
 
+![Stack **sem** TaskNotification][task_w_eb.png]
 
-![Stack **sem** TaskNotification](images/fw/tasks_w_eventbit.png)
+![Stack **com** TaskNotification][task_w_tn.png]
 
-
-![Stack **com** TaskNotification](images/fw/tasks_w_tn.png)
-
-
-![Heap **com** TaskNotification](images/fw/tasks_w_tn.png)
-
+![Heap **com** TaskNotification][tasks_w_tn]
 
 ## Embarcado firmware ESP32:
 Basicamente o firmware do ESP32 é aprnas um bdrige UART<>WiFI. Não possui nenhuma logica de negócio.
@@ -41,26 +37,26 @@ Backend: Django com utilização de Channel , abstração de websocket , para at
 Message Broker: RabbitMQ com o protocolo AMQP e MQTT
 Google maps API
 
-![Tela login](images/web/desktop_login.png)
 
+![Tela login][desktop_login]
 
 Recepção do payload da telemetria via channels(sockets)
  
-![Desktop Debug](images/web/desktop_debug.png)
+![Desktop Debug][desktop_debug]
 
-![Mobile Debug](images/web/mobile_debug1.png){:height="50%" width="50%"}
+![Mobile Debug][mobile_debug1]{:height="50%" width="50%"}
 
-![Mobile Debug](images/web/mobile_debug2.png){:height="50%" width="50%"}
+![Mobile Debug][mobile_debug2]{:height="50%" width="50%"}
 
 Gráficos do acelerometro utilizado para registros da telemetria
 
-![Desktop Acelerometros](images/web/desktop_accelerometer.png)
+![Desktop Acelerometros][desktop_accelerometer]
 
 ![Mobile Acelerometros][mobile_accelerometer]{:height="50%" width="50%"}
 
 Leitura da posição do GPS
 
-![Desktop posição](images/web/desktop_position.png)
+![Desktop posição][desktop_position]
 
 
 ## SW Desktop
@@ -68,16 +64,16 @@ No diretório GoodsTracker é possível encontrar uma versão nativa do SW em li
 
 Quando o usuario indica 2 pontos no mapa(clicando) uma rota é devolvida conforme mostra a figura abaixo.
 
-![Rotas traçadas](images/sw/route.png)
+![Rotas traçadas][desktop_route]
 
 O usuário pode contruir uma cerca eletrôncia onde onde será sinalizado caso a posição que o GPS indique uma localização fora.
 Pode-se contruir inúmeras cercas compostas por inúmeros pontos 
 
-![Cercas traçadas](images/sw/fence.png)
+![Cercas traçadas][desktop_fence]
 
 Todo o histórico da telemetria é mantido e mostrado para o usuário em forma de treeview
 
-![Histórico da telemetria](images/sw/behavior.png)
+![Histórico da telemetria][desktop_behavior]
 
 É possivel habilitar e desabilitar os layers e também configurar o tipos de comunicação
 
@@ -113,4 +109,16 @@ trafic - Ntopng
 |      |ldap adm         |              | /phpldapadmin/ |
 
 
+[desktop_route]:images/sw/route.png
+[desktop_fence]:images/sw/fence.png
+[desktop_behavior]:images/sw/behavior.png
+[desktop_login]:images/web/desktop_login.png
+[desktop_debug]:images/web/desktop_debug.png
+[mobile_debug1]:images/web/mobile_debug1.png
+[mobile_debug2]:images/web/mobile_debug2.png
+[desktop_accelerometer]:images/web/desktop_accelerometer.png
+[desktop_position]:images/web/desktop_position.png
+[task_w_eb.png]:images/fw/tasks_w_eventbit.png
+[task_w_tn.png]:images/fw/tasks_w_tn.png
+[tasks_w_tn]:images/fw/tasks_w_tn.png
 [mobile_accelerometer]:images/web/mobile_accelerometer.png
