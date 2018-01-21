@@ -101,16 +101,16 @@ trafic - Ntopng
 
 ### Ports
       
-| Port | Aplicação       | socket      | url             |
-|------|-----------------|-------------|-----------------|
-|15672 |RabbitMQ adm     |             
-|1883  |MQTT             |
-|3000  |ntopng           |
-|8000  |gtracker.com     |              | gtracker.com   |
-|8020  |Daphne           | daphne.sock  |                |
-|8010  |uwsgi            | gtracker.sock|                |
-|5432  |gtracker-data    |              |                |
-|      |ldap adm         |              | /phpldapadmin/ |
+| Port| Aplicação|socket|url|
+|-----|----------|------|---|
+|15672|RabbitMQ adm|||             
+|1883 |MQTT|||
+|3000 |ntopng|||
+|8000 |gtracker.com||gtracker.com|
+|8020 |Daphne|daphne.sock||
+|8010 |uwsgi|gtracker.sock||
+|5432 |gtracker-data|||
+|     |ldap adm||/phpldapadmin/|
 
 [tasks_diagram]:architecture/tasks_diagram.png
 [desktop_route]:images/sw/route.png
