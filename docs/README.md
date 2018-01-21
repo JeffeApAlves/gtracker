@@ -15,6 +15,8 @@ A comunicação via UART com o Host é totalmente assíncrona. O device possui t
 Por ser tratar de eventos assíncronos os frames possuem um timestamp para controle de sequência. Todo o firmware está orientado a eventos.
 Segue o diagrama de tasks 
 
+Documentação firmware [see doxygen](FW/html/index.html)
+
 ![Diagrama de tasks][tasks_diagram]
 
 Abaixo podemos verificar como está o uso de memória e fazer uma comparação do impacto do uso do **TaskNotification**.
