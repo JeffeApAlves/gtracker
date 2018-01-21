@@ -48,9 +48,9 @@ Recepção do payload da telemetria via channels(sockets)
  
 ![Desktop Debug](images/web/desktop_debug.png)
 
-![Mobile Debug](images/web/mobile_debug1.png)
+![Mobile Debug](images/web/mobile_debug1.png){:class="img-responsive"}
 
-![Mobile Debug](images/web/mobile_debug2.png)
+![Mobile Debug](images/web/mobile_debug2.png){:height="50%" width="50%"}
 
 Gráficos do acelerometro utilizado para registros da telemetria
 
