@@ -13,7 +13,12 @@ realizada por meio de um gerenciador de dispositivos que abstrai a uma mesma int
 Utilização do FreeRTOS com filas de mensagens para troca de informações entre as tasks e sinalizado através de TaskNotification. 
 A comunicação via UART com o Host é totalmente assíncrona. O device possui tasks independentes para recepção e transmissão. Após recepção e validação do frame o payload é postado em uma fila de entrada e sinalizado para a task da camada de aplicação que fará o consumo e o processamento respectivo. Se algum processamento da camada de aplicação gerar alguma resposta que deve ser transmitida para o host. Essa resposta será colocada em uma fila de saída para a camada de comunicação fazer o empacotamento e envio. 
 Por ser tratar de eventos assíncronos os frames possuem um timestamp para controle de sequência. Todo o firmware está orientado a eventos.
+Segue o diagrama de tasks 
+
+![Diagrama de tasks][tasks_diagram]
+
 Abaixo podemos verificar como está o uso de memória e fazer uma comparação do impacto do uso do **TaskNotification**.
+
 
 ![Stack **sem** TaskNotification][task_w_eb.png]
 
@@ -44,9 +49,7 @@ Recepção do payload da telemetria via channels(sockets)
  
 ![Desktop Debug][desktop_debug]
 
-![Mobile Debug][mobile_debug1]{:height="50%" width="50%"}
-
-![Mobile Debug][mobile_debug2]{:height="50%" width="50%"}
+![Mobile Debug][mobile_debug1]{:height="50%" width="50%"}![Mobile Debug][mobile_debug2]{:height="50%" width="50%"}
 
 Gráficos do acelerometro utilizado para registros da telemetria
 
@@ -108,7 +111,7 @@ trafic - Ntopng
 |5432  |gtracker-data    |              |                |
 |      |ldap adm         |              | /phpldapadmin/ |
 
-
+[tasks_diagram]:architecture/tasks_diagram.png
 [desktop_route]:images/sw/route.png
 [desktop_fence]:images/sw/fence.png
 [desktop_behavior]:images/sw/behavior.png
