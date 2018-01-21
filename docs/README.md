@@ -44,17 +44,23 @@ Message Broker: RabbitMQ com o protocolo AMQP e MQTT
 Google maps API
 
 
+Tela login
+
 ![Tela login][desktop_login]
 
-Recepção do payload da telemetria via channels(sockets)
- 
+Recepção do payload da telemetria via channels(sockets) - visualização desktop
+
 ![Desktop Debug][desktop_debug]
+
+Recepção do payload da telemetria via channels(sockets) - visualização mobile
 
 ![Mobile Debug][mobile_debug1]{:height="50%" width="50%"}![Mobile Debug][mobile_debug2]{:height="50%" width="50%"}
 
-Gráficos do acelerometro utilizado para registros da telemetria
+Gráficos do acelerometro utilizado para registros da telemetria -visualização desktop
 
 ![Desktop Acelerometros][desktop_accelerometer]
+
+Gráficos do acelerometro utilizado para registros da telemetria -visualização mobile
 
 ![Mobile Acelerometros][mobile_accelerometer]{:height="50%" width="50%"}
 
@@ -68,6 +74,8 @@ No diretório GoodsTracker é possível encontrar uma versão nativa do SW em li
 
 Quando o usuario indica 2 pontos no mapa(clicando) uma rota é devolvida conforme mostra a figura abaixo.
 
+Rotas traçadas
+
 ![Rotas traçadas][desktop_route]
 
 O usuário pode contruir uma cerca eletrôncia onde onde será sinalizado caso a posição que o GPS indique uma localização fora.
@@ -79,7 +87,11 @@ Todo o histórico da telemetria é mantido e mostrado para o usuário em forma d
 
 ![Histórico da telemetria][desktop_behavior]
 
+Configuração software
+
 É possivel habilitar e desabilitar os layers e também configurar o tipos de comunicação
+
+![Configuração software][desktop_setup]
 
 ## Ambiente de desenvolvimento
 
@@ -112,6 +124,8 @@ trafic - Ntopng
 |5432 |gtracker-data|||
 |     |ldap adm||/phpldapadmin/|
 
+
+
 [tasks_diagram]:architecture/tasks_diagram.png
 [desktop_route]:images/sw/route.png
 [desktop_fence]:images/sw/fence.png
@@ -126,3 +140,4 @@ trafic - Ntopng
 [task_w_tn.png]:images/fw/tasks_w_tn.png
 [tasks_w_tn]:images/fw/tasks_w_tn.png
 [mobile_accelerometer]:images/web/mobile_accelerometer.png
+[desktop_setup]:images/sw/setup.png
