@@ -41,10 +41,10 @@ Apesar do ESP32 ser mais que um transceiver o custo permite utiliza-lo apenas pa
 Basicamente o firmware do ESP32 é aprnas um bdrige UART<>WiFI. Não possui nenhuma logica de negócio.
 
 ## SW Web
-Backend: Django com utilização de Channel , abstração de websocket , para atualizações, em tempo real do frontend (Bootstrap+JS+CSS+Chart.js).
-Message Broker: RabbitMQ com o protocolo AMQP e MQTT
-Google maps API
-
+*Backend:* Nginx+Django com utilização de **Channel** , abstração de websocket , para atualizações, em tempo real do rontend.
+*frontend:* Responsivo Bootstrap+JS+CSS+Chart.js.
+*Message Broker:* RabbitMQ com o protocolo AMQP e MQTT
+*Google maps API:* para renderização do mapas e traçcador de rotas
 
 Tela login
 
@@ -72,24 +72,29 @@ Leitura da posição do GPS
 
 
 ## SW Desktop
-No diretório GoodsTracker é possível encontrar uma versão nativa do SW em linguagem C#.
+
+Versão nativa do SW em linguagem C# for windows .
+
+### Rotas
 
 Quando o usuario indica 2 pontos no mapa(clicando) uma rota é devolvida conforme mostra a figura abaixo.
 
-Rotas traçadas
-
 ![Rotas traçadas][desktop_route]
+
+### Cercas
 
 O usuário pode contruir uma cerca eletrôncia onde onde será sinalizado caso a posição que o GPS indique uma localização fora.
 Pode-se contruir inúmeras cercas compostas por inúmeros pontos 
 
 ![Cercas traçadas][desktop_fence]
 
+### Histórico telemetria
+
 Todo o histórico da telemetria é mantido e mostrado para o usuário em forma de treeview
 
 ![Histórico da telemetria][desktop_behavior]
 
-Configuração software
+### Configuração software
 
 É possivel habilitar e desabilitar os layers e também configurar o tipos de comunicação
 
@@ -125,7 +130,6 @@ trafic - Ntopng
 |8010 |uwsgi|gtracker.sock||
 |5432 |gtracker-data|||
 |     |ldap adm||/phpldapadmin/|
-
 
 
 [tasks_diagram]:architecture/tasks_diagram.png
