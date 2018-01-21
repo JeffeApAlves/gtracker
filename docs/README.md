@@ -26,16 +26,17 @@ Abaixo podemos verificar como está o uso de memória e fazer uma comparação d
 
 ![Heap **com** TaskNotification][tasks_w_tn]
 
-## Embarcado firmware ESP32:
-Basicamente o firmware do ESP32 é aprnas um bdrige UART<>WiFI. Não possui nenhuma logica de negócio.
-
-### RTC
-O RTC é ajustado automaticamente através de informações do GPS (Protocolo NMEA)
+### Relógio
+O RTC é ajustado automaticamente através de informações do GPS. Alguns dos frames do Protocolo NMEA possuem a informação de horas no formato UTC.
+Após receber essa informação o timestamp que o RTC incrementa localmente é setado para esse valor. Antes de mostrar para o usuário é chamado uma função que faz a conversão para o hora local. 
 
 ### Buffer circular
 A recepção e envio ,de bytes nas portas seriais, são feitas utilizando interrupção e buffer circulare *ringbuffer*.
 Como transceptor Wifi\BT\BLE está sendo utilizando o ESP32 que também possui um RTOS(FreeRTOS). Futuro será colocar um módulo GPRS para redes móveis e processar a pilha de conexão também no ESP32.
 Apesar do ESP32 ser mais que um transceiver o custo permite utiliza-lo apenas para essa finalidade
+
+## Embarcado firmware ESP32:
+Basicamente o firmware do ESP32 é aprnas um bdrige UART<>WiFI. Não possui nenhuma logica de negócio.
 
 ## SW Web
 Backend: Django com utilização de Channel , abstração de websocket , para atualizações, em tempo real do frontend (Bootstrap+JS+CSS+Chart.js).
