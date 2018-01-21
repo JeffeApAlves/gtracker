@@ -74,7 +74,7 @@ $(document).ready(function () {
     
       // Decide entre ws:// and wss://
       var ws_scheme   = window.location.protocol == "https:" ? "wss" : "ws";
-      var ws_path     = ws_scheme + '://' + window.location.host + "/tracker/stream/";
+      var ws_path     = ws_scheme + '://' + window.location.host + "/ws/tracker/";
       console.log("Conecatando em " + ws_path);
       var socket = new ReconnectingWebSocket(ws_path);
       

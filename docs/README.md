@@ -25,7 +25,6 @@ Abaixo podemos verificar como está o uso de memória e fazer uma comparação d
 ![Heap **com** TaskNotification](images/fw/tasks_w_tn.png)
 
 
-
 ## Embarcado firmware ESP32:
 Basicamente o firmware do ESP32 é aprnas um bdrige UART<>WiFI. Não possui nenhuma logica de negócio.
 
@@ -42,7 +41,29 @@ Backend: Django com utilização de Channel , abstração de websocket , para at
 Message Broker: RabbitMQ com o protocolo AMQP e MQTT
 Google maps API
 
-## SW Nativo
+![Tela login](images/web/desktop_login.png)
+
+
+Recepção do payload da telemetria via channels(sockets)
+ 
+![Desktop Debug](images/web/desktop_debug.png)
+
+![Mobile Debug](images/web/mobile_debug1.png)
+
+![Mobile Debug](images/web/mobile_debug2.png)
+
+Gráficos do acelerometro utilizado para registros da telemetria
+
+![Desktop Acelerometros](images/web/desktop_accelerometer.png)
+
+![Mobile Acelerometros](images/web/mobile_accelerometer.png)
+
+Leitura da posição do GPS
+
+![Desktop posição](images/web/desktop_position.png)
+
+
+## SW Desktop
 No diretório GoodsTracker é possível encontrar uma versão nativa do SW em linguagem C#.
 
 Quando o usuario indica 2 pontos no mapa(clicando) uma rota é devolvida conforme mostra a figura abaixo.
@@ -54,9 +75,9 @@ Pode-se contruir inúmeras cercas compostas por inúmeros pontos
 
 ![Cercas traçadas](images/sw/fence.png)
 
-Todo o histórico de telemetria é mantido e mostrado para o usuário em forma de treeview
+Todo o histórico da telemetria é mantido e mostrado para o usuário em forma de treeview
 
-![Histórico de telemetria](images/sw/behavior.png)
+![Histórico da telemetria](images/sw/behavior.png)
 
 É possivel habilitar e desabilitar os layers e também configurar o tipos de comunicação
 
