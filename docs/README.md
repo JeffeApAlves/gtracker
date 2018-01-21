@@ -1,5 +1,8 @@
 # GTracker
 
+
+O objetivo desse projeto é desenvolver uma plataforma web que relaciona valores coletados de telemetria veicular (acelerômetros, GPS, ...) a eficiência enérgica do veículo com o modo de condução (acelerações e frenagens bruscas) e o tráfico das vias da região. 
+
 ## Comunicação 
 Foram implementados 2 tipos de comunicação serial (RS 232) e via broker de mensagens (rabbitmq). Para a camada de domínio a comunicação é
 realizada por meio de um gerenciador de dispositivos que abstrai a uma mesma interface, sendo assim, é totalmente transparente a forma de comunicação para esse layer.  
