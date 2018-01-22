@@ -16,13 +16,9 @@ Por ser tratar de eventos assíncronos os frames possuem um timestamp para contr
 Segue o diagrama de tasks 
 
 
-Documentação do firmware gerada via Doxygen [see here][doc_m0_doxygen]
-
-
 ![Diagrama de tasks][tasks_diagram]
 
 Abaixo podemos verificar como está o uso de memória e fazer uma comparação do impacto do uso do **TaskNotification**.
-
 
 ![Stack **sem** TaskNotification][task_w_eb.png]
 
@@ -112,21 +108,18 @@ Todo o histórico da telemetria é mantido e mostrado para o usuário em forma d
 
 ![Configuração software][desktop_setup]
 
+## Links
+
+Documentação: |[WEB][doc_m0_doxygen]|[PDF][doc_m0_pdf]|
+
+
 ## Ambiente de desenvolvimento
 
-### Editores 
+*Editores:* VS Code for linux, nano
 
-VS Code for linux, nano
+*IDEs:* MCUXPresso,Eclipse, Visual Studio
 
-### IDEs
-
-MCUXPresso,Eclipse, Visual Studio
-
-### Monitors network
-
-sniffer - wireshark
-
-trafic - Ntopng
+*Monitors network:* sniffer - wireshark, trafic - Ntopng
 
 ## Configuração
 
@@ -159,7 +152,5 @@ trafic - Ntopng
 [tasks_w_tn]:images/fw/tasks_w_tn.png
 [mobile_accelerometer]:images/web/mobile_accelerometer.png
 [desktop_setup]:images/sw/setup.png
-
-
 [doc_m0_doxygen]:FW/html/index.html
 [doc_m0_pdf]:FW/latex/refman.pdf
