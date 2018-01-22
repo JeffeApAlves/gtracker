@@ -15,7 +15,9 @@ A comunicação via UART com o Host é totalmente assíncrona. O device possui t
 Por ser tratar de eventos assíncronos os frames possuem um timestamp para controle de sequência. Todo o firmware está orientado a eventos.
 Segue o diagrama de tasks 
 
-Documentação firmware [see doxygen](FW/html/index.html)
+
+Documentação do firmware gerada via Doxygen [see here][doc_m0_doxygen]
+
 
 ![Diagrama de tasks][tasks_diagram]
 
@@ -157,3 +159,7 @@ trafic - Ntopng
 [tasks_w_tn]:images/fw/tasks_w_tn.png
 [mobile_accelerometer]:images/web/mobile_accelerometer.png
 [desktop_setup]:images/sw/setup.png
+
+
+[doc_m0_doxygen]:FW/html/index.html
+[doc_m0_pdf]:FW/latex/refman.pdf
