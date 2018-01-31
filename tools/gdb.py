@@ -7,8 +7,7 @@
 @date    2018-01-09
 @version 0.1
 
-
-Gerenciador do projeto
+Gerenciamento remoto do gdb
 
 """
 
@@ -115,7 +114,7 @@ class GDB(object):
 
         cl = "sudo openocd -f %s '- c transport select %s' -f %s -d 3" % (GDB.interface,GDB.transport,GDB.target)
 
-        bash.execute_remote(cl,getpass.getuser(),GDB.host_gdb)
+        bash.execute(cl,user=getpass.getuser(),machine=GDB.host_gdb)
 
 
     @staticmethod
@@ -124,17 +123,17 @@ class GDB(object):
         '''Finaliza o processo correspondente ao openocd'''
         cl = "sudo pkill openocd"
 
-        bash.execute_remote(cl,getpass.getuser(),GDB.host_gdb)
+        bash.execute(cl,user=getpass.getuser(),machine=GDB.host_gdb)
      
         
     @staticmethod
     def config_jtag(freq):
 
         GDB.freq_jtag = value
-            
-        bash.execute_remote("sed -e '/adapter_khz/D' %s > '/tmp/interface'" % GDB.interface)
-        bash.execute_remote("echo  'adapter_khz '%s >> '/tmp/interface'" % GDB.freq_jtag)
-        bash.execute_remote("sudo  cp '/tmp/interface' %s" % GDB.interface)
+
+        bash.execute("sed -e '/adapter_khz/D' %s > '/tmp/interface'" % GDB.interface,user=getpass.getuser(),machine=GDB.host_gdb)
+        bash.execute("echo  'adapter_khz '%s >> '/tmp/interface'" % GDB.freq_jtag,user=getpass.getuser(),machine=GDB.host_gdb)
+        bash.execute("sudo  cp '/tmp/interface' %s" % GDB.interface,user=getpass.getuser(),machine=GDB.host_gdb)
 
 
     @staticmethod
@@ -145,18 +144,18 @@ class GDB(object):
     @staticmethod
     def shutdown_interface():
 
-        bash.execute_remote("sudo shutdown now",getpass.getuser(),GDB.host_gdb)
+        bash.execute("sudo shutdown now",user = getpass.getuser(),machine = GDB.host_gdb)
 
     @staticmethod
     def reset_target():
 
-        bash.execute_remote("gpio -g mode 8 out",getpass.getuser(),GDB.host_gdb)
-        bash.execute_remote("gpio -g write 8 1",getpass.getuser(),GDB.host_gdb)
-        sleep(2.0) 
-        bash.execute_remote("gpio -g write 8 0",getpass.getuser(),GDB.host_gdb)
+        bash.execute("gpio -g mode 8 out",user = getpass.getuser(),machine = GDB.host_gdb)
+        bash.execute("gpio -g write 8 1",user = getpass.getuser(),machine = GDB.host_gdb)
+        sleep(2.0)
+        bash.execute("gpio -g write 8 0",user = getpass.getuser(),machine = GDB.host_gdb)
         sleep(0.3)
-        bash.execute_remote("gpio -g write 8 1",getpass.getuser(),GDB.host_gdb)
-        sleep(1.0)     
+        bash.execute("gpio -g write 8 1",user = getpass.getuser(),machine = GDB.host_gdb)
+        sleep(1.0) 
 
     @staticmethod
     def scan_gdbserver():

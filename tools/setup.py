@@ -5,7 +5,10 @@ setup(
     version='0.1',
     py_modules=[
         'project',
+        'esp32',
+        'gdb',
         'platform',
+        'tui_menus',
         'cl_bash',
         'repository',
         'vanet'    

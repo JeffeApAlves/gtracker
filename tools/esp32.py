@@ -8,7 +8,7 @@
 @version 0.1
 
 
-Gerenciador do projeto
+Gerenciador do projeto ESP32
 
 """
 

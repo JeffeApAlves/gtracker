@@ -11,8 +11,7 @@ from cl_bash import *
 @date    2018-01-09
 @version 0.1
 
-
-Gerenciador do projeto
+Gerenciador dos rpositorios do projeto
 
 """
 

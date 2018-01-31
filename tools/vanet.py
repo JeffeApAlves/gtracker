@@ -7,9 +7,6 @@
 @date    2018-01-09
 @version 0.1
 
-
-Gerenciador do projeto
-
 """
 
 from __future__ import absolute_import

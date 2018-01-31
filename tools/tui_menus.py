@@ -6,7 +6,7 @@
 @version 0.1
 
 
-Gerenciador do projeto
+Menus gráficos(TUI) para o gerenciamento do projeto
 
 """
 
@@ -56,7 +56,7 @@ class Menu(object):
                     Menu.show(Menu.before_screen)
 
 
-class Project_Screen:
+class Project_Screen(Menu):
 
     @staticmethod
     def project_screen():
@@ -84,7 +84,7 @@ class Project_Screen:
 
         return code
 
-class Enviroment_Screen:
+class Enviroment_Screen(Menu):
 
     @staticmethod
     def enviroment_screen():
@@ -111,7 +111,7 @@ class Enviroment_Screen:
 
         return code
 
-class ESP32_Screen:
+class ESP32_Screen(Menu):
 
     @staticmethod
     def esp32_screen():
@@ -138,7 +138,7 @@ class ESP32_Screen:
 
         return code
 
-class Main_Screen:
+class Main_Screen(Menu):
 
     @staticmethod
     def main_screen():

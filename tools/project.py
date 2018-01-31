@@ -7,8 +7,7 @@
 @date    2018-01-09
 @version 0.1
 
-
-Gerenciador do projeto
+Carrega configurações do projeto contido no arquivo
 
 """
 

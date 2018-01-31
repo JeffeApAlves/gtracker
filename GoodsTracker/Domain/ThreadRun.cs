@@ -25,7 +25,7 @@ namespace GoodsTracker
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("Erro na execucao de alguma Thread");
+                    Debug.WriteLine("Erro na execucao na Thread:" + thread.Name);
                     Debug.WriteLine(e.ToString());
 
                     _shouldStop = true;
