@@ -19,6 +19,7 @@ import sys
 import getpass
 import subprocess
 import click
+import shlex
 from distutils import *
 from project import *
 from cl_bash import *
@@ -74,33 +75,44 @@ def install():
 
 
 @cli.command()
-def deploy():
+@click.option('--user',default=getpass.getuser())
+@click.option('--ident',default="")
+def deploy(ident,user):
 
-    '''Copia os arquivos para o servidor'''
+    '''Copia os arquivos da aplicação web para o host'''
 
-    cl = 'rsync -avz %s %s@%s:%s' % (PROJECT.TOOLDIR,getpass.getuser(),WEBSERVER.HOST,WEBSERVER.HOMEDIR)
-    args = shlex.split(cl)
-    subprocess.call(args)
-    
-    cl = 'rsync -avz %s %s@%s:%s' % (PROJECT.WEBDIR,getpass.getuser(),WEBSERVER.HOST,WEBSERVER.HOMEDIR)
+    #ec2-18-219-168-254.us-east-2.compute.amazonaws.com
+
+    if(ident != ""):
+        ident_file = "-rave 'ssh -i {}'".format(ident)
+    else:
+        ident_file = ""
+
+    # diretorios da aplicação web
+    dirs = " ".join([PROJECT.STARTUPDIR,PROJECT.WEBDIR,PROJECT.TOOLDIR])
+
+    #  copia apenas os diretorios necessários
+    cl = "rsync -vaz {} {} {}@{}:{}".format(ident_file,dirs,user,WEBSERVER.HOST,WEBSERVER.HOMEDIR)
+    click.echo(cl)
     args = shlex.split(cl)
     subprocess.call(args)
  
-    cl = 'rsync -avz %s %s@%s:%s' % (PROJECT.STARTUPDIR,getpass.getuser(),WEBSERVER.HOST,WEBSERVER.HOMEDIR)
+    #  copia os arquivos do diretorio raiz
+    cl = "rsync -vrz\
+    --include='*.conf'\
+    --exclude='*'\
+    --prune-empty-dirs\
+    {} {}/ {}@{}:{}".format(ident_file,PROJECT.HOMEDIR,user,WEBSERVER.HOST,WEBSERVER.HOMEDIR)
     args = shlex.split(cl)
     subprocess.call(args)
 
-
-    cl = 'rsync -rv  --include="*.conf" --exclude="*" --prune-empty-dirs %s/ %s@%s:%s' % (PROJECT.HOMEDIR,getpass.getuser(),WEBSERVER.HOST,WEBSERVER.HOMEDIR)
+    #  copia os arquivos do supervisor
+    cl = "rsync -vaz\
+    {} {}/ {}@{}:{}".format(ident_file,PROJECT.SUPERVISORDIR,user,WEBSERVER.HOST,WEBSERVER.SUPERVISORDIR)
     click.echo(cl)
     args = shlex.split(cl)
     subprocess.call(args)
-
-    cl = 'rsync -rv  --include="*.sh" --exclude="*" --prune-empty-dirs %s/ %s@%s:%s' % (PROJECT.HOMEDIR,getpass.getuser(),WEBSERVER.HOST,WEBSERVER.HOMEDIR)
-    click.echo(cl)
-    args = shlex.split(cl)
-    subprocess.call(args)
-
+ 
 
 @cli.command()
 def config():

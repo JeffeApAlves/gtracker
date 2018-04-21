@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME="GoodsTracker"                                  #Name of the application (*)
+NAME="gtracker"                                      #Name of the application (*)
 DJANGODIR=/var/www/gtracker/web                      # Django project directory (*)
 SOCKFILE=/var/www/gtracker/run/gtracker.sock         # we will communicate using this unix socket (*)
 USER=gtracker                                        # the user to run as (*)
@@ -18,7 +18,7 @@ ENVIROMENT=/home/jefferson/.virtualenvs/gtracker
 echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environment
-cd $DJANGODIR
+#cd $DJANGODIR
 source $ENVIROMENT/bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
@@ -26,17 +26,6 @@ export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 # Create the run directory if it doesn't exist
 RUNDIR=$(dirname $SOCKFILE)
 test -d $RUNDIR || mkdir -p $RUNDIR
-
-# Start your Django Unicorn
-# Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
-#exec $ENVIROMENT/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
-#  --name $NAME \
-#  --workers $NUM_WORKERS \
-#  --user $USER --group $GROUP\
-#  --pid $PID_FILE \
-#  --bind=unix:$SOCKFILE \
-#  --log-level=debug \
-#  --log-file=-
 
 #Start your Djangos uwsgi
 uwsgi --chdir=$DJANGODIR \
@@ -46,12 +35,11 @@ uwsgi --chdir=$DJANGODIR \
     --socket=$SOCKFILE \
     --chmod-socket=666 \
     --processes=$NUM_WORKERS \
-    --uid=$USER_ID --gid=$GROUP_ID \
+    --uid=$USER --gid=$GROUP \
     --harakiri=20 \
     --max-requests=5000 \
-    --logger file:/var/www/gtracker/logs/uwsgi.log \
+    --logger file:/var/log/gtracker/uwsgi.log \
     --vacuum \
     --http-websockets \
     --home=$ENVIROMENT
  #--daemonize=/var/log/uwsgi/yourproject.log
-

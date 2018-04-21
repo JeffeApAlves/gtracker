@@ -2,10 +2,10 @@
 
 NAME="gtracker-workers"                              # Name of the application (*)
 DJANGODIR=/var/www/gtracker/web          
-USER=gtracker                                        # the user to run as (*)
-USER_ID=999
-GROUP=webapps                                        # the group to run as (*)
-GROUP_ID=996
+#USER=gtracker                                        # the user to run as (*)
+#USER_ID=999
+#GROUP=webapps                                        # the group to run as (*)
+#GROUP_ID=996
 NUM_WORKERS=5                                        # how many worker processes should Gunicorn spawn (*)
 PID_FILE=/tmp/gtracker-runworkers_master.pid
 ENVIROMENT=/home/jefferson/.virtualenvs/gtracker

@@ -35,17 +35,19 @@ class PROJECT(object):
     # diretrio raiz da solução
     HOMEDIR = "%s/%s" % (configuration['project']['workdir'],NAME)
     # ferramnetas
-    TOOLDIR=HOMEDIR + '/tools'
+    TOOLDIR = "/".join([HOMEDIR , 'tools'])
     # diretorio do site
-    WEBDIR = HOMEDIR + '/web' 
+    WEBDIR = "/".join([HOMEDIR , '/web'] )
     # embarcado
-    PLATFORMDIR = HOMEDIR + '/platform'
+    PLATFORMDIR = "/".join([HOMEDIR , 'platform'])
     # Diretorio da simulação
-    VANETDIR=HOMEDIR + '/vanet' 
-    # scripts e configurações de inicialização
-    STARTUPDIR =  HOMEDIR + '/startup'
+    VANETDIR = "/".join([HOMEDIR , 'vanet']) 
+    # scripts de inicialização
+    STARTUPDIR =  "/".join([HOMEDIR , 'startup'])
     # Arquivos
-    REQUERIMENTS_FILE= WEBDIR + "/requirements.txt"
+    REQUERIMENTS_FILE = "/".join([WEBDIR , "requirements.txt"])
+    # configurações do supervisor
+    SUPERVISORDIR =  "/".join([HOMEDIR , 'supervisor'])
 
     # adiciona diretorio de ferramentas no path
     sys.path.append(os.path.join(HOMEDIR, 'tools'))
@@ -60,4 +62,8 @@ class WEBSERVER(object):
     # diretrio raiz da solução
     HOMEDIR = PROJECT.configuration['webserver']['home']
     # diretorio do site
-    WEBDIR = HOMEDIR + '/web' 
+    WEBDIR = "/".join([HOMEDIR ,"web"]) 
+    # diretorio do arquivos de codnfiguração do supervisor
+    SUPERVISORDIR= "/etc/supervisor/conf.d"
+    # diretorio startup das aplicações
+    STARTUPDIR = "/".join([HOMEDIR,"startup"])

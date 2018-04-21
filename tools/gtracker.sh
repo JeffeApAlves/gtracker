@@ -31,7 +31,7 @@ alias app-manage=$PROJECT_HOME/tools/app-manage.py
 alias vanet=$PROJECT_HOME/tools/vanet-manage.py
 alias platform=$PROJECT_HOME/tools/platform-manage.py
 
-### alias aplicação
+### alias aplicação web
 
 alias $prj_name_lower="app-manage"
 alias $prj_name_lower-home="cd $PROJECT_HOME"
