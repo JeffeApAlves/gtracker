@@ -8,8 +8,7 @@
 @date    2018-01-09
 @version 0.1
 
-
-Gerenciador do projeto
+Gerenciador da aplicação web
 
 """
 
@@ -25,7 +24,6 @@ from project import *
 from cl_bash import *
 
 locale.setlocale(locale.LC_ALL, '')
-
 
 @click.group()
 @click.option('--debug/--no-debug', default=False)
@@ -56,6 +54,10 @@ def update():
         args = shlex.split(cl)
         subprocess.call(args)
 
+@cli.command()
+def freeze():
+    '''Cria o arquivo requeriments com os pacotes que estão instalados no ambiente python'''
+
     with open(PROJECT.REQUERIMENTS_FILE,'w') as req:
 
         # Atualiza o arquivo do projeto 
@@ -73,14 +75,12 @@ def install():
     args = shlex.split(cl)
     subprocess.call(args)
 
-
 @cli.command()
 @click.option('--user',default=getpass.getuser())
 @click.option('--ident',default="")
 def deploy(ident,user):
 
     '''Copia os arquivos da aplicação web para o host'''
-
     #ec2-18-219-168-254.us-east-2.compute.amazonaws.com
 
     if(ident != ""):
@@ -113,14 +113,6 @@ def deploy(ident,user):
     args = shlex.split(cl)
     subprocess.call(args)
  
-
-@cli.command()
-def config():
-
-    '''Configurações referente a parte web que serão salvas na configuração do projeto'''
-    pass
-
-
 @cli.command()
 @click.pass_context
 def static_files(ctx):

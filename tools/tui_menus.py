@@ -6,7 +6,7 @@
 @version 0.1
 
 
-Menus gráficos(TUI) para o gerenciamento do projeto
+Menus gráficos(TUI) para o gerenciamento do projeto do esp32
 
 """
 
